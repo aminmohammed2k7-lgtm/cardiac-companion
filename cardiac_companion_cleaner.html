@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d1f1a">
+<meta name="mobile-web-app-capable" content="yes">
+<link id="manifestLink" rel="manifest">
+<title>Cardiac Companion</title>
+<!--
+  KNOWN LIMITATION — online font dependency:
+  Space Grotesk, Inter, IBM Plex Mono, and Noto Sans Ethiopic are loaded from
+  fonts.googleapis.com below. Unlike the manifest icons (embedded as base64
+  data URIs), these are NOT bundled into this file — embedding four full
+  variable font families here would balloon this single-file prototype by
+  several megabytes. Noto Sans Ethiopic in particular is required for correct
+  Amharic/Oromo glyph rendering, so a fully offline first load will fall back
+  to the browser's default system font for that script. First load requires
+  a network connection; once cached by the browser's own font cache, repeat
+  visits render offline. A JS check below warns the user if they open the
+  app offline before fonts have ever been cached.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ── base surfaces ── */
+    --void:#08130f;
+    --surface:#0d1f1a;
+    --surface-raised:#132d25;
+    --surface-hover:#183a2f;
+    --hairline:rgba(255,255,255,.08);
+    --hairline-strong:rgba(255,255,255,.16);
+
+    /* ── text ── */
+    --ink-1:#eef7f1;
+    --ink-2:#a3bfb2;
+    --ink-3:#638375;
+
+    /* ── clinical parameter accents (mirrors real bedside-monitor conventions) ── */
+    --trace-normal:#3ddc97;
+    --trace-tachy:#ffb648;
+    --trace-brady:#5ac8fa;
+    --trace-arrhy:#ff6b6b;
+    --stress-tint:#ff8a4c;
+
+    --spo2:#45d1e0;
+    --bp:#ff8fae;
+    --temp:#ffcc66;
+
+    /* ── reserved for the Ethiopian calendar only ── */
+    --ethio-gold:#f2b134;
+    --ethio-gold-dim:rgba(242,177,52,.13);
+
+    --danger:#ff6b6b;
+    --warning:#ffb648;
+    --info:#5ac8fa;
+
+    --glow-primary:rgba(61,220,151,.12);
+    --ecg-bg:#081712;
+    --ecg-grid-a:rgba(61,220,151,.055);
+    --ecg-grid-b:rgba(61,220,151,.02);
+    --ecg-veil:rgba(8,23,18,.82);
+
+    --font-display:'Space Grotesk','Noto Sans Ethiopic',system-ui,sans-serif;
+    --font-body:'Inter','Noto Sans Ethiopic',system-ui,sans-serif;
+    --font-mono:'IBM Plex Mono','Noto Sans Ethiopic',ui-monospace,monospace;
+
+    --r-lg:16px;
+    --r-md:12px;
+    --r-sm:8px;
+  }
+
+  /* ── Crimson theme — same clinical-monitor logic, deep red base.
+       Arrhythmia/danger shift to rose so they still stand out against
+       a red-toned background instead of blending into it. ── */
+  :root[data-theme="crimson"]{
+    --void:#170808;
+    --surface:#241010;
+    --surface-raised:#331515;
+    --surface-hover:#3d1a1a;
+    --hairline:rgba(255,255,255,.09);
+    --hairline-strong:rgba(255,255,255,.17);
+
+    --ink-1:#f8eeee;
+    --ink-2:#c2a3a3;
+    --ink-3:#8a6666;
+
+    --trace-arrhy:#ff4d8d;
+    --danger:#ff4d8d;
+
+    --glow-primary:rgba(255,77,109,.14);
+    --ecg-bg:#180a0b;
+    --ecg-grid-a:rgba(255,90,120,.06);
+    --ecg-grid-b:rgba(255,90,120,.02);
+    --ecg-veil:rgba(24,10,11,.82);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;}
+  }
+
+  html,body{height:100%;}
+
+  body{
+    font-family:var(--font-body);
+    background:var(--void);
+    color:var(--ink-1);
+    -webkit-font-smoothing:antialiased;
+    overflow:hidden;
+  }
+
+  ::selection{background:var(--trace-normal);color:var(--void);}
+
+  button, input, textarea{font-family:inherit;}
+  button{-webkit-appearance:none;appearance:none;}
+
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible{
+    outline:2px solid var(--trace-normal);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+
+  .app{
+    max-width:460px;
+    margin:0 auto;
+    height:100vh;
+    height:100dvh;
+    display:flex;
+    flex-direction:column;
+    background:var(--void);
+    position:relative;
+    box-shadow:0 0 60px rgba(0,0,0,.5);
+  }
+
+
+
+  /* ═══════════ HEADER ═══════════ */
+  .header{
+    position:relative;
+    z-index:5;
+    padding:calc(16px + env(safe-area-inset-top)) 18px 12px;
+    border-bottom:1px solid var(--hairline);
+    background:var(--void);
+  }
+
+  .header-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:10px;
+  }
+
+  .brand{display:flex; align-items:center; gap:10px;}
+
+  .brand-mark{
+    width:36px;height:36px;
+    border-radius:8px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline-strong);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--trace-normal);
+    flex-shrink:0;
+  }
+  .brand-mark svg{width:19px;height:19px;}
+
+  .brand-text h1{
+    font-family:var(--font-display);
+    font-size:15.5px;
+    font-weight:600;
+    letter-spacing:-.2px;
+    line-height:1.2;
+  }
+  .brand-text p{
+    font-size:11px;
+    color:var(--ink-3);
+    font-weight:500;
+    margin-top:1px;
+  }
+
+  .header-actions{display:flex; align-items:center; gap:8px;}
+
+  .icon-btn{
+    position:relative;
+    width:32px;height:32px;
+    border-radius:9px;
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    color:var(--ink-2);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .icon-btn svg{width:16px;height:16px;}
+  .icon-btn:hover{border-color:var(--hairline-strong); color:var(--ink-1);}
+
+  .notif-dot{
+    position:absolute;
+    top:-3px; right:-3px;
+    min-width:15px;height:15px;
+    padding:0 3px;
+    border-radius:8px;
+    background:var(--danger);
+    color:#fff;
+    font-size:9px;
+    font-weight:700;
+    font-family:var(--font-mono);
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--void);
+  }
+
+  .lang-pills{
+    display:flex;
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    border-radius:9px;
+    padding:2px;
+    gap:1px;
+  }
+  .lang-pill{
+    padding:5px 8px;
+    border:none;
+    background:transparent;
+    color:var(--ink-3);
+    font-size:10.5px;
+    font-weight:600;
+    border-radius:7px;
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .lang-pill.active{background:var(--surface-raised); color:var(--trace-normal);}
+
+  /* Ethiopian date pill */
+  .ec-pill{
+    margin-top:11px;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:6px 11px 6px 8px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:6px;
+  }
+  .ec-pill svg{width:13px;height:13px; color:var(--ink-2); flex-shrink:0;}
+  .ec-pill-text{
+    font-family:var(--font-mono);
+    font-size:11px;
+    font-weight:500;
+    color:var(--ink-2);
+    letter-spacing:.2px;
+  }
+  .ec-pill-sep{color:var(--ink-3); margin:0 1px;}
+  .ec-pill-greg{
+    font-size:10.5px;
+    color:var(--ink-3);
+    font-weight:500;
+    font-family:var(--font-mono);
+  }
+
+  /* ═══════════ CONTENT ═══════════ */
+  .content{
+    flex:1;
+    overflow-y:auto;
+    overflow-x:hidden;
+    position:relative;
+    z-index:1;
+    -webkit-overflow-scrolling:touch;
+  }
+  .content::-webkit-scrollbar{width:3px;}
+  .content::-webkit-scrollbar-thumb{background:var(--hairline-strong); border-radius:2px;}
+
+  .tab{display:none; padding:18px 16px 28px;}
+  .tab.active{display:block;}
+
+  .tab-head{margin-bottom:16px;}
+  .tab-head h2{
+    font-family:var(--font-display);
+    font-size:21px;
+    font-weight:600;
+    letter-spacing:-.3px;
+  }
+  .tab-head p{
+    font-size:12.5px;
+    color:var(--ink-3);
+    margin-top:2px;
+    font-weight:500;
+  }
+
+  /* ═══════════ CARD ═══════════ */
+  .card{
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-lg);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .card-head{
+    padding:13px 15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid var(--hairline);
+  }
+  .card-head-left{display:flex; align-items:center; gap:8px;}
+  .card-dot{width:6px;height:6px;border-radius:50%;background:var(--trace-normal);}
+  .card-label{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    color:var(--ink-3);
+  }
+  .card-body{padding:15px;}
+
+  .badge{
+    font-size:10.5px;
+    font-weight:600;
+    padding:4px 9px;
+    border-radius:20px;
+  }
+  .badge-live{
+    background:var(--surface-raised);
+    color:var(--ink-2);
+    display:flex; align-items:center; gap:5px;
+    cursor:pointer;
+    border:1px solid var(--hairline);
+    border-radius:14px;
+    padding:4px 9px;
+    font-size:10.5px;
+    font-weight:600;
+  }
+  .badge-live .dot{width:5px;height:5px;border-radius:50%;background:var(--ink-2);}
+  .badge-live.frozen{background:var(--surface-raised); color:var(--ink-3);}
+  .badge-live.frozen .dot{background:var(--ink-3);}
+
+  /* ═══════════ ECG ═══════════ */
+  .ecg-frame{
+    position:relative;
+    border-radius:var(--r-md);
+    overflow:hidden;
+    background:
+      linear-gradient(var(--ecg-grid-a) 1px, transparent 1px) 0 0/25px 25px,
+      linear-gradient(90deg, var(--ecg-grid-a) 1px, transparent 1px) 0 0/25px 25px,
+      linear-gradient(var(--ecg-grid-b) 1px, transparent 1px) 0 0/5px 5px,
+      linear-gradient(90deg, var(--ecg-grid-b) 1px, transparent 1px) 0 0/5px 5px,
+      var(--ecg-bg);
+    border:1px solid var(--hairline);
+  }
+  .ecg-inner{position:relative; aspect-ratio:700/168;}
+  canvas#ecgCanvas{width:100%;height:100%;display:block;}
+
+  .ecg-readout{
+    position:absolute;
+    top:7px; left:7px;
+    z-index:3;
+    pointer-events:none;
+    padding:5px 8px 6px 6px;
+    border-radius:8px;
+    background:var(--ecg-veil);
+  }
+  .ecg-bpm{
+    font-family:var(--font-display);
+    font-size:34px;
+    font-weight:700;
+    line-height:1;
+    letter-spacing:-1px;
+    color:var(--trace-normal);
+  }
+  .ecg-bpm-unit{
+    font-size:10px;
+    color:var(--ink-3);
+    font-weight:600;
+    letter-spacing:.5px;
+    margin-top:1px;
+  }
+  .ecg-status{
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--ink-2);
+    margin-top:4px;
+    font-weight:500;
+  }
+
+  .ecg-toggle{
+    position:absolute;
+    top:12px; right:12px;
+    z-index:3;
+  }
+
+  /* rhythm selector */
+  .rhythm-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:7px;
+    margin:14px 0 16px;
+  }
+  .rhythm-btn{
+    display:flex; flex-direction:column; align-items:center; gap:5px;
+    padding:9px 4px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-sm);
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .rhythm-btn .rdot{width:7px;height:7px;border-radius:50%; background:var(--ink-3);}
+  .rhythm-btn span{font-size:10px; font-weight:600; color:var(--ink-3); text-align:center; line-height:1.2;}
+  .rhythm-btn:hover{border-color:var(--hairline-strong);}
+  .rhythm-btn.active{background:rgba(255,255,255,.03); border-width:1px;}
+  .rhythm-btn.active[data-r="normal"]{border-color:var(--trace-normal);}
+  .rhythm-btn.active[data-r="normal"] .rdot{background:var(--trace-normal);}
+  .rhythm-btn.active[data-r="normal"] span{color:var(--trace-normal);}
+  .rhythm-btn.active[data-r="tachy"]{border-color:var(--trace-tachy);}
+  .rhythm-btn.active[data-r="tachy"] .rdot{background:var(--trace-tachy);}
+  .rhythm-btn.active[data-r="tachy"] span{color:var(--trace-tachy);}
+  .rhythm-btn.active[data-r="brady"]{border-color:var(--trace-brady);}
+  .rhythm-btn.active[data-r="brady"] .rdot{background:var(--trace-brady);}
+  .rhythm-btn.active[data-r="brady"] span{color:var(--trace-brady);}
+  .rhythm-btn.active[data-r="arrhy"]{border-color:var(--trace-arrhy);}
+  .rhythm-btn.active[data-r="arrhy"] .rdot{background:var(--trace-arrhy);}
+  .rhythm-btn.active[data-r="arrhy"] span{color:var(--trace-arrhy);}
+
+  /* sliders */
+  .slider-block{margin-bottom:14px;}
+  .slider-block:last-child{margin-bottom:0;}
+  .slider-top{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:8px;
+  }
+  .slider-name{font-size:12px; color:var(--ink-2); font-weight:500;}
+  .slider-val{font-family:var(--font-mono); font-size:12.5px; font-weight:600; color:var(--ink-1);}
+
+  input[type="range"]{
+    -webkit-appearance:none; appearance:none;
+    width:100%; height:4px;
+    border-radius:2px;
+    outline:none;
+    background:var(--surface-raised);
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:15px;height:15px;
+    border-radius:50%;
+    background:var(--trace-normal);
+    cursor:pointer;
+    border:2.5px solid var(--void);
+    box-shadow:0 0 0 1px var(--trace-normal);
+    margin-top:0;
+  }
+  input[type="range"]::-moz-range-thumb{
+    width:15px;height:15px;border-radius:50%;
+    background:var(--trace-normal); cursor:pointer; border:2.5px solid var(--void);
+  }
+
+  .sliders-2col{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px;}
+
+  /* toggle switch */
+  .switch-row{
+    display:flex; align-items:center; justify-content:space-between;
+    gap:12px;
+  }
+  .switch-copy p:first-child{font-size:13px; font-weight:600; color:var(--ink-1);}
+  .switch-copy p:last-child{font-size:11.5px; color:var(--ink-3); margin-top:2px;}
+
+  .switch{
+    position:relative;
+    width:42px; height:24px;
+    border-radius:14px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline-strong);
+    cursor:pointer;
+    flex-shrink:0;
+    transition:background .2s;
+  }
+  .switch::after{
+    content:'';
+    position:absolute;
+    top:2px; left:2px;
+    width:18px;height:18px;
+    border-radius:50%;
+    background:var(--ink-3);
+    transition:all .2s;
+  }
+  .switch.on{background:rgba(61,220,151,.15); border-color:var(--trace-normal);}
+  .switch.on::after{background:var(--trace-normal); left:20px;}
+
+  /* ═══════════ VITALS ═══════════ */
+  .vitals-row{display:grid; grid-template-columns:repeat(3,1fr); gap:9px;}
+  .vital{
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-md);
+    padding:11px 8px;
+    text-align:center;
+    border-top:2px solid var(--spo2);
+  }
+  .vital[data-k="bp"]{border-top-color:var(--bp);}
+  .vital[data-k="temp"]{border-top-color:var(--temp);}
+  .vital-icon{color:var(--spo2); margin-bottom:6px;}
+  .vital[data-k="bp"] .vital-icon{color:var(--bp);}
+  .vital[data-k="temp"] .vital-icon{color:var(--temp);}
+  .vital-icon svg{width:15px;height:15px;}
+  .vital-val{font-family:var(--font-mono); font-size:16px; font-weight:700; color:var(--ink-1);}
+  .vital-label{font-size:9.5px; color:var(--ink-3); font-weight:600; margin-top:3px; text-transform:uppercase; letter-spacing:.3px;}
+
+  /* ═══════════ MEDS ═══════════ */
+
+  /* date strip */
+  .datestrip-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;}
+  .cal-toggle{display:flex; background:var(--surface-raised); border:1px solid var(--hairline); border-radius:8px; padding:2px;}
+  .cal-toggle button{
+    padding:4px 9px; border:none; background:transparent; color:var(--ink-3);
+    font-size:10px; font-weight:700; border-radius:6px; cursor:pointer;
+  }
+  .cal-toggle button.active{background:var(--ethio-gold-dim); color:var(--ethio-gold);}
+
+  .datestrip{
+    display:flex; gap:7px;
+    overflow-x:auto;
+    padding-bottom:2px;
+    scrollbar-width:none;
+    margin-bottom:14px;
+  }
+  .datestrip::-webkit-scrollbar{display:none;}
+  .datecell{
+    flex-shrink:0;
+    width:52px;
+    padding:9px 4px 8px;
+    border-radius:11px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    text-align:center;
+  }
+  .datecell.today{background:var(--ethio-gold-dim); border-color:rgba(242,177,52,.4);}
+  .datecell .dow{font-size:9px; color:var(--ink-3); font-weight:600; text-transform:uppercase;}
+  .datecell .dnum{font-family:var(--font-mono); font-size:17px; font-weight:700; color:var(--ink-1); margin:3px 0 1px;}
+  .datecell.today .dnum{color:var(--ethio-gold);}
+  .datecell .dsub{font-size:8.5px; color:var(--ink-3); font-weight:500; white-space:nowrap; overflow:hidden;}
+
+  .med-list{display:flex; flex-direction:column; gap:8px;}
+  .med-item{
+    display:flex; align-items:center; gap:11px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-md);
+    padding:10px 11px;
+  }
+  .med-item.taken{border-color:rgba(61,220,151,.35); background:rgba(61,220,151,.05);}
+  .med-item.missed{border-color:rgba(255,107,107,.35); background:rgba(255,107,107,.05);}
+
+  .med-status{
+    width:32px;height:32px;
+    border-radius:9px;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+    background:var(--surface);
+    color:var(--ink-3);
+  }
+  .med-status svg{width:15px;height:15px;}
+  .med-item.taken .med-status{background:rgba(61,220,151,.15); color:var(--trace-normal);}
+  .med-item.missed .med-status{background:rgba(255,107,107,.15); color:var(--danger);}
+
+  .med-info{flex:1; min-width:0;}
+  .med-name{font-size:13px; font-weight:600; color:var(--ink-1);}
+  .med-meta{font-size:11px; color:var(--ink-3); margin-top:1px; font-family:var(--font-mono);}
+
+  .med-actions{display:flex; gap:5px;}
+  .med-btn{
+    width:28px;height:28px;
+    border-radius:8px;
+    border:1px solid var(--hairline);
+    background:var(--surface);
+    color:var(--ink-2);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:all .15s;
+  }
+  .med-btn svg{width:13px;height:13px;}
+  .med-btn.take:hover{border-color:var(--trace-normal); color:var(--trace-normal); background:rgba(61,220,151,.08);}
+  .med-btn.skip:hover{border-color:var(--danger); color:var(--danger); background:rgba(255,107,107,.08);}
+  .med-btn-spacer{width:28px; height:28px; flex-shrink:0;}
+
+  .form-field{
+    width:100%;
+    padding:10px 12px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-sm);
+    color:var(--ink-1);
+    font-size:12.5px;
+    margin-bottom:8px;
+  }
+  .form-field::placeholder{color:var(--ink-3);}
+  .form-field:focus{border-color:var(--trace-normal);}
+  .form-row2{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  /* iOS Safari zooms the whole page when an input under 16px gets focus */
+  @supports (-webkit-touch-callout: none){ .form-field{font-size:16px;} }
+
+  .btn{
+    width:100%;
+    padding:11px;
+    border-radius:var(--r-sm);
+    font-size:12.5px;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:all .15s;
+  }
+  .btn-solid{background:var(--trace-normal); color:var(--void);}
+  .btn-solid:hover{background:#33c589;}
+  .btn-ghost{background:var(--surface-raised); border-color:var(--hairline); color:var(--ink-2); margin-top:8px;}
+  .btn-ghost:hover{border-color:var(--hairline-strong); color:var(--ink-1);}
+  .btn-row{display:flex; gap:8px;}
+  .btn-row .btn{margin-top:0;}
+
+  .history-list{display:flex; flex-direction:column; gap:7px;}
+  .history-item{
+    display:flex; gap:10px; align-items:flex-start;
+    padding:9px 10px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-sm);
+    font-size:11.5px;
+  }
+  .hdot{width:6px;height:6px;border-radius:50%; margin-top:4px; flex-shrink:0;}
+  .htime{font-family:var(--font-mono); color:var(--ink-3); min-width:38px; font-size:11px;}
+  .htext{color:var(--ink-2); flex:1;}
+
+  /* ═══════════ SYMPTOMS ═══════════ */
+  .symptom-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  .symptom-chip{
+    padding:11px 10px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-sm);
+    text-align:left;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:500;
+    color:var(--ink-2);
+    transition:all .15s;
+  }
+  .symptom-chip:hover{border-color:var(--hairline-strong);}
+  .symptom-chip.sel{border-color:var(--info); background:rgba(90,200,250,.08); color:var(--info); font-weight:600;}
+  .symptom-chip.sel.severe{border-color:var(--danger); background:rgba(255,107,107,.08); color:var(--danger);}
+  .symptom-chip{display:flex; align-items:center; justify-content:space-between; gap:6px;}
+  div.symptom-chip{cursor:default;}
+  .symptom-sev{font-family:var(--font-mono); font-size:9.5px; font-weight:700; opacity:.75; flex-shrink:0;}
+  .symptom-remove{
+    background:none; border:none; color:inherit; opacity:.5; cursor:pointer;
+    width:16px; height:16px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .symptom-remove svg{width:11px;height:11px;}
+  .symptom-remove:hover{opacity:1;}
+
+  .stress-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:9px;}
+  .stress-name{font-size:12.5px; color:var(--ink-2); font-weight:500;}
+  .stress-num{font-family:var(--font-mono); font-size:13px; font-weight:700; color:var(--warning);}
+  .stress-track{height:6px; background:var(--surface-raised); border-radius:3px; overflow:hidden; margin-bottom:10px;}
+  .stress-fill{height:100%; border-radius:3px; background:linear-gradient(90deg,var(--trace-normal),var(--warning),var(--danger)); transition:width .3s;}
+  .stress-opts{display:grid; grid-template-columns:repeat(4,1fr); gap:7px;}
+  .stress-opt{
+    padding:8px 4px;
+    background:var(--surface-raised);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-sm);
+    font-size:10.5px; font-weight:600; color:var(--ink-3);
+    cursor:pointer;
+  }
+  .stress-opt.active{border-color:var(--warning); background:rgba(255,182,72,.1); color:var(--warning);}
+
+  textarea.form-field{resize:vertical; min-height:74px; font-family:inherit;}
+
+  /* ═══════════ SUMMARY ═══════════ */
+  .rings-row{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:14px;}
+  .ring-card{
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    border-radius:var(--r-lg);
+    padding:14px 8px;
+    text-align:center;
+  }
+  .ring-label{font-size:9.5px; font-weight:700; color:var(--ink-3); text-transform:uppercase; letter-spacing:.4px; margin-bottom:8px;}
+  .ring-num{font-family:var(--font-display); font-size:24px; font-weight:700; color:var(--trace-normal);}
+  .ring-sub{font-size:9px; color:var(--ink-3); margin-top:2px; font-weight:500;}
+
+  #trendChart{width:100%; height:110px; display:block;}
+
+  .ec-calendar-card{
+    background:var(--surface);
+    border:1px solid var(--hairline);
+  }
+  .ec-big{display:flex; align-items:baseline; gap:8px; margin-bottom:2px;}
+  .ec-big-num{font-family:var(--font-display); font-size:32px; font-weight:700; color:var(--ink-1); letter-spacing:-.5px;}
+  .ec-big-month{font-size:15px; font-weight:600; color:var(--ink-1);}
+  .ec-year{font-family:var(--font-mono); font-size:12px; color:var(--ink-3); font-weight:600;}
+  .ec-sub-row{display:flex; align-items:center; gap:8px; margin-top:8px; padding-top:10px; border-top:1px solid var(--hairline);}
+  .ec-sub-row span{font-size:11px; color:var(--ink-3);}
+  .ec-sub-row .g{font-family:var(--font-mono); font-weight:600; color:var(--ink-2);}
+
+  /* ═══════════ NAV ═══════════ */
+  .nav{
+    display:flex;
+    border-top:1px solid var(--hairline);
+    background:var(--surface);
+    padding:8px 6px calc(8px + env(safe-area-inset-bottom));
+    position:relative;
+    z-index:5;
+  }
+  .nav-item{
+    flex:1;
+    display:flex; flex-direction:column; align-items:center; gap:5px;
+    padding:6px 2px;
+    border-radius:10px;
+    border:none;
+    background:none;
+    cursor:pointer;
+    color:var(--ink-3);
+    transition:color .15s;
+  }
+  .nav-item svg{width:19px;height:19px;}
+  .nav-item span{font-size:9.5px; font-weight:600; letter-spacing:.2px;}
+  .nav-item.active{color:var(--trace-normal);}
+
+  /* ═══════════ DISCLAIMER ═══════════ */
+  .disclaimer{
+    text-align:center;
+    font-size:10.5px;
+    color:var(--ink-3);
+    padding:14px 24px 4px;
+    line-height:1.5;
+    font-weight:500;
+  }
+
+  /* ═══════════ NOTIFICATIONS ═══════════ */
+  .notif-panel{
+    position:fixed; inset:0;
+    max-width:460px; margin:0 auto;
+    background:var(--void);
+    z-index:100;
+    /* the panel is centred at max 460px, so translating by its own width alone
+       leaves it on screen for any viewport wider than 460px — also move it past
+       the side gutter, and hide it so closed-panel buttons can't take focus */
+    transform:translateX(calc(100% + (100vw - 100%) / 2));
+    visibility:hidden;
+    transition:transform .28s ease, visibility 0s linear .28s;
+    display:flex; flex-direction:column;
+  }
+  .notif-panel.open{
+    transform:translateX(0);
+    visibility:visible;
+    transition:transform .28s ease, visibility 0s linear 0s;
+  }
+  .notif-head{
+    padding:calc(16px + env(safe-area-inset-top)) 18px 16px;
+    border-bottom:1px solid var(--hairline);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .notif-head h2{font-family:var(--font-display); font-size:16px; font-weight:600;}
+  .notif-list{flex:1; overflow-y:auto; padding:12px 16px;}
+  .notif-item{
+    padding:12px 13px;
+    background:var(--surface);
+    border:1px solid var(--hairline);
+    border-left:3px solid var(--trace-normal);
+    border-radius:var(--r-sm);
+    margin-bottom:9px;
+  }
+  .notif-item.warning{border-left-color:var(--warning);}
+  .notif-item.danger{border-left-color:var(--danger);}
+  .notif-item .nt{font-size:12.5px; font-weight:600; color:var(--ink-1);}
+  .notif-item .nb{font-size:11.5px; color:var(--ink-2); margin-top:3px; line-height:1.4;}
+  .notif-item .nm{font-family:var(--font-mono); font-size:10px; color:var(--ink-3); margin-top:6px;}
+  .notif-empty{text-align:center; padding:60px 20px; color:var(--ink-3); font-size:13px;}
+
+  /* ═══════════ TOAST ═══════════ */
+  .toast{
+    position:fixed;
+    bottom:calc(86px + env(safe-area-inset-bottom)); left:50%;
+    transform:translateX(-50%) translateY(10px);
+    background:var(--surface-raised);
+    border:1px solid var(--hairline-strong);
+    color:var(--ink-1);
+    padding:9px 16px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+    opacity:0;
+    transition:all .25s;
+    z-index:200;
+    max-width:calc(100% - 40px);
+    text-align:center;
+    pointer-events:none;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+  /* tactile press feedback — the thing that makes it feel handled, not just displayed */
+  .btn, .rhythm-btn, .stress-opt, .symptom-chip, .med-btn, .icon-btn, .lang-pill, .nav-item, .cal-toggle button, .switch{
+    /* explicit properties, not `all` — `all` also animates the inherited
+       `visibility`, which left buttons in the notifications panel briefly
+       hidden (and unfocusable) as it opened */
+    transition:transform .12s ease, background-color .12s ease, border-color .12s ease, color .12s ease, opacity .12s ease;
+  }
+  .btn:active, .rhythm-btn:active, .stress-opt:active, button.symptom-chip:active, .med-btn:active, .icon-btn:active, .lang-pill:active, .nav-item:active, .cal-toggle button:active{
+    transform:scale(.94);
+  }
+
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="header">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1 id="appTitle">Cardiac Companion</h1>
+          <p id="appSubtitle">Rhythm log & med tracker</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Switch color theme" title="Switch color theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 100 18c1.3 0 2-.9 2-2 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.9 1.8-1.9H16c2.2 0 4-1.7 4-3.9C20 6.6 16.4 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7" r="1.1" fill="currentColor" stroke="none"/><circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </button>
+        <button class="icon-btn" onclick="triggerInstall()" id="installBtn" style="display:none; color:var(--trace-normal); border-color:rgba(61,220,151,.35);" aria-label="Install app" title="Install app">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 19h14"/></svg>
+        </button>
+        <button class="icon-btn" id="notifBtn" onclick="openNotifications()" aria-label="Notifications" aria-controls="notifPanel" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0112 0c0 4.4 1.2 5.8 2 6.5H4c.8-.7 2-2.1 2-6.5z"/><path d="M10 19a2 2 0 004 0"/></svg>
+          <span class="notif-dot" id="notifDot" style="display:none;">0</span>
+        </button>
+        <div class="lang-pills">
+          <button class="lang-pill active" onclick="setLang('en')" aria-pressed="true" lang="en" aria-label="English">EN</button>
+          <button class="lang-pill" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
+          <button class="lang-pill" onclick="setLang('or')" aria-pressed="false" lang="om" aria-label="Afaan Oromoo">OM</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="ec-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2.2"/><line x1="3.5" y1="10" x2="20.5" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg>
+      <span class="ec-pill-text" id="headerEcDate">—</span>
+      <span class="ec-pill-sep">·</span>
+      <span class="ec-pill-greg" id="headerGcDate">—</span>
+    </div>
+  </header>
+
+  <!-- ═══ CONTENT ═══ -->
+  <main class="content">
+
+    <!-- ───────── MONITOR ───────── -->
+    <section class="tab active" id="tab-monitor">
+      <div class="tab-head">
+        <h2 id="t-monitorTitle">Heart Monitor</h2>
+        <p id="t-monitorSub">Simulated real-time ECG</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot"></span>
+            <span class="card-label" id="t-ecgLabel">Electrocardiogram</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="ecg-frame">
+            <div class="ecg-inner">
+              <div class="ecg-readout">
+                <div class="ecg-bpm" id="bpmDisplay">72</div>
+                <div class="ecg-bpm-unit" id="t-bpmUnit">BPM</div>
+                <div class="ecg-status" id="rhythmStatus">Normal sinus</div>
+              </div>
+              <div class="ecg-toggle">
+                <button class="badge-live" id="freezeToggle" onclick="toggleFreeze()" aria-pressed="false">
+                  <span class="dot"></span><span id="t-liveLabel">Live</span>
+                </button>
+              </div>
+              <canvas id="ecgCanvas" width="700" height="168"></canvas>
+            </div>
+          </div>
+
+          <div class="rhythm-row" id="rhythmRow">
+            <button class="rhythm-btn active" data-r="normal" onclick="setRhythm('normal')" aria-pressed="true">
+              <span class="rdot"></span><span data-key="btn-normal">Normal</span>
+            </button>
+            <button class="rhythm-btn" data-r="tachy" onclick="setRhythm('tachy')" aria-pressed="false">
+              <span class="rdot"></span><span data-key="btn-tachy">Tachycardia</span>
+            </button>
+            <button class="rhythm-btn" data-r="brady" onclick="setRhythm('brady')" aria-pressed="false">
+              <span class="rdot"></span><span data-key="btn-brady">Bradycardia</span>
+            </button>
+            <button class="rhythm-btn" data-r="arrhy" onclick="setRhythm('arrhy')" aria-pressed="false">
+              <span class="rdot"></span><span data-key="btn-arrhy">Arrhythmia</span>
+            </button>
+          </div>
+
+          <div class="slider-block">
+            <div class="slider-top">
+              <span class="slider-name" id="t-hr">Heart rate</span>
+              <span class="slider-val"><span id="hrValue">72</span> BPM</span>
+            </div>
+            <input type="range" id="hrSlider" min="40" max="200" value="72" oninput="onHrSlider(this.value)" aria-labelledby="t-hr hrValue">
+          </div>
+
+          <div class="sliders-2col">
+            <div class="slider-block" style="margin-bottom:0;">
+              <div class="slider-top">
+                <span class="slider-name" id="t-signal">Signal</span>
+                <span class="slider-val" id="signalValue">100%</span>
+              </div>
+              <input type="range" id="signalSlider" min="0" max="100" value="100" oninput="updateSignal(this.value)" aria-labelledby="t-signal signalValue">
+            </div>
+            <div class="slider-block" style="margin-bottom:0;">
+              <div class="slider-top">
+                <span class="slider-name" id="t-noise">Noise</span>
+                <span class="slider-val" id="noiseValue">10%</span>
+              </div>
+              <input type="range" id="noiseSlider" min="0" max="50" value="10" oninput="updateNoise(this.value)" aria-labelledby="t-noise noiseValue">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--spo2);"></span>
+            <span class="card-label" id="t-vitals">Vitals</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="vitals-row">
+            <div class="vital" data-k="spo2">
+              <div class="vital-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6.5 7.4 6.5 12A6.5 6.5 0 015.5 15C5.5 10.4 12 3 12 3z"/></svg></div>
+              <div class="vital-val" id="spo2Value">98%</div>
+              <div class="vital-label" id="t-spo2">Oxygen</div>
+            </div>
+            <div class="vital" data-k="bp">
+              <div class="vital-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3l2-5 4 10 2-7 1.5 2.5H21"/></svg></div>
+              <div class="vital-val" id="bpValue">120/80</div>
+              <div class="vital-label" id="t-bp">Pressure</div>
+            </div>
+            <div class="vital" data-k="temp">
+              <div class="vital-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14.5V4.5a2 2 0 10-4 0v10a4 4 0 104 0z"/></svg></div>
+              <div class="vital-val" id="tempValue">36.6°</div>
+              <div class="vital-label" id="t-temp">Temp</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--ethio-gold);"></span>
+            <span class="card-label" id="t-biosignal">Biosignal Link</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="switch-row">
+            <div class="switch-copy">
+              <p id="t-biosignalName">Link today's log</p>
+              <p id="t-biosignalDesc">Adjusts the trace from today's log</p>
+            </div>
+            <button class="switch" id="biosignalSwitch" onclick="toggleBiosignal()" role="switch" aria-checked="false" aria-labelledby="t-biosignalName"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── MEDS ───────── -->
+    <section class="tab" id="tab-meds">
+      <div class="tab-head">
+        <h2 id="t-medsTitle">Medications</h2>
+        <p id="t-medsSub">Track your daily doses</p>
+      </div>
+
+      <div class="datestrip-head">
+        <span class="card-label" id="t-schedule" style="font-size:11px;">Schedule</span>
+        <div class="cal-toggle">
+          <button class="active" id="calToggleEc" onclick="setCalMode('ec')" aria-pressed="true" title="Ethiopian calendar">EC</button>
+          <button id="calToggleGc" onclick="setCalMode('gc')" aria-pressed="false" title="Gregorian calendar">GC</button>
+        </div>
+      </div>
+      <div class="datestrip" id="dateStrip"></div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--trace-brady);"></span>
+            <span class="card-label" id="t-todayMeds">Today's Medicines</span>
+          </div>
+          <span class="badge badge-live" style="background:var(--surface-raised); color:var(--ink-2); cursor:default;" id="medBadge">0/0</span>
+        </div>
+        <div class="card-body">
+          <div class="med-list" id="medList"></div>
+          <button class="btn btn-ghost" onclick="toggleAddMed()" id="t-addMed">+ Add medication</button>
+          <div id="addMedForm" style="display:none; margin-top:10px;">
+            <div class="form-row2">
+              <input class="form-field" id="newMedName" placeholder="Medicine name">
+              <input class="form-field" id="newMedDose" placeholder="Dose, e.g. 10mg">
+            </div>
+            <div class="form-row2">
+              <input class="form-field" id="newMedTime" type="time" value="08:00">
+              <input class="form-field" id="newMedFreq" placeholder="Frequency">
+            </div>
+            <button class="btn btn-solid" onclick="addMedication()" id="t-saveMed">Save medication</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--ink-3);"></span>
+            <span class="card-label" id="t-logHistory">Log History</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="history-list" id="historyList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── SYMPTOMS ───────── -->
+    <section class="tab" id="tab-symptoms">
+      <div class="tab-head">
+        <h2 id="t-symTitle">Symptoms</h2>
+        <p id="t-symSub">Log how you feel today</p>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--info);"></span>
+            <span class="card-label" id="t-symTracker">Symptom Tracker</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="symptom-grid" id="symptomGrid"></div>
+          <button class="btn btn-ghost" onclick="toggleAddSymptom()" id="t-addSymptom">+ Add custom symptom</button>
+          <div id="addSymptomForm" style="display:none; margin-top:10px;">
+            <input class="form-field" id="newSymptomName" placeholder="Symptom name">
+            <div class="slider-block" style="margin-bottom:10px;">
+              <div class="slider-top">
+                <span class="slider-name" id="t-severity">Severity</span>
+                <span class="slider-val" id="newSymptomSevVal">5/10</span>
+              </div>
+              <input type="range" id="newSymptomSev" min="1" max="10" value="5" oninput="document.getElementById('newSymptomSevVal').textContent=this.value+'/10'" aria-labelledby="t-severity newSymptomSevVal">
+            </div>
+            <button class="btn btn-solid" onclick="addCustomSymptom()" id="t-saveSymptom">Add symptom</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--warning);"></span>
+            <span class="card-label" id="t-stressTitle">Stress Level</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="stress-top">
+            <span class="stress-name" id="t-stressCurrent">Current level</span>
+            <span class="stress-num" id="stressNum">5/10</span>
+          </div>
+          <div class="stress-track"><div class="stress-fill" id="stressFill" style="width:50%;"></div></div>
+          <input type="range" id="stressSlider" min="1" max="10" value="5" style="margin-bottom:12px;" oninput="previewStress(this.value)" aria-labelledby="t-stressCurrent stressNum">
+          <div class="stress-opts">
+            <button class="stress-opt" onclick="previewStress(2)" data-lvl="2" id="t-low" aria-pressed="false">Low</button>
+            <button class="stress-opt active" onclick="previewStress(5)" data-lvl="5" id="t-moderate" aria-pressed="true">Moderate</button>
+            <button class="stress-opt" onclick="previewStress(8)" data-lvl="8" id="t-high" aria-pressed="false">High</button>
+            <button class="stress-opt" onclick="previewStress(10)" data-lvl="10" id="t-crisis" aria-pressed="false">Crisis</button>
+          </div>
+          <button class="btn btn-solid" onclick="commitStress()" id="t-saveSeverity" style="margin-top:12px;">Save this severity</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--danger);"></span>
+            <span class="card-label" id="t-emergencyContact">Emergency Contact</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <input class="form-field" id="emergencyContactInput" type="tel" placeholder="Clinician or emergency phone number" oninput="saveEmergencyContact(this.value)" style="margin-bottom:0;">
+          <a class="btn btn-ghost" id="emergencyCallBtn" style="display:none; text-align:center; text-decoration:none; color:var(--danger); border-color:rgba(255,107,107,.35);" href="#">Call now</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--ink-3);"></span>
+            <span class="card-label" id="t-notes">Daily Notes</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <textarea class="form-field" id="dailyNotes" rows="3" placeholder="How are you feeling today?"></textarea>
+          <button class="btn btn-solid" onclick="saveNote()" id="t-saveNote">Save note</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── SUMMARY ───────── -->
+    <section class="tab" id="tab-summary">
+      <div class="tab-head">
+        <h2 id="t-sumTitle">Weekly Summary</h2>
+        <p id="t-sumSub">Your health at a glance</p>
+      </div>
+
+      <div class="rings-row">
+        <div class="ring-card">
+          <div class="ring-label" id="t-adherence">Adherence</div>
+          <div class="ring-num" id="ringAdherence">—</div>
+          <div class="ring-sub" id="t-adherenceSub">doses taken</div>
+        </div>
+        <div class="ring-card">
+          <div class="ring-label" id="t-avgHr">Avg HR</div>
+          <div class="ring-num" id="ringAvgHr" style="color:var(--trace-brady);">—</div>
+          <div class="ring-sub" id="t-avgHrSub">bpm avg</div>
+        </div>
+        <div class="ring-card">
+          <div class="ring-label" id="t-wellness">Wellness</div>
+          <div class="ring-num" style="color:var(--warning);">60%</div>
+          <div class="ring-sub" id="t-wellnessSub">good days</div>
+        </div>
+      </div>
+
+      <div class="card ec-calendar-card">
+        <div class="card-head" style="border-color:rgba(242,177,52,.18);">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--ethio-gold);"></span>
+            <span class="card-label" id="t-ecCalendar" style="color:var(--ethio-gold);">Ethiopian Calendar</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="ec-big">
+            <span class="ec-big-num" id="ecBigDay">27</span>
+            <span class="ec-big-month" id="ecBigMonth">Hamle</span>
+            <span class="ec-year" id="ecBigYear">2018</span>
+          </div>
+          <div class="ec-sub-row">
+            <span id="t-gregorianEquiv">Gregorian</span>
+            <span class="g" id="ecGregEquiv">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--trace-brady);"></span>
+            <span class="card-label" id="t-weekTrend">7-Day HR Trend</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas id="trendChart" width="700" height="110"></canvas>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--trace-normal);"></span>
+            <span class="card-label" id="t-insights">Insights</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="history-list">
+            <div class="history-item"><div class="hdot" style="background:var(--trace-normal);"></div><div class="htext" id="insight1">HR steady 68–82 bpm — no spikes this week.</div></div>
+            <div class="history-item"><div class="hdot" style="background:var(--warning);"></div><div class="htext" id="insight2">1 missed dose (Wed, Ramipril). Set a reminder?</div></div>
+            <div class="history-item"><div class="hdot" style="background:var(--info);"></div><div class="htext" id="insight3">SpO₂ held 96–99% all week — no dips.</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <p class="disclaimer" id="t-disclaimer">Simulation only — not a medical device. Always follow your clinician's guidance.</p>
+  <p style="text-align:center; font-size:9.5px; color:var(--ink-3); opacity:.55; padding-bottom:10px; font-family:var(--font-mono); letter-spacing:.3px;" id="buildTag">Cardiac Companion</p>
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav">
+    <button type="button" class="nav-item active" onclick="switchTab('monitor', this)" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+      <span id="nav-monitor">Monitor</span>
+    </button>
+    <button type="button" class="nav-item" onclick="switchTab('meds', this)" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8.3" width="18" height="7.4" rx="3.7"/><line x1="12" y1="8.3" x2="12" y2="15.7"/></svg>
+      <span id="nav-meds">Meds</span>
+    </button>
+    <button type="button" class="nav-item" onclick="switchTab('symptoms', this)" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2.2"/><path d="M9 4V3.3A1.3 1.3 0 0110.3 2h3.4A1.3 1.3 0 0115 3.3V4"/><path d="M8.3 12.5l2.4 2.4 5-5.3"/></svg>
+      <span id="nav-symptoms">Symptoms</span>
+    </button>
+    <button type="button" class="nav-item" onclick="switchTab('summary', this)" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="20" x2="5" y2="12.5"/><line x1="12" y1="20" x2="12" y2="6"/><line x1="19" y1="20" x2="19" y2="15"/></svg>
+      <span id="nav-summary">Summary</span>
+    </button>
+  </nav>
+</div>
+
+<!-- ═══ NOTIFICATIONS ═══ -->
+<div class="notif-panel" id="notifPanel" role="dialog" aria-modal="true" aria-labelledby="t-notifTitle">
+  <div class="notif-head">
+    <h2 id="t-notifTitle">Notifications</h2>
+    <div style="display:flex; gap:8px;">
+      <button class="icon-btn" onclick="clearNotifications()" aria-label="Clear all" title="Clear all">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 6 7 20 7"/><path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2"/><path d="M7 7l1 13a1 1 0 001 1h6a1 1 0 001-1l1-13"/></svg>
+      </button>
+      <button class="icon-btn" id="notifCloseBtn" onclick="closeNotifications()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="notifPermRow" style="display:none; margin:12px 16px 0; padding:12px 13px; background:var(--surface-raised); border:1px solid var(--hairline); border-radius:var(--r-md); align-items:center; justify-content:space-between; gap:10px;">
+    <div style="font-size:11.5px; color:var(--ink-2); line-height:1.4; flex:1;" id="t-enableNotifText">Turn on phone notifications for medication and heart-rate alerts.</div>
+    <button class="btn btn-solid" style="width:auto; padding:8px 13px; margin:0; white-space:nowrap; font-size:11px;" onclick="requestNotificationPermission()" id="t-enableNotifBtn">Enable</button>
+  </div>
+  <div class="notif-list" id="notifList">
+    <div class="notif-empty" id="t-notifEmpty">No notifications yet</div>
+  </div>
+  <div style="padding:12px 16px calc(12px + env(safe-area-inset-bottom)); border-top:1px solid var(--hairline);">
+    <button class="btn btn-ghost" style="margin-top:0;" onclick="clearNotifications()" id="t-clearAll">Clear all notifications</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// PWA MANIFEST — built at runtime from embedded icons so the whole
+// app still ships as a single .html file. Registered as early as
+// possible so Chrome's installability check picks it up.
+// ═══════════════════════════════════════════
+(function(){
+  var ICON_192 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFY0lEQVR4nO3du3kbRxSA0QU/p2pAiVpgD66LketiD26BiRpgAXJAUeZjAe5jHnfmnpPZAbAA7j8zAAnxsgTz7cf3X72vgXqen35eel/DW10vxrCzLH2jaH7Hhp5bWsfQ7M4MPnu0CqH6nRh8zqgdQrUbN/iUVCuE4jdq8KmpdAh3JW/M8FNb6RkrUpPBp4cSu8HpHcDw00uJ2TsVgOGnt7MzeDgAw08UZ2bxUACGn2iOzuTuAAw/UR2ZzV0BGH6i2zujmwMw/Ixiz6xuCsDwM5qtM/tlAIafUW2Z3aK/CgGjuRmA1Z/RfTXDVwMw/Mzi1iw7ApHaagBWf2ZzbabtAKT2KQCrP7Nam207AKm9C8Dqz+w+zrgdgNT+BGD1J4u3s24HIDUBkNrdsjj+kM/rzNsBSE0ApCYAUhMAqV28ASYzOwCpCYDUBEBqAiA1AZCaAEhNAKQmAFITAKkJgNQEQGoCIDUBkNpfvS8govvHh3f//e/f/3S6EmqzA3zwcfiv/T/m4PsAb2wZdLvBXOwApCaA37YecxyH5iIAUhMAqQlgcazJTAAHCGYeAiC19AFYzXNLH8BRwpmDAEgtdQBWcVIHcJaAxicAUksbgNWbZfGFmOH58s45aXeAUnruJL68c17KAGYYkluPYYbH10rKALaKepww4OUI4Io9wx9xICNeU0TpAhh9MEa//mjSBbBX1GPQFmL5mgBWjDz07COAQqKutlGvK4pUAYw+DKNff0SpAjhq9CORcK4TwAdnht2gjSdNAIaTNWkCOKv3MehswBaAdQJ4o8SQG7SxpAjAUL7wPHyWIoBSeh+DKE8Av0Ue7pIrt13gvekD6PGCG7JxTB9AFpF3sMgEsOwbnhkGzQ71v6kDiPZ93dq3M0OcrU0dANfZBV6kD+DIqhltpY12PSOZNoCsK9zo32Vurek/jJXtCb9/fAj/26URX5OWO1qTHeD+8SH9E93S6I+r5bxMewSqLcqQRbmOUVUPIOLK31Kvxz9DGC2eu7Q7QPQByb5wtJI2gBKiRxT9+iKoHkDEF6H1NdVazSM+tyW1eHyp/j7A7AOz5vUxO1Ktu3z78f1Xqzvr+SLUHP4tj6vGD6iOPKYRQmi5UDXdATKuwNF4Dd7zJriR0iuvQS5DAKQmgAJKrsYjnNFnIoCGDHc8AhiQ8385AijEUI5JAIE4IrUngMYMeSwCGIyjVlkCKMhwjkcAHawdgxyN+hAAqQmgsJrHIEes8gTQiSNPDAIIQAz9CKACR5VxCGAQoqpDAB05+vQngM5E0JcAKnFkGYMABiCmegRAagKoyModnwBITQDB2UXqEgCpCaAyK3hsAiA1AQRm96hPAA0Y5LgEQGoCIDUBNLL3GOTY1IYASE0ApCYAUhNAQ1vP9c7/7QiA1Jr+nWBeXPsesJW/PTtAB2uDbvj7sAOQmh2A1ARAagIgNQGQmgBITQCkJgBSEwCpCYDUBEBqAiA1AZCaAEjt7vnp56X3RUAPz08/L3YAUhMAqQmA1ARAanfL8vJmoPeFQEuvM28HIDUBkNqfAByDyOLtrNsBSO1dAHYBZvdxxu0ApPYpALsAs1qbbTsAqa0GYBdgNtdm2g5AalcDsAswi1uzfHMHEAGj+2qGHYFI7csA7AKMasvsbtoBRMBots7s5iOQCBjFnlnd9R5ABES3d0Z3vwkWAVEdmc1DnwKJgGiOzuThj0FFQBRnZvHUzwFEQG9nZ/D0D8JEQC8lZq/o8Pqr87RQctEt+qsQdgNqKz1j1QbWbkBJtRbX6iu2EDij9qmi2ZFFCOzR6jjd/MwuBG5p/T6y65tWMbAsfT88CfepjSjmFu2Twv8AvcqrTVdGoSUAAAAASUVORK5CYII=";
+  var ICON_512 = "data:image/png;base64,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";
+  var ICON_MASK = "data:image/png;base64,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sw8C+MfKW/ICAMZiBwAAggQAAAQJABjIqtvkq74umJkAAIAgAQAAQQIA2JXtfxiTAIDBGJjAEQQAAAQJAAAIEgAwoFUeA6zyOmBFAgAAggQAAAQJABiU7XNgTwIA2IWAgbEJAAAIEgAAECQAYGC20YG9CABgc8IFxicAACBIAMDg3E0DexAAABAkAIBN2bGAOQgAmIChCmxNAABAkAAAgCABAGzGowqYhwCASRiuwJYEAAAECQAACBIAMJGRHwOMfGzA7wQAAAQJAAAIEgDA3Wz/w3wEAEzGsAW2IAAAIEgAAECQAIAJjfQYYKRjAS4nAAAgSAAAQJAAgEnZegfuIQCAm4kQmJcAAIAgAQAAQQIAJmYLHriVAABuIj5gbgIAAIIEAEzOnThwCwEAAEECALiaXQeYnwCABRjIwLUEAAAECQAACBIAwFU8boA1CABYhMEMXEMAABcTGbAOAQALMaCBSwkAWMxeESAuYC0CAACCBAAsaOu7dXf/sB4BAIvaamgb/rAmAQALu3d4G/6wrsenj88vZx8EsL9P375c/HcNflifAICY90LA4IcOAQAAQb4DAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAEPR/g26qJEd8YGIAAAAASUVORK5CYII=";
+
+  var manifest = {
+    name: "Cardiac Companion",
+    short_name: "Cardiac",
+    description: "Cardiac health & medication companion",
+    start_url: "./",
+    scope: "./",
+    display: "standalone",
+    orientation: "portrait",
+    background_color: "#0d1f1a",
+    theme_color: "#0d1f1a",
+    icons: [
+      {src: ICON_192, sizes: "192x192", type: "image/png", purpose: "any"},
+      {src: ICON_512, sizes: "512x512", type: "image/png", purpose: "any"},
+      {src: ICON_MASK, sizes: "512x512", type: "image/png", purpose: "maskable"}
+    ]
+  };
+
+  try{
+    // The manifest is served from a blob: URL, and relative URLs such as "./"
+    // cannot be resolved against a blob: base — Chrome discards them as invalid.
+    // Use absolute URLs derived from this page instead.
+    var pageUrl = location.href.split('#')[0].split('?')[0];
+    manifest.start_url = pageUrl;
+    manifest.scope = new URL('./', pageUrl).href;
+    var manifestBlob = new Blob([JSON.stringify(manifest)], {type: 'application/manifest+json'});
+    document.getElementById('manifestLink').href = URL.createObjectURL(manifestBlob);
+  }catch(e){ /* Blob/URL unsupported — install prompt just won't be offered */ }
+
+  try{
+    var _t = localStorage.getItem('cc-theme');
+    if(_t === 'crimson') document.documentElement.setAttribute('data-theme','crimson');
+  }catch(e){}
+})();
+</script>
+
+<script>
+// ═══════════════════════════════════════════
+// ETHIOPIAN CALENDAR — real Gregorian↔Ethiopian conversion
+// ═══════════════════════════════════════════
+const ETHIOPIAN_MONTHS = [
+  {am:'መስከረም',en:'Meskerem',om:'Fulbaana'},
+  {am:'ጥቅምት',en:'Tikimt',om:'Onkololeessa'},
+  {am:'ኅዳር',en:'Hidar',om:'Sadaasa'},
+  {am:'ታኅሳስ',en:'Tahsas',om:'Muddee'},
+  {am:'ጥር',en:'Tir',om:'Amajjii'},
+  {am:'የካቲት',en:'Yekatit',om:'Guraandhala'},
+  {am:'መጋቢት',en:'Megabit',om:'Bitooteessa'},
+  {am:'ሚያዝያ',en:'Miazia',om:'Elba'},
+  {am:'ግንቦት',en:'Ginbot',om:'Caamsaa'},
+  {am:'ሰኔ',en:'Sene',om:'Waxabajjii'},
+  {am:'ሐምሌ',en:'Hamle',om:'Adooleessa'},
+  {am:'ነሐሴ',en:'Nehase',om:'Hagayya'},
+  {am:'ጳጉሜ',en:'Pagume',om:'Pagume'}
+];
+const EC_WEEKDAYS = {
+  en:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+  am:['እሁድ','ሰኞ','ማክሰ','ረቡዕ','ሐሙስ','ዓርብ','ቅዳሜ'],
+  or:['Dil','Wii','Kib','Roo','Kam','Jim','San']
+};
+
+function isGregorianLeap(y){ return (y%4===0 && y%100!==0) || (y%400===0); }
+
+function ethiopianNewYearGregorian(gYear){
+  const day = isGregorianLeap(gYear+1) ? 12 : 11;
+  return new Date(gYear, 8, day); // September, 0-indexed month=8
+}
+
+function gregorianToEthiopian(gDate){
+  const d = new Date(gDate.getFullYear(), gDate.getMonth(), gDate.getDate());
+  const gYear = d.getFullYear();
+  const newYear = ethiopianNewYearGregorian(gYear);
+  let ethYear, startOfEthYear;
+  if(d >= newYear){
+    ethYear = gYear - 7;
+    startOfEthYear = newYear;
+  } else {
+    ethYear = gYear - 8;
+    startOfEthYear = ethiopianNewYearGregorian(gYear - 1);
+  }
+  const diffDays = Math.round((d - startOfEthYear) / 86400000);
+  const month = Math.floor(diffDays / 30) + 1;
+  const day = (diffDays % 30) + 1;
+  return { year: ethYear, month, day, weekday: gDate.getDay() };
+}
+
+function formatEcShort(ec, lang){
+  const m = ETHIOPIAN_MONTHS[ec.month-1];
+  const name = lang==='am' ? m.am : lang==='or' ? m.om : m.en;
+  return name + ' ' + ec.day;
+}
+
+// ─── local-date helpers. toISOString() gives the UTC date, which in Ethiopia
+// (UTC+3) is still "yesterday" between midnight and 03:00 — so logs were
+// being filed under the wrong day. Always key days by the device's local date. ───
+function localDateKey(d){
+  d = d || new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function nowHHMM(){
+  const now=new Date();
+  return String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0');
+}
+
+// ═══════════════════════════════════════════
+// TRANSLATIONS
+// ═══════════════════════════════════════════
+const T = {
+  en:{
+    appTitle:"Cardiac Companion", appSubtitle:"Rhythm log & med tracker",
+    "nav-monitor":"Monitor","nav-meds":"Meds","nav-symptoms":"Symptoms","nav-summary":"Summary",
+    "t-monitorTitle":"Heart Monitor","t-monitorSub":"Simulated real-time ECG",
+    "t-ecgLabel":"Electrocardiogram","t-bpmUnit":"BPM","t-liveLabel":"Live",
+    "t-hr":"Heart rate","t-signal":"Signal","t-noise":"Noise",
+    "t-vitals":"Vitals","t-spo2":"Oxygen","t-bp":"Pressure","t-temp":"Temp",
+    "t-biosignal":"Biosignal Link","t-biosignalName":"Link today's log","t-biosignalDesc":"Adjusts the trace from today's log",
+    "t-medsTitle":"Medications","t-medsSub":"Track your daily doses","t-schedule":"Schedule",
+    "t-todayMeds":"Today's Medicines","t-addMed":"+ Add medication","t-saveMed":"Save medication",
+    "t-logHistory":"Log History",
+    "t-symTitle":"Symptoms","t-symSub":"Log how you feel today","t-symTracker":"Symptom Tracker",
+    "t-stressTitle":"Stress Level","t-stressCurrent":"Current level","t-saveSeverity":"Save this severity",
+    "t-low":"Low","t-moderate":"Moderate","t-high":"High","t-crisis":"Crisis",
+    "t-notes":"Daily Notes","t-saveNote":"Save note",
+    "t-sumTitle":"Weekly Summary","t-sumSub":"Your health at a glance",
+    "t-adherence":"Adherence","t-adherenceSub":"doses taken",
+    "t-avgHr":"Avg HR","t-avgHrSub":"bpm avg",
+    "t-wellness":"Wellness","t-wellnessSub":"good days",
+    "t-ecCalendar":"Ethiopian Calendar","t-gregorianEquiv":"Gregorian",
+    "t-weekTrend":"7-Day HR Trend","t-insights":"Insights",
+    insight1:"HR steady 68–82 bpm — no spikes this week.",
+    insight2:"1 missed dose (Wed, Ramipril). Set a reminder?",
+    insight3:"SpO₂ held 96–99% all week — no dips.",
+    "t-disclaimer":"Simulation only — not a medical device. Always follow your clinician's guidance.",
+    "t-notifTitle":"Notifications","t-notifEmpty":"No notifications yet","t-clearAll":"Clear all notifications",
+    "t-addSymptom":"+ Add custom symptom","t-saveSymptom":"Add symptom","t-severity":"Severity",
+    "t-emergencyContact":"Emergency Contact","t-emergencyContactPlaceholder":"Clinician or emergency phone number","t-callNow":"Call now",
+    "t-enableNotifText":"Turn on phone notifications for medication and heart-rate alerts.","t-enableNotifBtn":"Enable",
+    "btn-normal":"Normal","btn-tachy":"Tachycardia","btn-brady":"Bradycardia","btn-arrhy":"Arrhythmia",
+    rhythmLabels:{normal:"Normal sinus",tachy:"Tachycardia",brady:"Bradycardia",arrhy:"Arrhythmia"},
+    symptoms:["Chest pain","Shortness of breath","Dizziness","Fatigue","Palpitations","Cold sweat","Headache","Nausea"],
+    severeIdx:[0,4],
+    noteHint:"How are you feeling today?",
+    msg:{
+      lowHrTitle:"Low heart rate", lowHrText:"Rate below 60 BPM — monitor closely.",
+      irregularTitle:"Irregular rhythm", irregularText:"Arrhythmia pattern detected.",
+      biosignalLinkedTitle:"Biosignal linked", biosignalLinkedText:"ECG will reflect today's medication and stress log.",
+      biosignalOnToast:"Biosignal link enabled", biosignalOffToast:"Biosignal link disabled",
+      doseRecordedTitle:"Dose recorded", doseTakenText:"{name} {dose} marked as taken.",
+      doseMissedTitle:"Dose missed", doseMissedText:"{name} {dose} was not taken.",
+      doseRecordedToast:"Dose recorded", doseMissedToast:"Marked as missed",
+      enterMedName:"Enter a medicine name", medicationAdded:"Medication added",
+      symptomLoggedTitle:"Symptom logged",
+      symptomSevereText:"{name} recorded — consider contacting your clinician if it persists.",
+      enterSymptomName:"Enter a symptom name",
+      customSymptomSevereText:"{name} at {severity}/10 — consider contacting your clinician if it persists.",
+      customSymptomMildText:"{name} at {severity}/10.",
+      symptomAdded:"Symptom added",
+      highStressTitle:"High stress logged", highStressText:"Consider a short breathing exercise.",
+      severitySaved:"Severity saved",
+      writeSomethingFirst:"Write something first", noteSaved:"Note saved",
+      notificationsCleared:"Notifications cleared",
+      themeCrimson:"Crimson theme", themeTeal:"Teal theme",
+      installedToast:"Installed — find it on your home screen",
+      installManualToast:'Open Chrome menu → "Add to Home screen"',
+      installingToast:"Installing…",
+      notifUnsupported:"Notifications not supported here",
+      notifEnabledToast:"Phone notifications enabled",
+      notifBlockedToast:"Blocked — enable in browser settings",
+      welcomeTitle:"Welcome", welcomeText:"Your cardiac companion is ready.",
+      phoneNotifText:"You will now get alerts on this phone.",
+      callClinician:"Call clinician", resetToPending:"Reset to pending",
+      offlineFontsWarning:"Offline — some text may not display correctly until fonts load",
+      frozenLabel:"Frozen", stressTag:"Stress"
+    }
+  },
+  am:{
+    appTitle:"የልብ ጤና አጋር", appSubtitle:"የልብ ምቶት ክትትል",
+    "nav-monitor":"ክትትል","nav-meds":"መድሃኒት","nav-symptoms":"ምልክቶች","nav-summary":"ማጠቃለያ",
+    "t-monitorTitle":"የልብ ምቶት ክትትል","t-monitorSub":"የ ECG ማሳያ",
+    "t-ecgLabel":"ኤሌክትሮካርዲዮግራም","t-bpmUnit":"በደቂቃ","t-liveLabel":"ቀጥታ",
+    "t-hr":"የልብ ምት","t-signal":"ምልክት ጥንካሬ","t-noise":"ጫጫታ",
+    "t-vitals":"ሕይወታዊ ምልክቶች","t-spo2":"ኦክሲጅን","t-bp":"ግፊት","t-temp":"ሙቀት",
+    "t-biosignal":"የሕይወት ምልክት ግንኙነት","t-biosignalName":"የዛሬ ምዝገባ አገናኝ","t-biosignalDesc":"ከዛሬ ምዝገባ ትከታተል ያስተካክላል",
+    "t-medsTitle":"መድሃኒቶች","t-medsSub":"ዕለታዊ መድሃኒት ይከታተሉ","t-schedule":"መርሃግብር",
+    "t-todayMeds":"የዛሬ መድሃኒት","t-addMed":"+ መድሃኒት ጨምር","t-saveMed":"ይህን መድሃኒት አስቀምጥ",
+    "t-logHistory":"የምዝገባ ታሪክ",
+    "t-symTitle":"ምልክቶች","t-symSub":"ዛሬ ስሜትዎን ይመዝግቡ","t-symTracker":"ምልክት ተከታታይ",
+    "t-stressTitle":"የጭንቀት ደረጃ","t-stressCurrent":"አሁናዊ ደረጃ","t-saveSeverity":"ይህን ክብደት አስቀምጥ",
+    "t-low":"ዝቅተኛ","t-moderate":"መካከለኛ","t-high":"ከፍተኛ","t-crisis":"አደጋ",
+    "t-notes":"ዕለታዊ ማስታወሻ","t-saveNote":"ይህን ማስታወሻ አስቀምጥ",
+    "t-sumTitle":"ሳምንታዊ ማጠቃለያ","t-sumSub":"ጤናዎ በአጭሩ",
+    "t-adherence":"ተከታይነት","t-adherenceSub":"የተወሰደ",
+    "t-avgHr":"አማካይ ምት","t-avgHrSub":"አማካይ",
+    "t-wellness":"ደህንነት","t-wellnessSub":"ጥሩ ቀናት",
+    "t-ecCalendar":"የኢትዮጵያ ቀን መቁጠሪያ","t-gregorianEquiv":"ግሪጎሪያን",
+    "t-weekTrend":"የ7 ቀን ምት","t-insights":"ግንዛቤዎች",
+    insight1:"ይህ ሳምንት የልብ ምቶት የተረጋጋ ነበር።",
+    insight2:"ረቡዕ ላይ 1 መድሃኒት ዘሏል። ማስታወሻ ይሞክሩ።",
+    insight3:"SpO₂ ሙሉ ሳምንት ጥሩ ደረጃ ላይ ቆይቷል።",
+    "t-disclaimer":"ማስመሰያ ብቻ ነው — የሕክምና መሳሪያ አይደለም። ሁልጊዜ ሐኪምዎን ይከተሉ።",
+    "t-notifTitle":"ማሳወቂያዎች","t-notifEmpty":"እስካሁን ማሳወቂያ የለም","t-clearAll":"ሁሉንም አጽዳ",
+    "t-addSymptom":"+ ምልክት ጨምር","t-saveSymptom":"ይህን ምልክት አስቀምጥ","t-severity":"ክብደት",
+    "t-emergencyContact":"የአደጋ ጊዜ ግንኙነት","t-emergencyContactPlaceholder":"የሐኪም ወይም የአደጋ ጊዜ ስልክ ቁጥር","t-callNow":"አሁን ደውል",
+    "t-enableNotifText":"ለመድሃኒት እና ለልብ ምት ማንቂያዎች የስልክ ማሳወቂያ ያብሩ።","t-enableNotifBtn":"አብራ",
+    "btn-normal":"መደበኛ","btn-tachy":"ፈጣን","btn-brady":"ዝግተኛ","btn-arrhy":"ያልተስተካከለ",
+    rhythmLabels:{normal:"መደበኛ ምት",tachy:"ፈጣን ምቶት",brady:"ዝግተኛ ምቶት",arrhy:"ያልተስተካከለ ምት"},
+    symptoms:["የደረት ህመም","የትንፋሽ ማጠር","ማዞር","ድካም","የልብ ምት ስሜት","ቀዝቃዛ ላብ","ራስ ምታት","ማቅለሽለሽ"],
+    severeIdx:[0,4],
+    noteHint:"ዛሬ ስሜትዎ እንዴት ነው?",
+    msg:{
+      lowHrTitle:"ዝቅተኛ የልብ ምት", lowHrText:"ምት ከ60 በታች ነው — በጥንቃቄ ይከታተሉ።",
+      irregularTitle:"ያልተስተካከለ ምት", irregularText:"ያልተስተካከለ ምት ተገኝቷል።",
+      biosignalLinkedTitle:"ባዮሲግናል ተገናኝቷል", biosignalLinkedText:"ECG የዛሬውን የመድሃኒት እና የጭንቀት ምዝገባ ያንጸባርቃል።",
+      biosignalOnToast:"ባዮሲግናል ግንኙነት በራ", biosignalOffToast:"ባዮሲግናል ግንኙነት ጠፋ",
+      doseRecordedTitle:"መጠን ተመዝግቧል", doseTakenText:"{name} {dose} እንደተወሰደ ተመዝግቧል።",
+      doseMissedTitle:"መጠን ታልፏል", doseMissedText:"{name} {dose} አልተወሰደም።",
+      doseRecordedToast:"መጠን ተመዝግቧል", doseMissedToast:"እንዳመለጠ ተመዝግቧል",
+      enterMedName:"የመድሃኒት ስም ያስገቡ", medicationAdded:"መድሃኒት ታክሏል",
+      symptomLoggedTitle:"ምልክት ተመዝግቧል",
+      symptomSevereText:"{name} ተመዝግቧል — ከቀጠለ ሐኪምዎን ያነጋግሩ።",
+      enterSymptomName:"የምልክት ስም ያስገቡ",
+      customSymptomSevereText:"{name} በ{severity}/10 — ከቀጠለ ሐኪምዎን ያነጋግሩ።",
+      customSymptomMildText:"{name} በ{severity}/10።",
+      symptomAdded:"ምልክት ታክሏል",
+      highStressTitle:"ከፍተኛ ጭንቀት ተመዝግቧል", highStressText:"አጭር የመተንፈሻ ልምምድ ይሞክሩ።",
+      severitySaved:"ክብደት ተቀምጧል",
+      writeSomethingFirst:"መጀመሪያ የሆነ ነገር ይጻፉ", noteSaved:"ማስታወሻ ተቀምጧል",
+      notificationsCleared:"ማሳወቂያዎች ጸድተዋል",
+      themeCrimson:"ቀይ ገጽታ", themeTeal:"አረንጓዴ ገጽታ",
+      installedToast:"ተጭኗል — በመነሻ ገጽዎ ላይ ያግኙት",
+      installManualToast:'የChrome ምናሌ ይክፈቱ → "ወደ መነሻ ገጽ ጨምር"',
+      installingToast:"በመጫን ላይ…",
+      notifUnsupported:"ማሳወቂያዎች እዚህ አይደገፉም",
+      notifEnabledToast:"የስልክ ማሳወቂያዎች በርተዋል",
+      notifBlockedToast:"ታግዷል — በአሳሽ ቅንብሮች ውስጥ ያንቁ",
+      welcomeTitle:"እንኳን ደህና መጡ", welcomeText:"የልብ ጤና አጋርዎ ዝግጁ ነው።",
+      phoneNotifText:"አሁን በዚህ ስልክ ላይ ማንቂያዎችን ያገኛሉ።",
+      callClinician:"ሐኪም ይደውሉ", resetToPending:"ወደ በመጠባበቅ ላይ መልስ",
+      offlineFontsWarning:"ከመስመር ውጭ — ቅርጸ-ቁምፊዎች እስኪጫኑ ድረስ አንዳንድ ጽሁፎች በትክክል ላይታዩ ይችላሉ",
+      frozenLabel:"ቆሟል", stressTag:"ጭንቀት"
+    }
+  },
+  or:{
+    appTitle:"Hiriyyaa Fayyaa Onnee", appSubtitle:"Hordoffii fayyaa onnee",
+    "nav-monitor":"Hordoffii","nav-meds":"Qorichaa","nav-symptoms":"Mallattoo","nav-summary":"Cuunfaa",
+    "t-monitorTitle":"Hordoffii Onnee","t-monitorSub":"Agarsiisa ECG fakkeessaa",
+    "t-ecgLabel":"Elektiroo-kaardiiyoogiraafii","t-bpmUnit":"DAQ/DAQ","t-liveLabel":"Live",
+    "t-hr":"Dha'iinsa onnee","t-signal":"Cimina mallattoo","t-noise":"Sagalee",
+    "t-vitals":"Mallattoo Jireenyaa","t-spo2":"Oksijiinii","t-bp":"Dhiibbaa","t-temp":"Ho'ina",
+    "t-biosignal":"Walqabsiisa Baayoo-mallattoo","t-biosignalName":"Galmee har'aa walqabsiisi","t-biosignalDesc":"Galmee har'aa irraa agarsiisa jijjiira",
+    "t-medsTitle":"Qorichaalee","t-medsSub":"Qoricha guyyaa guyyaa hordofi","t-schedule":"Sagantaa",
+    "t-todayMeds":"Qoricha Har'aa","t-addMed":"+ Qoricha dabalii","t-saveMed":"Qoricha kana kaa'i",
+    "t-logHistory":"Seenaa Galmee",
+    "t-symTitle":"Mallattoo","t-symSub":"Har'aa akka si dhaga'amu galmeessi","t-symTracker":"Hordoffii Mallattoo",
+    "t-stressTitle":"Sadarkaa Dhiphina","t-stressCurrent":"Sadarkaa ammaa","t-saveSeverity":"Ulfaatina kana kaa'i",
+    "t-low":"Gad-aanaa","t-moderate":"Giddugaleessa","t-high":"Ol-aanaa","t-crisis":"Balaa",
+    "t-notes":"Yaadannoo Guyyaa","t-saveNote":"Yaadannoo kana kaa'i",
+    "t-sumTitle":"Cuunfaa Torbanii","t-sumSub":"Fayyaan kee walumaa galatti",
+    "t-adherence":"Fudhatuu","t-adherenceSub":"fudhatame",
+    "t-avgHr":"Onnee Gid.","t-avgHrSub":"gid. bpm",
+    "t-wellness":"Fayyummaa","t-wellnessSub":"guyyaa gaarii",
+    "t-ecCalendar":"Kalendaara Itoophiyaa","t-gregorianEquiv":"Gregoriyaanii",
+    "t-weekTrend":"Onnee Guyyoota 7","t-insights":"Gorsa",
+    insight1:"Torban kana dha'iinsi onnee tasgabbaa'aa ture.",
+    insight2:"Roobii qunnamtii 1 dhiiste. Yaadachiisa yaali.",
+    insight3:"SpO₂ torban guutuu gaarummaa irra ture.",
+    "t-disclaimer":"Fakkeessuu qofa — meeshaa yaalaa miti. Yeroo hunda gorsaa ogeessa fayyaa keessanii hordofaa.",
+    "t-notifTitle":"Beeksisa","t-notifEmpty":"Hanga ammaatti beeksisni hin jiru","t-clearAll":"Hunda haqi",
+    "t-addSymptom":"+ Mallattoo dabalii","t-saveSymptom":"Mallattoo kana kaa'i","t-severity":"Ulfaatina",
+    "t-emergencyContact":"Qunnamtii Balaa","t-emergencyContactPlaceholder":"Lakkoofsa bilbilaa ogeessa fayyaa ykn balaa","t-callNow":"Amma bilbili",
+    "t-enableNotifText":"Beeksisa qorichaa fi onnee bilbila keessanii banaa.","t-enableNotifBtn":"Banii",
+    "btn-normal":"Idilee","btn-tachy":"Saffisaa","btn-brady":"Gad-aanaa","btn-arrhy":"Walxaxaa",
+    rhythmLabels:{normal:"Onnee idilee",tachy:"Dha'iinsa saffisaa",brady:"Dha'iinsa gad-aanaa",arrhy:"Walxaxaa"},
+    symptoms:["Dhukkuba laphee","Rakkoo hafuura","Mariidhaa","Dadhabina","Dha'iinsa onnee","Dafqa qabaa","Dhukkuba mataa","Gogsii"],
+    severeIdx:[0,4],
+    noteHint:"Har'a akkam si dhaga'a?",
+    msg:{
+      lowHrTitle:"Dha'iinsa onnee gad-aanaa", lowHrText:"Sadarkaan gad-aanaa 60 gaditti — of eeggannoon hordofaa.",
+      irregularTitle:"Dha'iinsa walxaxaa", irregularText:"Mallattoon walxaxaa argameera.",
+      biosignalLinkedTitle:"Baayoo-mallattoon walqabsiifameera", biosignalLinkedText:"ECG-n galmee qorichaa fi dhiphina har'aa ni argisiisa.",
+      biosignalOnToast:"Walqabsiisni baayoo-mallattoo banameera", biosignalOffToast:"Walqabsiisni baayoo-mallattoo cufameera",
+      doseRecordedTitle:"Dosii galmeeffameera", doseTakenText:"{name} {dose} akka fudhatametti galmeeffame.",
+      doseMissedTitle:"Dosii hafe", doseMissedText:"{name} {dose} hin fudhatamne.",
+      doseRecordedToast:"Dosii galmeeffameera", doseMissedToast:"Akka hafetti galmeeffame",
+      enterMedName:"Maqaa qorichaa galchi", medicationAdded:"Qorichi dabalameera",
+      symptomLoggedTitle:"Mallattoon galmeeffameera",
+      symptomSevereText:"{name} galmeeffame — yoo itti fufe ogeessa fayyaa keessan quunnamaa.",
+      enterSymptomName:"Maqaa mallattoo galchi",
+      customSymptomSevereText:"{name} sadarkaa {severity}/10 — yoo itti fufe ogeessa fayyaa keessan quunnamaa.",
+      customSymptomMildText:"{name} sadarkaa {severity}/10.",
+      symptomAdded:"Mallattoon dabalameera",
+      highStressTitle:"Dhiphinni ol-aanaan galmeeffameera", highStressText:"Shaakala hafuura baafannaa gabaabaa yaalaa.",
+      severitySaved:"Ulfaatinni kaa'ameera",
+      writeSomethingFirst:"Dursii waan tokko barreessi", noteSaved:"Yaadannoon kaa'ameera",
+      notificationsCleared:"Beeksisni haqameera",
+      themeCrimson:"Bifa diimaa", themeTeal:"Bifa magaariisaa",
+      installedToast:"Fe'ameera — mallattoo qajeelfama keessaniirratti argadhaa",
+      installManualToast:'Menu Chrome baniif → "Add to Home screen" cuqaasi',
+      installingToast:"Fe'aa jira…",
+      notifUnsupported:"Beeksisni asitti hin deeggaramu",
+      notifEnabledToast:"Beeksisni bilbilaa banameera",
+      notifBlockedToast:"Cufameera — qindaa'ina birawuzarii keessatti banaa",
+      welcomeTitle:"Baga nagaan dhuftan", welcomeText:"Hiriyaan fayyaa onnee keessanii qophaa'eera.",
+      phoneNotifText:"Amma bilbila kanarratti beeksisa argattu.",
+      callClinician:"Ogeessa fayyaa bilbili", resetToPending:"Gara eegamaa deebisi",
+      offlineFontsWarning:"Offline — hanga fontiin fe'amutti barreeffamni tokko tokko sirriitti mul'achuu dhabuu danda'a",
+      frozenLabel:"Dhaabbate", stressTag:"Dhiphina"
+    }
+  }
+};
+
+// ─── runtime message translations — showToast/addNotification text was
+// hardcoded English; look these up so they follow the active language ───
+function tr(key, vars){
+  let s = (T[currentLang].msg && T[currentLang].msg[key]) || (T.en.msg && T.en.msg[key]) || key;
+  if(vars) Object.keys(vars).forEach(k=>{ s = s.split('{'+k+'}').join(vars[k]); });
+  return s;
+}
+
+let currentLang='en', currentRhythm='normal', currentHR=72, currentStress=5;
+let signalStrength=100, noiseLevel=10, ecgFrozen=false, stressModifier=false, biosignalOn=false;
+let selectedSymptoms=new Set(), calMode='ec', notifications=[];
+let customSymptoms=[]; // {id, name, severity}
+let notesLog=[]; // {id, date, time, text} — full, untruncated notes
+let hrLog={}; // {"YYYY-MM-DD": [hr samples...]} — feeds the real trend chart
+let emergencyContact=''; // optional phone number for the "call clinician" quick action
+let medDay=null;       // local date (YYYY-MM-DD) that the medication statuses & symptom picks belong to
+let adherenceLog={};   // {"YYYY-MM-DD": {taken, total}} — feeds the weekly adherence ring
+
+// ═══════════════════════════════════════════
+// PERSISTENCE — saves after every mutating action, rehydrates at init
+// ═══════════════════════════════════════════
+const STORAGE_KEY='cc-state-v1';
+const LANG_KEY='cc-lang';
+
+function persistState(){
+  try{
+    const payload={
+      medications, medHistory, notifications, customSymptoms, notesLog, hrLog,
+      selectedSymptoms:[...selectedSymptoms],
+      currentStress, emergencyContact, medDay, adherenceLog
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  }catch(e){ /* storage full or unavailable — app still works, just won't persist this save */ }
+}
+
+function loadPersistedState(){
+  try{
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(!raw) return;
+    const data=JSON.parse(raw);
+    if(Array.isArray(data.medications) && data.medications.length) medications=data.medications;
+    if(Array.isArray(data.medHistory)) medHistory=data.medHistory;
+    if(Array.isArray(data.notifications)) notifications=data.notifications;
+    if(Array.isArray(data.customSymptoms)) customSymptoms=data.customSymptoms;
+    if(Array.isArray(data.notesLog)) notesLog=data.notesLog;
+    if(data.hrLog && typeof data.hrLog==='object') hrLog=data.hrLog;
+    if(Array.isArray(data.selectedSymptoms)) selectedSymptoms=new Set(data.selectedSymptoms);
+    if(typeof data.currentStress==='number') currentStress=data.currentStress;
+    if(typeof data.emergencyContact==='string') emergencyContact=data.emergencyContact;
+    if(typeof data.medDay==='string') medDay=data.medDay;
+    if(data.adherenceLog && typeof data.adherenceLog==='object') adherenceLog=data.adherenceLog;
+  }catch(e){ /* corrupt or unavailable saved state — fall back to seed data */ }
+}
+
+// ═══════════════════════════════════════════
+// LANGUAGE
+// ═══════════════════════════════════════════
+// app key 'or' is Afaan Oromo, whose language code is 'om' ('or' is Odia)
+const HTML_LANG={en:'en', am:'am', or:'om'};
+
+function isTabActive(name){
+  const el=document.getElementById('tab-'+name);
+  return !!(el && el.classList.contains('active'));
+}
+
+function setLang(lang){
+  if(!T[lang]) lang='en';
+  currentLang=lang;
+  try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}   // remember the choice across reloads
+  document.documentElement.lang = HTML_LANG[lang] || 'en';
+  document.querySelectorAll('.lang-pill').forEach((b,i)=>{
+    const active=['en','am','or'][i]===lang;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+  const t=T[lang];
+  document.querySelectorAll('[id]').forEach(el=>{
+    if(t[el.id]!==undefined && typeof t[el.id]==='string') el.textContent=t[el.id];
+  });
+  document.getElementById('appTitle').textContent=t.appTitle;
+  document.getElementById('appSubtitle').textContent=t.appSubtitle;
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    const k=el.getAttribute('data-key');
+    if(t[k]) el.textContent=t[k];
+  });
+  refreshRhythmStatus();
+  refreshFreezeLabel();   // the [id] loop above just reset the badge to "Live", even if frozen
+  document.getElementById('dailyNotes').placeholder=t.noteHint;
+  document.getElementById('emergencyContactInput').placeholder=t['t-emergencyContactPlaceholder'];
+  document.getElementById('emergencyCallBtn').textContent=t['t-callNow'];
+  buildSymptomGrid();
+  buildDateStrip();
+  updateHeaderDate();
+  updateEcSummaryCard();
+  renderNotifications();  // empty-state text and "Call clinician" links follow the language
+  if(isTabActive('summary')) drawTrendChart();  // weekday labels are painted into the canvas
+}
+
+// ═══════════════════════════════════════════
+// ECG ENGINE
+// ═══════════════════════════════════════════
+const canvas=document.getElementById('ecgCanvas');
+const ctx=canvas.getContext('2d');
+let ecgOffset=0, ecgAnimId=null, ecgLastTs=null;
+const MID=84;
+
+// One beat spans (60/hr)*200 canvas px, so a constant sweep of 200 px/s shows
+// exactly `hr` beats per minute — like a real monitor's fixed paper speed.
+// (Previously the offset grew by hr/60*2.5 px per *frame*: the sweep sped up
+// with HR too, so the trace showed ~hr²/80 beats/min — 31 at "50 BPM", 174 at
+// "118 BPM" — and ran twice as fast on 120 Hz phone screens.)
+const ECG_SWEEP_PX_PER_SEC=200;
+
+// Rhythm colours follow the active theme's CSS variables (the crimson theme
+// shifts arrhythmia to rose). Refreshed by applyTheme().
+const RCOLOR={normal:'#3ddc97',tachy:'#ffb648',brady:'#5ac8fa',arrhy:'#ff6b6b'};
+function refreshRhythmColors(){
+  const css=getComputedStyle(document.documentElement);
+  Object.keys(RCOLOR).forEach(k=>{
+    const v=css.getPropertyValue('--trace-'+k).trim();
+    if(v) RCOLOR[k]=v;
+  });
+}
+refreshRhythmColors();
+
+function baseWave(x, rhythm, hr){
+  const period=(60/hr)*200;
+  const pos=x%period;
+  const p=pos/period;
+
+  if(rhythm==='normal'){
+    if(p<0.05) return MID+Math.sin(p/0.05*Math.PI)*6;
+    if(p<0.12) return MID-Math.sin((p-0.05)/0.07*Math.PI)*6;
+    if(p<0.18) return MID-(p-0.12)/0.06*45;
+    if(p<0.21) return MID-45+(p-0.18)/0.03*95;
+    if(p<0.24) return MID+50-(p-0.21)/0.03*70;
+    if(p<0.30) return MID-Math.sin((p-0.24)/0.06*Math.PI)*10;
+    return MID;
+  } else if(rhythm==='tachy'){
+    if(p<0.04) return MID-(p/0.04)*40;
+    if(p<0.07) return MID-40+((p-0.04)/0.03)*90;
+    if(p<0.10) return MID+50-((p-0.07)/0.03)*65;
+    if(p<0.18) return MID-Math.sin((p-0.10)/0.08*Math.PI)*12;
+    return MID;
+  } else if(rhythm==='brady'){
+    if(p<0.06) return MID+Math.sin(p/0.06*Math.PI)*8;
+    if(p<0.14) return MID-Math.sin((p-0.06)/0.08*Math.PI)*8;
+    if(p<0.22) return MID-(p-0.14)/0.08*55;
+    if(p<0.28) return MID-55+(p-0.22)/0.06*110;
+    if(p<0.34) return MID+55-(p-0.28)/0.06*75;
+    if(p<0.45) return MID-Math.sin((p-0.34)/0.11*Math.PI)*12;
+    return MID;
+  } else if(rhythm==='arrhy'){
+    const irregularity=Math.sin(x*0.04)*0.3;
+    const adjP=(pos+irregularity*20)/period;
+    if(adjP<0.06) return MID+Math.sin(adjP/0.06*Math.PI)*8;
+    if(adjP<0.10) return MID;
+    if(adjP<0.13) return MID-(adjP-0.10)/0.03*55;
+    if(adjP<0.17) return MID-55+(adjP-0.13)/0.04*110;
+    if(adjP<0.21) return MID+55-(adjP-0.17)/0.04*70;
+    if(adjP<0.28) return MID-Math.sin((adjP-0.21)/0.07*Math.PI)*14;
+    if(adjP>0.55 && adjP<0.62 && Math.sin(x*0.02)>0.7) return MID-Math.sin((adjP-0.55)/0.07*Math.PI)*30;
+    return MID;
+  }
+  return MID;
+}
+
+function renderEcgFrame(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const color=RCOLOR[currentRhythm];
+  const opacity=signalStrength/100;
+  ctx.globalAlpha=0.35+opacity*0.65;
+  ctx.strokeStyle=color;
+  ctx.lineWidth=2;
+  ctx.lineJoin='round';
+  ctx.lineCap='round';
+
+  ctx.beginPath();
+  for(let px=0; px<canvas.width; px++){
+    let y=baseWave(px+ecgOffset, currentRhythm, currentHR);
+    if(stressModifier){
+      y += (Math.random()-0.5)*11;
+      y -= 5;
+    }
+    y += (Math.random()-0.5)*(noiseLevel/12);
+    if(px===0) ctx.moveTo(px,y); else ctx.lineTo(px,y);
+  }
+  ctx.stroke();
+  ctx.globalAlpha=1;
+}
+
+// time-based animation: advance by elapsed time, not by frame count
+function ecgLoop(ts){
+  ecgAnimId=null;
+  if(ecgFrozen) return;
+  if(ecgLastTs!==null){
+    const dt=Math.min((ts-ecgLastTs)/1000, 0.1); // clamp so a stalled frame doesn't jump
+    ecgOffset += ECG_SWEEP_PX_PER_SEC*dt;
+  }
+  ecgLastTs=ts;
+  renderEcgFrame();
+  ecgAnimId=requestAnimationFrame(ecgLoop);
+}
+function startEcgLoop(){
+  if(ecgAnimId!==null || ecgFrozen || document.hidden) return; // never run two loops at once
+  ecgLastTs=null;
+  ecgAnimId=requestAnimationFrame(ecgLoop);
+}
+function stopEcgLoop(){
+  if(ecgAnimId!==null){ cancelAnimationFrame(ecgAnimId); ecgAnimId=null; }
+}
+// a frozen trace is a still frame; repaint it when what it shows changes
+function redrawIfFrozen(){ if(ecgFrozen) renderEcgFrame(); }
+
+renderEcgFrame();
+startEcgLoop();
+
+// ─── pause the ECG animation loop and vitals interval when the Monitor tab
+// isn't visible (another app tab, or the browser tab/app itself backgrounded)
+// so a phone doesn't burn battery redrawing a canvas nobody can see ───
+function pauseMonitorLoops(){
+  stopEcgLoop();
+  if(vitalsInterval){ clearInterval(vitalsInterval); vitalsInterval=null; }
+}
+function resumeMonitorLoops(){
+  startEcgLoop();
+  if(!vitalsInterval && !document.hidden) vitalsInterval=setInterval(vitalsTick, 3000);
+}
+document.addEventListener('visibilitychange', ()=>{
+  if(document.hidden) pauseMonitorLoops();
+  else {
+    checkDayRollover();
+    if(isTabActive('monitor')) resumeMonitorLoops();
+  }
+});
+
+function setRhythm(r){
+  currentRhythm=r;
+  document.querySelectorAll('.rhythm-btn').forEach(b=>{
+    const active=b.dataset.r===r;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+  const bpmMap={normal:72,tachy:118,brady:50,arrhy:82};
+  currentHR=bpmMap[r];
+  document.getElementById('hrSlider').value=currentHR;
+  document.getElementById('hrValue').textContent=currentHR;
+  document.getElementById('bpmDisplay').textContent=currentHR;
+  document.getElementById('bpmDisplay').style.color=RCOLOR[r];
+  refreshRhythmStatus();
+  redrawIfFrozen();
+  if(r==='brady') addNotification('warning',tr('lowHrTitle'),tr('lowHrText'));
+  if(r==='arrhy') addNotification('danger',tr('irregularTitle'),tr('irregularText'));
+  showToast(T[currentLang].rhythmLabels[r]);
+}
+
+function onHrSlider(v){
+  currentHR=parseInt(v,10);
+  document.getElementById('hrValue').textContent=v;
+  document.getElementById('bpmDisplay').textContent=v;
+  redrawIfFrozen();
+}
+function updateSignal(v){ signalStrength=parseInt(v,10); document.getElementById('signalValue').textContent=v+'%'; redrawIfFrozen(); }
+function updateNoise(v){ noiseLevel=parseInt(v,10); document.getElementById('noiseValue').textContent=v+'%'; redrawIfFrozen(); }
+
+function toggleFreeze(){
+  ecgFrozen=!ecgFrozen;
+  refreshFreezeLabel();
+  if(ecgFrozen) stopEcgLoop(); else startEcgLoop();
+}
+function refreshFreezeLabel(){
+  const btn=document.getElementById('freezeToggle');
+  btn.classList.toggle('frozen', ecgFrozen);
+  btn.setAttribute('aria-pressed', ecgFrozen ? 'true' : 'false');
+  document.getElementById('t-liveLabel').textContent = ecgFrozen ? tr('frozenLabel') : T[currentLang]['t-liveLabel'];
+}
+
+// ─── biosignal link: evaluates today's log and layers a stress modifier onto whichever rhythm is active ───
+function toggleBiosignal(){
+  biosignalOn=!biosignalOn;
+  const sw=document.getElementById('biosignalSwitch');
+  sw.classList.toggle('on', biosignalOn);
+  sw.setAttribute('aria-checked', biosignalOn ? 'true' : 'false');
+  if(biosignalOn){
+    evaluateBiosignal();
+    addNotification('info',tr('biosignalLinkedTitle'),tr('biosignalLinkedText'));
+  } else {
+    stressModifier=false;
+    refreshRhythmStatus();
+    redrawIfFrozen();
+  }
+  showToast(biosignalOn ? tr('biosignalOnToast') : tr('biosignalOffToast'));
+}
+
+// Called after *every* change that feeds it (doses, symptoms either way, any
+// stress level) — previously several paths skipped it, so "· Stress" got stuck on.
+function evaluateBiosignal(){
+  if(!biosignalOn) return;
+  const missed = medications.filter(m=>m.status==='missed').length;
+  const highStress = currentStress>=7;
+  const severeSymptoms = [...selectedSymptoms].filter(i=>T[currentLang].severeIdx.includes(i)).length;
+  const severeCustom = customSymptoms.filter(cs=>cs.severity>=7).length;
+  stressModifier = missed>0 || highStress || severeSymptoms>0 || severeCustom>0;
+  refreshRhythmStatus();
+  redrawIfFrozen();
+}
+
+function refreshRhythmStatus(){
+  document.getElementById('rhythmStatus').textContent = T[currentLang].rhythmLabels[currentRhythm] + (stressModifier ? ' · '+tr('stressTag') : '');
+}
+
+// ═══════════════════════════════════════════
+// VITALS
+// ═══════════════════════════════════════════
+let vitalsInterval=setInterval(vitalsTick, 3000);
+function vitalsTick(){
+  document.getElementById('spo2Value').textContent=(96+Math.random()*3).toFixed(0)+'%';
+  const b1=(115+Math.random()*15).toFixed(0), b2=(75+Math.random()*10).toFixed(0);
+  document.getElementById('bpValue').textContent=b1+'/'+b2;
+  document.getElementById('tempValue').textContent=(36.2+Math.random()*0.8).toFixed(1)+'°';
+  logHrSample();
+}
+
+// ─── feeds the weekly trend chart with real samples instead of a hardcoded literal ───
+function logHrSample(){
+  const dateKey=localDateKey();
+  if(!hrLog[dateKey]) hrLog[dateKey]=[];
+  hrLog[dateKey].push(currentHR);
+  if(hrLog[dateKey].length>200) hrLog[dateKey].shift();
+  const keys=Object.keys(hrLog).sort();
+  while(keys.length>14){ delete hrLog[keys.shift()]; }
+  persistState();
+}
+
+// ═══════════════════════════════════════════
+// MEDICATIONS
+// ═══════════════════════════════════════════
+let medications=[
+  {id:1,name:'Metoprolol',dose:'50mg',time:'08:00',status:'taken'},
+  {id:2,name:'Aspirin',dose:'100mg',time:'09:00',status:'taken'},
+  {id:3,name:'Atorvastatin',dose:'20mg',time:'20:00',status:'pending'},
+  {id:4,name:'Ramipril',dose:'5mg',time:'12:00',status:'missed'},
+];
+let medHistory=[
+  {time:'08:05',text:'Metoprolol 50mg taken',c:'var(--trace-normal)'},
+  {time:'09:10',text:'Aspirin 100mg taken',c:'var(--trace-normal)'},
+  {time:'12:00',text:'Ramipril 5mg missed',c:'var(--danger)'},
+  {time:'14:30',text:'Elevated HR event noted',c:'var(--warning)'},
+];
+
+// ─── escape user-entered text before it goes into innerHTML — medication
+// names/doses and custom symptom names are typed by the user and must not
+// be able to break markup or inject HTML ───
+const HTML_ESCAPE_MAP={'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'};
+function escapeHtml(str){
+  return String(str==null?'':str).replace(/[&<>"']/g, ch=>HTML_ESCAPE_MAP[ch]);
+}
+
+const ICON_CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17 19 7"/></svg>';
+const ICON_X='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
+const ICON_DASH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="12" x2="18" y2="12"/></svg>';
+
+function buildMedList(){
+  const list=document.getElementById('medList');
+  list.innerHTML='';
+  let taken=0;
+  medications.forEach(m=>{
+    if(m.status==='taken') taken++;
+    const icon = m.status==='taken'?ICON_CHECK:m.status==='missed'?ICON_X:ICON_DASH;
+    const item=document.createElement('div');
+    item.className='med-item '+m.status;
+    const metaParts=[m.dose, m.time, m.freq].filter(Boolean).map(escapeHtml);
+    item.innerHTML=`
+      <div class="med-status">${icon}</div>
+      <div class="med-info">
+        <div class="med-name">${escapeHtml(m.name)}</div>
+        <div class="med-meta">${metaParts.join(' · ')}</div>
+      </div>
+      <div class="med-actions">
+        <button class="med-btn take" onclick="markMed(${m.id},'taken')" aria-label="Mark taken">${ICON_CHECK}</button>
+        <button class="med-btn skip" onclick="markMed(${m.id},'missed')" aria-label="Mark missed">${ICON_X}</button>
+        ${m.status!=='pending'
+          ? `<button class="med-btn" onclick="resetMedToPending(${m.id})" aria-label="Reset to pending">${ICON_DASH}</button>`
+          : '<span class="med-btn-spacer" aria-hidden="true"></span>'}
+      </div>`;
+    list.appendChild(item);
+  });
+  document.getElementById('medBadge').textContent=taken+'/'+medications.length;
+  recordAdherence(taken, medications.length);
+}
+
+// today's taken/total, kept per day so the Summary shows a real weekly figure
+function recordAdherence(taken, total){
+  adherenceLog[medDay || localDateKey()]={taken, total};
+  const keys=Object.keys(adherenceLog).sort();
+  while(keys.length>14){ delete adherenceLog[keys.shift()]; }
+}
+
+// ─── new day → "Today's Medicines" and today's symptom picks start fresh.
+// Statuses used to be kept forever, so yesterday's taken/missed carried over.
+// Checked at start-up, every minute, and whenever the app comes back to the
+// foreground (which also keeps the header date / date strip current). ───
+function startNewDayIfNeeded(){
+  const today=localDateKey();
+  if(medDay===today) return false;
+  if(medDay!==null){   // null = first run, or data saved before this fix — treat as today's
+    medications.forEach(m=>{ m.status='pending'; });
+    selectedSymptoms.clear();
+  }
+  medDay=today;
+  return true;
+}
+function checkDayRollover(){
+  if(!startNewDayIfNeeded()) return;
+  buildMedList();
+  buildSymptomGrid();
+  buildDateStrip();
+  updateHeaderDate();
+  updateEcSummaryCard();
+  evaluateBiosignal();
+  if(isTabActive('summary')){ updateSummaryRings(); drawTrendChart(); }
+  persistState();
+}
+
+function resetMedToPending(id){
+  const med=medications.find(m=>m.id===id);
+  if(!med) return;
+  med.status='pending';
+  buildMedList();
+  evaluateBiosignal();
+  persistState();
+  showToast(tr('resetToPending'));
+}
+
+function markMed(id,status){
+  const med=medications.find(m=>m.id===id);
+  if(!med) return;
+  const toastMsg = status==='taken' ? tr('doseRecordedToast') : tr('doseMissedToast');
+  if(med.status===status){ showToast(toastMsg); return; }  // already recorded — don't log it twice
+  med.status=status;
+  buildMedList();
+  const t=nowHHMM();
+  if(status==='taken'){
+    medHistory.unshift({time:t,text:med.name+' '+med.dose+' taken',c:'var(--trace-normal)'});
+    addNotification('info',tr('doseRecordedTitle'),tr('doseTakenText',{name:med.name,dose:med.dose}));
+  } else {
+    medHistory.unshift({time:t,text:med.name+' '+med.dose+' missed',c:'var(--danger)'});
+    addNotification('danger',tr('doseMissedTitle'),tr('doseMissedText',{name:med.name,dose:med.dose}));
+  }
+  evaluateBiosignal();   // missed → taken must be able to clear the stress flag too
+  showToast(toastMsg);
+  persistState();
+}
+
+function toggleAddMed(){
+  const f=document.getElementById('addMedForm');
+  f.style.display = f.style.display==='none' ? 'block' : 'none';
+}
+function addMedication(){
+  const name=document.getElementById('newMedName').value.trim();
+  const dose=document.getElementById('newMedDose').value.trim();
+  const time=document.getElementById('newMedTime').value;
+  const freq=document.getElementById('newMedFreq').value.trim();
+  if(!name) return showToast(tr('enterMedName'));
+  medications.push({id:Date.now(),name,dose:dose||'—',time,freq:freq||'',status:'pending'});
+  buildMedList();
+  document.getElementById('addMedForm').style.display='none';
+  ['newMedName','newMedDose','newMedFreq'].forEach(id=>document.getElementById(id).value='');
+  showToast(tr('medicationAdded'));
+  persistState();
+}
+
+function buildHistory(){
+  const list=document.getElementById('historyList');
+  list.innerHTML='';
+  medHistory.slice(0,6).forEach(h=>{
+    const item=document.createElement('div');
+    item.className='history-item';
+    item.innerHTML=`<div class="hdot" style="background:${h.c};"></div><div class="htime">${escapeHtml(h.time)}</div><div class="htext">${escapeHtml(h.text)}</div>`;
+    if(h.noteId!==undefined){
+      // note entries open the full note — make them usable by keyboard & screen readers too
+      item.style.cursor='pointer';
+      item.setAttribute('role','button');
+      item.tabIndex=0;
+      item.onclick=()=>viewFullNote(h.noteId);
+      item.onkeydown=e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); viewFullNote(h.noteId); } };
+    }
+    list.appendChild(item);
+  });
+}
+
+// ─── date strip: driven by real Ethiopian calendar math ───
+function buildDateStrip(){
+  const strip=document.getElementById('dateStrip');
+  strip.innerHTML='';
+  const today=new Date();
+  for(let i=-3;i<=3;i++){
+    const d=new Date(today);
+    d.setDate(today.getDate()+i);
+    const ec=gregorianToEthiopian(d);
+    const isToday = i===0;
+    const cell=document.createElement('div');
+    cell.className='datecell'+(isToday?' today':'');
+    const dow = EC_WEEKDAYS[currentLang][d.getDay()];
+    if(calMode==='ec'){
+      cell.innerHTML=`<div class="dow">${dow}</div><div class="dnum">${ec.day}</div><div class="dsub">${d.getDate()}/${d.getMonth()+1}</div>`;
+    } else {
+      const m=ETHIOPIAN_MONTHS[ec.month-1];
+      const monthName = currentLang==='am' ? m.am : currentLang==='or' ? m.om : m.en;  // was always English
+      cell.innerHTML=`<div class="dow">${dow}</div><div class="dnum">${d.getDate()}</div><div class="dsub">${ec.day} ${monthName.slice(0,3)}</div>`;
+    }
+    strip.appendChild(cell);
+  }
+}
+function setCalMode(mode){
+  calMode=mode;
+  document.getElementById('calToggleEc').classList.toggle('active', mode==='ec');
+  document.getElementById('calToggleEc').setAttribute('aria-pressed', mode==='ec' ? 'true' : 'false');
+  document.getElementById('calToggleGc').classList.toggle('active', mode==='gc');
+  document.getElementById('calToggleGc').setAttribute('aria-pressed', mode==='gc' ? 'true' : 'false');
+  buildDateStrip();
+}
+
+function updateHeaderDate(){
+  const today=new Date();
+  const ec=gregorianToEthiopian(today);
+  document.getElementById('headerEcDate').textContent = formatEcShort(ec, currentLang) + ', ' + ec.year;
+  document.getElementById('headerGcDate').textContent = today.toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+
+function updateEcSummaryCard(){
+  const today=new Date();
+  const ec=gregorianToEthiopian(today);
+  const m=ETHIOPIAN_MONTHS[ec.month-1];
+  document.getElementById('ecBigDay').textContent=ec.day;
+  document.getElementById('ecBigMonth').textContent = currentLang==='am'?m.am:currentLang==='or'?m.om:m.en;
+  document.getElementById('ecBigYear').textContent=ec.year;
+  document.getElementById('ecGregEquiv').textContent = today.toLocaleDateString('en-US',{weekday:'short',month:'long',day:'numeric',year:'numeric'});
+  const tag=document.getElementById('buildTag');
+  if(tag) tag.textContent = `Cardiac Companion · build ${ec.year}.${String(ec.month).padStart(2,'0')}.${String(ec.day).padStart(2,'0')}`;
+}
+
+// ═══════════════════════════════════════════
+// SYMPTOMS
+// ═══════════════════════════════════════════
+function buildSymptomGrid(){
+  const grid=document.getElementById('symptomGrid');
+  grid.innerHTML='';
+  const list=T[currentLang].symptoms;
+  const severe=T[currentLang].severeIdx;
+  list.forEach((s,i)=>{
+    const btn=document.createElement('button');
+    const isSevere=severe.includes(i);
+    const isSelected=selectedSymptoms.has(i);
+    btn.className='symptom-chip'+(isSelected?(isSevere?' sel severe':' sel'):'');
+    btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+    btn.innerHTML=`<span>${s}</span>`;
+    btn.onclick=()=>{
+      if(selectedSymptoms.has(i)){
+        selectedSymptoms.delete(i);
+        btn.classList.remove('sel','severe');
+        btn.setAttribute('aria-pressed','false');
+      } else {
+        selectedSymptoms.add(i);
+        btn.classList.add('sel');
+        btn.setAttribute('aria-pressed','true');
+        if(isSevere){
+          btn.classList.add('severe');
+          addNotification('danger',tr('symptomLoggedTitle'), tr('symptomSevereText',{name:s}));
+        } else {
+          addNotification('info',tr('symptomLoggedTitle'), s);
+        }
+        medHistory.unshift({time:nowHHMM(),text:'Symptom: '+s,c: isSevere?'var(--danger)':'var(--info)'});
+        buildHistory();
+      }
+      evaluateBiosignal();   // runs on deselect too, so the stress flag can clear
+      persistState();
+    };
+    grid.appendChild(btn);
+  });
+
+  // custom, user-added symptoms with their own severity level
+  customSymptoms.forEach(cs=>{
+    const isSevere = cs.severity>=7;
+    const chip=document.createElement('div');
+    chip.className='symptom-chip sel'+(isSevere?' severe':'');
+    chip.innerHTML=`<span>${escapeHtml(cs.name)}</span><span class="symptom-sev">${cs.severity}/10</span>
+      <button class="symptom-remove" onclick="removeCustomSymptom(${cs.id}, event)" aria-label="Remove ${escapeHtml(cs.name)}">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>`;
+    grid.appendChild(chip);
+  });
+}
+
+function toggleAddSymptom(){
+  const f=document.getElementById('addSymptomForm');
+  f.style.display = f.style.display==='none' ? 'block' : 'none';
+}
+
+function addCustomSymptom(){
+  const nameInput=document.getElementById('newSymptomName');
+  const name=nameInput.value.trim();
+  const severity=parseInt(document.getElementById('newSymptomSev').value);
+  if(!name) return showToast(tr('enterSymptomName'));
+
+  const id=Date.now();
+  customSymptoms.push({id,name,severity});
+  buildSymptomGrid();
+  document.getElementById('addSymptomForm').style.display='none';
+  nameInput.value='';
+  document.getElementById('newSymptomSev').value=5;
+  document.getElementById('newSymptomSevVal').textContent='5/10';
+
+  const now=new Date();
+  const t=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
+  const isSevere=severity>=7;
+  medHistory.unshift({time:t,text:`Symptom: ${name} (${severity}/10)`, c: isSevere?'var(--danger)':'var(--info)'});
+  buildHistory();
+
+  if(isSevere){
+    addNotification('danger',tr('symptomLoggedTitle'), tr('customSymptomSevereText',{name,severity}));
+    evaluateBiosignal();
+  } else {
+    addNotification('info',tr('symptomLoggedTitle'), tr('customSymptomMildText',{name,severity}));
+  }
+  showToast(tr('symptomAdded'));
+  persistState();
+}
+
+function removeCustomSymptom(id, evt){
+  if(evt) evt.stopPropagation();
+  customSymptoms=customSymptoms.filter(cs=>cs.id!==id);
+  buildSymptomGrid();
+  evaluateBiosignal();
+  persistState();
+}
+
+// ─── emergency contact: gives a severe symptom an actual next step (a tap-to-call
+// link) instead of just a passive notification ───
+function saveEmergencyContact(v){
+  emergencyContact=v.trim();
+  updateEmergencyCallBtn();
+  persistState();
+}
+// digits and '+' only; empty string if there's nothing callable
+function dialableNumber(){
+  const num=emergencyContact.replace(/[^0-9+]/g,'');
+  return /\d/.test(num) ? num : '';
+}
+function updateEmergencyCallBtn(){
+  const btn=document.getElementById('emergencyCallBtn');
+  if(!btn) return;
+  const num=dialableNumber();
+  if(num){
+    btn.style.display='block';
+    btn.href='tel:'+num;
+  } else {
+    btn.style.display='none';   // was shown with a dead "tel:" link when the text had no digits
+  }
+}
+
+let pendingStress=5;
+function previewStress(level){
+  pendingStress=parseInt(level);
+  document.getElementById('stressSlider').value=pendingStress;
+  document.getElementById('stressFill').style.width=(pendingStress*10)+'%';
+  document.getElementById('stressNum').textContent=pendingStress+'/10';
+  document.querySelectorAll('.stress-opt').forEach(b=>{
+    const active=parseInt(b.dataset.lvl)===pendingStress;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+
+function commitStress(){
+  currentStress=pendingStress;
+  if(currentStress>=7) addNotification('warning',tr('highStressTitle'),tr('highStressText'));
+  evaluateBiosignal();   // any level — saving 4–6 after a high level used to leave the flag on
+  medHistory.unshift({time:nowHHMM(),text:'Stress level logged: '+currentStress+'/10',c: currentStress>=7?'var(--danger)':currentStress>=5?'var(--warning)':'var(--trace-normal)'});
+  buildHistory();
+  showToast(tr('severitySaved'));
+  persistState();
+}
+
+function saveNote(){
+  const notes=document.getElementById('dailyNotes');
+  const full=notes.value.trim();
+  if(!full) return showToast(tr('writeSomethingFirst'));
+  const t=nowHHMM();
+  const dateKey=localDateKey();
+  const noteId=Date.now();
+  notesLog.unshift({id:noteId, date:dateKey, time:t, text:full});
+  const preview = full.length>40 ? full.slice(0,40)+'…' : full;
+  medHistory.unshift({time:t,text:'Note: '+preview,c:'var(--ink-3)',noteId});
+  buildHistory();
+  notes.value='';
+  showToast(tr('noteSaved'));
+  persistState();
+}
+
+function viewFullNote(id){
+  const note=notesLog.find(n=>n.id===id);
+  if(!note) return;
+  alert(note.text);
+}
+
+// ═══════════════════════════════════════════
+// TREND CHART
+// ═══════════════════════════════════════════
+// the last n local days, oldest first
+function lastNDays(n){
+  const today=new Date(), out=[];
+  for(let i=n-1;i>=0;i--){
+    const d=new Date(today.getFullYear(), today.getMonth(), today.getDate()-i);
+    out.push({key:localDateKey(d), date:d});
+  }
+  return out;
+}
+
+function getWeeklyHrData(){
+  const days=lastNDays(7);
+  const data=days.map((d,i)=>{
+    const samples=hrLog[d.key];
+    if(samples && samples.length) return Math.round(samples.reduce((a,b)=>a+b,0)/samples.length);
+    return i===days.length-1 ? currentHR : null;
+  });
+  // fill days with no data yet using the nearest known value, so a fresh install
+  // still draws a sensible line instead of gaps
+  let lastKnown=data.find(v=>v!==null) ?? currentHR;
+  for(let i=0;i<data.length;i++){
+    if(data[i]===null) data[i]=lastKnown; else lastKnown=data[i];
+  }
+  return {data, days};
+}
+
+function drawTrendChart(){
+  const c=document.getElementById('trendChart');
+  const rect=c.getBoundingClientRect();
+  if(!rect.width || !rect.height) return;   // Summary tab hidden — drawn when it's shown
+  // Match the backing store to the displayed size (×DPR). It used to be a fixed
+  // 700px drawing squeezed into ~360px: squashed dots, ~5px day labels.
+  const dpr=window.devicePixelRatio||1;
+  c.width=Math.round(rect.width*dpr);
+  c.height=Math.round(rect.height*dpr);
+  const cx=c.getContext('2d');
+  cx.setTransform(dpr,0,0,dpr,0,0);
+  const W=rect.width, H=rect.height;
+  const {data, days}=getWeeklyHrData();
+  const css=getComputedStyle(document.documentElement);
+  const lineColor=css.getPropertyValue('--trace-brady').trim() || '#5ac8fa';
+  const highColor=css.getPropertyValue('--danger').trim() || '#ff6b6b';
+  const labelColor=css.getPropertyValue('--ink-2').trim() || '#a3bfb2';
+  cx.clearRect(0,0,W,H);
+
+  cx.strokeStyle='rgba(255,255,255,.06)';
+  cx.lineWidth=1;
+  for(let i=0;i<=3;i++){
+    const y=Math.round((i/3)*(H-24)+6)+0.5;
+    cx.beginPath(); cx.moveTo(28,y); cx.lineTo(W,y); cx.stroke();
+  }
+
+  // 40–120 bpm as before, widened when a day falls outside it
+  // (a day averaging above 120 used to be plotted off the top of the canvas)
+  const minV=Math.min(40, Math.min(...data)-5);
+  const maxV=Math.max(120, Math.max(...data)+5);
+  const pts=data.map((v,i)=>({x:28+(i/(data.length-1))*(W-38), y:H-22-((v-minV)/(maxV-minV))*(H-32)}));
+
+  const grad=cx.createLinearGradient(0,0,0,H);
+  grad.addColorStop(0,'rgba(90,200,250,.22)');
+  grad.addColorStop(1,'rgba(90,200,250,0)');
+  cx.beginPath();
+  pts.forEach((p,i)=>i===0?cx.moveTo(p.x,p.y):cx.lineTo(p.x,p.y));
+  cx.lineTo(pts[pts.length-1].x,H-22); cx.lineTo(pts[0].x,H-22); cx.closePath();
+  cx.fillStyle=grad; cx.fill();
+
+  cx.beginPath();
+  cx.strokeStyle=lineColor; cx.lineWidth=2.2; cx.lineJoin='round';
+  pts.forEach((p,i)=>i===0?cx.moveTo(p.x,p.y):cx.lineTo(p.x,p.y));
+  cx.stroke();
+
+  cx.font='9.5px Inter, "Noto Sans Ethiopic", system-ui, sans-serif';
+  cx.textAlign='center';
+  pts.forEach((p,i)=>{
+    cx.beginPath();
+    cx.arc(p.x,p.y,3.2,0,Math.PI*2);
+    cx.fillStyle=data[i]>90 ? highColor : lineColor;
+    cx.fill();
+    cx.globalAlpha=.8;
+    cx.fillStyle=labelColor;
+    cx.fillText(EC_WEEKDAYS[currentLang][days[i].date.getDay()], p.x, H-6);  // was always English
+    cx.globalAlpha=1;
+  });
+}
+
+// ─── Summary rings: computed from the app's own logs (they were hardcoded 80% / 74) ───
+function updateSummaryRings(){
+  const keys=lastNDays(7).map(d=>d.key);
+  let taken=0, total=0, sum=0, n=0;
+  keys.forEach(k=>{
+    const a=adherenceLog[k];
+    if(a){ taken+=a.taken; total+=a.total; }
+    (hrLog[k]||[]).forEach(v=>{ sum+=v; n++; });
+  });
+  document.getElementById('ringAdherence').textContent = total ? Math.round(taken/total*100)+'%' : '—';
+  document.getElementById('ringAvgHr').textContent = n ? Math.round(sum/n) : currentHR;
+}
+
+let resizeTimer;
+window.addEventListener('resize', ()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(()=>{ if(isTabActive('summary')) drawTrendChart(); }, 150);
+});
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+function switchTab(tab, el){
+  document.querySelectorAll('.tab').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>{
+    n.classList.remove('active');
+    n.setAttribute('aria-current','false');
+  });
+  document.getElementById('tab-'+tab).classList.add('active');
+  el.classList.add('active');
+  el.setAttribute('aria-current','page');
+  document.querySelector('.content').scrollTop=0;   // tabs share one scroller — start each at the top
+  if(tab==='summary'){ updateEcSummaryCard(); updateSummaryRings(); drawTrendChart(); }
+  if(tab==='monitor') resumeMonitorLoops(); else pauseMonitorLoops();
+}
+
+// ═══════════════════════════════════════════
+// NOTIFICATIONS
+// ═══════════════════════════════════════════
+function addNotification(type,title,text){
+  notifications.unshift({type,title,text,time:nowHHMM()});
+  if(notifications.length>25) notifications.pop();
+  updateNotifDot();
+  renderNotifications();
+  sendSystemNotification(type,title,text);
+  persistState();
+}
+function updateNotifDot(){
+  const dot=document.getElementById('notifDot');
+  if(notifications.length){ dot.style.display='flex'; dot.textContent=notifications.length>9?'9+':notifications.length; }
+  else dot.style.display='none';
+}
+function renderNotifications(){
+  const list=document.getElementById('notifList');
+  if(!notifications.length){ list.innerHTML=`<div class="notif-empty">${escapeHtml(T[currentLang]['t-notifEmpty'])}</div>`; return; }
+  list.innerHTML='';
+  const num=dialableNumber();
+  notifications.forEach(n=>{
+    const item=document.createElement('div');
+    item.className='notif-item'+(n.type==='warning'?' warning':n.type==='danger'?' danger':'');
+    let actionHtml='';
+    if(n.type==='danger' && num){
+      actionHtml=`<a href="tel:${escapeHtml(num)}" style="display:inline-block;margin-top:6px;font-size:11px;font-weight:700;color:var(--danger);text-decoration:underline;">${escapeHtml(tr('callClinician'))}</a>`;
+    }
+    item.innerHTML=`<div class="nt">${escapeHtml(n.title)}</div><div class="nb">${escapeHtml(n.text)}</div>${actionHtml}<div class="nm">${escapeHtml(n.time)}</div>`;
+    list.appendChild(item);
+  });
+}
+
+// the panel is a modal dialog: the app behind it is made inert while it's open,
+// focus moves into it, Escape closes it, and focus returns to where it was
+let notifReturnFocus=null;
+function openNotifications(){
+  const panel=document.getElementById('notifPanel');
+  if(panel.classList.contains('open')) return;
+  notifReturnFocus=document.activeElement;
+  renderNotifications();   // picks up an emergency contact added after these alerts were created
+  updateNotifPermUI();
+  panel.classList.add('open');
+  document.getElementById('notifBtn').setAttribute('aria-expanded','true');
+  // move focus in *before* making the app inert — while the focused element is
+  // inside a freshly-inert subtree, Chrome ignores focus() calls elsewhere
+  document.getElementById('notifCloseBtn').focus();
+  document.querySelector('.app').inert=true;
+}
+function closeNotifications(){
+  const panel=document.getElementById('notifPanel');
+  if(!panel.classList.contains('open')) return;
+  panel.classList.remove('open');
+  document.querySelector('.app').inert=false;
+  document.getElementById('notifBtn').setAttribute('aria-expanded','false');
+  const back=(notifReturnFocus && document.contains(notifReturnFocus)) ? notifReturnFocus : document.getElementById('notifBtn');
+  if(back && back.focus) back.focus();
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeNotifications(); });
+
+function clearNotifications(){
+  if(!notifications.length) return;
+  if(!confirm(T[currentLang]['t-clearAll'] + '?')) return;
+  notifications=[];
+  updateNotifDot();
+  renderNotifications();
+  showToast(tr('notificationsCleared'));
+  persistState();
+}
+
+// ═══════════════════════════════════════════
+// SYSTEM (ANDROID) NOTIFICATIONS + OFFLINE SUPPORT
+// Android Chrome only shows notifications through a service worker (the
+// plain `new Notification()` constructor throws there). Browsers refuse to
+// register a service worker from a blob: or data: URL, so the old in-file
+// Blob worker never registered — phone notifications and offline caching
+// silently never worked. The worker now lives in sw.js, which must sit in
+// the same folder as this file on an https:// (or localhost) server. If
+// sw.js is missing, or the file is opened as file://, registration fails
+// quietly and the in-app panel still receives every notification.
+// ═══════════════════════════════════════════
+// read live, so permission changed in browser settings is picked up
+function notifPermission(){
+  return (typeof Notification !== 'undefined') ? Notification.permission : 'unsupported';
+}
+let swRegistration = null;
+
+// ═══════════════════════════════════════════
+// COLOR THEME
+// ═══════════════════════════════════════════
+let currentTheme = 'teal';
+try{ currentTheme = localStorage.getItem('cc-theme') === 'crimson' ? 'crimson' : 'teal'; }catch(e){}
+
+function applyTheme(t){
+  currentTheme = t;
+  if(t === 'crimson') document.documentElement.setAttribute('data-theme','crimson');
+  else document.documentElement.removeAttribute('data-theme');
+  try{ localStorage.setItem('cc-theme', t); }catch(e){}
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if(metaTheme) metaTheme.setAttribute('content', t === 'crimson' ? '#170808' : '#0d1f1a');
+  // repaint everything drawn with theme colours (the ECG used fixed hex values,
+  // so crimson's rose arrhythmia colour never reached the trace)
+  refreshRhythmColors();
+  document.getElementById('bpmDisplay').style.color = RCOLOR[currentRhythm];
+  redrawIfFrozen();
+  if(isTabActive('summary')) drawTrendChart();
+}
+
+function toggleTheme(){
+  applyTheme(currentTheme === 'crimson' ? 'teal' : 'crimson');
+  showToast(currentTheme === 'crimson' ? tr('themeCrimson') : tr('themeTeal'));
+}
+
+// ═══════════════════════════════════════════
+// INSTALL TO HOME SCREEN
+// ═══════════════════════════════════════════
+let deferredInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e)=>{
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const btn = document.getElementById('installBtn');
+  if(btn && !isStandalone()) btn.style.display = 'flex';
+});
+
+window.addEventListener('appinstalled', ()=>{
+  deferredInstallPrompt = null;
+  const btn = document.getElementById('installBtn');
+  if(btn) btn.style.display = 'none';
+  showToast(tr('installedToast'));
+});
+
+function isStandalone(){
+  return window.matchMedia && window.matchMedia('(display-mode: standalone)').matches;
+}
+
+async function triggerInstall(){
+  if(!deferredInstallPrompt){
+    showToast(tr('installManualToast'));
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  const choice = await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  document.getElementById('installBtn').style.display = 'none';
+  if(choice.outcome === 'accepted') showToast(tr('installingToast'));
+}
+
+if(isStandalone()){
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const btn=document.getElementById('installBtn');
+    if(btn) btn.style.display='none';
+  });
+}
+
+function initServiceWorker(){
+  if(!('serviceWorker' in navigator) || !/^https?:$/.test(location.protocol)) return;
+  navigator.serviceWorker.register('./sw.js')
+    .then(reg=>{ swRegistration=reg; })
+    .catch(()=>{ /* sw.js not deployed next to this file — in-app notifications only */ });
+}
+
+function requestNotificationPermission(){
+  if(typeof Notification === 'undefined'){ showToast(tr('notifUnsupported')); return; }
+  Promise.resolve(Notification.requestPermission()).then(perm=>{
+    perm = perm || notifPermission();
+    updateNotifPermUI();
+    if(perm==='granted'){
+      showToast(tr('notifEnabledToast'));
+      sendSystemNotification('info',T[currentLang].appTitle,tr('phoneNotifText'));
+    } else if(perm==='denied'){
+      showToast(tr('notifBlockedToast'));
+    }
+  }).catch(()=>{});
+}
+
+function updateNotifPermUI(){
+  const row=document.getElementById('notifPermRow');
+  if(!row) return;
+  const show = notifPermission()==='default';
+  row.style.display = show ? 'flex' : 'none';
+}
+
+function sendSystemNotification(type,title,text){
+  // NOTE — verify specifically on iOS Safari: iOS's support for Notification
+  // permission requests and installed-PWA push/local notifications differs
+  // meaningfully from Android Chrome (e.g. iOS historically required the app
+  // be added to the home screen before permission could even be requested,
+  // and vibration patterns are ignored there). This function already
+  // degrades silently on any failure (try/catch below), and every
+  // notification is also written to `notifications` and rendered in the
+  // in-app panel by addNotification() regardless of whether the system-level
+  // call below succeeds — so the in-app panel is the reliable, cross-platform
+  // source of truth; treat this function purely as a best-effort bonus.
+  if(notifPermission()!=='granted') return;
+  const vib = type==='danger' ? [180,90,180] : type==='warning' ? [120] : [60];
+  const opts = { body:text, tag:'cardiac-'+type+'-'+Date.now(), vibrate:vib, silent:false,
+                 data:{url:location.href.split('#')[0]} };
+  const fallback=()=>{
+    try{ new Notification(title, opts); }   // desktop fallback; throws on Android Chrome
+    catch(e){ /* ignore — in-app panel already has it */ }
+  };
+  if(swRegistration){
+    // showNotification() needs an *active* worker and returns a promise; the
+    // old code called it synchronously, so its rejections were never caught
+    navigator.serviceWorker.ready
+      .then(reg=>reg.showNotification(title, opts))
+      .catch(fallback);
+  } else {
+    fallback();
+  }
+}
+
+let toastTimer;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),1800);
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+let _isFirstRun=true;
+try{ _isFirstRun = !localStorage.getItem(STORAGE_KEY); }catch(e){}   // check before anything saves
+loadPersistedState();
+const _newDay = startNewDayIfNeeded();   // saved statuses from an earlier day → start today fresh
+pendingStress=currentStress;
+buildMedList();
+buildHistory();
+previewStress(currentStress);
+document.getElementById('emergencyContactInput').value=emergencyContact;
+updateEmergencyCallBtn();
+updateNotifDot();
+let _savedLang='en';
+try{ _savedLang = localStorage.getItem(LANG_KEY) || 'en'; }catch(e){}
+setLang(_savedLang);   // also builds the symptom grid, date strip, header date, EC card and notifications
+initServiceWorker();
+updateNotifPermUI();
+applyTheme(currentTheme);
+if(_newDay) persistState();
+setInterval(checkDayRollover, 60000);   // midnight while the app is open
+if(_isFirstRun) setTimeout(()=>addNotification('info',tr('welcomeTitle'),tr('welcomeText')),500);
+
+// fonts (including Noto Sans Ethiopic, required for Amharic/Oromo) load from
+// Google Fonts — see the <head> comment. Warn only when offline AND the
+// Ethiopic font genuinely isn't available; the old check warned on every
+// offline start, even when the fonts were already cached.
+if(navigator.onLine===false){
+  const warnFonts=()=>setTimeout(()=>showToast(tr('offlineFontsWarning')), 1200);
+  if(document.fonts && document.fonts.load){
+    document.fonts.load('16px "Noto Sans Ethiopic"', 'አ')
+      .then(faces=>{ if(!faces.length) warnFonts(); })
+      .catch(warnFonts);
+  } else {
+    warnFonts();
+  }
+}
+</script>
+</body>
+</html>
