@@ -3,17 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0d1f1a">
+<meta name="theme-color" content="#f8f9fa">
 <meta name="mobile-web-app-capable" content="yes">
 <link id="manifestLink" rel="manifest">
 <title>Cardiac Companion</title>
 <!--
+  CLINICAL UI REDESIGN — see the design brief this build implements. Visual
+  presentation and microcopy were reworked for a clinical/professional
+  register; the underlying simulation, calendar, i18n, persistence and
+  notification engines are unchanged from the prior build.
+
   KNOWN LIMITATION — online font dependency:
-  Space Grotesk, Inter, IBM Plex Mono, and Noto Sans Ethiopic are loaded from
+  Inter, IBM Plex Mono, and Noto Sans Ethiopic are loaded from
   fonts.googleapis.com below. Unlike the manifest icons (embedded as base64
-  data URIs), these are NOT bundled into this file — embedding four full
-  variable font families here would balloon this single-file prototype by
-  several megabytes. Noto Sans Ethiopic in particular is required for correct
+  data URIs), these are NOT bundled into this file — embedding full variable
+  font families here would balloon this single-file prototype by several
+  megabytes. Noto Sans Ethiopic in particular is required for correct
   Amharic/Oromo glyph rendering, so a fully offline first load will fall back
   to the browser's default system font for that script. First load requires
   a network connection; once cached by the browser's own font cache, repeat
@@ -22,79 +27,105 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* ── base surfaces ── */
-    --void:#08130f;
-    --surface:#0d1f1a;
-    --surface-raised:#132d25;
-    --surface-hover:#183a2f;
-    --hairline:rgba(255,255,255,.08);
-    --hairline-strong:rgba(255,255,255,.16);
+    /* ── base surfaces (light clinical — warm white, not pure-black dark mode) ── */
+    --void:#f8f9fa;
+    --surface:#ffffff;
+    --surface-raised:#f1f3f4;
+    --surface-hover:#e9ecee;
+    --hairline:#e0e0e0;
+    --hairline-strong:#c9ced2;
 
     /* ── text ── */
-    --ink-1:#eef7f1;
-    --ink-2:#a3bfb2;
-    --ink-3:#638375;
+    --ink-1:#1a1a1a;
+    --ink-2:#5c5c5c;
+    --ink-3:#6b6f73;
 
-    /* ── clinical parameter accents (mirrors real bedside-monitor conventions) ── */
-    --trace-normal:#3ddc97;
-    --trace-tachy:#ffb648;
-    --trace-brady:#5ac8fa;
-    --trace-arrhy:#ff6b6b;
-    --stress-tint:#ff8a4c;
+    /* ── clinical status colors (matches hospital vital-signs-display convention) ──
+         Each has a "-ink" text-safe variant for use as actual text/labels; the
+         base value is for graphical marks only (chart strokes, dots, borders,
+         low-opacity tints) where full saturation reads clearly without needing
+         to clear text-contrast ratios. ── */
+    --trace-normal:#2e7d32;       /* normal sinus */
+    --trace-tachy:#d32f2f;        /* tachycardia */
+    --trace-brady:#1976d2;        /* bradycardia */
+    --trace-arrhy:#f57c00;        /* arrhythmia */
+    --trace-arrhy-ink:#9a3f00;
+    --stress-tint:#fbc02d;
 
-    --spo2:#45d1e0;
-    --bp:#ff8fae;
-    --temp:#ffcc66;
+    --spo2:#00695c;
+    --bp:#5c6bc0;
+    --temp:#8a6d1a;
 
     /* ── reserved for the Ethiopian calendar only ── */
-    --ethio-gold:#f2b134;
-    --ethio-gold-dim:rgba(242,177,52,.13);
+    --ethio-gold:#8a6d1a;
+    --ethio-gold-dim:rgba(138,109,26,.1);
 
-    --danger:#ff6b6b;
-    --warning:#ffb648;
-    --info:#5ac8fa;
+    --danger:#d32f2f;
+    --danger-ink:#a41313;
+    --warning:#fbc02d;
+    --warning-ink:#6d5300;
+    --info:#1976d2;
 
-    --glow-primary:rgba(61,220,151,.12);
-    --ecg-bg:#081712;
-    --ecg-grid-a:rgba(61,220,151,.055);
-    --ecg-grid-b:rgba(61,220,151,.02);
-    --ecg-veil:rgba(8,23,18,.82);
+    --ecg-bg:#fcfcfa;
+    --ecg-grid-a:rgba(26,26,26,.075);
+    --ecg-grid-b:rgba(26,26,26,.03);
+    --ecg-veil:rgba(255,255,255,.86);
 
-    --font-display:'Space Grotesk','Noto Sans Ethiopic',system-ui,sans-serif;
+    --card-shadow:0 1px 3px rgba(0,0,0,.1);
+
+    --font-display:'Inter','Noto Sans Ethiopic',system-ui,sans-serif;
     --font-body:'Inter','Noto Sans Ethiopic',system-ui,sans-serif;
     --font-mono:'IBM Plex Mono','Noto Sans Ethiopic',ui-monospace,monospace;
 
-    --r-lg:16px;
-    --r-md:12px;
-    --r-sm:8px;
+    --r-lg:4px;
+    --r-md:4px;
+    --r-sm:4px;
   }
 
-  /* ── Crimson theme — same clinical-monitor logic, deep red base.
-       Arrhythmia/danger shift to rose so they still stand out against
-       a red-toned background instead of blending into it. ── */
-  :root[data-theme="crimson"]{
-    --void:#170808;
-    --surface:#241010;
-    --surface-raised:#331515;
-    --surface-hover:#3d1a1a;
-    --hairline:rgba(255,255,255,.09);
-    --hairline-strong:rgba(255,255,255,.17);
+  /* ── Dark clinical theme — a muted, professional dark mode (not a "vibe"
+       theme): same status-color meanings as light mode, tonally lightened so
+       they stay legible on a dark surface, per hospital dark-display presets. ── */
+  :root[data-theme="dark"]{
+    --void:#12181b;
+    --surface:#1a2126;
+    --surface-raised:#212a30;
+    --surface-hover:#29333a;
+    --hairline:rgba(255,255,255,.1);
+    --hairline-strong:rgba(255,255,255,.18);
 
-    --ink-1:#f8eeee;
-    --ink-2:#c2a3a3;
-    --ink-3:#8a6666;
+    --ink-1:#eef1f3;
+    --ink-2:#a8b3ba;
+    --ink-3:#8b969d;
 
-    --trace-arrhy:#ff4d8d;
-    --danger:#ff4d8d;
+    --trace-normal:#66bb6a;
+    --trace-tachy:#ef5350;
+    --trace-brady:#42a5f5;
+    --trace-arrhy:#ffa726;
+    --trace-arrhy-ink:#ffa726;
+    --stress-tint:#ffca28;
 
-    --glow-primary:rgba(255,77,109,.14);
-    --ecg-bg:#180a0b;
-    --ecg-grid-a:rgba(255,90,120,.06);
-    --ecg-grid-b:rgba(255,90,120,.02);
-    --ecg-veil:rgba(24,10,11,.82);
+    --spo2:#4db6ac;
+    --bp:#9fa8da;
+    --temp:#e0b559;
+
+    --ethio-gold:#e0b559;
+    --ethio-gold-dim:rgba(224,181,89,.14);
+
+    --danger:#ef5350;
+    --danger-ink:#ef5350;
+    --warning:#ffca28;
+    --warning-ink:#ffca28;
+    --info:#42a5f5;
+
+    --ecg-bg:#0e1417;
+    --ecg-grid-a:rgba(255,255,255,.06);
+    --ecg-grid-b:rgba(255,255,255,.025);
+    --ecg-veil:rgba(18,24,27,.86);
+
+    --card-shadow:0 1px 3px rgba(0,0,0,.4);
   }
 
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
@@ -133,7 +164,9 @@
     flex-direction:column;
     background:var(--void);
     position:relative;
-    box-shadow:0 0 60px rgba(0,0,0,.5);
+  }
+  @media (min-width:640px){
+    .app{ box-shadow:0 0 0 1px var(--hairline), 0 4px 16px rgba(0,0,0,.08); }
   }
 
 
@@ -261,6 +294,12 @@
   }
 
   /* ═══════════ CONTENT ═══════════ */
+  .app-main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
   .content{
     flex:1;
     overflow-y:auto;
@@ -296,6 +335,7 @@
     border-radius:var(--r-lg);
     margin-bottom:14px;
     overflow:hidden;
+    box-shadow:var(--card-shadow);
   }
   .card-head{
     padding:13px 15px;
@@ -319,7 +359,7 @@
     font-size:10.5px;
     font-weight:600;
     padding:4px 9px;
-    border-radius:20px;
+    border-radius:var(--r-sm);
   }
   .badge-live{
     background:var(--surface-raised);
@@ -327,7 +367,7 @@
     display:flex; align-items:center; gap:5px;
     cursor:pointer;
     border:1px solid var(--hairline);
-    border-radius:14px;
+    border-radius:var(--r-sm);
     padding:4px 9px;
     font-size:10.5px;
     font-weight:600;
@@ -335,6 +375,25 @@
   .badge-live .dot{width:5px;height:5px;border-radius:50%;background:var(--ink-2);}
   .badge-live.frozen{background:var(--surface-raised); color:var(--ink-3);}
   .badge-live.frozen .dot{background:var(--ink-3);}
+
+  /* ═══════════ BADGE-STATUS — clinical status labels (light tint + dark,
+     text-safe ink; color is never the only signal, the text always says
+     the status too) ═══════════ */
+  .badge-status{
+    display:inline-flex; align-items:center; gap:5px;
+    padding:3px 8px;
+    border-radius:var(--r-sm);
+    font-size:10.5px;
+    font-weight:700;
+    border:1px solid transparent;
+    white-space:nowrap;
+  }
+  .badge-status svg{width:11px;height:11px;flex-shrink:0;}
+  .badge-status.taken{background:rgba(46,125,50,.1); color:#1e5e22; border-color:rgba(46,125,50,.3);}
+  .badge-status.pending{background:var(--surface-raised); color:var(--ink-2); border-color:var(--hairline);}
+  .badge-status.missed{background:rgba(211,47,47,.08); color:var(--danger-ink); border-color:rgba(211,47,47,.3);}
+  :root[data-theme="dark"] .badge-status.taken{background:rgba(102,187,106,.14); color:#8fd792;}
+  :root[data-theme="dark"] .badge-status.missed{background:rgba(239,83,80,.14); color:#ff8a80;}
 
   /* ═══════════ ECG ═══════════ */
   .ecg-frame{
@@ -409,7 +468,7 @@
   .rhythm-btn .rdot{width:7px;height:7px;border-radius:50%; background:var(--ink-3);}
   .rhythm-btn span{font-size:10px; font-weight:600; color:var(--ink-3); text-align:center; line-height:1.2;}
   .rhythm-btn:hover{border-color:var(--hairline-strong);}
-  .rhythm-btn.active{background:rgba(255,255,255,.03); border-width:1px;}
+  .rhythm-btn.active{background:var(--surface-hover); border-width:1px;}
   .rhythm-btn.active[data-r="normal"]{border-color:var(--trace-normal);}
   .rhythm-btn.active[data-r="normal"] .rdot{background:var(--trace-normal);}
   .rhythm-btn.active[data-r="normal"] span{color:var(--trace-normal);}
@@ -484,26 +543,25 @@
     background:var(--ink-3);
     transition:all .2s;
   }
-  .switch.on{background:rgba(61,220,151,.15); border-color:var(--trace-normal);}
+  .switch.on{background:rgba(46,125,50,.15); border-color:var(--trace-normal);}
   .switch.on::after{background:var(--trace-normal); left:20px;}
 
-  /* ═══════════ VITALS ═══════════ */
-  .vitals-row{display:grid; grid-template-columns:repeat(3,1fr); gap:9px;}
+  /* ═══════════ VITALS DASHBOARD GRID ═══════════
+     One neutral tile style for every parameter — color is reserved for actual
+     clinical status (rhythm classification), not used decoratively to tell
+     SpO2 from BP from Temp; the icon + label already do that unambiguously. */
+  .vitals-row{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
   .vital{
     background:var(--surface-raised);
     border:1px solid var(--hairline);
     border-radius:var(--r-md);
-    padding:11px 8px;
+    padding:12px 6px 10px;
     text-align:center;
-    border-top:2px solid var(--spo2);
   }
-  .vital[data-k="bp"]{border-top-color:var(--bp);}
-  .vital[data-k="temp"]{border-top-color:var(--temp);}
-  .vital-icon{color:var(--spo2); margin-bottom:6px;}
-  .vital[data-k="bp"] .vital-icon{color:var(--bp);}
-  .vital[data-k="temp"] .vital-icon{color:var(--temp);}
+  .vital-icon{color:var(--ink-3); margin-bottom:6px;}
   .vital-icon svg{width:15px;height:15px;}
   .vital-val{font-family:var(--font-mono); font-size:16px; font-weight:700; color:var(--ink-1);}
+  .vital[data-k="hr"] .vital-val{color:var(--trace-normal);}
   .vital-label{font-size:9.5px; color:var(--ink-3); font-weight:600; margin-top:3px; text-transform:uppercase; letter-spacing:.3px;}
 
   /* ═══════════ MEDS ═══════════ */
@@ -534,7 +592,7 @@
     border:1px solid var(--hairline);
     text-align:center;
   }
-  .datecell.today{background:var(--ethio-gold-dim); border-color:rgba(242,177,52,.4);}
+  .datecell.today{background:var(--ethio-gold-dim); border-color:rgba(138,109,26,.4);}
   .datecell .dow{font-size:9px; color:var(--ink-3); font-weight:600; text-transform:uppercase;}
   .datecell .dnum{font-family:var(--font-mono); font-size:17px; font-weight:700; color:var(--ink-1); margin:3px 0 1px;}
   .datecell.today .dnum{color:var(--ethio-gold);}
@@ -548,8 +606,8 @@
     border-radius:var(--r-md);
     padding:10px 11px;
   }
-  .med-item.taken{border-color:rgba(61,220,151,.35); background:rgba(61,220,151,.05);}
-  .med-item.missed{border-color:rgba(255,107,107,.35); background:rgba(255,107,107,.05);}
+  .med-item.taken{border-color:rgba(46,125,50,.35); background:rgba(46,125,50,.05);}
+  .med-item.missed{border-color:rgba(211,47,47,.35); background:rgba(211,47,47,.05);}
 
   .med-status{
     width:32px;height:32px;
@@ -560,8 +618,8 @@
     color:var(--ink-3);
   }
   .med-status svg{width:15px;height:15px;}
-  .med-item.taken .med-status{background:rgba(61,220,151,.15); color:var(--trace-normal);}
-  .med-item.missed .med-status{background:rgba(255,107,107,.15); color:var(--danger);}
+  .med-item.taken .med-status{background:rgba(46,125,50,.15); color:var(--trace-normal);}
+  .med-item.missed .med-status{background:rgba(211,47,47,.15); color:var(--danger);}
 
   .med-info{flex:1; min-width:0;}
   .med-name{font-size:13px; font-weight:600; color:var(--ink-1);}
@@ -579,8 +637,8 @@
     transition:all .15s;
   }
   .med-btn svg{width:13px;height:13px;}
-  .med-btn.take:hover{border-color:var(--trace-normal); color:var(--trace-normal); background:rgba(61,220,151,.08);}
-  .med-btn.skip:hover{border-color:var(--danger); color:var(--danger); background:rgba(255,107,107,.08);}
+  .med-btn.take:hover{border-color:var(--trace-normal); color:var(--trace-normal); background:rgba(46,125,50,.08);}
+  .med-btn.skip:hover{border-color:var(--danger); color:var(--danger); background:rgba(211,47,47,.08);}
   .med-btn-spacer{width:28px; height:28px; flex-shrink:0;}
 
   .form-field{
@@ -610,7 +668,8 @@
     transition:all .15s;
   }
   .btn-solid{background:var(--trace-normal); color:var(--void);}
-  .btn-solid:hover{background:#33c589;}
+  .btn-solid:hover{background:#255f28;}
+  :root[data-theme="dark"] .btn-solid:hover{background:#7fc983;}
   .btn-ghost{background:var(--surface-raised); border-color:var(--hairline); color:var(--ink-2); margin-top:8px;}
   .btn-ghost:hover{border-color:var(--hairline-strong); color:var(--ink-1);}
   .btn-row{display:flex; gap:8px;}
@@ -644,8 +703,8 @@
     transition:all .15s;
   }
   .symptom-chip:hover{border-color:var(--hairline-strong);}
-  .symptom-chip.sel{border-color:var(--info); background:rgba(90,200,250,.08); color:var(--info); font-weight:600;}
-  .symptom-chip.sel.severe{border-color:var(--danger); background:rgba(255,107,107,.08); color:var(--danger);}
+  .symptom-chip.sel{border-color:var(--info); background:rgba(25,118,210,.08); color:var(--info); font-weight:600;}
+  .symptom-chip.sel.severe{border-color:var(--danger); background:rgba(211,47,47,.08); color:var(--danger);}
   .symptom-chip{display:flex; align-items:center; justify-content:space-between; gap:6px;}
   div.symptom-chip{cursor:default;}
   .symptom-sev{font-family:var(--font-mono); font-size:9.5px; font-weight:700; opacity:.75; flex-shrink:0;}
@@ -670,7 +729,7 @@
     font-size:10.5px; font-weight:600; color:var(--ink-3);
     cursor:pointer;
   }
-  .stress-opt.active{border-color:var(--warning); background:rgba(255,182,72,.1); color:var(--warning);}
+  .stress-opt.active{border-color:var(--warning); background:rgba(251,192,45,.1); color:var(--warning);}
 
   textarea.form-field{resize:vertical; min-height:74px; font-family:inherit;}
 
@@ -682,6 +741,7 @@
     border-radius:var(--r-lg);
     padding:14px 8px;
     text-align:center;
+    box-shadow:var(--card-shadow);
   }
   .ring-label{font-size:9.5px; font-weight:700; color:var(--ink-3); text-transform:uppercase; letter-spacing:.4px; margin-bottom:8px;}
   .ring-num{font-family:var(--font-display); font-size:24px; font-weight:700; color:var(--trace-normal);}
@@ -765,13 +825,17 @@
     padding:12px 13px;
     background:var(--surface);
     border:1px solid var(--hairline);
-    border-left:3px solid var(--trace-normal);
+    border-left:3px solid var(--ink-3);
     border-radius:var(--r-sm);
     margin-bottom:9px;
   }
-  .notif-item.warning{border-left-color:var(--warning);}
-  .notif-item.danger{border-left-color:var(--danger);}
-  .notif-item .nt{font-size:12.5px; font-weight:600; color:var(--ink-1);}
+  /* Critical = red banner, Warning = yellow banner, Informational = plain
+     gray text (no tint) — per the brief's alert conventions. */
+  .notif-item.warning{border-left-color:var(--warning); background:rgba(251,192,45,.1);}
+  .notif-item.danger{border-left-color:var(--danger); background:rgba(211,47,47,.07);}
+  :root[data-theme="dark"] .notif-item.warning{background:rgba(255,202,40,.08);}
+  :root[data-theme="dark"] .notif-item.danger{background:rgba(239,83,80,.1);}
+  .notif-item .nt{font-size:12.5px; font-weight:700; color:var(--ink-1);}
   .notif-item .nb{font-size:11.5px; color:var(--ink-2); margin-top:3px; line-height:1.4;}
   .notif-item .nm{font-family:var(--font-mono); font-size:10px; color:var(--ink-3); margin-top:6px;}
   .notif-empty{text-align:center; padding:60px 20px; color:var(--ink-3); font-size:13px;}
@@ -808,6 +872,207 @@
     transform:scale(.94);
   }
 
+  /* ═══════════ GENTLE LOAD FADE-IN — the one animation the brief keeps ═══════════ */
+  .app{animation:app-fade-in .35s ease both;}
+  @keyframes app-fade-in{ from{opacity:0;} to{opacity:1;} }
+
+  /* ═══════════ ACTIVE ALERT BANNERS — persistent, at the top of the content,
+     for whatever clinically matters right now (arrhythmia, a missed dose,
+     high stress). Distinct from the notifications *log* in the side panel. ═══════════ */
+  #activeAlerts{padding:0 16px;}
+  #activeAlerts:empty{display:none;}
+  .alert-critical, .alert-warning, .alert-info{
+    display:flex; align-items:flex-start; gap:10px;
+    padding:11px 13px;
+    border-radius:var(--r-md);
+    margin-top:12px;
+    font-size:12.5px;
+    line-height:1.45;
+    border:1px solid transparent;
+  }
+  .alert-critical{background:rgba(211,47,47,.09); border-color:rgba(211,47,47,.3); color:var(--danger-ink);}
+  .alert-warning{background:rgba(251,192,45,.14); border-color:rgba(251,192,45,.4); color:var(--warning-ink);}
+  .alert-info{background:var(--surface-raised); border-color:var(--hairline); color:var(--ink-2);}
+  :root[data-theme="dark"] .alert-critical{color:#ff8a80;}
+  :root[data-theme="dark"] .alert-warning{color:#ffe082;}
+  .alert-critical svg, .alert-warning svg, .alert-info svg{width:16px;height:16px;flex-shrink:0;margin-top:1px;}
+  .alert-critical strong, .alert-warning strong, .alert-info strong{display:block; font-weight:700; margin-bottom:1px; color:var(--ink-1);}
+
+  /* ═══════════ METRIC / DATA CARD — shared component set from the brief's
+     Technical Deliverables list ═══════════ */
+  .metric-box{background:var(--surface); border:1px solid var(--hairline); border-radius:var(--r-lg); padding:14px 8px; text-align:center; box-shadow:var(--card-shadow);}
+  .data-card{background:var(--surface); border:1px solid var(--hairline); border-radius:var(--r-lg); box-shadow:var(--card-shadow); overflow:hidden;}
+  .table-row{display:flex; align-items:center; gap:11px; padding:10px 11px; border-bottom:1px solid var(--hairline);}
+  .table-row:last-child{border-bottom:none;}
+
+  /* ═══════════ TOOLTIP — tap/click OR keyboard-focus toggles it; never hover-only,
+     so it works on the touchscreens this app mostly runs on ═══════════ */
+  .info-tip{position:relative; display:inline-flex; vertical-align:middle; margin-left:4px;}
+  .info-tip-btn{
+    width:15px;height:15px;
+    border-radius:50%;
+    border:1px solid var(--hairline-strong);
+    background:var(--surface-raised);
+    color:var(--ink-3);
+    font-size:9.5px;
+    font-weight:700;
+    font-family:var(--font-body);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    padding:0;
+    line-height:1;
+  }
+  .info-tip-btn:hover, .info-tip-btn[aria-expanded="true"]{border-color:var(--info); color:var(--info);}
+  .info-tip-bubble{
+    display:none;
+    position:absolute;
+    bottom:calc(100% + 7px);
+    left:50%;
+    transform:translateX(-50%);
+    width:max-content;
+    max-width:220px;
+    background:var(--ink-1);
+    color:var(--surface);
+    font-size:11px;
+    font-weight:500;
+    line-height:1.4;
+    padding:8px 10px;
+    border-radius:var(--r-sm);
+    z-index:20;
+    text-align:left;
+    box-shadow:0 4px 12px rgba(0,0,0,.18);
+  }
+  .info-tip-bubble::after{content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:var(--ink-1);}
+  :root[data-theme="dark"] .info-tip-bubble{background:var(--surface-hover); color:var(--ink-1); border:1px solid var(--hairline-strong);}
+  :root[data-theme="dark"] .info-tip-bubble::after{border-top-color:var(--surface-hover);}
+  .info-tip.open .info-tip-bubble{display:block;}
+
+  /* ═══════════ WEEK VIEW — Meds: Mon–Sun adherence at a glance ═══════════ */
+  .week-view{display:grid; grid-template-columns:repeat(7,1fr); gap:5px; margin-bottom:14px;}
+  .week-cell{background:var(--surface-raised); border:1px solid var(--hairline); border-radius:var(--r-sm); padding:7px 2px 8px; text-align:center;}
+  .week-cell.is-today{border-color:var(--info); border-width:1.5px;}
+  .week-cell .wd{font-size:9px; font-weight:700; color:var(--ink-3); text-transform:uppercase;}
+  .week-cell .wmark{width:18px;height:18px; margin:5px auto 0; border-radius:50%; display:flex;align-items:center;justify-content:center; color:#fff;}
+  .week-cell .wmark svg{width:10px;height:10px;}
+  .week-cell .wmark.full{background:var(--trace-normal);}
+  .week-cell .wmark.partial{background:var(--warning); color:var(--warning-ink);}
+  .week-cell .wmark.none{background:var(--danger);}
+  .week-cell .wmark.empty{background:var(--surface-hover); color:var(--ink-3);}
+  .week-cell .wpct{display:block; font-size:8px; color:var(--ink-3); margin-top:3px; font-family:var(--font-mono);}
+
+  /* ═══════════ SYMPTOMS — body-system groups + checklist rows ═══════════ */
+  .symptom-group{margin-bottom:14px;}
+  .symptom-group:last-child{margin-bottom:0;}
+  .symptom-group-label{font-size:10px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--ink-3); margin-bottom:7px;}
+  .symptom-item{display:flex; align-items:center; gap:10px; padding:9px 10px; background:var(--surface-raised); border:1px solid var(--hairline); border-radius:var(--r-sm); cursor:pointer; margin-bottom:6px;}
+  .symptom-item:last-child{margin-bottom:0;}
+  .symptom-item .chk{width:17px;height:17px; flex-shrink:0; border:1.5px solid var(--hairline-strong); border-radius:3px; display:flex;align-items:center;justify-content:center; color:transparent; background:var(--surface);}
+  .symptom-item.sel .chk{background:var(--info); border-color:var(--info); color:#fff;}
+  .symptom-item.sel.severe .chk{background:var(--danger); border-color:var(--danger);}
+  .symptom-item .chk svg{width:11px;height:11px;}
+  .symptom-item .label{flex:1; font-size:12.5px; font-weight:500; color:var(--ink-1);}
+  .symptom-item .sev-pill{font-family:var(--font-mono); font-size:10px; font-weight:700; color:var(--ink-3);}
+  .symptom-item.sel.severe .sev-pill{color:var(--danger-ink);}
+
+  /* numeric severity as a visual progress bar, not just a bare slider */
+  .sev-bar-row{display:flex; align-items:center; gap:8px; margin-top:2px;}
+  .sev-bar{flex:1; height:8px; background:var(--surface-raised); border:1px solid var(--hairline); border-radius:4px; overflow:hidden;}
+  .sev-bar-fill{height:100%; background:var(--warning);}
+  .sev-bar-fill.hi{background:var(--danger);}
+  .sev-bar-num{font-family:var(--font-mono); font-size:11px; font-weight:700; color:var(--ink-1); min-width:34px; text-align:right;}
+
+  /* clinician-facing context tag: at rest / after exertion / other */
+  .ctx-row{display:flex; gap:6px; margin-top:8px; flex-wrap:wrap;}
+  .ctx-tag{padding:5px 9px; font-size:10.5px; font-weight:600; border:1px solid var(--hairline); background:var(--surface); border-radius:var(--r-sm); color:var(--ink-2); cursor:pointer;}
+  .ctx-tag.active{border-color:var(--info); background:rgba(25,118,210,.08); color:var(--info);}
+
+  /* ═══════════ SETTINGS PANEL — same slide-over mechanics as Notifications ═══════════ */
+  .settings-section{margin-bottom:22px;}
+  .settings-section:last-child{margin-bottom:4px;}
+  .settings-section-title{font-size:11px; font-weight:700; letter-spacing:.6px; text-transform:uppercase; color:var(--ink-3); margin-bottom:10px; padding:0 16px;}
+  .settings-row{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; border-bottom:1px solid var(--hairline);}
+  .settings-row:last-child{border-bottom:none;}
+  .settings-row-label{font-size:13px; font-weight:600; color:var(--ink-1);}
+  .settings-row-sub{font-size:11.5px; color:var(--ink-3); margin-top:2px;}
+  .settings-block{background:var(--surface); border:1px solid var(--hairline); border-radius:var(--r-md); margin:0 16px 4px; overflow:hidden;}
+  .seg-control{display:flex; background:var(--surface-raised); border:1px solid var(--hairline); border-radius:var(--r-sm); padding:2px;}
+  .seg-control button{padding:6px 11px; border:none; background:transparent; color:var(--ink-3); font-size:11px; font-weight:700; border-radius:3px; cursor:pointer;}
+  .seg-control button.active{background:var(--surface); color:var(--info); box-shadow:0 1px 2px rgba(0,0,0,.08);}
+
+  /* ═══════════ WEEKLY SUMMARY TABLE ═══════════ */
+  .week-table-wrap{overflow-x:auto;}
+  .week-table{width:100%; border-collapse:collapse; font-size:11.5px; min-width:420px;}
+  .week-table th{text-align:left; font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:.3px; color:var(--ink-3); padding:0 6px 8px; border-bottom:1px solid var(--hairline);}
+  .week-table td{padding:8px 6px; border-bottom:1px solid var(--hairline); color:var(--ink-1); font-family:var(--font-mono);}
+  .week-table tr:last-child td{border-bottom:none;}
+  .week-table td:first-child, .week-table th:first-child{font-family:var(--font-body); font-weight:600;}
+
+  /* neutral on purpose — direction alone doesn't mean "good" or "bad" the
+     same way for every metric it's attached to (rising adherence is good,
+     rising resting HR usually isn't), so we don't color-code it */
+  .trend-arrow{display:inline-flex; align-items:center; gap:3px; color:var(--ink-3);}
+  .trend-arrow svg{width:14px;height:14px;}
+
+  /* ═══════════ PRINT — a clean clinical report for clinician sharing.
+     "Export as PDF" = window.print(), then "Save as PDF" in the browser's
+     own print dialog — no extra library, works fully offline. ═══════════ */
+  .print-header{display:none;}
+  @media print{
+    @page{margin:14mm;}
+    html,body{height:auto; overflow:visible; background:#fff;}
+    .app, .app-main{max-width:none; height:auto; box-shadow:none; display:block;}
+    .header, .nav, .toast, #activeAlerts, .notif-panel,
+    .no-print, .info-tip, .rhythm-row, .sliders-2col, #addMedForm, #addSymptomForm,
+    .btn, .med-btn, .med-btn-spacer, .symptom-remove, .ctx-row, input[type="range"], .form-field{
+      display:none !important;
+    }
+    .content{overflow:visible !important; height:auto !important;}
+    .tab{display:block !important; padding:0 0 18px !important;}
+    .print-header{display:block !important; margin-bottom:14px; padding-bottom:10px; border-bottom:2px solid #000;}
+    .card{box-shadow:none !important; border:1px solid #999 !important; break-inside:avoid; border-radius:0 !important;}
+    *{color:#000 !important; background:#fff !important;}
+    /* the unchecked checkbox mark is hidden on screen via color:transparent
+       (it inherits from .chk so a checked box can flip it to white-on-blue);
+       the blanket color:#000 above would make every mark visible regardless
+       of selection state, so hide the unselected ones a different way */
+    .symptom-item:not(.sel) .chk svg{visibility:hidden;}
+    canvas{display:none;}
+  }
+
+  /* ═══════════ DESKTOP / TABLET — nav becomes a left rail, primary views
+     go side-by-side; the rules above this block remain the mobile-first base ═══════════ */
+  @media (min-width:720px){
+    .app{
+      display:grid;
+      grid-template-columns:88px 1fr;
+      grid-template-rows:auto 1fr;
+      grid-template-areas:"header header" "nav main";
+      max-width:none;
+    }
+    .header{grid-area:header;}
+    .nav{
+      grid-area:nav;
+      flex-direction:column;
+      justify-content:flex-start;
+      border-top:none;
+      border-right:1px solid var(--hairline);
+      padding:20px 8px;
+      gap:6px;
+      height:100%;
+    }
+    .nav-item{padding:11px 4px;}
+    .app-main{grid-area:main; overflow-y:auto; display:flex; flex-direction:column; min-height:0;}
+    .content{flex:1;}
+    .tab{padding:28px 32px 40px; max-width:1120px;}
+    .desktop-2col{display:grid; grid-template-columns:1.3fr 1fr; gap:16px; align-items:start;}
+    .desktop-2col > .card{margin-bottom:0;}
+    .vitals-row{grid-template-columns:repeat(4,1fr);}
+    .rings-row{max-width:560px;}
+  }
+  @media (min-width:1080px){
+    .tab{padding:32px 48px 48px;}
+  }
+
 </style>
 </head>
 <body>
@@ -830,12 +1095,15 @@
         <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Switch color theme" title="Switch color theme">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 100 18c1.3 0 2-.9 2-2 0-.5-.2-.9-.5-1.3-.3-.4-.5-.8-.5-1.3 0-1 .8-1.9 1.8-1.9H16c2.2 0 4-1.7 4-3.9C20 6.6 16.4 3 12 3z"/><circle cx="7.5" cy="10.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="12" cy="7" r="1.1" fill="currentColor" stroke="none"/><circle cx="16" cy="10" r="1.1" fill="currentColor" stroke="none"/></svg>
         </button>
-        <button class="icon-btn" onclick="triggerInstall()" id="installBtn" style="display:none; color:var(--trace-normal); border-color:rgba(61,220,151,.35);" aria-label="Install app" title="Install app">
+        <button class="icon-btn" onclick="triggerInstall()" id="installBtn" style="display:none; color:var(--trace-normal); border-color:rgba(46,125,50,.35);" aria-label="Install app" title="Install app">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 19h14"/></svg>
         </button>
         <button class="icon-btn" id="notifBtn" onclick="openNotifications()" aria-label="Notifications" aria-controls="notifPanel" aria-expanded="false">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0112 0c0 4.4 1.2 5.8 2 6.5H4c.8-.7 2-2.1 2-6.5z"/><path d="M10 19a2 2 0 004 0"/></svg>
           <span class="notif-dot" id="notifDot" style="display:none;">0</span>
+        </button>
+        <button class="icon-btn" id="settingsBtn" onclick="openSettings()" aria-label="Settings" aria-controls="settingsPanel" aria-expanded="false" title="Settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1.03 1.56V19a2 2 0 11-4 0v-.09A1.7 1.7 0 008.4 17.35a1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.56-1.03H2a2 2 0 110-4h.09A1.7 1.7 0 003.65 6.6a1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H8a1.7 1.7 0 001.03-1.56V.5a2 2 0 114 0v.09A1.7 1.7 0 0015.6 3.65a1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V8a1.7 1.7 0 001.56 1.03H22a2 2 0 110 4h-.09A1.7 1.7 0 0019.4 13z"/></svg>
         </button>
         <div class="lang-pills">
           <button class="lang-pill active" onclick="setLang('en')" aria-pressed="true" lang="en" aria-label="English">EN</button>
@@ -853,8 +1121,24 @@
     </div>
   </header>
 
+  <!-- app-main groups everything except the header/nav chrome into one flex
+       column, so the ≥720px layout can grid header–nav–main without having
+       to also wire the disclaimer/build-tag lines into the grid separately -->
+  <div class="app-main">
   <!-- ═══ CONTENT ═══ -->
   <main class="content">
+
+    <!-- shown only in print/PDF output — every tab prints stacked below this -->
+    <div class="print-header">
+      <strong id="printTitle" style="font-size:16px;">Cardiac Companion — Clinical Summary</strong><br>
+      <span id="printDate" style="font-size:11px;"></span><br>
+      <span id="printDisclaimer" style="font-size:10px;">Simulation only — not a medical device. Always follow your clinician's guidance.</span>
+      <div id="printClinicalInfo" style="font-size:11px; margin-top:6px;"></div>
+    </div>
+
+    <!-- persistent, state-driven banners (arrhythmia active / dose missed
+         today / high stress) — visible above whichever tab is open -->
+    <div id="activeAlerts" role="status" aria-live="polite"></div>
 
     <!-- ───────── MONITOR ───────── -->
     <section class="tab active" id="tab-monitor">
@@ -863,6 +1147,7 @@
         <p id="t-monitorSub">Simulated real-time ECG</p>
       </div>
 
+      <div class="desktop-2col">
       <div class="card">
         <div class="card-head">
           <div class="card-head-left">
@@ -880,11 +1165,15 @@
               </div>
               <div class="ecg-toggle">
                 <button class="badge-live" id="freezeToggle" onclick="toggleFreeze()" aria-pressed="false">
-                  <span class="dot"></span><span id="t-liveLabel">Live</span>
+                  <span class="dot"></span><span id="t-liveLabel">Running</span>
                 </button>
               </div>
               <canvas id="ecgCanvas" width="700" height="168"></canvas>
             </div>
+          </div>
+
+          <div class="tab-head" style="margin:16px 0 2px;">
+            <p class="card-label" id="t-simControls" style="font-size:10px;">Simulator controls — for demonstration only</p>
           </div>
 
           <div class="rhythm-row" id="rhythmRow">
@@ -913,7 +1202,7 @@
           <div class="sliders-2col">
             <div class="slider-block" style="margin-bottom:0;">
               <div class="slider-top">
-                <span class="slider-name" id="t-signal">Signal</span>
+                <span class="slider-name"><span id="t-signal">Signal</span><span class="info-tip" data-tip="tipSignal"><button class="info-tip-btn" type="button" aria-expanded="false" aria-label="What is signal strength?">i</button><span class="info-tip-bubble" id="t-tipSignal">How clearly the device can detect your heart rhythm (0–100%).</span></span></span>
                 <span class="slider-val" id="signalValue">100%</span>
               </div>
               <input type="range" id="signalSlider" min="0" max="100" value="100" oninput="updateSignal(this.value)" aria-labelledby="t-signal signalValue">
@@ -929,15 +1218,21 @@
         </div>
       </div>
 
+      <div>
       <div class="card">
         <div class="card-head">
           <div class="card-head-left">
-            <span class="card-dot" style="background:var(--spo2);"></span>
-            <span class="card-label" id="t-vitals">Vitals</span>
+            <span class="card-dot" style="background:var(--info);"></span>
+            <span class="card-label" id="t-vitals">Vital Signs</span>
           </div>
         </div>
         <div class="card-body">
           <div class="vitals-row">
+            <div class="vital" data-k="hr">
+              <div class="vital-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg></div>
+              <div class="vital-val" id="hrTileValue">72</div>
+              <div class="vital-label" id="t-hrTile">Heart rate</div>
+            </div>
             <div class="vital" data-k="spo2">
               <div class="vital-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6.5 7.4 6.5 12A6.5 6.5 0 015.5 15C5.5 10.4 12 3 12 3z"/></svg></div>
               <div class="vital-val" id="spo2Value">98%</div>
@@ -967,12 +1262,14 @@
         <div class="card-body">
           <div class="switch-row">
             <div class="switch-copy">
-              <p id="t-biosignalName">Link today's log</p>
+              <p><span id="t-biosignalName">Link today's log</span><span class="info-tip" data-tip="tipBiosignal"><button class="info-tip-btn" type="button" aria-expanded="false" aria-label="What does linking do?">i</button><span class="info-tip-bubble" id="t-tipBiosignal">Layers today's missed doses, stress level and symptom log onto the simulated trace, so the demo rhythm reflects the day you've logged.</span></span></p>
               <p id="t-biosignalDesc">Adjusts the trace from today's log</p>
             </div>
             <button class="switch" id="biosignalSwitch" onclick="toggleBiosignal()" role="switch" aria-checked="false" aria-labelledby="t-biosignalName"></button>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     </section>
 
@@ -983,26 +1280,42 @@
         <p id="t-medsSub">Track your daily doses</p>
       </div>
 
-      <div class="datestrip-head">
-        <span class="card-label" id="t-schedule" style="font-size:11px;">Schedule</span>
-        <div class="cal-toggle">
-          <button class="active" id="calToggleEc" onclick="setCalMode('ec')" aria-pressed="true" title="Ethiopian calendar">EC</button>
-          <button id="calToggleGc" onclick="setCalMode('gc')" aria-pressed="false" title="Gregorian calendar">GC</button>
+      <div class="card">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--info);"></span>
+            <span class="card-label" id="t-weekAdherence">Weekly Adherence</span>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="week-view" id="weekView"></div>
+          <div class="datestrip-head">
+            <span class="card-label" id="t-schedule" style="font-size:11px;">Schedule</span>
+            <div class="cal-toggle">
+              <button class="active" id="calToggleEc" onclick="setCalMode('ec')" aria-pressed="true" title="Ethiopian calendar">EC</button>
+              <button id="calToggleGc" onclick="setCalMode('gc')" aria-pressed="false" title="Gregorian calendar">GC</button>
+            </div>
+          </div>
+          <div class="datestrip" id="dateStrip" style="margin-bottom:0;"></div>
         </div>
       </div>
-      <div class="datestrip" id="dateStrip"></div>
 
-      <div class="card">
+      <div class="data-card" style="margin-bottom:14px;">
         <div class="card-head">
           <div class="card-head-left">
             <span class="card-dot" style="background:var(--trace-brady);"></span>
             <span class="card-label" id="t-todayMeds">Today's Medicines</span>
           </div>
-          <span class="badge badge-live" style="background:var(--surface-raised); color:var(--ink-2); cursor:default;" id="medBadge">0/0</span>
+          <span class="badge" style="background:var(--surface-raised); color:var(--ink-2);" id="medBadge">0/0</span>
         </div>
-        <div class="card-body">
-          <div class="med-list" id="medList"></div>
-          <button class="btn btn-ghost" onclick="toggleAddMed()" id="t-addMed">+ Add medication</button>
+        <div class="table-row" style="background:var(--surface-raised); padding:7px 11px;" aria-hidden="true">
+          <span style="flex:1; font-size:9.5px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--ink-3);" id="t-colMedication">Medication</span>
+          <span style="width:64px; font-size:9.5px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--ink-3);" id="t-colTime">Time</span>
+          <span style="width:92px; text-align:right; font-size:9.5px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--ink-3);" id="t-colStatus">Status</span>
+        </div>
+        <div id="medList"></div>
+        <div style="padding:11px;">
+          <button class="btn btn-ghost" onclick="toggleAddMed()" id="t-addMed" style="margin-top:0;">+ Add medication</button>
           <div id="addMedForm" style="display:none; margin-top:10px;">
             <div class="form-row2">
               <input class="form-field" id="newMedName" placeholder="Medicine name">
@@ -1045,18 +1358,27 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="symptom-grid" id="symptomGrid"></div>
+          <div id="symptomGrid"></div>
           <button class="btn btn-ghost" onclick="toggleAddSymptom()" id="t-addSymptom">+ Add custom symptom</button>
           <div id="addSymptomForm" style="display:none; margin-top:10px;">
             <input class="form-field" id="newSymptomName" placeholder="Symptom name">
-            <div class="slider-block" style="margin-bottom:10px;">
+            <div class="slider-block" style="margin-bottom:6px;">
               <div class="slider-top">
                 <span class="slider-name" id="t-severity">Severity</span>
-                <span class="slider-val" id="newSymptomSevVal">5/10</span>
               </div>
-              <input type="range" id="newSymptomSev" min="1" max="10" value="5" oninput="document.getElementById('newSymptomSevVal').textContent=this.value+'/10'" aria-labelledby="t-severity newSymptomSevVal">
+              <input type="range" id="newSymptomSev" min="1" max="10" value="5" oninput="onNewSymptomSevInput(this.value)" aria-labelledby="t-severity newSymptomSevVal">
+              <div class="sev-bar-row" style="margin-top:7px;">
+                <div class="sev-bar"><div class="sev-bar-fill" id="newSymptomSevFill" style="width:50%;"></div></div>
+                <span class="sev-bar-num" id="newSymptomSevVal">5/10</span>
+              </div>
             </div>
-            <button class="btn btn-solid" onclick="addCustomSymptom()" id="t-saveSymptom">Add symptom</button>
+            <div class="ctx-row" id="symptomCtxRow" role="group" aria-labelledby="t-symptomCtxLabel">
+              <span id="t-symptomCtxLabel" style="font-size:10.5px; color:var(--ink-3); width:100%; margin-bottom:1px;">Context (optional)</span>
+              <button type="button" class="ctx-tag active" data-ctx="rest" onclick="setSymptomCtx('rest')" id="t-ctxRest" aria-pressed="true">At rest</button>
+              <button type="button" class="ctx-tag" data-ctx="exertion" onclick="setSymptomCtx('exertion')" id="t-ctxExertion" aria-pressed="false">After exertion</button>
+              <button type="button" class="ctx-tag" data-ctx="other" onclick="setSymptomCtx('other')" id="t-ctxOther" aria-pressed="false">Other</button>
+            </div>
+            <button class="btn btn-solid" onclick="addCustomSymptom()" id="t-saveSymptom" style="margin-top:10px;">Add symptom</button>
           </div>
         </div>
       </div>
@@ -1065,7 +1387,7 @@
         <div class="card-head">
           <div class="card-head-left">
             <span class="card-dot" style="background:var(--warning);"></span>
-            <span class="card-label" id="t-stressTitle">Stress Level</span>
+            <span class="card-label"><span id="t-stressTitle">Stress Indicator</span><span class="info-tip" data-tip="tipStress"><button class="info-tip-btn" type="button" aria-expanded="false" aria-label="What is the stress indicator?">i</button><span class="info-tip-bubble" id="t-tipStress">Based on symptoms, missed doses, and other logged factors today.</span></span></span>
           </div>
         </div>
         <div class="card-body">
@@ -1094,7 +1416,7 @@
         </div>
         <div class="card-body">
           <input class="form-field" id="emergencyContactInput" type="tel" placeholder="Clinician or emergency phone number" oninput="saveEmergencyContact(this.value)" style="margin-bottom:0;">
-          <a class="btn btn-ghost" id="emergencyCallBtn" style="display:none; text-align:center; text-decoration:none; color:var(--danger); border-color:rgba(255,107,107,.35);" href="#">Call now</a>
+          <a class="btn btn-ghost" id="emergencyCallBtn" style="display:none; text-align:center; text-decoration:none; color:var(--danger); border-color:rgba(211,47,47,.35);" href="#">Call now</a>
         </div>
       </div>
 
@@ -1121,24 +1443,24 @@
 
       <div class="rings-row">
         <div class="ring-card">
-          <div class="ring-label" id="t-adherence">Adherence</div>
+          <div class="ring-label"><span id="t-adherence">Adherence</span><span class="info-tip" data-tip="tipAdherence"><button class="info-tip-btn" type="button" aria-expanded="false" aria-label="What is adherence?">i</button><span class="info-tip-bubble" id="t-tipAdherence">Share of scheduled doses marked taken over the last 7 days.</span></span></div>
           <div class="ring-num" id="ringAdherence">—</div>
-          <div class="ring-sub" id="t-adherenceSub">doses taken</div>
+          <div class="ring-sub"><span id="t-adherenceSub">doses taken</span> <span class="trend-arrow flat" id="adherenceTrend"></span></div>
         </div>
         <div class="ring-card">
           <div class="ring-label" id="t-avgHr">Avg HR</div>
           <div class="ring-num" id="ringAvgHr" style="color:var(--trace-brady);">—</div>
-          <div class="ring-sub" id="t-avgHrSub">bpm avg</div>
+          <div class="ring-sub"><span id="t-avgHrSub">bpm avg</span> <span class="trend-arrow flat" id="avgHrTrend"></span></div>
         </div>
         <div class="ring-card">
-          <div class="ring-label" id="t-wellness">Wellness</div>
-          <div class="ring-num" style="color:var(--warning);">60%</div>
-          <div class="ring-sub" id="t-wellnessSub">good days</div>
+          <div class="ring-label"><span id="t-daysIrregular">Days Irregular</span><span class="info-tip" data-tip="tipIrregular"><button class="info-tip-btn" type="button" aria-expanded="false" aria-label="What counts as an irregular day?">i</button><span class="info-tip-bubble" id="t-tipIrregular">Days this week the monitor was set to an arrhythmia rhythm at least once.</span></span></div>
+          <div class="ring-num" id="ringDaysIrregular" style="color:var(--trace-arrhy);">—</div>
+          <div class="ring-sub" id="t-daysIrregularSub">of last 7 days</div>
         </div>
       </div>
 
       <div class="card ec-calendar-card">
-        <div class="card-head" style="border-color:rgba(242,177,52,.18);">
+        <div class="card-head" style="border-color:rgba(138,109,26,.18);">
           <div class="card-head-left">
             <span class="card-dot" style="background:var(--ethio-gold);"></span>
             <span class="card-label" id="t-ecCalendar" style="color:var(--ethio-gold);">Ethiopian Calendar</span>
@@ -1166,6 +1488,29 @@
         </div>
         <div class="card-body">
           <canvas id="trendChart" width="700" height="110"></canvas>
+          <div style="text-align:center; font-size:9.5px; color:var(--ink-3); font-weight:600; margin-top:2px;" id="t-bpmAxisLabel">Beats per minute</div>
+        </div>
+      </div>
+
+      <div class="data-card" style="margin-bottom:14px;">
+        <div class="card-head">
+          <div class="card-head-left">
+            <span class="card-dot" style="background:var(--ink-2);"></span>
+            <span class="card-label" id="t-weekTable">Weekly Summary Table</span>
+          </div>
+        </div>
+        <div class="card-body week-table-wrap">
+          <table class="week-table">
+            <thead>
+              <tr>
+                <th id="t-wtDay">Day</th>
+                <th id="t-wtHr">Avg HR</th>
+                <th id="t-wtMeds">Meds Taken</th>
+                <th id="t-wtSymptoms">Symptoms</th>
+              </tr>
+            </thead>
+            <tbody id="weekTableBody"></tbody>
+          </table>
         </div>
       </div>
 
@@ -1177,12 +1522,16 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="history-list">
-            <div class="history-item"><div class="hdot" style="background:var(--trace-normal);"></div><div class="htext" id="insight1">HR steady 68–82 bpm — no spikes this week.</div></div>
-            <div class="history-item"><div class="hdot" style="background:var(--warning);"></div><div class="htext" id="insight2">1 missed dose (Wed, Ramipril). Set a reminder?</div></div>
-            <div class="history-item"><div class="hdot" style="background:var(--info);"></div><div class="htext" id="insight3">SpO₂ held 96–99% all week — no dips.</div></div>
+          <div class="history-list" id="insightsList">
+            <div class="history-item"><div class="hdot" style="background:var(--trace-normal);"></div><div class="htext" id="insight1">—</div></div>
+            <div class="history-item"><div class="hdot" style="background:var(--warning);"></div><div class="htext" id="insight2">—</div></div>
+            <div class="history-item"><div class="hdot" style="background:var(--trace-arrhy);"></div><div class="htext" id="insight3">—</div></div>
           </div>
         </div>
+      </div>
+
+      <div style="text-align:right;">
+        <button class="btn btn-ghost" style="width:auto; padding:9px 14px; margin-top:0;" onclick="window.print()" id="t-printSummary">Print / Export PDF</button>
       </div>
     </section>
 
@@ -1190,6 +1539,7 @@
 
   <p class="disclaimer" id="t-disclaimer">Simulation only — not a medical device. Always follow your clinician's guidance.</p>
   <p style="text-align:center; font-size:9.5px; color:var(--ink-3); opacity:.55; padding-bottom:10px; font-family:var(--font-mono); letter-spacing:.3px;" id="buildTag">Cardiac Companion</p>
+  </div>
 
   <!-- ═══ NAV ═══ -->
   <nav class="nav">
@@ -1233,7 +1583,103 @@
     <div class="notif-empty" id="t-notifEmpty">No notifications yet</div>
   </div>
   <div style="padding:12px 16px calc(12px + env(safe-area-inset-bottom)); border-top:1px solid var(--hairline);">
-    <button class="btn btn-ghost" style="margin-top:0;" onclick="clearNotifications()" id="t-clearAll">Clear all notifications</button>
+    <div class="btn-row">
+      <button class="btn btn-ghost" style="margin-top:0;" onclick="clearNotifications()" id="t-clearAll">Clear all notifications</button>
+      <button class="btn btn-ghost" style="margin-top:0;" onclick="window.print()" id="t-exportNotifPdf">Export as PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SETTINGS ═══ -->
+<div class="notif-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="t-settingsTitle">
+  <div class="notif-head">
+    <h2 id="t-settingsTitle">Settings</h2>
+    <button class="icon-btn" id="settingsCloseBtn" onclick="closeSettings()" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="notif-list" style="padding:16px 0;">
+
+    <div class="settings-section">
+      <div class="settings-section-title" id="t-settingsAccount">Account</div>
+      <div class="settings-block">
+        <div style="padding:12px 16px;">
+          <div class="settings-row-label" id="t-settingsEmergencyLabel" style="margin-bottom:8px;">Emergency contact</div>
+          <input class="form-field" id="settingsEmergencyContact" type="tel" placeholder="Clinician or emergency phone number" oninput="saveEmergencyContact(this.value)" style="margin-bottom:0; font-size:15px; padding:12px;">
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title" id="t-settingsPreferences">Preferences</div>
+      <div class="settings-block">
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label" id="t-settingsUnits">Units</div>
+          </div>
+          <div class="seg-control" id="unitsControl" role="group" aria-label="Temperature units">
+            <button type="button" class="active" data-unit="metric" onclick="setUnits('metric')" id="t-unitMetric" aria-pressed="true">°C</button>
+            <button type="button" data-unit="imperial" onclick="setUnits('imperial')" id="t-unitImperial" aria-pressed="false">°F</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label" id="t-settingsDateFormat">Date format</div>
+          </div>
+          <div class="seg-control" id="dateFormatControl" role="group" aria-label="Date format">
+            <button type="button" class="active" data-fmt="md" onclick="setDateFormat('md')" aria-pressed="true">MM/DD</button>
+            <button type="button" data-fmt="dm" onclick="setDateFormat('dm')" aria-pressed="false">DD/MM</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label" id="t-settingsTimezone">Timezone</div>
+            <div class="settings-row-sub" id="settingsTimezoneValue">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title" id="t-settingsPrivacy">Privacy &amp; Data</div>
+      <div class="settings-block">
+        <div class="settings-row">
+          <div>
+            <div class="settings-row-label" id="t-settingsStorage">Storage</div>
+            <div class="settings-row-sub" id="t-settingsStorageValue">On this device only — nothing is sent to a server</div>
+          </div>
+        </div>
+        <div style="padding:12px 16px; display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-ghost" style="width:auto; margin-top:0; flex:1;" onclick="exportCsv()" id="t-exportCsv">Export data (CSV)</button>
+          <button class="btn btn-ghost" style="width:auto; margin-top:0; flex:1;" onclick="window.print()" id="t-exportPdf">Print / Export PDF</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title" id="t-settingsClinical">Clinical Info</div>
+      <div class="settings-block">
+        <div style="padding:12px 16px;">
+          <div class="settings-row-label" id="t-settingsClinicalLabel" style="margin-bottom:2px;">Conditions &amp; current medications</div>
+          <div class="settings-row-sub" id="t-settingsClinicalSub" style="margin-bottom:8px;">For your own reference — shown on printed/exported reports</div>
+          <textarea class="form-field" id="clinicalInfoNotes" rows="3" style="margin-bottom:0;" oninput="saveClinicalInfo(this.value)" placeholder="e.g. hypertension, atrial fibrillation; metoprolol 50mg daily"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <div class="settings-section-title" id="t-settingsAbout">About</div>
+      <div class="settings-block">
+        <div class="settings-row">
+          <div class="settings-row-label" id="t-settingsVersion">Version</div>
+          <div class="settings-row-sub" id="settingsVersionValue">—</div>
+        </div>
+        <div style="padding:12px 16px;">
+          <div class="settings-row-sub" id="t-settingsAboutDisclaimer">Cardiac Companion is a simulation and personal log — it is not a medical device and does not diagnose or treat any condition. Always follow your clinician's guidance.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1258,8 +1704,8 @@
     scope: "./",
     display: "standalone",
     orientation: "portrait",
-    background_color: "#0d1f1a",
-    theme_color: "#0d1f1a",
+    background_color: "#f8f9fa",
+    theme_color: "#f8f9fa",
     icons: [
       {src: ICON_192, sizes: "192x192", type: "image/png", purpose: "any"},
       {src: ICON_512, sizes: "512x512", type: "image/png", purpose: "any"},
@@ -1280,7 +1726,7 @@
 
   try{
     var _t = localStorage.getItem('cc-theme');
-    if(_t === 'crimson') document.documentElement.setAttribute('data-theme','crimson');
+    if(_t === 'dark') document.documentElement.setAttribute('data-theme','dark');
   }catch(e){}
 })();
 </script>
@@ -1361,31 +1807,42 @@ const T = {
     appTitle:"Cardiac Companion", appSubtitle:"Rhythm log & med tracker",
     "nav-monitor":"Monitor","nav-meds":"Meds","nav-symptoms":"Symptoms","nav-summary":"Summary",
     "t-monitorTitle":"Heart Monitor","t-monitorSub":"Simulated real-time ECG",
-    "t-ecgLabel":"Electrocardiogram","t-bpmUnit":"BPM","t-liveLabel":"Live",
-    "t-hr":"Heart rate","t-signal":"Signal","t-noise":"Noise",
-    "t-vitals":"Vitals","t-spo2":"Oxygen","t-bp":"Pressure","t-temp":"Temp",
+    "t-ecgLabel":"Electrocardiogram","t-bpmUnit":"BPM","t-liveLabel":"Running",
+    "t-hr":"Heart rate","t-signal":"Signal","t-noise":"Noise","t-hrTile":"Heart rate",
+    "t-simControls":"Simulator controls — for demonstration only",
+    "t-vitals":"Vital Signs","t-spo2":"Oxygen","t-bp":"Pressure","t-temp":"Temp",
     "t-biosignal":"Biosignal Link","t-biosignalName":"Link today's log","t-biosignalDesc":"Adjusts the trace from today's log",
     "t-medsTitle":"Medications","t-medsSub":"Track your daily doses","t-schedule":"Schedule",
+    "t-weekAdherence":"Weekly Adherence",
+    "t-colMedication":"Medication","t-colTime":"Time","t-colStatus":"Status",
     "t-todayMeds":"Today's Medicines","t-addMed":"+ Add medication","t-saveMed":"Save medication",
     "t-logHistory":"Log History",
     "t-symTitle":"Symptoms","t-symSub":"Log how you feel today","t-symTracker":"Symptom Tracker",
-    "t-stressTitle":"Stress Level","t-stressCurrent":"Current level","t-saveSeverity":"Save this severity",
+    "t-symGroupCardiac":"Cardiac","t-symGroupResp":"Respiratory","t-symGroupNeuro":"Neurological","t-symGroupGeneral":"General","t-symGroupCustom":"Other (custom)",
+    "t-stressTitle":"Stress Indicator","t-stressCurrent":"Current level","t-saveSeverity":"Save this severity",
     "t-low":"Low","t-moderate":"Moderate","t-high":"High","t-crisis":"Crisis",
     "t-notes":"Daily Notes","t-saveNote":"Save note",
+    "t-symptomCtxLabel":"Context (optional)","t-ctxRest":"At rest","t-ctxExertion":"After exertion","t-ctxOther":"Other",
     "t-sumTitle":"Weekly Summary","t-sumSub":"Your health at a glance",
     "t-adherence":"Adherence","t-adherenceSub":"doses taken",
     "t-avgHr":"Avg HR","t-avgHrSub":"bpm avg",
-    "t-wellness":"Wellness","t-wellnessSub":"good days",
+    "t-daysIrregular":"Days Irregular","t-daysIrregularSub":"of last 7 days",
     "t-ecCalendar":"Ethiopian Calendar","t-gregorianEquiv":"Gregorian",
-    "t-weekTrend":"7-Day HR Trend","t-insights":"Insights",
-    insight1:"HR steady 68–82 bpm — no spikes this week.",
-    insight2:"1 missed dose (Wed, Ramipril). Set a reminder?",
-    insight3:"SpO₂ held 96–99% all week — no dips.",
+    "t-weekTrend":"7-Day HR Trend","t-bpmAxisLabel":"Beats per minute","t-insights":"Insights",
+    "t-weekTable":"Weekly Summary Table","t-wtDay":"Day","t-wtHr":"Avg HR","t-wtMeds":"Meds Taken","t-wtSymptoms":"Symptoms",
+    "t-printSummary":"Print / Export PDF","t-exportNotifPdf":"Export as PDF",
     "t-disclaimer":"Simulation only — not a medical device. Always follow your clinician's guidance.",
     "t-notifTitle":"Notifications","t-notifEmpty":"No notifications yet","t-clearAll":"Clear all notifications",
     "t-addSymptom":"+ Add custom symptom","t-saveSymptom":"Add symptom","t-severity":"Severity",
     "t-emergencyContact":"Emergency Contact","t-emergencyContactPlaceholder":"Clinician or emergency phone number","t-callNow":"Call now",
     "t-enableNotifText":"Turn on phone notifications for medication and heart-rate alerts.","t-enableNotifBtn":"Enable",
+    "t-settingsTitle":"Settings","t-settingsAccount":"Account","t-settingsEmergencyLabel":"Emergency contact",
+    "t-settingsPreferences":"Preferences","t-settingsUnits":"Units","t-settingsDateFormat":"Date format","t-settingsTimezone":"Timezone",
+    "t-settingsPrivacy":"Privacy & Data","t-settingsStorage":"Storage","t-settingsStorageValue":"On this device only — nothing is sent to a server",
+    "t-exportCsv":"Export data (CSV)","t-exportPdf":"Print / Export PDF",
+    "t-settingsClinical":"Clinical Info","t-settingsClinicalLabel":"Conditions & current medications","t-settingsClinicalSub":"For your own reference — shown on printed/exported reports",
+    "t-settingsAbout":"About","t-settingsVersion":"Version",
+    "t-settingsAboutDisclaimer":"Cardiac Companion is a simulation and personal log — it is not a medical device and does not diagnose or treat any condition. Always follow your clinician's guidance.",
     "btn-normal":"Normal","btn-tachy":"Tachycardia","btn-brady":"Bradycardia","btn-arrhy":"Arrhythmia",
     rhythmLabels:{normal:"Normal sinus",tachy:"Tachycardia",brady:"Bradycardia",arrhy:"Arrhythmia"},
     symptoms:["Chest pain","Shortness of breath","Dizziness","Fatigue","Palpitations","Cold sweat","Headache","Nausea"],
@@ -1410,7 +1867,7 @@ const T = {
       severitySaved:"Severity saved",
       writeSomethingFirst:"Write something first", noteSaved:"Note saved",
       notificationsCleared:"Notifications cleared",
-      themeCrimson:"Crimson theme", themeTeal:"Teal theme",
+      themeDark:"Dark mode", themeLight:"Light mode",
       installedToast:"Installed — find it on your home screen",
       installManualToast:'Open Chrome menu → "Add to Home screen"',
       installingToast:"Installing…",
@@ -1421,38 +1878,59 @@ const T = {
       phoneNotifText:"You will now get alerts on this phone.",
       callClinician:"Call clinician", resetToPending:"Reset to pending",
       offlineFontsWarning:"Offline — some text may not display correctly until fonts load",
-      frozenLabel:"Frozen", stressTag:"Stress"
+      frozenLabel:"Paused", stressTag:"Stress",
+      statusTaken:"Taken", statusPending:"Pending", statusMissed:"Missed",
+      reasonMissedPlaceholder:"Reason missed (optional)",
+      alertArrhythmiaTitle:"Irregular rhythm detected", alertArrhythmiaText:"Contact your clinician if symptoms persist.",
+      alertMissedDoseTitle:"Medication missed today", alertMissedDoseText:"{count} dose(s) not taken today.",
+      alertHighStressTitle:"High stress level recorded", alertHighStressText:"Consider a short breathing exercise.",
+      csvExported:"CSV file downloaded",
+      insightHrRange:"HR ranged {min}–{max} bpm this week ({n} reading(s)).",
+      insightNoHrData:"No heart-rate readings logged yet this week.",
+      insightMissedDoses:"{count} missed dose(s) this week.",
+      insightNoMissedDoses:"No missed doses this week.",
+      insightIrregularDays:"{count} day(s) with irregular rhythm this week.",
+      insightNoIrregularDays:"No irregular-rhythm days this week."
     }
   },
   am:{
     appTitle:"የልብ ጤና አጋር", appSubtitle:"የልብ ምቶት ክትትል",
     "nav-monitor":"ክትትል","nav-meds":"መድሃኒት","nav-symptoms":"ምልክቶች","nav-summary":"ማጠቃለያ",
     "t-monitorTitle":"የልብ ምቶት ክትትል","t-monitorSub":"የ ECG ማሳያ",
-    "t-ecgLabel":"ኤሌክትሮካርዲዮግራም","t-bpmUnit":"በደቂቃ","t-liveLabel":"ቀጥታ",
-    "t-hr":"የልብ ምት","t-signal":"ምልክት ጥንካሬ","t-noise":"ጫጫታ",
+    "t-ecgLabel":"ኤሌክትሮካርዲዮግራም","t-bpmUnit":"በደቂቃ","t-liveLabel":"በሂደት ላይ",
+    "t-hr":"የልብ ምት","t-signal":"ምልክት ጥንካሬ","t-noise":"ጫጫታ","t-hrTile":"የልብ ምት",
+    "t-simControls":"የማስመሰያ መቆጣጠሪያዎች — ለማሳያ ብቻ",
     "t-vitals":"ሕይወታዊ ምልክቶች","t-spo2":"ኦክሲጅን","t-bp":"ግፊት","t-temp":"ሙቀት",
     "t-biosignal":"የሕይወት ምልክት ግንኙነት","t-biosignalName":"የዛሬ ምዝገባ አገናኝ","t-biosignalDesc":"ከዛሬ ምዝገባ ትከታተል ያስተካክላል",
     "t-medsTitle":"መድሃኒቶች","t-medsSub":"ዕለታዊ መድሃኒት ይከታተሉ","t-schedule":"መርሃግብር",
+    "t-weekAdherence":"ሳምንታዊ ተከታይነት",
+    "t-colMedication":"መድሃኒት","t-colTime":"ሰዓት","t-colStatus":"ሁኔታ",
     "t-todayMeds":"የዛሬ መድሃኒት","t-addMed":"+ መድሃኒት ጨምር","t-saveMed":"ይህን መድሃኒት አስቀምጥ",
     "t-logHistory":"የምዝገባ ታሪክ",
     "t-symTitle":"ምልክቶች","t-symSub":"ዛሬ ስሜትዎን ይመዝግቡ","t-symTracker":"ምልክት ተከታታይ",
-    "t-stressTitle":"የጭንቀት ደረጃ","t-stressCurrent":"አሁናዊ ደረጃ","t-saveSeverity":"ይህን ክብደት አስቀምጥ",
+    "t-symGroupCardiac":"የልብ","t-symGroupResp":"የመተንፈሻ","t-symGroupNeuro":"ነርቭ ነክ","t-symGroupGeneral":"አጠቃላይ","t-symGroupCustom":"ሌላ (የተጨመረ)",
+    "t-stressTitle":"የጭንቀት መለኪያ","t-stressCurrent":"አሁናዊ ደረጃ","t-saveSeverity":"ይህን ክብደት አስቀምጥ",
     "t-low":"ዝቅተኛ","t-moderate":"መካከለኛ","t-high":"ከፍተኛ","t-crisis":"አደጋ",
     "t-notes":"ዕለታዊ ማስታወሻ","t-saveNote":"ይህን ማስታወሻ አስቀምጥ",
+    "t-symptomCtxLabel":"አውድ (አማራጭ)","t-ctxRest":"ባረፉበት","t-ctxExertion":"ከጥረት በኋላ","t-ctxOther":"ሌላ",
     "t-sumTitle":"ሳምንታዊ ማጠቃለያ","t-sumSub":"ጤናዎ በአጭሩ",
     "t-adherence":"ተከታይነት","t-adherenceSub":"የተወሰደ",
     "t-avgHr":"አማካይ ምት","t-avgHrSub":"አማካይ",
-    "t-wellness":"ደህንነት","t-wellnessSub":"ጥሩ ቀናት",
+    "t-daysIrregular":"መደበኛ ያልሆነ ቀናት","t-daysIrregularSub":"ከ7 ቀናት ውስጥ",
     "t-ecCalendar":"የኢትዮጵያ ቀን መቁጠሪያ","t-gregorianEquiv":"ግሪጎሪያን",
-    "t-weekTrend":"የ7 ቀን ምት","t-insights":"ግንዛቤዎች",
-    insight1:"ይህ ሳምንት የልብ ምቶት የተረጋጋ ነበር።",
-    insight2:"ረቡዕ ላይ 1 መድሃኒት ዘሏል። ማስታወሻ ይሞክሩ።",
-    insight3:"SpO₂ ሙሉ ሳምንት ጥሩ ደረጃ ላይ ቆይቷል።",
+    "t-weekTrend":"የ7 ቀን ምት","t-bpmAxisLabel":"በደቂቃ ምቶች","t-insights":"ግንዛቤዎች",
+    "t-weekTable":"ሳምንታዊ ማጠቃለያ ሠንጠረዥ","t-wtDay":"ቀን","t-wtHr":"አማካይ ምት","t-wtMeds":"የተወሰደ መድሃኒት","t-wtSymptoms":"ምልክቶች",
+    "t-printSummary":"አትም / ወደ PDF ላክ","t-exportNotifPdf":"ወደ PDF ላክ",
     "t-disclaimer":"ማስመሰያ ብቻ ነው — የሕክምና መሳሪያ አይደለም። ሁልጊዜ ሐኪምዎን ይከተሉ።",
     "t-notifTitle":"ማሳወቂያዎች","t-notifEmpty":"እስካሁን ማሳወቂያ የለም","t-clearAll":"ሁሉንም አጽዳ",
     "t-addSymptom":"+ ምልክት ጨምር","t-saveSymptom":"ይህን ምልክት አስቀምጥ","t-severity":"ክብደት",
     "t-emergencyContact":"የአደጋ ጊዜ ግንኙነት","t-emergencyContactPlaceholder":"የሐኪም ወይም የአደጋ ጊዜ ስልክ ቁጥር","t-callNow":"አሁን ደውል",
     "t-enableNotifText":"ለመድሃኒት እና ለልብ ምት ማንቂያዎች የስልክ ማሳወቂያ ያብሩ።","t-enableNotifBtn":"አብራ",
+    "t-settingsTitle":"ቅንብሮች","t-settingsAccount":"መለያ","t-settingsEmergencyLabel":"የአደጋ ጊዜ ግንኙነት",
+    "t-settingsPreferences":"ምርጫዎች","t-settingsUnits":"መለኪያ አሃድ","t-settingsDateFormat":"የቀን አቀራረብ","t-settingsTimezone":"የሰዓት ሰቅ",
+    "t-settingsPrivacy":"ግላዊነት እና ውሂብ","t-settingsStorage":"ማከማቻ",
+    "t-exportCsv":"ውሂብ ላክ (CSV)","t-exportPdf":"አትም / ወደ PDF ላክ",
+    "t-settingsClinical":"ክሊኒካዊ መረጃ","t-settingsAbout":"ስለ መተግበሪያው","t-settingsVersion":"ስሪት",
     "btn-normal":"መደበኛ","btn-tachy":"ፈጣን","btn-brady":"ዝግተኛ","btn-arrhy":"ያልተስተካከለ",
     rhythmLabels:{normal:"መደበኛ ምት",tachy:"ፈጣን ምቶት",brady:"ዝግተኛ ምቶት",arrhy:"ያልተስተካከለ ምት"},
     symptoms:["የደረት ህመም","የትንፋሽ ማጠር","ማዞር","ድካም","የልብ ምት ስሜት","ቀዝቃዛ ላብ","ራስ ምታት","ማቅለሽለሽ"],
@@ -1477,7 +1955,7 @@ const T = {
       severitySaved:"ክብደት ተቀምጧል",
       writeSomethingFirst:"መጀመሪያ የሆነ ነገር ይጻፉ", noteSaved:"ማስታወሻ ተቀምጧል",
       notificationsCleared:"ማሳወቂያዎች ጸድተዋል",
-      themeCrimson:"ቀይ ገጽታ", themeTeal:"አረንጓዴ ገጽታ",
+      themeDark:"ጨለማ ገጽታ", themeLight:"ብሩህ ገጽታ",
       installedToast:"ተጭኗል — በመነሻ ገጽዎ ላይ ያግኙት",
       installManualToast:'የChrome ምናሌ ይክፈቱ → "ወደ መነሻ ገጽ ጨምር"',
       installingToast:"በመጫን ላይ…",
@@ -1488,38 +1966,59 @@ const T = {
       phoneNotifText:"አሁን በዚህ ስልክ ላይ ማንቂያዎችን ያገኛሉ።",
       callClinician:"ሐኪም ይደውሉ", resetToPending:"ወደ በመጠባበቅ ላይ መልስ",
       offlineFontsWarning:"ከመስመር ውጭ — ቅርጸ-ቁምፊዎች እስኪጫኑ ድረስ አንዳንድ ጽሁፎች በትክክል ላይታዩ ይችላሉ",
-      frozenLabel:"ቆሟል", stressTag:"ጭንቀት"
+      frozenLabel:"ቆሟል", stressTag:"ጭንቀት",
+      statusTaken:"ተወስዷል", statusPending:"በመጠባበቅ ላይ", statusMissed:"አምልጧል",
+      reasonMissedPlaceholder:"ያመለጠበት ምክንያት (አማራጭ)",
+      alertArrhythmiaTitle:"ያልተስተካከለ ምት ተገኝቷል", alertArrhythmiaText:"ምልክቶቹ ከቀጠሉ ሐኪምዎን ያነጋግሩ።",
+      alertMissedDoseTitle:"ዛሬ መድሃኒት አምልጧል", alertMissedDoseText:"ዛሬ {count} መጠን(ዎች) አልተወሰዱም።",
+      alertHighStressTitle:"ከፍተኛ ጭንቀት ተመዝግቧል", alertHighStressText:"አጭር የመተንፈሻ ልምምድ ይሞክሩ።",
+      csvExported:"የCSV ፋይል ወርዷል",
+      insightHrRange:"በዚህ ሳምንት ምት ከ{min}–{max} ነበር ({n} ንባቦች)።",
+      insightNoHrData:"በዚህ ሳምንት እስካሁን የልብ ምት ንባብ የለም።",
+      insightMissedDoses:"በዚህ ሳምንት {count} መጠን(ዎች) አምልጠዋል።",
+      insightNoMissedDoses:"በዚህ ሳምንት ምንም ያመለጠ መጠን የለም።",
+      insightIrregularDays:"በዚህ ሳምንት {count} ቀን(ት) ያልተስተካከለ ምት ነበረው።",
+      insightNoIrregularDays:"በዚህ ሳምንት ያልተስተካከለ ምት ቀን የለም።"
     }
   },
   or:{
     appTitle:"Hiriyyaa Fayyaa Onnee", appSubtitle:"Hordoffii fayyaa onnee",
     "nav-monitor":"Hordoffii","nav-meds":"Qorichaa","nav-symptoms":"Mallattoo","nav-summary":"Cuunfaa",
     "t-monitorTitle":"Hordoffii Onnee","t-monitorSub":"Agarsiisa ECG fakkeessaa",
-    "t-ecgLabel":"Elektiroo-kaardiiyoogiraafii","t-bpmUnit":"DAQ/DAQ","t-liveLabel":"Live",
-    "t-hr":"Dha'iinsa onnee","t-signal":"Cimina mallattoo","t-noise":"Sagalee",
+    "t-ecgLabel":"Elektiroo-kaardiiyoogiraafii","t-bpmUnit":"DAQ/DAQ","t-liveLabel":"Hojjechaa jira",
+    "t-hr":"Dha'iinsa onnee","t-signal":"Cimina mallattoo","t-noise":"Sagalee","t-hrTile":"Dha'iinsa onnee",
+    "t-simControls":"Too'annoo fakkeessaa — agarsiisa qofaaf",
     "t-vitals":"Mallattoo Jireenyaa","t-spo2":"Oksijiinii","t-bp":"Dhiibbaa","t-temp":"Ho'ina",
     "t-biosignal":"Walqabsiisa Baayoo-mallattoo","t-biosignalName":"Galmee har'aa walqabsiisi","t-biosignalDesc":"Galmee har'aa irraa agarsiisa jijjiira",
     "t-medsTitle":"Qorichaalee","t-medsSub":"Qoricha guyyaa guyyaa hordofi","t-schedule":"Sagantaa",
+    "t-weekAdherence":"Fudhatuu Torbanii",
+    "t-colMedication":"Qoricha","t-colTime":"Yeroo","t-colStatus":"Haala",
     "t-todayMeds":"Qoricha Har'aa","t-addMed":"+ Qoricha dabalii","t-saveMed":"Qoricha kana kaa'i",
     "t-logHistory":"Seenaa Galmee",
     "t-symTitle":"Mallattoo","t-symSub":"Har'aa akka si dhaga'amu galmeessi","t-symTracker":"Hordoffii Mallattoo",
-    "t-stressTitle":"Sadarkaa Dhiphina","t-stressCurrent":"Sadarkaa ammaa","t-saveSeverity":"Ulfaatina kana kaa'i",
+    "t-symGroupCardiac":"Onnee","t-symGroupResp":"Hafuura","t-symGroupNeuro":"Narvii","t-symGroupGeneral":"Waliigalaa","t-symGroupCustom":"Kan biraa (dabalataa)",
+    "t-stressTitle":"Madaalii Dhiphinaa","t-stressCurrent":"Sadarkaa ammaa","t-saveSeverity":"Ulfaatina kana kaa'i",
     "t-low":"Gad-aanaa","t-moderate":"Giddugaleessa","t-high":"Ol-aanaa","t-crisis":"Balaa",
     "t-notes":"Yaadannoo Guyyaa","t-saveNote":"Yaadannoo kana kaa'i",
+    "t-symptomCtxLabel":"Haala (filannoo)","t-ctxRest":"Boqannaa irratti","t-ctxExertion":"Dadhabbii booda","t-ctxOther":"Kan biraa",
     "t-sumTitle":"Cuunfaa Torbanii","t-sumSub":"Fayyaan kee walumaa galatti",
     "t-adherence":"Fudhatuu","t-adherenceSub":"fudhatame",
     "t-avgHr":"Onnee Gid.","t-avgHrSub":"gid. bpm",
-    "t-wellness":"Fayyummaa","t-wellnessSub":"guyyaa gaarii",
+    "t-daysIrregular":"Guyyoota Walxaxaa","t-daysIrregularSub":"guyyoota 7 keessaa",
     "t-ecCalendar":"Kalendaara Itoophiyaa","t-gregorianEquiv":"Gregoriyaanii",
-    "t-weekTrend":"Onnee Guyyoota 7","t-insights":"Gorsa",
-    insight1:"Torban kana dha'iinsi onnee tasgabbaa'aa ture.",
-    insight2:"Roobii qunnamtii 1 dhiiste. Yaadachiisa yaali.",
-    insight3:"SpO₂ torban guutuu gaarummaa irra ture.",
+    "t-weekTrend":"Onnee Guyyoota 7","t-bpmAxisLabel":"Dha'iinsa daqiiqaatti","t-insights":"Gorsa",
+    "t-weekTable":"Gabatee Cuunfaa Torbanii","t-wtDay":"Guyyaa","t-wtHr":"Onnee Gid.","t-wtMeds":"Qoricha Fudhatame","t-wtSymptoms":"Mallattoo",
+    "t-printSummary":"Maxxansi / PDF Ergi","t-exportNotifPdf":"PDF Ergi",
     "t-disclaimer":"Fakkeessuu qofa — meeshaa yaalaa miti. Yeroo hunda gorsaa ogeessa fayyaa keessanii hordofaa.",
     "t-notifTitle":"Beeksisa","t-notifEmpty":"Hanga ammaatti beeksisni hin jiru","t-clearAll":"Hunda haqi",
     "t-addSymptom":"+ Mallattoo dabalii","t-saveSymptom":"Mallattoo kana kaa'i","t-severity":"Ulfaatina",
     "t-emergencyContact":"Qunnamtii Balaa","t-emergencyContactPlaceholder":"Lakkoofsa bilbilaa ogeessa fayyaa ykn balaa","t-callNow":"Amma bilbili",
     "t-enableNotifText":"Beeksisa qorichaa fi onnee bilbila keessanii banaa.","t-enableNotifBtn":"Banii",
+    "t-settingsTitle":"Qindaa'ina","t-settingsAccount":"Herrega","t-settingsEmergencyLabel":"Qunnamtii Balaa",
+    "t-settingsPreferences":"Filannoo","t-settingsUnits":"Safartuu","t-settingsDateFormat":"Bifa Guyyaa","t-settingsTimezone":"Zoonii Yeroo",
+    "t-settingsPrivacy":"Iccitii fi Ragaa","t-settingsStorage":"Kuusaa",
+    "t-exportCsv":"Ragaa Ergi (CSV)","t-exportPdf":"Maxxansi / PDF Ergi",
+    "t-settingsClinical":"Odeeffannoo Yaalaa","t-settingsAbout":"Waa'ee Appii","t-settingsVersion":"Version",
     "btn-normal":"Idilee","btn-tachy":"Saffisaa","btn-brady":"Gad-aanaa","btn-arrhy":"Walxaxaa",
     rhythmLabels:{normal:"Onnee idilee",tachy:"Dha'iinsa saffisaa",brady:"Dha'iinsa gad-aanaa",arrhy:"Walxaxaa"},
     symptoms:["Dhukkuba laphee","Rakkoo hafuura","Mariidhaa","Dadhabina","Dha'iinsa onnee","Dafqa qabaa","Dhukkuba mataa","Gogsii"],
@@ -1544,7 +2043,7 @@ const T = {
       severitySaved:"Ulfaatinni kaa'ameera",
       writeSomethingFirst:"Dursii waan tokko barreessi", noteSaved:"Yaadannoon kaa'ameera",
       notificationsCleared:"Beeksisni haqameera",
-      themeCrimson:"Bifa diimaa", themeTeal:"Bifa magaariisaa",
+      themeDark:"Bifa dukkanaa'aa", themeLight:"Bifa ifaa",
       installedToast:"Fe'ameera — mallattoo qajeelfama keessaniirratti argadhaa",
       installManualToast:'Menu Chrome baniif → "Add to Home screen" cuqaasi',
       installingToast:"Fe'aa jira…",
@@ -1555,7 +2054,19 @@ const T = {
       phoneNotifText:"Amma bilbila kanarratti beeksisa argattu.",
       callClinician:"Ogeessa fayyaa bilbili", resetToPending:"Gara eegamaa deebisi",
       offlineFontsWarning:"Offline — hanga fontiin fe'amutti barreeffamni tokko tokko sirriitti mul'achuu dhabuu danda'a",
-      frozenLabel:"Dhaabbate", stressTag:"Dhiphina"
+      frozenLabel:"Dhaabbate", stressTag:"Dhiphina",
+      statusTaken:"Fudhatame", statusPending:"Eegaa jira", statusMissed:"Hafe",
+      reasonMissedPlaceholder:"Sababa hafuu (filannoo)",
+      alertArrhythmiaTitle:"Dha'iinsa walxaxaa argameera", alertArrhythmiaText:"Yoo mallattoon itti fufe ogeessa fayyaa keessan quunnamaa.",
+      alertMissedDoseTitle:"Har'a qoricha hafeera", alertMissedDoseText:"Har'a dosii {count} hin fudhatamne.",
+      alertHighStressTitle:"Dhiphinni ol-aanaan galmeeffameera", alertHighStressText:"Shaakala hafuura baafannaa gabaabaa yaalaa.",
+      csvExported:"Faayilli CSV bu'eera",
+      insightHrRange:"Torban kana onneen {min}–{max} gidduutti ture (dubbisa {n}).",
+      insightNoHrData:"Torban kana hanga ammaatti dubbisni dha'iinsa onnee hin galmoofne.",
+      insightMissedDoses:"Torban kana dosii {count} hafeera.",
+      insightNoMissedDoses:"Torban kana dosiin hafe hin jiru.",
+      insightIrregularDays:"Torban kana guyyaa {count} dha'iinsi walxaxaa ture.",
+      insightNoIrregularDays:"Torban kana guyyaa dha'iinsa walxaxaa hin jiru."
     }
   }
 };
@@ -1577,6 +2088,12 @@ let hrLog={}; // {"YYYY-MM-DD": [hr samples...]} — feeds the real trend chart
 let emergencyContact=''; // optional phone number for the "call clinician" quick action
 let medDay=null;       // local date (YYYY-MM-DD) that the medication statuses & symptom picks belong to
 let adherenceLog={};   // {"YYYY-MM-DD": {taken, total}} — feeds the weekly adherence ring
+let rhythmLog={};      // {"YYYY-MM-DD": true} — a day the simulator was set to an arrhythmia rhythm
+let symptomDayLog={};  // {"YYYY-MM-DD": count} — symptoms logged that day, feeds the weekly table
+let clinicalInfo='';   // free-text pre-existing conditions / current meds, for the user's own printed record
+let unitsPref='metric';    // 'metric' (°C) or 'imperial' (°F) — Settings > Preferences
+let dateFormatPref='md';   // 'md' (MM/DD) or 'dm' (DD/MM) — Settings > Preferences
+let lastTempC=36.6;        // most recent simulated reading in °C, re-rendered on unit toggle
 
 // ═══════════════════════════════════════════
 // PERSISTENCE — saves after every mutating action, rehydrates at init
@@ -1589,7 +2106,8 @@ function persistState(){
     const payload={
       medications, medHistory, notifications, customSymptoms, notesLog, hrLog,
       selectedSymptoms:[...selectedSymptoms],
-      currentStress, emergencyContact, medDay, adherenceLog
+      currentStress, emergencyContact, medDay, adherenceLog,
+      rhythmLog, symptomDayLog, clinicalInfo, unitsPref, dateFormatPref
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
   }catch(e){ /* storage full or unavailable — app still works, just won't persist this save */ }
@@ -1611,6 +2129,11 @@ function loadPersistedState(){
     if(typeof data.emergencyContact==='string') emergencyContact=data.emergencyContact;
     if(typeof data.medDay==='string') medDay=data.medDay;
     if(data.adherenceLog && typeof data.adherenceLog==='object') adherenceLog=data.adherenceLog;
+    if(data.rhythmLog && typeof data.rhythmLog==='object') rhythmLog=data.rhythmLog;
+    if(data.symptomDayLog && typeof data.symptomDayLog==='object') symptomDayLog=data.symptomDayLog;
+    if(typeof data.clinicalInfo==='string') clinicalInfo=data.clinicalInfo;
+    if(data.unitsPref==='imperial' || data.unitsPref==='metric') unitsPref=data.unitsPref;
+    if(data.dateFormatPref==='md' || data.dateFormatPref==='dm') dateFormatPref=data.dateFormatPref;
   }catch(e){ /* corrupt or unavailable saved state — fall back to seed data */ }
 }
 
@@ -1652,10 +2175,13 @@ function setLang(lang){
   document.getElementById('emergencyCallBtn').textContent=t['t-callNow'];
   buildSymptomGrid();
   buildDateStrip();
+  buildWeekView();
   updateHeaderDate();
   updateEcSummaryCard();
   renderNotifications();  // empty-state text and "Call clinician" links follow the language
-  if(isTabActive('summary')) drawTrendChart();  // weekday labels are painted into the canvas
+  renderActiveAlerts();
+  updatePrintClinicalInfo();
+  if(isTabActive('summary')){ updateSummaryRings(); drawTrendChart(); buildWeekTable(); updateInsights(); }  // weekday labels are painted into the canvas
 }
 
 // ═══════════════════════════════════════════
@@ -1673,9 +2199,9 @@ const MID=84;
 // "118 BPM" — and ran twice as fast on 120 Hz phone screens.)
 const ECG_SWEEP_PX_PER_SEC=200;
 
-// Rhythm colours follow the active theme's CSS variables (the crimson theme
-// shifts arrhythmia to rose). Refreshed by applyTheme().
-const RCOLOR={normal:'#3ddc97',tachy:'#ffb648',brady:'#5ac8fa',arrhy:'#ff6b6b'};
+// Rhythm colours follow the active theme's CSS variables (dark mode lightens
+// each one for legibility against a dark surface). Refreshed by applyTheme().
+const RCOLOR={normal:'#2e7d32',tachy:'#d32f2f',brady:'#1976d2',arrhy:'#f57c00'};
 function refreshRhythmColors(){
   const css=getComputedStyle(document.documentElement);
   Object.keys(RCOLOR).forEach(k=>{
@@ -1809,17 +2335,26 @@ function setRhythm(r){
   document.getElementById('hrValue').textContent=currentHR;
   document.getElementById('bpmDisplay').textContent=currentHR;
   document.getElementById('bpmDisplay').style.color=RCOLOR[r];
+  document.getElementById('hrTileValue').textContent=currentHR;
   refreshRhythmStatus();
   redrawIfFrozen();
   if(r==='brady') addNotification('warning',tr('lowHrTitle'),tr('lowHrText'));
-  if(r==='arrhy') addNotification('danger',tr('irregularTitle'),tr('irregularText'));
+  if(r==='arrhy'){
+    addNotification('danger',tr('irregularTitle'),tr('irregularText'));
+    rhythmLog[localDateKey()]=true;
+    const keys=Object.keys(rhythmLog).sort();
+    while(keys.length>14){ delete rhythmLog[keys.shift()]; }
+  }
   showToast(T[currentLang].rhythmLabels[r]);
+  renderActiveAlerts();
+  persistState();
 }
 
 function onHrSlider(v){
   currentHR=parseInt(v,10);
   document.getElementById('hrValue').textContent=v;
   document.getElementById('bpmDisplay').textContent=v;
+  document.getElementById('hrTileValue').textContent=v;
   redrawIfFrozen();
 }
 function updateSignal(v){ signalStrength=parseInt(v,10); document.getElementById('signalValue').textContent=v+'%'; redrawIfFrozen(); }
@@ -1871,6 +2406,32 @@ function refreshRhythmStatus(){
   document.getElementById('rhythmStatus').textContent = T[currentLang].rhythmLabels[currentRhythm] + (stressModifier ? ' · '+tr('stressTag') : '');
 }
 
+// ─── persistent, state-driven banners at the top of the content (brief §8):
+// unlike the notifications *log*, these reflect whether a condition is true
+// right now, and disappear the moment it clears (dose marked taken, rhythm
+// switched back to normal, stress logged lower) ───
+function renderActiveAlerts(){
+  const el=document.getElementById('activeAlerts');
+  if(!el) return;
+  const alerts=[];
+  if(currentRhythm==='arrhy'){
+    alerts.push({level:'critical', title:tr('alertArrhythmiaTitle'), text:tr('alertArrhythmiaText')});
+  }
+  const missedCount=medications.filter(m=>m.status==='missed').length;
+  if(missedCount>0){
+    alerts.push({level:'critical', title:tr('alertMissedDoseTitle'), text:tr('alertMissedDoseText',{count:missedCount})});
+  }
+  if(currentStress>=7){
+    alerts.push({level:'warning', title:tr('alertHighStressTitle'), text:tr('alertHighStressText')});
+  }
+  if(!alerts.length){ el.innerHTML=''; return; }
+  el.innerHTML=alerts.map(a=>{
+    const cls = a.level==='critical' ? 'alert-critical' : a.level==='warning' ? 'alert-warning' : 'alert-info';
+    const icon = a.level==='info' ? ICON_INFO_CIRCLE : ICON_ALERT;
+    return `<div class="${cls}"><span aria-hidden="true">${icon}</span><div><strong>${escapeHtml(a.title)}</strong>${escapeHtml(a.text)}</div></div>`;
+  }).join('');
+}
+
 // ═══════════════════════════════════════════
 // VITALS
 // ═══════════════════════════════════════════
@@ -1879,7 +2440,8 @@ function vitalsTick(){
   document.getElementById('spo2Value').textContent=(96+Math.random()*3).toFixed(0)+'%';
   const b1=(115+Math.random()*15).toFixed(0), b2=(75+Math.random()*10).toFixed(0);
   document.getElementById('bpValue').textContent=b1+'/'+b2;
-  document.getElementById('tempValue').textContent=(36.2+Math.random()*0.8).toFixed(1)+'°';
+  lastTempC=36.2+Math.random()*0.8;
+  updateTempDisplay();
   logHrSample();
 }
 
@@ -1921,24 +2483,38 @@ function escapeHtml(str){
 const ICON_CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 12.5 10 17 19 7"/></svg>';
 const ICON_X='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
 const ICON_DASH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="6" y1="12" x2="18" y2="12"/></svg>';
+const ICON_ALERT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+const ICON_INFO_CIRCLE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>';
+const ICON_TREND_UP='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>';
+const ICON_TREND_DOWN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="5 12 12 19 19 12"/></svg>';
+const ICON_TREND_FLAT='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg>';
 
+const STATUS_ICON={taken:ICON_CHECK, missed:ICON_X, pending:ICON_DASH};
 function buildMedList(){
   const list=document.getElementById('medList');
   list.innerHTML='';
   let taken=0;
   medications.forEach(m=>{
     if(m.status==='taken') taken++;
-    const icon = m.status==='taken'?ICON_CHECK:m.status==='missed'?ICON_X:ICON_DASH;
     const item=document.createElement('div');
-    item.className='med-item '+m.status;
-    const metaParts=[m.dose, m.time, m.freq].filter(Boolean).map(escapeHtml);
+    item.className='table-row';
+    item.style.flexDirection='column';
+    item.style.alignItems='stretch';
+    const metaParts=[m.dose, m.freq].filter(Boolean).map(escapeHtml);
+    const statusLabel=tr('status'+m.status.charAt(0).toUpperCase()+m.status.slice(1));
     item.innerHTML=`
-      <div class="med-status">${icon}</div>
-      <div class="med-info">
-        <div class="med-name">${escapeHtml(m.name)}</div>
-        <div class="med-meta">${metaParts.join(' · ')}</div>
+      <div style="display:flex; align-items:center; gap:11px;">
+        <div style="flex:1; min-width:0;">
+          <div class="med-name">${escapeHtml(m.name)}</div>
+          <div class="med-meta">${metaParts.join(' · ')||'—'}</div>
+        </div>
+        <div style="width:64px; font-family:var(--font-mono); font-size:11.5px; color:var(--ink-2);">${escapeHtml(m.time||'—')}</div>
+        <div style="width:92px; text-align:right;">
+          <span class="badge-status ${m.status}">${STATUS_ICON[m.status]}${escapeHtml(statusLabel)}</span>
+        </div>
       </div>
-      <div class="med-actions">
+      <div style="display:flex; align-items:center; justify-content:flex-end; gap:5px; margin-top:7px;">
+        ${m.status==='missed' ? `<input class="form-field" style="margin:0 auto 0 0; flex:1; max-width:220px;" placeholder="${escapeHtml(tr('reasonMissedPlaceholder'))}" value="${escapeHtml(m.missedReason||'')}" oninput="setMissedReason(${m.id}, this.value)" aria-label="${escapeHtml(tr('reasonMissedPlaceholder'))}">` : ''}
         <button class="med-btn take" onclick="markMed(${m.id},'taken')" aria-label="Mark taken">${ICON_CHECK}</button>
         <button class="med-btn skip" onclick="markMed(${m.id},'missed')" aria-label="Mark missed">${ICON_X}</button>
         ${m.status!=='pending'
@@ -1949,6 +2525,71 @@ function buildMedList(){
   });
   document.getElementById('medBadge').textContent=taken+'/'+medications.length;
   recordAdherence(taken, medications.length);
+  buildWeekView();
+  renderActiveAlerts();
+}
+
+// optional clinical context for a missed dose — kept even after a later
+// mark-as-taken correction, cleared only when the dose is reset to pending
+function setMissedReason(id, value){
+  const med=medications.find(m=>m.id===id);
+  if(!med) return;
+  med.missedReason=value;
+  persistState();
+}
+
+// ─── Mon–Sun adherence at a glance, driven by the same adherenceLog the
+// Summary tab's ring reads from ───
+function buildWeekView(){
+  const el=document.getElementById('weekView');
+  if(!el) return;
+  const today=new Date();
+  const mondayOffset=(today.getDay()+6)%7;   // 0=Mon .. 6=Sun
+  const monday=new Date(today.getFullYear(), today.getMonth(), today.getDate()-mondayOffset);
+  el.innerHTML='';
+  for(let i=0;i<7;i++){
+    const d=new Date(monday.getFullYear(), monday.getMonth(), monday.getDate()+i);
+    const key=localDateKey(d);
+    const isToday = key===localDateKey(today);
+    const isFuture = d>today && !isToday;
+    const a = key===medDay ? {taken:medications.filter(m=>m.status==='taken').length, total:medications.length} : adherenceLog[key];
+    const cell=document.createElement('div');
+    cell.className='week-cell'+(isToday?' is-today':'');
+    let markHtml, pctHtml='';
+    if(isFuture || !a || !a.total){
+      markHtml=`<div class="wmark empty">${ICON_DASH}</div>`;
+    } else {
+      const pct=Math.round(a.taken/a.total*100);
+      const cls = a.taken===a.total ? 'full' : a.taken===0 ? 'none' : 'partial';
+      const icon = cls==='full' ? ICON_CHECK : cls==='none' ? ICON_X : ICON_DASH;
+      markHtml=`<div class="wmark ${cls}">${icon}</div>`;
+      pctHtml=`<span class="wpct">${pct}%</span>`;
+    }
+    cell.innerHTML=`<div class="wd">${EC_WEEKDAYS[currentLang][d.getDay()]}</div>${markHtml}${pctHtml}`;
+    el.appendChild(cell);
+  }
+}
+
+// ─── Summary tab's weekly table: one row per day, each column driven by the
+// same logs as the rings/week-view above (brief §7: "each day with HR avg,
+// meds taken, symptoms logged") ───
+function buildWeekTable(){
+  const body=document.getElementById('weekTableBody');
+  if(!body) return;
+  body.innerHTML='';
+  lastNDays(7).forEach(d=>{
+    const samples=hrLog[d.key];
+    const avgHr = samples && samples.length ? Math.round(samples.reduce((a,b)=>a+b,0)/samples.length) : null;
+    const a = d.key===medDay ? {taken:medications.filter(m=>m.status==='taken').length, total:medications.length} : adherenceLog[d.key];
+    const symCount = symptomDayLog[d.key] || 0;
+    const row=document.createElement('tr');
+    row.innerHTML =
+      `<td>${escapeHtml(EC_WEEKDAYS[currentLang][d.date.getDay()])}</td>`+
+      `<td>${avgHr!==null ? avgHr : '—'}</td>`+
+      `<td>${a && a.total ? a.taken+'/'+a.total : '—'}</td>`+
+      `<td>${symCount ? symCount : '—'}</td>`;
+    body.appendChild(row);
+  });
 }
 
 // today's taken/total, kept per day so the Summary shows a real weekly figure
@@ -1980,7 +2621,8 @@ function checkDayRollover(){
   updateHeaderDate();
   updateEcSummaryCard();
   evaluateBiosignal();
-  if(isTabActive('summary')){ updateSummaryRings(); drawTrendChart(); }
+  renderActiveAlerts();
+  if(isTabActive('summary')){ updateSummaryRings(); drawTrendChart(); buildWeekTable(); updateInsights(); }
   persistState();
 }
 
@@ -2065,7 +2707,7 @@ function buildDateStrip(){
     cell.className='datecell'+(isToday?' today':'');
     const dow = EC_WEEKDAYS[currentLang][d.getDay()];
     if(calMode==='ec'){
-      cell.innerHTML=`<div class="dow">${dow}</div><div class="dnum">${ec.day}</div><div class="dsub">${d.getDate()}/${d.getMonth()+1}</div>`;
+      cell.innerHTML=`<div class="dow">${dow}</div><div class="dnum">${ec.day}</div><div class="dsub">${formatSlashDate(d)}</div>`;
     } else {
       const m=ETHIOPIAN_MONTHS[ec.month-1];
       const monthName = currentLang==='am' ? m.am : currentLang==='or' ? m.om : m.en;  // was always English
@@ -2099,64 +2741,140 @@ function updateEcSummaryCard(){
   document.getElementById('ecBigYear').textContent=ec.year;
   document.getElementById('ecGregEquiv').textContent = today.toLocaleDateString('en-US',{weekday:'short',month:'long',day:'numeric',year:'numeric'});
   const tag=document.getElementById('buildTag');
-  if(tag) tag.textContent = `Cardiac Companion · build ${ec.year}.${String(ec.month).padStart(2,'0')}.${String(ec.day).padStart(2,'0')}`;
+  const buildStr = `${ec.year}.${String(ec.month).padStart(2,'0')}.${String(ec.day).padStart(2,'0')}`;
+  if(tag) tag.textContent = `Cardiac Companion · build ${buildStr}`;
+  const ver=document.getElementById('settingsVersionValue');
+  if(ver) ver.textContent = `1.0.0 · ${today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}`;
+  const pd=document.getElementById('printDate');
+  if(pd) pd.textContent = today.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
 }
 
 // ═══════════════════════════════════════════
 // SYMPTOMS
 // ═══════════════════════════════════════════
+// symptom index → body system (brief §6: "organized by body system"); the
+// checklist text itself still comes from T[lang].symptoms, this just groups
+// the same 8 fixed indices under a clinical heading
+const SYMPTOM_GROUPS=[
+  {labelKey:'t-symGroupCardiac', idx:[0,4]},   // Chest pain, Palpitations
+  {labelKey:'t-symGroupResp',    idx:[1]},     // Shortness of breath
+  {labelKey:'t-symGroupNeuro',   idx:[2,6]},   // Dizziness, Headache
+  {labelKey:'t-symGroupGeneral', idx:[3,5,7]}, // Fatigue, Cold sweat, Nausea
+];
+
 function buildSymptomGrid(){
   const grid=document.getElementById('symptomGrid');
   grid.innerHTML='';
   const list=T[currentLang].symptoms;
   const severe=T[currentLang].severeIdx;
-  list.forEach((s,i)=>{
-    const btn=document.createElement('button');
-    const isSevere=severe.includes(i);
-    const isSelected=selectedSymptoms.has(i);
-    btn.className='symptom-chip'+(isSelected?(isSevere?' sel severe':' sel'):'');
-    btn.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
-    btn.innerHTML=`<span>${s}</span>`;
-    btn.onclick=()=>{
-      if(selectedSymptoms.has(i)){
-        selectedSymptoms.delete(i);
-        btn.classList.remove('sel','severe');
-        btn.setAttribute('aria-pressed','false');
-      } else {
-        selectedSymptoms.add(i);
-        btn.classList.add('sel');
-        btn.setAttribute('aria-pressed','true');
-        if(isSevere){
-          btn.classList.add('severe');
-          addNotification('danger',tr('symptomLoggedTitle'), tr('symptomSevereText',{name:s}));
+
+  SYMPTOM_GROUPS.forEach(group=>{
+    const wrap=document.createElement('div');
+    wrap.className='symptom-group';
+    const label=document.createElement('div');
+    label.className='symptom-group-label';
+    label.textContent=T[currentLang][group.labelKey] || '';
+    wrap.appendChild(label);
+
+    group.idx.forEach(i=>{
+      const s=list[i];
+      if(s===undefined) return;
+      const isSevere=severe.includes(i);
+      const isSelected=selectedSymptoms.has(i);
+      const row=document.createElement('div');
+      row.className='symptom-item'+(isSelected?(isSevere?' sel severe':' sel'):'');
+      row.setAttribute('role','checkbox');
+      row.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+      row.tabIndex=0;
+      row.innerHTML=`<span class="chk" aria-hidden="true">${ICON_CHECK}</span><span class="label">${escapeHtml(s)}</span>`;
+      const toggle=()=>{
+        if(selectedSymptoms.has(i)){
+          selectedSymptoms.delete(i);
+          row.classList.remove('sel','severe');
+          row.setAttribute('aria-checked','false');
         } else {
-          addNotification('info',tr('symptomLoggedTitle'), s);
+          selectedSymptoms.add(i);
+          row.classList.add('sel');
+          row.setAttribute('aria-checked','true');
+          if(isSevere){
+            row.classList.add('severe');
+            addNotification('danger',tr('symptomLoggedTitle'), tr('symptomSevereText',{name:s}));
+          } else {
+            addNotification('info',tr('symptomLoggedTitle'), s);
+          }
+          medHistory.unshift({time:nowHHMM(),text:'Symptom: '+s,c: isSevere?'var(--danger)':'var(--info)'});
+          buildHistory();
+          const dk=localDateKey();
+          symptomDayLog[dk]=(symptomDayLog[dk]||0)+1;
+          const dkeys=Object.keys(symptomDayLog).sort();
+          while(dkeys.length>14){ delete symptomDayLog[dkeys.shift()]; }
         }
-        medHistory.unshift({time:nowHHMM(),text:'Symptom: '+s,c: isSevere?'var(--danger)':'var(--info)'});
-        buildHistory();
-      }
-      evaluateBiosignal();   // runs on deselect too, so the stress flag can clear
-      persistState();
-    };
-    grid.appendChild(btn);
+        evaluateBiosignal();   // runs on deselect too, so the stress flag can clear
+        renderActiveAlerts();
+        persistState();
+      };
+      row.onclick=toggle;
+      row.onkeydown=e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } };
+      wrap.appendChild(row);
+    });
+    grid.appendChild(wrap);
   });
 
-  // custom, user-added symptoms with their own severity level
-  customSymptoms.forEach(cs=>{
-    const isSevere = cs.severity>=7;
-    const chip=document.createElement('div');
-    chip.className='symptom-chip sel'+(isSevere?' severe':'');
-    chip.innerHTML=`<span>${escapeHtml(cs.name)}</span><span class="symptom-sev">${cs.severity}/10</span>
-      <button class="symptom-remove" onclick="removeCustomSymptom(${cs.id}, event)" aria-label="Remove ${escapeHtml(cs.name)}">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>`;
-    grid.appendChild(chip);
-  });
+  // custom, user-added symptoms with their own severity level — its own
+  // group beneath the standard checklist
+  if(customSymptoms.length){
+    const wrap=document.createElement('div');
+    wrap.className='symptom-group';
+    const label=document.createElement('div');
+    label.className='symptom-group-label';
+    label.textContent=T[currentLang]['t-symGroupCustom'] || '';
+    wrap.appendChild(label);
+    customSymptoms.forEach(cs=>{
+      const isSevere = cs.severity>=7;
+      const row=document.createElement('div');
+      row.className='symptom-item sel'+(isSevere?' severe':'');
+      row.style.cursor='default';
+      const ctxSub = cs.ctx ? `<br><span style="font-size:10px; font-weight:500; color:var(--ink-3);">${escapeHtml(ctxLabel(cs.ctx))}</span>` : '';
+      row.innerHTML=`<span class="chk" aria-hidden="true">${ICON_CHECK}</span>
+        <span class="label">${escapeHtml(cs.name)}${ctxSub}</span>
+        <span class="sev-pill">${cs.severity}/10</span>
+        <button class="symptom-remove" onclick="removeCustomSymptom(${cs.id}, event)" aria-label="Remove ${escapeHtml(cs.name)}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+        </button>`;
+      wrap.appendChild(row);
+    });
+    grid.appendChild(wrap);
+  }
 }
 
 function toggleAddSymptom(){
   const f=document.getElementById('addSymptomForm');
   f.style.display = f.style.display==='none' ? 'block' : 'none';
+}
+
+// numeric severity shown as a visual progress bar, not just a bare slider (brief §6)
+function onNewSymptomSevInput(v){
+  const val=parseInt(v,10);
+  document.getElementById('newSymptomSevVal').textContent=val+'/10';
+  const fill=document.getElementById('newSymptomSevFill');
+  if(fill){ fill.style.width=(val*10)+'%'; fill.classList.toggle('hi', val>=7); }
+}
+
+// clinician-facing context for a logged symptom (brief §6: "at rest" vs
+// "after exertion") — a single-select tag row; the choice is picked up by
+// the next addCustomSymptom() call, then reset back to the default
+let pendingSymptomCtx='rest';
+function setSymptomCtx(ctx){
+  pendingSymptomCtx=ctx;
+  document.querySelectorAll('#symptomCtxRow .ctx-tag').forEach(b=>{
+    const active=b.dataset.ctx===ctx;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+function ctxLabel(ctx){
+  const key = ctx==='exertion' ? 't-ctxExertion' : ctx==='other' ? 't-ctxOther' : 't-ctxRest';
+  return T[currentLang][key] || '';
 }
 
 function addCustomSymptom(){
@@ -2166,17 +2884,24 @@ function addCustomSymptom(){
   if(!name) return showToast(tr('enterSymptomName'));
 
   const id=Date.now();
-  customSymptoms.push({id,name,severity});
+  const ctx=pendingSymptomCtx;
+  customSymptoms.push({id,name,severity,ctx});
   buildSymptomGrid();
   document.getElementById('addSymptomForm').style.display='none';
   nameInput.value='';
   document.getElementById('newSymptomSev').value=5;
-  document.getElementById('newSymptomSevVal').textContent='5/10';
+  onNewSymptomSevInput(5);
+  setSymptomCtx('rest');
+
+  const dk=localDateKey();
+  symptomDayLog[dk]=(symptomDayLog[dk]||0)+1;
+  const dkeys=Object.keys(symptomDayLog).sort();
+  while(dkeys.length>14){ delete symptomDayLog[dkeys.shift()]; }
 
   const now=new Date();
   const t=now.getHours().toString().padStart(2,'0')+':'+now.getMinutes().toString().padStart(2,'0');
   const isSevere=severity>=7;
-  medHistory.unshift({time:t,text:`Symptom: ${name} (${severity}/10)`, c: isSevere?'var(--danger)':'var(--info)'});
+  medHistory.unshift({time:t,text:`Symptom: ${name} (${severity}/10, ${ctxLabel(ctx)})`, c: isSevere?'var(--danger)':'var(--info)'});
   buildHistory();
 
   if(isSevere){
@@ -2201,6 +2926,11 @@ function removeCustomSymptom(id, evt){
 // link) instead of just a passive notification ───
 function saveEmergencyContact(v){
   emergencyContact=v.trim();
+  // two inputs share this value — the header quick-edit and Settings > Account;
+  // keep whichever one the user isn't currently typing in synced to match
+  [document.getElementById('emergencyContactInput'), document.getElementById('settingsEmergencyContact')].forEach(el=>{
+    if(el && el.value!==emergencyContact && document.activeElement!==el) el.value=emergencyContact;
+  });
   updateEmergencyCallBtn();
   persistState();
 }
@@ -2240,6 +2970,7 @@ function commitStress(){
   evaluateBiosignal();   // any level — saving 4–6 after a high level used to leave the flag on
   medHistory.unshift({time:nowHHMM(),text:'Stress level logged: '+currentStress+'/10',c: currentStress>=7?'var(--danger)':currentStress>=5?'var(--warning)':'var(--trace-normal)'});
   buildHistory();
+  renderActiveAlerts();
   showToast(tr('severitySaved'));
   persistState();
 }
@@ -2309,27 +3040,36 @@ function drawTrendChart(){
   const W=rect.width, H=rect.height;
   const {data, days}=getWeeklyHrData();
   const css=getComputedStyle(document.documentElement);
-  const lineColor=css.getPropertyValue('--trace-brady').trim() || '#5ac8fa';
-  const highColor=css.getPropertyValue('--danger').trim() || '#ff6b6b';
-  const labelColor=css.getPropertyValue('--ink-2').trim() || '#a3bfb2';
+  const lineColor=css.getPropertyValue('--trace-brady').trim() || '#1976d2';
+  const highColor=css.getPropertyValue('--danger').trim() || '#d32f2f';
+  const labelColor=css.getPropertyValue('--ink-2').trim() || '#5c5c5c';
+  const gridColor=css.getPropertyValue('--hairline').trim() || '#e0e0e0';
   cx.clearRect(0,0,W,H);
-
-  cx.strokeStyle='rgba(255,255,255,.06)';
-  cx.lineWidth=1;
-  for(let i=0;i<=3;i++){
-    const y=Math.round((i/3)*(H-24)+6)+0.5;
-    cx.beginPath(); cx.moveTo(28,y); cx.lineTo(W,y); cx.stroke();
-  }
 
   // 40–120 bpm as before, widened when a day falls outside it
   // (a day averaging above 120 used to be plotted off the top of the canvas)
   const minV=Math.min(40, Math.min(...data)-5);
   const maxV=Math.max(120, Math.max(...data)+5);
+
+  // gridlines carry real numeric axis labels (clinical charts don't show bare
+  // lines) — drawn before the trace so the line/dots sit on top
+  cx.strokeStyle=gridColor;
+  cx.lineWidth=1;
+  cx.font='9px Inter, "Noto Sans Ethiopic", system-ui, sans-serif';
+  cx.textAlign='left';
+  cx.fillStyle=labelColor;
+  for(let i=0;i<=3;i++){
+    const y=Math.round((i/3)*(H-24)+6)+0.5;
+    cx.beginPath(); cx.moveTo(28,y); cx.lineTo(W,y); cx.stroke();
+    const val=Math.round(maxV-(i/3)*(maxV-minV));
+    cx.fillText(String(val), 0, y+3);
+  }
+
   const pts=data.map((v,i)=>({x:28+(i/(data.length-1))*(W-38), y:H-22-((v-minV)/(maxV-minV))*(H-32)}));
 
   const grad=cx.createLinearGradient(0,0,0,H);
-  grad.addColorStop(0,'rgba(90,200,250,.22)');
-  grad.addColorStop(1,'rgba(90,200,250,0)');
+  grad.addColorStop(0,'rgba(25,118,210,.22)');
+  grad.addColorStop(1,'rgba(25,118,210,0)');
   cx.beginPath();
   pts.forEach((p,i)=>i===0?cx.moveTo(p.x,p.y):cx.lineTo(p.x,p.y));
   cx.lineTo(pts[pts.length-1].x,H-22); cx.lineTo(pts[0].x,H-22); cx.closePath();
@@ -2354,17 +3094,74 @@ function drawTrendChart(){
   });
 }
 
-// ─── Summary rings: computed from the app's own logs (they were hardcoded 80% / 74) ───
-function updateSummaryRings(){
-  const keys=lastNDays(7).map(d=>d.key);
+// ─── Summary rings: computed from the app's own logs (they were hardcoded 80% / 74).
+// Each ring also gets a ↑/↓/→ trend arrow comparing this week against the
+// 7 days before it (brief §7: "Trend: ↑ / ↓ / →"), and a new ring counts
+// days this week the simulator was set to an arrhythmia rhythm. ───
+function summarizeDays(keys){
   let taken=0, total=0, sum=0, n=0;
   keys.forEach(k=>{
     const a=adherenceLog[k];
     if(a){ taken+=a.taken; total+=a.total; }
     (hrLog[k]||[]).forEach(v=>{ sum+=v; n++; });
   });
-  document.getElementById('ringAdherence').textContent = total ? Math.round(taken/total*100)+'%' : '—';
-  document.getElementById('ringAvgHr').textContent = n ? Math.round(sum/n) : currentHR;
+  return {
+    adherencePct: total ? Math.round(taken/total*100) : null,
+    avgHr: n ? Math.round(sum/n) : null
+  };
+}
+
+function setTrendArrow(elId, current, previous){
+  const el=document.getElementById(elId);
+  if(!el) return;
+  let dir='flat';
+  if(current!==null && previous!==null && current!==previous){
+    dir = current>previous ? 'up' : 'down';
+  }
+  el.className='trend-arrow '+dir;
+  el.innerHTML = dir==='up' ? ICON_TREND_UP : dir==='down' ? ICON_TREND_DOWN : ICON_TREND_FLAT;
+}
+
+function updateSummaryRings(){
+  const thisWeek=summarizeDays(lastNDays(7).map(d=>d.key));
+  const prevWeek=summarizeDays(lastNDays(14).map(d=>d.key).slice(0,7));
+
+  document.getElementById('ringAdherence').textContent = thisWeek.adherencePct!==null ? thisWeek.adherencePct+'%' : '—';
+  document.getElementById('ringAvgHr').textContent = thisWeek.avgHr!==null ? thisWeek.avgHr : currentHR;
+  setTrendArrow('adherenceTrend', thisWeek.adherencePct, prevWeek.adherencePct);
+  setTrendArrow('avgHrTrend', thisWeek.avgHr, prevWeek.avgHr);
+
+  const irregularDays=lastNDays(7).map(d=>d.key).filter(k=>rhythmLog[k]).length;
+  const ringIrr=document.getElementById('ringDaysIrregular');
+  if(ringIrr) ringIrr.textContent=irregularDays;
+}
+
+// ─── data-driven insights (brief §7: "remove insights unless they're
+// data-driven") — each line is computed from the same logs as the rings and
+// weekly table, with an explicit "no data yet" fallback instead of guessing ───
+function updateInsights(){
+  const keys=lastNDays(7).map(d=>d.key);
+
+  let allHr=[];
+  keys.forEach(k=>{ if(hrLog[k] && hrLog[k].length) allHr=allHr.concat(hrLog[k]); });
+  const el1=document.getElementById('insight1');
+  if(el1){
+    el1.textContent = allHr.length
+      ? tr('insightHrRange',{min:Math.min(...allHr), max:Math.max(...allHr), n:allHr.length})
+      : tr('insightNoHrData');
+  }
+
+  const missedCount=keys.reduce((sum,k)=>{
+    if(k===medDay) return sum+medications.filter(m=>m.status==='missed').length;
+    const a=adherenceLog[k];
+    return sum+(a ? Math.max(0, a.total-a.taken) : 0);
+  },0);
+  const el2=document.getElementById('insight2');
+  if(el2) el2.textContent = missedCount>0 ? tr('insightMissedDoses',{count:missedCount}) : tr('insightNoMissedDoses');
+
+  const irregularDays=keys.filter(k=>rhythmLog[k]).length;
+  const el3=document.getElementById('insight3');
+  if(el3) el3.textContent = irregularDays>0 ? tr('insightIrregularDays',{count:irregularDays}) : tr('insightNoIrregularDays');
 }
 
 let resizeTimer;
@@ -2386,7 +3183,7 @@ function switchTab(tab, el){
   el.classList.add('active');
   el.setAttribute('aria-current','page');
   document.querySelector('.content').scrollTop=0;   // tabs share one scroller — start each at the top
-  if(tab==='summary'){ updateEcSummaryCard(); updateSummaryRings(); drawTrendChart(); }
+  if(tab==='summary'){ updateEcSummaryCard(); updateSummaryRings(); drawTrendChart(); buildWeekTable(); updateInsights(); }
   if(tab==='monitor') resumeMonitorLoops(); else pauseMonitorLoops();
 }
 
@@ -2448,7 +3245,37 @@ function closeNotifications(){
   const back=(notifReturnFocus && document.contains(notifReturnFocus)) ? notifReturnFocus : document.getElementById('notifBtn');
   if(back && back.focus) back.focus();
 }
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeNotifications(); });
+document.addEventListener('keydown', e=>{
+  if(e.key!=='Escape') return;
+  closeNotifications();
+  closeSettings();
+  const openTip=document.querySelector('.info-tip.open');
+  if(openTip){
+    openTip.classList.remove('open');
+    const btn=openTip.querySelector('.info-tip-btn');
+    if(btn){ btn.setAttribute('aria-expanded','false'); btn.focus(); }
+  }
+});
+
+// ─── tooltips (brief §12: "every field has a tooltip") — tap/click OR
+// keyboard toggles the bubble; a single delegated listener covers every
+// .info-tip-btn on the page, including ones added after this listener runs.
+// Closes any other open tooltip first, so only one is ever visible. ───
+document.addEventListener('click', e=>{
+  const btn=e.target.closest('.info-tip-btn');
+  document.querySelectorAll('.info-tip.open').forEach(t=>{
+    if(!btn || t!==btn.closest('.info-tip')){
+      t.classList.remove('open');
+      const b=t.querySelector('.info-tip-btn');
+      if(b) b.setAttribute('aria-expanded','false');
+    }
+  });
+  if(!btn) return;
+  const tip=btn.closest('.info-tip');
+  const nowOpen=!tip.classList.contains('open');
+  tip.classList.toggle('open', nowOpen);
+  btn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+});
 
 function clearNotifications(){
   if(!notifications.length) return;
@@ -2458,6 +3285,148 @@ function clearNotifications(){
   renderNotifications();
   showToast(tr('notificationsCleared'));
   persistState();
+}
+
+// ═══════════════════════════════════════════
+// SETTINGS — same slide-over-panel mechanics as Notifications: the app
+// behind it goes inert, focus moves in, Escape (wired below) and the close
+// button both return focus to whatever opened it.
+// ═══════════════════════════════════════════
+let settingsReturnFocus=null;
+function openSettings(){
+  const panel=document.getElementById('settingsPanel');
+  if(panel.classList.contains('open')) return;
+  settingsReturnFocus=document.activeElement;
+  panel.classList.add('open');
+  document.getElementById('settingsBtn').setAttribute('aria-expanded','true');
+  document.getElementById('settingsCloseBtn').focus();
+  document.querySelector('.app').inert=true;
+}
+function closeSettings(){
+  const panel=document.getElementById('settingsPanel');
+  if(!panel.classList.contains('open')) return;
+  panel.classList.remove('open');
+  document.querySelector('.app').inert=false;
+  document.getElementById('settingsBtn').setAttribute('aria-expanded','false');
+  const back=(settingsReturnFocus && document.contains(settingsReturnFocus)) ? settingsReturnFocus : document.getElementById('settingsBtn');
+  if(back && back.focus) back.focus();
+}
+
+// ─── Preferences: units + date format. Both functions double as the
+// init-time sync (called once after loadPersistedState() with whatever was
+// restored), so the segmented-control highlight, the vitals tile and the
+// date strip all agree with the saved preference from the very first paint. ───
+function setUnits(unit){
+  unitsPref = (unit==='imperial') ? 'imperial' : 'metric';
+  document.querySelectorAll('#unitsControl button').forEach(b=>{
+    const active=b.dataset.unit===unitsPref;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+  updateTempDisplay();
+  persistState();
+}
+function setDateFormat(fmt){
+  dateFormatPref = (fmt==='dm') ? 'dm' : 'md';
+  document.querySelectorAll('#dateFormatControl button').forEach(b=>{
+    const active=b.dataset.fmt===dateFormatPref;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+  buildDateStrip();
+  persistState();
+}
+// D/M vs M/D for the date-strip's small Gregorian-equivalent line — the only
+// place in the app a Gregorian date is shown as bare numbers (elsewhere it's
+// a named month, which isn't ambiguous and doesn't need a preference)
+function formatSlashDate(d){
+  const dd=d.getDate(), mm=d.getMonth()+1;
+  return dateFormatPref==='dm' ? `${dd}/${mm}` : `${mm}/${dd}`;
+}
+
+function updateTempDisplay(){
+  const el=document.getElementById('tempValue');
+  if(!el) return;
+  el.textContent = unitsPref==='imperial'
+    ? (lastTempC*9/5+32).toFixed(1)+'°F'
+    : lastTempC.toFixed(1)+'°C';
+}
+
+function saveClinicalInfo(v){
+  clinicalInfo=v;
+  updatePrintClinicalInfo();
+  persistState();
+}
+// surfaced on the printed/exported report (brief §9: clinical info "for
+// context") — reuses the Settings section's own label so no extra
+// translation keys are needed just for this
+function updatePrintClinicalInfo(){
+  const el=document.getElementById('printClinicalInfo');
+  if(!el) return;
+  const label=T[currentLang]['t-settingsClinicalLabel'] || '';
+  if(clinicalInfo && clinicalInfo.trim()){
+    el.innerHTML=`<strong>${escapeHtml(label)}:</strong> ${escapeHtml(clinicalInfo.trim())}`;
+    el.style.display='block';
+  } else {
+    el.textContent='';
+    el.style.display='none';
+  }
+}
+
+// ─── CSV export (brief §9/§10: "Data export... for sharing with clinicians"),
+// built with a Blob + a throwaway <a download>, no library — stays fully
+// offline and local-first like the rest of the app ───
+function csvEscapeCell(v){
+  const s=String(v==null?'':v);
+  return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+}
+function exportCsv(){
+  const rows=[];
+  rows.push(['Cardiac Companion — data export']);
+  rows.push(['Generated', new Date().toLocaleString()]);
+  rows.push([]);
+
+  rows.push(["Today's medications"]);
+  rows.push(['Name','Dose','Time','Status','Reason missed']);
+  medications.forEach(m=>rows.push([m.name, m.dose, m.time||'', m.status, m.missedReason||'']));
+  rows.push([]);
+
+  rows.push(['Weekly adherence']);
+  rows.push(['Date','Taken','Total']);
+  lastNDays(7).forEach(d=>{
+    const a = d.key===medDay ? {taken:medications.filter(m=>m.status==='taken').length, total:medications.length} : adherenceLog[d.key];
+    rows.push([d.key, a?a.taken:'', a?a.total:'']);
+  });
+  rows.push([]);
+
+  rows.push(['Weekly heart rate']);
+  rows.push(['Date','Avg HR (bpm)','Samples']);
+  lastNDays(7).forEach(d=>{
+    const s=hrLog[d.key];
+    rows.push([d.key, s&&s.length ? Math.round(s.reduce((a,b)=>a+b,0)/s.length) : '', s?s.length:0]);
+  });
+  rows.push([]);
+
+  rows.push(['Symptoms logged']);
+  rows.push(['Date','Count']);
+  lastNDays(7).forEach(d=>rows.push([d.key, symptomDayLog[d.key]||0]));
+  rows.push([]);
+
+  rows.push(['Notes']);
+  rows.push(['Date','Time','Note']);
+  notesLog.forEach(n=>rows.push([n.date, n.time, n.text]));
+
+  const csv=rows.map(r=>r.map(csvEscapeCell).join(',')).join('\r\n');
+  const blob=new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='cardiac-companion-export-'+localDateKey()+'.csv';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 1000);
+  showToast(tr('csvExported'));
 }
 
 // ═══════════════════════════════════════════
@@ -2480,18 +3449,17 @@ let swRegistration = null;
 // ═══════════════════════════════════════════
 // COLOR THEME
 // ═══════════════════════════════════════════
-let currentTheme = 'teal';
-try{ currentTheme = localStorage.getItem('cc-theme') === 'crimson' ? 'crimson' : 'teal'; }catch(e){}
+let currentTheme = 'light';
+try{ currentTheme = localStorage.getItem('cc-theme') === 'dark' ? 'dark' : 'light'; }catch(e){}
 
 function applyTheme(t){
   currentTheme = t;
-  if(t === 'crimson') document.documentElement.setAttribute('data-theme','crimson');
+  if(t === 'dark') document.documentElement.setAttribute('data-theme','dark');
   else document.documentElement.removeAttribute('data-theme');
   try{ localStorage.setItem('cc-theme', t); }catch(e){}
   const metaTheme = document.querySelector('meta[name="theme-color"]');
-  if(metaTheme) metaTheme.setAttribute('content', t === 'crimson' ? '#170808' : '#0d1f1a');
-  // repaint everything drawn with theme colours (the ECG used fixed hex values,
-  // so crimson's rose arrhythmia colour never reached the trace)
+  if(metaTheme) metaTheme.setAttribute('content', t === 'dark' ? '#12181b' : '#f8f9fa');
+  // repaint everything drawn with theme colours
   refreshRhythmColors();
   document.getElementById('bpmDisplay').style.color = RCOLOR[currentRhythm];
   redrawIfFrozen();
@@ -2499,8 +3467,8 @@ function applyTheme(t){
 }
 
 function toggleTheme(){
-  applyTheme(currentTheme === 'crimson' ? 'teal' : 'crimson');
-  showToast(currentTheme === 'crimson' ? tr('themeCrimson') : tr('themeTeal'));
+  applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  showToast(currentTheme === 'dark' ? tr('themeDark') : tr('themeLight'));
 }
 
 // ═══════════════════════════════════════════
@@ -2624,8 +3592,16 @@ buildMedList();
 buildHistory();
 previewStress(currentStress);
 document.getElementById('emergencyContactInput').value=emergencyContact;
+document.getElementById('settingsEmergencyContact').value=emergencyContact;
 updateEmergencyCallBtn();
 updateNotifDot();
+// Settings > Preferences — sync the segmented controls, temp readout and
+// date strip to whatever was restored (or the defaults, on a first run)
+setUnits(unitsPref);
+setDateFormat(dateFormatPref);
+document.getElementById('clinicalInfoNotes').value=clinicalInfo;
+updatePrintClinicalInfo();
+try{ document.getElementById('settingsTimezoneValue').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
 let _savedLang='en';
 try{ _savedLang = localStorage.getItem(LANG_KEY) || 'en'; }catch(e){}
 setLang(_savedLang);   // also builds the symptom grid, date strip, header date, EC card and notifications
