@@ -5,7 +5,7 @@
 // allow a service worker to be created from a blob: or data: URL, which is why
 // this has to be a separate file.
 
-const CACHE = 'cardiac-companion-v2';
+const CACHE = 'cardiac-companion-v3';
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', () => {
