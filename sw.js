@@ -1,11 +1,12 @@
 // Cardiac Companion — service worker
 // Put this file in the same folder as the app's .html file, served over
-// https:// (or http://localhost). It enables system notifications on Android
-// Chrome and lets the app open offline after the first visit. Browsers do not
-// allow a service worker to be created from a blob: or data: URL, which is why
-// this has to be a separate file.
+// https:// (or http://localhost). It lets the app open offline after the
+// first visit and shows system notifications (Android Chrome only shows
+// notifications through a service worker). Browsers do not allow a service
+// worker to be created from a blob: or data: URL, which is why this has to
+// be a separate file.
 
-const CACHE = 'cardiac-companion-v3';
+const CACHE = 'cardiac-companion-v4';
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', () => {
@@ -52,15 +53,27 @@ self.addEventListener('fetch', event => {
   })());
 });
 
-// tapping a notification focuses the open app, or reopens it
+// Tapping a notification focuses the open app, or reopens it. A dose
+// reminder has two buttons, "Take" and "In 10 min": the choice is passed to
+// the open page, or — if the app isn't open — to a new one in the URL
+// (#dose=take|2026-09-29|<medicine>@08:00), since only the page can read
+// and save the log.
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  const target = (event.notification.data && event.notification.data.url) || self.registration.scope;
+  const data = event.notification.data || {};
+  const action = event.action;
+  const dose = data.dose && (action === 'take' || action === 'snooze') ? data.dose : null;
   event.waitUntil((async () => {
     const wins = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    for (const w of wins) {
-      if ('focus' in w) return w.focus();
+    if (wins.length) {
+      const win = wins[0];
+      if (dose) win.postMessage({ type: 'dose-action', action, key: dose.key, dkey: dose.dkey });
+      // "In 10 min" shouldn't pull the app to the front; anything else should
+      if (action !== 'snooze' && 'focus' in win) return win.focus();
+      return;
     }
+    let target = data.url || self.registration.scope;
+    if (dose) target += '#dose=' + encodeURIComponent([action, dose.key, dose.dkey].join('|'));
     if (self.clients.openWindow) return self.clients.openWindow(target);
   })());
 });

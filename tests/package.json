@@ -1,0 +1,14 @@
+{
+  "name": "cardiac-companion-tests",
+  "private": true,
+  "type": "module",
+  "description": "Checks for Cardiac Companion. Nothing here is served: the app is index.html and sw.js.",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 ./*.test.mjs",
+    "screens": "node screens.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.10.3",
+    "playwright-core": "1.56.1"
+  }
+}
