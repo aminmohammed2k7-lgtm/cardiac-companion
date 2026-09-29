@@ -1,12 +1,15 @@
-// Cardiac Companion — service worker
+// Cardiac Companion — service worker (app version 3.1)
 // Put this file in the same folder as the app's .html file, served over
-// https:// (or http://localhost). It lets the app open offline after the
-// first visit and shows system notifications (Android Chrome only shows
-// notifications through a service worker). Browsers do not allow a service
-// worker to be created from a blob: or data: URL, which is why this has to
-// be a separate file.
+// https:// (or http://localhost). It shows dose reminders as system
+// notifications on Android Chrome and lets the app open offline after the
+// first visit. Browsers do not allow a service worker to be created from a
+// blob: or data: URL, which is why this has to be a separate file.
+//
+// A service worker cannot schedule a notification for later on its own, so
+// reminders come from the open page (see checkReminders in index.html) and
+// from the calendar file the app exports.
 
-const CACHE = 'cardiac-companion-v4';
+const CACHE = 'cardiac-companion-v5';
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', () => {
@@ -25,6 +28,8 @@ self.addEventListener('activate', event => {
     const pages = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
     await Promise.all(pages.map(p =>
       cache.add(new Request(p.url.split('#')[0], { cache: 'reload' })).catch(() => {})));
+    // the camera pulse engine, so measuring works offline too
+    await cache.add(new Request(new URL('ppg-engine.js', self.registration.scope), { cache: 'reload' })).catch(() => {});
     await self.clients.claim();
   })());
 });
@@ -53,27 +58,15 @@ self.addEventListener('fetch', event => {
   })());
 });
 
-// Tapping a notification focuses the open app, or reopens it. A dose
-// reminder has two buttons, "Take" and "In 10 min": the choice is passed to
-// the open page, or — if the app isn't open — to a new one in the URL
-// (#dose=take|2026-09-29|<medicine>@08:00), since only the page can read
-// and save the log.
+// tapping a notification focuses the open app, or reopens it
 self.addEventListener('notificationclick', event => {
   event.notification.close();
-  const data = event.notification.data || {};
-  const action = event.action;
-  const dose = data.dose && (action === 'take' || action === 'snooze') ? data.dose : null;
+  const target = (event.notification.data && event.notification.data.url) || self.registration.scope;
   event.waitUntil((async () => {
     const wins = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    if (wins.length) {
-      const win = wins[0];
-      if (dose) win.postMessage({ type: 'dose-action', action, key: dose.key, dkey: dose.dkey });
-      // "In 10 min" shouldn't pull the app to the front; anything else should
-      if (action !== 'snooze' && 'focus' in win) return win.focus();
-      return;
+    for (const w of wins) {
+      if ('focus' in w) return w.focus();
     }
-    let target = data.url || self.registration.scope;
-    if (dose) target += '#dose=' + encodeURIComponent([action, dose.key, dose.dkey].join('|'));
     if (self.clients.openWindow) return self.clients.openWindow(target);
   })());
 });

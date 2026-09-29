@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pulse lab — Cardiac Companion</title>
+<meta name="color-scheme" content="light dark">
+<style>
+:root{--canvas:#EEF1EE;--surface:#fff;--surface-2:#F2F5F3;--line:#E1E6E3;--ink-1:#14201C;--ink-2:#435049;--ink-3:#5B6862;--accent:#1D5C54;--accent-soft:#E0EDE9;--warn:#D39A1C;--warn-soft:#FBF1DC;--warn-ink:#6E4B00;--hero:#17443E;
+  font-family:Onest,"Noto Sans Ethiopic",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink-1);background:var(--canvas);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--canvas:#0F1715;--surface:#17211E;--surface-2:#1D2926;--line:#2A3733;--ink-1:#E8EFEC;--ink-2:#B7C4BF;--ink-3:#93A29C;--accent:#6FB7AA;--accent-soft:#1F3833;--warn:#E3B04B;--warn-soft:#3A2F17;--warn-ink:#F0CE86;--hero:#0B2A26}}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--canvas)}
+main{max-width:1080px;margin:0 auto;padding:16px}
+header{background:var(--hero);color:#fff;border-radius:22px;padding:20px 22px;display:grid;gap:14px;grid-template-columns:1fr auto;align-items:center}
+h1{margin:0;font-size:1.35rem;letter-spacing:-.01em}
+header p{margin:4px 0 0;color:#CFE3DE;font-size:.9rem}
+.bpm{display:flex;align-items:baseline;gap:10px;margin-top:10px}
+.bpm b{font-size:clamp(3.2rem,11vw,5rem);font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.bpm span{color:#CFE3DE}
+.beat{width:14px;height:14px;border-radius:50%;background:#6FB7AA;opacity:.25;transition:opacity .25s,transform .25s}
+.beat.on{opacity:1;transform:scale(1.35);transition:none}
+@media (prefers-reduced-motion:reduce){.beat,.beat.on{transition:none;transform:none}}
+video{width:92px;height:92px;border-radius:50%;object-fit:cover;background:#000;border:3px solid rgba(255,255,255,.25)}
+.grid{display:grid;gap:14px;margin-top:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px}
+.card h2{margin:0 0 10px;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-3)}
+.wide{grid-column:1/-1}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button,.chip{font:inherit;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink-1);padding:10px 16px;cursor:pointer}
+button.solid{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.chip{padding:7px 12px;font-size:.9rem}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+button:focus-visible,.chip:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+button:disabled{opacity:.5;cursor:default}
+.bar{height:10px;border-radius:6px;background:var(--surface-2);overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.bar.q>i{background:var(--warn)}.bar.q.good>i{background:var(--accent)}
+.hint{margin:8px 0 0;color:var(--ink-2);font-size:.95rem}
+.note{background:var(--warn-soft);color:var(--warn-ink);border-radius:12px;padding:10px 12px;margin-top:10px;font-size:.9rem}
+canvas{width:100%;display:block}
+#wave{height:140px}#tacho{height:150px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:.92rem}
+dt{color:var(--ink-3)}dd{margin:0;font-variant-numeric:tabular-nums}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--surface-2);border-radius:12px;padding:10px}
+.stat b{display:block;font-size:1.5rem;font-variant-numeric:tabular-nums}.stat small{color:var(--ink-3)}
+.tag{display:inline-block;border-radius:999px;padding:3px 10px;font-size:.8rem;background:var(--accent-soft);color:var(--accent)}
+.tag.warn{background:var(--warn-soft);color:var(--warn-ink)}
+pre{background:var(--surface-2);border-radius:12px;padding:10px;overflow:auto;font-size:.78rem;max-height:220px;margin:0}
+footer{color:var(--ink-3);font-size:.82rem;margin:18px 4px}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Pulse lab</h1>
+      <p>Live view of the camera pulse engine. Cover the back camera and its light with a fingertip, press gently, hold still.</p>
+      <div class="bpm"><span class="beat" id="beat" aria-hidden="true"></span><b id="bpm">—</b><span>bpm <span id="method"></span></span></div>
+      <p id="status" role="status" aria-live="polite">Ready.</p>
+    </div>
+    <video id="video" muted playsinline aria-label="Camera preview"></video>
+  </header>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Measurement</h2>
+      <div class="row" role="group" aria-label="Duration" id="durations">
+        <button class="chip" data-d="30" aria-pressed="false">30 s</button>
+        <button class="chip" data-d="60" aria-pressed="true">60 s</button>
+        <button class="chip" data-d="120" aria-pressed="false">2 min</button>
+        <button class="chip" data-d="0" aria-pressed="false">Continuous</button>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <button class="solid" id="start">Start</button>
+        <button id="stop" disabled>Stop</button>
+      </div>
+      <p class="hint">Clean signal collected</p>
+      <div class="bar" aria-hidden="true"><i id="progress"></i></div>
+    </section>
+
+    <section class="card">
+      <h2>Signal quality</h2>
+      <div class="row" style="justify-content:space-between"><b id="qlevel">—</b><span id="qscore" class="tag">0</span></div>
+      <div class="bar q" id="qbar" style="margin-top:8px"><i></i></div>
+      <p class="hint" id="qhint">Place a fingertip over the camera and light.</p>
+      <p class="note" id="nolight" hidden>This browser couldn't switch the light on. Measure next to a bright lamp or window.</p>
+    </section>
+
+    <section class="card wide">
+      <h2>Pulse wave <small>(green: beat used · amber: set aside)</small></h2>
+      <canvas id="wave" aria-label="Pulse waveform"></canvas>
+    </section>
+
+    <section class="card">
+      <h2>Beat-to-beat intervals (ms)</h2>
+      <canvas id="tacho" aria-label="RR intervals"></canvas>
+      <dl style="margin-top:10px"><dt>Last RR</dt><dd id="rr">—</dd><dt>Instant</dt><dd id="inst">—</dd><dt>Average</dt><dd id="avg">—</dd></dl>
+    </section>
+
+    <section class="card">
+      <h2>Heart-rate variability</h2>
+      <div class="stats">
+        <div class="stat"><b id="rmssd">—</b><small>RMSSD ms</small></div>
+        <div class="stat"><b id="sdnn">—</b><small>SDNN ms</small></div>
+        <div class="stat"><b id="pnn">—</b><small>pNN50 %</small></div>
+      </div>
+      <p class="hint"><span id="hrvtag" class="tag warn">not yet</span> <span id="hrvwhy"></span></p>
+      <p class="note" id="uneven" hidden>The beats in this reading were uneven. That can have many causes; if it keeps happening, mention it to your nurse or doctor.</p>
+    </section>
+
+    <section class="card">
+      <h2>Counts</h2>
+      <dl><dt>Beats</dt><dd id="beats">0</dd><dt>Set aside</dt><dd id="aside">—</dd><dt>Intervals rejected</dt><dd id="rej">—</dd><dt>Beat timing</dt><dd id="timing">—</dd></dl>
+    </section>
+
+    <section class="card">
+      <h2>Camera</h2>
+      <dl><dt>Camera</dt><dd id="cam">—</dd><dt>Light</dt><dd id="torch">—</dd><dt>Frame rate</dt><dd id="fps">—</dd><dt>Clock</dt><dd id="clock">—</dd><dt>Exposure</dt><dd id="exp">—</dd></dl>
+    </section>
+
+    <section class="card wide">
+      <h2>Result</h2>
+      <p class="hint" id="resultText">No result yet.</p>
+      <div class="row" style="margin-top:10px"><button id="json" disabled>Download JSON</button><button id="csv" disabled>Download intervals (CSV)</button></div>
+    </section>
+
+    <section class="card wide">
+      <h2>Live hooks</h2>
+      <pre id="log" aria-live="off"></pre>
+      <details style="margin-top:10px"><summary>Using the hooks</summary><pre>const mon = new PPG.PulseMonitor({ video, durationSec: 60 });
+mon.on('rr', r =&gt; …)        // {t, rr, valid, reason, bpm}
+mon.on('metrics', m =&gt; …)   // {bpm, rmssd, sdnn, hrvReliable, hrvIssue, progress}
+mon.on('quality', q =&gt; …)   // {score, level, hint}
+mon.on('complete', res =&gt; …)
+await mon.start();</pre></details>
+    </section>
+  </div>
+  <footer>Not a medical device. These numbers are estimates from a phone camera and have only been tested on simulated signals.</footer>
+</main>
+<script src="ppg-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const f = (v, d = 0) => (v == null || !isFinite(v) ? '—' : v.toFixed(d));
+  const HINTS = { 'place-finger': 'Place a fingertip over the camera and light.', 'press-lighter': 'Too bright — press a little lighter.', 'hold-still': 'Hold still.', 'weak-signal': 'Weak pulse — warm your hand, cover the light fully.', good: 'Good signal.' };
+  const WHY = { uneven: 'The rhythm was uneven, so variability isn\'t meaningful.', 'too-few': 'Needs more clean beats.', artifacts: 'Too many disturbed beats.', noisy: 'Beat timing is too coarse for this little variability.' };
+  const STATES = { starting: 'Opening the camera…', waiting: 'Waiting for a fingertip.', settling: 'Settling — hold still.', measuring: 'Measuring.', complete: 'Done.', stopped: 'Stopped.', error: 'Camera problem.' };
+  let duration = 60, mon = null, wave = null, waveAt = 0, rrList = [], result = null, logLines = [], raf = 0;
+
+  if (!window.PPG) { $('status').textContent = 'ppg-engine.js did not load.'; $('start').disabled = true; return; }
+  $('durations').addEventListener('click', e => {
+    const b = e.target.closest('[data-d]'); if (!b || mon) return;
+    duration = +b.dataset.d;
+    document.querySelectorAll('#durations [data-d]').forEach(x => x.setAttribute('aria-pressed', x === b));
+  });
+  function log(type, d) {
+    const s = type === 'rr' ? `rr ${d.rr.toFixed(0)} ms ${d.valid ? 'ok' : d.reason}` : type === 'beat' ? `beat ${d.valid === false ? 'set aside: ' + d.reason : 'r=' + f(d.corr, 2)}` : `${type} ${JSON.stringify(d)}`;
+    logLines.push(`${new Date().toLocaleTimeString()}  ${s}`); if (logLines.length > 14) logLines.shift();
+    $('log').textContent = logLines.join('\n');
+  }
+  function draw() {
+    const now = wave ? wave.tEnd + (performance.now() - waveAt) : null;
+    PPG.drawWave($('wave'), wave, { now, color: css('--accent'), ok: css('--accent'), bad: css('--warn'), grid: css('--line') });
+    PPG.drawTachogram($('tacho'), rrList, { color: css('--accent'), bad: css('--warn'), grid: css('--line'), text: css('--ink-3') });
+    raf = requestAnimationFrame(draw);
+  }
+  function download(name, text, type) {
+    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([text], { type })); a.download = name; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+  $('start').onclick = async () => {
+    rrList = []; wave = null; result = null; logLines = [];
+    $('json').disabled = $('csv').disabled = true; $('resultText').textContent = 'Measuring…';
+    mon = new PPG.PulseMonitor({ video: $('video'), durationSec: duration });
+    mon.on('status', s => { $('status').textContent = STATES[s.state] || s.state; if (['complete', 'stopped', 'error'].includes(s.state)) { $('start').disabled = false; $('stop').disabled = true; mon = null; cancelAnimationFrame(raf); } });
+    mon.on('error', e => { $('status').textContent = e.code === 'permission-denied' ? 'Camera permission was refused.' : e.message; });
+    mon.on('wave', w => { wave = w; waveAt = performance.now(); });
+    mon.on('beat', b => { if (b.valid !== false) { const el = $('beat'); el.classList.add('on'); setTimeout(() => el.classList.remove('on'), 120); } log('beat', b); });
+    mon.on('rr', r => { rrList.push(r); if (rrList.length > 200) rrList.shift(); $('rr').textContent = f(r.rr) + ' ms'; log('rr', r); });
+    mon.on('segment', s => log('segment', s));
+    mon.on('camera', c => {
+      $('cam').textContent = c.label || '—'; $('torch').textContent = c.torch ? 'on' : 'off';
+      $('fps').textContent = c.fps ? c.fps + ' fps' : '—'; $('clock').textContent = c.timeSource || '—';
+      $('exp').textContent = c.exposureCompensation == null ? '—' : c.exposureCompensation.toFixed(2);
+      $('nolight').hidden = !!c.torch;
+    });
+    mon.on('quality', q => {
+      $('qlevel').textContent = q.level; $('qscore').textContent = Math.round(q.score);
+      $('qbar').firstElementChild.style.width = q.score + '%'; $('qbar').classList.toggle('good', q.score >= 65);
+      $('qhint').textContent = HINTS[q.hint] || '';
+    });
+    mon.on('metrics', m => {
+      $('bpm').textContent = m.bpm ? Math.round(m.bpm) : '—';
+      $('method').textContent = m.bpmMethod === 'uneven' ? '· every beat counted' : '';
+      $('inst').textContent = f(m.bpmInstant) + ' bpm'; $('avg').textContent = f(m.bpmAverage, 1) + ' bpm';
+      $('rmssd').textContent = f(m.rmssd); $('sdnn').textContent = f(m.sdnn); $('pnn').textContent = f(m.pnn50);
+      $('hrvtag').textContent = m.hrvReliable ? 'reliable' : 'not reliable'; $('hrvtag').className = 'tag' + (m.hrvReliable ? '' : ' warn');
+      $('hrvwhy').textContent = m.hrvReliable ? '' : (WHY[m.hrvIssue] || '');
+      $('uneven').hidden = !m.unevenBeats;
+      $('progress').style.width = (m.progress == null ? 0 : m.progress * 100) + '%';
+      $('beats').textContent = m.beatCount ?? '—';
+      const nz = o => Object.entries(o || {}).filter(([, v]) => v).map(([k, v]) => `${k} ${v}`).join(', ') || 'none';
+      $('aside').textContent = nz(m.beatsRejected); $('rej').textContent = nz(m.rejectedBy && Object.fromEntries(Object.entries(m.rejectedBy).filter(([k]) => k !== 'ok')));
+      $('timing').textContent = m.timingMs == null ? '—' : '±' + f(m.timingMs, 1) + ' ms';
+    });
+    mon.on('complete', res => {
+      result = res;
+      $('resultText').textContent = res.ok
+        ? `${res.bpm} bpm from ${res.beats} beats over ${res.cleanSec} s · RMSSD ${f(res.rmssd)} ms, SDNN ${f(res.sdnn)} ms (${res.hrvReliable ? 'reliable' : 'not reliable: ' + res.hrvIssue}) · quality ${res.quality}`
+        : `No usable reading (${res.reason}).`;
+      $('json').disabled = $('csv').disabled = !res.ok;
+    });
+    $('start').disabled = true; $('stop').disabled = false;
+    draw();
+    await mon.start();
+  };
+  $('stop').onclick = () => mon && mon.stop();
+  $('json').onclick = () => result && download('pulse-reading.json', JSON.stringify(result, null, 2), 'application/json');
+  $('csv').onclick = () => result && download('pulse-intervals.csv', 't_ms,rr_ms,valid,reason\n' + (result.intervals || []).map(i => [Math.round(i.t), i.rr.toFixed(1), i.valid, i.reason].join(',')).join('\n'), 'text/csv');
+})();
+</script>
+</body>
+</html>
