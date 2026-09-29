@@ -1,4 +1,4 @@
-// Cardiac Companion — service worker (app version 3.1)
+// Cardiac Companion — service worker (app version 3.2)
 // Put this file in the same folder as the app's .html file, served over
 // https:// (or http://localhost). It shows dose reminders as system
 // notifications on Android Chrome and lets the app open offline after the
@@ -9,7 +9,7 @@
 // reminders come from the open page (see checkReminders in index.html) and
 // from the calendar file the app exports.
 
-const CACHE = 'cardiac-companion-v5';
+const CACHE = 'cardiac-companion-v6';
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 
 self.addEventListener('install', () => {

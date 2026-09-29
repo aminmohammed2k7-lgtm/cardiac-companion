@@ -1,3 +1,47 @@
+# Cardiac Companion — version 3.2
+
+A plainer look, so the app reads like a medical record rather than an app
+template. Copy `index.html` and `sw.js` over the old ones and deploy
+(`ppg-engine.js` is unchanged). The service-worker cache is bumped to v6.
+Records, features and wording are unchanged apart from the notes below.
+
+## Changed
+- **Flat and plain throughout.** White cards with a 1px border instead of
+  floating rounded panels; buttons, fields and chips are rounded rectangles
+  (8px) instead of pills and circles; no shadows, inset "3D" button edges,
+  glows or coloured dots. The rules are in the comment at the top of the
+  stylesheet.
+- **Nothing moves.** No fade-in on opening, no sliding panels, no buttons
+  that shrink or sink when pressed. Colours change quickly instead.
+- **Warfarin card** is an ordinary card now, not a dark green block. The
+  dose is still the biggest number on the page (56px instead of 80px).
+- **Quieter labels.** Counts ("0/3", the weekday) are plain text; only
+  states (taken, missed, below / in / above range) are outlined tags.
+  Headings are lighter (no extra-bold), and the one-line subtitles under
+  each page title are gone.
+- **Drawn marks instead of characters.** INR results use drawn arrows and
+  a tick (with the status in words for screen readers), "What this week
+  shows" uses an info, alert or tick mark instead of a dot, the warning-sign
+  buttons end in a drawn arrow, and the ✓ and × characters are drawn icons.
+- **Header and nav.** The bell and settings icons stand alone; the
+  Ethiopian date is plain text (it was gold). The chosen tab has a bar along
+  its top edge on phones and a tinted background on the desktop rail.
+- **Touch targets.** Main buttons and fields are 48px tall and small
+  buttons, chips and icon buttons 44px on phones (the icon buttons were 36
+  to 40px). With a mouse on a wide screen they are 40px and 36px.
+
+## Fixed
+- English text no longer says "dose(s)" or "day(s)": the number picks the
+  word ("1 dose due now", "3 doses due now"). Amharic and Oromo are
+  unchanged.
+- The weight chart's dates no longer run into each other on a phone.
+
+## Added
+- `tests/look.test.js` (`node tests/look.test.js`, 14 checks): fails if
+  pills, shadows, gradients, press or slide motion, all-caps, extra-bold
+  type or text characters used as icons come back, or controls shrink below
+  48px / 44px.
+
 # Cardiac Companion — version 3.1
 
 Adds an optional camera pulse measurement. Copy `index.html`, `sw.js` and
