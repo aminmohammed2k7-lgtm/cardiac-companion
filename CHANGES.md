@@ -35,6 +35,10 @@ Records, features and wording are unchanged apart from the notes below.
   word ("1 dose due now", "3 doses due now"). Amharic and Oromo are
   unchanged.
 - The weight chart's dates no longer run into each other on a phone.
+- The camera pulse can be reached again. Its "Measure with camera" button
+  and panel were missing from the page, so tapping any reading tile stopped
+  with an error and the pulse rhythm question (Regular / Irregular / Not
+  sure) never appeared.
 
 ## Added
 - `tests/look.test.js` (`node tests/look.test.js`, 14 checks): fails if
