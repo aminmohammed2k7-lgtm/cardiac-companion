@@ -10,6 +10,12 @@ before the camera-pulse branch is merged. That merge
 about 211 move down by 1 to 52. The function names stay the same, so use
 those to find a spot after the merge.
 
+**Since Phase 1** the medical logic lives in `js/core/*.js` (the dates,
+calendars, dose plans, supply, warfarin, injection, health rules and reminder
+timing), and `index.html` is about 300 lines shorter. The line numbers below
+are still v3.2's. Search for the function name; where a function moved, its
+row names the file.
+
 Phases: **2** Android shell, **3** storage, **4** reminders, **5** files,
 sharing and calls, **6** camera pulse, **7** polish and accessibility,
 **9** retiring the website.
@@ -36,6 +42,7 @@ sharing and calls, **6** camera pulse, **7** polish and accessibility,
 | Where | What it does today | Android replacement | Phase |
 |---|---|---|---|
 | `:5956` `setInterval(tick, 30000)`, `:5906` `tick()` | Checks reminders every 30 s, **only while the page is open** | Native scheduled notifications through `@capacitor/local-notifications`. Their stable IDs are rescheduled on the events Phase 4 lists | 4 |
+| `:5958` `pageshow` | Re-checks reminders when the page is shown again (also after the back button) | Same as `visibilitychange`: `appStateChange` | 3, 4 |
 | `:5957` `visibilitychange` | Re-checks reminders when the page comes back | `@capacitor/app` `appStateChange`: flush storage on background (Phase 3), reschedule on foreground (Phase 4) | 3, 4 |
 | `:5842` `checkRemindersFor()`, `:5889` `checkReminders()` | Decides what is due, missed or coming up, for each person | The rules move to `js/core/` in Phase 1 and are tested. Phase 4 turns them into a schedule | 1, 4 |
 | `:5806` `systemNotify()`: `Notification`, `:5811–5812` service-worker `showNotification`, `:5813` `new Notification` | Shows the phone notification | `LocalNotifications.schedule()` on two channels: "Medicine reminders" (high) and "Coming up" (default), with private lock-screen visibility | 4 |
@@ -74,7 +81,7 @@ sharing and calls, **6** camera pulse, **7** polish and accessibility,
 | `:5941` `matchMedia('(prefers-color-scheme: dark)')` | First-run theme follows the phone | Keep. Check that the WebView reports the system theme, and style the system bars for both themes | 2, 7 |
 | `:155` `@media (prefers-reduced-motion: reduce)` | Turns off animations | Keep. Check on the phone | 7 |
 | Text size setting (Normal / Large) | App's own Large text | Keep. Also: fix WebView text zoom at 100%, and on first launch only, switch on Large when the system font scale is 1.15 or more | 2 |
-| `:3080` `islamicParts()`: `Intl.DateTimeFormat('en-u-ca-islamic-umalqura')` | Ramadan dates (the app asks the user to confirm) | Keep. Phase 1 tests check it in Node. Check on the Samsung's WebView too. See risk R4 | 1, 7 |
+| `:3080` `islamicParts()` (now `js/core/seasons.js`): `Intl.DateTimeFormat('en-u-ca-islamic-umalqura')` | Ramadan dates (the app asks the user to confirm) | Keep. Phase 1 tests check it in Node. Check on the Samsung's WebView too. See risk R4 | 1, 7 |
 | `ppg-engine.js:1198` `getUserMedia`, `:1182–1238` torch (`getCapabilities`, `applyConstraints`), `:1487` exposure | Camera pulse | Behind the `cameraPulse` build flag: **off in release**, and no CAMERA permission in the release manifest | 6 |
 | `ppg-engine.js:1360–1361` `navigator.wakeLock`, `:1359` `visibilitychange` | Keeps the screen on while measuring | Camera only, same flag | 6 |
 
