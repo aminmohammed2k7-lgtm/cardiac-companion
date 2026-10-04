@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/cn1.js — Conics I: CN-cir (circles), CN-par (parabolas). */
+/* ACE CSCA Question Factory · templates/cn1.js: Conics I, circles (CN-cir) and parabolas (CN-par). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.LN;
@@ -14,6 +14,8 @@
     var u = [Fp[0] / len, Fp[1] / len];
     return pts.every(function (p) { return close(Math.hypot(p[0] - Fp[0], p[1] - Fp[1]), Math.abs((p[0] + Fp[0]) * u[0] + (p[1] + Fp[1]) * u[1])); });
   }
+  /** "x - a" for a bracket (x − a)² */
+  function brk(v, a) { return F.sum([[1, v], [Fr.of(a).neg(), '']]); }
   QF.CN = { close: close, circlePts: circlePts, parPts: parPts, focusOK: focusOK };
 
   /* ===================== CN-cir · circles ===================== */
@@ -34,7 +36,7 @@
     var a = R.int(-6, 6), b = R.int(-6, 6), r = R.int(2, 7);
     if (a === 0 && b === 0) retry();
     if ((a === -3 && b === 2 && r <= 4) || (a === 2 && b === 5 && r === 5)) retry('real item');
-    return stdItem(R, a, b, r * r, r, R.pick(CSTEM)(a, b, r), 'Standard form $(x - a)^2 + (y - b)^2 = r^2$: flip the signs of the centre inside the brackets and square the radius ($r^2 = ' + (r * r) + '$).');
+    return stdItem(R, a, b, r * r, r, R.pick(CSTEM)(a, b, r), 'A circle with centre $(a, b)$ and radius $r$ has the equation $(x - a)^2 + (y - b)^2 = r^2$. Here $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r + '^2 = ' + (r * r) + '$.');
   });
   def({ id: 'CN-cir.sqrt-radius', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '+1', fmt: 'V', trick: 'T10',
     form: 'Centre and a surd radius (r = √7) → the standard equation', basis: 'Course plan 6.1 Q6' }, function (R) {
@@ -44,7 +46,7 @@
     return {
       stem: 'The equation of the circle with center $' + pt(a, b) + '$ and radius $\\sqrt{' + n + '}$ is ( )', key: m(key),
       wrong: W([[circ(a, b, n * n), 'radius'], [circ(-a, -b, n), 'sign'], [circ(a, b, '\\sqrt{' + n + '}'), 'radius'], [circ(-a, -b, n * n), 'sign'], [a === b ? null : circ(b, a, n), 'swap']]), check: chk.eq([circlePts(a, b, Math.sqrt(n))]),
-      sol: 'The right-hand side is $r^2 = (\\sqrt{' + n + '})^2 = ' + n + '$, not $' + (n * n) + '$ and not $\\sqrt{' + n + '}$. Flip the signs of the centre: $' + key + '$.'
+      sol: 'The right-hand side is $r^2 = (\\sqrt{' + n + '})^2 = ' + n + '$. With the centre $' + pt(a, b) + '$ the equation is $' + key + '$.'
     };
   });
   def({ id: 'CN-cir.read', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', trick: 'T10', w: 0.5,
@@ -55,7 +57,8 @@
     return {
       stem: 'The center and radius of the circle $' + circ(a, b, r2) + '$ are ( )', key: pr(a, b, r),
       wrong: [[pr(-a, -b, r), 'sign'], [pr(a, b, r2), 'radius'], [pr(-a, -b, r2), 'sign'], [a === b ? null : pr(b, a, r), 'swap'], [pr(a, -b, r), 'sign']].filter(function (x) { return x[0]; }), check: chk.tuple([a, b, Math.sqrt(r2)]),
-      sol: 'Compare with $(x - a)^2 + (y - b)^2 = r^2$: the centre is $' + pt(a, b) + '$ (signs flipped) and $r^2 = ' + r2 + '$, so $r = ' + F.n(r) + '$.'
+      sol: 'Comparing with $(x - a)^2 + (y - b)^2 = r^2$ gives $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r2 + '$. So the centre is $' + pt(a, b) + '$ and $r = ' + F.n(r) + '$.' +
+        (a < 0 ? ' The bracket $' + brk('x', a) + '$ is $x - (' + a + ')$, which is why $a = ' + a + '$.' : b < 0 ? ' The bracket $' + brk('y', b) + '$ is $y - (' + b + ')$, which is why $b = ' + b + '$.' : '')
     };
   });
   def({ id: 'CN-cir.r-trap', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -65,7 +68,7 @@
     return {
       stem: 'The ' + (dia ? 'diameter' : 'radius') + ' of the circle $' + circ(a, b, r2) + '$ is ( )', key: m(key),
       wrong: W([[r2, 'radius'], [dia ? r : r.scale(2), 'half'], [q(r2, 2), 'half'], [r2 * r2, 'radius'], [2 * r2, 'radius']]), check: chk.num((dia ? 2 : 1) * Math.sqrt(r2)),
-      sol: 'The right-hand side is $r^2 = ' + r2 + '$, so $r = ' + F.n(r) + '$' + (dia ? ' and the diameter is $' + F.n(key) + '$.' : '.')
+      sol: 'The right-hand side is $r^2 = ' + r2 + '$, so $r = ' + rootT(r2, r) + '$' + (dia ? ' and the diameter is $' + F.n(key) + '$.' : '.')
     };
   });
   function throughItem(R, a, b, px, py, form) {
@@ -75,7 +78,7 @@
     return {
       stem: R.pick(['If a circle passes through the point $A' + pt(px, py) + '$ and has center $' + pt(a, b) + '$, then its equation is ( )', 'If a circle has center $' + pt(a, b) + '$ and passes through the point $' + pt(px, py) + '$, then its equation is ( )']).replace('its equation', form === 'gen' ? 'its general equation' : 'its equation'),
       key: m(key), wrong: W(wrong), check: chk.eq([circlePts(a, b, Math.hypot(px - a, py - b))]),
-      sol: 'The radius is the distance from the centre to the point: $r^2 = ' + (px - a < 0 ? '(' + (px - a) + ')' : (px - a)) + '^2 + ' + (py - b < 0 ? '(' + (py - b) + ')' : (py - b)) + '^2 = ' + r2 + '$. So the circle is $' + circ(a, b, r2) + '$' + (form === 'gen' ? ', i.e. $' + key + '$.' : '.')
+      sol: 'The radius is the distance from the centre to the point: $r^2 = ' + (px - a < 0 ? '(' + (px - a) + ')' : (px - a)) + '^2 + ' + (py - b < 0 ? '(' + (py - b) + ')' : (py - b)) + '^2 = ' + r2 + '$. So the circle is $' + circ(a, b, r2) + '$' + (form === 'gen' ? '. Expanding, $' + F.sum([[1, 'x^2'], [-2 * a, 'x'], [a * a, ''], [1, 'y^2'], [-2 * b, 'y'], [b * b, '']]) + ' = ' + r2 + '$, that is $' + key + '$.' : '.')
     };
   }
   def({ id: 'CN-cir.r13', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', rep: 'R13', trick: 'T10', w: 2,
@@ -108,7 +111,13 @@
     }
     retry();
   }
-  function compSq(C) { return 'Complete the square: $' + circ(C.a, C.b, C.r2) + '$ (or use centre $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right)$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F$).'; }
+  function compSq(C) {
+    var parts = [];
+    if (C.a) parts.push('$' + F.sum([[1, 'x^2'], [C.D, 'x']]) + ' = (' + brk('x', C.a) + ')^2 - ' + (C.a * C.a) + '$');
+    if (C.b) parts.push('$' + F.sum([[1, 'y^2'], [C.E, 'y']]) + ' = (' + brk('y', C.b) + ')^2 - ' + (C.b * C.b) + '$');
+    return 'Completing the square, ' + h.joinAnd(parts) + ', so the equation becomes $' + circ(C.a, C.b, C.r2) + '$, since $' + F.sum([[C.a * C.a, ''], [C.b * C.b, ''], [-C.F, '']]) + ' = ' + C.r2 + '$.';
+  }
+  function rootT(r2, r) { return F.n(r) === '\\sqrt{' + r2 + '}' ? F.n(r) : '\\sqrt{' + r2 + '} = ' + F.n(r); }
   def({ id: 'CN-cir.gen-radius', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
     form: 'Radius of a circle in general form', basis: 'Dec Q21' }, function (R) {
     var C = genCircle(R, true);
@@ -116,7 +125,7 @@
     return {
       stem: 'The radius of the circle $' + C.tex + '$ is ( )', key: m(C.r),
       wrong: W([[C.r2, 'radius'], [Sd.sqrt(C.D * C.D + C.E * C.E - 4 * C.F), 'partial'], [C.a * C.a + C.b * C.b + C.F <= 0 ? null : Sd.sqrt(C.a * C.a + C.b * C.b + C.F), 'sign'], [C.F > 0 ? Sd.sqrt(C.F) : (C.F < 0 ? Sd.sqrt(-C.F) : null), 'partial'], [Sd.sqrt(C.r2 + 1), 'slip'], [C.r.scale(2), 'partial']]),
-      check: chk.num(Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)), sol: compSq(C) + ' So $r = ' + F.n(C.r) + '$ ($' + C.r2 + '$ is $r^2$).'
+      check: chk.num(Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)), sol: compSq(C) + ' So $r = ' + rootT(C.r2, C.r) + '$.'
     };
   });
   def({ id: 'CN-cir.gen-centre', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -125,7 +134,7 @@
     return {
       stem: 'The center of the circle $' + C.tex + '$ is ( )', key: T(C.a, C.b),
       wrong: [[T(-C.a, -C.b), 'sign'], [T(C.D, C.E), 'half'], [T(-C.D, -C.E), 'half'], [C.a === C.b ? null : T(C.b, C.a), 'swap'], [T(C.a, -C.b), 'sign'], [T(-C.a, C.b), 'sign']].filter(function (x) { return x[0]; }),
-      check: chk.tuple([-C.D / 2, -C.E / 2]), sol: compSq(C) + ' The centre is $' + pt(C.a, C.b) + '$: halve the coefficients of $x$ and $y$ and change their signs.'
+      check: chk.tuple([-C.D / 2, -C.E / 2]), sol: compSq(C) + ' So the centre is $' + pt(C.a, C.b) + '$.'
     };
   });
   def({ id: 'CN-cir.gen-both', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -135,7 +144,7 @@
     return {
       stem: 'The center and radius of the circle $' + C.tex + '$ are ( )', key: pr(C.a, C.b, C.r),
       wrong: [[pr(-C.a, -C.b, C.r), 'sign'], [pr(C.a, C.b, C.r2), 'radius'], [C.a === C.b ? null : pr(C.b, C.a, C.r), 'swap'], [pr(-C.a, -C.b, C.r2), 'sign'], [pr(C.D, C.E, C.r), 'half']].filter(function (x) { return x[0]; }),
-      check: chk.tuple([-C.D / 2, -C.E / 2, Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)]), sol: compSq(C) + ' Centre $' + pt(C.a, C.b) + '$, radius $' + F.n(C.r) + '$.'
+      check: chk.tuple([-C.D / 2, -C.E / 2, Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)]), sol: compSq(C) + ' So the centre is $' + pt(C.a, C.b) + '$ and the radius is $' + rootT(C.r2, C.r) + '$.'
     };
   });
   def({ id: 'CN-cir.to-general', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -147,7 +156,7 @@
     return {
       stem: 'The general equation of the circle with center $' + pt(a, b) + '$ and radius $' + r + '$ is ( )', key: m(key),
       wrong: W([[F.circleG(-2 * a, -2 * b, -Fc), 'sign'], [F.circleG(2 * a, 2 * b, Fc), 'sign'], [F.circleG(-2 * a, -2 * b, -r * r), 'partial'], [F.circleG(-a, -b, Fc), 'half'], [F.circleG(2 * a, 2 * b, -Fc), 'sign']]), check: chk.eq([circlePts(a, b, r)]),
-      sol: 'Start from $' + circ(a, b, r * r) + '$ and expand: $' + key + '$. The constant term is $a^2 + b^2 - r^2 = ' + Fc + '$, not $-r^2$.'
+      sol: 'Start from $' + circ(a, b, r * r) + '$ and expand: $' + F.sum([[1, 'x^2'], [-2 * a, 'x'], [a * a, ''], [1, 'y^2'], [-2 * b, 'y'], [b * b, '']]) + ' = ' + (r * r) + '$, that is $' + key + '$. The constant term is $' + F.sum([[a * a, ''], [b * b, ''], [-r * r, '']]) + ' = ' + Fc + '$.'
     };
   });
   def({ id: 'CN-cir.gen-frac', code: 'CN-cir', lesson: '6.2', tier: 'M', level: '+1', fmt: 'V',
@@ -162,7 +171,7 @@
     else { key = m(r); wrong = W([[r2, 'radius'], [Sd.sqrt(r2.mul(4)), 'partial'], [Sd.sqrt(r2.add(1)), 'slip'], [r2.mul(4), 'radius'], [r.scale(2), 'partial']]); check = chk.num(Math.sqrt((D * D + E * E) / 4 - Fc.n)); }
     return {
       stem: 'The ' + { centre: 'center', both: 'center and radius', radius: 'radius' }[ask] + ' of the circle $' + tex + '$ ' + (ask === 'both' ? 'are' : 'is') + ' ( )', key: key, wrong: wrong.filter(function (x) { return x[0]; }), check: check,
-      sol: 'Centre $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + pt(a, b) + '$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F = ' + F.n(r2) + '$, so $r = ' + F.n(r) + '$.'
+      sol: 'Here $D = ' + D + '$, $E = ' + E + '$ and $F = ' + Fc.n + '$. The centre is $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + pt(a, b) + '$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F = \\dfrac{' + (D * D) + ' + ' + (E * E) + '}{4} - ' + par(Fc.n) + ' = ' + F.n(r2) + '$, so $r = ' + F.n(r) + '$.'
     };
   });
   def({ id: 'CN-cir.axis-param', code: 'CN-cir', lesson: '6.1', tier: 'M', level: '+1', fmt: 'V',
@@ -173,14 +182,13 @@
     if (onX) { if (r % be !== 0) retry(); a = -r / be; key = [a + p, 0]; } else { a = -p; key = [0, be * a + r]; }
     if (key[0] === 0 && key[1] === 0) retry();
     var cx = F.sum([[1, 'a'], [p, '']]), cy = F.sum([[be, 'a'], [r, '']]);
-    var eq = '\\left(x - ' + (p === 0 ? 'a' : '(' + cx + ')') + '\\right)^2 + \\left(y - ' + '(' + cy + ')' + '\\right)^2 = ' + (rr * rr);
-    eq = '[x - (' + cx + ')]^2 + [y - (' + cy + ')]^2 = ' + (rr * rr);
+    var eq = (p === 0 ? '(x - a)^2' : '[x - (' + cx + ')]^2') + ' + [y - (' + cy + ')]^2 = ' + (rr * rr), zero = onX ? cy : cx;
     var v = onX ? key[0] : key[1], other = onX ? [0, be * (-p) + r] : (r % be === 0 ? [(-r / be) + p, 0] : null), T = function (x, y) { return m(pt(x, y)); };
     return {
       stem: 'The center of the circle $' + eq + '$ lies on the $' + (onX ? 'x' : 'y') + '$-axis. Then the center is ( )', key: T(key[0], key[1]),
       wrong: [[other ? T(other[0], other[1]) : null, 'axis'], [onX ? T(0, v) : T(v, 0), 'axis'], [onX ? T(-v, 0) : T(0, -v), 'sign'], [onX ? T(v, rr) : T(rr, v), 'partial'], [onX ? T(a, 0) : T(0, a), 'partial']].filter(function (x) { return x[0]; }),
       check: chk.tuple(onX ? [(-r / be) + p, 0] : [0, be * (-p) + r]),
-      sol: 'The centre is $(' + cx + ', ' + cy + ')$. On the $' + (onX ? 'x' : 'y') + '$-axis its $' + (onX ? 'y' : 'x') + '$-coordinate is $0$: $' + (onX ? cy : cx) + ' = 0$, so $a = ' + a + '$ and the centre is $' + pt(key[0], key[1]) + '$.'
+      sol: 'The centre is $(' + cx + ', ' + cy + ')$. A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + '$-coordinate $0$, so ' + (zero === 'a' ? '$a = 0$' : '$' + zero + ' = 0$ and $a = ' + a + '$') + '. Then the centre is $' + pt(key[0], key[1]) + '$.'
     };
   });
 
@@ -201,8 +209,8 @@
     var O = dirOptions(mm, axis);
     return {
       stem: 'The equation of the directrix of the parabola $' + parEq(mm, axis) + '$ is ( )', key: m(O.key), wrong: W(O.wrong), check: chk.eq([dirPts(axis, O.d.num)]),
-      sol: 'A quarter of the coefficient: for $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ the focus is $' + (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)$ and the directrix is $x = -\\dfrac{m}{4}' : '\\left(0, \\dfrac{m}{4}\\right)$ and the directrix is $y = -\\dfrac{m}{4}') +
-        '$. Here $m = ' + F.n(mm) + '$, so the directrix is $' + O.key + '$ — on the opposite side of the vertex from the focus.', sig: 'dir|' + axis + '|' + F.n(mm)
+      sol: 'For $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ the focus is $' + (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)$ and the directrix is $x = -\\dfrac{m}{4}' : '\\left(0, \\dfrac{m}{4}\\right)$ and the directrix is $y = -\\dfrac{m}{4}') +
+        '$. Here $m = ' + F.n(mm) + '$, so $\\dfrac{m}{4} = ' + F.n(mm.div(4)) + '$ and the directrix is $' + O.key + '$, on the opposite side of the vertex from the focus.', sig: 'dir|' + axis + '|' + F.n(mm)
     };
   });
   function yax2(a) { a = Fr.of(a); return 'y = ' + (a.n === 1 && a.d === 1 ? 'x^2' : a.n === -1 && a.d === 1 ? '-x^2' : a.d === 1 ? a.n + 'x^2' : (a.n < 0 ? '-' : '') + '\\dfrac{' + (Math.abs(a.n) === 1 ? '' : Math.abs(a.n)) + 'x^2}{' + a.d + '}'); }
@@ -213,7 +221,7 @@
     var wrong = [[lineEq('y', a.div(4).neg()), 'partial'], [lineEq('y', O.d.neg()), 'sign'], [lineEq('x', O.d), 'axis'], [lineEq('y', a.div(4)), 'partial'], [lineEq('y', mm.div(2).neg()), 'partial']];
     return {
       stem: 'The equation of the directrix of the parabola $' + yax2(a) + '$ is ( )', key: m(O.key), wrong: W(wrong), check: chk.eq([dirPts('y', O.d.num)]),
-      sol: 'Rewrite first: $x^2 = ' + F.sum([[mm, 'y']]) + '$. For $x^2 = my$ the directrix is $y = -\\dfrac{m}{4}$; with $m = ' + F.n(mm) + '$ this gives $' + O.key + '$. Using the coefficient $' + F.n(a) + '$ directly is the trap.'
+      sol: 'First rewrite the equation as $x^2 = ' + F.sum([[mm, 'y']]) + '$. For $x^2 = my$ the directrix is $y = -\\dfrac{m}{4}$, and with $m = ' + F.n(mm) + '$ this gives $' + O.key + '$. Using $' + F.n(a) + '$ in place of $m$ would give $y = ' + F.n(a.div(4).neg()) + '$, which is wrong.'
     };
   });
   def({ id: 'CN-par.focus', code: 'CN-par', lesson: '6.3', tier: 'E', level: '=', fmt: 'V', trick: 'T11', w: 0.5,
@@ -222,7 +230,7 @@
     return {
       stem: 'The coordinates of the focus of the parabola $' + parEq(mm, axis) + '$ are ( )', key: T(f, axis),
       wrong: [[T(f.neg(), axis), 'sign'], [T(f, o), 'axis'], [T(mm.div(2), axis), 'partial'], [T(mm, axis), 'partial'], [T(f.neg(), o), 'axis']], check: chk.tuple(axis === 'x' ? [mm.num / 4, 0] : [0, mm.num / 4]),
-      sol: 'A quarter of the coefficient: $\\dfrac{m}{4} = ' + F.n(f) + '$. The focus lies on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis (the axis of the linear variable): $' + (axis === 'x' ? pt(f, 0) : pt(0, f)) + '$.'
+      sol: 'For $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ the focus is $' + (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)' : '\\left(0, \\dfrac{m}{4}\\right)') + '$. Here $m = ' + F.n(mm) + '$, so the focus is $' + (axis === 'x' ? pt(f, 0) : pt(0, f)) + '$. It lies on the $' + axis + '$-axis because $' + axis + '$ is the variable that is not squared.'
     };
   });
   function parStmts(R, mm, axis, formTex) {
@@ -235,20 +243,25 @@
     var openTest = function (w) { return function () { var far = pts[0]; return w === 'to the right' ? axis === 'x' && far[0] > 0 : w === 'to the left' ? axis === 'x' && far[0] < 0 : w === 'upward' ? axis === 'y' && far[1] > 0 : axis === 'y' && far[1] < 0; }; };
     var on = pts[4], t0 = R.pick([1, 2, -2, 4, -4, 3]), P = axis === 'x' ? [q(t0 * t0).div(mm), q(t0)] : [q(t0), q(t0 * t0).div(mm)], Pw = axis === 'x' ? [P[0].neg(), P[1]] : [P[0], P[1].neg()];
     var onCurve = function (p) { return function () { return axis === 'x' ? close(p[1].num * p[1].num, mm.num * p[0].num) : close(p[0].num * p[0].num, mm.num * p[1].num); }; };
+    var sides = function (p) {             // the two sides of the equation at the point p
+      var l = axis === 'x' ? p[1].mul(p[1]) : p[0].mul(p[0]), r = mm.mul(axis === 'x' ? p[0] : p[1]);
+      return 'with $x = ' + F.n(p[0]) + '$ and $y = ' + F.n(p[1]) + '$, ' + (l.eq(r) ? 'both sides equal $' + F.n(l) + '$.' : 'the left side is $' + F.n(l) + '$ but the right side is $' + F.n(r) + '$.');
+    };
+    var fF = (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)' : '\\left(0, \\dfrac{m}{4}\\right)');
     var pool = [
-      focusS(f, axis, 'the focus is a quarter of the coefficient along the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis.', { g: 'f' }),
-      dirS(v, d, 'the directrix is $' + lineEq(v, d) + '$, opposite to the focus.', { g: 'd' }),
-      h.factS('It opens ' + opens, false, openTest(opens), 'the sign of the coefficient and the squared variable decide the direction.', { g: 'o' }),
-      h.factS('Its axis of symmetry is the $' + v + '$-axis', false, function () { return pts.every(function (p) { return onCurve(axis === 'x' ? [q(1), q(1)] : [q(1), q(1)]) || true; }) && true; }, 'the axis of symmetry is the axis of the linear variable.', { g: 's' }),
-      h.factS('It passes through the point $' + pt(P[0], P[1]) + '$', false, onCurve(P), 'the coordinates satisfy the equation.', { g: 'p' }),
-      focusS(f.neg(), axis, 'the focus is $' + FT(f, axis) + '$; the sign follows the coefficient.', { g: 'f', trap: 'sign' }),
-      focusS(f, o, 'the focus lies on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis: $' + FT(f, axis) + '$.', { g: 'f2', trap: 'axis' }),
-      focusS(mm.div(2), axis, 'use a quarter of the coefficient, not a half: the focus is $' + FT(f, axis) + '$.', { g: 'f3', trap: 'partial' }),
-      dirS(v, f, 'the directrix is on the opposite side of the vertex: $' + lineEq(v, d) + '$.', { g: 'd', trap: 'sign' }),
-      dirS(o, d, 'the directrix is perpendicular to the axis of symmetry: $' + lineEq(v, d) + '$.', { g: 'd2', trap: 'axis' }),
-      h.factS('It opens ' + wrongOpen, false, openTest(wrongOpen), 'it opens ' + opens + '.', { g: 'o', trap: 'axis' }),
-      h.factS('Its axis of symmetry is the $' + o + '$-axis', false, function () { return false; }, 'the axis of symmetry is the $' + v + '$-axis.', { g: 's', trap: 'axis' }),
-      h.factS('It passes through the point $' + pt(Pw[0], Pw[1]) + '$', false, onCurve(Pw), 'substituting the point does not satisfy the equation.', { g: 'p', trap: 'sign' })
+      focusS(f, axis, 'the focus is $' + fF + ' = ' + FT(f, axis) + '$ with $m = ' + F.n(mm) + '$.', { g: 'f' }),
+      dirS(v, d, 'the directrix is $' + v + ' = -\\dfrac{m}{4} = ' + F.n(d) + '$.', { g: 'd' }),
+      h.factS('It opens ' + opens, false, openTest(opens), 'the coefficient $' + F.n(mm) + '$ is ' + (mm.n > 0 ? 'positive' : 'negative') + ', so $' + v + '$ is never ' + (mm.n > 0 ? 'negative' : 'positive') + ' on the curve.', { g: 'o' }),
+      h.factS('Its axis of symmetry is the $' + v + '$-axis', false, function () { return pts.every(function (p) { return onCurve(axis === 'x' ? [q(1), q(1)] : [q(1), q(1)]) || true; }) && true; }, 'replacing $' + o + '$ by $-' + o + '$ does not change the equation.', { g: 's' }),
+      h.factS('It passes through the point $' + pt(P[0], P[1]) + '$', false, onCurve(P), sides(P), { g: 'p' }),
+      focusS(f.neg(), axis, 'the focus is $' + FT(f, axis) + '$, which has the same sign as $m = ' + F.n(mm) + '$.', { g: 'f', trap: 'sign' }),
+      focusS(f, o, 'the focus lies on the $' + v + '$-axis, at $' + FT(f, axis) + '$.', { g: 'f2', trap: 'axis' }),
+      focusS(mm.div(2), axis, 'the focus is at $\\dfrac{m}{4}$, not $\\dfrac{m}{2}$, so it is $' + FT(f, axis) + '$.', { g: 'f3', trap: 'partial' }),
+      dirS(v, f, 'the directrix is on the opposite side of the vertex from the focus, so it is $' + lineEq(v, d) + '$.', { g: 'd', trap: 'sign' }),
+      dirS(o, d, 'the directrix is perpendicular to the axis of symmetry, so it is $' + lineEq(v, d) + '$.', { g: 'd2', trap: 'axis' }),
+      h.factS('It opens ' + wrongOpen, false, openTest(wrongOpen), 'only $' + o + '$ is squared, so the curve opens along the $' + v + '$-axis, ' + opens + '.', { g: 'o', trap: 'axis' }),
+      h.factS('Its axis of symmetry is the $' + o + '$-axis', false, function () { return false; }, 'only $' + o + '$ is squared, so the axis of symmetry is the $' + v + '$-axis.', { g: 's', trap: 'axis' }),
+      h.factS('It passes through the point $' + pt(Pw[0], Pw[1]) + '$', false, onCurve(Pw), sides(Pw), { g: 'p', trap: 'sign' })
     ];
     // symmetry test by reflection of sample points
     pool[3].test = function () { return pts.every(function (p) { var r = axis === 'x' ? [p[0], -p[1]] : [-p[0], p[1]]; return onCurve([q(0), q(0)]) && (axis === 'x' ? close(r[1] * r[1], mm.num * r[0]) : close(r[0] * r[0], mm.num * r[1])); }); };
@@ -262,7 +275,7 @@
     else { mm = q(R.pick(MS)); axis = R.pick(['x', 'x', 'y']); tex = parEq(mm, axis); }
     var st = QF.pickStmts(R, fmt, parStmts(R, mm, axis, tex));
     if (block && block(mm, axis, st)) retry('real item');
-    return out('Which of the following statements about the parabola $' + tex + '$ is ' + (fmt === 'N' ? 'incorrect' : 'correct') + '? ( )', st, useY ? 'Rewrite as $x^2 = ' + F.sum([[mm, 'y']]) + '$.' : '');
+    return out('Which of the following statements about the parabola $' + tex + '$ is ' + (fmt === 'N' ? 'incorrect' : 'correct') + '? ( )', st, useY ? 'First rewrite the equation as $x^2 = ' + F.sum([[mm, 'y']]) + '$.' : '');
   }
   def({ id: 'CN-par.stmt', code: 'CN-par', lesson: '6.3', tier: 'E', level: '=', fmt: 'S', trick: 'T11', w: 2,
     form: 'Which statement about a parabola is correct (focus, directrix, direction, axis, a point)', basis: 'Dec Q32, Jun Q32' }, function (R) {
@@ -278,7 +291,7 @@
     return {
       stem: 'Let $F$ be the focus of the parabola $' + parEq(mm, axis) + '$. If a point $P$ on the parabola has $' + v + '$-coordinate $' + x0 + '$, then $|PF| =$ ( )', key: m(key),
       wrong: W([[q(x0).add(q(mm, 2)), 'partial'], [x0, 'partial'], [q(x0).add(mm), 'partial'], [q(x0).sub(q(mm, 4)).n === 0 ? null : q(x0).sub(q(mm, 4)).abs(), 'sign'], [Sd.sqrt(mm * x0), 'companion']]), check: chk.num(Math.hypot(P[0] - Fp[0], P[1] - Fp[1])),
-      sol: 'On a parabola the distance to the focus equals the distance to the directrix $' + lineEq(v, q(-mm, 4)) + '$. So $|PF| = ' + x0 + ' + ' + F.n(q(mm, 4)) + ' = ' + F.n(key) + '$ (add a quarter of the coefficient, $\\dfrac{p}{2}$, not $p$).'
+      sol: 'On a parabola the distance to the focus equals the distance to the directrix $' + lineEq(v, q(-mm, 4)) + '$. The point has $' + v + ' = ' + x0 + '$, so its distance to the directrix is $' + x0 + ' + ' + F.n(q(mm, 4)) + ' = ' + F.n(key) + '$. Hence $|PF| = ' + F.n(key) + '$.'
     };
   });
   def({ id: 'CN-par.through', code: 'CN-par', lesson: '6.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -290,7 +303,7 @@
       return {
         stem: 'If the parabola $y = ax^2$ passes through the point $' + pt(x0, y0) + '$, then $a =$ ( )', key: m(a),
         wrong: W([[a.inv(), 'reciprocal'], [q(y0, x0), 'partial'], [y0 * x0 * x0, 'operation'], [a.neg(), 'sign'], [q(y0, 2 * x0), 'slip']]), check: chk.num(y0 / (x0 * x0)),
-        sol: 'Substitute the point: $' + y0 + ' = a \\cdot ' + par(x0) + '^2 = ' + (x0 * x0) + 'a$, so $a = ' + F.n(a) + '$.'
+        sol: 'Substitute the point: $' + y0 + ' = a \\cdot ' + par(x0) + '^2 = ' + (x0 * x0 === 1 ? '' : x0 * x0) + 'a$, so $a = ' + F.n(a) + '$.'
       };
     }
     var mm = q(y0 * y0, x0);
@@ -308,7 +321,7 @@
     return {
       stem: 'The standard equation of the parabola with vertex at the origin and focus $F' + (axis === 'x' ? pt(f, 0) : pt(0, f)) + '$ is ( )', key: m(key),
       wrong: W([[parEq(mm.neg(), axis), 'sign'], [parEq(mm, o), 'axis'], [parEq(f.mul(2), axis), 'partial'], [parEq(f, axis), 'partial'], [parEq(mm.neg(), o), 'axis']]), check: chk.eq([parPts(mm.num, axis)]),
-      sol: 'The focus is on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis, so the equation is $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ with $\\dfrac{m}{4} = ' + F.n(f) + '$, i.e. $m = ' + F.n(mm) + '$: $' + key + '$.'
+      sol: 'The focus is on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis, so the equation is $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ with $\\dfrac{m}{4} = ' + F.n(f) + '$. So $m = ' + F.n(mm) + '$ and the equation is $' + key + '$.'
     };
   });
   def({ id: 'CN-par.through-focus', code: 'CN-par', lesson: '6.3', tier: 'M', level: '+1', fmt: 'V', trick: 'T11',
@@ -318,7 +331,7 @@
     return {
       stem: 'If the parabola $y = ax^2$ passes through the point $' + pt(x0, y0) + '$, then the coordinates of its focus are ( )', key: T(f, 'y'),
       wrong: [[T(a.div(4), 'y'), 'partial'], [T(f, 'x'), 'axis'], [T(f.neg(), 'y'), 'sign'], [T(a.inv().div(2), 'y'), 'partial'], [T(a, 'y'), 'partial']], check: chk.tuple([0, 1 / (4 * (y0.num / (x0 * x0)))]),
-      sol: 'Substituting the point gives $a = ' + F.n(a) + '$. Rewrite $y = ' + (a.eq(1) ? '' : F.n(a)) + 'x^2$ as $x^2 = ' + F.sum([[a.inv(), 'y']]) + '$: the focus is $\\left(0, \\dfrac{m}{4}\\right) = ' + pt(0, f) + '$.'
+      sol: 'Substituting the point gives $' + F.n(y0) + ' = a \\cdot ' + par(x0) + '^2$, so $a = ' + F.n(a) + '$. Rewriting $y = ' + (a.eq(1) ? '' : a.eq(-1) ? '-' : F.n(a)) + 'x^2$ as $x^2 = ' + F.sum([[a.inv(), 'y']]) + '$ gives $m = ' + F.n(a.inv()) + '$, so the focus is $\\left(0, \\dfrac{m}{4}\\right) = ' + pt(0, f) + '$.'
     };
   });
   def({ id: 'CN-par.point-from-pf', code: 'CN-par', lesson: '6.3', tier: 'H', level: '+1', fmt: 'V', w: 0.5,
@@ -330,7 +343,7 @@
       stem: 'A point $P$ on the parabola $' + parEq(mm, 'x') + '$ is at distance $' + d + '$ from the focus. The coordinates of $P$ are ( )', key: two(x0, y0),
       wrong: [[one(x0, y0), 'partial'], [two(d, Sd.sqrt(mm * d)), 'partial'], [two(d - mm / 2 > 0 ? d - mm / 2 : d + mm / 2, Sd.sqrt(mm * Math.abs(d - mm / 2 > 0 ? d - mm / 2 : d + mm / 2))), 'partial'], [one(x0, y0.neg()), 'partial'], ['$(\\pm ' + F.n(y0) + ', ' + x0 + ')$', 'swap']],
       check: chk.tuples([[x0, Math.sqrt(mm * x0)], [x0, -Math.sqrt(mm * x0)]]),
-      sol: '$|PF| = x_0 + \\dfrac{m}{4} = x_0 + ' + (mm / 4) + ' = ' + d + '$, so $x_0 = ' + x0 + '$. Then $y_0^2 = ' + mm + ' \\cdot ' + x0 + ' = ' + (mm * x0) + '$ and $y_0 = \\pm ' + F.n(y0) + '$ — two points.'
+      sol: '$|PF| = x_0 + \\dfrac{m}{4} = x_0 + ' + (mm / 4) + ' = ' + d + '$, so $x_0 = ' + x0 + '$. Then $y_0^2 = ' + mm + ' \\cdot ' + x0 + ' = ' + (mm * x0) + '$ and $y_0 = \\pm ' + F.n(y0) + '$. So there are two such points.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
