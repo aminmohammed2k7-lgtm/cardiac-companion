@@ -248,7 +248,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $q = ' + r + '$. The sum of the first $' + n + '$ terms is $' + Sn(n) + ' =$ ( )', key: m(s),
       wrong: W([[s + gterm(a1, r, n + 1), 'off-by-one'], [s - terms[n - 1], 'off-by-one'], [terms[n - 1], 'partial'], [n * (a1 + terms[n - 1]) / 2 === s ? null : q(n * (a1 + terms[n - 1]), 2), 'companion'], [-s, 'sign']]),
       check: chk.num(terms.reduce(function (x, y) { return x + y; }, 0)),
-      sol: 'Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $' + Sn(n) + ' = \\dfrac{' + (a1 === 1 ? '' : par(a1)) + '\\left(' + powT(r, n) + ' - 1\\right)}{' + par(r) + ' - 1} = ' + (r - 1 === 1 ? '' : '\\dfrac{' + (a1 * (Math.pow(r, n) - 1)) + '}{' + (r - 1) + '} = ') + s + '$. Adding the terms $' + listT(terms) + '$ gives the same result.'
+      sol: 'Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $' + Sn(n) + ' = \\dfrac{' + (a1 === 1 ? powT(r, n) + ' - 1' : par(a1) + '\\left(' + powT(r, n) + ' - 1\\right)') + '}{' + par(r) + ' - 1} = ' + (r - 1 === 1 ? '' : '\\dfrac{' + (a1 * (Math.pow(r, n) - 1)) + '}{' + (r - 1) + '} = ') + s + '$. Adding the terms $' + listT(terms) + '$ gives the same result.'
     };
   });
 
