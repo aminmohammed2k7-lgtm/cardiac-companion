@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/sq1.js — Sequences I: SQ-ar, SQ-geo, SQ-mean, SQ-gen, SQ-type. */
+/* ACE CSCA Question Factory · templates/sq1.js: Sequences I (SQ-ar, SQ-geo, SQ-mean, SQ-gen, SQ-type). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m;
@@ -45,7 +45,7 @@
     var wrong = [[a1.add(d.mul(n)), 'off-by-one'], [d.mul(n), 'partial'], [a1.add(d.mul(n - 2)), 'off-by-one'], [a1.add(d.mul(n + 1)), 'off-by-one'], [key.neg(), 'sign']];
     return {
       stem: stem || arStem(R, a1, d, n), key: m(key), wrong: W(wrong), check: chk.num(walk(a1.num, d.num, n)),
-      sol: (lead || '') + '$a_n = a_1 + (n - 1)d$, so $' + A(n) + ' = ' + F.n(a1) + ' + ' + (n - 1) + ' \\cdot ' + par(d) + ' = ' + F.n(key) + '$. Counting $' + n + '$ steps instead of $' + (n - 1) + '$ is the off-by-one trap.',
+      sol: (lead || '') + 'Since $a_n = a_1 + (n - 1)d$, we get $' + A(n) + ' = ' + F.n(a1) + ' + ' + (n - 1) + ' \\cdot ' + par(d) + ' = ' + F.n(key) + '$. From $a_1$ to $' + A(n) + '$ there are $' + (n - 1) + '$ steps of size $d$, not $' + n + '$.',
       sig: 'ar|' + F.n(a1) + '|' + F.n(d) + '|' + n
     };
   }
@@ -89,7 +89,7 @@
     return {
       stem: 'In the arithmetic sequence ' + SEQ + ', $' + A(i) + ' = ' + ai + '$ and $' + A(j) + ' = ' + aj + '$. Then $a_1$ and the common difference $d$ are ( )', key: pr(a1, d), wrong: wrong,
       check: chk.tuple([ai - (i - 1) * ((aj - ai) / (j - i)), (aj - ai) / (j - i)]),
-      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $d = \\dfrac{' + F.sum([[aj, ''], [-ai, '']]).replace(/^(-?\d+) ([+-]) (\d+)$/, '$1 $2 $3') + '}{' + (j - i) + '} = ' + d + '$. Then $a_1 = ' + A(i) + ' - ' + (i - 1 === 1 ? '' : (i - 1)) + 'd = ' + a1 + '$.'
+      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $d = \\dfrac{' + F.sum([[aj, ''], [-ai, '']]).replace(/^(-?\d+) ([+-]) (\d+)$/, '$1 $2 $3') + '}{' + (j - i) + '} = ' + d + '$. Then $a_1 = ' + A(i) + ' - ' + (i - 1 === 1 ? '' : (i - 1)) + 'd = ' + ai + ' - ' + (i - 1 === 1 ? '' : (i - 1) + ' \\cdot ') + par(d) + ' = ' + a1 + '$.'
     };
   });
   def({ id: 'SQ-ar.frac-d', code: 'SQ-ar', lesson: '5.1', tier: 'E', level: '+1', fmt: 'V', trick: 'T09',
@@ -106,14 +106,14 @@
       stem: 'In the arithmetic sequence ' + SEQ + ', $' + A(i) + ' = ' + ai + '$ and $' + A(j) + ' = ' + aj + '$. Then $' + A(k) + ' =$ ( )', key: m(key),
       wrong: W([[key + d, 'off-by-one'], [ai + k * d, 'partial'], [key - d, 'off-by-one'], [a1 + (k - 1) * (aj - ai), 'partial'], [aj + k * d, 'partial']]),
       check: chk.num(ai + (k - i) * ((aj - ai) / (j - i))),
-      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$ gives $d = ' + d + '$. Then $' + A(k) + ' = ' + A(i) + ' + ' + (k - i) + 'd = ' + ai + ' + ' + (k - i) + ' \\cdot ' + par(d) + ' = ' + key + '$.'
+      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $' + (j - i) + 'd = ' + aj + ' - ' + par(ai) + ' = ' + (aj - ai) + '$ and $d = ' + d + '$. Then $' + A(k) + ' = ' + A(i) + ' + ' + (k - i) + 'd = ' + ai + ' + ' + (k - i) + ' \\cdot ' + par(d) + ' = ' + key + '$.'
     };
   });
   function genTerm(R, stem, a1, d, sol) {
     var key = lin(d, a1 - d);
     return {
       stem: stem, key: m(key), wrong: W([[lin(d, a1), 'off-by-one'], [lin(a1, d), 'swap'], [lin(d, a1 + d), 'off-by-one'], [lin(d, d - a1), 'sign'], [lin(-d, a1 + d), 'sign']]),
-      check: chk.seq(function (n) { return walk(a1, d, n); }, 6), sol: sol + ' Check: $n = 1$ gives $' + a1 + '$.'
+      check: chk.seq(function (n) { return walk(a1, d, n); }, 6), sol: sol + ' Check with $n = 1$: the formula gives $' + a1 + '$, which is $a_1$.'
     };
   }
   def({ id: 'SQ-ar.general', code: 'SQ-ar', lesson: '5.1', tier: 'E', level: '+1', fmt: 'V',
@@ -121,7 +121,7 @@
     var a1 = R.int(-5, 9), d = R.nz(-4, 6), two = R.bool(0.4);
     if (a1 === d || a1 === 0) retry();
     return genTerm(R, 'In the arithmetic sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and ' + (two ? '$a_2 = ' + (a1 + d) + '$' : 'the common difference is $d = ' + d + '$') + '. The general term is $a_n =$ ( )', a1, d,
-      (two ? '$d = a_2 - a_1 = ' + d + '$. ' : '') + '$a_n = a_1 + (n - 1)d = ' + a1 + ' + ' + par(d) + '(n - 1) = ' + lin(d, a1 - d) + '$.');
+      (two ? '$d = a_2 - a_1 = ' + d + '$. ' : '') + '$a_n = a_1 + (n - 1)d = ' + F.sum([[a1, ''], [d, '(n - 1)']]) + ' = ' + lin(d, a1 - d) + '$.');
   });
   def({ id: 'SQ-ar.far-general', code: 'SQ-ar', lesson: '5.1', tier: 'M', level: '+1', fmt: 'V',
     form: 'Two far terms → aₙ = pn + q', basis: 'Course plan 5.1 Q8 (2.5)' }, function (R) {
@@ -129,7 +129,7 @@
     if (a1 === d || a1 === 0) retry();
     var ai = a1 + (i - 1) * d, aj = a1 + (j - 1) * d;
     return genTerm(R, 'In the arithmetic sequence ' + SEQ + ', $' + A(i) + ' = ' + ai + '$ and $' + A(j) + ' = ' + aj + '$. The general term is $a_n =$ ( )', a1, d,
-      '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$ gives $d = ' + d + '$, and $a_1 = ' + A(i) + ' - ' + (i - 1) + 'd = ' + a1 + '$. So $a_n = ' + a1 + ' + ' + par(d) + '(n - 1) = ' + lin(d, a1 - d) + '$.');
+      '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $' + (j - i) + 'd = ' + aj + ' - ' + par(ai) + ' = ' + (aj - ai) + '$ and $d = ' + d + '$. Then $a_1 = ' + A(i) + ' - ' + (i - 1) + 'd = ' + a1 + '$, so $a_n = ' + F.sum([[a1, ''], [d, '(n - 1)']]) + ' = ' + lin(d, a1 - d) + '$.');
   });
 
   /* ===================== SQ-geo · geometric sequences ===================== */
@@ -144,7 +144,7 @@
     return {
       stem: R.pick(['If the first three terms of the geometric sequence ' + SEQ + ' are $' + listT(terms) + '$, then the general term $a_n =$ ( )', 'The general term of the geometric sequence $' + listT(terms, true) + '$ is $a_n =$ ( )']),
       key: m(key), wrong: W(wrong), check: chk.seq(function (n) { var v = terms[0]; for (var i = 1; i < n; i++) v *= terms[1] / terms[0]; return v; }, 6),
-      sol: 'The common ratio is $q = \\dfrac{' + terms[1] + '}{' + terms[0] + '} = ' + r + '$, so $a_n = a_1q^{n-1} = ' + key + '$. Check $n = 1$: the exponent must be $n - 1$, not $n$.'
+      sol: 'The common ratio is $q = \\dfrac{' + terms[1] + '}{' + terms[0] + '} = ' + r + '$, so $a_n = a_1q^{n-1} = ' + key + '$. Check with $n = 1$: the formula gives $' + geoT(a1, r, 0) + ' = ' + a1 + '$, the first term. With the exponent $n$ instead of $n - 1$, it would give $' + (a1 * r) + '$.'
     };
   });
   def({ id: 'SQ-geo.middle', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -156,7 +156,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $a_4 = ' + a4 + '$. Then $' + A(k) + ' =$ ( )', key: m(key),
       wrong: W([[other, 'off-by-one'], [-key, 'sign'], [(a4 - a1) % 3 === 0 ? a1 + (a4 - a1) / 3 * (k - 1) : null, 'companion'], [(a1 + a4) % 2 === 0 ? (a1 + a4) / 2 : null, 'operation'], [-other, 'sign'], [a1 * r * (k - 1) * 2, 'operation']]),
       check: chk.num(a1 * Math.pow(Math.cbrt(a4 / a1), k - 1)),
-      sol: '$q^3 = \\dfrac{a_4}{a_1} = ' + (r * r * r) + '$, so $q = ' + r + '$ (a negative cube root is allowed). Then $' + A(k) + ' = a_1q^{' + (k - 1) + '} = ' + key + '$.'
+      sol: '$q^3 = \\dfrac{a_4}{a_1} = ' + (r * r * r) + '$, so $q = ' + r + '$. Then $' + A(k) + ' = a_1q^{' + (k - 1) + '} = ' + key + '$.'
     };
   });
   def({ id: 'SQ-geo.ratio', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -172,7 +172,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $a_4 = ' + F.n(a4) + '$. Then the common ratio $q =$ ( )', key: m(r),
       wrong: W([[r.neg(), 'sign'], [r.inv(), 'reciprocal'], [a4.div(a1), 'partial'], [r.inv().neg(), 'reciprocal'], [a4.sub(a1).div(3), 'companion']]),
       check: chk.num(Math.cbrt(a4.num / a1)),
-      sol: '$a_4 = a_1q^3$, so $q^3 = \\dfrac{' + F.n(a4) + '}{' + a1 + '} = ' + F.n(a4.div(a1)) + '$ and $q = ' + F.n(r) + '$. A negative cube keeps its sign.'
+      sol: '$a_4 = a_1q^3$, so $q^3 = ' + (function () { var raw = '\\dfrac{' + F.n(a4) + '}{' + a1 + '}', v = F.n(a4.div(a1)); return raw === v ? v : raw + ' = ' + v; })() + '$ and $q = ' + F.n(r) + '$. The value $' + F.n(r.neg()) + '$ does not work, because its cube is $' + F.n(r.neg().pow(3)) + '$.'
     };
   });
   def({ id: 'SQ-geo.term', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -217,8 +217,8 @@
     var formula = start === '+' ? geoT(c, -1, R.pick(['n+1', 'n-1'])) : geoT(c, -1, 'n'), P = altPool(R, c, start, formula);
     var st = QF.pickStmts(R, fmt, P.pool);
     if (block && block(c, start, st)) retry('real item');
-    return out('Given that the general term of the geometric sequence ' + SEQ + ' is $a_n = ' + formula + '$' + (fmt === 'N' ? ', which of the following statements is incorrect? ( )' : ', which of the following statements is correct? ( )'),
-      st, 'The terms are $' + listT([P.a(1), P.a(2), P.a(3), P.a(4)], true) + '$ ($S_n$ denotes the sum of the first $n$ terms).');
+    return out('The general term of the geometric sequence ' + SEQ + ' is $a_n = ' + formula + '$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is ' + (fmt === 'N' ? 'incorrect' : 'correct') + '? ( )',
+      st, 'The terms are $' + listT([P.a(1), P.a(2), P.a(3), P.a(4)], true) + '$.');
   }
   def({ id: 'SQ-geo.alt-stmt', code: 'SQ-geo', lesson: '5.2', tier: 'M', level: '=', fmt: 'S', w: 1,
     form: 'aₙ = c·(−1)ⁿ: which statement is correct (even partial sums are 0)', basis: 'Jun Q21' }, function (R) {
@@ -234,7 +234,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_2 = ' + a2 + '$ and the common ratio is $q = ' + F.n(r) + '$. Then $' + A(n) + ' =$ ( )', key: m(key),
       wrong: W([[q(a2).mul(r.pow(n - 1)), 'off-by-one'], [key.neg(), 'sign'], [q(a2).mul(r.pow(n - 3)), 'off-by-one'], [q(a2).add(r.mul(n - 2)), 'companion'], [q(a2).mul(r.inv().pow(n - 2)), 'reciprocal']]),
       check: chk.num((function () { var v = a2; for (var i = 2; i < n; i++) v *= r.num; return v; })()),
-      sol: 'Start from $a_2$: $' + A(n) + ' = a_2q^{' + (n - 2) + '} = ' + a2 + ' \\cdot ' + powT(r, n - 2) + ' = ' + F.n(key) + '$ (the exponent counts the steps from $a_2$, not from $a_1$).'
+      sol: 'Start from $a_2$: $' + A(n) + ' = a_2q^{' + (n - 2) + '} = ' + a2 + ' \\cdot ' + powT(r, n - 2) + ' = ' + F.n(key) + '$. The exponent is $' + (n - 2) + '$ because there are $' + (n - 2) + '$ steps from $a_2$ to $' + A(n) + '$.'
     };
   });
   def({ id: 'SQ-geo.sum-small', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '+1', fmt: 'V',
@@ -248,7 +248,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $q = ' + r + '$. The sum of the first $' + n + '$ terms is $' + Sn(n) + ' =$ ( )', key: m(s),
       wrong: W([[s + gterm(a1, r, n + 1), 'off-by-one'], [s - terms[n - 1], 'off-by-one'], [terms[n - 1], 'partial'], [n * (a1 + terms[n - 1]) / 2 === s ? null : q(n * (a1 + terms[n - 1]), 2), 'companion'], [-s, 'sign']]),
       check: chk.num(terms.reduce(function (x, y) { return x + y; }, 0)),
-      sol: 'The terms are $' + listT(terms) + '$; their sum is $' + s + '$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)'
+      sol: 'Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $' + Sn(n) + ' = \\dfrac{' + (a1 === 1 ? '' : par(a1)) + '\\left(' + powT(r, n) + ' - 1\\right)}{' + par(r) + ' - 1} = ' + (r - 1 === 1 ? '' : '\\dfrac{' + (a1 * (Math.pow(r, n) - 1)) + '}{' + (r - 1) + '} = ') + s + '$. Adding the terms $' + listT(terms) + '$ gives the same result.'
     };
   });
 
@@ -261,7 +261,7 @@
     return {
       stem: 'If $' + x + ', a, ' + z + '$ form an arithmetic sequence, then $a =$ ( )', key: m(key),
       wrong: W([[q(z - x, 2), 'operation'], [x + z, 'partial'], [gm, 'companion'], [key + 1, 'slip'], [key - 1, 'slip'], [-key, 'sign']]), check: chk.num((x + z) / 2),
-      sol: 'For an arithmetic sequence $2a = ' + x + ' + ' + par(q(z)) + '$, so $a = ' + key + '$.'
+      sol: 'In an arithmetic sequence the middle term is the average of its neighbours, so $2a = ' + x + ' + ' + par(q(z)) + ' = ' + (x + z) + '$ and $a = ' + key + '$.'
     };
   });
   def({ id: 'SQ-mean.sum-given', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -270,7 +270,7 @@
     return {
       stem: 'If $a, b, c$ form an arithmetic sequence and $a + c = ' + s + '$, then $b =$ ( )', key: m(s / 2),
       wrong: W([[s, 'partial'], [2 * s, 'operation'], [s > 0 ? m(F.pm(s / 2)) : null, 'pm'], [q(s, 4), 'half'], [s > 0 && N.isSquare(s) ? Math.sqrt(s) : null, 'companion'], [-s / 2, 'sign']]), check: chk.num(s / 2),
-      sol: 'In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = ' + s + '$, so $b = ' + (s / 2) + '$ (one value only).'
+      sol: 'In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = ' + s + '$, so $b = ' + (s / 2) + '$. An arithmetic mean has only one value.'
     };
   });
   var SURD = [[2, 3], [3, 2], [3, 5], [4, 7], [2, 2], [3, 7], [4, 3], [5, 2], [3, 8], [4, 15], [5, 21], [6, 11], [4, 12], [5, 24]];   // p ± √r with p² > r
@@ -282,7 +282,7 @@
     return {
       stem: R.pick(['Given that $a = ' + F.n(a) + '$ and $b = ' + F.n(b) + '$, the arithmetic mean of $a$ and $b$ is ( )', 'The arithmetic mean of $' + F.n(a) + '$ and $' + F.n(b) + '$ is ( )']), key: m(p),
       wrong: W([[m(F.pm(g)), 'companion'], [2 * p, 'partial'], [g.eq(p) ? null : g, 'companion'], [Sd.sqrt(r), 'operation'], [m(F.pm(p)), 'pm']]), check: chk.num((a.num + b.num) / 2),
-      sol: 'The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{' + (2 * p) + '}{2} = ' + p + '$ — the surds cancel, and there is only one value. ($\\pm ' + F.n(g) + '$ is the geometric mean.)'
+      sol: 'The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{' + (2 * p) + '}{2} = ' + p + '$, because the surds cancel. The value $\\pm ' + F.n(g) + '$ is the geometric mean, since $ab = ' + p + '^2 - ' + r + ' = ' + (p * p - r) + '$.'
     };
   });
   def({ id: 'SQ-mean.geo', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -292,7 +292,7 @@
     return {
       stem: R.pick(['The geometric mean of $' + x + '$ and $' + y + '$ is ( )', 'If $' + x + ', G, ' + y + '$ form a geometric sequence, then $G =$ ( )']), key: m(F.pm(g)),
       wrong: W([[g, 'pm'], [q(x + y, 2), 'companion'], [-g, 'pm'], [x * y, 'partial'], [m(F.pm(q(x + y, 2))), 'companion']]), check: chk.alts([Math.sqrt(x * y), -Math.sqrt(x * y)]),
-      sol: 'The geometric mean $G$ satisfies $G^2 = ' + x + ' \\cdot ' + y + ' = ' + (x * y) + '$, so $G = \\pm ' + g + '$ — both signs (the CSCA convention). $' + F.n(q(x + y, 2)) + '$ is the arithmetic mean.'
+      sol: 'The geometric mean $G$ satisfies $G^2 = ' + x + ' \\cdot ' + y + ' = ' + (x * y) + '$, so $G = \\pm ' + g + '$. Both signs work, since $' + x + ', ' + g + ', ' + y + '$ and $' + x + ', ' + (-g) + ', ' + y + '$ are both geometric. The value $' + F.n(q(x + y, 2)) + '$ is the arithmetic mean.'
     };
   });
   def({ id: 'SQ-mean.prod-given', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -301,7 +301,7 @@
     return {
       stem: R.pick(['Given that $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )', 'If $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )']), key: m(F.pm(g)),
       wrong: W([[g, 'pm'], [q(p, 2), 'half'], [-g, 'pm'], [m(F.pm(q(p, 2))), 'half'], [p, 'partial']]), check: chk.alts([g, -g]),
-      sol: 'In a geometric sequence $b^2 = ac = ' + p + '$, so $b = \\pm ' + g + '$ — both signs are possible.'
+      sol: 'In a geometric sequence $b^2 = ac = ' + p + '$, so $b = \\pm ' + g + '$. Both signs are possible: for example $1, ' + g + ', ' + p + '$ and $1, ' + (-g) + ', ' + p + '$ are both geometric.'
     };
   });
   var SURDG = [['\\sqrt{5} + 1', '\\sqrt{5} - 1', 4], ['\\sqrt{10} + 1', '\\sqrt{10} - 1', 9], ['\\sqrt{5} + 2', '\\sqrt{5} - 2', 1], ['\\sqrt{13} + 2', '\\sqrt{13} - 2', 9], ['\\sqrt{17} + 1', '\\sqrt{17} - 1', 16], ['\\sqrt{3} + 1', '\\sqrt{3} - 1', 2],
@@ -314,7 +314,7 @@
     return {
       stem: R.pick(['Given $a = ' + c[0] + '$ and $b = ' + c[1] + '$, the geometric mean of $a$ and $b$ is ( )', 'The geometric mean of $' + c[0] + '$ and $' + c[1] + '$ is ( )']), key: m(F.pm(g)),
       wrong: W([[g, 'pm'], [amT, 'companion'], [c[2] === 1 ? null : m(F.pm(c[2])), 'partial'], [g.neg(), 'pm'], ['$\\pm ' + amT + '$', 'companion']]), check: chk.alts([Math.sqrt(a * b), -Math.sqrt(a * b)]),
-      sol: 'The product is a difference of squares: $ab = ' + c[2] + '$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$ (two values). $' + amT + '$ is the arithmetic mean.'
+      sol: 'The product is a difference of squares: $ab = ' + c[0].split(' + ').map(function (x) { return (/^\d+$/.test(x) ? x : '\\left(' + x + '\\right)') + '^2'; }).join(' - ') + ' = ' + c[2] + '$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$. The value $' + amT + '$ is the arithmetic mean.'
     };
   });
   def({ id: 'SQ-mean.positive', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '+1', fmt: 'V',
@@ -325,7 +325,7 @@
     return {
       stem: kind === 'num' ? 'The positive geometric mean of $' + c[0] + '$ and $' + c[1] + '$ is ( )' : 'If the positive numbers $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )', key: m(g),
       wrong: W([[m(F.pm(g)), 'pm'], [-g, 'sign'], [kind === 'num' ? q(c[0] + c[1], 2) : q(p, 2), kind === 'num' ? 'companion' : 'half'], [p, 'partial']]), check: chk.num(Math.sqrt(p)),
-      sol: (kind === 'num' ? '$G^2 = ' + c[0] + ' \\cdot ' + c[1] + ' = ' + p + '$' : '$b^2 = ac = ' + p + '$') + ' gives $\\pm ' + g + '$, but the stem asks for the positive value only: $' + g + '$.'
+      sol: (kind === 'num' ? '$G^2 = ' + c[0] + ' \\cdot ' + c[1] + ' = ' + p + '$' : '$b^2 = ac = ' + p + '$') + ' gives $\\pm ' + g + '$. The question asks for the positive value, so the answer is $' + g + '$.'
     };
   });
   def({ id: 'SQ-mean.four', code: 'SQ-mean', lesson: '5.3', tier: 'M', level: '+1', fmt: 'S',
@@ -337,9 +337,9 @@
     }
     var pool = [
       st('a', F.n(p), true, '$\\dfrac{a + b}{2} = ' + p + '$.', { g: 'a' }), st('g', F.pm(g), true, '$ab = ' + (p * p - r) + '$, so the geometric mean is $\\pm ' + F.n(g) + '$.', { g: 'g' }),
-      st('a', F.pm(p), false, 'an arithmetic mean has one value.', { g: 'a', trap: 'pm' }), st('a', String(2 * p), false, 'that is the sum $a + b$; divide by $2$.', { g: 'a2', trap: 'partial' }),
-      st('g', F.n(g), false, 'a geometric mean has two values, $\\pm ' + F.n(g) + '$.', { g: 'g', trap: 'pm' }), st('g', F.pm(p), false, 'that is the arithmetic mean with a $\\pm$ sign.', { g: 'g2', trap: 'companion' }),
-      st('g', F.pm(p * p - r), false, 'that is $\\pm ab$; take the square root.', { g: 'g3', trap: 'partial' }), st('a', F.n(g), false, 'that is the size of the geometric mean.', { g: 'a3', trap: 'companion' })
+      st('a', F.pm(p), false, 'an arithmetic mean has one value, $\\dfrac{a + b}{2} = ' + p + '$.', { g: 'a', trap: 'pm' }), st('a', String(2 * p), false, '$' + (2 * p) + '$ is the sum $a + b$. The mean is $\\dfrac{' + (2 * p) + '}{2} = ' + p + '$.', { g: 'a2', trap: 'partial' }),
+      st('g', F.n(g), false, 'the geometric mean has two values, $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$.', { g: 'g', trap: 'pm' }), st('g', F.pm(p), false, '$' + p + '$ is the arithmetic mean. The geometric mean is $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$.', { g: 'g2', trap: 'companion' }),
+      st('g', F.pm(p * p - r), false, '$' + (p * p - r) + '$ is the product $ab$. The geometric mean is its square root with both signs, $\\pm ' + F.n(g) + '$.', { g: 'g3', trap: 'partial' }), st('a', F.n(g), false, 'the arithmetic mean is $\\dfrac{a + b}{2} = ' + p + '$, and $' + F.n(g) + '$ is $\\sqrt{ab}$.', { g: 'a3', trap: 'companion' })
     ].filter(function (s) { return s.ok === s.test(); });
     return out('Let $a = ' + F.n(a) + '$ and $b = ' + F.n(b) + '$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -354,7 +354,7 @@
     return {
       stem: 'If $x$, $' + t(p) + '$, $' + t(r) + '$ form a geometric sequence, then $x =$ ( )', key: m(x),
       wrong: W([[-x, 'sign'], [r + 2 * p === 0 ? null : q(p * p, r + 2 * p), 'sign'], [x + p, 'partial'], [r - 2 * p, 'partial'], [q(p * p, r), 'slip']]), check: chk.num(p * p / (r - 2 * p)),
-      sol: 'Middle term squared: $(' + t(p) + ')^2 = x(' + t(r) + ')$. Expanding, $' + F.sum([[2 * p, 'x'], [p * p, '']]) + ' = ' + F.sum([[r, 'x']]) + '$, so $x = ' + x + '$. The terms are $' + listT([x, x + p, x + r]) + '$.'
+      sol: 'The square of the middle term equals the product of its neighbours: $(' + t(p) + ')^2 = x(' + t(r) + ')$. Expanding and cancelling $x^2$ gives $' + F.sum([[2 * p, 'x'], [p * p, '']]) + ' = ' + F.sum([[r, 'x']]) + '$, so $x = ' + x + '$. The terms are $' + listT([x, x + p, x + r]) + '$.'
     };
   });
 
@@ -374,7 +374,7 @@
     return {
       stem: R.pick(['If the first ' + (count === 3 ? 'three' : 'four') + ' terms of the sequence ' + SEQ + ' are $' + listT(terms) + '$, then the general term $a_n =$ ( )', 'If the sequence ' + SEQ + ' is $' + listT(terms, true) + '$, then the general term $a_n =$ ( )']),
       key: m(key), wrong: W(wrong), check: chk.seq(function (n) { return frac ? sgn(start, n) / Math.pow(b, n) : sgn(start, n) * Math.pow(b, n); }, 6),
-      sol: 'Separate the sign and the size. Size: ' + (frac ? '$\\dfrac{1}{' + pw + '}$' : '$' + pw + '$') + '. Sign: the first term is ' + (start === '+' ? 'positive' : 'negative') + ', so use $' + s1 + '$. Hence $a_n = ' + key + '$; test $n = 1$ and $n = 2$ in each option.'
+      sol: 'Separate the sign and the size. Size: ' + (frac ? '$\\dfrac{1}{' + pw + '}$' : '$' + pw + '$') + '. Sign: the first term is ' + (start === '+' ? 'positive' : 'negative') + ', so use $' + s1 + '$. Hence $a_n = ' + key + '$. Check with $n = 1$ and $n = 2$: the formula gives $' + F.n(val(1)) + '$ and $' + F.n(val(2)) + '$.'
     };
   });
   def({ id: 'SQ-gen.linear-den', code: 'SQ-gen', lesson: '5.4', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -390,7 +390,7 @@
       stem: R.pick(['The general term of the sequence $' + listT(terms, true) + '$ is $a_n =$ ( )', 'If the sequence ' + SEQ + ' is $' + listT(terms, true) + '$, then the general term $a_n =$ ( )']), key: m(key),
       wrong: W([[fr(s2, lin(p, r)), 'sign'], [fr(s1, lin(p, r - p)), 'off-by-one'], [fr(s1, lin(1, p + r - 1)), 'near-miss'], [fr(s1, lin(p, r + p)), 'off-by-one'], [fr('1', lin(p, r)), 'partial']]),
       check: chk.seq(function (n) { return sgn(start, n) / (p * n + r); }, 6),
-      sol: 'Denominators $' + [1, 2, 3, 4].map(function (n) { return p * n + r; }).join(', ') + '$ increase by $' + p + '$: they are $' + lin(p, r) + '$. The first term is ' + (start === '+' ? 'positive' : 'negative') + ': sign $' + s1 + '$. So $a_n = ' + key + '$.'
+      sol: 'Denominators $' + [1, 2, 3, 4].map(function (n) { return p * n + r; }).join(', ') + '$ increase by $' + p + '$, so they are $' + lin(p, r) + '$. The first term is ' + (start === '+' ? 'positive' : 'negative') + ', so the sign factor is $' + s1 + '$. So $a_n = ' + key + '$.'
     };
   });
   var SHAPES = [['n', 'n + 1', function (n) { return [n, n + 1]; }], ['n', '2n - 1', function (n) { return [n, 2 * n - 1]; }], ['n', '2n + 1', function (n) { return [n, 2 * n + 1]; }], ['n', '3n + 1', function (n) { return [n, 3 * n + 1]; }], ['n', '3n - 1', function (n) { return [n, 3 * n - 1]; }],
@@ -407,8 +407,8 @@
     var wrong = [[mk(s2, sh[0], sh[1]), 'sign'], [mk(s1, cand[0][0], cand[0][1]), 'near-miss'], [mk(s1, sh[1], sh[0]), 'reciprocal'], [mk(s2, cand[1][0], cand[1][1]), 'near-miss'], [mk(s1, cand[2][0], cand[2][1]), 'near-miss']];
     return {
       stem: 'The general term of the sequence $' + listT(terms, true) + '$ is $a_n =$ ( )', key: m(key), wrong: W(wrong), check: chk.seq(function (n) { var t = sh[2](n); return sgn(start, n) * t[0] / t[1]; }, 6),
-      sol: 'Treat the three parts separately. Numerators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[0]; }).join(', ') + '$, i.e. $' + sh[0] + '$. Denominators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[1]; }).join(', ') + '$, i.e. $' + sh[1] +
-        '$. Sign: the first term is ' + (start === '+' ? 'positive' : 'negative') + ', $' + s1 + '$. So $a_n = ' + key + '$.'
+      sol: 'Treat the three parts separately. Numerators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[0]; }).join(', ') + '$, that is $' + sh[0] + '$. Denominators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[1]; }).join(', ') + '$, that is $' + sh[1] +
+        '$. The first term is ' + (start === '+' ? 'positive' : 'negative') + ', so the sign factor is $' + s1 + '$. So $a_n = ' + key + '$.'
     };
   }
   def({ id: 'SQ-gen.n-over', code: 'SQ-gen', lesson: '5.4', tier: 'M', level: '+1', fmt: 'V',
@@ -428,13 +428,24 @@
     return {
       stem: R.pick(['If the first four terms of the sequence ' + SEQ + ' are $' + listT(terms) + '$, then a possible general term is $a_n =$ ( )', 'A general term of the sequence $' + listT(terms, true) + '$ is $a_n =$ ( )']), key: m(P[0]), wrong: wrong,
       check: { type: 'custom', isTrue: function (text) { var f = ev.fnOf(text); return [1, 2, 3, 4].every(function (n) { return ev.close(f({ n: n }), terms[n - 1]); }); }, same: function (x, y) { var f = ev.fnOf(x), g = ev.fnOf(y); return [1, 2, 3, 4, 5, 6].every(function (n) { return ev.close(f({ n: n }), g({ n: n })); }); } },
-      sol: 'Test $n = 1, 2, 3, 4$ in each option: only $' + P[0] + '$ gives $' + listT(terms) + '$. An option that fits $a_1$ alone is not enough.'
+      sol: 'Put $n = 1, 2, 3, 4$ into each option. Only $' + P[0] + '$ gives $' + listT(terms) + '$.' + (function () {
+        var w = near.concat(far)[0]; if (!w) return '';
+        var j = [1, 2, 3, 4].filter(function (n) { return w[1](n) !== terms[n - 1]; })[0];
+        return ' For example, $' + w[0] + '$ gives $' + w[1](j) + '$ at $n = ' + j + '$ instead of $' + terms[j - 1] + '$.';
+      })()
     };
   });
 
   /* ===================== SQ-type · arithmetic or geometric? ===================== */
   function isAr(t) { for (var i = 2; i < t.length; i++) if (Math.abs((t[i] - t[i - 1]) - (t[1] - t[0])) > 1e-9) return false; return true; }
   function isGeo(t) { if (t.some(function (x) { return x === 0; })) return false; for (var i = 2; i < t.length; i++) if (Math.abs(t[i] * t[0] - t[i - 1] * t[1]) > 1e-9 * Math.abs(t[0] * t[i]) + 1e-12) return false; return true; }
+  function steps(s, f) { var o = []; for (var i = 1; i < s.length; i++) o.push(f(s[i], s[i - 1])); return o.join(', '); }
+  /** why a listed sequence is (or is not) arithmetic or geometric, from its actual differences or ratios */
+  function typeWhy(s, want) {
+    if (want === 'ar') return 'the differences are $' + steps(s, function (x, y) { return F.n(x - y); }) + '$';
+    if (s.some(function (x) { return x === 0; })) return 'one of its terms is $0$, and a geometric sequence has no zero terms';
+    return 'the ratios are $' + steps(s, function (x, y) { return F.n(q(x, y)); }) + '$';
+  }
   function mkSeq(R, kind) {
     var a = R.int(-6, 9), d = R.nz(-5, 6), r = R.pick([2, 3, -2, -3]), c = R.pick([1, 2, 3, -1, 5, 4]);
     switch (kind) {
@@ -458,8 +469,9 @@
     return {
       stem: 'Among the four sequences ' + seqs.map(function (s, i) { return '(' + (i + 1) + ') $' + listT(s) + '$'; }).join('; ') + ', the number of ' + want + ' sequences is ( )', key: m(count),
       wrong: W(opts.filter(function (x) { return x !== count; }).map(function (x) { return [x, 'slip']; })), check: chk.num(count),
-      sol: (want === 'arithmetic' ? 'A sequence is arithmetic when consecutive differences are equal (a constant sequence counts, with $d = 0$).' : 'A sequence is geometric when consecutive ratios are equal (a constant non-zero sequence counts, with $q = 1$).') + ' Here ' +
-        (which.length ? which.join(', ') + (which.length === 1 ? ' is' : ' are') : 'none is') + ' ' + want + ', so the number is $' + count + '$.'
+      sol: 'A sequence is ' + want + ' when the ' + (want === 'arithmetic' ? 'differences' : 'ratios') + ' of consecutive terms are all equal. ' +
+        seqs.map(function (s, i) { var ok = (want === 'arithmetic' ? isAr : isGeo)(s); return 'In (' + (i + 1) + ') ' + typeWhy(s, want === 'arithmetic' ? 'ar' : 'geo') + ', so it is ' + (ok ? '' : 'not ') + want + '.'; }).join(' ') +
+        ' So the number of ' + want + ' sequences is $' + count + '$.'
     };
   });
   function formulaSeq(R, kinds) {
@@ -474,13 +486,13 @@
     form: 'The sequence with general term aₙ = pn + q (or c·kⁿ) is …', basis: 'Apr Q17' }, function (R) {
     var G = formulaSeq(R, ['lin', 'lin', 'exp', 'exp', 'expm', 'quad']);
     if (G.kind === 'lin' && G.p === 2 && G.r === -1) retry('real item');
-    var ar = isAr(G.terms), ge = isGeo(G.terms);
-    var why = G.kind === 'quad' ? 'neither the differences nor the ratios of consecutive terms are constant.' : G.kind === 'lin' ? '$a_{n+1} - a_n = ' + G.p + '$ is constant.' : '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$ is constant.';
+    var ar = isAr(G.terms), ge = isGeo(G.terms), t4 = G.terms.slice(0, 4);
+    var why = G.kind === 'quad' ? typeWhy(t4, 'ar') + ', which are not all equal, and ' + typeWhy(t4, 'geo') + ', which are not all equal either.' : G.kind === 'lin' ? '$a_{n+1} - a_n = ' + G.p + '$ for every $n$.' : '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$ for every $n$.';
     var S4 = [
-      h.factS('an arithmetic sequence', ar, function () { return isAr(G.terms); }, ar ? why : 'the differences of consecutive terms are not constant.', { trap: 'companion' }),
-      h.factS('a geometric sequence', ge, function () { return isGeo(G.terms); }, ge ? why : 'the ratios of consecutive terms are not constant.', { trap: 'companion' }),
-      h.factS('both arithmetic and geometric', ar && ge, function () { return isAr(G.terms) && isGeo(G.terms); }, ar && ge ? '' : 'only a constant non-zero sequence is both.', { trap: 'slip' }),
-      h.factS('neither arithmetic nor geometric', !ar && !ge, function () { return !isAr(G.terms) && !isGeo(G.terms); }, !ar && !ge ? why : 'check the differences and the ratios of the first terms $' + listT(G.terms.slice(0, 4)) + '$.', { trap: 'slip' })
+      h.factS('an arithmetic sequence', ar, function () { return isAr(G.terms); }, ar ? why : typeWhy(t4, 'ar') + ', which are not all equal.', { trap: 'companion' }),
+      h.factS('a geometric sequence', ge, function () { return isGeo(G.terms); }, ge ? why : typeWhy(t4, 'geo') + (t4.some(function (x) { return x === 0; }) ? '.' : ', which are not all equal.'), { trap: 'companion' }),
+      h.factS('both arithmetic and geometric', ar && ge, function () { return isAr(G.terms) && isGeo(G.terms); }, ar && ge ? '' : 'a sequence that is both must be constant, and here $a_1 = ' + t4[0] + '$ while $a_2 = ' + t4[1] + '$.', { trap: 'slip' }),
+      h.factS('neither arithmetic nor geometric', !ar && !ge, function () { return !isAr(G.terms) && !isGeo(G.terms); }, !ar && !ge ? why : 'it is ' + (ar ? 'arithmetic' : 'geometric') + ', because ' + why, { trap: 'slip' })
     ];
     var key = S4.filter(function (s) { return s.ok; });
     if (key.length !== 1) retry();
@@ -493,13 +505,12 @@
     var test = want === 'ar' ? isAr : isGeo, name = want === 'ar' ? 'arithmetic' : 'geometric';
     function st(s) {
       var ok = test(s);
-      return h.factS('$' + listT(s, true) + '$', ok, function () { return test(s); }, ok ? (want === 'ar' ? 'the common difference is $' + (s[1] - s[0]) + '$.' : 'the common ratio is $' + F.n(q(s[1], s[0])) + '$.') :
-        (want === 'ar' ? 'the differences are $' + [s[1] - s[0], s[2] - s[1], s[3] - s[2]].join(', ') + '$ — not constant.' : 'the ratios of consecutive terms are not constant.'), { trap: (want === 'ar' ? isGeo(s) : isAr(s)) ? 'companion' : 'slip' });
+      return h.factS('$' + listT(s, true) + '$', ok, function () { return test(s); }, typeWhy(s, want) + '.', { trap: (want === 'ar' ? isGeo(s) : isAr(s)) ? 'companion' : 'slip' });
     }
     var key = st(keySeq), wrong = ws.map(st);
     if (!key.ok || wrong.some(function (w) { return w.ok; })) retry();
     var st4 = QF.useStmts('S', key, wrong);
-    st4.sol = '$' + listT(keySeq, true) + '$ is ' + name + ': ' + key.why + ' In each of the other three sequences the ' + (want === 'ar' ? 'differences' : 'ratios') + ' of consecutive terms are not constant.';
+    st4.sol = [keySeq].concat(ws).map(function (s) { return '$' + listT(s, true) + '$ is ' + (test(s) ? '' : 'not ') + name + ', because ' + typeWhy(s, want) + '.'; }).join(' ');
     return out('Which of the following sequences is ' + (want === 'ar' ? 'an arithmetic' : 'a geometric') + ' sequence? ( )', st4);
   }
   def({ id: 'SQ-type.which-arith', code: 'SQ-type', lesson: '5.4', tier: 'E', level: '=', fmt: 'S', w: 0.5,
@@ -510,17 +521,22 @@
     form: 'aₙ = c·kⁿ with a negative k (or aₙ = pn + q): which description is correct (type, ratio or difference, first term)', basis: 'Course plan 5.4 Q5' }, function (R) {
     var G = formulaSeq(R, ['exp', 'exp', 'expm', 'lin']), t = G.terms, a1 = t[0];
     if (G.kind !== 'lin' && G.k > 0 && R.bool(0.7)) retry();
-    var d = t[1] - t[0];
+    var d = t[1] - t[0], t4 = t.slice(0, 4), lin1 = G.kind === 'lin';
+    function at(n) {                                     // the formula with a number put in for n
+      if (lin1) return (G.p === 1 ? '' : G.p === -1 ? '-' : F.n(G.p) + ' \\cdot ') + n + (G.r ? (G.r > 0 ? ' + ' : ' - ') + Math.abs(G.r) : '');
+      return geoT(G.c, G.k, G.kind === 'exp' ? n : n - 1);
+    }
+    var ratioW = '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$ for every $n$', diffW = '$a_{n+1} - a_n = ' + G.p + '$ for every $n$';
     function st(text, test, why, extra) { var ok = test(); return h.factS(text, ok, test, why, extra); }
     var pool = [
-      st('It is a geometric sequence with common ratio $' + F.n(G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], G.k); }, G.kind === 'lin' ? 'the ratios of consecutive terms are not constant.' : '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$.', { g: 'q', trap: 'companion' }),
-      st('It is a geometric sequence with common ratio $' + F.n(-G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], -G.k); }, 'the ratio keeps the sign of the base.', { g: 'q', trap: 'sign' }),
-      st('It is an arithmetic sequence with common difference $' + F.n(G.kind === 'lin' ? G.p : G.k) + '$', function () { return isAr(t) && ev.close(d, G.kind === 'lin' ? G.p : G.k); }, G.kind === 'lin' ? '$a_{n+1} - a_n = ' + G.p + '$.' : 'the differences of consecutive terms are not constant.', { g: 'd', trap: 'companion' }),
-      st('Its first term is $a_1 = ' + a1 + '$', function () { return true; }, 'put $n = 1$.', { g: 'a1' }),
-      st('Its first term is $a_1 = ' + (G.kind === 'lin' ? G.r : G.c) + '$', function () { return a1 === (G.kind === 'lin' ? G.r : G.c); }, 'put $n = 1$: $a_1 = ' + a1 + '$.', { g: 'a1', trap: 'off-by-one' }),
-      st('It is neither arithmetic nor geometric', function () { return !isAr(t) && !isGeo(t); }, 'one of the two tests succeeds.', { g: 'no', trap: 'slip' }),
-      st('$a_2 = ' + t[1] + '$', function () { return true; }, 'put $n = 2$.', { g: 'a2' }),
-      st('$a_3 = ' + (-t[2]) + '$', function () { return t[2] === -t[2]; }, 'put $n = 3$: $a_3 = ' + t[2] + '$.', { g: 'a3', trap: 'sign' })
+      st('It is a geometric sequence with common ratio $' + F.n(G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], G.k); }, lin1 ? typeWhy(t4, 'geo') + (t4.indexOf(0) >= 0 ? '.' : ', which are not all equal.') : ratioW + '.', { g: 'q', trap: 'companion' }),
+      st('It is a geometric sequence with common ratio $' + F.n(-G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], -G.k); }, lin1 ? typeWhy(t4, 'geo') + (t4.indexOf(0) >= 0 ? '.' : ', which are not all equal.') : '$\\dfrac{a_2}{a_1} = \\dfrac{' + t[1] + '}{' + par(t[0]) + '} = ' + G.k + '$, so the common ratio is $' + G.k + '$.', { g: 'q', trap: 'sign' }),
+      st('It is an arithmetic sequence with common difference $' + F.n(lin1 ? G.p : G.k) + '$', function () { return isAr(t) && ev.close(d, lin1 ? G.p : G.k); }, lin1 ? diffW + '.' : typeWhy(t4, 'ar') + ', which are not all equal.', { g: 'd', trap: 'companion' }),
+      st('Its first term is $a_1 = ' + a1 + '$', function () { return true; }, '$a_1 = ' + at(1) + ' = ' + a1 + '$.', { g: 'a1' }),
+      st('Its first term is $a_1 = ' + (lin1 ? G.r : G.c) + '$', function () { return a1 === (lin1 ? G.r : G.c); }, '$a_1 = ' + at(1) + ' = ' + a1 + '$.', { g: 'a1', trap: 'off-by-one' }),
+      st('It is neither arithmetic nor geometric', function () { return !isAr(t) && !isGeo(t); }, lin1 ? 'it is arithmetic, because ' + diffW + '.' : 'it is geometric, because ' + ratioW + '.', { g: 'no', trap: 'slip' }),
+      st('$a_2 = ' + t[1] + '$', function () { return true; }, '$a_2 = ' + at(2) + ' = ' + t[1] + '$.', { g: 'a2' }),
+      st('$a_3 = ' + (-t[2]) + '$', function () { return t[2] === -t[2]; }, '$a_3 = ' + at(3) + ' = ' + t[2] + '$.', { g: 'a3', trap: 'sign' })
     ];
     var seen = {};
     pool = pool.filter(function (s) { var k2 = QF.normText(s.t); if (seen[k2]) return false; seen[k2] = 1; return true; });
