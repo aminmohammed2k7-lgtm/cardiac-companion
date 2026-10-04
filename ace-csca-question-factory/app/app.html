@@ -1,0 +1,878 @@
+<title>CSCA Question Factory</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap">
+<style id="katex-css">/*@KATEX_CSS*/</style>
+<style>
+/* Layout: one control rail beside one exam sheet. The sheet is the only paper surface; controls stay flat on the desk. */
+:root {
+  --bg: #EEF1F5; --surface: #FFFFFF; --panel: #F6F8FA; --ink: #16202E; --muted: #586579; --line: #D2D9E2;
+  --accent: #1D4FD7; --accent-ink: #FFFFFF; --accent-soft: #E3EBFD;
+  --key: #BF3319; --key-ink: #FFFFFF; --key-soft: #FBEAE6;
+  --ok: #1A7A4A; --warn: #955800; --bad: #B3261E;
+  --font-ui: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-paper: 'STIX Two Text', 'Times New Roman', Times, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E131A; --surface: #171D27; --panel: #121821; --ink: #E7ECF3; --muted: #98A5B7; --line: #2B3545;
+    --accent: #8AA9FF; --accent-ink: #0B1220; --accent-soft: #1B2948;
+    --key: #FF9079; --key-ink: #2A0E08; --key-soft: #38201B;
+    --ok: #63CF95; --warn: #E9B250; --bad: #FF8F85; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0E131A; --surface: #171D27; --panel: #121821; --ink: #E7ECF3; --muted: #98A5B7; --line: #2B3545;
+  --accent: #8AA9FF; --accent-ink: #0B1220; --accent-soft: #1B2948;
+  --key: #FF9079; --key-ink: #2A0E08; --key-soft: #38201B;
+  --ok: #63CF95; --warn: #E9B250; --bad: #FF8F85; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font: 400 15px/1.5 var(--font-ui); margin: 0; }
+.wrap { max-width: 1260px; margin-inline: auto; padding-inline: 16px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--font-mono); font-size: 0.9em; }
+
+/* top bar */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 24px; padding-block: 10px; }
+.brand { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+.brand .paren { font-family: var(--font-paper); color: var(--key); margin-left: 4px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 2px; }
+.tabs button { border: 0; background: none; color: var(--muted); padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+.tabs button:hover { color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--ink); background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font-weight: 500; }
+.tab { padding-block: 20px 56px; }
+.lede { color: var(--muted); max-width: 70ch; }
+.h { font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.stack { display: grid; gap: 16px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.grow { flex: 1 1 auto; min-width: 0; }
+
+/* controls */
+.split { display: grid; grid-template-columns: minmax(250px, 310px) minmax(0, 1fr); gap: 20px; align-items: start; }
+.rail { display: grid; gap: 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+.f { display: grid; gap: 4px; min-width: 0; }
+.f > span, .cap { font-size: 11.5px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+select, input[type="number"], input[type="text"], input[type="search"], textarea {
+  width: 100%; min-width: 0; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface);
+}
+textarea { font-family: var(--font-mono); font-size: 13px; line-height: 1.45; resize: vertical; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.seed { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+.btn { border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: 500; white-space: nowrap; }
+.btn:hover { filter: brightness(1.08); }
+.btn.ghost { background: var(--surface); color: var(--ink); border-color: var(--line); font-weight: 400; }
+.btn.ghost:hover { border-color: var(--muted); filter: none; }
+.btn[disabled] { opacity: 0.5; cursor: default; }
+.checks { display: flex; flex-wrap: wrap; gap: 6px; }
+.chk { display: inline-flex; align-items: center; gap: 6px; padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 13px; cursor: pointer; }
+.chk input { margin: 0; accent-color: var(--accent); }
+.chk:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+details.more { border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+details.more > summary { padding: 8px 10px; cursor: pointer; font-size: 13px; }
+details.more .inner { padding: 4px 10px 10px; display: grid; gap: 10px; max-height: 280px; overflow: auto; }
+.codegrp { display: grid; gap: 4px; }
+.codegrp b { font-size: 12px; font-weight: 600; }
+.hint { font-size: 12.5px; color: var(--muted); }
+
+/* toolbar above the sheet */
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; margin-bottom: 10px; }
+.toolbar .btn { padding: 5px 10px; font-size: 13.5px; }
+.switch { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; cursor: pointer; }
+.switch input { accent-color: var(--key); margin: 0; }
+.stats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chip { font: 12px/1.3 var(--font-mono); padding: 3px 8px; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--muted); }
+.chip b { color: var(--ink); font-weight: 500; }
+.chip.ok { color: var(--ok); border-color: currentColor; }
+.chip.bad { color: var(--bad); border-color: currentColor; }
+
+/* the exam sheet */
+.sheet { background: var(--surface); border: 1px solid var(--line); border-radius: 3px; padding: clamp(16px, 3.2vw, 44px); font-family: var(--font-paper); font-size: 17px; line-height: 1.55; min-width: 0; }
+.sheet-head { padding-bottom: 14px; }
+.sheet-head h2 { font-size: 24px; font-weight: 600; line-height: 1.2; }
+.sheet-head .sub { font: 13px var(--font-ui); color: var(--muted); margin-top: 4px; }
+.keystrip { display: none; flex-wrap: wrap; gap: 4px 16px; margin-top: 12px; font: 500 13.5px var(--font-mono); letter-spacing: 0.12em; color: var(--key); }
+.keystrip i { font-style: normal; font-weight: 400; letter-spacing: 0; color: var(--muted); margin-right: 6px; font-size: 11.5px; }
+.show-key .keystrip { display: flex; }
+.qs { list-style: none; margin: 0; padding: 0; }
+.q { display: grid; grid-template-columns: 2.3em minmax(0, 1fr); gap: 0 6px; padding-block: 14px; border-top: 1px solid var(--line); }
+.qn { font: 500 13px/2 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.qb { min-width: 0; overflow-wrap: anywhere; }
+.band { border-top: 2px solid var(--key); padding: 6px 0 2px; font: 500 11.5px var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--key); }
+.opts { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 8px 22px; }
+.opts.long { grid-template-columns: minmax(0, 1fr); }
+.opt { display: flex; gap: 10px; align-items: baseline; min-width: 0; }
+.bub { flex: none; width: 1.7em; height: 1.7em; border: 1.5px solid var(--muted); border-radius: 50%; display: inline-grid; place-items: center; font: 500 12px/1 var(--font-mono); color: var(--muted); }
+.ot { min-width: 0; }
+.show-key .opt.key .bub { background: var(--key); border-color: var(--key); color: var(--key-ink); }
+.trap { display: none; margin-left: auto; padding-left: 8px; font: 11px var(--font-mono); color: var(--muted); white-space: nowrap; }
+.show-tags .opt:not(.key) .trap { display: inline; }
+.tags { display: none; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.show-tags .tags { display: flex; }
+.sol { display: none; margin-top: 12px; padding: 10px 14px; background: var(--key-soft); font-size: 15.5px; line-height: 1.6; }
+.sol::before { content: 'Solution'; display: block; font: 600 11px var(--font-ui); letter-spacing: 0.08em; text-transform: uppercase; color: var(--key); margin-bottom: 2px; }
+.show-sol .sol { display: block; }
+.katex { font-size: 1.04em; }
+.katex-display { margin: 0.4em 0; }
+code.tex { font-size: 0.85em; background: var(--panel); padding: 0 3px; }
+.empty { padding: 28px; text-align: center; color: var(--muted); font-family: var(--font-ui); font-size: 14px; }
+
+/* tables */
+.tblwrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; background: var(--panel); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; height: 8px; background: var(--accent); border-radius: 2px; vertical-align: middle; min-width: 2px; }
+.bar.real { background: var(--muted); }
+tr.pick { cursor: pointer; }
+tr.pick:hover td { background: var(--accent-soft); }
+.linkish { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+progress { width: 100%; height: 8px; accent-color: var(--accent); }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.pager { display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 12px; font-size: 13.5px; }
+.msg { padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); font-size: 13.5px; }
+.msg.bad { border-color: var(--bad); color: var(--bad); }
+.msg.ok { border-color: var(--ok); color: var(--ok); }
+.report { display: grid; gap: 4px; font: 12.5px/1.5 var(--font-mono); max-height: 420px; overflow: auto; }
+.report .e { color: var(--bad); }
+.report .w { color: var(--warn); }
+.guide { max-width: 74ch; display: grid; gap: 18px; }
+.guide h3 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.guide ul { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow-x: auto; font: 12.5px/1.5 var(--font-mono); }
+
+/* text panel (copy fallback) and toast */
+.overlay { position: fixed; inset: 0; z-index: 40; background: color-mix(in srgb, var(--ink) 45%, transparent); display: grid; place-items: center; padding: 16px; }
+.dialog { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px; width: min(720px, 100%); display: grid; gap: 10px; }
+.dialog textarea { height: 300px; }
+#toast { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 50; background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 6px; font-size: 13.5px; max-width: calc(100% - 32px); }
+
+@media (max-width: 760px) {
+  .split { grid-template-columns: minmax(0, 1fr) !important; }
+  .sheet { font-size: 16px; }
+  .top .wrap { gap: 4px; padding-block: 8px 6px; }
+  .tabs { flex-wrap: nowrap; overflow-x: auto; width: 100%; scrollbar-width: none; }
+  .tabs button { padding: 5px 9px; white-space: nowrap; flex: none; }
+  .q { grid-template-columns: 1.9em minmax(0, 1fr); }
+}
+@media print {
+  .top, .rail, .toolbar, .stats, #toast { display: none !important; }
+  body { background: #fff; }
+  .tab { padding: 0; }
+  .split { display: block; }
+  .sheet { border: 0; padding: 0; }
+  .q { break-inside: avoid; }
+}
+@media (prefers-reduced-motion: no-preference) { .tabs button, .btn { transition: background-color 0.12s, color 0.12s, border-color 0.12s; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">CSCA Question Factory<span class="paren" aria-hidden="true">( )</span></div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button role="tab" id="t-papers" data-tab="papers" aria-selected="true">Papers</button>
+      <button role="tab" id="t-bank" data-tab="bank" aria-selected="false">Question bank</button>
+      <button role="tab" id="t-course" data-tab="course" aria-selected="false">Course build</button>
+      <button role="tab" id="t-forms" data-tab="forms" aria-selected="false">Question forms</button>
+      <button role="tab" id="t-check" data-tab="check" aria-selected="false">Check a file</button>
+      <button role="tab" id="t-guide" data-tab="guide" aria-selected="false">Guide</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="app">
+  <div id="boot-error" class="msg bad" hidden style="margin-top:20px">The question engine did not load, so nothing can be generated. Reload the page.</div>
+
+  <!-- ============ PAPERS ============ -->
+  <section class="tab" id="papers" role="tabpanel" aria-labelledby="t-papers">
+    <div class="split">
+      <form class="rail" id="p-form" autocomplete="off">
+        <label class="f"><span>Paper</span>
+          <select id="p-type">
+            <option value="mock-real">Full mock · pattern of a real paper</option>
+            <option value="mock-bp">Full mock · new paper on a blueprint</option>
+            <option value="site">Site paper · diagnostic, mock-1 … mock-4</option>
+            <option value="weekly">Weekly mock · 24 questions</option>
+            <option value="set">Daily set · Set A, B or C</option>
+            <option value="drill">41–48 drill</option>
+            <option value="practice">Practice test · choose the topics</option>
+            <option value="speed">Speed-drill round · 8 questions</option>
+            <option value="trick">Easy-trick round · 10 questions</option>
+          </select>
+        </label>
+        <label class="f" data-for="mock-real"><span>Pattern</span><select id="p-source"></select></label>
+        <label class="f" data-for="mock-bp"><span>Blueprint</span>
+          <select id="p-bp"><option value="A">A · SI 5 · FN 9 · TR 10 · SQ 6 · LN 9 · CN 6</option><option value="B">B · SI 5 · FN 8 · TR 10 · SQ 8 · LN 8 · CN 6</option></select>
+        </label>
+        <label class="f" data-for="site"><span>Site paper</span>
+          <select id="p-site"><option value="diagnostic">diagnostic · December pattern</option><option value="mock-1">mock-1 · January pattern</option><option value="mock-2">mock-2 · March pattern</option><option value="mock-3">mock-3 · April pattern</option><option value="mock-4">mock-4 · June pattern</option></select>
+        </label>
+        <label class="f" data-for="weekly drill"><span>Week</span><select id="p-week"></select></label>
+        <label class="f" data-for="drill"><span>Version</span><select id="p-version"><option value="a">A</option><option value="b">B · new numbers</option></select></label>
+        <label class="f" data-for="set"><span>Lesson day</span><select id="p-day"></select></label>
+        <label class="f" data-for="set"><span>Set</span><select id="p-set"></select></label>
+        <label class="f" data-for="speed"><span>Level</span><select id="p-speed"></select></label>
+        <label class="f" data-for="trick"><span>Trick</span><select id="p-trick"></select></label>
+        <div class="stack" data-for="practice" style="gap:12px">
+          <div class="pair">
+            <label class="f"><span>Questions</span><input type="number" id="p-n" min="4" max="60" value="20"></label>
+            <label class="f"><span>Level</span><select id="p-level"><option value="=">Exam level</option><option value="+1">One notch harder</option><option value="mixed">Both</option></select></label>
+          </div>
+          <div class="f"><span>Domains</span><div class="checks" id="p-domains"></div></div>
+          <details class="more"><summary>Sub-domains <span class="hint" id="p-codes-count"></span></summary><div class="inner" id="p-codes"></div></details>
+          <div class="pair">
+            <label class="f"><span>Share per topic</span><select id="p-weights"><option value="real">As on real papers</option><option value="equal">Equal</option></select></label>
+            <label class="f"><span>Order</span><select id="p-order"><option value="exam">Easy to hard</option><option value="lesson">Lesson order</option><option value="shuffle">Shuffled</option></select></label>
+          </div>
+          <div class="f"><span>Tiers</span><div class="checks" id="p-tiers">
+            <label class="chk"><input type="checkbox" id="p-tier-E" value="E" checked>E · one step</label>
+            <label class="chk"><input type="checkbox" id="p-tier-M" value="M" checked>M · two–three</label>
+            <label class="chk"><input type="checkbox" id="p-tier-H" value="H" checked>H · multi-step</label>
+          </div></div>
+        </div>
+        <div class="f"><span>Seed · same seed, same paper</span>
+          <div class="seed"><input type="number" id="p-seed" min="1" max="999999" value="1"><button type="button" class="btn" id="p-new">New numbers</button></div>
+        </div>
+        <p class="hint" id="p-note"></p>
+      </form>
+
+      <div class="grow">
+        <div class="toolbar">
+          <label class="switch"><input type="checkbox" id="v-key">Answers</label>
+          <label class="switch"><input type="checkbox" id="v-sol">Solutions</label>
+          <label class="switch"><input type="checkbox" id="v-tags">Tags and trap names</label>
+          <span class="grow"></span>
+          <button type="button" class="btn ghost" id="x-json">Save JSON</button>
+          <button type="button" class="btn ghost" id="x-html">Save printable page</button>
+          <button type="button" class="btn ghost" id="x-md">Save Markdown</button>
+          <button type="button" class="btn ghost" id="x-copy">Copy JSON</button>
+          <button type="button" class="btn ghost" id="x-print" hidden>Print</button>
+        </div>
+        <div class="stats" id="p-stats"></div>
+        <article class="sheet" id="sheet"><div class="empty">Building the first paper…</div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BANK ============ -->
+  <section class="tab stack" id="bank" role="tabpanel" aria-labelledby="t-bank" hidden>
+    <div class="stack" style="gap:6px">
+      <h2 class="h">Question bank</h2>
+      <p class="lede">Every sub-domain gets a share of the bank equal to its share of the five real sittings (240 questions). Inside a sub-domain, the forms that came up more often get more questions. One question in five is one notch harder than the exam.</p>
+    </div>
+    <form class="row" id="b-form" autocomplete="off">
+      <label class="f" style="width:130px"><span>Questions</span><input type="number" id="b-total" min="300" max="8000" step="100" value="2000"></label>
+      <label class="f" style="width:110px"><span>Seed</span><input type="number" id="b-seed" min="1" max="999999" value="1"></label>
+      <button type="submit" class="btn" id="b-build" style="align-self:end">Build the bank</button>
+      <span class="grow"></span>
+      <button type="button" class="btn ghost" id="b-json" style="align-self:end" disabled>Save bank.json</button>
+      <button type="button" class="btn ghost" id="b-csv" style="align-self:end" disabled>Save bank.csv</button>
+      <button type="button" class="btn ghost" id="b-manifest" style="align-self:end" disabled>Save manifest.json</button>
+    </form>
+    <div id="b-progress" hidden><progress id="b-bar" max="48" value="0"></progress><p class="hint" id="b-status"></p></div>
+    <div id="b-error" class="msg bad" hidden></div>
+    <div class="tblwrap" id="b-domains" hidden></div>
+    <div id="b-browse" class="stack" hidden>
+      <div class="filters">
+        <label class="f"><span>Domain</span><select id="b-domain"></select></label>
+        <label class="f"><span>Sub-domain</span><select id="b-code"></select></label>
+        <label class="f"><span>Tier</span><select id="b-tier"><option value="">All tiers</option><option>E</option><option>M</option><option>H</option></select></label>
+        <label class="f"><span>Level</span><select id="b-level"><option value="">Both levels</option><option value="=">Exam level</option><option value="+1">One notch harder</option></select></label>
+        <label class="f"><span>Format</span><select id="b-format"><option value="">All formats</option><option value="V">V · compute</option><option value="S">S · which is true</option><option value="N">N · which is incorrect</option></select></label>
+        <label class="f"><span>Search</span><input type="search" id="b-search" placeholder="text, id or form"></label>
+      </div>
+      <div class="toolbar" style="margin:0">
+        <label class="switch"><input type="checkbox" id="bv-key" checked>Answers</label>
+        <label class="switch"><input type="checkbox" id="bv-sol">Solutions</label>
+        <label class="switch"><input type="checkbox" id="bv-tags" checked>Tags and trap names</label>
+        <span class="grow"></span>
+        <span class="hint" id="b-count"></span>
+        <button type="button" class="btn ghost" id="b-save-filter">Save this selection</button>
+      </div>
+      <article class="sheet show-key show-tags" id="b-sheet"></article>
+      <div class="pager"><button type="button" class="btn ghost" id="b-prev">Previous</button><span id="b-page"></span><button type="button" class="btn ghost" id="b-next">Next</button></div>
+    </div>
+  </section>
+
+  <!-- ============ COURSE ============ -->
+  <section class="tab stack" id="course" role="tabpanel" aria-labelledby="t-course" hidden>
+    <div class="stack" style="gap:6px">
+      <h2 class="h">Course build</h2>
+      <p class="lede">Everything the 56-day plan still needs written, in one run: Set A and Set B for the 33 lesson days, Set C for the 20 one-video days, weekly mocks W1–W7 and both versions of the 41–48 drills. No question is used twice anywhere in the build. Files use the website's import format, one per course week.</p>
+    </div>
+    <form class="row" id="c-form" autocomplete="off">
+      <label class="f" style="width:110px"><span>Seed</span><input type="number" id="c-seed" min="1" max="999999" value="1"></label>
+      <button type="submit" class="btn" id="c-build" style="align-self:end">Build the course</button>
+      <span class="hint" id="c-status" style="align-self:end"></span>
+    </form>
+    <div id="c-out" class="stack" hidden></div>
+  </section>
+
+  <!-- ============ FORMS ============ -->
+  <section class="tab stack" id="forms" role="tabpanel" aria-labelledby="t-forms" hidden>
+    <div class="stack" style="gap:6px">
+      <h2 class="h">Question forms</h2>
+      <p class="lede">A form is one kind of question the exam asks, written as a generator with its own answer check. Choose a row to see a sample. <span id="f-total"></span></p>
+    </div>
+    <div class="filters">
+      <label class="f"><span>Domain</span><select id="f-domain"></select></label>
+      <label class="f"><span>Sub-domain</span><select id="f-code"></select></label>
+      <label class="f"><span>Level</span><select id="f-level"><option value="">Both levels</option><option value="=">Exam level</option><option value="+1">One notch harder</option></select></label>
+      <label class="f"><span>Search</span><input type="search" id="f-search" placeholder="form, lesson or source"></label>
+    </div>
+    <div class="split" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+      <div class="tblwrap" style="max-height:640px;overflow:auto"><table id="f-table"></table></div>
+      <div class="stack" style="gap:10px">
+        <div class="row"><span class="mono" id="f-name">Sample</span><span class="grow"></span><button type="button" class="btn ghost" id="f-another">Another</button></div>
+        <article class="sheet show-key show-sol show-tags" id="f-sheet"><div class="empty">Choose a form on the left.</div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHECK ============ -->
+  <section class="tab stack" id="check" role="tabpanel" aria-labelledby="t-check" hidden>
+    <div class="stack" style="gap:6px">
+      <h2 class="h">Check a question file</h2>
+      <p class="lede">Paste questions in the website's import format, or choose a JSON file. The check applies the import rules: ids, slots, points, levels, four different options, a stem that ends with “( )”, formulas that KaTeX can read, and the per-set rules.</p>
+    </div>
+    <div class="row">
+      <input type="file" id="k-file" accept=".json,application/json">
+      <label class="switch"><input type="checkbox" id="k-partial">Part of a set (skip the “complete set” rules)</label>
+      <span class="grow"></span>
+      <button type="button" class="btn ghost" id="k-sample">Load a sample with mistakes</button>
+      <button type="button" class="btn" id="k-run">Check</button>
+    </div>
+    <textarea id="k-text" rows="12" spellcheck="false" placeholder='[{"id": "d09-a-q8", "kind": "set", "ref": "d09-a", …}]'></textarea>
+    <div id="k-out" class="stack" hidden></div>
+  </section>
+
+  <!-- ============ GUIDE ============ -->
+  <section class="tab" id="guide" role="tabpanel" aria-labelledby="t-guide" hidden>
+    <div class="guide" id="g-body"></div>
+  </section>
+</main>
+
+<div class="overlay" id="textpanel" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="tp-title">
+    <h3 id="tp-title" style="font-size:16px">Copy the file contents</h3>
+    <p class="hint" id="tp-hint"></p>
+    <textarea id="tp-text" readonly spellcheck="false"></textarea>
+    <div class="row"><span class="grow"></span><button type="button" class="btn ghost" id="tp-close">Close</button><button type="button" class="btn" id="tp-copy">Copy</button></div>
+  </div>
+</div>
+<div id="toast" role="status" aria-live="polite" hidden></div>
+
+<!--@KATEX_JS-->
+<!--@QF_BUNDLE-->
+<script>
+(function () {
+  'use strict';
+  var QF = window.QF;
+  if (!QF || !QF.assemble) { document.getElementById('boot-error').hidden = false; return; }
+  var A = QF.assemble, TAX = QF.tax, CO = QF.course, AT = QF.atlas, LETTERS = 'ABCD';
+  var FRAMED = !!(window.claude && typeof window.claude.use === 'function');
+  var KCSS = (document.getElementById('katex-css') || {}).textContent || '';
+  var HAS_KCSS = KCSS.replace(/\/\*[\s\S]*?\*\//g, '').trim().length > 200;
+  function $(s, r) { return (r || document).querySelector(s); }
+  function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem('qf.' + k)); localStorage.setItem('qf.' + k, JSON.stringify(v)); } catch (e) { return null; } }
+
+  /* ---------- formulas ---------- */
+  var kxCache = new Map();
+  function kx(tex, mode) {
+    var K = window.katex;
+    if (!K) return '<code class="tex">' + esc(tex) + '</code>';
+    var out = mode || (HAS_KCSS ? 'htmlAndMathml' : 'mathml'), key = out + '|' + tex, h = kxCache.get(key);
+    if (h === undefined) {
+      try { h = K.renderToString(tex, { throwOnError: false, output: out }); } catch (e) { h = '<code class="tex">' + esc(tex) + '</code>'; }
+      kxCache.set(key, h);
+    }
+    return h;
+  }
+  function rich(s, mode) { var p = String(s === undefined || s === null ? '' : s).split('$'), h = ''; for (var i = 0; i < p.length; i++) h += i % 2 ? kx(p[i], mode) : esc(p[i]); return h; }
+  function plainLen(s) { return String(s).replace(/\\[a-zA-Z]+|[{}$\\]/g, '').length; }
+
+  /* ---------- toast, save, copy ---------- */
+  var toastTimer = 0;
+  function toast(msg) { var t = $('#toast'); t.textContent = msg; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 3200); }
+  var dlPromise = FRAMED ? window.claude.use('downloads').catch(function () { return null; }) : Promise.resolve(null);
+  function showText(filename, data, why) {
+    $('#tp-hint').textContent = (why ? why + '. ' : '') + 'Copy the text and paste it into a file named ' + filename + '.';
+    $('#tp-text').value = data; $('#textpanel').hidden = false; $('#tp-text').focus(); $('#tp-text').select();
+  }
+  $('#tp-close').addEventListener('click', function () { $('#textpanel').hidden = true; });
+  $('#textpanel').addEventListener('click', function (e) { if (e.target === this) this.hidden = true; });
+  $('#tp-copy').addEventListener('click', function () {
+    var ta = $('#tp-text');
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(function () { toast('Copied'); }, function () { ta.focus(); ta.select(); toast('Select all and copy'); });
+    else { ta.focus(); ta.select(); toast('Select all and copy'); }
+  });
+  function save(filename, data) {
+    if (!FRAMED) {                                   // a local copy of this page: the browser can download directly
+      try {
+        var url = URL.createObjectURL(new Blob([data], { type: 'application/octet-stream' })), a = document.createElement('a');
+        a.href = url; a.download = filename; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000); toast('Downloaded ' + filename);
+      } catch (e) { showText(filename, data, 'This browser blocked the download'); }
+      return;
+    }
+    toast('Preparing ' + filename + '…');
+    dlPromise.then(function (dl) {
+      if (!dl) { showText(filename, data, 'Saving files is not available in this view'); return; }
+      dl.save({ filename: filename, data: data }).then(function () { toast('Saved ' + filename); }, function (e) {
+        var c = e && e.code;
+        if (c === 'declined') toast('Not saved');
+        else if (c === 'rate_limited') toast('Another save is still open. Answer it, then try again.');
+        else showText(filename, data, 'The file could not be saved here');
+      });
+    });
+  }
+  function copy(text, filename) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { toast('Copied'); }, function () { showText(filename, text, 'The clipboard is not available here'); });
+    else showText(filename, text, 'The clipboard is not available here');
+  }
+  function json(x) { return JSON.stringify(x, null, 1); }
+
+  /* ---------- one question, one paper ---------- */
+  var KIND_BAND = { mock: 41, diagnostic: 41, weekly: 21 };
+  function tagsHTML(it) {
+    var c = TAX.code(it.code), t = [];
+    t.push('<span class="chip" title="' + esc(c ? c.name : '') + '"><b>' + esc(it.code) + '</b></span>');
+    t.push('<span class="chip">lesson ' + esc(it.lesson) + '</span>');
+    t.push('<span class="chip">tier ' + esc(it.tier) + '</span>');
+    t.push('<span class="chip">level ' + esc(it.level) + '</span>');
+    t.push('<span class="chip">' + ({ V: 'V compute', S: 'S which is true', N: 'N which is incorrect' }[it.format] || it.format) + '</span>');
+    if (it.points) t.push('<span class="chip">' + it.points + ' pt</span>');
+    if (it.repeat) t.push('<span class="chip" title="' + esc(TAX.repeats[it.repeat] || '') + '">' + esc(it.repeat) + '</span>');
+    if (it.trick) t.push('<span class="chip" title="' + esc(TAX.tricks[it.trick] || '') + '">' + esc(it.trick) + '</span>');
+    if (it.template) t.push('<span class="chip">' + esc(it.template) + '</span>');
+    return t.join('');
+  }
+  function qHTML(it, n, label) {
+    var long = it.options.some(function (o) { return plainLen(o) > 34; });
+    return '<li class="q"><span class="qn">' + esc(label || n) + '</span><div class="qb"><div class="stem">' + rich(it.stem) + '</div><ol class="opts' + (long ? ' long' : '') + '">' +
+      it.options.map(function (o, k) {
+        var trap = it.traps && it.traps[k];
+        return '<li class="opt' + (k === it.answer ? ' key' : '') + '"><span class="bub">' + LETTERS[k] + '</span><span class="ot">' + rich(o) + '</span>' +
+          (trap ? '<span class="trap" title="' + esc(TAX.traps[trap] || '') + '">' + esc(trap) + '</span>' : '') + '</li>';
+      }).join('') + '</ol><div class="tags">' + tagsHTML(it) + '</div><div class="sol">' + rich(it.solution) + '</div></div></li>';
+  }
+  function keyGroups(p) {
+    var out = [], first = p.items.length ? (p.items[0].slot || 1) : 1;
+    for (var i = 0; i < p.items.length; i += 8) {
+      var part = p.items.slice(i, i + 8);
+      out.push('<span><i>' + (first + i) + '–' + (first + i + part.length - 1) + '</i>' + part.map(function (it) { return LETTERS[it.answer]; }).join('') + '</span>');
+    }
+    return out.join('');
+  }
+  function paperHTML(p) {
+    var pts = p.items.reduce(function (s, it) { return s + (it.points || 0); }, 0), band = KIND_BAND[p.kind];
+    var h = '<header class="sheet-head"><h2>' + esc(p.title) + '</h2><p class="sub">' + p.items.length + ' questions · one answer each' + (pts ? ' · ' + pts + ' points' : '') + ' · seed ' + esc(p.seed) + '</p>' +
+      '<div class="keystrip" aria-label="Answer key">' + keyGroups(p) + '</div></header><ol class="qs">';
+    p.items.forEach(function (it, i) {
+      var n = it.slot || i + 1;
+      if (band && n === band) h += '<li class="band">Questions ' + band + '–' + p.items.length + ' · 2.5 points each</li>';
+      h += qHTML(it, n);
+    });
+    return h + '</ol>';
+  }
+  function count(items, f) { var c = {}; items.forEach(function (it) { var k = f(it); c[k] = (c[k] || 0) + 1; }); return c; }
+  function statsHTML(p) {
+    var items = p.items, t = count(items, function (it) { return it.tier; }), l = count(items, function (it) { return it.level; }), f = count(items, function (it) { return it.format; }), d = count(items, function (it) { return it.domain; });
+    var chips = ['<span class="chip">tiers E/M/H <b>' + (t.E || 0) + '/' + (t.M || 0) + '/' + (t.H || 0) + '</b></span>',
+      '<span class="chip">exam level <b>' + (l['='] || 0) + '</b> · harder <b>' + (l['+1'] || 0) + '</b></span>',
+      '<span class="chip">V/S/N <b>' + (f.V || 0) + '/' + (f.S || 0) + '/' + (f.N || 0) + '</b></span>',
+      '<span class="chip">' + TAX.domains.filter(function (x) { return d[x.id]; }).map(function (x) { return x.id + ' <b>' + d[x.id] + '</b>'; }).join(' · ') + '</span>'];
+    var rep = items.filter(function (it) { return it.repeat; }).length;
+    if (rep) chips.push('<span class="chip">repeated templates <b>' + rep + '</b></span>');
+    chips.push('<span class="chip ok">all ' + items.length + ' answers checked</span>');
+    if (SITE_KINDS[p.kind]) {
+      var r = QF.validate.pack(items.map(A.toSite));
+      chips.push(r.ok ? '<span class="chip ok">import rules passed</span>' : '<span class="chip bad" title="' + esc(r.errors.slice(0, 6).join('\n')) + '">' + r.errors.length + ' import rule error(s)</span>');
+    }
+    return chips.join('');
+  }
+  var SITE_KINDS = { set: 1, setc: 1, weekly: 1, d4148: 1, mock: 1, diagnostic: 1 };
+
+  /* ---------- printable page (a file the browser can print to PDF) ---------- */
+  function printable(p, withKey) {
+    function r(s) { return rich(s, HAS_KCSS ? 'html' : 'mathml'); }
+    var pts = p.items.reduce(function (s, it) { return s + (it.points || 0); }, 0), band = KIND_BAND[p.kind];
+    var css = 'body{font:16px/1.5 "STIX Two Text","Times New Roman",Times,serif;color:#111;margin:0;padding:28px;max-width:820px;margin-inline:auto}h1{font-size:23px;margin:0 0 2px}' +
+      '.sub{font:13px system-ui,sans-serif;color:#555;margin:0 0 14px}.q{display:grid;grid-template-columns:2.2em 1fr;padding:9px 0;border-top:1px solid #ccc;break-inside:avoid}.n{font:13px/1.9 ui-monospace,Menlo,Consolas,monospace;color:#555}' +
+      '.o{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 20px;margin:6px 0 0;padding:0;list-style:none}.o.long{grid-template-columns:1fr}.o li{display:flex;gap:8px}.o b{font-weight:600}' +
+      '.band{border-top:2px solid #111;font:600 11px system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:5px 0 0}h2{font-size:18px;margin:0 0 8px;break-before:page}.key{font:14px/1.9 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.1em}' +
+      '.key i{font-style:normal;color:#555;letter-spacing:0;margin-right:6px}.key span{display:inline-block;margin-right:22px}.s{padding:6px 0;border-top:1px solid #ddd;break-inside:avoid}@media print{body{padding:0}}';
+    var h = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + esc(p.title) + '</title><style>' + (HAS_KCSS ? KCSS : '') + css + '</style></head><body>' +
+      '<h1>' + esc(p.title) + '</h1><p class="sub">' + p.items.length + ' questions · one answer each' + (pts ? ' · ' + pts + ' points' : '') + ' · seed ' + esc(p.seed) + '</p>';
+    p.items.forEach(function (it, i) {
+      var n = it.slot || i + 1, long = it.options.some(function (o) { return plainLen(o) > 34; });
+      if (band && n === band) h += '<div class="band">Questions ' + band + '–' + p.items.length + ' · 2.5 points each</div>';
+      h += '<div class="q"><span class="n">' + n + '</span><div>' + r(it.stem) + '<ol class="o' + (long ? ' long' : '') + '">' + it.options.map(function (o, k) { return '<li><b>' + LETTERS[k] + '.</b><span>' + r(o) + '</span></li>'; }).join('') + '</ol></div></div>';
+    });
+    if (withKey) {
+      h += '<h2>Answer key</h2><p class="key">' + keyGroups(p) + '</p><h2>Solutions</h2>';
+      p.items.forEach(function (it, i) { h += '<div class="s"><b>' + (it.slot || i + 1) + '. ' + LETTERS[it.answer] + '</b> &nbsp;' + r(it.solution) + '</div>'; });
+    }
+    return h + '</body></html>';
+  }
+
+  /* ---------- tabs ---------- */
+  var TABS = ['papers', 'bank', 'course', 'forms', 'check', 'guide'], opened = {};
+  function showTab(name, quiet) {
+    if (TABS.indexOf(name) < 0) name = 'papers';
+    TABS.forEach(function (t) { $('#' + t).hidden = t !== name; $('#t-' + t).setAttribute('aria-selected', t === name ? 'true' : 'false'); });
+    store('tab', name);
+    if (!quiet) { try { history.replaceState(null, '', '#' + name); } catch (e) { /* framed pages may refuse */ } }
+    if (!opened[name]) { opened[name] = 1; if (name === 'bank') bankStart(); if (name === 'forms') formsInit(); if (name === 'guide') guideInit(); }
+  }
+  $$('.tabs button').forEach(function (b) { b.addEventListener('click', function () { showTab(b.getAttribute('data-tab')); }); });
+
+  /* ---------- Papers ---------- */
+  var current = null;
+  function fillSelect(sel, rows) { sel.innerHTML = rows.map(function (r) { return '<option value="' + esc(r[0]) + '">' + esc(r[1]) + '</option>'; }).join(''); }
+  function lessonTitle(id) { var l = TAX.lesson(id); return id + ' ' + (l ? l.title : ''); }
+  fillSelect($('#p-source'), AT.order.map(function (k) { return [k, AT.papers[k].label + ' · blueprint ' + AT.papers[k].blueprint]; }));
+  fillSelect($('#p-week'), CO.weekly.map(function (w) { return [w.week, 'Week ' + w.week + ' · mock on day ' + w.day + ', drill on day ' + CO.drills[w.week - 1].day]; }));
+  fillSelect($('#p-day'), CO.days.map(function (d) { return [d.day, 'Day ' + d.day + ' · ' + d.a.lessons.concat(d.c ? [] : d.b.lessons).map(lessonTitle).join(' · ')]; }));
+  fillSelect($('#p-speed'), Object.keys(CO.speed).map(function (k) { return [k, k + ' · ' + CO.speed[k].name + ' (' + CO.speed[k].lessons + ')']; }));
+  fillSelect($('#p-trick'), Object.keys(CO.tricks).map(function (k) { return [k, k + ' · ' + TAX.tricks[k]]; }));
+  $('#p-domains').innerHTML = TAX.domains.map(function (d) { return '<label class="chk" title="' + esc(d.name) + '"><input type="checkbox" id="p-dom-' + d.id + '" value="' + d.id + '">' + d.id + '</label>'; }).join('');
+  $('#p-codes').innerHTML = TAX.domains.map(function (d) {
+    return '<div class="codegrp"><b>' + esc(d.name) + '</b><div class="checks">' + d.codes.map(function (c) {
+      return '<label class="chk" title="' + esc(TAX.code(c).name) + '"><input type="checkbox" id="p-code-' + c + '" value="' + c + '">' + c + '</label>';
+    }).join('') + '</div></div>';
+  }).join('');
+  function daySets() {
+    var d = CO.days.filter(function (x) { return String(x.day) === $('#p-day').value; })[0], keep = $('#p-set').value;
+    var rows = [['a', 'Set A · ' + d.a.lessons.join(', ')], ['b', 'Set B · ' + d.b.lessons.join(', ') + (d.c ? ' + spaced review' : '')]];
+    if (d.c) rows.push(['c', 'Set C · four hard questions (85+)']);
+    fillSelect($('#p-set'), rows);
+    if (rows.some(function (r) { return r[0] === keep; })) $('#p-set').value = keep;
+  }
+  function checked(sel) { return $$(sel + ' input:checked').map(function (i) { return i.value; }); }
+  function readCfg() {
+    return {
+      type: $('#p-type').value, source: $('#p-source').value, bp: $('#p-bp').value, site: $('#p-site').value, week: Number($('#p-week').value), version: $('#p-version').value,
+      day: Number($('#p-day').value), set: $('#p-set').value, speed: $('#p-speed').value, trick: $('#p-trick').value,
+      n: Math.max(4, Math.min(60, Number($('#p-n').value) || 20)), level: $('#p-level').value, weights: $('#p-weights').value, order: $('#p-order').value,
+      domains: checked('#p-domains'), codes: checked('#p-codes'), tiers: checked('#p-tiers'), seed: Math.max(1, Math.floor(Number($('#p-seed').value) || 1))
+    };
+  }
+  function roundPaper(key, seed) {
+    var items = QF.adapters.round(key, seed).map(function (x, i) {
+      var t = QF.templates[x.template];
+      return { id: key + '-' + (i + 1), kind: 'round', ref: key, slot: i + 1, points: 0, stem: x.stem, options: x.options, answer: x.answer, traps: x.traps, solution: x.explain, code: x.code, domain: TAX.domainOf(x.code),
+        lesson: x.lesson, tier: t.tier, level: t.level, format: t.fmt, repeat: t.rep || null, trick: t.trick || null, template: x.template, seed: x.seed };
+    });
+    var speed = key[0] === 'L';
+    return { ref: key, kind: 'round', seed: String(seed), items: items, key: A.keyString(items), meta: {},
+      title: speed ? 'Speed drill ' + key + ' · ' + CO.speed[key].name : 'Easy trick ' + key + ' · ' + TAX.tricks[key] };
+  }
+  function buildPaper(c) {
+    switch (c.type) {
+      case 'mock-real': return A.mock({ source: c.source, seed: c.seed });
+      case 'mock-bp': return A.mock({ blueprint: c.bp, mode: 'blueprint', seed: c.seed });
+      case 'site': return c.site === 'diagnostic' ? A.diagnostic({ seed: c.seed }) : A.siteMock(Number(c.site.slice(5)), { seed: c.seed });
+      case 'weekly': return A.weekly(c.week, { seed: c.seed });
+      case 'set': return A.dailySet(c.day, c.set, { seed: c.seed });
+      case 'drill': return A.drill(c.week, { seed: c.seed, version: c.version });
+      case 'speed': return roundPaper(c.speed, c.seed);
+      case 'trick': return roundPaper(c.trick, c.seed);
+      default: return A.practice({ n: c.n, level: c.level, weights: c.weights, order: c.order, seed: c.seed,
+        codes: c.codes.length ? c.codes : undefined, domains: !c.codes.length && c.domains.length ? c.domains : undefined, tiers: c.tiers.length && c.tiers.length < 3 ? c.tiers : undefined });
+    }
+  }
+  var NOTES = {
+    'mock-real': 'Every slot keeps the sub-domain, tier, question type and repeated template of that paper. Numbers, options and wording are new.',
+    'mock-bp': 'Slot order and domain quotas follow the blueprint. Repeated-template slots stay; every other slot takes any real exam form of its sub-domain.',
+    'site': 'The same replicas with the ids the website expects (diagnostic-q01 …, mock-1-q01 …).',
+    'weekly': 'Q1–16 this week’s topics, Q17–20 spaced review at exam level, Q21–24 the hard four (2.5 points, level +1).',
+    'set': 'Q1–4 exam level, Q5–7 one notch harder (Set B of a one-video day: spaced review), Q8 worth 2.5. Every set has a “which is true” item.',
+    'drill': 'Eight questions on slots 41–48, the hardest forms the real papers used for the week’s topics.',
+    'practice': 'Leave domains and sub-domains empty for the whole syllabus. Sub-domains, when ticked, replace the domain choice.',
+    'speed': 'One question per item type of the level, as the site’s ACE_GEN generators produce them.',
+    'trick': 'Ten questions for one easy trick.'
+  };
+  function showFields() {
+    var type = $('#p-type').value;
+    $$('#p-form [data-for]').forEach(function (el) { el.hidden = el.getAttribute('data-for').split(' ').indexOf(type) < 0; });
+    $('#p-note').textContent = NOTES[type] || '';
+    $('#p-codes-count').textContent = checked('#p-codes').length ? '· ' + checked('#p-codes').length + ' chosen' : '';
+  }
+  function showPaper(p) {
+    current = p;
+    $('#sheet').innerHTML = paperHTML(p);
+    $('#p-stats').innerHTML = statsHTML(p);
+  }
+  function generate() {
+    showFields();
+    var cfg = readCfg();
+    store('paper', cfg);
+    try { showPaper(buildPaper(cfg)); }
+    catch (e) { current = null; $('#p-stats').innerHTML = ''; $('#sheet').innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; }
+  }
+  function applyView(sheet, prefix) {
+    sheet.classList.toggle('show-key', $('#' + prefix + '-key').checked);
+    sheet.classList.toggle('show-sol', $('#' + prefix + '-sol').checked);
+    sheet.classList.toggle('show-tags', $('#' + prefix + '-tags').checked);
+  }
+  ['v-key', 'v-sol', 'v-tags'].forEach(function (id) { $('#' + id).addEventListener('change', function () { applyView($('#sheet'), 'v'); store('view', { key: $('#v-key').checked, sol: $('#v-sol').checked, tags: $('#v-tags').checked }); }); });
+  $('#p-form').addEventListener('change', function (e) { if (e.target.id === 'p-day') daySets(); generate(); });
+  $('#p-form').addEventListener('submit', function (e) { e.preventDefault(); generate(); });
+  $('#p-new').addEventListener('click', function () { $('#p-seed').value = 1 + Math.floor(Math.random() * 99999); generate(); });
+  function baseName(p) { return (p.ref + (p.kind === 'd4148' ? '-' + p.meta.version : '') + (/-\d+$/.test(p.ref) ? '' : '-seed' + p.seed)).replace(/[^\w.-]+/g, '-'); }
+  function paperJSON(p) { return json(p.kind === 'round' ? p.items.map(function (it) { return { stem: it.stem, options: it.options, answer: it.answer, explain: it.solution }; }) : p.items.map(SITE_KINDS[p.kind] ? A.toSite : A.toFull)); }
+  $('#x-json').addEventListener('click', function () { if (current) save(baseName(current) + '.json', paperJSON(current)); });
+  $('#x-copy').addEventListener('click', function () { if (current) copy(paperJSON(current), baseName(current) + '.json'); });
+  $('#x-md').addEventListener('click', function () { if (current) save(baseName(current) + '.md', A.toMarkdown(current, { tags: $('#v-tags').checked })); });
+  $('#x-html').addEventListener('click', function () { if (current) save(baseName(current) + '.html', printable(current, true)); });
+  if (!FRAMED) { $('#x-print').hidden = false; $('#x-print').addEventListener('click', function () { window.print(); }); }
+
+  /* ---------- Bank ---------- */
+  var BANK = null, bankJob = null, bPage = 0, bList = [];
+  function bankStart() { if (!BANK && !bankJob) bankBuild(); }
+  function bankBuild() {
+    var total = Math.max(300, Math.min(8000, Number($('#b-total').value) || 2000)), seed = Math.max(1, Math.floor(Number($('#b-seed').value) || 1));
+    $('#b-error').hidden = true; $('#b-progress').hidden = false; $('#b-build').disabled = true;
+    ['b-json', 'b-csv', 'b-manifest'].forEach(function (id) { $('#' + id).disabled = true; });
+    var job;
+    try { job = bankJob = QF.bank.job({ total: total, seed: seed, date: new Date().toISOString().slice(0, 10) }); } catch (e) { return bankFail(e); }
+    $('#b-bar').max = job.steps; $('#b-bar').value = 0;
+    (function tick() {
+      if (job !== bankJob) return;
+      try {
+        var until = Date.now() + 40;
+        while (!job.done && Date.now() < until) job.step();
+      } catch (e) { return bankFail(e); }
+      $('#b-bar').value = job.at; $('#b-status').textContent = 'Building and checking ' + total + ' questions · ' + (job.made || 0) + ' done · ' + (job.current || '');
+      if (!job.done) return setTimeout(tick, 0);
+      BANK = job.result(); bankJob = null; $('#b-progress').hidden = true; $('#b-build').disabled = false;
+      ['b-json', 'b-csv', 'b-manifest'].forEach(function (id) { $('#' + id).disabled = false; });
+      bankReady();
+    })();
+  }
+  function bankFail(e) {
+    bankJob = null; $('#b-progress').hidden = true; $('#b-build').disabled = false;
+    $('#b-error').textContent = /can supply only/.test(e.message) ? 'That is more questions than the forms can supply without repeating themselves (' + e.message.replace(/^bank: /, '') + '). Choose a smaller number.' : e.message;
+    $('#b-error').hidden = false;
+  }
+  function bankReady() {
+    var m = BANK.manifest, max = Math.max.apply(null, m.domains.map(function (d) { return Math.max(d.realShare, d.bankShare); }));
+    $('#b-domains').innerHTML = '<table><thead><tr><th>Domain</th><th class="num">Real papers</th><th>Share of 240</th><th class="num">Bank</th><th>Share of ' + m.total + '</th><th class="num">Sub-domains</th></tr></thead><tbody>' +
+      m.domains.map(function (d) {
+        return '<tr><td><b>' + d.domain + '</b> · ' + esc(d.name) + '</td><td class="num">' + d.realItems + '</td><td><span class="bar real" style="width:' + (d.realShare / max * 90) + 'px"></span> ' + d.realShare + '%</td>' +
+          '<td class="num">' + d.questions + '</td><td><span class="bar" style="width:' + (d.bankShare / max * 90) + 'px"></span> ' + d.bankShare + '%</td><td class="num">' + m.codes.filter(function (c) { return c.domain === d.domain; }).length + '</td></tr>';
+      }).join('') + '</tbody></table>';
+    $('#b-domains').hidden = false; $('#b-browse').hidden = false;
+    fillSelect($('#b-domain'), [['', 'All domains · ' + m.total]].concat(m.domains.map(function (d) { return [d.domain, d.domain + ' · ' + d.name + ' · ' + d.questions]; })));
+    bankCodes(); bankFilter();
+  }
+  function bankCodes() {
+    var dom = $('#b-domain').value, m = BANK.manifest;
+    fillSelect($('#b-code'), [['', 'All sub-domains']].concat(m.codes.filter(function (c) { return !dom || c.domain === dom; }).map(function (c) { return [c.code, c.code + ' · ' + c.questions + ' · ' + c.name]; })));
+  }
+  function bankFilter() {
+    var dom = $('#b-domain').value, code = $('#b-code').value, tier = $('#b-tier').value, level = $('#b-level').value, fmt = $('#b-format').value, q = $('#b-search').value.trim().toLowerCase();
+    bList = BANK.items.filter(function (it) {
+      if (dom && it.domain !== dom) return false;
+      if (code && it.code !== code) return false;
+      if (tier && it.tier !== tier) return false;
+      if (level && it.level !== level) return false;
+      if (fmt && it.format !== fmt) return false;
+      if (q && (it.id + ' ' + it.template + ' ' + it.form + ' ' + it.stem + ' ' + it.options.join(' ')).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    bPage = 0; bankPage();
+  }
+  function bankPage() {
+    var per = 20, pages = Math.max(1, Math.ceil(bList.length / per));
+    bPage = Math.max(0, Math.min(pages - 1, bPage));
+    var part = bList.slice(bPage * per, bPage * per + per);
+    $('#b-sheet').innerHTML = part.length ? '<ol class="qs">' + part.map(function (it) { return qHTML(it, 0, it.id.replace(/^QB-.*-/, '')); }).join('') + '</ol>' : '<div class="empty">No question matches these filters.</div>';
+    $('#b-count').textContent = bList.length + ' question' + (bList.length === 1 ? '' : 's');
+    $('#b-page').textContent = 'Page ' + (bPage + 1) + ' of ' + pages;
+    $('#b-prev').disabled = bPage === 0; $('#b-next').disabled = bPage >= pages - 1;
+  }
+  $('#b-form').addEventListener('submit', function (e) { e.preventDefault(); BANK = null; bankBuild(); });
+  $('#b-domain').addEventListener('change', function () { bankCodes(); bankFilter(); });
+  ['b-code', 'b-tier', 'b-level', 'b-format'].forEach(function (id) { $('#' + id).addEventListener('change', bankFilter); });
+  $('#b-search').addEventListener('input', function () { clearTimeout(this._t); this._t = setTimeout(bankFilter, 180); });
+  $('#b-prev').addEventListener('click', function () { bPage--; bankPage(); $('#b-sheet').scrollIntoView({ block: 'start' }); });
+  $('#b-next').addEventListener('click', function () { bPage++; bankPage(); $('#b-sheet').scrollIntoView({ block: 'start' }); });
+  ['bv-key', 'bv-sol', 'bv-tags'].forEach(function (id) { $('#' + id).addEventListener('change', function () { applyView($('#b-sheet'), 'bv'); }); });
+  $('#b-json').addEventListener('click', function () { save('bank.json', json(BANK.items.map(A.toFull))); });
+  $('#b-csv').addEventListener('click', function () { save('bank.csv', '﻿' + QF.bank.toCSV(BANK.items)); });
+  $('#b-manifest').addEventListener('click', function () { save('manifest.json', json(BANK.manifest)); });
+  $('#b-save-filter').addEventListener('click', function () {
+    if (!bList.length) return toast('Nothing to save');
+    var name = ['bank', $('#b-domain').value, $('#b-code').value, $('#b-tier').value, $('#b-level').value === '+1' ? 'plus1' : ($('#b-level').value ? 'exam' : ''), $('#b-format').value].filter(Boolean).join('-');
+    save(name + '.json', json(bList.map(A.toFull)));
+  });
+
+  /* ---------- Course ---------- */
+  var COURSE = null;
+  $('#c-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var seed = Math.max(1, Math.floor(Number($('#c-seed').value) || 1));
+    $('#c-status').textContent = 'Building 112 papers…'; $('#c-build').disabled = true;
+    setTimeout(function () {
+      try { COURSE = A.course({ seed: seed }); courseShow(); $('#c-status').textContent = ''; }
+      catch (err) { $('#c-status').textContent = err.message; }
+      $('#c-build').disabled = false;
+    }, 30);
+  });
+  function courseShow() {
+    var C = COURSE, rows = '';
+    Object.keys(C.weeks).forEach(function (w) {
+      var items = C.weeks[w], rep = QF.validate.pack(items), papers = C.papers.filter(function (p) { return p.meta.week === Number(w) && !(p.kind === 'd4148' && p.meta.version === 'b'); });
+      rows += '<tr><td><b>Week ' + w + '</b></td><td class="num">' + papers.length + '</td><td class="num">' + items.length + '</td><td>' + (rep.ok ? '<span class="chip ok">import rules passed</span>' : '<span class="chip bad">' + rep.errors.length + ' error(s)</span>') +
+        '</td><td><button type="button" class="linkish" data-save="week' + w + '">Save week' + w + '.json</button></td></tr>';
+    });
+    rows += '<tr><td><b>41–48 drills, version B</b></td><td class="num">7</td><td class="num">' + C.drillsB.length + '</td><td><span class="chip ok">checked</span></td><td><button type="button" class="linkish" data-save="drillsB">Save drills-version-b.json</button></td></tr>';
+    Object.keys(C.mocks).forEach(function (k) {
+      rows += '<tr><td><b>' + k + '</b> · ' + esc(C.mocks[k].title.replace(/^.*· /, '')) + '</td><td class="num">1</td><td class="num">48</td><td><span class="chip">key ' + C.mocks[k].key.slice(0, 12) + '…</span></td><td><button type="button" class="linkish" data-save="' + k + '">Save ' + k + '.json</button></td></tr>';
+    });
+    var list = C.papers.map(function (p, i) {
+      return '<tr class="pick" data-open="' + i + '"><td>' + esc(p.kind === 'd4148' ? p.ref + ' · ' + p.meta.version : p.ref) + '</td><td>' + esc(p.title) + '</td><td class="num">' + p.items.length + '</td><td class="mono">' + p.key.slice(0, 24) + (p.key.length > 24 ? '…' : '') + '</td></tr>';
+    }).join('');
+    $('#c-out').innerHTML = '<div class="tblwrap"><table><thead><tr><th>File</th><th class="num">Papers</th><th class="num">Questions</th><th>Check</th><th>Save</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      '<p class="hint">' + C.papers.length + ' papers. Choose a row below to open that paper in the Papers tab.</p>' +
+      '<div class="tblwrap" style="max-height:460px;overflow:auto"><table><thead><tr><th>Ref</th><th>Paper</th><th class="num">Questions</th><th>Key</th></tr></thead><tbody>' + list + '</tbody></table></div>';
+    $('#c-out').hidden = false;
+  }
+  $('#c-out').addEventListener('click', function (e) {
+    var s = e.target.closest('[data-save]'), o = e.target.closest('[data-open]');
+    if (s && COURSE) {
+      var k = s.getAttribute('data-save');
+      if (/^week/.test(k)) save(k + '.json', json(COURSE.weeks[k.slice(4)]));
+      else if (k === 'drillsB') save('drills-version-b.json', json(COURSE.drillsB));
+      else save(k + '.json', json(COURSE.mocks[k].items.map(A.toSite)));
+    } else if (o && COURSE) { showPaper(COURSE.papers[Number(o.getAttribute('data-open'))]); showTab('papers'); window.scrollTo(0, 0); }
+  });
+
+  /* ---------- Forms ---------- */
+  var fPick = null, fSeed = 1;
+  function formsInit() {
+    fillSelect($('#f-domain'), [['', 'All domains']].concat(TAX.domains.map(function (d) { return [d.id, d.id + ' · ' + d.name]; })));
+    formCodes(); formsTable();
+    $('#f-total').textContent = QF.templateList.length + ' forms cover all ' + TAX.codes.length + ' sub-domains.';
+  }
+  function formCodes() {
+    var dom = $('#f-domain').value;
+    fillSelect($('#f-code'), [['', 'All sub-domains']].concat(TAX.codes.filter(function (c) { return !dom || c.domain === dom; }).map(function (c) { return [c.code, c.code + ' · ' + c.name]; })));
+  }
+  function formsTable() {
+    var dom = $('#f-domain').value, code = $('#f-code').value, level = $('#f-level').value, q = $('#f-search').value.trim().toLowerCase();
+    var list = QF.templateList.filter(function (t) {
+      if (dom && TAX.domainOf(t.code) !== dom) return false;
+      if (code && t.code !== code) return false;
+      if (level && t.level !== level) return false;
+      if (q && (t.id + ' ' + t.form + ' ' + (t.basis || '') + ' ' + t.lesson + ' ' + (t.rep || '')).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    $('#f-table').innerHTML = '<thead><tr><th>Form</th><th>Lesson</th><th>Tier</th><th>Level</th><th>Type</th><th>What it asks</th><th>Based on</th></tr></thead><tbody>' +
+      list.map(function (t) {
+        return '<tr class="pick" data-form="' + esc(t.id) + '"><td class="mono">' + esc(t.id) + (t.rep ? ' <span class="chip">' + t.rep + '</span>' : '') + '</td><td>' + t.lesson + '</td><td>' + t.tier + '</td><td>' + esc(t.level) + '</td><td>' + t.fmt + '</td><td>' + esc(t.form) + '</td><td>' + esc(t.basis || '') + '</td></tr>';
+      }).join('') + '</tbody>';
+  }
+  function formSample() {
+    if (!fPick) return;
+    try {
+      var it = QF.gen(fPick, 'sample-' + fSeed);
+      $('#f-sheet').innerHTML = '<ol class="qs">' + qHTML(it, fSeed) + '</ol>';
+      $('#f-name').textContent = fPick + ' · sample ' + fSeed;
+    } catch (e) { $('#f-sheet').innerHTML = '<div class="empty">' + esc(e.message) + '</div>'; }
+  }
+  $('#f-domain').addEventListener('change', function () { formCodes(); formsTable(); });
+  ['f-code', 'f-level'].forEach(function (id) { $('#' + id).addEventListener('change', formsTable); });
+  $('#f-search').addEventListener('input', function () { clearTimeout(this._t); this._t = setTimeout(formsTable, 180); });
+  $('#f-table').addEventListener('click', function (e) { var r = e.target.closest('[data-form]'); if (r) { fPick = r.getAttribute('data-form'); fSeed = 1; formSample(); } });
+  $('#f-another').addEventListener('click', function () { fSeed++; formSample(); });
+
+  /* ---------- Check a file ---------- */
+  function katexStrict(list) {
+    var K = window.katex, out = [];
+    if (!K) return out;
+    list.forEach(function (q) {
+      [q.stem, q.solution].concat(q.options || []).forEach(function (s) {
+        var p = String(s === undefined || s === null ? '' : s).split('$');
+        for (var i = 1; i < p.length; i += 2) { try { K.renderToString(p[i], { throwOnError: true, strict: 'error' }); } catch (e) { out.push((q.id || '(no id)') + ': KaTeX cannot read “' + p[i].slice(0, 60) + '”'); } }
+      });
+    });
+    return out;
+  }
+  function runCheck() {
+    var out = $('#k-out'), data;
+    out.hidden = false;
+    try { data = JSON.parse($('#k-text').value); } catch (e) { out.innerHTML = '<div class="msg bad">This is not valid JSON: ' + esc(e.message) + '</div>'; return; }
+    var list = Array.isArray(data) ? data : (data.items || data.questions || []);
+    if (!list.length) { out.innerHTML = '<div class="msg bad">No questions found. The file should be a list of question objects.</div>'; return; }
+    var rep = QF.validate.pack(list, { partial: $('#k-partial').checked }), kerr = katexStrict(list), errs = rep.errors.concat(kerr);
+    out.innerHTML = '<div class="msg ' + (errs.length ? 'bad' : 'ok') + '">' + list.length + ' questions in ' + rep.groups + ' set(s): ' + (errs.length ? errs.length + ' error(s)' : 'no errors') + ', ' + rep.warnings.length + ' warning(s).</div>' +
+      (errs.length || rep.warnings.length ? '<div class="msg report">' + errs.map(function (e) { return '<div class="e">error &nbsp; ' + esc(e) + '</div>'; }).join('') + rep.warnings.map(function (w) { return '<div class="w">warning ' + esc(w) + '</div>'; }).join('') + '</div>' : '');
+  }
+  $('#k-run').addEventListener('click', runCheck);
+  $('#k-file').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    var r = new FileReader();
+    r.onload = function () { $('#k-text').value = String(r.result); runCheck(); };
+    r.readAsText(f);
+  });
+  $('#k-sample').addEventListener('click', function () {
+    var items = A.dailySet(9, 'a', { seed: 7 }).items.map(A.toSite);
+    items[1].points = 2.5; items[2].options[1] = items[2].options[0]; items[4].level = '='; items[6].stem = items[6].stem.replace(/\( \)$/, ''); items[7].answer = 4;
+    $('#k-text').value = json(items); runCheck();
+  });
+
+  /* ---------- Guide ---------- */
+  function guideInit() {
+    var n = QF.templateList.length, eq = QF.templateList.filter(function (t) { return t.level === '='; }).length;
+    $('#g-body').innerHTML =
+      '<div><h2 class="h">How the factory keeps questions accurate</h2><p class="lede" style="margin-top:6px">' + n + ' question forms cover all ' + TAX.codes.length + ' sub-domains of the exam. ' + eq + ' are forms the real papers used; the rest are the same forms one notch harder, as the course plan defines “+1”.</p></div>' +
+      '<div><h3>Every answer is checked twice</h3><ul>' +
+      '<li>Each form computes its answer exactly (fractions and surds, never rounded decimals) and builds wrong options from named mistakes: sign, end point, companion value, off by one, axis swap and so on.</li>' +
+      '<li>A separate checker then reads the four options as the student sees them and tests each one against an independent calculation: direct substitution, iterating a recursion, counting every outcome of a probability experiment, or sampling a curve from its definition.</li>' +
+      '<li>A question is kept only if exactly one option is correct and no two options are equal in value. Anything else is discarded and drawn again.</li>' +
+      '<li>The numbers of real exam questions are blocked, so a generated question never repeats a real one.</li></ul></div>' +
+      '<div><h3>What each paper follows</h3><ul>' +
+      '<li><b>Full mocks</b> copy the structure of one paper slot by slot: sub-domain, tier, question type and repeated template (R01–R14). Answer letters are balanced 12/12/12/12 with no run longer than three.</li>' +
+      '<li><b>Blueprint mocks</b> keep the domain quotas, the conic split, the anchors (sets at Q1–2, vectors at Q44, complex numbers at Q46, the hardest sequence at Q47, probability at Q48) and two to four H items in Q44–48.</li>' +
+      '<li><b>Daily sets, weekly mocks and 41–48 drills</b> follow the recipes of the course plan, with the points and levels the website checks on import.</li>' +
+      '<li><b>Practice tests</b> and the <b>bank</b> give each sub-domain the share it has on the real papers.</li></ul></div>' +
+      '<div><h3>The bank rule</h3><p>Questions for a sub-domain = bank size × (its questions in the five sittings ÷ 240), rounded so the total is exact. SET-num and FN-val never appeared in the five sittings (only in the undated paper and the CSC sample), so they get a floor of 8 questions each to keep the syllabus covered.</p></div>' +
+      '<div><h3>Seeds</h3><p>The same seed always gives the same paper, in this page and on the command line. Change the seed for new numbers. Keep the seed with a paper so that you can rebuild it later.</p></div>' +
+      '<div><h3>Using the generators on the website</h3><p>The speed drill and the easy-trick drill generate questions in the browser. Load the bundle and register the generators:</p>' +
+      '<pre class="code">&lt;script src="question-factory.js"&gt;&lt;/script&gt;\n&lt;script&gt;\n  QF.adapters.install();              // fills window.ACE_GEN.L01 … L12 and T01 … T12\n  const item = ACE_GEN.T05(rng);      // { stem, options, answer, explain }\n&lt;/script&gt;</pre></div>' +
+      '<div><h3>Command line</h3><pre class="code">node cli.js mock --source jun --seed 3 --out out/mock-jun\nnode cli.js mock --blueprint B --seed 8 --md\nnode cli.js set --day 17 --set b\nnode cli.js practice --n 25 --domains TR,SQ --level mixed\nnode cli.js course --out dist/course\nnode cli.js bank --total 2000 --out dist/bank\nnode cli.js validate my-questions.json</pre></div>';
+  }
+
+  /* ---------- start ---------- */
+  (function init() {
+    var cfg = store('paper'), view = store('view');
+    if (cfg) {
+      ['type', 'source', 'bp', 'site', 'week', 'version', 'day', 'speed', 'trick', 'level', 'weights', 'order'].forEach(function (k) { var el = $('#p-' + k); if (el && cfg[k] !== undefined && $$('option', el).some(function (o) { return o.value === String(cfg[k]); })) el.value = String(cfg[k]); });
+      if (cfg.n) $('#p-n').value = cfg.n;
+      if (cfg.seed) $('#p-seed').value = cfg.seed;
+      (cfg.domains || []).forEach(function (d) { var el = $('#p-dom-' + d); if (el) el.checked = true; });
+      (cfg.codes || []).forEach(function (c) { var el = document.getElementById('p-code-' + c); if (el) el.checked = true; });
+      if (cfg.tiers && cfg.tiers.length) ['E', 'M', 'H'].forEach(function (t) { $('#p-tier-' + t).checked = cfg.tiers.indexOf(t) >= 0; });
+    }
+    daySets();
+    if (cfg && cfg.set && $$('option', $('#p-set')).some(function (o) { return o.value === cfg.set; })) $('#p-set').value = cfg.set;
+    if (view) { $('#v-key').checked = !!view.key; $('#v-sol').checked = !!view.sol; $('#v-tags').checked = !!view.tags; }
+    applyView($('#sheet'), 'v');
+    generate();
+    var hash = (location.hash || '').replace('#', '');
+    showTab(TABS.indexOf(hash) >= 0 ? hash : (store('tab') || 'papers'), true);
+  })();
+})();
+</script>

@@ -1,0 +1,1794 @@
+{
+ "title": "ACE CSCA Mathematics question bank",
+ "seed": "1",
+ "generated": "2026-10-04",
+ "total": 2000,
+ "rule": "Each sub-domain gets total × (its items in the five real sittings ÷ 240), largest-remainder rounding. Sub-domains with no item in the five sittings get a floor of 8 questions each.",
+ "plusShare": 0.2,
+ "floorCodes": [
+  "SET-num",
+  "FN-val"
+ ],
+ "domains": [
+  {
+   "domain": "SI",
+   "name": "Sets & inequalities",
+   "realItems": 25,
+   "realShare": 10.4,
+   "questions": 213,
+   "bankShare": 10.7
+  },
+  {
+   "domain": "FN",
+   "name": "Functions (incl. exp / log / power)",
+   "realItems": 42,
+   "realShare": 17.5,
+   "questions": 357,
+   "bankShare": 17.9
+  },
+  {
+   "domain": "TR",
+   "name": "Trigonometry",
+   "realItems": 51,
+   "realShare": 21.3,
+   "questions": 420,
+   "bankShare": 21
+  },
+  {
+   "domain": "SQ",
+   "name": "Sequences",
+   "realItems": 34,
+   "realShare": 14.2,
+   "questions": 282,
+   "bankShare": 14.1
+  },
+  {
+   "domain": "LN",
+   "name": "Coordinates & lines",
+   "realItems": 43,
+   "realShare": 17.9,
+   "questions": 355,
+   "bankShare": 17.8
+  },
+  {
+   "domain": "CN",
+   "name": "Conics",
+   "realItems": 30,
+   "realShare": 12.5,
+   "questions": 249,
+   "bankShare": 12.5
+  },
+  {
+   "domain": "VEC",
+   "name": "Vectors",
+   "realItems": 5,
+   "realShare": 2.1,
+   "questions": 41,
+   "bankShare": 2.1
+  },
+  {
+   "domain": "CPX",
+   "name": "Complex numbers",
+   "realItems": 5,
+   "realShare": 2.1,
+   "questions": 42,
+   "bankShare": 2.1
+  },
+  {
+   "domain": "PRB",
+   "name": "Probability",
+   "realItems": 5,
+   "realShare": 2.1,
+   "questions": 41,
+   "bankShare": 2.1
+  }
+ ],
+ "codes": [
+  {
+   "code": "SET-el",
+   "domain": "SI",
+   "name": "Element / subset notation (∈, ⊆, ∅, {a})",
+   "lessons": [
+    "1.3"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 38,
+    "M": 3,
+    "H": 0
+   },
+   "formats": {
+    "V": 0,
+    "S": 41,
+    "N": 0
+   },
+   "forms": {
+    "SET-el.listed": 6,
+    "SET-el.two-sets": 12,
+    "SET-el.roots": 6,
+    "SET-el.interval": 6,
+    "SET-el.empty": 3,
+    "SET-el.int-builder": 3,
+    "SET-el.mixed": 2,
+    "SET-el.count": 3
+   }
+  },
+  {
+   "code": "SET-num",
+   "domain": "SI",
+   "name": "Number sets ℕ, ℤ, ℚ, ℝ",
+   "lessons": [
+    "1.3"
+   ],
+   "realItems": 0,
+   "realShare": 0,
+   "planned": 8,
+   "questions": 8,
+   "examLevel": 8,
+   "plusOne": 0,
+   "tiers": {
+    "E": 8,
+    "M": 0,
+    "H": 0
+   },
+   "formats": {
+    "V": 3,
+    "S": 5,
+    "N": 0
+   },
+   "forms": {
+    "SET-num.member": 5,
+    "SET-num.list": 3
+   }
+  },
+  {
+   "code": "SET-op",
+   "domain": "SI",
+   "name": "Intersection / union (often intervals)",
+   "lessons": [
+    "1.4"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 38,
+    "M": 3,
+    "H": 0
+   },
+   "formats": {
+    "V": 35,
+    "S": 6,
+    "N": 0
+   },
+   "forms": {
+    "SET-op.int-cap": 5,
+    "SET-op.sb-cup": 5,
+    "SET-op.sb-cap": 11,
+    "SET-op.fin-cap-dots": 5,
+    "SET-op.fin-cap": 2,
+    "SET-op.fin-cup": 2,
+    "SET-op.which": 3,
+    "SET-op.shared": 2,
+    "SET-op.collapse": 3,
+    "SET-op.four": 3
+   }
+  },
+  {
+   "code": "INQ-quad",
+   "domain": "SI",
+   "name": "Quadratic inequality",
+   "lessons": [
+    "1.5"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 41,
+    "M": 0,
+    "H": 0
+   },
+   "formats": {
+    "V": 39,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "INQ-quad.lt": 6,
+    "INQ-quad.gt": 13,
+    "INQ-quad.closed": 7,
+    "INQ-quad.factored": 7,
+    "INQ-quad.nonmonic": 3,
+    "INQ-quad.square": 3,
+    "INQ-quad.which": 2
+   }
+  },
+  {
+   "code": "INQ-rat",
+   "domain": "SI",
+   "name": "Rational (fractional) inequality",
+   "lessons": [
+    "1.6"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 18,
+    "M": 23,
+    "H": 0
+   },
+   "formats": {
+    "V": 39,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "INQ-rat.basic": 6,
+    "INQ-rat.closed": 12,
+    "INQ-rat.const": 6,
+    "INQ-rat.ge": 3,
+    "INQ-rat.le1": 6,
+    "INQ-rat.lek": 3,
+    "INQ-rat.flip": 3,
+    "INQ-rat.which": 2
+   }
+  },
+  {
+   "code": "INQ-prop",
+   "domain": "SI",
+   "name": "Inequality properties (a > b ⇒ ?)",
+   "lessons": [
+    "1.7"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 39,
+    "M": 2,
+    "H": 0
+   },
+   "formats": {
+    "V": 0,
+    "S": 41,
+    "N": 0
+   },
+   "forms": {
+    "INQ-prop.basic": 19,
+    "INQ-prop.less": 3,
+    "INQ-prop.impl": 7,
+    "INQ-prop.three": 4,
+    "INQ-prop.pos": 2,
+    "INQ-prop.negc": 2,
+    "INQ-prop.two-pairs": 2,
+    "INQ-prop.four": 2
+   }
+  },
+  {
+   "code": "FN-dom",
+   "domain": "FN",
+   "name": "Domain (incl. composite domain)",
+   "lessons": [
+    "1.8",
+    "7.3"
+   ],
+   "realItems": 8,
+   "realShare": 3.3,
+   "planned": 66,
+   "questions": 66,
+   "examLevel": 53,
+   "plusOne": 13,
+   "tiers": {
+    "E": 47,
+    "M": 19,
+    "H": 0
+   },
+   "formats": {
+    "V": 60,
+    "S": 6,
+    "N": 0
+   },
+   "forms": {
+    "FN-dom.inv-sqrt": 5,
+    "FN-dom.recip-root": 5,
+    "FN-dom.ln-root": 3,
+    "FN-dom.cbrt": 6,
+    "FN-dom.fraction": 6,
+    "FN-dom.three-recip": 5,
+    "FN-dom.composite": 3,
+    "FN-dom.composite-sq": 6,
+    "FN-dom.inv-ln-abs": 5,
+    "FN-dom.root-den-log": 5,
+    "FN-dom.sqrt": 2,
+    "FN-dom.log": 2,
+    "FN-dom.three-recip-frac": 7,
+    "FN-dom.which": 6
+   }
+  },
+  {
+   "code": "FN-rng",
+   "domain": "FN",
+   "name": "Range",
+   "lessons": [
+    "1.9"
+   ],
+   "realItems": 1,
+   "realShare": 0.4,
+   "planned": 8,
+   "questions": 8,
+   "examLevel": 6,
+   "plusOne": 2,
+   "tiers": {
+    "E": 2,
+    "M": 6,
+    "H": 0
+   },
+   "formats": {
+    "V": 8,
+    "S": 0,
+    "N": 0
+   },
+   "forms": {
+    "FN-rng.recip-abs": 3,
+    "FN-rng.recip-quad": 3,
+    "FN-rng.quad": 2
+   }
+  },
+  {
+   "code": "FN-par",
+   "domain": "FN",
+   "name": "Parity (odd / even), symmetry of graph",
+   "lessons": [
+    "1.10"
+   ],
+   "realItems": 6,
+   "realShare": 2.5,
+   "planned": 50,
+   "questions": 50,
+   "examLevel": 40,
+   "plusOne": 10,
+   "tiers": {
+    "E": 40,
+    "M": 10,
+    "H": 0
+   },
+   "formats": {
+    "V": 0,
+    "S": 44,
+    "N": 6
+   },
+   "forms": {
+    "FN-par.which-odd": 12,
+    "FN-par.which-even": 4,
+    "FN-par.classify": 6,
+    "FN-par.special": 6,
+    "FN-par.incorrect": 6,
+    "FN-par.symmetry": 6,
+    "FN-par.four": 10
+   }
+  },
+  {
+   "code": "FN-inv",
+   "domain": "FN",
+   "name": "Inverse function",
+   "lessons": [
+    "1.11"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 42,
+   "questions": 42,
+   "examLevel": 34,
+   "plusOne": 8,
+   "tiers": {
+    "E": 33,
+    "M": 9,
+    "H": 0
+   },
+   "formats": {
+    "V": 40,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "FN-inv.linear": 8,
+    "FN-inv.cubic": 15,
+    "FN-inv.restricted": 5,
+    "FN-inv.frac": 6,
+    "FN-inv.cubic-mix": 3,
+    "FN-inv.frac-neg": 3,
+    "FN-inv.which": 2
+   }
+  },
+  {
+   "code": "FN-mono",
+   "domain": "FN",
+   "name": "Monotonicity",
+   "lessons": [
+    "1.12",
+    "7.1"
+   ],
+   "realItems": 4,
+   "realShare": 1.7,
+   "planned": 33,
+   "questions": 33,
+   "examLevel": 26,
+   "plusOne": 7,
+   "tiers": {
+    "E": 33,
+    "M": 0,
+    "H": 0
+   },
+   "formats": {
+    "V": 4,
+    "S": 29,
+    "N": 0
+   },
+   "forms": {
+    "FN-mono.inc-R": 5,
+    "FN-mono.dec-R": 11,
+    "FN-mono.dec-pos": 3,
+    "FN-mono.inc-pos": 2,
+    "FN-mono.stmt": 5,
+    "FN-mono.recip": 3,
+    "FN-mono.quad": 4
+   }
+  },
+  {
+   "code": "FN-same",
+   "domain": "FN",
+   "name": "\"Same function\" (rule and domain)",
+   "lessons": [
+    "1.13"
+   ],
+   "realItems": 2,
+   "realShare": 0.8,
+   "planned": 17,
+   "questions": 17,
+   "examLevel": 17,
+   "plusOne": 0,
+   "tiers": {
+    "E": 0,
+    "M": 17,
+    "H": 0
+   },
+   "formats": {
+    "V": 0,
+    "S": 17,
+    "N": 0
+   },
+   "forms": {
+    "FN-same.pairs": 10,
+    "FN-same.as-x": 3,
+    "FN-same.as-abs": 4
+   }
+  },
+  {
+   "code": "FN-val",
+   "domain": "FN",
+   "name": "Function value by substitution",
+   "lessons": [
+    "1.8"
+   ],
+   "realItems": 0,
+   "realShare": 0,
+   "planned": 8,
+   "questions": 8,
+   "examLevel": 8,
+   "plusOne": 0,
+   "tiers": {
+    "E": 8,
+    "M": 0,
+    "H": 0
+   },
+   "formats": {
+    "V": 8,
+    "S": 0,
+    "N": 0
+   },
+   "forms": {
+    "FN-val.shift": 8
+   }
+  },
+  {
+   "code": "FN-cmp",
+   "domain": "FN",
+   "name": "Compare powers / exponentials / logs",
+   "lessons": [
+    "7.4"
+   ],
+   "realItems": 3,
+   "realShare": 1.3,
+   "planned": 25,
+   "questions": 25,
+   "examLevel": 20,
+   "plusOne": 5,
+   "tiers": {
+    "E": 4,
+    "M": 21,
+    "H": 0
+   },
+   "formats": {
+    "V": 0,
+    "S": 25,
+    "N": 0
+   },
+   "forms": {
+    "FN-cmp.r07": 13,
+    "FN-cmp.posexp": 1,
+    "FN-cmp.base-gt1": 1,
+    "FN-cmp.base-lt1": 1,
+    "FN-cmp.negexp": 1,
+    "FN-cmp.order3": 3,
+    "FN-cmp.log-sign": 5
+   }
+  },
+  {
+   "code": "FN-log",
+   "domain": "FN",
+   "name": "Log computation or log inequality",
+   "lessons": [
+    "7.2",
+    "7.3"
+   ],
+   "realItems": 7,
+   "realShare": 2.9,
+   "planned": 58,
+   "questions": 58,
+   "examLevel": 46,
+   "plusOne": 12,
+   "tiers": {
+    "E": 33,
+    "M": 25,
+    "H": 0
+   },
+   "formats": {
+    "V": 44,
+    "S": 8,
+    "N": 6
+   },
+   "forms": {
+    "FN-log.sum-inv": 5,
+    "FN-log.lg-sum": 6,
+    "FN-log.product": 6,
+    "FN-log.quotient": 8,
+    "FN-log.incorrect-rule": 6,
+    "FN-log.correct-rule": 2,
+    "FN-log.ineq": 8,
+    "FN-log.stmt4": 5,
+    "FN-log.chain": 3,
+    "FN-log.ineq-small": 3,
+    "FN-log.three-term": 2,
+    "FN-log.power-base": 3,
+    "FN-log.value-stmt": 1
+   }
+  },
+  {
+   "code": "FN-prop",
+   "domain": "FN",
+   "name": "Properties of exp / log / power functions",
+   "lessons": [
+    "7.1",
+    "7.3"
+   ],
+   "realItems": 6,
+   "realShare": 2.5,
+   "planned": 50,
+   "questions": 50,
+   "examLevel": 40,
+   "plusOne": 10,
+   "tiers": {
+    "E": 28,
+    "M": 22,
+    "H": 0
+   },
+   "formats": {
+    "V": 23,
+    "S": 20,
+    "N": 7
+   },
+   "forms": {
+    "FN-prop.exp-stmt": 5,
+    "FN-prop.exp-incorrect": 5,
+    "FN-prop.log-incorrect": 2,
+    "FN-prop.log-stmt": 5,
+    "FN-prop.exp-cond": 9,
+    "FN-prop.log-cond": 2,
+    "FN-prop.fixed-log": 5,
+    "FN-prop.fixed-exp": 2,
+    "FN-prop.symmetric": 5,
+    "FN-prop.exp-neg": 5,
+    "FN-prop.fixed-exp-coef": 5
+   }
+  },
+  {
+   "code": "TR-val",
+   "domain": "TR",
+   "name": "Special-angle values",
+   "lessons": [
+    "2.1"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 39,
+    "M": 2,
+    "H": 0
+   },
+   "formats": {
+    "V": 24,
+    "S": 17,
+    "N": 0
+   },
+   "forms": {
+    "TR-val.combo": 6,
+    "TR-val.alpha-true": 9,
+    "TR-val.single": 12,
+    "TR-val.which-correct": 6,
+    "TR-val.two": 2,
+    "TR-val.three": 2,
+    "TR-val.which-correct-quad": 2,
+    "TR-val.beyond": 2
+   }
+  },
+  {
+   "code": "TR-def",
+   "domain": "TR",
+   "name": "Ratio from a point on the terminal side / triangle",
+   "lessons": [
+    "2.2"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 32,
+   "plusOne": 9,
+   "tiers": {
+    "E": 35,
+    "M": 6,
+    "H": 0
+   },
+   "formats": {
+    "V": 38,
+    "S": 3,
+    "N": 0
+   },
+   "forms": {
+    "TR-def.point": 16,
+    "TR-def.unknown": 7,
+    "TR-def.triangle": 7,
+    "TR-def.symbolic": 2,
+    "TR-def.point-q3": 3,
+    "TR-def.four": 3,
+    "TR-def.chain": 3
+   }
+  },
+  {
+   "code": "TR-id",
+   "domain": "TR",
+   "name": "Same-angle identities, quadrant signs",
+   "lessons": [
+    "2.3"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 33,
+    "M": 8,
+    "H": 0
+   },
+   "formats": {
+    "V": 26,
+    "S": 13,
+    "N": 2
+   },
+   "forms": {
+    "TR-id.acute": 11,
+    "TR-id.quad-v": 3,
+    "TR-id.quad": 5,
+    "TR-id.identity": 6,
+    "TR-id.identity-n": 2,
+    "TR-id.noquad": 6,
+    "TR-id.from-tan": 2,
+    "TR-id.four": 2,
+    "TR-id.pair": 1,
+    "TR-id.sum-diff": 1,
+    "TR-id.lincomb": 2
+   }
+  },
+  {
+   "code": "TR-dbl",
+   "domain": "TR",
+   "name": "Double-angle formulas",
+   "lessons": [
+    "3.2"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 30,
+    "M": 9,
+    "H": 2
+   },
+   "formats": {
+    "V": 39,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "TR-dbl.cos-from-sin": 11,
+    "TR-dbl.cos-from-cos": 3,
+    "TR-dbl.surd": 5,
+    "TR-dbl.sin2": 6,
+    "TR-dbl.squared": 5,
+    "TR-dbl.expr": 3,
+    "TR-dbl.sin2-surd": 2,
+    "TR-dbl.tan2": 1,
+    "TR-dbl.sumk": 1,
+    "TR-dbl.sumk-cos": 1,
+    "TR-dbl.fourth": 1,
+    "TR-dbl.stmt": 2
+   }
+  },
+  {
+   "code": "TR-sum",
+   "domain": "TR",
+   "name": "Sum / difference formulas",
+   "lessons": [
+    "3.1"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 29,
+   "plusOne": 12,
+   "tiers": {
+    "E": 0,
+    "M": 38,
+    "H": 3
+   },
+   "formats": {
+    "V": 33,
+    "S": 8,
+    "N": 0
+   },
+   "forms": {
+    "TR-sum.exact": 6,
+    "TR-sum.exact-tan": 4,
+    "TR-sum.given": 11,
+    "TR-sum.acute-stmt": 8,
+    "TR-sum.exact-obtuse": 3,
+    "TR-sum.tan-shift": 3,
+    "TR-sum.two-ratios": 3,
+    "TR-sum.tan-roots": 2,
+    "TR-sum.cos-beta": 1
+   }
+  },
+  {
+   "code": "TR-half",
+   "domain": "TR",
+   "name": "Half-angle with quadrant sign",
+   "lessons": [
+    "3.3"
+   ],
+   "realItems": 10,
+   "realShare": 4.2,
+   "planned": 83,
+   "questions": 83,
+   "examLevel": 66,
+   "plusOne": 17,
+   "tiers": {
+    "E": 8,
+    "M": 70,
+    "H": 5
+   },
+   "formats": {
+    "V": 80,
+    "S": 3,
+    "N": 0
+   },
+   "forms": {
+    "TR-half.r01": 28,
+    "TR-half.acute": 8,
+    "TR-half.from-sin": 7,
+    "TR-half.tan": 7,
+    "TR-half.cos-q2": 7,
+    "TR-half.q4": 6,
+    "TR-half.stmt": 3,
+    "TR-half.mixed": 12,
+    "TR-half.pair": 5
+   }
+  },
+  {
+   "code": "TR-red",
+   "domain": "TR",
+   "name": "Reduction (induction) formulas",
+   "lessons": [
+    "2.4"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 30,
+    "M": 11,
+    "H": 0
+   },
+   "formats": {
+    "V": 11,
+    "S": 21,
+    "N": 9
+   },
+   "forms": {
+    "TR-red.correct": 18,
+    "TR-red.incorrect": 6,
+    "TR-red.three-half": 3,
+    "TR-red.value": 6,
+    "TR-red.incorrect-3half": 3,
+    "TR-red.chain": 3,
+    "TR-red.quotient": 2
+   }
+  },
+  {
+   "code": "TR-graph",
+   "domain": "TR",
+   "name": "Period, monotonic interval, parity, extremes, domain",
+   "lessons": [
+    "2.5",
+    "2.6"
+   ],
+   "realItems": 10,
+   "realShare": 4.2,
+   "planned": 83,
+   "questions": 83,
+   "examLevel": 66,
+   "plusOne": 17,
+   "tiers": {
+    "E": 59,
+    "M": 24,
+    "H": 0
+   },
+   "formats": {
+    "V": 27,
+    "S": 44,
+    "N": 12
+   },
+   "forms": {
+    "TR-graph.period": 6,
+    "TR-graph.tan-period": 6,
+    "TR-graph.extreme": 7,
+    "TR-graph.stmt": 14,
+    "TR-graph.stmt-n": 6,
+    "TR-graph.mono-interval": 6,
+    "TR-graph.tan-stmt": 6,
+    "TR-graph.tan-n": 6,
+    "TR-graph.tan-neg": 6,
+    "TR-graph.tan-domain": 3,
+    "TR-graph.period-frac": 2,
+    "TR-graph.four": 3,
+    "TR-graph.mono-shift": 3,
+    "TR-graph.min-interval": 3,
+    "TR-graph.tan-mono": 2,
+    "TR-graph.tan-shift": 2,
+    "TR-graph.tan-parity": 2
+   }
+  },
+  {
+   "code": "TR-hom",
+   "domain": "TR",
+   "name": "Homogeneous ratio (divide by cos α)",
+   "lessons": [
+    "3.4"
+   ],
+   "realItems": 1,
+   "realShare": 0.4,
+   "planned": 8,
+   "questions": 8,
+   "examLevel": 6,
+   "plusOne": 2,
+   "tiers": {
+    "E": 0,
+    "M": 8,
+    "H": 0
+   },
+   "formats": {
+    "V": 8,
+    "S": 0,
+    "N": 0
+   },
+   "forms": {
+    "TR-hom.forward": 2,
+    "TR-hom.backward": 4,
+    "TR-hom.forward-frac": 1,
+    "TR-hom.sincos": 1
+   }
+  },
+  {
+   "code": "SQ-ar",
+   "domain": "SQ",
+   "name": "Arithmetic sequence term",
+   "lessons": [
+    "5.1"
+   ],
+   "realItems": 9,
+   "realShare": 3.8,
+   "planned": 75,
+   "questions": 75,
+   "examLevel": 60,
+   "plusOne": 15,
+   "tiers": {
+    "E": 66,
+    "M": 9,
+    "H": 0
+   },
+   "formats": {
+    "V": 73,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "SQ-ar.r03": 20,
+    "SQ-ar.small": 13,
+    "SQ-ar.r12": 13,
+    "SQ-ar.large": 7,
+    "SQ-ar.two-terms": 7,
+    "SQ-ar.frac-d": 3,
+    "SQ-ar.far-term": 3,
+    "SQ-ar.general": 3,
+    "SQ-ar.far-general": 4,
+    "SQ-ar.stmt": 2
+   }
+  },
+  {
+   "code": "SQ-geo",
+   "domain": "SQ",
+   "name": "Geometric sequence term or ratio",
+   "lessons": [
+    "5.2"
+   ],
+   "realItems": 4,
+   "realShare": 1.7,
+   "planned": 33,
+   "questions": 33,
+   "examLevel": 26,
+   "plusOne": 7,
+   "tiers": {
+    "E": 24,
+    "M": 9,
+    "H": 0
+   },
+   "formats": {
+    "V": 24,
+    "S": 6,
+    "N": 3
+   },
+   "forms": {
+    "SQ-geo.general": 6,
+    "SQ-geo.middle": 6,
+    "SQ-geo.ratio": 5,
+    "SQ-geo.term": 3,
+    "SQ-geo.alt-stmt": 6,
+    "SQ-geo.alt-n": 3,
+    "SQ-geo.term-frac": 2,
+    "SQ-geo.sum-small": 2
+   }
+  },
+  {
+   "code": "SQ-mean",
+   "domain": "SQ",
+   "name": "Arithmetic / geometric mean (geometric: ±)",
+   "lessons": [
+    "5.3"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 35,
+    "M": 6,
+    "H": 0
+   },
+   "formats": {
+    "V": 38,
+    "S": 3,
+    "N": 0
+   },
+   "forms": {
+    "SQ-mean.three": 6,
+    "SQ-mean.sum-given": 6,
+    "SQ-mean.surd-arith": 6,
+    "SQ-mean.geo": 6,
+    "SQ-mean.prod-given": 6,
+    "SQ-mean.surd-geo": 3,
+    "SQ-mean.positive": 2,
+    "SQ-mean.four": 3,
+    "SQ-mean.param": 3
+   }
+  },
+  {
+   "code": "SQ-gen",
+   "domain": "SQ",
+   "name": "General term from a pattern",
+   "lessons": [
+    "5.4"
+   ],
+   "realItems": 3,
+   "realShare": 1.3,
+   "planned": 25,
+   "questions": 25,
+   "examLevel": 20,
+   "plusOne": 5,
+   "tiers": {
+    "E": 14,
+    "M": 11,
+    "H": 0
+   },
+   "formats": {
+    "V": 25,
+    "S": 0,
+    "N": 0
+   },
+   "forms": {
+    "SQ-gen.r14": 11,
+    "SQ-gen.linear-den": 6,
+    "SQ-gen.pattern": 3,
+    "SQ-gen.n-over": 2,
+    "SQ-gen.all-changing": 3
+   }
+  },
+  {
+   "code": "SQ-type",
+   "domain": "SQ",
+   "name": "Identify arithmetic / geometric",
+   "lessons": [
+    "5.4"
+   ],
+   "realItems": 2,
+   "realShare": 0.8,
+   "planned": 17,
+   "questions": 17,
+   "examLevel": 14,
+   "plusOne": 3,
+   "tiers": {
+    "E": 14,
+    "M": 3,
+    "H": 0
+   },
+   "formats": {
+    "V": 5,
+    "S": 12,
+    "N": 0
+   },
+   "forms": {
+    "SQ-type.count": 5,
+    "SQ-type.formula": 5,
+    "SQ-type.which-arith": 2,
+    "SQ-type.which-geo": 2,
+    "SQ-type.detail": 3
+   }
+  },
+  {
+   "code": "SQ-sn",
+   "domain": "SQ",
+   "name": "a_n from S_n, or an S_n relation",
+   "lessons": [
+    "5.5"
+   ],
+   "realItems": 4,
+   "realShare": 1.7,
+   "planned": 33,
+   "questions": 33,
+   "examLevel": 26,
+   "plusOne": 7,
+   "tiers": {
+    "E": 3,
+    "M": 12,
+    "H": 18
+   },
+   "formats": {
+    "V": 31,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "SQ-sn.r10": 10,
+    "SQ-sn.lambda": 5,
+    "SQ-sn.cubic": 5,
+    "SQ-sn.quad-term": 3,
+    "SQ-sn.quad-general": 3,
+    "SQ-sn.r10-partial": 1,
+    "SQ-sn.lambda-odd": 2,
+    "SQ-sn.exp": 2,
+    "SQ-sn.const-stmt": 2
+   }
+  },
+  {
+   "code": "SQ-rec",
+   "domain": "SQ",
+   "name": "Recursion (often reciprocal trick)",
+   "lessons": [
+    "5.6"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 6,
+    "M": 24,
+    "H": 11
+   },
+   "formats": {
+    "V": 39,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "SQ-rec.recip-far": 5,
+    "SQ-rec.recip-step": 5,
+    "SQ-rec.alt": 6,
+    "SQ-rec.fib": 3,
+    "SQ-rec.one-plus": 3,
+    "SQ-rec.ratio-abs-sum": 6,
+    "SQ-rec.recip-sum": 5,
+    "SQ-rec.recip-trick": 3,
+    "SQ-rec.alt-far": 3,
+    "SQ-rec.stmt": 2
+   }
+  },
+  {
+   "code": "SQ-sum",
+   "domain": "SQ",
+   "name": "Sums (index properties, grouping)",
+   "lessons": [
+    "5.7"
+   ],
+   "realItems": 2,
+   "realShare": 0.8,
+   "planned": 17,
+   "questions": 17,
+   "examLevel": 14,
+   "plusOne": 3,
+   "tiers": {
+    "E": 2,
+    "M": 3,
+    "H": 12
+   },
+   "formats": {
+    "V": 16,
+    "S": 1,
+    "N": 0
+   },
+   "forms": {
+    "SQ-sum.two-group": 5,
+    "SQ-sum.grouped-formula": 5,
+    "SQ-sum.blocks": 2,
+    "SQ-sum.odd-sn": 1,
+    "SQ-sum.index-pair": 1,
+    "SQ-sum.grouped-value": 2,
+    "SQ-sum.stmt": 1
+   }
+  },
+  {
+   "code": "LN-quad",
+   "domain": "LN",
+   "name": "Quadrant / signs of coordinates",
+   "lessons": [
+    "4.1"
+   ],
+   "realItems": 8,
+   "realShare": 3.3,
+   "planned": 66,
+   "questions": 66,
+   "examLevel": 53,
+   "plusOne": 13,
+   "tiers": {
+    "E": 53,
+    "M": 13,
+    "H": 0
+   },
+   "formats": {
+    "V": 20,
+    "S": 46,
+    "N": 0
+   },
+   "forms": {
+    "LN-quad.r02": 33,
+    "LN-quad.irrational": 7,
+    "LN-quad.sign-ab": 7,
+    "LN-quad.transformed": 6,
+    "LN-quad.four": 13
+   }
+  },
+  {
+   "code": "LN-pt",
+   "domain": "LN",
+   "name": "Symmetric point, point on an axis, distance to an axis",
+   "lessons": [
+    "4.1"
+   ],
+   "realItems": 2,
+   "realShare": 0.8,
+   "planned": 17,
+   "questions": 17,
+   "examLevel": 14,
+   "plusOne": 3,
+   "tiers": {
+    "E": 17,
+    "M": 0,
+    "H": 0
+   },
+   "formats": {
+    "V": 17,
+    "S": 0,
+    "N": 0
+   },
+   "forms": {
+    "LN-pt.symmetric": 5,
+    "LN-pt.dist-axis": 6,
+    "LN-pt.on-axis": 3,
+    "LN-pt.sym-param": 1,
+    "LN-pt.midpoint": 2
+   }
+  },
+  {
+   "code": "LN-dist",
+   "domain": "LN",
+   "name": "Distance between points",
+   "lessons": [
+    "4.2"
+   ],
+   "realItems": 8,
+   "realShare": 3.3,
+   "planned": 66,
+   "questions": 66,
+   "examLevel": 53,
+   "plusOne": 13,
+   "tiers": {
+    "E": 52,
+    "M": 14,
+    "H": 0
+   },
+   "formats": {
+    "V": 63,
+    "S": 3,
+    "N": 0
+   },
+   "forms": {
+    "LN-dist.r04": 17,
+    "LN-dist.integer": 6,
+    "LN-dist.surd": 12,
+    "LN-dist.symbolic": 6,
+    "LN-dist.param": 6,
+    "LN-dist.param-sym": 6,
+    "LN-dist.param-surd": 5,
+    "LN-dist.awkward": 5,
+    "LN-dist.stmt": 3
+   }
+  },
+  {
+   "code": "LN-slope",
+   "domain": "LN",
+   "name": "Slope or inclination angle",
+   "lessons": [
+    "4.3"
+   ],
+   "realItems": 7,
+   "realShare": 2.9,
+   "planned": 58,
+   "questions": 58,
+   "examLevel": 46,
+   "plusOne": 12,
+   "tiers": {
+    "E": 49,
+    "M": 9,
+    "H": 0
+   },
+   "formats": {
+    "V": 55,
+    "S": 3,
+    "N": 0
+   },
+   "forms": {
+    "LN-slope.two-points": 20,
+    "LN-slope.incl-si": 6,
+    "LN-slope.incl-general": 7,
+    "LN-slope.from-incl": 7,
+    "LN-slope.incl-two-points": 6,
+    "LN-slope.incl-int-general": 3,
+    "LN-slope.stmt": 3,
+    "LN-slope.param": 3,
+    "LN-slope.incl-surd-points": 3
+   }
+  },
+  {
+   "code": "LN-eq",
+   "domain": "LN",
+   "name": "Equation of a line",
+   "lessons": [
+    "4.4"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 38,
+    "M": 3,
+    "H": 0
+   },
+   "formats": {
+    "V": 40,
+    "S": 1,
+    "N": 0
+   },
+   "forms": {
+    "LN-eq.point-slope": 13,
+    "LN-eq.two-points": 13,
+    "LN-eq.incl": 7,
+    "LN-eq.two-points-frac": 2,
+    "LN-eq.incl-general": 3,
+    "LN-eq.intercepts": 2,
+    "LN-eq.stmt": 1
+   }
+  },
+  {
+   "code": "LN-int",
+   "domain": "LN",
+   "name": "Intersection / concurrency of lines",
+   "lessons": [
+    "4.5"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 30,
+    "M": 9,
+    "H": 2
+   },
+   "formats": {
+    "V": 40,
+    "S": 1,
+    "N": 0
+   },
+   "forms": {
+    "LN-int.integer": 16,
+    "LN-int.fraction": 6,
+    "LN-int.two-points": 5,
+    "LN-int.concurrent": 6,
+    "LN-int.concurrent-frac": 2,
+    "LN-int.intercept-form": 3,
+    "LN-int.on-axis": 2,
+    "LN-int.stmt": 1
+   }
+  },
+  {
+   "code": "LN-pp",
+   "domain": "LN",
+   "name": "Parallel / perpendicular (incl. parameter)",
+   "lessons": [
+    "4.6"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 28,
+    "M": 9,
+    "H": 4
+   },
+   "formats": {
+    "V": 20,
+    "S": 21,
+    "N": 0
+   },
+   "forms": {
+    "LN-pp.which-perp": 11,
+    "LN-pp.which-parallel": 5,
+    "LN-pp.three-lines": 5,
+    "LN-pp.perp-param": 6,
+    "LN-pp.par-param": 3,
+    "LN-pp.perp-through": 3,
+    "LN-pp.par-param-coincide": 4,
+    "LN-pp.par-through": 4
+   }
+  },
+  {
+   "code": "LN-perp",
+   "domain": "LN",
+   "name": "Line ⊥ a given line through an intersection point",
+   "lessons": [
+    "4.7"
+   ],
+   "realItems": 3,
+   "realShare": 1.3,
+   "planned": 25,
+   "questions": 25,
+   "examLevel": 20,
+   "plusOne": 5,
+   "tiers": {
+    "E": 2,
+    "M": 21,
+    "H": 2
+   },
+   "formats": {
+    "V": 25,
+    "S": 0,
+    "N": 0
+   },
+   "forms": {
+    "LN-perp.r06": 15,
+    "LN-perp.parallel": 3,
+    "LN-perp.through-point": 2,
+    "LN-perp.r06-frac": 1,
+    "LN-perp.r06-slope-form": 1,
+    "LN-perp.r06-axis": 1,
+    "LN-perp.two-points": 1,
+    "LN-perp.equal-intercepts": 1
+   }
+  },
+  {
+   "code": "CN-cir",
+   "domain": "CN",
+   "name": "Circle",
+   "lessons": [
+    "6.1",
+    "6.2"
+   ],
+   "realItems": 10,
+   "realShare": 4.2,
+   "planned": 83,
+   "questions": 83,
+   "examLevel": 66,
+   "plusOne": 17,
+   "tiers": {
+    "E": 72,
+    "M": 11,
+    "H": 0
+   },
+   "formats": {
+    "V": 81,
+    "S": 2,
+    "N": 0
+   },
+   "forms": {
+    "CN-cir.r08": 28,
+    "CN-cir.read": 3,
+    "CN-cir.r-trap": 3,
+    "CN-cir.r13": 11,
+    "CN-cir.gen-radius": 6,
+    "CN-cir.gen-centre": 3,
+    "CN-cir.gen-both": 6,
+    "CN-cir.to-general": 6,
+    "CN-cir.sqrt-radius": 3,
+    "CN-cir.far-point": 3,
+    "CN-cir.gen-through": 3,
+    "CN-cir.gen-frac": 3,
+    "CN-cir.axis-param": 3,
+    "CN-cir.stmt": 1,
+    "CN-cir.gen-stmt": 1
+   }
+  },
+  {
+   "code": "CN-ell",
+   "domain": "CN",
+   "name": "Ellipse",
+   "lessons": [
+    "6.4",
+    "6.5"
+   ],
+   "realItems": 7,
+   "realShare": 2.9,
+   "planned": 58,
+   "questions": 58,
+   "examLevel": 46,
+   "plusOne": 12,
+   "tiers": {
+    "E": 18,
+    "M": 37,
+    "H": 3
+   },
+   "formats": {
+    "V": 45,
+    "S": 11,
+    "N": 2
+   },
+   "forms": {
+    "CN-ell.foci": 3,
+    "CN-ell.sum": 5,
+    "CN-ell.from-2a-foci": 5,
+    "CN-ell.r09": 11,
+    "CN-ell.same-foci": 5,
+    "CN-ell.stmt": 5,
+    "CN-ell.stmt-general": 5,
+    "CN-ell.two-case": 3,
+    "CN-ell.a-e-b": 2,
+    "CN-ell.vertex-e": 2,
+    "CN-ell.stmt-n": 2,
+    "CN-ell.ecc": 3,
+    "CN-ell.from-2c-vertex": 3,
+    "CN-ell.2c-minor": 3,
+    "CN-ell.cond-stmt": 1
+   }
+  },
+  {
+   "code": "CN-hyp",
+   "domain": "CN",
+   "name": "Hyperbola",
+   "lessons": [
+    "6.6"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 42,
+   "questions": 42,
+   "examLevel": 34,
+   "plusOne": 8,
+   "tiers": {
+    "E": 24,
+    "M": 16,
+    "H": 2
+   },
+   "formats": {
+    "V": 34,
+    "S": 6,
+    "N": 2
+   },
+   "forms": {
+    "CN-hyp.foci": 13,
+    "CN-hyp.real-axis": 3,
+    "CN-hyp.stmt": 6,
+    "CN-hyp.condition": 6,
+    "CN-hyp.e-b": 6,
+    "CN-hyp.neg-lead": 2,
+    "CN-hyp.stmt-n": 2,
+    "CN-hyp.cond-range": 2,
+    "CN-hyp.ecc": 2
+   }
+  },
+  {
+   "code": "CN-par",
+   "domain": "CN",
+   "name": "Parabola",
+   "lessons": [
+    "6.3"
+   ],
+   "realItems": 8,
+   "realShare": 3.3,
+   "planned": 66,
+   "questions": 66,
+   "examLevel": 53,
+   "plusOne": 13,
+   "tiers": {
+    "E": 47,
+    "M": 14,
+    "H": 5
+   },
+   "formats": {
+    "V": 50,
+    "S": 12,
+    "N": 4
+   },
+   "forms": {
+    "CN-par.directrix": 17,
+    "CN-par.directrix-yax2": 6,
+    "CN-par.focus": 3,
+    "CN-par.stmt": 12,
+    "CN-par.focal-dist": 6,
+    "CN-par.through": 6,
+    "CN-par.from-focus": 3,
+    "CN-par.stmt-n": 4,
+    "CN-par.through-focus": 4,
+    "CN-par.point-from-pf": 5
+   }
+  },
+  {
+   "code": "VEC",
+   "domain": "VEC",
+   "name": "Plane vectors",
+   "lessons": [
+    "7.5"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 18,
+    "M": 18,
+    "H": 5
+   },
+   "formats": {
+    "V": 36,
+    "S": 5,
+    "N": 0
+   },
+   "forms": {
+    "VEC.lincomb": 9,
+    "VEC.midpoint": 5,
+    "VEC.collinear": 5,
+    "VEC.shape": 5,
+    "VEC.min-norm": 5,
+    "VEC.dot": 2,
+    "VEC.magnitude": 2,
+    "VEC.perp-param": 4,
+    "VEC.norm-sum": 4
+   }
+  },
+  {
+   "code": "CPX",
+   "domain": "CPX",
+   "name": "Complex numbers",
+   "lessons": [
+    "7.6"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 42,
+   "questions": 42,
+   "examLevel": 34,
+   "plusOne": 8,
+   "tiers": {
+    "E": 0,
+    "M": 31,
+    "H": 11
+   },
+   "formats": {
+    "V": 41,
+    "S": 1,
+    "N": 0
+   },
+   "forms": {
+    "CPX.linear": 6,
+    "CPX.rational": 5,
+    "CPX.max-mod": 3,
+    "CPX.omega": 6,
+    "CPX.root-on-line": 5,
+    "CPX.power-diff": 6,
+    "CPX.vieta": 3,
+    "CPX.min-mod": 2,
+    "CPX.shifted": 1,
+    "CPX.omega-power": 2,
+    "CPX.conj-expr": 2,
+    "CPX.stmt": 1
+   }
+  },
+  {
+   "code": "PRB",
+   "domain": "PRB",
+   "name": "Probability",
+   "lessons": [
+    "7.7"
+   ],
+   "realItems": 5,
+   "realShare": 2.1,
+   "planned": 41,
+   "questions": 41,
+   "examLevel": 33,
+   "plusOne": 8,
+   "tiers": {
+    "E": 3,
+    "M": 21,
+    "H": 17
+   },
+   "formats": {
+    "V": 33,
+    "S": 8,
+    "N": 0
+   },
+   "forms": {
+    "PRB.same-colour": 2,
+    "PRB.both-colour": 1,
+    "PRB.at-least-one": 2,
+    "PRB.share": 5,
+    "PRB.two-way": 5,
+    "PRB.same-option": 1,
+    "PRB.labels": 5,
+    "PRB.sums": 5,
+    "PRB.compare-n": 5,
+    "PRB.means": 2,
+    "PRB.stmt": 8
+   }
+  }
+ ],
+ "overflow": [
+  {
+   "code": "TR-def",
+   "template": "TR-def.symbolic",
+   "level": "=",
+   "planned": 6,
+   "made": 2
+  },
+  {
+   "code": "TR-sum",
+   "template": "TR-sum.exact",
+   "level": "=",
+   "planned": 12,
+   "made": 6
+  },
+  {
+   "code": "TR-sum",
+   "template": "TR-sum.exact-tan",
+   "level": "=",
+   "planned": 6,
+   "made": 4
+  },
+  {
+   "code": "TR-half",
+   "template": "TR-half.r01",
+   "level": "=",
+   "planned": 32,
+   "made": 28
+  },
+  {
+   "code": "TR-graph",
+   "template": "TR-graph.mono-interval",
+   "level": "=",
+   "planned": 7,
+   "made": 6
+  }
+ ],
+ "verification": {
+  "items": 2000,
+  "methods": {
+   "stmt": 550,
+   "set": 198,
+   "eq": 219,
+   "custom": 74,
+   "val": 871,
+   "fn": 88
+  }
+ }
+}

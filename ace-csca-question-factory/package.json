@@ -1,0 +1,16 @@
+{
+  "name": "ace-csca-question-factory",
+  "version": "1.0.0",
+  "description": "Verified question generator, paper assembler and question bank for CSCA Mathematics (ACE CSCA).",
+  "main": "src/index.js",
+  "bin": { "csca-factory": "cli.js" },
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "test": "node test/core.js && node test/run.js --quiet --n 60 && node test/assemble.js && node test/bank.js",
+    "bank": "node cli.js bank",
+    "course": "node cli.js course",
+    "bundle": "node cli.js bundle",
+    "app": "node tools/build-app.js"
+  }
+}

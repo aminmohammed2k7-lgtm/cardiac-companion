@@ -1,0 +1,803 @@
+{
+ "seed": "1",
+ "papers": [
+  {
+   "ref": "d02-a",
+   "kind": "set",
+   "title": "Day 2 · Set A · 1.3",
+   "items": 8,
+   "key": "ACADDBBC"
+  },
+  {
+   "ref": "d02-b",
+   "kind": "set",
+   "title": "Day 2 · Set B · 1.4",
+   "items": 8,
+   "key": "BADDCACB"
+  },
+  {
+   "ref": "d03-a",
+   "kind": "set",
+   "title": "Day 3 · Set A · 1.5, 1.6",
+   "items": 8,
+   "key": "ACBDBACD"
+  },
+  {
+   "ref": "d03-b",
+   "kind": "set",
+   "title": "Day 3 · Set B · 1.7",
+   "items": 8,
+   "key": "CCBDABAD"
+  },
+  {
+   "ref": "d04-a",
+   "kind": "set",
+   "title": "Day 4 · Set A · 1.8, 1.9",
+   "items": 8,
+   "key": "BDCAACDB"
+  },
+  {
+   "ref": "d04-b",
+   "kind": "set",
+   "title": "Day 4 · Set B · 1.10",
+   "items": 8,
+   "key": "BDAACCDB"
+  },
+  {
+   "ref": "d05-a",
+   "kind": "set",
+   "title": "Day 5 · Set A · 1.11",
+   "items": 8,
+   "key": "DDBACBCA"
+  },
+  {
+   "ref": "d05-b",
+   "kind": "set",
+   "title": "Day 5 · Set B · 1.12, 1.13",
+   "items": 8,
+   "key": "ADBDACCB"
+  },
+  {
+   "ref": "d4148-w1",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 1 · version A",
+   "items": 8,
+   "key": "ABBDACCD",
+   "version": "a"
+  },
+  {
+   "ref": "w1-test",
+   "kind": "weekly",
+   "title": "Weekly mock W1 · 24 questions · 30 minutes",
+   "items": 24,
+   "key": "DBBDDCAACCCBCDBBADAAADCB"
+  },
+  {
+   "ref": "d08-a",
+   "kind": "set",
+   "title": "Day 8 · Set A · 2.1",
+   "items": 8,
+   "key": "DBDCCBAA"
+  },
+  {
+   "ref": "d08-b",
+   "kind": "set",
+   "title": "Day 8 · Set B · 2.2",
+   "items": 8,
+   "key": "CBBDCADA"
+  },
+  {
+   "ref": "d09-a",
+   "kind": "set",
+   "title": "Day 9 · Set A · 2.3",
+   "items": 8,
+   "key": "CDCDBBAA"
+  },
+  {
+   "ref": "d09-b",
+   "kind": "set",
+   "title": "Day 9 · Set B · 2.3",
+   "items": 8,
+   "key": "BABADDCC"
+  },
+  {
+   "ref": "d09-c",
+   "kind": "setc",
+   "title": "Day 9 · Set C (85+) · 2.3",
+   "items": 4,
+   "key": "BCAD"
+  },
+  {
+   "ref": "d10-a",
+   "kind": "set",
+   "title": "Day 10 · Set A · 2.4",
+   "items": 8,
+   "key": "BBAACCDD"
+  },
+  {
+   "ref": "d10-b",
+   "kind": "set",
+   "title": "Day 10 · Set B · 2.4",
+   "items": 8,
+   "key": "BACDABDC"
+  },
+  {
+   "ref": "d10-c",
+   "kind": "setc",
+   "title": "Day 10 · Set C (85+) · 2.4",
+   "items": 4,
+   "key": "CBDA"
+  },
+  {
+   "ref": "d11-a",
+   "kind": "set",
+   "title": "Day 11 · Set A · 2.5",
+   "items": 8,
+   "key": "BCABDACD"
+  },
+  {
+   "ref": "d11-b",
+   "kind": "set",
+   "title": "Day 11 · Set B · 2.5",
+   "items": 8,
+   "key": "CABBCDAD"
+  },
+  {
+   "ref": "d11-c",
+   "kind": "setc",
+   "title": "Day 11 · Set C (85+) · 2.5",
+   "items": 4,
+   "key": "ABCD"
+  },
+  {
+   "ref": "d12-a",
+   "kind": "set",
+   "title": "Day 12 · Set A · 2.6",
+   "items": 8,
+   "key": "CBCDABDA"
+  },
+  {
+   "ref": "d12-b",
+   "kind": "set",
+   "title": "Day 12 · Set B · 2.6",
+   "items": 8,
+   "key": "DDBAACCB"
+  },
+  {
+   "ref": "d12-c",
+   "kind": "setc",
+   "title": "Day 12 · Set C (85+) · 2.6",
+   "items": 4,
+   "key": "BCAD"
+  },
+  {
+   "ref": "d4148-w2",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 2 · version A",
+   "items": 8,
+   "key": "CBBAADDC",
+   "version": "a"
+  },
+  {
+   "ref": "w2-test",
+   "kind": "weekly",
+   "title": "Weekly mock W2 · 24 questions · 30 minutes",
+   "items": 24,
+   "key": "BACDADDABCCACCBDBABCDDBA"
+  },
+  {
+   "ref": "d15-a",
+   "kind": "set",
+   "title": "Day 15 · Set A · 3.1",
+   "items": 8,
+   "key": "DACDBACB"
+  },
+  {
+   "ref": "d15-b",
+   "kind": "set",
+   "title": "Day 15 · Set B · 3.1",
+   "items": 8,
+   "key": "ADDCBCAB"
+  },
+  {
+   "ref": "d15-c",
+   "kind": "setc",
+   "title": "Day 15 · Set C (85+) · 3.1",
+   "items": 4,
+   "key": "ABDC"
+  },
+  {
+   "ref": "d16-a",
+   "kind": "set",
+   "title": "Day 16 · Set A · 3.2",
+   "items": 8,
+   "key": "CDACABBD"
+  },
+  {
+   "ref": "d16-b",
+   "kind": "set",
+   "title": "Day 16 · Set B · 3.2",
+   "items": 8,
+   "key": "ABCDBDAC"
+  },
+  {
+   "ref": "d16-c",
+   "kind": "setc",
+   "title": "Day 16 · Set C (85+) · 3.2",
+   "items": 4,
+   "key": "BCDA"
+  },
+  {
+   "ref": "d17-a",
+   "kind": "set",
+   "title": "Day 17 · Set A · 3.3",
+   "items": 8,
+   "key": "ADBBACCD"
+  },
+  {
+   "ref": "d17-b",
+   "kind": "set",
+   "title": "Day 17 · Set B · 3.3",
+   "items": 8,
+   "key": "DCBDACAB"
+  },
+  {
+   "ref": "d17-c",
+   "kind": "setc",
+   "title": "Day 17 · Set C (85+) · 3.3",
+   "items": 4,
+   "key": "DBCA"
+  },
+  {
+   "ref": "d18-a",
+   "kind": "set",
+   "title": "Day 18 · Set A · 3.4",
+   "items": 8,
+   "key": "BDBCACAD"
+  },
+  {
+   "ref": "d18-b",
+   "kind": "set",
+   "title": "Day 18 · Set B · 3.4",
+   "items": 8,
+   "key": "DADABBCC"
+  },
+  {
+   "ref": "d18-c",
+   "kind": "setc",
+   "title": "Day 18 · Set C (85+) · 3.4",
+   "items": 4,
+   "key": "BACD"
+  },
+  {
+   "ref": "d19-a",
+   "kind": "set",
+   "title": "Day 19 · Set A · 3.5",
+   "items": 8,
+   "key": "CDCBABDA"
+  },
+  {
+   "ref": "d19-b",
+   "kind": "set",
+   "title": "Day 19 · Set B · 3.5",
+   "items": 8,
+   "key": "ADCDBABC"
+  },
+  {
+   "ref": "d19-c",
+   "kind": "setc",
+   "title": "Day 19 · Set C (85+) · 3.5",
+   "items": 4,
+   "key": "ADBC"
+  },
+  {
+   "ref": "d4148-w3",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 3 · version A",
+   "items": 8,
+   "key": "DBADACCB",
+   "version": "a"
+  },
+  {
+   "ref": "w3-test",
+   "kind": "weekly",
+   "title": "Weekly mock W3 · 24 questions · 30 minutes",
+   "items": 24,
+   "key": "BABCCAADADDDBCBBACCDACBD"
+  },
+  {
+   "ref": "d22-a",
+   "kind": "set",
+   "title": "Day 22 · Set A · 4.1",
+   "items": 8,
+   "key": "ADCBDCAB"
+  },
+  {
+   "ref": "d22-b",
+   "kind": "set",
+   "title": "Day 22 · Set B · 4.2",
+   "items": 8,
+   "key": "AADDCBCB"
+  },
+  {
+   "ref": "d23-a",
+   "kind": "set",
+   "title": "Day 23 · Set A · 4.3",
+   "items": 8,
+   "key": "AADDCBBC"
+  },
+  {
+   "ref": "d23-b",
+   "kind": "set",
+   "title": "Day 23 · Set B · 4.4",
+   "items": 8,
+   "key": "DDCBACAB"
+  },
+  {
+   "ref": "d24-a",
+   "kind": "set",
+   "title": "Day 24 · Set A · 4.5",
+   "items": 8,
+   "key": "BCDACDAB"
+  },
+  {
+   "ref": "d24-b",
+   "kind": "set",
+   "title": "Day 24 · Set B · 4.5",
+   "items": 8,
+   "key": "DBCADACB"
+  },
+  {
+   "ref": "d24-c",
+   "kind": "setc",
+   "title": "Day 24 · Set C (85+) · 4.5",
+   "items": 4,
+   "key": "BDAC"
+  },
+  {
+   "ref": "d25-a",
+   "kind": "set",
+   "title": "Day 25 · Set A · 4.6",
+   "items": 8,
+   "key": "DBDBAACC"
+  },
+  {
+   "ref": "d25-b",
+   "kind": "set",
+   "title": "Day 25 · Set B · 4.6",
+   "items": 8,
+   "key": "ACBDACBD"
+  },
+  {
+   "ref": "d25-c",
+   "kind": "setc",
+   "title": "Day 25 · Set C (85+) · 4.6",
+   "items": 4,
+   "key": "ADCB"
+  },
+  {
+   "ref": "d26-a",
+   "kind": "set",
+   "title": "Day 26 · Set A · 4.7",
+   "items": 8,
+   "key": "ABDCBACD"
+  },
+  {
+   "ref": "d26-b",
+   "kind": "set",
+   "title": "Day 26 · Set B · 4.7",
+   "items": 8,
+   "key": "DABCABCD"
+  },
+  {
+   "ref": "d26-c",
+   "kind": "setc",
+   "title": "Day 26 · Set C (85+) · 4.7",
+   "items": 4,
+   "key": "BDAC"
+  },
+  {
+   "ref": "d4148-w4",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 4 · version A",
+   "items": 8,
+   "key": "DDCAABBC",
+   "version": "a"
+  },
+  {
+   "ref": "w4-test",
+   "kind": "weekly",
+   "title": "Weekly mock W4 · 24 questions · 30 minutes",
+   "items": 24,
+   "key": "AADBCBADDCAACCDBBBACDDCB"
+  },
+  {
+   "ref": "d29-a",
+   "kind": "set",
+   "title": "Day 29 · Set A · 5.1",
+   "items": 8,
+   "key": "DDACBBCA"
+  },
+  {
+   "ref": "d29-b",
+   "kind": "set",
+   "title": "Day 29 · Set B · 5.2",
+   "items": 8,
+   "key": "CBBCDAAD"
+  },
+  {
+   "ref": "d30-a",
+   "kind": "set",
+   "title": "Day 30 · Set A · 5.3",
+   "items": 8,
+   "key": "BADCDBAC"
+  },
+  {
+   "ref": "d30-b",
+   "kind": "set",
+   "title": "Day 30 · Set B · 5.4",
+   "items": 8,
+   "key": "ADCDABCB"
+  },
+  {
+   "ref": "d31-a",
+   "kind": "set",
+   "title": "Day 31 · Set A · 5.5",
+   "items": 8,
+   "key": "BBCAACDD"
+  },
+  {
+   "ref": "d31-b",
+   "kind": "set",
+   "title": "Day 31 · Set B · 5.5",
+   "items": 8,
+   "key": "ADBADBCC"
+  },
+  {
+   "ref": "d31-c",
+   "kind": "setc",
+   "title": "Day 31 · Set C (85+) · 5.5",
+   "items": 4,
+   "key": "BADC"
+  },
+  {
+   "ref": "d32-a",
+   "kind": "set",
+   "title": "Day 32 · Set A · 5.6",
+   "items": 8,
+   "key": "BADBCACD"
+  },
+  {
+   "ref": "d32-b",
+   "kind": "set",
+   "title": "Day 32 · Set B · 5.6",
+   "items": 8,
+   "key": "ABADBCDC"
+  },
+  {
+   "ref": "d32-c",
+   "kind": "setc",
+   "title": "Day 32 · Set C (85+) · 5.6",
+   "items": 4,
+   "key": "ABDC"
+  },
+  {
+   "ref": "d33-a",
+   "kind": "set",
+   "title": "Day 33 · Set A · 5.7",
+   "items": 8,
+   "key": "CDCBADBA"
+  },
+  {
+   "ref": "d33-b",
+   "kind": "set",
+   "title": "Day 33 · Set B · 5.7",
+   "items": 8,
+   "key": "CCBABDAD"
+  },
+  {
+   "ref": "d33-c",
+   "kind": "setc",
+   "title": "Day 33 · Set C (85+) · 5.7",
+   "items": 4,
+   "key": "BDAC"
+  },
+  {
+   "ref": "d4148-w5",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 5 · version A",
+   "items": 8,
+   "key": "CDBADABC",
+   "version": "a"
+  },
+  {
+   "ref": "w5-test",
+   "kind": "weekly",
+   "title": "Weekly mock W5 · 24 questions · 30 minutes",
+   "items": 24,
+   "key": "DBDACACBAACCDABBDCDCBDBA"
+  },
+  {
+   "ref": "d36-a",
+   "kind": "set",
+   "title": "Day 36 · Set A · 6.1",
+   "items": 8,
+   "key": "DABCABCD"
+  },
+  {
+   "ref": "d36-b",
+   "kind": "set",
+   "title": "Day 36 · Set B · 6.2",
+   "items": 8,
+   "key": "ACDADBBC"
+  },
+  {
+   "ref": "d37-a",
+   "kind": "set",
+   "title": "Day 37 · Set A · 6.3",
+   "items": 8,
+   "key": "ABBDDACC"
+  },
+  {
+   "ref": "d37-b",
+   "kind": "set",
+   "title": "Day 37 · Set B · 6.3",
+   "items": 8,
+   "key": "DCBACBAD"
+  },
+  {
+   "ref": "d37-c",
+   "kind": "setc",
+   "title": "Day 37 · Set C (85+) · 6.3",
+   "items": 4,
+   "key": "CDAB"
+  },
+  {
+   "ref": "d38-a",
+   "kind": "set",
+   "title": "Day 38 · Set A · 6.4",
+   "items": 8,
+   "key": "CDAADCBB"
+  },
+  {
+   "ref": "d38-b",
+   "kind": "set",
+   "title": "Day 38 · Set B · 6.4",
+   "items": 8,
+   "key": "DBDACBCA"
+  },
+  {
+   "ref": "d38-c",
+   "kind": "setc",
+   "title": "Day 38 · Set C (85+) · 6.4",
+   "items": 4,
+   "key": "CDAB"
+  },
+  {
+   "ref": "d39-a",
+   "kind": "set",
+   "title": "Day 39 · Set A · 6.5",
+   "items": 8,
+   "key": "BBCCADAD"
+  },
+  {
+   "ref": "d39-b",
+   "kind": "set",
+   "title": "Day 39 · Set B · 6.5",
+   "items": 8,
+   "key": "CCBBAADD"
+  },
+  {
+   "ref": "d39-c",
+   "kind": "setc",
+   "title": "Day 39 · Set C (85+) · 6.5",
+   "items": 4,
+   "key": "BDAC"
+  },
+  {
+   "ref": "d40-a",
+   "kind": "set",
+   "title": "Day 40 · Set A · 6.6",
+   "items": 8,
+   "key": "DACBBCDA"
+  },
+  {
+   "ref": "d40-b",
+   "kind": "set",
+   "title": "Day 40 · Set B · 6.6",
+   "items": 8,
+   "key": "DBADACCB"
+  },
+  {
+   "ref": "d40-c",
+   "kind": "setc",
+   "title": "Day 40 · Set C (85+) · 6.6",
+   "items": 4,
+   "key": "CBDA"
+  },
+  {
+   "ref": "d4148-w6",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 6 · version A",
+   "items": 8,
+   "key": "DBABDCAC",
+   "version": "a"
+  },
+  {
+   "ref": "w6-test",
+   "kind": "weekly",
+   "title": "Weekly mock W6 · 24 questions · 30 minutes",
+   "items": 24,
+   "key": "ADCAADBADCBCBDDBCABBADCC"
+  },
+  {
+   "ref": "d43-a",
+   "kind": "set",
+   "title": "Day 43 · Set A · 7.1",
+   "items": 8,
+   "key": "CBADBCDA"
+  },
+  {
+   "ref": "d43-b",
+   "kind": "set",
+   "title": "Day 43 · Set B · 7.2",
+   "items": 8,
+   "key": "DCDBCAAB"
+  },
+  {
+   "ref": "d44-a",
+   "kind": "set",
+   "title": "Day 44 · Set A · 7.3",
+   "items": 8,
+   "key": "CDDABABC"
+  },
+  {
+   "ref": "d44-b",
+   "kind": "set",
+   "title": "Day 44 · Set B · 7.4",
+   "items": 8,
+   "key": "CAABCDDB"
+  },
+  {
+   "ref": "d45-a",
+   "kind": "set",
+   "title": "Day 45 · Set A · 7.5",
+   "items": 8,
+   "key": "ABDBACCD"
+  },
+  {
+   "ref": "d45-b",
+   "kind": "set",
+   "title": "Day 45 · Set B · 7.6",
+   "items": 8,
+   "key": "DDAABBCC"
+  },
+  {
+   "ref": "d46-a",
+   "kind": "set",
+   "title": "Day 46 · Set A · 7.7",
+   "items": 8,
+   "key": "BBCAADCD"
+  },
+  {
+   "ref": "d46-b",
+   "kind": "set",
+   "title": "Day 46 · Set B · 7.7",
+   "items": 8,
+   "key": "BADBCDCA"
+  },
+  {
+   "ref": "d46-c",
+   "kind": "setc",
+   "title": "Day 46 · Set C (85+) · 7.7",
+   "items": 4,
+   "key": "DBCA"
+  },
+  {
+   "ref": "d4148-w7",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 7 · version A",
+   "items": 8,
+   "key": "ACBADCDB",
+   "version": "a"
+  },
+  {
+   "ref": "w7-test",
+   "kind": "weekly",
+   "title": "Weekly mock W7 · 24 questions · 30 minutes",
+   "items": 24,
+   "key": "BACCCBDACCBABDCADBDAADBD"
+  },
+  {
+   "ref": "d4148-w1",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 1 · version B",
+   "items": 8,
+   "key": "BDDACACB",
+   "version": "b"
+  },
+  {
+   "ref": "d4148-w2",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 2 · version B",
+   "items": 8,
+   "key": "ACDBDBAC",
+   "version": "b"
+  },
+  {
+   "ref": "d4148-w3",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 3 · version B",
+   "items": 8,
+   "key": "BADBDCCA",
+   "version": "b"
+  },
+  {
+   "ref": "d4148-w4",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 4 · version B",
+   "items": 8,
+   "key": "DCBAABDC",
+   "version": "b"
+  },
+  {
+   "ref": "d4148-w5",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 5 · version B",
+   "items": 8,
+   "key": "CBBAACDD",
+   "version": "b"
+  },
+  {
+   "ref": "d4148-w6",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 6 · version B",
+   "items": 8,
+   "key": "CBDAACBD",
+   "version": "b"
+  },
+  {
+   "ref": "d4148-w7",
+   "kind": "d4148",
+   "title": "41–48 drill · Week 7 · version B",
+   "items": 8,
+   "key": "ABCDBCAD",
+   "version": "b"
+  },
+  {
+   "ref": "diagnostic",
+   "kind": "diagnostic",
+   "title": "Diagnostic · December 2025 pattern",
+   "items": 48,
+   "key": "BCCBBDBDDABADBCDADBBAACDBAAADDDCBCACACCCADCDABBC"
+  },
+  {
+   "ref": "mock-1",
+   "kind": "mock",
+   "title": "Mock 1 · 25 January 2026 pattern",
+   "items": 48,
+   "key": "CACADDADBCCAABACDBCCDCAABDACBCDBACADBDBDBADBCBBD"
+  },
+  {
+   "ref": "mock-2",
+   "kind": "mock",
+   "title": "Mock 2 · 15 March 2026 pattern",
+   "items": 48,
+   "key": "DACDDABABDDCAAABCBACABACCBBDDDBBBCCACDDCCDABBDAC"
+  },
+  {
+   "ref": "mock-3",
+   "kind": "mock",
+   "title": "Mock 3 · 25 April 2026 pattern",
+   "items": 48,
+   "key": "DBCAABAADCABCADBDDCDBDACCDCBDCBBBCBCACADDABBCDAA"
+  },
+  {
+   "ref": "mock-4",
+   "kind": "mock",
+   "title": "Mock 4 · 27 June 2026 pattern",
+   "items": 48,
+   "key": "ACDABACCCABDBABDDCCCADBDDCDBABBDCCBABAACDBACDBDA"
+  }
+ ]
+}
