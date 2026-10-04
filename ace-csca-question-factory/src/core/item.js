@@ -175,21 +175,27 @@
     if (wrong.length < 3) throw new Retry('statement pool too small');
     return QF.useStmts(fmt, key, wrong);
   };
+  /** a statement as it is quoted in a solution: formulas bare, sentences in quotation marks */
+  function showStmt(t) { return /^\$[^$]*\$$/.test(t) ? t : '“' + t + '”'; }
+  /** a reason as a full sentence: capital first letter, full stop at the end */
+  function sentence(s) {
+    s = String(s || '').trim();
+    if (!s) return '';
+    s = s.charAt(0).toUpperCase() + s.slice(1);
+    return /[.?!]$/.test(s) ? s : s + '.';
+  }
+  QF.sentence = sentence;
+  function stmtLine(s, verdict) { var w = sentence(s.why); return showStmt(s.t) + verdict + (w ? ' ' + w : ''); }
   /** fixed statements: key + exactly three others (format S: key true, others false; N: key false, others true) */
   QF.useStmts = function (fmt, key, wrong) {
     var bad = fmt === 'N' ? (key.ok || wrong.some(function (w) { return !w.ok; })) : (!key.ok || wrong.some(function (w) { return w.ok; }));
     if (bad || wrong.length !== 3) throw new Error('useStmts: truth flags do not fit format ' + fmt + ' (key: ' + key.t + ')');
     var check = chk.stmt(fmt === 'N' ? 'F' : 'T');
     [key].concat(wrong).forEach(function (s) { check.facts[normText(s.t)] = s; });
-    var sol;
-    function show(t) { return /^\$[^$]*\$$/.test(t) ? t : '\u201c' + t + '\u201d'; }   // quote sentences, leave pure formulas bare
-    if (fmt === 'N') {
-      sol = 'The incorrect statement is ' + show(key.t) + (key.why ? ' — ' + key.why : '.') + ' The other three statements are true.';
-    } else {
-      sol = 'The correct statement is ' + show(key.t) + (key.why ? ' — ' + key.why : '.');
-      var notes = wrong.filter(function (w) { return w.why; }).map(function (w) { return show(w.t) + ' is false: ' + w.why; });
-      if (notes.length) sol += ' ' + notes.join(' ');
-    }
+    // The answer first, then one short reason for each of the other three options.
+    var good = fmt === 'N' ? ' is incorrect.' : ' is correct.', other = fmt === 'N' ? ' is correct.' : ' is incorrect.';
+    var sol = stmtLine(key, good);
+    wrong.forEach(function (w) { sol += ' ' + stmtLine(w, other); });
     return {
       key: key.t, check: check, sol: sol, keyStmt: key, wrongStmts: wrong,
       wrong: wrong.map(function (s) { return [s.t, s.trap || (fmt === 'N' ? 'true-statement' : 'false-statement')]; })

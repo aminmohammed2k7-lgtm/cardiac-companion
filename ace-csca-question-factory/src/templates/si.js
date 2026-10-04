@@ -18,13 +18,13 @@
     var setS = mkS(env);
     var o1 = R.pick(notIn(A, [A[0] - step, A[k - 1] + step, A[0] + 1, A[k - 1] - 1]));
     var pool = [
-      setS(el + ' \\in A', true, '$' + el + '$ is listed in $A$, and an element is linked to a set by $\\in$.', { g: 'in' }),
-      setS('\\{' + el2 + '\\} \\subseteq A', true, '$\\{' + el2 + '\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$.', { g: 'sub' }),
-      setS(el2 + ' \\subseteq A', false, '$\\subseteq$ links two sets, but $' + el2 + '$ is an element; write $' + el2 + ' \\in A$.', { trap: 'symbol', g: 'esub' }),
-      setS('\\{' + el3 + '\\} \\in A', false, '$\\{' + el3 + '\\}$ is a set, and the elements of $A$ are numbers; write $\\{' + el3 + '\\} \\subseteq A$.', { trap: 'symbol', g: 'sin' }),
-      setS('\\varnothing \\in A', false, 'the empty set is a subset of $A$, not one of its elements.', { trap: 'symbol', g: 'empty' }),
-      setS(o1 + ' \\in A', false, '$' + o1 + '$ is not listed in $A$.', { trap: 'slip', g: 'out' }),
-      setS(el3 + ' \\notin A', false, '$' + el3 + '$ is listed in $A$.', { trap: 'slip', g: 'notin' })
+      setS(el + ' \\in A', true, '$' + el + '$ is one of the listed elements of $A$.', { g: 'in' }),
+      setS('\\{' + el2 + '\\} \\subseteq A', true, 'the only element of $\\{' + el2 + '\\}$ is $' + el2 + '$, and $' + el2 + ' \\in A$, so $\\{' + el2 + '\\}$ is a subset of $A$.', { g: 'sub' }),
+      setS(el2 + ' \\subseteq A', false, '$' + el2 + '$ is an element, not a set. An element is related to a set by $\\in$, so the correct statement is $' + el2 + ' \\in A$.', { trap: 'symbol', g: 'esub' }),
+      setS('\\{' + el3 + '\\} \\in A', false, 'the elements of $A$ are numbers, and $\\{' + el3 + '\\}$ is a set. The correct statement is $\\{' + el3 + '\\} \\subseteq A$.', { trap: 'symbol', g: 'sin' }),
+      setS('\\varnothing \\in A', false, 'the elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it.', { trap: 'symbol', g: 'empty' }),
+      setS(o1 + ' \\in A', false, '$' + o1 + '$ is not one of the listed elements.', { trap: 'slip', g: 'out' }),
+      setS(el3 + ' \\notin A', false, '$' + el3 + '$ is one of the listed elements, so $' + el3 + ' \\in A$.', { trap: 'slip', g: 'notin' })
     ];
     var stem = R.pick([
       'Given the set $A = ' + h.lst(A) + '$, which of the following is correct? ( )',
@@ -44,12 +44,13 @@
     var sm = smallIsA ? 'A' : 'B', bg = smallIsA ? 'B' : 'A';
     var env = { A: ev.finiteSet(A), B: ev.finiteSet(B) };
     var setS = mkS(env);
+    var extra = big.filter(function (v) { return small.indexOf(v) < 0; })[0];
     var key = setS(sm + ' \\subseteq ' + bg, true, 'every element of $' + sm + '$ is also an element of $' + bg + '$.');
     var wrongs = R.sample([
-      setS('A = B', false, 'the two sets do not have the same elements.', { trap: 'slip' }),
-      setS(bg + ' \\subseteq ' + sm, false, '$' + bg + '$ has an element that is not in $' + sm + '$.', { trap: 'swap' }),
-      setS(sm + ' \\in ' + bg, false, '$\\in$ links an element to a set; between two sets use $\\subseteq$.', { trap: 'symbol' }),
-      setS(bg + ' \\in ' + sm, false, '$\\in$ links an element to a set; between two sets use $\\subseteq$.', { trap: 'symbol' })
+      setS('A = B', false, '$' + extra + ' \\in ' + bg + '$ but $' + extra + ' \\notin ' + sm + '$, so the two sets are not equal.', { trap: 'slip' }),
+      setS(bg + ' \\subseteq ' + sm, false, '$' + extra + ' \\in ' + bg + '$ but $' + extra + ' \\notin ' + sm + '$.', { trap: 'swap' }),
+      setS(sm + ' \\in ' + bg, false, 'the elements of $' + bg + '$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.', { trap: 'symbol' }),
+      setS(bg + ' \\in ' + sm, false, 'the elements of $' + sm + '$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.', { trap: 'symbol' })
     ], 3);
     return out('Given sets $A = ' + h.lst(A) + '$ and $B = ' + h.lst(B) + '$, which of the following is correct? ( )', QF.useStmts('S', key, wrongs));
   });
@@ -61,16 +62,16 @@
     var eq = R.pick(['x^2 - ' + k * k + ' = 0', 'x^2 = ' + k * k]);
     var r = R.pick([k, -k]);
     var pool = [
-      setS('\\{' + r + '\\} \\subseteq A', true, 'the equation gives $x = \\pm ' + k + '$, so $A = \\{-' + k + ', ' + k + '\\}$ and $\\{' + r + '\\}$ is a subset of it.', { g: 'sub' }),
-      setS((-r) + ' \\in A', true, 'the equation gives $x = \\pm ' + k + '$, so $A = \\{-' + k + ', ' + k + '\\}$ contains $' + (-r) + '$.', { g: 'in' }),
-      setS(k + ' \\subseteq A', false, '$' + k + '$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' }),
-      setS('A = \\{' + k + '\\}', false, 'the root $-' + k + '$ is missing.', { trap: 'partial', g: 'eq' }),
-      setS('-' + k + ' \\notin A', false, '$(-' + k + ')^2 = ' + k * k + '$, so $-' + k + '$ belongs to $A$.', { trap: 'sign', g: 'notin' }),
-      setS('\\{' + k + '\\} \\in A', false, '$\\{' + k + '\\}$ is a set; it is a subset of $A$, not an element.', { trap: 'symbol', g: 'sin' }),
-      setS('A = \\{' + k * k + '\\}', false, '$A$ holds the solutions $x$, not the value of $x^2$.', { trap: 'slip', g: 'eq' }),
-      setS('\\varnothing \\in A', false, 'the empty set is a subset of $A$, not an element.', { trap: 'symbol', g: 'empty' })
+      setS('\\{' + r + '\\} \\subseteq A', true, '$' + r + ' \\in A$, so the set $\\{' + r + '\\}$ is a subset of $A$.', { g: 'sub' }),
+      setS((-r) + ' \\in A', true, '$' + (-r) + '$ is one of the two solutions.', { g: 'in' }),
+      setS(k + ' \\subseteq A', false, '$' + k + '$ is an element, not a set, so the correct symbol is $\\in$: $' + k + ' \\in A$.', { trap: 'symbol', g: 'esub' }),
+      setS('A = \\{' + k + '\\}', false, '$x = -' + k + '$ is also a solution, so $A = \\{-' + k + ', ' + k + '\\}$.', { trap: 'partial', g: 'eq' }),
+      setS('-' + k + ' \\notin A', false, '$(-' + k + ')^2 = ' + k * k + '$, so $-' + k + '$ is a solution and $-' + k + ' \\in A$.', { trap: 'sign', g: 'notin' }),
+      setS('\\{' + k + '\\} \\in A', false, 'the elements of $A$ are the numbers $-' + k + '$ and $' + k + '$. The set $\\{' + k + '\\}$ is a subset of $A$, not an element.', { trap: 'symbol', g: 'sin' }),
+      setS('A = \\{' + k * k + '\\}', false, '$A$ is the set of solutions $x$, not the value of $x^2$.', { trap: 'slip', g: 'eq' }),
+      setS('\\varnothing \\in A', false, 'the elements of $A$ are the numbers $-' + k + '$ and $' + k + '$. The empty set is a subset of $A$, not an element.', { trap: 'symbol', g: 'empty' })
     ];
-    return out('Let $A = \\{x \\mid ' + eq + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('Let $A = \\{x \\mid ' + eq + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool), 'Solving $' + eq + '$ gives $x = \\pm ' + k + '$, so $A = \\{-' + k + ', ' + k + '\\}$.');
   });
 
   def({ id: 'SET-el.interval', code: 'SET-el', lesson: '1.3', tier: 'E', level: '=', fmt: 'S', w: 1,
@@ -82,20 +83,21 @@
     var env = { A: ev.realSet(pred) };
     var setS = mkS(env);
     var c = leftClosed ? a : b, o = leftClosed ? b : a, inner = R.int(a + 1, b - 1), outer = R.pick([a - 1, b + 1, a - 2, b + 2]);
-    var key, wrongs;
+    var key, wrongs, outWhy = (outer < a ? '$' + outer + ' < ' + a + '$' : '$' + outer + ' > ' + b + '$') + ', so $' + outer + '$ does not satisfy the condition.';
+    var inWhy = '$' + a + ' < ' + inner + ' < ' + b + '$, so $' + inner + ' \\in A$.';
     if (R.bool(0.7)) {
-      key = setS(c + ' \\in A', true, 'the end point $' + c + '$ is included (the sign there is $\\le$).');
+      key = setS(c + ' \\in A', true, 'the sign at $' + c + '$ is $\\le$, so the end point $' + c + '$ satisfies the condition.');
       wrongs = [
-        setS(o + ' \\in A', false, 'the end point $' + o + '$ is excluded (strict inequality).', { trap: 'endpoint' }),
-        setS(inner + ' \\notin A', false, '$' + inner + '$ lies between $' + a + '$ and $' + b + '$.', { trap: 'slip' }),
-        setS(outer + ' \\in A', false, '$' + outer + '$ lies outside the interval.', { trap: 'slip' })
+        setS(o + ' \\in A', false, 'the inequality at $' + o + '$ is strict, so the end point $' + o + '$ is not in $A$.', { trap: 'endpoint' }),
+        setS(inner + ' \\notin A', false, inWhy, { trap: 'slip' }),
+        setS(outer + ' \\in A', false, outWhy, { trap: 'slip' })
       ];
     } else {
-      key = setS(o + ' \\notin A', true, 'the end point $' + o + '$ is excluded (strict inequality).');
+      key = setS(o + ' \\notin A', true, 'the inequality at $' + o + '$ is strict, so the end point $' + o + '$ is not in $A$.');
       wrongs = [
-        setS(c + ' \\notin A', false, 'the end point $' + c + '$ is included (the sign there is $\\le$).', { trap: 'endpoint' }),
-        setS(inner + ' \\notin A', false, '$' + inner + '$ lies between $' + a + '$ and $' + b + '$.', { trap: 'slip' }),
-        setS(outer + ' \\in A', false, '$' + outer + '$ lies outside the interval.', { trap: 'slip' })
+        setS(c + ' \\notin A', false, 'the sign at $' + c + '$ is $\\le$, so $' + c + '$ satisfies the condition and $' + c + ' \\in A$.', { trap: 'endpoint' }),
+        setS(inner + ' \\notin A', false, inWhy, { trap: 'slip' }),
+        setS(outer + ' \\in A', false, outWhy, { trap: 'slip' })
       ];
     }
     return out('Let $A = \\{x \\mid ' + cond + '\\}$. Which of the following statements is correct? ( )', QF.useStmts('S', key, wrongs));
@@ -106,15 +108,15 @@
     var a = R.int(0, 2), b = a + R.int(1, 2), ab = '\\{' + a + ', ' + b + '\\}';
     var setS = mkS({});
     var pool = [
-      setS(a + ' \\in ' + ab, true, '$' + a + '$ is an element of the set.', { g: 'in' }),
+      setS(a + ' \\in ' + ab, true, '$' + a + '$ is one of the two listed elements.', { g: 'in' }),
       setS('\\varnothing \\subseteq \\{' + b + '\\}', true, 'the empty set is a subset of every set.', { g: 'empty-sub' }),
-      setS('\\{' + b + '\\} \\subseteq ' + ab, true, '$\\{' + b + '\\}$ is a set and its element $' + b + '$ is in the larger set.', { g: 'sub' }),
-      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element, the number $0$; the empty set has none.', { trap: 'symbol', g: 'empty-eq' }),
-      setS(b + ' \\subseteq ' + ab, false, '$' + b + '$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' }),
-      setS('\\{' + a + '\\} \\in ' + ab, false, '$\\{' + a + '\\}$ is a set; it is a subset, not an element.', { trap: 'symbol', g: 'sin' }),
-      setS('\\varnothing \\in \\{' + a + '\\}', false, 'the only element of $\\{' + a + '\\}$ is the number $' + a + '$.', { trap: 'symbol', g: 'empty-in' }),
-      setS('0 \\in \\varnothing', false, 'the empty set has no elements.', { trap: 'symbol', g: 'in-empty' }),
-      setS(ab + ' \\subseteq \\{' + a + '\\}', false, '$' + b + '$ is not in $\\{' + a + '\\}$.', { trap: 'swap', g: 'sub' })
+      setS('\\{' + b + '\\} \\subseteq ' + ab, true, 'the only element of $\\{' + b + '\\}$ is $' + b + '$, which belongs to $' + ab + '$.', { g: 'sub' }),
+      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element, the number $0$, while the empty set has no elements.', { trap: 'symbol', g: 'empty-eq' }),
+      setS(b + ' \\subseteq ' + ab, false, '$' + b + '$ is an element, not a set, so the correct statement is $' + b + ' \\in ' + ab + '$.', { trap: 'symbol', g: 'esub' }),
+      setS('\\{' + a + '\\} \\in ' + ab, false, 'the elements of $' + ab + '$ are numbers. The set $\\{' + a + '\\}$ is a subset of it, not an element.', { trap: 'symbol', g: 'sin' }),
+      setS('\\varnothing \\in \\{' + a + '\\}', false, 'the only element of $\\{' + a + '\\}$ is the number $' + a + '$. The empty set is a subset of $\\{' + a + '\\}$, not an element.', { trap: 'symbol', g: 'empty-in' }),
+      setS('0 \\in \\varnothing', false, 'the empty set has no elements at all.', { trap: 'symbol', g: 'in-empty' }),
+      setS(ab + ' \\subseteq \\{' + a + '\\}', false, '$' + b + ' \\in ' + ab + '$ but $' + b + ' \\notin \\{' + a + '\\}$.', { trap: 'swap', g: 'sub' })
     ];
     return out('Which of the following relations is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -131,25 +133,26 @@
     if (nat) {
       var noZero = list.filter(function (v) { return v !== 0; });
       pool = [
-        setS('0 \\in A', true, '$\\mathbb{N}$ contains $0$, and $0$ satisfies the condition; $A = ' + listTex + '$.', { g: 'zero' }),
-        setS('\\{0, 1\\} \\subseteq A', true, '$A = ' + listTex + '$ contains both $0$ and $1$.', { g: 'sub' }),
+        setS('0 \\in A', true, '$0$ is a natural number and satisfies $' + cond + '$.', { g: 'zero' }),
+        setS('\\{0, 1\\} \\subseteq A', true, 'both $0$ and $1$ are elements of $A$.', { g: 'sub' }),
         setS('-1 \\in A', false, '$-1$ is not a natural number.', { trap: 'domain', g: 'neg' }),
-        setS('A = ' + h.lst(noZero), false, '$0$ is a natural number and satisfies the condition, so it is missing.', { trap: 'partial', g: 'eq' }),
-        setS((list[list.length - 1] + 1) + ' \\in A', false, 'it does not satisfy $' + cond + '$.', { trap: 'endpoint', g: 'top' }),
-        setS('0 \\subseteq A', false, '$0$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' })
+        setS('A = ' + h.lst(noZero), false, '$0$ is a natural number and satisfies the condition, so $0$ is missing from this list.', { trap: 'partial', g: 'eq' }),
+        setS((list[list.length - 1] + 1) + ' \\in A', false, '$' + (list[list.length - 1] + 1) + '$ does not satisfy $' + cond + '$.', { trap: 'endpoint', g: 'top' }),
+        setS('0 \\subseteq A', false, '$0$ is an element, not a set, so the correct symbol is $\\in$: $0 \\in A$.', { trap: 'symbol', g: 'esub' })
       ];
     } else {
       var openEnd = leftClosed ? hi : lo, closedEnd = leftClosed ? lo : hi, inner = R.pick(list.filter(function (v) { return v !== closedEnd; }));
       pool = [
-        setS(closedEnd + ' \\in A', true, 'the end point $' + closedEnd + '$ is included; $A = ' + listTex + '$.', { g: 'closed' }),
-        setS('\\{' + inner + ', ' + closedEnd + '\\} \\subseteq A', true, 'both numbers are in $A = ' + listTex + '$.', { g: 'sub' }),
-        setS(openEnd + ' \\in A', false, 'the end point $' + openEnd + '$ is excluded (strict inequality).', { trap: 'endpoint', g: 'open' }),
-        setS('A = ' + h.lst(list.filter(function (v) { return v !== closedEnd; })), false, 'the included end point $' + closedEnd + '$ is missing.', { trap: 'endpoint', g: 'eq' }),
-        setS('\\{' + openEnd + ', ' + inner + '\\} \\subseteq A', false, '$' + openEnd + '$ is not in $A$.', { trap: 'endpoint', g: 'sub2' }),
-        setS(inner + ' \\subseteq A', false, '$' + inner + '$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' })
+        setS(closedEnd + ' \\in A', true, 'the sign at $' + closedEnd + '$ is $\\le$, so the end point $' + closedEnd + '$ belongs to $A$.', { g: 'closed' }),
+        setS('\\{' + inner + ', ' + closedEnd + '\\} \\subseteq A', true, 'both $' + inner + '$ and $' + closedEnd + '$ are elements of $A$.', { g: 'sub' }),
+        setS(openEnd + ' \\in A', false, 'the inequality at $' + openEnd + '$ is strict, so $' + openEnd + '$ is not in $A$.', { trap: 'endpoint', g: 'open' }),
+        setS('A = ' + h.lst(list.filter(function (v) { return v !== closedEnd; })), false, 'the end point $' + closedEnd + '$ is included, so it is missing from this list.', { trap: 'endpoint', g: 'eq' }),
+        setS('\\{' + openEnd + ', ' + inner + '\\} \\subseteq A', false, 'the inequality at $' + openEnd + '$ is strict, so $' + openEnd + ' \\notin A$.', { trap: 'endpoint', g: 'sub2' }),
+        setS(inner + ' \\subseteq A', false, '$' + inner + '$ is an element, not a set, so the correct symbol is $\\in$: $' + inner + ' \\in A$.', { trap: 'symbol', g: 'esub' })
       ];
     }
-    return out('Let $A = \\{x \\in ' + setName + ' \\mid ' + cond + '\\}$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('Let $A = \\{x \\in ' + setName + ' \\mid ' + cond + '\\}$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      'The ' + (nat ? 'natural numbers' : 'integers') + ' that satisfy $' + cond + '$ are ' + h.andList(list) + ', so $A = ' + listTex + '$.');
   });
 
   def({ id: 'SET-el.mixed', code: 'SET-el', lesson: '1.3', tier: 'E', level: '+1', fmt: 'S', trick: 'T01',
@@ -160,12 +163,12 @@
       setS('\\varnothing \\subseteq A', true, 'the empty set is a subset of every set.', { g: 'e1' }),
       setS('\\{0\\} \\subseteq A', true, '$0 \\in A$, so the set $\\{0\\}$ is a subset of $A$.', { g: 'z1' }),
       setS('\\{0, ' + b + '\\} \\subseteq A', true, 'both $0$ and $' + b + '$ are elements of $A$.', { g: 's1' }),
-      setS('\\varnothing \\in A', false, 'the empty set is a subset of $A$, not one of its elements.', { trap: 'symbol', g: 'e2' }),
-      setS('\\{0\\} \\in A', false, '$\\{0\\}$ is a set; the elements of $A$ are numbers.', { trap: 'symbol', g: 'z2' }),
-      setS('0 \\subseteq A', false, '$0$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'z3' }),
-      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element; the empty set has none.', { trap: 'symbol', g: 'e3' }),
-      setS('0 \\notin A', false, '$0$ is listed in $A$.', { trap: 'slip', g: 'z4' }),
-      setS('A = \\{' + a + ', ' + b + '\\}', false, 'the element $0$ is missing.', { trap: 'partial', g: 'eq' })
+      setS('\\varnothing \\in A', false, 'the elements of $A$ are the numbers $0$, $' + a + '$ and $' + b + '$. The empty set is a subset of $A$, not an element.', { trap: 'symbol', g: 'e2' }),
+      setS('\\{0\\} \\in A', false, '$\\{0\\}$ is a set, while the elements of $A$ are numbers. The correct statement is $\\{0\\} \\subseteq A$.', { trap: 'symbol', g: 'z2' }),
+      setS('0 \\subseteq A', false, '$0$ is an element, not a set, so the correct statement is $0 \\in A$.', { trap: 'symbol', g: 'z3' }),
+      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element, the number $0$, while the empty set has no elements.', { trap: 'symbol', g: 'e3' }),
+      setS('0 \\notin A', false, '$0$ is one of the listed elements of $A$.', { trap: 'slip', g: 'z4' }),
+      setS('A = \\{' + a + ', ' + b + '\\}', false, '$A$ also contains the element $0$.', { trap: 'partial', g: 'eq' })
     ];
     return out('Let $A = ' + h.lst(A) + '$, and let $\\varnothing$ denote the empty set. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -180,17 +183,18 @@
     function cnt(v, ok, why, extra) { return h.factS('The set $A$ has exactly $' + v + '$ elements', ok, function () { return list.length === v; }, why, extra); }
     function sub(v, ok, why, extra) { return h.factS('The set $A$ has exactly $' + v + '$ subsets', ok, function () { return Math.pow(2, list.length) === v; }, why, extra); }
     var pool = [
-      cnt(n, true, '$\\mathbb{N}$ starts at $0$, so $A = ' + listTex + '$.', { g: 'cnt' }),
-      sub(Math.pow(2, n), true, '$A = ' + listTex + '$ has $' + n + '$ elements, hence $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { g: 'sub' }),
-      setS('\\{0, ' + top + '\\} \\subseteq A', true, '$A = ' + listTex + '$ contains $0$ and $' + top + '$.', { g: 'ss' }),
-      cnt(n - 1, false, '$0$ is a natural number, so $A = ' + listTex + '$ has $' + n + '$ elements.', { trap: 'off-by-one', g: 'cnt' }),
-      sub(2 * n, false, 'a set with $' + n + '$ elements has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { trap: 'near-miss', g: 'sub' }),
-      sub(Math.pow(2, n - 1), false, '$A$ has $' + n + '$ elements (it includes $0$), so it has $2^{' + n + '}$ subsets.', { trap: 'off-by-one', g: 'sub' }),
+      cnt(n, true, '$A = ' + listTex + '$ has $' + n + '$ elements.', { g: 'cnt' }),
+      sub(Math.pow(2, n), true, 'a set with $' + n + '$ elements has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { g: 'sub' }),
+      setS('\\{0, ' + top + '\\} \\subseteq A', true, 'both $0$ and $' + top + '$ are elements of $A$.', { g: 'ss' }),
+      cnt(n - 1, false, '$0$ is a natural number, so $A$ has $' + n + '$ elements, not $' + (n - 1) + '$.', { trap: 'off-by-one', g: 'cnt' }),
+      sub(2 * n, false, 'a set with $' + n + '$ elements has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets, not $2 \\times ' + n + ' = ' + 2 * n + '$.', { trap: 'near-miss', g: 'sub' }),
+      sub(Math.pow(2, n - 1), false, '$A$ has $' + n + '$ elements, including $0$, so it has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { trap: 'off-by-one', g: 'sub' }),
       setS((top + 1) + ' \\in A', false, '$' + (top + 1) + '$ does not satisfy $' + cond + '$.', { trap: 'endpoint', g: 'top' }),
-      setS('0 \\notin A', false, '$0 \\in \\mathbb{N}$ and it satisfies the condition.', { trap: 'domain', g: 'zero' }),
-      setS('A = ' + h.lst(list.slice(1)), false, 'the element $0$ is missing.', { trap: 'partial', g: 'eq' })
+      setS('0 \\notin A', false, '$0$ is a natural number and satisfies $' + cond + '$, so $0 \\in A$.', { trap: 'domain', g: 'zero' }),
+      setS('A = ' + h.lst(list.slice(1)), false, 'the element $0$ is missing from this list.', { trap: 'partial', g: 'eq' })
     ];
-    return out('Let $A = \\{x \\in \\mathbb{N} \\mid ' + cond + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('Let $A = \\{x \\in \\mathbb{N} \\mid ' + cond + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool),
+      '$\\mathbb{N}$ starts at $0$, so $A = ' + listTex + '$.');
   });
 
   /* ===================== SET-num · number sets ===================== */
@@ -200,18 +204,18 @@
     var setS = mkS({});
     var fr = R.pick([[1, 2], [1, 3], [2, 3], [3, 4], [2, 5]]), frTex = '\\dfrac{' + fr[0] + '}{' + fr[1] + '}', sqv = R.pick([4, 9, 16]);
     var pool = [
-      setS('0 \\in \\mathbb{N}', true, 'in the CSCA (Chinese) convention $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$.', { g: 'zero' }),
-      setS(neg + ' \\in \\mathbb{Z}', true, 'negative whole numbers are integers.', { g: 'negZ' }),
-      setS('\\sqrt{' + sd + '} \\in \\mathbb{R}', true, '$\\sqrt{' + sd + '}$ is irrational but real.', { g: 'surdR' }),
-      setS(frTex + ' \\in \\mathbb{Q}', true, 'a quotient of two integers is rational.', { g: 'fracQ' }),
-      setS('\\sqrt{' + sqv + '} \\in \\mathbb{Q}', true, '$\\sqrt{' + sqv + '} = ' + Math.sqrt(sqv) + '$ is an integer, hence rational.', { g: 'sq' }),
-      setS(dec + ' \\in \\mathbb{N}', false, '$' + dec + '$ is not a whole number.', { trap: 'slip', g: 'decN' }),
+      setS('0 \\in \\mathbb{N}', true, 'the natural numbers are $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$, so $0$ is a natural number.', { g: 'zero' }),
+      setS(neg + ' \\in \\mathbb{Z}', true, 'the integers include the negative whole numbers.', { g: 'negZ' }),
+      setS('\\sqrt{' + sd + '} \\in \\mathbb{R}', true, '$\\sqrt{' + sd + '}$ is irrational, and every irrational number is real.', { g: 'surdR' }),
+      setS(frTex + ' \\in \\mathbb{Q}', true, '$' + frTex + '$ is a quotient of two integers, so it is rational.', { g: 'fracQ' }),
+      setS('\\sqrt{' + sqv + '} \\in \\mathbb{Q}', true, '$\\sqrt{' + sqv + '} = ' + Math.sqrt(sqv) + '$ is an integer, and every integer is rational.', { g: 'sq' }),
+      setS(dec + ' \\in \\mathbb{N}', false, '$' + dec + '$ is not a whole number, so it is not a natural number.', { trap: 'slip', g: 'decN' }),
       setS('\\pi \\in \\mathbb{Q}', false, '$\\pi$ is irrational.', { trap: 'slip', g: 'pi' }),
-      setS('\\sqrt{' + sd2 + '} \\in \\mathbb{Q}', false, '$\\sqrt{' + sd2 + '}$ is irrational.', { trap: 'slip', g: 'surdQ' }),
-      setS(neg + ' \\in \\mathbb{N}', false, 'natural numbers are not negative.', { trap: 'sign', g: 'negN' }),
-      setS('0 \\notin \\mathbb{N}', false, '$\\mathbb{N}$ includes $0$ in the CSCA convention.', { trap: 'domain', g: 'zero' }),
-      setS(frTex + ' \\in \\mathbb{Z}', false, '$' + frTex + '$ is not a whole number.', { trap: 'slip', g: 'fracZ' }),
-      setS('\\sqrt{' + sd + '} \\notin \\mathbb{R}', false, 'every square root of a positive number is real.', { trap: 'slip', g: 'surdR' })
+      setS('\\sqrt{' + sd2 + '} \\in \\mathbb{Q}', false, '$' + sd2 + '$ is not a perfect square, so $\\sqrt{' + sd2 + '}$ is irrational.', { trap: 'slip', g: 'surdQ' }),
+      setS(neg + ' \\in \\mathbb{N}', false, 'natural numbers are never negative.', { trap: 'sign', g: 'negN' }),
+      setS('0 \\notin \\mathbb{N}', false, '$\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$ contains $0$.', { trap: 'domain', g: 'zero' }),
+      setS(frTex + ' \\in \\mathbb{Z}', false, '$0 < ' + frTex + ' < 1$, so $' + frTex + '$ is not an integer.', { trap: 'slip', g: 'fracZ' }),
+      setS('\\sqrt{' + sd + '} \\notin \\mathbb{R}', false, 'the square root of a positive number is a real number.', { trap: 'slip', g: 'surdR' })
     ];
     var st = QF.pickStmts(R, 'S', pool);
     if (/sqrt\{3\} \\in \\mathbb\{R\}/.test(st.key)) retry('real item');
@@ -236,7 +240,7 @@
     return {
       stem: 'The set $\\{x \\in ' + (nat ? '\\mathbb{N}' : '\\mathbb{Z}') + ' \\mid ' + cond + '\\}$, written by listing its elements, is ( )',
       key: m(h.lst(key)), wrong: wrong, check: chk.set(inSet, crit),
-      sol: (nat ? '$\\mathbb{N}$ starts at $0$. ' : '') + 'The whole numbers that satisfy $' + cond + '$ are $' + key.join(', ') + '$, so the set is $' + h.lst(key) + '$.'
+      sol: (nat ? '$\\mathbb{N}$ starts at $0$. The natural numbers' : 'The integers') + ' that satisfy $' + cond + '$ are $' + key.join(', ') + '$, so the set is $' + h.lst(key) + '$.'
     };
   });
 
@@ -265,7 +269,7 @@
     return {
       stem: 'Given sets $' + nm[0] + ' = ' + showIv(style, a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + showIv(style, c, d, fc, fd) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(ivTex(c, b, fc, fb)), wrong: wrong, check: chk.set(truth, [a, b, c, d]),
-      sol: 'The intersection keeps the numbers that lie in both sets: from $' + c + '$ to $' + b + '$. $' + c + '$ is ' + (fc ? 'included' : 'excluded') + ' and $' + b + '$ is ' + (fb ? 'included' : 'excluded') + ' (each end point keeps the bracket of the set it comes from), so the answer is $' + ivTex(c, b, fc, fb) + '$.'
+      sol: 'The intersection is the part that lies in both sets. $' + nm[0] + '$ runs from $' + a + '$ to $' + b + '$ and $' + nm[1] + '$ runs from $' + c + '$ to $' + d + '$, so they overlap from $' + c + '$ to $' + b + '$. The end point $' + c + '$ comes from $' + nm[1] + '$, where it is ' + (fc ? 'included' : 'excluded') + ', and $' + b + '$ comes from $' + nm[0] + '$, where it is ' + (fb ? 'included' : 'excluded') + '. So $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + ivTex(c, b, fc, fb) + '$.'
     };
   });
 
@@ -288,7 +292,7 @@
     return {
       stem: 'Let $' + nm[0] + ' = ' + sbTex(a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + Bt + '$. Then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
       key: m(key), wrong: wrong, check: chk.set(function (x) { return inA(x) || inB(x); }, [a, b, c]),
-      sol: 'The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover ' + (up ? 'everything from $' + a + '$ upward, with $' + a + '$ ' + (fa ? 'included' : 'excluded') : 'everything up to $' + b + '$, with $' + b + '$ ' + (fb ? 'included' : 'excluded')) + ': $' + key + '$.'
+      sol: 'The union contains every number that lies in at least one of the two sets. $' + nm[0] + '$ runs from $' + a + '$ to $' + b + '$, and $' + nm[1] + '$ contains every number ' + (up ? 'from $' + c + '$ upward' : 'up to $' + c + '$') + '. Since $' + a + ' < ' + c + ' < ' + b + '$, the two sets overlap, so together they cover every number ' + (up ? 'from $' + a + '$ upward. The end point $' + a + '$ comes from $' + nm[0] + '$, where it is ' + (fa ? 'included' : 'excluded') : 'up to $' + b + '$. The end point $' + b + '$ comes from $' + nm[0] + '$, where it is ' + (fb ? 'included' : 'excluded')) + '. So $' + nm[0] + ' \\cup ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -313,7 +317,7 @@
     return {
       stem: 'Let $' + nm[0] + ' = ' + sbTex(a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + Bt + '$. Then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(key), wrong: wrong, check: chk.set(function (x) { return h.inIv(x, a, b, fa, fb) && inB(x); }, [a, b, c, d]),
-      sol: 'The intersection keeps the numbers that satisfy both conditions: it runs from $' + c + '$ (' + (fc ? 'included' : 'excluded') + ') to $' + b + '$ (' + (fb ? 'included' : 'excluded') + '), each end point keeping the bracket of the set it comes from. So the answer is $' + key + '$.'
+      sol: 'A number in $' + nm[0] + ' \\cap ' + nm[1] + '$ must satisfy both conditions. The larger lower bound is $' + c + '$, from $' + nm[1] + '$, where it is ' + (fc ? 'included' : 'excluded') + '. The smaller upper bound is $' + b + '$, from $' + nm[0] + '$, where it is ' + (fb ? 'included' : 'excluded') + '. So $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -336,7 +340,7 @@
     return {
       stem: 'If $' + nm[0] + ' = ' + h.lst(A) + '$ and $' + nm[1] + ' = ' + Bt + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(key), wrong: wrong, check: chk.set(truth, crit),
-      sol: 'The intersection keeps the elements of $' + nm[0] + '$ that are also in $' + nm[1] + '$, i.e. those that are at least $' + s + '$: $' + key + '$.'
+      sol: '$' + nm[1] + '$ contains every whole number from $' + s + '$ to $' + big + '$. The elements of $' + nm[0] + '$ that are at least $' + s + '$ are ' + h.andList(rng(s, last)) + ', so $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -360,7 +364,7 @@
       stem: 'Given sets $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(h.lst(t.cap)), wrong: [[m(h.lst(t.cup)), 'operation'], [m(h.lst(t.onlyA)), 'complement'], [m(h.lst(t.onlyB)), 'complement'], [m(h.lst(t.A)), 'partial']],
       check: chk.set(function (x) { return inA(x) && inB(x); }, rng0(-1, 13)),
-      sol: 'The intersection holds the elements that belong to both sets: $' + h.lst(t.cap) + '$.'
+      sol: 'The intersection contains the elements that appear in both lists. ' + (t.cap.length === 1 ? 'Only $' + t.cap[0] + '$ appears' : 'Only $' + t.cap.join('$ and $') + '$ appear') + ' in both, so $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + h.lst(t.cap) + '$.'
     };
   });
 
@@ -372,7 +376,7 @@
       stem: 'Given sets $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
       key: m(h.lst(t.cup)), wrong: [[m(h.lst(t.cap)), 'operation'], [m(h.lst(t.onlyA.concat(t.onlyB).sort(function (x, y) { return x - y; }))), 'partial'], [m(h.lst(t.A)), 'partial'], [m(h.lst(t.B)), 'partial']],
       check: chk.set(function (x) { return inA(x) || inB(x); }, rng0(-1, 13)),
-      sol: 'The union holds every element that belongs to at least one of the sets, each written once: $' + h.lst(t.cup) + '$.'
+      sol: 'The union contains every element that appears in at least one of the lists. Combine the two lists and write the common ' + (t.cap.length === 1 ? 'element $' + t.cap[0] + '$' : 'elements $' + t.cap.join('$ and $') + '$') + ' only once: $' + nm[0] + ' \\cup ' + nm[1] + ' = ' + h.lst(t.cup) + '$.'
     };
   });
 
@@ -395,14 +399,15 @@
     var inA = listTruth(t.A), inB = listTruth(t.B), crit = rng0(-1, 13);
     var cap = function (x) { return inA(x) && inB(x); }, cup = function (x) { return inA(x) || inB(x); };
     var useCap = R.bool();
+    var capS = '$' + X + ' \\cap ' + Y + ' = ' + h.lst(t.cap) + '$', cupS = '$' + X + ' \\cup ' + Y + ' = ' + h.lst(t.cup) + '$';
     var key = useCap
-      ? opStmt(X + ' \\cap ' + Y, h.lst(t.cap), true, cap, crit, 'the common elements are exactly $' + h.lst(t.cap) + '$.')
-      : opStmt(X + ' \\cup ' + Y, h.lst(t.cup), true, cup, crit, 'all elements of the two sets together are $' + h.lst(t.cup) + '$.');
+      ? opStmt(X + ' \\cap ' + Y, h.lst(t.cap), true, cap, crit, (t.cap.length === 1 ? 'the only element' : 'the elements') + ' common to both sets ' + (t.cap.length === 1 ? 'is ' : 'are ') + h.andList(t.cap) + '.')
+      : opStmt(X + ' \\cup ' + Y, h.lst(t.cup), true, cup, crit, 'combining the two lists, with each common element written once, gives $' + h.lst(t.cup) + '$.');
     var wrongs = R.sample([
-      opStmt(X + ' \\cup ' + Y, h.lst(t.cap), false, cup, crit, 'that is the intersection, not the union.', { trap: 'operation' }),
-      opStmt(X + ' \\cap ' + Y, h.lst(t.cup), false, cap, crit, 'that is the union, not the intersection.', { trap: 'operation' }),
-      opStmt(X + ' \\cap ' + Y, h.lst(t.onlyA.concat(t.onlyB).sort(function (x, y) { return x - y; })), false, cap, crit, 'these are the elements that are NOT shared.', { trap: 'complement' }),
-      opStmt(X + ' \\cup ' + Y, h.lst(t.A), false, cup, crit, 'the elements of $' + Y + '$ that are not in $' + X + '$ are missing.', { trap: 'partial' })
+      opStmt(X + ' \\cup ' + Y, h.lst(t.cap), false, cup, crit, '$' + h.lst(t.cap) + '$ is the intersection. The union is ' + cupS + '.', { trap: 'operation' }),
+      opStmt(X + ' \\cap ' + Y, h.lst(t.cup), false, cap, crit, '$' + h.lst(t.cup) + '$ is the union. The intersection is ' + capS + '.', { trap: 'operation' }),
+      opStmt(X + ' \\cap ' + Y, h.lst(t.onlyA.concat(t.onlyB).sort(function (x, y) { return x - y; })), false, cap, crit, 'these are the elements that belong to only one of the two sets. The intersection is ' + capS + '.', { trap: 'complement' }),
+      opStmt(X + ' \\cup ' + Y, h.lst(t.A), false, cup, crit, 'this set is $' + X + '$ itself. The union must also contain ' + h.andList(t.onlyB) + ' from $' + Y + '$.', { trap: 'partial' })
     ], 3);
     return out('If $' + X + ' = ' + h.lst(t.A) + '$ and $' + Y + ' = ' + h.lst(t.B) + '$, which of the following operations is correct? ( )', QF.useStmts('S', key, wrongs));
   });
@@ -417,17 +422,17 @@
       truth = function (x) { return h.inIv(x, a, b, true, f1) && h.inIv(x, a, d, false, f2); };
       key = show(a, b, false, f1);
       wrong = [[m(show(a, b, true, f1)), 'endpoint'], [m(show(a, d, true, f2)), 'operation'], [m(show(a, b, false, !f1)), 'endpoint'], [m(show(a, d, false, f2)), 'partial']];
-      sol = 'Both sets start at $' + a + '$, but only one of them contains $' + a + '$, so $' + a + '$ is not in the intersection. The right end is the smaller one, $' + b + '$, with the bracket of its own set.';
+      sol = 'A number in the intersection must lie in both sets. Both sets start at $' + a + '$, but $' + a + '$ belongs to $' + nm[0] + '$ only, so $' + a + '$ is not in $' + nm[0] + ' \\cap ' + nm[1] + '$. The intersection ends at the smaller right end point, $' + b + '$, which is ' + (f1 ? 'included' : 'excluded') + ' as it is in $' + nm[0] + '$.';
     } else {    // A = <a, d], B = <b, d): share the right end point d
       A = [a, d, f1, true]; B = [b, d, f2, false];
       truth = function (x) { return h.inIv(x, a, d, f1, true) && h.inIv(x, b, d, f2, false); };
       key = show(b, d, f2, false);
       wrong = [[m(show(b, d, f2, true)), 'endpoint'], [m(show(a, d, f1, true)), 'operation'], [m(show(b, d, !f2, false)), 'endpoint'], [m(show(a, b, f1, !f2)), 'complement']];
-      sol = 'Both sets end at $' + d + '$, but only one of them contains $' + d + '$, so $' + d + '$ is not in the intersection. The left end is the larger one, $' + b + '$, with the bracket of its own set.';
+      sol = 'A number in the intersection must lie in both sets. Both sets end at $' + d + '$, but $' + d + '$ belongs to $' + nm[0] + '$ only, so $' + d + '$ is not in $' + nm[0] + ' \\cap ' + nm[1] + '$. The intersection starts at the larger left end point, $' + b + '$, which is ' + (f2 ? 'included' : 'excluded') + ' as it is in $' + nm[1] + '$.';
     }
     return {
       stem: 'Let $' + nm[0] + ' = ' + show(A[0], A[1], A[2], A[3]) + '$ and $' + nm[1] + ' = ' + show(B[0], B[1], B[2], B[3]) + '$. Then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
-      key: m(key), wrong: wrong, check: chk.set(truth, [a, b, d]), sol: sol + ' Answer: $' + key + '$.'
+      key: m(key), wrong: wrong, check: chk.set(truth, [a, b, d]), sol: sol + ' So $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -442,7 +447,7 @@
       key = sbTex(-Infinity, b, false, fb);
       wrong = [[m(sbTex(a, c, fa, fc)), 'operation'], [m(sbTex(-Infinity, b, false, !fb)), 'endpoint'], [m(sbTex(a, b, fa, fb)), 'partial'], [m(sbTex(-Infinity, c, false, fc)), 'partial']];
       crit = [a, b, c];
-      sol = 'The first set covers everything below $' + c + '$ and the second continues from $' + a + '$ to $' + b + '$; since $' + a + ' < ' + c + '$ there is no gap, so the union is everything up to $' + b + '$ (' + (fb ? 'included' : 'excluded') + ').';
+      sol = '$' + nm[0] + '$ contains every number ' + (fc ? 'up to and including' : 'below') + ' $' + c + '$, and $' + nm[1] + '$ runs from $' + a + '$ to $' + b + '$. Since $' + a + ' < ' + c + '$, the two sets overlap and leave no gap, so the union contains every number up to $' + b + '$. The end point $' + b + '$ is ' + (fb ? 'included' : 'excluded') + ', as it is in $' + nm[1] + '$.';
     } else {              // [a, c) ∪ [c, b]  -> [a, b]
       a = R.int(-5, 1); c = a + R.int(1, 4); b = c + R.int(1, 4);
       var la = R.bool(), rb = R.bool(), mid = R.bool(); // mid: which of the two sets contains c
@@ -451,11 +456,11 @@
       key = sbTex(a, b, la, rb);
       wrong = [[m('\\{x \\mid x = ' + c + '\\}'), 'operation'], [m(sbTex(a, b, !la, rb)), 'endpoint'], [m(sbTex(a, b, la, !rb)), 'endpoint'], [m('\\{x \\mid ' + a + (la ? ' \\le ' : ' < ') + 'x' + (rb ? ' \\le ' : ' < ') + b + ' \\text{ and } x \\ne ' + c + '\\}'), 'endpoint']];
       crit = [a, b, c];
-      sol = 'The number $' + c + '$ belongs to one of the two sets, so the two pieces join without a gap: the union runs from $' + a + '$ to $' + b + '$ with the outer brackets unchanged.';
+      sol = '$' + nm[0] + '$ runs from $' + a + '$ to $' + c + '$ and $' + nm[1] + '$ runs from $' + c + '$ to $' + b + '$. The number $' + c + '$ belongs to $' + (mid ? nm[0] : nm[1]) + '$, so there is no gap at $' + c + '$ and the union runs from $' + a + '$ to $' + b + '$. The outer end points keep their brackets: $' + a + '$ is ' + (la ? 'included' : 'excluded') + ' and $' + b + '$ is ' + (rb ? 'included' : 'excluded') + '.';
     }
     return {
       stem: 'Let $' + nm[0] + ' = ' + At + '$ and $' + nm[1] + ' = ' + Bt + '$. Then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
-      key: m(key), wrong: wrong, check: chk.set(truth, crit), sol: sol + ' Answer: $' + key + '$.'
+      key: m(key), wrong: wrong, check: chk.set(truth, crit), sol: sol + ' So $' + nm[0] + ' \\cup ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -466,15 +471,17 @@
     var cap = function (x) { return h.inIv(x, a, b, fa, fb) && h.inIv(x, c, d, fc, fd); };
     var cup = function (x) { return h.inIv(x, a, b, fa, fb) || h.inIv(x, c, d, fc, fd); };
     var capL = X + ' \\cap ' + Y, cupL = X + ' \\cup ' + Y;
+    function inc(f) { return f ? 'included' : 'excluded'; }
+    var capT = '$' + capL + ' = ' + sbTex(c, b, fc, fb) + '$', cupT = '$' + cupL + ' = ' + sbTex(a, d, fa, fd) + '$';
     var pool = [
-      opStmt(capL, sbTex(c, b, fc, fb), true, cap, crit, 'both conditions hold from $' + c + '$ to $' + b + '$, each end point keeping its own bracket.', { g: 'cap' }),
-      opStmt(cupL, sbTex(a, d, fa, fd), true, cup, crit, 'together the sets cover from $' + a + '$ to $' + d + '$ with the outer brackets.', { g: 'cup' }),
-      opStmt(capL, sbTex(c, b, !fc, fb), false, cap, crit, 'the bracket at $' + c + '$ is wrong: $' + c + '$ is ' + (fc ? 'included' : 'excluded') + ' in $' + Y + '$.', { trap: 'endpoint', g: 'cap1' }),
-      opStmt(capL, sbTex(c, b, fc, !fb), false, cap, crit, 'the bracket at $' + b + '$ is wrong: $' + b + '$ is ' + (fb ? 'included' : 'excluded') + ' in $' + X + '$.', { trap: 'endpoint', g: 'cap2' }),
-      opStmt(cupL, sbTex(a, d, !fa, fd), false, cup, crit, 'the bracket at $' + a + '$ is wrong: $' + a + '$ is ' + (fa ? 'included' : 'excluded') + ' in $' + X + '$.', { trap: 'endpoint', g: 'cup1' }),
-      opStmt(cupL, sbTex(a, d, fa, !fd), false, cup, crit, 'the bracket at $' + d + '$ is wrong: $' + d + '$ is ' + (fd ? 'included' : 'excluded') + ' in $' + Y + '$.', { trap: 'endpoint', g: 'cup2' }),
-      opStmt(capL, sbTex(a, d, fa, fd), false, cap, crit, 'that is the union.', { trap: 'operation', g: 'swap1' }),
-      opStmt(cupL, sbTex(c, b, fc, fb), false, cup, crit, 'that is the intersection.', { trap: 'operation', g: 'swap2' })
+      opStmt(capL, sbTex(c, b, fc, fb), true, cap, crit, 'the sets overlap from $' + c + '$ to $' + b + '$. The end point $' + c + '$ comes from $' + Y + '$ (' + inc(fc) + ' there) and $' + b + '$ comes from $' + X + '$ (' + inc(fb) + ' there).', { g: 'cap' }),
+      opStmt(cupL, sbTex(a, d, fa, fd), true, cup, crit, 'together the sets cover every number from $' + a + '$ to $' + d + '$. The end point $' + a + '$ comes from $' + X + '$ (' + inc(fa) + ' there) and $' + d + '$ comes from $' + Y + '$ (' + inc(fd) + ' there).', { g: 'cup' }),
+      opStmt(capL, sbTex(c, b, !fc, fb), false, cap, crit, '$' + c + '$ is ' + inc(fc) + ' in $' + Y + '$, so it is ' + inc(fc) + ' in $' + capL + '$ as well.', { trap: 'endpoint', g: 'cap1' }),
+      opStmt(capL, sbTex(c, b, fc, !fb), false, cap, crit, '$' + b + '$ is ' + inc(fb) + ' in $' + X + '$, so it is ' + inc(fb) + ' in $' + capL + '$ as well.', { trap: 'endpoint', g: 'cap2' }),
+      opStmt(cupL, sbTex(a, d, !fa, fd), false, cup, crit, '$' + a + '$ is ' + inc(fa) + ' in $' + X + '$, so it is ' + inc(fa) + ' in $' + cupL + '$ as well.', { trap: 'endpoint', g: 'cup1' }),
+      opStmt(cupL, sbTex(a, d, fa, !fd), false, cup, crit, '$' + d + '$ is ' + inc(fd) + ' in $' + Y + '$, so it is ' + inc(fd) + ' in $' + cupL + '$ as well.', { trap: 'endpoint', g: 'cup2' }),
+      opStmt(capL, sbTex(a, d, fa, fd), false, cap, crit, 'that set is the union. The intersection is only the overlap: ' + capT + '.', { trap: 'operation', g: 'swap1' }),
+      opStmt(cupL, sbTex(c, b, fc, fb), false, cup, crit, 'that set is only the overlap, which is the intersection. The union is ' + cupT + '.', { trap: 'operation', g: 'swap2' })
     ];
     return out('Let $' + X + ' = ' + sbTex(a, b, fa, fb) + '$ and $' + Y + ' = ' + sbTex(c, d, fc, fd) + '$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -506,10 +513,11 @@
   function quadSol(r1, r2, rel, b, lead) {
     var fact = h.factor('x', r1) + h.factor('x', r2);
     var s = '';
-    if (lead && lead !== 1) s += 'Divide by $' + lead + '$' + (lead < 0 ? ' and reverse the inequality sign' : '') + ': $' + fact + ' ' + relTex(lead < 0 ? flip(rel) : rel) + ' 0$. ';
-    else s += 'Factor: $' + fact + ' ' + relTex(rel) + ' 0$. ';
+    if (lead && lead !== 1) s += 'Divide both sides by $' + lead + '$' + (lead < 0 ? ' and reverse the inequality sign, because $' + lead + '$ is negative' : '') + ': $' + fact + ' ' + relTex(lead < 0 ? flip(rel) : rel) + ' 0$. ';
+    else s += 'Factor the left side: $' + fact + ' ' + relTex(rel) + ' 0$. ';
     var eff = (lead && lead < 0) ? flip(rel) : rel;
-    s += 'The roots are $' + F.n(r1) + '$ and $' + F.n(r2) + '$ and the parabola opens upward, so the product is ' + (eff[0] === '<' ? 'negative between the roots' : 'positive outside the roots') + (eff.length === 2 ? ', and the roots themselves are included' : '') + '. Solution set: $' + b.keyTex + '$.';
+    s += 'The roots are $' + F.n(r1) + '$ and $' + F.n(r2) + '$. The graph of $y = ' + fact + '$ opens upward, so $y$ is negative between the roots and positive outside them. ' +
+      'Here we need $y ' + relTex(eff) + ' 0$, so $x$ lies ' + (eff[0] === '<' ? 'between' : 'outside') + ' the roots' + (eff.length === 2 ? ', with the roots included' : '') + '. The solution set is $' + b.keyTex + '$.';
     return s;
   }
   function flip(rel) { return { '<': '>', '>': '<', '<=': '>=', '>=': '<=' }[rel]; }
@@ -557,7 +565,8 @@
     var lo = r1.lt(r2) ? r1 : q(r2), hi = r1.lt(r2) ? q(r2) : r1, rel = R.pick(['<', '>', '<=', '>=']);
     // a(x - p/a)(x - r2) = (ax - p)(x - r2) = ax^2 - (a r2 + p)x + p r2
     var b = quad(R, { r1: lo, r2: hi, lead: a, rel: rel, style: R.pick(['iv', 'sb']) });
-    var s = 'Factor: $(' + F.sum([[a, 'x'], [-p, '']]) + ')' + h.factor('x', r2) + ' ' + relTex(rel) + ' 0$. The roots are $' + F.n(lo) + '$ and $' + F.n(hi) + '$ and the parabola opens upward, so the expression is ' + (rel[0] === '<' ? 'negative between the roots' : 'positive outside the roots') + (rel.length === 2 ? ' (roots included)' : '') + '. Solution set: $' + b.keyTex + '$.';
+    var s = 'Factor the left side: $(' + F.sum([[a, 'x'], [-p, '']]) + ')' + h.factor('x', r2) + ' ' + relTex(rel) + ' 0$. The roots are $' + F.n(lo) + '$ and $' + F.n(hi) + '$. The leading coefficient $' + a + '$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. ' +
+      'Here the expression must be ' + { '<': 'negative', '<=': 'negative or zero', '>': 'positive', '>=': 'positive or zero' }[rel] + ', so $x$ lies ' + (rel[0] === '<' ? 'between' : 'outside') + ' the roots' + (rel.length === 2 ? ', with the roots included' : '') + '. The solution set is $' + b.keyTex + '$.';
     return { stem: 'The solution set of the inequality $' + F.poly([a, -(a * r2 + p), p * r2]) + ' ' + relTex(rel) + ' 0$ is ( )', key: b.key, wrong: b.wrong, check: b.check, sol: s };
   });
 
@@ -567,10 +576,10 @@
     var truth = function (x) { return h.relTest(rel, (x - k) * (x - k)); };
     var sets = { '>': IS.except([k]), '>=': IS.all(), '<=': IS.set([IS.iv(k, k, true, true)]), '<': IS.empty() };
     var why = {
-      '>': 'A square is positive except where it is zero, so every $x$ except $' + k + '$ works',
-      '>=': 'A square is never negative, so every real number works',
-      '<=': 'A square is never negative, so it is $\\le 0$ only where it equals $0$, at $x = ' + k + '$',
-      '<': 'A square is never negative, so there is no solution'
+      '>': 'A square is never negative, and it equals $0$ only at $x = ' + k + '$. So it is positive for every $x$ except $' + k + '$, and the solution set is',
+      '>=': 'A square is never negative, so the inequality holds for every real number. The solution set is',
+      '<=': 'A square is never negative, so it can only be $\\le 0$ by being equal to $0$, which happens only at $x = ' + k + '$. The solution set is',
+      '<': 'A square is never negative, so it is never less than $0$. The inequality has no solution, and the solution set is'
     };
     var order = ['>', '>=', '<=', '<'].filter(function (x) { return x !== rel; });
     var texOf = function (rs, r) { return r === '>' ? rs.texB() : rs.tex(); };
@@ -579,7 +588,7 @@
     return {
       stem: 'The solution set of the inequality $' + F.poly([1, -2 * k, k * k]) + ' ' + relTex(rel) + ' 0$ is ( )',
       key: m(texOf(sets[rel], rel)), wrong: wrong, check: chk.set(truth, [k, -k]),
-      sol: 'The left side is a perfect square: $' + F.sq('x', k) + ' ' + relTex(rel) + ' 0$. ' + why[rel] + ': $' + texOf(sets[rel], rel) + '$.'
+      sol: 'The left side is a perfect square: $' + F.sq('x', k) + ' ' + relTex(rel) + ' 0$. ' + why[rel] + ' $' + texOf(sets[rel], rel) + '$.'
     };
   });
 
@@ -597,11 +606,12 @@
       }, why, extra);
     }
     var good = (inside ? '<' : '>') + (closed ? '=' : '');
-    var key = st([r1, r2], good, true, 'its roots are $' + r1 + '$ and $' + r2 + '$, and "' + (inside ? 'less than zero' : 'greater than zero') + '" means ' + (inside ? 'between' : 'outside') + ' the roots.');
+    var fac = h.factor('x', r1) + h.factor('x', r2);
+    var key = st([r1, r2], good, true, 'it factors as $' + fac + ' ' + relTex(good) + ' 0$. The roots are $' + r1 + '$ and $' + r2 + '$, and an upward parabola is ' + (inside ? 'negative between' : 'positive outside') + ' its roots' + (closed ? ', with the roots included because of the equality sign' : '') + '.');
     var wrongs = [
-      st([r1, r2], (inside ? '>' : '<') + (closed ? '=' : ''), false, 'this one holds ' + (inside ? 'outside' : 'between') + ' the roots.', { trap: 'complement' }),
-      st([-r2, -r1], good, false, 'its roots are $' + (-r2) + '$ and $' + (-r1) + '$ (signs reversed).', { trap: 'sign' }),
-      st([r1, r2], (inside ? '<' : '>') + (closed ? '' : '='), false, 'the end points are ' + (closed ? 'excluded here but the given set includes them' : 'included here but the given set excludes them') + '.', { trap: 'endpoint' })
+      st([r1, r2], (inside ? '>' : '<') + (closed ? '=' : ''), false, 'this inequality holds ' + (inside ? 'outside' : 'between') + ' the roots, so its solution set is $' + quadSets(r1, r2, !inside, closed).tex() + '$.', { trap: 'complement' }),
+      st([-r2, -r1], good, false, 'its roots are $' + (-r2) + '$ and $' + (-r1) + '$, so its solution set is $' + quadSets(-r2, -r1, inside, closed).tex() + '$.', { trap: 'sign' }),
+      st([r1, r2], (inside ? '<' : '>') + (closed ? '' : '='), false, 'its solution set is $' + quadSets(r1, r2, inside, !closed).tex() + '$, which ' + (closed ? 'leaves out' : 'includes') + ' the roots $' + r1 + '$ and $' + r2 + '$.', { trap: 'endpoint' })
     ];
     return out('Which of the following inequalities has the solution set $' + target.tex() + '$? ( )', QF.useStmts('S', key, wrongs));
   });
@@ -641,9 +651,12 @@
   }
   function fracTex(a, b, c, d) { return '\\dfrac{' + h.lin(a, 'x', b) + '}{' + h.lin(c, 'x', d) + '}'; }
   function ratSol(a, b, c, d, rel, r) {
-    return 'The numerator is zero at $x = ' + F.n(r.n0) + '$ and the denominator at $x = ' + F.n(r.d0) + '$. ' +
-      'The quotient has the same sign as $(' + h.lin(a, 'x', b) + ')(' + h.lin(c, 'x', d) + ')$, which is ' + (a * c > 0 ? 'negative between these two numbers and positive outside them' : 'positive between these two numbers and negative outside them') + '. ' +
-      (r.closed ? 'The numerator root is included, but the denominator root $' + F.n(r.d0) + '$ never is. ' : 'Both end points are excluded. ') + 'Solution set: $' + r.keyTex + '$.';
+    var neg = rel[0] === '<', between = neg === (a * c > 0);
+    return 'A quotient has the same sign as the product of its numerator and denominator. The product $(' + h.lin(a, 'x', b) + ')(' + h.lin(c, 'x', d) + ')$ is zero at $x = ' + F.n(r.n0) + '$ and $x = ' + F.n(r.d0) + '$, and it is ' +
+      (a * c > 0 ? 'negative between these two numbers and positive outside them' : 'positive between these two numbers and negative outside them') + '. ' +
+      'We need the quotient to be ' + (neg ? 'negative' : 'positive') + (r.closed ? ' or zero' : '') + ', so $x$ lies ' + (between ? 'between' : 'outside') + ' them. ' +
+      (r.closed ? 'The numerator is zero at $x = ' + F.n(r.n0) + '$, so this end point is included. The denominator is zero at $x = ' + F.n(r.d0) + '$, so this end point is excluded. ' : 'Both end points are excluded. ') +
+      'The solution set is $' + r.keyTex + '$.';
   }
 
   def({ id: 'INQ-rat.basic', code: 'INQ-rat', lesson: '1.6', tier: 'E', level: '=', fmt: 'V', trick: 'T02', w: 1,
@@ -681,7 +694,7 @@
     return {
       stem: 'The solution set of the inequality $\\dfrac{' + c0 + '}{' + h.lin(1, 'x', -a) + '} ' + relTex(rel) + ' 0$ is ( )',
       key: h.setOpt(key, 'iv'), wrong: wrong, check: chk.set(truth, [a, -a]),
-      sol: 'The numerator $' + c0 + '$ is ' + (c0 > 0 ? 'positive' : 'negative') + ' and never zero, so the fraction is ' + (rel[0] === '<' ? 'negative' : 'positive') + ' exactly when the denominator is ' + (above ? 'positive' : 'negative') + ': $x ' + (above ? '>' : '<') + ' ' + a + '$. The value $x = ' + a + '$ is excluded because the denominator cannot be zero. Solution set: $' + key.tex() + '$.'
+      sol: 'The numerator $' + c0 + '$ is ' + (c0 > 0 ? 'positive' : 'negative') + ' and never zero, so the fraction is never $0$ and it is ' + (rel[0] === '<' ? 'negative' : 'positive') + ' exactly when the denominator is ' + (above ? 'positive' : 'negative') + ': $' + h.lin(1, 'x', -a) + (above ? ' > ' : ' < ') + '0$, that is $x ' + (above ? '>' : '<') + ' ' + a + '$. The value $x = ' + a + '$ is excluded because the denominator cannot be zero. The solution set is $' + key.tex() + '$.'
     };
   });
 
@@ -712,7 +725,9 @@
     return {
       stem: 'The solution set of the fractional inequality $' + fracTex(1, a, 1, -b) + ' ' + relTex(rel) + ' 1$ is ( )',
       key: h.setOpt(key, 'iv'), wrong: wrong, check: chk.set(truth, [b, -a, -b, a]),
-      sol: 'Move $1$ to the left and combine: $' + fracTex(1, a, 1, -b) + ' - 1 = \\dfrac{' + c0 + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. The numerator is ' + (c0 > 0 ? 'positive' : 'negative') + ', so the denominator must be ' + (below ? 'negative' : 'positive') + ': $x ' + (below ? '<' : '>') + ' ' + b + '$ ($x = ' + b + '$ is never allowed). Solution set: $' + key.tex() + '$. Do not multiply both sides by $x ' + h.signed(-b) + '$: its sign is unknown.'
+      sol: 'Subtract $1$ from both sides and combine into one fraction: $' + fracTex(1, a, 1, -b) + ' - 1 = \\dfrac{(' + h.lin(1, 'x', a) + ') - (' + h.lin(1, 'x', -b) + ')}{' + h.lin(1, 'x', -b) + '} = \\dfrac{' + c0 + '}{' + h.lin(1, 'x', -b) + '}$, so the inequality becomes $\\dfrac{' + c0 + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. ' +
+        'The numerator $' + c0 + '$ is ' + (c0 > 0 ? 'positive' : 'negative') + ' and never zero, so the fraction is ' + (rel[0] === '<' ? 'negative' : 'positive') + ' exactly when the denominator is ' + (below ? 'negative' : 'positive') + ': $' + h.lin(1, 'x', -b) + (below ? ' < ' : ' > ') + '0$, that is $x ' + (below ? '<' : '>') + ' ' + b + '$. The solution set is $' + key.tex() + '$. ' +
+        'Multiplying both sides by $' + h.lin(1, 'x', -b) + '$ at the start would be a mistake, because its sign is not known.'
     };
   });
 
@@ -728,7 +743,7 @@
     return {
       stem: 'The solution set of the fractional inequality $' + fracTex(1, a, 1, -b) + ' ' + relTex(rel) + ' ' + k + '$ is ( )',
       key: r.key, wrong: r.wrong, check: r.check,
-      sol: 'Move $' + k + '$ to the left and combine into one fraction: $\\dfrac{' + h.lin(na, 'x', nb) + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. ' + ratSol(na, nb, 1, -b, rel, r)
+      sol: (k > 0 ? 'Subtract $' + k + '$ from' : 'Add $' + (-k) + '$ to') + ' both sides and combine into one fraction: $' + fracTex(1, a, 1, -b) + ' ' + (k > 0 ? '- ' + k : '+ ' + (-k)) + ' = \\dfrac{' + h.lin(na, 'x', nb) + '}{' + h.lin(1, 'x', -b) + '}$, so the inequality becomes $\\dfrac{' + h.lin(na, 'x', nb) + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. ' + ratSol(na, nb, 1, -b, rel, r)
     };
   });
 
@@ -736,8 +751,9 @@
     form: '(a − x)/(x + b) < 0: negative x-coefficient flips the regions', basis: 'Course plan 1.6 Q5' }, function (R) {
     var a = R.nz(-6, 6), b = R.nz(-6, 6), rel = R.pick(['<', '>', '<=', '>=']);
     if (a === -b) retry();
-    var r = rat({ a: -1, b: a, c: 1, d: b, rel: rel });
-    return { stem: 'The solution set of the inequality $\\dfrac{' + F.sum([[a, ''], [-1, 'x']]) + '}{' + h.lin(1, 'x', b) + '} ' + relTex(rel) + ' 0$ is ( )', key: r.key, wrong: r.wrong, check: r.check, sol: ratSol(-1, a, 1, b, rel, r) };
+    var r = rat({ a: -1, b: a, c: 1, d: b, rel: rel }), r2 = rat({ a: 1, b: -a, c: 1, d: b, rel: flip(rel) });
+    var sol = 'The numerator is $' + F.sum([[a, ''], [-1, 'x']]) + ' = -(' + h.lin(1, 'x', -a) + ')$. Multiply both sides by $-1$ and reverse the inequality sign: $' + fracTex(1, -a, 1, b) + ' ' + relTex(flip(rel)) + ' 0$. ' + ratSol(1, -a, 1, b, flip(rel), r2);
+    return { stem: 'The solution set of the inequality $\\dfrac{' + F.sum([[a, ''], [-1, 'x']]) + '}{' + h.lin(1, 'x', b) + '} ' + relTex(rel) + ' 0$ is ( )', key: r.key, wrong: r.wrong, check: r.check, sol: sol };
   });
 
   def({ id: 'INQ-rat.which', code: 'INQ-rat', lesson: '1.6', tier: 'M', level: '+1', fmt: 'S',
@@ -756,15 +772,15 @@
     }
     var aIsLo = a < b;
     var pool = [
-      st('<', IS.seg(lo, hi), true, 'the quotient is negative strictly between $' + lo + '$ and $' + hi + '$.', { g: 'lt' }),
-      st('<=', IS.set([IS.iv(lo, hi, aIsLo, !aIsLo)]), true, 'the numerator root $' + a + '$ is included, the denominator root $' + b + '$ is not.', { g: 'le' }),
-      st('>', IS.outside(lo, hi), true, 'the quotient is positive outside the two numbers.', { g: 'gt' }),
-      st('>=', IS.set([IS.iv(-Infinity, lo, false, aIsLo), IS.iv(hi, Infinity, !aIsLo, false)]), true, 'the numerator root $' + a + '$ is included, the denominator root $' + b + '$ is not.', { g: 'ge' }),
-      st('<=', IS.seg(lo, hi, 'cc'), false, 'the denominator root $' + b + '$ can never be included.', { trap: 'endpoint', g: 'le' }),
-      st('>=', IS.outside(lo, hi, true), false, 'the denominator root $' + b + '$ can never be included.', { trap: 'endpoint', g: 'ge' }),
-      st('<', IS.outside(lo, hi), false, 'the quotient is negative between the two numbers, not outside.', { trap: 'complement', g: 'lt' }),
-      st('>', IS.seg(lo, hi), false, 'the quotient is positive outside the two numbers, not between.', { trap: 'complement', g: 'gt' }),
-      st('<=', IS.set([IS.iv(lo, hi, !aIsLo, aIsLo)]), false, 'the brackets are the wrong way round: $' + a + '$ is included and $' + b + '$ is not.', { trap: 'endpoint', g: 'le2' })
+      st('<', IS.seg(lo, hi), true, 'the quotient is negative exactly when the numerator and denominator have opposite signs, which happens strictly between $' + lo + '$ and $' + hi + '$.', { g: 'lt' }),
+      st('<=', IS.set([IS.iv(lo, hi, aIsLo, !aIsLo)]), true, 'the quotient is negative between $' + lo + '$ and $' + hi + '$ and equals $0$ at $x = ' + a + '$. The value $x = ' + b + '$ is excluded because it makes the denominator zero.', { g: 'le' }),
+      st('>', IS.outside(lo, hi), true, 'the quotient is positive exactly when the numerator and denominator have the same sign, which happens outside $' + lo + '$ and $' + hi + '$.', { g: 'gt' }),
+      st('>=', IS.set([IS.iv(-Infinity, lo, false, aIsLo), IS.iv(hi, Infinity, !aIsLo, false)]), true, 'the quotient is positive outside $' + lo + '$ and $' + hi + '$ and equals $0$ at $x = ' + a + '$. The value $x = ' + b + '$ is excluded because it makes the denominator zero.', { g: 'ge' }),
+      st('<=', IS.seg(lo, hi, 'cc'), false, '$x = ' + b + '$ makes the denominator zero, so it can never be in the solution set.', { trap: 'endpoint', g: 'le' }),
+      st('>=', IS.outside(lo, hi, true), false, '$x = ' + b + '$ makes the denominator zero, so it can never be in the solution set.', { trap: 'endpoint', g: 'ge' }),
+      st('<', IS.outside(lo, hi), false, 'the quotient is negative between $' + lo + '$ and $' + hi + '$, not outside them.', { trap: 'complement', g: 'lt' }),
+      st('>', IS.seg(lo, hi), false, 'the quotient is positive outside $' + lo + '$ and $' + hi + '$, not between them.', { trap: 'complement', g: 'gt' }),
+      st('<=', IS.set([IS.iv(lo, hi, !aIsLo, aIsLo)]), false, '$x = ' + a + '$ makes the numerator zero, so it must be included, and $x = ' + b + '$ makes the denominator zero, so it must be excluded. The brackets here are the other way round.', { trap: 'endpoint', g: 'le2' })
     ];
     return out('Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -783,24 +799,28 @@
     // hypothesis a > b (or a < b written with the same pools mirrored)
     var k = R.int(2, 9), base = R.pick([2, 3, 4, 10]), gt = lessThan ? '<' : '>', lt = lessThan ? '>' : '<';
     var E = lessThan ? ENV_AB.map(function (e) { return { a: e.b, b: e.a }; }) : ENV_AB;
-    var tryv = lessThan ? '$a = -2$, $b = 1$' : '$a = 1$, $b = -2$';
+    // counterexamples: (1, -2) for a > b, (-2, 1) for a < b; the product and ratio statements need two negative numbers when a < b
+    var ce = lessThan ? { a: -2, b: 1 } : { a: 1, b: -2 }, ce2 = lessThan ? { a: -2, b: -1 } : { a: 1, b: -2 };
+    function take(c) { return 'take $a = ' + c.a + '$, $b = ' + c.b + '$: '; }
+    function cmp(x, y) { return x < y ? ' < ' : x > y ? ' > ' : ' = '; }
+    function num(v) { return F.n(N.q(v)); }
     var T = [
       h.relS('a + ' + k + ' ' + gt + ' b + ' + k, true, E, 'adding the same number to both sides keeps the direction.', { g: 'add' }),
       h.relS('a - ' + k + ' ' + gt + ' b - ' + k, true, E, 'subtracting the same number from both sides keeps the direction.', { g: 'add' }),
-      h.relS(k + 'a ' + gt + ' ' + k + 'b', true, E, 'multiplying by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
-      h.relS('a^3 ' + gt + ' b^3', true, E, '$y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order.', { g: 'cube' }),
-      h.relS(base + '^a ' + gt + ' ' + base + '^b', true, E, '$y = ' + base + '^x$ is increasing, so it keeps the order.', { g: 'exp' }),
-      h.relS(fr('a', k) + ' ' + gt + ' ' + fr('b', k), true, E, 'dividing by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
-      h.relS('-a ' + lt + ' -b', true, E, 'multiplying by $-1$ reverses the direction.', { g: 'neg' })
+      h.relS(k + 'a ' + gt + ' ' + k + 'b', true, E, 'multiplying both sides by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
+      h.relS('a^3 ' + gt + ' b^3', true, E, '$y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction.', { g: 'cube' }),
+      h.relS(base + '^a ' + gt + ' ' + base + '^b', true, E, '$y = ' + base + '^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power.', { g: 'exp' }),
+      h.relS(fr('a', k) + ' ' + gt + ' ' + fr('b', k), true, E, 'dividing both sides by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
+      h.relS('-a ' + lt + ' -b', true, E, 'multiplying both sides by $-1$ reverses the direction.', { g: 'neg' })
     ];
     var Fs = [
-      h.relS('a^2 ' + gt + ' b^2', false, E, 'squares need information about signs: try ' + tryv + '.', { trap: 'near-miss', g: 'sq' }),
-      h.relS('\\lvert a \\rvert ' + gt + ' \\lvert b \\rvert', false, E, 'absolute values need information about signs: try ' + tryv + '.', { trap: 'near-miss', g: 'abs' }),
-      h.relS(fr(1, 'a') + ' ' + lt + ' ' + fr(1, 'b'), false, E, 'reciprocals reverse the order only when both numbers have the same sign: try ' + tryv + '.', { trap: 'reciprocal', g: 'rec' }),
-      h.relS('-a ' + gt + ' -b', false, E, 'multiplying by $-1$ reverses the direction.', { trap: 'sign', g: 'neg' }),
-      h.relS('-' + k + 'a ' + gt + ' -' + k + 'b', false, E, 'multiplying by a negative number reverses the direction.', { trap: 'sign', g: 'negmul' }),
-      h.relS('ab ' + gt + ' b^2', false, E, 'multiplying both sides by $b$ is safe only if $b > 0$.', { trap: 'sign', g: 'ab' }),
-      h.relS(fr('a', 'b') + ' ' + gt + ' 1', false, E, 'dividing by $b$ is safe only if $b > 0$.', { trap: 'sign', g: 'ratio' })
+      h.relS('a^2 ' + gt + ' b^2', false, E, take(ce) + '$a^2 = ' + ce.a * ce.a + '$ and $b^2 = ' + ce.b * ce.b + '$, so $a^2' + cmp(ce.a * ce.a, ce.b * ce.b) + 'b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.relS('\\lvert a \\rvert ' + gt + ' \\lvert b \\rvert', false, E, take(ce) + '$\\lvert a \\rvert = ' + Math.abs(ce.a) + '$ and $\\lvert b \\rvert = ' + Math.abs(ce.b) + '$.', { trap: 'near-miss', g: 'abs' }),
+      h.relS(fr(1, 'a') + ' ' + lt + ' ' + fr(1, 'b'), false, E, take(ce) + '$\\dfrac{1}{a} = ' + num(1 / ce.a) + '$ and $\\dfrac{1}{b} = ' + num(1 / ce.b) + '$, so $\\dfrac{1}{a}' + cmp(1 / ce.a, 1 / ce.b) + '\\dfrac{1}{b}$.', { trap: 'reciprocal', g: 'rec' }),
+      h.relS('-a ' + gt + ' -b', false, E, 'multiplying both sides by $-1$ reverses the direction, so $-a ' + lt + ' -b$.', { trap: 'sign', g: 'neg' }),
+      h.relS('-' + k + 'a ' + gt + ' -' + k + 'b', false, E, 'multiplying both sides by the negative number $-' + k + '$ reverses the direction, so $-' + k + 'a ' + lt + ' -' + k + 'b$.', { trap: 'sign', g: 'negmul' }),
+      h.relS('ab ' + gt + ' b^2', false, E, 'multiplying both sides by $b$ keeps the direction only when $b > 0$. ' + QF.sentence(take(ce2) + '$ab = ' + ce2.a * ce2.b + '$ and $b^2 = ' + ce2.b * ce2.b + '$.'), { trap: 'sign', g: 'ab' }),
+      h.relS(fr('a', 'b') + ' ' + gt + ' 1', false, E, 'dividing both sides by $b$ keeps the direction only when $b > 0$. ' + QF.sentence(take(ce2) + '$\\dfrac{a}{b} = ' + num(ce2.a / ce2.b) + '$.'), { trap: 'sign', g: 'ratio' })
     ];
     return T.concat(Fs);
   }
@@ -810,29 +830,29 @@
     var st = QF.pickStmts(R, 'S', propBasic(R, false));
     if (/^\$5a > 5b\$$/.test(st.key)) retry('real item');
     var stem = R.pick(['It is known that $a > b$. Then ( )', 'If $a > b$, which of the following must be true? ( )']);
-    return out(stem, st, 'Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive.');
+    return out(stem, st);
   });
 
   def({ id: 'INQ-prop.less', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '=', fmt: 'S', trick: 'T03', w: 0.5,
     form: 'a < b ⇒ which is correct', basis: 'Course plan 1.7 Q4' }, function (R) {
-    return out('Let $a < b$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', propBasic(R, true)), 'Test with numbers such as $a = -2$, $b = 1$.');
+    return out('Let $a < b$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', propBasic(R, true)));
   });
 
   def({ id: 'INQ-prop.impl', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '=', fmt: 'S', trick: 'T03', w: 1,
     form: 'a, b, c real: which implication always holds', basis: 'Jan Q22' }, function (R) {
     var E = ENV_ANY;
     var pool = [
-      h.implS(['a > b'], 'a + c > b + c', true, E, 'adding $c$ to both sides is always safe.', { g: 'add' }),
-      h.implS(['a > b'], 'a - c > b - c', true, E, 'subtracting $c$ from both sides is always safe.', { g: 'add' }),
-      h.implS(['a > b', 'c > 0'], 'ac > bc', true, E, 'multiplying by a positive number keeps the direction.', { g: 'posmul' }),
-      h.implS(['a > b', 'c < 0'], 'ac < bc', true, E, 'multiplying by a negative number reverses the direction.', { g: 'negmul' }),
-      h.implS(['a > b'], 'ac > bc', false, E, 'it fails when $c \\le 0$.', { trap: 'sign', g: 'mul' }),
-      h.implS(['a > b'], 'a^2 > b^2', false, E, 'try $a = 1$, $b = -2$.', { trap: 'near-miss', g: 'sq' }),
-      h.implS(['a > b'], fr(1, 'a') + ' < ' + fr(1, 'b'), false, E, 'try $a = 1$, $b = -2$.', { trap: 'reciprocal', g: 'rec' }),
-      h.implS(['a > b'], 'ac^2 > bc^2', false, E, 'it fails when $c = 0$.', { trap: 'slip', g: 'c2' }),
-      h.implS(['ac > bc'], 'a > b', false, E, 'it fails when $c < 0$.', { trap: 'sign', g: 'cancel' }),
-      h.implS(['a^2 > b^2'], 'a > b', false, E, 'try $a = -2$, $b = 1$.', { trap: 'near-miss', g: 'sq2' }),
-      h.implS(['a > b'], '\\lvert a \\rvert > \\lvert b \\rvert', false, E, 'try $a = 1$, $b = -2$.', { trap: 'near-miss', g: 'abs' })
+      h.implS(['a > b'], 'a + c > b + c', true, E, 'adding the same number $c$ to both sides keeps the direction, whatever $c$ is.', { g: 'add' }),
+      h.implS(['a > b'], 'a - c > b - c', true, E, 'subtracting the same number $c$ from both sides keeps the direction, whatever $c$ is.', { g: 'add' }),
+      h.implS(['a > b', 'c > 0'], 'ac > bc', true, E, 'multiplying both sides by a positive number keeps the direction.', { g: 'posmul' }),
+      h.implS(['a > b', 'c < 0'], 'ac < bc', true, E, 'multiplying both sides by a negative number reverses the direction.', { g: 'negmul' }),
+      h.implS(['a > b'], 'ac > bc', false, E, 'if $c = 0$, then $ac = bc = 0$, and if $c < 0$ the direction is reversed.', { trap: 'sign', g: 'mul' }),
+      h.implS(['a > b'], 'a^2 > b^2', false, E, 'take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.implS(['a > b'], fr(1, 'a') + ' < ' + fr(1, 'b'), false, E, 'take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$.', { trap: 'reciprocal', g: 'rec' }),
+      h.implS(['a > b'], 'ac^2 > bc^2', false, E, 'if $c = 0$, both sides equal $0$.', { trap: 'slip', g: 'c2' }),
+      h.implS(['ac > bc'], 'a > b', false, E, 'take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$.', { trap: 'sign', g: 'cancel' }),
+      h.implS(['a^2 > b^2'], 'a > b', false, E, 'take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$.', { trap: 'near-miss', g: 'sq2' }),
+      h.implS(['a > b'], '\\lvert a \\rvert > \\lvert b \\rvert', false, E, 'take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$.', { trap: 'near-miss', g: 'abs' })
     ];
     return out('Let $a$, $b$, $c$ be real numbers. Which of the following statements is always true? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -841,35 +861,35 @@
     form: 'a > b > c ⇒ which must be true', basis: 'undated Q22' }, function (R) {
     var E = ENV_ABC;
     var pool = [
-      h.relS('a - c > b - c', true, E, 'subtracting the same number keeps the direction.', { g: 'add' }),
-      h.relS('a + c > b + c', true, E, 'adding the same number keeps the direction.', { g: 'add' }),
-      h.relS('a - c > 0', true, E, '$a > c$.', { g: 'diff' }),
-      h.relS('a + b > 2c', true, E, '$a > c$ and $b > c$; add the two inequalities.', { g: 'sum' }),
-      h.relS('ab > bc', false, E, 'multiplying $a > c$ by $b$ is safe only if $b > 0$.', { trap: 'sign', g: 'ab' }),
-      h.relS('a^2 > b^2', false, E, 'try $a = 1$, $b = -2$, $c = -3$.', { trap: 'near-miss', g: 'sq' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ is safe only if $c > 0$.', { trap: 'sign', g: 'div' }),
-      h.relS('ac > bc', false, E, 'multiplying by $c$ is safe only if $c > 0$.', { trap: 'sign', g: 'mul' }),
-      h.relS('a - b > b - c', false, E, 'the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$.', { trap: 'slip', g: 'gap' }),
-      h.relS('\\lvert a \\rvert > \\lvert c \\rvert', false, E, 'try $a = 1$, $c = -3$.', { trap: 'near-miss', g: 'abs' })
+      h.relS('a - c > b - c', true, E, 'subtracting $c$ from both sides of $a > b$ keeps the direction.', { g: 'add' }),
+      h.relS('a + c > b + c', true, E, 'adding $c$ to both sides of $a > b$ keeps the direction.', { g: 'add' }),
+      h.relS('a - c > 0', true, E, '$a > c$, so $a - c > 0$.', { g: 'diff' }),
+      h.relS('a + b > 2c', true, E, 'adding $a > c$ and $b > c$ gives $a + b > 2c$.', { g: 'sum' }),
+      h.relS('ab > bc', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$.', { trap: 'sign', g: 'ab' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$.', { trap: 'sign', g: 'div' }),
+      h.relS('ac > bc', false, E, 'multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.', { trap: 'sign', g: 'mul' }),
+      h.relS('a - b > b - c', false, E, 'take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$.', { trap: 'slip', g: 'gap' }),
+      h.relS('\\lvert a \\rvert > \\lvert c \\rvert', false, E, 'take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$.', { trap: 'near-miss', g: 'abs' })
     ];
     var st = QF.pickStmts(R, 'S', pool);
-    return out('If $a$, $b$, $c$ are real numbers and $a > b > c$, which of the following must be true? ( )', st, 'Test with numbers such as $a = 1$, $b = -2$, $c = -3$.');
+    return out('If $a$, $b$, $c$ are real numbers and $a > b > c$, which of the following must be true? ( )', st);
   });
 
   def({ id: 'INQ-prop.pos', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '+1', fmt: 'S', trick: 'T03',
     form: 'a > b > 0 ⇒ reciprocal or square statement', basis: 'Course plan 1.7 Q6' }, function (R) {
     var E = ENV_AB_POS;
     var pool = [
-      h.relS(fr(1, 'a') + ' < ' + fr(1, 'b'), true, E, 'for positive numbers the reciprocal reverses the order.', { g: 'rec' }),
-      h.relS('a^2 > b^2', true, E, 'for positive numbers squaring keeps the order.', { g: 'sq' }),
-      h.relS('\\sqrt{a} > \\sqrt{b}', true, E, '$y = \\sqrt{x}$ is increasing.', { g: 'root' }),
-      h.relS(fr('a', 'b') + ' > 1', true, E, 'divide $a > b$ by the positive number $b$.', { g: 'ratio' }),
-      h.relS(fr(1, 'a') + ' > ' + fr(1, 'b'), false, E, 'for positive numbers the reciprocal reverses the order.', { trap: 'reciprocal', g: 'rec' }),
-      h.relS('a^2 < b^2', false, E, 'for positive numbers squaring keeps the order.', { trap: 'sign', g: 'sq' }),
-      h.relS('-a > -b', false, E, 'multiplying by $-1$ reverses the direction.', { trap: 'sign', g: 'neg' }),
+      h.relS(fr(1, 'a') + ' < ' + fr(1, 'b'), true, E, 'dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$.', { g: 'rec' }),
+      h.relS('a^2 > b^2', true, E, '$a^2 - b^2 = (a + b)(a - b)$, and both factors are positive.', { g: 'sq' }),
+      h.relS('\\sqrt{a} > \\sqrt{b}', true, E, '$y = \\sqrt{x}$ is increasing on $[0, +\\infty)$.', { g: 'root' }),
+      h.relS(fr('a', 'b') + ' > 1', true, E, 'dividing both sides of $a > b$ by the positive number $b$ gives $\\dfrac{a}{b} > 1$.', { g: 'ratio' }),
+      h.relS(fr(1, 'a') + ' > ' + fr(1, 'b'), false, E, 'dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$, the opposite order.', { trap: 'reciprocal', g: 'rec' }),
+      h.relS('a^2 < b^2', false, E, '$a^2 - b^2 = (a + b)(a - b) > 0$, so $a^2 > b^2$.', { trap: 'sign', g: 'sq' }),
+      h.relS('-a > -b', false, E, 'multiplying both sides of $a > b$ by $-1$ gives $-a < -b$.', { trap: 'sign', g: 'neg' }),
       h.relS('a - b < 0', false, E, '$a > b$ means $a - b > 0$.', { trap: 'sign', g: 'diff' }),
-      h.relS(fr('b', 'a') + ' > 1', false, E, '$0 < b < a$ gives $\\dfrac{b}{a} < 1$.', { trap: 'reciprocal', g: 'ratio' }),
-      h.relS('ab < b^2', false, E, 'multiply $a > b$ by the positive number $b$: $ab > b^2$.', { trap: 'sign', g: 'ab' })
+      h.relS(fr('b', 'a') + ' > 1', false, E, 'dividing both sides of $b < a$ by the positive number $a$ gives $\\dfrac{b}{a} < 1$.', { trap: 'reciprocal', g: 'ratio' }),
+      h.relS('ab < b^2', false, E, 'multiplying both sides of $a > b$ by the positive number $b$ gives $ab > b^2$.', { trap: 'sign', g: 'ab' })
     ];
     return out('If $a > b > 0$, which of the following must be true? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -878,15 +898,15 @@
     form: 'a > b and c < 0 ⇒ which holds', basis: 'Course plan 1.7 Q7' }, function (R) {
     var E = ENV_ABC_NEG;
     var pool = [
-      h.relS('ac < bc', true, E, 'multiplying by the negative number $c$ reverses the direction.', { g: 'mul' }),
-      h.relS(fr('a', 'c') + ' < ' + fr('b', 'c'), true, E, 'dividing by the negative number $c$ reverses the direction.', { g: 'div' }),
-      h.relS('a + c > b + c', true, E, 'adding $c$ keeps the direction, whatever its sign.', { g: 'add' }),
-      h.relS('ac^2 > bc^2', true, E, '$c^2 > 0$, so the direction is kept.', { g: 'c2' }),
-      h.relS('ac > bc', false, E, 'multiplying by a negative number reverses the direction.', { trap: 'sign', g: 'mul' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by a negative number reverses the direction.', { trap: 'sign', g: 'div' }),
-      h.relS('a + c < b + c', false, E, 'adding $c$ never changes the direction.', { trap: 'sign', g: 'add' }),
-      h.relS('ac^2 < bc^2', false, E, '$c^2$ is positive.', { trap: 'sign', g: 'c2' }),
-      h.relS('a^2 > b^2', false, E, 'squares need sign information about $a$ and $b$.', { trap: 'near-miss', g: 'sq' })
+      h.relS('ac < bc', true, E, 'multiplying both sides of $a > b$ by the negative number $c$ reverses the direction.', { g: 'mul' }),
+      h.relS(fr('a', 'c') + ' < ' + fr('b', 'c'), true, E, 'dividing both sides of $a > b$ by the negative number $c$ reverses the direction.', { g: 'div' }),
+      h.relS('a + c > b + c', true, E, 'adding the same number to both sides keeps the direction, whatever its sign.', { g: 'add' }),
+      h.relS('ac^2 > bc^2', true, E, '$c \\ne 0$, so $c^2 > 0$, and multiplying both sides by a positive number keeps the direction.', { g: 'c2' }),
+      h.relS('ac > bc', false, E, 'multiplying by the negative number $c$ reverses the direction, so $ac < bc$.', { trap: 'sign', g: 'mul' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by the negative number $c$ reverses the direction, so $\\dfrac{a}{c} < \\dfrac{b}{c}$.', { trap: 'sign', g: 'div' }),
+      h.relS('a + c < b + c', false, E, 'adding $c$ to both sides keeps the direction, so $a + c > b + c$.', { trap: 'sign', g: 'add' }),
+      h.relS('ac^2 < bc^2', false, E, '$c^2 > 0$, so multiplying by $c^2$ keeps the direction: $ac^2 > bc^2$.', { trap: 'sign', g: 'c2' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' })
     ];
     return out('Given $a > b$ and $c < 0$, then ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -895,14 +915,14 @@
     form: 'a > b and c > d ⇒ which must be true (add, never subtract)', basis: 'CSC sample Q4' }, function (R) {
     var E = ENV_ABCD;
     var pool = [
-      h.relS('a + c > b + d', true, E, 'inequalities of the same direction can be added.', { g: 'add' }),
-      h.relS('a - d > b - c', true, E, '$-d > -c$; add this to $a > b$.', { g: 'sub' }),
-      h.relS('c^3 > d^3', true, E, 'cubes keep the order.', { g: 'cube' }),
-      h.relS('a - c > b - d', false, E, 'same-direction inequalities must not be subtracted: try $a = 1, b = 0, c = 3, d = 0$.', { trap: 'near-miss', g: 'sub' }),
-      h.relS('ac > bd', false, E, 'products need positive numbers: try $a = 1, b = -2, c = 1, d = -2$.', { trap: 'sign', g: 'mul' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'd'), false, E, 'quotients are not safe.', { trap: 'reciprocal', g: 'div' }),
-      h.relS('a^2 > b^2', false, E, 'squares need sign information.', { trap: 'near-miss', g: 'sq' }),
-      h.relS('a + d > b + c', false, E, 'try $a = 1, b = 0, c = 5, d = 0$.', { trap: 'swap', g: 'add2' })
+      h.relS('a + c > b + d', true, E, 'two inequalities in the same direction can be added.', { g: 'add' }),
+      h.relS('a - d > b - c', true, E, 'from $c > d$ we get $-d > -c$, and adding this to $a > b$ gives $a - d > b - c$.', { g: 'sub' }),
+      h.relS('c^3 > d^3', true, E, '$y = x^3$ is increasing on $\\mathbb{R}$, so $c > d$ gives $c^3 > d^3$.', { g: 'cube' }),
+      h.relS('a - c > b - d', false, E, 'two inequalities in the same direction cannot be subtracted. Take $a = 1$, $b = 0$, $c = 3$, $d = 0$: then $a - c = -2 < 0 = b - d$.', { trap: 'near-miss', g: 'sub' }),
+      h.relS('ac > bd', false, E, 'take $a = 1$, $b = -2$, $c = 1$, $d = -2$: then $ac = 1 < 4 = bd$.', { trap: 'sign', g: 'mul' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'd'), false, E, 'take $a = 2$, $b = 1$, $c = 4$, $d = 1$: then $\\dfrac{a}{c} = \\dfrac{1}{2} < 1 = \\dfrac{b}{d}$.', { trap: 'reciprocal', g: 'div' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.relS('a + d > b + c', false, E, 'take $a = 1$, $b = 0$, $c = 5$, $d = 0$: then $a + d = 1 < 5 = b + c$.', { trap: 'swap', g: 'add2' })
     ];
     return out('If $a > b$ and $c > d$, which of the following must be true? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -911,17 +931,17 @@
     form: 'a > b > c ⇒ four statements with products and quotients', basis: 'Course plan 1.7 Q8 (2.5)' }, function (R) {
     var E = ENV_ABC;
     var key = R.pick([
-      h.relS('a - c > b - c', true, E, 'subtracting the same number keeps the direction.'),
-      h.relS('a + c > b + c', true, E, 'adding the same number keeps the direction.'),
-      h.relS('2a > b + c', true, E, '$a > b$ and $a > c$; add the two inequalities.')
+      h.relS('a - c > b - c', true, E, 'subtracting $c$ from both sides of $a > b$ keeps the direction.'),
+      h.relS('a + c > b + c', true, E, 'adding $c$ to both sides of $a > b$ keeps the direction.'),
+      h.relS('2a > b + c', true, E, 'adding $a > b$ and $a > c$ gives $2a > b + c$.')
     ]);
     var wrongs = R.sample([
-      h.relS('ab > bc', false, E, 'multiplying $a > c$ by $b$ is safe only if $b > 0$.', { trap: 'sign' }),
-      h.relS('a^2 > b^2', false, E, 'try $a = 1$, $b = -2$, $c = -3$.', { trap: 'near-miss' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ is safe only if $c > 0$.', { trap: 'sign' }),
-      h.relS('ac > bc', false, E, 'multiplying by $c$ is safe only if $c > 0$.', { trap: 'sign' }),
-      h.relS(fr(1, 'a') + ' < ' + fr(1, 'c'), false, E, 'reciprocals need both numbers to have the same sign.', { trap: 'reciprocal' })
+      h.relS('ab > bc', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$.', { trap: 'sign' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$.', { trap: 'sign' }),
+      h.relS('ac > bc', false, E, 'multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.', { trap: 'sign' }),
+      h.relS(fr(1, 'a') + ' < ' + fr(1, 'c'), false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $\\dfrac{1}{a} = 1 > -\\dfrac{1}{3} = \\dfrac{1}{c}$.', { trap: 'reciprocal' })
     ], 3);
-    return out('It is known that $a > b > c$. Which of the following must be true? ( )', QF.useStmts('S', key, wrongs), 'Test with numbers such as $a = 1$, $b = -2$, $c = -3$.');
+    return out('It is known that $a > b > c$. Which of the following must be true? ( )', QF.useStmts('S', key, wrongs));
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);

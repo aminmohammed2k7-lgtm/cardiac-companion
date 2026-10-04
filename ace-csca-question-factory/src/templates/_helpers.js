@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/_helpers.js — small helpers shared by the template files. */
+/* ACE CSCA Question Factory · templates/_helpers.js: small helpers shared by the template files. */
 ;(function (root) {
   'use strict';
   var QF = root.QF, F = QF.fmt, S = QF.S, ev = QF.ev, N = QF.num;
@@ -76,6 +76,11 @@
     return out;
   };
   h.lst = function (arr) { return '\\{' + arr.join(', ') + '\\}'; };
+  /** values as words in a sentence: "$1$", "$1$ and $2$", "$1$, $2$ and $3$" */
+  h.andList = function (arr) {
+    var t = arr.map(function (x) { return '$' + F.n(x) + '$'; });
+    return t.length < 2 ? t.join('') : t.slice(0, -1).join(', ') + ' and ' + t[t.length - 1];
+  };
   /** a set in interval ('iv') or set-builder ('sb') notation, as an option string */
   h.setOpt = function (rs, style, v) { return F.m(style === 'sb' ? rs.texB(v) : rs.tex()); };
   /** integer written with its sign for use inside an expression: "+ 3", "- 2" */
