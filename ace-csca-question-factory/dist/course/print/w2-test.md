@@ -51,7 +51,7 @@ _24 questions · single answer · seed 1_
 - C. $3$
 - D. $\pm 3$
 
-**8.** Given $\tan\alpha = \dfrac{4}{3}$ and $\alpha$ is in the third quadrant, which of the following is correct? ( )  `TR-id · M · +1 · 2 pt`
+**8.** If $\tan\alpha = \dfrac{4}{3}$ and $\alpha$ is in the third quadrant, which of the following is correct? ( )  `TR-id · M · +1 · 2 pt`
 
 - A. $\sin\alpha + \cos\alpha = -\dfrac{7}{5}$
 - B. $\sin\alpha = \dfrac{4}{5}$
@@ -65,7 +65,7 @@ _24 questions · single answer · seed 1_
 - C. $\tan\alpha = \dfrac{\cos\alpha}{\sin\alpha}$
 - D. $\sin\alpha + \cos\alpha = 1$
 
-**10.** Given $\sin\left(\pi - \alpha\right) = -\dfrac{8}{17}$ and $\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$, then $\cos\left(\pi + \alpha\right) =$ ( )  `TR-red · M · +1 · 2 pt`
+**10.** If $\sin\left(\pi - \alpha\right) = -\dfrac{8}{17}$ and $\alpha \in \left(\pi, \dfrac{3\pi}{2}\right)$, then $\cos\left(\pi + \alpha\right) =$ ( )  `TR-red · M · +1 · 2 pt`
 
 - A. $-\dfrac{8}{17}$
 - B. $-\dfrac{15}{17}$
@@ -79,7 +79,7 @@ _24 questions · single answer · seed 1_
 - C. $\sin\left(2\pi - \alpha\right) = -\sin\alpha$
 - D. $\cos\left(2\pi - \alpha\right) = -\cos\alpha$
 
-**12.** Given $\sin\alpha = \dfrac{3}{5}$ and $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$, then $\dfrac{\cos\left(\pi + \alpha\right)\cdot\sin\left(\pi + \alpha\right)}{\sin\left(2\pi - \alpha\right)} =$ ( )  `TR-red · M · +1 · 2 pt`
+**12.** If $\sin\alpha = \dfrac{3}{5}$ and $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$, then $\dfrac{\cos\left(\pi + \alpha\right)\cdot\sin\left(\pi + \alpha\right)}{\sin\left(2\pi - \alpha\right)} =$ ( )  `TR-red · M · +1 · 2 pt`
 
 - A. $\dfrac{4}{5}$
 - B. $\dfrac{3}{5}$
@@ -114,7 +114,7 @@ _24 questions · single answer · seed 1_
 - C. $\left(-\dfrac{\pi}{3}, \dfrac{\pi}{3}\right)$
 - D. $\left(-\dfrac{\pi}{2}, -\dfrac{\pi}{6}\right)$
 
-**17.** Given sets $A = \{2, 4, 10\}$ and $B = \{3, 4, 6, 9\}$, then $A \cap B =$ ( )  `SET-op · E · = · 2 pt`
+**17.** If $A = \{2, 4, 10\}$ and $B = \{3, 4, 6, 9\}$, then $A \cap B =$ ( )  `SET-op · E · = · 2 pt`
 
 - A. $\{2, 3, 4, 6, 9, 10\}$
 - B. $\{4\}$
@@ -156,14 +156,14 @@ _24 questions · single answer · seed 1_
 - C. It is an even function
 - D. Its range is $\mathbb{R}$
 
-**23.** Given $\sin\left(\pi - \alpha\right) = \dfrac{3}{5}$ and $\alpha \in \left(0, \dfrac{\pi}{2}\right)$, then $\tan\left(2\pi - \alpha\right) =$ ( )  `TR-red · M · +1 · 2.5 pt`
+**23.** If $\sin\left(\pi - \alpha\right) = \dfrac{3}{5}$ and $\alpha \in \left(0, \dfrac{\pi}{2}\right)$, then $\tan\left(2\pi - \alpha\right) =$ ( )  `TR-red · M · +1 · 2.5 pt`
 
 - A. $\dfrac{3}{4}$
 - B. $-\dfrac{3}{4}$
 - C. $\dfrac{4}{3}$
 - D. $-\dfrac{4}{3}$
 
-**24.** Given $\tan\alpha = -\dfrac{8}{15}$ and $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$, which of the following is correct? ( )  `TR-id · M · +1 · 2.5 pt`
+**24.** If $\tan\alpha = -\dfrac{8}{15}$ and $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$, which of the following is correct? ( )  `TR-id · M · +1 · 2.5 pt`
 
 - A. $\sin\alpha + \cos\alpha = -\dfrac{7}{17}$
 - B. $\sin\alpha = -\dfrac{8}{17}$
@@ -180,50 +180,50 @@ _24 questions · single answer · seed 1_
 
 ## Solutions
 
-**1. B** — The reference angle is $30^\circ$ and the angle lies in the second quadrant, where sine is positive. So the value is $\dfrac{1}{2}$.
+**1. Answer B.** The angle $150^\circ$ lies in the second quadrant, where sine is positive, and its reference angle is $30^\circ$. So $\sin 150^\circ = \sin\left(180^\circ - 30^\circ\right) = \sin 30^\circ = \dfrac{1}{2}$.
 
-**2. A** — Use the special values: $\sin \dfrac{5\pi}{6} = \dfrac{1}{2}$, $\cos \dfrac{5\pi}{4} = -\dfrac{\sqrt{2}}{2}$, $\tan \dfrac{7\pi}{6} = \dfrac{\sqrt{3}}{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\dfrac{\sqrt{3} - \sqrt{6}}{6}$.
+**2. Answer A.** Find each value: $\sin \dfrac{5\pi}{6} = \sin\left(\pi - \dfrac{\pi}{6}\right) = \sin \dfrac{\pi}{6} = \dfrac{1}{2}$, $\cos \dfrac{5\pi}{4} = \cos\left(\pi + \dfrac{\pi}{4}\right) = -\cos \dfrac{\pi}{4} = -\dfrac{\sqrt{2}}{2}$ and $\tan \dfrac{7\pi}{6} = \tan\left(\pi + \dfrac{\pi}{6}\right) = \tan \dfrac{\pi}{6} = \dfrac{\sqrt{3}}{3}$. Substituting, the expression equals $\left(\dfrac{1}{2} - \dfrac{\sqrt{2}}{2}\right) \cdot \dfrac{\sqrt{3}}{3} = \dfrac{\sqrt{3} - \sqrt{6}}{6}$.
 
-**3. C** — Use the special values: $\sin \dfrac{\pi}{6} = \dfrac{1}{2}$, $\cos \dfrac{\pi}{3} = \dfrac{1}{2}$, $\tan \dfrac{\pi}{3} = \sqrt{3}$ (reference angle, then the sign of the quadrant). Substituting gives $1 - \sqrt{3}$.
+**3. Answer C.** Find each value: $\sin \dfrac{\pi}{6} = \dfrac{1}{2}$, $\cos \dfrac{\pi}{3} = \dfrac{1}{2}$ and $\tan \dfrac{\pi}{3} = \sqrt{3}$. Substituting, the expression equals $\dfrac{1}{2} + \dfrac{1}{2} - \sqrt{3} = 1 - \sqrt{3}$.
 
-**4. D** — $r = \sqrt{x^2 + y^2} = \sqrt{13}$. $\cos\alpha = \dfrac{x}{r}$ $= -\dfrac{3\sqrt{13}}{13}$ (the signs come from the coordinates).
+**4. Answer D.** Here $x = -3$, $y = -2$ and $r = \sqrt{x^2 + y^2} = \sqrt{13}$. So $\cos\alpha = \dfrac{x}{r} = \dfrac{-3}{\sqrt{13}} = -\dfrac{3\sqrt{13}}{13}$.
 
-**5. A** — $r = \sqrt{x^2 + y^2} = \sqrt{20}$. $\tan\alpha = \dfrac{y}{x}$ $= -\dfrac{1}{2}$ (the signs come from the coordinates).
+**5. Answer A.** Here $x = 4$, $y = -2$ and $r = \sqrt{x^2 + y^2} = \sqrt{20}$. So $\tan\alpha = \dfrac{y}{x} = \dfrac{-2}{4} = -\dfrac{1}{2}$.
 
-**6. D** — Here $r = \sqrt{10}$. The correct statement is $\tan\alpha = 3$ — $\tan\alpha = \dfrac{y}{x}$. $\tan\alpha = \dfrac{1}{3}$ is false: that is $\dfrac{x}{y}$; the tangent is $\dfrac{y}{x}$. $\cos\alpha = \dfrac{\sqrt{10}}{10}$ is false: the sign of $x$ decides the sign of the cosine. $\tan\alpha = -3$ is false: $\tan\alpha = \dfrac{y}{x}$ keeps both signs.
+**6. Answer D.** Here $x = -1$, $y = -3$ and $r = \sqrt{1 + 9} = \sqrt{10}$. $\tan\alpha = 3$ is correct. $\tan\alpha = \dfrac{y}{x} = \dfrac{-3}{-1} = 3$. $\tan\alpha = \dfrac{1}{3}$ is incorrect. This is $\dfrac{x}{y}$. In fact $\tan\alpha = \dfrac{y}{x} = \dfrac{-3}{-1} = 3$. $\cos\alpha = \dfrac{\sqrt{10}}{10}$ is incorrect. The cosine has the sign of $x = -1$: $\cos\alpha = \dfrac{x}{r} = \dfrac{-1}{\sqrt{10}} = -\dfrac{\sqrt{10}}{10}$. $\tan\alpha = -3$ is incorrect. $\tan\alpha = \dfrac{y}{x} = \dfrac{-3}{-1} = 3$.
 
-**7. D** — $\sin^2\alpha = 1 - \dfrac{1}{10} = \dfrac{9}{10}$, so $\tan^2\alpha = \dfrac{\sin^2\alpha}{\cos^2\alpha} = 9$. No quadrant is given, so both signs are possible: $\tan\alpha = \pm 3$.
+**7. Answer D.** From $\sin^2\alpha + \cos^2\alpha = 1$: $\sin^2\alpha = 1 - \dfrac{1}{10} = \dfrac{9}{10}$, so $\tan^2\alpha = \dfrac{\sin^2\alpha}{\cos^2\alpha} = 9$. No quadrant is given, so $\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\tan\alpha = \pm 3$.
 
-**8. A** — Here $\sin\alpha = -\dfrac{4}{5}$ and $\cos\alpha = -\dfrac{3}{5}$. The correct statement is $\sin\alpha + \cos\alpha = -\dfrac{7}{5}$ — add the two values with their signs. $\sin\alpha\cos\alpha = -\dfrac{12}{25}$ is false: the sign of the product is wrong. $\cos\alpha = \dfrac{3}{5}$ is false: the sign of the cosine is wrong for the third quadrant. $\sin\alpha = \dfrac{4}{5}$ is false: the sign of the sine is wrong for the third quadrant.
+**8. Answer A.** Since $\lvert\tan\alpha\rvert = \dfrac{4}{3}$, a right triangle with legs $4$ and $3$ has hypotenuse $5$. In the third quadrant $\sin\alpha < 0$ and $\cos\alpha < 0$, so $\sin\alpha = -\dfrac{4}{5}$ and $\cos\alpha = -\dfrac{3}{5}$. $\sin\alpha + \cos\alpha = -\dfrac{7}{5}$ is correct. $\sin\alpha + \cos\alpha = -\dfrac{4}{5} - \dfrac{3}{5} = -\dfrac{7}{5}$. $\sin\alpha\cos\alpha = -\dfrac{12}{25}$ is incorrect. $\sin\alpha\cos\alpha = \left(-\dfrac{4}{5}\right) \times \left(-\dfrac{3}{5}\right) = \dfrac{12}{25}$. $\cos\alpha = \dfrac{3}{5}$ is incorrect. Cosine is negative in the third quadrant, so $\cos\alpha = -\dfrac{3}{5}$. $\sin\alpha = \dfrac{4}{5}$ is incorrect. Sine is negative in the third quadrant, so $\sin\alpha = -\dfrac{4}{5}$.
 
-**9. B** — The correct statement is $\sin\alpha = \tan\alpha\cos\alpha$ — multiply $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$ by $\cos\alpha$. $\tan\alpha = \sin\alpha\cos\alpha$ is false: the tangent is a quotient, not a product. $\tan\alpha = \dfrac{\cos\alpha}{\sin\alpha}$ is false: the fraction is upside down: $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$. $\sin\alpha + \cos\alpha = 1$ is false: only the squares add up to $1$.
+**9. Answer B.** $\sin\alpha = \tan\alpha\cos\alpha$ is correct. Multiply $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$ by $\cos\alpha$. $\tan\alpha = \sin\alpha\cos\alpha$ is incorrect. The tangent is the quotient $\dfrac{\sin\alpha}{\cos\alpha}$, not the product. $\tan\alpha = \dfrac{\cos\alpha}{\sin\alpha}$ is incorrect. The fraction is upside down: $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha}$. $\sin\alpha + \cos\alpha = 1$ is incorrect. Only the squares add up to $1$. For example, at $\alpha = \dfrac{\pi}{4}$ the left side is $\sqrt{2}$.
 
-**10. C** — Step 1: $\sin\left(\pi - \alpha\right) = \sin\alpha$, so $\sin\alpha = -\dfrac{8}{17}$. Step 2: in the third quadrant $\cos\alpha = -\dfrac{15}{17}$. Step 3: $\cos\left(\pi + \alpha\right) = -\cos\alpha = \dfrac{15}{17}$.
+**10. Answer C.** Step 1: $\sin\left(\pi - \alpha\right) = \sin\alpha$, so $\sin\alpha = -\dfrac{8}{17}$. Step 2: $\cos^2\alpha = 1 - \dfrac{64}{289} = \dfrac{225}{289}$, and in the third quadrant cosine is negative, so $\cos\alpha = -\dfrac{15}{17}$. Step 3: $\cos\left(\pi + \alpha\right) = -\cos\alpha = \dfrac{15}{17}$.
 
-**11. C** — The correct statement is $\sin\left(2\pi - \alpha\right) = -\sin\alpha$ — a multiple of $\pi$ keeps the name; the sign is that of $\sin$ where the angle lands (take $\alpha$ acute). $\cos\left(2\pi - \alpha\right) = -\cos\alpha$ is false: the sign is wrong: the correct result is $\cos\alpha$. $\sin\left(\dfrac{\pi}{2} - \alpha\right) = -\cos\alpha$ is false: the sign is wrong: the correct result is $\cos\alpha$. $\sin\left(\pi + \alpha\right) = -\cos\alpha$ is false: the name is wrong: the correct result is $-\sin\alpha$.
+**11. Answer C.** $\sin\left(2\pi - \alpha\right) = -\sin\alpha$ is correct. If $\alpha$ is acute, $2\pi - \alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\pi$, so the function name stays the same. $\cos\left(2\pi - \alpha\right) = -\cos\alpha$ is incorrect. If $\alpha$ is acute, $2\pi - \alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\pi$, so the function name stays the same. So $\cos\left(2\pi - \alpha\right) = \cos\alpha$. $\sin\left(\dfrac{\pi}{2} - \alpha\right) = -\cos\alpha$ is incorrect. If $\alpha$ is acute, $\dfrac{\pi}{2} - \alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\dfrac{\pi}{2}$, so sine and cosine swap. So $\sin\left(\dfrac{\pi}{2} - \alpha\right) = \cos\alpha$. $\sin\left(\pi + \alpha\right) = -\cos\alpha$ is incorrect. If $\alpha$ is acute, $\pi + \alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\pi$, so the function name stays the same. So $\sin\left(\pi + \alpha\right) = -\sin\alpha$.
 
-**12. A** — Reduce each factor: $\cos\left(\pi + \alpha\right) = -\cos\alpha$, $\sin\left(\pi + \alpha\right) = -\sin\alpha$, $\sin\left(2\pi - \alpha\right) = -\sin\alpha$. With $\sin\alpha = \dfrac{3}{5}$ and $\cos\alpha = -\dfrac{4}{5}$ the quotient equals $\dfrac{4}{5}$.
+**12. Answer A.** Reduce each factor: $\cos\left(\pi + \alpha\right) = -\cos\alpha$, $\sin\left(\pi + \alpha\right) = -\sin\alpha$ and $\sin\left(2\pi - \alpha\right) = -\sin\alpha$. So the expression is $\dfrac{\left(-\cos\alpha\right)\left(-\sin\alpha\right)}{-\sin\alpha} = -\cos\alpha$. Here $\sin\alpha = \dfrac{3}{5}$ and $\cos\alpha = -\dfrac{4}{5}$, so the value is $\dfrac{4}{5}$.
 
-**13. C** — The incorrect statement is “It is monotonically increasing on $[0, \pi]$” — on $[0, \pi]$ it rises to $1$ and then falls. The other three statements are true.
+**13. Answer C.** “It is monotonically increasing on $[0, \pi]$” is incorrect. On $[0, \pi]$ it rises from $0$ to $1$ and then falls back to $0$. “It has infinitely many zeros” is correct. It is zero at $x = k\pi$ for every integer $k$. “Its range is $[-1, 1]$” is correct. Its values lie between $-1$ and $1$, and both ends are reached. “It is a periodic function with minimum positive period $2\pi$” is correct. $\sin(x + 2\pi) = \sin x$ for every $x$, and no smaller positive number has this property.
 
-**14. C** — $T = \dfrac{2\pi}{|\omega|}$ with $\omega = \dfrac{2}{3}$: dividing by a fraction multiplies by its reciprocal, so $T = 3\pi$.
+**14. Answer C.** For $y = A\sin(\omega x + \varphi) + k$ the minimum positive period is $T = \dfrac{2\pi}{|\omega|}$, whatever $A$, $\varphi$ and $k$ are. Here $\omega = \dfrac{2}{3}$, and dividing by a fraction means multiplying by its reciprocal: $T = 2\pi \div \dfrac{2}{3} = 2\pi \times \dfrac{3}{2} = 3\pi$.
 
-**15. B** — The incorrect statement is “Its maximum value is $1$” — the tangent is unbounded. The other three statements are true.
+**15. Answer B.** “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is increasing on $\left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\left(-\dfrac{\pi}{2}, \dfrac{\pi}{2}\right)$ is one of them. “Its range is $\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “Its minimum positive period is $\pi$” is correct. For $y = \tan\omega x$ the period is $T = \dfrac{\pi}{|\omega|} = \pi$.
 
-**16. D** — The function is undefined where $3x = \dfrac{\pi}{2} + k\pi$, that is at $x = \dfrac{\pi}{6} + k \cdot \dfrac{\pi}{3}$ ($k \in \mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\left(-\dfrac{\pi}{2}, -\dfrac{\pi}{6}\right)$ contains none of them; each of the other intervals contains one.
+**16. Answer D.** The function is undefined where $3x = \dfrac{\pi}{2} + k\pi$, that is at $x = \dfrac{\pi}{6} + \dfrac{k\pi}{3}$ ($k \in \mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\left(-\dfrac{\pi}{2}, -\dfrac{\pi}{6}\right)$ contains none of them. Each of the other intervals contains one.
 
-**17. B** — The intersection holds the elements that belong to both sets: $\{4\}$.
+**17. Answer B.** The intersection contains the elements that appear in both lists. Only $4$ appears in both, so $A \cap B = \{4\}$.
 
-**18. A** — Divide by $2$: $(x - 2)(x - 7) > 0$. The roots are $2$ and $7$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $(-\infty, 2) \cup (7, +\infty)$.
+**18. Answer A.** Divide both sides by $2$: $(x - 2)(x - 7) > 0$. The roots are $2$ and $7$. The graph of $y = (x - 2)(x - 7)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $(-\infty, 2) \cup (7, +\infty)$.
 
-**19. B** — Move $1$ to the left and combine: $\dfrac{x - 2}{x - 6} - 1 = \dfrac{4}{x - 6} < 0$. The numerator is positive, so the denominator must be negative: $x < 6$ ($x = 6$ is never allowed). Solution set: $(-\infty, 6)$. Do not multiply both sides by $x - 6$: its sign is unknown.
+**19. Answer B.** Subtract $1$ from both sides and combine into one fraction: $\dfrac{x - 2}{x - 6} - 1 = \dfrac{(x - 2) - (x - 6)}{x - 6} = \dfrac{4}{x - 6}$, so the inequality becomes $\dfrac{4}{x - 6} < 0$. The numerator $4$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x - 6 < 0$, that is $x < 6$. The solution set is $(-\infty, 6)$. Multiplying both sides by $x - 6$ at the start would be a mistake, because its sign is not known.
 
-**20. C** — Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^3 + 2x$ — it is odd: $f(-x) = -f(x)$. $y = x^2 + \cos x$ is false: it is even: $f(-x) = f(x)$. $y = x^4$ is false: it is even: $f(-x) = f(x)$. $y = (x - 1)^2$ is false: it is neither odd nor even.
+**20. Answer C.** For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^3 + 2x$ is correct. $f(-x) = -x^3 - 2x = -f(x)$, so it is odd. $y = x^2 + \cos x$ is incorrect. $f(-x) = x^2 + \cos x = f(x)$, so it is even, not odd. $y = x^4$ is incorrect. $f(-x) = (-x)^4 = x^4 = f(x)$, so it is even, not odd. $y = (x - 1)^2$ is incorrect. $f(-x) = (-x - 1)^2 = (x + 1)^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.
 
-**21. D** — The correct statement is “Its minimum value is $-2$” — the minimum is $k - |A|$. “Its maximum value is $4$” is false: the vertical shift $2$ was forgotten: the maximum is $6$. “Its minimum value is $-4$” is false: the vertical shift $2$ was forgotten: the minimum is $-2$. “Its minimum positive period is $2\pi$” is false: that is the period of a tangent; here $T = \dfrac{2\pi}{|\omega|} = 4\pi$.
+**21. Answer D.** “Its minimum value is $-2$” is correct. The minimum is $k - |A| = 2 - 4 = -2$. “Its maximum value is $4$” is incorrect. The vertical shift is missing. The maximum is $k + |A| = 2 + 4 = 6$. “Its minimum value is $-4$” is incorrect. The vertical shift is missing. The minimum is $k - |A| = 2 - 4 = -2$. “Its minimum positive period is $2\pi$” is incorrect. $\dfrac{\pi}{|\omega|}$ is the period formula for a tangent. Here $T = \dfrac{2\pi}{|\omega|} = 2\pi \div \dfrac{1}{2} = 4\pi$.
 
-**22. D** — The correct statement is “Its range is $\mathbb{R}$”. “It is an even function” is false: the tangent is odd. “Its maximum value is $1$” is false: the tangent is unbounded. “Its minimum positive period is $\dfrac{\pi}{2}$” is false: that is the formula for sine and cosine; for a tangent $T = \dfrac{\pi}{|\omega|} = \dfrac{\pi}{4}$.
+**22. Answer D.** “Its range is $\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “It is an even function” is incorrect. $\tan(-u) = -\tan u$, so the function is odd, not even. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “Its minimum positive period is $\dfrac{\pi}{2}$” is incorrect. $\dfrac{2\pi}{|\omega|}$ is the formula for sine and cosine. For $y = \tan\omega x$ the period is $T = \dfrac{\pi}{|\omega|} = \dfrac{\pi}{4}$.
 
-**23. B** — Step 1: $\sin\left(\pi - \alpha\right) = \sin\alpha$, so $\sin\alpha = \dfrac{3}{5}$. Step 2: in the first quadrant $\cos\alpha = \dfrac{4}{5}$ and $\tan\alpha = \dfrac{3}{4}$. Step 3: $\tan\left(2\pi - \alpha\right) = -\tan\alpha = -\dfrac{3}{4}$.
+**23. Answer B.** Step 1: $\sin\left(\pi - \alpha\right) = \sin\alpha$, so $\sin\alpha = \dfrac{3}{5}$. Step 2: $\cos^2\alpha = 1 - \dfrac{9}{25} = \dfrac{16}{25}$, and in the first quadrant cosine is positive, so $\cos\alpha = \dfrac{4}{5}$ and $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha} = \dfrac{3}{4}$. Step 3: $\tan\left(2\pi - \alpha\right) = -\tan\alpha = -\dfrac{3}{4}$.
 
-**24. A** — Here $\sin\alpha = \dfrac{8}{17}$ and $\cos\alpha = -\dfrac{15}{17}$. The correct statement is $\sin\alpha + \cos\alpha = -\dfrac{7}{17}$ — add the two values with their signs. $\sin\alpha + \cos\alpha = \dfrac{23}{17}$ is false: one of the two signs is wrong. $\sin\alpha\cos\alpha = \dfrac{120}{289}$ is false: the sign of the product is wrong. $\sin\alpha = -\dfrac{8}{17}$ is false: the sign of the sine is wrong for the second quadrant.
+**24. Answer A.** Since $\lvert\tan\alpha\rvert = \dfrac{8}{15}$, a right triangle with legs $8$ and $15$ has hypotenuse $17$. In the second quadrant $\sin\alpha > 0$ and $\cos\alpha < 0$, so $\sin\alpha = \dfrac{8}{17}$ and $\cos\alpha = -\dfrac{15}{17}$. $\sin\alpha + \cos\alpha = -\dfrac{7}{17}$ is correct. $\sin\alpha + \cos\alpha = \dfrac{8}{17} - \dfrac{15}{17} = -\dfrac{7}{17}$. $\sin\alpha + \cos\alpha = \dfrac{23}{17}$ is incorrect. $\sin\alpha + \cos\alpha = \dfrac{8}{17} - \dfrac{15}{17} = -\dfrac{7}{17}$. $\sin\alpha\cos\alpha = \dfrac{120}{289}$ is incorrect. $\sin\alpha\cos\alpha = \dfrac{8}{17} \times \left(-\dfrac{15}{17}\right) = -\dfrac{120}{289}$. $\sin\alpha = -\dfrac{8}{17}$ is incorrect. Sine is positive in the second quadrant, so $\sin\alpha = \dfrac{8}{17}$.

@@ -75,7 +75,7 @@ _48 questions · single answer · seed 1_
 **11.** Which of the following functions is monotonically decreasing on $(-\infty, +\infty)$? ( )  `FN-mono · E · = · 2 pt`
 
 - A. $y = \left(\dfrac{1}{2}\right)^x$
-- B. $y = e^x$
+- B. $y = -\dfrac{5}{x}$
 - C. $y = 2^x$
 - D. $y = x^3$
 
@@ -121,7 +121,7 @@ _48 questions · single answer · seed 1_
 - C. an arithmetic sequence
 - D. neither arithmetic nor geometric
 
-**18.** Given points $A(2, 0)$ and $B(-10, b)$, if $|AB| = 13$, then $b =$ ( )  `LN-dist · E · = · 2 pt`
+**18.** The points $A(2, 0)$ and $B(-10, b)$ satisfy $|AB| = 13$. Then $b =$ ( )  `LN-dist · E · = · 2 pt`
 
 - A. $\pm 12$
 - B. $-5$
@@ -142,7 +142,7 @@ _48 questions · single answer · seed 1_
 - C. $x^2 + y^2 - 10x + 8y - 16 = 0$
 - D. $x^2 + y^2 - 10x + 8y + 25 = 0$
 
-**21.** Given $\sin\alpha = \dfrac{3\sqrt{10}}{10}$ and $\alpha$ is an acute angle, then $\tan\alpha =$ ( )  `TR-id · E · = · 2 pt`
+**21.** If $\sin\alpha = \dfrac{3\sqrt{10}}{10}$ and $\alpha$ is an acute angle, then $\tan\alpha =$ ( )  `TR-id · E · = · 2 pt`
 
 - A. $\dfrac{1}{3}$
 - B. $3$
@@ -163,7 +163,7 @@ _48 questions · single answer · seed 1_
 - C. $(x + 4)^2 + (y - 2)^2 = 25$
 - D. $(x + 1)^2 + (y + 2)^2 = 5$
 
-**24.** It is known that $a > b$. Then ( )  `INQ-prop · E · = · 2 pt`
+**24.** If $a > b$, then ( )  `INQ-prop · E · = · 2 pt`
 
 - A. $-a > -b$
 - B. $ab > b^2$
@@ -233,7 +233,7 @@ _48 questions · single answer · seed 1_
 - C. $x + y - 5 = 0$
 - D. $2x + y - 1 = 0$
 
-**34.** It is known that $\cos\alpha = -\dfrac{4}{5}$ and $\dfrac{\pi}{2} < \alpha < \pi$. Then $\sin\dfrac{\alpha}{2} =$ ( )  `TR-half · M · = · R01 · 2 pt`
+**34.** Suppose $\cos\alpha = -\dfrac{4}{5}$ and $\dfrac{\pi}{2} < \alpha < \pi$. Then $\sin\dfrac{\alpha}{2} =$ ( )  `TR-half · M · = · R01 · 2 pt`
 
 - A. $\pm \dfrac{3\sqrt{10}}{10}$
 - B. $-\dfrac{3\sqrt{10}}{10}$
@@ -351,98 +351,98 @@ _48 questions · single answer · seed 1_
 
 ## Solutions
 
-**1. D** — The correct statement is $B \subseteq A$ — every element of $B$ is also an element of $A$. $A = B$ is false: the two sets do not have the same elements. $B \in A$ is false: $\in$ links an element to a set; between two sets use $\subseteq$. $A \subseteq B$ is false: $A$ has an element that is not in $B$.
+**1. Answer D.** $B \subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A = B$ is incorrect. $5 \in A$ but $5 \notin B$, so the two sets are not equal. $B \in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\subseteq$, not by $\in$. $A \subseteq B$ is incorrect. $5 \in A$ but $5 \notin B$.
 
-**2. B** — The intersection keeps the numbers that satisfy both conditions: it runs from $-2$ (included) to $2$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\{x \mid -2 \le x < 2\}$.
+**2. Answer B.** A number in $A \cap B$ must satisfy both conditions. The larger lower bound is $-2$, from $B$, where it is included. The smaller upper bound is $2$, from $A$, where it is excluded. So $A \cap B = \{x \mid -2 \le x < 2\}$.
 
-**3. C** — Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-5, -2)$.
+**3. Answer C.** A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-5, -2)$.
 
-**4. A** — Factor: $(x - 2)(x - 4) \ge 0$. The roots are $2$ and $4$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\infty, 2] \cup [4, +\infty)$.
+**4. Answer A.** Factor the left side: $(x - 2)(x - 4) \ge 0$. The roots are $2$ and $4$. The graph of $y = (x - 2)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\infty, 2] \cup [4, +\infty)$.
 
-**5. A** — A cube root is defined for every real number (only even roots need a non-negative argument). Domain: $(-\infty, +\infty)$.
+**5. Answer A.** A cube root is defined for every real number, positive, negative or zero. Only even roots, such as square roots, need a non-negative expression inside. So the domain is $(-\infty, +\infty)$.
 
-**6. B** — The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \pm 7$: there are two points, $(2, 7)$ and $(2, -7)$. An option with only one of them is incomplete.
+**6. Answer B.** The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \pm 7$. Hence there are two points, $(2, 7)$ and $(2, -7)$, and an option with only one of them is incomplete.
 
-**7. A** — The reference angle is $30^\circ$ and the angle lies in the third quadrant, where tangent is positive. So the value is $\dfrac{\sqrt{3}}{3}$.
+**7. Answer A.** The angle $210^\circ$ lies in the third quadrant, where tangent is positive, and its reference angle is $30^\circ$. So $\tan 210^\circ = \tan\left(180^\circ + 30^\circ\right) = \tan 30^\circ = \dfrac{\sqrt{3}}{3}$.
 
-**8. A** — Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x + \dfrac{1}{x}$ — it is odd: $f(-x) = -f(x)$. $y = x^4 - x^2$ is false: it is even: $f(-x) = f(x)$. $y = x^2 + x$ is false: it is neither odd nor even. $y = x^2 - 3$ is false: it is even: $f(-x) = f(x)$.
+**8. Answer A.** For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x + \dfrac{1}{x}$ is correct. $f(-x) = -x - \dfrac{1}{x} = -f(x)$, so it is odd. $y = x^4 - x^2$ is incorrect. $f(-x) = x^4 - x^2 = f(x)$, so it is even, not odd. $y = x^2 + x$ is incorrect. $f(-x) = x^2 - x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^2 - 3$ is incorrect. $f(-x) = x^2 - 3 = f(x)$, so it is even, not odd.
 
-**9. D** — $k = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{-1 - (-3)}{3 - (-1)} = \dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.
+**9. Answer D.** $k = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{-1 - (-3)}{3 - (-1)} = \dfrac{1}{2}$.
 
-**10. C** — Swap $x$ and $y$: $x = 6y + 4$. Solve for $y$: $y = \dfrac{x - 4}{6}$. (The reciprocal $\dfrac{1}{6x + 4}$ is not the inverse function.)
+**10. Answer C.** Swap $x$ and $y$: $x = 6y + 4$. Solve for $y$: $6y = x - 4$, so $y = \dfrac{x - 4}{6}$. The reciprocal $\dfrac{1}{6x + 4}$ is a different function, not the inverse.
 
-**11. A** — The correct statement is $y = \left(\dfrac{1}{2}\right)^x$ — on $(-\infty, +\infty)$ a larger $x$ always gives a smaller value. $y = x^3$ is false: it is not decreasing on the whole of $(-\infty, +\infty)$. $y = 2^x$ is false: it is not decreasing on the whole of $(-\infty, +\infty)$. $y = e^x$ is false: it is not decreasing on the whole of $(-\infty, +\infty)$.
+**11. Answer A.** $y = \left(\dfrac{1}{2}\right)^x$ is correct. The base $\dfrac{1}{2}$ is between $0$ and $1$, so it is decreasing on $\mathbb{R}$. $y = x^3$ is incorrect. Cubing keeps the order of real numbers, so it is increasing on $\mathbb{R}$. $y = 2^x$ is incorrect. The base $2$ is greater than $1$, so it is increasing on $\mathbb{R}$. $y = -\dfrac{5}{x}$ is incorrect. It is not defined at $x = 0$, and it increases on each of $(-\infty, 0)$ and $(0, +\infty)$.
 
-**12. B** — The numerator is zero at $x = -\dfrac{4}{3}$ and the denominator at $x = -4$. The quotient has the same sign as $(3x + 4)(x + 4)$, which is negative between these two numbers and positive outside them. Both end points are excluded. Solution set: $\left(-4, -\dfrac{4}{3}\right)$.
+**12. Answer B.** A quotient has the same sign as the product of its numerator and denominator. The product $(3x + 4)(x + 4)$ is zero at $x = -\dfrac{4}{3}$ and $x = -4$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative, so $x$ lies between them. Both end points are excluded. The solution set is $\left(-4, -\dfrac{4}{3}\right)$.
 
-**13. C** — For an arithmetic sequence $2a = 9 + 15$, so $a = 12$.
+**13. Answer C.** In an arithmetic sequence the middle term is the average of its neighbours, so $2a = 9 + 15 = 24$ and $a = 12$.
 
-**14. A** — $k = \tan\theta = \tan 45^\circ = 1$.
+**14. Answer A.** $k = \tan\theta = \tan 45^\circ = 1$.
 
-**15. D** — The common difference is $d = a_2 - a_1 = 4$. $a_n = a_1 + (n - 1)d$, so $a_8 = 3 + 7 \cdot 4 = 31$. Counting $8$ steps instead of $7$ is the off-by-one trap.
+**15. Answer D.** The common difference is $d = a_2 - a_1 = 4$. Since $a_n = a_1 + (n - 1)d$, we get $a_8 = 3 + 7 \cdot 4 = 31$. From $a_1$ to $a_8$ there are $7$ steps of size $d$, not $8$.
 
-**16. B** — By definition, for a point $P(x, y)$ on the terminal side with $|OP| = r$: $\sin\alpha = \dfrac{y}{r}$, $\cos\alpha = \dfrac{x}{r}$, $\tan\alpha = \dfrac{y}{x}$.
+**16. Answer B.** For a point $P(x, y)$ on the terminal side with $|OP| = r$, the definitions are $\sin\alpha = \dfrac{y}{r}$, $\cos\alpha = \dfrac{x}{r}$ and $\tan\alpha = \dfrac{y}{x}$. So $\sin\alpha = \dfrac{y}{r}$.
 
-**17. D** — The first terms are $3, 6, 11, 18, \ldots$. The correct statement is “neither arithmetic nor geometric” — neither the differences nor the ratios of consecutive terms are constant. “an arithmetic sequence” is false: the differences of consecutive terms are not constant. “a geometric sequence” is false: the ratios of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both.
+**17. Answer D.** The first terms are $3, 6, 11, 18, \ldots$. “neither arithmetic nor geometric” is correct. The differences are $3, 5, 7$, which are not all equal, and the ratios are $2, \dfrac{11}{6}, \dfrac{18}{11}$, which are not all equal either. “an arithmetic sequence” is incorrect. The differences are $3, 5, 7$, which are not all equal. “a geometric sequence” is incorrect. The ratios are $2, \dfrac{11}{6}, \dfrac{18}{11}$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = 3$ while $a_2 = 6$.
 
-**18. D** — $|AB|^2 = 169$ gives $b^2 + (-12)^2 = 169$, so $b^2 = 25$ and $b = \pm 5$ — two answers.
+**18. Answer D.** $|AB|^2 = 169$ gives $b^2 + (-12)^2 = 169$, so $b^2 = 25$ and $b = \pm 5$. Both values give $|AB| = 13$.
 
-**19. C** — Point-slope form: $y - (-5) = -3(x - 1)$, i.e. $y = -3x - 2$. Check: the point $(1, -5)$ satisfies it.
+**19. Answer C.** By the point-slope form, $y + 5 = -3(x - 1)$, that is $y = -3x - 2$.
 
-**20. D** — Start from $(x - 5)^2 + (y + 4)^2 = 16$ and expand: $x^2 + y^2 - 10x + 8y + 25 = 0$. The constant term is $a^2 + b^2 - r^2 = 25$, not $-r^2$.
+**20. Answer D.** Start from $(x - 5)^2 + (y + 4)^2 = 16$ and expand: $x^2 - 10x + 25 + y^2 + 8y + 16 = 16$, that is $x^2 + y^2 - 10x + 8y + 25 = 0$. The constant term is $25 + 16 - 16 = 25$.
 
-**21. B** — $\cos^2\alpha = 1 - \sin^2\alpha$ gives $\cos\alpha = \pm \dfrac{\sqrt{10}}{10}$; in the first quadrant cosine is positive. Then $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha} = 3$.
+**21. Answer B.** From $\sin^2\alpha + \cos^2\alpha = 1$: $\cos^2\alpha = 1 - \left(\dfrac{3\sqrt{10}}{10}\right)^2 = 1 - \dfrac{9}{10} = \dfrac{1}{10}$, so $\cos\alpha = \pm \dfrac{\sqrt{10}}{10}$. In the first quadrant cosine is positive, so $\cos\alpha = \dfrac{\sqrt{10}}{10}$. Then $\tan\alpha = \dfrac{\sin\alpha}{\cos\alpha} = 3$.
 
-**22. D** — $a_4 = a_1q^3$, so $q^3 = \dfrac{-8}{-1} = 8$ and $q = 2$. A negative cube keeps its sign.
+**22. Answer D.** $a_4 = a_1q^3$, so $q^3 = \dfrac{-8}{-1} = 8$ and $q = 2$. The value $-2$ does not work, because its cube is $-8$.
 
-**23. A** — The radius is the distance from the centre to the point: $r^2 = (-3)^2 + 4^2 = 25$. So the circle is $(x + 1)^2 + (y + 2)^2 = 25$.
+**23. Answer A.** The radius is the distance from the center to the point: $r^2 = (-3)^2 + 4^2 = 25$. So the circle is $(x + 1)^2 + (y + 2)^2 = 25$.
 
-**24. C** — Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a + 4 > b + 4$ — adding the same number to both sides keeps the direction. $\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$.
+**24. Answer C.** $a + 4 > b + 4$ is correct. Adding the same number to both sides keeps the direction. $\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\dfrac{a}{b} = -\dfrac{1}{2}$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$.
 
-**25. C** — Compare the exponents: $-1 < 0.5$, and the values are in the opposite order, so $y = a^x$ is decreasing: $0 < a < 1$.
+**25. Answer C.** The exponents satisfy $-1 < 0.5$, and the powers satisfy $a^{-1} > a^{0.5}$. So the larger exponent gives the smaller power, which means $y = a^x$ is decreasing. This happens exactly when $0 < a < 1$.
 
-**26. D** — $\cos 2\alpha = 1 - 2\sin^2\alpha = 1 - 2 \cdot \dfrac{9}{49} = \dfrac{31}{49}$. No quadrant is needed, because only the square of the given ratio is used.
+**26. Answer D.** $\cos 2\alpha = 1 - 2\sin^2\alpha = 1 - 2 \cdot \dfrac{9}{49} = \dfrac{31}{49}$. No quadrant is needed, because only the square of the given ratio is used.
 
-**27. C** — Solve the two equations together (elimination or substitution): $x = -4$, $y = -1$. Check by substituting into both equations — a point that fits only one of them is a trap.
+**27. Answer C.** Multiplying the first equation by $4$, the second by $-3$ and subtracting removes $y$ and gives $17x + 68 = 0$, so $x = -4$. Putting this into the first equation gives $-3y - 3 = 0$, so $y = -1$. So the intersection point is $(-4, -1)$.
 
-**28. B** — $e^2 = \dfrac{c^2}{a^2} = \dfrac{a^2 + 9}{a^2} = 2$, so $9 = 1a^2$ and $a^2 = 9$. Since $a > 0$, $a = 3$.
+**28. Answer B.** $e^2 = \dfrac{c^2}{a^2} = \dfrac{a^2 + 9}{a^2} = 2$, so $a^2 + 9 = 2a^2$ and $9 = a^2$. Hence $a^2 = 9$, and since $a > 0$, $a = 3$.
 
-**29. D** — Separate the sign and the size. Size: $\dfrac{1}{5^{n}}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = \dfrac{(-1)^{n+1}}{5^{n}}$; test $n = 1$ and $n = 2$ in each option.
+**29. Answer D.** Separate the sign and the size. Size: $\dfrac{1}{5^{n}}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = \dfrac{(-1)^{n+1}}{5^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $\dfrac{1}{5}$ and $-\dfrac{1}{25}$.
 
-**30. C** — $\log_{2}8 = 3$ since $2^{3} = 8$. $\log_{8}4 = \dfrac{2}{3}$ since $8^{2/3} = 4$. Product: $2$.
+**30. Answer C.** $\log_{2}8 = 3$ because $2^{3} = 8$, and $\log_{8}4 = \dfrac{2}{3}$ because $8^{2/3} = 4$. So the product is $3 \times \dfrac{2}{3} = 2$.
 
-**31. B** — Since $-1 \le \cos x \le 1$, the function $A\cos(\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = -5$ and $|A| = 4$, so the minimum is $-9$.
+**31. Answer B.** Since $-1 \le \cos x \le 1$, the function $y = A\cos \omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = 4$ and $k = -5$, so the minimum is $-5 - 4 = -9$.
 
-**32. B** — Substitute the point: $(-5)^2 = m \cdot 4$, so $m = \dfrac{25}{4}$.
+**32. Answer B.** Substitute the point: $(-5)^2 = m \cdot 4$, so $m = \dfrac{25}{4}$.
 
-**33. B** — The given line has slope $-1$. A perpendicular line needs slope $1$ (product $-1$); that is $x - y + 3 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.
+**33. Answer B.** The given line has slope $-1$. A perpendicular line has slope $1$, because $-1 \cdot 1 = -1$. The only option with slope $1$ is $x - y + 3 = 0$.
 
-**34. C** — Locate the half angle first: $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$ gives $\dfrac{\alpha}{2} \in \left(\dfrac{\pi}{4}, \dfrac{\pi}{2}\right)$, where the sine is positive. $\sin^2\dfrac{\alpha}{2} = \dfrac{1 - \cos\alpha}{2} = \dfrac{9}{10}$, so $\sin\dfrac{\alpha}{2} = \dfrac{3\sqrt{10}}{10}$. The interval fixes the sign, so an option with $\pm$ is a trap.
+**34. Answer C.** Find where the half angle lies: $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$ gives $\dfrac{\alpha}{2} \in \left(\dfrac{\pi}{4}, \dfrac{\pi}{2}\right)$, where the sine is positive. $\sin^2\dfrac{\alpha}{2} = \dfrac{1 - \cos\alpha}{2} = \dfrac{1 - \left(-\dfrac{4}{5}\right)}{2} = \dfrac{9}{10}$, so $\sin\dfrac{\alpha}{2} = \dfrac{3\sqrt{10}}{10}$. The interval fixes the sign, so the answer is not $\pm\dfrac{3\sqrt{10}}{10}$.
 
-**35. B** — Write $\dfrac{\pi}{12} = \dfrac{\pi}{4} - \dfrac{\pi}{6}$. Then $\sin\left(\dfrac{\pi}{4} - \dfrac{\pi}{6}\right) = \sin \dfrac{\pi}{4}\cos \dfrac{\pi}{6} - \cos \dfrac{\pi}{4}\sin \dfrac{\pi}{6} = \dfrac{\sqrt{2}}{2} \cdot \dfrac{\sqrt{3}}{2} - \dfrac{\sqrt{2}}{2} \cdot \dfrac{1}{2} = \dfrac{\sqrt{6} - \sqrt{2}}{4}$.
+**35. Answer B.** Write $\dfrac{\pi}{12} = \dfrac{\pi}{4} - \dfrac{\pi}{6}$. Then $\sin\left(\dfrac{\pi}{4} - \dfrac{\pi}{6}\right) = \sin \dfrac{\pi}{4}\cos \dfrac{\pi}{6} - \cos \dfrac{\pi}{4}\sin \dfrac{\pi}{6} = \dfrac{\sqrt{2}}{2} \cdot \dfrac{\sqrt{3}}{2} - \dfrac{\sqrt{2}}{2} \cdot \dfrac{1}{2} = \dfrac{\sqrt{6} - \sqrt{2}}{4}$.
 
-**36. C** — The inside must lie in the domain of $f$: $-5 < x^2 - 2 < 7$, i.e. $-3 < x^2 < 9$. Solving for $x$ gives $(-3, 3)$.
+**36. Answer C.** The expression $x^2 - 2$ takes the place of $x$, so it must lie in the domain of $f$: $-5 < x^2 - 2 < 7$. Add $2$: $-3 < x^2 < 9$. The left part holds for every $x$, because $x^2 \ge 0 > -3$. The right part, $x^2 < 9$, means $-3 < x < 3$. So the domain is $(-3, 3)$.
 
-**37. A** — Locate the half angle first: $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$ gives $\dfrac{\alpha}{2} \in \left(\dfrac{\pi}{4}, \dfrac{\pi}{2}\right)$, where the cosine is positive. $\cos^2\dfrac{\alpha}{2} = \dfrac{1 + \cos\alpha}{2} = \dfrac{5}{12}$, so $\cos\dfrac{\alpha}{2} = \dfrac{\sqrt{15}}{6}$. The interval fixes the sign, so an option with $\pm$ is a trap.
+**37. Answer A.** Find where the half angle lies: $\alpha \in \left(\dfrac{\pi}{2}, \pi\right)$ gives $\dfrac{\alpha}{2} \in \left(\dfrac{\pi}{4}, \dfrac{\pi}{2}\right)$, where the cosine is positive. $\cos^2\dfrac{\alpha}{2} = \dfrac{1 + \cos\alpha}{2} = \dfrac{1 - \dfrac{1}{6}}{2} = \dfrac{5}{12}$, so $\cos\dfrac{\alpha}{2} = \dfrac{\sqrt{15}}{6}$. The interval fixes the sign, so the answer is not $\pm\dfrac{\sqrt{15}}{6}$.
 
-**38. C** — The correct statement is $\sin\left(\pi - \alpha\right) = \sin\alpha$ — a multiple of $\pi$ keeps the name; the sign is that of $\sin$ where the angle lands (take $\alpha$ acute). $\tan\left(2\pi - \alpha\right) = \tan\alpha$ is false: the sign is wrong: the correct result is $-\tan\alpha$. $\tan\left(\pi - \alpha\right) = \tan\alpha$ is false: the sign is wrong: the correct result is $-\tan\alpha$. $\sin\left(\dfrac{\pi}{2} + \alpha\right) = -\cos\alpha$ is false: the sign is wrong: the correct result is $\cos\alpha$.
+**38. Answer C.** $\sin\left(\pi - \alpha\right) = \sin\alpha$ is correct. If $\alpha$ is acute, $\pi - \alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\pi$, so the function name stays the same. $\tan\left(2\pi - \alpha\right) = \tan\alpha$ is incorrect. If $\alpha$ is acute, $2\pi - \alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\pi$, so the function name stays the same. So $\tan\left(2\pi - \alpha\right) = -\tan\alpha$. $\tan\left(\pi - \alpha\right) = \tan\alpha$ is incorrect. If $\alpha$ is acute, $\pi - \alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\pi$, so the function name stays the same. So $\tan\left(\pi - \alpha\right) = -\tan\alpha$. $\sin\left(\dfrac{\pi}{2} + \alpha\right) = -\cos\alpha$ is incorrect. If $\alpha$ is acute, $\dfrac{\pi}{2} + \alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\dfrac{\pi}{2}$, so sine and cosine swap. So $\sin\left(\dfrac{\pi}{2} + \alpha\right) = \cos\alpha$.
 
-**39. A** — The tangent repeats every $\pi$, so for $y = A\tan(\omega x + \varphi)$ the period is $T = \dfrac{\pi}{|\omega|} = \dfrac{\pi}{5}$ (not $\dfrac{2\pi}{|\omega|}$).
+**39. Answer A.** The tangent repeats every $\pi$, not every $2\pi$. So for $y = A\tan(\omega x + \varphi)$ the minimum positive period is $T = \dfrac{\pi}{|\omega|}$. Here $\omega = 5$, so $T = \dfrac{\pi}{5} = \dfrac{\pi}{5}$.
 
-**40. D** — Focal distance $2c = 2$ gives $c = 1$. From $e = \dfrac{c}{a} = \dfrac{1}{5}$: $a = 5$. Then $b^2 = a^2 - c^2 = 24$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\dfrac{x^2}{24} + \dfrac{y^2}{25} = 1$.
+**40. Answer D.** The focal distance $2c = 2$ gives $c = 1$. From $e = \dfrac{c}{a} = \dfrac{1}{5}$ we get $a = 5$. Then $b^2 = a^2 - c^2 = 25 - 1 = 24$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\dfrac{x^2}{24} + \dfrac{y^2}{25} = 1$.
 
-**41. D** — Write the terms out, one sign at a time: $a_2 = -2 \cdot \dfrac{2}{3} = -\dfrac{4}{3}$, $a_3 = 2 \cdot \left(-\dfrac{4}{3}\right) = -\dfrac{8}{3}$, $a_4 = -2 \cdot \left(-\dfrac{8}{3}\right) = \dfrac{16}{3}$.
+**41. Answer D.** Work out the terms in order, taking the sign from $(-1)^{n+1}$ at each step: $a_2 = -2 \cdot \dfrac{2}{3} = -\dfrac{4}{3}$, $a_3 = 2 \cdot \left(-\dfrac{4}{3}\right) = -\dfrac{8}{3}$, $a_4 = -2 \cdot \left(-\dfrac{8}{3}\right) = \dfrac{16}{3}$.
 
-**42. A** — Two conditions: the argument of the logarithm must be positive, $\lvert x - 5 \rvert > 0$, so $x \ne 5$; and the logarithm (a denominator) must not be zero, $\lvert x - 5 \rvert \ne 1$, so $x \ne 4$ and $x \ne 6$. Domain: $\{x \mid x \ne 4,\ x \ne 5 \text{ and } x \ne 6\}$.
+**42. Answer A.** There are two conditions. First, the expression inside the logarithm must be positive: $\lvert x - 5 \rvert > 0$, so $x \ne 5$. Second, the logarithm is in the denominator, so it must not be zero: $\lvert x - 5 \rvert \ne 1$, so $x \ne 4$ and $x \ne 6$. The domain is $\{x \mid x \ne 4,\ x \ne 5 \text{ and } x \ne 6\}$.
 
-**43. B** — The given ellipse has $c^2 = 20 - 16 = 4$, and the same foci mean the same $c$. Minor axis $2b = 6$ gives $b^2 = 9$. Then $a^2 = b^2 + c^2 = 13$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\dfrac{x^2}{9} + \dfrac{y^2}{13} = 1$.
+**43. Answer B.** The given ellipse has $c^2 = 20 - 16 = 4$, and the same foci mean the same $c$. Minor axis $2b = 6$ gives $b^2 = 9$. Then $a^2 = b^2 + c^2 = 9 + 4 = 13$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\dfrac{x^2}{9} + \dfrac{y^2}{13} = 1$.
 
-**44. B** — Walk along the sides from $A$ to $E$: opposite sides give $\overrightarrow{DC} = \boldsymbol{a}$ and $\overrightarrow{BC} = \boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\overrightarrow{AE} = \dfrac{1}{2}\boldsymbol{a} + \boldsymbol{b}$.
+**44. Answer B.** Measure every point from $A$: $\overrightarrow{AB} = \boldsymbol{a}$, $\overrightarrow{AD} = \boldsymbol{b}$ and, since $ABCD$ is a parallelogram, $\overrightarrow{AC} = \boldsymbol{a} + \boldsymbol{b}$. Since $E$ is the midpoint of $CD$, $\overrightarrow{AE} = \dfrac{1}{2}(\overrightarrow{AC} + \overrightarrow{AD}) = \dfrac{1}{2}\boldsymbol{a} + \boldsymbol{b}$. So $\overrightarrow{AE} = \dfrac{1}{2}\boldsymbol{a} + \boldsymbol{b}$.
 
-**45. C** — Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 4a_{n+1} - 4a_n$, so $q = \dfrac{a_{n+1}}{a_n} = \dfrac{11}{4}$. Put $n = 1$: $7a_1 = 4a_2 - 4 = 11a_1 - 4$, so $a_1 = 1$. Then $S_n = \dfrac{a_1(q^n - 1)}{q - 1} = \dfrac{4}{7}\left(\dfrac{11}{4}\right)^{n} - \dfrac{4}{7}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.
+**45. Answer C.** Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 4a_{n+1} - 4a_n$, that is $11a_n = 4a_{n+1}$, so $q = \dfrac{a_{n+1}}{a_n} = \dfrac{11}{4}$. Put $n = 1$: $7a_1 = 4a_2 - 4 = 11a_1 - 4$, so $a_1 = 1$. Then $S_n = \dfrac{a_1(q^n - 1)}{q - 1} = \dfrac{4}{7}\left(\dfrac{11}{4}\right)^{n} - \dfrac{4}{7}$. Check with $n = 1$: the formula gives $\dfrac{4}{7} \cdot \dfrac{11}{4} - \dfrac{4}{7} = 1$, which is $a_1$.
 
-**46. D** — Divide by $-3 - 3i$ using its conjugate: $z - 1 = \dfrac{18}{-3 - 3i} = \dfrac{18(-3 + 3i)}{18} = -3 + 3i$. Then $z = -2 + 3i$.
+**46. Answer D.** Divide by $-3 - 3i$ using its conjugate: $z - 1 = \dfrac{18}{-3 - 3i} = \dfrac{18(-3 + 3i)}{18} = -3 + 3i$. Then $z = -2 + 3i$.
 
-**47. A** — For $n = 1$: $a_1 = \dfrac{1}{4}a_1 + \dfrac{3}{4}$, so $a_1 = 1$. For $n \ge 2$: $a_n = S_n - S_{n-1} = \dfrac{1}{4}a_n - \dfrac{1}{4}a_{n-1}$, which gives $a_n = -\dfrac{1}{3}a_{n-1}$. So $\{a_n\}$ is geometric with ratio $-\dfrac{1}{3}$. Hence $a_n = \left(-\dfrac{1}{3}\right)^{n-1}$.
+**47. Answer A.** For $n = 1$: $a_1 = \dfrac{1}{4}a_1 + \dfrac{3}{4}$, so $a_1 = 1$. For $n \ge 2$: $a_n = S_n - S_{n-1} = \dfrac{1}{4}a_n - \dfrac{1}{4}a_{n-1}$, which gives $a_n = -\dfrac{1}{3}a_{n-1}$. So $\{a_n\}$ is geometric with ratio $-\dfrac{1}{3}$. Hence $a_n = \left(-\dfrac{1}{3}\right)^{n-1}$.
 
-**48. A** — The four probabilities add up to $1$. So $P(\text{red}) = 1 - \dfrac{1}{20} - \dfrac{4}{5} = \dfrac{3}{20}$; then $P(\text{yellow}) = \dfrac{7}{10} - \dfrac{3}{20} = \dfrac{11}{20}$ and $P(\text{white}) = \dfrac{4}{5} - \dfrac{11}{20} = \dfrac{1}{4}$. Match each value to its colour — the options differ only in the order.
+**48. Answer A.** The four probabilities add up to $1$. So $P(\text{red}) = 1 - \dfrac{1}{20} - \dfrac{4}{5} = \dfrac{3}{20}$. Then $P(\text{yellow}) = \dfrac{7}{10} - \dfrac{3}{20} = \dfrac{11}{20}$ and $P(\text{white}) = \dfrac{4}{5} - \dfrac{11}{20} = \dfrac{1}{4}$. The options use the same three numbers in different orders, so the order yellow, white, red decides the answer.

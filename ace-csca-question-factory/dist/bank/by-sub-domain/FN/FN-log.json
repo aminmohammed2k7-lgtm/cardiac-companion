@@ -26,7 +26,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$\\log_{3}27 = 3$ because $3^{3} = 27$. A base $\\dfrac{1}{3}$ changes the sign: $\\log_{\\frac{1}{3}}81 = -\\log_{3}81 = -4$. Sum: $-1$.",
+  "solution": "$\\log_{3}27 = 3$ because $3^{3} = 27$. Changing the base to $\\dfrac{1}{3}$ changes the sign: $\\log_{\\frac{1}{3}}81 = -4$, because $\\left(\\dfrac{1}{3}\\right)^{-4} = 3^{4} = 81$. So the value is $3 + (-4) = -1$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -64,7 +64,7 @@
    "sign",
    null
   ],
-  "solution": "$\\log_{3}3 = 1$ because $3^{1} = 3$. A base $\\dfrac{1}{3}$ changes the sign: $\\log_{\\frac{1}{3}}27 = -\\log_{3}27 = -3$. Sum: $-2$.",
+  "solution": "$\\log_{3}3 = 1$ because $3^{1} = 3$. Changing the base to $\\dfrac{1}{3}$ changes the sign: $\\log_{\\frac{1}{3}}27 = -3$, because $\\left(\\dfrac{1}{3}\\right)^{-3} = 3^{3} = 27$. So the value is $1 + (-3) = -2$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -102,7 +102,7 @@
    "old-answer",
    null
   ],
-  "solution": "$\\log_{2}16 = 4$ because $2^{4} = 16$. A base $\\dfrac{1}{2}$ changes the sign: $\\log_{\\frac{1}{2}}4 = -\\log_{2}4 = -2$. Sum: $2$.",
+  "solution": "$\\log_{2}16 = 4$ because $2^{4} = 16$. Changing the base to $\\dfrac{1}{2}$ changes the sign: $\\log_{\\frac{1}{2}}4 = -2$, because $\\left(\\dfrac{1}{2}\\right)^{-2} = 2^{2} = 4$. So the value is $4 + (-2) = 2$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -140,7 +140,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$\\log_{5}25 = 2$ because $5^{2} = 25$. A base $\\dfrac{1}{5}$ changes the sign: $\\log_{\\frac{1}{5}}25 = -\\log_{5}25 = -2$. Sum: $0$.",
+  "solution": "$\\log_{5}25 = 2$ because $5^{2} = 25$. Changing the base to $\\dfrac{1}{5}$ changes the sign: $\\log_{\\frac{1}{5}}25 = -2$, because $\\left(\\dfrac{1}{5}\\right)^{-2} = 5^{2} = 25$. So the value is $2 + (-2) = 0$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -178,7 +178,7 @@
    "sign",
    "old-answer"
   ],
-  "solution": "$\\log_{2}64 = 6$ because $2^{6} = 64$. A base $\\dfrac{1}{2}$ changes the sign: $\\log_{\\frac{1}{2}}16 = -\\log_{2}16 = -4$. Sum: $2$.",
+  "solution": "$\\log_{2}64 = 6$ because $2^{6} = 64$. Changing the base to $\\dfrac{1}{2}$ changes the sign: $\\log_{\\frac{1}{2}}16 = -4$, because $\\left(\\dfrac{1}{2}\\right)^{-4} = 2^{4} = 16$. So the value is $6 + (-4) = 2$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -216,7 +216,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "$\\lg 16 + \\lg 625 = \\lg(16 \\times 625) = \\lg 10000 = 4$. ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)",
+  "solution": "$\\lg 16 + \\lg 625 = \\lg(16 \\times 625) = \\lg 10000 = 4$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -254,7 +254,7 @@
    "near-miss",
    null
   ],
-  "solution": "$\\lg 8 = 3\\lg 2$, so the sum is $3(\\lg 2 + \\lg 5) = 3\\lg 10 = 3$. ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)",
+  "solution": "$\\lg 8 = 3\\lg 2$, so the sum is $3(\\lg 2 + \\lg 5) = 3\\lg 10 = 3$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -292,7 +292,7 @@
    "partial",
    null
   ],
-  "solution": "$a + 4b = \\lg 16 + 4\\lg 5 = 4(\\lg 2 + \\lg 5) = 4$. ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)",
+  "solution": "$a + 4b = \\lg 16 + 4\\lg 5 = 4(\\lg 2 + \\lg 5) = 4$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -330,7 +330,7 @@
    "near-miss",
    "partial"
   ],
-  "solution": "$\\lg 625 = 4\\lg 5$, so the sum is $4(\\lg 5 + \\lg 2) = 4\\lg 10 = 4$. ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)",
+  "solution": "$\\lg 625 = 4\\lg 5$, so the sum is $4(\\lg 5 + \\lg 2) = 4\\lg 10 = 4$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -368,7 +368,7 @@
    "near-miss",
    "partial"
   ],
-  "solution": "$\\lg 4 + \\lg 250 = \\lg(4 \\times 250) = \\lg 1000 = 3$. ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)",
+  "solution": "$\\lg 4 + \\lg 250 = \\lg(4 \\times 250) = \\lg 1000 = 3$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -406,7 +406,7 @@
    "near-miss",
    "slip"
   ],
-  "solution": "$\\lg 4 = 2\\lg 2$, so the sum is $2(\\lg 2 + \\lg 5) = 2\\lg 10 = 2$. ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)",
+  "solution": "$\\lg 4 = 2\\lg 2$, so the sum is $2(\\lg 2 + \\lg 5) = 2\\lg 10 = 2$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -444,7 +444,7 @@
    "partial",
    null
   ],
-  "solution": "$\\log_{2}4 = 2$ since $2^{2} = 4$. $\\log_{2}16 = 4$ since $2^{4} = 16$. Product: $8$.",
+  "solution": "$\\log_{2}4 = 2$ because $2^{2} = 4$, and $\\log_{2}16 = 4$ because $2^{4} = 16$. So the product is $2 \\times 4 = 8$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -482,7 +482,7 @@
    "half",
    "reciprocal"
   ],
-  "solution": "$\\log_{4}64 = 3$ since $4^{3} = 64$. $\\log_{8}2 = \\dfrac{1}{3}$ since $8^{1/3} = 2$. Product: $1$.",
+  "solution": "$\\log_{4}64 = 3$ because $4^{3} = 64$, and $\\log_{8}2 = \\dfrac{1}{3}$ because $8^{1/3} = 2$. So the product is $3 \\times \\dfrac{1}{3} = 1$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -520,7 +520,7 @@
    "half",
    "operation"
   ],
-  "solution": "$\\log_{2}32 = 5$ since $2^{5} = 32$. $\\log_{25}125 = \\dfrac{3}{2}$ since $25^{3/2} = 125$. Product: $\\dfrac{15}{2}$.",
+  "solution": "$\\log_{2}32 = 5$ because $2^{5} = 32$, and $\\log_{25}125 = \\dfrac{3}{2}$ because $25^{3/2} = 125$. So the product is $5 \\times \\dfrac{3}{2} = \\dfrac{15}{2}$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -558,7 +558,7 @@
    null,
    "half"
   ],
-  "solution": "$\\log_{2}32 = 5$ since $2^{5} = 32$. $\\log_{4}8 = \\dfrac{3}{2}$ since $4^{3/2} = 8$. Product: $\\dfrac{15}{2}$.",
+  "solution": "$\\log_{2}32 = 5$ because $2^{5} = 32$, and $\\log_{4}8 = \\dfrac{3}{2}$ because $4^{3/2} = 8$. So the product is $5 \\times \\dfrac{3}{2} = \\dfrac{15}{2}$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -596,7 +596,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\log_{3}27 = 3$ since $3^{3} = 27$. $\\log_{2}16 = 4$ since $2^{4} = 16$. Product: $12$.",
+  "solution": "$\\log_{3}27 = 3$ because $3^{3} = 27$, and $\\log_{2}16 = 4$ because $2^{4} = 16$. So the product is $3 \\times 4 = 12$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -634,7 +634,7 @@
    "operation",
    "partial"
   ],
-  "solution": "$\\log_{5}25 = 2$ since $5^{2} = 25$. $\\log_{2}32 = 5$ since $2^{5} = 32$. Product: $10$.",
+  "solution": "$\\log_{5}25 = 2$ because $5^{2} = 25$, and $\\log_{2}32 = 5$ because $2^{5} = 32$. So the product is $2 \\times 5 = 10$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -672,7 +672,7 @@
    "near-miss",
    "swap"
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{5}3$: the numerator is $\\log_{5}3$ and the denominator is $\\log_{5}3$, so $\\log_{5}3$ cancels and the quotient is $1$. Also $\\log_{3}1 = 0$. Answer: $1$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{5}3$. The numerator is $\\log_{5^{3}}3^{3} = \\log_{5}3$ and the denominator is $\\log_{5}3$. Dividing, $\\log_{5}3$ cancels and the quotient is $1$. Also $\\log_{3}1 = 0$, so the value is $1$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -710,7 +710,7 @@
    null,
    "half"
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{5}2$: the numerator is $\\dfrac{4}{3}\\log_{5}2$ and the denominator is $2\\log_{5}2$, so $\\log_{5}2$ cancels and the quotient is $\\dfrac{2}{3}$. Also $\\log_{7}1 = 0$. Answer: $\\dfrac{2}{3}$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{5}2$. The numerator is $\\log_{5^{3}}2^{4} = \\dfrac{4}{3}\\log_{5}2$ and the denominator is $\\log_{5}2^{2} = 2\\log_{5}2$. Dividing, $\\log_{5}2$ cancels and the quotient is $\\dfrac{2}{3}$. Also $\\log_{7}1 = 0$, so the value is $\\dfrac{2}{3}$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -748,7 +748,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{3}2$: the numerator is $\\log_{3}2$ and the denominator is $\\dfrac{1}{3}\\log_{3}2$, so $\\log_{3}2$ cancels and the quotient is $3$. Answer: $3$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{3}2$. The numerator is $\\log_{3}2$ and the denominator is $\\log_{3^{3}}2 = \\dfrac{1}{3}\\log_{3}2$. Dividing, $\\log_{3}2$ cancels and the quotient is $3$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -786,7 +786,7 @@
    "half",
    null
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{2}3$: the numerator is $2\\log_{2}3$ and the denominator is $\\log_{2}3$, so $\\log_{2}3$ cancels and the quotient is $2$. Answer: $2$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{2}3$. The numerator is $\\log_{2}3^{2} = 2\\log_{2}3$ and the denominator is $\\log_{2^{2}}3^{2} = \\log_{2}3$. Dividing, $\\log_{2}3$ cancels and the quotient is $2$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -824,7 +824,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{2}5$: the numerator is $\\dfrac{1}{2}\\log_{2}5$ and the denominator is $\\dfrac{1}{3}\\log_{2}5$, so $\\log_{2}5$ cancels and the quotient is $\\dfrac{3}{2}$. Also $\\log_{6}1 = 0$. Answer: $\\dfrac{3}{2}$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{2}5$. The numerator is $\\log_{2^{2}}5 = \\dfrac{1}{2}\\log_{2}5$ and the denominator is $\\log_{2^{3}}5 = \\dfrac{1}{3}\\log_{2}5$. Dividing, $\\log_{2}5$ cancels and the quotient is $\\dfrac{3}{2}$. Also $\\log_{6}1 = 0$, so the value is $\\dfrac{3}{2}$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -862,7 +862,7 @@
    "half",
    null
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{3}5$: the numerator is $\\log_{3}5$ and the denominator is $2\\log_{3}5$, so $\\log_{3}5$ cancels and the quotient is $\\dfrac{1}{2}$. Answer: $\\dfrac{1}{2}$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{3}5$. The numerator is $\\log_{3^{3}}5^{3} = \\log_{3}5$ and the denominator is $\\log_{3}5^{2} = 2\\log_{3}5$. Dividing, $\\log_{3}5$ cancels and the quotient is $\\dfrac{1}{2}$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -900,7 +900,7 @@
    "swap",
    "half"
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{2}3$: the numerator is $\\log_{2}3$ and the denominator is $\\log_{2}3$, so $\\log_{2}3$ cancels and the quotient is $1$. Answer: $1$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{2}3$. The numerator is $\\log_{2^{2}}3^{2} = \\log_{2}3$ and the denominator is $\\log_{2^{3}}3^{3} = \\log_{2}3$. Dividing, $\\log_{2}3$ cancels and the quotient is $1$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -938,7 +938,7 @@
    "swap",
    null
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{2}3$: the numerator is $\\log_{2}3$ and the denominator is $2\\log_{2}3$, so $\\log_{2}3$ cancels and the quotient is $\\dfrac{1}{2}$. Also $\\log_{6}1 = 0$. Answer: $\\dfrac{1}{2}$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{2}3$. The numerator is $\\log_{2^{3}}3^{3} = \\log_{2}3$ and the denominator is $\\log_{2}3^{2} = 2\\log_{2}3$. Dividing, $\\log_{2}3$ cancels and the quotient is $\\dfrac{1}{2}$. Also $\\log_{6}1 = 0$, so the value is $\\dfrac{1}{2}$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -976,13 +976,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\log_a(M - N) = \\log_a M - \\log_a N$ — there is no rule for the logarithm of a difference. The other three statements are true.",
+  "solution": "$\\log_a(M - N) = \\log_a M - \\log_a N$ is incorrect. There is no rule for the logarithm of a difference. The quotient rule gives $\\log_a M - \\log_a N = \\log_a \\dfrac{M}{N}$. $\\log_a b = \\dfrac{\\ln b}{\\ln a}$ is correct. This is the change-of-base formula. $a^{\\log_a M} = M$ is correct. $\\log_a M$ is the exponent that turns $a$ into $M$. $\\log_a M^n = n\\log_a M$ is correct. This is the power rule: the exponent comes down as a factor.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
   "template": "FN-log.incorrect-rule",
   "seed": "bank:1:FN-log.incorrect-rule:0",
-  "form": "Logarithm rules: which is INCORRECT",
+  "form": "Logarithm rules: which is incorrect",
   "answer_letter": "B",
   "answer_value": "$\\log_a(M - N) = \\log_a M - \\log_a N$",
   "verified": "stmt"
@@ -1014,13 +1014,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\log_a(MN) = \\log_a M \\cdot \\log_a N$ — a product inside becomes a SUM of logarithms. The other three statements are true.",
+  "solution": "$\\log_a(MN) = \\log_a M \\cdot \\log_a N$ is incorrect. The logarithm of a product is the sum $\\log_a M + \\log_a N$, not the product of the logarithms. $\\log_a M^n = n\\log_a M$ is correct. This is the power rule: the exponent comes down as a factor. $\\log_a \\dfrac{M}{N} = \\log_a M - \\log_a N$ is correct. This is the quotient rule: the logarithm of a quotient is the difference of the logarithms. $\\log_a b = \\dfrac{\\ln b}{\\ln a}$ is correct. This is the change-of-base formula.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
   "template": "FN-log.incorrect-rule",
   "seed": "bank:1:FN-log.incorrect-rule:1",
-  "form": "Logarithm rules: which is INCORRECT",
+  "form": "Logarithm rules: which is incorrect",
   "answer_letter": "A",
   "answer_value": "$\\log_a(MN) = \\log_a M \\cdot \\log_a N$",
   "verified": "stmt"
@@ -1052,13 +1052,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is $\\log_a(MN) = \\log_a M \\cdot \\log_a N$ — a product inside becomes a SUM of logarithms. The other three statements are true.",
+  "solution": "$\\log_a(MN) = \\log_a M \\cdot \\log_a N$ is incorrect. The logarithm of a product is the sum $\\log_a M + \\log_a N$, not the product of the logarithms. $a^{\\log_a M} = M$ is correct. $\\log_a M$ is the exponent that turns $a$ into $M$. $\\log_a \\dfrac{M}{N} = \\log_a M - \\log_a N$ is correct. This is the quotient rule: the logarithm of a quotient is the difference of the logarithms. $\\log_a(MN) = \\log_a M + \\log_a N$ is correct. This is the product rule: the logarithm of a product is the sum of the logarithms.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
   "template": "FN-log.incorrect-rule",
   "seed": "bank:1:FN-log.incorrect-rule:2",
-  "form": "Logarithm rules: which is INCORRECT",
+  "form": "Logarithm rules: which is incorrect",
   "answer_letter": "D",
   "answer_value": "$\\log_a(MN) = \\log_a M \\cdot \\log_a N$",
   "verified": "stmt"
@@ -1090,13 +1090,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\log_a(M - N) = \\log_a M - \\log_a N$ — there is no rule for the logarithm of a difference. The other three statements are true.",
+  "solution": "$\\log_a(M - N) = \\log_a M - \\log_a N$ is incorrect. There is no rule for the logarithm of a difference. The quotient rule gives $\\log_a M - \\log_a N = \\log_a \\dfrac{M}{N}$. $\\log_a(MN) = \\log_a M + \\log_a N$ is correct. This is the product rule: the logarithm of a product is the sum of the logarithms. $\\log_a b = \\dfrac{\\ln b}{\\ln a}$ is correct. This is the change-of-base formula. $a^{\\log_a M} = M$ is correct. $\\log_a M$ is the exponent that turns $a$ into $M$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
   "template": "FN-log.incorrect-rule",
   "seed": "bank:1:FN-log.incorrect-rule:3",
-  "form": "Logarithm rules: which is INCORRECT",
+  "form": "Logarithm rules: which is incorrect",
   "answer_letter": "B",
   "answer_value": "$\\log_a(M - N) = \\log_a M - \\log_a N$",
   "verified": "stmt"
@@ -1128,13 +1128,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\log_a(M + N) = \\log_a M + \\log_a N$ — there is no rule for the logarithm of a sum; $\\log_a M + \\log_a N = \\log_a(MN)$. The other three statements are true.",
+  "solution": "$\\log_a(M + N) = \\log_a M + \\log_a N$ is incorrect. There is no rule for the logarithm of a sum. The product rule gives $\\log_a M + \\log_a N = \\log_a(MN)$. $\\log_a(MN) = \\log_a M + \\log_a N$ is correct. This is the product rule: the logarithm of a product is the sum of the logarithms. $\\log_a b = \\dfrac{\\ln b}{\\ln a}$ is correct. This is the change-of-base formula. $\\log_a \\dfrac{M}{N} = \\log_a M - \\log_a N$ is correct. This is the quotient rule: the logarithm of a quotient is the difference of the logarithms.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
   "template": "FN-log.incorrect-rule",
   "seed": "bank:1:FN-log.incorrect-rule:4~2",
-  "form": "Logarithm rules: which is INCORRECT",
+  "form": "Logarithm rules: which is incorrect",
   "answer_letter": "C",
   "answer_value": "$\\log_a(M + N) = \\log_a M + \\log_a N$",
   "verified": "stmt"
@@ -1166,13 +1166,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\log_a(M + N) = \\log_a M + \\log_a N$ — there is no rule for the logarithm of a sum; $\\log_a M + \\log_a N = \\log_a(MN)$. The other three statements are true.",
+  "solution": "$\\log_a(M + N) = \\log_a M + \\log_a N$ is incorrect. There is no rule for the logarithm of a sum. The product rule gives $\\log_a M + \\log_a N = \\log_a(MN)$. $\\log_a(MN) = \\log_a M + \\log_a N$ is correct. This is the product rule: the logarithm of a product is the sum of the logarithms. $\\log_a M^n = n\\log_a M$ is correct. This is the power rule: the exponent comes down as a factor. $a^{\\log_a M} = M$ is correct. $\\log_a M$ is the exponent that turns $a$ into $M$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
   "template": "FN-log.incorrect-rule",
   "seed": "bank:1:FN-log.incorrect-rule:5~1",
-  "form": "Logarithm rules: which is INCORRECT",
+  "form": "Logarithm rules: which is incorrect",
   "answer_letter": "C",
   "answer_value": "$\\log_a(M + N) = \\log_a M + \\log_a N$",
   "verified": "stmt"
@@ -1204,7 +1204,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "The correct statement is $\\log_a(MN) = \\log_a M + \\log_a N$ — the logarithm of a product is the sum of the logarithms. $\\log_a \\dfrac{M}{N} = \\dfrac{\\log_a M}{\\log_a N}$ is false: a quotient inside becomes a DIFFERENCE of logarithms. $\\log_a(M + N) = \\log_a M + \\log_a N$ is false: there is no rule for the logarithm of a sum; $\\log_a M + \\log_a N = \\log_a(MN)$. $\\log_a M^n = (\\log_a M)^n$ is false: the exponent comes down as a factor: $n\\log_a M$.",
+  "solution": "$\\log_a(MN) = \\log_a M + \\log_a N$ is correct. This is the product rule: the logarithm of a product is the sum of the logarithms. $\\log_a \\dfrac{M}{N} = \\dfrac{\\log_a M}{\\log_a N}$ is incorrect. The logarithm of a quotient is the difference $\\log_a M - \\log_a N$, not the quotient of the logarithms. $\\log_a(M + N) = \\log_a M + \\log_a N$ is incorrect. There is no rule for the logarithm of a sum. The product rule gives $\\log_a M + \\log_a N = \\log_a(MN)$. $\\log_a M^n = (\\log_a M)^n$ is incorrect. The exponent comes down as a factor: $\\log_a M^n = n\\log_a M$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -1242,7 +1242,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is $\\log_a(MN) = \\log_a M + \\log_a N$ — the logarithm of a product is the sum of the logarithms. $\\log_a \\dfrac{M}{N} = \\dfrac{\\log_a M}{\\log_a N}$ is false: a quotient inside becomes a DIFFERENCE of logarithms. $\\log_a M^n = (\\log_a M)^n$ is false: the exponent comes down as a factor: $n\\log_a M$. $\\log_a(MN) = \\log_a M \\cdot \\log_a N$ is false: a product inside becomes a SUM of logarithms.",
+  "solution": "$\\log_a(MN) = \\log_a M + \\log_a N$ is correct. This is the product rule: the logarithm of a product is the sum of the logarithms. $\\log_a \\dfrac{M}{N} = \\dfrac{\\log_a M}{\\log_a N}$ is incorrect. The logarithm of a quotient is the difference $\\log_a M - \\log_a N$, not the quotient of the logarithms. $\\log_a M^n = (\\log_a M)^n$ is incorrect. The exponent comes down as a factor: $\\log_a M^n = n\\log_a M$. $\\log_a(MN) = \\log_a M \\cdot \\log_a N$ is incorrect. The logarithm of a product is the sum $\\log_a M + \\log_a N$, not the product of the logarithms.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -1280,7 +1280,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "Domain first: $x - 5 > 0$. Write $1 = \\log_{3} 3$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x - 5 \\le 3$. Together with the domain: $(5, 8]$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x - 5 > 0$, that is $x > 5$. Next, write $1 = \\log_{3} 3$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x - 5 \\le 3$, that is $x \\le 8$. Both conditions must hold, so the solution set is $(5, 8]$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1318,7 +1318,7 @@
    "sign",
    null
   ],
-  "solution": "Domain first: $x + 5 > 0$. Write $2 = \\log_{5} 25$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x + 5 \\ge 25$. Together with the domain: $[20, +\\infty)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x + 5 > 0$, that is $x > -5$. Next, write $2 = \\log_{5} 25$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x + 5 \\ge 25$, that is $x \\ge 20$. Both conditions must hold, so the solution set is $[20, +\\infty)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1356,7 +1356,7 @@
    "endpoint",
    "domain"
   ],
-  "solution": "Domain first: $x + 4 > 0$. Write $2 = \\log_{3} 9$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x + 4 < 9$. Together with the domain: $(-4, 5)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x + 4 > 0$, that is $x > -4$. Next, write $2 = \\log_{3} 9$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x + 4 < 9$, that is $x < 5$. Both conditions must hold, so the solution set is $(-4, 5)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1394,7 +1394,7 @@
    "slip",
    "sign"
   ],
-  "solution": "Domain first: $2x - 3 > 0$. Write $1 = \\log_{2} 2$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $2x - 3 \\ge 2$. Together with the domain: $\\{x \\mid x \\ge \\dfrac{5}{2}\\}$.",
+  "solution": "First, the expression inside the logarithm must be positive: $2x - 3 > 0$, that is $x > \\dfrac{3}{2}$. Next, write $1 = \\log_{2} 2$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $2x - 3 \\ge 2$, that is $x \\ge \\dfrac{5}{2}$. Both conditions must hold, so the solution set is $\\{x \\mid x \\ge \\dfrac{5}{2}\\}$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1432,7 +1432,7 @@
    null,
    "slip"
   ],
-  "solution": "Domain first: $-5 - x > 0$. Write $0 = \\lg 1$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $-5 - x > 1$. Together with the domain: $(-\\infty, -6)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $-5 - x > 0$, that is $x < -5$. Next, write $0 = \\lg 1$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $-5 - x > 1$, that is $x < -6$. Both conditions must hold, so the solution set is $(-\\infty, -6)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1470,7 +1470,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Domain first: $x - 5 > 0$. Write $2 = \\log_{3} 9$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x - 5 < 9$. Together with the domain: $\\{x \\mid 5 < x < 14\\}$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x - 5 > 0$, that is $x > 5$. Next, write $2 = \\log_{3} 9$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x - 5 < 9$, that is $x < 14$. Both conditions must hold, so the solution set is $\\{x \\mid 5 < x < 14\\}$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1508,7 +1508,7 @@
    "sign",
    "domain"
   ],
-  "solution": "Domain first: $x + 1 > 0$. Write $1 = \\log_{2} 2$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x + 1 < 2$. Together with the domain: $(-1, 1)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x + 1 > 0$, that is $x > -1$. Next, write $1 = \\log_{2} 2$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x + 1 < 2$, that is $x < 1$. Both conditions must hold, so the solution set is $(-1, 1)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1546,7 +1546,7 @@
    null,
    "slip"
   ],
-  "solution": "Domain first: $x + 1 > 0$. Write $2 = \\log_{3} 9$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x + 1 \\ge 9$. Together with the domain: $\\{x \\mid x \\ge 8\\}$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x + 1 > 0$, that is $x > -1$. Next, write $2 = \\log_{3} 9$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x + 1 \\ge 9$, that is $x \\ge 8$. Both conditions must hold, so the solution set is $\\{x \\mid x \\ge 8\\}$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1584,7 +1584,7 @@
    "swap",
    "off-by-one"
   ],
-  "solution": "The correct statement is $\\lg 3 + \\lg 5 = \\lg 15$ — the sum of two logarithms is the logarithm of the product. $\\log_{\\frac{1}{2}}4 = 2$ is false: a base $\\dfrac{1}{2}$ gives $-2$. $\\log_{3}2 > \\log_{2}3$ is false: the left side is less than $1$ and the right side is greater than $1$. $\\log_{2}4 = 3$ is false: $2^{2} = 4$, so the value is $2$.",
+  "solution": "$\\lg 3 + \\lg 5 = \\lg 15$ is correct. The sum of two logarithms is the logarithm of the product, and $3 \\times 5 = 15$. $\\log_{\\frac{1}{2}}4 = 2$ is incorrect. $\\left(\\dfrac{1}{2}\\right)^{-2} = 4$, so the value is $-2$. $\\log_{3}2 > \\log_{2}3$ is incorrect. The left side is less than $1$, because its argument is smaller than its base, and the right side is greater than $1$. $\\log_{2}4 = 3$ is incorrect. $2^{2} = 4$, so the value is $2$, not $3$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1622,7 +1622,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\log_{9}3 = \\dfrac{1}{2}$ — $9^{1/2} = 3$. “If $a > 1$ and $\\log_a x > \\log_a x^2$, then $x > 1$” is false: for $a > 1$ the logarithm is increasing, so $x > x^2$, which forces $0 < x < 1$. $\\log_{\\frac{1}{3}}9 = 2$ is false: a base $\\dfrac{1}{3}$ gives $-2$. $\\log_{9}3 = \\log_{3}9$ is false: the two values are reciprocals: $\\dfrac{1}{2}$ and $2$.",
+  "solution": "$\\log_{9}3 = \\dfrac{1}{2}$ is correct. $9^{1/2} = 3$. “If $a > 1$ and $\\log_a x > \\log_a x^2$, then $x > 1$” is incorrect. For $a > 1$ the logarithm is increasing, so $x > x^2$, which forces $0 < x < 1$. $\\log_{\\frac{1}{3}}9 = 2$ is incorrect. $\\left(\\dfrac{1}{3}\\right)^{-2} = 9$, so the value is $-2$. $\\log_{9}3 = \\log_{3}9$ is incorrect. The two values are reciprocals of each other: $\\log_{9}3 = \\dfrac{1}{2}$ and $\\log_{3}9 = 2$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1660,7 +1660,7 @@
    "reciprocal",
    "swap"
   ],
-  "solution": "The correct statement is $\\log_{2}5 > \\log_{5}2$ — the left side is greater than $1$ and the right side is less than $1$. $\\log_{5}2 > \\log_{2}5$ is false: the left side is less than $1$ and the right side is greater than $1$. $\\log_{9}27 = \\log_{27}9$ is false: the two values are reciprocals: $\\dfrac{3}{2}$ and $\\dfrac{2}{3}$. $\\log_{\\frac{1}{5}}25 = 2$ is false: a base $\\dfrac{1}{5}$ gives $-2$.",
+  "solution": "$\\log_{2}5 > \\log_{5}2$ is correct. The left side is greater than $1$, because its argument is greater than its base, and the right side is less than $1$, because its argument is smaller than its base. $\\log_{5}2 > \\log_{2}5$ is incorrect. The left side is less than $1$, because its argument is smaller than its base, and the right side is greater than $1$. $\\log_{9}27 = \\log_{27}9$ is incorrect. The two values are reciprocals of each other: $\\log_{9}27 = \\dfrac{3}{2}$ and $\\log_{27}9 = \\dfrac{2}{3}$. $\\log_{\\frac{1}{5}}25 = 2$ is incorrect. $\\left(\\dfrac{1}{5}\\right)^{-2} = 25$, so the value is $-2$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1698,7 +1698,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is $\\log_{3}5 > \\log_{5}3$ — the left side is greater than $1$ and the right side is less than $1$. $\\lg 3 + \\lg 4 = \\lg 7$ is false: $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$. “If $a > 1$ and $\\log_a x > \\log_a x^2$, then $x > 1$” is false: for $a > 1$ the logarithm is increasing, so $x > x^2$, which forces $0 < x < 1$. $\\log_{8}4 = \\log_{4}8$ is false: the two values are reciprocals: $\\dfrac{2}{3}$ and $\\dfrac{3}{2}$.",
+  "solution": "$\\log_{3}5 > \\log_{5}3$ is correct. The left side is greater than $1$, because its argument is greater than its base, and the right side is less than $1$, because its argument is smaller than its base. $\\lg 3 + \\lg 4 = \\lg 7$ is incorrect. $\\lg 3 + \\lg 4 = \\lg 12$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$. “If $a > 1$ and $\\log_a x > \\log_a x^2$, then $x > 1$” is incorrect. For $a > 1$ the logarithm is increasing, so $x > x^2$, which forces $0 < x < 1$. $\\log_{8}4 = \\log_{4}8$ is incorrect. The two values are reciprocals of each other: $\\log_{8}4 = \\dfrac{2}{3}$ and $\\log_{4}8 = \\dfrac{3}{2}$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1736,7 +1736,7 @@
    "swap",
    "off-by-one"
   ],
-  "solution": "The correct statement is $\\lg 2 + \\lg 7 = \\lg 14$ — the sum of two logarithms is the logarithm of the product. “If $a > 1$ and $\\log_a x > \\log_a x^2$, then $x > 1$” is false: for $a > 1$ the logarithm is increasing, so $x > x^2$, which forces $0 < x < 1$. $\\log_{4}64 = 4$ is false: $4^{3} = 64$, so the value is $3$. $\\log_{5}2 > \\log_{2}5$ is false: the left side is less than $1$ and the right side is greater than $1$.",
+  "solution": "$\\lg 2 + \\lg 7 = \\lg 14$ is correct. The sum of two logarithms is the logarithm of the product, and $2 \\times 7 = 14$. “If $a > 1$ and $\\log_a x > \\log_a x^2$, then $x > 1$” is incorrect. For $a > 1$ the logarithm is increasing, so $x > x^2$, which forces $0 < x < 1$. $\\log_{4}64 = 4$ is incorrect. $4^{3} = 64$, so the value is $3$, not $4$. $\\log_{5}2 > \\log_{2}5$ is incorrect. The left side is less than $1$, because its argument is smaller than its base, and the right side is greater than $1$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1774,7 +1774,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "By the change-of-base formula $\\log_a b \\cdot \\log_b c = \\log_a c$: the product is $\\log_{2}16 = 4$.",
+  "solution": "Change both logarithms to base $10$: $\\log_{2}5 \\cdot \\log_{5}16 = \\dfrac{\\lg 5}{\\lg 2} \\cdot \\dfrac{\\lg 16}{\\lg 5} = \\dfrac{\\lg 16}{\\lg 2} = \\log_{2}16$. Since $2^{4} = 16$, the value is $4$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -1812,7 +1812,7 @@
    "reciprocal",
    null
   ],
-  "solution": "By the change-of-base formula $\\log_a b \\cdot \\log_b c = \\log_a c$: the product is $\\log_{2}8 = 3$.",
+  "solution": "Change both logarithms to base $10$: $\\log_{2}5 \\cdot \\log_{5}8 = \\dfrac{\\lg 5}{\\lg 2} \\cdot \\dfrac{\\lg 8}{\\lg 5} = \\dfrac{\\lg 8}{\\lg 2} = \\log_{2}8$. Since $2^{3} = 8$, the value is $3$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -1850,7 +1850,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "By the change-of-base formula $\\log_a b \\cdot \\log_b c = \\log_a c$: the product is $\\log_{2}8 = 3$.",
+  "solution": "Change both logarithms to base $10$: $\\log_{2}10 \\cdot \\log_{10}8 = \\dfrac{\\lg 10}{\\lg 2} \\cdot \\dfrac{\\lg 8}{\\lg 10} = \\dfrac{\\lg 8}{\\lg 2} = \\log_{2}8$. Since $2^{3} = 8$, the value is $3$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -1888,7 +1888,7 @@
    "domain",
    "sign"
   ],
-  "solution": "Domain first: $x - 1 > 0$. Write $-1 = \\log_{\\frac{1}{3}} 3$. Because the base is between $0$ and $1$, the logarithm is decreasing and the direction reverses: $x - 1 \\le 3$. Together with the domain: $(1, 4]$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x - 1 > 0$, that is $x > 1$. Next, write $-1 = \\log_{\\frac{1}{3}} 3$. The base is between $0$ and $1$, so the logarithm is decreasing and the inequality sign reverses: $x - 1 \\le 3$, that is $x \\le 4$. Both conditions must hold, so the solution set is $(1, 4]$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1926,7 +1926,7 @@
    null,
    "domain"
   ],
-  "solution": "Domain first: $-4 - x > 0$. Write $-1 = \\log_{\\frac{1}{2}} 2$. Because the base is between $0$ and $1$, the logarithm is decreasing and the direction reverses: $-4 - x \\le 2$. Together with the domain: $\\{x \\mid -6 \\le x < -4\\}$.",
+  "solution": "First, the expression inside the logarithm must be positive: $-4 - x > 0$, that is $x < -4$. Next, write $-1 = \\log_{\\frac{1}{2}} 2$. The base is between $0$ and $1$, so the logarithm is decreasing and the inequality sign reverses: $-4 - x \\le 2$, that is $x \\ge -6$. Both conditions must hold, so the solution set is $\\{x \\mid -6 \\le x < -4\\}$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1964,7 +1964,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Domain first: $2x + 2 > 0$. Write $-2 = \\log_{\\frac{1}{2}} 4$. Because the base is between $0$ and $1$, the logarithm is decreasing and the direction reverses: $2x + 2 \\ge 4$. Together with the domain: $[1, +\\infty)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $2x + 2 > 0$, that is $x > -1$. Next, write $-2 = \\log_{\\frac{1}{2}} 4$. The base is between $0$ and $1$, so the logarithm is decreasing and the inequality sign reverses: $2x + 2 \\ge 4$, that is $x \\ge 1$. Both conditions must hold, so the solution set is $[1, +\\infty)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -2002,7 +2002,7 @@
    "sign",
    "slip"
   ],
-  "solution": "$\\log_{5}125 = 3$; $\\log_{3}\\dfrac{1}{3} = -1$ (a reciprocal gives a negative exponent); $\\lg 10 = 1$. Combining with the signs gives $1$.",
+  "solution": "Work out each term. $\\log_{5}125 = 3$, because $5^{3} = 125$. $\\log_{3}\\dfrac{1}{3} = \\log_{3}3^{-1} = -1$. $\\lg 10 = 1$. So the value is $3 + (-1) - 1 = 1$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -2040,7 +2040,7 @@
    null,
    "slip"
   ],
-  "solution": "$\\log_{2}4 = 2$; $\\log_{3}\\dfrac{1}{3} = -1$ (a reciprocal gives a negative exponent); $\\lg 10 = 1$. Combining with the signs gives $2$.",
+  "solution": "Work out each term. $\\log_{2}4 = 2$, because $2^{2} = 4$. $\\log_{3}\\dfrac{1}{3} = \\log_{3}3^{-1} = -1$. $\\lg 10 = 1$. So the value is $2 + (-1) + 1 = 2$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -2078,7 +2078,7 @@
    "reciprocal",
    "slip"
   ],
-  "solution": "Write both numbers as powers of the same base and use $\\log_{a^m} a^n = \\dfrac{n}{m}$: the value is $\\dfrac{2}{3}$ (check: $8^{2/3} = 4$).",
+  "solution": "Write both numbers as powers of $2$: $8 = 2^{3}$ and $4 = 2^{2}$. Then $\\log_{8}4 = \\log_{2^{3}}2^{2} = \\dfrac{2}{3}$. Check: $8^{2/3} = 4$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -2116,7 +2116,7 @@
    null,
    "slip"
   ],
-  "solution": "Write both numbers as powers of the same base and use $\\log_{a^m} a^n = \\dfrac{n}{m}$: the value is $\\dfrac{3}{2}$ (check: $9^{3/2} = 27$).",
+  "solution": "Write both numbers as powers of $3$: $9 = 3^{2}$ and $27 = 3^{3}$. Then $\\log_{9}27 = \\log_{3^{2}}3^{3} = \\dfrac{3}{2}$. Check: $9^{3/2} = 27$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -2154,7 +2154,7 @@
    null,
    "slip"
   ],
-  "solution": "Write both numbers as powers of the same base and use $\\log_{a^m} a^n = \\dfrac{n}{m}$: the value is $\\dfrac{1}{2}$ (check: $25^{1/2} = 5$).",
+  "solution": "Write both numbers as powers of $5$: $25 = 5^{2}$ and $5 = 5$. Then $\\log_{25}5 = \\log_{5^{2}}5 = \\dfrac{1}{2}$. Check: $25^{1/2} = 5$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",
@@ -2192,7 +2192,7 @@
    "operation",
    null
   ],
-  "solution": "The correct statement is $\\lg 4 + \\lg 250 = 3$ — $\\lg 4 + \\lg 250 = \\lg 1000 = 3$. $\\log_{9} 27 = 3$ is false: dividing the two numbers is not a logarithm rule; as powers of the same base the value is $\\dfrac{3}{2}$. $\\log_{2} 10 - \\log_{2} 5 = \\log_{2} 5$ is false: a difference of logarithms is the logarithm of the quotient: $\\log_{2} 2 = 1$. $\\lg 4 + \\lg 250 = \\lg 254$ is false: a sum of logarithms is the logarithm of the product: $\\lg 1000 = 3$.",
+  "solution": "$\\lg 4 + \\lg 250 = 3$ is correct. $\\lg 4 + \\lg 250 = \\lg 1000 = 3$. $\\log_{9} 27 = 3$ is incorrect. Dividing the two numbers is not a logarithm rule. In fact $9 = 3^{2}$ and $27 = 3^{3}$, so $\\log_{9} 27 = \\dfrac{3}{2}$. $\\log_{2} 10 - \\log_{2} 5 = \\log_{2} 5$ is incorrect. A difference of logarithms is the logarithm of the quotient: $\\log_{2} 2 = 1$. $\\lg 4 + \\lg 250 = \\lg 254$ is incorrect. A sum of logarithms is the logarithm of the product: $\\lg 1000 = 3$.",
   "video": "V41",
   "version": "a",
   "domain": "FN",

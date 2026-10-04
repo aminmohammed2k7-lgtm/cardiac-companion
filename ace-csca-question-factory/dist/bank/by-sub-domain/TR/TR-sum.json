@@ -164,7 +164,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ and $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, then $\\sin \\dfrac{7\\pi}{12} =$ ( )",
+  "stem": "Given that $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ and $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, the value of $\\sin \\dfrac{7\\pi}{12}$ is ( )",
   "options": [
    "$\\dfrac{\\sqrt{6} + \\sqrt{2}}{2}$",
    "$\\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$",
@@ -202,7 +202,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and $\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}$, then $\\sin 105^\\circ =$ ( )",
+  "stem": "Given that $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and $\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}$, the value of $\\sin 105^\\circ$ is ( )",
   "options": [
    "$\\dfrac{\\sqrt{6} + \\sqrt{2}}{4}$",
    "$\\dfrac{\\sqrt{6} + \\sqrt{2}}{2}$",
@@ -254,7 +254,7 @@
    "operation",
    null
   ],
-  "solution": "Write $\\dfrac{7\\pi}{12} = \\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}$. Then $\\tan\\left(\\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{3} + \\tan \\dfrac{\\pi}{4}}{1 - \\tan \\dfrac{\\pi}{3}\\tan \\dfrac{\\pi}{4}} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = -2 - \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $\\dfrac{7\\pi}{12} = \\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}$. Then $\\tan\\left(\\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{3} + \\tan \\dfrac{\\pi}{4}}{1 - \\tan \\dfrac{\\pi}{3}\\tan \\dfrac{\\pi}{4}} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = \\dfrac{(\\sqrt{3} + 1)^2}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\dfrac{4 + 2\\sqrt{3}}{-2} = -2 - \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -278,7 +278,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan 60^\\circ = \\sqrt{3}$ and $\\tan 45^\\circ = 1$, then $\\tan 105^\\circ =$ ( )",
+  "stem": "Given that $\\tan 60^\\circ = \\sqrt{3}$ and $\\tan 45^\\circ = 1$, the value of $\\tan 105^\\circ$ is ( )",
   "options": [
    "$2 + \\sqrt{3}$",
    "$-2 - \\sqrt{3}$",
@@ -292,7 +292,7 @@
    "companion",
    "operation"
   ],
-  "solution": "Write $105^\\circ = 60^\\circ + 45^\\circ$. Then $\\tan\\left(60^\\circ + 45^\\circ\\right) = \\dfrac{\\tan 60^\\circ + \\tan 45^\\circ}{1 - \\tan 60^\\circ\\tan 45^\\circ} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = -2 - \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $105^\\circ = 60^\\circ + 45^\\circ$. Then $\\tan\\left(60^\\circ + 45^\\circ\\right) = \\dfrac{\\tan 60^\\circ + \\tan 45^\\circ}{1 - \\tan 60^\\circ\\tan 45^\\circ} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = \\dfrac{(\\sqrt{3} + 1)^2}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\dfrac{4 + 2\\sqrt{3}}{-2} = -2 - \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -316,7 +316,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan \\dfrac{\\pi}{4} = 1$ and $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$, then $\\tan \\dfrac{5\\pi}{12} =$ ( )",
+  "stem": "Given that $\\tan \\dfrac{\\pi}{4} = 1$ and $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$, the value of $\\tan \\dfrac{5\\pi}{12}$ is ( )",
   "options": [
    "$2 - \\sqrt{3}$",
    "$-2 - \\sqrt{3}$",
@@ -330,7 +330,7 @@
    "companion",
    null
   ],
-  "solution": "Write $\\dfrac{5\\pi}{12} = \\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}$. Then $\\tan\\left(\\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{4} + \\tan \\dfrac{\\pi}{6}}{1 - \\tan \\dfrac{\\pi}{4}\\tan \\dfrac{\\pi}{6}} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $\\dfrac{5\\pi}{12} = \\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}$. Then $\\tan\\left(\\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{4} + \\tan \\dfrac{\\pi}{6}}{1 - \\tan \\dfrac{\\pi}{4}\\tan \\dfrac{\\pi}{6}} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = \\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6} = 2 + \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -368,7 +368,7 @@
    null,
    "operation"
   ],
-  "solution": "Write $75^\\circ = 45^\\circ + 30^\\circ$. Then $\\tan\\left(45^\\circ + 30^\\circ\\right) = \\dfrac{\\tan 45^\\circ + \\tan 30^\\circ}{1 - \\tan 45^\\circ\\tan 30^\\circ} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $75^\\circ = 45^\\circ + 30^\\circ$. Then $\\tan\\left(45^\\circ + 30^\\circ\\right) = \\dfrac{\\tan 45^\\circ + \\tan 30^\\circ}{1 - \\tan 45^\\circ\\tan 30^\\circ} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = \\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6} = 2 + \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -392,7 +392,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) =$ ( )",
   "options": [
    "$\\dfrac{8 + 15\\sqrt{3}}{34}$",
    "$\\dfrac{15\\sqrt{3} - 8}{34}$",
@@ -406,7 +406,7 @@
    "sign",
    "companion"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{15}{17} \\cdot \\dfrac{\\sqrt{3}}{2} + \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{15\\sqrt{3} - 8}{34}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{15}{17} \\cdot \\dfrac{\\sqrt{3}}{2} + \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{15\\sqrt{3} - 8}{34}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -430,7 +430,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin\\left(\\alpha - \\dfrac{\\pi}{3}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin\\left(\\alpha - \\dfrac{\\pi}{3}\\right) =$ ( )",
   "options": [
    "$-\\dfrac{12 + 5\\sqrt{3}}{26}$",
    "$\\dfrac{5 - 12\\sqrt{3}}{26}$",
@@ -444,7 +444,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{12}{13}$. Then $\\sin\\left(\\alpha - \\dfrac{\\pi}{3}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} - \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{12}{13}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{5}{13} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{12 + 5\\sqrt{3}}{26}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$. In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{12}{13}$. Then $\\sin\\left(\\alpha - \\dfrac{\\pi}{3}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} - \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{12}{13}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{5}{13} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{12 + 5\\sqrt{3}}{26}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -468,7 +468,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{12}{13}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\dfrac{\\pi}{3} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{12}{13}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\dfrac{\\pi}{3} + \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{5 + 12\\sqrt{3}}{26}$",
    "$\\dfrac{12 - 5\\sqrt{3}}{26}$",
@@ -482,7 +482,7 @@
    null,
    "sign"
   ],
-  "solution": "In the second quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{5}{13}$. Then $\\cos\\left(\\dfrac{\\pi}{3} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} - \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{5}{13}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{12}{13} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{5 + 12\\sqrt{3}}{26}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{144}{169} = \\dfrac{25}{169}$. In the second quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{5}{13}$. Then $\\cos\\left(\\dfrac{\\pi}{3} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} - \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{5}{13}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{12}{13} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{5 + 12\\sqrt{3}}{26}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -506,7 +506,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) =$ ( )",
   "options": [
    "$\\dfrac{3 - 4\\sqrt{3}}{10}$",
    "$\\dfrac{4\\sqrt{3} - 3}{10}$",
@@ -520,7 +520,7 @@
    "companion",
    "sign"
   ],
-  "solution": "In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{4}{5}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} + \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\dfrac{3}{5} \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{4}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{3 - 4\\sqrt{3}}{10}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$. In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{4}{5}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} + \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\dfrac{3}{5} \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{4}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{3 - 4\\sqrt{3}}{10}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -544,7 +544,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\alpha - \\dfrac{\\pi}{6}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\alpha - \\dfrac{\\pi}{6}\\right) =$ ( )",
   "options": [
    "$\\dfrac{15 - 8\\sqrt{3}}{34}$",
    "$\\dfrac{8 + 15\\sqrt{3}}{34}$",
@@ -558,7 +558,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\sin\\left(\\alpha - \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} - \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{15}{17} \\cdot \\dfrac{\\sqrt{3}}{2} - \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{8 + 15\\sqrt{3}}{34}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\sin\\left(\\alpha - \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} - \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{15}{17} \\cdot \\dfrac{\\sqrt{3}}{2} - \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{8 + 15\\sqrt{3}}{34}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -582,7 +582,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{7}{25}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{7}{25}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) =$ ( )",
   "options": [
    "$\\dfrac{7 + 24\\sqrt{3}}{50}$",
    "$\\dfrac{24 - 7\\sqrt{3}}{50}$",
@@ -596,7 +596,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{24}{25}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} + \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{7}{25}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\dfrac{24}{25} \\cdot \\dfrac{1}{2} = \\dfrac{24 - 7\\sqrt{3}}{50}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{49}{625} = \\dfrac{576}{625}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{24}{25}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} + \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{7}{25}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\dfrac{24}{25} \\cdot \\dfrac{1}{2} = \\dfrac{24 - 7\\sqrt{3}}{50}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -620,7 +620,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{7}{25}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{7}{25}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
   "options": [
    "$-\\dfrac{7 + 24\\sqrt{3}}{50}$",
    "$\\dfrac{24 - 7\\sqrt{3}}{50}$",
@@ -634,7 +634,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{24}{25}$. Then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} - \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{7}{25}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{24}{25} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{7 + 24\\sqrt{3}}{50}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{49}{625} = \\dfrac{576}{625}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{24}{25}$. Then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} - \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{7}{25}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{24}{25} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{7 + 24\\sqrt{3}}{50}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -658,7 +658,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{4}{5}$ and $\\alpha$ is in the second quadrant, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{4}{5}$ and $\\alpha$ is in the second quadrant, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) =$ ( )",
   "options": [
    "$\\dfrac{4\\sqrt{3} - 3}{10}$",
    "$\\dfrac{3 + 4\\sqrt{3}}{10}$",
@@ -672,7 +672,7 @@
    "sign",
    "companion"
   ],
-  "solution": "In the second quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{3}{5}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{4}{5} \\cdot \\dfrac{\\sqrt{3}}{2} + \\left(-\\dfrac{3}{5}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{4\\sqrt{3} - 3}{10}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. In the second quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{3}{5}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{4}{5} \\cdot \\dfrac{\\sqrt{3}}{2} + \\left(-\\dfrac{3}{5}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{4\\sqrt{3} - 3}{10}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -696,7 +696,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha$ is in the fourth quadrant, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha$ is in the fourth quadrant, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) =$ ( )",
   "options": [
    "$\\dfrac{3 + 4\\sqrt{3}}{10}$",
    "$-\\dfrac{4 + 3\\sqrt{3}}{10}$",
@@ -710,7 +710,7 @@
    null,
    "sign"
   ],
-  "solution": "In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{4}{5}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{3}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\dfrac{4}{5} \\cdot \\dfrac{1}{2} = \\dfrac{4 - 3\\sqrt{3}}{10}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$. In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{4}{5}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{6}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{3}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\dfrac{4}{5} \\cdot \\dfrac{1}{2} = \\dfrac{4 - 3\\sqrt{3}}{10}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -734,7 +734,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{1}{5}$ and $\\alpha$ is in the third quadrant, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{1}{5}$ and $\\alpha$ is in the third quadrant, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) =$ ( )",
   "options": [
    "$\\dfrac{6\\sqrt{2} - 1}{10}$",
    "$-\\dfrac{1 + 6\\sqrt{2}}{10}$",
@@ -748,7 +748,7 @@
    "companion",
    "sign"
   ],
-  "solution": "In the third quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{2\\sqrt{6}}{5}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} + \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{1}{5}\\right) \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{2\\sqrt{6}}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{1 + 6\\sqrt{2}}{10}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{25} = \\dfrac{24}{25}$. In the third quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{2\\sqrt{6}}{5}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} + \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{1}{5}\\right) \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{2\\sqrt{6}}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{1 + 6\\sqrt{2}}{10}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -772,7 +772,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{2}{3}$ and $\\alpha$ is in the third quadrant, then $\\sin\\left(\\dfrac{\\pi}{6} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{2}{3}$ and $\\alpha$ is in the third quadrant, then $\\sin\\left(\\dfrac{\\pi}{6} + \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{\\sqrt{5} - 2\\sqrt{3}}{6}$",
    "$\\dfrac{2 - \\sqrt{15}}{6}$",
@@ -786,7 +786,7 @@
    null,
    "sign"
   ],
-  "solution": "In the third quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{\\sqrt{5}}{3}$. Then $\\sin\\left(\\dfrac{\\pi}{6} + \\alpha\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{\\sqrt{5}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\left(-\\dfrac{2}{3}\\right) \\cdot \\dfrac{1}{2} = -\\dfrac{2 + \\sqrt{15}}{6}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{4}{9} = \\dfrac{5}{9}$. In the third quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{\\sqrt{5}}{3}$. Then $\\sin\\left(\\dfrac{\\pi}{6} + \\alpha\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{6} + \\cos\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{\\sqrt{5}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\left(-\\dfrac{2}{3}\\right) \\cdot \\dfrac{1}{2} = -\\dfrac{2 + \\sqrt{15}}{6}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -824,7 +824,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is $\\sin(\\alpha - \\beta) < \\sin\\alpha$ — $-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval. $\\sin(\\alpha - \\beta) > 0$ is false: it is negative when $\\alpha < \\beta$. $\\cos(\\alpha + \\beta) > 0$ is false: $\\alpha + \\beta$ can be obtuse, for example $\\alpha = \\beta = 60^\\circ$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is false: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger.",
+  "solution": "$\\sin(\\alpha - \\beta) < \\sin\\alpha$ is correct. $-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval. $\\sin(\\alpha - \\beta) > 0$ is incorrect. It is negative when $\\alpha < \\beta$. For $\\alpha = 30^\\circ$ and $\\beta = 60^\\circ$, $\\sin(-30^\\circ) = -\\dfrac{1}{2}$. $\\cos(\\alpha + \\beta) > 0$ is incorrect. $\\alpha + \\beta$ can be obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\cos 120^\\circ = -\\dfrac{1}{2} < 0$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is incorrect. $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -862,7 +862,7 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is $\\cos(\\alpha + \\beta) < \\cos\\alpha$ — $0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is false: not always: for $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ < \\sin 80^\\circ$. $\\sin(\\alpha - \\beta) > 0$ is false: it is negative when $\\alpha < \\beta$. $\\cos(\\alpha + \\beta) > 0$ is false: $\\alpha + \\beta$ can be obtuse, for example $\\alpha = \\beta = 60^\\circ$.",
+  "solution": "$\\cos(\\alpha + \\beta) < \\cos\\alpha$ is correct. $0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is incorrect. This is not always true. For $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ = \\sin 20^\\circ < \\sin 80^\\circ$. $\\sin(\\alpha - \\beta) > 0$ is incorrect. It is negative when $\\alpha < \\beta$. For $\\alpha = 30^\\circ$ and $\\beta = 60^\\circ$, $\\sin(-30^\\circ) = -\\dfrac{1}{2}$. $\\cos(\\alpha + \\beta) > 0$ is incorrect. $\\alpha + \\beta$ can be obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\cos 120^\\circ = -\\dfrac{1}{2} < 0$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -900,7 +900,7 @@
    null,
    "operation"
   ],
-  "solution": "The correct statement is $\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ — $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines. $\\cos(\\alpha + \\beta) > \\cos(\\alpha - \\beta)$ is false: the difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is false: the sine of a sum is not the sum of the sines.",
+  "solution": "$\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ is correct. $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$. $\\cos(\\alpha + \\beta) > \\cos(\\alpha - \\beta)$ is incorrect. The difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is incorrect. The sine of a sum is not the sum of the sines. For $\\alpha = \\beta = 30^\\circ$ the left side is $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and the right side is $1$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -938,7 +938,7 @@
    "operation",
    "sign"
   ],
-  "solution": "The correct statement is $\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ — $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is false: the sine of a sum is not the sum of the sines. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is false: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger. $\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)$ is false: $\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$.",
+  "solution": "$\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ is correct. $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is incorrect. The sine of a sum is not the sum of the sines. For $\\alpha = \\beta = 30^\\circ$ the left side is $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and the right side is $1$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is incorrect. $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one. $\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)$ is incorrect. $\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -976,7 +976,7 @@
    "sign",
    "domain"
   ],
-  "solution": "The correct statement is $\\cos(\\alpha + \\beta) < \\cos\\alpha\\cos\\beta$ — $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$. $\\tan(\\alpha + \\beta) > 0$ is false: it is negative when $\\alpha + \\beta$ is obtuse. $\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)$ is false: $\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines.",
+  "solution": "$\\cos(\\alpha + \\beta) < \\cos\\alpha\\cos\\beta$ is correct. $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$. $\\tan(\\alpha + \\beta) > 0$ is incorrect. It is negative when $\\alpha + \\beta$ is obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\tan 120^\\circ = -\\sqrt{3}$. $\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)$ is incorrect. $\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1014,7 +1014,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\cos(\\alpha + \\beta) < \\cos(\\alpha - \\beta)$ — the difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is false: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger. $\\cos(\\alpha + \\beta) > \\cos\\alpha$ is false: $\\alpha + \\beta > \\alpha$ and the cosine is decreasing on $(0, \\pi)$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is false: the sine of a sum is not the sum of the sines.",
+  "solution": "$\\cos(\\alpha + \\beta) < \\cos(\\alpha - \\beta)$ is correct. The difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is incorrect. $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one. $\\cos(\\alpha + \\beta) > \\cos\\alpha$ is incorrect. $0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$, so $\\cos(\\alpha + \\beta) < \\cos\\alpha$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is incorrect. The sine of a sum is not the sum of the sines. For $\\alpha = \\beta = 30^\\circ$ the left side is $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and the right side is $1$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1052,7 +1052,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\cos(\\alpha + \\beta) < \\cos(\\alpha - \\beta)$ — the difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\cos(\\alpha + \\beta) > \\cos\\alpha$ is false: $\\alpha + \\beta > \\alpha$ and the cosine is decreasing on $(0, \\pi)$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is false: the sine of a sum is not the sum of the sines. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines.",
+  "solution": "$\\cos(\\alpha + \\beta) < \\cos(\\alpha - \\beta)$ is correct. The difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\cos(\\alpha + \\beta) > \\cos\\alpha$ is incorrect. $0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$, so $\\cos(\\alpha + \\beta) < \\cos\\alpha$. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is incorrect. The sine of a sum is not the sum of the sines. For $\\alpha = \\beta = 30^\\circ$ the left side is $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and the right side is $1$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1090,7 +1090,7 @@
    "operation",
    "operation"
   ],
-  "solution": "The correct statement is $\\sin(\\alpha - \\beta) < \\sin\\alpha$ — $-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is false: the sine of a sum is not the sum of the sines. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines. $\\cos(\\alpha + \\beta) > \\cos(\\alpha - \\beta)$ is false: the difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$.",
+  "solution": "$\\sin(\\alpha - \\beta) < \\sin\\alpha$ is correct. $-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval. $\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta$ is incorrect. The sine of a sum is not the sum of the sines. For $\\alpha = \\beta = 30^\\circ$ the left side is $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and the right side is $1$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$. $\\cos(\\alpha + \\beta) > \\cos(\\alpha - \\beta)$ is incorrect. The difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1204,7 +1204,7 @@
    null,
    "sign"
   ],
-  "solution": "The angle $255^\\circ$ lies in the third quadrant and its reference angle is $75^\\circ$, so $\\tan 255^\\circ = \\tan 75^\\circ$. With $75^\\circ = 45^\\circ + 30^\\circ$: $\\tan\\left(45^\\circ + 30^\\circ\\right) = \\dfrac{\\tan 45^\\circ + \\tan 30^\\circ}{1 - \\tan 45^\\circ\\tan 30^\\circ} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$. Hence the value is $2 + \\sqrt{3}$.",
+  "solution": "The angle $255^\\circ$ lies in the third quadrant and its reference angle is $75^\\circ$, so $\\tan 255^\\circ = \\tan 75^\\circ$. With $75^\\circ = 45^\\circ + 30^\\circ$: $\\tan\\left(45^\\circ + 30^\\circ\\right) = \\dfrac{\\tan 45^\\circ + \\tan 30^\\circ}{1 - \\tan 45^\\circ\\tan 30^\\circ} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = \\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6} = 2 + \\sqrt{3}$. Hence the value is $2 + \\sqrt{3}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1228,7 +1228,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) =$ ( )",
   "options": [
    "$\\dfrac{7}{23}$",
    "$-\\dfrac{7}{23}$",
@@ -1242,7 +1242,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "From the quadrant, $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\cos\\alpha = -\\dfrac{15}{17}$, so $\\tan\\alpha = \\dfrac{8}{15}$. $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha - \\tan\\dfrac{\\pi}{4}}{1 + \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{-\\dfrac{7}{15}}{\\dfrac{23}{15}} = -\\dfrac{7}{23}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the third quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{15}{17}$. So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{8}{15}$. With $\\tan\\dfrac{\\pi}{4} = 1$: $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha - \\tan\\dfrac{\\pi}{4}}{1 + \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha - 1}{1 + \\tan\\alpha} = \\dfrac{-\\dfrac{7}{15}}{\\dfrac{23}{15}} = \\dfrac{-7}{23} = -\\dfrac{7}{23}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1266,7 +1266,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = -\\dfrac{4}{5}$ and $\\alpha$ is in the third quadrant, then $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{4}{5}$ and $\\alpha$ is in the third quadrant, then $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) =$ ( )",
   "options": [
    "$7$",
    "$-7$",
@@ -1280,7 +1280,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "From the quadrant, $\\sin\\alpha = -\\dfrac{4}{5}$ and $\\cos\\alpha = -\\dfrac{3}{5}$, so $\\tan\\alpha = \\dfrac{4}{3}$. $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha + \\tan\\dfrac{\\pi}{4}}{1 - \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\dfrac{7}{3}}{-\\dfrac{1}{3}} = -7$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. In the third quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{3}{5}$. So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{4}{3}$. With $\\tan\\dfrac{\\pi}{4} = 1$: $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha + \\tan\\dfrac{\\pi}{4}}{1 - \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha + 1}{1 - \\tan\\alpha} = \\dfrac{\\dfrac{7}{3}}{-\\dfrac{1}{3}} = \\dfrac{7}{-1} = -7$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1304,7 +1304,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) =$ ( )",
   "options": [
    "$-\\dfrac{7}{23}$",
    "$-\\dfrac{23}{7}$",
@@ -1318,7 +1318,7 @@
    "sign",
    "sign"
   ],
-  "solution": "From the quadrant, $\\sin\\alpha = \\dfrac{15}{17}$ and $\\cos\\alpha = -\\dfrac{8}{17}$, so $\\tan\\alpha = -\\dfrac{15}{8}$. $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha + \\tan\\dfrac{\\pi}{4}}{1 - \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{-\\dfrac{7}{8}}{\\dfrac{23}{8}} = -\\dfrac{7}{23}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{15}{8}$. With $\\tan\\dfrac{\\pi}{4} = 1$: $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha + \\tan\\dfrac{\\pi}{4}}{1 - \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha + 1}{1 - \\tan\\alpha} = \\dfrac{-\\dfrac{7}{8}}{\\dfrac{23}{8}} = \\dfrac{-7}{23} = -\\dfrac{7}{23}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1342,7 +1342,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{8}{17}$, $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, and $\\cos\\beta = -\\dfrac{3}{5}$, $\\beta \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin(\\alpha - \\beta) =$ ( )",
+  "stem": "Let $\\sin\\alpha = \\dfrac{8}{17}$ with $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, and $\\cos\\beta = -\\dfrac{3}{5}$ with $\\beta \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin(\\alpha - \\beta) =$ ( )",
   "options": [
    "$-\\dfrac{84}{85}$",
    "$-\\dfrac{13}{85}$",
@@ -1356,7 +1356,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs from the quadrants: $\\cos\\alpha = \\dfrac{15}{17}$ and $\\sin\\beta = \\dfrac{4}{5}$. Then $\\sin(\\alpha - \\beta) = \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = \\dfrac{8}{17} \\cdot \\left(-\\dfrac{3}{5}\\right) - \\dfrac{15}{17} \\cdot \\dfrac{4}{5} = -\\dfrac{84}{85}$.",
+  "solution": "From $\\sin^2 + \\cos^2 = 1$ and the sign in each quadrant: $\\cos\\alpha = \\dfrac{15}{17}$, because the cosine is positive in the first quadrant, and $\\sin\\beta = \\dfrac{4}{5}$, because the sine is positive in the second quadrant. Then $\\sin(\\alpha - \\beta) = \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = \\dfrac{8}{17} \\cdot \\left(-\\dfrac{3}{5}\\right) - \\dfrac{15}{17} \\cdot \\dfrac{4}{5} = -\\dfrac{84}{85}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1380,7 +1380,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{5}{13}$, $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, and $\\cos\\beta = \\dfrac{4}{5}$, $\\beta \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$. Then $\\cos(\\alpha + \\beta) =$ ( )",
+  "stem": "Let $\\sin\\alpha = \\dfrac{5}{13}$ with $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, and $\\cos\\beta = \\dfrac{4}{5}$ with $\\beta \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$. Then $\\cos(\\alpha + \\beta) =$ ( )",
   "options": [
    "$\\dfrac{56}{65}$",
    "$\\dfrac{63}{65}$",
@@ -1394,7 +1394,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs from the quadrants: $\\cos\\alpha = -\\dfrac{12}{13}$ and $\\sin\\beta = -\\dfrac{3}{5}$. Then $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta = \\left(-\\dfrac{12}{13}\\right) \\cdot \\dfrac{4}{5} - \\dfrac{5}{13} \\cdot \\left(-\\dfrac{3}{5}\\right) = -\\dfrac{33}{65}$.",
+  "solution": "From $\\sin^2 + \\cos^2 = 1$ and the sign in each quadrant: $\\cos\\alpha = -\\dfrac{12}{13}$, because the cosine is negative in the second quadrant, and $\\sin\\beta = -\\dfrac{3}{5}$, because the sine is negative in the fourth quadrant. Then $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta = \\left(-\\dfrac{12}{13}\\right) \\cdot \\dfrac{4}{5} - \\dfrac{5}{13} \\cdot \\left(-\\dfrac{3}{5}\\right) = -\\dfrac{33}{65}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",
@@ -1418,7 +1418,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{8}{17}$, $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, and $\\cos\\beta = \\dfrac{4}{5}$, $\\beta \\in \\left(0, \\dfrac{\\pi}{2}\\right)$. Then $\\cos(\\alpha + \\beta) =$ ( )",
+  "stem": "Let $\\cos\\alpha = -\\dfrac{8}{17}$ with $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, and $\\cos\\beta = \\dfrac{4}{5}$ with $\\beta \\in \\left(0, \\dfrac{\\pi}{2}\\right)$. Then $\\cos(\\alpha + \\beta) =$ ( )",
   "options": [
    "$-\\dfrac{84}{85}$",
    "$-\\dfrac{13}{85}$",
@@ -1432,7 +1432,7 @@
    "sign",
    null
   ],
-  "solution": "Signs from the quadrants: $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\sin\\beta = \\dfrac{3}{5}$. Then $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta = \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{4}{5} - \\left(-\\dfrac{15}{17}\\right) \\cdot \\dfrac{3}{5} = \\dfrac{13}{85}$.",
+  "solution": "From $\\sin^2 + \\cos^2 = 1$ and the sign in each quadrant: $\\sin\\alpha = -\\dfrac{15}{17}$, because the sine is negative in the third quadrant, and $\\sin\\beta = \\dfrac{3}{5}$, because the sine is positive in the first quadrant. Then $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta = \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{4}{5} - \\left(-\\dfrac{15}{17}\\right) \\cdot \\dfrac{3}{5} = \\dfrac{13}{85}$.",
   "video": "V15",
   "version": "a",
   "domain": "TR",

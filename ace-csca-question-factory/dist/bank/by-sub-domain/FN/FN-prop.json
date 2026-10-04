@@ -26,7 +26,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “Its graph passes through the point $(0, 1)$” — at $x = 0$ the power equals $1$. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = \\left(\\dfrac{1}{2}\\right)$. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases.",
+  "solution": "“Its graph passes through the point $(0, 1)$” is correct. At $x = 0$ the power is $1$, so $y = 1$. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $\\dfrac{1}{2}$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{2}$ is between $0$ and $1$, so the function is decreasing.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -64,7 +64,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "The correct statement is “It is monotonically decreasing on $\\mathbb{R}$” — the base is between $0$ and $1$. “Its graph is symmetric about the $y$-axis” is false: it is not an even function. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = \\left(\\dfrac{1}{4}\\right)$.",
+  "solution": "“It is monotonically decreasing on $\\mathbb{R}$” is correct. The base $\\dfrac{1}{4}$ is between $0$ and $1$, so the function is decreasing. “Its graph is symmetric about the $y$-axis” is incorrect. The function is decreasing, so $f(-1) \\ne f(1)$ and it is not even. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $\\dfrac{1}{4}$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -102,7 +102,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “It is monotonically decreasing on $\\mathbb{R}$” — the base is between $0$ and $1$. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = \\left(\\dfrac{1}{4}\\right)$.",
+  "solution": "“It is monotonically decreasing on $\\mathbb{R}$” is correct. The base $\\dfrac{1}{4}$ is between $0$ and $1$, so the function is decreasing. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{4}$ is between $0$ and $1$, so the function is decreasing. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $\\dfrac{1}{4}$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -140,7 +140,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “Its range is $(0, +\\infty)$” — an exponential takes every positive value and no other. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its graph is symmetric about the $y$-axis” is false: it is not an even function. “Its range is $\\mathbb{R}$” is false: its values are always positive.",
+  "solution": "“Its range is $(0, +\\infty)$” is correct. Every power of a positive base is positive, and the function takes every positive value. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so the function is decreasing. “Its graph is symmetric about the $y$-axis” is incorrect. The function is decreasing, so $f(-1) \\ne f(1)$ and it is not even. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -178,7 +178,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is “Its range is $(0, +\\infty)$” — an exponential takes every positive value and no other. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its graph is symmetric about the $y$-axis” is false: it is not an even function.",
+  "solution": "“Its range is $(0, +\\infty)$” is correct. Every power of a positive base is positive, and the function takes every positive value. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{2}$ is between $0$ and $1$, so the function is decreasing. “Its graph is symmetric about the $y$-axis” is incorrect. The function is decreasing, so $f(-1) \\ne f(1)$ and it is not even.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -216,13 +216,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “Its range is $\\mathbb{R}$” — its values are always positive. The other three statements are true.",
+  "solution": "“Its range is $\\mathbb{R}$” is incorrect. For $a > 0$, $a^x$ is always positive, so its range is $(0, +\\infty)$. “Its range is $(0, +\\infty)$” is correct. For $a > 0$, $a^x$ is always positive and takes every positive value. “Its graph passes through the point $(0, 1)$” is correct. $a^0 = 1$ for every base $a$. “Its domain is $\\mathbb{R}$” is correct. For $a > 0$, $a^x$ is defined for every real $x$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
   "template": "FN-prop.exp-incorrect",
   "seed": "bank:1:FN-prop.exp-incorrect:0",
-  "form": "y = aˣ (a > 0, a ≠ 1): which statement is INCORRECT",
+  "form": "y = aˣ (a > 0, a ≠ 1): which statement is incorrect",
   "answer_letter": "D",
   "answer_value": "Its range is $\\mathbb{R}$",
   "verified": "stmt"
@@ -254,13 +254,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its range is $\\mathbb{R}$” — its values are always positive. The other three statements are true.",
+  "solution": "“Its range is $\\mathbb{R}$” is incorrect. For $a > 0$, $a^x$ is always positive, so its range is $(0, +\\infty)$. “Its range is $(0, +\\infty)$” is correct. For $a > 0$, $a^x$ is always positive and takes every positive value. “It is monotonic on $\\mathbb{R}$” is correct. It is increasing when $a > 1$ and decreasing when $0 < a < 1$, so it is monotonic in both cases. “Its graph passes through the point $(0, 1)$” is correct. $a^0 = 1$ for every base $a$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
   "template": "FN-prop.exp-incorrect",
   "seed": "bank:1:FN-prop.exp-incorrect:1",
-  "form": "y = aˣ (a > 0, a ≠ 1): which statement is INCORRECT",
+  "form": "y = aˣ (a > 0, a ≠ 1): which statement is incorrect",
   "answer_letter": "A",
   "answer_value": "Its range is $\\mathbb{R}$",
   "verified": "stmt"
@@ -292,13 +292,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “It is decreasing on its domain” — that holds only when $0 < a < 1$; for $a > 1$ the function is increasing. The other three statements are true.",
+  "solution": "“It is decreasing on its domain” is incorrect. This holds only when $0 < a < 1$. For $a > 1$ the function is increasing. “Its range is $(0, +\\infty)$” is correct. For $a > 0$, $a^x$ is always positive and takes every positive value. “Its graph passes through the point $(0, 1)$” is correct. $a^0 = 1$ for every base $a$. “Its domain is $\\mathbb{R}$” is correct. For $a > 0$, $a^x$ is defined for every real $x$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
   "template": "FN-prop.exp-incorrect",
   "seed": "bank:1:FN-prop.exp-incorrect:2~1",
-  "form": "y = aˣ (a > 0, a ≠ 1): which statement is INCORRECT",
+  "form": "y = aˣ (a > 0, a ≠ 1): which statement is incorrect",
   "answer_letter": "C",
   "answer_value": "It is decreasing on its domain",
   "verified": "stmt"
@@ -330,13 +330,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “It is decreasing on its domain” — that holds only when $0 < a < 1$; for $a > 1$ the function is increasing. The other three statements are true.",
+  "solution": "“It is decreasing on its domain” is incorrect. This holds only when $0 < a < 1$. For $a > 1$ the function is increasing. “Its domain is $\\mathbb{R}$” is correct. For $a > 0$, $a^x$ is defined for every real $x$. “It is monotonic on $\\mathbb{R}$” is correct. It is increasing when $a > 1$ and decreasing when $0 < a < 1$, so it is monotonic in both cases. “Its graph passes through the point $(0, 1)$” is correct. $a^0 = 1$ for every base $a$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
   "template": "FN-prop.exp-incorrect",
   "seed": "bank:1:FN-prop.exp-incorrect:3~4",
-  "form": "y = aˣ (a > 0, a ≠ 1): which statement is INCORRECT",
+  "form": "y = aˣ (a > 0, a ≠ 1): which statement is incorrect",
   "answer_letter": "A",
   "answer_value": "It is decreasing on its domain",
   "verified": "stmt"
@@ -368,13 +368,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its graph passes through the point $(1, 0)$” — the fixed point of $y = a^x$ is $(0, 1)$; $(1, 0)$ belongs to $y = \\log_a x$. The other three statements are true.",
+  "solution": "“Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $a^1 = a \\ne 0$. The fixed point of $y = a^x$ is $(0, 1)$, and $(1, 0)$ is the fixed point of $y = \\log_a x$. “It is monotonic on $\\mathbb{R}$” is correct. It is increasing when $a > 1$ and decreasing when $0 < a < 1$, so it is monotonic in both cases. “Its graph passes through the point $(0, 1)$” is correct. $a^0 = 1$ for every base $a$. “Its domain is $\\mathbb{R}$” is correct. For $a > 0$, $a^x$ is defined for every real $x$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
   "template": "FN-prop.exp-incorrect",
   "seed": "bank:1:FN-prop.exp-incorrect:4",
-  "form": "y = aˣ (a > 0, a ≠ 1): which statement is INCORRECT",
+  "form": "y = aˣ (a > 0, a ≠ 1): which statement is incorrect",
   "answer_letter": "C",
   "answer_value": "Its graph passes through the point $(1, 0)$",
   "verified": "stmt"
@@ -406,13 +406,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “Its domain is $(-\\infty, +\\infty)$” — the argument of a logarithm must be positive. The other three statements are true.",
+  "solution": "“Its domain is $(-\\infty, +\\infty)$” is incorrect. The expression inside a logarithm must be positive, so the domain is $(0, +\\infty)$. “When $a > 1$, it is increasing on $(0, +\\infty)$” is correct. A logarithm with a base greater than $1$ is increasing. “When $0 < a < 1$, it is decreasing on $(0, +\\infty)$” is correct. A logarithm with a base between $0$ and $1$ is decreasing. “Its range is $\\mathbb{R}$” is correct. Every real number $t$ is a value, because $\\log_a a^t = t$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
   "template": "FN-prop.log-incorrect",
   "seed": "bank:1:FN-prop.log-incorrect:0",
-  "form": "y = log_a x (a > 0, a ≠ 1): which statement is INCORRECT",
+  "form": "y = log_a x (a > 0, a ≠ 1): which statement is incorrect",
   "answer_letter": "D",
   "answer_value": "Its domain is $(-\\infty, +\\infty)$",
   "verified": "stmt"
@@ -444,13 +444,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” — base and argument are on opposite sides of $1$, so the value is negative. The other three statements are true.",
+  "solution": "“When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is incorrect. When $0 < a < 1$ and $x > 1$, the base and the argument lie on opposite sides of $1$, so $\\log_a x < 0$. “Its graph always passes through the point $(1, 0)$” is correct. $\\log_a 1 = 0$ for every base $a$, because $a^0 = 1$. “When $0 < a < 1$, it is decreasing on $(0, +\\infty)$” is correct. A logarithm with a base between $0$ and $1$ is decreasing. “Its range is $\\mathbb{R}$” is correct. Every real number $t$ is a value, because $\\log_a a^t = t$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
   "template": "FN-prop.log-incorrect",
   "seed": "bank:1:FN-prop.log-incorrect:1",
-  "form": "y = log_a x (a > 0, a ≠ 1): which statement is INCORRECT",
+  "form": "y = log_a x (a > 0, a ≠ 1): which statement is incorrect",
   "answer_letter": "C",
   "answer_value": "When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$",
   "verified": "stmt"
@@ -482,7 +482,7 @@
    "sign",
    "domain"
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$”. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is false: a base greater than $1$ gives an increasing logarithm. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is false: base and argument are on opposite sides of $1$, so the value is negative. “It is increasing on its domain” is false: that holds only when $a > 1$.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Every real number $t$ is a value, because $\\log_a a^t = t$. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is incorrect. A logarithm with a base greater than $1$ is increasing. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is incorrect. When $0 < a < 1$ and $x > 1$, the base and the argument lie on opposite sides of $1$, so $\\log_a x < 0$. “It is increasing on its domain” is incorrect. This holds only when $a > 1$. For $0 < a < 1$ the function is decreasing.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -520,7 +520,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “Its domain is $(0, +\\infty)$”. “Its graph always passes through the point $(0, 1)$” is false: $(0, 1)$ belongs to $y = a^x$; $x = 0$ is not even in the domain here. “It is increasing on its domain” is false: that holds only when $a > 1$. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is false: a base greater than $1$ gives an increasing logarithm.",
+  "solution": "“Its domain is $(0, +\\infty)$” is correct. The expression inside a logarithm must be positive. “Its graph always passes through the point $(0, 1)$” is incorrect. $x = 0$ is not in the domain of $y = \\log_a x$. The point $(0, 1)$ is the fixed point of $y = a^x$. “It is increasing on its domain” is incorrect. This holds only when $a > 1$. For $0 < a < 1$ the function is decreasing. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is incorrect. A logarithm with a base greater than $1$ is increasing.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -558,7 +558,7 @@
    "domain",
    "domain"
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$”. “Its domain is $(-\\infty, +\\infty)$” is false: the argument of a logarithm must be positive. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is false: base and argument are on opposite sides of $1$, so the value is negative. “It is increasing on its domain” is false: that holds only when $a > 1$.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Every real number $t$ is a value, because $\\log_a a^t = t$. “Its domain is $(-\\infty, +\\infty)$” is incorrect. The expression inside a logarithm must be positive, so the domain is $(0, +\\infty)$. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is incorrect. When $0 < a < 1$ and $x > 1$, the base and the argument lie on opposite sides of $1$, so $\\log_a x < 0$. “It is increasing on its domain” is incorrect. This holds only when $a > 1$. For $0 < a < 1$ the function is decreasing.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -596,7 +596,7 @@
    "sign",
    "swap"
   ],
-  "solution": "The correct statement is “Its domain is $(0, +\\infty)$”. “Its graph always passes through the point $(0, 1)$” is false: $(0, 1)$ belongs to $y = a^x$; $x = 0$ is not even in the domain here. “Its domain is $(-\\infty, +\\infty)$” is false: the argument of a logarithm must be positive. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is false: base and argument are on opposite sides of $1$, so the value is negative.",
+  "solution": "“Its domain is $(0, +\\infty)$” is correct. The expression inside a logarithm must be positive. “Its graph always passes through the point $(0, 1)$” is incorrect. $x = 0$ is not in the domain of $y = \\log_a x$. The point $(0, 1)$ is the fixed point of $y = a^x$. “Its domain is $(-\\infty, +\\infty)$” is incorrect. The expression inside a logarithm must be positive, so the domain is $(0, +\\infty)$. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is incorrect. When $0 < a < 1$ and $x > 1$, the base and the argument lie on opposite sides of $1$, so $\\log_a x < 0$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -634,7 +634,7 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is “When $a > 1$, it is increasing on $(0, +\\infty)$” — a base greater than $1$ gives an increasing logarithm. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is false: a base greater than $1$ gives an increasing logarithm. “Its graph always passes through the point $(0, 1)$” is false: $(0, 1)$ belongs to $y = a^x$; $x = 0$ is not even in the domain here. “It is increasing on its domain” is false: that holds only when $a > 1$.",
+  "solution": "“When $a > 1$, it is increasing on $(0, +\\infty)$” is correct. A logarithm with a base greater than $1$ is increasing. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is incorrect. A logarithm with a base greater than $1$ is increasing. “Its graph always passes through the point $(0, 1)$” is incorrect. $x = 0$ is not in the domain of $y = \\log_a x$. The point $(0, 1)$ is the fixed point of $y = a^x$. “It is increasing on its domain” is incorrect. This holds only when $a > 1$. For $0 < a < 1$ the function is decreasing.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -672,7 +672,7 @@
    null,
    "sign"
   ],
-  "solution": "Compare the exponents: $1.5 > -0.1$, and the values are in the opposite order, so $y = a^x$ is decreasing: $0 < a < 1$.",
+  "solution": "The exponents satisfy $1.5 > -0.1$, and the powers satisfy $a^{1.5} < a^{-0.1}$. So the larger exponent gives the smaller power, which means $y = a^x$ is decreasing. This happens exactly when $0 < a < 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -710,7 +710,7 @@
    "sign",
    null
   ],
-  "solution": "Compare the exponents: $1.5 < 2.5$, and the values are in the opposite order, so $y = a^x$ is decreasing: $0 < a < 1$.",
+  "solution": "The exponents satisfy $1.5 < 2.5$, and the powers satisfy $a^{1.5} > a^{2.5}$. So the larger exponent gives the smaller power, which means $y = a^x$ is decreasing. This happens exactly when $0 < a < 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -748,7 +748,7 @@
    "sign",
    null
   ],
-  "solution": "Compare the exponents: $\\frac{1}{2} > -2$, and the values are in the same order, so $y = a^x$ is increasing: $a > 1$.",
+  "solution": "The exponents satisfy $\\frac{1}{2} > -2$, and the powers satisfy $a^{\\frac{1}{2}} > a^{-2}$. So the larger exponent gives the larger power, which means $y = a^x$ is increasing. This happens exactly when $a > 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -786,7 +786,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Compare the exponents: $-0.4 < 2.5$, and the values are in the same order, so $y = a^x$ is increasing: $a > 1$.",
+  "solution": "The exponents satisfy $-0.4 < 2.5$, and the powers satisfy $a^{-0.4} < a^{2.5}$. So the larger exponent gives the larger power, which means $y = a^x$ is increasing. This happens exactly when $a > 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -824,7 +824,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Compare the exponents: $\\frac{1}{2} < 2.5$, and the values are in the opposite order, so $y = a^x$ is decreasing: $0 < a < 1$.",
+  "solution": "The exponents satisfy $\\frac{1}{2} < 2.5$, and the powers satisfy $a^{\\frac{1}{2}} > a^{2.5}$. So the larger exponent gives the smaller power, which means $y = a^x$ is decreasing. This happens exactly when $0 < a < 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -862,7 +862,7 @@
    null,
    "sign"
   ],
-  "solution": "Compare the exponents: $-0.4 < -0.1$, and the values are in the opposite order, so $y = a^x$ is decreasing: $0 < a < 1$.",
+  "solution": "The exponents satisfy $-0.4 < -0.1$, and the powers satisfy $a^{-0.4} > a^{-0.1}$. So the larger exponent gives the smaller power, which means $y = a^x$ is decreasing. This happens exactly when $0 < a < 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -900,7 +900,7 @@
    "sign",
    null
   ],
-  "solution": "Compare the exponents: $\\frac{1}{2} > -2$, and the values are in the same order, so $y = a^x$ is increasing: $a > 1$.",
+  "solution": "The exponents satisfy $\\frac{1}{2} > -2$, and the powers satisfy $a^{\\frac{1}{2}} > a^{-2}$. So the larger exponent gives the larger power, which means $y = a^x$ is increasing. This happens exactly when $a > 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -938,7 +938,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Compare the exponents: $0.3 < 2.5$, and the values are in the same order, so $y = a^x$ is increasing: $a > 1$.",
+  "solution": "The exponents satisfy $0.3 < 2.5$, and the powers satisfy $a^{0.3} < a^{2.5}$. So the larger exponent gives the larger power, which means $y = a^x$ is increasing. This happens exactly when $a > 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -976,7 +976,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Compare the exponents: $\\frac{1}{2} < \\frac{2}{3}$, and the values are in the opposite order, so $y = a^x$ is decreasing: $0 < a < 1$.",
+  "solution": "The exponents satisfy $\\frac{1}{2} < \\frac{2}{3}$, and the powers satisfy $a^{\\frac{1}{2}} > a^{\\frac{2}{3}}$. So the larger exponent gives the smaller power, which means $y = a^x$ is decreasing. This happens exactly when $0 < a < 1$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1014,7 +1014,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Compare the arguments: $3 > 2$, and the logarithms are in the opposite order, so $y = \\log_a x$ is decreasing: $0 < a < 1$.",
+  "solution": "The arguments satisfy $3 > 2$, and the logarithms satisfy $\\log_a 3 < \\log_a 2$. So the larger argument gives the smaller logarithm, which means $y = \\log_a x$ is decreasing. This happens exactly when $0 < a < 1$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1052,7 +1052,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Compare the arguments: $3 < 5$, and the logarithms are in the same order, so $y = \\log_a x$ is increasing: $a > 1$.",
+  "solution": "The arguments satisfy $3 < 5$, and the logarithms satisfy $\\log_a 3 < \\log_a 5$. So the larger argument gives the larger logarithm, which means $y = \\log_a x$ is increasing. This happens exactly when $a > 1$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1090,7 +1090,7 @@
    "off-by-one",
    null
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x = 1$. Then $f(1) = 1 + 0 = 1$. Fixed point: $(1, 1)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x = 1$. Then $f(1) = 1 + 0 = 1$ whatever $a$ is. So the fixed point is $(1, 1)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1128,7 +1128,7 @@
    "near-miss",
    "off-by-one"
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x - 2 = 1$, i.e. $x = 3$. Then $f(3) = -3 + 0 = -3$. Fixed point: $(3, -3)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x - 2 = 1$, so $x = 3$. Then $f(3) = -3 + 0 = -3$ whatever $a$ is. So the fixed point is $(3, -3)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1166,7 +1166,7 @@
    "off-by-one",
    null
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x - 5 = 1$, i.e. $x = 6$. Then $f(6) = -2 + 0 = -2$. Fixed point: $(6, -2)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x - 5 = 1$, so $x = 6$. Then $f(6) = -2 + 0 = -2$ whatever $a$ is. So the fixed point is $(6, -2)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1204,7 +1204,7 @@
    "off-by-one",
    "swap"
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x - 3 = 1$, i.e. $x = 4$. Then $f(4) = 5 + 0 = 5$. Fixed point: $(4, 5)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x - 3 = 1$, so $x = 4$. Then $f(4) = 5 + 0 = 5$ whatever $a$ is. So the fixed point is $(4, 5)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1242,7 +1242,7 @@
    null,
    "near-miss"
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x + 4 = 1$, i.e. $x = -3$. Then $f(-3) = 2 + 0 = 2$. Fixed point: $(-3, 2)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x + 4 = 1$, so $x = -3$. Then $f(-3) = 2 + 0 = 2$ whatever $a$ is. So the fixed point is $(-3, 2)$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1280,7 +1280,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$a^0 = 1$ for every base, so make the exponent $0$: $x = -2$. Then $f(-2) = 1 + 2 = 3$. Fixed point: $(-2, 3)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $x + 2 = 0$, so $x = -2$. Then $f(-2) = 1 + 2 = 3$ whatever $a$ is. So the fixed point is $(-2, 3)$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1318,7 +1318,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$a^0 = 1$ for every base, so make the exponent $0$: $x = -4$. Then $f(-4) = 1 + 2 = 3$. Fixed point: $(-4, 3)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $x + 4 = 0$, so $x = -4$. Then $f(-4) = 1 + 2 = 3$ whatever $a$ is. So the fixed point is $(-4, 3)$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1356,7 +1356,7 @@
    "axis",
    "axis"
   ],
-  "solution": "The correct statement is “Their graphs are symmetric about the line $y = x$” — the two functions are inverses of each other, so their graphs are mirror images in the line $y = x$.",
+  "solution": "“Their graphs are symmetric about the line $y = x$” is correct. The two functions are inverses of each other, so their graphs are mirror images in the line $y = x$. “Their graphs are symmetric about the $y$-axis” is incorrect. The point $(1, 2)$ lies on $y = 2^x$, but its mirror image in the $y$-axis, $(-1, 2)$, does not lie on $y = \\log_{2} x$. “Their graphs are symmetric about the $x$-axis” is incorrect. The point $(1, 2)$ lies on $y = 2^x$, but its mirror image in the $x$-axis, $(1, -2)$, does not lie on $y = \\log_{2} x$. “Their graphs are symmetric about the origin” is incorrect. The point $(1, 2)$ lies on $y = 2^x$, but its mirror image in the origin, $(-1, -2)$, does not lie on $y = \\log_{2} x$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1394,7 +1394,7 @@
    null,
    "axis"
   ],
-  "solution": "The correct statement is “Their graphs are symmetric about the $y$-axis” — replacing $x$ by $-x$ reflects a graph in the $y$-axis.",
+  "solution": "“Their graphs are symmetric about the $y$-axis” is correct. Replacing $x$ by $-x$ reflects a graph in the $y$-axis. “Their graphs are symmetric about the line $y = x$” is incorrect. The point $(1, 5)$ lies on $y = 5^x$, but its mirror image in the line $y = x$, $(5, 1)$, does not lie on $y = 5^{-x}$. “Their graphs are symmetric about the $x$-axis” is incorrect. The point $(1, 5)$ lies on $y = 5^x$, but its mirror image in the $x$-axis, $(1, -5)$, does not lie on $y = 5^{-x}$. “Their graphs are symmetric about the origin” is incorrect. The point $(1, 5)$ lies on $y = 5^x$, but its mirror image in the origin, $(-1, -5)$, does not lie on $y = 5^{-x}$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1432,7 +1432,7 @@
    "axis",
    "axis"
   ],
-  "solution": "The correct statement is “Their graphs are symmetric about the line $y = x$” — the two functions are inverses of each other, so their graphs are mirror images in the line $y = x$.",
+  "solution": "“Their graphs are symmetric about the line $y = x$” is correct. The two functions are inverses of each other, so their graphs are mirror images in the line $y = x$. “Their graphs are symmetric about the $y$-axis” is incorrect. The point $(1, 5)$ lies on $y = 5^x$, but its mirror image in the $y$-axis, $(-1, 5)$, does not lie on $y = \\log_{5} x$. “Their graphs are symmetric about the $x$-axis” is incorrect. The point $(1, 5)$ lies on $y = 5^x$, but its mirror image in the $x$-axis, $(1, -5)$, does not lie on $y = \\log_{5} x$. “Their graphs are symmetric about the origin” is incorrect. The point $(1, 5)$ lies on $y = 5^x$, but its mirror image in the origin, $(-1, -5)$, does not lie on $y = \\log_{5} x$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1470,7 +1470,7 @@
    null,
    "axis"
   ],
-  "solution": "The correct statement is “Their graphs are symmetric about the $x$-axis” — changing the sign of $y$ reflects a graph in the $x$-axis.",
+  "solution": "“Their graphs are symmetric about the $x$-axis” is correct. Changing the sign of $y$ reflects a graph in the $x$-axis. “Their graphs are symmetric about the line $y = x$” is incorrect. The point $(1, 10)$ lies on $y = 10^x$, but its mirror image in the line $y = x$, $(10, 1)$, does not lie on $y = -10^x$. “Their graphs are symmetric about the $y$-axis” is incorrect. The point $(1, 10)$ lies on $y = 10^x$, but its mirror image in the $y$-axis, $(-1, 10)$, does not lie on $y = -10^x$. “Their graphs are symmetric about the origin” is incorrect. The point $(1, 10)$ lies on $y = 10^x$, but its mirror image in the origin, $(-1, -10)$, does not lie on $y = -10^x$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1508,7 +1508,7 @@
    "axis",
    "axis"
   ],
-  "solution": "The correct statement is “Their graphs are symmetric about the $x$-axis” — $\\log_{1/a} x = -\\log_a x$, and changing the sign of $y$ reflects a graph in the $x$-axis.",
+  "solution": "“Their graphs are symmetric about the $x$-axis” is correct. $\\log_{1/a} x = -\\log_a x$, and changing the sign of $y$ reflects a graph in the $x$-axis. “Their graphs are symmetric about the line $y = x$” is incorrect. The point $(1, 0)$ lies on $y = \\log_{10} x$, but its mirror image in the line $y = x$, $(0, 1)$, does not lie on $y = \\log_{\\frac{1}{10}} x$. “Their graphs are symmetric about the $y$-axis” is incorrect. The point $(1, 0)$ lies on $y = \\log_{10} x$, but its mirror image in the $y$-axis, $(-1, 0)$, does not lie on $y = \\log_{\\frac{1}{10}} x$. “Their graphs are symmetric about the origin” is incorrect. The point $(1, 0)$ lies on $y = \\log_{10} x$, but its mirror image in the origin, $(-1, 0)$, does not lie on $y = \\log_{\\frac{1}{10}} x$.",
   "video": "V42",
   "version": "a",
   "domain": "FN",
@@ -1546,7 +1546,7 @@
    "domain",
    "swap"
   ],
-  "solution": "Rewrite $3^{-x} = \\left(\\dfrac{1}{3}\\right)^x$: the base is between $0$ and $1$. The correct statement is “It is monotonically decreasing on $\\mathbb{R}$” — the base is between $0$ and $1$. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 3 \\cdot \\dfrac{1}{3}$. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its range is $\\mathbb{R}$” is false: its values are always positive.",
+  "solution": "First rewrite $3^{-x} = \\left(\\dfrac{1}{3}\\right)^x$, so the base is $\\dfrac{1}{3}$, which lies between $0$ and $1$. “It is monotonically decreasing on $\\mathbb{R}$” is correct. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so the function is decreasing. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $3 \\times \\dfrac{1}{3} = 1$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so the function is decreasing. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1584,7 +1584,7 @@
    "slip",
    null
   ],
-  "solution": "Rewrite $2^{-x} = \\left(\\dfrac{1}{2}\\right)^x$: the base is between $0$ and $1$. The correct statement is “Its graph passes through the point $(0, 1)$” — at $x = 0$ the power equals $1$. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “Its range is $\\mathbb{R}$” is false: its values are always positive. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases.",
+  "solution": "First rewrite $2^{-x} = \\left(\\dfrac{1}{2}\\right)^x$, so the base is $\\dfrac{1}{2}$, which lies between $0$ and $1$. “Its graph passes through the point $(0, 1)$” is correct. At $x = 0$ the power is $1$, so $y = 1$. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{2}$ is between $0$ and $1$, so the function is decreasing.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1622,7 +1622,7 @@
    "sign",
    "domain"
   ],
-  "solution": "Rewrite $3^{-x} = \\left(\\dfrac{1}{3}\\right)^x$: the base is between $0$ and $1$. The correct statement is “Its domain is $\\mathbb{R}$” — an exponential is defined for every real $x$. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 3 \\cdot \\dfrac{1}{3}$. “Its range is $\\mathbb{R}$” is false: its values are always positive.",
+  "solution": "First rewrite $3^{-x} = \\left(\\dfrac{1}{3}\\right)^x$, so the base is $\\dfrac{1}{3}$, which lies between $0$ and $1$. “Its domain is $\\mathbb{R}$” is correct. A power of a positive base is defined for every real exponent. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so the function is decreasing. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $3 \\times \\dfrac{1}{3} = 1$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1660,7 +1660,7 @@
    "domain",
    null
   ],
-  "solution": "Rewrite $4^{-x} = \\left(\\dfrac{1}{4}\\right)^x$: the base is between $0$ and $1$. The correct statement is “Its range is $(0, +\\infty)$” — an exponential takes every positive value and no other. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 2 \\cdot \\dfrac{1}{4}$. “Its range is $\\mathbb{R}$” is false: its values are always positive.",
+  "solution": "First rewrite $4^{-x} = \\left(\\dfrac{1}{4}\\right)^x$, so the base is $\\dfrac{1}{4}$, which lies between $0$ and $1$. “Its range is $(0, +\\infty)$” is correct. Every power of a positive base is positive, and the function takes every positive value. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{4}$ is between $0$ and $1$, so the function is decreasing. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $2 \\times \\dfrac{1}{4} = \\dfrac{1}{2}$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1698,7 +1698,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Rewrite $3^{-x} = \\left(\\dfrac{1}{3}\\right)^x$: the base is between $0$ and $1$. The correct statement is “It is monotonically decreasing on $\\mathbb{R}$” — the base is between $0$ and $1$. “Its graph passes through the origin” is false: at $x = 0$ the value is $2$, not $0$. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 2 \\cdot \\dfrac{1}{3}$.",
+  "solution": "First rewrite $3^{-x} = \\left(\\dfrac{1}{3}\\right)^x$, so the base is $\\dfrac{1}{3}$, which lies between $0$ and $1$. “It is monotonically decreasing on $\\mathbb{R}$” is correct. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so the function is decreasing. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $2$, not $0$. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so the function is decreasing. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $2 \\times \\dfrac{1}{3} = \\dfrac{2}{3}$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1736,7 +1736,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Make the exponent $0$: $2x - 3 = 0$ gives $x = \\dfrac{3}{2}$. Then $f = a^0 - 3 = -2$. Fixed point: $\\left(\\dfrac{3}{2}, -2\\right)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $2x - 3 = 0$ gives $x = \\dfrac{3}{2}$. Then $f\\left(\\dfrac{3}{2}\\right) = a^0 - 3 = 1 - 3 = -2$ whatever $a$ is. So the fixed point is $\\left(\\dfrac{3}{2}, -2\\right)$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1774,7 +1774,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Make the exponent $0$: $3x - 2 = 0$ gives $x = \\dfrac{2}{3}$. Then $f = a^0 + 2 = 3$. Fixed point: $\\left(\\dfrac{2}{3}, 3\\right)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $3x - 2 = 0$ gives $x = \\dfrac{2}{3}$. Then $f\\left(\\dfrac{2}{3}\\right) = a^0 + 2 = 1 + 2 = 3$ whatever $a$ is. So the fixed point is $\\left(\\dfrac{2}{3}, 3\\right)$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1812,7 +1812,7 @@
    "partial",
    null
   ],
-  "solution": "Make the exponent $0$: $2x + 5 = 0$ gives $x = -\\dfrac{5}{2}$. Then $f = a^0 + 2 = 3$. Fixed point: $\\left(-\\dfrac{5}{2}, 3\\right)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $2x + 5 = 0$ gives $x = -\\dfrac{5}{2}$. Then $f\\left(-\\dfrac{5}{2}\\right) = a^0 + 2 = 1 + 2 = 3$ whatever $a$ is. So the fixed point is $\\left(-\\dfrac{5}{2}, 3\\right)$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1850,7 +1850,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Make the exponent $0$: $3x - 1 = 0$ gives $x = \\dfrac{1}{3}$. Then $f = a^0 - 3 = -2$. Fixed point: $\\left(\\dfrac{1}{3}, -2\\right)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $3x - 1 = 0$ gives $x = \\dfrac{1}{3}$. Then $f\\left(\\dfrac{1}{3}\\right) = a^0 - 3 = 1 - 3 = -2$ whatever $a$ is. So the fixed point is $\\left(\\dfrac{1}{3}, -2\\right)$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",
@@ -1888,7 +1888,7 @@
    null,
    "sign"
   ],
-  "solution": "Make the exponent $0$: $3x - 3 = 0$ gives $x = 1$. Then $f = a^0 - 4 = -3$. Fixed point: $(1, -3)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $3x - 3 = 0$ gives $x = 1$. Then $f(1) = a^0 - 4 = 1 - 4 = -3$ whatever $a$ is. So the fixed point is $(1, -3)$.",
   "video": "V40",
   "version": "a",
   "domain": "FN",

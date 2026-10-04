@@ -26,7 +26,7 @@
    "slip",
    "partial"
   ],
-  "solution": "Work coordinate by coordinate: $2\\boldsymbol{a} - \\boldsymbol{b} = (2 - 1, 2 - 3) = (1, -1)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $2\\boldsymbol{a} = (2, 2)$ and $-\\boldsymbol{b} = (-1, -3)$, so $2\\boldsymbol{a} - \\boldsymbol{b} = (2 - 1, 2 - 3) = (1, -1)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -64,7 +64,7 @@
    "slip",
    "sign"
   ],
-  "solution": "Work coordinate by coordinate: $3\\boldsymbol{a} + 2\\boldsymbol{b} = (12 + 6, 3 - 2) = (18, 1)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $3\\boldsymbol{a} = (12, 3)$ and $2\\boldsymbol{b} = (6, -2)$, so $3\\boldsymbol{a} + 2\\boldsymbol{b} = (12 + 6, 3 - 2) = (18, 1)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -102,7 +102,7 @@
    "slip",
    "partial"
   ],
-  "solution": "Work coordinate by coordinate: $3\\boldsymbol{a} - \\boldsymbol{b} = (9 + 3, 9 - 3) = (12, 6)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $3\\boldsymbol{a} = (9, 9)$ and $-\\boldsymbol{b} = (3, -3)$, so $3\\boldsymbol{a} - \\boldsymbol{b} = (9 + 3, 9 - 3) = (12, 6)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -140,7 +140,7 @@
    null,
    "partial"
   ],
-  "solution": "Work coordinate by coordinate: $\\boldsymbol{a} - 2\\boldsymbol{b} = (-1 + 6, 1 + 8) = (5, 9)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $\\boldsymbol{a} = (-1, 1)$ and $-2\\boldsymbol{b} = (6, 8)$, so $\\boldsymbol{a} - 2\\boldsymbol{b} = (-1 + 6, 1 + 8) = (5, 9)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -178,7 +178,7 @@
    "slip",
    "sign"
   ],
-  "solution": "Work coordinate by coordinate: $2\\boldsymbol{b} - \\boldsymbol{a} = (-1 + 2, -4 + 6) = (1, 2)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $-\\boldsymbol{a} = (-1, -4)$ and $2\\boldsymbol{b} = (2, 6)$, so $2\\boldsymbol{b} - \\boldsymbol{a} = (-1 + 2, -4 + 6) = (1, 2)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -216,7 +216,7 @@
    null,
    "partial"
   ],
-  "solution": "Work coordinate by coordinate: $2\\boldsymbol{a} - 3\\boldsymbol{b} = (-2 - 3, -8 - 9) = (-5, -17)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $2\\boldsymbol{a} = (-2, -8)$ and $-3\\boldsymbol{b} = (-3, -9)$, so $2\\boldsymbol{a} - 3\\boldsymbol{b} = (-2 - 3, -8 - 9) = (-5, -17)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -254,7 +254,7 @@
    "slip",
    "sign"
   ],
-  "solution": "Work coordinate by coordinate: $3\\boldsymbol{a} - 2\\boldsymbol{b} = (-9 + 8, -3 - 2) = (-1, -5)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $3\\boldsymbol{a} = (-9, -3)$ and $-2\\boldsymbol{b} = (8, -2)$, so $3\\boldsymbol{a} - 2\\boldsymbol{b} = (-9 + 8, -3 - 2) = (-1, -5)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -292,7 +292,7 @@
    "slip",
    "partial"
   ],
-  "solution": "Work coordinate by coordinate: $3\\boldsymbol{a} + 2\\boldsymbol{b} = (-3 - 8, 6 + 2) = (-11, 8)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $3\\boldsymbol{a} = (-3, 6)$ and $2\\boldsymbol{b} = (-8, 2)$, so $3\\boldsymbol{a} + 2\\boldsymbol{b} = (-3 - 8, 6 + 2) = (-11, 8)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -330,7 +330,7 @@
    null,
    "slip"
   ],
-  "solution": "Work coordinate by coordinate: $\\boldsymbol{a} - 3\\boldsymbol{b} = (-3 - 6, -1 - 6) = (-9, -7)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $\\boldsymbol{a} = (-3, -1)$ and $-3\\boldsymbol{b} = (-6, -6)$, so $\\boldsymbol{a} - 3\\boldsymbol{b} = (-3 - 6, -1 - 6) = (-9, -7)$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -368,7 +368,7 @@
    "sign",
    "operation"
   ],
-  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$. From $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$: $\\overrightarrow{OB} = 2\\overrightarrow{OM} - \\overrightarrow{OA}$.",
+  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$. Multiplying by $2$ gives $\\overrightarrow{OA} + \\overrightarrow{OB} = 2\\overrightarrow{OM}$, so $\\overrightarrow{OB} = 2\\overrightarrow{OM} - \\overrightarrow{OA}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -406,7 +406,7 @@
    "sign",
    "operation"
   ],
-  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$. $\\overrightarrow{OM} - \\overrightarrow{OA} = \\overrightarrow{AM}$, half of $\\overrightarrow{AB}$.",
+  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$. Also $\\overrightarrow{OM} - \\overrightarrow{OA} = \\overrightarrow{AM}$, which is half of $\\overrightarrow{AB}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -444,7 +444,7 @@
    null,
    "half"
   ],
-  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$. Since $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$, the sum is $2\\overrightarrow{OM}$.",
+  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OA} + \\overrightarrow{OB})$. Multiplying by $2$ gives $\\overrightarrow{OA} + \\overrightarrow{OB} = 2\\overrightarrow{OM}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -482,7 +482,7 @@
    null,
    "half"
   ],
-  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OE} + \\overrightarrow{OF})$. Since $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OE} + \\overrightarrow{OF})$, the sum is $2\\overrightarrow{OM}$.",
+  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OE} + \\overrightarrow{OF})$. Multiplying by $2$ gives $\\overrightarrow{OE} + \\overrightarrow{OF} = 2\\overrightarrow{OM}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -520,7 +520,7 @@
    "half",
    null
   ],
-  "solution": "For a midpoint, $\\overrightarrow{ON} = \\dfrac{1}{2}(\\overrightarrow{OC} + \\overrightarrow{OD})$. $\\overrightarrow{CN} = \\dfrac{1}{2}\\overrightarrow{CD}$ and $\\overrightarrow{CD} = \\overrightarrow{OD} - \\overrightarrow{OC}$ (end minus start).",
+  "solution": "For a midpoint, $\\overrightarrow{ON} = \\dfrac{1}{2}(\\overrightarrow{OC} + \\overrightarrow{OD})$. Also $\\overrightarrow{CN} = \\dfrac{1}{2}\\overrightarrow{CD}$, and $\\overrightarrow{CD} = \\overrightarrow{OD} - \\overrightarrow{OC}$ because a vector is its end point minus its start point.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -748,7 +748,7 @@
    null,
    "swap"
   ],
-  "solution": "Walk along the sides from $A$ to $M$: opposite sides give $\\overrightarrow{DC} = \\boldsymbol{a}$ and $\\overrightarrow{BC} = \\boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\\overrightarrow{AM} = \\dfrac{1}{2}\\boldsymbol{a} + \\boldsymbol{b}$.",
+  "solution": "Measure every point from $A$: $\\overrightarrow{AB} = \\boldsymbol{a}$, $\\overrightarrow{AD} = \\boldsymbol{b}$ and, since $ABCD$ is a parallelogram, $\\overrightarrow{AC} = \\boldsymbol{a} + \\boldsymbol{b}$. Since $M$ is the midpoint of $CD$, $\\overrightarrow{AM} = \\dfrac{1}{2}(\\overrightarrow{AC} + \\overrightarrow{AD}) = \\dfrac{1}{2}\\boldsymbol{a} + \\boldsymbol{b}$. So $\\overrightarrow{AM} = \\dfrac{1}{2}\\boldsymbol{a} + \\boldsymbol{b}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -786,7 +786,7 @@
    null,
    "swap"
   ],
-  "solution": "Walk along the sides from $B$ to $F$: opposite sides give $\\overrightarrow{DC} = \\boldsymbol{a}$ and $\\overrightarrow{BC} = \\boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\\overrightarrow{BF} = \\boldsymbol{b} - \\dfrac{1}{2}\\boldsymbol{a}$.",
+  "solution": "Measure every point from $A$: $\\overrightarrow{AB} = \\boldsymbol{a}$, $\\overrightarrow{AD} = \\boldsymbol{b}$ and, since $ABCD$ is a parallelogram, $\\overrightarrow{AC} = \\boldsymbol{a} + \\boldsymbol{b}$. Since $F$ is the midpoint of $CD$, $\\overrightarrow{AF} = \\dfrac{1}{2}(\\overrightarrow{AC} + \\overrightarrow{AD}) = \\dfrac{1}{2}\\boldsymbol{a} + \\boldsymbol{b}$. Then $\\overrightarrow{BF} = \\overrightarrow{AF} - \\overrightarrow{AB} = \\boldsymbol{b} - \\dfrac{1}{2}\\boldsymbol{a}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -824,7 +824,7 @@
    null,
    "sign"
   ],
-  "solution": "Walk along the sides from $D$ to $M$: opposite sides give $\\overrightarrow{DC} = \\boldsymbol{a}$ and $\\overrightarrow{BC} = \\boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\\overrightarrow{DM} = \\boldsymbol{a} - \\dfrac{1}{2}\\boldsymbol{b}$.",
+  "solution": "Measure every point from $A$: $\\overrightarrow{AB} = \\boldsymbol{a}$, $\\overrightarrow{AD} = \\boldsymbol{b}$ and, since $ABCD$ is a parallelogram, $\\overrightarrow{AC} = \\boldsymbol{a} + \\boldsymbol{b}$. Since $M$ is the midpoint of $BC$, $\\overrightarrow{AM} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC}) = \\boldsymbol{a} + \\dfrac{1}{2}\\boldsymbol{b}$. Then $\\overrightarrow{DM} = \\overrightarrow{AM} - \\overrightarrow{AD} = \\boldsymbol{a} - \\dfrac{1}{2}\\boldsymbol{b}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -862,7 +862,7 @@
    "sign",
    null
   ],
-  "solution": "Walk along the sides from $B$ to $M$: opposite sides give $\\overrightarrow{DC} = \\boldsymbol{a}$ and $\\overrightarrow{BC} = \\boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\\overrightarrow{BM} = \\dfrac{1}{2}\\boldsymbol{b} - \\boldsymbol{a}$.",
+  "solution": "Measure every point from $A$: $\\overrightarrow{AB} = \\boldsymbol{a}$, $\\overrightarrow{AD} = \\boldsymbol{b}$. Since $M$ is the midpoint of $DA$, $\\overrightarrow{AM} = \\dfrac{1}{2}\\overrightarrow{AD} = \\dfrac{1}{2}\\boldsymbol{b}$. Then $\\overrightarrow{BM} = \\overrightarrow{AM} - \\overrightarrow{AB} = \\dfrac{1}{2}\\boldsymbol{b} - \\boldsymbol{a}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -900,7 +900,7 @@
    "sign",
    null
   ],
-  "solution": "Walk along the sides from $A$ to $F$: opposite sides give $\\overrightarrow{DC} = \\boldsymbol{a}$ and $\\overrightarrow{BC} = \\boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\\overrightarrow{AF} = \\boldsymbol{a} + \\dfrac{1}{2}\\boldsymbol{b}$.",
+  "solution": "Measure every point from $A$: $\\overrightarrow{AB} = \\boldsymbol{a}$, $\\overrightarrow{AD} = \\boldsymbol{b}$ and, since $ABCD$ is a parallelogram, $\\overrightarrow{AC} = \\boldsymbol{a} + \\boldsymbol{b}$. Since $F$ is the midpoint of $BC$, $\\overrightarrow{AF} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC}) = \\boldsymbol{a} + \\dfrac{1}{2}\\boldsymbol{b}$. So $\\overrightarrow{AF} = \\boldsymbol{a} + \\dfrac{1}{2}\\boldsymbol{b}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1052,7 +1052,7 @@
    null,
    "slip"
   ],
-  "solution": "Square it: $|\\boldsymbol{c}|^2 = 1\\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot 1 + 4(1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = 1$, where $|\\boldsymbol{c}|^2 = 1$. So the minimum of $|\\boldsymbol{c}|$ is $1$.",
+  "solution": "Square it: $|\\boldsymbol{c}|^2 = \\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot 1 + 4(1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = 1$, where $|\\boldsymbol{c}|^2 = 1$. So the minimum of $|\\boldsymbol{c}|$ is $1$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1090,7 +1090,7 @@
    "half",
    null
   ],
-  "solution": "Square it: $|\\boldsymbol{c}|^2 = 1\\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot 0 + 1(1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = \\dfrac{1}{2}$, where $|\\boldsymbol{c}|^2 = \\dfrac{1}{2}$. So the minimum of $|\\boldsymbol{c}|$ is $\\dfrac{\\sqrt{2}}{2}$.",
+  "solution": "Square it: $|\\boldsymbol{c}|^2 = \\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot 0 + (1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = \\dfrac{1}{2}$, where $|\\boldsymbol{c}|^2 = \\dfrac{1}{2}$. So the minimum of $|\\boldsymbol{c}|$ is $\\dfrac{\\sqrt{2}}{2}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1128,7 +1128,7 @@
    "sign",
    "operation"
   ],
-  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = x_1x_2 + y_1y_2 = (-5) \\cdot (-3) + 5 \\cdot (-1) = 10$ — a number, not a vector.",
+  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = x_1x_2 + y_1y_2 = (-5) \\cdot (-3) + 5 \\cdot (-1) = 10$. The dot product is a number, not a vector.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1166,7 +1166,7 @@
    "sign",
    "swap"
   ],
-  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = x_1x_2 + y_1y_2 = (-3) \\cdot 5 + 1 \\cdot (-3) = -18$ — a number, not a vector.",
+  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = x_1x_2 + y_1y_2 = (-3) \\cdot 5 + 1 \\cdot (-3) = -18$. The dot product is a number, not a vector.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1204,7 +1204,7 @@
    null,
    "operation"
   ],
-  "solution": "$2\\boldsymbol{a} + \\boldsymbol{b} = (-6, 6)$. $|2\\boldsymbol{a} + \\boldsymbol{b}| = \\sqrt{(-6)^2 + 6^2} = \\sqrt{72} = 6\\sqrt{2}$.",
+  "solution": "First $2\\boldsymbol{a} + \\boldsymbol{b} = (-6, 6)$. Then $|2\\boldsymbol{a} + \\boldsymbol{b}| = \\sqrt{(-6)^2 + 6^2} = \\sqrt{72} = 6\\sqrt{2}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1418,7 +1418,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $|\\boldsymbol{a}| = 2$, $|\\boldsymbol{b}| = 4$ and $\\boldsymbol{a} \\cdot \\boldsymbol{b} = -4$, then $|\\boldsymbol{a} - \\boldsymbol{b}| =$ ( )",
+  "stem": "If $|\\boldsymbol{a}| = 2$, $|\\boldsymbol{b}| = 4$ and $\\boldsymbol{a} \\cdot \\boldsymbol{b} = -4$, then $|\\boldsymbol{a} - \\boldsymbol{b}| =$ ( )",
   "options": [
    "$2\\sqrt{3}$",
    "$2\\sqrt{5}$",
@@ -1432,7 +1432,7 @@
    "partial",
    null
   ],
-  "solution": "$|\\boldsymbol{a} - \\boldsymbol{b}|^2 = |\\boldsymbol{a}|^2 - 2\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 28$, so $|\\boldsymbol{a} - \\boldsymbol{b}| = 2\\sqrt{7}$.",
+  "solution": "$|\\boldsymbol{a} - \\boldsymbol{b}|^2 = |\\boldsymbol{a}|^2 - 2\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 4 + 8 + 16 = 28$, so $|\\boldsymbol{a} - \\boldsymbol{b}| = \\sqrt{28} = 2\\sqrt{7}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1456,7 +1456,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $|\\boldsymbol{a}| = 3$, $|\\boldsymbol{b}| = 4$ and $\\boldsymbol{a} \\cdot \\boldsymbol{b} = 0$, then $|2\\boldsymbol{a} + \\boldsymbol{b}| =$ ( )",
+  "stem": "If $|\\boldsymbol{a}| = 3$, $|\\boldsymbol{b}| = 4$ and $\\boldsymbol{a} \\cdot \\boldsymbol{b} = 0$, then $|2\\boldsymbol{a} + \\boldsymbol{b}| =$ ( )",
   "options": [
    "$\\sqrt{53}$",
    "$52$",
@@ -1470,7 +1470,7 @@
    "operation",
    null
   ],
-  "solution": "$|2\\boldsymbol{a} + \\boldsymbol{b}|^2 = 4|\\boldsymbol{a}|^2 + 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 52$, so $|2\\boldsymbol{a} + \\boldsymbol{b}| = 2\\sqrt{13}$.",
+  "solution": "$|2\\boldsymbol{a} + \\boldsymbol{b}|^2 = 4|\\boldsymbol{a}|^2 + 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 36 + 16 = 52$, so $|2\\boldsymbol{a} + \\boldsymbol{b}| = \\sqrt{52} = 2\\sqrt{13}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1494,7 +1494,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $|\\boldsymbol{a}| = 4$, $|\\boldsymbol{b}| = 3$ and $\\boldsymbol{a} \\cdot \\boldsymbol{b} = 6$, then $|2\\boldsymbol{a} + \\boldsymbol{b}| =$ ( )",
+  "stem": "If $|\\boldsymbol{a}| = 4$, $|\\boldsymbol{b}| = 3$ and $\\boldsymbol{a} \\cdot \\boldsymbol{b} = 6$, then $|2\\boldsymbol{a} + \\boldsymbol{b}| =$ ( )",
   "options": [
    "$\\sqrt{97}$",
    "$97$",
@@ -1508,7 +1508,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$|2\\boldsymbol{a} + \\boldsymbol{b}|^2 = 4|\\boldsymbol{a}|^2 + 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 97$, so $|2\\boldsymbol{a} + \\boldsymbol{b}| = \\sqrt{97}$.",
+  "solution": "$|2\\boldsymbol{a} + \\boldsymbol{b}|^2 = 4|\\boldsymbol{a}|^2 + 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 64 + 24 + 9 = 97$, so $|2\\boldsymbol{a} + \\boldsymbol{b}| = \\sqrt{97} = \\sqrt{97}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",
@@ -1532,7 +1532,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $|\\boldsymbol{a}| = 4$, $|\\boldsymbol{b}| = 4$ and the angle between $\\boldsymbol{a}$ and $\\boldsymbol{b}$ is $90^\\circ$, then $|2\\boldsymbol{a} - \\boldsymbol{b}| =$ ( )",
+  "stem": "If $|\\boldsymbol{a}| = 4$, $|\\boldsymbol{b}| = 4$ and the angle between $\\boldsymbol{a}$ and $\\boldsymbol{b}$ is $90^\\circ$, then $|2\\boldsymbol{a} - \\boldsymbol{b}| =$ ( )",
   "options": [
    "$80$",
    "$4\\sqrt{5}$",
@@ -1546,7 +1546,7 @@
    "slip",
    "operation"
   ],
-  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = |\\boldsymbol{a}||\\boldsymbol{b}|\\cos 90^\\circ = 0$. $|2\\boldsymbol{a} - \\boldsymbol{b}|^2 = 4|\\boldsymbol{a}|^2 - 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 80$, so $|2\\boldsymbol{a} - \\boldsymbol{b}| = 4\\sqrt{5}$.",
+  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = |\\boldsymbol{a}||\\boldsymbol{b}|\\cos 90^\\circ = 0$. $|2\\boldsymbol{a} - \\boldsymbol{b}|^2 = 4|\\boldsymbol{a}|^2 - 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + |\\boldsymbol{b}|^2 = 64 + 16 = 80$, so $|2\\boldsymbol{a} - \\boldsymbol{b}| = \\sqrt{80} = 4\\sqrt{5}$.",
   "video": "V44",
   "version": "a",
   "domain": "VEC",

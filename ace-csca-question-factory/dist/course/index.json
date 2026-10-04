@@ -60,7 +60,7 @@
   {
    "ref": "d4148-w1",
    "kind": "d4148",
-   "title": "41–48 drill · Week 1 · version A",
+   "title": "41-48 drill · Week 1 · version A",
    "items": 8,
    "key": "ABBDACCD",
    "version": "a"
@@ -173,7 +173,7 @@
   {
    "ref": "d4148-w2",
    "kind": "d4148",
-   "title": "41–48 drill · Week 2 · version A",
+   "title": "41-48 drill · Week 2 · version A",
    "items": 8,
    "key": "CBBAADDC",
    "version": "a"
@@ -293,7 +293,7 @@
   {
    "ref": "d4148-w3",
    "kind": "d4148",
-   "title": "41–48 drill · Week 3 · version A",
+   "title": "41-48 drill · Week 3 · version A",
    "items": 8,
    "key": "DBADACCB",
    "version": "a"
@@ -399,7 +399,7 @@
   {
    "ref": "d4148-w4",
    "kind": "d4148",
-   "title": "41–48 drill · Week 4 · version A",
+   "title": "41-48 drill · Week 4 · version A",
    "items": 8,
    "key": "DDCAABBC",
    "version": "a"
@@ -505,7 +505,7 @@
   {
    "ref": "d4148-w5",
    "kind": "d4148",
-   "title": "41–48 drill · Week 5 · version A",
+   "title": "41-48 drill · Week 5 · version A",
    "items": 8,
    "key": "CDBADABC",
    "version": "a"
@@ -618,7 +618,7 @@
   {
    "ref": "d4148-w6",
    "kind": "d4148",
-   "title": "41–48 drill · Week 6 · version A",
+   "title": "41-48 drill · Week 6 · version A",
    "items": 8,
    "key": "DBABDCAC",
    "version": "a"
@@ -696,7 +696,7 @@
   {
    "ref": "d4148-w7",
    "kind": "d4148",
-   "title": "41–48 drill · Week 7 · version A",
+   "title": "41-48 drill · Week 7 · version A",
    "items": 8,
    "key": "ACBADCDB",
    "version": "a"
@@ -711,7 +711,7 @@
   {
    "ref": "d4148-w1",
    "kind": "d4148",
-   "title": "41–48 drill · Week 1 · version B",
+   "title": "41-48 drill · Week 1 · version B",
    "items": 8,
    "key": "BDDACACB",
    "version": "b"
@@ -719,7 +719,7 @@
   {
    "ref": "d4148-w2",
    "kind": "d4148",
-   "title": "41–48 drill · Week 2 · version B",
+   "title": "41-48 drill · Week 2 · version B",
    "items": 8,
    "key": "ACDBDBAC",
    "version": "b"
@@ -727,7 +727,7 @@
   {
    "ref": "d4148-w3",
    "kind": "d4148",
-   "title": "41–48 drill · Week 3 · version B",
+   "title": "41-48 drill · Week 3 · version B",
    "items": 8,
    "key": "BADBDCCA",
    "version": "b"
@@ -735,7 +735,7 @@
   {
    "ref": "d4148-w4",
    "kind": "d4148",
-   "title": "41–48 drill · Week 4 · version B",
+   "title": "41-48 drill · Week 4 · version B",
    "items": 8,
    "key": "DCBAABDC",
    "version": "b"
@@ -743,7 +743,7 @@
   {
    "ref": "d4148-w5",
    "kind": "d4148",
-   "title": "41–48 drill · Week 5 · version B",
+   "title": "41-48 drill · Week 5 · version B",
    "items": 8,
    "key": "CBBAACDD",
    "version": "b"
@@ -751,7 +751,7 @@
   {
    "ref": "d4148-w6",
    "kind": "d4148",
-   "title": "41–48 drill · Week 6 · version B",
+   "title": "41-48 drill · Week 6 · version B",
    "items": 8,
    "key": "CBDAACBD",
    "version": "b"
@@ -759,7 +759,7 @@
   {
    "ref": "d4148-w7",
    "kind": "d4148",
-   "title": "41–48 drill · Week 7 · version B",
+   "title": "41-48 drill · Week 7 · version B",
    "items": 8,
    "key": "ABCDBCAD",
    "version": "b"

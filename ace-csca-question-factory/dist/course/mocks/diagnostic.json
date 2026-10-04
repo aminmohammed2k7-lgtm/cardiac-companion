@@ -26,7 +26,7 @@
    "swap",
    "symbol"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\subseteq B$ is incorrect. $4 \\in A$ but $4 \\notin B$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $4 \\in A$ but $4 \\notin B$, so the two sets are not equal.",
   "video": "V02",
   "version": "a"
  },
@@ -43,7 +43,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $P = [1, 5]$ and $Q = (3, 9]$, then $P \\cap Q =$ ( )",
+  "stem": "If $P = [1, 5]$ and $Q = (3, 9]$, then $P \\cap Q =$ ( )",
   "options": [
    "$(3, 5)$",
    "$[3, 5)$",
@@ -57,7 +57,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $3$ to $5$. $3$ is excluded and $5$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(3, 5]$.",
+  "solution": "The intersection is the part that lies in both sets. $P$ runs from $1$ to $5$ and $Q$ runs from $3$ to $9$, so they overlap from $3$ to $5$. The end point $3$ comes from $Q$, where it is excluded, and $5$ comes from $P$, where it is included. So $P \\cap Q = (3, 5]$.",
   "video": "V02",
   "version": "a"
  },
@@ -88,7 +88,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(x + 3)(x + 1) < 0$. The roots are $-3$ and $-1$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-3, -1)$.",
+  "solution": "Factor the left side: $(x + 3)(x + 1) < 0$. The roots are $-3$ and $-1$. The graph of $y = (x + 3)(x + 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-3, -1)$.",
   "video": "V03",
   "version": "a"
  },
@@ -119,7 +119,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "The expression under the root must be positive — not just non-negative, because it is in a denominator: $4 - x > 0$, so $x < 4$. Domain: $(-\\infty, 4)$.",
+  "solution": "The square root is in the denominator, so the expression under it must be positive, not zero: $4 - x > 0$, so $x < 4$. The domain is $(-\\infty, 4)$.",
   "video": "V05",
   "version": "a"
  },
@@ -150,7 +150,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "$a_n = a_1 + (n - 1)d$, so $a_{100} = 8 + 99 \\cdot 2 = 206$. Counting $100$ steps instead of $99$ is the off-by-one trap.",
+  "solution": "Since $a_n = a_1 + (n - 1)d$, we get $a_{100} = 8 + 99 \\cdot 2 = 206$. From $a_1$ to $a_{100}$ there are $99$ steps of size $d$, not $100$.",
   "video": "V27",
   "version": "a"
  },
@@ -212,7 +212,7 @@
    "reciprocal",
    "companion"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{\\sqrt{6} + \\sqrt{3}}{2}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ and $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. Substituting, the expression equals $\\left(\\dfrac{1}{2} + \\dfrac{\\sqrt{2}}{2}\\right) \\cdot \\sqrt{3} = \\dfrac{\\sqrt{6} + \\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -243,7 +243,7 @@
    "companion",
    null
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^5$ — it is odd: $f(-x) = -f(x)$. $y = x^4 - x^2$ is false: it is even: $f(-x) = f(x)$. $y = -x^2$ is false: it is even: $f(-x) = f(x)$. $y = x + \\cos x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^5$ is correct. $f(-x) = -x^5 = -f(x)$, so it is odd. $y = x^4 - x^2$ is incorrect. $f(-x) = x^4 - x^2 = f(x)$, so it is even, not odd. $y = -x^2$ is incorrect. $f(-x) = -x^2 = f(x)$, so it is even, not odd. $y = x + \\cos x$ is incorrect. $f(-x) = -x + \\cos x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a"
  },
@@ -274,7 +274,7 @@
    "near-miss",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 1$, so $y^3 = x - 1$, hence $y = \\sqrt[3]{x - 1}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 1$, so $y^3 = x - 1$. Take the cube root of both sides: $y = \\sqrt[3]{x - 1}$.",
   "video": "V07",
   "version": "a"
  },
@@ -294,9 +294,9 @@
   "stem": "Which of the following functions is monotonically increasing on $(-\\infty, +\\infty)$? ( )",
   "options": [
    "$y = e^x$",
-   "$y = -x^2$",
+   "$y = -3x + 3$",
    "$y = -\\dfrac{3}{x}$",
-   "$y = \\dfrac{3}{x}$"
+   "$y = -x^2$"
   ],
   "answer": 0,
   "traps": [
@@ -305,7 +305,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = e^x$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = -\\dfrac{3}{x}$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = \\dfrac{3}{x}$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = -x^2$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = e^x$ is correct. The base $e \\approx 2.718$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = -\\dfrac{3}{x}$ is incorrect. It is not defined at $x = 0$, and it increases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = -x^2$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$. $y = -3x + 3$ is incorrect. It is a linear function with negative slope $-3$, so it is decreasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a"
  },
@@ -336,7 +336,7 @@
    "axis",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-3, 5)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-3, 5)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a"
  },
@@ -367,7 +367,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x + 6}{x + 5} - 1 = \\dfrac{1}{x + 5} \\le 0$. The numerator is positive, so the denominator must be negative: $x < -5$ ($x = -5$ is never allowed). Solution set: $(-\\infty, -5)$. Do not multiply both sides by $x + 5$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x + 6}{x + 5} - 1 = \\dfrac{(x + 6) - (x + 5)}{x + 5} = \\dfrac{1}{x + 5}$, so the inequality becomes $\\dfrac{1}{x + 5} \\le 0$. The numerator $1$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x + 5 < 0$, that is $x < -5$. The solution set is $(-\\infty, -5)$. Multiplying both sides by $x + 5$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a"
  },
@@ -398,7 +398,7 @@
    "partial",
    null
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 14$, so $b = 7$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 14$, so $b = 7$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a"
  },
@@ -429,7 +429,7 @@
    "domain",
    "companion"
   ],
-  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ = \\dfrac{\\pi}{6}$. The intercept does not matter.",
+  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ = \\dfrac{\\pi}{6}$. The intercept $1$ does not affect the angle.",
   "video": "V22",
   "version": "a"
  },
@@ -460,7 +460,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Decide for each option whether the two powers share a base (exponential function) or an exponent (power function). The correct statement is $1.3^{2/3} < 2.3^{2/3}$ — same exponent $2/3$: $y = x^{2/3}$ is increasing on $(0, +\\infty)$, so the larger base gives the larger value. $3^{1.2} > 3^{2.25}$ is false: same base $3$: $y = 3^x$ is increasing, so the larger exponent gives the larger value. $0.3^{-0.6} < 0.3^{-0.3}$ is false: same base $0.3$: $y = 0.3^x$ is decreasing, so the larger exponent gives the smaller value. $3.5^{-0.3} > 1.7^{-0.3}$ is false: same exponent $-0.3$: $y = x^{-0.3}$ is decreasing on $(0, +\\infty)$, so the larger base gives the smaller value.",
+  "solution": "In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function. $1.3^{2/3} < 2.3^{2/3}$ is correct. Both powers have the exponent $2/3$, and $y = x^{2/3}$ is increasing on $(0, +\\infty)$ because $2/3 > 0$. Since $1.3 < 2.3$, $1.3^{2/3} < 2.3^{2/3}$. $3^{1.2} > 3^{2.25}$ is incorrect. Both powers have the base $3$, and $y = 3^x$ is increasing because $3 > 1$. Since $1.2 < 2.25$, $3^{1.2} < 3^{2.25}$. $0.3^{-0.6} < 0.3^{-0.3}$ is incorrect. Both powers have the base $0.3$, and $y = 0.3^x$ is decreasing because $0 < 0.3 < 1$. Since $-0.6 < -0.3$, $0.3^{-0.6} > 0.3^{-0.3}$. $3.5^{-0.3} > 1.7^{-0.3}$ is incorrect. Both powers have the exponent $-0.3$, and $y = x^{-0.3}$ is decreasing on $(0, +\\infty)$ because $-0.3 < 0$. Since $1.7 < 3.5$, $1.7^{-0.3} > 3.5^{-0.3}$.",
   "video": "V43",
   "version": "a"
  },
@@ -491,7 +491,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{-3}{x} = -\\dfrac{3}{2}$ and $x = 2$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{-3}{x} = -\\dfrac{3}{2}$, which gives $x = -3 \\div \\left(-\\dfrac{3}{2}\\right) = 2$.",
   "video": "V10",
   "version": "a"
  },
@@ -522,7 +522,7 @@
    "partial",
    "off-by-one"
   ],
-  "solution": "The common difference is $d = a_2 - a_1 = -2$. $a_n = a_1 + (n - 1)d$, so $a_{1000} = 6 + 999 \\cdot \\left(-2\\right) = -1992$. Counting $1000$ steps instead of $999$ is the off-by-one trap.",
+  "solution": "The common difference is $d = a_2 - a_1 = -2$. Since $a_n = a_1 + (n - 1)d$, we get $a_{1000} = 6 + 999 \\cdot \\left(-2\\right) = -1992$. From $a_1$ to $a_{1000}$ there are $999$ steps of size $d$, not $1000$.",
   "video": "V27",
   "version": "a"
  },
@@ -553,7 +553,7 @@
    "sign",
    null
   ],
-  "solution": "Standard form $(x - a)^2 + (y - b)^2 = r^2$: flip the signs of the centre inside the brackets and square the radius ($r^2 = 49$). So the equation is $(x - 3)^2 + (y - 1)^2 = 49$.",
+  "solution": "A circle with center $(a, b)$ and radius $r$ has the equation $(x - a)^2 + (y - b)^2 = r^2$. Here $a = 3$, $b = 1$ and $r^2 = 7^2 = 49$. So the equation is $(x - 3)^2 + (y - 1)^2 = 49$.",
   "video": "V34",
   "version": "a"
  },
@@ -570,7 +570,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(3, -5)$ and $B(-5, 0)$, then $|AB| =$ ( )",
+  "stem": "For the points $A(3, -5)$ and $B(-5, 0)$, $|AB| =$ ( )",
   "options": [
    "$\\sqrt{29}$",
    "$\\sqrt{89}$",
@@ -584,7 +584,7 @@
    "partial",
    "operation"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-8)^2 + 5^2} = \\sqrt{89}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-5 - 3 = -8$ and $0 - (-5) = 5$. By the distance formula, $|AB| = \\sqrt{(-8)^2 + 5^2} = \\sqrt{64 + 25} = \\sqrt{89}$.",
   "video": "V21",
   "version": "a"
  },
@@ -615,7 +615,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Slope first: $k = \\dfrac{1 - (-2)}{-2 - 1} = -1$. Then $y - (-2) = -1(x - 1)$, i.e. $y = -x - 1$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{1 - (-2)}{-2 - 1} = -1$. By the point-slope form through $P$, $y + 2 = -(x - 1)$, that is $y = -x - 1$. Check with $Q$: $-\\left(-2\\right) - 1 = 1$.",
   "video": "V23",
   "version": "a"
  },
@@ -646,7 +646,7 @@
    "partial",
    "radius"
   ],
-  "solution": "Complete the square: $x^2 + (y - 1)^2 = 25$ (or use centre $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right)$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F$). So $r = 5$ ($25$ is $r^2$).",
+  "solution": "Completing the square, $y^2 - 2y = (y - 1)^2 - 1$, so the equation becomes $x^2 + (y - 1)^2 = 25$, since $1 + 24 = 25$. So $r = \\sqrt{25} = 5$.",
   "video": "V35",
   "version": "a"
  },
@@ -663,7 +663,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{\\sqrt{7}}{4}$ and $0 < \\alpha < \\dfrac{\\pi}{2}$, then $\\tan\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{\\sqrt{7}}{4}$ and $0 < \\alpha < \\dfrac{\\pi}{2}$, then $\\tan\\alpha =$ ( )",
   "options": [
    "$\\dfrac{3\\sqrt{7}}{7}$",
    "$\\dfrac{\\sqrt{7}}{4}$",
@@ -677,7 +677,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\cos^2\\alpha$ gives $\\sin\\alpha = \\pm \\dfrac{3}{4}$; in the first quadrant sine is positive. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{3\\sqrt{7}}{7}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\left(\\dfrac{\\sqrt{7}}{4}\\right)^2 = 1 - \\dfrac{7}{16} = \\dfrac{9}{16}$, so $\\sin\\alpha = \\pm \\dfrac{3}{4}$. In the first quadrant sine is positive, so $\\sin\\alpha = \\dfrac{3}{4}$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{3\\sqrt{7}}{7}$.",
   "video": "V11",
   "version": "a"
  },
@@ -708,7 +708,7 @@
    null,
    "companion"
   ],
-  "solution": "The common ratio is $q = \\dfrac{-18}{6} = -3$, so $a_n = a_1q^{n-1} = 6 \\cdot (-3)^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{-18}{6} = -3$, so $a_n = a_1q^{n-1} = 6 \\cdot (-3)^{n-1}$. Check with $n = 1$: the formula gives $6 \\cdot (-3)^{0} = 6$, the first term. With the exponent $n$ instead of $n - 1$, it would give $-18$.",
   "video": "V28",
   "version": "a"
  },
@@ -725,7 +725,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$\\lvert a \\rvert > \\lvert b \\rvert$",
    "$a^2 > b^2$",
@@ -739,7 +739,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $9a > 9b$ — multiplying by the positive number $9$ keeps the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $-a > -b$ is false: multiplying by $-1$ reverses the direction.",
+  "solution": "$9a > 9b$ is correct. Multiplying both sides by the positive number $9$ keeps the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$.",
   "video": "V04",
   "version": "a"
  },
@@ -756,7 +756,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $P(-1, -3)$ and $Q(-2, -6)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(-1, -3)$ and $Q(-2, -6)$, $|PQ| =$ ( )",
   "options": [
    "$4$",
    "$\\sqrt{10}$",
@@ -770,7 +770,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-1)^2 + (-3)^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-2 - (-1) = -1$ and $-6 - (-3) = -3$. By the distance formula, $|PQ| = \\sqrt{(-1)^2 + (-3)^2} = \\sqrt{1 + 9} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a"
  },
@@ -801,7 +801,7 @@
    "swap",
    "domain"
   ],
-  "solution": "The correct statement is “Its graph passes through the point $(0, 1)$” — at $x = 0$ the power equals $1$. “Its range is $\\mathbb{R}$” is false: its values are always positive. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 5$. “It is monotonically decreasing on $\\mathbb{R}$” is false: the base is greater than $1$, so the function increases.",
+  "solution": "“Its graph passes through the point $(0, 1)$” is correct. At $x = 0$ the power is $1$, so $y = 1$. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $5$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions. “It is monotonically decreasing on $\\mathbb{R}$” is incorrect. The base $5$ is greater than $1$, so the function is increasing.",
   "video": "V40",
   "version": "a"
  },
@@ -863,7 +863,7 @@
    "swap",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = \\dfrac{1}{5}$, $y = \\dfrac{8}{5}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -2x + 2$. Substituting this into the other equation gives $x - 2(-2x + 2) + 3 = 0$, that is $5x - 1 = 0$, so $x = \\dfrac{1}{5}$. Then $y = -2 \\cdot \\dfrac{1}{5} + 2 = \\dfrac{8}{5}$. So the intersection point is $\\left(\\dfrac{1}{5}, \\dfrac{8}{5}\\right)$.",
   "video": "V24",
   "version": "a"
  },
@@ -894,7 +894,7 @@
    "axis",
    null
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 2 + 2 = 4$ (plus, not minus), so $c = 2$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 2, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 2 + 2 = 4$, so $c = 2$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 2, 0)$.",
   "video": "V39",
   "version": "a"
  },
@@ -925,7 +925,7 @@
    "sign",
    null
   ],
-  "solution": "$\\log_{3}81 = 4$ because $3^{4} = 81$. A base $\\dfrac{1}{3}$ changes the sign: $\\log_{\\frac{1}{3}}9 = -\\log_{3}9 = -2$. Sum: $2$.",
+  "solution": "$\\log_{3}81 = 4$ because $3^{4} = 81$. Changing the base to $\\dfrac{1}{3}$ changes the sign: $\\log_{\\frac{1}{3}}9 = -2$, because $\\left(\\dfrac{1}{3}\\right)^{-2} = 3^{2} = 9$. So the value is $4 + (-2) = 2$.",
   "video": "V41",
   "version": "a"
  },
@@ -956,7 +956,7 @@
    "partial",
    null
   ],
-  "solution": "The correct statement is “Its range is $[-1, 1]$”. “It has exactly one zero” is false: it has infinitely many zeros. “Its minimum positive period is $\\pi$” is false: the minimum positive period of $y = \\sin x$ is $2\\pi$. “Its maximum value is $2$” is false: its values never exceed $1$.",
+  "solution": "“Its range is $[-1, 1]$” is correct. Its values lie between $-1$ and $1$, and both ends are reached. “It has exactly one zero” is incorrect. It is zero at $x = k\\pi$ for every integer $k$, so it has infinitely many zeros. “Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\sin \\dfrac{\\pi}{2} = 1$ but $\\sin\\left(\\dfrac{\\pi}{2} + \\pi\\right) = -1$. “Its maximum value is $2$” is incorrect. Its values never exceed $1$.",
   "video": "V13",
   "version": "a"
  },
@@ -987,7 +987,7 @@
    null,
    "axis"
   ],
-  "solution": "Rewrite as $x^2 = 20y$. The correct statement is “Its directrix is $y = -5$” — the directrix is $y = -5$, opposite to the focus. “Its directrix is $x = -5$” is false: the directrix is perpendicular to the axis of symmetry: $y = -5$. “Its focus is $(5, 0)$” is false: the focus lies on the $y$-axis: $(0, 5)$. “Its focus is $(0, 10)$” is false: use a quarter of the coefficient, not a half: the focus is $(0, 5)$.",
+  "solution": "First rewrite the equation as $x^2 = 20y$. “Its directrix is $y = -5$” is correct. The directrix is $y = -\\dfrac{m}{4} = -5$. “Its directrix is $x = -5$” is incorrect. The directrix is perpendicular to the axis of symmetry, so it is $y = -5$. “Its focus is $(5, 0)$” is incorrect. The focus lies on the $y$-axis, at $(0, 5)$. “Its focus is $(0, 10)$” is incorrect. The focus is at $\\dfrac{m}{4}$, not $\\dfrac{m}{2}$, so it is $(0, 5)$.",
   "video": "V36",
   "version": "a"
  },
@@ -1018,7 +1018,7 @@
    "parallel",
    "sign"
   ],
-  "solution": "The given line has slope $-4$. A perpendicular line needs slope $\\dfrac{1}{4}$ (product $-1$); that is $x - 4y + 4 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $-4$. A perpendicular line has slope $\\dfrac{1}{4}$, because $-4 \\cdot \\dfrac{1}{4} = -1$. The only option with slope $\\dfrac{1}{4}$ is $x - 4y + 4 = 0$.",
   "video": "V25",
   "version": "a"
  },
@@ -1049,7 +1049,7 @@
    null,
    "pm"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{5}{8}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{4}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{1}{4}\\right)}{2} = \\dfrac{5}{8}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{4}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{10}}{4}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1111,7 +1111,7 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt{(x + 1)^2}$ — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x + 1 \\rvert$ on $\\mathbb{R}$. $y = x + 1$ is false: the rule differs when $x + 1 < 0$. $y = \\left(\\sqrt{x + 1}\\right)^2$ is false: it is defined only for $x + 1 \\ge 0$. $y = \\sqrt[3]{(x + 1)^3}$ is false: it equals $x + 1$, which differs from $\\lvert x + 1 \\rvert$ when $x + 1 < 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt{(x + 1)^2}$ is correct. $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x + 1 \\rvert$ on $\\mathbb{R}$. $y = x + 1$ is incorrect. It differs from $\\lvert x + 1 \\rvert$ when $x + 1 < 0$. At $x = -2$ it gives $-1$, but $y = \\lvert x + 1 \\rvert$ gives $1$. $y = \\left(\\sqrt{x + 1}\\right)^2$ is incorrect. It is defined only for $x + 1 \\ge 0$, while $y = \\lvert x + 1 \\rvert$ is defined on $\\mathbb{R}$. $y = \\sqrt[3]{(x + 1)^3}$ is incorrect. It equals $x + 1$, which differs from $\\lvert x + 1 \\rvert$ when $x + 1 < 0$. At $x = -2$ it gives $-1$, but $y = \\lvert x + 1 \\rvert$ gives $1$.",
   "video": "V08",
   "version": "a"
  },
@@ -1128,7 +1128,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = \\dfrac{5}{8}$ and $\\alpha$ is an acute angle. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = \\dfrac{5}{8}$ and $\\alpha$ is an acute angle. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{\\sqrt{13}}{4}$",
    "$\\pm \\dfrac{\\sqrt{13}}{4}$",
@@ -1142,7 +1142,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(0, \\dfrac{\\pi}{4}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{13}{16}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{13}}{4}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(0, \\dfrac{\\pi}{4}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 + \\dfrac{5}{8}}{2} = \\dfrac{13}{16}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{13}}{4}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{13}}{4}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1173,7 +1173,7 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ — the sign is wrong: the correct result is $-\\tan\\alpha$. The other three statements are true.",
+  "solution": "$\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.",
   "video": "V12",
   "version": "a"
  },
@@ -1204,7 +1204,7 @@
    null,
    "sign"
   ],
-  "solution": "A quarter of the coefficient: for $y^2 = mx$ the focus is $\\left(\\dfrac{m}{4}, 0\\right)$ and the directrix is $x = -\\dfrac{m}{4}$. Here $m = 12$, so the directrix is $x = -3$ — on the opposite side of the vertex from the focus.",
+  "solution": "For $y^2 = mx$ the focus is $\\left(\\dfrac{m}{4}, 0\\right)$ and the directrix is $x = -\\dfrac{m}{4}$. Here $m = 12$, so $\\dfrac{m}{4} = 3$ and the directrix is $x = -3$, on the opposite side of the vertex from the focus.",
   "video": "V36",
   "version": "a"
  },
@@ -1266,7 +1266,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $3$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 3 + 98 \\cdot 1 = 101$ and $a_{99} = \\dfrac{1}{101}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 3$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 3 + 98 \\cdot 1 = 101$ and $a_{99} = \\dfrac{1}{101}$.",
   "video": "V32",
   "version": "a"
  },
@@ -1297,7 +1297,7 @@
    "swap",
    null
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$”. “Its domain is $(-\\infty, +\\infty)$” is false: the argument of a logarithm must be positive. “Its graph always passes through the point $(0, 1)$” is false: $(0, 1)$ belongs to $y = a^x$; $x = 0$ is not even in the domain here. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is false: base and argument are on opposite sides of $1$, so the value is negative.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Every real number $t$ is a value, because $\\log_a a^t = t$. “Its domain is $(-\\infty, +\\infty)$” is incorrect. The expression inside a logarithm must be positive, so the domain is $(0, +\\infty)$. “Its graph always passes through the point $(0, 1)$” is incorrect. $x = 0$ is not in the domain of $y = \\log_a x$. The point $(0, 1)$ is the fixed point of $y = a^x$. “When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$” is incorrect. When $0 < a < 1$ and $x > 1$, the base and the argument lie on opposite sides of $1$, so $\\log_a x < 0$.",
   "video": "V42",
   "version": "a"
  },
@@ -1328,7 +1328,7 @@
    null,
    "half"
   ],
-  "solution": "Here $a^2 = 18$ (under $y^2$), $b^2 = 9$ and $c^2 = 9$. The correct statement is “Its foci are $(0, \\pm 3)$” — $c^2 = 18 - 9 = 9$ and the larger denominator is under $y^2$. “The length of its major axis is $6$” is false: that is the minor axis; the major axis is $2a = 6\\sqrt{2}$. “The length of its major axis is $3\\sqrt{2}$” is false: that is $a$; the major axis is $2a = 6\\sqrt{2}$. “Its focal distance is $3$” is false: that is $c$; the focal distance is $2c = 6$.",
+  "solution": "Here $a^2 = 18$ is under $y^2$, $b^2 = 9$, and $c^2 = a^2 - b^2 = 9$. “Its foci are $(0, \\pm 3)$” is correct. $c^2 = 18 - 9 = 9$, so $c = 3$, and the foci are on the $y$-axis because the larger denominator is under $y^2$. “The length of its major axis is $6$” is incorrect. The minor axis has length $2b = 6$, and the major axis is $2a = 6\\sqrt{2}$. “The length of its major axis is $3\\sqrt{2}$” is incorrect. $a = 3\\sqrt{2}$, so the major axis is $2a = 6\\sqrt{2}$. “Its focal distance is $3$” is incorrect. $c = 3$, so the focal distance is $2c = 6$.",
   "video": "V37",
   "version": "a"
  },
@@ -1359,7 +1359,7 @@
    "swap",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-4, -1)$. Step 2 — swap and flip: a line perpendicular to $4x - y - 1 = 0$ has the form $x + 4y + k = 0$. Step 3 — substitute the point: $k = 8$. So $l$: $x + 4y + 8 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = 3y - 1$. Substituting this into the other equation gives $(3y - 1) - 4y = 0$, that is $-y - 1 = 0$, so $y = -1$. Then $x = 3 \\cdot \\left(-1\\right) - 1 = -4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x - y - 1 = 0$ has the form $x + 4y + k = 0$. Substituting $(-4, -1)$ gives $-4 - 4 + k = 0$, so $k = 8$. So $l$ is $x + 4y + 8 = 0$.",
   "video": "V26",
   "version": "a"
  },
@@ -1390,7 +1390,7 @@
    "sign",
    "companion"
   ],
-  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OP} + \\overrightarrow{OQ})$. $\\overrightarrow{PM} = \\dfrac{1}{2}\\overrightarrow{PQ}$ and $\\overrightarrow{PQ} = \\overrightarrow{OQ} - \\overrightarrow{OP}$ (end minus start).",
+  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OP} + \\overrightarrow{OQ})$. Also $\\overrightarrow{PM} = \\dfrac{1}{2}\\overrightarrow{PQ}$, and $\\overrightarrow{PQ} = \\overrightarrow{OQ} - \\overrightarrow{OP}$ because a vector is its end point minus its start point.",
   "video": "V44",
   "version": "a"
  },
@@ -1421,7 +1421,7 @@
    "slip",
    "slip"
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $31$ terms: 10 complete blocks of three (each $0$) and one more term, $z^{30} = 1$. So the sum is $1$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $31$ terms, which is $10$ blocks of three and one more term, $z^{30} = 1$. So the sum is $1$.",
   "video": "V45",
   "version": "a"
  },
@@ -1438,7 +1438,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $2(a_3 + a_5 + a_7) + 3(a_4 + a_{10}) = 72$. Then the sum of the first $11$ terms $S_{11} =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $2(a_3 + a_5 + a_7) + 3(a_4 + a_{10}) = 72$. Then the sum of its first $11$ terms is $S_{11} =$ ( )",
   "options": [
    "$132$",
    "$66$",
@@ -1452,7 +1452,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "Index property: $a_4 + a_{10} = 2a_7$ and $a_3 + a_5 + a_7 = 3a_5$. The condition becomes $6a_5 + 6a_7 = 72$, so $a_5 + a_7 = 12$. Because $5 + 7 = 1 + 11$, $a_1 + a_{11} = 12$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 66$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_4 + a_{10} = 2a_7$ and $a_3 + a_5 + a_7 = 3a_5$. The condition becomes $6a_5 + 6a_7 = 72$, so $a_5 + a_7 = 12$. Because $5 + 7 = 1 + 11$, $a_1 + a_{11} = 12$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 66$.",
   "video": "V33",
   "version": "a"
  },

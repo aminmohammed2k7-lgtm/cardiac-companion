@@ -128,7 +128,7 @@ _24 questions · single answer · seed 1_
 - C. $\dfrac{7}{6}$
 - D. $\dfrac{6}{7}$
 
-**19.** Given $\tan \dfrac{\pi}{3} = \sqrt{3}$ and $\tan \dfrac{\pi}{4} = 1$, then $\tan \dfrac{7\pi}{12} =$ ( )  `TR-sum · M · = · 2 pt`
+**19.** Given that $\tan \dfrac{\pi}{3} = \sqrt{3}$ and $\tan \dfrac{\pi}{4} = 1$, the value of $\tan \dfrac{7\pi}{12}$ is ( )  `TR-sum · M · = · 2 pt`
 
 - A. $-1 - \sqrt{3}$
 - B. $2 + \sqrt{3}$
@@ -156,7 +156,7 @@ _24 questions · single answer · seed 1_
 - C. $n(n + 1)$
 - D. $n^2 + 3n$
 
-**23.** It is known that the arithmetic sequence $\{a_n\}$ satisfies $2(a_2 + a_4 + a_6) + 3(a_7 + a_9) = 72$. Then the sum of the first $11$ terms $S_{11} =$ ( )  `SQ-sum · H · +1 · 2.5 pt`
+**23.** The arithmetic sequence $\{a_n\}$ satisfies $2(a_2 + a_4 + a_6) + 3(a_7 + a_9) = 72$. Then the sum of its first $11$ terms is $S_{11} =$ ( )  `SQ-sum · H · +1 · 2.5 pt`
 
 - A. $132$
 - B. $66$
@@ -180,50 +180,50 @@ _24 questions · single answer · seed 1_
 
 ## Solutions
 
-**1. D** — $a_n = a_1 + (n - 1)d$, so $a_{80} = 6 + 79 \cdot 3 = 243$. Counting $80$ steps instead of $79$ is the off-by-one trap.
+**1. Answer D.** Since $a_n = a_1 + (n - 1)d$, we get $a_{80} = 6 + 79 \cdot 3 = 243$. From $a_1$ to $a_{80}$ there are $79$ steps of size $d$, not $80$.
 
-**2. B** — $a_n = a_1 + (n - 1)d$, so $a_{41} = 0 + 40 \cdot \dfrac{5}{2} = 100$. Counting $41$ steps instead of $40$ is the off-by-one trap.
+**2. Answer B.** Since $a_n = a_1 + (n - 1)d$, we get $a_{41} = 0 + 40 \cdot \dfrac{5}{2} = 100$. From $a_1$ to $a_{41}$ there are $40$ steps of size $d$, not $41$.
 
-**3. D** — The common difference is $d = a_2 - a_1 = -1$. $a_n = a_1 + (n - 1)d$, so $a_5 = 3 + 4 \cdot \left(-1\right) = -1$. Counting $5$ steps instead of $4$ is the off-by-one trap.
+**3. Answer D.** The common difference is $d = a_2 - a_1 = -1$. Since $a_n = a_1 + (n - 1)d$, we get $a_5 = 3 + 4 \cdot \left(-1\right) = -1$. From $a_1$ to $a_5$ there are $4$ steps of size $d$, not $5$.
 
-**4. A** — The correct statement is $a_{12} = -46$ — $a_{12} = a_1 + 11d = -46$. $d = -\dfrac{15}{4}$ is false: the gap between the two terms is $6 - 3 = 3$ steps, not $4$; $d = \dfrac{a_6 - a_3}{6 - 3} = \dfrac{-16 - (-1)}{3} = -5$. $a_n = -5n + 9$ is false: that formula gives $a_1 = 4$; the correct one is $a_n = -5n + 14$. $a_1 = 14$ is false: from $a_3$ back to $a_1$ there are $2$ steps, not $3$: $a_1 = 9$.
+**4. Answer A.** $a_{12} = -46$ is correct. $a_{12} = a_1 + 11d = -46$. $d = -\dfrac{15}{4}$ is incorrect. From $a_3$ to $a_6$ there are $6 - 3 = 3$ steps, not $4$, so $d = \dfrac{a_6 - a_3}{6 - 3} = \dfrac{-16 - (-1)}{3} = -5$. $a_n = -5n + 9$ is incorrect. That formula gives $a_1 = 4$, but $a_1 = 9$. The correct formula is $a_n = -5n + 14$. $a_1 = 14$ is incorrect. From $a_3$ back to $a_1$ there are $2$ steps, not $3$, so $a_1 = -1 - 2 \cdot (-5) = 9$.
 
-**5. C** — The common ratio is $q = \dfrac{20}{5} = 4$, so $a_n = a_1q^{n-1} = 5 \cdot 4^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.
+**5. Answer C.** The common ratio is $q = \dfrac{20}{5} = 4$, so $a_n = a_1q^{n-1} = 5 \cdot 4^{n-1}$. Check with $n = 1$: the formula gives $5 \cdot 4^{0} = 5$, the first term. With the exponent $n$ instead of $n - 1$, it would give $20$.
 
-**6. A** — The terms are $-1, 1, -1, 1, -1$; their sum is $-1$. (Formula: $S_n = \dfrac{a_1(q^n - 1)}{q - 1}$ for $q \ne 1$.)
+**6. Answer A.** Since $q \ne 1$, $S_n = \dfrac{a_1(q^n - 1)}{q - 1}$, so $S_5 = \dfrac{\left(-1\right)\left((-1)^{5} - 1\right)}{\left(-1\right) - 1} = \dfrac{2}{-2} = -1$. Adding the terms $-1, 1, -1, 1, -1$ gives the same result.
 
-**7. C** — For an arithmetic sequence $2a = -9 + \left(-21\right)$, so $a = -15$.
+**7. Answer C.** In an arithmetic sequence the middle term is the average of its neighbours, so $2a = -9 + \left(-21\right) = -30$ and $a = -15$.
 
-**8. B** — The correct statement is “The arithmetic mean of $a$ and $b$ is $3$” — $\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $6$” is false: that is the sum $a + b$; divide by $2$. “The geometric mean of $a$ and $b$ is $\pm 3$” is false: that is the arithmetic mean with a $\pm$ sign. “The arithmetic mean of $a$ and $b$ is $\pm 3$” is false: an arithmetic mean has one value.
+**8. Answer B.** “The arithmetic mean of $a$ and $b$ is $3$” is correct. $\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $6$” is incorrect. $6$ is the sum $a + b$. The mean is $\dfrac{6}{2} = 3$. “The geometric mean of $a$ and $b$ is $\pm 3$” is incorrect. $3$ is the arithmetic mean. The geometric mean is $\pm\sqrt{ab} = \pm 2$. “The arithmetic mean of $a$ and $b$ is $\pm 3$” is incorrect. An arithmetic mean has one value, $\dfrac{a + b}{2} = 3$.
 
-**9. A** — Separate the sign and the size. Size: $3^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \cdot 3^{n}$; test $n = 1$ and $n = 2$ in each option.
+**9. Answer A.** Separate the sign and the size. Size: $3^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \cdot 3^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $-3$ and $9$.
 
-**10. A** — Treat the three parts separately. Numerators: $1, 2, 3, 4$, i.e. $n$. Denominators: $3, 5, 7, 9$, i.e. $2n + 1$. Sign: the first term is negative, $(-1)^{n}$. So $a_n = (-1)^{n} \cdot \dfrac{n}{2n + 1}$.
+**10. Answer A.** Treat the three parts separately. Numerators: $1, 2, 3, 4$, that is $n$. Denominators: $3, 5, 7, 9$, that is $2n + 1$. The first term is negative, so the sign factor is $(-1)^{n}$. So $a_n = (-1)^{n} \cdot \dfrac{n}{2n + 1}$.
 
-**11. C** — The first terms are $3, 6, 11, 18, \ldots$. The correct statement is “neither arithmetic nor geometric” — neither the differences nor the ratios of consecutive terms are constant. “an arithmetic sequence” is false: the differences of consecutive terms are not constant. “a geometric sequence” is false: the ratios of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both.
+**11. Answer C.** The first terms are $3, 6, 11, 18, \ldots$. “neither arithmetic nor geometric” is correct. The differences are $3, 5, 7$, which are not all equal, and the ratios are $2, \dfrac{11}{6}, \dfrac{18}{11}$, which are not all equal either. “an arithmetic sequence” is incorrect. The differences are $3, 5, 7$, which are not all equal. “a geometric sequence” is incorrect. The ratios are $2, \dfrac{11}{6}, \dfrac{18}{11}$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = 3$ while $a_2 = 6$.
 
-**12. C** — For $n \ge 2$: $a_n = S_n - S_{n-1} = 2 \cdot 3^{n} - 2 \cdot 3^{n-1} = 4 \cdot 3^{n-1}$. For $n = 1$: $a_1 = S_1 = 4$, which fits the formula.
+**12. Answer C.** For $n \ge 2$, $a_n = S_n - S_{n-1} = 2 \cdot 3^{n} - 2 \cdot 3^{n-1} = 2 \cdot 3^{n-1}(3 - 1) = 4 \cdot 3^{n-1}$. For $n = 1$, $a_1 = S_1 = 4$, and the formula also gives $4$.
 
-**13. D** — $a_6 = S_6 - S_5 = 36 - 25 = 11$. ($S_6 = 36$ is the sum, not the term.)
+**13. Answer D.** $a_6 = S_6 - S_5 = 36 - 25 = 11$. The value $36$ is $S_6$, the sum of the first $6$ terms, not the term $a_6$ itself.
 
-**14. A** — Take reciprocals: $\dfrac{1}{a_{n+1}} = \dfrac{1 + 4a_n}{a_n} = \dfrac{1}{a_n} + 4$. $\left\{\dfrac{1}{a_n}\right\}$ is an arithmetic sequence with first term $3$ and common difference $4$. So $\dfrac{1}{a_{20}} = 3 + 19 \cdot 4 = 79$ and $a_{20} = \dfrac{1}{79}$.
+**14. Answer A.** Take reciprocals: $\dfrac{1}{a_{n+1}} = \dfrac{1 + 4a_n}{a_n} = \dfrac{1}{a_n} + 4$. So $\left\{\dfrac{1}{a_n}\right\}$ is an arithmetic sequence with first term $\dfrac{1}{a_1} = 3$ and common difference $4$. So $\dfrac{1}{a_{20}} = 3 + 19 \cdot 4 = 79$ and $a_{20} = \dfrac{1}{79}$.
 
-**15. B** — Take reciprocals: $\dfrac{1}{a_n} = \dfrac{1}{a_{n-1}} + 1$. $\left\{\dfrac{1}{a_n}\right\}$ is an arithmetic sequence with first term $1$ and common difference $1$. So $\dfrac{1}{a_{99}} = 1 + 98 \cdot 1 = 99$ and $a_{99} = \dfrac{1}{99}$.
+**15. Answer B.** Take reciprocals: $\dfrac{1}{a_n} = \dfrac{1}{a_{n-1}} + 1$. So $\left\{\dfrac{1}{a_n}\right\}$ is an arithmetic sequence with first term $\dfrac{1}{a_1} = 1$ and common difference $1$. So $\dfrac{1}{a_{99}} = 1 + 98 \cdot 1 = 99$ and $a_{99} = \dfrac{1}{99}$.
 
-**16. B** — Group: $(3^{1} + 3^{2} + \cdots + 3^{5}) + 3(1 + 2 + \cdots + 5) = 363 + 45 = 408$.
+**16. Answer B.** Add the powers and the linear parts separately: $S_5 = (3^{1} + 3^{2} + \cdots + 3^{5}) + 3(1 + 2 + \cdots + 5) = 363 + 45 = 408$.
 
-**17. D** — Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -5)$.
+**17. Answer D.** A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -5)$.
 
-**18. C** — $k = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{-2 - 5}{-8 - (-2)} = \dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.
+**18. Answer C.** $k = \dfrac{y_2 - y_1}{x_2 - x_1} = \dfrac{-2 - 5}{-8 - (-2)} = \dfrac{7}{6}$.
 
-**19. D** — Write $\dfrac{7\pi}{12} = \dfrac{\pi}{3} + \dfrac{\pi}{4}$. Then $\tan\left(\dfrac{\pi}{3} + \dfrac{\pi}{4}\right) = \dfrac{\tan \dfrac{\pi}{3} + \tan \dfrac{\pi}{4}}{1 - \tan \dfrac{\pi}{3}\tan \dfrac{\pi}{4}} = \dfrac{\sqrt{3} + 1}{1 - \sqrt{3} \cdot 1} = -2 - \sqrt{3}$ (rationalise the denominator).
+**19. Answer D.** Write $\dfrac{7\pi}{12} = \dfrac{\pi}{3} + \dfrac{\pi}{4}$. Then $\tan\left(\dfrac{\pi}{3} + \dfrac{\pi}{4}\right) = \dfrac{\tan \dfrac{\pi}{3} + \tan \dfrac{\pi}{4}}{1 - \tan \dfrac{\pi}{3}\tan \dfrac{\pi}{4}} = \dfrac{\sqrt{3} + 1}{1 - \sqrt{3} \cdot 1} = \dfrac{(\sqrt{3} + 1)^2}{(1 - \sqrt{3})(1 + \sqrt{3})} = \dfrac{4 + 2\sqrt{3}}{-2} = -2 - \sqrt{3}$. The denominator was rationalised in the last steps.
 
-**20. C** — Swap $x$ and $y$: $x = 7y + 7$. Solve for $y$: $y = \dfrac{x - 7}{7}$. (The reciprocal $\dfrac{1}{7x + 7}$ is not the inverse function.)
+**20. Answer C.** Swap $x$ and $y$: $x = 7y + 7$. Solve for $y$: $7y = x - 7$, so $y = \dfrac{x - 7}{7}$. The reciprocal $\dfrac{1}{7x + 7}$ is a different function, not the inverse.
 
-**21. B** — Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 3a_{n+1} - 3a_n$, so $q = \dfrac{a_{n+1}}{a_n} = \dfrac{8}{3}$. Put $n = 1$: $5a_1 = 3a_2 - 3 = 8a_1 - 3$, so $a_1 = 1$. Then $S_n = \dfrac{a_1(q^n - 1)}{q - 1} = \dfrac{3}{5}\left(\dfrac{8}{3}\right)^{n} - \dfrac{3}{5}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.
+**21. Answer B.** Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 3a_{n+1} - 3a_n$, that is $8a_n = 3a_{n+1}$, so $q = \dfrac{a_{n+1}}{a_n} = \dfrac{8}{3}$. Put $n = 1$: $5a_1 = 3a_2 - 3 = 8a_1 - 3$, so $a_1 = 1$. Then $S_n = \dfrac{a_1(q^n - 1)}{q - 1} = \dfrac{3}{5}\left(\dfrac{8}{3}\right)^{n} - \dfrac{3}{5}$. Check with $n = 1$: the formula gives $\dfrac{3}{5} \cdot \dfrac{8}{3} - \dfrac{3}{5} = 1$, which is $a_1$.
 
-**22. D** — Take reciprocals: $b_{n+1} = \dfrac{1 + 2a_n}{a_n} = b_n + 2$. So $\{b_n\}$ is arithmetic with $b_1 = 4$ and $d = 2$: $b_n = 2n + 2$. Its sum is $S_n = \dfrac{n(b_1 + b_n)}{2} = n^2 + 3n$.
+**22. Answer D.** Take reciprocals: $b_{n+1} = \dfrac{1 + 2a_n}{a_n} = b_n + 2$. So $\{b_n\}$ is arithmetic with $b_1 = 4$ and $d = 2$: $b_n = 2n + 2$. Its sum is $S_n = \dfrac{n(b_1 + b_n)}{2} = n^2 + 3n$.
 
-**23. B** — Index property: $a_7 + a_9 = 2a_8$ and $a_2 + a_4 + a_6 = 3a_4$. The condition becomes $6a_4 + 6a_8 = 72$, so $a_4 + a_8 = 12$. Because $4 + 8 = 1 + 11$, $a_1 + a_{11} = 12$ and $S_{11} = \dfrac{11(a_1 + a_{11})}{2} = 66$.
+**23. Answer B.** In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_7 + a_9 = 2a_8$ and $a_2 + a_4 + a_6 = 3a_4$. The condition becomes $6a_4 + 6a_8 = 72$, so $a_4 + a_8 = 12$. Because $4 + 8 = 1 + 11$, $a_1 + a_{11} = 12$ and $S_{11} = \dfrac{11(a_1 + a_{11})}{2} = 66$.
 
-**24. A** — For $n = 1$: $a_1 = \dfrac{1}{4}a_1 + \dfrac{9}{4}$, so $a_1 = 3$. For $n \ge 2$: $a_n = S_n - S_{n-1} = \dfrac{1}{4}a_n - \dfrac{1}{4}a_{n-1}$, which gives $a_n = -\dfrac{1}{3}a_{n-1}$. So $\{a_n\}$ is geometric with ratio $-\dfrac{1}{3}$. Hence $a_n = 3\left(-\dfrac{1}{3}\right)^{n-1}$.
+**24. Answer A.** For $n = 1$: $a_1 = \dfrac{1}{4}a_1 + \dfrac{9}{4}$, so $a_1 = 3$. For $n \ge 2$: $a_n = S_n - S_{n-1} = \dfrac{1}{4}a_n - \dfrac{1}{4}a_{n-1}$, which gives $a_n = -\dfrac{1}{3}a_{n-1}$. So $\{a_n\}$ is geometric with ratio $-\dfrac{1}{3}$. Hence $a_n = 3\left(-\dfrac{1}{3}\right)^{n-1}$.

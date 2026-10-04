@@ -26,7 +26,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$.",
+  "solution": "$\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(-\\alpha\\right) = \\cos\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -64,7 +64,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The correct statement is $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $-\\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -102,7 +102,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$. $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$. $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(-\\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -140,7 +140,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "The correct statement is $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\tan$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -178,7 +178,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\tan$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\tan\\left(\\pi - \\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$.",
+  "solution": "$\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$. $\\tan\\left(\\pi - \\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -216,7 +216,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -254,7 +254,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\tan\\left(2\\pi - \\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the name is wrong: the correct result is $\\sin\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\tan\\left(2\\pi - \\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -292,7 +292,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -330,7 +330,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the name is wrong: the correct result is $\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -368,7 +368,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -406,7 +406,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is false: the name is wrong: the correct result is $\\sin\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -444,7 +444,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\tan$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\tan\\left(2\\pi - \\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\tan\\left(2\\pi - \\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -482,7 +482,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\left(\\pi + \\alpha\\right) = \\tan\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\tan$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(-\\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$.",
+  "solution": "$\\tan\\left(\\pi + \\alpha\\right) = \\tan\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where tangent is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(-\\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(-\\alpha\\right) = \\cos\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$. $\\tan\\left(-\\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -520,7 +520,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -558,7 +558,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $-\\cos\\alpha$.",
+  "solution": "$\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$. $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(-\\alpha\\right) = \\cos\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -596,7 +596,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\tan$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -634,7 +634,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\tan$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$ is false: the name is wrong: the correct result is $-\\sin\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(-\\alpha\\right) = \\cos\\alpha$. $\\sin\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(-\\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -672,7 +672,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -710,13 +710,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ — the sign is wrong: the correct result is $\\cos\\alpha$. The other three statements are true.",
+  "solution": "$\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect",
   "seed": "bank:1:TR-red.incorrect:0",
-  "form": "Which reduction formula is INCORRECT",
+  "form": "Which reduction formula is incorrect",
   "answer_letter": "B",
   "answer_value": "$\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$",
   "verified": "stmt"
@@ -748,13 +748,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is $\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ — the sign is wrong: the correct result is $\\cos\\alpha$. The other three statements are true.",
+  "solution": "$\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(-\\alpha\\right) = \\cos\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect",
   "seed": "bank:1:TR-red.incorrect:1",
-  "form": "Which reduction formula is INCORRECT",
+  "form": "Which reduction formula is incorrect",
   "answer_letter": "D",
   "answer_value": "$\\cos\\left(-\\alpha\\right) = -\\cos\\alpha$",
   "verified": "stmt"
@@ -786,13 +786,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\cos\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ — the name is wrong: the correct result is $-\\cos\\alpha$. The other three statements are true.",
+  "solution": "$\\cos\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$. $\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect",
   "seed": "bank:1:TR-red.incorrect:2",
-  "form": "Which reduction formula is INCORRECT",
+  "form": "Which reduction formula is incorrect",
   "answer_letter": "A",
   "answer_value": "$\\cos\\left(\\pi + \\alpha\\right) = \\sin\\alpha$",
   "verified": "stmt"
@@ -824,13 +824,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ — the sign is wrong: the correct result is $\\sin\\alpha$. The other three statements are true.",
+  "solution": "$\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$. $\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect",
   "seed": "bank:1:TR-red.incorrect:3",
-  "form": "Which reduction formula is INCORRECT",
+  "form": "Which reduction formula is incorrect",
   "answer_letter": "D",
   "answer_value": "$\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$",
   "verified": "stmt"
@@ -862,13 +862,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ — the sign is wrong: the correct result is $-\\sin\\alpha$. The other three statements are true.",
+  "solution": "$\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$. $\\tan\\left(\\pi + \\alpha\\right) = \\tan\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where tangent is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect",
   "seed": "bank:1:TR-red.incorrect:4",
-  "form": "Which reduction formula is INCORRECT",
+  "form": "Which reduction formula is incorrect",
   "answer_letter": "C",
   "answer_value": "$\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$",
   "verified": "stmt"
@@ -900,13 +900,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ — the name is wrong: the correct result is $\\cos\\alpha$. The other three statements are true.",
+  "solution": "$\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. $\\tan\\left(-\\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect",
   "seed": "bank:1:TR-red.incorrect:5",
-  "form": "Which reduction formula is INCORRECT",
+  "form": "Which reduction formula is incorrect",
   "answer_letter": "C",
   "answer_value": "$\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$",
   "verified": "stmt"
@@ -938,7 +938,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\sin\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\alpha - \\pi\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$.",
+  "solution": "$\\cos\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\alpha - \\dfrac{\\pi}{2}$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(\\alpha - \\pi\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha - \\pi$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\alpha - \\pi\\right) = -\\cos\\alpha$. $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -976,7 +976,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is false: the name is wrong: the correct result is $-\\sin\\alpha$. $\\sin\\left(\\alpha + \\pi\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} - \\alpha$ lies in the third quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(\\alpha + \\pi\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha + \\pi$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\alpha + \\pi\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1014,7 +1014,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = -\\sin\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\alpha + \\dfrac{3\\pi}{2}\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$. $\\sin\\left(\\alpha + \\pi\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$.",
+  "solution": "$\\cos\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\alpha - \\dfrac{3\\pi}{2}$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(\\alpha + \\dfrac{3\\pi}{2}\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha + \\dfrac{3\\pi}{2}$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\alpha + \\dfrac{3\\pi}{2}\\right) = \\sin\\alpha$. $\\sin\\left(\\alpha + \\pi\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha + \\pi$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\alpha + \\pi\\right) = -\\sin\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\sin\\alpha$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1052,7 +1052,7 @@
    "companion",
    null
   ],
-  "solution": "$\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $-\\dfrac{3}{5}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} - \\alpha$ lies in the third quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha = -\\dfrac{3}{5}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1090,7 +1090,7 @@
    null,
    "sign"
   ],
-  "solution": "$\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $-\\dfrac{3}{4}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha = -\\dfrac{3}{4}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1128,7 +1128,7 @@
    "companion",
    null
   ],
-  "solution": "$\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $\\dfrac{3}{4}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = \\dfrac{3}{4}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1166,7 +1166,7 @@
    "companion",
    "sign"
   ],
-  "solution": "$\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$ (multiple of $\\pi$: the name stays; sign from the quadrant where the angle lands). So the value is $-\\dfrac{2}{3}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha = -\\dfrac{2}{3}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1204,7 +1204,7 @@
    "sign",
    "companion"
   ],
-  "solution": "$\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $\\dfrac{4}{5}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha = \\dfrac{4}{5}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1242,7 +1242,7 @@
    null,
    "companion"
   ],
-  "solution": "$\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $-\\dfrac{2}{5}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = -\\dfrac{2}{5}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1280,13 +1280,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ — the sign is wrong: the correct result is $\\sin\\alpha$. The other three statements are true.",
+  "solution": "$\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect-3half",
   "seed": "bank:1:TR-red.incorrect-3half:0",
-  "form": "Which formula with 3π/2 is INCORRECT",
+  "form": "Which formula with 3π/2 is incorrect",
   "answer_letter": "A",
   "answer_value": "$\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$",
   "verified": "stmt"
@@ -1318,13 +1318,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ — the sign is wrong: the correct result is $-\\sin\\alpha$. The other three statements are true.",
+  "solution": "$\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} - \\alpha$ lies in the third quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} - \\alpha$ lies in the third quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect-3half",
   "seed": "bank:1:TR-red.incorrect-3half:1",
-  "form": "Which formula with 3π/2 is INCORRECT",
+  "form": "Which formula with 3π/2 is incorrect",
   "answer_letter": "A",
   "answer_value": "$\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\sin\\alpha$",
   "verified": "stmt"
@@ -1356,13 +1356,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ — the sign is wrong: the correct result is $-\\cos\\alpha$. The other three statements are true.",
+  "solution": "$\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
   "template": "TR-red.incorrect-3half",
   "seed": "bank:1:TR-red.incorrect-3half:2",
-  "form": "Which formula with 3π/2 is INCORRECT",
+  "form": "Which formula with 3π/2 is incorrect",
   "answer_letter": "A",
   "answer_value": "$\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$",
   "verified": "stmt"
@@ -1380,7 +1380,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\pi + \\alpha\\right) = -\\dfrac{7}{25}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\tan\\left(2\\pi - \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\pi + \\alpha\\right) = -\\dfrac{7}{25}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\tan\\left(2\\pi - \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{24}{7}$",
    "$\\dfrac{7}{24}$",
@@ -1394,7 +1394,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = \\dfrac{7}{25}$. Step 2: in the second quadrant $\\cos\\alpha = -\\dfrac{24}{25}$ and $\\tan\\alpha = -\\dfrac{7}{24}$. Step 3: $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha = \\dfrac{7}{24}$.",
+  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = \\dfrac{7}{25}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{49}{625} = \\dfrac{576}{625}$, and in the second quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{24}{25}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{7}{24}$. Step 3: $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha = \\dfrac{7}{24}$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1418,7 +1418,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\pi + \\alpha\\right) = \\dfrac{15}{17}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\pi - \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\pi + \\alpha\\right) = \\dfrac{15}{17}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\pi - \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{15}{17}$",
    "$-\\dfrac{8}{17}$",
@@ -1432,7 +1432,7 @@
    "companion",
    "sign"
   ],
-  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{15}{17}$. Step 2: in the fourth quadrant $\\cos\\alpha = \\dfrac{8}{17}$. Step 3: $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha = -\\dfrac{8}{17}$.",
+  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{15}{17}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$, and in the fourth quadrant cosine is positive, so $\\cos\\alpha = \\dfrac{8}{17}$. Step 3: $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha = -\\dfrac{8}{17}$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1456,7 +1456,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\dfrac{15}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\dfrac{15}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{15}{17}$",
    "$-\\dfrac{8}{17}$",
@@ -1470,7 +1470,7 @@
    null,
    "companion"
   ],
-  "solution": "Step 1: $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = \\dfrac{15}{17}$. Step 2: in the first quadrant $\\cos\\alpha = \\dfrac{8}{17}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = \\dfrac{8}{17}$.",
+  "solution": "Step 1: $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = \\dfrac{15}{17}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$, and in the first quadrant cosine is positive, so $\\cos\\alpha = \\dfrac{8}{17}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = \\dfrac{8}{17}$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1494,7 +1494,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\tan\\alpha = \\dfrac{24}{7}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin\\left(\\pi - \\alpha\\right)\\cdot\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right)}{\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right)} =$ ( )",
+  "stem": "If $\\tan\\alpha = \\dfrac{24}{7}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin\\left(\\pi - \\alpha\\right)\\cdot\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right)}{\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right)} =$ ( )",
   "options": [
    "$\\dfrac{7}{25}$",
    "$-\\dfrac{24}{25}$",
@@ -1508,7 +1508,7 @@
    null,
    "partial"
   ],
-  "solution": "Reduce each factor: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$, $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$. With $\\sin\\alpha = \\dfrac{24}{25}$ and $\\cos\\alpha = \\dfrac{7}{25}$ the quotient equals $-\\dfrac{7}{25}$.",
+  "solution": "Reduce each factor: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ and $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$. So the expression is $\\dfrac{\\left(\\sin\\alpha\\right)\\left(\\cos\\alpha\\right)}{-\\sin\\alpha} = -\\cos\\alpha$. Here $\\sin\\alpha = \\dfrac{24}{25}$ and $\\cos\\alpha = \\dfrac{7}{25}$ (from $\\tan\\alpha = \\dfrac{24}{7}$ and the quadrant), so the value is $-\\dfrac{7}{25}$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",
@@ -1532,7 +1532,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\cos\\left(2\\pi - \\alpha\\right)\\cdot\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right)}{\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right)} =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\cos\\left(2\\pi - \\alpha\\right)\\cdot\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right)}{\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right)} =$ ( )",
   "options": [
    "$\\dfrac{12}{13}$",
    "$-\\dfrac{5}{13}$",
@@ -1546,7 +1546,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Reduce each factor: $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$, $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$, $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. With $\\sin\\alpha = \\dfrac{5}{13}$ and $\\cos\\alpha = \\dfrac{12}{13}$ the quotient equals $\\dfrac{12}{13}$.",
+  "solution": "Reduce each factor: $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$, $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ and $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. So the expression is $\\dfrac{\\left(\\cos\\alpha\\right)\\left(\\cos\\alpha\\right)}{\\cos\\alpha} = \\cos\\alpha$. Here $\\sin\\alpha = \\dfrac{5}{13}$ and $\\cos\\alpha = \\dfrac{12}{13}$, so the value is $\\dfrac{12}{13}$.",
   "video": "V12",
   "version": "a",
   "domain": "TR",

@@ -12,7 +12,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = [-3, 3)$ and $B = [1, 7)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = [-3, 3)$ and $B = [1, 7)$, then $A \\cap B =$ ( )",
   "options": [
    "$[1, 3)$",
    "$[1, 3]$",
@@ -26,7 +26,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $1$ to $3$. $1$ is included and $3$ is excluded (each end point keeps the bracket of the set it comes from), so the answer is $[1, 3)$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-3$ to $3$ and $B$ runs from $1$ to $7$, so they overlap from $1$ to $3$. The end point $1$ comes from $B$, where it is included, and $3$ comes from $A$, where it is excluded. So $A \\cap B = [1, 3)$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -50,7 +50,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = (-3, 5]$ and $B = (1, 9)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = (-3, 5]$ and $B = (1, 9)$, then $A \\cap B =$ ( )",
   "options": [
    "$(1, 5]$",
    "$[1, 5)$",
@@ -64,7 +64,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $1$ to $5$. $1$ is excluded and $5$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(1, 5]$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-3$ to $5$ and $B$ runs from $1$ to $9$, so they overlap from $1$ to $5$. The end point $1$ comes from $B$, where it is excluded, and $5$ comes from $A$, where it is included. So $A \\cap B = (1, 5]$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -88,7 +88,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = (-2, 4)$ and $B = [0, 5)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = (-2, 4)$ and $B = [0, 5)$, then $A \\cap B =$ ( )",
   "options": [
    "$[0, 4]$",
    "$[0, 4)$",
@@ -102,7 +102,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $0$ to $4$. $0$ is included and $4$ is excluded (each end point keeps the bracket of the set it comes from), so the answer is $[0, 4)$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-2$ to $4$ and $B$ runs from $0$ to $5$, so they overlap from $0$ to $4$. The end point $0$ comes from $B$, where it is included, and $4$ comes from $A$, where it is excluded. So $A \\cap B = [0, 4)$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -126,7 +126,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = [-2, 3]$ and $B = (0, 7)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = [-2, 3]$ and $B = (0, 7)$, then $A \\cap B =$ ( )",
   "options": [
    "$[0, 3)$",
    "$(0, 3]$",
@@ -140,7 +140,7 @@
    "endpoint",
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $0$ to $3$. $0$ is excluded and $3$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(0, 3]$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-2$ to $3$ and $B$ runs from $0$ to $7$, so they overlap from $0$ to $3$. The end point $0$ comes from $B$, where it is excluded, and $3$ comes from $A$, where it is included. So $A \\cap B = (0, 3]$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -164,7 +164,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = [-5, 0]$ and $B = (-3, 2)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = [-5, 0]$ and $B = (-3, 2)$, then $A \\cap B =$ ( )",
   "options": [
    "$(-3, 0)$",
    "$[-5, 2)$",
@@ -178,7 +178,7 @@
    "endpoint",
    null
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $-3$ to $0$. $-3$ is excluded and $0$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(-3, 0]$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-5$ to $0$ and $B$ runs from $-3$ to $2$, so they overlap from $-3$ to $0$. The end point $-3$ comes from $B$, where it is excluded, and $0$ comes from $A$, where it is included. So $A \\cap B = (-3, 0]$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -216,7 +216,7 @@
    "operation",
    "operation"
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything up to $3$, with $3$ included: $\\{x \\mid x \\le 3\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $A$ runs from $-1$ to $3$, and $B$ contains every number up to $1$. Since $-1 < 1 < 3$, the two sets overlap, so together they cover every number up to $3$. The end point $3$ comes from $A$, where it is included. So $A \\cup B = \\{x \\mid x \\le 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -254,7 +254,7 @@
    "operation",
    null
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $2$ upward, with $2$ included: $\\{x \\mid x \\ge 2\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $P$ runs from $2$ to $6$, and $Q$ contains every number from $3$ upward. Since $2 < 3 < 6$, the two sets overlap, so together they cover every number from $2$ upward. The end point $2$ comes from $P$, where it is included. So $P \\cup Q = \\{x \\mid x \\ge 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -292,7 +292,7 @@
    "operation",
    "operation"
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $-5$ upward, with $-5$ included: $\\{x \\mid x \\ge -5\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $M$ runs from $-5$ to $0$, and $N$ contains every number from $-3$ upward. Since $-5 < -3 < 0$, the two sets overlap, so together they cover every number from $-5$ upward. The end point $-5$ comes from $M$, where it is included. So $M \\cup N = \\{x \\mid x \\ge -5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -330,7 +330,7 @@
    "partial",
    "operation"
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $1$ upward, with $1$ included: $\\{x \\mid x \\ge 1\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $A$ runs from $1$ to $3$, and $B$ contains every number from $2$ upward. Since $1 < 2 < 3$, the two sets overlap, so together they cover every number from $1$ upward. The end point $1$ comes from $A$, where it is included. So $A \\cup B = \\{x \\mid x \\ge 1\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -368,7 +368,7 @@
    "partial",
    null
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $-3$ upward, with $-3$ included: $\\{x \\mid x \\ge -3\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $P$ runs from $-3$ to $2$, and $Q$ contains every number from $-1$ upward. Since $-3 < -1 < 2$, the two sets overlap, so together they cover every number from $-3$ upward. The end point $-3$ comes from $P$, where it is included. So $P \\cup Q = \\{x \\mid x \\ge -3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -406,7 +406,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $3$ (excluded) to $4$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 3 < x \\le 4\\}$.",
+  "solution": "A number in $P \\cap Q$ must satisfy both conditions. The larger lower bound is $3$, from $Q$, where it is excluded. The smaller upper bound is $4$, from $P$, where it is included. So $P \\cap Q = \\{x \\mid 3 < x \\le 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -444,7 +444,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-4$ (excluded) to $-2$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -4 < x \\le -2\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $-4$, from $N$, where it is excluded. The smaller upper bound is $-2$, from $M$, where it is included. So $M \\cap N = \\{x \\mid -4 < x \\le -2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -482,7 +482,7 @@
    "endpoint",
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $1$ (included) to $2$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 1 \\le x \\le 2\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $1$, from $B$, where it is included. The smaller upper bound is $2$, from $A$, where it is included. So $A \\cap B = \\{x \\mid 1 \\le x \\le 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -520,7 +520,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-3$ (excluded) to $0$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -3 < x \\le 0\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $-3$, from $B$, where it is excluded. The smaller upper bound is $0$, from $A$, where it is included. So $A \\cap B = \\{x \\mid -3 < x \\le 0\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -558,7 +558,7 @@
    "operation",
    null
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-1$ (included) to $3$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -1 \\le x \\le 3\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $-1$, from $N$, where it is included. The smaller upper bound is $3$, from $M$, where it is included. So $M \\cap N = \\{x \\mid -1 \\le x \\le 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -596,7 +596,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-2$ (included) to $-1$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -2 \\le x \\le -1\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $-2$, from $B$, where it is included. The smaller upper bound is $-1$, from $A$, where it is included. So $A \\cap B = \\{x \\mid -2 \\le x \\le -1\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -634,7 +634,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $4$ (included) to $7$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 4 \\le x < 7\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $4$, from $N$, where it is included. The smaller upper bound is $7$, from $M$, where it is excluded. So $M \\cap N = \\{x \\mid 4 \\le x < 7\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -672,7 +672,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $3$ (excluded) to $4$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 3 < x < 4\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $3$, from $B$, where it is excluded. The smaller upper bound is $4$, from $A$, where it is excluded. So $A \\cap B = \\{x \\mid 3 < x < 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -710,7 +710,7 @@
    "endpoint",
    null
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-2$ (excluded) to $2$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -2 < x < 2\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $-2$, from $B$, where it is excluded. The smaller upper bound is $2$, from $A$, where it is excluded. So $A \\cap B = \\{x \\mid -2 < x < 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -748,7 +748,7 @@
    "operation",
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $4$ (included) to $6$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 4 \\le x \\le 6\\}$.",
+  "solution": "A number in $P \\cap Q$ must satisfy both conditions. The larger lower bound is $4$, from $Q$, where it is included. The smaller upper bound is $6$, from $P$, where it is included. So $P \\cap Q = \\{x \\mid 4 \\le x \\le 6\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -786,7 +786,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $0$ (excluded) to $3$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 0 < x < 3\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $0$, from $N$, where it is excluded. The smaller upper bound is $3$, from $M$, where it is excluded. So $M \\cap N = \\{x \\mid 0 < x < 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -824,7 +824,7 @@
    "partial",
    null
   ],
-  "solution": "The intersection keeps the elements of $M$ that are also in $N$, i.e. those that are at least $4$: $\\{4, 5\\}$.",
+  "solution": "$N$ contains every whole number from $4$ to $2026$. The elements of $M$ that are at least $4$ are $4$ and $5$, so $M \\cap N = \\{4, 5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -862,7 +862,7 @@
    "partial",
    "complement"
   ],
-  "solution": "The intersection keeps the elements of $P$ that are also in $Q$, i.e. those that are at least $2$: $\\{2, 3\\}$.",
+  "solution": "$Q$ contains every whole number from $2$ to $100$. The elements of $P$ that are at least $2$ are $2$ and $3$, so $P \\cap Q = \\{2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -900,7 +900,7 @@
    "partial",
    null
   ],
-  "solution": "The intersection keeps the elements of $A$ that are also in $B$, i.e. those that are at least $3$: $\\{3, 4, 5\\}$.",
+  "solution": "$B$ contains every whole number from $3$ to $2026$. The elements of $A$ that are at least $3$ are $3$, $4$ and $5$, so $A \\cap B = \\{3, 4, 5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -938,7 +938,7 @@
    null,
    "complement"
   ],
-  "solution": "The intersection keeps the elements of $A$ that are also in $B$, i.e. those that are at least $2$: $\\{2, 3\\}$.",
+  "solution": "$B$ contains every whole number from $2$ to $2026$. The elements of $A$ that are at least $2$ are $2$ and $3$, so $A \\cap B = \\{2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -976,7 +976,7 @@
    "operation",
    "partial"
   ],
-  "solution": "The intersection keeps the elements of $A$ that are also in $B$, i.e. those that are at least $1$: $\\{1, 2, 3\\}$.",
+  "solution": "$B$ contains every whole number from $1$ to $2026$. The elements of $A$ that are at least $1$ are $1$, $2$ and $3$, so $A \\cap B = \\{1, 2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1000,7 +1000,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $M = \\{0, 3, 4, 11\\}$ and $N = \\{0, 4, 10\\}$, then $M \\cap N =$ ( )",
+  "stem": "If $M = \\{0, 3, 4, 11\\}$ and $N = \\{0, 4, 10\\}$, then $M \\cap N =$ ( )",
   "options": [
    "$\\{0, 4\\}$",
    "$\\{0, 3, 4, 10, 11\\}$",
@@ -1014,7 +1014,7 @@
    "complement",
    "complement"
   ],
-  "solution": "The intersection holds the elements that belong to both sets: $\\{0, 4\\}$.",
+  "solution": "The intersection contains the elements that appear in both lists. Only $0$ and $4$ appear in both, so $M \\cap N = \\{0, 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1038,7 +1038,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $P = \\{0, 1, 6, 10\\}$ and $Q = \\{1, 6, 7\\}$, then $P \\cap Q =$ ( )",
+  "stem": "If $P = \\{0, 1, 6, 10\\}$ and $Q = \\{1, 6, 7\\}$, then $P \\cap Q =$ ( )",
   "options": [
    "$\\{0, 1, 6, 7, 10\\}$",
    "$\\{1, 6\\}$",
@@ -1052,7 +1052,7 @@
    "complement",
    "complement"
   ],
-  "solution": "The intersection holds the elements that belong to both sets: $\\{1, 6\\}$.",
+  "solution": "The intersection contains the elements that appear in both lists. Only $1$ and $6$ appear in both, so $P \\cap Q = \\{1, 6\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1076,7 +1076,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $P = \\{0, 4, 11\\}$ and $Q = \\{0, 8, 9\\}$, then $P \\cup Q =$ ( )",
+  "stem": "If $P = \\{0, 4, 11\\}$ and $Q = \\{0, 8, 9\\}$, then $P \\cup Q =$ ( )",
   "options": [
    "$\\{0, 4, 8, 9, 11\\}$",
    "$\\{0\\}$",
@@ -1090,7 +1090,7 @@
    "partial",
    "partial"
   ],
-  "solution": "The union holds every element that belongs to at least one of the sets, each written once: $\\{0, 4, 8, 9, 11\\}$.",
+  "solution": "The union contains every element that appears in at least one of the lists. Combine the two lists and write the common element $0$ only once: $P \\cup Q = \\{0, 4, 8, 9, 11\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1114,7 +1114,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = \\{1, 3, 6, 8\\}$ and $B = \\{0, 1, 6, 7\\}$, then $A \\cup B =$ ( )",
+  "stem": "If $A = \\{1, 3, 6, 8\\}$ and $B = \\{0, 1, 6, 7\\}$, then $A \\cup B =$ ( )",
   "options": [
    "$\\{1, 6\\}$",
    "$\\{0, 1, 3, 6, 7, 8\\}$",
@@ -1128,7 +1128,7 @@
    "partial",
    "partial"
   ],
-  "solution": "The union holds every element that belongs to at least one of the sets, each written once: $\\{0, 1, 3, 6, 7, 8\\}$.",
+  "solution": "The union contains every element that appears in at least one of the lists. Combine the two lists and write the common elements $1$ and $6$ only once: $A \\cup B = \\{0, 1, 3, 6, 7, 8\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1166,7 +1166,7 @@
    null,
    "complement"
   ],
-  "solution": "The correct statement is $A \\cup B = \\{1, 5, 6, 8, 10, 11\\}$ — all elements of the two sets together are $\\{1, 5, 6, 8, 10, 11\\}$. $A \\cap B = \\{1, 5, 8, 10, 11\\}$ is false: these are the elements that are NOT shared. $A \\cap B = \\{1, 5, 6, 8, 10, 11\\}$ is false: that is the union, not the intersection. $A \\cup B = \\{5, 6, 8, 11\\}$ is false: the elements of $B$ that are not in $A$ are missing.",
+  "solution": "$A \\cup B = \\{1, 5, 6, 8, 10, 11\\}$ is correct. Combining the two lists, with each common element written once, gives $\\{1, 5, 6, 8, 10, 11\\}$. $A \\cap B = \\{1, 5, 8, 10, 11\\}$ is incorrect. These are the elements that belong to only one of the two sets. The intersection is $A \\cap B = \\{6\\}$. $A \\cap B = \\{1, 5, 6, 8, 10, 11\\}$ is incorrect. $\\{1, 5, 6, 8, 10, 11\\}$ is the union. The intersection is $A \\cap B = \\{6\\}$. $A \\cup B = \\{5, 6, 8, 11\\}$ is incorrect. This set is $A$ itself. The union must also contain $1$ and $10$ from $B$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1204,7 +1204,7 @@
    "operation",
    "complement"
   ],
-  "solution": "The correct statement is $A \\cup B = \\{0, 3, 5, 9, 12\\}$ — all elements of the two sets together are $\\{0, 3, 5, 9, 12\\}$. $A \\cap B = \\{0, 3, 9\\}$ is false: these are the elements that are NOT shared. $A \\cap B = \\{0, 3, 5, 9, 12\\}$ is false: that is the union, not the intersection. $A \\cup B = \\{5, 12\\}$ is false: that is the intersection, not the union.",
+  "solution": "$A \\cup B = \\{0, 3, 5, 9, 12\\}$ is correct. Combining the two lists, with each common element written once, gives $\\{0, 3, 5, 9, 12\\}$. $A \\cap B = \\{0, 3, 9\\}$ is incorrect. These are the elements that belong to only one of the two sets. The intersection is $A \\cap B = \\{5, 12\\}$. $A \\cap B = \\{0, 3, 5, 9, 12\\}$ is incorrect. $\\{0, 3, 5, 9, 12\\}$ is the union. The intersection is $A \\cap B = \\{5, 12\\}$. $A \\cup B = \\{5, 12\\}$ is incorrect. $\\{5, 12\\}$ is the intersection. The union is $A \\cup B = \\{0, 3, 5, 9, 12\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1242,7 +1242,7 @@
    "operation",
    null
   ],
-  "solution": "The correct statement is $P \\cup Q = \\{0, 2, 3, 7, 9, 12\\}$ — all elements of the two sets together are $\\{0, 2, 3, 7, 9, 12\\}$. $P \\cup Q = \\{0, 2, 7, 9\\}$ is false: the elements of $Q$ that are not in $P$ are missing. $P \\cup Q = \\{2, 7\\}$ is false: that is the intersection, not the union. $P \\cap Q = \\{0, 2, 3, 7, 9, 12\\}$ is false: that is the union, not the intersection.",
+  "solution": "$P \\cup Q = \\{0, 2, 3, 7, 9, 12\\}$ is correct. Combining the two lists, with each common element written once, gives $\\{0, 2, 3, 7, 9, 12\\}$. $P \\cup Q = \\{0, 2, 7, 9\\}$ is incorrect. This set is $P$ itself. The union must also contain $3$ and $12$ from $Q$. $P \\cup Q = \\{2, 7\\}$ is incorrect. $\\{2, 7\\}$ is the intersection. The union is $P \\cup Q = \\{0, 2, 3, 7, 9, 12\\}$. $P \\cap Q = \\{0, 2, 3, 7, 9, 12\\}$ is incorrect. $\\{0, 2, 3, 7, 9, 12\\}$ is the union. The intersection is $P \\cap Q = \\{2, 7\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1280,7 +1280,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Both sets start at $-4$, but only one of them contains $-4$, so $-4$ is not in the intersection. The right end is the smaller one, $0$, with the bracket of its own set. Answer: $\\{x \\mid -4 < x < 0\\}$.",
+  "solution": "A number in the intersection must lie in both sets. Both sets start at $-4$, but $-4$ belongs to $A$ only, so $-4$ is not in $A \\cap B$. The intersection ends at the smaller right end point, $0$, which is excluded as it is in $A$. So $A \\cap B = \\{x \\mid -4 < x < 0\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1318,7 +1318,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "Both sets end at $3$, but only one of them contains $3$, so $3$ is not in the intersection. The left end is the larger one, $2$, with the bracket of its own set. Answer: $[2, 3)$.",
+  "solution": "A number in the intersection must lie in both sets. Both sets end at $3$, but $3$ belongs to $A$ only, so $3$ is not in $A \\cap B$. The intersection starts at the larger left end point, $2$, which is included as it is in $B$. So $A \\cap B = [2, 3)$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1356,7 +1356,7 @@
    "endpoint",
    null
   ],
-  "solution": "The first set covers everything below $0$ and the second continues from $-1$ to $1$; since $-1 < 0$ there is no gap, so the union is everything up to $1$ (included). Answer: $\\{x \\mid x \\le 1\\}$.",
+  "solution": "$A$ contains every number below $0$, and $B$ runs from $-1$ to $1$. Since $-1 < 0$, the two sets overlap and leave no gap, so the union contains every number up to $1$. The end point $1$ is included, as it is in $B$. So $A \\cup B = \\{x \\mid x \\le 1\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1394,7 +1394,7 @@
    "partial",
    null
   ],
-  "solution": "The first set covers everything below $-1$ and the second continues from $-3$ to $0$; since $-3 < -1$ there is no gap, so the union is everything up to $0$ (included). Answer: $\\{x \\mid x \\le 0\\}$.",
+  "solution": "$P$ contains every number below $-1$, and $Q$ runs from $-3$ to $0$. Since $-3 < -1$, the two sets overlap and leave no gap, so the union contains every number up to $0$. The end point $0$ is included, as it is in $Q$. So $P \\cup Q = \\{x \\mid x \\le 0\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1432,7 +1432,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The number $4$ belongs to one of the two sets, so the two pieces join without a gap: the union runs from $0$ to $7$ with the outer brackets unchanged. Answer: $\\{x \\mid 0 < x \\le 7\\}$.",
+  "solution": "$P$ runs from $0$ to $4$ and $Q$ runs from $4$ to $7$. The number $4$ belongs to $P$, so there is no gap at $4$ and the union runs from $0$ to $7$. The outer end points keep their brackets: $0$ is excluded and $7$ is included. So $P \\cup Q = \\{x \\mid 0 < x \\le 7\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1470,13 +1470,13 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The correct statement is $A \\cap B = \\{x \\mid -2 < x \\le 0\\}$ — both conditions hold from $-2$ to $0$, each end point keeping its own bracket. $A \\cap B = \\{x \\mid -2 < x < 0\\}$ is false: the bracket at $0$ is wrong: $0$ is included in $A$. $A \\cup B = \\{x \\mid -3 \\le x < 2\\}$ is false: the bracket at $-3$ is wrong: $-3$ is excluded in $A$. $A \\cap B = \\{x \\mid -2 \\le x \\le 0\\}$ is false: the bracket at $-2$ is wrong: $-2$ is excluded in $B$.",
+  "solution": "$A \\cap B = \\{x \\mid -2 < x \\le 0\\}$ is correct. The sets overlap from $-2$ to $0$. The end point $-2$ comes from $B$ (excluded there) and $0$ comes from $A$ (included there). $A \\cap B = \\{x \\mid -2 < x < 0\\}$ is incorrect. $0$ is included in $A$, so it is included in $A \\cap B$ as well. $A \\cup B = \\{x \\mid -3 \\le x < 2\\}$ is incorrect. $-3$ is excluded in $A$, so it is excluded in $A \\cup B$ as well. $A \\cap B = \\{x \\mid -2 \\le x \\le 0\\}$ is incorrect. $-2$ is excluded in $B$, so it is excluded in $A \\cap B$ as well.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
   "template": "SET-op.four",
   "seed": "bank:1:SET-op.four:0",
-  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap",
+  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error",
   "answer_letter": "A",
   "answer_value": "$A \\cap B = \\{x \\mid -2 < x \\le 0\\}$",
   "verified": "stmt"
@@ -1508,13 +1508,13 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $M \\cup N = \\{x \\mid -3 \\le x < 3\\}$ — together the sets cover from $-3$ to $3$ with the outer brackets. $M \\cap N = \\{x \\mid -1 < x < 0\\}$ is false: the bracket at $0$ is wrong: $0$ is included in $M$. $M \\cap N = \\{x \\mid -1 \\le x \\le 0\\}$ is false: the bracket at $-1$ is wrong: $-1$ is excluded in $N$. $M \\cup N = \\{x \\mid -3 \\le x \\le 3\\}$ is false: the bracket at $3$ is wrong: $3$ is excluded in $N$.",
+  "solution": "$M \\cup N = \\{x \\mid -3 \\le x < 3\\}$ is correct. Together the sets cover every number from $-3$ to $3$. The end point $-3$ comes from $M$ (included there) and $3$ comes from $N$ (excluded there). $M \\cap N = \\{x \\mid -1 < x < 0\\}$ is incorrect. $0$ is included in $M$, so it is included in $M \\cap N$ as well. $M \\cap N = \\{x \\mid -1 \\le x \\le 0\\}$ is incorrect. $-1$ is excluded in $N$, so it is excluded in $M \\cap N$ as well. $M \\cup N = \\{x \\mid -3 \\le x \\le 3\\}$ is incorrect. $3$ is excluded in $N$, so it is excluded in $M \\cup N$ as well.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
   "template": "SET-op.four",
   "seed": "bank:1:SET-op.four:1",
-  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap",
+  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error",
   "answer_letter": "D",
   "answer_value": "$M \\cup N = \\{x \\mid -3 \\le x < 3\\}$",
   "verified": "stmt"
@@ -1546,13 +1546,13 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The correct statement is $P \\cap Q = \\{x \\mid 3 < x < 6\\}$ — both conditions hold from $3$ to $6$, each end point keeping its own bracket. $P \\cap Q = \\{x \\mid 3 \\le x < 6\\}$ is false: the bracket at $3$ is wrong: $3$ is excluded in $Q$. $P \\cup Q = \\{x \\mid 0 \\le x < 7\\}$ is false: the bracket at $0$ is wrong: $0$ is excluded in $P$. $P \\cap Q = \\{x \\mid 3 < x \\le 6\\}$ is false: the bracket at $6$ is wrong: $6$ is excluded in $P$.",
+  "solution": "$P \\cap Q = \\{x \\mid 3 < x < 6\\}$ is correct. The sets overlap from $3$ to $6$. The end point $3$ comes from $Q$ (excluded there) and $6$ comes from $P$ (excluded there). $P \\cap Q = \\{x \\mid 3 \\le x < 6\\}$ is incorrect. $3$ is excluded in $Q$, so it is excluded in $P \\cap Q$ as well. $P \\cup Q = \\{x \\mid 0 \\le x < 7\\}$ is incorrect. $0$ is excluded in $P$, so it is excluded in $P \\cup Q$ as well. $P \\cap Q = \\{x \\mid 3 < x \\le 6\\}$ is incorrect. $6$ is excluded in $P$, so it is excluded in $P \\cap Q$ as well.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
   "template": "SET-op.four",
   "seed": "bank:1:SET-op.four:2",
-  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap",
+  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error",
   "answer_letter": "A",
   "answer_value": "$P \\cap Q = \\{x \\mid 3 < x < 6\\}$",
   "verified": "stmt"

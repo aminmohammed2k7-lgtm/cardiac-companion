@@ -26,7 +26,7 @@
    null,
    "near-miss"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{29}$. $\\cos\\alpha = \\dfrac{x}{r}$ $= \\dfrac{2\\sqrt{29}}{29}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 2$, $y = 5$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{29}$. So $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{2}{\\sqrt{29}} = \\dfrac{2\\sqrt{29}}{29}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -64,7 +64,7 @@
    "companion",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{15}{17}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 8$, $y = 15$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{15}{17}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -102,7 +102,7 @@
    "companion",
    null
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{2\\sqrt{5}}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -2$, $y = 4$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{4}{2\\sqrt{5}} = \\dfrac{2\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -140,7 +140,7 @@
    "companion",
    null
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{10}$. $\\cos\\alpha = \\dfrac{x}{r}$ $= \\dfrac{3\\sqrt{10}}{10}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 3$, $y = 1$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{10}$. So $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{3}{\\sqrt{10}} = \\dfrac{3\\sqrt{10}}{10}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -178,7 +178,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{169} = 13$. $\\cos\\alpha = \\dfrac{x}{r}$ $= -\\dfrac{12}{13}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -12$, $y = 5$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{169} = 13$. So $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-12}{13} = -\\dfrac{12}{13}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -216,7 +216,7 @@
    null,
    "near-miss"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{10}$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{3\\sqrt{10}}{10}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -1$, $y = 3$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{10}$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{3}{\\sqrt{10}} = \\dfrac{3\\sqrt{10}}{10}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -254,7 +254,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{10}$. $\\tan\\alpha = \\dfrac{y}{x}$ $= -\\dfrac{1}{3}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -3$, $y = 1$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{10}$. So $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{1}{-3} = -\\dfrac{1}{3}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -292,7 +292,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{5}$. $\\cos\\alpha = \\dfrac{x}{r}$ $= -\\dfrac{2\\sqrt{5}}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -2$, $y = 1$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{5}$. So $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-2}{\\sqrt{5}} = -\\dfrac{2\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -330,7 +330,7 @@
    null,
    "companion"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{5}$. $\\cos\\alpha = \\dfrac{x}{r}$ $= \\dfrac{\\sqrt{5}}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 1$, $y = 2$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{5}$. So $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -368,7 +368,7 @@
    "companion",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. $\\sin\\alpha = \\dfrac{y}{r}$ $= -\\dfrac{2\\sqrt{5}}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 2$, $y = -4$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-4}{2\\sqrt{5}} = -\\dfrac{2\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -406,7 +406,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. $\\tan\\alpha = \\dfrac{y}{x}$ $= \\dfrac{15}{8}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 8$, $y = 15$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. So $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{15}{8}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -444,7 +444,7 @@
    "companion",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{25} = 5$. $\\tan\\alpha = \\dfrac{y}{x}$ $= -\\dfrac{4}{3}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 3$, $y = -4$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{25} = 5$. So $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-4}{3} = -\\dfrac{4}{3}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -482,7 +482,7 @@
    "companion",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{169} = 13$. $\\tan\\alpha = \\dfrac{y}{x}$ $= -\\dfrac{12}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 5$, $y = -12$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{169} = 13$. So $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-12}{5} = -\\dfrac{12}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -520,7 +520,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{\\sqrt{5}}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 4$, $y = 2$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{2}{2\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -558,7 +558,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{13}$. $\\tan\\alpha = \\dfrac{y}{x}$ $= -\\dfrac{3}{2}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -2$, $y = 3$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{13}$. So $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{3}{-2} = -\\dfrac{3}{2}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -596,7 +596,7 @@
    null,
    "companion"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{25} = 5$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{4}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 3$, $y = 4$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{25} = 5$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{4}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -634,7 +634,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = -2$ and $x = -1$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = -2$, which gives $x = 2 \\div \\left(-2\\right) = -1$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -672,7 +672,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{y}{1} = -2$ and $y = -2$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{y}{1} = -2$, which gives $y = -2 \\times 1 = -2$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -710,7 +710,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = \\dfrac{1}{2}$ and $x = 4$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = \\dfrac{1}{2}$, which gives $x = 2 \\div \\dfrac{1}{2} = 4$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -748,7 +748,7 @@
    null,
    "sign"
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{3}{x} = \\dfrac{3}{2}$ and $x = 2$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{3}{x} = \\dfrac{3}{2}$, which gives $x = 3 \\div \\dfrac{3}{2} = 2$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -786,7 +786,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{y}{5} = -3$ and $y = -15$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{y}{5} = -3$, which gives $y = -3 \\times 5 = -15$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -824,7 +824,7 @@
    "sign",
    null
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = 2$ and $x = 1$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = 2$, which gives $x = 2 \\div 2 = 1$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -862,7 +862,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{y}{4} = 3$ and $y = 12$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{y}{4} = 3$, which gives $y = 3 \\times 4 = 12$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -900,7 +900,7 @@
    "reciprocal",
    "companion"
   ],
-  "solution": "Since $5^2 + 12^2 = 13^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $A$ the opposite side is $BC = 12$ and the adjacent side is $5$, so $\\tan A = \\dfrac{12}{5}$.",
+  "solution": "Since $5^2 + 12^2 = 13^2$, the triangle has a right angle at $C$ and $AB = 13$ is the hypotenuse. For angle $A$ the opposite side is $BC = 12$ and the adjacent side is $AC = 5$, so $\\tan A = \\dfrac{12}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -938,7 +938,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Since $7^2 + 24^2 = 25^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $A$ the opposite side is $BC = 24$ and the adjacent side is $7$, so $\\sin A = \\dfrac{24}{25}$.",
+  "solution": "Since $7^2 + 24^2 = 25^2$, the triangle has a right angle at $C$ and $AB = 25$ is the hypotenuse. For angle $A$ the opposite side is $BC = 24$ and the adjacent side is $AC = 7$, so $\\sin A = \\dfrac{24}{25}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -976,7 +976,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Since $12^2 + 9^2 = 15^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $A$ the opposite side is $BC = 9$ and the adjacent side is $12$, so $\\sin A = \\dfrac{3}{5}$.",
+  "solution": "Since $12^2 + 9^2 = 15^2$, the triangle has a right angle at $C$ and $AB = 15$ is the hypotenuse. For angle $A$ the opposite side is $BC = 9$ and the adjacent side is $AC = 12$, so $\\sin A = \\dfrac{9}{15} = \\dfrac{3}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1014,7 +1014,7 @@
    "near-miss",
    "reciprocal"
   ],
-  "solution": "Since $12^2 + 5^2 = 13^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $B$ the opposite side is $AC = 12$ and the adjacent side is $5$, so $\\sin B = \\dfrac{12}{13}$.",
+  "solution": "Since $12^2 + 5^2 = 13^2$, the triangle has a right angle at $C$ and $AB = 13$ is the hypotenuse. For angle $B$ the opposite side is $AC = 12$ and the adjacent side is $BC = 5$, so $\\sin B = \\dfrac{12}{13}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1052,7 +1052,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Since $3^2 + 4^2 = 5^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $B$ the opposite side is $AC = 3$ and the adjacent side is $4$, so $\\sin B = \\dfrac{3}{5}$.",
+  "solution": "Since $3^2 + 4^2 = 5^2$, the triangle has a right angle at $C$ and $AB = 5$ is the hypotenuse. For angle $B$ the opposite side is $AC = 3$ and the adjacent side is $BC = 4$, so $\\sin B = \\dfrac{3}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1090,7 +1090,7 @@
    "near-miss",
    "reciprocal"
   ],
-  "solution": "Since $12^2 + 5^2 = 13^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $A$ the opposite side is $BC = 5$ and the adjacent side is $12$, so $\\tan A = \\dfrac{5}{12}$.",
+  "solution": "Since $12^2 + 5^2 = 13^2$, the triangle has a right angle at $C$ and $AB = 13$ is the hypotenuse. For angle $A$ the opposite side is $BC = 5$ and the adjacent side is $AC = 12$, so $\\tan A = \\dfrac{5}{12}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1128,7 +1128,7 @@
    null,
    "companion"
   ],
-  "solution": "Since $12^2 + 5^2 = 13^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $B$ the opposite side is $AC = 12$ and the adjacent side is $5$, so $\\cos B = \\dfrac{5}{13}$.",
+  "solution": "Since $12^2 + 5^2 = 13^2$, the triangle has a right angle at $C$ and $AB = 13$ is the hypotenuse. For angle $B$ the opposite side is $AC = 12$ and the adjacent side is $BC = 5$, so $\\cos B = \\dfrac{5}{13}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1166,7 +1166,7 @@
    "near-miss",
    null
   ],
-  "solution": "By definition, for a point $P(x, y)$ on the terminal side with $|OP| = r$: $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$, $\\tan\\alpha = \\dfrac{y}{x}$.",
+  "solution": "For a point $P(x, y)$ on the terminal side with $|OP| = r$, the definitions are $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$ and $\\tan\\alpha = \\dfrac{y}{x}$. So $\\sin\\alpha = \\dfrac{y}{r}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1204,7 +1204,7 @@
    null,
    "near-miss"
   ],
-  "solution": "By definition, for a point $P(x, y)$ on the terminal side with $|OP| = r$: $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$, $\\tan\\alpha = \\dfrac{y}{x}$.",
+  "solution": "For a point $P(x, y)$ on the terminal side with $|OP| = r$, the definitions are $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$ and $\\tan\\alpha = \\dfrac{y}{x}$. So $\\tan\\alpha = \\dfrac{y}{x}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1242,7 +1242,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{13}$. $\\sin\\alpha = \\dfrac{y}{r}$ $= -\\dfrac{3\\sqrt{13}}{13}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -2$, $y = -3$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{13}$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-3}{\\sqrt{13}} = -\\dfrac{3\\sqrt{13}}{13}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1280,7 +1280,7 @@
    "near-miss",
    null
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. $\\sin\\alpha = \\dfrac{y}{r}$ $= -\\dfrac{15}{17}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -8$, $y = -15$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-15}{17} = -\\dfrac{15}{17}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1318,7 +1318,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. $\\sin\\alpha = \\dfrac{y}{r}$ $= -\\dfrac{15}{17}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -8$, $y = -15$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-15}{17} = -\\dfrac{15}{17}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1356,13 +1356,13 @@
    null,
    "sign"
   ],
-  "solution": "Here $r = \\sqrt{20}$. The correct statement is $\\tan\\alpha = -2$ — $\\tan\\alpha = \\dfrac{y}{x}$. $\\tan\\alpha = 2$ is false: $\\tan\\alpha = \\dfrac{y}{x}$ keeps both signs. $\\cos\\alpha = \\dfrac{\\sqrt{5}}{5}$ is false: the sign of $x$ decides the sign of the cosine. $\\tan\\alpha = -\\dfrac{1}{2}$ is false: that is $\\dfrac{x}{y}$; the tangent is $\\dfrac{y}{x}$.",
+  "solution": "Here $x = -2$, $y = 4$ and $r = \\sqrt{4 + 16} = \\sqrt{20}$. $\\tan\\alpha = -2$ is correct. $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{4}{-2} = -2$. $\\tan\\alpha = 2$ is incorrect. $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{4}{-2} = -2$. $\\cos\\alpha = \\dfrac{\\sqrt{5}}{5}$ is incorrect. The cosine has the sign of $x = -2$: $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-2}{2\\sqrt{5}} = -\\dfrac{\\sqrt{5}}{5}$. $\\tan\\alpha = -\\dfrac{1}{2}$ is incorrect. This is $\\dfrac{x}{y}$. In fact $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{4}{-2} = -2$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
   "template": "TR-def.four",
   "seed": "bank:1:TR-def.four:0",
-  "form": "Four statements about α whose terminal side passes through a point in QII–QIV",
+  "form": "Four statements about α whose terminal side passes through a point in QII-QIV",
   "answer_letter": "C",
   "answer_value": "$\\tan\\alpha = -2$",
   "verified": "stmt"
@@ -1394,13 +1394,13 @@
    null,
    "sign"
   ],
-  "solution": "Here $r = \\sqrt{100} = 10$. The correct statement is $\\cos\\alpha = -\\dfrac{3}{5}$ — $\\cos\\alpha = \\dfrac{x}{r}$. $\\tan\\alpha = \\dfrac{3}{4}$ is false: that is $\\dfrac{x}{y}$; the tangent is $\\dfrac{y}{x}$. $\\cos\\alpha = \\dfrac{3}{5}$ is false: the sign of $x$ decides the sign of the cosine. $\\sin\\alpha = \\dfrac{4}{5}$ is false: the sign of $y$ decides the sign of the sine.",
+  "solution": "Here $x = -6$, $y = -8$ and $r = \\sqrt{36 + 64} = 10$. $\\cos\\alpha = -\\dfrac{3}{5}$ is correct. $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-6}{10} = -\\dfrac{3}{5}$. $\\tan\\alpha = \\dfrac{3}{4}$ is incorrect. This is $\\dfrac{x}{y}$. In fact $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-8}{-6} = \\dfrac{4}{3}$. $\\cos\\alpha = \\dfrac{3}{5}$ is incorrect. The cosine has the sign of $x = -6$: $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-6}{10} = -\\dfrac{3}{5}$. $\\sin\\alpha = \\dfrac{4}{5}$ is incorrect. The sine has the sign of $y = -8$: $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-8}{10} = -\\dfrac{4}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
   "template": "TR-def.four",
   "seed": "bank:1:TR-def.four:1",
-  "form": "Four statements about α whose terminal side passes through a point in QII–QIV",
+  "form": "Four statements about α whose terminal side passes through a point in QII-QIV",
   "answer_letter": "C",
   "answer_value": "$\\cos\\alpha = -\\dfrac{3}{5}$",
   "verified": "stmt"
@@ -1432,13 +1432,13 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Here $r = \\sqrt{5}$. The correct statement is $\\tan\\alpha = -\\dfrac{1}{2}$ — $\\tan\\alpha = \\dfrac{y}{x}$. $\\tan\\alpha = -2$ is false: that is $\\dfrac{x}{y}$; the tangent is $\\dfrac{y}{x}$. $\\cos\\alpha = \\dfrac{2\\sqrt{5}}{5}$ is false: the sign of $x$ decides the sign of the cosine. $\\sin\\alpha = -\\dfrac{\\sqrt{5}}{5}$ is false: the sign of $y$ decides the sign of the sine.",
+  "solution": "Here $x = -2$, $y = 1$ and $r = \\sqrt{4 + 1} = \\sqrt{5}$. $\\tan\\alpha = -\\dfrac{1}{2}$ is correct. $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{1}{-2} = -\\dfrac{1}{2}$. $\\tan\\alpha = -2$ is incorrect. This is $\\dfrac{x}{y}$. In fact $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{1}{-2} = -\\dfrac{1}{2}$. $\\cos\\alpha = \\dfrac{2\\sqrt{5}}{5}$ is incorrect. The cosine has the sign of $x = -2$: $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-2}{\\sqrt{5}} = -\\dfrac{2\\sqrt{5}}{5}$. $\\sin\\alpha = -\\dfrac{\\sqrt{5}}{5}$ is incorrect. The sine has the sign of $y = 1$: $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
   "template": "TR-def.four",
   "seed": "bank:1:TR-def.four:2",
-  "form": "Four statements about α whose terminal side passes through a point in QII–QIV",
+  "form": "Four statements about α whose terminal side passes through a point in QII-QIV",
   "answer_letter": "A",
   "answer_value": "$\\tan\\alpha = -\\dfrac{1}{2}$",
   "verified": "stmt"
@@ -1470,7 +1470,7 @@
    "companion",
    "companion"
   ],
-  "solution": "From $\\tan\\alpha = \\dfrac{y}{x}$: $\\dfrac{-8}{x} = \\dfrac{8}{15}$, so $x = -15$. Then $r = \\sqrt{225 + 64} = 17$ and $\\sin\\alpha = -\\dfrac{8}{17}$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{-8}{x} = \\dfrac{8}{15}$ and $x = -15$. Then $r = \\sqrt{x^2 + y^2} = \\sqrt{225 + 64} = 17$, so $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-8}{17} = -\\dfrac{8}{17}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1508,7 +1508,7 @@
    "companion",
    null
   ],
-  "solution": "From $\\tan\\alpha = \\dfrac{y}{x}$: $\\dfrac{-4}{x} = \\dfrac{4}{3}$, so $x = -3$. Then $r = \\sqrt{9 + 16} = 5$ and $\\sin\\alpha = -\\dfrac{4}{5}$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{-4}{x} = \\dfrac{4}{3}$ and $x = -3$. Then $r = \\sqrt{x^2 + y^2} = \\sqrt{9 + 16} = 5$, so $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-4}{5} = -\\dfrac{4}{5}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",
@@ -1546,7 +1546,7 @@
    "sign",
    null
   ],
-  "solution": "From $\\tan\\alpha = \\dfrac{y}{x}$: $\\dfrac{-12}{x} = -\\dfrac{12}{5}$, so $x = 5$. Then $r = \\sqrt{25 + 144} = 13$ and $\\cos\\alpha = \\dfrac{5}{13}$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{-12}{x} = -\\dfrac{12}{5}$ and $x = 5$. Then $r = \\sqrt{x^2 + y^2} = \\sqrt{25 + 144} = 13$, so $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{5}{13}$.",
   "video": "V10",
   "version": "a",
   "domain": "TR",

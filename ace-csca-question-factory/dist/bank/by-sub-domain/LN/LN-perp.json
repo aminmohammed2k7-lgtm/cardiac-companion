@@ -26,7 +26,7 @@
    "swap",
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, 2)$. Step 2 — swap and flip: a line perpendicular to $3x + 2y + 5 = 0$ has the form $2x - 3y + k = 0$. Step 3 — substitute the point: $k = 10$. So $l$: $2x - 3y + 10 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = 4y - 10$. Substituting this into the other equation gives $2(4y - 10) - 3y + 10 = 0$, that is $5y - 10 = 0$, so $y = 2$. Then $x = 4 \\cdot 2 - 10 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x + 2y + 5 = 0$ has the form $2x - 3y + k = 0$. Substituting $(-2, 2)$ gives $-4 - 6 + k = 0$, so $k = 10$. So $l$ is $2x - 3y + 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -64,7 +64,7 @@
    "parallel",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(4, 1)$. Step 2 — swap and flip: a line perpendicular to $4x + y - 4 = 0$ has the form $x - 4y + k = 0$. Step 3 — substitute the point: $k = 0$. So $l$: $x - 4y = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = 4x - 15$. Substituting this into the other equation gives $4x - 3(4x - 15) - 13 = 0$, that is $-8x + 32 = 0$, so $x = 4$. Then $y = 4 \\cdot 4 - 15 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x + y - 4 = 0$ has the form $x - 4y + k = 0$. Substituting $(4, 1)$ gives $4 - 4 + k = 0$, so $k = 0$. So $l$ is $x - 4y = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -102,7 +102,7 @@
    "parallel",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(3, -3)$. Step 2 — swap and flip: a line perpendicular to $4x + y = 0$ has the form $x - 4y + k = 0$. Step 3 — substitute the point: $k = -15$. So $l$: $x - 4y - 15 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = 3x - 12$. Substituting this into the other equation gives $x - 3(3x - 12) - 12 = 0$, that is $-8x + 24 = 0$, so $x = 3$. Then $y = 3 \\cdot 3 - 12 = -3$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x + y = 0$ has the form $x - 4y + k = 0$. Substituting $(3, -3)$ gives $3 + 12 + k = 0$, so $k = -15$. So $l$ is $x - 4y - 15 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -140,7 +140,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(1, -1)$. Step 2 — swap and flip: a line perpendicular to $2x + y + 2 = 0$ has the form $x - 2y + k = 0$. Step 3 — substitute the point: $k = -3$. So $l$: $x - 2y - 3 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = 4x - 5$. Substituting this into the other equation gives $3x + 2(4x - 5) - 1 = 0$, that is $11x - 11 = 0$, so $x = 1$. Then $y = 4 \\cdot 1 - 5 = -1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $2x + y + 2 = 0$ has the form $x - 2y + k = 0$. Substituting $(1, -1)$ gives $1 + 2 + k = 0$, so $k = -3$. So $l$ is $x - 2y - 3 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -178,7 +178,7 @@
    "sign",
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(1, -3)$. Step 2 — swap and flip: a line perpendicular to $x - 2y + 4 = 0$ has the form $2x + y + k = 0$. Step 3 — substitute the point: $k = 1$. So $l$: $2x + y + 1 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = -4y - 11$. Substituting this into the other equation gives $4(-4y - 11) + 3y + 5 = 0$, that is $-13y - 39 = 0$, so $y = -3$. Then $x = -4 \\cdot \\left(-3\\right) - 11 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 2y + 4 = 0$ has the form $2x + y + k = 0$. Substituting $(1, -3)$ gives $2 - 3 + k = 0$, so $k = 1$. So $l$ is $2x + y + 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -216,7 +216,7 @@
    null,
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, -4)$. Step 2 — swap and flip: a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Step 3 — substitute the point: $k = 14$. So $l$: $x + 3y + 14 = 0$.",
+  "solution": "First find the intersection point. Multiplying the first equation by $3$, the second by $-2$ and subtracting removes $y$ and gives $13x + 26 = 0$, so $x = -2$. Putting this into the first equation gives $-2y - 8 = 0$, so $y = -4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Substituting $(-2, -4)$ gives $-2 - 12 + k = 0$, so $k = 14$. So $l$ is $x + 3y + 14 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -254,7 +254,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, -4)$. Step 2 — swap and flip: a line perpendicular to $3x - 4y = 0$ has the form $4x + 3y + k = 0$. Step 3 — substitute the point: $k = 20$. So $l$: $4x + 3y + 20 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = 3y + 10$. Substituting this into the other equation gives $2(3y + 10) + 3y + 16 = 0$, that is $9y + 36 = 0$, so $y = -4$. Then $x = 3 \\cdot \\left(-4\\right) + 10 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - 4y = 0$ has the form $4x + 3y + k = 0$. Substituting $(-2, -4)$ gives $-8 - 12 + k = 0$, so $k = 20$. So $l$ is $4x + 3y + 20 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -292,7 +292,7 @@
    "sign",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-3, 3)$. Step 2 — swap and flip: a line perpendicular to $x - 4y - 5 = 0$ has the form $4x + y + k = 0$. Step 3 — substitute the point: $k = 9$. So $l$: $4x + y + 9 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = 4x + 15$. Substituting this into the other equation gives $2x - (4x + 15) + 9 = 0$, that is $-2x - 6 = 0$, so $x = -3$. Then $y = 4 \\cdot \\left(-3\\right) + 15 = 3$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 4y - 5 = 0$ has the form $4x + y + k = 0$. Substituting $(-3, 3)$ gives $-12 + 3 + k = 0$, so $k = 9$. So $l$ is $4x + y + 9 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -330,7 +330,7 @@
    null,
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, 1)$. Step 2 — swap and flip: a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Step 3 — substitute the point: $k = -1$. So $l$: $x + 3y - 1 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = 3y - 5$. Substituting this into the other equation gives $(3y - 5) + 2y = 0$, that is $5y - 5 = 0$, so $y = 1$. Then $x = 3 \\cdot 1 - 5 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Substituting $(-2, 1)$ gives $-2 + 3 + k = 0$, so $k = -1$. So $l$ is $x + 3y - 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -368,7 +368,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-1, -2)$. Step 2 — swap and flip: a line perpendicular to $x - 2y - 4 = 0$ has the form $2x + y + k = 0$. Step 3 — substitute the point: $k = 4$. So $l$: $2x + y + 4 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = -3y - 7$. Substituting this into the other equation gives $(-3y - 7) + 2y + 5 = 0$, that is $-y - 2 = 0$, so $y = -2$. Then $x = -3 \\cdot \\left(-2\\right) - 7 = -1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 2y - 4 = 0$ has the form $2x + y + k = 0$. Substituting $(-1, -2)$ gives $-2 - 2 + k = 0$, so $k = 4$. So $l$ is $2x + y + 4 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -406,7 +406,7 @@
    "parallel",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-3, -4)$. Step 2 — swap and flip: a line perpendicular to $x - 3y + 4 = 0$ has the form $3x + y + k = 0$. Step 3 — substitute the point: $k = 13$. So $l$: $3x + y + 13 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = 3y + 9$. Substituting this into the other equation gives $3(3y + 9) - 4y - 7 = 0$, that is $5y + 20 = 0$, so $y = -4$. Then $x = 3 \\cdot \\left(-4\\right) + 9 = -3$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 3y + 4 = 0$ has the form $3x + y + k = 0$. Substituting $(-3, -4)$ gives $-9 - 4 + k = 0$, so $k = 13$. So $l$ is $3x + y + 13 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -444,7 +444,7 @@
    null,
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-1, -4)$. Step 2 — swap and flip: a line perpendicular to $3x + 2y + 4 = 0$ has the form $2x - 3y + k = 0$. Step 3 — substitute the point: $k = -10$. So $l$: $2x - 3y - 10 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = 2x - 2$. Substituting this into the other equation gives $3x - 2(2x - 2) - 5 = 0$, that is $-x - 1 = 0$, so $x = -1$. Then $y = 2 \\cdot \\left(-1\\right) - 2 = -4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x + 2y + 4 = 0$ has the form $2x - 3y + k = 0$. Substituting $(-1, -4)$ gives $-2 + 12 + k = 0$, so $k = -10$. So $l$ is $2x - 3y - 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -482,7 +482,7 @@
    "parallel",
    "slip"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(2, 1)$. Step 2 — swap and flip: a line perpendicular to $x + y - 6 = 0$ has the form $x - y + k = 0$. Step 3 — substitute the point: $k = -1$. So $l$: $x - y - 1 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = -x + 3$. Substituting this into the other equation gives $3x + 4(-x + 3) - 10 = 0$, that is $-x + 2 = 0$, so $x = 2$. Then $y = -2 + 3 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x + y - 6 = 0$ has the form $x - y + k = 0$. Substituting $(2, 1)$ gives $2 - 1 + k = 0$, so $k = -1$. So $l$ is $x - y - 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -520,7 +520,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(1, -2)$. Step 2 — swap and flip: a line perpendicular to $3x + 4y + 6 = 0$ has the form $4x - 3y + k = 0$. Step 3 — substitute the point: $k = -10$. So $l$: $4x - 3y - 10 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = 4x - 6$. Substituting this into the other equation gives $x - 4(4x - 6) - 9 = 0$, that is $-15x + 15 = 0$, so $x = 1$. Then $y = 4 \\cdot 1 - 6 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x + 4y + 6 = 0$ has the form $4x - 3y + k = 0$. Substituting $(1, -2)$ gives $4 + 6 + k = 0$, so $k = -10$. So $l$ is $4x - 3y - 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -558,7 +558,7 @@
    null,
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(0, 4)$. Step 2 — swap and flip: a line perpendicular to $x - 2y - 6 = 0$ has the form $2x + y + k = 0$. Step 3 — substitute the point: $k = -4$. So $l$: $2x + y - 4 = 0$.",
+  "solution": "First find the intersection point. Multiplying the first equation by $2$, the second by $-3$ and subtracting removes $y$ and gives $13x = 0$, so $x = 0$. Putting this into the first equation gives $-3y + 12 = 0$, so $y = 4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 2y - 6 = 0$ has the form $2x + y + k = 0$. Substituting $(0, 4)$ gives $4 + k = 0$, so $k = -4$. So $l$ is $2x + y - 4 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -596,7 +596,7 @@
    "sign",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(2, 0)$. Step 2 — a line parallel to $x + 4y - 3 = 0$ has the form $x + 4y + k = 0$. Step 3 — substitute the point: $k = -2$. So $l$: $x + 4y - 2 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = 3y + 2$. Substituting this into the other equation gives $2(3y + 2) - 3y - 4 = 0$, that is $3y = 0$, so $y = 0$. Then $x = 3 \\cdot 0 + 2 = 2$. A line parallel to $x + 4y - 3 = 0$ keeps the same coefficients of $x$ and $y$, so it has the form $x + 4y + k = 0$. Substituting $(2, 0)$ gives $2 + k = 0$, so $k = -2$. So $l$ is $x + 4y - 2 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -634,7 +634,7 @@
    "slip",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, 1)$. Step 2 — a line parallel to $x + y + 5 = 0$ has the form $x + y + k = 0$. Step 3 — substitute the point: $k = 1$. So $l$: $x + y + 1 = 0$.",
+  "solution": "First find the intersection point. Adding the two equations removes $y$ and gives $6x + 12 = 0$, so $x = -2$. Putting this into the first equation gives $3y - 3 = 0$, so $y = 1$. A line parallel to $x + y + 5 = 0$ keeps the same coefficients of $x$ and $y$, so it has the form $x + y + k = 0$. Substituting $(-2, 1)$ gives $-2 + 1 + k = 0$, so $k = 1$. So $l$ is $x + y + 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -672,7 +672,7 @@
    "sign",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-3, 0)$. Step 2 — a line parallel to $3x + y + 1 = 0$ has the form $3x + y + k = 0$. Step 3 — substitute the point: $k = 9$. So $l$: $3x + y + 9 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = 4y - 3$. Substituting this into the other equation gives $2(4y - 3) - 3y + 6 = 0$, that is $5y = 0$, so $y = 0$. Then $x = 4 \\cdot 0 - 3 = -3$. A line parallel to $3x + y + 1 = 0$ keeps the same coefficients of $x$ and $y$, so it has the form $3x + y + k = 0$. Substituting $(-3, 0)$ gives $-9 + k = 0$, so $k = 9$. So $l$ is $3x + y + 9 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -710,7 +710,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the point is given: $(0, 2)$. Step 2 — swap and flip: a line perpendicular to $4x + 3y = 0$ has the form $3x - 4y + k = 0$. Step 3 — substitute the point: $k = 8$. So $l$: $3x - 4y + 8 = 0$.",
+  "solution": "Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x + 3y = 0$ has the form $3x - 4y + k = 0$. Substituting $(0, 2)$ gives $-8 + k = 0$, so $k = 8$. So $l$ is $3x - 4y + 8 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -748,7 +748,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Step 1 — the point is given: $(3, 2)$. Step 2 — swap and flip: a line perpendicular to $3x - 4y - 2 = 0$ has the form $4x + 3y + k = 0$. Step 3 — substitute the point: $k = -18$. So $l$: $4x + 3y - 18 = 0$.",
+  "solution": "Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - 4y - 2 = 0$ has the form $4x + 3y + k = 0$. Substituting $(3, 2)$ gives $12 + 6 + k = 0$, so $k = -18$. So $l$ is $4x + 3y - 18 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -786,7 +786,7 @@
    null,
    "sign"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $\\left(\\dfrac{5}{4}, -\\dfrac{3}{2}\\right)$. Step 2 — swap and flip: a line perpendicular to $x + y + 3 = 0$ has the form $x - y + k = 0$. Step 3 — substitute the point: $k = -\\dfrac{11}{4}$ (then clear the fraction). So $l$: $4x - 4y - 11 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = -2x + 1$. Substituting this into the other equation gives $2x + 3(-2x + 1) + 2 = 0$, that is $-4x + 5 = 0$, so $x = \\dfrac{5}{4}$. Then $y = -2 \\cdot \\dfrac{5}{4} + 1 = -\\dfrac{3}{2}$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x + y + 3 = 0$ has the form $x - y + k = 0$. Substituting $\\left(\\dfrac{5}{4}, -\\dfrac{3}{2}\\right)$ gives $\\dfrac{5}{4} + \\dfrac{3}{2} + k = 0$, so $k = -\\dfrac{11}{4}$. Clearing the fraction, $l$ is $4x - 4y - 11 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -824,7 +824,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(2, 4)$. Step 2 — swap and flip: a line perpendicular to $2x - y = 0$ has the form $x + 2y + k = 0$. Step 3 — substitute the point: $k = -10$. So $l$: $x + 2y - 10 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = -3x + 10$. Substituting this into the other equation gives $4x + 3(-3x + 10) - 20 = 0$, that is $-5x + 10 = 0$, so $x = 2$. Then $y = -3 \\cdot 2 + 10 = 4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $y = 2x$, that is $2x - y = 0$, has the form $x + 2y + k = 0$. Substituting $(2, 4)$ gives $2 + 8 + k = 0$, so $k = -10$. So $l$ is $x + 2y - 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -862,7 +862,7 @@
    "parallel",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-1, 0)$. Step 2 — swap and flip: a line perpendicular to $4x - 3y - 4 = 0$ has the form $3x + 4y + k = 0$. Step 3 — substitute the point: $k = 3$. So $l$: $3x + 4y + 3 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = x + 1$. Substituting this into the other equation gives $3x + 4(x + 1) + 3 = 0$, that is $7x + 7 = 0$, so $x = -1$. Then $y = -1 + 1 = 0$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x - 3y - 4 = 0$ has the form $3x + 4y + k = 0$. Substituting $(-1, 0)$ gives $-3 + k = 0$, so $k = 3$. So $l$ is $3x + 4y + 3 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -900,7 +900,7 @@
    "parallel",
    "sign"
   ],
-  "solution": "The line $AB$ is $x - 3y + 11 = 0$. Step 1 — the intersection: solving the two equations gives $(0, -1)$. Step 2 — swap and flip: a line perpendicular to $x - 3y + 11 = 0$ has the form $3x + y + k = 0$. Step 3 — substitute the point: $k = 1$. So $l$: $3x + y + 1 = 0$.",
+  "solution": "The line $AB$ has slope $\\dfrac{1}{3}$ and passes through $A$, so it is $x - 3y + 11 = 0$. Next find the intersection point. From the second equation, $y = -4x - 1$. Substituting this into the other equation gives $x + 3(-4x - 1) + 3 = 0$, that is $-11x = 0$, so $x = 0$. Then $y = -4 \\cdot 0 - 1 = -1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 3y + 11 = 0$ has the form $3x + y + k = 0$. Substituting $(0, -1)$ gives $-1 + k = 0$, so $k = 1$. So $l$ is $3x + y + 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -938,7 +938,7 @@
    null,
    "sign"
   ],
-  "solution": "The intersection point is $(3, 4)$. Case 1: both intercepts are $0$ — the line passes through the origin: $4x - 3y = 0$. Case 2: equal non-zero intercepts $c$: $x + y = c$, and the point gives $c = 7$: $x + y - 7 = 0$. Both lines are answers; forgetting the line through the origin is the trap.",
+  "solution": "First find the intersection point. From the first equation, $x = 4y - 13$. Substituting this into the other equation gives $3(4y - 13) - 4y + 7 = 0$, that is $8y - 32 = 0$, so $y = 4$. Then $x = 4 \\cdot 4 - 13 = 3$. If both intercepts are $0$, the line passes through the origin and $(3, 4)$, so it is $4x - 3y = 0$. If the two intercepts are equal and not $0$, the line is $x + y = c$, and the point gives $c = 3 + 4 = 7$, so it is $x + y - 7 = 0$. Both lines satisfy the condition.",
   "video": "V26",
   "version": "a",
   "domain": "LN",

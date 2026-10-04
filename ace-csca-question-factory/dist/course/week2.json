@@ -26,7 +26,7 @@
    "companion",
    null
   ],
-  "solution": "The reference angle is $30^\\circ$ and the angle lies in the third quadrant, where tangent is positive. So the value is $\\dfrac{\\sqrt{3}}{3}$.",
+  "solution": "The angle $210^\\circ$ lies in the third quadrant, where tangent is positive, and its reference angle is $30^\\circ$. So $\\tan 210^\\circ = \\tan\\left(180^\\circ + 30^\\circ\\right) = \\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3}$.",
   "video": "V09",
   "version": "a"
  },
@@ -57,7 +57,7 @@
    "sign",
    "companion"
   ],
-  "solution": "The correct statement is $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ — reference angle and quadrant sign give $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ is false: that is the value of $\\sin\\alpha$. $\\tan\\alpha = -\\sqrt{3}$ is false: the sign is wrong for this quadrant. $\\sin\\alpha = \\dfrac{1}{2}$ is false: that is the value of $\\cos\\alpha$.",
+  "solution": "For $\\alpha = \\dfrac{\\pi}{3}$: $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$, $\\cos\\alpha = \\dfrac{1}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\sqrt{3}$. $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\sin\\alpha$. In fact $\\cos\\alpha = \\dfrac{1}{2}$. $\\tan\\alpha = -\\sqrt{3}$ is incorrect. Tangent is positive in the first quadrant, so $\\tan\\alpha = \\sqrt{3}$. $\\sin\\alpha = \\dfrac{1}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -88,7 +88,7 @@
    "partial",
    null
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$, $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{3 + \\sqrt{3}}{2}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$ and $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. Substituting, the expression equals $\\left(\\dfrac{\\sqrt{3}}{2} + \\dfrac{1}{2}\\right) \\cdot \\sqrt{3} = \\dfrac{3 + \\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -119,7 +119,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ — this is the correct special value. $\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$ is false: the correct value is $\\sqrt{3}$ (check the sign of the quadrant). $\\tan \\dfrac{\\pi}{6} = \\sqrt{3}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{3}$. $\\cos \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{2}$ (check the sign of the quadrant).",
+  "solution": "$\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is correct. $\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$ is incorrect. In the first quadrant the tangent is positive. In fact $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. $\\tan \\dfrac{\\pi}{6} = \\sqrt{3}$ is incorrect. This is the reciprocal of the correct value. In fact $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. $\\cos \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$ is incorrect. In the first quadrant the cosine is positive. In fact $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -150,7 +150,7 @@
    null,
    "companion"
   ],
-  "solution": "Remove full turns: $690^\\circ$ has the same terminal side as $330^\\circ$, which lies in the fourth quadrant. Hence the value is $-\\dfrac{1}{2}$.",
+  "solution": "Since $690^\\circ = 330^\\circ + 360^\\circ$, the angle has the same terminal side as $330^\\circ$, so the two angles have the same trigonometric values. Then $\\sin 330^\\circ = \\sin\\left(360^\\circ - 30^\\circ\\right) = -\\sin 30^\\circ = -\\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -181,7 +181,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{2\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{2\\pi}{3} = -\\dfrac{1}{2}$, $\\tan \\dfrac{5\\pi}{4} = 1$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{4 - \\sqrt{3}}{4}$.",
+  "solution": "Find each value: $\\sin \\dfrac{2\\pi}{3} = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{2\\pi}{3} = \\cos\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ and $\\tan \\dfrac{5\\pi}{4} = \\tan\\left(\\pi + \\dfrac{\\pi}{4}\\right) = \\tan \\dfrac{\\pi}{4} = 1$. Substituting, the expression equals $\\dfrac{\\sqrt{3}}{2} \\cdot \\left(-\\dfrac{1}{2}\\right) + 1 = \\dfrac{4 - \\sqrt{3}}{4}$.",
   "video": "V09",
   "version": "a"
  },
@@ -212,7 +212,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\tan \\dfrac{2\\pi}{3} = -\\sqrt{3}$ — this is the correct special value. $\\sin \\dfrac{4\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is false: the correct value is $-\\dfrac{\\sqrt{3}}{2}$ (check the sign of the quadrant). $\\tan \\dfrac{11\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$ is false: the correct value is $-\\dfrac{\\sqrt{3}}{3}$ (check the sign of the quadrant). $\\sin \\dfrac{2\\pi}{3} = -\\dfrac{\\sqrt{3}}{2}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{2}$ (check the sign of the quadrant).",
+  "solution": "$\\tan \\dfrac{2\\pi}{3} = -\\sqrt{3}$ is correct. $\\tan \\dfrac{2\\pi}{3} = \\tan\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$. $\\sin \\dfrac{4\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is incorrect. In the third quadrant the sine is negative. In fact $\\sin \\dfrac{4\\pi}{3} = \\sin\\left(\\pi + \\dfrac{\\pi}{3}\\right) = -\\sin \\dfrac{\\pi}{3} = -\\dfrac{\\sqrt{3}}{2}$. $\\tan \\dfrac{11\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$ is incorrect. In the fourth quadrant the tangent is negative. In fact $\\tan \\dfrac{11\\pi}{6} = \\tan\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = -\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$. $\\sin \\dfrac{2\\pi}{3} = -\\dfrac{\\sqrt{3}}{2}$ is incorrect. In the second quadrant the sine is positive. In fact $\\sin \\dfrac{2\\pi}{3} = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -243,7 +243,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Reference angle first, then the sign of the quadrant: $\\sin \\dfrac{2\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ (QII, sine positive), $\\cos \\dfrac{4\\pi}{3} = -\\dfrac{1}{2}$ (QIII, cosine negative), $\\tan \\dfrac{5\\pi}{3} = -\\sqrt{3}$ (QIV, tangent negative). The result is $\\dfrac{3\\sqrt{3} - 1}{2}$.",
+  "solution": "Use the reference angle and the sign in each quadrant. $\\sin \\dfrac{2\\pi}{3} = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, because sine is positive in the second quadrant. $\\cos \\dfrac{4\\pi}{3} = \\cos\\left(\\pi + \\dfrac{\\pi}{3}\\right) = -\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$, because cosine is negative in the third quadrant. $\\tan \\dfrac{5\\pi}{3} = \\tan\\left(2\\pi - \\dfrac{\\pi}{3}\\right) = -\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$, because tangent is negative in the fourth quadrant. So the value is $\\dfrac{\\sqrt{3}}{2} - \\dfrac{1}{2} + \\sqrt{3} = \\dfrac{3\\sqrt{3} - 1}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -274,7 +274,7 @@
    null,
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{169} = 13$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{5}{13}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -12$, $y = 5$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{169} = 13$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{5}{13}$.",
   "video": "V10",
   "version": "a"
  },
@@ -305,7 +305,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{15}{17}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 8$, $y = 15$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{289} = 17$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{15}{17}$.",
   "video": "V10",
   "version": "a"
  },
@@ -336,7 +336,7 @@
    "companion",
    "near-miss"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{5}$. $\\sin\\alpha = \\dfrac{y}{r}$ $= \\dfrac{\\sqrt{5}}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 2$, $y = 1$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{5}$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a"
  },
@@ -367,7 +367,7 @@
    "near-miss",
    null
   ],
-  "solution": "Since $3^2 + 4^2 = 5^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $A$ the opposite side is $BC = 4$ and the adjacent side is $3$, so $\\tan A = \\dfrac{4}{3}$.",
+  "solution": "Since $3^2 + 4^2 = 5^2$, the triangle has a right angle at $C$ and $AB = 5$ is the hypotenuse. For angle $A$ the opposite side is $BC = 4$ and the adjacent side is $AC = 3$, so $\\tan A = \\dfrac{4}{3}$.",
   "video": "V10",
   "version": "a"
  },
@@ -398,7 +398,7 @@
    null,
    "near-miss"
   ],
-  "solution": "By definition, for a point $P(x, y)$ on the terminal side with $|OP| = r$: $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$, $\\tan\\alpha = \\dfrac{y}{x}$.",
+  "solution": "For a point $P(x, y)$ on the terminal side with $|OP| = r$, the definitions are $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$ and $\\tan\\alpha = \\dfrac{y}{x}$. So $\\sin\\alpha = \\dfrac{y}{r}$.",
   "video": "V10",
   "version": "a"
  },
@@ -429,7 +429,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = -\\dfrac{1}{2}$ and $x = -4$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{2}{x} = -\\dfrac{1}{2}$, which gives $x = 2 \\div \\left(-\\dfrac{1}{2}\\right) = -4$.",
   "video": "V10",
   "version": "a"
  },
@@ -460,7 +460,7 @@
    "near-miss",
    null
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{25} = 5$. $\\sin\\alpha = \\dfrac{y}{r}$ $= -\\dfrac{4}{5}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -3$, $y = -4$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{25} = 5$. So $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-4}{5} = -\\dfrac{4}{5}$.",
   "video": "V10",
   "version": "a"
  },
@@ -491,7 +491,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $r = \\sqrt{5}$. The correct statement is $\\cos\\alpha = \\dfrac{2\\sqrt{5}}{5}$ — $\\cos\\alpha = \\dfrac{x}{r}$. $\\tan\\alpha = \\dfrac{1}{2}$ is false: $\\tan\\alpha = \\dfrac{y}{x}$ keeps both signs. $\\cos\\alpha = -\\dfrac{2\\sqrt{5}}{5}$ is false: the sign of $x$ decides the sign of the cosine. $\\sin\\alpha = \\dfrac{2\\sqrt{5}}{5}$ is false: that is $\\cos\\alpha$.",
+  "solution": "Here $x = 2$, $y = -1$ and $r = \\sqrt{4 + 1} = \\sqrt{5}$. $\\cos\\alpha = \\dfrac{2\\sqrt{5}}{5}$ is correct. $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{2}{\\sqrt{5}} = \\dfrac{2\\sqrt{5}}{5}$. $\\tan\\alpha = \\dfrac{1}{2}$ is incorrect. $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-1}{2} = -\\dfrac{1}{2}$. $\\cos\\alpha = -\\dfrac{2\\sqrt{5}}{5}$ is incorrect. The cosine has the sign of $x = 2$: $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{2}{\\sqrt{5}} = \\dfrac{2\\sqrt{5}}{5}$. $\\sin\\alpha = \\dfrac{2\\sqrt{5}}{5}$ is incorrect. This is the value of $\\cos\\alpha = \\dfrac{x}{r}$. In fact $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-1}{\\sqrt{5}} = -\\dfrac{\\sqrt{5}}{5}$.",
   "video": "V10",
   "version": "a"
  },
@@ -522,7 +522,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The correct statement is $\\sin^2\\alpha + \\cos^2\\alpha = 1$ — the Pythagorean identity. $\\tan\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ is false: the fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$. $1 + \\tan^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$ is false: the right side should be $\\dfrac{1}{\\cos^2\\alpha}$. $\\sin\\alpha + \\cos\\alpha = 1$ is false: only the squares add up to $1$.",
+  "solution": "$\\sin^2\\alpha + \\cos^2\\alpha = 1$ is correct. This is the Pythagorean identity. $\\tan\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ is incorrect. The fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$. $1 + \\tan^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$ is incorrect. The right side should be $\\dfrac{1}{\\cos^2\\alpha}$. $\\sin\\alpha + \\cos\\alpha = 1$ is incorrect. Only the squares add up to $1$. For example, at $\\alpha = \\dfrac{\\pi}{4}$ the left side is $\\sqrt{2}$.",
   "video": "V11",
   "version": "a"
  },
@@ -539,7 +539,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{\\sqrt{6}}{3}$ and $\\alpha$ is an acute angle, then $\\tan\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{\\sqrt{6}}{3}$ and $\\alpha$ is an acute angle, then $\\tan\\alpha =$ ( )",
   "options": [
    "$\\sqrt{2}$",
    "$-\\dfrac{\\sqrt{2}}{2}$",
@@ -553,7 +553,7 @@
    "companion",
    null
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\cos^2\\alpha$ gives $\\sin\\alpha = \\pm \\dfrac{\\sqrt{3}}{3}$; in the first quadrant sine is positive. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{\\sqrt{2}}{2}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\left(\\dfrac{\\sqrt{6}}{3}\\right)^2 = 1 - \\dfrac{2}{3} = \\dfrac{1}{3}$, so $\\sin\\alpha = \\pm \\dfrac{\\sqrt{3}}{3}$. In the first quadrant sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{3}}{3}$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{\\sqrt{2}}{2}$.",
   "video": "V11",
   "version": "a"
  },
@@ -570,7 +570,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{\\sqrt{5}}{3}$ and $\\alpha$ is an acute angle, then $\\cos\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{\\sqrt{5}}{3}$ and $\\alpha$ is an acute angle, then $\\cos\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{2}{3}$",
    "$\\dfrac{\\sqrt{5}}{2}$",
@@ -584,7 +584,7 @@
    null,
    "companion"
   ],
-  "solution": "$\\cos^2\\alpha = 1 - \\sin^2\\alpha$ gives $\\cos\\alpha = \\pm \\dfrac{2}{3}$; in the first quadrant cosine is positive. So $\\cos\\alpha = \\dfrac{2}{3}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\left(\\dfrac{\\sqrt{5}}{3}\\right)^2 = 1 - \\dfrac{5}{9} = \\dfrac{4}{9}$, so $\\cos\\alpha = \\pm \\dfrac{2}{3}$. In the first quadrant cosine is positive, so $\\cos\\alpha = \\dfrac{2}{3}$.",
   "video": "V11",
   "version": "a"
  },
@@ -601,7 +601,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{5}{13}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{5}{13}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{5}{13}$",
    "$\\dfrac{12}{5}$",
@@ -615,7 +615,7 @@
    "sign",
    null
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\cos^2\\alpha$ gives $\\sin\\alpha = \\pm \\dfrac{12}{13}$; in the third quadrant sine is negative. So $\\sin\\alpha = -\\dfrac{12}{13}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\left(-\\dfrac{5}{13}\\right)^2 = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$, so $\\sin\\alpha = \\pm \\dfrac{12}{13}$. In the third quadrant sine is negative, so $\\sin\\alpha = -\\dfrac{12}{13}$.",
   "video": "V11",
   "version": "a"
  },
@@ -632,7 +632,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{24}{25}$ and $\\alpha$ is in the second quadrant, which of the following is correct? ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{24}{25}$ and $\\alpha$ is in the second quadrant, which of the following is correct? ( )",
   "options": [
    "$\\tan\\alpha = \\dfrac{7}{24}$",
    "$\\cos\\alpha = -\\dfrac{7}{25}$",
@@ -646,7 +646,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "The correct statement is $\\cos\\alpha = -\\dfrac{7}{25}$ — the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant. $\\tan\\alpha = -\\dfrac{7}{24}$ is false: that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent. $\\tan\\alpha = \\dfrac{7}{24}$ is false: that is the reciprocal of the tangent with the wrong sign. $\\tan\\alpha = \\dfrac{24}{7}$ is false: the sign of the tangent is wrong for the second quadrant.",
+  "solution": "In the second quadrant $\\sin\\alpha > 0$ and $\\cos\\alpha < 0$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{576}{625} = \\dfrac{49}{625}$, so $\\cos\\alpha = -\\dfrac{7}{25}$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{24}{7}$. $\\cos\\alpha = -\\dfrac{7}{25}$ is correct. $\\tan\\alpha = -\\dfrac{7}{24}$ is incorrect. This is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{24}{7}$. $\\tan\\alpha = \\dfrac{7}{24}$ is incorrect. This is $-\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{24}{7}$. $\\tan\\alpha = \\dfrac{24}{7}$ is incorrect. Tangent is negative in the second quadrant, so $\\tan\\alpha = -\\dfrac{24}{7}$.",
   "video": "V11",
   "version": "a"
  },
@@ -677,7 +677,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "$\\cos^2\\alpha = 1 - \\dfrac{9}{10} = \\dfrac{1}{10}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 9$. No quadrant is given, so both signs are possible: $\\tan\\alpha = \\pm 3$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{9}{10} = \\dfrac{1}{10}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 9$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = \\pm 3$.",
   "video": "V11",
   "version": "a"
  },
@@ -694,7 +694,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = -\\dfrac{24}{7}$ and $\\alpha$ is in the second quadrant, then $\\cos\\alpha =$ ( )",
+  "stem": "If $\\tan\\alpha = -\\dfrac{24}{7}$ and $\\alpha$ is in the second quadrant, then $\\cos\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{7}{25}$",
    "$\\dfrac{24}{25}$",
@@ -708,7 +708,7 @@
    "sign",
    "companion"
   ],
-  "solution": "From $\\tan\\alpha = -\\dfrac{24}{7}$, think of a right triangle with legs $24$ and $7$: $\\lvert\\sin\\alpha\\rvert = \\dfrac{24}{25}$ and $\\lvert\\cos\\alpha\\rvert = \\dfrac{7}{25}$. In the second quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{7}{25}$.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{24}{7}$, take a right triangle with legs $24$ and $7$. Its hypotenuse is $\\sqrt{24^2 + 7^2} = 25$, so $\\lvert\\sin\\alpha\\rvert = \\dfrac{24}{25}$ and $\\lvert\\cos\\alpha\\rvert = \\dfrac{7}{25}$. In the second quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{7}{25}$.",
   "video": "V11",
   "version": "a"
  },
@@ -725,7 +725,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = -\\dfrac{3}{4}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\tan\\alpha = -\\dfrac{3}{4}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\sin\\alpha = \\dfrac{3}{5}$",
    "$\\cos\\alpha = \\dfrac{4}{5}$",
@@ -739,7 +739,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = \\dfrac{3}{5}$ and $\\cos\\alpha = -\\dfrac{4}{5}$. The correct statement is $\\sin\\alpha = \\dfrac{3}{5}$ — the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant. $\\cos\\alpha = \\dfrac{4}{5}$ is false: the sign of the cosine is wrong for the second quadrant. $\\sin\\alpha = -\\dfrac{3}{5}$ is false: the sign of the sine is wrong for the second quadrant. $\\sin\\alpha + \\cos\\alpha = \\dfrac{7}{5}$ is false: one of the two signs is wrong.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{3}{4}$, a right triangle with legs $3$ and $4$ has hypotenuse $5$. In the second quadrant $\\sin\\alpha > 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = \\dfrac{3}{5}$ and $\\cos\\alpha = -\\dfrac{4}{5}$. $\\sin\\alpha = \\dfrac{3}{5}$ is correct. $\\cos\\alpha = \\dfrac{4}{5}$ is incorrect. Cosine is negative in the second quadrant, so $\\cos\\alpha = -\\dfrac{4}{5}$. $\\sin\\alpha = -\\dfrac{3}{5}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{3}{5}$. $\\sin\\alpha + \\cos\\alpha = \\dfrac{7}{5}$ is incorrect. $\\sin\\alpha + \\cos\\alpha = \\dfrac{3}{5} - \\dfrac{4}{5} = -\\dfrac{1}{5}$.",
   "video": "V11",
   "version": "a"
  },
@@ -756,7 +756,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the fourth quadrant, then $\\cos\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the fourth quadrant, then $\\cos\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{8}{17}$",
    "$\\dfrac{15}{17}$",
@@ -770,7 +770,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "$\\cos^2\\alpha = 1 - \\sin^2\\alpha$ gives $\\cos\\alpha = \\pm \\dfrac{15}{17}$; in the fourth quadrant cosine is positive. So $\\cos\\alpha = \\dfrac{15}{17}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\left(-\\dfrac{8}{17}\\right)^2 = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$, so $\\cos\\alpha = \\pm \\dfrac{15}{17}$. In the fourth quadrant cosine is positive, so $\\cos\\alpha = \\dfrac{15}{17}$.",
   "video": "V11",
   "version": "a"
  },
@@ -787,7 +787,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\sin\\alpha = \\dfrac{15}{17}$",
    "$\\tan\\alpha = \\dfrac{15}{8}$",
@@ -801,7 +801,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "The correct statement is $\\sin\\alpha = \\dfrac{15}{17}$ — the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant. $\\sin\\alpha = -\\dfrac{15}{17}$ is false: the sign of the sine is wrong for the second quadrant. $\\tan\\alpha = \\dfrac{15}{8}$ is false: the sign of the tangent is wrong for the second quadrant. $\\tan\\alpha = -\\dfrac{8}{15}$ is false: that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.",
+  "solution": "In the second quadrant $\\sin\\alpha > 0$ and $\\cos\\alpha < 0$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{15}{8}$. $\\sin\\alpha = \\dfrac{15}{17}$ is correct. $\\sin\\alpha = -\\dfrac{15}{17}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{15}{17}$. $\\tan\\alpha = \\dfrac{15}{8}$ is incorrect. Tangent is negative in the second quadrant, so $\\tan\\alpha = -\\dfrac{15}{8}$. $\\tan\\alpha = -\\dfrac{8}{15}$ is incorrect. This is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{15}{8}$.",
   "video": "V11",
   "version": "a"
  },
@@ -818,7 +818,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{5}{12}$",
    "$-\\dfrac{12}{13}$",
@@ -832,7 +832,7 @@
    "sign",
    "companion"
   ],
-  "solution": "$\\cos^2\\alpha = 1 - \\sin^2\\alpha$ gives $\\cos\\alpha = \\pm \\dfrac{12}{13}$; in the second quadrant cosine is negative. So $\\cos\\alpha = -\\dfrac{12}{13}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\left(\\dfrac{5}{13}\\right)^2 = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$, so $\\cos\\alpha = \\pm \\dfrac{12}{13}$. In the second quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{12}{13}$.",
   "video": "V11",
   "version": "a"
  },
@@ -863,7 +863,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin^2\\alpha - \\cos^2\\alpha = 1$ — the identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$. The other three statements are true.",
+  "solution": "$\\sin^2\\alpha - \\cos^2\\alpha = 1$ is incorrect. The identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$. $\\sin^2\\alpha + \\cos^2\\alpha = 1$ is correct. This is the Pythagorean identity. $1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$ is correct. Divide $\\sin^2\\alpha + \\cos^2\\alpha = 1$ by $\\cos^2\\alpha$. $\\sin\\alpha = \\tan\\alpha\\cos\\alpha$ is correct. Multiply $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ by $\\cos\\alpha$.",
   "video": "V11",
   "version": "a"
  },
@@ -894,7 +894,7 @@
    "near-miss",
    null
   ],
-  "solution": "By definition, for a point $P(x, y)$ on the terminal side with $|OP| = r$: $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$, $\\tan\\alpha = \\dfrac{y}{x}$.",
+  "solution": "For a point $P(x, y)$ on the terminal side with $|OP| = r$, the definitions are $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$ and $\\tan\\alpha = \\dfrac{y}{x}$. So $\\tan\\alpha = \\dfrac{y}{x}$.",
   "video": "V10",
   "version": "a"
  },
@@ -925,7 +925,7 @@
    "domain",
    null
   ],
-  "solution": "Each denominator must be non-zero, so $x$ cannot be $-2$, $1$, $5$. List every excluded point: $(-\\infty, -2) \\cup (-2, 1) \\cup (1, 5) \\cup (5, +\\infty)$.",
+  "solution": "Each denominator must be non-zero: $x + 2 \\ne 0$, $x - 1 \\ne 0$, $x - 5 \\ne 0$. So $x$ cannot be $-2$, $1$ or $5$, and all three points must be removed. The domain is $(-\\infty, -2) \\cup (-2, 1) \\cup (1, 5) \\cup (5, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -956,7 +956,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $4 \\in A$ — the end point $4$ is included (the sign there is $\\le$). $1 \\in A$ is false: the end point $1$ is excluded (strict inequality). $3 \\notin A$ is false: $3$ lies between $1$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$4 \\in A$ is correct. The sign at $4$ is $\\le$, so the end point $4$ satisfies the condition. $1 \\in A$ is incorrect. The inequality at $1$ is strict, so the end point $1$ is not in $A$. $3 \\notin A$ is incorrect. $1 < 3 < 4$, so $3 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a"
  },
@@ -987,7 +987,7 @@
    null,
    "sign"
   ],
-  "solution": "In the second quadrant cosine is negative: $\\cos\\alpha = -\\dfrac{7}{25}$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{24}{7}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{576}{625} = \\dfrac{49}{625}$. In the second quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{7}{25}$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{24}{7}$.",
   "video": "V11",
   "version": "a"
  },
@@ -1004,7 +1004,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha + \\cos\\alpha = -\\dfrac{1}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\alpha - \\cos\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha + \\cos\\alpha = -\\dfrac{1}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\alpha - \\cos\\alpha =$ ( )",
   "options": [
    "$\\dfrac{49}{25}$",
    "$\\dfrac{7}{5}$",
@@ -1018,7 +1018,7 @@
    "sign",
    "pm"
   ],
-  "solution": "Square: $(\\sin\\alpha + \\cos\\alpha)^2 = 1 + 2\\sin\\alpha\\cos\\alpha = \\dfrac{1}{25}$, so $\\sin\\alpha\\cos\\alpha = -\\dfrac{12}{25}$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = \\dfrac{49}{25}$. In the second quadrant $\\sin\\alpha > 0 > \\cos\\alpha$, so the difference is positive: $\\dfrac{7}{5}$.",
+  "solution": "Square both sides: $(\\sin\\alpha + \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha + 2\\sin\\alpha\\cos\\alpha = 1 + 2\\sin\\alpha\\cos\\alpha = \\dfrac{1}{25}$, so $2\\sin\\alpha\\cos\\alpha = -\\dfrac{24}{25}$ and $\\sin\\alpha\\cos\\alpha = -\\dfrac{12}{25}$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = 1 - \\left(-\\dfrac{24}{25}\\right) = \\dfrac{49}{25}$. In the second quadrant $\\sin\\alpha > 0 > \\cos\\alpha$, so $\\sin\\alpha - \\cos\\alpha$ is positive and equals $\\dfrac{7}{5}$.",
   "video": "V11",
   "version": "a"
  },
@@ -1035,7 +1035,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = \\dfrac{24}{7}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $2\\sin\\alpha - 2\\cos\\alpha =$ ( )",
+  "stem": "If $\\tan\\alpha = \\dfrac{24}{7}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $2\\sin\\alpha - 2\\cos\\alpha =$ ( )",
   "options": [
    "$\\dfrac{34}{25}$",
    "$-\\dfrac{62}{25}$",
@@ -1049,7 +1049,7 @@
    null,
    "sign"
   ],
-  "solution": "From the tangent and the quadrant: $\\sin\\alpha = -\\dfrac{24}{25}$ and $\\cos\\alpha = -\\dfrac{7}{25}$. Substituting: $2\\sin\\alpha - 2\\cos\\alpha = -\\dfrac{34}{25}$.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{24}{7}$, a right triangle with legs $24$ and $7$ has hypotenuse $25$. In the third quadrant $\\sin\\alpha < 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = -\\dfrac{24}{25}$ and $\\cos\\alpha = -\\dfrac{7}{25}$. Substituting: $2\\sin\\alpha - 2\\cos\\alpha = 2 \\times \\left(-\\dfrac{24}{25}\\right) - 2 \\times \\left(-\\dfrac{7}{25}\\right) = -\\dfrac{34}{25}$.",
   "video": "V11",
   "version": "a"
  },
@@ -1066,7 +1066,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = \\dfrac{15}{8}$ and $\\alpha$ is in the third quadrant, which of the following is correct? ( )",
+  "stem": "If $\\tan\\alpha = \\dfrac{15}{8}$ and $\\alpha$ is in the third quadrant, which of the following is correct? ( )",
   "options": [
    "$\\cos\\alpha = -\\dfrac{8}{17}$",
    "$\\sin\\alpha\\cos\\alpha = -\\dfrac{120}{289}$",
@@ -1080,7 +1080,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\cos\\alpha = -\\dfrac{8}{17}$. The correct statement is $\\cos\\alpha = -\\dfrac{8}{17}$ — the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant. $\\sin\\alpha\\cos\\alpha = -\\dfrac{120}{289}$ is false: the sign of the product is wrong. $\\cos\\alpha = \\dfrac{8}{17}$ is false: the sign of the cosine is wrong for the third quadrant. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{17}$ is false: one of the two signs is wrong.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{15}{8}$, a right triangle with legs $15$ and $8$ has hypotenuse $17$. In the third quadrant $\\sin\\alpha < 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\cos\\alpha = -\\dfrac{8}{17}$. $\\cos\\alpha = -\\dfrac{8}{17}$ is correct. $\\sin\\alpha\\cos\\alpha = -\\dfrac{120}{289}$ is incorrect. $\\sin\\alpha\\cos\\alpha = \\left(-\\dfrac{15}{17}\\right) \\times \\left(-\\dfrac{8}{17}\\right) = \\dfrac{120}{289}$. $\\cos\\alpha = \\dfrac{8}{17}$ is incorrect. Cosine is negative in the third quadrant, so $\\cos\\alpha = -\\dfrac{8}{17}$. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{17}$ is incorrect. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{15}{17} - \\dfrac{8}{17} = -\\dfrac{23}{17}$.",
   "video": "V11",
   "version": "a"
  },
@@ -1111,7 +1111,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $\\{0\\} \\subseteq A$ — $0 \\in A$, so the set $\\{0\\}$ is a subset of $A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element; the empty set has none. $\\{0\\} \\in A$ is false: $\\{0\\}$ is a set; the elements of $A$ are numbers.",
+  "solution": "$\\{0\\} \\subseteq A$ is correct. $0 \\in A$, so the set $\\{0\\}$ is a subset of $A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $0$, $3$ and $4$. The empty set is a subset of $A$, not an element. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $\\{0\\} \\in A$ is incorrect. $\\{0\\}$ is a set, while the elements of $A$ are numbers. The correct statement is $\\{0\\} \\subseteq A$.",
   "video": "V02",
   "version": "a"
  },
@@ -1142,7 +1142,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "The correct statement is $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$.",
+  "solution": "$\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -1173,7 +1173,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ — the sign is wrong: the correct result is $\\sin\\alpha$. The other three statements are true.",
+  "solution": "$\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(-\\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.",
   "video": "V12",
   "version": "a"
  },
@@ -1204,7 +1204,7 @@
    "companion",
    "sign"
   ],
-  "solution": "$\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $\\dfrac{4}{5}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\sin\\alpha = \\dfrac{4}{5}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a"
  },
@@ -1235,7 +1235,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\left(\\pi + \\alpha\\right) = \\tan\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\tan$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$.",
+  "solution": "$\\tan\\left(\\pi + \\alpha\\right) = \\tan\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where tangent is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -1266,7 +1266,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$.",
+  "solution": "$\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$. $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -1297,7 +1297,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\sin\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\sin\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\cos\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} - \\alpha$ lies in the third quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha - \\dfrac{\\pi}{2}$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = -\\cos\\alpha$. $\\sin\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha - \\dfrac{3\\pi}{2}$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -1328,7 +1328,7 @@
    "companion",
    null
   ],
-  "solution": "$\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$ (multiple of $\\pi$: the name stays; sign from the quadrant where the angle lands). So the value is $\\dfrac{2}{5}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha = \\dfrac{2}{5}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a"
  },
@@ -1345,7 +1345,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\dfrac{7}{25}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\dfrac{7}{25}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) =$ ( )",
   "options": [
    "$-\\dfrac{24}{25}$",
    "$\\dfrac{7}{25}$",
@@ -1359,7 +1359,7 @@
    "companion",
    null
   ],
-  "solution": "Step 1: $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{7}{25}$. Step 2: in the fourth quadrant $\\cos\\alpha = \\dfrac{24}{25}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = \\dfrac{24}{25}$.",
+  "solution": "Step 1: $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{7}{25}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{49}{625} = \\dfrac{576}{625}$, and in the fourth quadrant cosine is positive, so $\\cos\\alpha = \\dfrac{24}{25}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = \\dfrac{24}{25}$.",
   "video": "V12",
   "version": "a"
  },
@@ -1390,7 +1390,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -1421,7 +1421,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ — the sign is wrong: the correct result is $-\\sin\\alpha$. The other three statements are true.",
+  "solution": "$\\sin\\left(2\\pi - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V12",
   "version": "a"
  },
@@ -1452,7 +1452,7 @@
    null,
    "sign"
   ],
-  "solution": "$\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $\\dfrac{1}{4}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha = \\dfrac{1}{4}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a"
  },
@@ -1483,7 +1483,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(\\alpha + \\pi\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $-\\cos\\alpha$. $\\cos\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = \\sin\\alpha$ is false: the sign is wrong: the correct result is $-\\sin\\alpha$. $\\cos\\left(\\alpha + \\pi\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $-\\cos\\alpha$.",
+  "solution": "$\\sin\\left(\\alpha + \\pi\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\alpha + \\pi$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$. $\\cos\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha - \\dfrac{3\\pi}{2}$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = -\\sin\\alpha$. $\\cos\\left(\\alpha + \\pi\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha + \\pi$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\alpha + \\pi\\right) = -\\cos\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -1514,7 +1514,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "The correct statement is $1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$ — divide $\\sin^2\\alpha + \\cos^2\\alpha = 1$ by $\\cos^2\\alpha$. $\\tan\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ is false: the fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$. $1 + \\tan^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$ is false: the right side should be $\\dfrac{1}{\\cos^2\\alpha}$. $\\sin^2\\alpha - \\cos^2\\alpha = 1$ is false: the identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$.",
+  "solution": "$1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$ is correct. Divide $\\sin^2\\alpha + \\cos^2\\alpha = 1$ by $\\cos^2\\alpha$. $\\tan\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ is incorrect. The fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$. $1 + \\tan^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$ is incorrect. The right side should be $\\dfrac{1}{\\cos^2\\alpha}$. $\\sin^2\\alpha - \\cos^2\\alpha = 1$ is incorrect. The identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$.",
   "video": "V11",
   "version": "a"
  },
@@ -1545,7 +1545,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y + 3}{y - 1}$. Cross-multiply: $x(y - 1) = 4y + 3$, collect $y$: $y(x - 4) = x + 3$, so $y = \\dfrac{x + 3}{x - 4}$. Check with one point: $f(0) = -3$, and the inverse sends $-3$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y + 3}{y - 1}$. Multiply both sides by $y - 1$: $xy - x = 4y + 3$. Collect the terms in $y$ on one side: $y(x - 4) = x + 3$, so $y = \\dfrac{x + 3}{x - 4}$. Check with one point: $f(0) = -3$, and the inverse sends $-3$ back to $0$.",
   "video": "V07",
   "version": "a"
  },
@@ -1576,7 +1576,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 7)(x - 1) > 0$. The roots are $-7$ and $1$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -7 \\text{ or } x > 1\\}$.",
+  "solution": "Factor the left side: $(x + 7)(x - 1) > 0$. The roots are $-7$ and $1$. The graph of $y = (x + 7)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -7 \\text{ or } x > 1\\}$.",
   "video": "V03",
   "version": "a"
  },
@@ -1593,7 +1593,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\pi + \\alpha\\right) = \\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\pi + \\alpha\\right) = \\dfrac{8}{17}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) =$ ( )",
   "options": [
    "$-\\dfrac{8}{17}$",
    "$-\\dfrac{15}{17}$",
@@ -1607,7 +1607,7 @@
    null,
    "companion"
   ],
-  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{8}{17}$. Step 2: in the fourth quadrant $\\cos\\alpha = \\dfrac{15}{17}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha = \\dfrac{15}{17}$.",
+  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{8}{17}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$, and in the fourth quadrant cosine is positive, so $\\cos\\alpha = \\dfrac{15}{17}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha = \\dfrac{15}{17}$.",
   "video": "V12",
   "version": "a"
  },
@@ -1624,7 +1624,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\tan\\alpha = -\\dfrac{8}{15}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\dfrac{\\sin\\left(\\pi + \\alpha\\right)\\cdot\\sin\\left(\\pi - \\alpha\\right)}{\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right)} =$ ( )",
+  "stem": "If $\\tan\\alpha = -\\dfrac{8}{15}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\dfrac{\\sin\\left(\\pi + \\alpha\\right)\\cdot\\sin\\left(\\pi - \\alpha\\right)}{\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right)} =$ ( )",
   "options": [
    "$\\dfrac{15}{17}$",
    "$-\\dfrac{8}{17}$",
@@ -1638,7 +1638,7 @@
    null,
    "partial"
   ],
-  "solution": "Reduce each factor: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$. With $\\sin\\alpha = \\dfrac{8}{17}$ and $\\cos\\alpha = -\\dfrac{15}{17}$ the quotient equals $\\dfrac{8}{17}$.",
+  "solution": "Reduce each factor: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$ and $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$. So the expression is $\\dfrac{\\left(-\\sin\\alpha\\right)\\left(\\sin\\alpha\\right)}{-\\sin\\alpha} = \\sin\\alpha$. Here $\\sin\\alpha = \\dfrac{8}{17}$ and $\\cos\\alpha = -\\dfrac{15}{17}$ (from $\\tan\\alpha = -\\dfrac{8}{15}$ and the quadrant), so the value is $\\dfrac{8}{17}$.",
   "video": "V12",
   "version": "a"
  },
@@ -1655,7 +1655,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\pi + \\alpha\\right) = \\dfrac{4}{5}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\pi + \\alpha\\right) = \\dfrac{4}{5}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) =$ ( )",
   "options": [
    "$-\\dfrac{4}{5}$",
    "$-\\dfrac{3}{5}$",
@@ -1669,7 +1669,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{4}{5}$. Step 2: in the third quadrant $\\cos\\alpha = -\\dfrac{3}{5}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = -\\dfrac{3}{5}$.",
+  "solution": "Step 1: $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{4}{5}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$, and in the third quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{3}{5}$. Step 3: $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha = -\\dfrac{3}{5}$.",
   "video": "V12",
   "version": "a"
  },
@@ -1700,7 +1700,7 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is $\\cos\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ — the name is wrong: the correct result is $-\\cos\\alpha$. The other three statements are true.",
+  "solution": "$\\cos\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V12",
   "version": "a"
  },
@@ -1731,7 +1731,7 @@
    "endpoint",
    "complement"
   ],
-  "solution": "Move $2$ to the left and combine into one fraction: $\\dfrac{-x + 13}{x - 4} \\le 0$. The numerator is zero at $x = 13$ and the denominator at $x = 4$. The quotient has the same sign as $(-x + 13)(x - 4)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $4$ never is. Solution set: $(-\\infty, 4) \\cup [13, +\\infty)$.",
+  "solution": "Subtract $2$ from both sides and combine into one fraction: $\\dfrac{x + 5}{x - 4} - 2 = \\dfrac{-x + 13}{x - 4}$, so the inequality becomes $\\dfrac{-x + 13}{x - 4} \\le 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(-x + 13)(x - 4)$ is zero at $x = 13$ and $x = 4$, and it is positive between these two numbers and negative outside them. We need the quotient to be negative or zero, so $x$ lies outside them. The numerator is zero at $x = 13$, so this end point is included. The denominator is zero at $x = 4$, so this end point is excluded. The solution set is $(-\\infty, 4) \\cup [13, +\\infty)$.",
   "video": "V03",
   "version": "a"
  },
@@ -1762,7 +1762,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 3$, so $T = \\dfrac{2\\pi}{3}$.",
+  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 3$, so $T = \\dfrac{2\\pi}{3} = \\dfrac{2\\pi}{3}$.",
   "video": "V13",
   "version": "a"
  },
@@ -1793,7 +1793,7 @@
    null,
    "companion"
   ],
-  "solution": "Since $-1 \\le \\cos x \\le 1$, the function $A\\cos(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = -1$ and $|A| = 3$, so the maximum is $2$.",
+  "solution": "Since $-1 \\le \\cos x \\le 1$, the function $y = A\\cos \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = -3$ and $k = -1$, so the maximum is $-1 + 3 = 2$. Because $A$ is negative, the maximum occurs where $\\cos x = -1$.",
   "video": "V13",
   "version": "a"
  },
@@ -1824,7 +1824,7 @@
    "domain",
    "near-miss"
   ],
-  "solution": "The correct statement is “Its graph is symmetric about the $y$-axis”. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$. “Its graph is symmetric about the origin” is false: $y = \\cos x$ is even, so its graph is symmetric about the $y$-axis. “Its minimum positive period is $\\pi$” is false: the minimum positive period of $y = \\cos x$ is $2\\pi$.",
+  "solution": "“Its graph is symmetric about the $y$-axis” is correct. $\\cos(-x) = \\cos x$, so it is even. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. “Its graph is symmetric about the origin” is incorrect. $\\cos(-x) = \\cos x$, so it is even, so its graph is symmetric about the $y$-axis. “Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\cos 0 = 1$ but $\\cos\\left(0 + \\pi\\right) = -1$.",
   "video": "V13",
   "version": "a"
  },
@@ -1855,7 +1855,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its range is $\\mathbb{R}$” — its values stay between $-1$ and $1$. The other three statements are true.",
+  "solution": "“Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. “It is an odd function” is correct. $\\sin(-x) = -\\sin x$, so it is odd. “Its graph is symmetric about the origin” is correct. $\\sin(-x) = -\\sin x$, so it is odd. “It is a periodic function with minimum positive period $2\\pi$” is correct. $\\sin(x + 2\\pi) = \\sin x$ for every $x$, and no smaller positive number has this property.",
   "video": "V13",
   "version": "a"
  },
@@ -1886,7 +1886,7 @@
    "sign",
    null
   ],
-  "solution": "Let $u = x - \\dfrac{\\pi}{2}$. The function $\\sin u$ is increasing for $-\\dfrac{\\pi}{2} \\le u \\le \\dfrac{\\pi}{2}$. Solve $-\\dfrac{\\pi}{2} \\le x - \\dfrac{\\pi}{2} \\le \\dfrac{\\pi}{2}$: $x \\in \\left[0, \\pi\\right]$. Moving the interval the other way (adding instead of subtracting), or using the interval of the unshifted function, gives a wrong option; half a period later the function moves in the opposite direction.",
+  "solution": "Let $u = x - \\dfrac{\\pi}{2}$. The function $\\sin u$ is increasing for $-\\dfrac{\\pi}{2} \\le u \\le \\dfrac{\\pi}{2}$. Solving $-\\dfrac{\\pi}{2} \\le x - \\dfrac{\\pi}{2} \\le \\dfrac{\\pi}{2}$ gives $0 \\le x \\le \\pi$, so the function is increasing on $\\left[0, \\pi\\right]$. For the other options, on $\\left[-\\pi, 0\\right]$ it is decreasing, on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = 0$ and on $\\left[\\pi, 2\\pi\\right]$ it is decreasing.",
   "video": "V13",
   "version": "a"
  },
@@ -1917,7 +1917,7 @@
    "near-miss",
    "reciprocal"
   ],
-  "solution": "$T = \\dfrac{2\\pi}{|\\omega|}$ with $\\omega = \\dfrac{1}{3}$: dividing by a fraction multiplies by its reciprocal, so $T = 6\\pi$.",
+  "solution": "For $y = A\\cos(\\omega x + \\varphi) + k$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$, $\\varphi$ and $k$ are. Here $\\omega = \\dfrac{1}{3}$, and dividing by a fraction means multiplying by its reciprocal: $T = 2\\pi \\div \\dfrac{1}{3} = 2\\pi \\times 3 = 6\\pi$.",
   "video": "V13",
   "version": "a"
  },
@@ -1948,7 +1948,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The correct statement is “Its minimum value is $-1$” — the minimum is $k - |A|$. “It is an odd function” is false: $f(-x) \\ne -f(x)$ in general. “Its minimum positive period is $\\dfrac{\\pi}{4}$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. “Its maximum value is $2$” is false: the vertical shift $1$ was forgotten: the maximum is $3$.",
+  "solution": "“Its minimum value is $-1$” is correct. The minimum is $k - |A| = 1 - 2 = -1$. “It is an odd function” is incorrect. For an odd function the maximum and the minimum are opposite numbers, but here they are $3$ and $-1$. “Its minimum positive period is $\\dfrac{\\pi}{4}$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{4} = \\dfrac{\\pi}{2}$. “Its maximum value is $2$” is incorrect. The vertical shift is missing. The maximum is $k + |A| = 1 + 2 = 3$.",
   "video": "V13",
   "version": "a"
  },
@@ -1979,7 +1979,7 @@
    "reciprocal",
    null
   ],
-  "solution": "The correct statement is “Its maximum value is $2$” — the maximum is $k + |A|$. “Its minimum positive period is $\\pi$” is false: divide by $\\omega$, do not multiply: $T = 4\\pi$. “It is an even function” is false: $f(-x) \\ne f(x)$ in general. “Its minimum positive period is $2\\pi$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = 4\\pi$.",
+  "solution": "“Its maximum value is $2$” is correct. The maximum is $k + |A| = 0 + 2 = 2$. “Its minimum positive period is $\\pi$” is incorrect. The period is found by dividing $2\\pi$ by $|\\omega|$, not by multiplying: $T = \\dfrac{2\\pi}{|\\omega|} = 2\\pi \\div \\dfrac{1}{2} = 4\\pi$. “It is an even function” is incorrect. $f(0) = \\sqrt{3}$ is neither the maximum $2$ nor the minimum $-2$, so the $y$-axis is not an axis of symmetry of the graph. “Its minimum positive period is $2\\pi$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = 2\\pi \\div \\dfrac{1}{2} = 4\\pi$.",
   "video": "V13",
   "version": "a"
  },
@@ -2010,7 +2010,7 @@
    null,
    "partial"
   ],
-  "solution": "The correct statement is “Its graph is symmetric about the $y$-axis”. “It has exactly one zero” is false: it has infinitely many zeros. “Its minimum positive period is $\\pi$” is false: the minimum positive period of $y = \\cos x$ is $2\\pi$. “Its maximum value is $\\dfrac{\\pi}{2}$” is false: its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it).",
+  "solution": "“Its graph is symmetric about the $y$-axis” is correct. $\\cos(-x) = \\cos x$, so it is even. “It has exactly one zero” is incorrect. It is zero at $x = \\dfrac{\\pi}{2} + k\\pi$ for every integer $k$, so it has infinitely many zeros. “Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\cos 0 = 1$ but $\\cos\\left(0 + \\pi\\right) = -1$. “Its maximum value is $\\dfrac{\\pi}{2}$” is incorrect. Its maximum value is $1$.",
   "video": "V13",
   "version": "a"
  },
@@ -2041,7 +2041,7 @@
    "partial",
    "companion"
   ],
-  "solution": "Since $-1 \\le \\cos 5x \\le 1$, the function $A\\cos(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 2$ and $|A| = 3$, so the maximum is $5$.",
+  "solution": "Since $-1 \\le \\cos 5x \\le 1$, the function $y = A\\cos \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = -3$ and $k = 2$, so the maximum is $2 + 3 = 5$. Because $A$ is negative, the maximum occurs where $\\cos 5x = -1$.",
   "video": "V13",
   "version": "a"
  },
@@ -2072,7 +2072,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its minimum positive period is $\\pi$” — the minimum positive period of $y = \\cos x$ is $2\\pi$. The other three statements are true.",
+  "solution": "“Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\cos 0 = 1$ but $\\cos\\left(0 + \\pi\\right) = -1$. “It has infinitely many zeros” is correct. It is zero at $x = \\dfrac{\\pi}{2} + k\\pi$ for every integer $k$. “It is a periodic function with minimum positive period $2\\pi$” is correct. $\\cos(x + 2\\pi) = \\cos x$ for every $x$, and no smaller positive number has this property. “Its graph is symmetric about the $y$-axis” is correct. $\\cos(-x) = \\cos x$, so it is even.",
   "video": "V13",
   "version": "a"
  },
@@ -2103,7 +2103,7 @@
    "slip",
    "slip"
   ],
-  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$ (then the pattern repeats every $2\\pi$). So the function is monotonically decreasing on $\\left[0, \\pi\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$, and this pattern repeats every $2\\pi$. So the function is monotonically decreasing on $\\left[0, \\pi\\right]$. For the other options, on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = 0$, on $\\left[-\\pi, 0\\right]$ it is increasing and on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ it changes direction at $x = \\pi$.",
   "video": "V13",
   "version": "a"
  },
@@ -2134,7 +2134,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is false: the name is wrong: the correct result is $-\\cos\\alpha$. $\\tan\\left(\\pi - \\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$.",
+  "solution": "$\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\cos\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$. $\\tan\\left(\\pi - \\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -2165,7 +2165,7 @@
    "companion",
    null
   ],
-  "solution": "The reference angle is $\\dfrac{\\pi}{6}$ and the angle lies in the second quadrant, where tangent is negative. So the value is $-\\dfrac{\\sqrt{3}}{3}$.",
+  "solution": "The angle $\\dfrac{5\\pi}{6}$ lies in the second quadrant, where tangent is negative, and its reference angle is $\\dfrac{\\pi}{6}$. So $\\tan \\dfrac{5\\pi}{6} = \\tan\\left(\\pi - \\dfrac{\\pi}{6}\\right) = -\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$.",
   "video": "V09",
   "version": "a"
  },
@@ -2196,7 +2196,7 @@
    "endpoint",
    "domain"
   ],
-  "solution": "The root needs $x \\le 6$, the denominator needs $x \\ne 3$ and the logarithm needs $x > 0$. Domain: $(0, 3) \\cup (3, 6]$.",
+  "solution": "The square root needs $x \\le 6$, the denominator needs $x \\ne 3$ and the logarithm needs $x > 0$. All three must hold. The domain is $(0, 3) \\cup (3, 6]$.",
   "video": "V05",
   "version": "a"
  },
@@ -2227,7 +2227,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “Its minimum value is $-1$” — the minimum is $k - |A|$. “It is an odd function” is false: $f(-x) \\ne -f(x)$ in general. “Its minimum value is $-3$” is false: the vertical shift $2$ was forgotten: the minimum is $-1$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = \\pi$.",
+  "solution": "“Its minimum value is $-1$” is correct. The minimum is $k - |A| = 2 - 3 = -1$. “It is an odd function” is incorrect. For an odd function the maximum and the minimum are opposite numbers, but here they are $5$ and $-1$. “Its minimum value is $-3$” is incorrect. The vertical shift is missing. The minimum is $k - |A| = 2 - 3 = -1$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{2} = \\pi$.",
   "video": "V13",
   "version": "a"
  },
@@ -2258,7 +2258,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Let $u = x - \\dfrac{\\pi}{3}$. The function $\\cos u$ is increasing for $-\\pi \\le u \\le 0$. Solve $-\\pi \\le x - \\dfrac{\\pi}{3} \\le 0$: $x \\in \\left[-\\dfrac{2\\pi}{3}, \\dfrac{\\pi}{3}\\right]$. Moving the interval the other way (adding instead of subtracting), or using the interval of the unshifted function, gives a wrong option; half a period later the function moves in the opposite direction.",
+  "solution": "Let $u = x - \\dfrac{\\pi}{3}$. The function $\\cos u$ is increasing for $-\\pi \\le u \\le 0$. Solving $-\\pi \\le x - \\dfrac{\\pi}{3} \\le 0$ gives $-\\dfrac{2\\pi}{3} \\le x \\le \\dfrac{\\pi}{3}$, so the function is increasing on $\\left[-\\dfrac{2\\pi}{3}, \\dfrac{\\pi}{3}\\right]$. For the other options, on $\\left[-\\dfrac{4\\pi}{3}, -\\dfrac{\\pi}{3}\\right]$ it changes direction at $x = -\\dfrac{2\\pi}{3}$, on $\\left[-\\pi, 0\\right]$ it changes direction at $x = -\\dfrac{2\\pi}{3}$ and on $\\left[\\dfrac{\\pi}{3}, \\dfrac{4\\pi}{3}\\right]$ it is decreasing.",
   "video": "V13",
   "version": "a"
  },
@@ -2289,7 +2289,7 @@
    "partial",
    "near-miss"
   ],
-  "solution": "The correct statement is “Its minimum positive period is $\\pi$” — $T = \\dfrac{2\\pi}{|\\omega|}$. “Its maximum value is $3$” is false: the vertical shift $-1$ was forgotten: the maximum is $2$. “It is an even function” is false: $f(-x) \\ne f(x)$ in general. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = \\pi$.",
+  "solution": "“Its minimum positive period is $\\pi$” is correct. $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{2} = \\pi$. “Its maximum value is $3$” is incorrect. The vertical shift is missing. The maximum is $k + |A| = -1 + 3 = 2$. “It is an even function” is incorrect. $f(0) = -\\dfrac{5}{2}$ is neither the maximum $2$ nor the minimum $-4$, so the $y$-axis is not an axis of symmetry of the graph. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{2} = \\pi$.",
   "video": "V13",
   "version": "a"
  },
@@ -2351,7 +2351,7 @@
    "domain",
    null
   ],
-  "solution": "The inside $-x + 1$ must lie in the domain of $f$: $1 \\le -x + 1 \\le 2$. Solve for $x$ (dividing by a negative number reverses the signs): $[-1, 0]$.",
+  "solution": "The expression $-x + 1$ takes the place of $x$, so it must lie in the domain of $f$: $1 \\le -x + 1 \\le 2$. Subtract $1$: $0 \\le -x \\le 1$. Divide by $-1$, reversing both inequality signs because $-1$ is negative: $-1 \\le x \\le 0$. So the domain of $f(-x + 1)$ is $[-1, 0]$.",
   "video": "V05",
   "version": "a"
  },
@@ -2382,7 +2382,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{3}$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = 3$, so $T = \\dfrac{\\pi}{3} = \\dfrac{\\pi}{3}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2413,7 +2413,7 @@
    "partial",
    "near-miss"
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{2\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2444,7 +2444,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is “Its minimum positive period is $\\dfrac{\\pi}{2}$” — for a tangent $T = \\dfrac{\\pi}{|\\omega|}$. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. “It is an even function” is false: the tangent is odd. “Its maximum value is $1$” is false: the tangent is unbounded.",
+  "solution": "“Its minimum positive period is $\\dfrac{\\pi}{2}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{4}$. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum.",
   "video": "V14",
   "version": "a"
  },
@@ -2475,7 +2475,7 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “It is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” — the direction is the other way. The other three statements are true.",
+  "solution": "“It is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$ is one of them. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its minimum positive period is $\\pi$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value.",
   "video": "V14",
   "version": "a"
  },
@@ -2506,7 +2506,7 @@
    "companion",
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$ and compare with $f(x)$; remember that $\\tan(-x) = -\\tan x$. $y = \\tan 2x$ is odd: $\\tan(-2x) = -\\tan 2x$. The others: $y = \\tan^2 x$ — $\\tan^2(-x) = \\tan^2 x$, so it is even. $y = \\tan x + 1$ — $f(-x) = -\\tan x + 1$ is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x\\tan x$ — odd times odd is even, so it is even.",
+  "solution": "Replace $x$ by $-x$ and compare with $f(x)$, using $\\tan(-x) = -\\tan x$. $y = \\tan 2x$ is odd, because $\\tan(-2x) = -\\tan 2x$. $y = \\tan^2 x$ is not odd, because $\\tan^2(-x) = (-\\tan x)^2 = \\tan^2 x$, so it is even. $y = \\tan x + 1$ is not odd, because $f(-x) = -\\tan x + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x\\tan x$ is not odd, because $(-x)\\tan(-x) = x\\tan x$, so it is even.",
   "video": "V14",
   "version": "a"
  },
@@ -2537,7 +2537,7 @@
    "partial",
    "near-miss"
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{2\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2568,7 +2568,7 @@
    "domain",
    null
   ],
-  "solution": "The function is undefined where $3x = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\dfrac{\\pi}{6} + k \\cdot \\dfrac{\\pi}{3}$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\dfrac{\\pi}{6}, 0\\right)$ contains none of them; each of the other intervals contains one.",
+  "solution": "The function is undefined where $3x = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\dfrac{\\pi}{6} + \\dfrac{k\\pi}{3}$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\dfrac{\\pi}{6}, 0\\right)$ contains none of them. Each of the other intervals contains one.",
   "video": "V14",
   "version": "a"
  },
@@ -2599,7 +2599,7 @@
    "domain",
    "domain"
   ],
-  "solution": "The correct statement is “It is increasing on $\\left(-\\dfrac{\\pi}{6}, \\dfrac{\\pi}{6}\\right)$” — the tangent is increasing on each interval between consecutive asymptotes. “It is increasing on its whole domain” is false: it is monotonic on each interval between asymptotes, but not across them. “It is an even function” is false: the tangent is odd. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$.",
+  "solution": "“It is increasing on $\\left(-\\dfrac{\\pi}{6}, \\dfrac{\\pi}{6}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{6}, \\dfrac{\\pi}{6}\\right)$ is one of them. “It is increasing on its whole domain” is incorrect. It is monotonic on each interval between consecutive asymptotes, but not across an asymptote. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{6}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2630,7 +2630,7 @@
    "near-miss",
    null
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = \\dfrac{1}{3}$, so $T = \\pi \\div \\dfrac{1}{3} = 3\\pi$.",
   "video": "V14",
   "version": "a"
  },
@@ -2661,7 +2661,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “It is increasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” — the tangent is increasing on each interval between consecutive asymptotes. “It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is false: the direction is the other way. “Its maximum value is $1$” is false: the tangent is unbounded. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$.",
+  "solution": "“It is increasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{4}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2692,7 +2692,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its domain is $\\mathbb{R}$” — the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. The other three statements are true.",
+  "solution": "“Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{2}$. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$ is one of them. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value.",
   "video": "V14",
   "version": "a"
  },
@@ -2723,7 +2723,7 @@
    "partial",
    "sign"
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{5\\pi}{6}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{5\\pi}{6}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{5\\pi}{6},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2754,7 +2754,7 @@
    "partial",
    "companion"
   ],
-  "solution": "Since $-1 \\le \\sin x \\le 1$, the function $A\\sin(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 4$ and $|A| = 3$, so the maximum is $7$.",
+  "solution": "Since $-1 \\le \\sin x \\le 1$, the function $y = A\\sin \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = -3$ and $k = 4$, so the maximum is $4 + 3 = 7$. Because $A$ is negative, the maximum occurs where $\\sin x = -1$.",
   "video": "V13",
   "version": "a"
  },
@@ -2785,7 +2785,7 @@
    null,
    "pm"
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\dfrac{1}{4} = \\dfrac{3}{4}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 3$. No quadrant is given, so both signs are possible: $\\tan\\alpha = \\pm \\sqrt{3}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{4} = \\dfrac{3}{4}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 3$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = \\pm \\sqrt{3}$.",
   "video": "V11",
   "version": "a"
  },
@@ -2816,7 +2816,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{2y + 5}{2y - 5}$. Cross-multiply: $x(2y - 5) = 2y + 5$, collect $y$: $y(2x - 2) = 5x + 5$, so $y = \\dfrac{5x + 5}{2x - 2}$. Check with one point: $f(0) = -1$, and the inverse sends $-1$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{2y + 5}{2y - 5}$. Multiply both sides by $2y - 5$: $2xy - 5x = 2y + 5$. Collect the terms in $y$ on one side: $y(2x - 2) = 5x + 5$, so $y = \\dfrac{5x + 5}{2x - 2}$. Check with one point: $f(0) = -1$, and the inverse sends $-1$ back to $0$.",
   "video": "V07",
   "version": "a"
  },
@@ -2847,7 +2847,7 @@
    "shift",
    "partial"
   ],
-  "solution": "The correct statement is “Its graph passes through the point $\\left(\\dfrac{\\pi}{8}, 0\\right)$” — the angle $2x - \\dfrac{\\pi}{4}$ is $0$ there. “Its minimum positive period is $\\pi$” is false: the coefficient of $x$ changes the period: $T = \\dfrac{\\pi}{2}$. “It is an odd function” is false: the shift moves the graph, so it is no longer symmetric about the origin. “It is monotonically decreasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{3\\pi}{8}\\right)$” is false: a tangent with a positive coefficient of $x$ increases on each interval of its domain.",
+  "solution": "“Its graph passes through the point $\\left(\\dfrac{\\pi}{8}, 0\\right)$” is correct. The angle $2x - \\dfrac{\\pi}{4}$ is $0$ there. “Its minimum positive period is $\\pi$” is incorrect. The coefficient of $x$ changes the period: $T = \\dfrac{\\pi}{2}$. “It is an odd function” is incorrect. At $x = 0$ the function equals $\\tan\\left(-\\dfrac{\\pi}{4}\\right) \\ne 0$, but an odd function defined at $0$ has the value $0$ there. “It is monotonically decreasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{3\\pi}{8}\\right)$” is incorrect. A tangent with a positive coefficient of $x$ increases on each interval of its domain.",
   "video": "V14",
   "version": "a"
  },
@@ -2878,7 +2878,7 @@
    "sign",
    "partial"
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{5\\pi}{6}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{5\\pi}{6}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{5\\pi}{6},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2909,7 +2909,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “Its domain is $\\left\\{x \\mid x \\ne 2k\\pi + \\dfrac{3\\pi}{2},\\ k \\in \\mathbb{Z}\\right\\}$” — solve $\\dfrac{x}{2} - \\dfrac{\\pi}{4} \\ne \\dfrac{\\pi}{2} + k\\pi$. “It is monotonically increasing on $\\left(\\dfrac{\\pi}{2}, \\dfrac{5\\pi}{2}\\right)$” is false: the function is undefined at $x = \\dfrac{3\\pi}{2}$, which lies inside this interval. “Its minimum positive period is $4\\pi$” is false: the tangent has period $\\dfrac{\\pi}{|\\omega|}$, not $\\dfrac{2\\pi}{|\\omega|}$: $T = 2\\pi$. “Its graph passes through the point $\\left(\\dfrac{3\\pi}{2}, 0\\right)$” is false: the function is undefined at $x = \\dfrac{3\\pi}{2}$.",
+  "solution": "“Its domain is $\\left\\{x \\mid x \\ne 2k\\pi + \\dfrac{3\\pi}{2},\\ k \\in \\mathbb{Z}\\right\\}$” is correct. It comes from solving $\\dfrac{x}{2} - \\dfrac{\\pi}{4} \\ne \\dfrac{\\pi}{2} + k\\pi$. “It is monotonically increasing on $\\left(\\dfrac{\\pi}{2}, \\dfrac{5\\pi}{2}\\right)$” is incorrect. The function is undefined at $x = \\dfrac{3\\pi}{2}$, which lies inside this interval. “Its minimum positive period is $4\\pi$” is incorrect. The tangent has period $\\dfrac{\\pi}{|\\omega|}$, not $\\dfrac{2\\pi}{|\\omega|}$: $T = 2\\pi$. “Its graph passes through the point $\\left(\\dfrac{3\\pi}{2}, 0\\right)$” is incorrect. The function is undefined at $x = \\dfrac{3\\pi}{2}$.",
   "video": "V14",
   "version": "a"
  },
@@ -2940,7 +2940,7 @@
    "near-miss",
    "domain"
   ],
-  "solution": "Rewrite $\\tan(-u) = -\\tan u$ first. The correct statement is “Its minimum positive period is $\\dfrac{\\pi}{4}$” — for a tangent $T = \\dfrac{\\pi}{|\\omega|}$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. “It is increasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{\\pi}{8}\\right)$” is false: the direction is the other way.",
+  "solution": "“Its minimum positive period is $\\dfrac{\\pi}{4}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{8}$. “It is increasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{\\pi}{8}\\right)$” is incorrect. $\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{\\pi}{8}\\right)$.",
   "video": "V14",
   "version": "a"
  },
@@ -2971,7 +2971,7 @@
    "reciprocal",
    null
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{-4y + 4}{y + 3}$. Cross-multiply: $x(y + 3) = -4y + 4$, collect $y$: $y(x + 4) = -3x + 4$, so $y = -\\dfrac{3x - 4}{x + 4}$. Check with one point: $f(0) = \\dfrac{4}{3}$, and the inverse sends $\\dfrac{4}{3}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{-4y + 4}{y + 3}$. Multiply both sides by $y + 3$: $xy + 3x = -4y + 4$. Collect the terms in $y$ on one side: $y(x + 4) = -3x + 4$, so $y = \\dfrac{-3x + 4}{x + 4} = -\\dfrac{3x - 4}{x + 4}$. Check with one point: $f(0) = \\dfrac{4}{3}$, and the inverse sends $\\dfrac{4}{3}$ back to $0$.",
   "video": "V07",
   "version": "a"
  },
@@ -2988,7 +2988,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = -\\dfrac{12}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\tan\\alpha = -\\dfrac{12}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\sin\\alpha = -\\dfrac{12}{13}$",
    "$\\sin\\alpha + \\cos\\alpha = \\dfrac{17}{13}$",
@@ -3002,7 +3002,7 @@
    null,
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = \\dfrac{12}{13}$ and $\\cos\\alpha = -\\dfrac{5}{13}$. The correct statement is $\\sin\\alpha\\cos\\alpha = -\\dfrac{60}{169}$ — multiply the two values with their signs. $\\sin\\alpha\\cos\\alpha = \\dfrac{60}{169}$ is false: the sign of the product is wrong. $\\sin\\alpha = -\\dfrac{12}{13}$ is false: the sign of the sine is wrong for the second quadrant. $\\sin\\alpha + \\cos\\alpha = \\dfrac{17}{13}$ is false: one of the two signs is wrong.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{12}{5}$, a right triangle with legs $12$ and $5$ has hypotenuse $13$. In the second quadrant $\\sin\\alpha > 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = \\dfrac{12}{13}$ and $\\cos\\alpha = -\\dfrac{5}{13}$. $\\sin\\alpha\\cos\\alpha = -\\dfrac{60}{169}$ is correct. $\\sin\\alpha\\cos\\alpha = \\dfrac{12}{13} \\times \\left(-\\dfrac{5}{13}\\right) = -\\dfrac{60}{169}$. $\\sin\\alpha\\cos\\alpha = \\dfrac{60}{169}$ is incorrect. $\\sin\\alpha\\cos\\alpha = \\dfrac{12}{13} \\times \\left(-\\dfrac{5}{13}\\right) = -\\dfrac{60}{169}$. $\\sin\\alpha = -\\dfrac{12}{13}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{12}{13}$. $\\sin\\alpha + \\cos\\alpha = \\dfrac{17}{13}$ is incorrect. $\\sin\\alpha + \\cos\\alpha = \\dfrac{12}{13} - \\dfrac{5}{13} = \\dfrac{7}{13}$.",
   "video": "V11",
   "version": "a"
  },
@@ -3033,7 +3033,7 @@
    "partial",
    "pm"
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\dfrac{1}{17} = \\dfrac{16}{17}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 16$. No quadrant is given, so both signs are possible: $\\tan\\alpha = \\pm 4$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{17} = \\dfrac{16}{17}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 16$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = \\pm 4$.",
   "video": "V11",
   "version": "a"
  },
@@ -3050,7 +3050,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\pi - \\alpha\\right) = -\\dfrac{4}{5}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\pi - \\alpha\\right) = -\\dfrac{4}{5}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{4}{5}$",
    "$\\dfrac{3}{5}$",
@@ -3064,7 +3064,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Step 1: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{4}{5}$. Step 2: in the third quadrant $\\cos\\alpha = -\\dfrac{3}{5}$. Step 3: $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha = \\dfrac{3}{5}$.",
+  "solution": "Step 1: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{4}{5}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$, and in the third quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{3}{5}$. Step 3: $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha = \\dfrac{3}{5}$.",
   "video": "V12",
   "version": "a"
  },
@@ -3095,7 +3095,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "The correct statement is $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(\\alpha + \\dfrac{3\\pi}{2}\\right) = \\cos\\alpha$ is false: the name is wrong: the correct result is $\\sin\\alpha$. $\\sin\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\cos\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = -\\cos\\alpha$ is false: the name is wrong: the correct result is $\\sin\\alpha$.",
+  "solution": "$\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\cos\\left(\\alpha + \\dfrac{3\\pi}{2}\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha + \\dfrac{3\\pi}{2}$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\alpha + \\dfrac{3\\pi}{2}\\right) = \\sin\\alpha$. $\\sin\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha - \\dfrac{\\pi}{2}$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = -\\cos\\alpha$. $\\cos\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha - \\dfrac{\\pi}{2}$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\sin\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -3126,7 +3126,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "The correct statement is “Its minimum value is $-2$” — the minimum is $k - |A|$. “It is an odd function” is false: $f(-x) \\ne -f(x)$ in general. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = \\pi$. “It is an even function” is false: $f(-x) \\ne f(x)$ in general.",
+  "solution": "“Its minimum value is $-2$” is correct. The minimum is $k - |A| = 0 - 2 = -2$. “It is an odd function” is incorrect. $f(0) = \\sqrt{3} \\ne 0$, but an odd function defined at $0$ has $f(0) = 0$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{2} = \\pi$. “It is an even function” is incorrect. $f(0) = \\sqrt{3}$ is neither the maximum $2$ nor the minimum $-2$, so the $y$-axis is not an axis of symmetry of the graph.",
   "video": "V13",
   "version": "a"
  },
@@ -3157,7 +3157,7 @@
    "slip",
    null
   ],
-  "solution": "Rewrite $\\tan(-u) = -\\tan u$ first. The correct statement is “It is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” — $\\tan(-u) = -\\tan u$, and $-\\tan$ is decreasing on each interval between asymptotes. “It is decreasing on its whole domain” is false: it is monotonic on each interval between asymptotes, but not across them. “It is an even function” is false: the tangent is odd. “Its maximum value is $1$” is false: the tangent is unbounded.",
+  "solution": "“It is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is correct. $\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$. “It is decreasing on its whole domain” is incorrect. It is monotonic on each interval between consecutive asymptotes, but not across an asymptote. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum.",
   "video": "V14",
   "version": "a"
  },
@@ -3188,7 +3188,7 @@
    "near-miss",
    null
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x + \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{\\pi}{3}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x + \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{\\pi}{3}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a"
  },
@@ -3219,7 +3219,7 @@
    null,
    "sign"
   ],
-  "solution": "From $\\tan\\alpha = \\dfrac{y}{x}$: $\\dfrac{-15}{x} = \\dfrac{15}{8}$, so $x = -8$. Then $r = \\sqrt{64 + 225} = 17$ and $\\sin\\alpha = -\\dfrac{15}{17}$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{-15}{x} = \\dfrac{15}{8}$ and $x = -8$. Then $r = \\sqrt{x^2 + y^2} = \\sqrt{64 + 225} = 17$, so $\\sin\\alpha = \\dfrac{y}{r} = \\dfrac{-15}{17} = -\\dfrac{15}{17}$.",
   "video": "V10",
   "version": "a"
  },
@@ -3250,7 +3250,7 @@
    "companion",
    "sign"
   ],
-  "solution": "The reference angle is $30^\\circ$ and the angle lies in the second quadrant, where sine is positive. So the value is $\\dfrac{1}{2}$.",
+  "solution": "The angle $150^\\circ$ lies in the second quadrant, where sine is positive, and its reference angle is $30^\\circ$. So $\\sin 150^\\circ = \\sin\\left(180^\\circ - 30^\\circ\\right) = \\sin 30^\\circ = \\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -3281,7 +3281,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{5\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{5\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$, $\\tan \\dfrac{7\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{\\sqrt{3} - \\sqrt{6}}{6}$.",
+  "solution": "Find each value: $\\sin \\dfrac{5\\pi}{6} = \\sin\\left(\\pi - \\dfrac{\\pi}{6}\\right) = \\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{5\\pi}{4} = \\cos\\left(\\pi + \\dfrac{\\pi}{4}\\right) = -\\cos \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ and $\\tan \\dfrac{7\\pi}{6} = \\tan\\left(\\pi + \\dfrac{\\pi}{6}\\right) = \\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. Substituting, the expression equals $\\left(\\dfrac{1}{2} - \\dfrac{\\sqrt{2}}{2}\\right) \\cdot \\dfrac{\\sqrt{3}}{3} = \\dfrac{\\sqrt{3} - \\sqrt{6}}{6}$.",
   "video": "V09",
   "version": "a"
  },
@@ -3312,7 +3312,7 @@
    null,
    "sign"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$, $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ (reference angle, then the sign of the quadrant). Substituting gives $1 - \\sqrt{3}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$ and $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. Substituting, the expression equals $\\dfrac{1}{2} + \\dfrac{1}{2} - \\sqrt{3} = 1 - \\sqrt{3}$.",
   "video": "V09",
   "version": "a"
  },
@@ -3343,7 +3343,7 @@
    "companion",
    null
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{13}$. $\\cos\\alpha = \\dfrac{x}{r}$ $= -\\dfrac{3\\sqrt{13}}{13}$ (the signs come from the coordinates).",
+  "solution": "Here $x = -3$, $y = -2$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{13}$. So $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-3}{\\sqrt{13}} = -\\dfrac{3\\sqrt{13}}{13}$.",
   "video": "V10",
   "version": "a"
  },
@@ -3374,7 +3374,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. $\\tan\\alpha = \\dfrac{y}{x}$ $= -\\dfrac{1}{2}$ (the signs come from the coordinates).",
+  "solution": "Here $x = 4$, $y = -2$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{20}$. So $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-2}{4} = -\\dfrac{1}{2}$.",
   "video": "V10",
   "version": "a"
  },
@@ -3405,7 +3405,7 @@
    "sign",
    null
   ],
-  "solution": "Here $r = \\sqrt{10}$. The correct statement is $\\tan\\alpha = 3$ — $\\tan\\alpha = \\dfrac{y}{x}$. $\\tan\\alpha = \\dfrac{1}{3}$ is false: that is $\\dfrac{x}{y}$; the tangent is $\\dfrac{y}{x}$. $\\cos\\alpha = \\dfrac{\\sqrt{10}}{10}$ is false: the sign of $x$ decides the sign of the cosine. $\\tan\\alpha = -3$ is false: $\\tan\\alpha = \\dfrac{y}{x}$ keeps both signs.",
+  "solution": "Here $x = -1$, $y = -3$ and $r = \\sqrt{1 + 9} = \\sqrt{10}$. $\\tan\\alpha = 3$ is correct. $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-3}{-1} = 3$. $\\tan\\alpha = \\dfrac{1}{3}$ is incorrect. This is $\\dfrac{x}{y}$. In fact $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-3}{-1} = 3$. $\\cos\\alpha = \\dfrac{\\sqrt{10}}{10}$ is incorrect. The cosine has the sign of $x = -1$: $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-1}{\\sqrt{10}} = -\\dfrac{\\sqrt{10}}{10}$. $\\tan\\alpha = -3$ is incorrect. $\\tan\\alpha = \\dfrac{y}{x} = \\dfrac{-3}{-1} = 3$.",
   "video": "V10",
   "version": "a"
  },
@@ -3436,7 +3436,7 @@
    "pm",
    null
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\dfrac{1}{10} = \\dfrac{9}{10}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 9$. No quadrant is given, so both signs are possible: $\\tan\\alpha = \\pm 3$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{10} = \\dfrac{9}{10}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 9$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = \\pm 3$.",
   "video": "V11",
   "version": "a"
  },
@@ -3453,7 +3453,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = \\dfrac{4}{3}$ and $\\alpha$ is in the third quadrant, which of the following is correct? ( )",
+  "stem": "If $\\tan\\alpha = \\dfrac{4}{3}$ and $\\alpha$ is in the third quadrant, which of the following is correct? ( )",
   "options": [
    "$\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{5}$",
    "$\\sin\\alpha = \\dfrac{4}{5}$",
@@ -3467,7 +3467,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = -\\dfrac{4}{5}$ and $\\cos\\alpha = -\\dfrac{3}{5}$. The correct statement is $\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{5}$ — add the two values with their signs. $\\sin\\alpha\\cos\\alpha = -\\dfrac{12}{25}$ is false: the sign of the product is wrong. $\\cos\\alpha = \\dfrac{3}{5}$ is false: the sign of the cosine is wrong for the third quadrant. $\\sin\\alpha = \\dfrac{4}{5}$ is false: the sign of the sine is wrong for the third quadrant.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{4}{3}$, a right triangle with legs $4$ and $3$ has hypotenuse $5$. In the third quadrant $\\sin\\alpha < 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = -\\dfrac{4}{5}$ and $\\cos\\alpha = -\\dfrac{3}{5}$. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{5}$ is correct. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{4}{5} - \\dfrac{3}{5} = -\\dfrac{7}{5}$. $\\sin\\alpha\\cos\\alpha = -\\dfrac{12}{25}$ is incorrect. $\\sin\\alpha\\cos\\alpha = \\left(-\\dfrac{4}{5}\\right) \\times \\left(-\\dfrac{3}{5}\\right) = \\dfrac{12}{25}$. $\\cos\\alpha = \\dfrac{3}{5}$ is incorrect. Cosine is negative in the third quadrant, so $\\cos\\alpha = -\\dfrac{3}{5}$. $\\sin\\alpha = \\dfrac{4}{5}$ is incorrect. Sine is negative in the third quadrant, so $\\sin\\alpha = -\\dfrac{4}{5}$.",
   "video": "V11",
   "version": "a"
  },
@@ -3498,7 +3498,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "The correct statement is $\\sin\\alpha = \\tan\\alpha\\cos\\alpha$ — multiply $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ by $\\cos\\alpha$. $\\tan\\alpha = \\sin\\alpha\\cos\\alpha$ is false: the tangent is a quotient, not a product. $\\tan\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ is false: the fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$. $\\sin\\alpha + \\cos\\alpha = 1$ is false: only the squares add up to $1$.",
+  "solution": "$\\sin\\alpha = \\tan\\alpha\\cos\\alpha$ is correct. Multiply $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ by $\\cos\\alpha$. $\\tan\\alpha = \\sin\\alpha\\cos\\alpha$ is incorrect. The tangent is the quotient $\\dfrac{\\sin\\alpha}{\\cos\\alpha}$, not the product. $\\tan\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ is incorrect. The fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$. $\\sin\\alpha + \\cos\\alpha = 1$ is incorrect. Only the squares add up to $1$. For example, at $\\alpha = \\dfrac{\\pi}{4}$ the left side is $\\sqrt{2}$.",
   "video": "V11",
   "version": "a"
  },
@@ -3515,7 +3515,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\pi - \\alpha\\right) = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\cos\\left(\\pi + \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\pi - \\alpha\\right) = -\\dfrac{8}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\cos\\left(\\pi + \\alpha\\right) =$ ( )",
   "options": [
    "$-\\dfrac{8}{17}$",
    "$-\\dfrac{15}{17}$",
@@ -3529,7 +3529,7 @@
    null,
    "companion"
   ],
-  "solution": "Step 1: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{8}{17}$. Step 2: in the third quadrant $\\cos\\alpha = -\\dfrac{15}{17}$. Step 3: $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha = \\dfrac{15}{17}$.",
+  "solution": "Step 1: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = -\\dfrac{8}{17}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$, and in the third quadrant cosine is negative, so $\\cos\\alpha = -\\dfrac{15}{17}$. Step 3: $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha = \\dfrac{15}{17}$.",
   "video": "V12",
   "version": "a"
  },
@@ -3560,7 +3560,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ is false: the name is wrong: the correct result is $-\\sin\\alpha$.",
+  "solution": "$\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -3577,7 +3577,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\alpha = \\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\dfrac{\\cos\\left(\\pi + \\alpha\\right)\\cdot\\sin\\left(\\pi + \\alpha\\right)}{\\sin\\left(2\\pi - \\alpha\\right)} =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\dfrac{\\cos\\left(\\pi + \\alpha\\right)\\cdot\\sin\\left(\\pi + \\alpha\\right)}{\\sin\\left(2\\pi - \\alpha\\right)} =$ ( )",
   "options": [
    "$\\dfrac{4}{5}$",
    "$\\dfrac{3}{5}$",
@@ -3591,7 +3591,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Reduce each factor: $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$, $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$, $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$. With $\\sin\\alpha = \\dfrac{3}{5}$ and $\\cos\\alpha = -\\dfrac{4}{5}$ the quotient equals $\\dfrac{4}{5}$.",
+  "solution": "Reduce each factor: $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$, $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ and $\\sin\\left(2\\pi - \\alpha\\right) = -\\sin\\alpha$. So the expression is $\\dfrac{\\left(-\\cos\\alpha\\right)\\left(-\\sin\\alpha\\right)}{-\\sin\\alpha} = -\\cos\\alpha$. Here $\\sin\\alpha = \\dfrac{3}{5}$ and $\\cos\\alpha = -\\dfrac{4}{5}$, so the value is $\\dfrac{4}{5}$.",
   "video": "V12",
   "version": "a"
  },
@@ -3622,7 +3622,7 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “It is monotonically increasing on $[0, \\pi]$” — on $[0, \\pi]$ it rises to $1$ and then falls. The other three statements are true.",
+  "solution": "“It is monotonically increasing on $[0, \\pi]$” is incorrect. On $[0, \\pi]$ it rises from $0$ to $1$ and then falls back to $0$. “It has infinitely many zeros” is correct. It is zero at $x = k\\pi$ for every integer $k$. “Its range is $[-1, 1]$” is correct. Its values lie between $-1$ and $1$, and both ends are reached. “It is a periodic function with minimum positive period $2\\pi$” is correct. $\\sin(x + 2\\pi) = \\sin x$ for every $x$, and no smaller positive number has this property.",
   "video": "V13",
   "version": "a"
  },
@@ -3653,7 +3653,7 @@
    null,
    "near-miss"
   ],
-  "solution": "$T = \\dfrac{2\\pi}{|\\omega|}$ with $\\omega = \\dfrac{2}{3}$: dividing by a fraction multiplies by its reciprocal, so $T = 3\\pi$.",
+  "solution": "For $y = A\\sin(\\omega x + \\varphi) + k$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$, $\\varphi$ and $k$ are. Here $\\omega = \\dfrac{2}{3}$, and dividing by a fraction means multiplying by its reciprocal: $T = 2\\pi \\div \\dfrac{2}{3} = 2\\pi \\times \\dfrac{3}{2} = 3\\pi$.",
   "video": "V13",
   "version": "a"
  },
@@ -3684,7 +3684,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its maximum value is $1$” — the tangent is unbounded. The other three statements are true.",
+  "solution": "“Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$ is one of them. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “Its minimum positive period is $\\pi$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$.",
   "video": "V14",
   "version": "a"
  },
@@ -3715,7 +3715,7 @@
    "domain",
    null
   ],
-  "solution": "The function is undefined where $3x = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\dfrac{\\pi}{6} + k \\cdot \\dfrac{\\pi}{3}$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\dfrac{\\pi}{2}, -\\dfrac{\\pi}{6}\\right)$ contains none of them; each of the other intervals contains one.",
+  "solution": "The function is undefined where $3x = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\dfrac{\\pi}{6} + \\dfrac{k\\pi}{3}$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\dfrac{\\pi}{2}, -\\dfrac{\\pi}{6}\\right)$ contains none of them. Each of the other intervals contains one.",
   "video": "V14",
   "version": "a"
  },
@@ -3732,7 +3732,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = \\{2, 4, 10\\}$ and $B = \\{3, 4, 6, 9\\}$, then $A \\cap B =$ ( )",
+  "stem": "If $A = \\{2, 4, 10\\}$ and $B = \\{3, 4, 6, 9\\}$, then $A \\cap B =$ ( )",
   "options": [
    "$\\{2, 3, 4, 6, 9, 10\\}$",
    "$\\{4\\}$",
@@ -3746,7 +3746,7 @@
    "complement",
    "complement"
   ],
-  "solution": "The intersection holds the elements that belong to both sets: $\\{4\\}$.",
+  "solution": "The intersection contains the elements that appear in both lists. Only $4$ appears in both, so $A \\cap B = \\{4\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -3777,7 +3777,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Divide by $2$: $(x - 2)(x - 7) > 0$. The roots are $2$ and $7$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $(-\\infty, 2) \\cup (7, +\\infty)$.",
+  "solution": "Divide both sides by $2$: $(x - 2)(x - 7) > 0$. The roots are $2$ and $7$. The graph of $y = (x - 2)(x - 7)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $(-\\infty, 2) \\cup (7, +\\infty)$.",
   "video": "V03",
   "version": "a"
  },
@@ -3808,7 +3808,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x - 2}{x - 6} - 1 = \\dfrac{4}{x - 6} < 0$. The numerator is positive, so the denominator must be negative: $x < 6$ ($x = 6$ is never allowed). Solution set: $(-\\infty, 6)$. Do not multiply both sides by $x - 6$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x - 2}{x - 6} - 1 = \\dfrac{(x - 2) - (x - 6)}{x - 6} = \\dfrac{4}{x - 6}$, so the inequality becomes $\\dfrac{4}{x - 6} < 0$. The numerator $4$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x - 6 < 0$, that is $x < 6$. The solution set is $(-\\infty, 6)$. Multiplying both sides by $x - 6$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a"
  },
@@ -3839,7 +3839,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^3 + 2x$ — it is odd: $f(-x) = -f(x)$. $y = x^2 + \\cos x$ is false: it is even: $f(-x) = f(x)$. $y = x^4$ is false: it is even: $f(-x) = f(x)$. $y = (x - 1)^2$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^3 + 2x$ is correct. $f(-x) = -x^3 - 2x = -f(x)$, so it is odd. $y = x^2 + \\cos x$ is incorrect. $f(-x) = x^2 + \\cos x = f(x)$, so it is even, not odd. $y = x^4$ is incorrect. $f(-x) = (-x)^4 = x^4 = f(x)$, so it is even, not odd. $y = (x - 1)^2$ is incorrect. $f(-x) = (-x - 1)^2 = (x + 1)^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a"
  },
@@ -3870,7 +3870,7 @@
    "partial",
    null
   ],
-  "solution": "The correct statement is “Its minimum value is $-2$” — the minimum is $k - |A|$. “Its maximum value is $4$” is false: the vertical shift $2$ was forgotten: the maximum is $6$. “Its minimum value is $-4$” is false: the vertical shift $2$ was forgotten: the minimum is $-2$. “Its minimum positive period is $2\\pi$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = 4\\pi$.",
+  "solution": "“Its minimum value is $-2$” is correct. The minimum is $k - |A| = 2 - 4 = -2$. “Its maximum value is $4$” is incorrect. The vertical shift is missing. The maximum is $k + |A| = 2 + 4 = 6$. “Its minimum value is $-4$” is incorrect. The vertical shift is missing. The minimum is $k - |A| = 2 - 4 = -2$. “Its minimum positive period is $2\\pi$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = 2\\pi \\div \\dfrac{1}{2} = 4\\pi$.",
   "video": "V13",
   "version": "a"
  },
@@ -3901,7 +3901,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$”. “It is an even function” is false: the tangent is odd. “Its maximum value is $1$” is false: the tangent is unbounded. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$.",
   "video": "V14",
   "version": "a"
  },
@@ -3918,7 +3918,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\pi - \\alpha\\right) = \\dfrac{3}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\tan\\left(2\\pi - \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\pi - \\alpha\\right) = \\dfrac{3}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\tan\\left(2\\pi - \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{3}{4}$",
    "$-\\dfrac{3}{4}$",
@@ -3932,7 +3932,7 @@
    "companion",
    "reciprocal"
   ],
-  "solution": "Step 1: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = \\dfrac{3}{5}$. Step 2: in the first quadrant $\\cos\\alpha = \\dfrac{4}{5}$ and $\\tan\\alpha = \\dfrac{3}{4}$. Step 3: $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha = -\\dfrac{3}{4}$.",
+  "solution": "Step 1: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$, so $\\sin\\alpha = \\dfrac{3}{5}$. Step 2: $\\cos^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$, and in the first quadrant cosine is positive, so $\\cos\\alpha = \\dfrac{4}{5}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{3}{4}$. Step 3: $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha = -\\dfrac{3}{4}$.",
   "video": "V12",
   "version": "a"
  },
@@ -3949,7 +3949,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = -\\dfrac{8}{15}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\tan\\alpha = -\\dfrac{8}{15}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{17}$",
    "$\\sin\\alpha = -\\dfrac{8}{17}$",
@@ -3963,7 +3963,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = \\dfrac{8}{17}$ and $\\cos\\alpha = -\\dfrac{15}{17}$. The correct statement is $\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{17}$ — add the two values with their signs. $\\sin\\alpha + \\cos\\alpha = \\dfrac{23}{17}$ is false: one of the two signs is wrong. $\\sin\\alpha\\cos\\alpha = \\dfrac{120}{289}$ is false: the sign of the product is wrong. $\\sin\\alpha = -\\dfrac{8}{17}$ is false: the sign of the sine is wrong for the second quadrant.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{8}{15}$, a right triangle with legs $8$ and $15$ has hypotenuse $17$. In the second quadrant $\\sin\\alpha > 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = \\dfrac{8}{17}$ and $\\cos\\alpha = -\\dfrac{15}{17}$. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{7}{17}$ is correct. $\\sin\\alpha + \\cos\\alpha = \\dfrac{8}{17} - \\dfrac{15}{17} = -\\dfrac{7}{17}$. $\\sin\\alpha + \\cos\\alpha = \\dfrac{23}{17}$ is incorrect. $\\sin\\alpha + \\cos\\alpha = \\dfrac{8}{17} - \\dfrac{15}{17} = -\\dfrac{7}{17}$. $\\sin\\alpha\\cos\\alpha = \\dfrac{120}{289}$ is incorrect. $\\sin\\alpha\\cos\\alpha = \\dfrac{8}{17} \\times \\left(-\\dfrac{15}{17}\\right) = -\\dfrac{120}{289}$. $\\sin\\alpha = -\\dfrac{8}{17}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{8}{17}$.",
   "video": "V11",
   "version": "a"
  }

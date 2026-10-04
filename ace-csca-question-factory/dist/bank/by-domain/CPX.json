@@ -444,7 +444,7 @@
    "operation",
    null
   ],
-  "solution": "The points $z$ lie on the circle with centre $0$ and radius $2$, and $|z + 3i|$ is the distance from such a point to $-3i$, which is $3$ from the centre. The largest distance is $2 + 3 = 5$.",
+  "solution": "The points $z$ lie on the circle with center $0$ and radius $2$, and $|z + 3i|$ is the distance from such a point to $-3i$, which is $3$ from the center. The largest distance is $2 + 3 = 5$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -482,7 +482,7 @@
    "companion",
    "operation"
   ],
-  "solution": "The points $2z$ lie on the circle with centre $0$ and radius $8$, and $|2z - 3i|$ is the distance from such a point to $3i$, which is $3$ from the centre. The largest distance is $8 + 3 = 11$.",
+  "solution": "The points $2z$ lie on the circle with center $0$ and radius $8$, and $|2z - 3i|$ is the distance from such a point to $3i$, which is $3$ from the center. The largest distance is $8 + 3 = 11$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -520,7 +520,7 @@
    "partial",
    "companion"
   ],
-  "solution": "The points $z$ lie on the circle with centre $0$ and radius $4$, and $|z + 3i|$ is the distance from such a point to $-3i$, which is $3$ from the centre. The largest distance is $4 + 3 = 7$.",
+  "solution": "The points $z$ lie on the circle with center $0$ and radius $4$, and $|z + 3i|$ is the distance from such a point to $-3i$, which is $3$ from the center. The largest distance is $4 + 3 = 7$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -558,7 +558,7 @@
    "slip",
    null
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $301$ terms: 100 complete blocks of three (each $0$) and one more term, $z^{300} = 1$. So the sum is $1$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $301$ terms, which is $100$ blocks of three and one more term, $z^{300} = 1$. So the sum is $1$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -596,7 +596,7 @@
    "slip",
    null
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $101$ terms: 33 complete blocks of three (each $0$) and two more terms, $z^{99} + z^{100} = 1 + z = -z^2$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $101$ terms, which is $33$ blocks of three and two more terms, $z^{99} + z^{100} = 1 + z = -z^2$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -634,7 +634,7 @@
    null,
    "slip"
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $31$ terms: 10 complete blocks of three (each $0$) and one more term, $z^{30} = 1$. So the sum is $1$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $31$ terms, which is $10$ blocks of three and one more term, $z^{30} = 1$. So the sum is $1$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -672,7 +672,7 @@
    "slip",
    "slip"
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $2026$ terms: 675 complete blocks of three (each $0$) and one more term, $z^{2025} = 1$. So the sum is $1$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $2026$ terms, which is $675$ blocks of three and one more term, $z^{2025} = 1$. So the sum is $1$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -710,7 +710,7 @@
    null,
    "slip"
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $99$ terms: 33 complete blocks of three (each $0$), so the sum is $0$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $99$ terms, which is $33$ blocks of three exactly, so the sum is $0$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -748,7 +748,7 @@
    "slip",
    "slip"
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $100$ terms: 33 complete blocks of three (each $0$) and one more term, $z^{99} = 1$. So the sum is $1$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $100$ terms, which is $33$ blocks of three and one more term, $z^{99} = 1$. So the sum is $1$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -786,7 +786,7 @@
    "half",
    "partial"
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + ti$ (a point of $y = x$). Product of the roots: $z\\bar{z} = 2t^2 = 8$, so $t = \\pm 2$. Sum of the roots: $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 4$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + ti$, since $z$ lies on $y = x$. The product of the roots is $z\\bar{z} = 2t^2 = 8$, so $t = \\pm 2$. The sum of the roots is $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 4$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -824,7 +824,7 @@
    "pm",
    "partial"
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = 2t + ti$ (a point of $y = \\dfrac{1}{2}x$). Product of the roots: $z\\bar{z} = 5t^2 = 15$, so $t = \\pm \\sqrt{3}$. Sum of the roots: $z + \\bar{z} = 4t = -m$. Hence $m = \\pm 4\\sqrt{3}$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = 2t + ti$, since $z$ lies on $y = \\dfrac{1}{2}x$. The product of the roots is $z\\bar{z} = 5t^2 = 15$, so $t = \\pm \\sqrt{3}$. The sum of the roots is $z + \\bar{z} = 4t = -m$. Hence $m = \\pm 4\\sqrt{3}$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -862,7 +862,7 @@
    "half",
    null
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = 2t + ti$ (a point of $y = \\dfrac{1}{2}x$). Product of the roots: $z\\bar{z} = 5t^2 = 25$, so $t = \\pm \\sqrt{5}$. Sum of the roots: $z + \\bar{z} = 4t = -m$. Hence $m = \\pm 4\\sqrt{5}$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = 2t + ti$, since $z$ lies on $y = \\dfrac{1}{2}x$. The product of the roots is $z\\bar{z} = 5t^2 = 25$, so $t = \\pm \\sqrt{5}$. The sum of the roots is $z + \\bar{z} = 4t = -m$. Hence $m = \\pm 4\\sqrt{5}$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -900,7 +900,7 @@
    null,
    "pm"
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + 2ti$ (a point of $y = 2x$). Product of the roots: $z\\bar{z} = 5t^2 = 25$, so $t = \\pm \\sqrt{5}$. Sum of the roots: $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 2\\sqrt{5}$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + 2ti$, since $z$ lies on $y = 2x$. The product of the roots is $z\\bar{z} = 5t^2 = 25$, so $t = \\pm \\sqrt{5}$. The sum of the roots is $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 2\\sqrt{5}$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -938,7 +938,7 @@
    "pm",
    null
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + ti$ (a point of $y = x$). Product of the roots: $z\\bar{z} = 2t^2 = 2$, so $t = \\pm 1$. Sum of the roots: $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 2$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + ti$, since $z$ lies on $y = x$. The product of the roots is $z\\bar{z} = 2t^2 = 2$, so $t = \\pm 1$. The sum of the roots is $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 2$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -976,7 +976,7 @@
    "partial",
    null
   ],
-  "solution": "The roots are $1 + i$ and $1 - i$ (conjugates). $z_1^{3} = -2 + 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} - z_2^{3} = 4i$. Squaring gives $-16$ (remember $i^2 = -1$).",
+  "solution": "The roots are $1 + i$ and $1 - i$, a conjugate pair. Then $z_1^{3} = -2 + 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} - z_2^{3} = 4i$. Squaring gives $-16$, because $i^2 = -1$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1014,7 +1014,7 @@
    "sign",
    "partial"
   ],
-  "solution": "The roots are $1 + i$ and $1 - i$ (conjugates). $z_1^{3} = -2 + 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} + z_2^{3} = -4$. Squaring gives $16$.",
+  "solution": "The roots are $1 + i$ and $1 - i$, a conjugate pair. Then $z_1^{3} = -2 + 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} + z_2^{3} = -4$. Squaring gives $16$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1052,7 +1052,7 @@
    "slip",
    null
   ],
-  "solution": "The roots are $-1 + i$ and $-1 - i$ (conjugates). $z_1^{3} = 2 + 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} + z_2^{3} = 4$. Squaring gives $16$.",
+  "solution": "The roots are $-1 + i$ and $-1 - i$, a conjugate pair. Then $z_1^{3} = 2 + 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} + z_2^{3} = 4$. Squaring gives $16$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1090,7 +1090,7 @@
    "companion",
    "sign"
   ],
-  "solution": "The roots are $1 + 3i$ and $1 - 3i$ (conjugates). $z_1^{2} = -8 + 6i$ and $z_2^{2}$ is its conjugate, so $z_1^{2} + z_2^{2} = -16$. Squaring gives $256$.",
+  "solution": "The roots are $1 + 3i$ and $1 - 3i$, a conjugate pair. Then $z_1^{2} = -8 + 6i$ and $z_2^{2}$ is its conjugate, so $z_1^{2} + z_2^{2} = -16$. Squaring gives $256$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1128,7 +1128,7 @@
    "companion",
    "slip"
   ],
-  "solution": "The roots are $-1 + i$ and $-1 - i$ (conjugates). $z_1^{4} = -4$ and $z_2^{4}$ is its conjugate, so $z_1^{4} - z_2^{4} = 0$. Squaring gives $0$.",
+  "solution": "The roots are $-1 + i$ and $-1 - i$, a conjugate pair. Then $z_1^{4} = -4$ and $z_2^{4}$ is its conjugate, so $z_1^{4} - z_2^{4} = 0$. Squaring gives $0$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1166,7 +1166,7 @@
    "companion",
    "sign"
   ],
-  "solution": "The roots are $-1 + 2i$ and $-1 - 2i$ (conjugates). $z_1^{3} = 11 - 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} + z_2^{3} = 22$. Squaring gives $484$.",
+  "solution": "The roots are $-1 + 2i$ and $-1 - 2i$, a conjugate pair. Then $z_1^{3} = 11 - 2i$ and $z_2^{3}$ is its conjugate, so $z_1^{3} + z_2^{3} = 22$. Squaring gives $484$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1318,7 +1318,7 @@
    null,
    "partial"
   ],
-  "solution": "The points $z$ lie on the circle with centre $0$ and radius $4$, and $|z - 3i|$ is the distance from such a point to $3i$, which is $3$ from the centre. The smallest distance is $|3 - 4| = 1$.",
+  "solution": "The points $z$ lie on the circle with center $0$ and radius $4$, and $|z - 3i|$ is the distance from such a point to $3i$, which is $3$ from the center. The smallest distance is $|3 - 4| = 1$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1356,7 +1356,7 @@
    "operation",
    "partial"
   ],
-  "solution": "The points $z$ lie on the circle with centre $0$ and radius $2$, and $|z + 1|$ is the distance from such a point to $-1$, which is $1$ from the centre. The smallest distance is $|1 - 2| = 1$.",
+  "solution": "The points $z$ lie on the circle with center $0$ and radius $2$, and $|z + 1|$ is the distance from such a point to $-1$, which is $1$ from the center. The smallest distance is $|1 - 2| = 1$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1394,7 +1394,7 @@
    "partial",
    null
   ],
-  "solution": "$z$ lies on the circle with centre $3 + 4i$ and radius $1$. The centre is $5$ from the origin, so $|z|$ ranges from $4$ to $6$; the minimum is $4$.",
+  "solution": "$z$ lies on the circle with center $3 + 4i$ and radius $1$. The center is $5$ from the origin, so $|z|$ ranges from $4$ to $6$; the minimum is $4$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",
@@ -1584,7 +1584,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{1}{z} = \\dfrac{4}{25} - \\dfrac{3}{25}i$ — $\\dfrac{1}{z} = \\dfrac{\\bar{z}}{z\\bar{z}} = \\dfrac{4 - 3i}{25}$. $z\\bar{z} = 7$ is false: $z\\bar{z} = a^2 + b^2 = 25$. $\\bar{z} = -4 + 3i$ is false: only the imaginary part changes sign: $\\bar{z} = 4 - 3i$. $\\dfrac{1}{z} = \\dfrac{4}{25} + \\dfrac{3}{25}i$ is false: multiply by the conjugate: $\\dfrac{1}{z} = \\dfrac{4}{25} - \\dfrac{3}{25}i$.",
+  "solution": "$\\dfrac{1}{z} = \\dfrac{4}{25} - \\dfrac{3}{25}i$ is correct. $\\dfrac{1}{z} = \\dfrac{\\bar{z}}{z\\bar{z}} = \\dfrac{4 - 3i}{25}$. $z\\bar{z} = 7$ is incorrect. $z\\bar{z} = a^2 + b^2 = 25$. $\\bar{z} = -4 + 3i$ is incorrect. Only the imaginary part changes sign, so $\\bar{z} = 4 - 3i$. $\\dfrac{1}{z} = \\dfrac{4}{25} + \\dfrac{3}{25}i$ is incorrect. Multiplying the numerator and the denominator by $\\bar{z}$ gives $\\dfrac{1}{z} = \\dfrac{4}{25} - \\dfrac{3}{25}i$.",
   "video": "V45",
   "version": "a",
   "domain": "CPX",

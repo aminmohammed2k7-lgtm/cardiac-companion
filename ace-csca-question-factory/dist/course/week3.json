@@ -43,7 +43,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan 60^\\circ = \\sqrt{3}$ and $\\tan 45^\\circ = 1$, then $\\tan 105^\\circ =$ ( )",
+  "stem": "Given that $\\tan 60^\\circ = \\sqrt{3}$ and $\\tan 45^\\circ = 1$, the value of $\\tan 105^\\circ$ is ( )",
   "options": [
    "$-2 - \\sqrt{3}$",
    "$2 - \\sqrt{3}$",
@@ -57,7 +57,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Write $105^\\circ = 60^\\circ + 45^\\circ$. Then $\\tan\\left(60^\\circ + 45^\\circ\\right) = \\dfrac{\\tan 60^\\circ + \\tan 45^\\circ}{1 - \\tan 60^\\circ\\tan 45^\\circ} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = -2 - \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $105^\\circ = 60^\\circ + 45^\\circ$. Then $\\tan\\left(60^\\circ + 45^\\circ\\right) = \\dfrac{\\tan 60^\\circ + \\tan 45^\\circ}{1 - \\tan 60^\\circ\\tan 45^\\circ} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = \\dfrac{(\\sqrt{3} + 1)^2}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\dfrac{4 + 2\\sqrt{3}}{-2} = -2 - \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a"
  },
@@ -74,7 +74,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{12}{13}$ and $\\alpha$ is in the third quadrant, then $\\sin\\left(\\dfrac{\\pi}{3} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{12}{13}$ and $\\alpha$ is in the third quadrant, then $\\sin\\left(\\dfrac{\\pi}{3} + \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{12\\sqrt{3} - 5}{26}$",
    "$\\dfrac{5 - 12\\sqrt{3}}{26}$",
@@ -88,7 +88,7 @@
    null,
    "sign"
   ],
-  "solution": "In the third quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{5}{13}$. Then $\\sin\\left(\\dfrac{\\pi}{3} + \\alpha\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} + \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{5}{13}\\right) \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{12}{13}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{5 + 12\\sqrt{3}}{26}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{144}{169} = \\dfrac{25}{169}$. In the third quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{5}{13}$. Then $\\sin\\left(\\dfrac{\\pi}{3} + \\alpha\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} + \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{5}{13}\\right) \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{12}{13}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{5 + 12\\sqrt{3}}{26}$.",
   "video": "V15",
   "version": "a"
  },
@@ -119,7 +119,7 @@
    "operation",
    null
   ],
-  "solution": "The correct statement is $\\cos(\\alpha + \\beta) < \\cos\\alpha\\cos\\beta$ — $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$. $\\cos(\\alpha + \\beta) > 0$ is false: $\\alpha + \\beta$ can be obtuse, for example $\\alpha = \\beta = 60^\\circ$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is false: not always: for $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ < \\sin 80^\\circ$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines.",
+  "solution": "$\\cos(\\alpha + \\beta) < \\cos\\alpha\\cos\\beta$ is correct. $\\cos(\\alpha + \\beta) = \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$. $\\cos(\\alpha + \\beta) > 0$ is incorrect. $\\alpha + \\beta$ can be obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\cos 120^\\circ = -\\dfrac{1}{2} < 0$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is incorrect. This is not always true. For $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ = \\sin 20^\\circ < \\sin 80^\\circ$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$.",
   "video": "V15",
   "version": "a"
  },
@@ -167,7 +167,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{12}{13}$, $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, and $\\cos\\beta = -\\dfrac{12}{13}$, $\\beta \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$. Then $\\sin(\\alpha - \\beta) =$ ( )",
+  "stem": "Let $\\sin\\alpha = \\dfrac{12}{13}$ with $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, and $\\cos\\beta = -\\dfrac{12}{13}$ with $\\beta \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$. Then $\\sin(\\alpha - \\beta) =$ ( )",
   "options": [
    "$-\\dfrac{119}{169}$",
    "$\\dfrac{119}{169}$",
@@ -181,7 +181,7 @@
    "companion",
    "sign"
   ],
-  "solution": "Signs from the quadrants: $\\cos\\alpha = \\dfrac{5}{13}$ and $\\sin\\beta = -\\dfrac{5}{13}$. Then $\\sin(\\alpha - \\beta) = \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = \\dfrac{12}{13} \\cdot \\left(-\\dfrac{12}{13}\\right) - \\dfrac{5}{13} \\cdot \\left(-\\dfrac{5}{13}\\right) = -\\dfrac{119}{169}$.",
+  "solution": "From $\\sin^2 + \\cos^2 = 1$ and the sign in each quadrant: $\\cos\\alpha = \\dfrac{5}{13}$, because the cosine is positive in the first quadrant, and $\\sin\\beta = -\\dfrac{5}{13}$, because the sine is negative in the third quadrant. Then $\\sin(\\alpha - \\beta) = \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = \\dfrac{12}{13} \\cdot \\left(-\\dfrac{12}{13}\\right) - \\dfrac{5}{13} \\cdot \\left(-\\dfrac{5}{13}\\right) = -\\dfrac{119}{169}$.",
   "video": "V15",
   "version": "a"
  },
@@ -198,7 +198,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the third quadrant, then $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the third quadrant, then $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) =$ ( )",
   "options": [
    "$-\\dfrac{7}{23}$",
    "$\\dfrac{23}{7}$",
@@ -212,7 +212,7 @@
    null,
    "sign"
   ],
-  "solution": "From the quadrant, $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\cos\\alpha = -\\dfrac{8}{17}$, so $\\tan\\alpha = \\dfrac{15}{8}$. $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha - \\tan\\dfrac{\\pi}{4}}{1 + \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\dfrac{7}{8}}{\\dfrac{23}{8}} = \\dfrac{7}{23}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the third quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{15}{17}$. So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{15}{8}$. With $\\tan\\dfrac{\\pi}{4} = 1$: $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha - \\tan\\dfrac{\\pi}{4}}{1 + \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha - 1}{1 + \\tan\\alpha} = \\dfrac{\\dfrac{7}{8}}{\\dfrac{23}{8}} = \\dfrac{7}{23}$.",
   "video": "V15",
   "version": "a"
  },
@@ -229,7 +229,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{4}\\right) =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{4}\\right) =$ ( )",
   "options": [
    "$\\dfrac{7\\sqrt{2}}{34}$",
    "$-\\dfrac{7\\sqrt{2}}{34}$",
@@ -243,7 +243,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{8}{17}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{4} + \\sin\\alpha\\sin \\dfrac{\\pi}{4} = \\dfrac{8}{17} \\cdot \\dfrac{\\sqrt{2}}{2} + \\left(-\\dfrac{15}{17}\\right) \\cdot \\dfrac{\\sqrt{2}}{2} = -\\dfrac{7\\sqrt{2}}{34}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$. In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{8}{17}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{4} + \\sin\\alpha\\sin \\dfrac{\\pi}{4} = \\dfrac{8}{17} \\cdot \\dfrac{\\sqrt{2}}{2} + \\left(-\\dfrac{15}{17}\\right) \\cdot \\dfrac{\\sqrt{2}}{2} = -\\dfrac{7\\sqrt{2}}{34}$.",
   "video": "V15",
   "version": "a"
  },
@@ -291,7 +291,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan 45^\\circ = 1$ and $\\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3}$, then $\\tan 75^\\circ =$ ( )",
+  "stem": "Given that $\\tan 45^\\circ = 1$ and $\\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3}$, the value of $\\tan 75^\\circ$ is ( )",
   "options": [
    "$-2 - \\sqrt{3}$",
    "$\\sqrt{3} - 2$",
@@ -305,7 +305,7 @@
    "companion",
    null
   ],
-  "solution": "Write $75^\\circ = 45^\\circ + 30^\\circ$. Then $\\tan\\left(45^\\circ + 30^\\circ\\right) = \\dfrac{\\tan 45^\\circ + \\tan 30^\\circ}{1 - \\tan 45^\\circ\\tan 30^\\circ} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $75^\\circ = 45^\\circ + 30^\\circ$. Then $\\tan\\left(45^\\circ + 30^\\circ\\right) = \\dfrac{\\tan 45^\\circ + \\tan 30^\\circ}{1 - \\tan 45^\\circ\\tan 30^\\circ} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = \\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6} = 2 + \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a"
  },
@@ -336,7 +336,7 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is $\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ — $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is false: not always: for $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ < \\sin 80^\\circ$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is false: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines.",
+  "solution": "$\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ is correct. $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is incorrect. This is not always true. For $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ = \\sin 20^\\circ < \\sin 80^\\circ$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is incorrect. $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$.",
   "video": "V15",
   "version": "a"
  },
@@ -353,7 +353,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{4}{5}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\dfrac{\\pi}{4} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{4}{5}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\dfrac{\\pi}{4} + \\alpha\\right) =$ ( )",
   "options": [
    "$-\\dfrac{\\sqrt{2}}{10}$",
    "$\\dfrac{5\\sqrt{2} - 8}{10}$",
@@ -367,7 +367,7 @@
    null,
    "sign"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{3}{5}$. Then $\\cos\\left(\\dfrac{\\pi}{4} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{4} - \\sin\\alpha\\sin \\dfrac{\\pi}{4} = \\left(-\\dfrac{4}{5}\\right) \\cdot \\dfrac{\\sqrt{2}}{2} - \\dfrac{3}{5} \\cdot \\dfrac{\\sqrt{2}}{2} = -\\dfrac{7\\sqrt{2}}{10}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{3}{5}$. Then $\\cos\\left(\\dfrac{\\pi}{4} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{4} - \\sin\\alpha\\sin \\dfrac{\\pi}{4} = \\left(-\\dfrac{4}{5}\\right) \\cdot \\dfrac{\\sqrt{2}}{2} - \\dfrac{3}{5} \\cdot \\dfrac{\\sqrt{2}}{2} = -\\dfrac{7\\sqrt{2}}{10}$.",
   "video": "V15",
   "version": "a"
  },
@@ -398,7 +398,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its minimum positive period is $\\pi$” — that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. The other three statements are true.",
+  "solution": "“Its minimum positive period is $\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “It is increasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$.",
   "video": "V14",
   "version": "a"
  },
@@ -429,7 +429,7 @@
    null,
    "sign"
   ],
-  "solution": "$\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha$ (odd multiple of $\\dfrac{\\pi}{2}$: the name changes; sign from the quadrant where the angle lands). So the value is $-\\dfrac{3}{5}$ — no quadrant is needed.",
+  "solution": "If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\cos\\alpha = -\\dfrac{3}{5}$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.",
   "video": "V12",
   "version": "a"
  },
@@ -460,7 +460,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is $\\tan\\alpha = -\\sqrt{3}$ — $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\sqrt{3}$. $\\sin\\alpha = -\\dfrac{1}{2}$ is false: that is the value of $\\cos\\alpha$. $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ is false: that is the value of $\\sin\\alpha$. $\\cos\\alpha = \\dfrac{1}{2}$ is false: the sign is wrong for this quadrant.",
+  "solution": "For $\\alpha = \\dfrac{2\\pi}{3}$: $\\sin\\alpha = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos\\alpha = \\cos\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\sqrt{3}$. $\\tan\\alpha = -\\sqrt{3}$ is correct. $\\sin\\alpha = -\\dfrac{1}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\sin\\alpha$. In fact $\\cos\\alpha = -\\dfrac{1}{2}$. $\\cos\\alpha = \\dfrac{1}{2}$ is incorrect. Cosine is negative in the second quadrant, so $\\cos\\alpha = -\\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a"
  },
@@ -491,7 +491,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha - \\tan\\dfrac{\\pi}{4}}{1 + \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{-5}{-3} = \\dfrac{5}{3}$.",
+  "solution": "With $\\tan\\dfrac{\\pi}{4} = 1$: $\\tan\\left(\\alpha - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha - \\tan\\dfrac{\\pi}{4}}{1 + \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha - 1}{1 + \\tan\\alpha} = \\dfrac{-5}{-3} = \\dfrac{5}{3}$.",
   "video": "V15",
   "version": "a"
  },
@@ -508,7 +508,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{8}{17}$, $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, and $\\cos\\beta = \\dfrac{3}{5}$, $\\beta \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$. Then $\\sin(\\alpha + \\beta) =$ ( )",
+  "stem": "Let $\\sin\\alpha = \\dfrac{8}{17}$ with $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, and $\\cos\\beta = \\dfrac{3}{5}$ with $\\beta \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$. Then $\\sin(\\alpha + \\beta) =$ ( )",
   "options": [
    "$\\dfrac{84}{85}$",
    "$-\\dfrac{13}{85}$",
@@ -522,7 +522,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs from the quadrants: $\\cos\\alpha = -\\dfrac{15}{17}$ and $\\sin\\beta = -\\dfrac{4}{5}$. Then $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta = \\dfrac{8}{17} \\cdot \\dfrac{3}{5} + \\left(-\\dfrac{15}{17}\\right) \\cdot \\left(-\\dfrac{4}{5}\\right) = \\dfrac{84}{85}$.",
+  "solution": "From $\\sin^2 + \\cos^2 = 1$ and the sign in each quadrant: $\\cos\\alpha = -\\dfrac{15}{17}$, because the cosine is negative in the second quadrant, and $\\sin\\beta = -\\dfrac{4}{5}$, because the sine is negative in the fourth quadrant. Then $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta = \\dfrac{8}{17} \\cdot \\dfrac{3}{5} + \\left(-\\dfrac{15}{17}\\right) \\cdot \\left(-\\dfrac{4}{5}\\right) = \\dfrac{84}{85}$.",
   "video": "V15",
   "version": "a"
  },
@@ -615,7 +615,7 @@
    null,
    "sign"
   ],
-  "solution": "Reference angle first, then the sign of the quadrant: $\\sin \\dfrac{2\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ (QII, sine positive), $\\cos \\dfrac{5\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ (QIII, cosine negative), $\\tan \\dfrac{11\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$ (QIV, tangent negative). The result is $\\dfrac{5\\sqrt{3} - 3\\sqrt{2}}{6}$.",
+  "solution": "Use the reference angle and the sign in each quadrant. $\\sin \\dfrac{2\\pi}{3} = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, because sine is positive in the second quadrant. $\\cos \\dfrac{5\\pi}{4} = \\cos\\left(\\pi + \\dfrac{\\pi}{4}\\right) = -\\cos \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$, because cosine is negative in the third quadrant. $\\tan \\dfrac{11\\pi}{6} = \\tan\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = -\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$, because tangent is negative in the fourth quadrant. So the value is $\\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{3}}{3} = \\dfrac{5\\sqrt{3} - 3\\sqrt{2}}{6}$.",
   "video": "V09",
   "version": "a"
  },
@@ -694,21 +694,21 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{15}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{15}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
   "options": [
    "$\\dfrac{240}{289}$",
-   "$\\dfrac{120}{289}$",
    "$-\\dfrac{240}{289}$",
+   "$\\dfrac{120}{289}$",
    "$\\dfrac{161}{289}$"
   ],
   "answer": 0,
   "traps": [
    null,
-   "partial",
    "sign",
+   "partial",
    "companion"
   ],
-  "solution": "In the first quadrant the sine is positive: $\\sin\\alpha = \\dfrac{8}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{8}{17} \\cdot \\dfrac{15}{17} = \\dfrac{240}{289}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$. In the first quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{8}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{8}{17} \\cdot \\dfrac{15}{17} = \\dfrac{240}{289}$.",
   "video": "V16",
   "version": "a"
  },
@@ -770,7 +770,7 @@
    "companion",
    "partial"
   ],
-  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{1}{10} = \\dfrac{4}{5}$. The given value is already the square: squaring it again gives the trap answer $\\dfrac{49}{50}$.",
+  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{1}{10} = \\dfrac{4}{5}$. The given number is already $\\sin^2\\alpha$, so it must not be squared again. Squaring it would give $\\dfrac{49}{50}$.",
   "video": "V16",
   "version": "a"
  },
@@ -787,7 +787,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{24}{25}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{24}{25}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\sin 2\\alpha = -\\dfrac{168}{625}$",
    "$\\tan 2\\alpha = -\\dfrac{336}{527}$",
@@ -801,7 +801,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = -\\dfrac{7}{25}$ and $\\cos\\alpha = \\dfrac{24}{25}$. The correct statement is $\\tan 2\\alpha = -\\dfrac{336}{527}$ — $\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha}$. $\\tan 2\\alpha = \\dfrac{336}{527}$ is false: the sign is wrong. $\\sin 2\\alpha = -\\dfrac{168}{625}$ is false: the factor $2$ is missing. $\\cos 2\\alpha = -\\dfrac{527}{625}$ is false: that is $\\sin^2\\alpha - \\cos^2\\alpha$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{576}{625} = \\dfrac{49}{625}$. In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{7}{25}$. $\\tan 2\\alpha = -\\dfrac{336}{527}$ is correct. $\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha} = -\\dfrac{336}{527}$. $\\tan 2\\alpha = \\dfrac{336}{527}$ is incorrect. $\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha} = -\\dfrac{336}{527}$. $\\sin 2\\alpha = -\\dfrac{168}{625}$ is incorrect. The factor $2$ is missing: $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{7}{25}\\right) \\cdot \\dfrac{24}{25} = -\\dfrac{336}{625}$. $\\cos 2\\alpha = -\\dfrac{527}{625}$ is incorrect. This is $\\sin^2\\alpha - \\cos^2\\alpha$. In fact $\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha = \\dfrac{576}{625} - \\dfrac{49}{625} = \\dfrac{527}{625}$.",
   "video": "V16",
   "version": "a"
  },
@@ -832,7 +832,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{8}{1 - 16} = -\\dfrac{8}{15}$.",
+  "solution": "Then $\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{8}{1 - 16} = \\dfrac{8}{-15} = -\\dfrac{8}{15}$.",
   "video": "V16",
   "version": "a"
  },
@@ -849,7 +849,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{4}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{4}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
   "options": [
    "$\\dfrac{24}{25}$",
    "$\\dfrac{3}{4}$",
@@ -863,7 +863,7 @@
    "partial",
    null
   ],
-  "solution": "Simplify first: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. With $\\alpha$ acute, $\\cos\\alpha = \\dfrac{3}{5}$, so the value is $\\dfrac{4}{3}$.",
+  "solution": "Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. Since $\\alpha$ is acute the cosine is positive, so $\\cos\\alpha = \\dfrac{3}{5}$. So $\\tan\\alpha = \\dfrac{4}{3}$ and the value is $\\dfrac{4}{3}$.",
   "video": "V16",
   "version": "a"
  },
@@ -944,19 +944,19 @@
   "trick": null,
   "stem": "If $\\sin\\alpha = \\dfrac{8}{17}$ and $\\alpha$ is in the first quadrant, then $\\sin 2\\alpha =$ ( )",
   "options": [
-   "$-\\dfrac{240}{289}$",
+   "$\\dfrac{120}{289}$",
    "$\\dfrac{161}{289}$",
    "$\\dfrac{240}{289}$",
-   "$\\dfrac{120}{289}$"
+   "$-\\dfrac{240}{289}$"
   ],
   "answer": 2,
   "traps": [
-   "sign",
+   "partial",
    "companion",
    null,
-   "partial"
+   "sign"
   ],
-  "solution": "In the first quadrant the cosine is positive: $\\cos\\alpha = \\dfrac{15}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{8}{17} \\cdot \\dfrac{15}{17} = \\dfrac{240}{289}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the first quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{15}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{8}{17} \\cdot \\dfrac{15}{17} = \\dfrac{240}{289}$.",
   "video": "V16",
   "version": "a"
  },
@@ -1018,7 +1018,7 @@
    "domain",
    "domain"
   ],
-  "solution": "The correct statement is $\\sin(\\alpha - \\beta) < \\sin\\alpha$ — $-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval. $\\tan(\\alpha + \\beta) > 0$ is false: it is negative when $\\alpha + \\beta$ is obtuse. $\\sin(\\alpha - \\beta) > 0$ is false: it is negative when $\\alpha < \\beta$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines.",
+  "solution": "$\\sin(\\alpha - \\beta) < \\sin\\alpha$ is correct. $-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval. $\\tan(\\alpha + \\beta) > 0$ is incorrect. It is negative when $\\alpha + \\beta$ is obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\tan 120^\\circ = -\\sqrt{3}$. $\\sin(\\alpha - \\beta) > 0$ is incorrect. It is negative when $\\alpha < \\beta$. For $\\alpha = 30^\\circ$ and $\\beta = 60^\\circ$, $\\sin(-30^\\circ) = -\\dfrac{1}{2}$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$.",
   "video": "V15",
   "version": "a"
  },
@@ -1049,7 +1049,7 @@
    "slip",
    null
   ],
-  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$ (then the pattern repeats every $2\\pi$). So the function is monotonically increasing on $\\left[-\\pi, 0\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$, and this pattern repeats every $2\\pi$. So the function is monotonically increasing on $\\left[-\\pi, 0\\right]$. For the other options, on $\\left[0, \\pi\\right]$ it is decreasing, on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ it changes direction at $x = \\pi$ and on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = 0$.",
   "video": "V13",
   "version": "a"
  },
@@ -1066,7 +1066,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{\\sqrt{15}}{4}$ and $\\alpha$ is an acute angle, then $\\sin\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{\\sqrt{15}}{4}$ and $\\alpha$ is an acute angle, then $\\sin\\alpha =$ ( )",
   "options": [
    "$\\dfrac{1}{4}$",
    "$\\dfrac{\\sqrt{15}}{4}$",
@@ -1080,7 +1080,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\cos^2\\alpha$ gives $\\sin\\alpha = \\pm \\dfrac{1}{4}$; in the first quadrant sine is positive. So $\\sin\\alpha = \\dfrac{1}{4}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\left(\\dfrac{\\sqrt{15}}{4}\\right)^2 = 1 - \\dfrac{15}{16} = \\dfrac{1}{16}$, so $\\sin\\alpha = \\pm \\dfrac{1}{4}$. In the first quadrant sine is positive, so $\\sin\\alpha = \\dfrac{1}{4}$.",
   "video": "V11",
   "version": "a"
  },
@@ -1111,7 +1111,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{4}{9} = \\dfrac{1}{9}$. The given value is already the square: squaring it again gives the trap answer $\\dfrac{49}{81}$.",
+  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{4}{9} = \\dfrac{1}{9}$. The given number is already $\\sin^2\\alpha$, so it must not be squared again. Squaring it would give $\\dfrac{49}{81}$.",
   "video": "V16",
   "version": "a"
  },
@@ -1142,7 +1142,7 @@
    "sign",
    "half"
   ],
-  "solution": "Square both sides: $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = 1 - \\sin 2\\alpha = \\dfrac{36}{25}$. So $\\sin 2\\alpha = -\\dfrac{11}{25}$.",
+  "solution": "Square both sides: $(\\sin\\alpha - \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha - 2\\sin\\alpha\\cos\\alpha = 1 - \\sin 2\\alpha$, so $1 - \\sin 2\\alpha = \\dfrac{36}{25}$. Therefore $\\sin 2\\alpha = 1 - \\dfrac{36}{25} = -\\dfrac{11}{25}$.",
   "video": "V16",
   "version": "a"
  },
@@ -1159,7 +1159,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{4}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} - \\tan\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{4}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} - \\tan\\alpha =$ ( )",
   "options": [
    "$\\dfrac{24}{25}$",
    "$\\dfrac{3}{4}$",
@@ -1173,7 +1173,7 @@
    null,
    "partial"
   ],
-  "solution": "Simplify first: $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{4\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = 2\\tan\\alpha$, so the expression equals $2\\tan\\alpha - \\tan\\alpha = \\tan\\alpha$. With $\\alpha$ acute, $\\cos\\alpha = \\dfrac{3}{5}$, so the value is $\\dfrac{4}{3}$.",
+  "solution": "Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{4\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = 2\\tan\\alpha$, so the expression equals $2\\tan\\alpha - \\tan\\alpha = \\tan\\alpha$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. Since $\\alpha$ is acute the cosine is positive, so $\\cos\\alpha = \\dfrac{3}{5}$. So $\\tan\\alpha = \\dfrac{4}{3}$ and the value is $\\dfrac{4}{3}$.",
   "video": "V16",
   "version": "a"
  },
@@ -1221,7 +1221,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = -\\dfrac{4}{3}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\tan\\alpha = -\\dfrac{4}{3}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\cos\\alpha = -\\dfrac{3}{5}$",
    "$\\cos\\alpha = \\dfrac{3}{5}$",
@@ -1235,7 +1235,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = \\dfrac{4}{5}$ and $\\cos\\alpha = -\\dfrac{3}{5}$. The correct statement is $\\cos\\alpha = -\\dfrac{3}{5}$ — the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant. $\\sin\\alpha = -\\dfrac{4}{5}$ is false: the sign of the sine is wrong for the second quadrant. $\\cos\\alpha = \\dfrac{3}{5}$ is false: the sign of the cosine is wrong for the second quadrant. $\\sin\\alpha\\cos\\alpha = \\dfrac{12}{25}$ is false: the sign of the product is wrong.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{4}{3}$, a right triangle with legs $4$ and $3$ has hypotenuse $5$. In the second quadrant $\\sin\\alpha > 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = \\dfrac{4}{5}$ and $\\cos\\alpha = -\\dfrac{3}{5}$. $\\cos\\alpha = -\\dfrac{3}{5}$ is correct. $\\sin\\alpha = -\\dfrac{4}{5}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{4}{5}$. $\\cos\\alpha = \\dfrac{3}{5}$ is incorrect. Cosine is negative in the second quadrant, so $\\cos\\alpha = -\\dfrac{3}{5}$. $\\sin\\alpha\\cos\\alpha = \\dfrac{12}{25}$ is incorrect. $\\sin\\alpha\\cos\\alpha = \\dfrac{4}{5} \\times \\left(-\\dfrac{3}{5}\\right) = -\\dfrac{12}{25}$.",
   "video": "V11",
   "version": "a"
  },
@@ -1266,7 +1266,7 @@
    "pm",
    "sign"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(0, \\dfrac{\\pi}{4}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1}{10}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{10}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(0, \\dfrac{\\pi}{4}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{4}{5}}{2} = \\dfrac{1}{10}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{10}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{10}}{10}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1283,7 +1283,7 @@
   "points": 2,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{5}{7}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{5}{7}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\pm \\dfrac{\\sqrt{42}}{7}$",
    "$\\dfrac{6}{7}$",
@@ -1297,7 +1297,7 @@
    "sign",
    null
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{6}{7}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{42}}{7}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{5}{7}\\right)}{2} = \\dfrac{6}{7}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{42}}{7}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{42}}{7}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1328,7 +1328,7 @@
    "pm",
    "sign"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{11}{12}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{33}}{6}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{5}{6}\\right)}{2} = \\dfrac{11}{12}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{33}}{6}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{33}}{6}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1345,7 +1345,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "Given $\\cos\\alpha = -\\dfrac{1}{5}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, which of the following is correct? ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{1}{5}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, which of the following is correct? ( )",
   "options": [
    "$\\tan\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{6}}{2}$",
    "$\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{5}$",
@@ -1359,7 +1359,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Halving the interval, $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$. The correct statement is $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{5}$ — $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{3}{5}$ and the sine of the half angle is positive here. $\\sin\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{15}}{5}$ is false: the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$. $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{5}$ is false: that is the size of $\\sin\\dfrac{\\alpha}{2}$. $\\tan\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{6}}{2}$ is false: the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$.",
+  "solution": "Halving the interval of $\\alpha$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$. $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{5}$ is correct. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{3}{5}$ and the sine of the half angle is positive here. $\\sin\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{15}}{5}$ is incorrect. On $\\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$ the sine is positive, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{5}$. $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{5}$ is incorrect. This has the size of $\\sin\\dfrac{\\alpha}{2}$. In fact $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{5}$. $\\tan\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{6}}{2}$ is incorrect. On $\\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$ the tangent is positive, so $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{6}}{2}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1376,7 +1376,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\sin\\alpha = -\\dfrac{20}{29}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\sin\\alpha = -\\dfrac{20}{29}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$-\\dfrac{2\\sqrt{29}}{29}$",
    "$-\\dfrac{5\\sqrt{29}}{29}$",
@@ -1390,7 +1390,7 @@
    "pm",
    "sign"
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{21}{29}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{4}{29}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{2\\sqrt{29}}{29}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{400}{841} = \\dfrac{441}{841}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{21}{29}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{21}{29}}{2} = \\dfrac{4}{29}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{2\\sqrt{29}}{29}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{2\\sqrt{29}}{29}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1407,7 +1407,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = \\dfrac{8}{17}$ and $-\\dfrac{\\pi}{2} < \\alpha < 0$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = \\dfrac{8}{17}$ and $-\\dfrac{\\pi}{2} < \\alpha < 0$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{3}{5}$",
    "$\\pm \\dfrac{3}{5}$",
@@ -1421,7 +1421,7 @@
    null,
    "partial"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. The sine is negative on the given interval: $\\sin\\alpha = -\\dfrac{15}{17}$. So $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{3}{5}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$, and the sine is negative on the given interval, so $\\sin\\alpha = -\\dfrac{15}{17}$. Then $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{3}{5}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{3}{5}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1438,7 +1438,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{1}{9}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{1}{9}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\pm \\dfrac{2}{3}$",
    "$-\\dfrac{2}{3}$",
@@ -1452,7 +1452,7 @@
    null,
    "companion"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{4}{9}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{2}{3}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{1}{9}}{2} = \\dfrac{4}{9}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{2}{3}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{2}{3}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1483,7 +1483,7 @@
    "pm",
    null
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1}{3}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{3}}{3}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{1}{3}}{2} = \\dfrac{1}{3}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{3}}{3}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{3}}{3}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1514,7 +1514,7 @@
    "companion",
    null
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{15}{16}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{4}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{7}{8}\\right)}{2} = \\dfrac{15}{16}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{15}}{4}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{15}}{4}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1531,7 +1531,7 @@
   "points": 2,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "Given $\\cos\\alpha = -\\dfrac{1}{6}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{1}{6}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\pm \\dfrac{\\sqrt{21}}{6}$",
    "$\\dfrac{\\sqrt{15}}{6}$",
@@ -1545,7 +1545,7 @@
    null,
    "sign"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{7}{12}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{21}}{6}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{1}{6}\\right)}{2} = \\dfrac{7}{12}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{21}}{6}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{21}}{6}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1562,7 +1562,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{12}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{12}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$-\\dfrac{\\sqrt{26}}{26}$",
    "$\\dfrac{\\sqrt{26}}{26}$",
@@ -1576,7 +1576,7 @@
    "partial",
    "pm"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1}{26}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{26}}{26}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{12}{13}}{2} = \\dfrac{1}{26}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{26}}{26}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{26}}{26}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1593,7 +1593,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "Given $\\cos\\alpha = \\dfrac{1}{7}$ and $\\alpha \\in \\left[\\dfrac{3\\pi}{2}, 2\\pi\\right]$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{1}{7}$ and $\\alpha \\in \\left[\\dfrac{3\\pi}{2}, 2\\pi\\right]$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$-\\dfrac{\\sqrt{21}}{7}$",
    "$\\pm \\dfrac{\\sqrt{21}}{7}$",
@@ -1607,7 +1607,7 @@
    "partial",
    null
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{3}{7}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{21}}{7}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{1}{7}}{2} = \\dfrac{3}{7}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{21}}{7}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{21}}{7}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1669,7 +1669,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “It is an odd function”. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. “Its maximum value is $1$” is false: the tangent is unbounded. “It is an even function” is false: the tangent is odd.",
+  "solution": "“It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\pi$. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even.",
   "video": "V14",
   "version": "a"
  },
@@ -1700,7 +1700,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is false: the name is wrong: the correct result is $-\\sin\\alpha$. $\\tan\\left(\\pi + \\alpha\\right) = -\\tan\\alpha$ is false: the sign is wrong: the correct result is $\\tan\\alpha$.",
+  "solution": "$\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(\\pi - \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where sine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha$. $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} + \\alpha$ lies in the second quadrant, where cosine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$. $\\tan\\left(\\pi + \\alpha\\right) = -\\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where tangent is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(\\pi + \\alpha\\right) = \\tan\\alpha$.",
   "video": "V12",
   "version": "a"
  },
@@ -1731,7 +1731,7 @@
    "companion",
    "sign"
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{3}{5}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1}{5}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{5}}{5}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{3}{5}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{3}{5}}{2} = \\dfrac{1}{5}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{5}}{5}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{5}}{5}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1748,7 +1748,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\sin\\alpha = -\\dfrac{7}{25}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\sin\\alpha = -\\dfrac{7}{25}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{49}{50}$",
    "$-\\dfrac{7\\sqrt{2}}{10}$",
@@ -1762,7 +1762,7 @@
    "pm",
    null
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{24}{25}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{49}{50}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{7\\sqrt{2}}{10}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{49}{625} = \\dfrac{576}{625}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{24}{25}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{24}{25}\\right)}{2} = \\dfrac{49}{50}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{7\\sqrt{2}}{10}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{7\\sqrt{2}}{10}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1779,7 +1779,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "Given $\\sin\\alpha = -\\dfrac{12}{13}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following pairs is correct? ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{12}{13}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following pairs is correct? ( )",
   "options": [
    "$\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{13}}{13}$, $\\tan\\dfrac{\\alpha}{2} = \\dfrac{2}{3}$",
    "$\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{13}}{13}$, $\\tan\\dfrac{\\alpha}{2} = -\\dfrac{2}{3}$",
@@ -1793,7 +1793,7 @@
    "sign",
    "sign"
   ],
-  "solution": "On this interval the cosine is positive, so $\\cos\\alpha = \\dfrac{5}{13}$. Since $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$: the cosine of the half angle is negative and its tangent is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{9}{13}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{13}}{13}$; $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{2}{3}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{144}{169} = \\dfrac{25}{169}$. On the given interval the cosine is positive, so $\\cos\\alpha = \\dfrac{5}{13}$. Since $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$, where the cosine is negative and the tangent is negative. Then $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{9}{13}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{13}}{13}$, and $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{2}{3}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1810,7 +1810,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left[\\dfrac{3\\pi}{2}, 2\\pi\\right]$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left[\\dfrac{3\\pi}{2}, 2\\pi\\right]$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{3\\sqrt{10}}{10}$",
    "$-\\dfrac{\\sqrt{10}}{10}$",
@@ -1824,7 +1824,7 @@
    null,
    "pm"
   ],
-  "solution": "On this interval the cosine is positive, so $\\cos\\alpha = \\dfrac{4}{5}$. Locate the half angle first: $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1}{10}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{10}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$. On the given interval the cosine is positive, so $\\cos\\alpha = \\dfrac{4}{5}$. Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{3\\pi}{4}, \\pi\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{4}{5}}{2} = \\dfrac{1}{10}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{10}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{10}}{10}$.",
   "video": "V17",
   "version": "a"
  },
@@ -1841,7 +1841,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\dfrac{15}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\tan\\left(2\\pi - \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\dfrac{15}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\tan\\left(2\\pi - \\alpha\\right) =$ ( )",
   "options": [
    "$-\\dfrac{8}{15}$",
    "$\\dfrac{8}{15}$",
@@ -1855,7 +1855,7 @@
    "companion",
    "reciprocal"
   ],
-  "solution": "Step 1: $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$, so $\\cos\\alpha = -\\dfrac{15}{17}$. Step 2: in the third quadrant $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\tan\\alpha = \\dfrac{8}{15}$. Step 3: $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha = -\\dfrac{8}{15}$.",
+  "solution": "Step 1: $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$, so $\\cos\\alpha = -\\dfrac{15}{17}$. Step 2: $\\sin^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$, and in the third quadrant sine is negative, so $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{8}{15}$. Step 3: $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha = -\\dfrac{8}{15}$.",
   "video": "V12",
   "version": "a"
  },
@@ -1886,7 +1886,7 @@
    "swap",
    "reciprocal"
   ],
-  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{3\\sin\\alpha - 4\\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = \\dfrac{3\\tan\\alpha - 4}{\\tan\\alpha - 1} = \\dfrac{2}{1} = 2$.",
+  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{3\\sin\\alpha - 4\\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = \\dfrac{3\\tan\\alpha - 4}{\\tan\\alpha - 1} = 2$.",
   "video": "V18",
   "version": "a"
  },
@@ -1917,7 +1917,7 @@
    "sign",
    null
   ],
-  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\sin\\alpha + 3\\cos\\alpha}{\\sin\\alpha - 3\\cos\\alpha} = \\dfrac{\\tan\\alpha + 3}{\\tan\\alpha - 3} = \\dfrac{\\dfrac{10}{3}}{-\\dfrac{8}{3}} = -\\dfrac{5}{4}$.",
+  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\sin\\alpha + 3\\cos\\alpha}{\\sin\\alpha - 3\\cos\\alpha} = \\dfrac{\\tan\\alpha + 3}{\\tan\\alpha - 3} = \\dfrac{\\dfrac{10}{3}}{-\\dfrac{8}{3}} = \\dfrac{10}{-8} = -\\dfrac{5}{4}$.",
   "video": "V18",
   "version": "a"
  },
@@ -2010,7 +2010,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\sin\\alpha + 3\\cos\\alpha}{4\\sin\\alpha + \\cos\\alpha} = \\dfrac{\\tan\\alpha + 3}{4\\tan\\alpha + 1} = \\dfrac{\\dfrac{3}{2}}{-5} = -\\dfrac{3}{10}$.",
+  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\sin\\alpha + 3\\cos\\alpha}{4\\sin\\alpha + \\cos\\alpha} = \\dfrac{\\tan\\alpha + 3}{4\\tan\\alpha + 1} = \\dfrac{\\dfrac{3}{2}}{-5} = \\dfrac{3}{-10} = -\\dfrac{3}{10}$.",
   "video": "V18",
   "version": "a"
  },
@@ -2072,7 +2072,7 @@
    "reciprocal",
    "companion"
   ],
-  "solution": "Write each expression in terms of $\\tan\\alpha$: divide by $\\cos\\alpha$, or by $\\sin^2\\alpha + \\cos^2\\alpha = 1$. The correct statement is $\\dfrac{\\sin\\alpha + \\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = -\\dfrac{1}{3}$ — divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\tan\\alpha + 1}{\\tan\\alpha - 1} = -\\dfrac{1}{3}$. $\\dfrac{\\sin\\alpha + \\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = -3$ is false: the fraction is upside down; the value is $-\\dfrac{1}{3}$. $\\sin\\alpha\\cos\\alpha = \\dfrac{1}{5}$ is false: that is $\\sin^2\\alpha$; $\\sin\\alpha\\cos\\alpha = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1} = -\\dfrac{2}{5}$. $\\cos^2\\alpha = \\dfrac{1}{5}$ is false: that is $\\sin^2\\alpha$; $\\cos^2\\alpha = \\dfrac{4}{5}$.",
+  "solution": "Write each expression in terms of $\\tan\\alpha$, either by dividing by $\\cos\\alpha$ or by dividing by $\\sin^2\\alpha + \\cos^2\\alpha = 1$. $\\dfrac{\\sin\\alpha + \\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = -\\dfrac{1}{3}$ is correct. Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\tan\\alpha + 1}{\\tan\\alpha - 1} = -\\dfrac{1}{3}$. $\\dfrac{\\sin\\alpha + \\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = -3$ is incorrect. The value is $-\\dfrac{1}{3}$, and $-3$ is its reciprocal. $\\sin\\alpha\\cos\\alpha = \\dfrac{1}{5}$ is incorrect. $\\dfrac{1}{5}$ is the value of $\\sin^2\\alpha$. In fact $\\sin\\alpha\\cos\\alpha = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1} = -\\dfrac{2}{5}$. $\\cos^2\\alpha = \\dfrac{1}{5}$ is incorrect. $\\dfrac{1}{5}$ is the value of $\\sin^2\\alpha$. In fact $\\cos^2\\alpha = \\dfrac{4}{5}$.",
   "video": "V18",
   "version": "a"
  },
@@ -2151,7 +2151,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that $\\dfrac{2\\sin\\alpha + \\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = -\\dfrac{1}{4}$. Then $\\tan\\alpha =$ ( )",
+  "stem": "Suppose $\\dfrac{2\\sin\\alpha + \\cos\\alpha}{\\sin\\alpha - \\cos\\alpha} = -\\dfrac{1}{4}$. Then $\\tan\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{1}{3}$",
    "$\\dfrac{1}{3}$",
@@ -2213,7 +2213,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that $\\dfrac{\\sin\\alpha - \\cos\\alpha}{\\sin\\alpha + \\cos\\alpha} = -2$. Then $\\tan\\alpha =$ ( )",
+  "stem": "Suppose $\\dfrac{\\sin\\alpha - \\cos\\alpha}{\\sin\\alpha + \\cos\\alpha} = -2$. Then $\\tan\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{1}{3}$",
    "$\\dfrac{1}{3}$",
@@ -2244,7 +2244,7 @@
   "points": 2,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{1}{9}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{1}{9}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{5}{9}$",
    "$\\dfrac{\\sqrt{5}}{3}$",
@@ -2258,7 +2258,7 @@
    "sign",
    "pm"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{5}{9}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{5}}{3}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{1}{9}\\right)}{2} = \\dfrac{5}{9}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{5}}{3}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{5}}{3}$.",
   "video": "V17",
   "version": "a"
  },
@@ -2275,7 +2275,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}$ and $\\sin 30^\\circ = \\dfrac{1}{2}$, then $\\sin 75^\\circ =$ ( )",
+  "stem": "Given that $\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}$ and $\\sin 30^\\circ = \\dfrac{1}{2}$, the value of $\\sin 75^\\circ$ is ( )",
   "options": [
    "$\\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$",
    "$\\dfrac{\\sqrt{6} + \\sqrt{2}}{4}$",
@@ -2320,7 +2320,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “It is monotonically decreasing on $[0, \\pi]$”. “Its maximum value is $2$” is false: its values never exceed $1$. “Its graph is symmetric about the origin” is false: $y = \\cos x$ is even, so its graph is symmetric about the $y$-axis. “Its maximum value is $\\dfrac{\\pi}{2}$” is false: its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it).",
+  "solution": "“It is monotonically decreasing on $[0, \\pi]$” is correct. On this interval $\\cos x$ falls steadily from $1$ to $-1$. “Its maximum value is $2$” is incorrect. Its values never exceed $1$. “Its graph is symmetric about the origin” is incorrect. $\\cos(-x) = \\cos x$, so it is even, so its graph is symmetric about the $y$-axis. “Its maximum value is $\\dfrac{\\pi}{2}$” is incorrect. Its maximum value is $1$.",
   "video": "V13",
   "version": "a"
  },
@@ -2382,7 +2382,7 @@
    "half",
    "sign"
   ],
-  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\tan\\alpha + 1}{2\\tan\\alpha - 1} = -\\dfrac{2}{5}$. So $\\tan\\alpha + 1 = \\left(-\\dfrac{2}{5}\\right)\\left(2\\tan\\alpha - 1\\right)$, which gives $\\tan\\alpha = -\\dfrac{1}{3}$. Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{-\\dfrac{2}{3}}{\\dfrac{10}{9}} = -\\dfrac{3}{5}$.",
+  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\tan\\alpha + 1}{2\\tan\\alpha - 1} = -\\dfrac{2}{5}$. So $\\tan\\alpha + 1 = \\left(-\\dfrac{2}{5}\\right)\\left(2\\tan\\alpha - 1\\right)$, which gives $\\tan\\alpha = -\\dfrac{1}{3}$. Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{-\\dfrac{2}{3}}{\\dfrac{10}{9}} = \\dfrac{-6}{10} = -\\dfrac{3}{5}$.",
   "video": "V18",
   "version": "a"
  },
@@ -2444,7 +2444,7 @@
    null,
    "companion"
   ],
-  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\tan\\alpha + 3}{\\tan\\alpha - 1} = -5$. So $\\tan\\alpha + 3 = \\left(-5\\right)\\left(\\tan\\alpha - 1\\right)$, which gives $\\tan\\alpha = \\dfrac{1}{3}$. Then $\\cos 2\\alpha = \\dfrac{1 - \\tan^2\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{\\dfrac{8}{9}}{\\dfrac{10}{9}} = \\dfrac{4}{5}$.",
+  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{\\tan\\alpha + 3}{\\tan\\alpha - 1} = -5$. So $\\tan\\alpha + 3 = \\left(-5\\right)\\left(\\tan\\alpha - 1\\right)$, which gives $\\tan\\alpha = \\dfrac{1}{3}$. Then $\\cos 2\\alpha = \\dfrac{1 - \\tan^2\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{\\dfrac{8}{9}}{\\dfrac{10}{9}} = \\dfrac{8}{10} = \\dfrac{4}{5}$.",
   "video": "V18",
   "version": "a"
  },
@@ -2475,7 +2475,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “Its maximum value is $2$” — the maximum is $k + |A|$. “Its maximum value is $3$” is false: the vertical shift $-1$ was forgotten: the maximum is $2$. “Its minimum positive period is $6\\pi$” is false: divide by $\\omega$, do not multiply: $T = \\dfrac{2\\pi}{3}$. “It is an odd function” is false: $f(-x) \\ne -f(x)$ in general.",
+  "solution": "“Its maximum value is $2$” is correct. The maximum is $k + |A| = -1 + 3 = 2$. “Its maximum value is $3$” is incorrect. The vertical shift is missing. The maximum is $k + |A| = -1 + 3 = 2$. “Its minimum positive period is $6\\pi$” is incorrect. The period is found by dividing $2\\pi$ by $|\\omega|$, not by multiplying: $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{3} = \\dfrac{2\\pi}{3}$. “It is an odd function” is incorrect. For an odd function the maximum and the minimum are opposite numbers, but here they are $2$ and $-4$.",
   "video": "V13",
   "version": "a"
  },
@@ -2492,7 +2492,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{24}{25}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{24}{25}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\sin\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{24}{25}$",
    "$\\dfrac{7}{25}$",
@@ -2506,7 +2506,7 @@
    null,
    "near-miss"
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\cos^2\\alpha$ gives $\\sin\\alpha = \\pm \\dfrac{7}{25}$; in the third quadrant sine is negative. So $\\sin\\alpha = -\\dfrac{7}{25}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\left(-\\dfrac{24}{25}\\right)^2 = 1 - \\dfrac{576}{625} = \\dfrac{49}{625}$, so $\\sin\\alpha = \\pm \\dfrac{7}{25}$. In the third quadrant sine is negative, so $\\sin\\alpha = -\\dfrac{7}{25}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2537,7 +2537,7 @@
    "pm",
    null
   ],
-  "solution": "$\\cos^2\\alpha = 1 - \\dfrac{4}{5} = \\dfrac{1}{5}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 4$. No quadrant is given, so both signs are possible: $\\tan\\alpha = \\pm 2$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{4}{5} = \\dfrac{1}{5}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 4$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = \\pm 2$.",
   "video": "V19",
   "version": "a"
  },
@@ -2568,7 +2568,7 @@
    null,
    "partial"
   ],
-  "solution": "The correct statement is $(\\sin\\alpha + \\cos\\alpha)^2 = 1 + 2\\sin\\alpha\\cos\\alpha$ — expand the square and use $\\sin^2\\alpha + \\cos^2\\alpha = 1$. $\\sin^2\\alpha - \\cos^2\\alpha = 1$ is false: the identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$. $(\\sin\\alpha + \\cos\\alpha)^2 = 1$ is false: the middle term $2\\sin\\alpha\\cos\\alpha$ is missing. $\\tan\\alpha = \\sin\\alpha\\cos\\alpha$ is false: the tangent is a quotient, not a product.",
+  "solution": "$(\\sin\\alpha + \\cos\\alpha)^2 = 1 + 2\\sin\\alpha\\cos\\alpha$ is correct. Expand the square and use $\\sin^2\\alpha + \\cos^2\\alpha = 1$. $\\sin^2\\alpha - \\cos^2\\alpha = 1$ is incorrect. The identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$. $(\\sin\\alpha + \\cos\\alpha)^2 = 1$ is incorrect. The middle term $2\\sin\\alpha\\cos\\alpha$ is missing. $\\tan\\alpha = \\sin\\alpha\\cos\\alpha$ is incorrect. The tangent is the quotient $\\dfrac{\\sin\\alpha}{\\cos\\alpha}$, not the product.",
   "video": "V19",
   "version": "a"
  },
@@ -2599,7 +2599,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ — the sign is wrong: the correct result is $-\\sin\\alpha$. The other three statements are true.",
+  "solution": "$\\sin\\left(\\pi + \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$. $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\pi + \\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\cos\\left(\\pi - \\alpha\\right) = -\\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V19",
   "version": "a"
  },
@@ -2616,7 +2616,7 @@
   "points": 2,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "Given $\\cos\\alpha = -\\dfrac{5}{8}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{5}{8}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{\\sqrt{13}}{4}$",
    "$-\\dfrac{\\sqrt{13}}{4}$",
@@ -2630,7 +2630,7 @@
    "pm",
    "companion"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{13}{16}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{13}}{4}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{5}{8}\\right)}{2} = \\dfrac{13}{16}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{13}}{4}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{13}}{4}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2661,7 +2661,7 @@
    "near-miss",
    "partial"
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{3}$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = 3$, so $T = \\dfrac{\\pi}{3} = \\dfrac{\\pi}{3}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2692,7 +2692,7 @@
    "companion",
    null
   ],
-  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{5}{9} = -\\dfrac{1}{9}$. The given value is already the square: squaring it again gives the trap answer $\\dfrac{31}{81}$.",
+  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{5}{9} = -\\dfrac{1}{9}$. The given number is already $\\sin^2\\alpha$, so it must not be squared again. Squaring it would give $\\dfrac{31}{81}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2709,7 +2709,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "Given $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$-\\dfrac{\\sqrt{10}}{10}$",
    "$\\dfrac{\\sqrt{10}}{10}$",
@@ -2723,7 +2723,7 @@
    "pm",
    "companion"
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{4}{5}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1}{10}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{10}}{10}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{4}{5}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{4}{5}}{2} = \\dfrac{1}{10}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{\\sqrt{10}}{10}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{10}}{10}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2740,7 +2740,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{4 + 3\\sqrt{3}}{10}$",
    "$\\dfrac{3 - 4\\sqrt{3}}{10}$",
@@ -2754,7 +2754,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{4}{5}$. Then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} - \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{3}{5} \\cdot \\dfrac{\\sqrt{3}}{2} - \\left(-\\dfrac{4}{5}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{4 + 3\\sqrt{3}}{10}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$. In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{4}{5}$. Then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} - \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\dfrac{3}{5} \\cdot \\dfrac{\\sqrt{3}}{2} - \\left(-\\dfrac{4}{5}\\right) \\cdot \\dfrac{1}{2} = \\dfrac{4 + 3\\sqrt{3}}{10}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2771,12 +2771,12 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "If $\\sin\\alpha = \\dfrac{8}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{4}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
   "options": [
-   "$\\dfrac{161}{289}$",
-   "$\\dfrac{120}{289}$",
-   "$-\\dfrac{240}{289}$",
-   "$\\dfrac{240}{289}$"
+   "$-\\dfrac{7}{25}$",
+   "$\\dfrac{12}{25}$",
+   "$-\\dfrac{24}{25}$",
+   "$\\dfrac{24}{25}$"
   ],
   "answer": 3,
   "traps": [
@@ -2785,7 +2785,7 @@
    "sign",
    null
   ],
-  "solution": "In the first quadrant the cosine is positive: $\\cos\\alpha = \\dfrac{15}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{8}{17} \\cdot \\dfrac{15}{17} = \\dfrac{240}{289}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. In the first quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{3}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{4}{5} \\cdot \\dfrac{3}{5} = \\dfrac{24}{25}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2816,7 +2816,7 @@
    null,
    "companion"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{3}{7}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{21}}{7}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the cosine is positive. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{1}{7}}{2} = \\dfrac{3}{7}$, so $\\cos\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{21}}{7}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{21}}{7}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2847,7 +2847,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ — a multiple of $\\pi$ keeps the name; the sign is that of $\\sin$ where the angle lands (take $\\alpha$ acute). $\\tan\\left(\\pi - \\alpha\\right) = \\tan\\alpha$ is false: the sign is wrong: the correct result is $-\\tan\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is false: the name is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\tan\\left(\\pi - \\alpha\\right) = \\tan\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi - \\alpha$ lies in the second quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\tan\\left(\\pi - \\alpha\\right) = -\\tan\\alpha$. $\\cos\\left(2\\pi - \\alpha\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(2\\pi - \\alpha\\right) = \\cos\\alpha$. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$.",
   "video": "V19",
   "version": "a"
  },
@@ -2940,7 +2940,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "The correct statement is “It is increasing on $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$” — the tangent is increasing on each interval between consecutive asymptotes. “Its minimum positive period is $6\\pi$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$. “It is decreasing on $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$” is false: the direction is the other way. “Its minimum positive period is $\\pi$” is false: the coefficient of $x$ changes the period: $T = 3\\pi$.",
+  "solution": "“It is increasing on $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$ is one of them. “Its minimum positive period is $6\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$. “It is decreasing on $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$ is one of them. “Its minimum positive period is $\\pi$” is incorrect. The coefficient of $x$ changes the period. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$.",
   "video": "V14",
   "version": "a"
  },
@@ -2957,7 +2957,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the second quadrant, then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
   "options": [
    "$\\dfrac{15 - 8\\sqrt{3}}{34}$",
    "$\\dfrac{15\\sqrt{3} - 8}{34}$",
@@ -2971,7 +2971,7 @@
    null,
    "sign"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} - \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{15}{17} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{8 + 15\\sqrt{3}}{34}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\cos\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{3} - \\sin\\alpha\\sin \\dfrac{\\pi}{3} = \\left(-\\dfrac{8}{17}\\right) \\cdot \\dfrac{1}{2} - \\dfrac{15}{17} \\cdot \\dfrac{\\sqrt{3}}{2} = -\\dfrac{8 + 15\\sqrt{3}}{34}$.",
   "video": "V19",
   "version": "a"
  },
@@ -2988,7 +2988,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\sin\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\sin\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{5\\sqrt{26}}{26}$",
    "$\\pm \\dfrac{5\\sqrt{26}}{26}$",
@@ -3002,7 +3002,7 @@
    "sign",
    "companion"
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{12}{13}$. Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{25}{26}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{5\\sqrt{26}}{26}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{12}{13}$. Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{12}{13}\\right)}{2} = \\dfrac{25}{26}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{5\\sqrt{26}}{26}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{5\\sqrt{26}}{26}$.",
   "video": "V19",
   "version": "a"
  },
@@ -3033,7 +3033,7 @@
    "half",
    null
   ],
-  "solution": "Square both sides: $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = 1 - \\sin 2\\alpha = \\dfrac{49}{25}$. So $\\sin 2\\alpha = -\\dfrac{24}{25}$.",
+  "solution": "Square both sides: $(\\sin\\alpha - \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha - 2\\sin\\alpha\\cos\\alpha = 1 - \\sin 2\\alpha$, so $1 - \\sin 2\\alpha = \\dfrac{49}{25}$. Therefore $\\sin 2\\alpha = 1 - \\dfrac{49}{25} = -\\dfrac{24}{25}$.",
   "video": "V19",
   "version": "a"
  },
@@ -3064,7 +3064,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “It is increasing on its whole domain” — it is monotonic on each interval between asymptotes, but not across them. The other three statements are true.",
+  "solution": "“It is increasing on its whole domain” is incorrect. It is monotonic on each interval between consecutive asymptotes, but not across an asymptote. “It is increasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$.",
   "video": "V19",
   "version": "a"
  },
@@ -3095,7 +3095,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is “It is an odd function”. “Its maximum value is $1$” is false: the tangent is unbounded. “It is an even function” is false: the tangent is odd. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$.",
+  "solution": "“It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{3\\pi}{2}$.",
   "video": "V14",
   "version": "a"
  },
@@ -3112,7 +3112,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{2}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{2}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{\\sqrt{21} - 2\\sqrt{3}}{10}$",
    "$\\dfrac{\\sqrt{21} + 2\\sqrt{3}}{10}$",
@@ -3126,7 +3126,7 @@
    "companion",
    null
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{21}}{5}$. Then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} - \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{2}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{21}}{5} \\cdot \\dfrac{1}{2} = -\\dfrac{\\sqrt{21} + 2\\sqrt{3}}{10}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{4}{25} = \\dfrac{21}{25}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{21}}{5}$. Then $\\cos\\left(\\dfrac{\\pi}{6} + \\alpha\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} - \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{2}{5}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{21}}{5} \\cdot \\dfrac{1}{2} = -\\dfrac{\\sqrt{21} + 2\\sqrt{3}}{10}$.",
   "video": "V15",
   "version": "a"
  },
@@ -3188,7 +3188,7 @@
    "domain",
    "operation"
   ],
-  "solution": "The correct statement is $\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ — $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines. $\\cos(\\alpha + \\beta) > 0$ is false: $\\alpha + \\beta$ can be obtuse, for example $\\alpha = \\beta = 60^\\circ$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is false: not always: for $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ < \\sin 80^\\circ$.",
+  "solution": "$\\sin(\\alpha + \\beta) < \\sin\\alpha + \\sin\\beta$ is correct. $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$, and both cosines are less than $1$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$. $\\cos(\\alpha + \\beta) > 0$ is incorrect. $\\alpha + \\beta$ can be obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\cos 120^\\circ = -\\dfrac{1}{2} < 0$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is incorrect. This is not always true. For $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ = \\sin 20^\\circ < \\sin 80^\\circ$.",
   "video": "V15",
   "version": "a"
  },
@@ -3205,7 +3205,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "Given $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{3\\sqrt{34}}{34}$",
    "$-\\dfrac{5\\sqrt{34}}{34}$",
@@ -3219,7 +3219,7 @@
    "pm",
    null
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{8}{17}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{9}{34}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{34}}{34}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{8}{17}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{8}{17}}{2} = \\dfrac{9}{34}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{34}}{34}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{3\\sqrt{34}}{34}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3236,7 +3236,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = \\dfrac{1}{5}$ and $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = \\dfrac{1}{5}$ and $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$-\\dfrac{\\sqrt{6}}{3}$",
    "$-2\\sqrt{6}$",
@@ -3250,7 +3250,7 @@
    "sign",
    "pm"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. The sine is negative on the given interval: $\\sin\\alpha = -\\dfrac{2\\sqrt{6}}{5}$. So $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{\\sqrt{6}}{3}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{25} = \\dfrac{24}{25}$, and the sine is negative on the given interval, so $\\sin\\alpha = -\\dfrac{2\\sqrt{6}}{5}$. Then $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{\\sqrt{6}}{3}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{6}}{3}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3267,7 +3267,7 @@
   "points": 2.5,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "Given $\\cos\\alpha = -\\dfrac{15}{17}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{15}{17}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$, then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\pm \\dfrac{4\\sqrt{17}}{17}$",
    "$-\\dfrac{4\\sqrt{17}}{17}$",
@@ -3281,7 +3281,7 @@
    null,
    "companion"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{16}{17}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{4\\sqrt{17}}{17}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{15}{17}\\right)}{2} = \\dfrac{16}{17}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{4\\sqrt{17}}{17}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{4\\sqrt{17}}{17}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3312,7 +3312,7 @@
    null,
    "half"
   ],
-  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{2\\tan\\alpha - 1}{\\tan\\alpha + 2} = \\dfrac{3}{4}$. So $2\\tan\\alpha - 1 = \\dfrac{3}{4}\\left(\\tan\\alpha + 2\\right)$, which gives $\\tan\\alpha = 2$. Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{4}{5} = \\dfrac{4}{5}$.",
+  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{2\\tan\\alpha - 1}{\\tan\\alpha + 2} = \\dfrac{3}{4}$. So $2\\tan\\alpha - 1 = \\dfrac{3}{4}\\left(\\tan\\alpha + 2\\right)$, which gives $\\tan\\alpha = 2$. Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{4}{5}$.",
   "video": "V18",
   "version": "a"
  },
@@ -3329,7 +3329,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{24}{25}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{24}{25}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
   "options": [
    "$\\dfrac{7}{24}$",
    "$\\dfrac{24}{7}$",
@@ -3343,7 +3343,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Simplify first: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. With $\\alpha$ acute, $\\cos\\alpha = \\dfrac{7}{25}$, so the value is $\\dfrac{24}{7}$.",
+  "solution": "Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{576}{625} = \\dfrac{49}{625}$. Since $\\alpha$ is acute the cosine is positive, so $\\cos\\alpha = \\dfrac{7}{25}$. So $\\tan\\alpha = \\dfrac{24}{7}$ and the value is $\\dfrac{24}{7}$.",
   "video": "V16",
   "version": "a"
  },
@@ -3374,7 +3374,7 @@
    "operation",
    "domain"
   ],
-  "solution": "The correct statement is $\\cos(\\alpha + \\beta) < \\cos(\\alpha - \\beta)$ — the difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\tan(\\alpha + \\beta) > 0$ is false: it is negative when $\\alpha + \\beta$ is obtuse. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is false: the cosine of a sum is not the sum of the cosines. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is false: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger.",
+  "solution": "$\\cos(\\alpha + \\beta) < \\cos(\\alpha - \\beta)$ is correct. The difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$. $\\tan(\\alpha + \\beta) > 0$ is incorrect. It is negative when $\\alpha + \\beta$ is obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\tan 120^\\circ = -\\sqrt{3}$. $\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta$ is incorrect. The cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is incorrect. $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one.",
   "video": "V15",
   "version": "a"
  },
@@ -3405,7 +3405,7 @@
    "companion",
    "operation"
   ],
-  "solution": "The angle $\\dfrac{19\\pi}{12}$ lies in the fourth quadrant and its reference angle is $\\dfrac{5\\pi}{12}$, so $\\tan \\dfrac{19\\pi}{12} = -\\tan \\dfrac{5\\pi}{12}$. With $\\dfrac{5\\pi}{12} = \\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}$: $\\tan\\left(\\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{4} + \\tan \\dfrac{\\pi}{6}}{1 - \\tan \\dfrac{\\pi}{4}\\tan \\dfrac{\\pi}{6}} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$. Hence the value is $-2 - \\sqrt{3}$.",
+  "solution": "The angle $\\dfrac{19\\pi}{12}$ lies in the fourth quadrant and its reference angle is $\\dfrac{5\\pi}{12}$, so $\\tan \\dfrac{19\\pi}{12} = -\\tan \\dfrac{5\\pi}{12}$. With $\\dfrac{5\\pi}{12} = \\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}$: $\\tan\\left(\\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{4} + \\tan \\dfrac{\\pi}{6}}{1 - \\tan \\dfrac{\\pi}{4}\\tan \\dfrac{\\pi}{6}} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = \\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6} = 2 + \\sqrt{3}$. Hence the value is $-2 - \\sqrt{3}$.",
   "video": "V15",
   "version": "a"
  },
@@ -3422,7 +3422,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan \\dfrac{\\pi}{4} = 1$ and $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$, then $\\tan \\dfrac{5\\pi}{12} =$ ( )",
+  "stem": "Given that $\\tan \\dfrac{\\pi}{4} = 1$ and $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$, the value of $\\tan \\dfrac{5\\pi}{12}$ is ( )",
   "options": [
    "$\\sqrt{3} - 2$",
    "$2 + \\sqrt{3}$",
@@ -3436,7 +3436,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Write $\\dfrac{5\\pi}{12} = \\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}$. Then $\\tan\\left(\\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{4} + \\tan \\dfrac{\\pi}{6}}{1 - \\tan \\dfrac{\\pi}{4}\\tan \\dfrac{\\pi}{6}} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = 2 + \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $\\dfrac{5\\pi}{12} = \\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}$. Then $\\tan\\left(\\dfrac{\\pi}{4} + \\dfrac{\\pi}{6}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{4} + \\tan \\dfrac{\\pi}{6}}{1 - \\tan \\dfrac{\\pi}{4}\\tan \\dfrac{\\pi}{6}} = \\dfrac{1 + \\dfrac{\\sqrt{3}}{3}}{1 - 1 \\cdot \\dfrac{\\sqrt{3}}{3}} = \\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6} = 2 + \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a"
  },
@@ -3453,7 +3453,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) =$ ( )",
   "options": [
    "$\\dfrac{1}{7}$",
    "$-7$",
@@ -3467,7 +3467,7 @@
    null,
    "sign"
   ],
-  "solution": "From the quadrant, $\\sin\\alpha = \\dfrac{4}{5}$ and $\\cos\\alpha = -\\dfrac{3}{5}$, so $\\tan\\alpha = -\\dfrac{4}{3}$. $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha + \\tan\\dfrac{\\pi}{4}}{1 - \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{-\\dfrac{1}{3}}{\\dfrac{7}{3}} = -\\dfrac{1}{7}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{4}{5}$. So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{4}{3}$. With $\\tan\\dfrac{\\pi}{4} = 1$: $\\tan\\left(\\alpha + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan\\alpha + \\tan\\dfrac{\\pi}{4}}{1 - \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha + 1}{1 - \\tan\\alpha} = \\dfrac{-\\dfrac{1}{3}}{\\dfrac{7}{3}} = \\dfrac{-1}{7} = -\\dfrac{1}{7}$.",
   "video": "V15",
   "version": "a"
  },
@@ -3515,21 +3515,21 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{\\sqrt{21}}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin 2\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{\\sqrt{21}}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\sin 2\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{4\\sqrt{21}}{25}$",
-   "$-\\dfrac{2\\sqrt{21}}{25}$",
    "$\\dfrac{4\\sqrt{21}}{25}$",
-   "$\\dfrac{17}{25}$"
+   "$\\dfrac{17}{25}$",
+   "$-\\dfrac{2\\sqrt{21}}{25}$"
   ],
   "answer": 0,
   "traps": [
    null,
-   "partial",
    "sign",
-   "companion"
+   "companion",
+   "partial"
   ],
-  "solution": "In the fourth quadrant the sine is negative: $\\sin\\alpha = -\\dfrac{2}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{2}{5}\\right) \\cdot \\dfrac{\\sqrt{21}}{5} = -\\dfrac{4\\sqrt{21}}{25}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{21}{25} = \\dfrac{4}{25}$. In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{2}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{2}{5}\\right) \\cdot \\dfrac{\\sqrt{21}}{5} = -\\dfrac{4\\sqrt{21}}{25}$.",
   "video": "V16",
   "version": "a"
  },
@@ -3560,7 +3560,7 @@
    "partial",
    "old-answer"
   ],
-  "solution": "$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot \\dfrac{7}{8} - 1 = \\dfrac{3}{4}$. The given value is already the square: squaring it again gives the trap answer $\\dfrac{17}{32}$.",
+  "solution": "$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot \\dfrac{7}{8} - 1 = \\dfrac{3}{4}$. The given number is already $\\cos^2\\alpha$, so it must not be squared again. Squaring it would give $\\dfrac{17}{32}$.",
   "video": "V16",
   "version": "a"
  },
@@ -3591,7 +3591,7 @@
    "sign",
    null
   ],
-  "solution": "$\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{-8}{1 - 16} = \\dfrac{8}{15}$.",
+  "solution": "Then $\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{-8}{1 - 16} = \\dfrac{-8}{-15} = \\dfrac{8}{15}$.",
   "video": "V16",
   "version": "a"
  },
@@ -3608,7 +3608,7 @@
   "points": 2,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{7}{25}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{7}{25}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{4}{5}$",
    "$-\\dfrac{4}{5}$",
@@ -3622,7 +3622,7 @@
    "pm",
    "companion"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{16}{25}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{4}{5}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{7}{25}\\right)}{2} = \\dfrac{16}{25}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{4}{5}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{4}{5}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3639,7 +3639,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{3\\sqrt{34}}{34}$",
    "$\\pm \\dfrac{5\\sqrt{34}}{34}$",
@@ -3653,7 +3653,7 @@
    "sign",
    null
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{8}{17}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{25}{34}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{5\\sqrt{34}}{34}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{8}{17}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{8}{17}\\right)}{2} = \\dfrac{25}{34}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{5\\sqrt{34}}{34}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{5\\sqrt{34}}{34}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3670,7 +3670,7 @@
   "points": 2,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{1}{4}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{1}{4}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{5}{8}$",
    "$\\pm \\dfrac{\\sqrt{10}}{4}$",
@@ -3684,7 +3684,7 @@
    "sign",
    null
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{5}{8}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{4}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{1}{4}\\right)}{2} = \\dfrac{5}{8}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{\\sqrt{10}}{4}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{10}}{4}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3701,7 +3701,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T05",
-  "stem": "Given $\\sin\\alpha = -\\dfrac{21}{29}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$, which of the following pairs is correct? ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{21}{29}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$, which of the following pairs is correct? ( )",
   "options": [
    "$\\cos\\dfrac{\\alpha}{2} = \\dfrac{3\\sqrt{58}}{58}$, $\\tan\\dfrac{\\alpha}{2} = \\dfrac{7}{3}$",
    "$\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{58}}{58}$, $\\tan\\dfrac{\\alpha}{2} = \\dfrac{7}{3}$",
@@ -3715,7 +3715,7 @@
    "sign",
    null
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{20}{29}$. Since $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$: the cosine of the half angle is negative and its tangent is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{9}{58}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{58}}{58}$; $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{7}{3}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{441}{841} = \\dfrac{400}{841}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{20}{29}$. Since $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative and the tangent is negative. Then $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{9}{58}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{58}}{58}$, and $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{7}{3}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3777,7 +3777,7 @@
    null,
    "partial"
   ],
-  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{3\\sin\\alpha - 4\\cos\\alpha}{4\\sin\\alpha - 3\\cos\\alpha} = \\dfrac{3\\tan\\alpha - 4}{4\\tan\\alpha - 3} = \\dfrac{-\\dfrac{11}{2}}{-5} = \\dfrac{11}{10}$.",
+  "solution": "Divide the numerator and the denominator by $\\cos\\alpha$: $\\dfrac{3\\sin\\alpha - 4\\cos\\alpha}{4\\sin\\alpha - 3\\cos\\alpha} = \\dfrac{3\\tan\\alpha - 4}{4\\tan\\alpha - 3} = \\dfrac{-\\dfrac{11}{2}}{-5} = \\dfrac{-11}{-10} = \\dfrac{11}{10}$.",
   "video": "V18",
   "version": "a"
  },
@@ -3794,7 +3794,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{\\sqrt{6}}{3}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{\\sqrt{6}}{3}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
   "options": [
    "$-\\dfrac{\\sqrt{3} + 3\\sqrt{2}}{6}$",
    "$\\dfrac{\\sqrt{3} - 3\\sqrt{2}}{6}$",
@@ -3808,7 +3808,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{3}}{3}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} + \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{3} \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{\\sqrt{6}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{\\sqrt{3} - 3\\sqrt{2}}{6}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{2}{3} = \\dfrac{1}{3}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{3}}{3}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} + \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{3} \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{\\sqrt{6}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{\\sqrt{3} - 3\\sqrt{2}}{6}$.",
   "video": "V19",
   "version": "a"
  },
@@ -3839,7 +3839,7 @@
    "reciprocal",
    "partial"
   ],
-  "solution": "$\\sin^2\\alpha = 1 - \\dfrac{1}{5} = \\dfrac{4}{5}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 4$. No quadrant is given, so both signs are possible: $\\tan\\alpha = \\pm 2$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{5} = \\dfrac{4}{5}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = 4$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = \\pm 2$.",
   "video": "V19",
   "version": "a"
  },
@@ -3870,7 +3870,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$, $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{4\\sqrt{3} + 3\\sqrt{2}}{12}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$ and $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. Substituting, the expression equals $\\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{1}{2} + \\dfrac{\\sqrt{3}}{3} = \\dfrac{4\\sqrt{3} + 3\\sqrt{2}}{12}$.",
   "video": "V09",
   "version": "a"
  },
@@ -3901,7 +3901,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Since $7^2 + 24^2 = 25^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $A$ the opposite side is $BC = 24$ and the adjacent side is $7$, so $\\tan A = \\dfrac{24}{7}$.",
+  "solution": "Since $7^2 + 24^2 = 25^2$, the triangle has a right angle at $C$ and $AB = 25$ is the hypotenuse. For angle $A$ the opposite side is $BC = 24$ and the adjacent side is $AC = 7$, so $\\tan A = \\dfrac{24}{7}$.",
   "video": "V10",
   "version": "a"
  },
@@ -3932,7 +3932,7 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ — the sign is wrong: the correct result is $-\\cos\\alpha$. The other three statements are true.",
+  "solution": "$\\cos\\left(\\pi + \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\pi + \\alpha$ lies in the third quadrant, where cosine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. So $\\cos\\left(\\pi + \\alpha\\right) = -\\cos\\alpha$. $\\sin\\left(-\\alpha\\right) = -\\sin\\alpha$ is correct. If $\\alpha$ is acute, $-\\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\\pi$, so the function name stays the same. $\\sin\\left(\\dfrac{\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ is correct. If $\\alpha$ is acute, $\\dfrac{\\pi}{2} - \\alpha$ lies in the first quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\tan\\left(2\\pi - \\alpha\\right) = -\\tan\\alpha$ is correct. If $\\alpha$ is acute, $2\\pi - \\alpha$ lies in the fourth quadrant, where tangent is negative. The shift is a multiple of $\\pi$, so the function name stays the same.",
   "video": "V12",
   "version": "a"
  },
@@ -3963,7 +3963,7 @@
    "reciprocal",
    null
   ],
-  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 3$, so $T = \\dfrac{2\\pi}{3}$.",
+  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 3$, so $T = \\dfrac{2\\pi}{3} = \\dfrac{2\\pi}{3}$.",
   "video": "V13",
   "version": "a"
  },
@@ -3980,7 +3980,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{3}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{3}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) =$ ( )",
   "options": [
    "$\\dfrac{\\sqrt{6} - 3}{6}$",
    "$-\\dfrac{3 + \\sqrt{6}}{6}$",
@@ -3994,7 +3994,7 @@
    "sign",
    "companion"
   ],
-  "solution": "In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{6}}{3}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} + \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{\\sqrt{3}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\dfrac{\\sqrt{6}}{3} \\cdot \\dfrac{1}{2} = \\dfrac{\\sqrt{6} - 3}{6}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{3} = \\dfrac{2}{3}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{6}}{3}$. Then $\\cos\\left(\\alpha - \\dfrac{\\pi}{6}\\right) = \\cos\\alpha\\cos \\dfrac{\\pi}{6} + \\sin\\alpha\\sin \\dfrac{\\pi}{6} = \\left(-\\dfrac{\\sqrt{3}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} + \\dfrac{\\sqrt{6}}{3} \\cdot \\dfrac{1}{2} = \\dfrac{\\sqrt{6} - 3}{6}$.",
   "video": "V15",
   "version": "a"
  },
@@ -4011,7 +4011,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "Given $\\sin\\alpha = -\\dfrac{40}{41}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$, then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{40}{41}$ and $\\pi < \\alpha < \\dfrac{3\\pi}{2}$, then $\\cos\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\pm \\dfrac{4\\sqrt{41}}{41}$",
    "$\\dfrac{4\\sqrt{41}}{41}$",
@@ -4025,7 +4025,7 @@
    null,
    "companion"
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{9}{41}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{16}{41}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{4\\sqrt{41}}{41}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{1600}{1681} = \\dfrac{81}{1681}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{9}{41}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{9}{41}}{2} = \\dfrac{16}{41}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{4\\sqrt{41}}{41}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{4\\sqrt{41}}{41}$.",
   "video": "V17",
   "version": "a"
  },
@@ -4042,7 +4042,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = \\dfrac{1}{8}$ and $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = \\dfrac{1}{8}$ and $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$-3\\sqrt{7}$",
    "$-\\dfrac{\\sqrt{7}}{3}$",
@@ -4056,7 +4056,7 @@
    "sign",
    "pm"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. The sine is negative on the given interval: $\\sin\\alpha = -\\dfrac{3\\sqrt{7}}{8}$. So $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{\\sqrt{7}}{3}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{1}{64} = \\dfrac{63}{64}$, and the sine is negative on the given interval, so $\\sin\\alpha = -\\dfrac{3\\sqrt{7}}{8}$. Then $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{\\sqrt{7}}{3}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{7}}{3}$.",
   "video": "V17",
   "version": "a"
  },

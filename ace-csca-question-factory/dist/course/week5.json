@@ -26,7 +26,7 @@
    "off-by-one",
    null
   ],
-  "solution": "$a_n = a_1 + (n - 1)d$, so $a_{20} = 3 + 19 \\cdot 3 = 60$. Counting $20$ steps instead of $19$ is the off-by-one trap.",
+  "solution": "Since $a_n = a_1 + (n - 1)d$, we get $a_{20} = 3 + 19 \\cdot 3 = 60$. From $a_1$ to $a_{20}$ there are $19$ steps of size $d$, not $20$.",
   "video": "V27",
   "version": "a"
  },
@@ -57,7 +57,7 @@
    "off-by-one",
    null
   ],
-  "solution": "The common difference is $d = a_2 - a_1 = -1$. $a_n = a_1 + (n - 1)d$, so $a_7 = -2 + 6 \\cdot \\left(-1\\right) = -8$. Counting $7$ steps instead of $6$ is the off-by-one trap.",
+  "solution": "The common difference is $d = a_2 - a_1 = -1$. Since $a_n = a_1 + (n - 1)d$, we get $a_7 = -2 + 6 \\cdot \\left(-1\\right) = -8$. From $a_1$ to $a_7$ there are $6$ steps of size $d$, not $7$.",
   "video": "V27",
   "version": "a"
  },
@@ -88,7 +88,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "The common difference is $d = a_2 - a_1 = -1$. $a_n = a_1 + (n - 1)d$, so $a_{2026} = 1 + 2025 \\cdot \\left(-1\\right) = -2024$. Counting $2026$ steps instead of $2025$ is the off-by-one trap.",
+  "solution": "The common difference is $d = a_2 - a_1 = -1$. Since $a_n = a_1 + (n - 1)d$, we get $a_{2026} = 1 + 2025 \\cdot \\left(-1\\right) = -2024$. From $a_1$ to $a_{2026}$ there are $2025$ steps of size $d$, not $2026$.",
   "video": "V27",
   "version": "a"
  },
@@ -119,7 +119,7 @@
    null,
    "partial"
   ],
-  "solution": "$a_7 - a_4 = 3d$, so $d = \\dfrac{-26 + 14}{3} = -4$. Then $a_1 = a_4 - 3d = -2$.",
+  "solution": "$a_7 - a_4 = 3d$, so $d = \\dfrac{-26 + 14}{3} = -4$. Then $a_1 = a_4 - 3d = -14 - 3 \\cdot \\left(-4\\right) = -2$.",
   "video": "V27",
   "version": "a"
  },
@@ -150,7 +150,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "$a_n = a_1 + (n - 1)d$, so $a_{91} = 3 + 90 \\cdot \\dfrac{2}{3} = 63$. Counting $91$ steps instead of $90$ is the off-by-one trap.",
+  "solution": "Since $a_n = a_1 + (n - 1)d$, we get $a_{91} = 3 + 90 \\cdot \\dfrac{2}{3} = 63$. From $a_1$ to $a_{91}$ there are $90$ steps of size $d$, not $91$.",
   "video": "V27",
   "version": "a"
  },
@@ -181,7 +181,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "$a_{10} - a_4 = 6d$ gives $d = 2$. Then $a_{30} = a_4 + 26d = 11 + 26 \\cdot 2 = 63$.",
+  "solution": "$a_{10} - a_4 = 6d$, so $6d = 23 - 11 = 12$ and $d = 2$. Then $a_{30} = a_4 + 26d = 11 + 26 \\cdot 2 = 63$.",
   "video": "V27",
   "version": "a"
  },
@@ -212,7 +212,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "The correct statement is $a_8 = 19$ — $a_8 = a_1 + 7d = 19$. $a_8 = 22$ is false: term number minus one: $a_8 = a_1 + 7d = 19$. $d = -3$ is false: the sign is wrong; $d = \\dfrac{a_9 - a_4}{9 - 4} = \\dfrac{22 - 7}{5} = 3$. $a_1 = -5$ is false: from $a_4$ back to $a_1$ there are $3$ steps, not $4$: $a_1 = -2$.",
+  "solution": "$a_8 = 19$ is correct. $a_8 = a_1 + 7d = 19$. $a_8 = 22$ is incorrect. $a_8 = a_1 + 7d = 19$, with $7$ steps from $a_1$, not $8$. $d = -3$ is incorrect. $d = \\dfrac{a_9 - a_4}{9 - 4} = \\dfrac{22 - 7}{5} = 3$. $a_1 = -5$ is incorrect. From $a_4$ back to $a_1$ there are $3$ steps, not $4$, so $a_1 = 7 - 3 \\cdot 3 = -2$.",
   "video": "V27",
   "version": "a"
  },
@@ -243,7 +243,7 @@
    "off-by-one",
    "swap"
   ],
-  "solution": "$a_9 - a_4 = 5d$ gives $d = -1$, and $a_1 = a_4 - 3d = -6$. So $a_n = -6 + \\left(-1\\right)(n - 1) = -n - 5$. Check: $n = 1$ gives $-6$.",
+  "solution": "$a_9 - a_4 = 5d$, so $5d = -14 - \\left(-9\\right) = -5$ and $d = -1$. Then $a_1 = a_4 - 3d = -6$, so $a_n = -6 - (n - 1) = -n - 5$. Check with $n = 1$: the formula gives $-6$, which is $a_1$.",
   "video": "V27",
   "version": "a"
  },
@@ -274,7 +274,7 @@
    null,
    "swap"
   ],
-  "solution": "The common ratio is $q = \\dfrac{10}{5} = 2$, so $a_n = a_1q^{n-1} = 5 \\cdot 2^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{10}{5} = 2$, so $a_n = a_1q^{n-1} = 5 \\cdot 2^{n-1}$. Check with $n = 1$: the formula gives $5 \\cdot 2^{0} = 5$, the first term. With the exponent $n$ instead of $n - 1$, it would give $10$.",
   "video": "V28",
   "version": "a"
  },
@@ -305,7 +305,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{16}{-2} = -8$ and $q = -2$. A negative cube keeps its sign.",
+  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{16}{-2} = -8$ and $q = -2$. The value $2$ does not work, because its cube is $8$.",
   "video": "V28",
   "version": "a"
  },
@@ -336,7 +336,7 @@
    "off-by-one",
    "companion"
   ],
-  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 64$, so $q = 4$ (a negative cube root is allowed). Then $a_3 = a_1q^{2} = -32$.",
+  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 64$, so $q = 4$. Then $a_3 = a_1q^{2} = -32$.",
   "video": "V28",
   "version": "a"
  },
@@ -398,7 +398,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Start from $a_2$: $a_4 = a_2q^{2} = 6 \\cdot \\left(\\dfrac{3}{2}\\right)^{2} = \\dfrac{27}{2}$ (the exponent counts the steps from $a_2$, not from $a_1$).",
+  "solution": "Start from $a_2$: $a_4 = a_2q^{2} = 6 \\cdot \\left(\\dfrac{3}{2}\\right)^{2} = \\dfrac{27}{2}$. The exponent is $2$ because there are $2$ steps from $a_2$ to $a_4$.",
   "video": "V28",
   "version": "a"
  },
@@ -429,7 +429,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "The terms are $1, 2, 4, 8$; their sum is $15$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)",
+  "solution": "Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $S_4 = \\dfrac{2^{4} - 1}{2 - 1} = 15$. Adding the terms $1, 2, 4, 8$ gives the same result.",
   "video": "V28",
   "version": "a"
  },
@@ -446,7 +446,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 4 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 4 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "The first term is $a_1 = -4$",
    "The first term is $a_1 = 4$",
@@ -460,7 +460,7 @@
    "sign",
    "companion"
   ],
-  "solution": "The terms are $-4, 4, -4, 4, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is “The first term is $a_1 = -4$” — put $n = 1$ into the formula. $S_{20} = 80$ is false: the terms alternate in sign and cancel in pairs: $S_{20} = 0$. “The first term is $a_1 = 4$” is false: put $n = 1$ into the formula: $a_1 = -4$. “It is an arithmetic sequence” is false: the differences alternate between $8$ and $-8$.",
+  "solution": "The terms are $-4, 4, -4, 4, \\ldots$. “The first term is $a_1 = -4$” is correct. Put $n = 1$ into the formula. $S_{20} = 80$ is incorrect. The terms alternate in sign and cancel in pairs: $S_{20} = 0$. “The first term is $a_1 = 4$” is incorrect. Put $n = 1$ into the formula: $a_1 = -4$. “It is an arithmetic sequence” is incorrect. The differences alternate between $8$ and $-8$.",
   "video": "V28",
   "version": "a"
  },
@@ -477,7 +477,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 3 \\cdot (-1)^{n}$, which of the following statements is incorrect? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 3 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is incorrect? ( )",
   "options": [
    "The first term is $a_1 = -3$",
    "$a_8 = 3$",
@@ -491,7 +491,7 @@
    "true-statement",
    null
   ],
-  "solution": "The terms are $-3, 3, -3, 3, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The incorrect statement is $a_7 = 3$ — put $n = 7$ into the formula: $a_7 = -3$. The other three statements are true.",
+  "solution": "The terms are $-3, 3, -3, 3, \\ldots$. $a_7 = 3$ is incorrect. Put $n = 7$ into the formula: $a_7 = -3$. “The first term is $a_1 = -3$” is correct. Put $n = 1$ into the formula. $a_8 = 3$ is correct. Put $n = 8$ into the formula. “The common ratio is $q = -1$” is correct. Each term is the previous one times $-1$.",
   "video": "V28",
   "version": "a"
  },
@@ -522,7 +522,7 @@
    "partial",
    "operation"
   ],
-  "solution": "For an arithmetic sequence $2a = -7 + \\left(-15\\right)$, so $a = -11$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = -7 + \\left(-15\\right) = -22$ and $a = -11$.",
   "video": "V29",
   "version": "a"
  },
@@ -553,7 +553,7 @@
    "pm",
    "companion"
   ],
-  "solution": "The geometric mean $G$ satisfies $G^2 = 12 \\cdot 27 = 324$, so $G = \\pm 18$ — both signs (the CSCA convention). $\\dfrac{39}{2}$ is the arithmetic mean.",
+  "solution": "The geometric mean $G$ satisfies $G^2 = 12 \\cdot 27 = 324$, so $G = \\pm 18$. Both signs work, since $12, 18, 27$ and $12, -18, 27$ are both geometric. The value $\\dfrac{39}{2}$ is the arithmetic mean.",
   "video": "V29",
   "version": "a"
  },
@@ -584,7 +584,7 @@
    "pm",
    null
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 30$, so $b = 15$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 30$, so $b = 15$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a"
  },
@@ -601,7 +601,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that $a, b, c$ form a geometric sequence and $ac = 81$, then $b =$ ( )",
+  "stem": "If $a, b, c$ form a geometric sequence and $ac = 81$, then $b =$ ( )",
   "options": [
    "$-9$",
    "$9$",
@@ -615,7 +615,7 @@
    null,
    "half"
   ],
-  "solution": "In a geometric sequence $b^2 = ac = 81$, so $b = \\pm 9$ — both signs are possible.",
+  "solution": "In a geometric sequence $b^2 = ac = 81$, so $b = \\pm 9$. Both signs are possible: for example $1, 9, 81$ and $1, -9, 81$ are both geometric.",
   "video": "V29",
   "version": "a"
  },
@@ -646,7 +646,7 @@
    "partial",
    null
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{10}{2} = 5$ — the surds cancel, and there is only one value. ($\\pm 2$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{10}{2} = 5$, because the surds cancel. The value $\\pm 2$ is the geometric mean, since $ab = 5^2 - 21 = 4$.",
   "video": "V29",
   "version": "a"
  },
@@ -677,7 +677,7 @@
    "pm",
    "companion"
   ],
-  "solution": "The product is a difference of squares: $ab = 4$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 2$ (two values). $\\sqrt{5}$ is the arithmetic mean.",
+  "solution": "The product is a difference of squares: $ab = \\left(\\sqrt{5}\\right)^2 - 1^2 = 4$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 2$. The value $\\sqrt{5}$ is the arithmetic mean.",
   "video": "V29",
   "version": "a"
  },
@@ -708,7 +708,7 @@
    "pm",
    "companion"
   ],
-  "solution": "$G^2 = 1 \\cdot 25 = 25$ gives $\\pm 5$, but the stem asks for the positive value only: $5$.",
+  "solution": "$G^2 = 1 \\cdot 25 = 25$ gives $\\pm 5$. The question asks for the positive value, so the answer is $5$.",
   "video": "V29",
   "version": "a"
  },
@@ -739,7 +739,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “The geometric mean of $a$ and $b$ is $\\pm 1$” — $ab = 1$, so the geometric mean is $\\pm 1$. “The arithmetic mean of $a$ and $b$ is $\\pm 2$” is false: an arithmetic mean has one value. “The arithmetic mean of $a$ and $b$ is $1$” is false: that is the size of the geometric mean. “The geometric mean of $a$ and $b$ is $\\pm 2$” is false: that is the arithmetic mean with a $\\pm$ sign.",
+  "solution": "“The geometric mean of $a$ and $b$ is $\\pm 1$” is correct. $ab = 1$, so the geometric mean is $\\pm 1$. “The arithmetic mean of $a$ and $b$ is $\\pm 2$” is incorrect. An arithmetic mean has one value, $\\dfrac{a + b}{2} = 2$. “The arithmetic mean of $a$ and $b$ is $1$” is incorrect. The arithmetic mean is $\\dfrac{a + b}{2} = 2$, and $1$ is $\\sqrt{ab}$. “The geometric mean of $a$ and $b$ is $\\pm 2$” is incorrect. $2$ is the arithmetic mean. The geometric mean is $\\pm\\sqrt{ab} = \\pm 1$.",
   "video": "V29",
   "version": "a"
  },
@@ -770,7 +770,7 @@
    "off-by-one",
    "operation"
   ],
-  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{4^{n}}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = \\dfrac{(-1)^{n+1}}{4^{n}}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{4^{n}}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = \\dfrac{(-1)^{n+1}}{4^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $\\dfrac{1}{4}$ and $-\\dfrac{1}{16}$.",
   "video": "V30",
   "version": "a"
  },
@@ -801,7 +801,7 @@
    "slip",
    null
   ],
-  "solution": "$-6, -5, -4, -3, \\ldots$ is arithmetic: the common difference is $1$. In each of the other three sequences the differences of consecutive terms are not constant.",
+  "solution": "$-6, -5, -4, -3, \\ldots$ is arithmetic, because the differences are $1, 1, 1$. $3, -6, 12, -24, \\ldots$ is not arithmetic, because the differences are $-9, 18, -36$. $1, 3, 4, 7, \\ldots$ is not arithmetic, because the differences are $2, 1, 3$. $-1, 3, -9, 27, \\ldots$ is not arithmetic, because the differences are $4, -12, 36$.",
   "video": "V30",
   "version": "a"
  },
@@ -832,7 +832,7 @@
    null,
    "companion"
   ],
-  "solution": "$4, 12, 36, 108, \\ldots$ is geometric: the common ratio is $3$. In each of the other three sequences the ratios of consecutive terms are not constant.",
+  "solution": "$4, 12, 36, 108, \\ldots$ is geometric, because the ratios are $3, 3, 3$. $1, 2, 4, 7, \\ldots$ is not geometric, because the ratios are $2, 2, \\dfrac{7}{4}$. $4, 8, 12, 16, \\ldots$ is not geometric, because the ratios are $2, \\dfrac{3}{2}, \\dfrac{4}{3}$. $-6, -8, -10, -12, \\ldots$ is not geometric, because the ratios are $\\dfrac{4}{3}, \\dfrac{5}{4}, \\dfrac{6}{5}$.",
   "video": "V30",
   "version": "a"
  },
@@ -863,7 +863,7 @@
    "slip",
    null
   ],
-  "solution": "A sequence is geometric when consecutive ratios are equal (a constant non-zero sequence counts, with $q = 1$). Here (1), (3) are geometric, so the number is $2$.",
+  "solution": "A sequence is geometric when the ratios of consecutive terms are all equal. In (1) the ratios are $2, 2, 2$, so it is geometric. In (2) the ratios are $\\dfrac{3}{2}, \\dfrac{5}{3}, \\dfrac{9}{5}$, so it is not geometric. In (3) the ratios are $-1, -1, -1$, so it is geometric. In (4) the ratios are $4, \\dfrac{9}{4}, \\dfrac{16}{9}$, so it is not geometric. So the number of geometric sequences is $2$.",
   "video": "V30",
   "version": "a"
  },
@@ -894,7 +894,7 @@
    "sign",
    "companion"
   ],
-  "solution": "The first terms are $-3, 9, -27, 81, \\ldots$. The correct statement is $a_2 = 9$ — put $n = 2$. “It is an arithmetic sequence with common difference $-3$” is false: the differences of consecutive terms are not constant. “Its first term is $a_1 = 1$” is false: put $n = 1$: $a_1 = -3$. $a_3 = 27$ is false: put $n = 3$: $a_3 = -27$.",
+  "solution": "The first terms are $-3, 9, -27, 81, \\ldots$. $a_2 = 9$ is correct. $a_2 = (-3)^{2} = 9$. “It is an arithmetic sequence with common difference $-3$” is incorrect. The differences are $12, -36, 108$, which are not all equal. “Its first term is $a_1 = 1$” is incorrect. $a_1 = (-3)^{1} = -3$. $a_3 = 27$ is incorrect. $a_3 = (-3)^{3} = -27$.",
   "video": "V30",
   "version": "a"
  },
@@ -925,7 +925,7 @@
    "off-by-one",
    "sign"
   ],
-  "solution": "Denominators $9, 11, 13, 15$ increase by $2$: they are $2n + 7$. The first term is positive: sign $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{2n + 7}$.",
+  "solution": "Denominators $9, 11, 13, 15$ increase by $2$, so they are $2n + 7$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{2n + 7}$.",
   "video": "V30",
   "version": "a"
  },
@@ -956,7 +956,7 @@
    null,
    "sign"
   ],
-  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, i.e. $n$. Denominators: $2, 3, 4, 5$, i.e. $n + 1$. Sign: the first term is negative, $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n}{n + 1}$.",
+  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, that is $n$. Denominators: $2, 3, 4, 5$, that is $n + 1$. The first term is negative, so the sign factor is $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n}{n + 1}$.",
   "video": "V30",
   "version": "a"
  },
@@ -987,7 +987,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Treat the three parts separately. Numerators: $2, 3, 4, 5$, i.e. $n + 1$. Denominators: $3, 5, 7, 9$, i.e. $2n + 1$. Sign: the first term is positive, $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{n + 1}{2n + 1}$.",
+  "solution": "Treat the three parts separately. Numerators: $2, 3, 4, 5$, that is $n + 1$. Denominators: $3, 5, 7, 9$, that is $2n + 1$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{n + 1}{2n + 1}$.",
   "video": "V30",
   "version": "a"
  },
@@ -1018,7 +1018,7 @@
    "off-by-one",
    "near-miss"
   ],
-  "solution": "$a_9 = S_9 - S_8 = 170 - 135 = 35$. ($S_9 = 170$ is the sum, not the term.)",
+  "solution": "$a_9 = S_9 - S_8 = 170 - 135 = 35$. The value $170$ is $S_9$, the sum of the first $9$ terms, not the term $a_9$ itself.",
   "video": "V31",
   "version": "a"
  },
@@ -1049,7 +1049,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "$a_{12} = S_{12} - S_{11} = 145 - 122 = 23$. ($S_{12} = 145$ is the sum, not the term.)",
+  "solution": "$a_{12} = S_{12} - S_{11} = 145 - 122 = 23$. The value $145$ is $S_{12}$, the sum of the first $12$ terms, not the term $a_{12}$ itself.",
   "video": "V31",
   "version": "a"
  },
@@ -1080,7 +1080,7 @@
    null,
    "near-miss"
   ],
-  "solution": "$a_{12} = S_{12} - S_{11} = 323 - 274 = 49$. ($S_{12} = 323$ is the sum, not the term.)",
+  "solution": "$a_{12} = S_{12} - S_{11} = 323 - 274 = 49$. The value $323$ is $S_{12}$, the sum of the first $12$ terms, not the term $a_{12}$ itself.",
   "video": "V31",
   "version": "a"
  },
@@ -1111,7 +1111,7 @@
    "off-by-one",
    "operation"
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = -(2n - 1) - 2 = -2n - 1$. For $n = 1$: $a_1 = S_1 = -3$, which fits. So $a_n = -2n - 1$.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = -\\left[n^2 - (n - 1)^2\\right] - 2\\left[n - (n - 1)\\right] = -(2n - 1) - 2 = -2n - 1$. For $n = 1$, $a_1 = S_1 = -3$, and the formula also gives $-3$. So $a_n = -2n - 1$.",
   "video": "V31",
   "version": "a"
  },
@@ -1142,7 +1142,7 @@
    "partial",
    "partial"
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = 5^{n} - 5^{n-1} = 4 \\cdot 5^{n-1}$. For $n = 1$: $a_1 = S_1 = 4$, which fits the formula.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = 5^{n} - 5^{n-1} = 5^{n-1}(5 - 1) = 4 \\cdot 5^{n-1}$. For $n = 1$, $a_1 = S_1 = 4$, and the formula also gives $4$.",
   "video": "V31",
   "version": "a"
  },
@@ -1173,7 +1173,7 @@
    null,
    "operation"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 3n^2 + n - 4$. Check $n = 1$: $a_1 = S_1 = 0$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$, this gives $a_n = (3n^2 - 3n + 1) + 2(2n - 1) - 3 = 3n^2 + n - 4$. For $n = 1$, $a_1 = S_1 = 0$, and the formula also gives $0$. Differentiating $S_n$ gives $3n^2 + 4n - 3$, which is not $a_n$: at $n = 2$ it gives $17$, while $a_2 = S_2 - S_1 = 10$.",
   "video": "V31",
   "version": "a"
  },
@@ -1204,7 +1204,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $a_2 = 7$ — $a_2 = S_2 - S_1 = 6 - \\left(-1\\right)$. “$a_n = 6n - 5$ for every $n \\ge 1$” is false: the formula fails at $n = 1$: $a_1 = S_1 = -1$, not $1$. $a_2 = 5$ is false: $a_2 = S_2 - S_1 = 7$. $a_1 = 1$ is false: $a_1 = S_1 = -1$; the formula for $n \\ge 2$ does not apply.",
+  "solution": "$a_2 = 7$ is correct. $a_2 = S_2 - S_1 = 6 - \\left(-1\\right) = 7$. “$a_n = 6n - 5$ for every $n \\ge 1$” is incorrect. The formula fails at $n = 1$: $a_1 = S_1 = -1$, not $1$. $a_2 = 5$ is incorrect. $a_2 = S_2 - S_1 = 7$. $a_1 = 1$ is incorrect. $a_1 = S_1 = -1$. The value $1$ comes from the formula $a_n = 6n - 5$, which holds only for $n \\ge 2$.",
   "video": "V31",
   "version": "a"
  },
@@ -1235,7 +1235,7 @@
    "partial",
    null
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 4a_{n+1} - 4a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{9}{4}$. Put $n = 1$: $5a_1 = 4a_2 - 4 = 9a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{4}{5}\\left(\\dfrac{9}{4}\\right)^{n} - \\dfrac{4}{5}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 4a_{n+1} - 4a_n$, that is $9a_n = 4a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{9}{4}$. Put $n = 1$: $5a_1 = 4a_2 - 4 = 9a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{4}{5}\\left(\\dfrac{9}{4}\\right)^{n} - \\dfrac{4}{5}$. Check with $n = 1$: the formula gives $\\dfrac{4}{5} \\cdot \\dfrac{9}{4} - \\dfrac{4}{5} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a"
  },
@@ -1266,7 +1266,7 @@
    "partial",
    "near-miss"
   ],
-  "solution": "$a_{12} = S_{12} - S_{11} = 168 - 143 = 25$. ($S_{12} = 168$ is the sum, not the term.)",
+  "solution": "$a_{12} = S_{12} - S_{11} = 168 - 143 = 25$. The value $168$ is $S_{12}$, the sum of the first $12$ terms, not the term $a_{12}$ itself.",
   "video": "V31",
   "version": "a"
  },
@@ -1297,7 +1297,7 @@
    "operation",
    null
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = 2(2n - 1) + 1 = 4n - 1$. For $n = 1$: $a_1 = S_1 = 3$, which fits. So $a_n = 4n - 1$.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = 2\\left[n^2 - (n - 1)^2\\right] + \\left[n - (n - 1)\\right] = 2(2n - 1) + 1 = 4n - 1$. For $n = 1$, $a_1 = S_1 = 3$, and the formula also gives $3$. So $a_n = 4n - 1$.",
   "video": "V31",
   "version": "a"
  },
@@ -1328,7 +1328,7 @@
    "off-by-one",
    "near-miss"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 3n^2 - 3n + 2$. Check $n = 1$: $a_1 = S_1 = 2$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$, this gives $a_n = (3n^2 - 3n + 1) + 1 = 3n^2 - 3n + 2$. For $n = 1$, $a_1 = S_1 = 2$, and the formula also gives $2$. Differentiating $S_n$ gives $3n^2 + 1$, which is not $a_n$: at $n = 2$ it gives $13$, while $a_2 = S_2 - S_1 = 8$.",
   "video": "V31",
   "version": "a"
  },
@@ -1359,7 +1359,7 @@
    "near-miss",
    "off-by-one"
   ],
-  "solution": "$a_8 = S_8 - S_7 = 176 - 133 = 43$. ($S_8 = 176$ is the sum, not the term.)",
+  "solution": "$a_8 = S_8 - S_7 = 176 - 133 = 43$. The value $176$ is $S_8$, the sum of the first $8$ terms, not the term $a_8$ itself.",
   "video": "V31",
   "version": "a"
  },
@@ -1390,7 +1390,7 @@
    "slip",
    null
   ],
-  "solution": "The first terms are $0, 3, 8, 15, \\ldots$. The correct statement is “neither arithmetic nor geometric” — neither the differences nor the ratios of consecutive terms are constant. “an arithmetic sequence” is false: the differences of consecutive terms are not constant. “a geometric sequence” is false: the ratios of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both.",
+  "solution": "The first terms are $0, 3, 8, 15, \\ldots$. “neither arithmetic nor geometric” is correct. The differences are $3, 5, 7$, which are not all equal, and one of its terms is $0$, and a geometric sequence has no zero terms, which are not all equal either. “an arithmetic sequence” is incorrect. The differences are $3, 5, 7$, which are not all equal. “a geometric sequence” is incorrect. One of its terms is $0$, and a geometric sequence has no zero terms. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = 0$ while $a_2 = 3$.",
   "video": "V30",
   "version": "a"
  },
@@ -1421,7 +1421,7 @@
    "parallel",
    "sign"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(4, 2)$. Step 2 — swap and flip: a line perpendicular to $x + 2y + 5 = 0$ has the form $2x - y + k = 0$. Step 3 — substitute the point: $k = -6$. So $l$: $2x - y - 6 = 0$.",
+  "solution": "First find the intersection point. Adding the two equations removes $y$ and gives $8x - 32 = 0$, so $x = 4$. Putting this into the first equation gives $3y - 6 = 0$, so $y = 2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x + 2y + 5 = 0$ has the form $2x - y + k = 0$. Substituting $(4, 2)$ gives $8 - 2 + k = 0$, so $k = -6$. So $l$ is $2x - y - 6 = 0$.",
   "video": "V26",
   "version": "a"
  },
@@ -1452,7 +1452,7 @@
    null,
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -1$, $y = 5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $y = -2x + 3$. Substituting this into the other equation gives $3x + 4(-2x + 3) - 17 = 0$, that is $-5x - 5 = 0$, so $x = -1$. Then $y = -2 \\cdot \\left(-1\\right) + 3 = 5$. So the intersection point is $(-1, 5)$.",
   "video": "V24",
   "version": "a"
  },
@@ -1514,7 +1514,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $2a_n = 5a_{n+1} - 5a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{7}{5}$. Put $n = 1$: $2a_1 = 5a_2 - 5 = 7a_1 - 5$, so $a_1 = 1$. So the terms are $1, \\dfrac{7}{5}, \\dfrac{49}{25}, \\ldots$ and $S_3 = \\dfrac{109}{25}$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $2a_n = 5a_{n+1} - 5a_n$, that is $7a_n = 5a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{7}{5}$. Put $n = 1$: $2a_1 = 5a_2 - 5 = 7a_1 - 5$, so $a_1 = 1$. So the terms are $1, \\dfrac{7}{5}, \\dfrac{49}{25}, \\ldots$ and $S_3 = \\dfrac{109}{25}$.",
   "video": "V31",
   "version": "a"
  },
@@ -1545,7 +1545,7 @@
    "partial",
    "off-by-one"
   ],
-  "solution": "For $n = 1$: $a_1 = \\dfrac{1}{3}a_1 + \\dfrac{4}{3}$, so $a_1 = 2$. For $n \\ge 2$: $a_n = S_n - S_{n-1} = \\dfrac{1}{3}a_n - \\dfrac{1}{3}a_{n-1}$, which gives $a_n = -\\dfrac{1}{2}a_{n-1}$. So $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{2}$. The terms are $2, -1, \\dfrac{1}{2}, -\\dfrac{1}{4}, \\dfrac{1}{8}$, so $a_1 + a_3 + a_5 = \\dfrac{21}{8}$ (not $S_5 = \\dfrac{11}{8}$).",
+  "solution": "For $n = 1$: $a_1 = \\dfrac{1}{3}a_1 + \\dfrac{4}{3}$, so $a_1 = 2$. For $n \\ge 2$: $a_n = S_n - S_{n-1} = \\dfrac{1}{3}a_n - \\dfrac{1}{3}a_{n-1}$, which gives $a_n = -\\dfrac{1}{2}a_{n-1}$. So $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{2}$. The terms are $2, -1, \\dfrac{1}{2}, -\\dfrac{1}{4}, \\dfrac{1}{8}$, so $a_1 + a_3 + a_5 = \\dfrac{21}{8}$. This is not $S_5 = \\dfrac{11}{8}$, which also includes $a_2$ and $a_4$.",
   "video": "V31",
   "version": "a"
  },
@@ -1576,7 +1576,7 @@
    "partial",
    null
   ],
-  "solution": "The correct statement is $a_1 = 3$ — $a_1 = S_1 = 3$. “$\\{a_n\\}$ is an arithmetic sequence” is false: the constant term of $S_n$ breaks the pattern at the first term. $a_2 = 7$ is false: $a_2 = S_2 - S_1 = 5$. $a_3 = 17$ is false: that is $S_3$; $a_3 = S_3 - S_2 = 9$.",
+  "solution": "$a_1 = 3$ is correct. $a_1 = S_1 = 3$. “$\\{a_n\\}$ is an arithmetic sequence” is incorrect. $a_2 - a_1 = 2$ but $a_3 - a_2 = 4$, so the differences are not all equal. $a_2 = 7$ is incorrect. $a_2 = S_2 - S_1 = 5$. $a_3 = 17$ is incorrect. $17$ is $S_3$, the sum of the first three terms. In fact $a_3 = S_3 - S_2 = 9$.",
   "video": "V31",
   "version": "a"
  },
@@ -1607,7 +1607,7 @@
    null,
    "slip"
   ],
-  "solution": "Intersect the two complete lines first: $(-2, -2)$. The third line must pass through this point: substitute $x = -2$, $y = -2$ into $ax + y - 2 = 0$ and solve: $a = -2$.",
+  "solution": "First find where the first two lines meet. From the first equation, $y = x$. Substituting this into the other equation gives $4x - 3(x) + 2 = 0$, that is $x + 2 = 0$, so $x = -2$. Then $y = -2 = -2$. The third line must also pass through $(-2, -2)$, so $-2a - 2 - 2 = 0$ and $a = -2$.",
   "video": "V24",
   "version": "a"
  },
@@ -1669,7 +1669,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "Compute the terms one by one: $3, \\dfrac{4}{3}, \\dfrac{7}{4}$. So $a_3 = \\dfrac{7}{4}$.",
+  "solution": "Work out the terms in order: $a_2 = 1 + \\dfrac{1}{3} = \\dfrac{4}{3}$ and $a_3 = 1 + \\dfrac{3}{4} = \\dfrac{7}{4}$. So $a_3 = \\dfrac{7}{4}$.",
   "video": "V32",
   "version": "a"
  },
@@ -1700,7 +1700,7 @@
    "sign",
    null
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 3 \\cdot \\dfrac{2}{3} = 2$, $a_3 = -3 \\cdot 2 = -6$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 3 \\cdot \\dfrac{2}{3} = 2$, $a_3 = -3 \\cdot 2 = -6$.",
   "video": "V32",
   "version": "a"
  },
@@ -1731,7 +1731,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $2$ and common difference $3$. So $\\dfrac{1}{a_8} = 2 + 7 \\cdot 3 = 23$ and $a_8 = \\dfrac{1}{23}$.",
+  "solution": "The relation says that $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 2$ and common difference $3$. So $\\dfrac{1}{a_8} = 2 + 7 \\cdot 3 = 23$ and $a_8 = \\dfrac{1}{23}$.",
   "video": "V32",
   "version": "a"
  },
@@ -1762,7 +1762,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 4a_n}{a_n} = \\dfrac{1}{a_n} + 4$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $4$ and common difference $4$. So $\\dfrac{1}{a_{30}} = 4 + 29 \\cdot 4 = 120$ and $a_{30} = \\dfrac{1}{120}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 4a_n}{a_n} = \\dfrac{1}{a_n} + 4$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 4$ and common difference $4$. So $\\dfrac{1}{a_{30}} = 4 + 29 \\cdot 4 = 120$ and $a_{30} = \\dfrac{1}{120}$.",
   "video": "V32",
   "version": "a"
  },
@@ -1793,7 +1793,7 @@
    "partial",
    "companion"
   ],
-  "solution": "Apply the rule step by step: $a_1 = -1$, $a_2 = -3$, $a_3 = -7$, $a_4 = -15$, $a_5 = -31$. The correct statement is $a_4 = -15$ — apply the rule 3 times. “$\\{a_n\\}$ is a geometric sequence” is false: the ratios $\\dfrac{a_2}{a_1}$ and $\\dfrac{a_3}{a_2}$ are not equal (the added constant breaks the pattern). $a_3 = -6$ is false: the constant $-1$ was not added; $a_3 = -7$. $a_2 = -7$ is false: that is $a_3$; $a_2 = -3$.",
+  "solution": "Apply the rule step by step: $a_1 = -1$, $a_2 = -3$, $a_3 = -7$, $a_4 = -15$, $a_5 = -31$. $a_4 = -15$ is correct. It matches the terms worked out above. “$\\{a_n\\}$ is a geometric sequence” is incorrect. $\\dfrac{a_2}{a_1} = 3$ but $\\dfrac{a_3}{a_2} = \\dfrac{7}{3}$. $a_3 = -6$ is incorrect. The rule gives $a_3 = 2 \\cdot (-3) - 1 = -7$, so the constant $-1$ is missing. $a_2 = -7$ is incorrect. The value $-7$ belongs to $a_3$, while $a_2 = -3$.",
   "video": "V32",
   "version": "a"
  },
@@ -1824,7 +1824,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $1$ and common difference $1$. So $\\dfrac{1}{a_{200}} = 1 + 199 \\cdot 1 = 200$ and $a_{200} = \\dfrac{1}{200}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 1$ and common difference $1$. So $\\dfrac{1}{a_{200}} = 1 + 199 \\cdot 1 = 200$ and $a_{200} = \\dfrac{1}{200}$.",
   "video": "V32",
   "version": "a"
  },
@@ -1917,7 +1917,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Compute the terms one by one: $2, \\dfrac{3}{2}, \\dfrac{5}{3}, \\dfrac{8}{5}$. So $a_4 = \\dfrac{8}{5}$.",
+  "solution": "Work out the terms in order: $a_2 = 1 + \\dfrac{1}{2} = \\dfrac{3}{2}$, $a_3 = 1 + \\dfrac{2}{3} = \\dfrac{5}{3}$ and $a_4 = 1 + \\dfrac{3}{5} = \\dfrac{8}{5}$. So $a_4 = \\dfrac{8}{5}$.",
   "video": "V32",
   "version": "a"
  },
@@ -1948,7 +1948,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = -3 \\cdot \\dfrac{1}{4} = -\\dfrac{3}{4}$, $a_3 = 3 \\cdot \\left(-\\dfrac{3}{4}\\right) = -\\dfrac{9}{4}$, $a_4 = -3 \\cdot \\left(-\\dfrac{9}{4}\\right) = \\dfrac{27}{4}$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n+1}$ at each step: $a_2 = -3 \\cdot \\dfrac{1}{4} = -\\dfrac{3}{4}$, $a_3 = 3 \\cdot \\left(-\\dfrac{3}{4}\\right) = -\\dfrac{9}{4}$, $a_4 = -3 \\cdot \\left(-\\dfrac{9}{4}\\right) = \\dfrac{27}{4}$.",
   "video": "V32",
   "version": "a"
  },
@@ -1979,7 +1979,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $3$ and common difference $3$. So $\\dfrac{1}{a_7} = 3 + 6 \\cdot 3 = 21$ and $a_7 = \\dfrac{1}{21}$.",
+  "solution": "The relation says that $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 3$ and common difference $3$. So $\\dfrac{1}{a_7} = 3 + 6 \\cdot 3 = 21$ and $a_7 = \\dfrac{1}{21}$.",
   "video": "V32",
   "version": "a"
  },
@@ -2041,7 +2041,7 @@
    null,
    "partial"
   ],
-  "solution": "$a_n = a_1 + (n - 1)d$, so $a_{60} = 1 + 59 \\cdot 2 = 119$. Counting $60$ steps instead of $59$ is the off-by-one trap.",
+  "solution": "Since $a_n = a_1 + (n - 1)d$, we get $a_{60} = 1 + 59 \\cdot 2 = 119$. From $a_1$ to $a_{60}$ there are $59$ steps of size $d$, not $60$.",
   "video": "V27",
   "version": "a"
  },
@@ -2072,7 +2072,7 @@
    "sign",
    null
   ],
-  "solution": "The given line has slope $-\\dfrac{3}{2}$. A parallel line needs the same slope $-\\dfrac{3}{2}$ and a different intercept; that is $3x + 2y + 5 = 0$. In general form: $A_1B_2 - A_2B_1 = 0$.",
+  "solution": "The given line has slope $-\\dfrac{3}{2}$. A parallel line has the same slope $-\\dfrac{3}{2}$ but is a different line. The option with these properties is $3x + 2y + 5 = 0$.",
   "video": "V25",
   "version": "a"
  },
@@ -2103,7 +2103,7 @@
    null,
    "sign"
   ],
-  "solution": "From the relation, $a_{n+1} = -\\dfrac{1}{3}a_n$, so $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{3}$ and $b_n = |a_n|$ is geometric with first term $4$ and ratio $\\dfrac{1}{3}$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = 6\\left(1 - \\dfrac{1}{3^{n}}\\right)$. Forgetting the absolute value (ratio $-\\dfrac{1}{3}$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -\\dfrac{1}{3}a_n$, so $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{3}$ and $b_n = |a_n|$ is geometric with first term $4$ and ratio $\\dfrac{1}{3}$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{4\\left(1 - \\left(\\dfrac{1}{3}\\right)^{n}\\right)}{1 - \\dfrac{1}{3}} = 6\\left(1 - \\dfrac{1}{3^{n}}\\right)$. Without the absolute value the ratio would stay $-\\dfrac{1}{3}$, and the sum would be the different expression $3\\left(1 - \\left(-\\dfrac{1}{3}\\right)^{n}\\right)$.",
   "video": "V32",
   "version": "a"
  },
@@ -2165,7 +2165,7 @@
    "partial",
    "sign"
   ],
-  "solution": "From the relation, $a_{n+1} = -2a_n$, so $\\{a_n\\}$ is geometric with ratio $-2$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $2$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = 2\\left(2^{n} - 1\\right)$. Forgetting the absolute value (ratio $-2$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -2a_n$, so $\\{a_n\\}$ is geometric with ratio $-2$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $2$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{2\\left(1 - 2^{n}\\right)}{1 - 2} = 2\\left(2^{n} - 1\\right)$. Without the absolute value the ratio would stay $-2$, and the sum would be the different expression $\\dfrac{2\\left(1 - (-2)^{n}\\right)}{3}$.",
   "video": "V32",
   "version": "a"
  },
@@ -2196,7 +2196,7 @@
    "sign",
    null
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 2 \\cdot 8 = 16$, $a_3 = -2 \\cdot 16 = -32$, $a_4 = 2 \\cdot \\left(-32\\right) = -64$, $a_5 = -2 \\cdot \\left(-64\\right) = 128$, $a_6 = 2 \\cdot 128 = 256$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 2 \\cdot 8 = 16$, $a_3 = -2 \\cdot 16 = -32$, $a_4 = 2 \\cdot \\left(-32\\right) = -64$, $a_5 = -2 \\cdot \\left(-64\\right) = 128$, $a_6 = 2 \\cdot 128 = 256$.",
   "video": "V32",
   "version": "a"
  },
@@ -2227,7 +2227,7 @@
    null,
    "partial"
   ],
-  "solution": "$a_{11} - a_5 = 6d$ gives $d = -4$. Then $a_{25} = a_5 + 20d = -20 + 20 \\cdot \\left(-4\\right) = -100$.",
+  "solution": "$a_{11} - a_5 = 6d$, so $6d = -44 - \\left(-20\\right) = -24$ and $d = -4$. Then $a_{25} = a_5 + 20d = -20 + 20 \\cdot \\left(-4\\right) = -100$.",
   "video": "V27",
   "version": "a"
  },
@@ -2351,7 +2351,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "The terms are $5, 10, 20, 40$; their sum is $75$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)",
+  "solution": "Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $S_4 = \\dfrac{5\\left(2^{4} - 1\\right)}{2 - 1} = 75$. Adding the terms $5, 10, 20, 40$ gives the same result.",
   "video": "V33",
   "version": "a"
  },
@@ -2382,7 +2382,7 @@
    "half",
    "operation"
   ],
-  "solution": "Index property: if $m + n = p + q$, then $a_m + a_n = a_p + a_q$. The correct statement is $a_1 + a_{11} = 6$ — $1 + 11 = 2 \\cdot 6$, so the sum is $2a_6 = 6$. $a_1 + a_{11} = 3$ is false: the two terms add up to $2a_6 = 6$. $a_5 + a_7 = 3$ is false: the two terms add up to $2a_6 = 6$, not $a_6$. $S_{11} = 66$ is false: the factor $\\dfrac{1}{2}$ is missing: $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 11a_6 = 33$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. $a_1 + a_{11} = 6$ is correct. $1 + 11 = 2 \\cdot 6$, so the sum is $2a_6 = 6$. $a_1 + a_{11} = 3$ is incorrect. The two terms add up to $2a_6 = 6$. $a_5 + a_7 = 3$ is incorrect. The two terms add up to $2a_6 = 6$, not $a_6$. $S_{11} = 66$ is incorrect. The sum formula has a factor $\\dfrac{1}{2}$, so $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 11a_6 = 33$.",
   "video": "V33",
   "version": "a"
  },
@@ -2413,7 +2413,7 @@
    "off-by-one",
    null
   ],
-  "solution": "The blocks $S_2$, $S_4 - S_2$, $S_6 - S_4$, $\\ldots$ form a geometric sequence with ratio $q^2$. Here $S_4 - S_2 = 4$, so $q^2 = 4$. Then $S_6 - S_4 = 16$ and $S_6 = 21$.",
+  "solution": "The blocks $S_2 = a_1 + a_2$, $S_4 - S_2 = a_3 + a_4$, $S_6 - S_4 = a_5 + a_6$, $\\ldots$ form a geometric sequence with ratio $q^2$, because $a_3 + a_4 = q^2(a_1 + a_2)$, and so on. Here $S_4 - S_2 = 4$ and $S_2 = 1$, so $q^2 = 4$. Then $S_6 - S_4 = 4 \\cdot 4 = 16$ and $S_6 = 5 + 16 = 21$.",
   "video": "V33",
   "version": "a"
  },
@@ -2444,7 +2444,7 @@
    "partial",
    "slip"
   ],
-  "solution": "Group: $(3^{1} + 3^{2} + \\cdots + 3^{4}) + \\left(-1\\right)(1 + 2 + \\cdots + 4) = 120 + \\left(-10\\right) = 110$.",
+  "solution": "Add the powers and the linear parts separately: $S_4 = (3^{1} + 3^{2} + \\cdots + 3^{4}) - (1 + 2 + \\cdots + 4) = 120 - 10 = 110$.",
   "video": "V33",
   "version": "a"
  },
@@ -2475,7 +2475,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $2n$ add up to $\\dfrac{2n(n + 1)}{2}$. Together: $S_n = 2^{n+2} + n^2 + n - 4$. Check with $n = 1$: $S_1 = a_1 = 6$.",
+  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $2n$ add up to $\\dfrac{2n(n + 1)}{2}$. Adding the two parts gives $S_n = 2^{n+2} + n^2 + n - 4$. Check with $n = 1$: $S_1 = a_1 = 6$.",
   "video": "V33",
   "version": "a"
  },
@@ -2568,7 +2568,7 @@
    "partial",
    "off-by-one"
   ],
-  "solution": "The terms are $4, 8, 16, 32$; their sum is $60$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)",
+  "solution": "Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $S_4 = \\dfrac{4\\left(2^{4} - 1\\right)}{2 - 1} = 60$. Adding the terms $4, 8, 16, 32$ gives the same result.",
   "video": "V33",
   "version": "a"
  },
@@ -2630,7 +2630,7 @@
    "partial",
    "companion"
   ],
-  "solution": "Apply the rule step by step: $a_1 = 0$, $a_2 = 3$, $a_3 = 12$, $a_4 = 39$, $a_5 = 120$. The correct statement is $a_3 = 12$ — apply the rule 2 times. “$\\{a_n\\}$ is a geometric sequence” is false: the ratios $\\dfrac{a_2}{a_1}$ and $\\dfrac{a_3}{a_2}$ are not equal (the added constant breaks the pattern). $a_3 = 9$ is false: the constant $3$ was not added; $a_3 = 12$. $a_2 = 12$ is false: that is $a_3$; $a_2 = 3$.",
+  "solution": "Apply the rule step by step: $a_1 = 0$, $a_2 = 3$, $a_3 = 12$, $a_4 = 39$, $a_5 = 120$. $a_3 = 12$ is correct. It matches the terms worked out above. “$\\{a_n\\}$ is a geometric sequence” is incorrect. One of the first two terms is $0$, and a geometric sequence has no zero terms. $a_3 = 9$ is incorrect. The rule gives $a_3 = 3 \\cdot 3 + 3 = 12$, so the constant $3$ is missing. $a_2 = 12$ is incorrect. The value $12$ belongs to $a_3$, while $a_2 = 3$.",
   "video": "V32",
   "version": "a"
  },
@@ -2661,7 +2661,7 @@
    "companion",
    null
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{8}{2} = 4$ — the surds cancel, and there is only one value. ($\\pm 2$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{8}{2} = 4$, because the surds cancel. The value $\\pm 2$ is the geometric mean, since $ab = 4^2 - 12 = 4$.",
   "video": "V29",
   "version": "a"
  },
@@ -2692,7 +2692,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(3, 1)$. Step 2 — swap and flip: a line perpendicular to $3x + 2y = 0$ has the form $2x - 3y + k = 0$. Step 3 — substitute the point: $k = -3$. So $l$: $2x - 3y - 3 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = 3x - 8$. Substituting this into the other equation gives $2x - (3x - 8) - 5 = 0$, that is $-x + 3 = 0$, so $x = 3$. Then $y = 3 \\cdot 3 - 8 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x + 2y = 0$ has the form $2x - 3y + k = 0$. Substituting $(3, 1)$ gives $6 - 3 + k = 0$, so $k = -3$. So $l$ is $2x - 3y - 3 = 0$.",
   "video": "V26",
   "version": "a"
  },
@@ -2709,7 +2709,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $2(a_1 + a_3 + a_5) + 3(a_5 + a_7) = 12$. Then the sum of the first $8$ terms $S_8 =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $2(a_1 + a_3 + a_5) + 3(a_5 + a_7) = 12$. Then the sum of its first $8$ terms is $S_8 =$ ( )",
   "options": [
    "$9$",
    "$16$",
@@ -2723,7 +2723,7 @@
    "partial",
    null
   ],
-  "solution": "Index property: $a_5 + a_7 = 2a_6$ and $a_1 + a_3 + a_5 = 3a_3$. The condition becomes $6a_3 + 6a_6 = 12$, so $a_3 + a_6 = 2$. Because $3 + 6 = 1 + 8$, $a_1 + a_8 = 2$ and $S_8 = \\dfrac{8(a_1 + a_8)}{2} = 8$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_5 + a_7 = 2a_6$ and $a_1 + a_3 + a_5 = 3a_3$. The condition becomes $6a_3 + 6a_6 = 12$, so $a_3 + a_6 = 2$. Because $3 + 6 = 1 + 8$, $a_1 + a_8 = 2$ and $S_8 = \\dfrac{8(a_1 + a_8)}{2} = 8$.",
   "video": "V33",
   "version": "a"
  },
@@ -2740,7 +2740,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $3(a_3 + a_7) + 2(a_5 + a_7 + a_9) = 36$. Then the sum of the first $11$ terms $S_{11} =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $3(a_3 + a_7) + 2(a_5 + a_7 + a_9) = 36$. Then the sum of its first $11$ terms is $S_{11} =$ ( )",
   "options": [
    "$30$",
    "$33$",
@@ -2754,7 +2754,7 @@
    "partial",
    "half"
   ],
-  "solution": "Index property: $a_3 + a_7 = 2a_5$ and $a_5 + a_7 + a_9 = 3a_7$. The condition becomes $6a_5 + 6a_7 = 36$, so $a_5 + a_7 = 6$. Because $5 + 7 = 1 + 11$, $a_1 + a_{11} = 6$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 33$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_3 + a_7 = 2a_5$ and $a_5 + a_7 + a_9 = 3a_7$. The condition becomes $6a_5 + 6a_7 = 36$, so $a_5 + a_7 = 6$. Because $5 + 7 = 1 + 11$, $a_1 + a_{11} = 6$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 33$.",
   "video": "V33",
   "version": "a"
  },
@@ -2785,7 +2785,7 @@
    "partial",
    null
   ],
-  "solution": "Group the two parts. Geometric part: $2^{1} + 2^{2} + 2^{3} + \\cdots$ has first term $2$ and ratio $2$, so it sums to $2(2^n - 1)$. Linear part: the terms $-2n - 1$ add up to $-\\dfrac{2n(n + 1)}{2} - n$. Together: $S_n = 2^{n+1} - n^2 - 2n - 2$. Check with $n = 1$: $S_1 = a_1 = -1$.",
+  "solution": "Group the two parts. Geometric part: $2^{1} + 2^{2} + 2^{3} + \\cdots$ has first term $2$ and ratio $2$, so it sums to $2(2^n - 1)$. Linear part: the terms $-2n - 1$ add up to $-\\dfrac{2n(n + 1)}{2} - n$. Adding the two parts gives $S_n = 2^{n+1} - n^2 - 2n - 2$. Check with $n = 1$: $S_1 = a_1 = -1$.",
   "video": "V33",
   "version": "a"
  },
@@ -2816,7 +2816,7 @@
    "operation",
    "companion"
   ],
-  "solution": "The blocks $S_2$, $S_4 - S_2$, $S_6 - S_4$, $\\ldots$ form a geometric sequence with ratio $q^2$. Here $S_4 - S_2 = 20$, so $q^2 = 4$. Then $S_6 - S_4 = 80$ and $S_6 = 105$.",
+  "solution": "The blocks $S_2 = a_1 + a_2$, $S_4 - S_2 = a_3 + a_4$, $S_6 - S_4 = a_5 + a_6$, $\\ldots$ form a geometric sequence with ratio $q^2$, because $a_3 + a_4 = q^2(a_1 + a_2)$, and so on. Here $S_4 - S_2 = 20$ and $S_2 = 5$, so $q^2 = \\dfrac{20}{5} = 4$. Then $S_6 - S_4 = 20 \\cdot 4 = 80$ and $S_6 = 25 + 80 = 105$.",
   "video": "V33",
   "version": "a"
  },
@@ -2847,7 +2847,7 @@
    null,
    "partial"
   ],
-  "solution": "The correct statement is “The arithmetic mean of $a$ and $b$ is $3$” — $\\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $6$” is false: that is the sum $a + b$; divide by $2$. “The geometric mean of $a$ and $b$ is $\\pm 2$” is false: that is $\\pm ab$; take the square root. “The geometric mean of $a$ and $b$ is $\\sqrt{2}$” is false: a geometric mean has two values, $\\pm \\sqrt{2}$.",
+  "solution": "“The arithmetic mean of $a$ and $b$ is $3$” is correct. $\\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $6$” is incorrect. $6$ is the sum $a + b$. The mean is $\\dfrac{6}{2} = 3$. “The geometric mean of $a$ and $b$ is $\\pm 2$” is incorrect. $2$ is the product $ab$. The geometric mean is its square root with both signs, $\\pm \\sqrt{2}$. “The geometric mean of $a$ and $b$ is $\\sqrt{2}$” is incorrect. The geometric mean has two values, $\\pm\\sqrt{ab} = \\pm \\sqrt{2}$.",
   "video": "V29",
   "version": "a"
  },
@@ -2878,7 +2878,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $2$ and common difference $1$. So $\\dfrac{1}{a_{200}} = 2 + 199 \\cdot 1 = 201$ and $a_{200} = \\dfrac{1}{201}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 2$ and common difference $1$. So $\\dfrac{1}{a_{200}} = 2 + 199 \\cdot 1 = 201$ and $a_{200} = \\dfrac{1}{201}$.",
   "video": "V32",
   "version": "a"
  },
@@ -2909,7 +2909,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 3 \\cdot \\dfrac{1}{4} = \\dfrac{3}{4}$, $a_3 = -3 \\cdot \\dfrac{3}{4} = -\\dfrac{9}{4}$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 3 \\cdot \\dfrac{1}{4} = \\dfrac{3}{4}$, $a_3 = -3 \\cdot \\dfrac{3}{4} = -\\dfrac{9}{4}$.",
   "video": "V32",
   "version": "a"
  },
@@ -2940,7 +2940,7 @@
    "off-by-one",
    "near-miss"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 3n^2 + 3n - 3$. Check $n = 1$: $a_1 = S_1 = 3$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$, this gives $a_n = (3n^2 - 3n + 1) + 3(2n - 1) - 1 = 3n^2 + 3n - 3$. For $n = 1$, $a_1 = S_1 = 3$, and the formula also gives $3$. Differentiating $S_n$ gives $3n^2 + 6n - 1$, which is not $a_n$: at $n = 2$ it gives $23$, while $a_2 = S_2 - S_1 = 15$.",
   "video": "V31",
   "version": "a"
  },
@@ -2957,7 +2957,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 6 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 6 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "$a_4 = 6$",
    "The common ratio is $q = 1$",
@@ -2971,7 +2971,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The terms are $-6, 6, -6, 6, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is $a_4 = 6$ — put $n = 4$ into the formula. “The common ratio is $q = 1$” is false: consecutive terms have opposite signs, so $q = -1$. “The first term is $a_1 = 6$” is false: put $n = 1$ into the formula: $a_1 = -6$. $a_7 = 6$ is false: put $n = 7$ into the formula: $a_7 = -6$.",
+  "solution": "The terms are $-6, 6, -6, 6, \\ldots$. $a_4 = 6$ is correct. Put $n = 4$ into the formula. “The common ratio is $q = 1$” is incorrect. Consecutive terms have opposite signs, so $q = -1$. “The first term is $a_1 = 6$” is incorrect. Put $n = 1$ into the formula: $a_1 = -6$. $a_7 = 6$ is incorrect. Put $n = 7$ into the formula: $a_7 = -6$.",
   "video": "V28",
   "version": "a"
  },
@@ -3002,7 +3002,7 @@
    "partial",
    null
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 3a_{n+1} - 3a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{4}{3}$. Put $n = 1$: $a_1 = 3a_2 - 3 = 4a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 3\\left(\\dfrac{4}{3}\\right)^{n} - 3$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 3a_{n+1} - 3a_n$, that is $4a_n = 3a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{4}{3}$. Put $n = 1$: $a_1 = 3a_2 - 3 = 4a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 3\\left(\\dfrac{4}{3}\\right)^{n} - 3$. Check with $n = 1$: the formula gives $3 \\cdot \\dfrac{4}{3} - 3 = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a"
  },
@@ -3050,7 +3050,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $3(a_1 + a_3) + 2(a_4 + a_5 + a_6) = 48$. Then the sum of the first $6$ terms $S_6 =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $3(a_1 + a_3) + 2(a_4 + a_5 + a_6) = 48$. Then the sum of its first $6$ terms is $S_6 =$ ( )",
   "options": [
    "$28$",
    "$24$",
@@ -3064,7 +3064,7 @@
    "half",
    "off-by-one"
   ],
-  "solution": "Index property: $a_1 + a_3 = 2a_2$ and $a_4 + a_5 + a_6 = 3a_5$. The condition becomes $6a_2 + 6a_5 = 48$, so $a_2 + a_5 = 8$. Because $2 + 5 = 1 + 6$, $a_1 + a_6 = 8$ and $S_6 = \\dfrac{6(a_1 + a_6)}{2} = 24$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_1 + a_3 = 2a_2$ and $a_4 + a_5 + a_6 = 3a_5$. The condition becomes $6a_2 + 6a_5 = 48$, so $a_2 + a_5 = 8$. Because $2 + 5 = 1 + 6$, $a_1 + a_6 = 8$ and $S_6 = \\dfrac{6(a_1 + a_6)}{2} = 24$.",
   "video": "V33",
   "version": "a"
  },
@@ -3095,7 +3095,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "The blocks $S_2$, $S_4 - S_2$, $S_6 - S_4$, $\\ldots$ form a geometric sequence with ratio $q^2$. Here $S_4 - S_2 = 8$, so $q^2 = 4$. Then $S_6 - S_4 = 32$ and $S_6 = 42$; $S_8 - S_6 = 128$ and $S_8 = 170$.",
+  "solution": "The blocks $S_2 = a_1 + a_2$, $S_4 - S_2 = a_3 + a_4$, $S_6 - S_4 = a_5 + a_6$, $\\ldots$ form a geometric sequence with ratio $q^2$, because $a_3 + a_4 = q^2(a_1 + a_2)$, and so on. Here $S_4 - S_2 = 8$ and $S_2 = 2$, so $q^2 = \\dfrac{8}{2} = 4$. Then $S_6 - S_4 = 8 \\cdot 4 = 32$ and $S_6 = 10 + 32 = 42$. Next, $S_8 - S_6 = 32 \\cdot 4 = 128$ and $S_8 = 42 + 128 = 170$.",
   "video": "V33",
   "version": "a"
  },
@@ -3126,7 +3126,7 @@
    "off-by-one",
    null
   ],
-  "solution": "$a_n = a_1 + (n - 1)d$, so $a_{80} = 6 + 79 \\cdot 3 = 243$. Counting $80$ steps instead of $79$ is the off-by-one trap.",
+  "solution": "Since $a_n = a_1 + (n - 1)d$, we get $a_{80} = 6 + 79 \\cdot 3 = 243$. From $a_1$ to $a_{80}$ there are $79$ steps of size $d$, not $80$.",
   "video": "V27",
   "version": "a"
  },
@@ -3157,7 +3157,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "$a_n = a_1 + (n - 1)d$, so $a_{41} = 0 + 40 \\cdot \\dfrac{5}{2} = 100$. Counting $41$ steps instead of $40$ is the off-by-one trap.",
+  "solution": "Since $a_n = a_1 + (n - 1)d$, we get $a_{41} = 0 + 40 \\cdot \\dfrac{5}{2} = 100$. From $a_1$ to $a_{41}$ there are $40$ steps of size $d$, not $41$.",
   "video": "V27",
   "version": "a"
  },
@@ -3188,7 +3188,7 @@
    "off-by-one",
    null
   ],
-  "solution": "The common difference is $d = a_2 - a_1 = -1$. $a_n = a_1 + (n - 1)d$, so $a_5 = 3 + 4 \\cdot \\left(-1\\right) = -1$. Counting $5$ steps instead of $4$ is the off-by-one trap.",
+  "solution": "The common difference is $d = a_2 - a_1 = -1$. Since $a_n = a_1 + (n - 1)d$, we get $a_5 = 3 + 4 \\cdot \\left(-1\\right) = -1$. From $a_1$ to $a_5$ there are $4$ steps of size $d$, not $5$.",
   "video": "V27",
   "version": "a"
  },
@@ -3219,7 +3219,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "The correct statement is $a_{12} = -46$ — $a_{12} = a_1 + 11d = -46$. $d = -\\dfrac{15}{4}$ is false: the gap between the two terms is $6 - 3 = 3$ steps, not $4$; $d = \\dfrac{a_6 - a_3}{6 - 3} = \\dfrac{-16 - (-1)}{3} = -5$. $a_n = -5n + 9$ is false: that formula gives $a_1 = 4$; the correct one is $a_n = -5n + 14$. $a_1 = 14$ is false: from $a_3$ back to $a_1$ there are $2$ steps, not $3$: $a_1 = 9$.",
+  "solution": "$a_{12} = -46$ is correct. $a_{12} = a_1 + 11d = -46$. $d = -\\dfrac{15}{4}$ is incorrect. From $a_3$ to $a_6$ there are $6 - 3 = 3$ steps, not $4$, so $d = \\dfrac{a_6 - a_3}{6 - 3} = \\dfrac{-16 - (-1)}{3} = -5$. $a_n = -5n + 9$ is incorrect. That formula gives $a_1 = 4$, but $a_1 = 9$. The correct formula is $a_n = -5n + 14$. $a_1 = 14$ is incorrect. From $a_3$ back to $a_1$ there are $2$ steps, not $3$, so $a_1 = -1 - 2 \\cdot (-5) = 9$.",
   "video": "V27",
   "version": "a"
  },
@@ -3250,7 +3250,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "The common ratio is $q = \\dfrac{20}{5} = 4$, so $a_n = a_1q^{n-1} = 5 \\cdot 4^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{20}{5} = 4$, so $a_n = a_1q^{n-1} = 5 \\cdot 4^{n-1}$. Check with $n = 1$: the formula gives $5 \\cdot 4^{0} = 5$, the first term. With the exponent $n$ instead of $n - 1$, it would give $20$.",
   "video": "V28",
   "version": "a"
  },
@@ -3281,7 +3281,7 @@
    "sign",
    "companion"
   ],
-  "solution": "The terms are $-1, 1, -1, 1, -1$; their sum is $-1$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)",
+  "solution": "Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $S_5 = \\dfrac{\\left(-1\\right)\\left((-1)^{5} - 1\\right)}{\\left(-1\\right) - 1} = \\dfrac{2}{-2} = -1$. Adding the terms $-1, 1, -1, 1, -1$ gives the same result.",
   "video": "V28",
   "version": "a"
  },
@@ -3312,7 +3312,7 @@
    null,
    "slip"
   ],
-  "solution": "For an arithmetic sequence $2a = -9 + \\left(-21\\right)$, so $a = -15$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = -9 + \\left(-21\\right) = -30$ and $a = -15$.",
   "video": "V29",
   "version": "a"
  },
@@ -3343,7 +3343,7 @@
    "partial",
    "companion"
   ],
-  "solution": "The correct statement is “The arithmetic mean of $a$ and $b$ is $3$” — $\\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $6$” is false: that is the sum $a + b$; divide by $2$. “The geometric mean of $a$ and $b$ is $\\pm 3$” is false: that is the arithmetic mean with a $\\pm$ sign. “The arithmetic mean of $a$ and $b$ is $\\pm 3$” is false: an arithmetic mean has one value.",
+  "solution": "“The arithmetic mean of $a$ and $b$ is $3$” is correct. $\\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $6$” is incorrect. $6$ is the sum $a + b$. The mean is $\\dfrac{6}{2} = 3$. “The geometric mean of $a$ and $b$ is $\\pm 3$” is incorrect. $3$ is the arithmetic mean. The geometric mean is $\\pm\\sqrt{ab} = \\pm 2$. “The arithmetic mean of $a$ and $b$ is $\\pm 3$” is incorrect. An arithmetic mean has one value, $\\dfrac{a + b}{2} = 3$.",
   "video": "V29",
   "version": "a"
  },
@@ -3374,7 +3374,7 @@
    "off-by-one",
    "operation"
   ],
-  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 3^{n}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 3^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $-3$ and $9$.",
   "video": "V30",
   "version": "a"
  },
@@ -3405,7 +3405,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, i.e. $n$. Denominators: $3, 5, 7, 9$, i.e. $2n + 1$. Sign: the first term is negative, $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n}{2n + 1}$.",
+  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, that is $n$. Denominators: $3, 5, 7, 9$, that is $2n + 1$. The first term is negative, so the sign factor is $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n}{2n + 1}$.",
   "video": "V30",
   "version": "a"
  },
@@ -3436,7 +3436,7 @@
    null,
    "companion"
   ],
-  "solution": "The first terms are $3, 6, 11, 18, \\ldots$. The correct statement is “neither arithmetic nor geometric” — neither the differences nor the ratios of consecutive terms are constant. “an arithmetic sequence” is false: the differences of consecutive terms are not constant. “a geometric sequence” is false: the ratios of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both.",
+  "solution": "The first terms are $3, 6, 11, 18, \\ldots$. “neither arithmetic nor geometric” is correct. The differences are $3, 5, 7$, which are not all equal, and the ratios are $2, \\dfrac{11}{6}, \\dfrac{18}{11}$, which are not all equal either. “an arithmetic sequence” is incorrect. The differences are $3, 5, 7$, which are not all equal. “a geometric sequence” is incorrect. The ratios are $2, \\dfrac{11}{6}, \\dfrac{18}{11}$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = 3$ while $a_2 = 6$.",
   "video": "V30",
   "version": "a"
  },
@@ -3467,7 +3467,7 @@
    null,
    "partial"
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = 2 \\cdot 3^{n} - 2 \\cdot 3^{n-1} = 4 \\cdot 3^{n-1}$. For $n = 1$: $a_1 = S_1 = 4$, which fits the formula.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = 2 \\cdot 3^{n} - 2 \\cdot 3^{n-1} = 2 \\cdot 3^{n-1}(3 - 1) = 4 \\cdot 3^{n-1}$. For $n = 1$, $a_1 = S_1 = 4$, and the formula also gives $4$.",
   "video": "V31",
   "version": "a"
  },
@@ -3498,7 +3498,7 @@
    "near-miss",
    null
   ],
-  "solution": "$a_6 = S_6 - S_5 = 36 - 25 = 11$. ($S_6 = 36$ is the sum, not the term.)",
+  "solution": "$a_6 = S_6 - S_5 = 36 - 25 = 11$. The value $36$ is $S_6$, the sum of the first $6$ terms, not the term $a_6$ itself.",
   "video": "V31",
   "version": "a"
  },
@@ -3529,7 +3529,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 4a_n}{a_n} = \\dfrac{1}{a_n} + 4$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $3$ and common difference $4$. So $\\dfrac{1}{a_{20}} = 3 + 19 \\cdot 4 = 79$ and $a_{20} = \\dfrac{1}{79}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 4a_n}{a_n} = \\dfrac{1}{a_n} + 4$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 3$ and common difference $4$. So $\\dfrac{1}{a_{20}} = 3 + 19 \\cdot 4 = 79$ and $a_{20} = \\dfrac{1}{79}$.",
   "video": "V32",
   "version": "a"
  },
@@ -3560,7 +3560,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $1$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 1 + 98 \\cdot 1 = 99$ and $a_{99} = \\dfrac{1}{99}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 1$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 1 + 98 \\cdot 1 = 99$ and $a_{99} = \\dfrac{1}{99}$.",
   "video": "V32",
   "version": "a"
  },
@@ -3591,7 +3591,7 @@
    "partial",
    "slip"
   ],
-  "solution": "Group: $(3^{1} + 3^{2} + \\cdots + 3^{5}) + 3(1 + 2 + \\cdots + 5) = 363 + 45 = 408$.",
+  "solution": "Add the powers and the linear parts separately: $S_5 = (3^{1} + 3^{2} + \\cdots + 3^{5}) + 3(1 + 2 + \\cdots + 5) = 363 + 45 = 408$.",
   "video": "V33",
   "version": "a"
  },
@@ -3622,7 +3622,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -5)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -5)$.",
   "video": "V20",
   "version": "a"
  },
@@ -3653,7 +3653,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-2 - 5}{-8 - (-2)} = \\dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-2 - 5}{-8 - (-2)} = \\dfrac{7}{6}$.",
   "video": "V22",
   "version": "a"
  },
@@ -3670,7 +3670,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ and $\\tan \\dfrac{\\pi}{4} = 1$, then $\\tan \\dfrac{7\\pi}{12} =$ ( )",
+  "stem": "Given that $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ and $\\tan \\dfrac{\\pi}{4} = 1$, the value of $\\tan \\dfrac{7\\pi}{12}$ is ( )",
   "options": [
    "$-1 - \\sqrt{3}$",
    "$2 + \\sqrt{3}$",
@@ -3684,7 +3684,7 @@
    "companion",
    null
   ],
-  "solution": "Write $\\dfrac{7\\pi}{12} = \\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}$. Then $\\tan\\left(\\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{3} + \\tan \\dfrac{\\pi}{4}}{1 - \\tan \\dfrac{\\pi}{3}\\tan \\dfrac{\\pi}{4}} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = -2 - \\sqrt{3}$ (rationalise the denominator).",
+  "solution": "Write $\\dfrac{7\\pi}{12} = \\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}$. Then $\\tan\\left(\\dfrac{\\pi}{3} + \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan \\dfrac{\\pi}{3} + \\tan \\dfrac{\\pi}{4}}{1 - \\tan \\dfrac{\\pi}{3}\\tan \\dfrac{\\pi}{4}} = \\dfrac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} = \\dfrac{(\\sqrt{3} + 1)^2}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\dfrac{4 + 2\\sqrt{3}}{-2} = -2 - \\sqrt{3}$. The denominator was rationalised in the last steps.",
   "video": "V15",
   "version": "a"
  },
@@ -3715,7 +3715,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = 7y + 7$. Solve for $y$: $y = \\dfrac{x - 7}{7}$. (The reciprocal $\\dfrac{1}{7x + 7}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 7y + 7$. Solve for $y$: $7y = x - 7$, so $y = \\dfrac{x - 7}{7}$. The reciprocal $\\dfrac{1}{7x + 7}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a"
  },
@@ -3746,7 +3746,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 3a_{n+1} - 3a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{3}$. Put $n = 1$: $5a_1 = 3a_2 - 3 = 8a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{3}{5}\\left(\\dfrac{8}{3}\\right)^{n} - \\dfrac{3}{5}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 3a_{n+1} - 3a_n$, that is $8a_n = 3a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{3}$. Put $n = 1$: $5a_1 = 3a_2 - 3 = 8a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{3}{5}\\left(\\dfrac{8}{3}\\right)^{n} - \\dfrac{3}{5}$. Check with $n = 1$: the formula gives $\\dfrac{3}{5} \\cdot \\dfrac{8}{3} - \\dfrac{3}{5} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a"
  },
@@ -3794,7 +3794,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $2(a_2 + a_4 + a_6) + 3(a_7 + a_9) = 72$. Then the sum of the first $11$ terms $S_{11} =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $2(a_2 + a_4 + a_6) + 3(a_7 + a_9) = 72$. Then the sum of its first $11$ terms is $S_{11} =$ ( )",
   "options": [
    "$132$",
    "$66$",
@@ -3808,7 +3808,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "Index property: $a_7 + a_9 = 2a_8$ and $a_2 + a_4 + a_6 = 3a_4$. The condition becomes $6a_4 + 6a_8 = 72$, so $a_4 + a_8 = 12$. Because $4 + 8 = 1 + 11$, $a_1 + a_{11} = 12$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 66$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_7 + a_9 = 2a_8$ and $a_2 + a_4 + a_6 = 3a_4$. The condition becomes $6a_4 + 6a_8 = 72$, so $a_4 + a_8 = 12$. Because $4 + 8 = 1 + 11$, $a_1 + a_{11} = 12$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 66$.",
   "video": "V33",
   "version": "a"
  },

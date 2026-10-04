@@ -12,7 +12,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $3(a_3 + a_5) + 2(a_3 + a_7 + a_{11}) = 30$. Then the sum of the first $10$ terms $S_{10} =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $3(a_3 + a_5) + 2(a_3 + a_7 + a_{11}) = 30$. Then the sum of its first $10$ terms is $S_{10} =$ ( )",
   "options": [
    "$25$",
    "$\\dfrac{55}{2}$",
@@ -26,7 +26,7 @@
    "half",
    "partial"
   ],
-  "solution": "Index property: $a_3 + a_5 = 2a_4$ and $a_3 + a_7 + a_{11} = 3a_7$. The condition becomes $6a_4 + 6a_7 = 30$, so $a_4 + a_7 = 5$. Because $4 + 7 = 1 + 10$, $a_1 + a_{10} = 5$ and $S_{10} = \\dfrac{10(a_1 + a_{10})}{2} = 25$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_3 + a_5 = 2a_4$ and $a_3 + a_7 + a_{11} = 3a_7$. The condition becomes $6a_4 + 6a_7 = 30$, so $a_4 + a_7 = 5$. Because $4 + 7 = 1 + 10$, $a_1 + a_{10} = 5$ and $S_{10} = \\dfrac{10(a_1 + a_{10})}{2} = 25$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -50,7 +50,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $2(a_3 + a_4 + a_5) + 3(a_6 + a_{10}) = 12$. Then the sum of the first $11$ terms $S_{11} =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $2(a_3 + a_4 + a_5) + 3(a_6 + a_{10}) = 12$. Then the sum of its first $11$ terms is $S_{11} =$ ( )",
   "options": [
    "$12$",
    "$10$",
@@ -64,7 +64,7 @@
    null,
    "half"
   ],
-  "solution": "Index property: $a_6 + a_{10} = 2a_8$ and $a_3 + a_4 + a_5 = 3a_4$. The condition becomes $6a_4 + 6a_8 = 12$, so $a_4 + a_8 = 2$. Because $4 + 8 = 1 + 11$, $a_1 + a_{11} = 2$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 11$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_6 + a_{10} = 2a_8$ and $a_3 + a_4 + a_5 = 3a_4$. The condition becomes $6a_4 + 6a_8 = 12$, so $a_4 + a_8 = 2$. Because $4 + 8 = 1 + 11$, $a_1 + a_{11} = 2$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 11$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -88,7 +88,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $2(a_1 + a_3 + a_5) + 3(a_2 + a_8) = 24$. Then the sum of the first $7$ terms $S_7 =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $2(a_1 + a_3 + a_5) + 3(a_2 + a_8) = 24$. Then the sum of its first $7$ terms is $S_7 =$ ( )",
   "options": [
    "$24$",
    "$28$",
@@ -102,7 +102,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Index property: $a_2 + a_8 = 2a_5$ and $a_1 + a_3 + a_5 = 3a_3$. The condition becomes $6a_3 + 6a_5 = 24$, so $a_3 + a_5 = 4$. Because $3 + 5 = 1 + 7$, $a_1 + a_7 = 4$ and $S_7 = \\dfrac{7(a_1 + a_7)}{2} = 14$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_2 + a_8 = 2a_5$ and $a_1 + a_3 + a_5 = 3a_3$. The condition becomes $6a_3 + 6a_5 = 24$, so $a_3 + a_5 = 4$. Because $3 + 5 = 1 + 7$, $a_1 + a_7 = 4$ and $S_7 = \\dfrac{7(a_1 + a_7)}{2} = 14$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -126,7 +126,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $2(a_1 + a_3 + a_5) + 3(a_5 + a_9) = 24$. Then the sum of the first $9$ terms $S_9 =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $2(a_1 + a_3 + a_5) + 3(a_5 + a_9) = 24$. Then the sum of its first $9$ terms is $S_9 =$ ( )",
   "options": [
    "$24$",
    "$18$",
@@ -140,7 +140,7 @@
    "half",
    "off-by-one"
   ],
-  "solution": "Index property: $a_5 + a_9 = 2a_7$ and $a_1 + a_3 + a_5 = 3a_3$. The condition becomes $6a_3 + 6a_7 = 24$, so $a_3 + a_7 = 4$. Because $3 + 7 = 1 + 9$, $a_1 + a_9 = 4$ and $S_9 = \\dfrac{9(a_1 + a_9)}{2} = 18$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_5 + a_9 = 2a_7$ and $a_1 + a_3 + a_5 = 3a_3$. The condition becomes $6a_3 + 6a_7 = 24$, so $a_3 + a_7 = 4$. Because $3 + 7 = 1 + 9$, $a_1 + a_9 = 4$ and $S_9 = \\dfrac{9(a_1 + a_9)}{2} = 18$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -164,7 +164,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $3(a_1 + a_3) + 2(a_3 + a_4 + a_5) = 72$. Then the sum of the first $5$ terms $S_5 =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $3(a_1 + a_3) + 2(a_3 + a_4 + a_5) = 72$. Then the sum of its first $5$ terms is $S_5 =$ ( )",
   "options": [
    "$72$",
    "$30$",
@@ -178,7 +178,7 @@
    "half",
    "off-by-one"
   ],
-  "solution": "Index property: $a_1 + a_3 = 2a_2$ and $a_3 + a_4 + a_5 = 3a_4$. The condition becomes $6a_2 + 6a_4 = 72$, so $a_2 + a_4 = 12$. Because $2 + 4 = 1 + 5$, $a_1 + a_5 = 12$ and $S_5 = \\dfrac{5(a_1 + a_5)}{2} = 30$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_1 + a_3 = 2a_2$ and $a_3 + a_4 + a_5 = 3a_4$. The condition becomes $6a_2 + 6a_4 = 72$, so $a_2 + a_4 = 12$. Because $2 + 4 = 1 + 5$, $a_1 + a_5 = 12$ and $S_5 = \\dfrac{5(a_1 + a_5)}{2} = 30$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -216,7 +216,7 @@
    null,
    "partial"
   ],
-  "solution": "Group the two parts. Geometric part: $2^{1} + 2^{2} + 2^{3} + \\cdots$ has first term $2$ and ratio $2$, so it sums to $2(2^n - 1)$. Linear part: the terms $-n$ add up to $-\\dfrac{n(n + 1)}{2}$. Together: $S_n = 2^{n+1} - \\dfrac{n(n + 1)}{2} - 2$. Check with $n = 1$: $S_1 = a_1 = 1$.",
+  "solution": "Group the two parts. Geometric part: $2^{1} + 2^{2} + 2^{3} + \\cdots$ has first term $2$ and ratio $2$, so it sums to $2(2^n - 1)$. Linear part: the terms $-n$ add up to $-\\dfrac{n(n + 1)}{2}$. Adding the two parts gives $S_n = 2^{n+1} - \\dfrac{n(n + 1)}{2} - 2$. Check with $n = 1$: $S_1 = a_1 = 1$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -254,7 +254,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $n + 1$ add up to $\\dfrac{n(n + 1)}{2} + n$. Together: $S_n = 2^{n+2} + \\dfrac{n(n + 1)}{2} + n - 4$. Check with $n = 1$: $S_1 = a_1 = 6$.",
+  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $n + 1$ add up to $\\dfrac{n(n + 1)}{2} + n$. Adding the two parts gives $S_n = 2^{n+2} + \\dfrac{n(n + 1)}{2} + n - 4$. Check with $n = 1$: $S_1 = a_1 = 6$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -292,7 +292,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Group the two parts. Geometric part: $3^{2} + 3^{3} + 3^{4} + \\cdots$ has first term $9$ and ratio $3$, so it sums to $\\dfrac{9(3^n - 1)}{2}$. Linear part: the terms $-2n - 1$ add up to $-\\dfrac{2n(n + 1)}{2} - n$. Together: $S_n = \\dfrac{3^{n+2} - 9}{2} - n^2 - 2n$. Check with $n = 1$: $S_1 = a_1 = 6$.",
+  "solution": "Group the two parts. Geometric part: $3^{2} + 3^{3} + 3^{4} + \\cdots$ has first term $9$ and ratio $3$, so it sums to $\\dfrac{9(3^n - 1)}{2}$. Linear part: the terms $-2n - 1$ add up to $-\\dfrac{2n(n + 1)}{2} - n$. Adding the two parts gives $S_n = \\dfrac{3^{n+2} - 9}{2} - n^2 - 2n$. Check with $n = 1$: $S_1 = a_1 = 6$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -330,7 +330,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $4n$ add up to $\\dfrac{4n(n + 1)}{2}$. Together: $S_n = 2^{n+2} + 2n^2 + 2n - 4$. Check with $n = 1$: $S_1 = a_1 = 8$.",
+  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $4n$ add up to $\\dfrac{4n(n + 1)}{2}$. Adding the two parts gives $S_n = 2^{n+2} + 2n^2 + 2n - 4$. Check with $n = 1$: $S_1 = a_1 = 8$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -368,7 +368,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Group the two parts. Geometric part: $3^{1} + 3^{2} + 3^{3} + \\cdots$ has first term $3$ and ratio $3$, so it sums to $\\dfrac{3(3^n - 1)}{2}$. Linear part: the terms $3n + 1$ add up to $\\dfrac{3n(n + 1)}{2} + n$. Together: $S_n = \\dfrac{3^{n+1} - 3}{2} + \\dfrac{3n(n + 1)}{2} + n$. Check with $n = 1$: $S_1 = a_1 = 7$.",
+  "solution": "Group the two parts. Geometric part: $3^{1} + 3^{2} + 3^{3} + \\cdots$ has first term $3$ and ratio $3$, so it sums to $\\dfrac{3(3^n - 1)}{2}$. Linear part: the terms $3n + 1$ add up to $\\dfrac{3n(n + 1)}{2} + n$. Adding the two parts gives $S_n = \\dfrac{3^{n+1} - 3}{2} + \\dfrac{3n(n + 1)}{2} + n$. Check with $n = 1$: $S_1 = a_1 = 7$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -406,7 +406,7 @@
    "off-by-one",
    "companion"
   ],
-  "solution": "The blocks $S_2$, $S_4 - S_2$, $S_6 - S_4$, $\\ldots$ form a geometric sequence with ratio $q^2$. Here $S_4 - S_2 = 8$, so $q^2 = 4$. Then $S_6 - S_4 = 32$ and $S_6 = 42$.",
+  "solution": "The blocks $S_2 = a_1 + a_2$, $S_4 - S_2 = a_3 + a_4$, $S_6 - S_4 = a_5 + a_6$, $\\ldots$ form a geometric sequence with ratio $q^2$, because $a_3 + a_4 = q^2(a_1 + a_2)$, and so on. Here $S_4 - S_2 = 8$ and $S_2 = 2$, so $q^2 = \\dfrac{8}{2} = 4$. Then $S_6 - S_4 = 8 \\cdot 4 = 32$ and $S_6 = 10 + 32 = 42$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -444,7 +444,7 @@
    "companion",
    "off-by-one"
   ],
-  "solution": "The blocks $S_2$, $S_4 - S_2$, $S_6 - S_4$, $\\ldots$ form a geometric sequence with ratio $q^2$. Here $S_4 - S_2 = 18$, so $q^2 = 3$. Then $S_6 - S_4 = 54$ and $S_6 = 78$; $S_8 - S_6 = 162$ and $S_8 = 240$.",
+  "solution": "The blocks $S_2 = a_1 + a_2$, $S_4 - S_2 = a_3 + a_4$, $S_6 - S_4 = a_5 + a_6$, $\\ldots$ form a geometric sequence with ratio $q^2$, because $a_3 + a_4 = q^2(a_1 + a_2)$, and so on. Here $S_4 - S_2 = 18$ and $S_2 = 6$, so $q^2 = \\dfrac{18}{6} = 3$. Then $S_6 - S_4 = 18 \\cdot 3 = 54$ and $S_6 = 24 + 54 = 78$. Next, $S_8 - S_6 = 54 \\cdot 3 = 162$ and $S_8 = 78 + 162 = 240$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -558,7 +558,7 @@
    "slip",
    null
   ],
-  "solution": "Group: $(2^{1} + 2^{2} + \\cdots + 2^{7}) + 2(1 + 2 + \\cdots + 7) = 254 + 56 = 310$.",
+  "solution": "Add the powers and the linear parts separately: $S_7 = (2^{1} + 2^{2} + \\cdots + 2^{7}) + 2(1 + 2 + \\cdots + 7) = 254 + 56 = 310$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -596,7 +596,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "Group: $(3^{1} + 3^{2} + \\cdots + 3^{5}) + 1(1 + 2 + \\cdots + 5) = 363 + 15 = 378$.",
+  "solution": "Add the powers and the linear parts separately: $S_5 = (3^{1} + 3^{2} + \\cdots + 3^{5}) + (1 + 2 + \\cdots + 5) = 363 + 15 = 378$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",
@@ -634,7 +634,7 @@
    "half",
    "half"
   ],
-  "solution": "Index property: if $m + n = p + q$, then $a_m + a_n = a_p + a_q$. The correct statement is $a_6 + a_8 = 8$ — $6 + 8 = 2 \\cdot 7$, so the sum is $2a_7 = 8$. $a_6 + a_8 = 4$ is false: the two terms add up to $2a_7 = 8$, not $a_7$. $S_{13} = 104$ is false: the factor $\\dfrac{1}{2}$ is missing: $S_{13} = \\dfrac{13(a_1 + a_{13})}{2} = 13a_7 = 52$. $a_1 + a_{13} = 4$ is false: the two terms add up to $2a_7 = 8$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. $a_6 + a_8 = 8$ is correct. $6 + 8 = 2 \\cdot 7$, so the sum is $2a_7 = 8$. $a_6 + a_8 = 4$ is incorrect. The two terms add up to $2a_7 = 8$, not $a_7$. $S_{13} = 104$ is incorrect. The sum formula has a factor $\\dfrac{1}{2}$, so $S_{13} = \\dfrac{13(a_1 + a_{13})}{2} = 13a_7 = 52$. $a_1 + a_{13} = 4$ is incorrect. The two terms add up to $2a_7 = 8$.",
   "video": "V33",
   "version": "a",
   "domain": "SQ",

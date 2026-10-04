@@ -114,7 +114,7 @@ _24 questions · single answer · seed 1_
 - C. $\dfrac{5}{13}$
 - D. $\dfrac{\sqrt{119}}{12}$
 
-**17.** Given that $a, b, c$ form a geometric sequence and $ac = 36$, then $b =$ ( )  `SQ-mean · E · = · 2 pt`
+**17.** If $a, b, c$ form a geometric sequence and $ac = 36$, then $b =$ ( )  `SQ-mean · E · = · 2 pt`
 
 - A. $18$
 - B. $-6$
@@ -180,50 +180,50 @@ _24 questions · single answer · seed 1_
 
 ## Solutions
 
-**1. A** — Standard form $(x - a)^2 + (y - b)^2 = r^2$: flip the signs of the centre inside the brackets and square the radius ($r^2 = 25$). So the equation is $(x - 1)^2 + (y + 4)^2 = 25$.
+**1. Answer A.** A circle with center $(a, b)$ and radius $r$ has the equation $(x - a)^2 + (y - b)^2 = r^2$. Here $a = 1$, $b = -4$ and $r^2 = 5^2 = 25$. So the equation is $(x - 1)^2 + (y + 4)^2 = 25$.
 
-**2. D** — Centre $\left(-\dfrac{D}{2}, -\dfrac{E}{2}\right) = \left(\dfrac{1}{2}, 2\right)$ and $r^2 = \dfrac{D^2 + E^2}{4} - F = \dfrac{5}{4}$, so $r = \dfrac{\sqrt{5}}{2}$.
+**2. Answer D.** Here $D = -1$, $E = -4$ and $F = 3$. The center is $\left(-\dfrac{D}{2}, -\dfrac{E}{2}\right) = \left(\dfrac{1}{2}, 2\right)$ and $r^2 = \dfrac{D^2 + E^2}{4} - F = \dfrac{1 + 16}{4} - 3 = \dfrac{5}{4}$, so $r = \dfrac{\sqrt{5}}{2}$.
 
-**3. C** — The radius is the distance from the centre to the point: $r^2 = 1^2 + (-2)^2 = 5$. So the circle is $(x + 1)^2 + (y + 1)^2 = 5$.
+**3. Answer C.** The radius is the distance from the center to the point: $r^2 = 1^2 + (-2)^2 = 5$. So the circle is $(x + 1)^2 + (y + 1)^2 = 5$.
 
-**4. A** — The radius is the distance from the centre to the point: $r^2 = 8^2 + (-6)^2 = 100$. So the circle is $(x - 4)^2 + (y - 5)^2 = 100$.
+**4. Answer A.** The radius is the distance from the center to the point: $r^2 = 8^2 + (-6)^2 = 100$. So the circle is $(x - 4)^2 + (y - 5)^2 = 100$.
 
-**5. A** — A quarter of the coefficient: for $y^2 = mx$ the focus is $\left(\dfrac{m}{4}, 0\right)$ and the directrix is $x = -\dfrac{m}{4}$. Here $m = -10$, so the directrix is $x = \dfrac{5}{2}$ — on the opposite side of the vertex from the focus.
+**5. Answer A.** For $y^2 = mx$ the focus is $\left(\dfrac{m}{4}, 0\right)$ and the directrix is $x = -\dfrac{m}{4}$. Here $m = -10$, so $\dfrac{m}{4} = -\dfrac{5}{2}$ and the directrix is $x = \dfrac{5}{2}$, on the opposite side of the vertex from the focus.
 
-**6. D** — Substituting the point gives $a = 2$. Rewrite $y = 2x^2$ as $x^2 = \dfrac{1}{2}y$: the focus is $\left(0, \dfrac{m}{4}\right) = \left(0, \dfrac{1}{8}\right)$.
+**6. Answer D.** Substituting the point gives $32 = a \cdot 4^2$, so $a = 2$. Rewriting $y = 2x^2$ as $x^2 = \dfrac{1}{2}y$ gives $m = \dfrac{1}{2}$, so the focus is $\left(0, \dfrac{m}{4}\right) = \left(0, \dfrac{1}{8}\right)$.
 
-**7. B** — A quarter of the coefficient: $\dfrac{m}{4} = -3$. The focus lies on the $y$-axis (the axis of the linear variable): $(0, -3)$.
+**7. Answer B.** For $x^2 = my$ the focus is $\left(0, \dfrac{m}{4}\right)$. Here $m = -12$, so the focus is $(0, -3)$. It lies on the $y$-axis because $y$ is the variable that is not squared.
 
-**8. A** — Rewrite as $x^2 = 6y$. The incorrect statement is “Its axis of symmetry is the $x$-axis” — the axis of symmetry is the $y$-axis. The other three statements are true.
+**8. Answer A.** First rewrite the equation as $x^2 = 6y$. “Its axis of symmetry is the $x$-axis” is incorrect. Only $x$ is squared, so the axis of symmetry is the $y$-axis. “Its directrix is $y = -\dfrac{3}{2}$” is correct. The directrix is $y = -\dfrac{m}{4} = -\dfrac{3}{2}$. “Its axis of symmetry is the $y$-axis” is correct. Replacing $x$ by $-x$ does not change the equation. “It passes through the point $\left(-2, \dfrac{2}{3}\right)$” is correct. With $x = -2$ and $y = \dfrac{2}{3}$, both sides equal $4$.
 
-**9. D** — Focal distance $2c = 10$ gives $c = 5$. From $e = \dfrac{c}{a} = \dfrac{5}{7}$: $a = 7$. Then $b^2 = a^2 - c^2 = 24$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\dfrac{x^2}{49} + \dfrac{y^2}{24} = 1$.
+**9. Answer D.** The focal distance $2c = 10$ gives $c = 5$. From $e = \dfrac{c}{a} = \dfrac{5}{7}$ we get $a = 7$. Then $b^2 = a^2 - c^2 = 49 - 25 = 24$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\dfrac{x^2}{49} + \dfrac{y^2}{24} = 1$.
 
-**10. C** — $a^2 = 25$ is the larger denominator (it is under $y^2$), $b^2 = 21$, $c^2 = 4$. So $e = \dfrac{c}{a} = \dfrac{2}{5}$, a number between $0$ and $1$.
+**10. Answer C.** The larger denominator is $a^2 = 25$, under $y^2$. So $b^2 = 21$ and $c^2 = a^2 - b^2 = 4$, which gives $e = \dfrac{c}{a} = \dfrac{2}{5} = \dfrac{2}{5}$, a number between $0$ and $1$.
 
-**11. B** — The vertex $(0, 12)$ is on the minor axis, so $b^2 = 144$. From $e^2 = 1 - \dfrac{b^2}{a^2} = \dfrac{25}{169}$: $a^2 = 169$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\dfrac{x^2}{169} + \dfrac{y^2}{144} = 1$.
+**11. Answer B.** The vertex $(0, 12)$ is on the minor axis, so $b^2 = 144$. From $e^2 = 1 - \dfrac{b^2}{a^2} = \dfrac{25}{169}$ we get $\dfrac{b^2}{a^2} = \dfrac{144}{169}$, so $a^2 = 169$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\dfrac{x^2}{169} + \dfrac{y^2}{144} = 1$.
 
-**12. C** — $2c = 4$ gives $c = 2$ and $2b = 4$ gives $b = 2$. Then $a^2 = b^2 + c^2 = 8$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\dfrac{x^2}{4} + \dfrac{y^2}{8} = 1$.
+**12. Answer C.** $2c = 4$ gives $c = 2$ and $2b = 4$ gives $b = 2$. Then $a^2 = b^2 + c^2 = 4 + 4 = 8$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\dfrac{x^2}{4} + \dfrac{y^2}{8} = 1$.
 
-**13. B** — The positive term gives $a^2 = 64$ and the negative term gives $b^2 = 36$. The real axis is $2a = 16$, the imaginary axis is $2b = 12$, and the focal distance is $2c = 20$.
+**13. Answer B.** The positive term gives $a^2 = 64$ and the negative term gives $b^2 = 36$. The real axis is $2a = 16$, the imaginary axis is $2b = 12$, and the focal distance is $2c = 20$.
 
-**14. D** — Here $a^2 = 6$, $b^2 = 3$ and $c^2 = a^2 + b^2 = 9$. The incorrect statement is “Its foci are $(\pm \sqrt{3}, 0)$” — $c^2 = a^2 + b^2$, not $a^2 - b^2$: the foci are $(\pm 3, 0)$. The other three statements are true.
+**14. Answer D.** Here $a^2 = 6$, $b^2 = 3$ and $c^2 = a^2 + b^2 = 9$. “Its foci are $(\pm \sqrt{3}, 0)$” is incorrect. For a hyperbola $c^2 = a^2 + b^2 = 9$, so the foci are $(\pm 3, 0)$. “The length of its imaginary axis is $2\sqrt{3}$” is correct. $b^2 = 3$, so $2b = 2\sqrt{3}$. “The length of its real axis is $2\sqrt{6}$” is correct. $a^2 = 6$, so $2a = 2\sqrt{6}$. “Its focal distance is $6$” is correct. $c^2 = 6 + 3 = 9$, so $2c = 6$.
 
-**15. D** — For a hyperbola $c^2 = a^2 + b^2 = 10 + 6 = 16$ (plus, not minus), so $c = 4$. The foci are on the axis of the positive term, the $y$-axis: $(0, \pm 4)$.
+**15. Answer D.** Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 10 + 6 = 16$, so $c = 4$. The foci lie on the axis of the positive term, the $y$-axis, so they are $(0, \pm 4)$.
 
-**16. B** — $a^2 = 25$ (the positive term), $b^2 = 144$, $c^2 = 169$. So $e = \dfrac{c}{a} = \dfrac{13}{5}$, which is greater than $1$.
+**16. Answer B.** The positive term gives $a^2 = 25$, and $b^2 = 144$, so $c^2 = a^2 + b^2 = 169$. Then $e = \dfrac{c}{a} = \dfrac{13}{5} = \dfrac{13}{5}$, which is greater than $1$.
 
-**17. C** — In a geometric sequence $b^2 = ac = 36$, so $b = \pm 6$ — both signs are possible.
+**17. Answer C.** In a geometric sequence $b^2 = ac = 36$, so $b = \pm 6$. Both signs are possible: for example $1, 6, 36$ and $1, -6, 36$ are both geometric.
 
-**18. A** — The common difference is $d = a_2 - a_1 = 5$. $a_n = a_1 + (n - 1)d$, so $a_{2024} = 3 + 2023 \cdot 5 = 10118$. Counting $2024$ steps instead of $2023$ is the off-by-one trap.
+**18. Answer A.** The common difference is $d = a_2 - a_1 = 5$. Since $a_n = a_1 + (n - 1)d$, we get $a_{2024} = 3 + 2023 \cdot 5 = 10118$. From $a_1$ to $a_{2024}$ there are $2023$ steps of size $d$, not $2024$.
 
-**19. B** — Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a(a - 5) = 0$, so $a = 5$ or $a = 0$ — both values are valid.
+**19. Answer B.** Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $a(a - 3) - 2a = 0$, that is $a(a - 5) = 0$, so $a = 5$ or $a = 0$. Both values are valid.
 
-**20. B** — The correct statement is $\sin\left(-\alpha\right) = -\sin\alpha$ — a multiple of $\pi$ keeps the name; the sign is that of $\sin$ where the angle lands (take $\alpha$ acute). $\sin\left(\pi + \alpha\right) = \sin\alpha$ is false: the sign is wrong: the correct result is $-\sin\alpha$. $\sin\left(2\pi - \alpha\right) = \sin\alpha$ is false: the sign is wrong: the correct result is $-\sin\alpha$. $\cos\left(-\alpha\right) = -\cos\alpha$ is false: the sign is wrong: the correct result is $\cos\alpha$.
+**20. Answer B.** $\sin\left(-\alpha\right) = -\sin\alpha$ is correct. If $\alpha$ is acute, $-\alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\pi$, so the function name stays the same. $\sin\left(\pi + \alpha\right) = \sin\alpha$ is incorrect. If $\alpha$ is acute, $\pi + \alpha$ lies in the third quadrant, where sine is negative. The shift is a multiple of $\pi$, so the function name stays the same. So $\sin\left(\pi + \alpha\right) = -\sin\alpha$. $\sin\left(2\pi - \alpha\right) = \sin\alpha$ is incorrect. If $\alpha$ is acute, $2\pi - \alpha$ lies in the fourth quadrant, where sine is negative. The shift is a multiple of $\pi$, so the function name stays the same. So $\sin\left(2\pi - \alpha\right) = -\sin\alpha$. $\cos\left(-\alpha\right) = -\cos\alpha$ is incorrect. If $\alpha$ is acute, $-\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is a multiple of $\pi$, so the function name stays the same. So $\cos\left(-\alpha\right) = \cos\alpha$.
 
-**21. A** — Focal distance $2c = 6$ gives $c = 3$. From $e = \dfrac{c}{a} = \dfrac{3}{5}$: $a = 5$. Then $b^2 = a^2 - c^2 = 16$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\dfrac{x^2}{25} + \dfrac{y^2}{16} = 1$.
+**21. Answer A.** The focal distance $2c = 6$ gives $c = 3$. From $e = \dfrac{c}{a} = \dfrac{3}{5}$ we get $a = 5$. Then $b^2 = a^2 - c^2 = 25 - 9 = 16$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\dfrac{x^2}{25} + \dfrac{y^2}{16} = 1$.
 
-**22. D** — The given ellipse has $c^2 = 9 - 5 = 4$, and the same foci mean the same $c$. Minor axis $2b = 4\sqrt{2}$ gives $b^2 = 8$. Then $a^2 = b^2 + c^2 = 12$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\dfrac{x^2}{12} + \dfrac{y^2}{8} = 1$.
+**22. Answer D.** The given ellipse has $c^2 = 9 - 5 = 4$, and the same foci mean the same $c$. Minor axis $2b = 4\sqrt{2}$ gives $b^2 = 8$. Then $a^2 = b^2 + c^2 = 8 + 4 = 12$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\dfrac{x^2}{12} + \dfrac{y^2}{8} = 1$.
 
-**23. C** — A point on an axis is a vertex, but it may be on the major or on the minor axis. Case 1: $a = 4$, $b = 2$ gives $\dfrac{x^2}{4} + \dfrac{y^2}{16} = 1$. Case 2: $b = 4$, $a = 8$ gives $\dfrac{x^2}{64} + \dfrac{y^2}{16} = 1$. Both are answers; an option with one case only is incomplete.
+**23. Answer C.** A point on an axis is a vertex, but it can be an end of the major axis or of the minor axis. If it is on the major axis, then $a = 4$ and $b = 2$, which gives $\dfrac{x^2}{4} + \dfrac{y^2}{16} = 1$. If it is on the minor axis, then $b = 4$ and $a = 8$, which gives $\dfrac{x^2}{64} + \dfrac{y^2}{16} = 1$. Both equations are possible, so an option with only one of them is incomplete.
 
-**24. C** — $|PF| = x_0 + \dfrac{m}{4} = x_0 + 3 = 8$, so $x_0 = 5$. Then $y_0^2 = 12 \cdot 5 = 60$ and $y_0 = \pm 2\sqrt{15}$ — two points.
+**24. Answer C.** $|PF| = x_0 + \dfrac{m}{4} = x_0 + 3 = 8$, so $x_0 = 5$. Then $y_0^2 = 12 \cdot 5 = 60$ and $y_0 = \pm 2\sqrt{15}$. So there are two such points.

@@ -26,7 +26,7 @@
    "slip",
    "operation"
   ],
-  "solution": "There are $C(7, 2) = 21$ equally likely pairs. Same-colour pairs: $10 + 1 = 11$. So the probability is $\\dfrac{11}{21}$.",
+  "solution": "There are $C(7, 2) = 21$ equally likely pairs. The pairs of the same colour number $C(5, 2) + C(2, 2) = 10 + 1 = 11$. So the probability is $\\dfrac{11}{21}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -64,7 +64,7 @@
    null,
    "operation"
   ],
-  "solution": "There are $C(7, 2) = 21$ equally likely pairs. Same-colour pairs: $10 + 1 = 11$. So the probability is $\\dfrac{11}{21}$.",
+  "solution": "There are $C(7, 2) = 21$ equally likely pairs. The pairs of the same colour number $C(5, 2) + C(2, 2) = 10 + 1 = 11$. So the probability is $\\dfrac{11}{21}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -406,7 +406,7 @@
    "partial",
    "complement"
   ],
-  "solution": "P(same choice) $= \\dfrac{10}{60} \\cdot \\dfrac{10}{40} + \\dfrac{20}{60} \\cdot \\dfrac{10}{40} + \\dfrac{30}{60} \\cdot \\dfrac{20}{40} = \\dfrac{3}{8}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{10}{60} \\cdot \\dfrac{10}{40} + \\dfrac{20}{60} \\cdot \\dfrac{10}{40} + \\dfrac{30}{60} \\cdot \\dfrac{20}{40} = \\dfrac{3}{8}$. So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -444,7 +444,7 @@
    null,
    "partial"
   ],
-  "solution": "P(same choice) $= \\dfrac{10}{100} \\cdot \\dfrac{5}{30} + \\dfrac{10}{100} \\cdot \\dfrac{10}{30} + \\dfrac{80}{100} \\cdot \\dfrac{15}{30} = \\dfrac{9}{20}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{9}{20} = \\dfrac{11}{20}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{10}{100} \\cdot \\dfrac{5}{30} + \\dfrac{10}{100} \\cdot \\dfrac{10}{30} + \\dfrac{80}{100} \\cdot \\dfrac{15}{30} = \\dfrac{9}{20}$. So P(different) $= 1 - \\dfrac{9}{20} = \\dfrac{11}{20}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -482,7 +482,7 @@
    "complement",
    null
   ],
-  "solution": "P(same choice) $= \\dfrac{15}{40} \\cdot \\dfrac{40}{100} + \\dfrac{5}{40} \\cdot \\dfrac{20}{100} + \\dfrac{20}{40} \\cdot \\dfrac{40}{100} = \\dfrac{3}{8}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{15}{40} \\cdot \\dfrac{40}{100} + \\dfrac{5}{40} \\cdot \\dfrac{20}{100} + \\dfrac{20}{40} \\cdot \\dfrac{40}{100} = \\dfrac{3}{8}$. So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -520,7 +520,7 @@
    "partial",
    "complement"
   ],
-  "solution": "P(same choice) $= \\dfrac{40}{80} \\cdot \\dfrac{10}{30} + \\dfrac{30}{80} \\cdot \\dfrac{15}{30} + \\dfrac{10}{80} \\cdot \\dfrac{5}{30} = \\dfrac{3}{8}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{40}{80} \\cdot \\dfrac{10}{30} + \\dfrac{30}{80} \\cdot \\dfrac{15}{30} + \\dfrac{10}{80} \\cdot \\dfrac{5}{30} = \\dfrac{3}{8}$. So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -558,7 +558,7 @@
    "partial",
    null
   ],
-  "solution": "P(same choice) $= \\dfrac{30}{100} \\cdot \\dfrac{5}{40} + \\dfrac{10}{100} \\cdot \\dfrac{25}{40} + \\dfrac{30}{100} \\cdot \\dfrac{5}{40} + \\dfrac{30}{100} \\cdot \\dfrac{5}{40} = \\dfrac{7}{40}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{7}{40} = \\dfrac{33}{40}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{30}{100} \\cdot \\dfrac{5}{40} + \\dfrac{10}{100} \\cdot \\dfrac{25}{40} + \\dfrac{30}{100} \\cdot \\dfrac{5}{40} + \\dfrac{30}{100} \\cdot \\dfrac{5}{40} = \\dfrac{7}{40}$. So P(different) $= 1 - \\dfrac{7}{40} = \\dfrac{33}{40}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -596,7 +596,7 @@
    "partial",
    "complement"
   ],
-  "solution": "P(same choice) $= \\dfrac{25}{50} \\cdot \\dfrac{20}{40} + \\dfrac{5}{50} \\cdot \\dfrac{10}{40} + \\dfrac{20}{50} \\cdot \\dfrac{10}{40} = \\dfrac{3}{8}$ (multiply within each option, then add).",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{25}{50} \\cdot \\dfrac{20}{40} + \\dfrac{5}{50} \\cdot \\dfrac{10}{40} + \\dfrac{20}{50} \\cdot \\dfrac{10}{40} = \\dfrac{3}{8}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -634,7 +634,7 @@
    "complement",
    "complement"
   ],
-  "solution": "There are $C(5, 2) = 10$ equally likely pairs. Different colours: $3 \\cdot 2 = 6$ pairs, so $\\dfrac{3}{5}$. For the second event, same-label pairs: $2$, so different labels: $1 - \\dfrac{2}{10} = \\dfrac{4}{5}$.",
+  "solution": "There are $C(5, 2) = 10$ equally likely pairs. There are $3 \\cdot 2 = 6$ pairs with different colours, so the first probability is $\\dfrac{6}{10} = \\dfrac{3}{5}$. For the second event, exactly $2$ pairs share a label, one for each label that both colours carry, so the probability of different labels is $1 - \\dfrac{2}{10} = \\dfrac{4}{5}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -672,7 +672,7 @@
    "complement",
    null
   ],
-  "solution": "There are $C(7, 2) = 21$ equally likely pairs. Different colours: $3 \\cdot 4 = 12$ pairs, so $\\dfrac{4}{7}$. For the second event, same-label pairs: $3$, so different labels: $1 - \\dfrac{3}{21} = \\dfrac{6}{7}$.",
+  "solution": "There are $C(7, 2) = 21$ equally likely pairs. There are $3 \\cdot 4 = 12$ pairs with different colours, so the first probability is $\\dfrac{12}{21} = \\dfrac{4}{7}$. For the second event, exactly $3$ pairs share a label, one for each label that both colours carry, so the probability of different labels is $1 - \\dfrac{3}{21} = \\dfrac{6}{7}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -710,7 +710,7 @@
    "complement",
    "swap"
   ],
-  "solution": "There are $C(5, 2) = 10$ equally likely pairs. Different colours: $3 \\cdot 2 = 6$ pairs, so $\\dfrac{3}{5}$. For the second event, same-label pairs: $2$, so different labels: $1 - \\dfrac{2}{10} = \\dfrac{4}{5}$.",
+  "solution": "There are $C(5, 2) = 10$ equally likely pairs. There are $3 \\cdot 2 = 6$ pairs with different colours, so the first probability is $\\dfrac{6}{10} = \\dfrac{3}{5}$. For the second event, exactly $2$ pairs share a label, one for each label that both colours carry, so the probability of different labels is $1 - \\dfrac{2}{10} = \\dfrac{4}{5}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -748,7 +748,7 @@
    "complement",
    "swap"
   ],
-  "solution": "There are $C(6, 2) = 15$ equally likely pairs. Different colours: $3 \\cdot 3 = 9$ pairs, so $\\dfrac{3}{5}$. For the second event, same-label pairs: $3$, so different labels: $1 - \\dfrac{3}{15} = \\dfrac{4}{5}$.",
+  "solution": "There are $C(6, 2) = 15$ equally likely pairs. There are $3 \\cdot 3 = 9$ pairs with different colours, so the first probability is $\\dfrac{9}{15} = \\dfrac{3}{5}$. For the second event, exactly $3$ pairs share a label, one for each label that both colours carry, so the probability of different labels is $1 - \\dfrac{3}{15} = \\dfrac{4}{5}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -786,7 +786,7 @@
    null,
    "complement"
   ],
-  "solution": "There are $C(8, 2) = 28$ equally likely pairs. Different colours: $4 \\cdot 4 = 16$ pairs, so $\\dfrac{4}{7}$. For the second event, pairs with no ball labelled $1$: $C(6, 2) = 15$, so at least one label $1$: $\\dfrac{13}{28}$.",
+  "solution": "There are $C(8, 2) = 28$ equally likely pairs. There are $4 \\cdot 4 = 16$ pairs with different colours, so the first probability is $\\dfrac{16}{28} = \\dfrac{4}{7}$. For the second event, there are $C(6, 2) = 15$ pairs with no ball labelled $1$, so the probability of at least one label $1$ is $1 - \\dfrac{15}{28} = \\dfrac{13}{28}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -824,7 +824,7 @@
    "swap",
    "swap"
   ],
-  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{3}{20} - \\dfrac{4}{5} = \\dfrac{1}{20}$; then $P(\\text{green}) = \\dfrac{11}{20} - \\dfrac{1}{20} = \\dfrac{1}{2}$ and $P(\\text{white}) = \\dfrac{4}{5} - \\dfrac{1}{2} = \\dfrac{3}{10}$. Match each value to its colour — the options differ only in the order.",
+  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{3}{20} - \\dfrac{4}{5} = \\dfrac{1}{20}$. Then $P(\\text{green}) = \\dfrac{11}{20} - \\dfrac{1}{20} = \\dfrac{1}{2}$ and $P(\\text{white}) = \\dfrac{4}{5} - \\dfrac{1}{2} = \\dfrac{3}{10}$. The options use the same three numbers in different orders, so the order green, white, red decides the answer.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -862,7 +862,7 @@
    null,
    "swap"
   ],
-  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{1}{10} - \\dfrac{7}{20} = \\dfrac{11}{20}$; then $P(\\text{green}) = \\dfrac{4}{5} - \\dfrac{11}{20} = \\dfrac{1}{4}$ and $P(\\text{black}) = \\dfrac{7}{20} - \\dfrac{1}{4} = \\dfrac{1}{10}$. Match each value to its colour — the options differ only in the order.",
+  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{1}{10} - \\dfrac{7}{20} = \\dfrac{11}{20}$. Then $P(\\text{green}) = \\dfrac{4}{5} - \\dfrac{11}{20} = \\dfrac{1}{4}$ and $P(\\text{black}) = \\dfrac{7}{20} - \\dfrac{1}{4} = \\dfrac{1}{10}$. The options use the same three numbers in different orders, so the order green, black, red decides the answer.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -900,7 +900,7 @@
    "swap",
    "swap"
   ],
-  "solution": "The four probabilities add up to $1$. So $P(\\text{white}) = 1 - \\dfrac{7}{16} - \\dfrac{3}{8} = \\dfrac{3}{16}$; then $P(\\text{red}) = \\dfrac{5}{16} - \\dfrac{3}{16} = \\dfrac{1}{8}$ and $P(\\text{black}) = \\dfrac{3}{8} - \\dfrac{1}{8} = \\dfrac{1}{4}$. Match each value to its colour — the options differ only in the order.",
+  "solution": "The four probabilities add up to $1$. So $P(\\text{white}) = 1 - \\dfrac{7}{16} - \\dfrac{3}{8} = \\dfrac{3}{16}$. Then $P(\\text{red}) = \\dfrac{5}{16} - \\dfrac{3}{16} = \\dfrac{1}{8}$ and $P(\\text{black}) = \\dfrac{3}{8} - \\dfrac{1}{8} = \\dfrac{1}{4}$. The options use the same three numbers in different orders, so the order red, black, white decides the answer.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -938,7 +938,7 @@
    null,
    "swap"
   ],
-  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{4}{9} - \\dfrac{5}{18} = \\dfrac{5}{18}$; then $P(\\text{yellow}) = \\dfrac{1}{3} - \\dfrac{5}{18} = \\dfrac{1}{18}$ and $P(\\text{white}) = \\dfrac{5}{18} - \\dfrac{1}{18} = \\dfrac{2}{9}$. Match each value to its colour — the options differ only in the order.",
+  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{4}{9} - \\dfrac{5}{18} = \\dfrac{5}{18}$. Then $P(\\text{yellow}) = \\dfrac{1}{3} - \\dfrac{5}{18} = \\dfrac{1}{18}$ and $P(\\text{white}) = \\dfrac{5}{18} - \\dfrac{1}{18} = \\dfrac{2}{9}$. The options use the same three numbers in different orders, so the order yellow, white, red decides the answer.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -976,7 +976,7 @@
    "swap",
    "swap"
   ],
-  "solution": "The four probabilities add up to $1$. So $P(\\text{green}) = 1 - \\dfrac{7}{30} - \\dfrac{3}{10} = \\dfrac{7}{15}$; then $P(\\text{yellow}) = \\dfrac{7}{10} - \\dfrac{7}{15} = \\dfrac{7}{30}$ and $P(\\text{white}) = \\dfrac{3}{10} - \\dfrac{7}{30} = \\dfrac{1}{15}$. Match each value to its colour — the options differ only in the order.",
+  "solution": "The four probabilities add up to $1$. So $P(\\text{green}) = 1 - \\dfrac{7}{30} - \\dfrac{3}{10} = \\dfrac{7}{15}$. Then $P(\\text{yellow}) = \\dfrac{7}{10} - \\dfrac{7}{15} = \\dfrac{7}{30}$ and $P(\\text{white}) = \\dfrac{3}{10} - \\dfrac{7}{30} = \\dfrac{1}{15}$. The options use the same three numbers in different orders, so the order yellow, white, green decides the answer.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1190,7 +1190,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "There are $4$ identical balls labelled $1, 2, \\ldots, 4$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| > \\dfrac{1}{3}$ is ( )",
+  "stem": "There are $4$ identical balls labelled $1, 2, 3, 4$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| > \\dfrac{1}{3}$ is ( )",
   "options": [
    "$\\dfrac{2}{3}$",
    "$\\dfrac{3}{5}$",
@@ -1204,7 +1204,7 @@
    "complement",
    "slip"
   ],
-  "solution": "If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| > 2$. Counting the ordered draws that satisfy it gives $16$ out of $24$, i.e. $\\dfrac{2}{3}$.",
+  "solution": "If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| > 2$. Counting the ordered draws that satisfy it gives $16$ out of $24$, so the probability is $\\dfrac{2}{3}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1228,7 +1228,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "There are $5$ identical balls labelled $1, 2, \\ldots, 5$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| < 1$ is ( )",
+  "stem": "There are $5$ identical balls labelled $1, 2, 3, 4, 5$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| < 1$ is ( )",
   "options": [
    "$\\dfrac{2}{15}$",
    "$\\dfrac{4}{5}$",
@@ -1242,7 +1242,7 @@
    null,
    "endpoint"
   ],
-  "solution": "If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| < 6$. Counting the ordered draws that satisfy it gives $52$ out of $60$, i.e. $\\dfrac{13}{15}$.",
+  "solution": "If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| < 6$. Counting the ordered draws that satisfy it gives $52$ out of $60$, so the probability is $\\dfrac{13}{15}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1280,7 +1280,7 @@
    "order",
    "partial"
   ],
-  "solution": "There are $C(10, 2) = 45$ equally likely pairs. The correct statement is “The probability that at least one ball is red is $\\dfrac{7}{9}$” — it is $1 - P(\\text{both blue}) = 1 - \\dfrac{2}{9}$. “The probability that the two balls have different colours is $\\dfrac{5}{18}$” is false: that counts only one of the two orders; the probability is $\\dfrac{25}{45} = \\dfrac{5}{9}$. “The probability that at least one ball is red is $\\dfrac{5}{9}$” is false: that is “exactly one red”; add the case of two red balls: $\\dfrac{7}{9}$. “The probability that the two balls have the same colour is $\\dfrac{2}{9}$” is false: that counts only the red pairs; add the blue pairs: $\\dfrac{4}{9}$.",
+  "solution": "There are $C(10, 2) = 45$ equally likely pairs. “The probability that at least one ball is red is $\\dfrac{7}{9}$” is correct. It is $1 - P(\\text{both blue}) = 1 - \\dfrac{2}{9} = \\dfrac{7}{9}$. “The probability that the two balls have different colours is $\\dfrac{5}{18}$” is incorrect. The pairs are unordered, so there are $25$ such pairs out of $45$ and the probability is $\\dfrac{25}{45} = \\dfrac{5}{9}$. “The probability that at least one ball is red is $\\dfrac{5}{9}$” is incorrect. That value is the probability of exactly one red ball. Adding the case of two red balls gives $\\dfrac{7}{9}$. “The probability that the two balls have the same colour is $\\dfrac{2}{9}$” is incorrect. That value counts only the red pairs. Adding the blue pairs gives $\\dfrac{4}{9}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1318,7 +1318,7 @@
    "partial",
    null
   ],
-  "solution": "There are $C(9, 2) = 36$ equally likely pairs. The correct statement is “The probability that at least one ball is black is $\\dfrac{5}{6}$” — it is $1 - P(\\text{both white}) = 1 - \\dfrac{1}{6}$. “The probability that the two balls have different colours is $\\dfrac{4}{9}$” is false: that is the probability of the same colour; different colours: $\\dfrac{5}{9}$. “The probability that both balls are black is $\\dfrac{25}{81}$” is false: the balls are drawn together (no replacement): $\\dfrac{C(5, 2)}{C(9, 2)} = \\dfrac{10}{36} = \\dfrac{5}{18}$. “The probability that at least one ball is black is $\\dfrac{5}{9}$” is false: that is “exactly one black”; add the case of two black balls: $\\dfrac{5}{6}$.",
+  "solution": "There are $C(9, 2) = 36$ equally likely pairs. “The probability that at least one ball is black is $\\dfrac{5}{6}$” is correct. It is $1 - P(\\text{both white}) = 1 - \\dfrac{1}{6} = \\dfrac{5}{6}$. “The probability that the two balls have different colours is $\\dfrac{4}{9}$” is incorrect. The value $\\dfrac{4}{9}$ is the probability of the same colour. The probability of different colours is $\\dfrac{5}{9}$. “The probability that both balls are black is $\\dfrac{25}{81}$” is incorrect. The balls are drawn together, so there is no replacement and the probability is $\\dfrac{C(5, 2)}{C(9, 2)} = \\dfrac{10}{36} = \\dfrac{5}{18}$. “The probability that at least one ball is black is $\\dfrac{5}{9}$” is incorrect. That value is the probability of exactly one black ball. Adding the case of two black balls gives $\\dfrac{5}{6}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1356,7 +1356,7 @@
    "complement",
    "replacement"
   ],
-  "solution": "There are $C(6, 2) = 15$ equally likely pairs. The correct statement is “The probability that both balls are red is $\\dfrac{2}{5}$” — there are $C(4, 2) = 6$ such pairs out of $C(6, 2) = 15$. “The probability that at least one ball is red is $\\dfrac{3}{5}$” is false: the complement of “at least one red” is “both blue”: $1 - \\dfrac{1}{15} = \\dfrac{14}{15}$. “The probability that the two balls have the same colour is $\\dfrac{2}{5}$” is false: that counts only the red pairs; add the blue pairs: $\\dfrac{7}{15}$. “The probability that both balls are red is $\\dfrac{4}{9}$” is false: the balls are drawn together (no replacement): $\\dfrac{C(4, 2)}{C(6, 2)} = \\dfrac{6}{15} = \\dfrac{2}{5}$.",
+  "solution": "There are $C(6, 2) = 15$ equally likely pairs. “The probability that both balls are red is $\\dfrac{2}{5}$” is correct. There are $C(4, 2) = 6$ such pairs out of $C(6, 2) = 15$. “The probability that at least one ball is red is $\\dfrac{3}{5}$” is incorrect. The complement of “at least one red” is “both blue”: $1 - \\dfrac{1}{15} = \\dfrac{14}{15}$. “The probability that the two balls have the same colour is $\\dfrac{2}{5}$” is incorrect. That value counts only the red pairs. Adding the blue pairs gives $\\dfrac{7}{15}$. “The probability that both balls are red is $\\dfrac{4}{9}$” is incorrect. The balls are drawn together, so there is no replacement and the probability is $\\dfrac{C(4, 2)}{C(6, 2)} = \\dfrac{6}{15} = \\dfrac{2}{5}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1394,7 +1394,7 @@
    "partial",
    null
   ],
-  "solution": "There are $C(7, 2) = 21$ equally likely pairs. The correct statement is “The probability that the two balls have the same colour is $\\dfrac{11}{21}$” — there are $10 + 1 = 11$ such pairs out of $21$. “The probability that the two balls have the same colour is $\\dfrac{10}{21}$” is false: that counts only the black pairs; add the white pairs: $\\dfrac{11}{21}$. “The probability that the two balls have different colours is $\\dfrac{11}{21}$” is false: that is the probability of the same colour; different colours: $\\dfrac{10}{21}$. “The probability that at least one ball is black is $\\dfrac{11}{21}$” is false: the complement of “at least one black” is “both white”: $1 - \\dfrac{1}{21} = \\dfrac{20}{21}$.",
+  "solution": "There are $C(7, 2) = 21$ equally likely pairs. “The probability that the two balls have the same colour is $\\dfrac{11}{21}$” is correct. There are $10 + 1 = 11$ such pairs out of $21$. “The probability that the two balls have the same colour is $\\dfrac{10}{21}$” is incorrect. That value counts only the black pairs. Adding the white pairs gives $\\dfrac{11}{21}$. “The probability that the two balls have different colours is $\\dfrac{11}{21}$” is incorrect. The value $\\dfrac{11}{21}$ is the probability of the same colour. The probability of different colours is $\\dfrac{10}{21}$. “The probability that at least one ball is black is $\\dfrac{11}{21}$” is incorrect. The complement of “at least one black” is “both white”: $1 - \\dfrac{1}{21} = \\dfrac{20}{21}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1432,7 +1432,7 @@
    "partial",
    "replacement"
   ],
-  "solution": "There are $C(5, 2) = 10$ equally likely pairs. The correct statement is “The probability that at least one ball is red is $\\dfrac{7}{10}$” — it is $1 - P(\\text{both blue}) = 1 - \\dfrac{3}{10}$. “The probability that the two balls have different colours is $\\dfrac{2}{5}$” is false: that is the probability of the same colour; different colours: $\\dfrac{3}{5}$. “The probability that both balls are red is $\\dfrac{4}{25}$” is false: the balls are drawn together (no replacement): $\\dfrac{C(2, 2)}{C(5, 2)} = \\dfrac{1}{10}$. “The probability that at least one ball is red is $\\dfrac{3}{5}$” is false: that is “exactly one red”; add the case of two red balls: $\\dfrac{7}{10}$.",
+  "solution": "There are $C(5, 2) = 10$ equally likely pairs. “The probability that at least one ball is red is $\\dfrac{7}{10}$” is correct. It is $1 - P(\\text{both blue}) = 1 - \\dfrac{3}{10} = \\dfrac{7}{10}$. “The probability that the two balls have different colours is $\\dfrac{2}{5}$” is incorrect. The value $\\dfrac{2}{5}$ is the probability of the same colour. The probability of different colours is $\\dfrac{3}{5}$. “The probability that both balls are red is $\\dfrac{4}{25}$” is incorrect. The balls are drawn together, so there is no replacement and the probability is $\\dfrac{C(2, 2)}{C(5, 2)} = \\dfrac{1}{10}$. “The probability that at least one ball is red is $\\dfrac{3}{5}$” is incorrect. That value is the probability of exactly one red ball. Adding the case of two red balls gives $\\dfrac{7}{10}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1470,7 +1470,7 @@
    null,
    "replacement"
   ],
-  "solution": "There are $C(9, 2) = 36$ equally likely pairs. The correct statement is “The probability that both balls are red is $\\dfrac{1}{6}$” — there are $C(4, 2) = 6$ such pairs out of $C(9, 2) = 36$. “The probability that the two balls have different colours is $\\dfrac{5}{18}$” is false: that counts only one of the two orders; the probability is $\\dfrac{20}{36} = \\dfrac{5}{9}$. “The probability that at least one ball is red is $\\dfrac{5}{6}$” is false: the complement of “at least one red” is “both blue”: $1 - \\dfrac{5}{18} = \\dfrac{13}{18}$. “The probability that both balls are red is $\\dfrac{16}{81}$” is false: the balls are drawn together (no replacement): $\\dfrac{C(4, 2)}{C(9, 2)} = \\dfrac{6}{36} = \\dfrac{1}{6}$.",
+  "solution": "There are $C(9, 2) = 36$ equally likely pairs. “The probability that both balls are red is $\\dfrac{1}{6}$” is correct. There are $C(4, 2) = 6$ such pairs out of $C(9, 2) = 36$. “The probability that the two balls have different colours is $\\dfrac{5}{18}$” is incorrect. The pairs are unordered, so there are $20$ such pairs out of $36$ and the probability is $\\dfrac{20}{36} = \\dfrac{5}{9}$. “The probability that at least one ball is red is $\\dfrac{5}{6}$” is incorrect. The complement of “at least one red” is “both blue”: $1 - \\dfrac{5}{18} = \\dfrac{13}{18}$. “The probability that both balls are red is $\\dfrac{16}{81}$” is incorrect. The balls are drawn together, so there is no replacement and the probability is $\\dfrac{C(4, 2)}{C(9, 2)} = \\dfrac{6}{36} = \\dfrac{1}{6}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1508,7 +1508,7 @@
    "complement",
    "partial"
   ],
-  "solution": "There are $C(8, 2) = 28$ equally likely pairs. The correct statement is “The probability that the two balls have the same colour is $\\dfrac{13}{28}$” — there are $3 + 10 = 13$ such pairs out of $28$. “The probability that the two balls have the same colour is $\\dfrac{3}{28}$” is false: that counts only the red pairs; add the blue pairs: $\\dfrac{13}{28}$. “The probability that the two balls have different colours is $\\dfrac{13}{28}$” is false: that is the probability of the same colour; different colours: $\\dfrac{15}{28}$. “The probability that at least one ball is red is $\\dfrac{15}{28}$” is false: that is “exactly one red”; add the case of two red balls: $\\dfrac{9}{14}$.",
+  "solution": "There are $C(8, 2) = 28$ equally likely pairs. “The probability that the two balls have the same colour is $\\dfrac{13}{28}$” is correct. There are $3 + 10 = 13$ such pairs out of $28$. “The probability that the two balls have the same colour is $\\dfrac{3}{28}$” is incorrect. That value counts only the red pairs. Adding the blue pairs gives $\\dfrac{13}{28}$. “The probability that the two balls have different colours is $\\dfrac{13}{28}$” is incorrect. The value $\\dfrac{13}{28}$ is the probability of the same colour. The probability of different colours is $\\dfrac{15}{28}$. “The probability that at least one ball is red is $\\dfrac{15}{28}$” is incorrect. That value is the probability of exactly one red ball. Adding the case of two red balls gives $\\dfrac{9}{14}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",
@@ -1546,7 +1546,7 @@
    "order",
    null
   ],
-  "solution": "There are $C(7, 2) = 21$ equally likely pairs. The correct statement is “The probability that at least one ball is green is $\\dfrac{6}{7}$” — it is $1 - P(\\text{both white}) = 1 - \\dfrac{1}{7}$. “The probability that the two balls have different colours is $\\dfrac{2}{7}$” is false: that counts only one of the two orders; the probability is $\\dfrac{12}{21} = \\dfrac{4}{7}$. “The probability that at least one ball is green is $\\dfrac{4}{7}$” is false: that is “exactly one green”; add the case of two green balls: $\\dfrac{6}{7}$. “The probability that the two balls have the same colour is $\\dfrac{2}{7}$” is false: that counts only the green pairs; add the white pairs: $\\dfrac{3}{7}$.",
+  "solution": "There are $C(7, 2) = 21$ equally likely pairs. “The probability that at least one ball is green is $\\dfrac{6}{7}$” is correct. It is $1 - P(\\text{both white}) = 1 - \\dfrac{1}{7} = \\dfrac{6}{7}$. “The probability that the two balls have different colours is $\\dfrac{2}{7}$” is incorrect. The pairs are unordered, so there are $12$ such pairs out of $21$ and the probability is $\\dfrac{12}{21} = \\dfrac{4}{7}$. “The probability that at least one ball is green is $\\dfrac{4}{7}$” is incorrect. That value is the probability of exactly one green ball. Adding the case of two green balls gives $\\dfrac{6}{7}$. “The probability that the two balls have the same colour is $\\dfrac{2}{7}$” is incorrect. That value counts only the green pairs. Adding the white pairs gives $\\dfrac{3}{7}$.",
   "video": "V46",
   "version": "a",
   "domain": "PRB",

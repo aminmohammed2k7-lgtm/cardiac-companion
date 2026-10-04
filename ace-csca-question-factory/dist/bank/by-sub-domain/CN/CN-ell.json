@@ -330,7 +330,7 @@
    "axis",
    null
   ],
-  "solution": "$2a = 10$ gives $a = 5$; the foci give $c = 1$. Then $b^2 = a^2 - c^2 = 24$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{24} + \\dfrac{y^2}{25} = 1$.",
+  "solution": "$2a = 10$ gives $a = 5$, and the foci give $c = 1$. Then $b^2 = a^2 - c^2 = 25 - 1 = 24$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{24} + \\dfrac{y^2}{25} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -368,7 +368,7 @@
    null,
    "sign"
   ],
-  "solution": "$2a = 8$ gives $a = 4$; the foci give $c = 1$. Then $b^2 = a^2 - c^2 = 15$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{16} + \\dfrac{y^2}{15} = 1$.",
+  "solution": "$2a = 8$ gives $a = 4$, and the foci give $c = 1$. Then $b^2 = a^2 - c^2 = 16 - 1 = 15$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{16} + \\dfrac{y^2}{15} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -406,7 +406,7 @@
    "partial",
    null
   ],
-  "solution": "$2a = 10$ gives $a = 5$; the foci give $c = 2$. Then $b^2 = a^2 - c^2 = 21$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{21} + \\dfrac{y^2}{25} = 1$.",
+  "solution": "$2a = 10$ gives $a = 5$, and the foci give $c = 2$. Then $b^2 = a^2 - c^2 = 25 - 4 = 21$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{21} + \\dfrac{y^2}{25} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -444,7 +444,7 @@
    "axis",
    "sign"
   ],
-  "solution": "$2a = 10$ gives $a = 5$; the foci give $c = 2$. Then $b^2 = a^2 - c^2 = 21$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{25} + \\dfrac{y^2}{21} = 1$.",
+  "solution": "$2a = 10$ gives $a = 5$, and the foci give $c = 2$. Then $b^2 = a^2 - c^2 = 25 - 4 = 21$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{25} + \\dfrac{y^2}{21} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -482,7 +482,7 @@
    "partial",
    null
   ],
-  "solution": "$2a = 16$ gives $a = 8$; the foci give $c = 4$. Then $b^2 = a^2 - c^2 = 48$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{64} + \\dfrac{y^2}{48} = 1$.",
+  "solution": "$2a = 16$ gives $a = 8$, and the foci give $c = 4$. Then $b^2 = a^2 - c^2 = 64 - 16 = 48$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{64} + \\dfrac{y^2}{48} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -520,13 +520,13 @@
    "axis",
    null
   ],
-  "solution": "Focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{4}{5}$: $a = 5$. Then $b^2 = a^2 - c^2 = 9$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{9} + \\dfrac{y^2}{25} = 1$.",
+  "solution": "The focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{4}{5}$ we get $a = 5$. Then $b^2 = a^2 - c^2 = 25 - 16 = 9$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{9} + \\dfrac{y^2}{25} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:0",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "D",
   "answer_value": "$\\dfrac{x^2}{9} + \\dfrac{y^2}{25} = 1$",
   "verified": "eq"
@@ -558,13 +558,13 @@
    "axis",
    "partial"
   ],
-  "solution": "Focal distance $2c = 10$ gives $c = 5$. From $e = \\dfrac{c}{a} = \\dfrac{5}{13}$: $a = 13$. Then $b^2 = a^2 - c^2 = 144$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{169} + \\dfrac{y^2}{144} = 1$.",
+  "solution": "The focal distance $2c = 10$ gives $c = 5$. From $e = \\dfrac{c}{a} = \\dfrac{5}{13}$ we get $a = 13$. Then $b^2 = a^2 - c^2 = 169 - 25 = 144$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{169} + \\dfrac{y^2}{144} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:1",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "A",
   "answer_value": "$\\dfrac{x^2}{169} + \\dfrac{y^2}{144} = 1$",
   "verified": "eq"
@@ -596,13 +596,13 @@
    null,
    "partial"
   ],
-  "solution": "Focal distance $2c = 10$ gives $c = 5$. From $e = \\dfrac{c}{a} = \\dfrac{5}{13}$: $a = 13$. Then $b^2 = a^2 - c^2 = 144$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{144} + \\dfrac{y^2}{169} = 1$.",
+  "solution": "The focal distance $2c = 10$ gives $c = 5$. From $e = \\dfrac{c}{a} = \\dfrac{5}{13}$ we get $a = 13$. Then $b^2 = a^2 - c^2 = 169 - 25 = 144$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{144} + \\dfrac{y^2}{169} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:2",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "C",
   "answer_value": "$\\dfrac{x^2}{144} + \\dfrac{y^2}{169} = 1$",
   "verified": "eq"
@@ -634,13 +634,13 @@
    "axis",
    "sign"
   ],
-  "solution": "Focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{1}{2}$: $a = 8$. Then $b^2 = a^2 - c^2 = 48$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{48} + \\dfrac{y^2}{64} = 1$.",
+  "solution": "The focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{1}{2}$ we get $a = 8$. Then $b^2 = a^2 - c^2 = 64 - 16 = 48$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{48} + \\dfrac{y^2}{64} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:3",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "A",
   "answer_value": "$\\dfrac{x^2}{48} + \\dfrac{y^2}{64} = 1$",
   "verified": "eq"
@@ -672,13 +672,13 @@
    "axis",
    "partial"
   ],
-  "solution": "Focal distance $2c = 12$ gives $c = 6$. From $e = \\dfrac{c}{a} = \\dfrac{3}{5}$: $a = 10$. Then $b^2 = a^2 - c^2 = 64$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{64} + \\dfrac{y^2}{100} = 1$.",
+  "solution": "The focal distance $2c = 12$ gives $c = 6$. From $e = \\dfrac{c}{a} = \\dfrac{3}{5}$ we get $a = 10$. Then $b^2 = a^2 - c^2 = 100 - 36 = 64$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{64} + \\dfrac{y^2}{100} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:4",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "A",
   "answer_value": "$\\dfrac{x^2}{64} + \\dfrac{y^2}{100} = 1$",
   "verified": "eq"
@@ -710,13 +710,13 @@
    "sign",
    "partial"
   ],
-  "solution": "Focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{2}{3}$: $a = 6$. Then $b^2 = a^2 - c^2 = 20$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{20} + \\dfrac{y^2}{36} = 1$.",
+  "solution": "The focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{2}{3}$ we get $a = 6$. Then $b^2 = a^2 - c^2 = 36 - 16 = 20$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{20} + \\dfrac{y^2}{36} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:5",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "B",
   "answer_value": "$\\dfrac{x^2}{20} + \\dfrac{y^2}{36} = 1$",
   "verified": "eq"
@@ -748,13 +748,13 @@
    null,
    "axis"
   ],
-  "solution": "Focal distance $2c = 4$ gives $c = 2$. From $e = \\dfrac{c}{a} = \\dfrac{2}{3}$: $a = 3$. Then $b^2 = a^2 - c^2 = 5$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{9} + \\dfrac{y^2}{5} = 1$.",
+  "solution": "The focal distance $2c = 4$ gives $c = 2$. From $e = \\dfrac{c}{a} = \\dfrac{2}{3}$ we get $a = 3$. Then $b^2 = a^2 - c^2 = 9 - 4 = 5$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{9} + \\dfrac{y^2}{5} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:6~2",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "C",
   "answer_value": "$\\dfrac{x^2}{9} + \\dfrac{y^2}{5} = 1$",
   "verified": "eq"
@@ -786,13 +786,13 @@
    "sign",
    "partial"
   ],
-  "solution": "Focal distance $2c = 2$ gives $c = 1$. From $e = \\dfrac{c}{a} = \\dfrac{1}{3}$: $a = 3$. Then $b^2 = a^2 - c^2 = 8$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{9} + \\dfrac{y^2}{8} = 1$.",
+  "solution": "The focal distance $2c = 2$ gives $c = 1$. From $e = \\dfrac{c}{a} = \\dfrac{1}{3}$ we get $a = 3$. Then $b^2 = a^2 - c^2 = 9 - 1 = 8$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{9} + \\dfrac{y^2}{8} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:7~1",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "A",
   "answer_value": "$\\dfrac{x^2}{9} + \\dfrac{y^2}{8} = 1$",
   "verified": "eq"
@@ -824,13 +824,13 @@
    "axis",
    null
   ],
-  "solution": "Focal distance $2c = 4$ gives $c = 2$. From $e = \\dfrac{c}{a} = \\dfrac{2}{5}$: $a = 5$. Then $b^2 = a^2 - c^2 = 21$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{21} + \\dfrac{y^2}{25} = 1$.",
+  "solution": "The focal distance $2c = 4$ gives $c = 2$. From $e = \\dfrac{c}{a} = \\dfrac{2}{5}$ we get $a = 5$. Then $b^2 = a^2 - c^2 = 25 - 4 = 21$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{21} + \\dfrac{y^2}{25} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:8",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "D",
   "answer_value": "$\\dfrac{x^2}{21} + \\dfrac{y^2}{25} = 1$",
   "verified": "eq"
@@ -862,13 +862,13 @@
    "axis",
    "partial"
   ],
-  "solution": "Focal distance $2c = 4$ gives $c = 2$. From $e = \\dfrac{c}{a} = \\dfrac{1}{2}$: $a = 4$. Then $b^2 = a^2 - c^2 = 12$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{12} + \\dfrac{y^2}{16} = 1$.",
+  "solution": "The focal distance $2c = 4$ gives $c = 2$. From $e = \\dfrac{c}{a} = \\dfrac{1}{2}$ we get $a = 4$. Then $b^2 = a^2 - c^2 = 16 - 4 = 12$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{12} + \\dfrac{y^2}{16} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:9",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "B",
   "answer_value": "$\\dfrac{x^2}{12} + \\dfrac{y^2}{16} = 1$",
   "verified": "eq"
@@ -900,13 +900,13 @@
    "partial",
    "axis"
   ],
-  "solution": "Focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{4}{5}$: $a = 5$. Then $b^2 = a^2 - c^2 = 9$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$.",
+  "solution": "The focal distance $2c = 8$ gives $c = 4$. From $e = \\dfrac{c}{a} = \\dfrac{4}{5}$ we get $a = 5$. Then $b^2 = a^2 - c^2 = 25 - 16 = 9$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.r09",
   "seed": "bank:1:CN-ell.r09:10~2",
-  "form": "Centre O, the axis of the foci, the focal distance and e → the equation",
+  "form": "Center O, the axis of the foci, the focal distance and e → the equation",
   "answer_letter": "B",
   "answer_value": "$\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$",
   "verified": "eq"
@@ -938,7 +938,7 @@
    "sign",
    "axis"
   ],
-  "solution": "The given ellipse has $c^2 = 16 - 12 = 4$, and the same foci mean the same $c$. Minor axis $2b = 2\\sqrt{5}$ gives $b^2 = 5$. Then $a^2 = b^2 + c^2 = 9$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{9} + \\dfrac{y^2}{5} = 1$.",
+  "solution": "The given ellipse has $c^2 = 16 - 12 = 4$, and the same foci mean the same $c$. Minor axis $2b = 2\\sqrt{5}$ gives $b^2 = 5$. Then $a^2 = b^2 + c^2 = 5 + 4 = 9$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{9} + \\dfrac{y^2}{5} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -976,7 +976,7 @@
    null,
    "sign"
   ],
-  "solution": "The given ellipse has $c^2 = 36 - 20 = 16$, and the same foci mean the same $c$. Minor axis $2b = 2\\sqrt{6}$ gives $b^2 = 6$. Then $a^2 = b^2 + c^2 = 22$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{22} + \\dfrac{y^2}{6} = 1$.",
+  "solution": "The given ellipse has $c^2 = 36 - 20 = 16$, and the same foci mean the same $c$. Minor axis $2b = 2\\sqrt{6}$ gives $b^2 = 6$. Then $a^2 = b^2 + c^2 = 6 + 16 = 22$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{22} + \\dfrac{y^2}{6} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1014,7 +1014,7 @@
    "partial",
    "sign"
   ],
-  "solution": "The given ellipse has $c^2 = 4 - 2 = 2$, and the same foci mean the same $c$. Minor axis $2b = 4\\sqrt{5}$ gives $b^2 = 20$. Then $a^2 = b^2 + c^2 = 22$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{20} + \\dfrac{y^2}{22} = 1$.",
+  "solution": "The given ellipse has $c^2 = 4 - 2 = 2$, and the same foci mean the same $c$. Minor axis $2b = 4\\sqrt{5}$ gives $b^2 = 20$. Then $a^2 = b^2 + c^2 = 20 + 2 = 22$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{20} + \\dfrac{y^2}{22} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1052,7 +1052,7 @@
    "sign",
    "partial"
   ],
-  "solution": "The given ellipse has $c^2 = 7 - 3 = 4$, and the same foci mean the same $c$. Minor axis $2b = 2\\sqrt{6}$ gives $b^2 = 6$. Then $a^2 = b^2 + c^2 = 10$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{6} + \\dfrac{y^2}{10} = 1$.",
+  "solution": "The given ellipse has $c^2 = 7 - 3 = 4$, and the same foci mean the same $c$. Minor axis $2b = 2\\sqrt{6}$ gives $b^2 = 6$. Then $a^2 = b^2 + c^2 = 6 + 4 = 10$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{6} + \\dfrac{y^2}{10} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1090,7 +1090,7 @@
    "sign",
    "partial"
   ],
-  "solution": "The given ellipse has $c^2 = 4 - 1 = 3$, and the same foci mean the same $c$. Minor axis $2b = 4\\sqrt{2}$ gives $b^2 = 8$. Then $a^2 = b^2 + c^2 = 11$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{11} + \\dfrac{y^2}{8} = 1$.",
+  "solution": "The given ellipse has $c^2 = 4 - 1 = 3$, and the same foci mean the same $c$. Minor axis $2b = 4\\sqrt{2}$ gives $b^2 = 8$. Then $a^2 = b^2 + c^2 = 8 + 3 = 11$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{11} + \\dfrac{y^2}{8} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1128,7 +1128,7 @@
    "sign",
    "half"
   ],
-  "solution": "Here $a^2 = 4$ (under $y^2$), $b^2 = 2$ and $c^2 = 2$. The correct statement is “Its foci are $(0, \\pm \\sqrt{2})$” — $c^2 = 4 - 2 = 2$ and the larger denominator is under $y^2$. “Its focal distance is $\\sqrt{2}$” is false: that is $c$; the focal distance is $2c = 2\\sqrt{2}$. “Its foci are $(0, \\pm \\sqrt{6})$” is false: for an ellipse $c^2 = a^2 - b^2$, not $a^2 + b^2$. “The length of its major axis is $2$” is false: that is $a$; the major axis is $2a = 4$.",
+  "solution": "Here $a^2 = 4$ is under $y^2$, $b^2 = 2$, and $c^2 = a^2 - b^2 = 2$. “Its foci are $(0, \\pm \\sqrt{2})$” is correct. $c^2 = 4 - 2 = 2$, so $c = \\sqrt{2}$, and the foci are on the $y$-axis because the larger denominator is under $y^2$. “Its focal distance is $\\sqrt{2}$” is incorrect. $c = \\sqrt{2}$, so the focal distance is $2c = 2\\sqrt{2}$. “Its foci are $(0, \\pm \\sqrt{6})$” is incorrect. For an ellipse $c^2 = a^2 - b^2 = 2$, so the foci are $(0, \\pm \\sqrt{2})$. “The length of its major axis is $2$” is incorrect. $a = 2$, so the major axis is $2a = 4$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1166,7 +1166,7 @@
    null,
    "axis"
   ],
-  "solution": "Here $a^2 = 12$ (under $y^2$), $b^2 = 3$ and $c^2 = 9$. The correct statement is “The length of its major axis is $4\\sqrt{3}$” — $a^2 = 12$, so $2a = 4\\sqrt{3}$. “The length of its minor axis is $4\\sqrt{3}$” is false: that is the major axis; the minor axis is $2b = 2\\sqrt{3}$. “Its eccentricity is $\\sqrt{3}$” is false: divide by $a$, not $b$: $e = \\dfrac{c}{a} = \\dfrac{\\sqrt{3}}{2}$. “The length of its minor axis is $3$” is false: that is $b^2$; the minor axis is $2b = 2\\sqrt{3}$.",
+  "solution": "Here $a^2 = 12$ is under $y^2$, $b^2 = 3$, and $c^2 = a^2 - b^2 = 9$. “The length of its major axis is $4\\sqrt{3}$” is correct. $a^2 = 12$, so $2a = 4\\sqrt{3}$. “The length of its minor axis is $4\\sqrt{3}$” is incorrect. The major axis has length $2a = 4\\sqrt{3}$, and the minor axis is $2b = 2\\sqrt{3}$. “Its eccentricity is $\\sqrt{3}$” is incorrect. The eccentricity is $e = \\dfrac{c}{a} = \\dfrac{\\sqrt{3}}{2}$. The value $\\sqrt{3}$ is $\\dfrac{c}{b}$. “The length of its minor axis is $3$” is incorrect. $b^2 = 3$, so $b = \\sqrt{3}$ and the minor axis is $2b = 2\\sqrt{3}$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1204,7 +1204,7 @@
    "axis",
    null
   ],
-  "solution": "Here $a^2 = 169$ (under $x^2$), $b^2 = 25$ and $c^2 = 144$. The correct statement is “Its foci are $(\\pm 12, 0)$” — $c^2 = 169 - 25 = 144$ and the larger denominator is under $x^2$. “Its foci are $(0, \\pm 12)$” is false: the foci are on the $x$-axis (the larger denominator is under $x^2$): $(\\pm 12, 0)$. “Its eccentricity is $\\dfrac{12}{5}$” is false: divide by $a$, not $b$: $e = \\dfrac{c}{a} = \\dfrac{12}{13}$. “The length of its minor axis is $26$” is false: that is the major axis; the minor axis is $2b = 10$.",
+  "solution": "Here $a^2 = 169$ is under $x^2$, $b^2 = 25$, and $c^2 = a^2 - b^2 = 144$. “Its foci are $(\\pm 12, 0)$” is correct. $c^2 = 169 - 25 = 144$, so $c = 12$, and the foci are on the $x$-axis because the larger denominator is under $x^2$. “Its foci are $(0, \\pm 12)$” is incorrect. The larger denominator is under $x^2$, so the foci are on the $x$-axis, at $(\\pm 12, 0)$. “Its eccentricity is $\\dfrac{12}{5}$” is incorrect. The eccentricity is $e = \\dfrac{c}{a} = \\dfrac{12}{13}$. The value $\\dfrac{12}{5}$ is $\\dfrac{c}{b}$. “The length of its minor axis is $26$” is incorrect. The major axis has length $2a = 26$, and the minor axis is $2b = 10$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1242,7 +1242,7 @@
    "axis",
    "axis"
   ],
-  "solution": "Here $a^2 = 18$ (under $x^2$), $b^2 = 9$ and $c^2 = 9$. The correct statement is “The length of its major axis is $6\\sqrt{2}$” — $a^2 = 18$, so $2a = 6\\sqrt{2}$. “Its foci are $(0, \\pm 3)$” is false: the foci are on the $x$-axis (the larger denominator is under $x^2$): $(\\pm 3, 0)$. “Its focal distance is $3$” is false: that is $c$; the focal distance is $2c = 6$. “The length of its major axis is $6$” is false: that is the minor axis; the major axis is $2a = 6\\sqrt{2}$.",
+  "solution": "Here $a^2 = 18$ is under $x^2$, $b^2 = 9$, and $c^2 = a^2 - b^2 = 9$. “The length of its major axis is $6\\sqrt{2}$” is correct. $a^2 = 18$, so $2a = 6\\sqrt{2}$. “Its foci are $(0, \\pm 3)$” is incorrect. The larger denominator is under $x^2$, so the foci are on the $x$-axis, at $(\\pm 3, 0)$. “Its focal distance is $3$” is incorrect. $c = 3$, so the focal distance is $2c = 6$. “The length of its major axis is $6$” is incorrect. The minor axis has length $2b = 6$, and the major axis is $2a = 6\\sqrt{2}$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1280,7 +1280,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Here $a^2 = 169$ (under $x^2$), $b^2 = 25$ and $c^2 = 144$. The correct statement is “Its eccentricity is $\\dfrac{12}{13}$” — $e = \\dfrac{c}{a} = \\dfrac{12}{13}$. “The length of its minor axis is $25$” is false: that is $b^2$; the minor axis is $2b = 10$. “Its foci are $(0, \\pm 12)$” is false: the foci are on the $x$-axis (the larger denominator is under $x^2$): $(\\pm 12, 0)$. “Its foci are $(\\pm \\sqrt{194}, 0)$” is false: for an ellipse $c^2 = a^2 - b^2$, not $a^2 + b^2$.",
+  "solution": "Here $a^2 = 169$ is under $x^2$, $b^2 = 25$, and $c^2 = a^2 - b^2 = 144$. “Its eccentricity is $\\dfrac{12}{13}$” is correct. $e = \\dfrac{c}{a} = \\dfrac{12}{13} = \\dfrac{12}{13}$. “The length of its minor axis is $25$” is incorrect. $b^2 = 25$, so $b = 5$ and the minor axis is $2b = 10$. “Its foci are $(0, \\pm 12)$” is incorrect. The larger denominator is under $x^2$, so the foci are on the $x$-axis, at $(\\pm 12, 0)$. “Its foci are $(\\pm \\sqrt{194}, 0)$” is incorrect. For an ellipse $c^2 = a^2 - b^2 = 144$, so the foci are $(\\pm 12, 0)$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1318,7 +1318,7 @@
    null,
    "companion"
   ],
-  "solution": "Nothing says which of $p$, $q$ is larger, so only statements that hold in both cases are correct. The correct statement is “It is symmetric about the origin” — replacing $(x, y)$ by $(-x, -y)$ leaves the equation unchanged. “Its eccentricity is greater than $1$” is false: for an ellipse $0 < e < 1$. “The length of its major axis is $2\\sqrt{p}$” is false: only when $p > q$. “Its focal distance is $2\\sqrt{p - q}$” is false: only when $p > q$; in general it is $2\\sqrt{|p - q|}$.",
+  "solution": "The question does not say which of $p$ and $q$ is larger, so a correct statement must hold in both cases. “It is symmetric about the origin” is correct. Replacing $(x, y)$ by $(-x, -y)$ leaves the equation unchanged. “Its eccentricity is greater than $1$” is incorrect. For an ellipse $0 < e < 1$. “The length of its major axis is $2\\sqrt{p}$” is incorrect. This holds only when $p > q$. If $p < q$, the major axis is $2\\sqrt{q}$. “Its focal distance is $2\\sqrt{p - q}$” is incorrect. This holds only when $p > q$. In general the focal distance is $2\\sqrt{|p - q|}$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1356,7 +1356,7 @@
    null,
    "axis"
   ],
-  "solution": "Nothing says which of $m$, $n$ is larger, so only statements that hold in both cases are correct. The correct statement is “It is symmetric about the origin” — replacing $(x, y)$ by $(-x, -y)$ leaves the equation unchanged. “The length of its major axis is $2\\sqrt{m}$” is false: only when $m > n$. “Its focal distance is $2\\sqrt{m - n}$” is false: only when $m > n$; in general it is $2\\sqrt{|m - n|}$. “Its eccentricity is greater than $1$” is false: for an ellipse $0 < e < 1$.",
+  "solution": "The question does not say which of $m$ and $n$ is larger, so a correct statement must hold in both cases. “It is symmetric about the origin” is correct. Replacing $(x, y)$ by $(-x, -y)$ leaves the equation unchanged. “The length of its major axis is $2\\sqrt{m}$” is incorrect. This holds only when $m > n$. If $m < n$, the major axis is $2\\sqrt{n}$. “Its focal distance is $2\\sqrt{m - n}$” is incorrect. This holds only when $m > n$. In general the focal distance is $2\\sqrt{|m - n|}$. “Its eccentricity is greater than $1$” is incorrect. For an ellipse $0 < e < 1$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1394,7 +1394,7 @@
    "axis",
    "companion"
   ],
-  "solution": "Nothing says which of $s$, $t$ is larger, so only statements that hold in both cases are correct. The correct statement is “It is symmetric about the origin” — replacing $(x, y)$ by $(-x, -y)$ leaves the equation unchanged. “Its foci are on the $y$-axis” is false: only when $t > s$. “Its foci are on the $x$-axis” is false: only when $s > t$; if $s < t$ they are on the $y$-axis. “Its eccentricity is greater than $1$” is false: for an ellipse $0 < e < 1$.",
+  "solution": "The question does not say which of $s$ and $t$ is larger, so a correct statement must hold in both cases. “It is symmetric about the origin” is correct. Replacing $(x, y)$ by $(-x, -y)$ leaves the equation unchanged. “Its foci are on the $y$-axis” is incorrect. This holds only when $t > s$. If $s > t$, the foci are on the $x$-axis. “Its foci are on the $x$-axis” is incorrect. This holds only when $s > t$. If $s < t$, the foci are on the $y$-axis. “Its eccentricity is greater than $1$” is incorrect. For an ellipse $0 < e < 1$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1432,7 +1432,7 @@
    "companion",
    "axis"
   ],
-  "solution": "Nothing says which of $s$, $t$ is larger, so only statements that hold in both cases are correct. The correct statement is “It is symmetric about the $x$-axis and about the $y$-axis” — only $x^2$ and $y^2$ appear. “It passes through the point $(s, 0)$” is false: the $x$-intercepts are $\\pm\\sqrt{s}$, not $\\pm s$. “Its eccentricity is greater than $1$” is false: for an ellipse $0 < e < 1$. “Its foci are on the $x$-axis” is false: only when $s > t$; if $s < t$ they are on the $y$-axis.",
+  "solution": "The question does not say which of $s$ and $t$ is larger, so a correct statement must hold in both cases. “It is symmetric about the $x$-axis and about the $y$-axis” is correct. Replacing $x$ by $-x$, or $y$ by $-y$, leaves the equation unchanged. “It passes through the point $(s, 0)$” is incorrect. The $x$-intercepts are $\\pm\\sqrt{s}$, not $\\pm s$. “Its eccentricity is greater than $1$” is incorrect. For an ellipse $0 < e < 1$. “Its foci are on the $x$-axis” is incorrect. This holds only when $s > t$. If $s < t$, the foci are on the $y$-axis.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1470,7 +1470,7 @@
    "companion",
    null
   ],
-  "solution": "Nothing says which of $s$, $t$ is larger, so only statements that hold in both cases are correct. The correct statement is “It passes through the point $(0, -\\sqrt{t})$” — put $x = 0$: $y^2 = t$. “Its foci are on the $y$-axis” is false: only when $t > s$. “Its eccentricity is greater than $1$” is false: for an ellipse $0 < e < 1$. “The length of its major axis is $2\\sqrt{s}$” is false: only when $s > t$.",
+  "solution": "The question does not say which of $s$ and $t$ is larger, so a correct statement must hold in both cases. “It passes through the point $(0, -\\sqrt{t})$” is correct. Putting $x = 0$ gives $y^2 = t$, so $y = \\pm\\sqrt{t}$. “Its foci are on the $y$-axis” is incorrect. This holds only when $t > s$. If $s > t$, the foci are on the $x$-axis. “Its eccentricity is greater than $1$” is incorrect. For an ellipse $0 < e < 1$. “The length of its major axis is $2\\sqrt{s}$” is incorrect. This holds only when $s > t$. If $s < t$, the major axis is $2\\sqrt{t}$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
@@ -1508,7 +1508,7 @@
    "partial",
    null
   ],
-  "solution": "A point on an axis is a vertex, but it may be on the major or on the minor axis. Case 1: $a = 2$, $b = 1$ gives $x^2 + \\dfrac{y^2}{4} = 1$. Case 2: $b = 2$, $a = 4$ gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{4} = 1$. Both are answers; an option with one case only is incomplete.",
+  "solution": "A point on an axis is a vertex, but it can be an end of the major axis or of the minor axis. If it is on the major axis, then $a = 2$ and $b = 1$, which gives $x^2 + \\dfrac{y^2}{4} = 1$. If it is on the minor axis, then $b = 2$ and $a = 4$, which gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{4} = 1$. Both equations are possible, so an option with only one of them is incomplete.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1546,7 +1546,7 @@
    "partial",
    "partial"
   ],
-  "solution": "A point on an axis is a vertex, but it may be on the major or on the minor axis. Case 1: $a = 4$, $b = 2$ gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{4} = 1$. Case 2: $b = 4$, $a = 8$ gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{64} = 1$. Both are answers; an option with one case only is incomplete.",
+  "solution": "A point on an axis is a vertex, but it can be an end of the major axis or of the minor axis. If it is on the major axis, then $a = 4$ and $b = 2$, which gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{4} = 1$. If it is on the minor axis, then $b = 4$ and $a = 8$, which gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{64} = 1$. Both equations are possible, so an option with only one of them is incomplete.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1584,7 +1584,7 @@
    "partial",
    null
   ],
-  "solution": "A point on an axis is a vertex, but it may be on the major or on the minor axis. Case 1: $a = 4$, $b = 2$ gives $\\dfrac{x^2}{4} + \\dfrac{y^2}{16} = 1$. Case 2: $b = 4$, $a = 8$ gives $\\dfrac{x^2}{64} + \\dfrac{y^2}{16} = 1$. Both are answers; an option with one case only is incomplete.",
+  "solution": "A point on an axis is a vertex, but it can be an end of the major axis or of the minor axis. If it is on the major axis, then $a = 4$ and $b = 2$, which gives $\\dfrac{x^2}{4} + \\dfrac{y^2}{16} = 1$. If it is on the minor axis, then $b = 4$ and $a = 8$, which gives $\\dfrac{x^2}{64} + \\dfrac{y^2}{16} = 1$. Both equations are possible, so an option with only one of them is incomplete.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1622,7 +1622,7 @@
    null,
    "companion"
   ],
-  "solution": "$c = ae = 6$, so $b^2 = a^2 - c^2 = 64$ and $b = 8$.",
+  "solution": "$c = ae = 10 \\cdot \\dfrac{3}{5} = 6$, so $b^2 = a^2 - c^2 = 100 - 36 = 64$ and $b = 8$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1660,7 +1660,7 @@
    null,
    "half"
   ],
-  "solution": "$c = ae = 2$, so $b^2 = a^2 - c^2 = 5$ and $b = \\sqrt{5}$.",
+  "solution": "$c = ae = 3 \\cdot \\dfrac{2}{3} = 2$, so $b^2 = a^2 - c^2 = 9 - 4 = 5$ and $b = \\sqrt{5}$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1698,7 +1698,7 @@
    "slip",
    "sign"
   ],
-  "solution": "The vertex $(1, 0)$ is on the minor axis, so $b^2 = 1$. From $e^2 = 1 - \\dfrac{b^2}{a^2} = \\dfrac{3}{4}$: $a^2 = 4$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $x^2 + \\dfrac{y^2}{4} = 1$.",
+  "solution": "The vertex $(1, 0)$ is on the minor axis, so $b^2 = 1$. From $e^2 = 1 - \\dfrac{b^2}{a^2} = \\dfrac{3}{4}$ we get $\\dfrac{b^2}{a^2} = \\dfrac{1}{4}$, so $a^2 = 4$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $x^2 + \\dfrac{y^2}{4} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1736,7 +1736,7 @@
    "axis",
    null
   ],
-  "solution": "The vertex $(0, 12)$ is on the minor axis, so $b^2 = 144$. From $e^2 = 1 - \\dfrac{b^2}{a^2} = \\dfrac{25}{169}$: $a^2 = 169$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{169} + \\dfrac{y^2}{144} = 1$.",
+  "solution": "The vertex $(0, 12)$ is on the minor axis, so $b^2 = 144$. From $e^2 = 1 - \\dfrac{b^2}{a^2} = \\dfrac{25}{169}$ we get $\\dfrac{b^2}{a^2} = \\dfrac{144}{169}$, so $a^2 = 169$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{169} + \\dfrac{y^2}{144} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -1774,13 +1774,13 @@
    "true-statement",
    null
   ],
-  "solution": "Here $a^2 = 10$ (under $y^2$), $b^2 = 6$ and $c^2 = 4$. The incorrect statement is “Its foci are $(0, \\pm 4)$” — for an ellipse $c^2 = a^2 - b^2$, not $a^2 + b^2$. The other three statements are true.",
+  "solution": "Here $a^2 = 10$ is under $y^2$, $b^2 = 6$, and $c^2 = a^2 - b^2 = 4$. “Its foci are $(0, \\pm 4)$” is incorrect. For an ellipse $c^2 = a^2 - b^2 = 4$, so the foci are $(0, \\pm 2)$. “Its eccentricity is $\\dfrac{\\sqrt{10}}{5}$” is correct. $e = \\dfrac{c}{a} = \\dfrac{2}{\\sqrt{10}} = \\dfrac{\\sqrt{10}}{5}$. “The length of its major axis is $2\\sqrt{10}$” is correct. $a^2 = 10$, so $2a = 2\\sqrt{10}$. “Its focal distance is $4$” is correct. The focal distance is $2c = 4$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.stmt-n",
   "seed": "bank:1:CN-ell.stmt-n:0",
-  "form": "Which statement about an ellipse with foci on the y-axis is INCORRECT",
+  "form": "Which statement about an ellipse with foci on the y-axis is incorrect",
   "answer_letter": "D",
   "answer_value": "Its foci are $(0, \\pm 4)$",
   "verified": "stmt"
@@ -1812,13 +1812,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "Here $a^2 = 5$ (under $y^2$), $b^2 = 1$ and $c^2 = 4$. The incorrect statement is “The length of its major axis is $\\sqrt{5}$” — that is $a$; the major axis is $2a = 2\\sqrt{5}$. The other three statements are true.",
+  "solution": "Here $a^2 = 5$ is under $y^2$, $b^2 = 1$, and $c^2 = a^2 - b^2 = 4$. “The length of its major axis is $\\sqrt{5}$” is incorrect. $a = \\sqrt{5}$, so the major axis is $2a = 2\\sqrt{5}$. “Its focal distance is $4$” is correct. The focal distance is $2c = 4$. “The length of its minor axis is $2$” is correct. $b^2 = 1$, so $2b = 2$. “Its foci are $(0, \\pm 2)$” is correct. $c^2 = 5 - 1 = 4$, so $c = 2$, and the foci are on the $y$-axis because the larger denominator is under $y^2$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.stmt-n",
   "seed": "bank:1:CN-ell.stmt-n:1",
-  "form": "Which statement about an ellipse with foci on the y-axis is INCORRECT",
+  "form": "Which statement about an ellipse with foci on the y-axis is incorrect",
   "answer_letter": "A",
   "answer_value": "The length of its major axis is $\\sqrt{5}$",
   "verified": "stmt"
@@ -1850,13 +1850,13 @@
    null,
    "axis"
   ],
-  "solution": "$a^2 = 25$ is the larger denominator (it is under $y^2$), $b^2 = 9$, $c^2 = 16$. So $e = \\dfrac{c}{a} = \\dfrac{4}{5}$, a number between $0$ and $1$.",
+  "solution": "The larger denominator is $a^2 = 25$, under $y^2$. So $b^2 = 9$ and $c^2 = a^2 - b^2 = 16$, which gives $e = \\dfrac{c}{a} = \\dfrac{4}{5} = \\dfrac{4}{5}$, a number between $0$ and $1$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.ecc",
   "seed": "bank:1:CN-ell.ecc:0",
-  "form": "Eccentricity of an ellipse whose foci are on the y-axis (axis trap)",
+  "form": "Eccentricity of an ellipse whose foci are on the y-axis (a² is under y²)",
   "answer_letter": "C",
   "answer_value": "$\\dfrac{4}{5}$",
   "verified": "val"
@@ -1888,13 +1888,13 @@
    "reciprocal",
    null
   ],
-  "solution": "$a^2 = 49$ is the larger denominator, $b^2 = 24$, $c^2 = 25$. So $e = \\dfrac{c}{a} = \\dfrac{5}{7}$, a number between $0$ and $1$.",
+  "solution": "The larger denominator is $a^2 = 49$. So $b^2 = 24$ and $c^2 = a^2 - b^2 = 25$, which gives $e = \\dfrac{c}{a} = \\dfrac{5}{7} = \\dfrac{5}{7}$, a number between $0$ and $1$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.ecc",
   "seed": "bank:1:CN-ell.ecc:1",
-  "form": "Eccentricity of an ellipse whose foci are on the y-axis (axis trap)",
+  "form": "Eccentricity of an ellipse whose foci are on the y-axis (a² is under y²)",
   "answer_letter": "D",
   "answer_value": "$\\dfrac{5}{7}$",
   "verified": "val"
@@ -1926,13 +1926,13 @@
    "companion",
    null
   ],
-  "solution": "$a^2 = 49$ is the larger denominator (it is under $y^2$), $b^2 = 24$, $c^2 = 25$. So $e = \\dfrac{c}{a} = \\dfrac{5}{7}$, a number between $0$ and $1$.",
+  "solution": "The larger denominator is $a^2 = 49$, under $y^2$. So $b^2 = 24$ and $c^2 = a^2 - b^2 = 25$, which gives $e = \\dfrac{c}{a} = \\dfrac{5}{7} = \\dfrac{5}{7}$, a number between $0$ and $1$.",
   "video": "V37",
   "version": "a",
   "domain": "CN",
   "template": "CN-ell.ecc",
   "seed": "bank:1:CN-ell.ecc:2",
-  "form": "Eccentricity of an ellipse whose foci are on the y-axis (axis trap)",
+  "form": "Eccentricity of an ellipse whose foci are on the y-axis (a² is under y²)",
   "answer_letter": "D",
   "answer_value": "$\\dfrac{5}{7}$",
   "verified": "val"
@@ -1964,7 +1964,7 @@
    null,
    "axis"
   ],
-  "solution": "The point $(0, 13)$ lies on the axis of the foci, so it is a vertex of the major axis: $a = 13$. Focal distance $2c = 10$ gives $c = 5$, so $b^2 = 144$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{144} + \\dfrac{y^2}{169} = 1$.",
+  "solution": "The point $(0, 13)$ lies on the axis of the foci, so it is a vertex of the major axis: $a = 13$. Focal distance $2c = 10$ gives $c = 5$, so $b^2 = a^2 - c^2 = 169 - 25 = 144$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{144} + \\dfrac{y^2}{169} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -2002,7 +2002,7 @@
    "partial",
    "axis"
   ],
-  "solution": "The point $(0, 8)$ lies on the axis of the foci, so it is a vertex of the major axis: $a = 8$. Focal distance $2c = 8$ gives $c = 4$, so $b^2 = 48$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{48} + \\dfrac{y^2}{64} = 1$.",
+  "solution": "The point $(0, 8)$ lies on the axis of the foci, so it is a vertex of the major axis: $a = 8$. Focal distance $2c = 8$ gives $c = 4$, so $b^2 = a^2 - c^2 = 64 - 16 = 48$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{48} + \\dfrac{y^2}{64} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -2040,7 +2040,7 @@
    null,
    "axis"
   ],
-  "solution": "The point $(-6, 0)$ lies on the axis of the foci, so it is a vertex of the major axis: $a = 6$. Focal distance $2c = 4$ gives $c = 2$, so $b^2 = 32$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{36} + \\dfrac{y^2}{32} = 1$.",
+  "solution": "The point $(-6, 0)$ lies on the axis of the foci, so it is a vertex of the major axis: $a = 6$. Focal distance $2c = 4$ gives $c = 2$, so $b^2 = a^2 - c^2 = 36 - 4 = 32$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{36} + \\dfrac{y^2}{32} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -2078,7 +2078,7 @@
    "sign",
    null
   ],
-  "solution": "$2c = 6$ gives $c = 3$ and $2b = 10$ gives $b = 5$. Then $a^2 = b^2 + c^2 = 34$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{34} + \\dfrac{y^2}{25} = 1$.",
+  "solution": "$2c = 6$ gives $c = 3$ and $2b = 10$ gives $b = 5$. Then $a^2 = b^2 + c^2 = 25 + 9 = 34$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{34} + \\dfrac{y^2}{25} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -2116,7 +2116,7 @@
    "axis",
    null
   ],
-  "solution": "$2c = 10$ gives $c = 5$ and $2b = 2$ gives $b = 1$. Then $a^2 = b^2 + c^2 = 26$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{26} + y^2 = 1$.",
+  "solution": "$2c = 10$ gives $c = 5$ and $2b = 2$ gives $b = 1$. Then $a^2 = b^2 + c^2 = 1 + 25 = 26$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{26} + y^2 = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -2154,7 +2154,7 @@
    "axis",
    "partial"
   ],
-  "solution": "$2c = 4$ gives $c = 2$ and $2b = 6$ gives $b = 3$. Then $a^2 = b^2 + c^2 = 13$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{13} + \\dfrac{y^2}{9} = 1$.",
+  "solution": "$2c = 4$ gives $c = 2$ and $2b = 6$ gives $b = 3$. Then $a^2 = b^2 + c^2 = 9 + 4 = 13$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{13} + \\dfrac{y^2}{9} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",
@@ -2192,7 +2192,7 @@
    "companion",
    "axis"
   ],
-  "solution": "Here $2a = 6$ and $2c = 4$, so $a = 3$, $c = 2$ and $b^2 = a^2 - c^2 = 5$. The correct statement is “Its equation is $\\dfrac{x^2}{5} + \\dfrac{y^2}{9} = 1$” — $a = 3$, $c = 2$, $b^2 = a^2 - c^2 = 5$, and $a^2$ goes under $y^2$. “Its eccentricity is $\\dfrac{3}{2}$” is false: that is $\\dfrac{a}{c}$; an ellipse has $e = \\dfrac{c}{a} = \\dfrac{2}{3} < 1$. “Its foci are $(\\pm 2, 0)$” is false: the foci are on the $y$-axis. “Its equation is $\\dfrac{x^2}{4} + \\dfrac{y^2}{9} = 1$” is false: $c^2$ was used in place of $b^2 = a^2 - c^2 = 5$: $\\dfrac{x^2}{5} + \\dfrac{y^2}{9} = 1$.",
+  "solution": "Here $2a = 6$ and $2c = 4$, so $a = 3$, $c = 2$ and $b^2 = a^2 - c^2 = 5$. “Its equation is $\\dfrac{x^2}{5} + \\dfrac{y^2}{9} = 1$” is correct. $a = 3$, $c = 2$, $b^2 = a^2 - c^2 = 5$, and $a^2$ goes under $y^2$. “Its eccentricity is $\\dfrac{3}{2}$” is incorrect. The value is $\\dfrac{a}{c}$. An ellipse has $e = \\dfrac{c}{a} = \\dfrac{2}{3} < 1$. “Its foci are $(\\pm 2, 0)$” is incorrect. The question says the foci are on the $y$-axis. “Its equation is $\\dfrac{x^2}{4} + \\dfrac{y^2}{9} = 1$” is incorrect. The second denominator is $b^2 = a^2 - c^2 = 5$, not $c^2 = 4$. The equation is $\\dfrac{x^2}{5} + \\dfrac{y^2}{9} = 1$.",
   "video": "V38",
   "version": "a",
   "domain": "CN",

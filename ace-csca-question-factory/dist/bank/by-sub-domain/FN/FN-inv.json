@@ -26,7 +26,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = 2y - 7$. Solve for $y$: $y = \\dfrac{x + 7}{2}$. (The reciprocal $\\dfrac{1}{2x - 7}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 2y - 7$. Solve for $y$: $2y = x + 7$, so $y = \\dfrac{x + 7}{2}$. The reciprocal $\\dfrac{1}{2x - 7}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -64,7 +64,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = 3y - 4$. Solve for $y$: $y = \\dfrac{x + 4}{3}$. (The reciprocal $\\dfrac{1}{3x - 4}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 3y - 4$. Solve for $y$: $3y = x + 4$, so $y = \\dfrac{x + 4}{3}$. The reciprocal $\\dfrac{1}{3x - 4}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -102,7 +102,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = 2y - 2$. Solve for $y$: $y = \\dfrac{x + 2}{2}$. (The reciprocal $\\dfrac{1}{2x - 2}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 2y - 2$. Solve for $y$: $2y = x + 2$, so $y = \\dfrac{x + 2}{2}$. The reciprocal $\\dfrac{1}{2x - 2}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -140,7 +140,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = 4y + 2$. Solve for $y$: $y = \\dfrac{x - 2}{4}$. (The reciprocal $\\dfrac{1}{4x + 2}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 4y + 2$. Solve for $y$: $4y = x - 2$, so $y = \\dfrac{x - 2}{4}$. The reciprocal $\\dfrac{1}{4x + 2}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -178,7 +178,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = 5y - 5$. Solve for $y$: $y = \\dfrac{x + 5}{5}$. (The reciprocal $\\dfrac{1}{5x - 5}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 5y - 5$. Solve for $y$: $5y = x + 5$, so $y = \\dfrac{x + 5}{5}$. The reciprocal $\\dfrac{1}{5x - 5}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -216,7 +216,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = 6y - 4$. Solve for $y$: $y = \\dfrac{x + 4}{6}$. (The reciprocal $\\dfrac{1}{6x - 4}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 6y - 4$. Solve for $y$: $6y = x + 4$, so $y = \\dfrac{x + 4}{6}$. The reciprocal $\\dfrac{1}{6x - 4}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -254,7 +254,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = 7y - 1$. Solve for $y$: $y = \\dfrac{x + 1}{7}$. (The reciprocal $\\dfrac{1}{7x - 1}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 7y - 1$. Solve for $y$: $7y = x + 1$, so $y = \\dfrac{x + 1}{7}$. The reciprocal $\\dfrac{1}{7x - 1}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -292,7 +292,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = 5y + 8$. Solve for $y$: $y = \\dfrac{x - 8}{5}$. (The reciprocal $\\dfrac{1}{5x + 8}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = 5y + 8$. Solve for $y$: $5y = x - 8$, so $y = \\dfrac{x - 8}{5}$. The reciprocal $\\dfrac{1}{5x + 8}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -330,7 +330,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -5 - y^3$, so $y^3 = -5 - x$, hence $y = \\sqrt[3]{-5 - x}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -5 - y^3$, so $y^3 = -5 - x$. Take the cube root of both sides: $y = \\sqrt[3]{-5 - x}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -368,7 +368,7 @@
    "sign",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 2$, so $y^3 = x - 2$, hence $y = \\sqrt[3]{x - 2}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 2$, so $y^3 = x - 2$. Take the cube root of both sides: $y = \\sqrt[3]{x - 2}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -406,7 +406,7 @@
    "near-miss",
    "slip"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 7 - y^3$, so $y^3 = 7 - x$, hence $y = \\sqrt[3]{7 - x}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 7 - y^3$, so $y^3 = 7 - x$. Take the cube root of both sides: $y = \\sqrt[3]{7 - x}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -444,7 +444,7 @@
    "near-miss",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 4y^3$, so $y^3 = \\dfrac{x}{4}$, hence $y = \\sqrt[3]{\\dfrac{x}{4}}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 4y^3$, so $y^3 = \\dfrac{x}{4}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x}{4}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -482,7 +482,7 @@
    "sign",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -2 - y^3$, so $y^3 = -2 - x$, hence $y = \\sqrt[3]{-2 - x}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -2 - y^3$, so $y^3 = -2 - x$. Take the cube root of both sides: $y = \\sqrt[3]{-2 - x}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -520,7 +520,7 @@
    "slip",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 5y^3$, so $y^3 = \\dfrac{x}{5}$, hence $y = \\sqrt[3]{\\dfrac{x}{5}}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 5y^3$, so $y^3 = \\dfrac{x}{5}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x}{5}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -558,7 +558,7 @@
    "near-miss",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 8$, so $y^3 = x - 8$, hence $y = \\sqrt[3]{x - 8}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 8$, so $y^3 = x - 8$. Take the cube root of both sides: $y = \\sqrt[3]{x - 8}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -596,7 +596,7 @@
    "near-miss",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 3y^3$, so $y^3 = \\dfrac{x}{3}$, hence $y = \\sqrt[3]{\\dfrac{x}{3}}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 3y^3$, so $y^3 = \\dfrac{x}{3}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x}{3}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -634,7 +634,7 @@
    "near-miss",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 5$, so $y^3 = x - 5$, hence $y = \\sqrt[3]{x - 5}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 5$, so $y^3 = x - 5$. Take the cube root of both sides: $y = \\sqrt[3]{x - 5}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -672,7 +672,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 6y^3$, so $y^3 = \\dfrac{x}{6}$, hence $y = \\sqrt[3]{\\dfrac{x}{6}}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 6y^3$, so $y^3 = \\dfrac{x}{6}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x}{6}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -710,7 +710,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 6$, so $y^3 = x + 6$, hence $y = \\sqrt[3]{x + 6}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 6$, so $y^3 = x + 6$. Take the cube root of both sides: $y = \\sqrt[3]{x + 6}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -748,7 +748,7 @@
    "sign",
    "slip"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 7$, so $y^3 = x + 7$, hence $y = \\sqrt[3]{x + 7}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 7$, so $y^3 = x + 7$. Take the cube root of both sides: $y = \\sqrt[3]{x + 7}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -786,7 +786,7 @@
    "near-miss",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 2y^3$, so $y^3 = \\dfrac{x}{2}$, hence $y = \\sqrt[3]{\\dfrac{x}{2}}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = 2y^3$, so $y^3 = \\dfrac{x}{2}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x}{2}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -824,7 +824,7 @@
    "near-miss",
    "slip"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -9 - y^3$, so $y^3 = -9 - x$, hence $y = \\sqrt[3]{-9 - x}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -9 - y^3$, so $y^3 = -9 - x$. Take the cube root of both sides: $y = \\sqrt[3]{-9 - x}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -862,7 +862,7 @@
    "sign",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 3$, so $y^3 = x + 3$, hence $y = \\sqrt[3]{x + 3}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 3$, so $y^3 = x + 3$. Take the cube root of both sides: $y = \\sqrt[3]{x + 3}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -900,7 +900,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Solving $x = 3y$ gives $y = \\dfrac{x}{3}$. The domain of the inverse is the range of the original function: as $x$ runs over $[0, 3]$, $3x$ runs over $[0, 9]$.",
+  "solution": "Swap $x$ and $y$: $x = 3y$, so $y = \\dfrac{x}{3}$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[0, 3]$, $3x$ runs from $0$ to $9$. So the inverse is $y = \\dfrac{x}{3},\\ x \\in [0, 9]$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -938,7 +938,7 @@
    "domain",
    null
   ],
-  "solution": "Solving $x = 3y + 2$ gives $y = \\dfrac{x - 2}{3}$. The domain of the inverse is the range of the original function: as $x$ runs over $[-1, 1]$, $3x + 2$ runs over $[-1, 5]$.",
+  "solution": "Swap $x$ and $y$: $x = 3y + 2$, so $y = \\dfrac{x - 2}{3}$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[-1, 1]$, $3x + 2$ runs from $-1$ to $5$. So the inverse is $y = \\dfrac{x - 2}{3},\\ x \\in [-1, 5]$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -976,7 +976,7 @@
    "near-miss",
    "domain"
   ],
-  "solution": "Solving $x = 5y$ gives $y = \\dfrac{x}{5}$. The domain of the inverse is the range of the original function: as $x$ runs over $[-1, 0]$, $5x$ runs over $[-5, 0]$.",
+  "solution": "Swap $x$ and $y$: $x = 5y$, so $y = \\dfrac{x}{5}$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[-1, 0]$, $5x$ runs from $-5$ to $0$. So the inverse is $y = \\dfrac{x}{5},\\ x \\in [-5, 0]$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1014,7 +1014,7 @@
    null,
    "slip"
   ],
-  "solution": "Solving $x = 5y$ gives $y = \\dfrac{x}{5}$. The domain of the inverse is the range of the original function: as $x$ runs over $[0, 3]$, $5x$ runs over $[0, 15]$.",
+  "solution": "Swap $x$ and $y$: $x = 5y$, so $y = \\dfrac{x}{5}$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[0, 3]$, $5x$ runs from $0$ to $15$. So the inverse is $y = \\dfrac{x}{5},\\ x \\in [0, 15]$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1052,7 +1052,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "Solving $x = 2y + 2$ gives $y = \\dfrac{x - 2}{2}$. The domain of the inverse is the range of the original function: as $x$ runs over $[1, 4]$, $2x + 2$ runs over $[4, 10]$.",
+  "solution": "Swap $x$ and $y$: $x = 2y + 2$, so $y = \\dfrac{x - 2}{2}$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[1, 4]$, $2x + 2$ runs from $4$ to $10$. So the inverse is $y = \\dfrac{x - 2}{2},\\ x \\in [4, 10]$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1090,7 +1090,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{y + 2}{3y - 5}$. Cross-multiply: $x(3y - 5) = y + 2$, collect $y$: $y(3x - 1) = 5x + 2$, so $y = \\dfrac{5x + 2}{3x - 1}$. Check with one point: $f(0) = -\\dfrac{2}{5}$, and the inverse sends $-\\dfrac{2}{5}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{y + 2}{3y - 5}$. Multiply both sides by $3y - 5$: $3xy - 5x = y + 2$. Collect the terms in $y$ on one side: $y(3x - 1) = 5x + 2$, so $y = \\dfrac{5x + 2}{3x - 1}$. Check with one point: $f(0) = -\\dfrac{2}{5}$, and the inverse sends $-\\dfrac{2}{5}$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1128,7 +1128,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{2y - 3}{y - 1}$. Cross-multiply: $x(y - 1) = 2y - 3$, collect $y$: $y(x - 2) = x - 3$, so $y = \\dfrac{x - 3}{x - 2}$. Check with one point: $f(0) = 3$, and the inverse sends $3$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{2y - 3}{y - 1}$. Multiply both sides by $y - 1$: $xy - x = 2y - 3$. Collect the terms in $y$ on one side: $y(x - 2) = x - 3$, so $y = \\dfrac{x - 3}{x - 2}$. Check with one point: $f(0) = 3$, and the inverse sends $3$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1166,7 +1166,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{3y + 3}{y + 3}$. Cross-multiply: $x(y + 3) = 3y + 3$, collect $y$: $y(x - 3) = -3x + 3$, so $y = -\\dfrac{3x - 3}{x - 3}$. Check with one point: $f(0) = 1$, and the inverse sends $1$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{3y + 3}{y + 3}$. Multiply both sides by $y + 3$: $xy + 3x = 3y + 3$. Collect the terms in $y$ on one side: $y(x - 3) = -3x + 3$, so $y = \\dfrac{-3x + 3}{x - 3} = -\\dfrac{3x - 3}{x - 3}$. Check with one point: $f(0) = 1$, and the inverse sends $1$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1204,7 +1204,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{y + 3}{3y - 2}$. Cross-multiply: $x(3y - 2) = y + 3$, collect $y$: $y(3x - 1) = 2x + 3$, so $y = \\dfrac{2x + 3}{3x - 1}$. Check with one point: $f(0) = -\\dfrac{3}{2}$, and the inverse sends $-\\dfrac{3}{2}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{y + 3}{3y - 2}$. Multiply both sides by $3y - 2$: $3xy - 2x = y + 3$. Collect the terms in $y$ on one side: $y(3x - 1) = 2x + 3$, so $y = \\dfrac{2x + 3}{3x - 1}$. Check with one point: $f(0) = -\\dfrac{3}{2}$, and the inverse sends $-\\dfrac{3}{2}$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1242,7 +1242,7 @@
    "sign",
    null
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{y + 2}{y + 4}$. Cross-multiply: $x(y + 4) = y + 2$, collect $y$: $y(x - 1) = -4x + 2$, so $y = -\\dfrac{4x - 2}{x - 1}$. Check with one point: $f(0) = \\dfrac{1}{2}$, and the inverse sends $\\dfrac{1}{2}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{y + 2}{y + 4}$. Multiply both sides by $y + 4$: $xy + 4x = y + 2$. Collect the terms in $y$ on one side: $y(x - 1) = -4x + 2$, so $y = \\dfrac{-4x + 2}{x - 1} = -\\dfrac{4x - 2}{x - 1}$. Check with one point: $f(0) = \\dfrac{1}{2}$, and the inverse sends $\\dfrac{1}{2}$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1280,7 +1280,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y - 1}{3y - 1}$. Cross-multiply: $x(3y - 1) = 4y - 1$, collect $y$: $y(3x - 4) = x - 1$, so $y = \\dfrac{x - 1}{3x - 4}$. Check with one point: $f(0) = 1$, and the inverse sends $1$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y - 1}{3y - 1}$. Multiply both sides by $3y - 1$: $3xy - x = 4y - 1$. Collect the terms in $y$ on one side: $y(3x - 4) = x - 1$, so $y = \\dfrac{x - 1}{3x - 4}$. Check with one point: $f(0) = 1$, and the inverse sends $1$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1318,7 +1318,7 @@
    "slip",
    null
   ],
-  "solution": "Swap $x$ and $y$: $x = 2y^3 + 2$. Isolate $y^3 = \\dfrac{x - 2}{2}$ and take the cube root: $y = \\sqrt[3]{\\dfrac{x - 2}{2}}$.",
+  "solution": "Swap $x$ and $y$: $x = 2y^3 + 2$. Then $2y^3 = x - 2$, so $y^3 = \\dfrac{x - 2}{2}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x - 2}{2}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1356,7 +1356,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = 5y^3 + 3$. Isolate $y^3 = \\dfrac{x - 3}{5}$ and take the cube root: $y = \\sqrt[3]{\\dfrac{x - 3}{5}}$.",
+  "solution": "Swap $x$ and $y$: $x = 5y^3 + 3$. Then $5y^3 = x - 3$, so $y^3 = \\dfrac{x - 3}{5}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x - 3}{5}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1394,7 +1394,7 @@
    "slip",
    null
   ],
-  "solution": "Swap $x$ and $y$: $x = 3 - 3y^3$. Isolate $y^3 = \\dfrac{3 - x}{3}$ and take the cube root: $y = \\sqrt[3]{\\dfrac{3 - x}{3}}$.",
+  "solution": "Swap $x$ and $y$: $x = 3 - 3y^3$. Then $3y^3 = 3 - x$, so $y^3 = \\dfrac{3 - x}{3}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{3 - x}{3}}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1432,7 +1432,7 @@
    "sign",
    null
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{-3y - 2}{2y + 1}$. Cross-multiply: $x(2y + 1) = -3y - 2$, collect $y$: $y(2x + 3) = -x - 2$, so $y = -\\dfrac{x + 2}{2x + 3}$. Check with one point: $f(0) = -2$, and the inverse sends $-2$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{-3y - 2}{2y + 1}$. Multiply both sides by $2y + 1$: $2xy + x = -3y - 2$. Collect the terms in $y$ on one side: $y(2x + 3) = -x - 2$, so $y = \\dfrac{-x - 2}{2x + 3} = -\\dfrac{x + 2}{2x + 3}$. Check with one point: $f(0) = -2$, and the inverse sends $-2$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1470,7 +1470,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{-4y + 2}{2y + 5}$. Cross-multiply: $x(2y + 5) = -4y + 2$, collect $y$: $y(2x + 4) = -5x + 2$, so $y = -\\dfrac{5x - 2}{2x + 4}$. Check with one point: $f(0) = \\dfrac{2}{5}$, and the inverse sends $\\dfrac{2}{5}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{-4y + 2}{2y + 5}$. Multiply both sides by $2y + 5$: $2xy + 5x = -4y + 2$. Collect the terms in $y$ on one side: $y(2x + 4) = -5x + 2$, so $y = \\dfrac{-5x + 2}{2x + 4} = -\\dfrac{5x - 2}{2x + 4}$. Check with one point: $f(0) = \\dfrac{2}{5}$, and the inverse sends $\\dfrac{2}{5}$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1508,7 +1508,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{-2y + 3}{y + 1}$. Cross-multiply: $x(y + 1) = -2y + 3$, collect $y$: $y(x + 2) = -x + 3$, so $y = -\\dfrac{x - 3}{x + 2}$. Check with one point: $f(0) = 3$, and the inverse sends $3$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{-2y + 3}{y + 1}$. Multiply both sides by $y + 1$: $xy + x = -2y + 3$. Collect the terms in $y$ on one side: $y(x + 2) = -x + 3$, so $y = \\dfrac{-x + 3}{x + 2} = -\\dfrac{x - 3}{x + 2}$. Check with one point: $f(0) = 3$, and the inverse sends $3$ back to $0$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1546,7 +1546,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "The correct statement is “The graph of its inverse function passes through the point $(25, 1)$” — $f(1) = 25$, so the inverse sends $25$ to $1$. “Its inverse function is $y = \\dfrac{1}{5x + 20}$” is false: that is the reciprocal, not the inverse function. “Its inverse function is $y = \\dfrac{x + 20}{5}$” is false: the sign of $20$ is wrong. “The graphs of the function and its inverse are symmetric about the $x$-axis” is false: they are symmetric about the line $y = x$.",
+  "solution": "“The graph of its inverse function passes through the point $(25, 1)$” is correct. $f(1) = 25$, so the inverse sends $25$ to $1$. “Its inverse function is $y = \\dfrac{1}{5x + 20}$” is incorrect. $\\dfrac{1}{5x + 20}$ is the reciprocal of $f(x)$, not its inverse. The inverse is $y = \\dfrac{x - 20}{5}$. “Its inverse function is $y = \\dfrac{x + 20}{5}$” is incorrect. Solving $x = 5y + 20$ gives $y = \\dfrac{x - 20}{5}$, so the sign in front of $20$ is wrong. “The graphs of the function and its inverse are symmetric about the $x$-axis” is incorrect. The graphs of a function and its inverse are symmetric about the line $y = x$, because swapping $x$ and $y$ reflects a point in that line.",
   "video": "V07",
   "version": "a",
   "domain": "FN",
@@ -1584,7 +1584,7 @@
    "axis",
    "reciprocal"
   ],
-  "solution": "The correct statement is “Its inverse function is $y = \\dfrac{x - 5}{5}$” — swap $x$ and $y$ and solve. “The graph of its inverse function passes through the point $(-1, 0)$” is false: $(-1, 0)$ is on the graph of $f$; the inverse passes through $(0, -1)$. “The graphs of the function and its inverse are symmetric about the $x$-axis” is false: they are symmetric about the line $y = x$. “Its inverse function is $y = \\dfrac{1}{5x + 5}$” is false: that is the reciprocal, not the inverse function.",
+  "solution": "“Its inverse function is $y = \\dfrac{x - 5}{5}$” is correct. Swapping $x$ and $y$ gives $x = 5y + 5$, so $y = \\dfrac{x - 5}{5}$. “The graph of its inverse function passes through the point $(-1, 0)$” is incorrect. $(-1, 0)$ is on the graph of $f$. Swapping the coordinates gives the point $(0, -1)$ on the inverse. “The graphs of the function and its inverse are symmetric about the $x$-axis” is incorrect. The graphs of a function and its inverse are symmetric about the line $y = x$, because swapping $x$ and $y$ reflects a point in that line. “Its inverse function is $y = \\dfrac{1}{5x + 5}$” is incorrect. $\\dfrac{1}{5x + 5}$ is the reciprocal of $f(x)$, not its inverse. The inverse is $y = \\dfrac{x - 5}{5}$.",
   "video": "V07",
   "version": "a",
   "domain": "FN",

@@ -26,7 +26,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $3a_n = 5a_{n+1} - 5a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{5}$. Put $n = 1$: $3a_1 = 5a_2 - 5 = 8a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{5}{3}\\left(\\dfrac{8}{5}\\right)^{n} - \\dfrac{5}{3}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $3a_n = 5a_{n+1} - 5a_n$, that is $8a_n = 5a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{5}$. Put $n = 1$: $3a_1 = 5a_2 - 5 = 8a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{5}{3}\\left(\\dfrac{8}{5}\\right)^{n} - \\dfrac{5}{3}$. Check with $n = 1$: the formula gives $\\dfrac{5}{3} \\cdot \\dfrac{8}{5} - \\dfrac{5}{3} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -64,7 +64,7 @@
    "reciprocal",
    null
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 4a_{n+1} - 4a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{5}{4}$. Put $n = 1$: $a_1 = 4a_2 - 4 = 5a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 4\\left(\\dfrac{5}{4}\\right)^{n} - 4$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 4a_{n+1} - 4a_n$, that is $5a_n = 4a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{5}{4}$. Put $n = 1$: $a_1 = 4a_2 - 4 = 5a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 4\\left(\\dfrac{5}{4}\\right)^{n} - 4$. Check with $n = 1$: the formula gives $4 \\cdot \\dfrac{5}{4} - 4 = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -102,7 +102,7 @@
    "partial",
    null
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $4a_n = 5a_{n+1} - 5a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{9}{5}$. Put $n = 1$: $4a_1 = 5a_2 - 5 = 9a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{5}{4}\\left(\\dfrac{9}{5}\\right)^{n} - \\dfrac{5}{4}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $4a_n = 5a_{n+1} - 5a_n$, that is $9a_n = 5a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{9}{5}$. Put $n = 1$: $4a_1 = 5a_2 - 5 = 9a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{5}{4}\\left(\\dfrac{9}{5}\\right)^{n} - \\dfrac{5}{4}$. Check with $n = 1$: the formula gives $\\dfrac{5}{4} \\cdot \\dfrac{9}{5} - \\dfrac{5}{4} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -140,7 +140,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $3a_n = 4a_{n+1} - 4a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{7}{4}$. Put $n = 1$: $3a_1 = 4a_2 - 4 = 7a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{4}{3}\\left(\\dfrac{7}{4}\\right)^{n} - \\dfrac{4}{3}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $3a_n = 4a_{n+1} - 4a_n$, that is $7a_n = 4a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{7}{4}$. Put $n = 1$: $3a_1 = 4a_2 - 4 = 7a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{4}{3}\\left(\\dfrac{7}{4}\\right)^{n} - \\dfrac{4}{3}$. Check with $n = 1$: the formula gives $\\dfrac{4}{3} \\cdot \\dfrac{7}{4} - \\dfrac{4}{3} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -178,7 +178,7 @@
    "reciprocal",
    null
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 3a_{n+1} - 3a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{3}$. Put $n = 1$: $5a_1 = 3a_2 - 3 = 8a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{3}{5}\\left(\\dfrac{8}{3}\\right)^{n} - \\dfrac{3}{5}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $5a_n = 3a_{n+1} - 3a_n$, that is $8a_n = 3a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{3}$. Put $n = 1$: $5a_1 = 3a_2 - 3 = 8a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{3}{5}\\left(\\dfrac{8}{3}\\right)^{n} - \\dfrac{3}{5}$. Check with $n = 1$: the formula gives $\\dfrac{3}{5} \\cdot \\dfrac{8}{3} - \\dfrac{3}{5} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -216,7 +216,7 @@
    "reciprocal",
    "partial"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 2a_{n+1} - 2a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{3}{2}$. Put $n = 1$: $a_1 = 2a_2 - 2 = 3a_1 - 2$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 2\\left(\\dfrac{3}{2}\\right)^{n} - 2$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 2a_{n+1} - 2a_n$, that is $3a_n = 2a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{3}{2}$. Put $n = 1$: $a_1 = 2a_2 - 2 = 3a_1 - 2$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 2\\left(\\dfrac{3}{2}\\right)^{n} - 2$. Check with $n = 1$: the formula gives $2 \\cdot \\dfrac{3}{2} - 2 = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -254,7 +254,7 @@
    "reciprocal",
    "partial"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 2a_{n+1} - 2a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{9}{2}$. Put $n = 1$: $7a_1 = 2a_2 - 2 = 9a_1 - 2$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{2}{7}\\left(\\dfrac{9}{2}\\right)^{n} - \\dfrac{2}{7}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 2a_{n+1} - 2a_n$, that is $9a_n = 2a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{9}{2}$. Put $n = 1$: $7a_1 = 2a_2 - 2 = 9a_1 - 2$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{2}{7}\\left(\\dfrac{9}{2}\\right)^{n} - \\dfrac{2}{7}$. Check with $n = 1$: the formula gives $\\dfrac{2}{7} \\cdot \\dfrac{9}{2} - \\dfrac{2}{7} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -292,7 +292,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 3a_{n+1} - 3a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{4}{3}$. Put $n = 1$: $a_1 = 3a_2 - 3 = 4a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 3\\left(\\dfrac{4}{3}\\right)^{n} - 3$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 3a_{n+1} - 3a_n$, that is $4a_n = 3a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{4}{3}$. Put $n = 1$: $a_1 = 3a_2 - 3 = 4a_1 - 3$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 3\\left(\\dfrac{4}{3}\\right)^{n} - 3$. Check with $n = 1$: the formula gives $3 \\cdot \\dfrac{4}{3} - 3 = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -330,7 +330,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 5a_{n+1} - 5a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{6}{5}$. Put $n = 1$: $a_1 = 5a_2 - 5 = 6a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 5\\left(\\dfrac{6}{5}\\right)^{n} - 5$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $a_n = 5a_{n+1} - 5a_n$, that is $6a_n = 5a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{6}{5}$. Put $n = 1$: $a_1 = 5a_2 - 5 = 6a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = 5\\left(\\dfrac{6}{5}\\right)^{n} - 5$. Check with $n = 1$: the formula gives $5 \\cdot \\dfrac{6}{5} - 5 = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -368,7 +368,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 4a_{n+1} - 4a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{11}{4}$. Put $n = 1$: $7a_1 = 4a_2 - 4 = 11a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{4}{7}\\left(\\dfrac{11}{4}\\right)^{n} - \\dfrac{4}{7}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 4a_{n+1} - 4a_n$, that is $11a_n = 4a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{11}{4}$. Put $n = 1$: $7a_1 = 4a_2 - 4 = 11a_1 - 4$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{4}{7}\\left(\\dfrac{11}{4}\\right)^{n} - \\dfrac{4}{7}$. Check with $n = 1$: the formula gives $\\dfrac{4}{7} \\cdot \\dfrac{11}{4} - \\dfrac{4}{7} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -596,7 +596,7 @@
    "near-miss",
    "operation"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 3n^2 + 3n - 1$. Check $n = 1$: $a_1 = S_1 = 5$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$, this gives $a_n = (3n^2 - 3n + 1) + 3(2n - 1) + 1 = 3n^2 + 3n - 1$. For $n = 1$, $a_1 = S_1 = 5$, and the formula also gives $5$. Differentiating $S_n$ gives $3n^2 + 6n + 1$, which is not $a_n$: at $n = 2$ it gives $25$, while $a_2 = S_2 - S_1 = 17$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -634,7 +634,7 @@
    null,
    "near-miss"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 6n^2 - 8n + 2$. Check $n = 1$: $a_1 = S_1 = 0$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$, this gives $a_n = 2(3n^2 - 3n + 1) - (2n - 1) - 1 = 6n^2 - 8n + 2$. For $n = 1$, $a_1 = S_1 = 0$, and the formula also gives $0$. Differentiating $S_n$ gives $6n^2 - 2n - 1$, which is not $a_n$: at $n = 2$ it gives $19$, while $a_2 = S_2 - S_1 = 10$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -672,7 +672,7 @@
    "operation",
    null
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 6n^2 - 2n$. Check $n = 1$: $a_1 = S_1 = 4$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$, this gives $a_n = 2(3n^2 - 3n + 1) + 2(2n - 1) = 6n^2 - 2n$. For $n = 1$, $a_1 = S_1 = 4$, and the formula also gives $4$. Differentiating $S_n$ gives $6n^2 + 4n$, which is not $a_n$: at $n = 2$ it gives $32$, while $a_2 = S_2 - S_1 = 20$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -710,7 +710,7 @@
    "off-by-one",
    "near-miss"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 3n^2 - 3n - 1$. Check $n = 1$: $a_1 = S_1 = -1$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$, this gives $a_n = (3n^2 - 3n + 1) - 2 = 3n^2 - 3n - 1$. For $n = 1$, $a_1 = S_1 = -1$, and the formula also gives $-1$. Differentiating $S_n$ gives $3n^2 - 2$, which is not $a_n$: at $n = 2$ it gives $10$, while $a_2 = S_2 - S_1 = 5$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -748,7 +748,7 @@
    "off-by-one",
    "operation"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 3n^2 - 7n + 2$. Check $n = 1$: $a_1 = S_1 = -2$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$, this gives $a_n = (3n^2 - 3n + 1) - 2(2n - 1) - 1 = 3n^2 - 7n + 2$. For $n = 1$, $a_1 = S_1 = -2$, and the formula also gives $-2$. Differentiating $S_n$ gives $3n^2 - 4n - 1$, which is not $a_n$: at $n = 2$ it gives $3$, while $a_2 = S_2 - S_1 = 0$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -786,7 +786,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "$a_{12} = S_{12} - S_{11} = 471 - 399 = 72$. ($S_{12} = 471$ is the sum, not the term.)",
+  "solution": "$a_{12} = S_{12} - S_{11} = 471 - 399 = 72$. The value $471$ is $S_{12}$, the sum of the first $12$ terms, not the term $a_{12}$ itself.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -824,7 +824,7 @@
    "partial",
    "off-by-one"
   ],
-  "solution": "$a_{12} = S_{12} - S_{11} = 339 - 289 = 50$. ($S_{12} = 339$ is the sum, not the term.)",
+  "solution": "$a_{12} = S_{12} - S_{11} = 339 - 289 = 50$. The value $339$ is $S_{12}$, the sum of the first $12$ terms, not the term $a_{12}$ itself.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -862,7 +862,7 @@
    null,
    "partial"
   ],
-  "solution": "$a_8 = S_8 - S_7 = 57 - 43 = 14$. ($S_8 = 57$ is the sum, not the term.)",
+  "solution": "$a_8 = S_8 - S_7 = 57 - 43 = 14$. The value $57$ is $S_8$, the sum of the first $8$ terms, not the term $a_8$ itself.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -900,7 +900,7 @@
    null,
    "near-miss"
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = 2(2n - 1) - 2 = 4n - 4$. For $n = 1$: $a_1 = S_1 = 0$, which fits. So $a_n = 4n - 4$.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = 2\\left[n^2 - (n - 1)^2\\right] - 2\\left[n - (n - 1)\\right] = 2(2n - 1) - 2 = 4n - 4$. For $n = 1$, $a_1 = S_1 = 0$, and the formula also gives $0$. So $a_n = 4n - 4$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -938,7 +938,7 @@
    "near-miss",
    null
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = 2(2n - 1) - 3 = 4n - 5$. For $n = 1$: $a_1 = S_1 = -1$, which fits. So $a_n = 4n - 5$.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = 2\\left[n^2 - (n - 1)^2\\right] - 3\\left[n - (n - 1)\\right] = 2(2n - 1) - 3 = 4n - 5$. For $n = 1$, $a_1 = S_1 = -1$, and the formula also gives $-1$. So $a_n = 4n - 5$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -976,7 +976,7 @@
    null,
    "near-miss"
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = -(2n - 1) + 2 = -2n + 3$. For $n = 1$: $a_1 = S_1 = 1$, which fits. So $a_n = -2n + 3$.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = -\\left[n^2 - (n - 1)^2\\right] + 2\\left[n - (n - 1)\\right] = -(2n - 1) + 2 = -2n + 3$. For $n = 1$, $a_1 = S_1 = 1$, and the formula also gives $1$. So $a_n = -2n + 3$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -1014,7 +1014,7 @@
    "companion",
    "off-by-one"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 3a_{n+1} - 3a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{10}{3}$. Put $n = 1$: $7a_1 = 3a_2 - 3 = 10a_1 - 3$, so $a_1 = 1$. So the terms are $1, \\dfrac{10}{3}, \\dfrac{100}{9}, \\ldots$ and $a_3 = \\dfrac{100}{9}$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $7a_n = 3a_{n+1} - 3a_n$, that is $10a_n = 3a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{10}{3}$. Put $n = 1$: $7a_1 = 3a_2 - 3 = 10a_1 - 3$, so $a_1 = 1$. So the terms are $1, \\dfrac{10}{3}, \\dfrac{100}{9}, \\ldots$ and $a_3 = \\dfrac{100}{9}$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -1052,7 +1052,7 @@
    null,
    "partial"
   ],
-  "solution": "For $n = 1$: $a_1 = \\dfrac{2}{3}a_1 + \\dfrac{1}{3}$, so $a_1 = 1$. For $n \\ge 2$: $a_n = S_n - S_{n-1} = \\dfrac{2}{3}a_n - \\dfrac{2}{3}a_{n-1}$, which gives $a_n = -2a_{n-1}$. So $\\{a_n\\}$ is geometric with ratio $-2$. The terms are $1, -2, 4, -8, 16$, so $a_1 + a_3 + a_5 = 21$ (not $S_5 = 11$).",
+  "solution": "For $n = 1$: $a_1 = \\dfrac{2}{3}a_1 + \\dfrac{1}{3}$, so $a_1 = 1$. For $n \\ge 2$: $a_n = S_n - S_{n-1} = \\dfrac{2}{3}a_n - \\dfrac{2}{3}a_{n-1}$, which gives $a_n = -2a_{n-1}$. So $\\{a_n\\}$ is geometric with ratio $-2$. The terms are $1, -2, 4, -8, 16$, so $a_1 + a_3 + a_5 = 21$. This is not $S_5 = 11$, which also includes $a_2$ and $a_4$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -1090,7 +1090,7 @@
    null,
    "partial"
   ],
-  "solution": "For $n = 1$: $a_1 = \\dfrac{1}{3}a_1 + 2$, so $a_1 = 3$. For $n \\ge 2$: $a_n = S_n - S_{n-1} = \\dfrac{1}{3}a_n - \\dfrac{1}{3}a_{n-1}$, which gives $a_n = -\\dfrac{1}{2}a_{n-1}$. So $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{2}$. The terms are $3, -\\dfrac{3}{2}, \\dfrac{3}{4}, -\\dfrac{3}{8}, \\dfrac{3}{16}$, so $a_1 + a_3 + a_5 = \\dfrac{63}{16}$ (not $S_5 = \\dfrac{33}{16}$).",
+  "solution": "For $n = 1$: $a_1 = \\dfrac{1}{3}a_1 + 2$, so $a_1 = 3$. For $n \\ge 2$: $a_n = S_n - S_{n-1} = \\dfrac{1}{3}a_n - \\dfrac{1}{3}a_{n-1}$, which gives $a_n = -\\dfrac{1}{2}a_{n-1}$. So $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{2}$. The terms are $3, -\\dfrac{3}{2}, \\dfrac{3}{4}, -\\dfrac{3}{8}, \\dfrac{3}{16}$, so $a_1 + a_3 + a_5 = \\dfrac{63}{16}$. This is not $S_5 = \\dfrac{33}{16}$, which also includes $a_2$ and $a_4$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -1128,7 +1128,7 @@
    "partial",
    "off-by-one"
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = 3 \\cdot 4^{n} - 3 \\cdot 4^{n-1} = 9 \\cdot 4^{n-1}$. For $n = 1$: $a_1 = S_1 = 9$, which fits the formula.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = 3 \\cdot 4^{n} - 3 \\cdot 4^{n-1} = 3 \\cdot 4^{n-1}(4 - 1) = 9 \\cdot 4^{n-1}$. For $n = 1$, $a_1 = S_1 = 9$, and the formula also gives $9$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -1166,7 +1166,7 @@
    "slip",
    "swap"
   ],
-  "solution": "For $n \\ge 2$: $a_n = S_n - S_{n-1} = 2^{n} - 2^{n-1} = 2^{n-1}$. For $n = 1$: $a_1 = S_1 = 1$, which fits the formula.",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1} = 2^{n} - 2^{n-1} = 2^{n-1}(2 - 1) = 2^{n-1}$. For $n = 1$, $a_1 = S_1 = 1$, and the formula also gives $1$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
@@ -1204,13 +1204,13 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is $a_2 = 11$ — $a_2 = S_2 - S_1 = 20 - 9$. “$a_n = 6n - 1$ for every $n \\ge 1$” is false: the formula fails at $n = 1$: $a_1 = S_1 = 9$, not $5$. $a_2 = 15$ is false: $a_2 = S_2 - S_1 = 11$. $a_3 = 37$ is false: that is $S_3$; $a_3 = S_3 - S_2 = 17$.",
+  "solution": "$a_2 = 11$ is correct. $a_2 = S_2 - S_1 = 20 - 9 = 11$. “$a_n = 6n - 1$ for every $n \\ge 1$” is incorrect. The formula fails at $n = 1$: $a_1 = S_1 = 9$, not $5$. $a_2 = 15$ is incorrect. $a_2 = S_2 - S_1 = 11$. $a_3 = 37$ is incorrect. $37$ is $S_3$, the sum of the first three terms. In fact $a_3 = S_3 - S_2 = 17$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
   "template": "SQ-sn.const-stmt",
   "seed": "bank:1:SQ-sn.const-stmt:0",
-  "form": "Sₙ = pn² + qn + c with c ≠ 0: which statement about {aₙ} is true (the \"+ constant\" trap)",
+  "form": "Sₙ = pn² + qn + c with c ≠ 0: which statement about {aₙ} is true (the constant term changes a₁)",
   "answer_letter": "D",
   "answer_value": "$a_2 = 11$",
   "verified": "stmt"
@@ -1242,13 +1242,13 @@
    "domain",
    "partial"
   ],
-  "solution": "The correct statement is “$\\{a_n\\}$ is not an arithmetic sequence” — $a_2 - a_1 = 3$ but $a_3 - a_2 = 4$. “$\\{a_n\\}$ is an arithmetic sequence” is false: the constant term of $S_n$ breaks the pattern at the first term. $a_3 = 16$ is false: that is $S_3$; $a_3 = S_3 - S_2 = 9$. $a_1 = 1$ is false: $a_1 = S_1 = 2$; the formula for $n \\ge 2$ does not apply.",
+  "solution": "“$\\{a_n\\}$ is not an arithmetic sequence” is correct. $a_2 - a_1 = 3$ but $a_3 - a_2 = 4$. “$\\{a_n\\}$ is an arithmetic sequence” is incorrect. $a_2 - a_1 = 3$ but $a_3 - a_2 = 4$, so the differences are not all equal. $a_3 = 16$ is incorrect. $16$ is $S_3$, the sum of the first three terms. In fact $a_3 = S_3 - S_2 = 9$. $a_1 = 1$ is incorrect. $a_1 = S_1 = 2$. The value $1$ comes from the formula $a_n = 4n - 3$, which holds only for $n \\ge 2$.",
   "video": "V31",
   "version": "a",
   "domain": "SQ",
   "template": "SQ-sn.const-stmt",
   "seed": "bank:1:SQ-sn.const-stmt:1",
-  "form": "Sₙ = pn² + qn + c with c ≠ 0: which statement about {aₙ} is true (the \"+ constant\" trap)",
+  "form": "Sₙ = pn² + qn + c with c ≠ 0: which statement about {aₙ} is true (the constant term changes a₁)",
   "answer_letter": "A",
   "answer_value": "$\\{a_n\\}$ is not an arithmetic sequence",
   "verified": "stmt"

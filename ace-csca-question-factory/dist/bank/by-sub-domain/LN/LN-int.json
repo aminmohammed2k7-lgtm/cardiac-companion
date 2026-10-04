@@ -26,7 +26,7 @@
    null,
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -5$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -3x - 18$. Substituting this into the other equation gives $4x - 3(-3x - 18) + 11 = 0$, that is $13x + 65 = 0$, so $x = -5$. Then $y = -3 \\cdot \\left(-5\\right) - 18 = -3$. So the intersection point is $(-5, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -64,7 +64,7 @@
    "swap",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 4$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $y = 3x - 11$. Substituting this into the other equation gives $x + 4(3x - 11) - 8 = 0$, that is $13x - 52 = 0$, so $x = 4$. Then $y = 3 \\cdot 4 - 11 = 1$. So the intersection point is $(4, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -102,7 +102,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -4$, $y = 5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $y = -2x - 3$. Substituting this into the other equation gives $3x + 4(-2x - 3) - 8 = 0$, that is $-5x - 20 = 0$, so $x = -4$. Then $y = -2 \\cdot \\left(-4\\right) - 3 = 5$. So the intersection point is $(-4, 5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -140,7 +140,7 @@
    null,
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 2$, $y = 3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $x = -3y + 11$. Substituting this into the other equation gives $3(-3y + 11) + 2y - 12 = 0$, that is $-7y + 21 = 0$, so $y = 3$. Then $x = -3 \\cdot 3 + 11 = 2$. So the intersection point is $(2, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -178,7 +178,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 1$, $y = -5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $x = 4y + 21$. Substituting this into the other equation gives $2(4y + 21) - 3y - 17 = 0$, that is $5y + 25 = 0$, so $y = -5$. Then $x = 4 \\cdot \\left(-5\\right) + 21 = 1$. So the intersection point is $(1, -5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -216,7 +216,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -2$, $y = -1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -3x - 7$. Substituting this into the other equation gives $x + 2(-3x - 7) + 4 = 0$, that is $-5x - 10 = 0$, so $x = -2$. Then $y = -3 \\cdot \\left(-2\\right) - 7 = -1$. So the intersection point is $(-2, -1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -254,7 +254,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 5$, $y = 5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -x + 10$. Substituting this into the other equation gives $2x + (-x + 10) - 15 = 0$, that is $x - 5 = 0$, so $x = 5$. Then $y = -5 + 10 = 5$. So the intersection point is $(5, 5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -292,7 +292,7 @@
    "swap",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 2$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 3x - 9$. Substituting this into the other equation gives $4x - 3(3x - 9) - 17 = 0$, that is $-5x + 10 = 0$, so $x = 2$. Then $y = 3 \\cdot 2 - 9 = -3$. So the intersection point is $(2, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -330,7 +330,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 5$, $y = -1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $x = 3y + 8$. Substituting this into the other equation gives $3(3y + 8) - 2y - 17 = 0$, that is $7y + 7 = 0$, so $y = -1$. Then $x = 3 \\cdot \\left(-1\\right) + 8 = 5$. So the intersection point is $(5, -1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -368,7 +368,7 @@
    "swap",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -3$, $y = 0$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -4x - 12$. Substituting this into the other equation gives $x - 2(-4x - 12) + 3 = 0$, that is $9x + 27 = 0$, so $x = -3$. Then $y = -4 \\cdot \\left(-3\\right) - 12 = 0$. So the intersection point is $(-3, 0)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -406,7 +406,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 1$, $y = -4$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $x = 4y + 17$. Substituting this into the other equation gives $4(4y + 17) + 3y + 8 = 0$, that is $19y + 76 = 0$, so $y = -4$. Then $x = 4 \\cdot \\left(-4\\right) + 17 = 1$. So the intersection point is $(1, -4)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -444,7 +444,7 @@
    null,
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -2$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 2x + 5$. Substituting this into the other equation gives $4x + 3(2x + 5) + 5 = 0$, that is $10x + 20 = 0$, so $x = -2$. Then $y = 2 \\cdot \\left(-2\\right) + 5 = 1$. So the intersection point is $(-2, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -482,7 +482,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 4$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $y = 3x - 15$. Substituting this into the other equation gives $x - 4(3x - 15) - 16 = 0$, that is $-11x + 44 = 0$, so $x = 4$. Then $y = 3 \\cdot 4 - 15 = -3$. So the intersection point is $(4, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -520,7 +520,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 3$, $y = -5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = x - 8$. Substituting this into the other equation gives $4x - 3(x - 8) - 27 = 0$, that is $x - 3 = 0$, so $x = 3$. Then $y = 3 - 8 = -5$. So the intersection point is $(3, -5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -558,7 +558,7 @@
    "swap",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -3$, $y = -5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $x = -2y - 13$. Substituting this into the other equation gives $(-2y - 13) + 3y + 18 = 0$, that is $y + 5 = 0$, so $y = -5$. Then $x = -2 \\cdot \\left(-5\\right) - 13 = -3$. So the intersection point is $(-3, -5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -596,7 +596,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 1$, $y = -4$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Subtracting the second equation from the first removes $y$ and gives $-2x + 2 = 0$, so $x = 1$. Putting this into the first equation gives $3y + 12 = 0$, so $y = -4$. So the intersection point is $(1, -4)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -634,7 +634,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{11}{2}$, $y = -\\dfrac{7}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = x + 2$. Substituting this into the other equation gives $x - 3(x + 2) - 5 = 0$, that is $-2x - 11 = 0$, so $x = -\\dfrac{11}{2}$. Then $y = -\\dfrac{11}{2} + 2 = -\\dfrac{7}{2}$. So the intersection point is $\\left(-\\dfrac{11}{2}, -\\dfrac{7}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -672,7 +672,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = \\dfrac{2}{7}$, $y = \\dfrac{8}{7}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -3x + 2$. Substituting this into the other equation gives $2x + 3(-3x + 2) - 4 = 0$, that is $-7x + 2 = 0$, so $x = \\dfrac{2}{7}$. Then $y = -3 \\cdot \\dfrac{2}{7} + 2 = \\dfrac{8}{7}$. So the intersection point is $\\left(\\dfrac{2}{7}, \\dfrac{8}{7}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -710,7 +710,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{1}{4}$, $y = \\dfrac{3}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 2x + 2$. Substituting this into the other equation gives $2x - 3(2x + 2) + 5 = 0$, that is $-4x - 1 = 0$, so $x = -\\dfrac{1}{4}$. Then $y = 2 \\cdot \\left(-\\dfrac{1}{4}\\right) + 2 = \\dfrac{3}{2}$. So the intersection point is $\\left(-\\dfrac{1}{4}, \\dfrac{3}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -748,7 +748,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{1}{3}$, $y = \\dfrac{13}{3}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -x + 4$. Substituting this into the other equation gives $2x - (-x + 4) + 5 = 0$, that is $3x + 1 = 0$, so $x = -\\dfrac{1}{3}$. Then $y = -\\left(-\\dfrac{1}{3}\\right) + 4 = \\dfrac{13}{3}$. So the intersection point is $\\left(-\\dfrac{1}{3}, \\dfrac{13}{3}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -786,7 +786,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = \\dfrac{9}{4}$, $y = \\dfrac{3}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 2x - 3$. Substituting this into the other equation gives $2x - 3(2x - 3) = 0$, that is $-4x + 9 = 0$, so $x = \\dfrac{9}{4}$. Then $y = 2 \\cdot \\dfrac{9}{4} - 3 = \\dfrac{3}{2}$. So the intersection point is $\\left(\\dfrac{9}{4}, \\dfrac{3}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -824,7 +824,7 @@
    "swap",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{13}{2}$, $y = -\\dfrac{3}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = x + 5$. Substituting this into the other equation gives $x - 3(x + 5) + 2 = 0$, that is $-2x - 13 = 0$, so $x = -\\dfrac{13}{2}$. Then $y = -\\dfrac{13}{2} + 5 = -\\dfrac{3}{2}$. So the intersection point is $\\left(-\\dfrac{13}{2}, -\\dfrac{3}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -862,7 +862,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $3$, so $l_2: 3x - y + 15 = 0$. Solve the two equations together (elimination or substitution): $x = -4$, $y = 3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-3 - 6}{-6 - (-3)} = 3$, so $l_2$ is $3x - y + 15 = 0$. From the first equation, $y = 2x + 11$. Substituting this into the other equation gives $3x - (2x + 11) + 15 = 0$, that is $x + 4 = 0$, so $x = -4$. Then $y = 2 \\cdot \\left(-4\\right) + 11 = 3$. So the intersection point is $(-4, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -900,7 +900,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $2$, so $l_2: 2x - y + 3 = 0$. Solve the two equations together (elimination or substitution): $x = 0$, $y = 3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{7 - (-1)}{2 - (-2)} = 2$, so $l_2$ is $2x - y + 3 = 0$. From the first equation, $y = -2x + 3$. Substituting this into the other equation gives $2x - (-2x + 3) + 3 = 0$, that is $4x = 0$, so $x = 0$. Then $y = -2 \\cdot 0 + 3 = 3$. So the intersection point is $(0, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -938,7 +938,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $-1$, so $l_2: x + y - 2 = 0$. Solve the two equations together (elimination or substitution): $x = 2$, $y = 0$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-3 - 1}{5 - 1} = -1$, so $l_2$ is $x + y - 2 = 0$. From the first equation, $y = x - 2$. Substituting this into the other equation gives $x + (x - 2) - 2 = 0$, that is $2x - 4 = 0$, so $x = 2$. Then $y = 2 - 2 = 0$. So the intersection point is $(2, 0)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -976,7 +976,7 @@
    "partial",
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $1$, so $l_2: x - y = 0$. Solve the two equations together (elimination or substitution): $x = -3$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-5 - (-4)}{-5 - (-4)} = 1$, so $l_2$ is $x - y = 0$. From the first equation, $y = 3x + 6$. Substituting this into the other equation gives $x - (3x + 6) = 0$, that is $-2x - 6 = 0$, so $x = -3$. Then $y = 3 \\cdot \\left(-3\\right) + 6 = -3$. So the intersection point is $(-3, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1014,7 +1014,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $-2$, so $l_2: 2x + y + 7 = 0$. Solve the two equations together (elimination or substitution): $x = -4$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-3 - 3}{-2 - (-5)} = -2$, so $l_2$ is $2x + y + 7 = 0$. From the first equation, $y = -3x - 11$. Substituting this into the other equation gives $2x + (-3x - 11) + 7 = 0$, that is $-x - 4 = 0$, so $x = -4$. Then $y = -3 \\cdot \\left(-4\\right) - 11 = 1$. So the intersection point is $(-4, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1052,7 +1052,7 @@
    null,
    "swap"
   ],
-  "solution": "Intersect the two complete lines first: $(-2, -4)$. The third line must pass through this point: substitute $x = -2$, $y = -4$ into $ax - y - 8 = 0$ and solve: $a = -2$.",
+  "solution": "First find where the first two lines meet. Multiplying the first equation by $-2$, the second by $1$ and subtracting removes $y$ and gives $-9x - 18 = 0$, so $x = -2$. Putting this into the first equation gives $2y + 8 = 0$, so $y = -4$. The third line must also pass through $(-2, -4)$, so $-2a + 4 - 8 = 0$ and $a = -2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1090,7 +1090,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(-1, -3)$. The third line must pass through this point: substitute $x = -1$, $y = -3$ into $x + ay + 7 = 0$ and solve: $a = 2$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = 4x + 1$. Substituting this into the other equation gives $2x + 3(4x + 1) + 11 = 0$, that is $14x + 14 = 0$, so $x = -1$. Then $y = 4 \\cdot \\left(-1\\right) + 1 = -3$. The third line must also pass through $(-1, -3)$, so $-1 - 3a + 7 = 0$ and $a = 2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1128,7 +1128,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(2, 2)$. The third line must pass through this point: substitute $x = 2$, $y = 2$ into $ax - y - 6 = 0$ and solve: $a = 4$.",
+  "solution": "First find where the first two lines meet. From the first equation, $y = 3x - 4$. Substituting this into the other equation gives $x + 2(3x - 4) - 6 = 0$, that is $7x - 14 = 0$, so $x = 2$. Then $y = 3 \\cdot 2 - 4 = 2$. The third line must also pass through $(2, 2)$, so $2a - 2 - 6 = 0$ and $a = 4$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1166,7 +1166,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(-1, -1)$. The third line must pass through this point: substitute $x = -1$, $y = -1$ into $ax - 3y - 8 = 0$ and solve: $a = -5$.",
+  "solution": "First find where the first two lines meet. From the first equation, $x = -2y - 3$. Substituting this into the other equation gives $3(-2y - 3) - 4y - 1 = 0$, that is $-10y - 10 = 0$, so $y = -1$. Then $x = -2 \\cdot \\left(-1\\right) - 3 = -1$. The third line must also pass through $(-1, -1)$, so $-a + 3 - 8 = 0$ and $a = -5$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1204,7 +1204,7 @@
    "sign",
    null
   ],
-  "solution": "Intersect the two complete lines first: $(3, -1)$. The third line must pass through this point: substitute $x = 3$, $y = -1$ into $ax - y - 7 = 0$ and solve: $a = 2$.",
+  "solution": "First find where the first two lines meet. Multiplying the first equation by $-4$, the second by $3$ and subtracting removes $y$ and gives $-17x + 51 = 0$, so $x = 3$. Putting this into the first equation gives $3y + 3 = 0$, so $y = -1$. The third line must also pass through $(3, -1)$, so $3a + 1 - 7 = 0$ and $a = 2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1242,7 +1242,7 @@
    null,
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(-2, 3)$. The third line must pass through this point: substitute $x = -2$, $y = 3$ into $ax + 2y + 2 = 0$ and solve: $a = 4$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = x + 5$. Substituting this into the other equation gives $3x + 4(x + 5) - 6 = 0$, that is $7x + 14 = 0$, so $x = -2$. Then $y = -2 + 5 = 3$. The third line must also pass through $(-2, 3)$, so $-2a + 6 + 2 = 0$ and $a = 4$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1280,7 +1280,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $\\left(\\dfrac{7}{5}, -\\dfrac{6}{5}\\right)$. The third line must pass through this point: substitute $x = \\dfrac{7}{5}$, $y = -\\dfrac{6}{5}$ into $ax - 2y + 6 = 0$ and solve: $a = -6$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = 2x - 4$. Substituting this into the other equation gives $x - 3(2x - 4) - 5 = 0$, that is $-5x + 7 = 0$, so $x = \\dfrac{7}{5}$. Then $y = 2 \\cdot \\dfrac{7}{5} - 4 = -\\dfrac{6}{5}$. The third line must also pass through $\\left(\\dfrac{7}{5}, -\\dfrac{6}{5}\\right)$, so $\\dfrac{7}{5}a + \\dfrac{12}{5} + 6 = 0$ and $a = -6$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1318,7 +1318,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Intersect the two complete lines first: $\\left(\\dfrac{1}{4}, -\\dfrac{1}{2}\\right)$. The third line must pass through this point: substitute $x = \\dfrac{1}{4}$, $y = -\\dfrac{1}{2}$ into $ax - y - 2 = 0$ and solve: $a = 6$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = 2x - 1$. Substituting this into the other equation gives $2x + 3(2x - 1) + 1 = 0$, that is $8x - 2 = 0$, so $x = \\dfrac{1}{4}$. Then $y = 2 \\cdot \\dfrac{1}{4} - 1 = -\\dfrac{1}{2}$. The third line must also pass through $\\left(\\dfrac{1}{4}, -\\dfrac{1}{2}\\right)$, so $\\dfrac{1}{4}a + \\dfrac{1}{2} - 2 = 0$ and $a = 6$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1356,7 +1356,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Clear the fractions: the second line is $2x + 5y + 10 = 0$. Solve the two equations together (elimination or substitution): $x = -10$, $y = 2$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Multiplying by $10$ clears the fractions, so the second line is $2x + 5y + 10 = 0$. Multiplying the first equation by $5$, the second by $-2$ and subtracting removes $y$ and gives $19x + 190 = 0$, so $x = -10$. Putting this into the first equation gives $-2y + 4 = 0$, so $y = 2$. So the intersection point is $(-10, 2)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1394,7 +1394,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Clear the fractions: the second line is $x - 5y + 5 = 0$. Solve the two equations together (elimination or substitution): $x = 5$, $y = 2$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Multiplying by $-5$ clears the fractions, so the second line is $x - 5y + 5 = 0$. From the first equation, $x = -3y + 11$. Substituting this into the other equation gives $(-3y + 11) - 5y + 5 = 0$, that is $-8y + 16 = 0$, so $y = 2$. Then $x = -3 \\cdot 2 + 11 = 5$. So the intersection point is $(5, 2)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1432,7 +1432,7 @@
    "swap",
    null
   ],
-  "solution": "Clear the fractions: the second line is $x + 4y + 4 = 0$. Solve the two equations together (elimination or substitution): $x = -8$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Multiplying by $4$ clears the fractions, so the second line is $x + 4y + 4 = 0$. From the second equation, $x = -4y - 4$. Substituting this into the other equation gives $3(-4y - 4) - 2y + 26 = 0$, that is $-14y + 14 = 0$, so $y = 1$. Then $x = -4 \\cdot 1 - 4 = -8$. So the intersection point is $(-8, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1470,7 +1470,7 @@
    "axis",
    null
   ],
-  "solution": "The point where $l_1$ meets the $x$-axis: put $y = 0$ in $l_1$ to get $(5, 0)$. It must lie on $l_2$: $5 + a = 0$, so $a = -5$.",
+  "solution": "Putting $y = 0$ in $l_1$ gives $x = 5$, so $l_1$ meets the $x$-axis at $(5, 0)$. This point lies on $l_2$, so $5 + a = 0$ and $a = -5$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1508,7 +1508,7 @@
    null,
    "sign"
   ],
-  "solution": "The point where $l_1$ meets the $x$-axis: put $y = 0$ in $l_1$ to get $(1, 0)$. It must lie on $l_2$: $2 + a = 0$, so $a = -2$.",
+  "solution": "Putting $y = 0$ in $l_1$ gives $x = 1$, so $l_1$ meets the $x$-axis at $(1, 0)$. This point lies on $l_2$, so $2 + a = 0$ and $a = -2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -1546,7 +1546,7 @@
    "swap",
    null
   ],
-  "solution": "Solving the two equations together gives the intersection point $(-1, 3)$. The correct statement is “$l_2$ crosses the $y$-axis at the point $\\left(0, \\dfrac{8}{3}\\right)$” — put $x = 0$ in the equation of $l_2$: $y = \\dfrac{8}{3}$. “$l_1$ crosses the $x$-axis at the point $\\left(\\dfrac{5}{2}, 0\\right)$” is false: the sign is wrong: $y = 0$ gives $x = -\\dfrac{5}{2}$. “The intersection point of $l_1$ and $l_2$ lies in the first quadrant” is false: the intersection point is $(-1, 3)$, which is in the second quadrant. “$l_1$ and $l_2$ intersect at the point $(3, -1)$” is false: the coordinates are swapped; the intersection point is $(-1, 3)$.",
+  "solution": "From the first equation, $y = 2x + 5$. Substituting this into the other equation gives $x + 3(2x + 5) - 8 = 0$, that is $7x + 7 = 0$, so $x = -1$. Then $y = 2 \\cdot \\left(-1\\right) + 5 = 3$. So the intersection point is $(-1, 3)$. “$l_2$ crosses the $y$-axis at the point $\\left(0, \\dfrac{8}{3}\\right)$” is correct. Putting $x = 0$ in the equation of $l_2$ gives $y = \\dfrac{8}{3}$. “$l_1$ crosses the $x$-axis at the point $\\left(\\dfrac{5}{2}, 0\\right)$” is incorrect. Putting $y = 0$ in the equation of $l_1$ gives $x = -\\dfrac{5}{2}$. “The intersection point of $l_1$ and $l_2$ lies in the first quadrant” is incorrect. The intersection point is $(-1, 3)$, which is in the second quadrant. “$l_1$ and $l_2$ intersect at the point $(3, -1)$” is incorrect. Putting it into the equation of $l_1$ gives $6 + 1 + 5 = 12$, not $0$. In fact the intersection point is $(-1, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",

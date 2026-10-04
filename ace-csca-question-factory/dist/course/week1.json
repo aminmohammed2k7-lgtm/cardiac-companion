@@ -26,7 +26,7 @@
    "symbol",
    "symbol"
   ],
-  "solution": "The correct statement is $\\{9\\} \\subseteq A$ — $\\{9\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $\\{7\\} \\in A$ is false: $\\{7\\}$ is a set, and the elements of $A$ are numbers; write $\\{7\\} \\subseteq A$. $7 \\notin A$ is false: $7$ is listed in $A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements.",
+  "solution": "$\\{9\\} \\subseteq A$ is correct. The only element of $\\{9\\}$ is $9$, and $9 \\in A$, so $\\{9\\}$ is a subset of $A$. $\\{7\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{7\\}$ is a set. The correct statement is $\\{7\\} \\subseteq A$. $7 \\notin A$ is incorrect. $7$ is one of the listed elements, so $7 \\in A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it.",
   "video": "V02",
   "version": "a"
  },
@@ -57,7 +57,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $-7 \\in A$ — the equation gives $x = \\pm 7$, so $A = \\{-7, 7\\}$ contains $-7$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not an element. $A = \\{7\\}$ is false: the root $-7$ is missing. $-7 \\notin A$ is false: $(-7)^2 = 49$, so $-7$ belongs to $A$.",
+  "solution": "Solving $x^2 = 49$ gives $x = \\pm 7$, so $A = \\{-7, 7\\}$. $-7 \\in A$ is correct. $-7$ is one of the two solutions. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $-7$ and $7$. The empty set is a subset of $A$, not an element. $A = \\{7\\}$ is incorrect. $x = -7$ is also a solution, so $A = \\{-7, 7\\}$. $-7 \\notin A$ is incorrect. $(-7)^2 = 49$, so $-7$ is a solution and $-7 \\in A$.",
   "video": "V02",
   "version": "a"
  },
@@ -88,7 +88,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $-4 \\in \\mathbb{Z}$ — negative whole numbers are integers. $\\sqrt{6} \\in \\mathbb{Q}$ is false: $\\sqrt{6}$ is irrational. $\\sqrt{3} \\notin \\mathbb{R}$ is false: every square root of a positive number is real. $\\dfrac{2}{3} \\in \\mathbb{Z}$ is false: $\\dfrac{2}{3}$ is not a whole number.",
+  "solution": "$-4 \\in \\mathbb{Z}$ is correct. The integers include the negative whole numbers. $\\sqrt{6} \\in \\mathbb{Q}$ is incorrect. $6$ is not a perfect square, so $\\sqrt{6}$ is irrational. $\\sqrt{3} \\notin \\mathbb{R}$ is incorrect. The square root of a positive number is a real number. $\\dfrac{2}{3} \\in \\mathbb{Z}$ is incorrect. $0 < \\dfrac{2}{3} < 1$, so $\\dfrac{2}{3}$ is not an integer.",
   "video": "V02",
   "version": "a"
  },
@@ -119,7 +119,7 @@
    "swap",
    null
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements. $A \\subseteq B$ is false: $A$ has an element that is not in $B$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $4 \\in A$ but $4 \\notin B$, so the two sets are not equal. $A \\subseteq B$ is incorrect. $4 \\in A$ but $4 \\notin B$.",
   "video": "V02",
   "version": "a"
  },
@@ -150,7 +150,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $-1 \\notin A$ — the end point $-1$ is excluded (strict inequality). $4 \\notin A$ is false: the end point $4$ is included (the sign there is $\\le$). $3 \\notin A$ is false: $3$ lies between $-1$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$-1 \\notin A$ is correct. The inequality at $-1$ is strict, so the end point $-1$ is not in $A$. $4 \\notin A$ is incorrect. The sign at $4$ is $\\le$, so $4$ satisfies the condition and $4 \\in A$. $3 \\notin A$ is incorrect. $-1 < 3 < 4$, so $3 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a"
  },
@@ -181,7 +181,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $\\{0, 5\\} \\subseteq A$ — both $0$ and $5$ are elements of $A$. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element; the empty set has none. $0 \\notin A$ is false: $0$ is listed in $A$. $A = \\{2, 5\\}$ is false: the element $0$ is missing.",
+  "solution": "$\\{0, 5\\} \\subseteq A$ is correct. Both $0$ and $5$ are elements of $A$. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $0 \\notin A$ is incorrect. $0$ is one of the listed elements of $A$. $A = \\{2, 5\\}$ is incorrect. $A$ also contains the element $0$.",
   "video": "V02",
   "version": "a"
  },
@@ -212,7 +212,7 @@
    "symbol",
    "endpoint"
   ],
-  "solution": "The correct statement is $\\{1, 3\\} \\subseteq A$ — both numbers are in $A = \\{0, 1, 2, 3\\}$. $\\{-1, 1\\} \\subseteq A$ is false: $-1$ is not in $A$. $-1 \\in A$ is false: the end point $-1$ is excluded (strict inequality). $1 \\subseteq A$ is false: $1$ is an element, so the symbol must be $\\in$.",
+  "solution": "The integers that satisfy $-1 < x \\le 3$ are $0$, $1$, $2$ and $3$, so $A = \\{0, 1, 2, 3\\}$. $\\{1, 3\\} \\subseteq A$ is correct. Both $1$ and $3$ are elements of $A$. $\\{-1, 1\\} \\subseteq A$ is incorrect. The inequality at $-1$ is strict, so $-1 \\notin A$. $-1 \\in A$ is incorrect. The inequality at $-1$ is strict, so $-1$ is not in $A$. $1 \\subseteq A$ is incorrect. $1$ is an element, not a set, so the correct symbol is $\\in$: $1 \\in A$.",
   "video": "V02",
   "version": "a"
  },
@@ -243,7 +243,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The correct statement is “The set $A$ has exactly $4$ elements” — $\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2, 3\\}$. $A = \\{1, 2, 3\\}$ is false: the element $0$ is missing. “The set $A$ has exactly $8$ subsets” is false: $A$ has $4$ elements (it includes $0$), so it has $2^{4}$ subsets. $4 \\in A$ is false: $4$ does not satisfy $x < 4$.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2, 3\\}$. “The set $A$ has exactly $4$ elements” is correct. $A = \\{0, 1, 2, 3\\}$ has $4$ elements. $A = \\{1, 2, 3\\}$ is incorrect. The element $0$ is missing from this list. “The set $A$ has exactly $8$ subsets” is incorrect. $A$ has $4$ elements, including $0$, so it has $2^{4} = 16$ subsets. $4 \\in A$ is incorrect. $4$ does not satisfy $x < 4$.",
   "video": "V02",
   "version": "a"
  },
@@ -260,7 +260,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = \\{1, 7, 8, 12\\}$ and $B = \\{1, 5, 9, 10, 12\\}$, then $A \\cap B =$ ( )",
+  "stem": "If $A = \\{1, 7, 8, 12\\}$ and $B = \\{1, 5, 9, 10, 12\\}$, then $A \\cap B =$ ( )",
   "options": [
    "$\\{1, 5, 7, 8, 9, 10, 12\\}$",
    "$\\{1, 12\\}$",
@@ -274,7 +274,7 @@
    "complement",
    "complement"
   ],
-  "solution": "The intersection holds the elements that belong to both sets: $\\{1, 12\\}$.",
+  "solution": "The intersection contains the elements that appear in both lists. Only $1$ and $12$ appear in both, so $A \\cap B = \\{1, 12\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -291,7 +291,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $P = \\{6, 7, 12\\}$ and $Q = \\{1, 5, 10, 12\\}$, then $P \\cup Q =$ ( )",
+  "stem": "If $P = \\{6, 7, 12\\}$ and $Q = \\{1, 5, 10, 12\\}$, then $P \\cup Q =$ ( )",
   "options": [
    "$\\{1, 5, 6, 7, 10, 12\\}$",
    "$\\{1, 5, 6, 7, 10\\}$",
@@ -305,7 +305,7 @@
    "partial",
    "operation"
   ],
-  "solution": "The union holds every element that belongs to at least one of the sets, each written once: $\\{1, 5, 6, 7, 10, 12\\}$.",
+  "solution": "The union contains every element that appears in at least one of the lists. Combine the two lists and write the common element $12$ only once: $P \\cup Q = \\{1, 5, 6, 7, 10, 12\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -322,7 +322,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $M = [-3, 5]$ and $N = (1, 6)$, then $M \\cap N =$ ( )",
+  "stem": "If $M = [-3, 5]$ and $N = (1, 6)$, then $M \\cap N =$ ( )",
   "options": [
    "$[-3, 6)$",
    "$(1, 5)$",
@@ -336,7 +336,7 @@
    "endpoint",
    null
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $1$ to $5$. $1$ is excluded and $5$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(1, 5]$.",
+  "solution": "The intersection is the part that lies in both sets. $M$ runs from $-3$ to $5$ and $N$ runs from $1$ to $6$, so they overlap from $1$ to $5$. The end point $1$ comes from $N$, where it is excluded, and $5$ comes from $M$, where it is included. So $M \\cap N = (1, 5]$.",
   "video": "V02",
   "version": "a"
  },
@@ -367,7 +367,7 @@
    "partial",
    null
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $1$ upward, with $1$ excluded: $\\{x \\mid x > 1\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $A$ runs from $1$ to $5$, and $B$ contains every number from $2$ upward. Since $1 < 2 < 5$, the two sets overlap, so together they cover every number from $1$ upward. The end point $1$ comes from $A$, where it is excluded. So $A \\cup B = \\{x \\mid x > 1\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -398,7 +398,7 @@
    null,
    "operation"
   ],
-  "solution": "The correct statement is $M \\cap N = \\{1, 5\\}$ — the common elements are exactly $\\{1, 5\\}$. $M \\cup N = \\{1, 5\\}$ is false: that is the intersection, not the union. $M \\cup N = \\{1, 5, 6, 10, 12\\}$ is false: the elements of $N$ that are not in $M$ are missing. $M \\cap N = \\{1, 3, 5, 6, 10, 12\\}$ is false: that is the union, not the intersection.",
+  "solution": "$M \\cap N = \\{1, 5\\}$ is correct. The elements common to both sets are $1$ and $5$. $M \\cup N = \\{1, 5\\}$ is incorrect. $\\{1, 5\\}$ is the intersection. The union is $M \\cup N = \\{1, 3, 5, 6, 10, 12\\}$. $M \\cup N = \\{1, 5, 6, 10, 12\\}$ is incorrect. This set is $M$ itself. The union must also contain $3$ from $N$. $M \\cap N = \\{1, 3, 5, 6, 10, 12\\}$ is incorrect. $\\{1, 3, 5, 6, 10, 12\\}$ is the union. The intersection is $M \\cap N = \\{1, 5\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -429,7 +429,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "Both sets end at $7$, but only one of them contains $7$, so $7$ is not in the intersection. The left end is the larger one, $4$, with the bracket of its own set. Answer: $\\{x \\mid 4 \\le x < 7\\}$.",
+  "solution": "A number in the intersection must lie in both sets. Both sets end at $7$, but $7$ belongs to $A$ only, so $7$ is not in $A \\cap B$. The intersection starts at the larger left end point, $4$, which is included as it is in $B$. So $A \\cap B = \\{x \\mid 4 \\le x < 7\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -460,7 +460,7 @@
    null,
    "operation"
   ],
-  "solution": "The number $3$ belongs to one of the two sets, so the two pieces join without a gap: the union runs from $0$ to $5$ with the outer brackets unchanged. Answer: $\\{x \\mid 0 \\le x \\le 5\\}$.",
+  "solution": "$A$ runs from $0$ to $3$ and $B$ runs from $3$ to $5$. The number $3$ belongs to $B$, so there is no gap at $3$ and the union runs from $0$ to $5$. The outer end points keep their brackets: $0$ is included and $5$ is included. So $A \\cup B = \\{x \\mid 0 \\le x \\le 5\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -491,7 +491,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The correct statement is $A \\cup B = \\{x \\mid -2 < x < 5\\}$ — together the sets cover from $-2$ to $5$ with the outer brackets. $A \\cap B = \\{x \\mid 1 < x \\le 2\\}$ is false: the bracket at $1$ is wrong: $1$ is included in $B$. $A \\cup B = \\{x \\mid -2 \\le x < 5\\}$ is false: the bracket at $-2$ is wrong: $-2$ is excluded in $A$. $A \\cup B = \\{x \\mid 1 \\le x \\le 2\\}$ is false: that is the intersection.",
+  "solution": "$A \\cup B = \\{x \\mid -2 < x < 5\\}$ is correct. Together the sets cover every number from $-2$ to $5$. The end point $-2$ comes from $A$ (excluded there) and $5$ comes from $B$ (excluded there). $A \\cap B = \\{x \\mid 1 < x \\le 2\\}$ is incorrect. $1$ is included in $B$, so it is included in $A \\cap B$ as well. $A \\cup B = \\{x \\mid -2 \\le x < 5\\}$ is incorrect. $-2$ is excluded in $A$, so it is excluded in $A \\cup B$ as well. $A \\cup B = \\{x \\mid 1 \\le x \\le 2\\}$ is incorrect. That set is only the overlap, which is the intersection. The union is $A \\cup B = \\{x \\mid -2 < x < 5\\}$.",
   "video": "V02",
   "version": "a"
  },
@@ -522,7 +522,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x - 2)(x - 8) < 0$. The roots are $2$ and $8$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(2, 8)$.",
+  "solution": "Factor the left side: $(x - 2)(x - 8) < 0$. The roots are $2$ and $8$. The graph of $y = (x - 2)(x - 8)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(2, 8)$.",
   "video": "V03",
   "version": "a"
  },
@@ -553,7 +553,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(x)(x - 4) > 0$. The roots are $0$ and $4$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 0 \\text{ or } x > 4\\}$.",
+  "solution": "Factor the left side: $(x)(x - 4) > 0$. The roots are $0$ and $4$. The graph of $y = (x)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 0 \\text{ or } x > 4\\}$.",
   "video": "V03",
   "version": "a"
  },
@@ -584,7 +584,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "Factor: $(x + 1)(x - 6) \\ge 0$. The roots are $-1$ and $6$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -1] \\cup [6, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 1)(x - 6) \\ge 0$. The roots are $-1$ and $6$. The graph of $y = (x + 1)(x - 6)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -1] \\cup [6, +\\infty)$.",
   "video": "V03",
   "version": "a"
  },
@@ -615,7 +615,7 @@
    "sign",
    null
   ],
-  "solution": "Divide by $-3$ and reverse the inequality sign: $(x + 4)(x - 1) < 0$. The roots are $-4$ and $1$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-4, 1)$.",
+  "solution": "Divide both sides by $-3$ and reverse the inequality sign, because $-3$ is negative: $(x + 4)(x - 1) < 0$. The roots are $-4$ and $1$. The graph of $y = (x + 4)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-4, 1)$.",
   "video": "V03",
   "version": "a"
  },
@@ -646,7 +646,7 @@
    "endpoint",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = 2$ and the denominator at $x = 1$. The quotient has the same sign as $(-x + 2)(x - 1)$, which is positive between these two numbers and negative outside them. Both end points are excluded. Solution set: $(-\\infty, 1) \\cup (2, +\\infty)$.",
+  "solution": "The numerator is $2 - x = -(x - 2)$. Multiply both sides by $-1$ and reverse the inequality sign: $\\dfrac{x - 2}{x - 1} > 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(x - 2)(x - 1)$ is zero at $x = 2$ and $x = 1$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive, so $x$ lies outside them. Both end points are excluded. The solution set is $(-\\infty, 1) \\cup (2, +\\infty)$.",
   "video": "V03",
   "version": "a"
  },
@@ -677,7 +677,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{1}{4}$ and the denominator at $x = 5$. The quotient has the same sign as $(4x - 1)(x - 5)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $5$ never is. Solution set: $\\left[\\dfrac{1}{4}, 5\\right)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(4x - 1)(x - 5)$ is zero at $x = \\dfrac{1}{4}$ and $x = 5$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative or zero, so $x$ lies between them. The numerator is zero at $x = \\dfrac{1}{4}$, so this end point is included. The denominator is zero at $x = 5$, so this end point is excluded. The solution set is $\\left[\\dfrac{1}{4}, 5\\right)$.",
   "video": "V03",
   "version": "a"
  },
@@ -708,7 +708,7 @@
    null,
    "complement"
   ],
-  "solution": "The correct statement is “The solution set of $\\dfrac{x - 5}{x + 4} \\ge 0$ is $(-\\infty, -4) \\cup [5, +\\infty)$” — the numerator root $5$ is included, the denominator root $-4$ is not. “The solution set of $\\dfrac{x - 5}{x + 4} > 0$ is $(-4, 5)$” is false: the quotient is positive outside the two numbers, not between. “The solution set of $\\dfrac{x - 5}{x + 4} \\le 0$ is $[-4, 5)$” is false: the brackets are the wrong way round: $5$ is included and $-4$ is not. “The solution set of $\\dfrac{x - 5}{x + 4} \\ge 0$ is $(-\\infty, -4] \\cup [5, +\\infty)$” is false: the denominator root $-4$ can never be included.",
+  "solution": "“The solution set of $\\dfrac{x - 5}{x + 4} \\ge 0$ is $(-\\infty, -4) \\cup [5, +\\infty)$” is correct. The quotient is positive outside $-4$ and $5$ and equals $0$ at $x = 5$. The value $x = -4$ is excluded because it makes the denominator zero. “The solution set of $\\dfrac{x - 5}{x + 4} > 0$ is $(-4, 5)$” is incorrect. The quotient is positive outside $-4$ and $5$, not between them. “The solution set of $\\dfrac{x - 5}{x + 4} \\le 0$ is $[-4, 5)$” is incorrect. $x = 5$ makes the numerator zero, so it must be included, and $x = -4$ makes the denominator zero, so it must be excluded. The brackets here are the other way round. “The solution set of $\\dfrac{x - 5}{x + 4} \\ge 0$ is $(-\\infty, -4] \\cup [5, +\\infty)$” is incorrect. $x = -4$ makes the denominator zero, so it can never be in the solution set.",
   "video": "V03",
   "version": "a"
  },
@@ -739,7 +739,7 @@
    "endpoint",
    null
   ],
-  "solution": "Move $2$ to the left and combine into one fraction: $\\dfrac{-x - 9}{x + 2} \\ge 0$. The numerator is zero at $x = -9$ and the denominator at $x = -2$. The quotient has the same sign as $(-x - 9)(x + 2)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $-2$ never is. Solution set: $[-9, -2)$.",
+  "solution": "Subtract $2$ from both sides and combine into one fraction: $\\dfrac{x - 5}{x + 2} - 2 = \\dfrac{-x - 9}{x + 2}$, so the inequality becomes $\\dfrac{-x - 9}{x + 2} \\ge 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(-x - 9)(x + 2)$ is zero at $x = -9$ and $x = -2$, and it is positive between these two numbers and negative outside them. We need the quotient to be positive or zero, so $x$ lies between them. The numerator is zero at $x = -9$, so this end point is included. The denominator is zero at $x = -2$, so this end point is excluded. The solution set is $[-9, -2)$.",
   "video": "V03",
   "version": "a"
  },
@@ -770,7 +770,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $8a > 8b$ — multiplying by the positive number $8$ keeps the direction. $-8a > -8b$ is false: multiplying by a negative number reverses the direction. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$.",
+  "solution": "$8a > 8b$ is correct. Multiplying both sides by the positive number $8$ keeps the direction. $-8a > -8b$ is incorrect. Multiplying both sides by the negative number $-8$ reverses the direction, so $-8a < -8b$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$.",
   "video": "V04",
   "version": "a"
  },
@@ -801,7 +801,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The correct statement is “If $a > b$, then $a + c > b + c$” — adding $c$ to both sides is always safe. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is false: try $a = 1$, $b = -2$. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$.",
+  "solution": "“If $a > b$, then $a + c > b + c$” is correct. Adding the same number $c$ to both sides keeps the direction, whatever $c$ is. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$.",
   "video": "V04",
   "version": "a"
  },
@@ -832,7 +832,7 @@
    "near-miss",
    "slip"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a + b > 2c$ — $a > c$ and $b > c$; add the two inequalities. $a - b > b - c$ is false: the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is false: dividing by $c$ is safe only if $c > 0$. $a^2 > b^2$ is false: try $a = 1$, $b = -2$, $c = -3$.",
+  "solution": "$a + b > 2c$ is correct. Adding $a > c$ and $b > c$ gives $a + b > 2c$. $a - b > b - c$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is incorrect. Dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a"
  },
@@ -863,7 +863,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test with numbers such as $a = -2$, $b = 1$. The correct statement is $a^3 < b^3$ — $y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order. $\\lvert a \\rvert < \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = -2$, $b = 1$. $\\dfrac{a}{b} < 1$ is false: dividing by $b$ is safe only if $b > 0$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = -2$, $b = 1$.",
+  "solution": "$a^3 < b^3$ is correct. $y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction. $\\lvert a \\rvert < \\lvert b \\rvert$ is incorrect. Take $a = -2$, $b = 1$: $\\lvert a \\rvert = 2$ and $\\lvert b \\rvert = 1$. $\\dfrac{a}{b} < 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = -2$, $b = -1$: $\\dfrac{a}{b} = 2$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is incorrect. Take $a = -2$, $b = 1$: $\\dfrac{1}{a} = -\\dfrac{1}{2}$ and $\\dfrac{1}{b} = 1$, so $\\dfrac{1}{a} < \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a"
  },
@@ -894,7 +894,7 @@
    "swap",
    "near-miss"
   ],
-  "solution": "The correct statement is $a - d > b - c$ — $-d > -c$; add this to $a > b$. $a + d > b + c$ is false: try $a = 1, b = 0, c = 5, d = 0$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is false: quotients are not safe. $a - c > b - d$ is false: same-direction inequalities must not be subtracted: try $a = 1, b = 0, c = 3, d = 0$.",
+  "solution": "$a - d > b - c$ is correct. From $c > d$ we get $-d > -c$, and adding this to $a > b$ gives $a - d > b - c$. $a + d > b + c$ is incorrect. Take $a = 1$, $b = 0$, $c = 5$, $d = 0$: then $a + d = 1 < 5 = b + c$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is incorrect. Take $a = 2$, $b = 1$, $c = 4$, $d = 1$: then $\\dfrac{a}{c} = \\dfrac{1}{2} < 1 = \\dfrac{b}{d}$. $a - c > b - d$ is incorrect. Two inequalities in the same direction cannot be subtracted. Take $a = 1$, $b = 0$, $c = 3$, $d = 0$: then $a - c = -2 < 0 = b - d$.",
   "video": "V04",
   "version": "a"
  },
@@ -925,7 +925,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\sqrt{a} > \\sqrt{b}$ — $y = \\sqrt{x}$ is increasing. $a - b < 0$ is false: $a > b$ means $a - b > 0$. $ab < b^2$ is false: multiply $a > b$ by the positive number $b$: $ab > b^2$. $-a > -b$ is false: multiplying by $-1$ reverses the direction.",
+  "solution": "$\\sqrt{a} > \\sqrt{b}$ is correct. $y = \\sqrt{x}$ is increasing on $[0, +\\infty)$. $a - b < 0$ is incorrect. $a > b$ means $a - b > 0$. $ab < b^2$ is incorrect. Multiplying both sides of $a > b$ by the positive number $b$ gives $ab > b^2$. $-a > -b$ is incorrect. Multiplying both sides of $a > b$ by $-1$ gives $-a < -b$.",
   "video": "V04",
   "version": "a"
  },
@@ -942,7 +942,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "Given $a > b$ and $c < 0$, then ( )",
+  "stem": "If $a > b$ and $c < 0$, then ( )",
   "options": [
    "$a + c > b + c$",
    "$a^2 > b^2$",
@@ -956,7 +956,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $a + c > b + c$ — adding $c$ keeps the direction, whatever its sign. $ac > bc$ is false: multiplying by a negative number reverses the direction. $a + c < b + c$ is false: adding $c$ never changes the direction. $a^2 > b^2$ is false: squares need sign information about $a$ and $b$.",
+  "solution": "$a + c > b + c$ is correct. Adding the same number to both sides keeps the direction, whatever its sign. $ac > bc$ is incorrect. Multiplying by the negative number $c$ reverses the direction, so $ac < bc$. $a + c < b + c$ is incorrect. Adding $c$ to both sides keeps the direction, so $a + c > b + c$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: then $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a"
  },
@@ -973,7 +973,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b > c$. Which of the following must be true? ( )",
+  "stem": "If $a > b > c$, which of the following must be true? ( )",
   "options": [
    "$\\dfrac{1}{a} < \\dfrac{1}{c}$",
    "$ac > bc$",
@@ -987,7 +987,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $2a > b + c$ — $a > b$ and $a > c$; add the two inequalities. $\\dfrac{1}{a} < \\dfrac{1}{c}$ is false: reciprocals need both numbers to have the same sign. $ac > bc$ is false: multiplying by $c$ is safe only if $c > 0$. $ab > bc$ is false: multiplying $a > c$ by $b$ is safe only if $b > 0$.",
+  "solution": "$2a > b + c$ is correct. Adding $a > b$ and $a > c$ gives $2a > b + c$. $\\dfrac{1}{a} < \\dfrac{1}{c}$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $\\dfrac{1}{a} = 1 > -\\dfrac{1}{3} = \\dfrac{1}{c}$. $ac > bc$ is incorrect. Multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$. $ab > bc$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$.",
   "video": "V04",
   "version": "a"
  },
@@ -1018,7 +1018,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The expression under the root must be positive — not just non-negative, because it is in a denominator: $x - 5 > 0$, so $x > 5$. Domain: $(5, +\\infty)$.",
+  "solution": "The square root is in the denominator, so the expression under it must be positive, not zero: $x - 5 > 0$, so $x > 5$. The domain is $(5, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -1049,7 +1049,7 @@
    "partial",
    null
   ],
-  "solution": "The denominator needs $x \\ne -2$ and the root needs $-x \\ge 0$, i.e. $x \\le 0$. Intersect the two conditions: $(-\\infty, -2) \\cup (-2, 0]$.",
+  "solution": "The denominator needs $x \\ne -2$, and the square root needs $-x \\ge 0$, that is $x \\le 0$. Both conditions must hold, so the domain is $(-\\infty, -2) \\cup (-2, 0]$.",
   "video": "V05",
   "version": "a"
  },
@@ -1080,7 +1080,7 @@
    null,
    "partial"
   ],
-  "solution": "The logarithm needs $x - 2 > 0$, i.e. $x > 2$; the root needs $7 - x \\ge 0$, i.e. $x \\le 7$. Together: $\\{x \\mid 2 < x \\le 7\\}$.",
+  "solution": "The logarithm needs $x - 2 > 0$, that is $x > 2$. The square root needs $7 - x \\ge 0$, that is $x \\le 7$. Both conditions must hold, so the domain is $\\{x \\mid 2 < x \\le 7\\}$.",
   "video": "V05",
   "version": "a"
  },
@@ -1111,7 +1111,7 @@
    "sign",
    "domain"
   ],
-  "solution": "A cube root is defined for every real number (only even roots need a non-negative argument). Domain: $(-\\infty, +\\infty)$.",
+  "solution": "A cube root is defined for every real number, positive, negative or zero. Only even roots, such as square roots, need a non-negative expression inside. So the domain is $(-\\infty, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -1142,7 +1142,7 @@
    "domain",
    "endpoint"
   ],
-  "solution": "The correct statement is $y = \\sqrt{x - 5}$ — its domain is $[5, +\\infty)$. $y = \\dfrac{1}{x - 5}$ is false: its domain is $(-\\infty, 5) \\cup (5, +\\infty)$. $y = \\sqrt{5 - x}$ is false: its domain is $(-\\infty, 5]$. $y = \\dfrac{1}{\\sqrt{x - 5}}$ is false: its domain is $(5, +\\infty)$.",
+  "solution": "$y = \\sqrt{x - 5}$ is correct. The square root needs $x - 5 \\ge 0$, so its domain is $[5, +\\infty)$. $y = \\dfrac{1}{x - 5}$ is incorrect. The denominator needs $x - 5 \\ne 0$, so its domain is $(-\\infty, 5) \\cup (5, +\\infty)$. $y = \\sqrt{5 - x}$ is incorrect. The square root needs $5 - x \\ge 0$, that is $x \\le 5$, so its domain is $(-\\infty, 5]$. $y = \\dfrac{1}{\\sqrt{x - 5}}$ is incorrect. The square root is in a denominator, so $x - 5 > 0$, so its domain is $(5, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -1173,7 +1173,7 @@
    null,
    "partial"
   ],
-  "solution": "Since $x^2 \\ge 0$, the denominator satisfies $x^2 + 1 \\ge 1$, so $0 < f(x) \\le 4$; the value $4$ is reached at $x = 0$ and $0$ is never reached. Range: $(0, 4]$.",
+  "solution": "Since $x^2 \\ge 0$, the denominator satisfies $x^2 + 1 \\ge 1$, so $0 < f(x) \\le \\dfrac{4}{1} = 4$. The largest value $4$ is reached at $x = 0$. As $x^2$ grows, $f(x)$ comes as close to $0$ as we like, but it is never $0$. So the range is $(0, 4]$.",
   "video": "V05",
   "version": "a"
  },
@@ -1204,7 +1204,7 @@
    "swap",
    null
   ],
-  "solution": "The inside $2x - 4$ must lie in the domain of $f$: $-8 < 2x - 4 < -6$. Solve for $x$: $(-2, -1)$.",
+  "solution": "The expression $2x - 4$ takes the place of $x$, so it must lie in the domain of $f$: $-8 < 2x - 4 < -6$. Subtract $-4$: $-4 < 2x < -2$. Divide by $2$: $-2 < x < -1$. So the domain of $f(2x - 4)$ is $(-2, -1)$.",
   "video": "V05",
   "version": "a"
  },
@@ -1235,7 +1235,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Two conditions: the argument of the logarithm must be positive, $\\lvert x \\rvert > 0$, so $x \\ne 0$; and the logarithm (a denominator) must not be zero, $\\lvert x \\rvert \\ne 1$, so $x \\ne -1$ and $x \\ne 1$. Domain: $\\{x \\mid x \\ne -1,\\ x \\ne 0 \\text{ and } x \\ne 1\\}$.",
+  "solution": "There are two conditions. First, the expression inside the logarithm must be positive: $\\lvert x \\rvert > 0$, so $x \\ne 0$. Second, the logarithm is in the denominator, so it must not be zero: $\\lvert x \\rvert \\ne 1$, so $x \\ne -1$ and $x \\ne 1$. The domain is $\\{x \\mid x \\ne -1,\\ x \\ne 0 \\text{ and } x \\ne 1\\}$.",
   "video": "V05",
   "version": "a"
  },
@@ -1266,7 +1266,7 @@
    "companion",
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = 2x$ — it is odd: $f(-x) = -f(x)$. $y = \\lvert x \\rvert + 1$ is false: it is even: $f(-x) = f(x)$. $y = x^4 + 1$ is false: it is even: $f(-x) = f(x)$. $y = x + \\cos x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = 2x$ is correct. $f(-x) = -2x = -f(x)$, so it is odd. $y = \\lvert x \\rvert + 1$ is incorrect. $f(-x) = \\lvert x \\rvert + 1 = f(x)$, so it is even, not odd. $y = x^4 + 1$ is incorrect. $f(-x) = x^4 + 1 = f(x)$, so it is even, not odd. $y = x + \\cos x$ is incorrect. $f(-x) = -x + \\cos x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a"
  },
@@ -1297,7 +1297,7 @@
    "near-miss",
    null
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = \\lvert x \\rvert + 1$ — it is even: $f(-x) = f(x)$. $y = 2^x$ is false: it is neither odd nor even. $y = x + \\cos x$ is false: it is neither odd nor even. $y = x^5$ is false: it is odd: $f(-x) = -f(x)$.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = \\lvert x \\rvert + 1$ is correct. $f(-x) = \\lvert x \\rvert + 1 = f(x)$, so it is even. $y = 2^x$ is incorrect. $f(-x) = 2^{-x}$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x + \\cos x$ is incorrect. $f(-x) = -x + \\cos x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^5$ is incorrect. $f(-x) = -x^5 = -f(x)$, so it is odd, not even.",
   "video": "V06",
   "version": "a"
  },
@@ -1328,7 +1328,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an even function but not an odd function” — $f(-x) = f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = (-x)^2 - 5 = x^2 - 5 = f(x)$, so $f$ is even. “an even function but not an odd function” is correct. It is even, and it is not also odd, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an odd function but not an even function” is incorrect. It is even, not odd. “neither an odd nor an even function” is incorrect. It is even. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a"
  },
@@ -1359,7 +1359,7 @@
    "slip",
    "companion"
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$” — it takes every real value. “Its graph is symmetric about the $y$-axis” is false: it is not an even function. “Its range is $[0, +\\infty)$” is false: it also takes values below $0$. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is false: it increases on part of its domain.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. It takes every real value. “Its graph is symmetric about the $y$-axis” is incorrect. $f(-1) = -1$ but $f(1) = 1$, so the function is not even. “Its range is $[0, +\\infty)$” is incorrect. Its range is $\\mathbb{R}$, so it also takes values below $0$, such as $-1$. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is incorrect. An odd power keeps the order of real numbers, so it is increasing on $(-\\infty, +\\infty)$.",
   "video": "V06",
   "version": "a"
  },
@@ -1390,7 +1390,7 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its graph is symmetric about the origin” — symmetry about the origin belongs to odd functions; the graph of an even function is symmetric about the $y$-axis. The other three statements are true.",
+  "solution": "“Its graph is symmetric about the origin” is incorrect. Symmetry about the origin belongs to odd functions. The graph of an even function is symmetric about the $y$-axis. “Its graph is symmetric about the $y$-axis” is correct. If $(x, y)$ is on the graph, then so is $(-x, y)$, because $f(-x) = f(x)$. “Its domain is symmetric about the origin” is correct. The definition compares $f(x)$ with $f(-x)$, so $-x$ must be in the domain whenever $x$ is. “$f(-5) = f(5)$ whenever $5$ is in its domain” is correct. This is the definition $f(-x) = f(x)$ with $x = 5$.",
   "video": "V06",
   "version": "a"
  },
@@ -1421,7 +1421,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = (-x)\\lvert -x \\rvert = -x\\lvert x \\rvert = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a"
  },
@@ -1452,7 +1452,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = (-x)^2\\sin(-x) = -x^2\\sin x = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a"
  },
@@ -1483,7 +1483,7 @@
    "companion",
    "domain"
   ],
-  "solution": "The correct statement is “$f(x) = x^4$ is an even function” — $f(-x) = f(x)$. “$f(x) = x^3$, $x \\in [-1, 2]$, is an odd function” is false: the domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^3 + x^2$ is an even function” is false: it is neither odd nor even. “$f(x) = 2x$ is an even function” is false: it is odd, not even.",
+  "solution": "“$f(x) = x^4$ is an even function” is correct. $f(-x) = (-x)^4 = x^4 = f(x)$, so it is even. “$f(x) = x^3$, $x \\in [-1, 2]$, is an odd function” is incorrect. The domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^3 + x^2$ is an even function” is incorrect. $f(-x) = -x^3 + x^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. “$f(x) = 2x$ is an even function” is incorrect. $f(-x) = -2x = -f(x)$, so it is odd, not even.",
   "video": "V06",
   "version": "a"
  },
@@ -1514,7 +1514,7 @@
    "sign",
    null
   ],
-  "solution": "Swap $x$ and $y$: $x = -2y - 8$. Solve for $y$: $y = \\dfrac{x + 8}{-2}$. (The reciprocal $\\dfrac{1}{-2x - 8}$ is not the inverse function.)",
+  "solution": "Swap $x$ and $y$: $x = -2y - 8$. Solve for $y$: $-2y = x + 8$, so $y = \\dfrac{x + 8}{-2} = -\\dfrac{x + 8}{2}$. The reciprocal $\\dfrac{1}{-2x - 8}$ is a different function, not the inverse.",
   "video": "V07",
   "version": "a"
  },
@@ -1545,7 +1545,7 @@
    "slip",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -2 - y^3$, so $y^3 = -2 - x$, hence $y = \\sqrt[3]{-2 - x}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = -2 - y^3$, so $y^3 = -2 - x$. Take the cube root of both sides: $y = \\sqrt[3]{-2 - x}$.",
   "video": "V07",
   "version": "a"
  },
@@ -1576,7 +1576,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 9$, so $y^3 = x + 9$, hence $y = \\sqrt[3]{x + 9}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 - 9$, so $y^3 = x + 9$. Take the cube root of both sides: $y = \\sqrt[3]{x + 9}$.",
   "video": "V07",
   "version": "a"
  },
@@ -1607,7 +1607,7 @@
    "near-miss",
    "domain"
   ],
-  "solution": "Solving $x = 5y + 1$ gives $y = \\dfrac{x - 1}{5}$. The domain of the inverse is the range of the original function: as $x$ runs over $[0, 3]$, $5x + 1$ runs over $[1, 16]$.",
+  "solution": "Swap $x$ and $y$: $x = 5y + 1$, so $y = \\dfrac{x - 1}{5}$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[0, 3]$, $5x + 1$ runs from $1$ to $16$. So the inverse is $y = \\dfrac{x - 1}{5},\\ x \\in [1, 16]$.",
   "video": "V07",
   "version": "a"
  },
@@ -1638,7 +1638,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Swap $x$ and $y$: $x = 4y^3 + 6$. Isolate $y^3 = \\dfrac{x - 6}{4}$ and take the cube root: $y = \\sqrt[3]{\\dfrac{x - 6}{4}}$.",
+  "solution": "Swap $x$ and $y$: $x = 4y^3 + 6$. Then $4y^3 = x - 6$, so $y^3 = \\dfrac{x - 6}{4}$. Take the cube root of both sides: $y = \\sqrt[3]{\\dfrac{x - 6}{4}}$.",
   "video": "V07",
   "version": "a"
  },
@@ -1669,7 +1669,7 @@
    "sign",
    "axis"
   ],
-  "solution": "The correct statement is “The graph of its inverse function passes through the point $(0, 1)$” — $f(1) = 0$, so the inverse sends $0$ to $1$. “Its inverse function is $y = \\dfrac{x - 3}{3}$” is false: the sign of $3$ is wrong. “The graphs of the function and its inverse are symmetric about the $x$-axis” is false: they are symmetric about the line $y = x$. “Its inverse function is $y = \\dfrac{1}{3x - 3}$” is false: that is the reciprocal, not the inverse function.",
+  "solution": "“The graph of its inverse function passes through the point $(0, 1)$” is correct. $f(1) = 0$, so the inverse sends $0$ to $1$. “Its inverse function is $y = \\dfrac{x - 3}{3}$” is incorrect. Solving $x = 3y - 3$ gives $y = \\dfrac{x + 3}{3}$, so the sign in front of $3$ is wrong. “The graphs of the function and its inverse are symmetric about the $x$-axis” is incorrect. The graphs of a function and its inverse are symmetric about the line $y = x$, because swapping $x$ and $y$ reflects a point in that line. “Its inverse function is $y = \\dfrac{1}{3x - 3}$” is incorrect. $\\dfrac{1}{3x - 3}$ is the reciprocal of $f(x)$, not its inverse. The inverse is $y = \\dfrac{x + 3}{3}$.",
   "video": "V07",
   "version": "a"
  },
@@ -1700,7 +1700,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{-4y + 1}{2y + 3}$. Cross-multiply: $x(2y + 3) = -4y + 1$, collect $y$: $y(2x + 4) = -3x + 1$, so $y = -\\dfrac{3x - 1}{2x + 4}$. Check with one point: $f(0) = \\dfrac{1}{3}$, and the inverse sends $\\dfrac{1}{3}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{-4y + 1}{2y + 3}$. Multiply both sides by $2y + 3$: $2xy + 3x = -4y + 1$. Collect the terms in $y$ on one side: $y(2x + 4) = -3x + 1$, so $y = \\dfrac{-3x + 1}{2x + 4} = -\\dfrac{3x - 1}{2x + 4}$. Check with one point: $f(0) = \\dfrac{1}{3}$, and the inverse sends $\\dfrac{1}{3}$ back to $0$.",
   "video": "V07",
   "version": "a"
  },
@@ -1731,7 +1731,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y + 2}{2y + 5}$. Cross-multiply: $x(2y + 5) = 4y + 2$, collect $y$: $y(2x - 4) = -5x + 2$, so $y = -\\dfrac{5x - 2}{2x - 4}$. Check with one point: $f(0) = \\dfrac{2}{5}$, and the inverse sends $\\dfrac{2}{5}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y + 2}{2y + 5}$. Multiply both sides by $2y + 5$: $2xy + 5x = 4y + 2$. Collect the terms in $y$ on one side: $y(2x - 4) = -5x + 2$, so $y = \\dfrac{-5x + 2}{2x - 4} = -\\dfrac{5x - 2}{2x - 4}$. Check with one point: $f(0) = \\dfrac{2}{5}$, and the inverse sends $\\dfrac{2}{5}$ back to $0$.",
   "video": "V07",
   "version": "a"
  },
@@ -1752,8 +1752,8 @@
   "options": [
    "$y = 5x + 1$",
    "$y = \\left(\\dfrac{1}{3}\\right)^x$",
-   "$y = 3^{-x}$",
-   "$y = x^2$"
+   "$y = x^2$",
+   "$y = -x^3$"
   ],
   "answer": 0,
   "traps": [
@@ -1762,7 +1762,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = 5x + 1$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = \\left(\\dfrac{1}{3}\\right)^x$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = 3^{-x}$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = x^2$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 5x + 1$ is correct. It is a linear function with positive slope $5$, so it is increasing on $\\mathbb{R}$. $y = \\left(\\dfrac{1}{3}\\right)^x$ is incorrect. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = x^2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = -x^3$ is incorrect. $x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a"
  },
@@ -1793,7 +1793,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $y = -x^2$ — on $(0, +\\infty)$ a larger $x$ always gives a smaller value. $y = x^3$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = e^x$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = \\lvert x \\rvert$ is false: it is not decreasing on the whole of $(0, +\\infty)$.",
+  "solution": "$y = -x^2$ is correct. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$. $y = x^3$ is incorrect. Cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$. $y = e^x$ is incorrect. The base $e \\approx 2.718$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = \\lvert x \\rvert$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a"
  },
@@ -1824,7 +1824,7 @@
    "domain",
    "domain"
   ],
-  "solution": "The correct statement is “When $x > 0$, the function is increasing” — for positive $x$ the values grow with $x$. “When $x < 0$, the function is increasing” is false: for negative $x$ the values fall as $x$ grows towards $0$. “When $x \\in \\mathbb{R}$, the function is decreasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x \\in \\mathbb{R}$, the function is increasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
+  "solution": "The graph of $y = x^2$ is a parabola opening upward with its lowest point at $(0, 0)$, so the function decreases for $x < 0$ and increases for $x > 0$. “When $x > 0$, the function is increasing” is correct. “When $x < 0$, the function is increasing” is incorrect. For $x < 0$ the function is decreasing. “When $x \\in \\mathbb{R}$, the function is decreasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x \\in \\mathbb{R}$, the function is increasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a"
  },
@@ -1855,7 +1855,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is “When $x > 0$, the function is decreasing” — for positive $x$ the values fall as $x$ grows. “When $x < 0$, the function is decreasing” is false: for negative $x$ the values grow as $x$ grows towards $0$. “When $x > 0$, the function is increasing” is false: for positive $x$ the values fall as $x$ grows. “When $x \\in \\mathbb{R}$, the function is decreasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
+  "solution": "The graph of $y = -\\lvert x \\rvert$ is an upside-down V shape with its highest point at $(0, 0)$, so the function increases for $x < 0$ and decreases for $x > 0$. “When $x > 0$, the function is decreasing” is correct. “When $x < 0$, the function is decreasing” is incorrect. For $x < 0$ the function is increasing. “When $x > 0$, the function is increasing” is incorrect. For $x > 0$ the function is decreasing. “When $x \\in \\mathbb{R}$, the function is decreasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a"
  },
@@ -1886,7 +1886,7 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt[3]{x^3}$ — a cube root undoes a cube for every real number, so it equals $x$ on $\\mathbb{R}$. $y = \\dfrac{x^2}{x}$ is false: it is not defined at $x = 0$. $y = \\sqrt{x^2}$ is false: it equals $\\lvert x \\rvert$, which differs from $x$ when $x < 0$. $y = \\left(\\sqrt{x}\\right)^2$ is false: it is defined only for $x \\ge 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt[3]{x^3}$ is correct. A cube root undoes a cube for every real number, so it equals $x$ on $\\mathbb{R}$. $y = \\dfrac{x^2}{x}$ is incorrect. It is not defined at $x = 0$, while $y = x$ is. $y = \\sqrt{x^2}$ is incorrect. It equals $\\lvert x \\rvert$, which differs from $x$ when $x < 0$. At $x = -1$ it gives $1$, but $y = x$ gives $-1$. $y = \\left(\\sqrt{x}\\right)^2$ is incorrect. It is defined only for $x \\ge 0$, while $y = x$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a"
  },
@@ -1917,7 +1917,7 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x$ and $y = \\sqrt[3]{x^3}$” — a cube root has no domain restriction and $\\sqrt[3]{x^3} = x$ for every $x$. “$y = 1$ and $y = \\dfrac{x}{x}$” is false: $\\dfrac{x}{x}$ is not defined at $x = 0$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is false: $\\dfrac{x^2}{x}$ is not defined at $x = 0$. “$y = x + 2$ and $y = \\dfrac{x^2 - 4}{x - 2}$” is false: the fraction is not defined at $x = 2$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x$ and $y = \\sqrt[3]{x^3}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt[3]{x^3} = x$ for every real $x$. “$y = 1$ and $y = \\dfrac{x}{x}$” is incorrect. $\\dfrac{x}{x}$ is not defined at $x = 0$, while $y = 1$ is. “$y = x$ and $y = \\dfrac{x^2}{x}$” is incorrect. $\\dfrac{x^2}{x}$ is not defined at $x = 0$, while $y = x$ is. “$y = x + 2$ and $y = \\dfrac{x^2 - 4}{x - 2}$” is incorrect. The fraction is not defined at $x = 2$, while $y = x + 2$ is.",
   "video": "V08",
   "version": "a"
  },
@@ -1948,7 +1948,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt{(x - 1)^2}$ — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 1 \\rvert$ on $\\mathbb{R}$. $y = x - 1$ is false: the rule differs when $x - 1 < 0$. $y = \\left(\\sqrt{x - 1}\\right)^2$ is false: it is defined only for $x - 1 \\ge 0$. $y = \\sqrt[3]{(x - 1)^3}$ is false: it equals $x - 1$, which differs from $\\lvert x - 1 \\rvert$ when $x - 1 < 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt{(x - 1)^2}$ is correct. $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 1 \\rvert$ on $\\mathbb{R}$. $y = x - 1$ is incorrect. It differs from $\\lvert x - 1 \\rvert$ when $x - 1 < 0$. At $x = 0$ it gives $-1$, but $y = \\lvert x - 1 \\rvert$ gives $1$. $y = \\left(\\sqrt{x - 1}\\right)^2$ is incorrect. It is defined only for $x - 1 \\ge 0$, while $y = \\lvert x - 1 \\rvert$ is defined on $\\mathbb{R}$. $y = \\sqrt[3]{(x - 1)^3}$ is incorrect. It equals $x - 1$, which differs from $\\lvert x - 1 \\rvert$ when $x - 1 < 0$. At $x = 0$ it gives $-1$, but $y = \\lvert x - 1 \\rvert$ gives $1$.",
   "video": "V08",
   "version": "a"
  },
@@ -1979,7 +1979,7 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = \\lvert x - 5 \\rvert$ and $y = \\sqrt{(x - 5)^2}$” — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$. “$y = x - 5$ and $y = \\dfrac{x^2 - 25}{x + 5}$” is false: the fraction is not defined at $x = -5$. “$y = x + 5$ and $y = \\dfrac{x^2 - 25}{x - 5}$” is false: the fraction is not defined at $x = 5$. “$y = x$ and $y = \\sqrt{x^2}$” is false: $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = \\lvert x - 5 \\rvert$ and $y = \\sqrt{(x - 5)^2}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt{(x - 5)^2} = \\lvert x - 5 \\rvert$ for every real $x$. “$y = x - 5$ and $y = \\dfrac{x^2 - 25}{x + 5}$” is incorrect. The fraction is not defined at $x = -5$, while $y = x - 5$ is. “$y = x + 5$ and $y = \\dfrac{x^2 - 25}{x - 5}$” is incorrect. The fraction is not defined at $x = 5$, while $y = x + 5$ is. “$y = x$ and $y = \\sqrt{x^2}$” is incorrect. $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. At $x = -1$ the two rules give $-1$ and $1$.",
   "video": "V08",
   "version": "a"
  },
@@ -2010,7 +2010,7 @@
    "endpoint",
    "complement"
   ],
-  "solution": "Move $3$ to the left and combine into one fraction: $\\dfrac{-2x + 7}{x - 3} \\ge 0$. The numerator is zero at $x = \\dfrac{7}{2}$ and the denominator at $x = 3$. The quotient has the same sign as $(-2x + 7)(x - 3)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $3$ never is. Solution set: $\\left(3, \\dfrac{7}{2}\\right]$.",
+  "solution": "Subtract $3$ from both sides and combine into one fraction: $\\dfrac{x - 2}{x - 3} - 3 = \\dfrac{-2x + 7}{x - 3}$, so the inequality becomes $\\dfrac{-2x + 7}{x - 3} \\ge 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(-2x + 7)(x - 3)$ is zero at $x = \\dfrac{7}{2}$ and $x = 3$, and it is positive between these two numbers and negative outside them. We need the quotient to be positive or zero, so $x$ lies between them. The numerator is zero at $x = \\dfrac{7}{2}$, so this end point is included. The denominator is zero at $x = 3$, so this end point is excluded. The solution set is $\\left(3, \\dfrac{7}{2}\\right]$.",
   "video": "V03",
   "version": "a"
  },
@@ -2041,7 +2041,7 @@
    "partial",
    "domain"
   ],
-  "solution": "Two conditions: the argument of the logarithm must be positive, $\\lvert x + 6 \\rvert > 0$, so $x \\ne -6$; and the logarithm (a denominator) must not be zero, $\\lvert x + 6 \\rvert \\ne 1$, so $x \\ne -7$ and $x \\ne -5$. Domain: $\\{x \\mid x \\ne -7,\\ x \\ne -6 \\text{ and } x \\ne -5\\}$.",
+  "solution": "There are two conditions. First, the expression inside the logarithm must be positive: $\\lvert x + 6 \\rvert > 0$, so $x \\ne -6$. Second, the logarithm is in the denominator, so it must not be zero: $\\lvert x + 6 \\rvert \\ne 1$, so $x \\ne -7$ and $x \\ne -5$. The domain is $\\{x \\mid x \\ne -7,\\ x \\ne -6 \\text{ and } x \\ne -5\\}$.",
   "video": "V05",
   "version": "a"
  },
@@ -2072,7 +2072,7 @@
    "swap",
    "sign"
   ],
-  "solution": "The inside $-2x - 4$ must lie in the domain of $f$: $0 \\le -2x - 4 \\le 2$. Solve for $x$ (dividing by a negative number reverses the signs): $[-3, -2]$.",
+  "solution": "The expression $-2x - 4$ takes the place of $x$, so it must lie in the domain of $f$: $0 \\le -2x - 4 \\le 2$. Subtract $-4$: $4 \\le -2x \\le 6$. Divide by $-2$, reversing both inequality signs because $-2$ is negative: $-3 \\le x \\le -2$. So the domain of $f(-2x - 4)$ is $[-3, -2]$.",
   "video": "V05",
   "version": "a"
  },
@@ -2103,7 +2103,7 @@
    "domain",
    null
   ],
-  "solution": "The root needs $x \\ge -3$, the denominator needs $x \\ne 1$ and the logarithm needs $x > 0$. The strictest conditions are $x > 0$ and $x \\ne 1$. Domain: $(0, 1) \\cup (1, +\\infty)$.",
+  "solution": "The square root needs $x \\ge -3$, the denominator needs $x \\ne 1$ and the logarithm needs $x > 0$. Every $x > 0$ already satisfies $x \\ge -3$, so the conditions reduce to $x > 0$ and $x \\ne 1$. The domain is $(0, 1) \\cup (1, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -2134,7 +2134,7 @@
    "endpoint",
    "partial"
   ],
-  "solution": "Since $x^2 \\ge 0$, the denominator satisfies $x^2 + 4 \\ge 4$, so $0 < f(x) \\le \\dfrac{13}{4}$; the value $\\dfrac{13}{4}$ is reached at $x = 0$ and $0$ is never reached. Range: $\\left(0, \\dfrac{13}{4}\\right]$.",
+  "solution": "Since $x^2 \\ge 0$, the denominator satisfies $x^2 + 4 \\ge 4$, so $0 < f(x) \\le \\dfrac{13}{4}$. The largest value $\\dfrac{13}{4}$ is reached at $x = 0$. As $x^2$ grows, $f(x)$ comes as close to $0$ as we like, but it is never $0$. So the range is $\\left(0, \\dfrac{13}{4}\\right]$.",
   "video": "V05",
   "version": "a"
  },
@@ -2165,7 +2165,7 @@
    null,
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{3y - 1}{y + 5}$. Cross-multiply: $x(y + 5) = 3y - 1$, collect $y$: $y(x - 3) = -5x - 1$, so $y = -\\dfrac{5x + 1}{x - 3}$. Check with one point: $f(0) = -\\dfrac{1}{5}$, and the inverse sends $-\\dfrac{1}{5}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{3y - 1}{y + 5}$. Multiply both sides by $y + 5$: $xy + 5x = 3y - 1$. Collect the terms in $y$ on one side: $y(x - 3) = -5x - 1$, so $y = \\dfrac{-5x - 1}{x - 3} = -\\dfrac{5x + 1}{x - 3}$. Check with one point: $f(0) = -\\dfrac{1}{5}$, and the inverse sends $-\\dfrac{1}{5}$ back to $0$.",
   "video": "V07",
   "version": "a"
  },
@@ -2196,7 +2196,7 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = \\lvert x \\rvert$ and $y = \\sqrt{x^2}$” — $\\sqrt{x^2} = \\lvert x \\rvert$ for every real $x$. “$y = x$ and $y = (\\sqrt{x})^2$” is false: $(\\sqrt{x})^2$ is defined only for $x \\ge 0$. “$y = x - 3$ and $y = \\dfrac{x^2 - 9}{x + 3}$” is false: the fraction is not defined at $x = -3$. “$y = x$ and $y = e^{\\ln x}$” is false: $e^{\\ln x}$ is defined only for $x > 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = \\lvert x \\rvert$ and $y = \\sqrt{x^2}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt{x^2} = \\lvert x \\rvert$ for every real $x$. “$y = x$ and $y = (\\sqrt{x})^2$” is incorrect. $(\\sqrt{x})^2$ is defined only for $x \\ge 0$, while $y = x$ is defined on $\\mathbb{R}$. “$y = x - 3$ and $y = \\dfrac{x^2 - 9}{x + 3}$” is incorrect. The fraction is not defined at $x = -3$, while $y = x - 3$ is. “$y = x$ and $y = e^{\\ln x}$” is incorrect. $e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a"
  },
@@ -2227,7 +2227,7 @@
    "endpoint",
    null
   ],
-  "solution": "The numerator is zero at $x = -\\dfrac{4}{3}$ and the denominator at $x = 1$. The quotient has the same sign as $(3x + 4)(x - 1)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $1$ never is. Solution set: $\\left(-\\infty, -\\dfrac{4}{3}\\right] \\cup (1, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x + 4)(x - 1)$ is zero at $x = -\\dfrac{4}{3}$ and $x = 1$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = -\\dfrac{4}{3}$, so this end point is included. The denominator is zero at $x = 1$, so this end point is excluded. The solution set is $\\left(-\\infty, -\\dfrac{4}{3}\\right] \\cup (1, +\\infty)$.",
   "video": "V03",
   "version": "a"
  },
@@ -2258,7 +2258,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $5 \\in A$ — $5$ is listed in $A$, and an element is linked to a set by $\\in$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $\\{7\\} \\in A$ is false: $\\{7\\}$ is a set, and the elements of $A$ are numbers; write $\\{7\\} \\subseteq A$. $7 \\notin A$ is false: $7$ is listed in $A$.",
+  "solution": "$5 \\in A$ is correct. $5$ is one of the listed elements of $A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $\\{7\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{7\\}$ is a set. The correct statement is $\\{7\\} \\subseteq A$. $7 \\notin A$ is incorrect. $7$ is one of the listed elements, so $7 \\in A$.",
   "video": "V02",
   "version": "a"
  },
@@ -2289,7 +2289,7 @@
    "near-miss",
    "domain"
   ],
-  "solution": "The correct statement is $\\{0, 2\\} \\subseteq A$ — $A = \\{0, 1, 2\\}$ contains $0$ and $2$. $A = \\{1, 2\\}$ is false: the element $0$ is missing. $0 \\notin A$ is false: $0 \\in \\mathbb{N}$ and it satisfies the condition. “The set $A$ has exactly $6$ subsets” is false: a set with $3$ elements has $2^{3} = 8$ subsets.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2\\}$. $\\{0, 2\\} \\subseteq A$ is correct. Both $0$ and $2$ are elements of $A$. $A = \\{1, 2\\}$ is incorrect. The element $0$ is missing from this list. $0 \\notin A$ is incorrect. $0$ is a natural number and satisfies $x < 3$, so $0 \\in A$. “The set $A$ has exactly $6$ subsets” is incorrect. A set with $3$ elements has $2^{3} = 8$ subsets, not $2 \\times 3 = 6$.",
   "video": "V02",
   "version": "a"
  },
@@ -2306,7 +2306,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = (0, 5]$ and $B = (1, 8)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = (0, 5]$ and $B = (1, 8)$, then $A \\cap B =$ ( )",
   "options": [
    "$(1, 5)$",
    "$(1, 5]$",
@@ -2320,7 +2320,7 @@
    "endpoint",
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $1$ to $5$. $1$ is excluded and $5$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(1, 5]$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $0$ to $5$ and $B$ runs from $1$ to $8$, so they overlap from $1$ to $5$. The end point $1$ comes from $B$, where it is excluded, and $5$ comes from $A$, where it is included. So $A \\cap B = (1, 5]$.",
   "video": "V02",
   "version": "a"
  },
@@ -2351,7 +2351,7 @@
    "operation",
    null
   ],
-  "solution": "Both sets end at $3$, but only one of them contains $3$, so $3$ is not in the intersection. The left end is the larger one, $1$, with the bracket of its own set. Answer: $[1, 3)$.",
+  "solution": "A number in the intersection must lie in both sets. Both sets end at $3$, but $3$ belongs to $M$ only, so $3$ is not in $M \\cap N$. The intersection starts at the larger left end point, $1$, which is included as it is in $N$. So $M \\cap N = [1, 3)$.",
   "video": "V02",
   "version": "a"
  },
@@ -2382,7 +2382,7 @@
    "sign",
    null
   ],
-  "solution": "Factor: $(x - 1)(x - 6) < 0$. The roots are $1$ and $6$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(1, 6)$.",
+  "solution": "Factor the left side: $(x - 1)(x - 6) < 0$. The roots are $1$ and $6$. The graph of $y = (x - 1)(x - 6)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(1, 6)$.",
   "video": "V03",
   "version": "a"
  },
@@ -2413,7 +2413,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The correct statement is $x^2 - 13x + 30 > 0$ — its roots are $3$ and $10$, and \"greater than zero\" means outside the roots. $x^2 - 13x + 30 < 0$ is false: this one holds between the roots. $x^2 + 13x + 30 > 0$ is false: its roots are $-10$ and $-3$ (signs reversed). $x^2 - 13x + 30 \\ge 0$ is false: the end points are included here but the given set excludes them.",
+  "solution": "$x^2 - 13x + 30 > 0$ is correct. It factors as $(x - 3)(x - 10) > 0$. The roots are $3$ and $10$, and an upward parabola is positive outside its roots. $x^2 - 13x + 30 < 0$ is incorrect. This inequality holds between the roots, so its solution set is $(3, 10)$. $x^2 + 13x + 30 > 0$ is incorrect. Its roots are $-10$ and $-3$, so its solution set is $(-\\infty, -10) \\cup (-3, +\\infty)$. $x^2 - 13x + 30 \\ge 0$ is incorrect. Its solution set is $(-\\infty, 3] \\cup [10, +\\infty)$, which includes the roots $3$ and $10$.",
   "video": "V03",
   "version": "a"
  },
@@ -2444,7 +2444,7 @@
    "endpoint",
    "sign"
   ],
-  "solution": "The numerator $5$ is positive and never zero, so the fraction is positive exactly when the denominator is positive: $x > 1$. The value $x = 1$ is excluded because the denominator cannot be zero. Solution set: $(1, +\\infty)$.",
+  "solution": "The numerator $5$ is positive and never zero, so the fraction is never $0$ and it is positive exactly when the denominator is positive: $x - 1 > 0$, that is $x > 1$. The value $x = 1$ is excluded because the denominator cannot be zero. The solution set is $(1, +\\infty)$.",
   "video": "V03",
   "version": "a"
  },
@@ -2475,7 +2475,7 @@
    "complement",
    "endpoint"
   ],
-  "solution": "The correct statement is “The solution set of $\\dfrac{x + 4}{x + 2} > 0$ is $(-\\infty, -4) \\cup (-2, +\\infty)$” — the quotient is positive outside the two numbers. “The solution set of $\\dfrac{x + 4}{x + 2} < 0$ is $(-\\infty, -4) \\cup (-2, +\\infty)$” is false: the quotient is negative between the two numbers, not outside. “The solution set of $\\dfrac{x + 4}{x + 2} > 0$ is $(-4, -2)$” is false: the quotient is positive outside the two numbers, not between. “The solution set of $\\dfrac{x + 4}{x + 2} \\ge 0$ is $(-\\infty, -4] \\cup [-2, +\\infty)$” is false: the denominator root $-2$ can never be included.",
+  "solution": "“The solution set of $\\dfrac{x + 4}{x + 2} > 0$ is $(-\\infty, -4) \\cup (-2, +\\infty)$” is correct. The quotient is positive exactly when the numerator and denominator have the same sign, which happens outside $-4$ and $-2$. “The solution set of $\\dfrac{x + 4}{x + 2} < 0$ is $(-\\infty, -4) \\cup (-2, +\\infty)$” is incorrect. The quotient is negative between $-4$ and $-2$, not outside them. “The solution set of $\\dfrac{x + 4}{x + 2} > 0$ is $(-4, -2)$” is incorrect. The quotient is positive outside $-4$ and $-2$, not between them. “The solution set of $\\dfrac{x + 4}{x + 2} \\ge 0$ is $(-\\infty, -4] \\cup [-2, +\\infty)$” is incorrect. $x = -2$ makes the denominator zero, so it can never be in the solution set.",
   "video": "V03",
   "version": "a"
  },
@@ -2506,7 +2506,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a^3 > b^3$ — $y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $-4a > -4b$ is false: multiplying by a negative number reverses the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$a^3 > b^3$ is correct. $y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $-4a > -4b$ is incorrect. Multiplying both sides by the negative number $-4$ reverses the direction, so $-4a < -4b$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a"
  },
@@ -2523,7 +2523,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "Given $a > b$ and $c < 0$, then ( )",
+  "stem": "If $a > b$ and $c < 0$, then ( )",
   "options": [
    "$a^2 > b^2$",
    "$ac > bc$",
@@ -2537,7 +2537,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $ac < bc$ — multiplying by the negative number $c$ reverses the direction. $a + c < b + c$ is false: adding $c$ never changes the direction. $ac > bc$ is false: multiplying by a negative number reverses the direction. $a^2 > b^2$ is false: squares need sign information about $a$ and $b$.",
+  "solution": "$ac < bc$ is correct. Multiplying both sides of $a > b$ by the negative number $c$ reverses the direction. $a + c < b + c$ is incorrect. Adding $c$ to both sides keeps the direction, so $a + c > b + c$. $ac > bc$ is incorrect. Multiplying by the negative number $c$ reverses the direction, so $ac < bc$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: then $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a"
  },
@@ -2568,7 +2568,7 @@
    null,
    "sign"
   ],
-  "solution": "The expression under the root must be positive — not just non-negative, because it is in a denominator: $x - 4 > 0$, so $x > 4$. Domain: $(4, +\\infty)$.",
+  "solution": "The square root is in the denominator, so the expression under it must be positive, not zero: $x - 4 > 0$, so $x > 4$. The domain is $(4, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -2599,7 +2599,7 @@
    "domain",
    "endpoint"
   ],
-  "solution": "The correct statement is $y = \\dfrac{1}{x - 5}$ — its domain is $(-\\infty, 5) \\cup (5, +\\infty)$. $y = \\sqrt{x - 5}$ is false: its domain is $[5, +\\infty)$. $y = \\sqrt[3]{x - 5}$ is false: its domain is $\\mathbb{R}$. $y = \\ln(x - 5)$ is false: its domain is $(5, +\\infty)$.",
+  "solution": "$y = \\dfrac{1}{x - 5}$ is correct. The denominator needs $x - 5 \\ne 0$, so its domain is $(-\\infty, 5) \\cup (5, +\\infty)$. $y = \\sqrt{x - 5}$ is incorrect. The square root needs $x - 5 \\ge 0$, so its domain is $[5, +\\infty)$. $y = \\sqrt[3]{x - 5}$ is incorrect. A cube root is defined for every real number, so its domain is $\\mathbb{R}$. $y = \\ln(x - 5)$ is incorrect. The logarithm needs $x - 5 > 0$, so its domain is $(5, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -2630,7 +2630,7 @@
    null,
    "domain"
   ],
-  "solution": "Two conditions: the argument of the logarithm must be positive, $\\lvert x - 3 \\rvert > 0$, so $x \\ne 3$; and the logarithm (a denominator) must not be zero, $\\lvert x - 3 \\rvert \\ne 1$, so $x \\ne 2$ and $x \\ne 4$. Domain: $\\{x \\mid x \\ne 2,\\ x \\ne 3 \\text{ and } x \\ne 4\\}$.",
+  "solution": "There are two conditions. First, the expression inside the logarithm must be positive: $\\lvert x - 3 \\rvert > 0$, so $x \\ne 3$. Second, the logarithm is in the denominator, so it must not be zero: $\\lvert x - 3 \\rvert \\ne 1$, so $x \\ne 2$ and $x \\ne 4$. The domain is $\\{x \\mid x \\ne 2,\\ x \\ne 3 \\text{ and } x \\ne 4\\}$.",
   "video": "V05",
   "version": "a"
  },
@@ -2661,7 +2661,7 @@
    "endpoint",
    null
   ],
-  "solution": "Complete the square: $y = \\left(x - 3\\right)^2 + 3$. The square is at least $0$, so $y \\ge 3$, with equality at $x = 3$. Range: $[3, +\\infty)$.",
+  "solution": "Complete the square: $y = \\left(x - 3\\right)^2 + 3$. The square is never negative, so $y \\ge 3$, with equality at $x = 3$. Every value above $3$ is also reached, so the range is $[3, +\\infty)$.",
   "video": "V05",
   "version": "a"
  },
@@ -2692,7 +2692,7 @@
    "domain",
    "companion"
   ],
-  "solution": "The correct statement is “Its range is $[0, +\\infty)$” — its smallest value is $0$ and it grows without bound. “Its graph is symmetric about the origin” is false: it is not an odd function. “Its range is $\\mathbb{R}$” is false: it never goes below $0$. “It is monotonically increasing on $(-\\infty, +\\infty)$” is false: it decreases on part of its domain.",
+  "solution": "“Its range is $[0, +\\infty)$” is correct. Its smallest value is $0$, at $x = 0$, and it takes every larger value. “Its graph is symmetric about the origin” is incorrect. $f(-1) = 1$ but $-f(1) = -1$, so the function is not odd. “Its range is $\\mathbb{R}$” is incorrect. Its smallest value is $0$, at $x = 0$, so it never takes values below $0$. “It is monotonically increasing on $(-\\infty, +\\infty)$” is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V06",
   "version": "a"
  },
@@ -2723,7 +2723,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “$f(x) = x^2 + 1$ is an even function” — $f(-x) = f(x)$. “$f(x) = x^3$, $x \\in [-3, 5]$, is an odd function” is false: the domain $[-3, 5]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^4 + 1$ is an odd function” is false: it is even, not odd. “$f(x) = -2x$ is an even function” is false: it is odd, not even.",
+  "solution": "“$f(x) = x^2 + 1$ is an even function” is correct. $f(-x) = x^2 + 1 = f(x)$, so it is even. “$f(x) = x^3$, $x \\in [-3, 5]$, is an odd function” is incorrect. The domain $[-3, 5]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^4 + 1$ is an odd function” is incorrect. $f(-x) = x^4 + 1 = f(x)$, so it is even, not odd. “$f(x) = -2x$ is an even function” is incorrect. $f(-x) = 2x = -f(x)$, so it is odd, not even.",
   "video": "V06",
   "version": "a"
  },
@@ -2754,7 +2754,7 @@
    "near-miss",
    "domain"
   ],
-  "solution": "Solving $x = 4y + 2$ gives $y = \\dfrac{x - 2}{4}$. The domain of the inverse is the range of the original function: as $x$ runs over $[1, 3]$, $4x + 2$ runs over $[6, 14]$.",
+  "solution": "Swap $x$ and $y$: $x = 4y + 2$, so $y = \\dfrac{x - 2}{4}$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[1, 3]$, $4x + 2$ runs from $6$ to $14$. So the inverse is $y = \\dfrac{x - 2}{4},\\ x \\in [6, 14]$.",
   "video": "V07",
   "version": "a"
  },
@@ -2785,7 +2785,7 @@
    "slip",
    null
   ],
-  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 2$, so $y^3 = x - 2$, hence $y = \\sqrt[3]{x - 2}$.",
+  "solution": "Swap $x$ and $y$ and solve for $y$: $x = y^3 + 2$, so $y^3 = x - 2$. Take the cube root of both sides: $y = \\sqrt[3]{x - 2}$.",
   "video": "V07",
   "version": "a"
  },
@@ -2816,7 +2816,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = 2x - 4$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = -\\dfrac{2}{x}$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = -2x + 4$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = x^2 + 4$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 2x - 4$ is correct. It is a linear function with positive slope $2$, so it is increasing on $\\mathbb{R}$. $y = -\\dfrac{2}{x}$ is incorrect. It is not defined at $x = 0$, and it increases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = -2x + 4$ is incorrect. It is a linear function with negative slope $-2$, so it is decreasing on $\\mathbb{R}$. $y = x^2 + 4$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a"
  },
@@ -2847,7 +2847,7 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = \\lvert x - 4 \\rvert$ and $y = \\sqrt{(x - 4)^2}$” — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$. “$y = x$ and $y = e^{\\ln x}$” is false: $e^{\\ln x}$ is defined only for $x > 0$. “$y = 1$ and $y = \\dfrac{x}{x}$” is false: $\\dfrac{x}{x}$ is not defined at $x = 0$. “$y = x + 4$ and $y = \\dfrac{x^2 - 16}{x - 4}$” is false: the fraction is not defined at $x = 4$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = \\lvert x - 4 \\rvert$ and $y = \\sqrt{(x - 4)^2}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt{(x - 4)^2} = \\lvert x - 4 \\rvert$ for every real $x$. “$y = x$ and $y = e^{\\ln x}$” is incorrect. $e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$. “$y = 1$ and $y = \\dfrac{x}{x}$” is incorrect. $\\dfrac{x}{x}$ is not defined at $x = 0$, while $y = 1$ is. “$y = x + 4$ and $y = \\dfrac{x^2 - 16}{x - 4}$” is incorrect. The fraction is not defined at $x = 4$, while $y = x + 4$ is.",
   "video": "V08",
   "version": "a"
  },
@@ -2878,7 +2878,7 @@
    "endpoint",
    "complement"
   ],
-  "solution": "Move $2$ to the left and combine into one fraction: $\\dfrac{-x - 8}{x + 3} \\le 0$. The numerator is zero at $x = -8$ and the denominator at $x = -3$. The quotient has the same sign as $(-x - 8)(x + 3)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $-3$ never is. Solution set: $(-\\infty, -8] \\cup (-3, +\\infty)$.",
+  "solution": "Subtract $2$ from both sides and combine into one fraction: $\\dfrac{x - 2}{x + 3} - 2 = \\dfrac{-x - 8}{x + 3}$, so the inequality becomes $\\dfrac{-x - 8}{x + 3} \\le 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(-x - 8)(x + 3)$ is zero at $x = -8$ and $x = -3$, and it is positive between these two numbers and negative outside them. We need the quotient to be negative or zero, so $x$ lies outside them. The numerator is zero at $x = -8$, so this end point is included. The denominator is zero at $x = -3$, so this end point is excluded. The solution set is $(-\\infty, -8] \\cup (-3, +\\infty)$.",
   "video": "V03",
   "version": "a"
  },
@@ -2909,7 +2909,7 @@
    "swap",
    null
   ],
-  "solution": "The inside $3x + 1$ must lie in the domain of $f$: $-8 \\le 3x + 1 \\le 1$. Solve for $x$: $[-3, 0]$.",
+  "solution": "The expression $3x + 1$ takes the place of $x$, so it must lie in the domain of $f$: $-8 \\le 3x + 1 \\le 1$. Subtract $1$: $-9 \\le 3x \\le 0$. Divide by $3$: $-3 \\le x \\le 0$. So the domain of $f(3x + 1)$ is $[-3, 0]$.",
   "video": "V05",
   "version": "a"
  },
@@ -2940,7 +2940,7 @@
    null,
    "domain"
   ],
-  "solution": "Two conditions: the argument of the logarithm must be positive, $\\lvert x + 3 \\rvert > 0$, so $x \\ne -3$; and the logarithm (a denominator) must not be zero, $\\lvert x + 3 \\rvert \\ne 1$, so $x \\ne -4$ and $x \\ne -2$. Domain: $\\{x \\mid x \\ne -4,\\ x \\ne -3 \\text{ and } x \\ne -2\\}$.",
+  "solution": "There are two conditions. First, the expression inside the logarithm must be positive: $\\lvert x + 3 \\rvert > 0$, so $x \\ne -3$. Second, the logarithm is in the denominator, so it must not be zero: $\\lvert x + 3 \\rvert \\ne 1$, so $x \\ne -4$ and $x \\ne -2$. The domain is $\\{x \\mid x \\ne -4,\\ x \\ne -3 \\text{ and } x \\ne -2\\}$.",
   "video": "V05",
   "version": "a"
  },
@@ -2971,7 +2971,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{3y + 3}{2y - 5}$. Cross-multiply: $x(2y - 5) = 3y + 3$, collect $y$: $y(2x - 3) = 5x + 3$, so $y = \\dfrac{5x + 3}{2x - 3}$. Check with one point: $f(0) = -\\dfrac{3}{5}$, and the inverse sends $-\\dfrac{3}{5}$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{3y + 3}{2y - 5}$. Multiply both sides by $2y - 5$: $2xy - 5x = 3y + 3$. Collect the terms in $y$ on one side: $y(2x - 3) = 5x + 3$, so $y = \\dfrac{5x + 3}{2x - 3}$. Check with one point: $f(0) = -\\dfrac{3}{5}$, and the inverse sends $-\\dfrac{3}{5}$ back to $0$.",
   "video": "V07",
   "version": "a"
  }

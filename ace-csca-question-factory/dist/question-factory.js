@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory — browser bundle. Defines window.QF; call QF.adapters.install() to register ACE_GEN. */
+/* ACE CSCA Question Factory: browser bundle. Defines window.QF; call QF.adapters.install() to register ACE_GEN. */
 /* ---- core/rng.js ---- */
 /* ACE CSCA Question Factory · core/rng.js
  * Seeded random numbers. Same seed -> same question, in Node and in the browser.
@@ -1311,7 +1311,7 @@
   };
   var LESSONS = Object.keys(L).map(function (id) { return { id: id, title: L[id][0], week: L[id][1], day: L[id][2], video: L[id][3] }; });
 
-  /* recycled bank templates (Atlas §5.1) — only the template is kept, the numbers are always new */
+  /* recycled bank templates (Atlas §5.1): only the template is kept, the numbers are always new */
   var REPEATS = {
     R01: 'Half-angle: cos α given with α ∈ (π/2, π) → sin(α/2)',
     R02: 'Which point lies in a given quadrant',
@@ -1560,21 +1560,27 @@
     if (wrong.length < 3) throw new Retry('statement pool too small');
     return QF.useStmts(fmt, key, wrong);
   };
+  /** a statement as it is quoted in a solution: formulas bare, sentences in quotation marks */
+  function showStmt(t) { return /^\$[^$]*\$$/.test(t) ? t : '“' + t + '”'; }
+  /** a reason as a full sentence: capital first letter, full stop at the end */
+  function sentence(s) {
+    s = String(s || '').trim();
+    if (!s) return '';
+    s = s.charAt(0).toUpperCase() + s.slice(1);
+    return /[.?!]$/.test(s) ? s : s + '.';
+  }
+  QF.sentence = sentence;
+  function stmtLine(s, verdict) { var w = sentence(s.why); return showStmt(s.t) + verdict + (w ? ' ' + w : ''); }
   /** fixed statements: key + exactly three others (format S: key true, others false; N: key false, others true) */
   QF.useStmts = function (fmt, key, wrong) {
     var bad = fmt === 'N' ? (key.ok || wrong.some(function (w) { return !w.ok; })) : (!key.ok || wrong.some(function (w) { return w.ok; }));
     if (bad || wrong.length !== 3) throw new Error('useStmts: truth flags do not fit format ' + fmt + ' (key: ' + key.t + ')');
     var check = chk.stmt(fmt === 'N' ? 'F' : 'T');
     [key].concat(wrong).forEach(function (s) { check.facts[normText(s.t)] = s; });
-    var sol;
-    function show(t) { return /^\$[^$]*\$$/.test(t) ? t : '\u201c' + t + '\u201d'; }   // quote sentences, leave pure formulas bare
-    if (fmt === 'N') {
-      sol = 'The incorrect statement is ' + show(key.t) + (key.why ? ' — ' + key.why : '.') + ' The other three statements are true.';
-    } else {
-      sol = 'The correct statement is ' + show(key.t) + (key.why ? ' — ' + key.why : '.');
-      var notes = wrong.filter(function (w) { return w.why; }).map(function (w) { return show(w.t) + ' is false: ' + w.why; });
-      if (notes.length) sol += ' ' + notes.join(' ');
-    }
+    // The answer first, then one short reason for each of the other three options.
+    var good = fmt === 'N' ? ' is incorrect.' : ' is correct.', other = fmt === 'N' ? ' is correct.' : ' is incorrect.';
+    var sol = stmtLine(key, good);
+    wrong.forEach(function (w) { sol += ' ' + stmtLine(w, other); });
     return {
       key: key.t, check: check, sol: sol, keyStmt: key, wrongStmts: wrong,
       wrong: wrong.map(function (s) { return [s.t, s.trap || (fmt === 'N' ? 'true-statement' : 'false-statement')]; })
@@ -1741,7 +1747,7 @@
   }
 
   /** QF.strict = true (the test-suite): a draw that fails verification is an error, so that a faulty template is found.
-   *  QF.strict = false (normal use): the draw is discarded and the next one is taken — a question that fails its check is never returned. */
+   *  QF.strict = false (normal use): the draw is discarded and the next one is taken, so a question that fails its check is never returned. */
   QF.strict = false;
   QF.rejected = 0;
   /** generate one verified item from a template. Same (id, seed) -> same item. */
@@ -1777,7 +1783,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/_helpers.js ---- */
-/* ACE CSCA Question Factory · templates/_helpers.js — small helpers shared by the template files. */
+/* ACE CSCA Question Factory · templates/_helpers.js: small helpers shared by the template files. */
 ;(function (root) {
   'use strict';
   var QF = root.QF, F = QF.fmt, S = QF.S, ev = QF.ev, N = QF.num;
@@ -1855,6 +1861,10 @@
     return out;
   };
   h.lst = function (arr) { return '\\{' + arr.join(', ') + '\\}'; };
+  /** values as words in a sentence: "$1$", "$1$ and $2$", "$1$, $2$ and $3$" */
+  h.andList = function (arr) { return h.joinAnd(arr.map(function (x) { return '$' + F.n(x) + '$'; })); };
+  /** phrases joined as in a sentence: "a", "a and b", "a, b and c" */
+  h.joinAnd = function (t) { return t.length < 2 ? t.join('') : t.slice(0, -1).join(', ') + ' and ' + t[t.length - 1]; };
   /** a set in interval ('iv') or set-builder ('sb') notation, as an option string */
   h.setOpt = function (rs, style, v) { return F.m(style === 'sb' ? rs.texB(v) : rs.tex()); };
   /** integer written with its sign for use inside an expression: "+ 3", "- 2" */
@@ -1869,7 +1879,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/si.js ---- */
-/* ACE CSCA Question Factory · templates/si.js — Sets & inequalities (SET-el, SET-num, SET-op, INQ-quad, INQ-rat, INQ-prop). */
+/* ACE CSCA Question Factory · templates/si.js: sets and inequalities (SET-el, SET-num, SET-op, INQ-quad, INQ-rat, INQ-prop). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, F = QF.fmt, IS = QF.iset, chk = QF.chk, S = QF.S, ev = QF.ev, h = QF.h, m = F.m;
@@ -1889,13 +1899,13 @@
     var setS = mkS(env);
     var o1 = R.pick(notIn(A, [A[0] - step, A[k - 1] + step, A[0] + 1, A[k - 1] - 1]));
     var pool = [
-      setS(el + ' \\in A', true, '$' + el + '$ is listed in $A$, and an element is linked to a set by $\\in$.', { g: 'in' }),
-      setS('\\{' + el2 + '\\} \\subseteq A', true, '$\\{' + el2 + '\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$.', { g: 'sub' }),
-      setS(el2 + ' \\subseteq A', false, '$\\subseteq$ links two sets, but $' + el2 + '$ is an element; write $' + el2 + ' \\in A$.', { trap: 'symbol', g: 'esub' }),
-      setS('\\{' + el3 + '\\} \\in A', false, '$\\{' + el3 + '\\}$ is a set, and the elements of $A$ are numbers; write $\\{' + el3 + '\\} \\subseteq A$.', { trap: 'symbol', g: 'sin' }),
-      setS('\\varnothing \\in A', false, 'the empty set is a subset of $A$, not one of its elements.', { trap: 'symbol', g: 'empty' }),
-      setS(o1 + ' \\in A', false, '$' + o1 + '$ is not listed in $A$.', { trap: 'slip', g: 'out' }),
-      setS(el3 + ' \\notin A', false, '$' + el3 + '$ is listed in $A$.', { trap: 'slip', g: 'notin' })
+      setS(el + ' \\in A', true, '$' + el + '$ is one of the listed elements of $A$.', { g: 'in' }),
+      setS('\\{' + el2 + '\\} \\subseteq A', true, 'the only element of $\\{' + el2 + '\\}$ is $' + el2 + '$, and $' + el2 + ' \\in A$, so $\\{' + el2 + '\\}$ is a subset of $A$.', { g: 'sub' }),
+      setS(el2 + ' \\subseteq A', false, '$' + el2 + '$ is an element, not a set. An element is related to a set by $\\in$, so the correct statement is $' + el2 + ' \\in A$.', { trap: 'symbol', g: 'esub' }),
+      setS('\\{' + el3 + '\\} \\in A', false, 'the elements of $A$ are numbers, and $\\{' + el3 + '\\}$ is a set. The correct statement is $\\{' + el3 + '\\} \\subseteq A$.', { trap: 'symbol', g: 'sin' }),
+      setS('\\varnothing \\in A', false, 'the elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it.', { trap: 'symbol', g: 'empty' }),
+      setS(o1 + ' \\in A', false, '$' + o1 + '$ is not one of the listed elements.', { trap: 'slip', g: 'out' }),
+      setS(el3 + ' \\notin A', false, '$' + el3 + '$ is one of the listed elements, so $' + el3 + ' \\in A$.', { trap: 'slip', g: 'notin' })
     ];
     var stem = R.pick([
       'Given the set $A = ' + h.lst(A) + '$, which of the following is correct? ( )',
@@ -1915,12 +1925,13 @@
     var sm = smallIsA ? 'A' : 'B', bg = smallIsA ? 'B' : 'A';
     var env = { A: ev.finiteSet(A), B: ev.finiteSet(B) };
     var setS = mkS(env);
+    var extra = big.filter(function (v) { return small.indexOf(v) < 0; })[0];
     var key = setS(sm + ' \\subseteq ' + bg, true, 'every element of $' + sm + '$ is also an element of $' + bg + '$.');
     var wrongs = R.sample([
-      setS('A = B', false, 'the two sets do not have the same elements.', { trap: 'slip' }),
-      setS(bg + ' \\subseteq ' + sm, false, '$' + bg + '$ has an element that is not in $' + sm + '$.', { trap: 'swap' }),
-      setS(sm + ' \\in ' + bg, false, '$\\in$ links an element to a set; between two sets use $\\subseteq$.', { trap: 'symbol' }),
-      setS(bg + ' \\in ' + sm, false, '$\\in$ links an element to a set; between two sets use $\\subseteq$.', { trap: 'symbol' })
+      setS('A = B', false, '$' + extra + ' \\in ' + bg + '$ but $' + extra + ' \\notin ' + sm + '$, so the two sets are not equal.', { trap: 'slip' }),
+      setS(bg + ' \\subseteq ' + sm, false, '$' + extra + ' \\in ' + bg + '$ but $' + extra + ' \\notin ' + sm + '$.', { trap: 'swap' }),
+      setS(sm + ' \\in ' + bg, false, 'the elements of $' + bg + '$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.', { trap: 'symbol' }),
+      setS(bg + ' \\in ' + sm, false, 'the elements of $' + sm + '$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.', { trap: 'symbol' })
     ], 3);
     return out('Given sets $A = ' + h.lst(A) + '$ and $B = ' + h.lst(B) + '$, which of the following is correct? ( )', QF.useStmts('S', key, wrongs));
   });
@@ -1932,16 +1943,16 @@
     var eq = R.pick(['x^2 - ' + k * k + ' = 0', 'x^2 = ' + k * k]);
     var r = R.pick([k, -k]);
     var pool = [
-      setS('\\{' + r + '\\} \\subseteq A', true, 'the equation gives $x = \\pm ' + k + '$, so $A = \\{-' + k + ', ' + k + '\\}$ and $\\{' + r + '\\}$ is a subset of it.', { g: 'sub' }),
-      setS((-r) + ' \\in A', true, 'the equation gives $x = \\pm ' + k + '$, so $A = \\{-' + k + ', ' + k + '\\}$ contains $' + (-r) + '$.', { g: 'in' }),
-      setS(k + ' \\subseteq A', false, '$' + k + '$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' }),
-      setS('A = \\{' + k + '\\}', false, 'the root $-' + k + '$ is missing.', { trap: 'partial', g: 'eq' }),
-      setS('-' + k + ' \\notin A', false, '$(-' + k + ')^2 = ' + k * k + '$, so $-' + k + '$ belongs to $A$.', { trap: 'sign', g: 'notin' }),
-      setS('\\{' + k + '\\} \\in A', false, '$\\{' + k + '\\}$ is a set; it is a subset of $A$, not an element.', { trap: 'symbol', g: 'sin' }),
-      setS('A = \\{' + k * k + '\\}', false, '$A$ holds the solutions $x$, not the value of $x^2$.', { trap: 'slip', g: 'eq' }),
-      setS('\\varnothing \\in A', false, 'the empty set is a subset of $A$, not an element.', { trap: 'symbol', g: 'empty' })
+      setS('\\{' + r + '\\} \\subseteq A', true, '$' + r + ' \\in A$, so the set $\\{' + r + '\\}$ is a subset of $A$.', { g: 'sub' }),
+      setS((-r) + ' \\in A', true, '$' + (-r) + '$ is one of the two solutions.', { g: 'in' }),
+      setS(k + ' \\subseteq A', false, '$' + k + '$ is an element, not a set, so the correct symbol is $\\in$: $' + k + ' \\in A$.', { trap: 'symbol', g: 'esub' }),
+      setS('A = \\{' + k + '\\}', false, '$x = -' + k + '$ is also a solution, so $A = \\{-' + k + ', ' + k + '\\}$.', { trap: 'partial', g: 'eq' }),
+      setS('-' + k + ' \\notin A', false, '$(-' + k + ')^2 = ' + k * k + '$, so $-' + k + '$ is a solution and $-' + k + ' \\in A$.', { trap: 'sign', g: 'notin' }),
+      setS('\\{' + k + '\\} \\in A', false, 'the elements of $A$ are the numbers $-' + k + '$ and $' + k + '$. The set $\\{' + k + '\\}$ is a subset of $A$, not an element.', { trap: 'symbol', g: 'sin' }),
+      setS('A = \\{' + k * k + '\\}', false, '$A$ is the set of solutions $x$, not the value of $x^2$.', { trap: 'slip', g: 'eq' }),
+      setS('\\varnothing \\in A', false, 'the elements of $A$ are the numbers $-' + k + '$ and $' + k + '$. The empty set is a subset of $A$, not an element.', { trap: 'symbol', g: 'empty' })
     ];
-    return out('Let $A = \\{x \\mid ' + eq + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('Let $A = \\{x \\mid ' + eq + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool), 'Solving $' + eq + '$ gives $x = \\pm ' + k + '$, so $A = \\{-' + k + ', ' + k + '\\}$.');
   });
 
   def({ id: 'SET-el.interval', code: 'SET-el', lesson: '1.3', tier: 'E', level: '=', fmt: 'S', w: 1,
@@ -1953,20 +1964,21 @@
     var env = { A: ev.realSet(pred) };
     var setS = mkS(env);
     var c = leftClosed ? a : b, o = leftClosed ? b : a, inner = R.int(a + 1, b - 1), outer = R.pick([a - 1, b + 1, a - 2, b + 2]);
-    var key, wrongs;
+    var key, wrongs, outWhy = (outer < a ? '$' + outer + ' < ' + a + '$' : '$' + outer + ' > ' + b + '$') + ', so $' + outer + '$ does not satisfy the condition.';
+    var inWhy = '$' + a + ' < ' + inner + ' < ' + b + '$, so $' + inner + ' \\in A$.';
     if (R.bool(0.7)) {
-      key = setS(c + ' \\in A', true, 'the end point $' + c + '$ is included (the sign there is $\\le$).');
+      key = setS(c + ' \\in A', true, 'the sign at $' + c + '$ is $\\le$, so the end point $' + c + '$ satisfies the condition.');
       wrongs = [
-        setS(o + ' \\in A', false, 'the end point $' + o + '$ is excluded (strict inequality).', { trap: 'endpoint' }),
-        setS(inner + ' \\notin A', false, '$' + inner + '$ lies between $' + a + '$ and $' + b + '$.', { trap: 'slip' }),
-        setS(outer + ' \\in A', false, '$' + outer + '$ lies outside the interval.', { trap: 'slip' })
+        setS(o + ' \\in A', false, 'the inequality at $' + o + '$ is strict, so the end point $' + o + '$ is not in $A$.', { trap: 'endpoint' }),
+        setS(inner + ' \\notin A', false, inWhy, { trap: 'slip' }),
+        setS(outer + ' \\in A', false, outWhy, { trap: 'slip' })
       ];
     } else {
-      key = setS(o + ' \\notin A', true, 'the end point $' + o + '$ is excluded (strict inequality).');
+      key = setS(o + ' \\notin A', true, 'the inequality at $' + o + '$ is strict, so the end point $' + o + '$ is not in $A$.');
       wrongs = [
-        setS(c + ' \\notin A', false, 'the end point $' + c + '$ is included (the sign there is $\\le$).', { trap: 'endpoint' }),
-        setS(inner + ' \\notin A', false, '$' + inner + '$ lies between $' + a + '$ and $' + b + '$.', { trap: 'slip' }),
-        setS(outer + ' \\in A', false, '$' + outer + '$ lies outside the interval.', { trap: 'slip' })
+        setS(c + ' \\notin A', false, 'the sign at $' + c + '$ is $\\le$, so $' + c + '$ satisfies the condition and $' + c + ' \\in A$.', { trap: 'endpoint' }),
+        setS(inner + ' \\notin A', false, inWhy, { trap: 'slip' }),
+        setS(outer + ' \\in A', false, outWhy, { trap: 'slip' })
       ];
     }
     return out('Let $A = \\{x \\mid ' + cond + '\\}$. Which of the following statements is correct? ( )', QF.useStmts('S', key, wrongs));
@@ -1977,15 +1989,15 @@
     var a = R.int(0, 2), b = a + R.int(1, 2), ab = '\\{' + a + ', ' + b + '\\}';
     var setS = mkS({});
     var pool = [
-      setS(a + ' \\in ' + ab, true, '$' + a + '$ is an element of the set.', { g: 'in' }),
+      setS(a + ' \\in ' + ab, true, '$' + a + '$ is one of the two listed elements.', { g: 'in' }),
       setS('\\varnothing \\subseteq \\{' + b + '\\}', true, 'the empty set is a subset of every set.', { g: 'empty-sub' }),
-      setS('\\{' + b + '\\} \\subseteq ' + ab, true, '$\\{' + b + '\\}$ is a set and its element $' + b + '$ is in the larger set.', { g: 'sub' }),
-      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element, the number $0$; the empty set has none.', { trap: 'symbol', g: 'empty-eq' }),
-      setS(b + ' \\subseteq ' + ab, false, '$' + b + '$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' }),
-      setS('\\{' + a + '\\} \\in ' + ab, false, '$\\{' + a + '\\}$ is a set; it is a subset, not an element.', { trap: 'symbol', g: 'sin' }),
-      setS('\\varnothing \\in \\{' + a + '\\}', false, 'the only element of $\\{' + a + '\\}$ is the number $' + a + '$.', { trap: 'symbol', g: 'empty-in' }),
-      setS('0 \\in \\varnothing', false, 'the empty set has no elements.', { trap: 'symbol', g: 'in-empty' }),
-      setS(ab + ' \\subseteq \\{' + a + '\\}', false, '$' + b + '$ is not in $\\{' + a + '\\}$.', { trap: 'swap', g: 'sub' })
+      setS('\\{' + b + '\\} \\subseteq ' + ab, true, 'the only element of $\\{' + b + '\\}$ is $' + b + '$, which belongs to $' + ab + '$.', { g: 'sub' }),
+      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element, the number $0$, while the empty set has no elements.', { trap: 'symbol', g: 'empty-eq' }),
+      setS(b + ' \\subseteq ' + ab, false, '$' + b + '$ is an element, not a set, so the correct statement is $' + b + ' \\in ' + ab + '$.', { trap: 'symbol', g: 'esub' }),
+      setS('\\{' + a + '\\} \\in ' + ab, false, 'the elements of $' + ab + '$ are numbers. The set $\\{' + a + '\\}$ is a subset of it, not an element.', { trap: 'symbol', g: 'sin' }),
+      setS('\\varnothing \\in \\{' + a + '\\}', false, 'the only element of $\\{' + a + '\\}$ is the number $' + a + '$. The empty set is a subset of $\\{' + a + '\\}$, not an element.', { trap: 'symbol', g: 'empty-in' }),
+      setS('0 \\in \\varnothing', false, 'the empty set has no elements at all.', { trap: 'symbol', g: 'in-empty' }),
+      setS(ab + ' \\subseteq \\{' + a + '\\}', false, '$' + b + ' \\in ' + ab + '$ but $' + b + ' \\notin \\{' + a + '\\}$.', { trap: 'swap', g: 'sub' })
     ];
     return out('Which of the following relations is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -2002,25 +2014,26 @@
     if (nat) {
       var noZero = list.filter(function (v) { return v !== 0; });
       pool = [
-        setS('0 \\in A', true, '$\\mathbb{N}$ contains $0$, and $0$ satisfies the condition; $A = ' + listTex + '$.', { g: 'zero' }),
-        setS('\\{0, 1\\} \\subseteq A', true, '$A = ' + listTex + '$ contains both $0$ and $1$.', { g: 'sub' }),
+        setS('0 \\in A', true, '$0$ is a natural number and satisfies $' + cond + '$.', { g: 'zero' }),
+        setS('\\{0, 1\\} \\subseteq A', true, 'both $0$ and $1$ are elements of $A$.', { g: 'sub' }),
         setS('-1 \\in A', false, '$-1$ is not a natural number.', { trap: 'domain', g: 'neg' }),
-        setS('A = ' + h.lst(noZero), false, '$0$ is a natural number and satisfies the condition, so it is missing.', { trap: 'partial', g: 'eq' }),
-        setS((list[list.length - 1] + 1) + ' \\in A', false, 'it does not satisfy $' + cond + '$.', { trap: 'endpoint', g: 'top' }),
-        setS('0 \\subseteq A', false, '$0$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' })
+        setS('A = ' + h.lst(noZero), false, '$0$ is a natural number and satisfies the condition, so $0$ is missing from this list.', { trap: 'partial', g: 'eq' }),
+        setS((list[list.length - 1] + 1) + ' \\in A', false, '$' + (list[list.length - 1] + 1) + '$ does not satisfy $' + cond + '$.', { trap: 'endpoint', g: 'top' }),
+        setS('0 \\subseteq A', false, '$0$ is an element, not a set, so the correct symbol is $\\in$: $0 \\in A$.', { trap: 'symbol', g: 'esub' })
       ];
     } else {
       var openEnd = leftClosed ? hi : lo, closedEnd = leftClosed ? lo : hi, inner = R.pick(list.filter(function (v) { return v !== closedEnd; }));
       pool = [
-        setS(closedEnd + ' \\in A', true, 'the end point $' + closedEnd + '$ is included; $A = ' + listTex + '$.', { g: 'closed' }),
-        setS('\\{' + inner + ', ' + closedEnd + '\\} \\subseteq A', true, 'both numbers are in $A = ' + listTex + '$.', { g: 'sub' }),
-        setS(openEnd + ' \\in A', false, 'the end point $' + openEnd + '$ is excluded (strict inequality).', { trap: 'endpoint', g: 'open' }),
-        setS('A = ' + h.lst(list.filter(function (v) { return v !== closedEnd; })), false, 'the included end point $' + closedEnd + '$ is missing.', { trap: 'endpoint', g: 'eq' }),
-        setS('\\{' + openEnd + ', ' + inner + '\\} \\subseteq A', false, '$' + openEnd + '$ is not in $A$.', { trap: 'endpoint', g: 'sub2' }),
-        setS(inner + ' \\subseteq A', false, '$' + inner + '$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'esub' })
+        setS(closedEnd + ' \\in A', true, 'the sign at $' + closedEnd + '$ is $\\le$, so the end point $' + closedEnd + '$ belongs to $A$.', { g: 'closed' }),
+        setS('\\{' + inner + ', ' + closedEnd + '\\} \\subseteq A', true, 'both $' + inner + '$ and $' + closedEnd + '$ are elements of $A$.', { g: 'sub' }),
+        setS(openEnd + ' \\in A', false, 'the inequality at $' + openEnd + '$ is strict, so $' + openEnd + '$ is not in $A$.', { trap: 'endpoint', g: 'open' }),
+        setS('A = ' + h.lst(list.filter(function (v) { return v !== closedEnd; })), false, 'the end point $' + closedEnd + '$ is included, so it is missing from this list.', { trap: 'endpoint', g: 'eq' }),
+        setS('\\{' + openEnd + ', ' + inner + '\\} \\subseteq A', false, 'the inequality at $' + openEnd + '$ is strict, so $' + openEnd + ' \\notin A$.', { trap: 'endpoint', g: 'sub2' }),
+        setS(inner + ' \\subseteq A', false, '$' + inner + '$ is an element, not a set, so the correct symbol is $\\in$: $' + inner + ' \\in A$.', { trap: 'symbol', g: 'esub' })
       ];
     }
-    return out('Let $A = \\{x \\in ' + setName + ' \\mid ' + cond + '\\}$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('Let $A = \\{x \\in ' + setName + ' \\mid ' + cond + '\\}$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      'The ' + (nat ? 'natural numbers' : 'integers') + ' that satisfy $' + cond + '$ are ' + h.andList(list) + ', so $A = ' + listTex + '$.');
   });
 
   def({ id: 'SET-el.mixed', code: 'SET-el', lesson: '1.3', tier: 'E', level: '+1', fmt: 'S', trick: 'T01',
@@ -2031,12 +2044,12 @@
       setS('\\varnothing \\subseteq A', true, 'the empty set is a subset of every set.', { g: 'e1' }),
       setS('\\{0\\} \\subseteq A', true, '$0 \\in A$, so the set $\\{0\\}$ is a subset of $A$.', { g: 'z1' }),
       setS('\\{0, ' + b + '\\} \\subseteq A', true, 'both $0$ and $' + b + '$ are elements of $A$.', { g: 's1' }),
-      setS('\\varnothing \\in A', false, 'the empty set is a subset of $A$, not one of its elements.', { trap: 'symbol', g: 'e2' }),
-      setS('\\{0\\} \\in A', false, '$\\{0\\}$ is a set; the elements of $A$ are numbers.', { trap: 'symbol', g: 'z2' }),
-      setS('0 \\subseteq A', false, '$0$ is an element, so the symbol must be $\\in$.', { trap: 'symbol', g: 'z3' }),
-      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element; the empty set has none.', { trap: 'symbol', g: 'e3' }),
-      setS('0 \\notin A', false, '$0$ is listed in $A$.', { trap: 'slip', g: 'z4' }),
-      setS('A = \\{' + a + ', ' + b + '\\}', false, 'the element $0$ is missing.', { trap: 'partial', g: 'eq' })
+      setS('\\varnothing \\in A', false, 'the elements of $A$ are the numbers $0$, $' + a + '$ and $' + b + '$. The empty set is a subset of $A$, not an element.', { trap: 'symbol', g: 'e2' }),
+      setS('\\{0\\} \\in A', false, '$\\{0\\}$ is a set, while the elements of $A$ are numbers. The correct statement is $\\{0\\} \\subseteq A$.', { trap: 'symbol', g: 'z2' }),
+      setS('0 \\subseteq A', false, '$0$ is an element, not a set, so the correct statement is $0 \\in A$.', { trap: 'symbol', g: 'z3' }),
+      setS('\\varnothing = \\{0\\}', false, '$\\{0\\}$ has one element, the number $0$, while the empty set has no elements.', { trap: 'symbol', g: 'e3' }),
+      setS('0 \\notin A', false, '$0$ is one of the listed elements of $A$.', { trap: 'slip', g: 'z4' }),
+      setS('A = \\{' + a + ', ' + b + '\\}', false, '$A$ also contains the element $0$.', { trap: 'partial', g: 'eq' })
     ];
     return out('Let $A = ' + h.lst(A) + '$, and let $\\varnothing$ denote the empty set. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -2051,17 +2064,18 @@
     function cnt(v, ok, why, extra) { return h.factS('The set $A$ has exactly $' + v + '$ elements', ok, function () { return list.length === v; }, why, extra); }
     function sub(v, ok, why, extra) { return h.factS('The set $A$ has exactly $' + v + '$ subsets', ok, function () { return Math.pow(2, list.length) === v; }, why, extra); }
     var pool = [
-      cnt(n, true, '$\\mathbb{N}$ starts at $0$, so $A = ' + listTex + '$.', { g: 'cnt' }),
-      sub(Math.pow(2, n), true, '$A = ' + listTex + '$ has $' + n + '$ elements, hence $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { g: 'sub' }),
-      setS('\\{0, ' + top + '\\} \\subseteq A', true, '$A = ' + listTex + '$ contains $0$ and $' + top + '$.', { g: 'ss' }),
-      cnt(n - 1, false, '$0$ is a natural number, so $A = ' + listTex + '$ has $' + n + '$ elements.', { trap: 'off-by-one', g: 'cnt' }),
-      sub(2 * n, false, 'a set with $' + n + '$ elements has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { trap: 'near-miss', g: 'sub' }),
-      sub(Math.pow(2, n - 1), false, '$A$ has $' + n + '$ elements (it includes $0$), so it has $2^{' + n + '}$ subsets.', { trap: 'off-by-one', g: 'sub' }),
+      cnt(n, true, '$A = ' + listTex + '$ has $' + n + '$ elements.', { g: 'cnt' }),
+      sub(Math.pow(2, n), true, 'a set with $' + n + '$ elements has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { g: 'sub' }),
+      setS('\\{0, ' + top + '\\} \\subseteq A', true, 'both $0$ and $' + top + '$ are elements of $A$.', { g: 'ss' }),
+      cnt(n - 1, false, '$0$ is a natural number, so $A$ has $' + n + '$ elements, not $' + (n - 1) + '$.', { trap: 'off-by-one', g: 'cnt' }),
+      sub(2 * n, false, 'a set with $' + n + '$ elements has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets, not $2 \\times ' + n + ' = ' + 2 * n + '$.', { trap: 'near-miss', g: 'sub' }),
+      sub(Math.pow(2, n - 1), false, '$A$ has $' + n + '$ elements, including $0$, so it has $2^{' + n + '} = ' + Math.pow(2, n) + '$ subsets.', { trap: 'off-by-one', g: 'sub' }),
       setS((top + 1) + ' \\in A', false, '$' + (top + 1) + '$ does not satisfy $' + cond + '$.', { trap: 'endpoint', g: 'top' }),
-      setS('0 \\notin A', false, '$0 \\in \\mathbb{N}$ and it satisfies the condition.', { trap: 'domain', g: 'zero' }),
-      setS('A = ' + h.lst(list.slice(1)), false, 'the element $0$ is missing.', { trap: 'partial', g: 'eq' })
+      setS('0 \\notin A', false, '$0$ is a natural number and satisfies $' + cond + '$, so $0 \\in A$.', { trap: 'domain', g: 'zero' }),
+      setS('A = ' + h.lst(list.slice(1)), false, 'the element $0$ is missing from this list.', { trap: 'partial', g: 'eq' })
     ];
-    return out('Let $A = \\{x \\in \\mathbb{N} \\mid ' + cond + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('Let $A = \\{x \\in \\mathbb{N} \\mid ' + cond + '\\}$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool),
+      '$\\mathbb{N}$ starts at $0$, so $A = ' + listTex + '$.');
   });
 
   /* ===================== SET-num · number sets ===================== */
@@ -2071,18 +2085,18 @@
     var setS = mkS({});
     var fr = R.pick([[1, 2], [1, 3], [2, 3], [3, 4], [2, 5]]), frTex = '\\dfrac{' + fr[0] + '}{' + fr[1] + '}', sqv = R.pick([4, 9, 16]);
     var pool = [
-      setS('0 \\in \\mathbb{N}', true, 'in the CSCA (Chinese) convention $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$.', { g: 'zero' }),
-      setS(neg + ' \\in \\mathbb{Z}', true, 'negative whole numbers are integers.', { g: 'negZ' }),
-      setS('\\sqrt{' + sd + '} \\in \\mathbb{R}', true, '$\\sqrt{' + sd + '}$ is irrational but real.', { g: 'surdR' }),
-      setS(frTex + ' \\in \\mathbb{Q}', true, 'a quotient of two integers is rational.', { g: 'fracQ' }),
-      setS('\\sqrt{' + sqv + '} \\in \\mathbb{Q}', true, '$\\sqrt{' + sqv + '} = ' + Math.sqrt(sqv) + '$ is an integer, hence rational.', { g: 'sq' }),
-      setS(dec + ' \\in \\mathbb{N}', false, '$' + dec + '$ is not a whole number.', { trap: 'slip', g: 'decN' }),
+      setS('0 \\in \\mathbb{N}', true, 'the natural numbers are $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$, so $0$ is a natural number.', { g: 'zero' }),
+      setS(neg + ' \\in \\mathbb{Z}', true, 'the integers include the negative whole numbers.', { g: 'negZ' }),
+      setS('\\sqrt{' + sd + '} \\in \\mathbb{R}', true, '$\\sqrt{' + sd + '}$ is irrational, and every irrational number is real.', { g: 'surdR' }),
+      setS(frTex + ' \\in \\mathbb{Q}', true, '$' + frTex + '$ is a quotient of two integers, so it is rational.', { g: 'fracQ' }),
+      setS('\\sqrt{' + sqv + '} \\in \\mathbb{Q}', true, '$\\sqrt{' + sqv + '} = ' + Math.sqrt(sqv) + '$ is an integer, and every integer is rational.', { g: 'sq' }),
+      setS(dec + ' \\in \\mathbb{N}', false, '$' + dec + '$ is not a whole number, so it is not a natural number.', { trap: 'slip', g: 'decN' }),
       setS('\\pi \\in \\mathbb{Q}', false, '$\\pi$ is irrational.', { trap: 'slip', g: 'pi' }),
-      setS('\\sqrt{' + sd2 + '} \\in \\mathbb{Q}', false, '$\\sqrt{' + sd2 + '}$ is irrational.', { trap: 'slip', g: 'surdQ' }),
-      setS(neg + ' \\in \\mathbb{N}', false, 'natural numbers are not negative.', { trap: 'sign', g: 'negN' }),
-      setS('0 \\notin \\mathbb{N}', false, '$\\mathbb{N}$ includes $0$ in the CSCA convention.', { trap: 'domain', g: 'zero' }),
-      setS(frTex + ' \\in \\mathbb{Z}', false, '$' + frTex + '$ is not a whole number.', { trap: 'slip', g: 'fracZ' }),
-      setS('\\sqrt{' + sd + '} \\notin \\mathbb{R}', false, 'every square root of a positive number is real.', { trap: 'slip', g: 'surdR' })
+      setS('\\sqrt{' + sd2 + '} \\in \\mathbb{Q}', false, '$' + sd2 + '$ is not a perfect square, so $\\sqrt{' + sd2 + '}$ is irrational.', { trap: 'slip', g: 'surdQ' }),
+      setS(neg + ' \\in \\mathbb{N}', false, 'natural numbers are never negative.', { trap: 'sign', g: 'negN' }),
+      setS('0 \\notin \\mathbb{N}', false, '$\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$ contains $0$.', { trap: 'domain', g: 'zero' }),
+      setS(frTex + ' \\in \\mathbb{Z}', false, '$0 < ' + frTex + ' < 1$, so $' + frTex + '$ is not an integer.', { trap: 'slip', g: 'fracZ' }),
+      setS('\\sqrt{' + sd + '} \\notin \\mathbb{R}', false, 'the square root of a positive number is a real number.', { trap: 'slip', g: 'surdR' })
     ];
     var st = QF.pickStmts(R, 'S', pool);
     if (/sqrt\{3\} \\in \\mathbb\{R\}/.test(st.key)) retry('real item');
@@ -2107,7 +2121,7 @@
     return {
       stem: 'The set $\\{x \\in ' + (nat ? '\\mathbb{N}' : '\\mathbb{Z}') + ' \\mid ' + cond + '\\}$, written by listing its elements, is ( )',
       key: m(h.lst(key)), wrong: wrong, check: chk.set(inSet, crit),
-      sol: (nat ? '$\\mathbb{N}$ starts at $0$. ' : '') + 'The whole numbers that satisfy $' + cond + '$ are $' + key.join(', ') + '$, so the set is $' + h.lst(key) + '$.'
+      sol: (nat ? '$\\mathbb{N}$ starts at $0$. The natural numbers' : 'The integers') + ' that satisfy $' + cond + '$ are $' + key.join(', ') + '$, so the set is $' + h.lst(key) + '$.'
     };
   });
 
@@ -2134,9 +2148,9 @@
       [m(ivTex(a, d, fa, fd)), 'operation'], [m(ivTex(c, b, !fc, fb)), 'endpoint']
     ];
     return {
-      stem: 'Given sets $' + nm[0] + ' = ' + showIv(style, a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + showIv(style, c, d, fc, fd) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
+      stem: 'If $' + nm[0] + ' = ' + showIv(style, a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + showIv(style, c, d, fc, fd) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(ivTex(c, b, fc, fb)), wrong: wrong, check: chk.set(truth, [a, b, c, d]),
-      sol: 'The intersection keeps the numbers that lie in both sets: from $' + c + '$ to $' + b + '$. $' + c + '$ is ' + (fc ? 'included' : 'excluded') + ' and $' + b + '$ is ' + (fb ? 'included' : 'excluded') + ' (each end point keeps the bracket of the set it comes from), so the answer is $' + ivTex(c, b, fc, fb) + '$.'
+      sol: 'The intersection is the part that lies in both sets. $' + nm[0] + '$ runs from $' + a + '$ to $' + b + '$ and $' + nm[1] + '$ runs from $' + c + '$ to $' + d + '$, so they overlap from $' + c + '$ to $' + b + '$. The end point $' + c + '$ comes from $' + nm[1] + '$, where it is ' + (fc ? 'included' : 'excluded') + ', and $' + b + '$ comes from $' + nm[0] + '$, where it is ' + (fb ? 'included' : 'excluded') + '. So $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + ivTex(c, b, fc, fb) + '$.'
     };
   });
 
@@ -2159,7 +2173,7 @@
     return {
       stem: 'Let $' + nm[0] + ' = ' + sbTex(a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + Bt + '$. Then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
       key: m(key), wrong: wrong, check: chk.set(function (x) { return inA(x) || inB(x); }, [a, b, c]),
-      sol: 'The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover ' + (up ? 'everything from $' + a + '$ upward, with $' + a + '$ ' + (fa ? 'included' : 'excluded') : 'everything up to $' + b + '$, with $' + b + '$ ' + (fb ? 'included' : 'excluded')) + ': $' + key + '$.'
+      sol: 'The union contains every number that lies in at least one of the two sets. $' + nm[0] + '$ runs from $' + a + '$ to $' + b + '$, and $' + nm[1] + '$ contains every number ' + (up ? 'from $' + c + '$ upward' : 'up to $' + c + '$') + '. Since $' + a + ' < ' + c + ' < ' + b + '$, the two sets overlap, so together they cover every number ' + (up ? 'from $' + a + '$ upward. The end point $' + a + '$ comes from $' + nm[0] + '$, where it is ' + (fa ? 'included' : 'excluded') : 'up to $' + b + '$. The end point $' + b + '$ comes from $' + nm[0] + '$, where it is ' + (fb ? 'included' : 'excluded')) + '. So $' + nm[0] + ' \\cup ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -2184,7 +2198,7 @@
     return {
       stem: 'Let $' + nm[0] + ' = ' + sbTex(a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + Bt + '$. Then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(key), wrong: wrong, check: chk.set(function (x) { return h.inIv(x, a, b, fa, fb) && inB(x); }, [a, b, c, d]),
-      sol: 'The intersection keeps the numbers that satisfy both conditions: it runs from $' + c + '$ (' + (fc ? 'included' : 'excluded') + ') to $' + b + '$ (' + (fb ? 'included' : 'excluded') + '), each end point keeping the bracket of the set it comes from. So the answer is $' + key + '$.'
+      sol: 'A number in $' + nm[0] + ' \\cap ' + nm[1] + '$ must satisfy both conditions. The larger lower bound is $' + c + '$, from $' + nm[1] + '$, where it is ' + (fc ? 'included' : 'excluded') + '. The smaller upper bound is $' + b + '$, from $' + nm[0] + '$, where it is ' + (fb ? 'included' : 'excluded') + '. So $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -2207,7 +2221,7 @@
     return {
       stem: 'If $' + nm[0] + ' = ' + h.lst(A) + '$ and $' + nm[1] + ' = ' + Bt + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(key), wrong: wrong, check: chk.set(truth, crit),
-      sol: 'The intersection keeps the elements of $' + nm[0] + '$ that are also in $' + nm[1] + '$, i.e. those that are at least $' + s + '$: $' + key + '$.'
+      sol: '$' + nm[1] + '$ contains every whole number from $' + s + '$ to $' + big + '$. The elements of $' + nm[0] + '$ that are at least $' + s + '$ are ' + h.andList(rng(s, last)) + ', so $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -2228,10 +2242,10 @@
     var t = twoLists(R), nm = names(R);
     var inA = listTruth(t.A), inB = listTruth(t.B);
     return {
-      stem: 'Given sets $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
+      stem: 'If $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(h.lst(t.cap)), wrong: [[m(h.lst(t.cup)), 'operation'], [m(h.lst(t.onlyA)), 'complement'], [m(h.lst(t.onlyB)), 'complement'], [m(h.lst(t.A)), 'partial']],
       check: chk.set(function (x) { return inA(x) && inB(x); }, rng0(-1, 13)),
-      sol: 'The intersection holds the elements that belong to both sets: $' + h.lst(t.cap) + '$.'
+      sol: 'The intersection contains the elements that appear in both lists. ' + (t.cap.length === 1 ? 'Only $' + t.cap[0] + '$ appears' : 'Only $' + t.cap.join('$ and $') + '$ appear') + ' in both, so $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + h.lst(t.cap) + '$.'
     };
   });
 
@@ -2240,10 +2254,10 @@
     var t = twoLists(R), nm = names(R);
     var inA = listTruth(t.A), inB = listTruth(t.B);
     return {
-      stem: 'Given sets $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
+      stem: 'If $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
       key: m(h.lst(t.cup)), wrong: [[m(h.lst(t.cap)), 'operation'], [m(h.lst(t.onlyA.concat(t.onlyB).sort(function (x, y) { return x - y; }))), 'partial'], [m(h.lst(t.A)), 'partial'], [m(h.lst(t.B)), 'partial']],
       check: chk.set(function (x) { return inA(x) || inB(x); }, rng0(-1, 13)),
-      sol: 'The union holds every element that belongs to at least one of the sets, each written once: $' + h.lst(t.cup) + '$.'
+      sol: 'The union contains every element that appears in at least one of the lists. Combine the two lists and write the common ' + (t.cap.length === 1 ? 'element $' + t.cap[0] + '$' : 'elements $' + t.cap.join('$ and $') + '$') + ' only once: $' + nm[0] + ' \\cup ' + nm[1] + ' = ' + h.lst(t.cup) + '$.'
     };
   });
 
@@ -2266,14 +2280,15 @@
     var inA = listTruth(t.A), inB = listTruth(t.B), crit = rng0(-1, 13);
     var cap = function (x) { return inA(x) && inB(x); }, cup = function (x) { return inA(x) || inB(x); };
     var useCap = R.bool();
+    var capS = '$' + X + ' \\cap ' + Y + ' = ' + h.lst(t.cap) + '$', cupS = '$' + X + ' \\cup ' + Y + ' = ' + h.lst(t.cup) + '$';
     var key = useCap
-      ? opStmt(X + ' \\cap ' + Y, h.lst(t.cap), true, cap, crit, 'the common elements are exactly $' + h.lst(t.cap) + '$.')
-      : opStmt(X + ' \\cup ' + Y, h.lst(t.cup), true, cup, crit, 'all elements of the two sets together are $' + h.lst(t.cup) + '$.');
+      ? opStmt(X + ' \\cap ' + Y, h.lst(t.cap), true, cap, crit, (t.cap.length === 1 ? 'the only element' : 'the elements') + ' common to both sets ' + (t.cap.length === 1 ? 'is ' : 'are ') + h.andList(t.cap) + '.')
+      : opStmt(X + ' \\cup ' + Y, h.lst(t.cup), true, cup, crit, 'combining the two lists, with each common element written once, gives $' + h.lst(t.cup) + '$.');
     var wrongs = R.sample([
-      opStmt(X + ' \\cup ' + Y, h.lst(t.cap), false, cup, crit, 'that is the intersection, not the union.', { trap: 'operation' }),
-      opStmt(X + ' \\cap ' + Y, h.lst(t.cup), false, cap, crit, 'that is the union, not the intersection.', { trap: 'operation' }),
-      opStmt(X + ' \\cap ' + Y, h.lst(t.onlyA.concat(t.onlyB).sort(function (x, y) { return x - y; })), false, cap, crit, 'these are the elements that are NOT shared.', { trap: 'complement' }),
-      opStmt(X + ' \\cup ' + Y, h.lst(t.A), false, cup, crit, 'the elements of $' + Y + '$ that are not in $' + X + '$ are missing.', { trap: 'partial' })
+      opStmt(X + ' \\cup ' + Y, h.lst(t.cap), false, cup, crit, '$' + h.lst(t.cap) + '$ is the intersection. The union is ' + cupS + '.', { trap: 'operation' }),
+      opStmt(X + ' \\cap ' + Y, h.lst(t.cup), false, cap, crit, '$' + h.lst(t.cup) + '$ is the union. The intersection is ' + capS + '.', { trap: 'operation' }),
+      opStmt(X + ' \\cap ' + Y, h.lst(t.onlyA.concat(t.onlyB).sort(function (x, y) { return x - y; })), false, cap, crit, 'these are the elements that belong to only one of the two sets. The intersection is ' + capS + '.', { trap: 'complement' }),
+      opStmt(X + ' \\cup ' + Y, h.lst(t.A), false, cup, crit, 'this set is $' + X + '$ itself. The union must also contain ' + h.andList(t.onlyB) + ' from $' + Y + '$.', { trap: 'partial' })
     ], 3);
     return out('If $' + X + ' = ' + h.lst(t.A) + '$ and $' + Y + ' = ' + h.lst(t.B) + '$, which of the following operations is correct? ( )', QF.useStmts('S', key, wrongs));
   });
@@ -2288,17 +2303,17 @@
       truth = function (x) { return h.inIv(x, a, b, true, f1) && h.inIv(x, a, d, false, f2); };
       key = show(a, b, false, f1);
       wrong = [[m(show(a, b, true, f1)), 'endpoint'], [m(show(a, d, true, f2)), 'operation'], [m(show(a, b, false, !f1)), 'endpoint'], [m(show(a, d, false, f2)), 'partial']];
-      sol = 'Both sets start at $' + a + '$, but only one of them contains $' + a + '$, so $' + a + '$ is not in the intersection. The right end is the smaller one, $' + b + '$, with the bracket of its own set.';
+      sol = 'A number in the intersection must lie in both sets. Both sets start at $' + a + '$, but $' + a + '$ belongs to $' + nm[0] + '$ only, so $' + a + '$ is not in $' + nm[0] + ' \\cap ' + nm[1] + '$. The intersection ends at the smaller right end point, $' + b + '$, which is ' + (f1 ? 'included' : 'excluded') + ' as it is in $' + nm[0] + '$.';
     } else {    // A = <a, d], B = <b, d): share the right end point d
       A = [a, d, f1, true]; B = [b, d, f2, false];
       truth = function (x) { return h.inIv(x, a, d, f1, true) && h.inIv(x, b, d, f2, false); };
       key = show(b, d, f2, false);
       wrong = [[m(show(b, d, f2, true)), 'endpoint'], [m(show(a, d, f1, true)), 'operation'], [m(show(b, d, !f2, false)), 'endpoint'], [m(show(a, b, f1, !f2)), 'complement']];
-      sol = 'Both sets end at $' + d + '$, but only one of them contains $' + d + '$, so $' + d + '$ is not in the intersection. The left end is the larger one, $' + b + '$, with the bracket of its own set.';
+      sol = 'A number in the intersection must lie in both sets. Both sets end at $' + d + '$, but $' + d + '$ belongs to $' + nm[0] + '$ only, so $' + d + '$ is not in $' + nm[0] + ' \\cap ' + nm[1] + '$. The intersection starts at the larger left end point, $' + b + '$, which is ' + (f2 ? 'included' : 'excluded') + ' as it is in $' + nm[1] + '$.';
     }
     return {
       stem: 'Let $' + nm[0] + ' = ' + show(A[0], A[1], A[2], A[3]) + '$ and $' + nm[1] + ' = ' + show(B[0], B[1], B[2], B[3]) + '$. Then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
-      key: m(key), wrong: wrong, check: chk.set(truth, [a, b, d]), sol: sol + ' Answer: $' + key + '$.'
+      key: m(key), wrong: wrong, check: chk.set(truth, [a, b, d]), sol: sol + ' So $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
@@ -2313,7 +2328,7 @@
       key = sbTex(-Infinity, b, false, fb);
       wrong = [[m(sbTex(a, c, fa, fc)), 'operation'], [m(sbTex(-Infinity, b, false, !fb)), 'endpoint'], [m(sbTex(a, b, fa, fb)), 'partial'], [m(sbTex(-Infinity, c, false, fc)), 'partial']];
       crit = [a, b, c];
-      sol = 'The first set covers everything below $' + c + '$ and the second continues from $' + a + '$ to $' + b + '$; since $' + a + ' < ' + c + '$ there is no gap, so the union is everything up to $' + b + '$ (' + (fb ? 'included' : 'excluded') + ').';
+      sol = '$' + nm[0] + '$ contains every number ' + (fc ? 'up to and including' : 'below') + ' $' + c + '$, and $' + nm[1] + '$ runs from $' + a + '$ to $' + b + '$. Since $' + a + ' < ' + c + '$, the two sets overlap and leave no gap, so the union contains every number up to $' + b + '$. The end point $' + b + '$ is ' + (fb ? 'included' : 'excluded') + ', as it is in $' + nm[1] + '$.';
     } else {              // [a, c) ∪ [c, b]  -> [a, b]
       a = R.int(-5, 1); c = a + R.int(1, 4); b = c + R.int(1, 4);
       var la = R.bool(), rb = R.bool(), mid = R.bool(); // mid: which of the two sets contains c
@@ -2322,30 +2337,32 @@
       key = sbTex(a, b, la, rb);
       wrong = [[m('\\{x \\mid x = ' + c + '\\}'), 'operation'], [m(sbTex(a, b, !la, rb)), 'endpoint'], [m(sbTex(a, b, la, !rb)), 'endpoint'], [m('\\{x \\mid ' + a + (la ? ' \\le ' : ' < ') + 'x' + (rb ? ' \\le ' : ' < ') + b + ' \\text{ and } x \\ne ' + c + '\\}'), 'endpoint']];
       crit = [a, b, c];
-      sol = 'The number $' + c + '$ belongs to one of the two sets, so the two pieces join without a gap: the union runs from $' + a + '$ to $' + b + '$ with the outer brackets unchanged.';
+      sol = '$' + nm[0] + '$ runs from $' + a + '$ to $' + c + '$ and $' + nm[1] + '$ runs from $' + c + '$ to $' + b + '$. The number $' + c + '$ belongs to $' + (mid ? nm[0] : nm[1]) + '$, so there is no gap at $' + c + '$ and the union runs from $' + a + '$ to $' + b + '$. The outer end points keep their brackets: $' + a + '$ is ' + (la ? 'included' : 'excluded') + ' and $' + b + '$ is ' + (rb ? 'included' : 'excluded') + '.';
     }
     return {
       stem: 'Let $' + nm[0] + ' = ' + At + '$ and $' + nm[1] + ' = ' + Bt + '$. Then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
-      key: m(key), wrong: wrong, check: chk.set(truth, crit), sol: sol + ' Answer: $' + key + '$.'
+      key: m(key), wrong: wrong, check: chk.set(truth, crit), sol: sol + ' So $' + nm[0] + ' \\cup ' + nm[1] + ' = ' + key + '$.'
     };
   });
 
   def({ id: 'SET-op.four', code: 'SET-op', lesson: '1.4', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap', basis: 'Course plan 1.4 Q8' }, function (R) {
+    form: 'Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error', basis: 'Course plan 1.4 Q8' }, function (R) {
     var a = R.int(-5, 0), c = a + R.int(1, 3), b = c + R.int(1, 3), d = b + R.int(1, 3), fa = R.bool(), fb = R.bool(), fc = R.bool(), fd = R.bool();
     var nm = names(R), X = nm[0], Y = nm[1], crit = [a, c, b, d];
     var cap = function (x) { return h.inIv(x, a, b, fa, fb) && h.inIv(x, c, d, fc, fd); };
     var cup = function (x) { return h.inIv(x, a, b, fa, fb) || h.inIv(x, c, d, fc, fd); };
     var capL = X + ' \\cap ' + Y, cupL = X + ' \\cup ' + Y;
+    function inc(f) { return f ? 'included' : 'excluded'; }
+    var capT = '$' + capL + ' = ' + sbTex(c, b, fc, fb) + '$', cupT = '$' + cupL + ' = ' + sbTex(a, d, fa, fd) + '$';
     var pool = [
-      opStmt(capL, sbTex(c, b, fc, fb), true, cap, crit, 'both conditions hold from $' + c + '$ to $' + b + '$, each end point keeping its own bracket.', { g: 'cap' }),
-      opStmt(cupL, sbTex(a, d, fa, fd), true, cup, crit, 'together the sets cover from $' + a + '$ to $' + d + '$ with the outer brackets.', { g: 'cup' }),
-      opStmt(capL, sbTex(c, b, !fc, fb), false, cap, crit, 'the bracket at $' + c + '$ is wrong: $' + c + '$ is ' + (fc ? 'included' : 'excluded') + ' in $' + Y + '$.', { trap: 'endpoint', g: 'cap1' }),
-      opStmt(capL, sbTex(c, b, fc, !fb), false, cap, crit, 'the bracket at $' + b + '$ is wrong: $' + b + '$ is ' + (fb ? 'included' : 'excluded') + ' in $' + X + '$.', { trap: 'endpoint', g: 'cap2' }),
-      opStmt(cupL, sbTex(a, d, !fa, fd), false, cup, crit, 'the bracket at $' + a + '$ is wrong: $' + a + '$ is ' + (fa ? 'included' : 'excluded') + ' in $' + X + '$.', { trap: 'endpoint', g: 'cup1' }),
-      opStmt(cupL, sbTex(a, d, fa, !fd), false, cup, crit, 'the bracket at $' + d + '$ is wrong: $' + d + '$ is ' + (fd ? 'included' : 'excluded') + ' in $' + Y + '$.', { trap: 'endpoint', g: 'cup2' }),
-      opStmt(capL, sbTex(a, d, fa, fd), false, cap, crit, 'that is the union.', { trap: 'operation', g: 'swap1' }),
-      opStmt(cupL, sbTex(c, b, fc, fb), false, cup, crit, 'that is the intersection.', { trap: 'operation', g: 'swap2' })
+      opStmt(capL, sbTex(c, b, fc, fb), true, cap, crit, 'the sets overlap from $' + c + '$ to $' + b + '$. The end point $' + c + '$ comes from $' + Y + '$ (' + inc(fc) + ' there) and $' + b + '$ comes from $' + X + '$ (' + inc(fb) + ' there).', { g: 'cap' }),
+      opStmt(cupL, sbTex(a, d, fa, fd), true, cup, crit, 'together the sets cover every number from $' + a + '$ to $' + d + '$. The end point $' + a + '$ comes from $' + X + '$ (' + inc(fa) + ' there) and $' + d + '$ comes from $' + Y + '$ (' + inc(fd) + ' there).', { g: 'cup' }),
+      opStmt(capL, sbTex(c, b, !fc, fb), false, cap, crit, '$' + c + '$ is ' + inc(fc) + ' in $' + Y + '$, so it is ' + inc(fc) + ' in $' + capL + '$ as well.', { trap: 'endpoint', g: 'cap1' }),
+      opStmt(capL, sbTex(c, b, fc, !fb), false, cap, crit, '$' + b + '$ is ' + inc(fb) + ' in $' + X + '$, so it is ' + inc(fb) + ' in $' + capL + '$ as well.', { trap: 'endpoint', g: 'cap2' }),
+      opStmt(cupL, sbTex(a, d, !fa, fd), false, cup, crit, '$' + a + '$ is ' + inc(fa) + ' in $' + X + '$, so it is ' + inc(fa) + ' in $' + cupL + '$ as well.', { trap: 'endpoint', g: 'cup1' }),
+      opStmt(cupL, sbTex(a, d, fa, !fd), false, cup, crit, '$' + d + '$ is ' + inc(fd) + ' in $' + Y + '$, so it is ' + inc(fd) + ' in $' + cupL + '$ as well.', { trap: 'endpoint', g: 'cup2' }),
+      opStmt(capL, sbTex(a, d, fa, fd), false, cap, crit, 'that set is the union. The intersection is only the overlap: ' + capT + '.', { trap: 'operation', g: 'swap1' }),
+      opStmt(cupL, sbTex(c, b, fc, fb), false, cup, crit, 'that set is only the overlap, which is the intersection. The union is ' + cupT + '.', { trap: 'operation', g: 'swap2' })
     ];
     return out('Let $' + X + ' = ' + sbTex(a, b, fa, fb) + '$ and $' + Y + ' = ' + sbTex(c, d, fc, fd) + '$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -2377,10 +2394,11 @@
   function quadSol(r1, r2, rel, b, lead) {
     var fact = h.factor('x', r1) + h.factor('x', r2);
     var s = '';
-    if (lead && lead !== 1) s += 'Divide by $' + lead + '$' + (lead < 0 ? ' and reverse the inequality sign' : '') + ': $' + fact + ' ' + relTex(lead < 0 ? flip(rel) : rel) + ' 0$. ';
-    else s += 'Factor: $' + fact + ' ' + relTex(rel) + ' 0$. ';
+    if (lead && lead !== 1) s += 'Divide both sides by $' + lead + '$' + (lead < 0 ? ' and reverse the inequality sign, because $' + lead + '$ is negative' : '') + ': $' + fact + ' ' + relTex(lead < 0 ? flip(rel) : rel) + ' 0$. ';
+    else s += 'Factor the left side: $' + fact + ' ' + relTex(rel) + ' 0$. ';
     var eff = (lead && lead < 0) ? flip(rel) : rel;
-    s += 'The roots are $' + F.n(r1) + '$ and $' + F.n(r2) + '$ and the parabola opens upward, so the product is ' + (eff[0] === '<' ? 'negative between the roots' : 'positive outside the roots') + (eff.length === 2 ? ', and the roots themselves are included' : '') + '. Solution set: $' + b.keyTex + '$.';
+    s += 'The roots are $' + F.n(r1) + '$ and $' + F.n(r2) + '$. The graph of $y = ' + fact + '$ opens upward, so $y$ is negative between the roots and positive outside them. ' +
+      'Here we need $y ' + relTex(eff) + ' 0$, so $x$ lies ' + (eff[0] === '<' ? 'between' : 'outside') + ' the roots' + (eff.length === 2 ? ', with the roots included' : '') + '. The solution set is $' + b.keyTex + '$.';
     return s;
   }
   function flip(rel) { return { '<': '>', '>': '<', '<=': '>=', '>=': '<=' }[rel]; }
@@ -2428,7 +2446,8 @@
     var lo = r1.lt(r2) ? r1 : q(r2), hi = r1.lt(r2) ? q(r2) : r1, rel = R.pick(['<', '>', '<=', '>=']);
     // a(x - p/a)(x - r2) = (ax - p)(x - r2) = ax^2 - (a r2 + p)x + p r2
     var b = quad(R, { r1: lo, r2: hi, lead: a, rel: rel, style: R.pick(['iv', 'sb']) });
-    var s = 'Factor: $(' + F.sum([[a, 'x'], [-p, '']]) + ')' + h.factor('x', r2) + ' ' + relTex(rel) + ' 0$. The roots are $' + F.n(lo) + '$ and $' + F.n(hi) + '$ and the parabola opens upward, so the expression is ' + (rel[0] === '<' ? 'negative between the roots' : 'positive outside the roots') + (rel.length === 2 ? ' (roots included)' : '') + '. Solution set: $' + b.keyTex + '$.';
+    var s = 'Factor the left side: $(' + F.sum([[a, 'x'], [-p, '']]) + ')' + h.factor('x', r2) + ' ' + relTex(rel) + ' 0$. The roots are $' + F.n(lo) + '$ and $' + F.n(hi) + '$. The leading coefficient $' + a + '$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. ' +
+      'Here the expression must be ' + { '<': 'negative', '<=': 'negative or zero', '>': 'positive', '>=': 'positive or zero' }[rel] + ', so $x$ lies ' + (rel[0] === '<' ? 'between' : 'outside') + ' the roots' + (rel.length === 2 ? ', with the roots included' : '') + '. The solution set is $' + b.keyTex + '$.';
     return { stem: 'The solution set of the inequality $' + F.poly([a, -(a * r2 + p), p * r2]) + ' ' + relTex(rel) + ' 0$ is ( )', key: b.key, wrong: b.wrong, check: b.check, sol: s };
   });
 
@@ -2438,10 +2457,10 @@
     var truth = function (x) { return h.relTest(rel, (x - k) * (x - k)); };
     var sets = { '>': IS.except([k]), '>=': IS.all(), '<=': IS.set([IS.iv(k, k, true, true)]), '<': IS.empty() };
     var why = {
-      '>': 'A square is positive except where it is zero, so every $x$ except $' + k + '$ works',
-      '>=': 'A square is never negative, so every real number works',
-      '<=': 'A square is never negative, so it is $\\le 0$ only where it equals $0$, at $x = ' + k + '$',
-      '<': 'A square is never negative, so there is no solution'
+      '>': 'A square is never negative, and it equals $0$ only at $x = ' + k + '$. So it is positive for every $x$ except $' + k + '$, and the solution set is',
+      '>=': 'A square is never negative, so the inequality holds for every real number. The solution set is',
+      '<=': 'A square is never negative, so it can only be $\\le 0$ by being equal to $0$, which happens only at $x = ' + k + '$. The solution set is',
+      '<': 'A square is never negative, so it is never less than $0$. The inequality has no solution, and the solution set is'
     };
     var order = ['>', '>=', '<=', '<'].filter(function (x) { return x !== rel; });
     var texOf = function (rs, r) { return r === '>' ? rs.texB() : rs.tex(); };
@@ -2450,7 +2469,7 @@
     return {
       stem: 'The solution set of the inequality $' + F.poly([1, -2 * k, k * k]) + ' ' + relTex(rel) + ' 0$ is ( )',
       key: m(texOf(sets[rel], rel)), wrong: wrong, check: chk.set(truth, [k, -k]),
-      sol: 'The left side is a perfect square: $' + F.sq('x', k) + ' ' + relTex(rel) + ' 0$. ' + why[rel] + ': $' + texOf(sets[rel], rel) + '$.'
+      sol: 'The left side is a perfect square: $' + F.sq('x', k) + ' ' + relTex(rel) + ' 0$. ' + why[rel] + ' $' + texOf(sets[rel], rel) + '$.'
     };
   });
 
@@ -2468,11 +2487,12 @@
       }, why, extra);
     }
     var good = (inside ? '<' : '>') + (closed ? '=' : '');
-    var key = st([r1, r2], good, true, 'its roots are $' + r1 + '$ and $' + r2 + '$, and "' + (inside ? 'less than zero' : 'greater than zero') + '" means ' + (inside ? 'between' : 'outside') + ' the roots.');
+    var fac = h.factor('x', r1) + h.factor('x', r2);
+    var key = st([r1, r2], good, true, 'it factors as $' + fac + ' ' + relTex(good) + ' 0$. The roots are $' + r1 + '$ and $' + r2 + '$, and an upward parabola is ' + (inside ? 'negative between' : 'positive outside') + ' its roots' + (closed ? ', with the roots included because of the equality sign' : '') + '.');
     var wrongs = [
-      st([r1, r2], (inside ? '>' : '<') + (closed ? '=' : ''), false, 'this one holds ' + (inside ? 'outside' : 'between') + ' the roots.', { trap: 'complement' }),
-      st([-r2, -r1], good, false, 'its roots are $' + (-r2) + '$ and $' + (-r1) + '$ (signs reversed).', { trap: 'sign' }),
-      st([r1, r2], (inside ? '<' : '>') + (closed ? '' : '='), false, 'the end points are ' + (closed ? 'excluded here but the given set includes them' : 'included here but the given set excludes them') + '.', { trap: 'endpoint' })
+      st([r1, r2], (inside ? '>' : '<') + (closed ? '=' : ''), false, 'this inequality holds ' + (inside ? 'outside' : 'between') + ' the roots, so its solution set is $' + quadSets(r1, r2, !inside, closed).tex() + '$.', { trap: 'complement' }),
+      st([-r2, -r1], good, false, 'its roots are $' + (-r2) + '$ and $' + (-r1) + '$, so its solution set is $' + quadSets(-r2, -r1, inside, closed).tex() + '$.', { trap: 'sign' }),
+      st([r1, r2], (inside ? '<' : '>') + (closed ? '' : '='), false, 'its solution set is $' + quadSets(r1, r2, inside, !closed).tex() + '$, which ' + (closed ? 'leaves out' : 'includes') + ' the roots $' + r1 + '$ and $' + r2 + '$.', { trap: 'endpoint' })
     ];
     return out('Which of the following inequalities has the solution set $' + target.tex() + '$? ( )', QF.useStmts('S', key, wrongs));
   });
@@ -2512,9 +2532,12 @@
   }
   function fracTex(a, b, c, d) { return '\\dfrac{' + h.lin(a, 'x', b) + '}{' + h.lin(c, 'x', d) + '}'; }
   function ratSol(a, b, c, d, rel, r) {
-    return 'The numerator is zero at $x = ' + F.n(r.n0) + '$ and the denominator at $x = ' + F.n(r.d0) + '$. ' +
-      'The quotient has the same sign as $(' + h.lin(a, 'x', b) + ')(' + h.lin(c, 'x', d) + ')$, which is ' + (a * c > 0 ? 'negative between these two numbers and positive outside them' : 'positive between these two numbers and negative outside them') + '. ' +
-      (r.closed ? 'The numerator root is included, but the denominator root $' + F.n(r.d0) + '$ never is. ' : 'Both end points are excluded. ') + 'Solution set: $' + r.keyTex + '$.';
+    var neg = rel[0] === '<', between = neg === (a * c > 0);
+    return 'A quotient has the same sign as the product of its numerator and denominator. The product $(' + h.lin(a, 'x', b) + ')(' + h.lin(c, 'x', d) + ')$ is zero at $x = ' + F.n(r.n0) + '$ and $x = ' + F.n(r.d0) + '$, and it is ' +
+      (a * c > 0 ? 'negative between these two numbers and positive outside them' : 'positive between these two numbers and negative outside them') + '. ' +
+      'We need the quotient to be ' + (neg ? 'negative' : 'positive') + (r.closed ? ' or zero' : '') + ', so $x$ lies ' + (between ? 'between' : 'outside') + ' them. ' +
+      (r.closed ? 'The numerator is zero at $x = ' + F.n(r.n0) + '$, so this end point is included. The denominator is zero at $x = ' + F.n(r.d0) + '$, so this end point is excluded. ' : 'Both end points are excluded. ') +
+      'The solution set is $' + r.keyTex + '$.';
   }
 
   def({ id: 'INQ-rat.basic', code: 'INQ-rat', lesson: '1.6', tier: 'E', level: '=', fmt: 'V', trick: 'T02', w: 1,
@@ -2527,7 +2550,7 @@
   });
 
   def({ id: 'INQ-rat.closed', code: 'INQ-rat', lesson: '1.6', tier: 'M', level: '=', fmt: 'V', trick: 'T02', w: 2,
-    form: '(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)', basis: 'Jan Q12, Mar Q11' }, function (R) {
+    form: '(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)', basis: 'Jan Q12, Mar Q11' }, function (R) {
     var a = R.pick([2, 3, 2, 3, 4]), b = R.nz(-7, 7), c = R.pick([1, 1, 1, 2, 3]), d = R.nz(-7, 7), rel = R.pick(['<=', '<=', '<=', '>=']);
     if (N.gcd(a, b) !== 1 || N.gcd(c, d) !== 1) retry();
     if ((a === 2 && b === 1 && c === 1 && d === -2) || (a === 2 && b === -3 && c === 3 && d === -4)) retry('real item');
@@ -2552,7 +2575,7 @@
     return {
       stem: 'The solution set of the inequality $\\dfrac{' + c0 + '}{' + h.lin(1, 'x', -a) + '} ' + relTex(rel) + ' 0$ is ( )',
       key: h.setOpt(key, 'iv'), wrong: wrong, check: chk.set(truth, [a, -a]),
-      sol: 'The numerator $' + c0 + '$ is ' + (c0 > 0 ? 'positive' : 'negative') + ' and never zero, so the fraction is ' + (rel[0] === '<' ? 'negative' : 'positive') + ' exactly when the denominator is ' + (above ? 'positive' : 'negative') + ': $x ' + (above ? '>' : '<') + ' ' + a + '$. The value $x = ' + a + '$ is excluded because the denominator cannot be zero. Solution set: $' + key.tex() + '$.'
+      sol: 'The numerator $' + c0 + '$ is ' + (c0 > 0 ? 'positive' : 'negative') + ' and never zero, so the fraction is never $0$ and it is ' + (rel[0] === '<' ? 'negative' : 'positive') + ' exactly when the denominator is ' + (above ? 'positive' : 'negative') + ': $' + h.lin(1, 'x', -a) + (above ? ' > ' : ' < ') + '0$, that is $x ' + (above ? '>' : '<') + ' ' + a + '$. The value $x = ' + a + '$ is excluded because the denominator cannot be zero. The solution set is $' + key.tex() + '$.'
     };
   });
 
@@ -2583,7 +2606,9 @@
     return {
       stem: 'The solution set of the fractional inequality $' + fracTex(1, a, 1, -b) + ' ' + relTex(rel) + ' 1$ is ( )',
       key: h.setOpt(key, 'iv'), wrong: wrong, check: chk.set(truth, [b, -a, -b, a]),
-      sol: 'Move $1$ to the left and combine: $' + fracTex(1, a, 1, -b) + ' - 1 = \\dfrac{' + c0 + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. The numerator is ' + (c0 > 0 ? 'positive' : 'negative') + ', so the denominator must be ' + (below ? 'negative' : 'positive') + ': $x ' + (below ? '<' : '>') + ' ' + b + '$ ($x = ' + b + '$ is never allowed). Solution set: $' + key.tex() + '$. Do not multiply both sides by $x ' + h.signed(-b) + '$: its sign is unknown.'
+      sol: 'Subtract $1$ from both sides and combine into one fraction: $' + fracTex(1, a, 1, -b) + ' - 1 = \\dfrac{(' + h.lin(1, 'x', a) + ') - (' + h.lin(1, 'x', -b) + ')}{' + h.lin(1, 'x', -b) + '} = \\dfrac{' + c0 + '}{' + h.lin(1, 'x', -b) + '}$, so the inequality becomes $\\dfrac{' + c0 + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. ' +
+        'The numerator $' + c0 + '$ is ' + (c0 > 0 ? 'positive' : 'negative') + ' and never zero, so the fraction is ' + (rel[0] === '<' ? 'negative' : 'positive') + ' exactly when the denominator is ' + (below ? 'negative' : 'positive') + ': $' + h.lin(1, 'x', -b) + (below ? ' < ' : ' > ') + '0$, that is $x ' + (below ? '<' : '>') + ' ' + b + '$. The solution set is $' + key.tex() + '$. ' +
+        'Multiplying both sides by $' + h.lin(1, 'x', -b) + '$ at the start would be a mistake, because its sign is not known.'
     };
   });
 
@@ -2599,7 +2624,7 @@
     return {
       stem: 'The solution set of the fractional inequality $' + fracTex(1, a, 1, -b) + ' ' + relTex(rel) + ' ' + k + '$ is ( )',
       key: r.key, wrong: r.wrong, check: r.check,
-      sol: 'Move $' + k + '$ to the left and combine into one fraction: $\\dfrac{' + h.lin(na, 'x', nb) + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. ' + ratSol(na, nb, 1, -b, rel, r)
+      sol: (k > 0 ? 'Subtract $' + k + '$ from' : 'Add $' + (-k) + '$ to') + ' both sides and combine into one fraction: $' + fracTex(1, a, 1, -b) + ' ' + (k > 0 ? '- ' + k : '+ ' + (-k)) + ' = \\dfrac{' + h.lin(na, 'x', nb) + '}{' + h.lin(1, 'x', -b) + '}$, so the inequality becomes $\\dfrac{' + h.lin(na, 'x', nb) + '}{' + h.lin(1, 'x', -b) + '} ' + relTex(rel) + ' 0$. ' + ratSol(na, nb, 1, -b, rel, r)
     };
   });
 
@@ -2607,8 +2632,9 @@
     form: '(a − x)/(x + b) < 0: negative x-coefficient flips the regions', basis: 'Course plan 1.6 Q5' }, function (R) {
     var a = R.nz(-6, 6), b = R.nz(-6, 6), rel = R.pick(['<', '>', '<=', '>=']);
     if (a === -b) retry();
-    var r = rat({ a: -1, b: a, c: 1, d: b, rel: rel });
-    return { stem: 'The solution set of the inequality $\\dfrac{' + F.sum([[a, ''], [-1, 'x']]) + '}{' + h.lin(1, 'x', b) + '} ' + relTex(rel) + ' 0$ is ( )', key: r.key, wrong: r.wrong, check: r.check, sol: ratSol(-1, a, 1, b, rel, r) };
+    var r = rat({ a: -1, b: a, c: 1, d: b, rel: rel }), r2 = rat({ a: 1, b: -a, c: 1, d: b, rel: flip(rel) });
+    var sol = 'The numerator is $' + F.sum([[a, ''], [-1, 'x']]) + ' = -(' + h.lin(1, 'x', -a) + ')$. Multiply both sides by $-1$ and reverse the inequality sign: $' + fracTex(1, -a, 1, b) + ' ' + relTex(flip(rel)) + ' 0$. ' + ratSol(1, -a, 1, b, flip(rel), r2);
+    return { stem: 'The solution set of the inequality $\\dfrac{' + F.sum([[a, ''], [-1, 'x']]) + '}{' + h.lin(1, 'x', b) + '} ' + relTex(rel) + ' 0$ is ( )', key: r.key, wrong: r.wrong, check: r.check, sol: sol };
   });
 
   def({ id: 'INQ-rat.which', code: 'INQ-rat', lesson: '1.6', tier: 'M', level: '+1', fmt: 'S',
@@ -2627,15 +2653,15 @@
     }
     var aIsLo = a < b;
     var pool = [
-      st('<', IS.seg(lo, hi), true, 'the quotient is negative strictly between $' + lo + '$ and $' + hi + '$.', { g: 'lt' }),
-      st('<=', IS.set([IS.iv(lo, hi, aIsLo, !aIsLo)]), true, 'the numerator root $' + a + '$ is included, the denominator root $' + b + '$ is not.', { g: 'le' }),
-      st('>', IS.outside(lo, hi), true, 'the quotient is positive outside the two numbers.', { g: 'gt' }),
-      st('>=', IS.set([IS.iv(-Infinity, lo, false, aIsLo), IS.iv(hi, Infinity, !aIsLo, false)]), true, 'the numerator root $' + a + '$ is included, the denominator root $' + b + '$ is not.', { g: 'ge' }),
-      st('<=', IS.seg(lo, hi, 'cc'), false, 'the denominator root $' + b + '$ can never be included.', { trap: 'endpoint', g: 'le' }),
-      st('>=', IS.outside(lo, hi, true), false, 'the denominator root $' + b + '$ can never be included.', { trap: 'endpoint', g: 'ge' }),
-      st('<', IS.outside(lo, hi), false, 'the quotient is negative between the two numbers, not outside.', { trap: 'complement', g: 'lt' }),
-      st('>', IS.seg(lo, hi), false, 'the quotient is positive outside the two numbers, not between.', { trap: 'complement', g: 'gt' }),
-      st('<=', IS.set([IS.iv(lo, hi, !aIsLo, aIsLo)]), false, 'the brackets are the wrong way round: $' + a + '$ is included and $' + b + '$ is not.', { trap: 'endpoint', g: 'le2' })
+      st('<', IS.seg(lo, hi), true, 'the quotient is negative exactly when the numerator and denominator have opposite signs, which happens strictly between $' + lo + '$ and $' + hi + '$.', { g: 'lt' }),
+      st('<=', IS.set([IS.iv(lo, hi, aIsLo, !aIsLo)]), true, 'the quotient is negative between $' + lo + '$ and $' + hi + '$ and equals $0$ at $x = ' + a + '$. The value $x = ' + b + '$ is excluded because it makes the denominator zero.', { g: 'le' }),
+      st('>', IS.outside(lo, hi), true, 'the quotient is positive exactly when the numerator and denominator have the same sign, which happens outside $' + lo + '$ and $' + hi + '$.', { g: 'gt' }),
+      st('>=', IS.set([IS.iv(-Infinity, lo, false, aIsLo), IS.iv(hi, Infinity, !aIsLo, false)]), true, 'the quotient is positive outside $' + lo + '$ and $' + hi + '$ and equals $0$ at $x = ' + a + '$. The value $x = ' + b + '$ is excluded because it makes the denominator zero.', { g: 'ge' }),
+      st('<=', IS.seg(lo, hi, 'cc'), false, '$x = ' + b + '$ makes the denominator zero, so it can never be in the solution set.', { trap: 'endpoint', g: 'le' }),
+      st('>=', IS.outside(lo, hi, true), false, '$x = ' + b + '$ makes the denominator zero, so it can never be in the solution set.', { trap: 'endpoint', g: 'ge' }),
+      st('<', IS.outside(lo, hi), false, 'the quotient is negative between $' + lo + '$ and $' + hi + '$, not outside them.', { trap: 'complement', g: 'lt' }),
+      st('>', IS.seg(lo, hi), false, 'the quotient is positive outside $' + lo + '$ and $' + hi + '$, not between them.', { trap: 'complement', g: 'gt' }),
+      st('<=', IS.set([IS.iv(lo, hi, !aIsLo, aIsLo)]), false, '$x = ' + a + '$ makes the numerator zero, so it must be included, and $x = ' + b + '$ makes the denominator zero, so it must be excluded. The brackets here are the other way round.', { trap: 'endpoint', g: 'le2' })
     ];
     return out('Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -2654,24 +2680,28 @@
     // hypothesis a > b (or a < b written with the same pools mirrored)
     var k = R.int(2, 9), base = R.pick([2, 3, 4, 10]), gt = lessThan ? '<' : '>', lt = lessThan ? '>' : '<';
     var E = lessThan ? ENV_AB.map(function (e) { return { a: e.b, b: e.a }; }) : ENV_AB;
-    var tryv = lessThan ? '$a = -2$, $b = 1$' : '$a = 1$, $b = -2$';
+    // counterexamples: (1, -2) for a > b, (-2, 1) for a < b; the product and ratio statements need two negative numbers when a < b
+    var ce = lessThan ? { a: -2, b: 1 } : { a: 1, b: -2 }, ce2 = lessThan ? { a: -2, b: -1 } : { a: 1, b: -2 };
+    function take(c) { return 'take $a = ' + c.a + '$, $b = ' + c.b + '$: '; }
+    function cmp(x, y) { return x < y ? ' < ' : x > y ? ' > ' : ' = '; }
+    function num(v) { return F.n(N.q(v)); }
     var T = [
       h.relS('a + ' + k + ' ' + gt + ' b + ' + k, true, E, 'adding the same number to both sides keeps the direction.', { g: 'add' }),
       h.relS('a - ' + k + ' ' + gt + ' b - ' + k, true, E, 'subtracting the same number from both sides keeps the direction.', { g: 'add' }),
-      h.relS(k + 'a ' + gt + ' ' + k + 'b', true, E, 'multiplying by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
-      h.relS('a^3 ' + gt + ' b^3', true, E, '$y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order.', { g: 'cube' }),
-      h.relS(base + '^a ' + gt + ' ' + base + '^b', true, E, '$y = ' + base + '^x$ is increasing, so it keeps the order.', { g: 'exp' }),
-      h.relS(fr('a', k) + ' ' + gt + ' ' + fr('b', k), true, E, 'dividing by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
-      h.relS('-a ' + lt + ' -b', true, E, 'multiplying by $-1$ reverses the direction.', { g: 'neg' })
+      h.relS(k + 'a ' + gt + ' ' + k + 'b', true, E, 'multiplying both sides by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
+      h.relS('a^3 ' + gt + ' b^3', true, E, '$y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction.', { g: 'cube' }),
+      h.relS(base + '^a ' + gt + ' ' + base + '^b', true, E, '$y = ' + base + '^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power.', { g: 'exp' }),
+      h.relS(fr('a', k) + ' ' + gt + ' ' + fr('b', k), true, E, 'dividing both sides by the positive number $' + k + '$ keeps the direction.', { g: 'mul' }),
+      h.relS('-a ' + lt + ' -b', true, E, 'multiplying both sides by $-1$ reverses the direction.', { g: 'neg' })
     ];
     var Fs = [
-      h.relS('a^2 ' + gt + ' b^2', false, E, 'squares need information about signs: try ' + tryv + '.', { trap: 'near-miss', g: 'sq' }),
-      h.relS('\\lvert a \\rvert ' + gt + ' \\lvert b \\rvert', false, E, 'absolute values need information about signs: try ' + tryv + '.', { trap: 'near-miss', g: 'abs' }),
-      h.relS(fr(1, 'a') + ' ' + lt + ' ' + fr(1, 'b'), false, E, 'reciprocals reverse the order only when both numbers have the same sign: try ' + tryv + '.', { trap: 'reciprocal', g: 'rec' }),
-      h.relS('-a ' + gt + ' -b', false, E, 'multiplying by $-1$ reverses the direction.', { trap: 'sign', g: 'neg' }),
-      h.relS('-' + k + 'a ' + gt + ' -' + k + 'b', false, E, 'multiplying by a negative number reverses the direction.', { trap: 'sign', g: 'negmul' }),
-      h.relS('ab ' + gt + ' b^2', false, E, 'multiplying both sides by $b$ is safe only if $b > 0$.', { trap: 'sign', g: 'ab' }),
-      h.relS(fr('a', 'b') + ' ' + gt + ' 1', false, E, 'dividing by $b$ is safe only if $b > 0$.', { trap: 'sign', g: 'ratio' })
+      h.relS('a^2 ' + gt + ' b^2', false, E, take(ce) + '$a^2 = ' + ce.a * ce.a + '$ and $b^2 = ' + ce.b * ce.b + '$, so $a^2' + cmp(ce.a * ce.a, ce.b * ce.b) + 'b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.relS('\\lvert a \\rvert ' + gt + ' \\lvert b \\rvert', false, E, take(ce) + '$\\lvert a \\rvert = ' + Math.abs(ce.a) + '$ and $\\lvert b \\rvert = ' + Math.abs(ce.b) + '$.', { trap: 'near-miss', g: 'abs' }),
+      h.relS(fr(1, 'a') + ' ' + lt + ' ' + fr(1, 'b'), false, E, take(ce) + '$\\dfrac{1}{a} = ' + num(1 / ce.a) + '$ and $\\dfrac{1}{b} = ' + num(1 / ce.b) + '$, so $\\dfrac{1}{a}' + cmp(1 / ce.a, 1 / ce.b) + '\\dfrac{1}{b}$.', { trap: 'reciprocal', g: 'rec' }),
+      h.relS('-a ' + gt + ' -b', false, E, 'multiplying both sides by $-1$ reverses the direction, so $-a ' + lt + ' -b$.', { trap: 'sign', g: 'neg' }),
+      h.relS('-' + k + 'a ' + gt + ' -' + k + 'b', false, E, 'multiplying both sides by the negative number $-' + k + '$ reverses the direction, so $-' + k + 'a ' + lt + ' -' + k + 'b$.', { trap: 'sign', g: 'negmul' }),
+      h.relS('ab ' + gt + ' b^2', false, E, 'multiplying both sides by $b$ keeps the direction only when $b > 0$. ' + QF.sentence(take(ce2) + '$ab = ' + ce2.a * ce2.b + '$ and $b^2 = ' + ce2.b * ce2.b + '$.'), { trap: 'sign', g: 'ab' }),
+      h.relS(fr('a', 'b') + ' ' + gt + ' 1', false, E, 'dividing both sides by $b$ keeps the direction only when $b > 0$. ' + QF.sentence(take(ce2) + '$\\dfrac{a}{b} = ' + num(ce2.a / ce2.b) + '$.'), { trap: 'sign', g: 'ratio' })
     ];
     return T.concat(Fs);
   }
@@ -2680,30 +2710,30 @@
     form: 'a > b ⇒ which must be true (add, positive multiple, cube, increasing function)', basis: 'Dec Q24, Mar Q23, Apr Q24, Jun Q22' }, function (R) {
     var st = QF.pickStmts(R, 'S', propBasic(R, false));
     if (/^\$5a > 5b\$$/.test(st.key)) retry('real item');
-    var stem = R.pick(['It is known that $a > b$. Then ( )', 'If $a > b$, which of the following must be true? ( )']);
-    return out(stem, st, 'Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive.');
+    var stem = R.pick(['If $a > b$, then ( )', 'If $a > b$, which of the following must be true? ( )']);
+    return out(stem, st);
   });
 
   def({ id: 'INQ-prop.less', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '=', fmt: 'S', trick: 'T03', w: 0.5,
     form: 'a < b ⇒ which is correct', basis: 'Course plan 1.7 Q4' }, function (R) {
-    return out('Let $a < b$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', propBasic(R, true)), 'Test with numbers such as $a = -2$, $b = 1$.');
+    return out('Let $a < b$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', propBasic(R, true)));
   });
 
   def({ id: 'INQ-prop.impl', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '=', fmt: 'S', trick: 'T03', w: 1,
     form: 'a, b, c real: which implication always holds', basis: 'Jan Q22' }, function (R) {
     var E = ENV_ANY;
     var pool = [
-      h.implS(['a > b'], 'a + c > b + c', true, E, 'adding $c$ to both sides is always safe.', { g: 'add' }),
-      h.implS(['a > b'], 'a - c > b - c', true, E, 'subtracting $c$ from both sides is always safe.', { g: 'add' }),
-      h.implS(['a > b', 'c > 0'], 'ac > bc', true, E, 'multiplying by a positive number keeps the direction.', { g: 'posmul' }),
-      h.implS(['a > b', 'c < 0'], 'ac < bc', true, E, 'multiplying by a negative number reverses the direction.', { g: 'negmul' }),
-      h.implS(['a > b'], 'ac > bc', false, E, 'it fails when $c \\le 0$.', { trap: 'sign', g: 'mul' }),
-      h.implS(['a > b'], 'a^2 > b^2', false, E, 'try $a = 1$, $b = -2$.', { trap: 'near-miss', g: 'sq' }),
-      h.implS(['a > b'], fr(1, 'a') + ' < ' + fr(1, 'b'), false, E, 'try $a = 1$, $b = -2$.', { trap: 'reciprocal', g: 'rec' }),
-      h.implS(['a > b'], 'ac^2 > bc^2', false, E, 'it fails when $c = 0$.', { trap: 'slip', g: 'c2' }),
-      h.implS(['ac > bc'], 'a > b', false, E, 'it fails when $c < 0$.', { trap: 'sign', g: 'cancel' }),
-      h.implS(['a^2 > b^2'], 'a > b', false, E, 'try $a = -2$, $b = 1$.', { trap: 'near-miss', g: 'sq2' }),
-      h.implS(['a > b'], '\\lvert a \\rvert > \\lvert b \\rvert', false, E, 'try $a = 1$, $b = -2$.', { trap: 'near-miss', g: 'abs' })
+      h.implS(['a > b'], 'a + c > b + c', true, E, 'adding the same number $c$ to both sides keeps the direction, whatever $c$ is.', { g: 'add' }),
+      h.implS(['a > b'], 'a - c > b - c', true, E, 'subtracting the same number $c$ from both sides keeps the direction, whatever $c$ is.', { g: 'add' }),
+      h.implS(['a > b', 'c > 0'], 'ac > bc', true, E, 'multiplying both sides by a positive number keeps the direction.', { g: 'posmul' }),
+      h.implS(['a > b', 'c < 0'], 'ac < bc', true, E, 'multiplying both sides by a negative number reverses the direction.', { g: 'negmul' }),
+      h.implS(['a > b'], 'ac > bc', false, E, 'if $c = 0$, then $ac = bc = 0$, and if $c < 0$ the direction is reversed.', { trap: 'sign', g: 'mul' }),
+      h.implS(['a > b'], 'a^2 > b^2', false, E, 'take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.implS(['a > b'], fr(1, 'a') + ' < ' + fr(1, 'b'), false, E, 'take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$.', { trap: 'reciprocal', g: 'rec' }),
+      h.implS(['a > b'], 'ac^2 > bc^2', false, E, 'if $c = 0$, both sides equal $0$.', { trap: 'slip', g: 'c2' }),
+      h.implS(['ac > bc'], 'a > b', false, E, 'take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$.', { trap: 'sign', g: 'cancel' }),
+      h.implS(['a^2 > b^2'], 'a > b', false, E, 'take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$.', { trap: 'near-miss', g: 'sq2' }),
+      h.implS(['a > b'], '\\lvert a \\rvert > \\lvert b \\rvert', false, E, 'take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$.', { trap: 'near-miss', g: 'abs' })
     ];
     return out('Let $a$, $b$, $c$ be real numbers. Which of the following statements is always true? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -2712,35 +2742,35 @@
     form: 'a > b > c ⇒ which must be true', basis: 'undated Q22' }, function (R) {
     var E = ENV_ABC;
     var pool = [
-      h.relS('a - c > b - c', true, E, 'subtracting the same number keeps the direction.', { g: 'add' }),
-      h.relS('a + c > b + c', true, E, 'adding the same number keeps the direction.', { g: 'add' }),
-      h.relS('a - c > 0', true, E, '$a > c$.', { g: 'diff' }),
-      h.relS('a + b > 2c', true, E, '$a > c$ and $b > c$; add the two inequalities.', { g: 'sum' }),
-      h.relS('ab > bc', false, E, 'multiplying $a > c$ by $b$ is safe only if $b > 0$.', { trap: 'sign', g: 'ab' }),
-      h.relS('a^2 > b^2', false, E, 'try $a = 1$, $b = -2$, $c = -3$.', { trap: 'near-miss', g: 'sq' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ is safe only if $c > 0$.', { trap: 'sign', g: 'div' }),
-      h.relS('ac > bc', false, E, 'multiplying by $c$ is safe only if $c > 0$.', { trap: 'sign', g: 'mul' }),
-      h.relS('a - b > b - c', false, E, 'the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$.', { trap: 'slip', g: 'gap' }),
-      h.relS('\\lvert a \\rvert > \\lvert c \\rvert', false, E, 'try $a = 1$, $c = -3$.', { trap: 'near-miss', g: 'abs' })
+      h.relS('a - c > b - c', true, E, 'subtracting $c$ from both sides of $a > b$ keeps the direction.', { g: 'add' }),
+      h.relS('a + c > b + c', true, E, 'adding $c$ to both sides of $a > b$ keeps the direction.', { g: 'add' }),
+      h.relS('a - c > 0', true, E, '$a > c$, so $a - c > 0$.', { g: 'diff' }),
+      h.relS('a + b > 2c', true, E, 'adding $a > c$ and $b > c$ gives $a + b > 2c$.', { g: 'sum' }),
+      h.relS('ab > bc', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$.', { trap: 'sign', g: 'ab' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$.', { trap: 'sign', g: 'div' }),
+      h.relS('ac > bc', false, E, 'multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.', { trap: 'sign', g: 'mul' }),
+      h.relS('a - b > b - c', false, E, 'take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$.', { trap: 'slip', g: 'gap' }),
+      h.relS('\\lvert a \\rvert > \\lvert c \\rvert', false, E, 'take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$.', { trap: 'near-miss', g: 'abs' })
     ];
     var st = QF.pickStmts(R, 'S', pool);
-    return out('If $a$, $b$, $c$ are real numbers and $a > b > c$, which of the following must be true? ( )', st, 'Test with numbers such as $a = 1$, $b = -2$, $c = -3$.');
+    return out('If $a$, $b$, $c$ are real numbers and $a > b > c$, which of the following must be true? ( )', st);
   });
 
   def({ id: 'INQ-prop.pos', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '+1', fmt: 'S', trick: 'T03',
     form: 'a > b > 0 ⇒ reciprocal or square statement', basis: 'Course plan 1.7 Q6' }, function (R) {
     var E = ENV_AB_POS;
     var pool = [
-      h.relS(fr(1, 'a') + ' < ' + fr(1, 'b'), true, E, 'for positive numbers the reciprocal reverses the order.', { g: 'rec' }),
-      h.relS('a^2 > b^2', true, E, 'for positive numbers squaring keeps the order.', { g: 'sq' }),
-      h.relS('\\sqrt{a} > \\sqrt{b}', true, E, '$y = \\sqrt{x}$ is increasing.', { g: 'root' }),
-      h.relS(fr('a', 'b') + ' > 1', true, E, 'divide $a > b$ by the positive number $b$.', { g: 'ratio' }),
-      h.relS(fr(1, 'a') + ' > ' + fr(1, 'b'), false, E, 'for positive numbers the reciprocal reverses the order.', { trap: 'reciprocal', g: 'rec' }),
-      h.relS('a^2 < b^2', false, E, 'for positive numbers squaring keeps the order.', { trap: 'sign', g: 'sq' }),
-      h.relS('-a > -b', false, E, 'multiplying by $-1$ reverses the direction.', { trap: 'sign', g: 'neg' }),
+      h.relS(fr(1, 'a') + ' < ' + fr(1, 'b'), true, E, 'dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$.', { g: 'rec' }),
+      h.relS('a^2 > b^2', true, E, '$a^2 - b^2 = (a + b)(a - b)$, and both factors are positive.', { g: 'sq' }),
+      h.relS('\\sqrt{a} > \\sqrt{b}', true, E, '$y = \\sqrt{x}$ is increasing on $[0, +\\infty)$.', { g: 'root' }),
+      h.relS(fr('a', 'b') + ' > 1', true, E, 'dividing both sides of $a > b$ by the positive number $b$ gives $\\dfrac{a}{b} > 1$.', { g: 'ratio' }),
+      h.relS(fr(1, 'a') + ' > ' + fr(1, 'b'), false, E, 'dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$, the opposite order.', { trap: 'reciprocal', g: 'rec' }),
+      h.relS('a^2 < b^2', false, E, '$a^2 - b^2 = (a + b)(a - b) > 0$, so $a^2 > b^2$.', { trap: 'sign', g: 'sq' }),
+      h.relS('-a > -b', false, E, 'multiplying both sides of $a > b$ by $-1$ gives $-a < -b$.', { trap: 'sign', g: 'neg' }),
       h.relS('a - b < 0', false, E, '$a > b$ means $a - b > 0$.', { trap: 'sign', g: 'diff' }),
-      h.relS(fr('b', 'a') + ' > 1', false, E, '$0 < b < a$ gives $\\dfrac{b}{a} < 1$.', { trap: 'reciprocal', g: 'ratio' }),
-      h.relS('ab < b^2', false, E, 'multiply $a > b$ by the positive number $b$: $ab > b^2$.', { trap: 'sign', g: 'ab' })
+      h.relS(fr('b', 'a') + ' > 1', false, E, 'dividing both sides of $b < a$ by the positive number $a$ gives $\\dfrac{b}{a} < 1$.', { trap: 'reciprocal', g: 'ratio' }),
+      h.relS('ab < b^2', false, E, 'multiplying both sides of $a > b$ by the positive number $b$ gives $ab > b^2$.', { trap: 'sign', g: 'ab' })
     ];
     return out('If $a > b > 0$, which of the following must be true? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -2749,31 +2779,31 @@
     form: 'a > b and c < 0 ⇒ which holds', basis: 'Course plan 1.7 Q7' }, function (R) {
     var E = ENV_ABC_NEG;
     var pool = [
-      h.relS('ac < bc', true, E, 'multiplying by the negative number $c$ reverses the direction.', { g: 'mul' }),
-      h.relS(fr('a', 'c') + ' < ' + fr('b', 'c'), true, E, 'dividing by the negative number $c$ reverses the direction.', { g: 'div' }),
-      h.relS('a + c > b + c', true, E, 'adding $c$ keeps the direction, whatever its sign.', { g: 'add' }),
-      h.relS('ac^2 > bc^2', true, E, '$c^2 > 0$, so the direction is kept.', { g: 'c2' }),
-      h.relS('ac > bc', false, E, 'multiplying by a negative number reverses the direction.', { trap: 'sign', g: 'mul' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by a negative number reverses the direction.', { trap: 'sign', g: 'div' }),
-      h.relS('a + c < b + c', false, E, 'adding $c$ never changes the direction.', { trap: 'sign', g: 'add' }),
-      h.relS('ac^2 < bc^2', false, E, '$c^2$ is positive.', { trap: 'sign', g: 'c2' }),
-      h.relS('a^2 > b^2', false, E, 'squares need sign information about $a$ and $b$.', { trap: 'near-miss', g: 'sq' })
+      h.relS('ac < bc', true, E, 'multiplying both sides of $a > b$ by the negative number $c$ reverses the direction.', { g: 'mul' }),
+      h.relS(fr('a', 'c') + ' < ' + fr('b', 'c'), true, E, 'dividing both sides of $a > b$ by the negative number $c$ reverses the direction.', { g: 'div' }),
+      h.relS('a + c > b + c', true, E, 'adding the same number to both sides keeps the direction, whatever its sign.', { g: 'add' }),
+      h.relS('ac^2 > bc^2', true, E, '$c \\ne 0$, so $c^2 > 0$, and multiplying both sides by a positive number keeps the direction.', { g: 'c2' }),
+      h.relS('ac > bc', false, E, 'multiplying by the negative number $c$ reverses the direction, so $ac < bc$.', { trap: 'sign', g: 'mul' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by the negative number $c$ reverses the direction, so $\\dfrac{a}{c} < \\dfrac{b}{c}$.', { trap: 'sign', g: 'div' }),
+      h.relS('a + c < b + c', false, E, 'adding $c$ to both sides keeps the direction, so $a + c > b + c$.', { trap: 'sign', g: 'add' }),
+      h.relS('ac^2 < bc^2', false, E, '$c^2 > 0$, so multiplying by $c^2$ keeps the direction: $ac^2 > bc^2$.', { trap: 'sign', g: 'c2' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' })
     ];
-    return out('Given $a > b$ and $c < 0$, then ( )', QF.pickStmts(R, 'S', pool));
+    return out('If $a > b$ and $c < 0$, then ( )', QF.pickStmts(R, 'S', pool));
   });
 
   def({ id: 'INQ-prop.two-pairs', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '+1', fmt: 'S', trick: 'T03',
     form: 'a > b and c > d ⇒ which must be true (add, never subtract)', basis: 'CSC sample Q4' }, function (R) {
     var E = ENV_ABCD;
     var pool = [
-      h.relS('a + c > b + d', true, E, 'inequalities of the same direction can be added.', { g: 'add' }),
-      h.relS('a - d > b - c', true, E, '$-d > -c$; add this to $a > b$.', { g: 'sub' }),
-      h.relS('c^3 > d^3', true, E, 'cubes keep the order.', { g: 'cube' }),
-      h.relS('a - c > b - d', false, E, 'same-direction inequalities must not be subtracted: try $a = 1, b = 0, c = 3, d = 0$.', { trap: 'near-miss', g: 'sub' }),
-      h.relS('ac > bd', false, E, 'products need positive numbers: try $a = 1, b = -2, c = 1, d = -2$.', { trap: 'sign', g: 'mul' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'd'), false, E, 'quotients are not safe.', { trap: 'reciprocal', g: 'div' }),
-      h.relS('a^2 > b^2', false, E, 'squares need sign information.', { trap: 'near-miss', g: 'sq' }),
-      h.relS('a + d > b + c', false, E, 'try $a = 1, b = 0, c = 5, d = 0$.', { trap: 'swap', g: 'add2' })
+      h.relS('a + c > b + d', true, E, 'two inequalities in the same direction can be added.', { g: 'add' }),
+      h.relS('a - d > b - c', true, E, 'from $c > d$ we get $-d > -c$, and adding this to $a > b$ gives $a - d > b - c$.', { g: 'sub' }),
+      h.relS('c^3 > d^3', true, E, '$y = x^3$ is increasing on $\\mathbb{R}$, so $c > d$ gives $c^3 > d^3$.', { g: 'cube' }),
+      h.relS('a - c > b - d', false, E, 'two inequalities in the same direction cannot be subtracted. Take $a = 1$, $b = 0$, $c = 3$, $d = 0$: then $a - c = -2 < 0 = b - d$.', { trap: 'near-miss', g: 'sub' }),
+      h.relS('ac > bd', false, E, 'take $a = 1$, $b = -2$, $c = 1$, $d = -2$: then $ac = 1 < 4 = bd$.', { trap: 'sign', g: 'mul' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'd'), false, E, 'take $a = 2$, $b = 1$, $c = 4$, $d = 1$: then $\\dfrac{a}{c} = \\dfrac{1}{2} < 1 = \\dfrac{b}{d}$.', { trap: 'reciprocal', g: 'div' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' }),
+      h.relS('a + d > b + c', false, E, 'take $a = 1$, $b = 0$, $c = 5$, $d = 0$: then $a + d = 1 < 5 = b + c$.', { trap: 'swap', g: 'add2' })
     ];
     return out('If $a > b$ and $c > d$, which of the following must be true? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -2782,23 +2812,23 @@
     form: 'a > b > c ⇒ four statements with products and quotients', basis: 'Course plan 1.7 Q8 (2.5)' }, function (R) {
     var E = ENV_ABC;
     var key = R.pick([
-      h.relS('a - c > b - c', true, E, 'subtracting the same number keeps the direction.'),
-      h.relS('a + c > b + c', true, E, 'adding the same number keeps the direction.'),
-      h.relS('2a > b + c', true, E, '$a > b$ and $a > c$; add the two inequalities.')
+      h.relS('a - c > b - c', true, E, 'subtracting $c$ from both sides of $a > b$ keeps the direction.'),
+      h.relS('a + c > b + c', true, E, 'adding $c$ to both sides of $a > b$ keeps the direction.'),
+      h.relS('2a > b + c', true, E, 'adding $a > b$ and $a > c$ gives $2a > b + c$.')
     ]);
     var wrongs = R.sample([
-      h.relS('ab > bc', false, E, 'multiplying $a > c$ by $b$ is safe only if $b > 0$.', { trap: 'sign' }),
-      h.relS('a^2 > b^2', false, E, 'try $a = 1$, $b = -2$, $c = -3$.', { trap: 'near-miss' }),
-      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ is safe only if $c > 0$.', { trap: 'sign' }),
-      h.relS('ac > bc', false, E, 'multiplying by $c$ is safe only if $c > 0$.', { trap: 'sign' }),
-      h.relS(fr(1, 'a') + ' < ' + fr(1, 'c'), false, E, 'reciprocals need both numbers to have the same sign.', { trap: 'reciprocal' })
+      h.relS('ab > bc', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$.', { trap: 'sign' }),
+      h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss' }),
+      h.relS(fr('a', 'c') + ' > ' + fr('b', 'c'), false, E, 'dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$.', { trap: 'sign' }),
+      h.relS('ac > bc', false, E, 'multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.', { trap: 'sign' }),
+      h.relS(fr(1, 'a') + ' < ' + fr(1, 'c'), false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $\\dfrac{1}{a} = 1 > -\\dfrac{1}{3} = \\dfrac{1}{c}$.', { trap: 'reciprocal' })
     ], 3);
-    return out('It is known that $a > b > c$. Which of the following must be true? ( )', QF.useStmts('S', key, wrongs), 'Test with numbers such as $a = 1$, $b = -2$, $c = -3$.');
+    return out('If $a > b > c$, which of the following must be true? ( )', QF.useStmts('S', key, wrongs));
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/fn1.js ---- */
-/* ACE CSCA Question Factory · templates/fn1.js — Functions I: FN-dom, FN-rng, FN-par, FN-inv, FN-mono, FN-same, FN-val. */
+/* ACE CSCA Question Factory · templates/fn1.js: Functions I: FN-dom, FN-rng, FN-par, FN-inv, FN-mono, FN-same, FN-val. */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, F = QF.fmt, IS = QF.iset, chk = QF.chk, ev = QF.ev, h = QF.h, nt = QF.nt, m = F.m;
@@ -2835,7 +2865,7 @@
     return {
       stem: 'The domain of the function $y = \\dfrac{1}{\\sqrt{' + (rev ? am(a) : xm(a)) + '}}$ is ( )',
       key: m(key.tex()), wrong: wrong, check: domCheck(f, [a, -a]),
-      sol: 'The expression under the root must be positive — not just non-negative, because it is in a denominator: $' + (rev ? am(a) : xm(a)) + ' > 0$, so $x ' + (rev ? '<' : '>') + ' ' + a + '$. Domain: $' + key.tex() + '$.'
+      sol: 'The square root is in the denominator, so the expression under it must be positive, not zero: $' + (rev ? am(a) : xm(a)) + ' > 0$, so $x ' + (rev ? '<' : '>') + ' ' + a + '$. The domain is $' + key.tex() + '$.'
     };
   });
 
@@ -2849,17 +2879,17 @@
       key = IS.set([IS.iv(-Infinity, p), IS.iv(p, b, false, true)]);
       wrong = [[m(IS.seg(p, b, 'oc').tex()), 'partial'], [m(IS.set([IS.iv(-Infinity, p), IS.iv(p, b)]).tex()), 'endpoint'], [m(IS.below(b, true).tex()), 'partial'], [m(IS.below(b).tex()), 'endpoint']];
       expr = '\\dfrac{1}{' + xm(p) + '} + \\sqrt{' + am(b) + '}';
-      why = 'The denominator needs $x \\ne ' + p + '$ and the root needs $' + am(b) + ' \\ge 0$, i.e. $x \\le ' + b + '$.';
+      why = 'The denominator needs $x \\ne ' + p + '$, and the square root needs $' + am(b) + ' \\ge 0$, that is $x \\le ' + b + '$.';
     } else {   // sqrt(x - p) + 1/(x - b): x >= p, x != b
       f = function (x) { return M.sq(x - p) + M.inv(x - b); };
       key = IS.set([IS.iv(p, b, true, false), IS.iv(b, Infinity)]);
       wrong = [[m(IS.above(p, true).tex()), 'partial'], [m(IS.set([IS.iv(p, b), IS.iv(b, Infinity)]).tex()), 'endpoint'], [m(IS.above(b).tex()), 'partial'], [m(IS.seg(p, b, 'co').tex()), 'partial']];
       expr = '\\sqrt{' + xm(p) + '} + \\dfrac{1}{' + xm(b) + '}';
-      why = 'The root needs $' + xm(p) + ' \\ge 0$, i.e. $x \\ge ' + p + '$, and the denominator needs $x \\ne ' + b + '$.';
+      why = 'The square root needs $' + xm(p) + ' \\ge 0$, that is $x \\ge ' + p + '$, and the denominator needs $x \\ne ' + b + '$.';
     }
     return {
       stem: 'The domain of the function $f(x) = ' + expr + '$ is ( )', key: m(key.tex()), wrong: wrong, check: domCheck(f, [p, b]),
-      sol: why + ' Intersect the two conditions: $' + key.tex() + '$.'
+      sol: why + ' Both conditions must hold, so the domain is $' + key.tex() + '$.'
     };
   });
 
@@ -2874,7 +2904,7 @@
       key: m(key.texB()),
       wrong: [[m(IS.below(b, true).texB()), 'partial'], [m(IS.above(p).texB()), 'partial'], [m(IS.seg(p, b, 'cc').texB()), 'endpoint'], [m(IS.seg(p, b, 'oo').texB()), 'endpoint']],
       check: domCheck(f, [p, b]),
-      sol: 'The logarithm needs $' + xm(p) + ' > 0$' + (p === 0 ? '' : ', i.e. $x > ' + p + '$') + '; the root needs $' + am(b) + ' \\ge 0$, i.e. $x \\le ' + b + '$. Together: $' + key.texB() + '$.'
+      sol: 'The logarithm needs ' + (p === 0 ? '$x > 0$' : '$' + xm(p) + ' > 0$, that is $x > ' + p + '$') + '. The square root needs $' + am(b) + ' \\ge 0$, that is $x \\le ' + b + '$. Both conditions must hold, so the domain is $' + key.texB() + '$.'
     };
   });
 
@@ -2887,7 +2917,7 @@
     var wrong = [[m(IS.above(a, true).tex()), 'domain'], [m(IS.below(a, true).tex()), 'sign'], [m(IS.above(a).tex()), 'endpoint'], [m(IS.except([a]).tex()), 'slip']];
     return {
       stem: 'The domain of the function $f(x) = ' + expr + '$ is ( )', key: m(ALL), wrong: wrong, check: domCheck(f, [a, -a]),
-      sol: 'A cube root is defined for every real number (only even roots need a non-negative argument). Domain: $' + ALL + '$.'
+      sol: 'A cube root is defined for every real number, positive, negative or zero. Only even roots, such as square roots, need a non-negative expression inside. So the domain is $' + ALL + '$.'
     };
   });
 
@@ -2903,7 +2933,7 @@
     } else if (kind === 'cancel') {
       expr = '\\dfrac{x^2 - ' + p * p + '}{' + xm(p) + '}';
       f = function (x) { return (x * x - p * p) * M.inv(x - p); };
-      why = 'Find the domain before simplifying: the denominator is zero at $x = ' + p + '$, so $x \\ne ' + p + '$ even though the fraction simplifies to $' + h.lin(1, 'x', p) + '$.';
+      why = 'Find the domain before simplifying. The denominator is zero at $x = ' + p + '$, so $x \\ne ' + p + '$, even though the fraction simplifies to $' + h.lin(1, 'x', p) + '$ for every other $x$.';
     } else {
       var cc = R.int(1, 5);
       expr = '\\dfrac{' + cc + '}{' + am(p) + '}';
@@ -2912,7 +2942,7 @@
     }
     var key = IS.except([p]);
     var wrong = [[m(IS.above(p).tex()), 'partial'], [m(IS.except([-p]).tex()), 'sign'], [m('\\mathbb{R}'), 'domain'], [m(IS.below(p).tex()), 'partial']];
-    return { stem: 'The domain of the function $f(x) = ' + expr + '$ is ( )', key: m(key.tex()), wrong: wrong, check: domCheck(f, [p, -p]), sol: why + ' Domain: $' + key.tex() + '$.' };
+    return { stem: 'The domain of the function $f(x) = ' + expr + '$ is ( )', key: m(key.tex()), wrong: wrong, check: domCheck(f, [p, -p]), sol: why + ' The domain is $' + key.tex() + '$.' };
   });
 
   function threeRecip(R, frac) {
@@ -2928,6 +2958,7 @@
       pts.sort(function (a, b) { return a.num - b.num; });
     }
     var f = function (x) { return fs[0](x) + fs[1](x) + fs[2](x); };
+    var dens = terms.map(function (t) { return /\\dfrac\{1\}\{(.*)\}$/.exec(t)[1]; });
     var key = IS.except(pts), style = R.pick(['iv', 'sb']);
     var show = function (rs) { return m(style === 'sb' ? rs.texB() : rs.tex()); };
     var wrong = [
@@ -2940,7 +2971,7 @@
     return {
       stem: 'The domain of the function $y = ' + terms.join(' + ') + '$ is ( )', key: show(key), wrong: wrong,
       check: domCheck(f, pts.map(function (p) { return p.num; })),
-      sol: 'Each denominator must be non-zero, so $x$ cannot be $' + pts.map(F.n).join('$, $') + '$. List every excluded point: $' + (style === 'sb' ? key.texB() : key.tex()) + '$.'
+      sol: 'Each denominator must be non-zero: $' + dens.join(' \\ne 0$, $') + ' \\ne 0$. So $x$ cannot be ' + h.andList(pts).replace(/ and /, ' or ') + ', and all three points must be removed. The domain is $' + (style === 'sb' ? key.texB() : key.tex()) + '$.'
     };
   }
   def({ id: 'FN-dom.three-recip', code: 'FN-dom', lesson: '1.8', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -2967,7 +2998,9 @@
     return {
       stem: 'If the domain of $f(x)$ is $' + D + '$, then the domain of $f(' + inner + ')$ is ( )', key: m(key.tex()), wrong: wrong,
       check: chk.set(truth, [u, v, lo, hi, img[0], img[1], sg[0].num, sg[1].num, half[0].num, half[1].num]),
-      sol: 'The inside $' + inner + '$ must lie in the domain of $f$: $' + lo + (closed ? ' \\le ' : ' < ') + inner + (closed ? ' \\le ' : ' < ') + hi + '$. Solve for $x$' + (a < 0 ? ' (dividing by a negative number reverses the signs)' : '') + ': $' + key.tex() + '$.'
+      sol: 'The expression $' + inner + '$ takes the place of $x$, so it must lie in the domain of $f$: $' + lo + (closed ? ' \\le ' : ' < ') + inner + (closed ? ' \\le ' : ' < ') + hi + '$. ' +
+        (b !== 0 ? 'Subtract $' + b + '$: $' + (lo - b) + (closed ? ' \\le ' : ' < ') + F.sum([[a, 'x']]) + (closed ? ' \\le ' : ' < ') + (hi - b) + '$. ' : '') +
+        'Divide by $' + a + '$' + (a < 0 ? ', reversing both inequality signs because $' + a + '$ is negative' : '') + ': $' + u + (closed ? ' \\le ' : ' < ') + 'x' + (closed ? ' \\le ' : ' < ') + v + '$. So the domain of $f(' + inner + ')$ is $' + key.tex() + '$.'
     };
   });
 
@@ -2994,7 +3027,11 @@
     return {
       stem: 'If the domain of $f(x)$ is $' + IS.seg(p, qq).tex() + '$, then the domain of $f(x^2 - ' + r + ')$ is ( )', key: m(key.tex()), wrong: wrong,
       check: chk.set(truth, [0, s, -s, p, qq, s * s, -s * s, 1, -1, 2, -2, 3, -3]),
-      sol: 'The inside must lie in the domain of $f$: $' + p + ' < x^2 - ' + r + ' < ' + qq + '$, i.e. $' + (p + r) + ' < x^2 < ' + (qq + r) + '$. Solving for $x$ gives $' + key.tex() + '$.'
+      sol: 'The expression $x^2 - ' + r + '$ takes the place of $x$, so it must lie in the domain of $f$: $' + p + ' < x^2 - ' + r + ' < ' + qq + '$. Add $' + r + '$: $' + (p + r) + ' < x^2 < ' + (qq + r) + '$. ' +
+        (kind === 'hole' ? 'The left part, $x^2 > 0$, means $x \\ne 0$, and the right part, $x^2 < ' + s * s + '$, means $-' + s + ' < x < ' + s + '$.'
+          : kind === 'band' ? 'The left part, $x^2 > ' + (p + r) + '$, means $x < -' + Math.sqrt(p + r) + '$ or $x > ' + Math.sqrt(p + r) + '$, and the right part, $x^2 < ' + s * s + '$, means $-' + s + ' < x < ' + s + '$.'
+            : 'The left part holds for every $x$, because $x^2 \\ge 0 > ' + (p + r) + '$. The right part, $x^2 < ' + s * s + '$, means $-' + s + ' < x < ' + s + '$.') +
+        ' So the domain is $' + key.tex() + '$.'
     };
   });
 
@@ -3007,7 +3044,7 @@
     var wrong = [[m(IS.except([a - 1, a + 1]).texB()), 'partial'], [m(IS.except([a]).texB()), 'partial'], [m(IS.above(a).texB()), 'domain'], [m(IS.except([a, a + 1]).texB()), 'partial']];
     return {
       stem: 'The domain of the function $y = \\dfrac{1}{' + lg + '\\lvert ' + xm(a) + ' \\rvert}$ is ( )', key: m(key.texB()), wrong: wrong, check: domCheck(f, [a - 1, a, a + 1]),
-      sol: 'Two conditions: the argument of the logarithm must be positive, $\\lvert ' + xm(a) + ' \\rvert > 0$, so $x \\ne ' + a + '$; and the logarithm (a denominator) must not be zero, $\\lvert ' + xm(a) + ' \\rvert \\ne 1$, so $x \\ne ' + (a - 1) + '$ and $x \\ne ' + (a + 1) + '$. Domain: $' + key.texB() + '$.'
+      sol: 'There are two conditions. First, the expression inside the logarithm must be positive: $\\lvert ' + xm(a) + ' \\rvert > 0$, so $x \\ne ' + a + '$. Second, the logarithm is in the denominator, so it must not be zero: $\\lvert ' + xm(a) + ' \\rvert \\ne 1$, so $x \\ne ' + (a - 1) + '$ and $x \\ne ' + (a + 1) + '$. The domain is $' + key.texB() + '$.'
     };
   });
 
@@ -3022,18 +3059,18 @@
       key = IS.set([IS.iv(0, b), IS.iv(b, Infinity)]);
       wrong = [[m(IS.above(0).tex()), 'partial'], [m(IS.set([IS.iv(-a, b, true, false), IS.iv(b, Infinity)]).tex()), 'domain'], [m(IS.above(b).tex()), 'partial'], [m(IS.set([IS.iv(0, b, true, false), IS.iv(b, Infinity)]).tex()), 'endpoint']];
       expr = '\\dfrac{\\sqrt{' + h.lin(1, 'x', a) + '}}{' + xm(b) + '}';
-      why = 'The root needs $x \\ge ' + (-a) + '$, the denominator needs $x \\ne ' + b + '$ and the logarithm needs $x > 0$. The strictest conditions are $x > 0$ and $x \\ne ' + b + '$.';
+      why = 'The square root needs $x \\ge ' + (-a) + '$, the denominator needs $x \\ne ' + b + '$ and the logarithm needs $x > 0$. Every $x > 0$ already satisfies $x \\ge ' + (-a) + '$, so the conditions reduce to $x > 0$ and $x \\ne ' + b + '$.';
     } else {               // sqrt(c - x)/(x - b) + ln x, 0 < b < c
       var c = b + R.int(1, 4);
       f = function (x) { return M.sq(c - x) * M.inv(x - b) + cf * M.ln(x); };
       key = IS.set([IS.iv(0, b), IS.iv(b, c, false, true)]);
       wrong = [[m(IS.seg(0, c, 'oc').tex()), 'partial'], [m(IS.set([IS.iv(0, b), IS.iv(b, c)]).tex()), 'endpoint'], [m(IS.below(c, true).tex()), 'domain'], [m(IS.set([IS.iv(0, b, true, false), IS.iv(b, c, false, true)]).tex()), 'endpoint']];
       expr = '\\dfrac{\\sqrt{' + am(c) + '}}{' + xm(b) + '}';
-      why = 'The root needs $x \\le ' + c + '$, the denominator needs $x \\ne ' + b + '$ and the logarithm needs $x > 0$.';
+      why = 'The square root needs $x \\le ' + c + '$, the denominator needs $x \\ne ' + b + '$ and the logarithm needs $x > 0$. All three must hold.';
     }
     return {
       stem: 'The domain of the function $y = ' + expr + ' + ' + (cf === 1 ? '' : cf) + lg + ' x$ is ( )', key: m(key.tex()), wrong: wrong,
-      check: domCheck(f, [0, b, -5, -4, -3, -2, -1, 5, 6, 7, 8]), sol: why + ' Domain: $' + key.tex() + '$.'
+      check: domCheck(f, [0, b, -5, -4, -3, -2, -1, 5, 6, 7, 8]), sol: why + ' The domain is $' + key.tex() + '$.'
     };
   });
 
@@ -3048,7 +3085,7 @@
     var inside = a > 0 ? h.lin(a, 'x', b) : F.sum([[b, ''], [a, 'x']]);
     return {
       stem: 'The domain of the function $y = \\sqrt{' + inside + '}$ is ( )', key: m(key.tex()), wrong: wrong, check: domCheck(f, [r, -r]),
-      sol: 'The expression under a square root must be non-negative: $' + inside + ' \\ge 0$, so $x ' + (a > 0 ? '\\ge' : '\\le') + ' ' + r + '$. Domain: $' + key.tex() + '$.'
+      sol: 'The expression under a square root must be non-negative: $' + inside + ' \\ge 0$' + (a === 1 ? ', so $x \\ge ' + r + '$. ' : ', that is $' + F.sum([[a, 'x']]) + ' \\ge ' + (-b) + '$. ' + (a < 0 ? 'Dividing by the negative number $' + a + '$ reverses the sign: ' : 'Divide by $' + a + '$: ') + '$x ' + (a > 0 ? '\\ge' : '\\le') + ' ' + r + '$. ') + 'The domain is $' + key.tex() + '$.'
     };
   });
 
@@ -3063,28 +3100,28 @@
     var wrong = [[m((a > 0 ? IS.above(r, true) : IS.below(r, true)).tex()), 'endpoint'], [m((a > 0 ? IS.below(r) : IS.above(r)).tex()), 'sign'], [m(IS.above(0).tex()), 'domain'], [m(ALL), 'domain'], [m((a > 0 ? IS.above(-r) : IS.below(-r)).tex()), 'sign']];
     return {
       stem: 'The domain of the function $y = ' + base + '(' + inside + ')$ is ( )', key: m(key.tex()), wrong: wrong, check: domCheck(f, [r, -r, 0]),
-      sol: 'The argument of a logarithm must be positive (the base does not matter): $' + inside + ' > 0$, so $x ' + (a > 0 ? '>' : '<') + ' ' + r + '$. Domain: $' + key.tex() + '$.'
+      sol: 'Whatever the base, the expression inside a logarithm must be positive: $' + inside + ' > 0$, so $x ' + (a > 0 ? '>' : '<') + ' ' + r + '$. The domain is $' + key.tex() + '$.'
     };
   });
 
   def({ id: 'FN-dom.which', code: 'FN-dom', lesson: '1.8', tier: 'E', level: '+1', fmt: 'S',
     form: 'Which function has the given domain (reverse form)', basis: 'Course plan 1.4 rule: one "which is true" item per set' }, function (R) {
     var a = R.nz(-5, 5);
+    var dom = { open: IS.above(a).tex(), closed: IS.above(a, true).tex(), hole: IS.except([a]).tex(), all: '\\mathbb{R}', down: IS.below(a, true).tex(), downopen: IS.below(a).tex() };
     var lib = [
-      { t: '\\dfrac{1}{\\sqrt{' + xm(a) + '}}', f: function (x) { return M.inv(M.sq(x - a)); }, d: 'open' },
-      { t: '\\ln(' + xm(a) + ')', f: function (x) { return M.ln(x - a); }, d: 'open' },
-      { t: '\\sqrt{' + xm(a) + '}', f: function (x) { return M.sq(x - a); }, d: 'closed' },
-      { t: '\\dfrac{1}{' + xm(a) + '}', f: function (x) { return M.inv(x - a); }, d: 'hole' },
-      { t: '\\sqrt[3]{' + xm(a) + '}', f: function (x) { return M.cbrt(x - a); }, d: 'all' },
-      { t: '\\sqrt{' + am(a) + '}', f: function (x) { return M.sq(a - x); }, d: 'down' },
-      { t: '\\dfrac{1}{\\sqrt{' + am(a) + '}}', f: function (x) { return M.inv(M.sq(a - x)); }, d: 'downopen' }
+      { t: '\\dfrac{1}{\\sqrt{' + xm(a) + '}}', f: function (x) { return M.inv(M.sq(x - a)); }, d: 'open', w: 'the square root is in a denominator, so $' + xm(a) + ' > 0$' },
+      { t: '\\ln(' + xm(a) + ')', f: function (x) { return M.ln(x - a); }, d: 'open', w: 'the logarithm needs $' + xm(a) + ' > 0$' },
+      { t: '\\sqrt{' + xm(a) + '}', f: function (x) { return M.sq(x - a); }, d: 'closed', w: 'the square root needs $' + xm(a) + ' \\ge 0$' },
+      { t: '\\dfrac{1}{' + xm(a) + '}', f: function (x) { return M.inv(x - a); }, d: 'hole', w: 'the denominator needs $' + xm(a) + ' \\ne 0$' },
+      { t: '\\sqrt[3]{' + xm(a) + '}', f: function (x) { return M.cbrt(x - a); }, d: 'all', w: 'a cube root is defined for every real number' },
+      { t: '\\sqrt{' + am(a) + '}', f: function (x) { return M.sq(a - x); }, d: 'down', w: 'the square root needs $' + am(a) + ' \\ge 0$, that is $x \\le ' + a + '$' },
+      { t: '\\dfrac{1}{\\sqrt{' + am(a) + '}}', f: function (x) { return M.inv(M.sq(a - x)); }, d: 'downopen', w: 'the square root is in a denominator, so $' + am(a) + ' > 0$, that is $x < ' + a + '$' }
     ];
     var targets = { open: IS.above(a), closed: IS.above(a, true), hole: IS.except([a]) };
     var want = R.pick(['open', 'closed', 'hole']), T = targets[want];
     var grid = [a - 3, a - 1e-4, a, a + 1e-4, a + 3, -a, 0];
-    var why = { open: 'its domain is $' + IS.above(a).tex() + '$', closed: 'its domain is $' + IS.above(a, true).tex() + '$', hole: 'its domain is $' + IS.except([a]).tex() + '$', all: 'its domain is $\\mathbb{R}$', down: 'its domain is $' + IS.below(a, true).tex() + '$', downopen: 'its domain is $' + IS.below(a).tex() + '$' };
     var pool = lib.map(function (e) {
-      return h.factS('$y = ' + e.t + '$', e.d === want, function () { var dfn = defined(e.f); return grid.every(function (x) { return dfn(x) === T.has(x); }); }, why[e.d] + '.', { trap: e.d === want ? null : (e.d === 'closed' || e.d === 'open' ? 'endpoint' : 'domain') });
+      return h.factS('$y = ' + e.t + '$', e.d === want, function () { var dfn = defined(e.f); return grid.every(function (x) { return dfn(x) === T.has(x); }); }, e.w + ', so its domain is $' + dom[e.d] + '$.', { trap: e.d === want ? null : (e.d === 'closed' || e.d === 'open' ? 'endpoint' : 'domain') });
     });
     return out('Which of the following functions has the domain $' + T.tex() + '$? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -3104,7 +3141,7 @@
     var truth = function (y) { return Math.abs(y) > 1e-12 && k / y - c >= -1e-9; };   // |x| = k/y - c has a solution
     return {
       stem: 'The range of the function $f(x) = \\dfrac{' + k + '}{' + c + ' + \\lvert x \\rvert}$ is ( )', key: m(s.key.tex()), wrong: s.wrong, check: chk.set(truth, [0, top.num, k]),
-      sol: 'Since $\\lvert x \\rvert \\ge 0$, the denominator satisfies $' + c + ' + \\lvert x \\rvert \\ge ' + c + '$, so $0 < f(x) \\le ' + F.n(top) + '$; the value $' + F.n(top) + '$ is reached at $x = 0$ and $0$ is never reached. Range: $' + s.key.tex() + '$.'
+      sol: 'Since $\\lvert x \\rvert \\ge 0$, the denominator satisfies $' + c + ' + \\lvert x \\rvert \\ge ' + c + '$, so $0 < f(x) \\le \\dfrac{' + k + '}{' + c + '}' + (top.isInt ? ' = ' + F.n(top) : '') + '$. The largest value $' + F.n(top) + '$ is reached at $x = 0$. As $\\lvert x \\rvert$ grows, $f(x)$ comes as close to $0$ as we like, but it is never $0$. So the range is $' + s.key.tex() + '$.'
     };
   });
   def({ id: 'FN-rng.recip-quad', code: 'FN-rng', lesson: '1.9', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -3114,11 +3151,11 @@
     var truth = function (y) { return Math.abs(y) > 1e-12 && k / y - c >= -1e-9; };   // x^2 = k/y - c has a solution
     return {
       stem: 'The range of the function $f(x) = \\dfrac{' + k + '}{x^2 + ' + c + '}$ is ( )', key: m(s.key.tex()), wrong: s.wrong, check: chk.set(truth, [0, top.num, k]),
-      sol: 'Since $x^2 \\ge 0$, the denominator satisfies $x^2 + ' + c + ' \\ge ' + c + '$, so $0 < f(x) \\le ' + F.n(top) + '$; the value $' + F.n(top) + '$ is reached at $x = 0$ and $0$ is never reached. Range: $' + s.key.tex() + '$.'
+      sol: 'Since $x^2 \\ge 0$, the denominator satisfies $x^2 + ' + c + ' \\ge ' + c + '$, so $0 < f(x) \\le \\dfrac{' + k + '}{' + c + '}' + (top.isInt ? ' = ' + F.n(top) : '') + '$. The largest value $' + F.n(top) + '$ is reached at $x = 0$. As $x^2$ grows, $f(x)$ comes as close to $0$ as we like, but it is never $0$. So the range is $' + s.key.tex() + '$.'
     };
   });
   def({ id: 'FN-rng.quad', code: 'FN-rng', lesson: '1.9', tier: 'E', level: '+1', fmt: 'V',
-    form: 'Range of a quadratic from its vertex', basis: 'Course plan deck 1.8–1.9 (vertex)' }, function (R) {
+    form: 'Range of a quadratic from its vertex', basis: 'Course plan deck 1.8-1.9 (vertex)' }, function (R) {
     var hv = R.nz(-4, 4), kv = R.int(-5, 6), up = R.bool(0.7);   // y = ±(x - h)^2 + k
     var poly = up ? F.poly([1, -2 * hv, hv * hv + kv]) : F.poly([-1, 2 * hv, -hv * hv + kv]);
     // y is attained iff ±(y - k) >= 0
@@ -3128,7 +3165,7 @@
     var wrong = [[m((up ? IS.above(kv) : IS.below(kv)).tex()), 'endpoint'], [m((up ? IS.below(kv, true) : IS.above(kv, true)).tex()), 'sign'], [m((up ? IS.above(c0, true) : IS.below(c0, true)).tex()), 'slip'], [m((up ? IS.above(hv, true) : IS.below(hv, true)).tex()), 'companion'], [m('\\mathbb{R}'), 'domain']];
     return {
       stem: 'The range of the function $y = ' + poly + '$ is ( )', key: m(key.tex()), wrong: wrong, check: chk.set(truth, [kv, c0, hv, 0]),
-      sol: 'Complete the square: $y = ' + (up ? '' : '-') + F.sq('x', hv) + (kv === 0 ? '' : ' ' + h.signed(kv)) + '$. The square is at least $0$, so $y ' + (up ? '\\ge' : '\\le') + ' ' + kv + '$, with equality at $x = ' + hv + '$. Range: $' + key.tex() + '$.'
+      sol: 'Complete the square: $y = ' + (up ? '' : '-') + F.sq('x', hv) + (kv === 0 ? '' : ' ' + h.signed(kv)) + '$. The square is never negative, so $y ' + (up ? '\\ge' : '\\le') + ' ' + kv + '$, with equality at $x = ' + hv + '$. Every value ' + (up ? 'above' : 'below') + ' $' + kv + '$ is also reached, so the range is $' + key.tex() + '$.'
     };
   });
 
@@ -3136,31 +3173,39 @@
   var P = Math.pow;
   function ODD() {
     return [
-      ['x^3', function (x) { return x * x * x; }], ['x^3 - x', function (x) { return x * x * x - x; }], ['2x', function (x) { return 2 * x; }],
-      ['\\dfrac{1}{x}', function (x) { return M.inv(x); }], ['\\sin x', Math.sin], ['\\tan x', Math.tan], ['x^3 + \\sin x', function (x) { return x * x * x + Math.sin(x); }],
-      ['x^5', function (x) { return P(x, 5); }], ['x^3 - 2x', function (x) { return x * x * x - 2 * x; }], ['-x^3', function (x) { return -x * x * x; }],
-      ['x + \\dfrac{1}{x}', function (x) { return x + M.inv(x); }], ['x^3 + 2x', function (x) { return x * x * x + 2 * x; }], ['-2x', function (x) { return -2 * x; }]
+      ['x^3', function (x) { return x * x * x; }, '-x^3'], ['x^3 - x', function (x) { return x * x * x - x; }, '-x^3 + x'], ['2x', function (x) { return 2 * x; }, '-2x'],
+      ['\\dfrac{1}{x}', function (x) { return M.inv(x); }, '-\\dfrac{1}{x}'], ['\\sin x', Math.sin, '\\sin(-x) = -\\sin x'], ['\\tan x', Math.tan, '\\tan(-x) = -\\tan x'],
+      ['x^3 + \\sin x', function (x) { return x * x * x + Math.sin(x); }, '-x^3 - \\sin x'],
+      ['x^5', function (x) { return P(x, 5); }, '-x^5'], ['x^3 - 2x', function (x) { return x * x * x - 2 * x; }, '-x^3 + 2x'], ['-x^3', function (x) { return -x * x * x; }, 'x^3'],
+      ['x + \\dfrac{1}{x}', function (x) { return x + M.inv(x); }, '-x - \\dfrac{1}{x}'], ['x^3 + 2x', function (x) { return x * x * x + 2 * x; }, '-x^3 - 2x'], ['-2x', function (x) { return -2 * x; }, '2x']
     ];
   }
   function EVEN() {
     return [
-      ['x^2', function (x) { return x * x; }], ['x^4', function (x) { return P(x, 4); }], ['\\lvert x \\rvert', Math.abs], ['\\cos x', Math.cos],
-      ['x^2 + 1', function (x) { return x * x + 1; }], ['x^4 + 1', function (x) { return P(x, 4) + 1; }], ['x^2 + \\cos x', function (x) { return x * x + Math.cos(x); }],
-      ['\\lvert x \\rvert + 1', function (x) { return Math.abs(x) + 1; }], ['x^2 - 3', function (x) { return x * x - 3; }], ['x^4 - x^2', function (x) { return P(x, 4) - x * x; }],
-      ['-x^2', function (x) { return -x * x; }], ['\\dfrac{1}{x^2}', function (x) { return M.inv(x * x); }], ['3x^2 - \\cos x', function (x) { return 3 * x * x - Math.cos(x); }]
+      ['x^2', function (x) { return x * x; }, '(-x)^2 = x^2'], ['x^4', function (x) { return P(x, 4); }, '(-x)^4 = x^4'], ['\\lvert x \\rvert', Math.abs, '\\lvert -x \\rvert = \\lvert x \\rvert'], ['\\cos x', Math.cos, '\\cos(-x) = \\cos x'],
+      ['x^2 + 1', function (x) { return x * x + 1; }, 'x^2 + 1'], ['x^4 + 1', function (x) { return P(x, 4) + 1; }, 'x^4 + 1'], ['x^2 + \\cos x', function (x) { return x * x + Math.cos(x); }, 'x^2 + \\cos x'],
+      ['\\lvert x \\rvert + 1', function (x) { return Math.abs(x) + 1; }, '\\lvert x \\rvert + 1'], ['x^2 - 3', function (x) { return x * x - 3; }, 'x^2 - 3'], ['x^4 - x^2', function (x) { return P(x, 4) - x * x; }, 'x^4 - x^2'],
+      ['-x^2', function (x) { return -x * x; }, '-x^2'], ['\\dfrac{1}{x^2}', function (x) { return M.inv(x * x); }, '\\dfrac{1}{x^2}'], ['3x^2 - \\cos x', function (x) { return 3 * x * x - Math.cos(x); }, '3x^2 - \\cos x']
     ];
   }
   function NEITHER() {
     return [
-      ['x + 1', function (x) { return x + 1; }], ['x^2 + x', function (x) { return x * x + x; }], ['x^3 + 1', function (x) { return x * x * x + 1; }], ['2^x', function (x) { return P(2, x); }],
-      ['x^2 - 2x', function (x) { return x * x - 2 * x; }], ['\\sqrt{x}', function (x) { return M.sq(x); }], ['(x - 1)^2', function (x) { return (x - 1) * (x - 1); }],
-      ['x^3 + x^2', function (x) { return x * x * x + x * x; }], ['\\sin x + 1', function (x) { return Math.sin(x) + 1; }], ['x + \\cos x', function (x) { return x + Math.cos(x); }],
-      ['\\ln x', function (x) { return M.ln(x); }], ['\\lvert x - 1 \\rvert', function (x) { return Math.abs(x - 1); }], ['x - 1', function (x) { return x - 1; }]
+      ['x + 1', function (x) { return x + 1; }, '-x + 1'], ['x^2 + x', function (x) { return x * x + x; }, 'x^2 - x'], ['x^3 + 1', function (x) { return x * x * x + 1; }, '-x^3 + 1'], ['2^x', function (x) { return P(2, x); }, '2^{-x}'],
+      ['x^2 - 2x', function (x) { return x * x - 2 * x; }, 'x^2 + 2x'], ['\\sqrt{x}', function (x) { return M.sq(x); }, 'D:[0, +\\infty)'], ['(x - 1)^2', function (x) { return (x - 1) * (x - 1); }, '(-x - 1)^2 = (x + 1)^2'],
+      ['x^3 + x^2', function (x) { return x * x * x + x * x; }, '-x^3 + x^2'], ['\\sin x + 1', function (x) { return Math.sin(x) + 1; }, '-\\sin x + 1'], ['x + \\cos x', function (x) { return x + Math.cos(x); }, '-x + \\cos x'],
+      ['\\ln x', function (x) { return M.ln(x); }, 'D:(0, +\\infty)'], ['\\lvert x - 1 \\rvert', function (x) { return Math.abs(x - 1); }, '\\lvert -x - 1 \\rvert = \\lvert x + 1 \\rvert'], ['x - 1', function (x) { return x - 1; }, '-x - 1']
     ];
   }
+  /** the parity of a library function, explained by computing f(-x) */
+  function parWhy(e, kind, want) {
+    var fx = e[2];
+    if (/^D:/.test(fx)) return 'its domain $' + fx.slice(2) + '$ is not symmetric about the origin, so it is neither odd nor even.';
+    if (kind === 'odd') return '$f(-x) = ' + fx + ' = -f(x)$, so it is odd' + (want && want !== 'odd' ? ', not even' : '') + '.';
+    if (kind === 'even') return '$f(-x) = ' + fx + ' = f(x)$, so it is even' + (want && want !== 'even' ? ', not odd' : '') + '.';
+    return '$f(-x) = ' + fx + '$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.';
+  }
   function parS(e, kind, want) { // statement "y = ..." for "which function is <want>"
-    var why = { odd: 'it is odd: $f(-x) = -f(x)$', even: 'it is even: $f(-x) = f(x)$', neither: 'it is neither odd nor even' }[kind];
-    return h.factS('$y = ' + e[0] + '$', kind === want, function () { return want === 'odd' ? nt.odd(e[1]) : nt.even(e[1]); }, why + '.', { trap: kind === want ? null : (kind === 'neither' ? 'near-miss' : 'companion') });
+    return h.factS('$y = ' + e[0] + '$', kind === want, function () { return want === 'odd' ? nt.odd(e[1]) : nt.even(e[1]); }, parWhy(e, kind, want), { trap: kind === want ? null : (kind === 'neither' ? 'near-miss' : 'companion') });
   }
   function whichPar(R, want) {
     var other = want === 'odd' ? 'even' : 'odd';
@@ -3168,69 +3213,78 @@
     var key = parS(R.pick(keyPool), want, want);
     var o = R.sample(want === 'odd' ? EVEN() : ODD(), 2), nn = R.sample(NEITHER(), 2);
     var wrongs = R.sample([parS(o[0], other, want), parS(o[1], other, want), parS(nn[0], 'neither', want), parS(nn[1], 'neither', want)], 3);
-    return out('Which of the following functions is ' + want + '? ( )', QF.useStmts('S', key, wrongs), 'Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again.');
+    return out('Which of the following functions is ' + want + '? ( )', QF.useStmts('S', key, wrongs), 'For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin.');
   }
   def({ id: 'FN-par.which-odd', code: 'FN-par', lesson: '1.10', tier: 'E', level: '=', fmt: 'S', w: 2,
     form: 'Which function is odd', basis: 'Dec Q8, Apr Q8' }, function (R) { return whichPar(R, 'odd'); });
   def({ id: 'FN-par.which-even', code: 'FN-par', lesson: '1.10', tier: 'E', level: '=', fmt: 'S', w: 0.6,
     form: 'Which function is even', basis: 'undated Q7' }, function (R) { return whichPar(R, 'even'); });
 
-  function classify(R, e, kind, stem) {
+  function classify(R, e, kind, stem, domTex) {
     var labels = [['an odd function but not an even function', 'odd'], ['an even function but not an odd function', 'even'], ['neither an odd nor an even function', 'neither'], ['both an odd and an even function', 'both']];
     var isOdd = function () { return nt.odd(e[1]); }, isEven = function () { return nt.even(e[1]); };
     var tests = { odd: function () { return isOdd() && !isEven(); }, even: function () { return isEven() && !isOdd(); }, neither: function () { return !isOdd() && !isEven(); }, both: function () { return isOdd() && isEven(); } };
-    var whyKey = { odd: '$f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.', even: '$f(-x) = f(x)$ for every $x$ in the (symmetric) domain.', neither: '$f(-x)$ equals neither $f(x)$ nor $-f(x)$.' }[kind];
-    var st = labels.map(function (l) { return h.factS(l[0], l[1] === kind, tests[l[1]], l[1] === kind ? whyKey : '', { trap: l[1] === kind ? null : 'companion' }); });
+    var f1 = e[1](1), fm1 = e[1](-1);
+    var zero = 'a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not';
+    var why = {
+      odd: { odd: 'it is odd, and it is not also even, because ' + zero + '.', even: 'it is odd, not even.', neither: 'it is odd.', both: zero + '.' },
+      even: { even: 'it is even, and it is not also odd, because ' + zero + '.', odd: 'it is even, not odd.', neither: 'it is even.', both: zero + '.' },
+      neither: { neither: 'for example $f(-1) = ' + F.n(fm1) + '$, while $f(1) = ' + F.n(f1) + '$ and $-f(1) = ' + F.n(-f1) + '$.', odd: '$f(-1) = ' + F.n(fm1) + '$ but $-f(1) = ' + F.n(-f1) + '$.', even: '$f(-1) = ' + F.n(fm1) + '$ but $f(1) = ' + F.n(f1) + '$.', both: 'it is not odd: $f(-1) = ' + F.n(fm1) + '$ but $-f(1) = ' + F.n(-f1) + '$.' }
+    }[kind];
+    var st = labels.map(function (l) { return h.factS(l[0], l[1] === kind, tests[l[1]], why[l[1]], { trap: l[1] === kind ? null : 'companion' }); });
     var key = st.filter(function (s) { return s.ok; })[0], wrongs = st.filter(function (s) { return !s.ok; });
-    return out(stem, QF.useStmts('S', key, wrongs));
+    var pre = 'The domain ' + (domTex ? '$' + domTex + '$' : '$\\mathbb{R}$') + ' is symmetric about the origin, and $f(-x) = ' + e[2] +
+      (kind === 'odd' ? ' = -f(x)$, so $f$ is odd.' : kind === 'even' ? ' = f(x)$, so $f$ is even.' : '$, which is neither $f(x)$ nor $-f(x)$.');
+    return out(stem, QF.useStmts('S', key, wrongs), pre);
   }
   def({ id: 'FN-par.classify', code: 'FN-par', lesson: '1.10', tier: 'E', level: '=', fmt: 'S', w: 1,
     form: 'Parity of a polynomial: odd / even / neither / both', basis: 'Jan Q8' }, function (R) {
     var kind = R.pick(['odd', 'even', 'even', 'neither']), a = R.int(1, 4), b = R.int(1, 6), e;
-    if (kind === 'odd') e = R.pick([['x^3 + ' + a + 'x', function (x) { return x * x * x + a * x; }], ['x^5 - ' + a + 'x', function (x) { return P(x, 5) - a * x; }], [a + 'x^3 - ' + b + 'x', function (x) { return a * x * x * x - b * x; }]]);
-    else if (kind === 'even') e = R.pick([['x^4 + ' + b, function (x) { return P(x, 4) + b; }], ['x^2 - ' + b, function (x) { return x * x - b; }], [a + 'x^4 + x^2', function (x) { return a * P(x, 4) + x * x; }]]);
-    else e = R.pick([['x^3 + ' + b, function (x) { return x * x * x + b; }], ['x^2 + ' + a + 'x', function (x) { return x * x + a * x; }], ['x^2 - ' + 2 * a + 'x + ' + a * a, function (x) { return (x - a) * (x - a); }]]);
-    e[0] = e[0].replace(/(^|[^0-9])1x/g, '$1x');
+    if (kind === 'odd') e = R.pick([['x^3 + ' + a + 'x', function (x) { return x * x * x + a * x; }, '-x^3 - ' + a + 'x'], ['x^5 - ' + a + 'x', function (x) { return P(x, 5) - a * x; }, '-x^5 + ' + a + 'x'], [a + 'x^3 - ' + b + 'x', function (x) { return a * x * x * x - b * x; }, '-' + a + 'x^3 + ' + b + 'x']]);
+    else if (kind === 'even') e = R.pick([['x^4 + ' + b, function (x) { return P(x, 4) + b; }, '(-x)^4 + ' + b + ' = x^4 + ' + b], ['x^2 - ' + b, function (x) { return x * x - b; }, '(-x)^2 - ' + b + ' = x^2 - ' + b], [a + 'x^4 + x^2', function (x) { return a * P(x, 4) + x * x; }, a + '(-x)^4 + (-x)^2 = ' + a + 'x^4 + x^2']]);
+    else e = R.pick([['x^3 + ' + b, function (x) { return x * x * x + b; }, '-x^3 + ' + b], ['x^2 + ' + a + 'x', function (x) { return x * x + a * x; }, 'x^2 - ' + a + 'x'], ['x^2 - ' + 2 * a + 'x + ' + a * a, function (x) { return (x - a) * (x - a); }, 'x^2 + ' + 2 * a + 'x + ' + a * a]]);
+    e[0] = e[0].replace(/(^|[^0-9])1x/g, '$1x'); e[2] = e[2].replace(/(^|[^0-9(])1x/g, '$1x').replace(/(^|[^0-9])1\(/g, '$1(');
     if (e[0] === 'x^4 + 3') retry('real item');
     return classify(R, e, kind, 'The function $f(x) = ' + e[0] + '$ ($x \\in \\mathbb{R}$) is ( )');
   });
   def({ id: 'FN-par.special', code: 'FN-par', lesson: '1.10', tier: 'E', level: '=', fmt: 'S', w: 1,
-    form: 'Parity of x|x|, ln(x²), x sin x and similar products', basis: 'Mar Q7; Course plan 1.10 Q6–7' }, function (R) {
+    form: 'Parity of x|x|, ln(x²), x sin x and similar products', basis: 'Mar Q7; Course plan 1.10 Q6-7' }, function (R) {
     var lib = [
-      [['x\\lvert x \\rvert', function (x) { return x * Math.abs(x); }], 'odd'], [['x\\sin x', function (x) { return x * Math.sin(x); }], 'even'],
-      [['x\\cos x', function (x) { return x * Math.cos(x); }], 'odd'], [['x^2\\sin x', function (x) { return x * x * Math.sin(x); }], 'odd'],
-      [['\\ln\\lvert x \\rvert', function (x) { return M.ln(Math.abs(x)); }], 'even'], [['\\dfrac{x}{x^2 + 1}', function (x) { return x / (x * x + 1); }], 'odd'],
-      [['x^3\\lvert x \\rvert', function (x) { return x * x * x * Math.abs(x); }], 'odd'], [['\\lvert x \\rvert\\cos x', function (x) { return Math.abs(x) * Math.cos(x); }], 'even'],
-      [['x + \\lvert x \\rvert', function (x) { return x + Math.abs(x); }], 'neither'], [['\\dfrac{x^2}{x^2 + 1}', function (x) { return x * x / (x * x + 1); }], 'even']
+      [['x\\lvert x \\rvert', function (x) { return x * Math.abs(x); }, '(-x)\\lvert -x \\rvert = -x\\lvert x \\rvert'], 'odd'], [['x\\sin x', function (x) { return x * Math.sin(x); }, '(-x)\\sin(-x) = x\\sin x'], 'even'],
+      [['x\\cos x', function (x) { return x * Math.cos(x); }, '(-x)\\cos(-x) = -x\\cos x'], 'odd'], [['x^2\\sin x', function (x) { return x * x * Math.sin(x); }, '(-x)^2\\sin(-x) = -x^2\\sin x'], 'odd'],
+      [['\\ln\\lvert x \\rvert', function (x) { return M.ln(Math.abs(x)); }, '\\ln\\lvert -x \\rvert = \\ln\\lvert x \\rvert', '(-\\infty, 0) \\cup (0, +\\infty)'], 'even'], [['\\dfrac{x}{x^2 + 1}', function (x) { return x / (x * x + 1); }, '\\dfrac{-x}{(-x)^2 + 1} = -\\dfrac{x}{x^2 + 1}'], 'odd'],
+      [['x^3\\lvert x \\rvert', function (x) { return x * x * x * Math.abs(x); }, '(-x)^3\\lvert -x \\rvert = -x^3\\lvert x \\rvert'], 'odd'], [['\\lvert x \\rvert\\cos x', function (x) { return Math.abs(x) * Math.cos(x); }, '\\lvert -x \\rvert\\cos(-x) = \\lvert x \\rvert\\cos x'], 'even'],
+      [['x + \\lvert x \\rvert', function (x) { return x + Math.abs(x); }, '-x + \\lvert x \\rvert'], 'neither'], [['\\dfrac{x^2}{x^2 + 1}', function (x) { return x * x / (x * x + 1); }, '\\dfrac{(-x)^2}{(-x)^2 + 1} = \\dfrac{x^2}{x^2 + 1}'], 'even']
     ];
     var pk = R.pick(lib);
-    return classify(R, pk[0], pk[1], 'On its domain, the function $f(x) = ' + pk[0][0] + '$ is ( )');
+    return classify(R, pk[0], pk[1], 'On its domain, the function $f(x) = ' + pk[0][0] + '$ is ( )', pk[0][3]);
   });
 
   def({ id: 'FN-par.incorrect', code: 'FN-par', lesson: '1.10', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'Odd (or even) function y = f(x): which statement is INCORRECT', basis: 'Jun Q7' }, function (R) {
+    form: 'Odd (or even) function y = f(x): which statement is incorrect', basis: 'Jun Q7' }, function (R) {
     var kind = R.pick(['odd', 'even']), c = R.int(1, 5);
     var samples = kind === 'odd' ? ODD().slice(0, 5).map(function (e) { return e[1]; }) : EVEN().slice(0, 5).map(function (e) { return e[1]; });
     var xs = [0.4, 1.3, 2.1, c];
     function all(pred) { return function () { return samples.every(pred); }; }
     var negRule = function (f) { return xs.every(function (x) { var u = f(x), v = f(-x); return !isFinite(u) || ev.close(v, -u, 1e-8); }); };
     var sameRule = function (f) { return xs.every(function (x) { var u = f(x), v = f(-x); return !isFinite(u) || ev.close(v, u, 1e-8); }); };
+    var symDom = 'the definition compares $f(x)$ with $f(-x)$, so $-x$ must be in the domain whenever $x$ is.';
     var pool = kind === 'odd' ? [
-      h.factS('Its graph is symmetric about the origin', true, all(negRule), '', { g: 'g1' }),
-      h.factS('$f(-x) = -f(x)$ for every $x$ in its domain', true, all(negRule), '', { g: 'g2' }),
-      h.factS('Its domain is symmetric about the origin', true, all(function (f) { return xs.every(function (x) { return isFinite(f(x)) === isFinite(f(-x)); }); }), '', { g: 'g3' }),
-      h.factS('$f(-' + c + ') = -f(' + c + ')$ whenever $' + c + '$ is in its domain', true, all(negRule), '', { g: 'g4' }),
-      h.factS('If $0$ is in its domain, then $f(0) = 0$', true, all(function (f) { var v = f(0); return !isFinite(v) || Math.abs(v) < 1e-9; }), '', { g: 'g5' }),
-      h.factS('$f(-x) = f(x)$ for every $x$ in its domain', false, all(sameRule), 'that is the definition of an EVEN function; an odd function satisfies $f(-x) = -f(x)$.', { g: 'g2', trap: 'companion' }),
-      h.factS('Its graph is symmetric about the $y$-axis', false, all(sameRule), 'symmetry about the $y$-axis belongs to even functions; the graph of an odd function is symmetric about the origin.', { g: 'g1', trap: 'companion' })
+      h.factS('Its graph is symmetric about the origin', true, all(negRule), 'if $(x, y)$ is on the graph, then so is $(-x, -y)$, because $f(-x) = -f(x)$.', { g: 'g1' }),
+      h.factS('$f(-x) = -f(x)$ for every $x$ in its domain', true, all(negRule), 'this is the definition of an odd function.', { g: 'g2' }),
+      h.factS('Its domain is symmetric about the origin', true, all(function (f) { return xs.every(function (x) { return isFinite(f(x)) === isFinite(f(-x)); }); }), symDom, { g: 'g3' }),
+      h.factS('$f(-' + c + ') = -f(' + c + ')$ whenever $' + c + '$ is in its domain', true, all(negRule), 'this is the definition $f(-x) = -f(x)$ with $x = ' + c + '$.', { g: 'g4' }),
+      h.factS('If $0$ is in its domain, then $f(0) = 0$', true, all(function (f) { var v = f(0); return !isFinite(v) || Math.abs(v) < 1e-9; }), 'putting $x = 0$ into $f(-x) = -f(x)$ gives $f(0) = -f(0)$, so $f(0) = 0$.', { g: 'g5' }),
+      h.factS('$f(-x) = f(x)$ for every $x$ in its domain', false, all(sameRule), 'this is the definition of an even function. An odd function satisfies $f(-x) = -f(x)$.', { g: 'g2', trap: 'companion' }),
+      h.factS('Its graph is symmetric about the $y$-axis', false, all(sameRule), 'symmetry about the $y$-axis belongs to even functions. The graph of an odd function is symmetric about the origin.', { g: 'g1', trap: 'companion' })
     ] : [
-      h.factS('Its graph is symmetric about the $y$-axis', true, all(sameRule), '', { g: 'g1' }),
-      h.factS('$f(-x) = f(x)$ for every $x$ in its domain', true, all(sameRule), '', { g: 'g2' }),
-      h.factS('Its domain is symmetric about the origin', true, all(function (f) { return xs.every(function (x) { return isFinite(f(x)) === isFinite(f(-x)); }); }), '', { g: 'g3' }),
-      h.factS('$f(-' + c + ') = f(' + c + ')$ whenever $' + c + '$ is in its domain', true, all(sameRule), '', { g: 'g4' }),
-      h.factS('$f(-x) = -f(x)$ for every $x$ in its domain', false, all(negRule), 'that is the definition of an ODD function; an even function satisfies $f(-x) = f(x)$.', { g: 'g2', trap: 'companion' }),
-      h.factS('Its graph is symmetric about the origin', false, all(negRule), 'symmetry about the origin belongs to odd functions; the graph of an even function is symmetric about the $y$-axis.', { g: 'g1', trap: 'companion' }),
-      h.factS('If $0$ is in its domain, then $f(0) = 0$', false, all(function (f) { var v = f(0); return !isFinite(v) || Math.abs(v) < 1e-9; }), 'that holds for odd functions; for example $y = \\cos x$ is even with $f(0) = 1$.', { g: 'g5', trap: 'companion' })
+      h.factS('Its graph is symmetric about the $y$-axis', true, all(sameRule), 'if $(x, y)$ is on the graph, then so is $(-x, y)$, because $f(-x) = f(x)$.', { g: 'g1' }),
+      h.factS('$f(-x) = f(x)$ for every $x$ in its domain', true, all(sameRule), 'this is the definition of an even function.', { g: 'g2' }),
+      h.factS('Its domain is symmetric about the origin', true, all(function (f) { return xs.every(function (x) { return isFinite(f(x)) === isFinite(f(-x)); }); }), symDom, { g: 'g3' }),
+      h.factS('$f(-' + c + ') = f(' + c + ')$ whenever $' + c + '$ is in its domain', true, all(sameRule), 'this is the definition $f(-x) = f(x)$ with $x = ' + c + '$.', { g: 'g4' }),
+      h.factS('$f(-x) = -f(x)$ for every $x$ in its domain', false, all(negRule), 'this is the definition of an odd function. An even function satisfies $f(-x) = f(x)$.', { g: 'g2', trap: 'companion' }),
+      h.factS('Its graph is symmetric about the origin', false, all(negRule), 'symmetry about the origin belongs to odd functions. The graph of an even function is symmetric about the $y$-axis.', { g: 'g1', trap: 'companion' }),
+      h.factS('If $0$ is in its domain, then $f(0) = 0$', false, all(function (f) { var v = f(0); return !isFinite(v) || Math.abs(v) < 1e-9; }), 'this holds for odd functions, not for even ones. For example, $y = \\cos x$ is even and $\\cos 0 = 1$.', { g: 'g5', trap: 'companion' })
     ];
     var st = QF.pickStmts(R, 'N', pool);
     return out('Which of the following statements about an ' + kind + ' function $y = f(x)$ is incorrect? ( )', st);
@@ -3239,14 +3293,17 @@
   function fnFacts(R, name, f, o) {
     // statements about a simple power-type function; o: {par, rng, mono}
     var incAll = function () { return nt.incOn(f, -Infinity, Infinity); }, decAll = function () { return nt.decOn(f, -Infinity, Infinity); };
-    var lo = nt.min(f, -200, 200), hi = nt.max(f, -200, 200);
+    var lo = nt.min(f, -200, 200), hi = nt.max(f, -200, 200), f1 = f(1), fm1 = f(-1);
+    var monoWhy = o.mono === 'inc' ? 'an odd power keeps the order of real numbers, so it is increasing on $(-\\infty, +\\infty)$.'
+      : o.mono === 'dec' ? '$x^3$ is increasing on $(-\\infty, +\\infty)$, so $-x^3$ is decreasing there.'
+        : 'it decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.';
     var pool = [
-      h.factS('Its graph is symmetric about the $y$-axis', o.par === 'even', function () { return nt.even(f); }, o.par === 'even' ? '$f(-x) = f(x)$, so it is even.' : 'it is not an even function.', { g: 'sym', trap: 'companion' }),
-      h.factS('Its graph is symmetric about the origin', o.par === 'odd', function () { return nt.odd(f); }, o.par === 'odd' ? '$f(-x) = -f(x)$, so it is odd.' : 'it is not an odd function.', { g: 'sym', trap: 'companion' }),
-      h.factS('Its range is $[' + o.min + ', +\\infty)$', o.rng === 'half', function () { return Math.abs(lo - o.min) < 1e-9 && hi > 100; }, o.rng === 'half' ? 'its smallest value is $' + o.min + '$ and it grows without bound.' : 'it also takes values below $' + o.min + '$.', { g: 'rng', trap: 'slip' }),
-      h.factS('Its range is $\\mathbb{R}$', o.rng === 'all', function () { return lo < -100 && hi > 100; }, o.rng === 'all' ? 'it takes every real value.' : 'it never goes below $' + o.min + '$.', { g: 'rng', trap: 'domain' }),
-      h.factS('It is monotonically increasing on $(-\\infty, +\\infty)$', o.mono === 'inc', incAll, o.mono === 'inc' ? 'larger $x$ always gives a larger value.' : 'it decreases on part of its domain.', { g: 'mono', trap: 'slip' }),
-      h.factS('It is monotonically decreasing on $(-\\infty, +\\infty)$', o.mono === 'dec', decAll, o.mono === 'dec' ? 'larger $x$ always gives a smaller value.' : 'it increases on part of its domain.', { g: 'mono', trap: 'sign' })
+      h.factS('Its graph is symmetric about the $y$-axis', o.par === 'even', function () { return nt.even(f); }, o.par === 'even' ? '$f(-x) = f(x)$, so the function is even.' : '$f(-1) = ' + fm1 + '$ but $f(1) = ' + f1 + '$, so the function is not even.', { g: 'sym', trap: 'companion' }),
+      h.factS('Its graph is symmetric about the origin', o.par === 'odd', function () { return nt.odd(f); }, o.par === 'odd' ? '$f(-x) = -f(x)$, so the function is odd.' : '$f(-1) = ' + fm1 + '$ but $-f(1) = ' + (-f1) + '$, so the function is not odd.', { g: 'sym', trap: 'companion' }),
+      h.factS('Its range is $[' + o.min + ', +\\infty)$', o.rng === 'half', function () { return Math.abs(lo - o.min) < 1e-9 && hi > 100; }, o.rng === 'half' ? 'its smallest value is $' + o.min + '$, at $x = 0$, and it takes every larger value.' : 'its range is $\\mathbb{R}$, so it also takes values below $' + o.min + '$, such as $' + Math.min(f1, fm1) + '$.', { g: 'rng', trap: 'slip' }),
+      h.factS('Its range is $\\mathbb{R}$', o.rng === 'all', function () { return lo < -100 && hi > 100; }, o.rng === 'all' ? 'it takes every real value.' : 'its smallest value is $' + o.min + '$, at $x = 0$, so it never takes values below $' + o.min + '$.', { g: 'rng', trap: 'domain' }),
+      h.factS('It is monotonically increasing on $(-\\infty, +\\infty)$', o.mono === 'inc', incAll, monoWhy, { g: 'mono', trap: 'slip' }),
+      h.factS('It is monotonically decreasing on $(-\\infty, +\\infty)$', o.mono === 'dec', decAll, monoWhy, { g: 'mono', trap: 'sign' })
     ];
     return pool;
   }
@@ -3279,12 +3336,12 @@
     }
     var od = R.sample(ODD(), 2), evn = R.sample(EVEN(), 2), ne = R.sample(NEITHER(), 2);
     var pool = [
-      ps(od[0], 'odd', 'odd', '$f(-x) = -f(x)$.', { g: 'o1' }),
-      ps(evn[0], 'even', 'even', '$f(-x) = f(x)$.', { g: 'e1' }),
-      ps(od[1], 'even', 'odd', 'it is odd, not even.', { trap: 'companion', g: 'o2' }),
-      ps(evn[1], 'odd', 'even', 'it is even, not odd.', { trap: 'companion', g: 'e2' }),
-      ps(ne[0], 'odd', 'neither', 'it is neither odd nor even.', { trap: 'near-miss', g: 'n1' }),
-      ps(ne[1], 'even', 'neither', 'it is neither odd nor even.', { trap: 'near-miss', g: 'n2' }),
+      ps(od[0], 'odd', 'odd', parWhy(od[0], 'odd', 'odd'), { g: 'o1' }),
+      ps(evn[0], 'even', 'even', parWhy(evn[0], 'even', 'even'), { g: 'e1' }),
+      ps(od[1], 'even', 'odd', parWhy(od[1], 'odd', 'even'), { trap: 'companion', g: 'o2' }),
+      ps(evn[1], 'odd', 'even', parWhy(evn[1], 'even', 'odd'), { trap: 'companion', g: 'e2' }),
+      ps(ne[0], 'odd', 'neither', parWhy(ne[0], 'neither'), { trap: 'near-miss', g: 'n1' }),
+      ps(ne[1], 'even', 'neither', parWhy(ne[1], 'neither'), { trap: 'near-miss', g: 'n2' }),
       restricted('x^2', function (x) { return x * x; }, -a, b, 'even'),
       restricted('x^3', function (x) { return x * x * x; }, -a, b, 'odd')
     ];
@@ -3313,7 +3370,7 @@
     ];
     return {
       stem: 'The inverse function of $y = ' + h.lin(k, 'x', b) + '$ is ( )', key: m(key), wrong: wrong, check: invCheck(f, TS),
-      sol: 'Swap $x$ and $y$: $x = ' + h.lin(k, 'y', b) + '$. Solve for $y$: $y = \\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}$. (The reciprocal $\\dfrac{1}{' + h.lin(k, 'x', b) + '}$ is not the inverse function.)'
+      sol: 'Swap $x$ and $y$: $x = ' + h.lin(k, 'y', b) + '$. Solve for $y$: $' + F.sum([[k, 'y']]) + ' = ' + h.lin(1, 'x', -b) + '$, so $y = \\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}' + (k < 0 ? ' = -\\dfrac{' + h.lin(1, 'x', -b) + '}{' + (-k) + '}' : '') + '$. The reciprocal $\\dfrac{1}{' + h.lin(k, 'x', b) + '}$ is a different function, not the inverse.'
     };
   });
 
@@ -3338,7 +3395,7 @@
       wrong = [[m('y = \\sqrt[3]{' + h.lin(1, 'x', -c) + '}'), 'sign'], [m('y = ' + c + ' - \\sqrt[3]{x}'), 'slip'], [m('y = \\sqrt{' + F.sum([[c, ''], [-1, 'x']]) + '}'), 'near-miss'], [m('y = \\sqrt[3]{' + h.lin(1, 'x', c) + '}'), 'sign']];
       how = '$x = ' + c + ' - y^3$, so $y^3 = ' + F.sum([[c, ''], [-1, 'x']]) + '$';
     }
-    return { stem: 'The inverse function of $y = ' + expr + '$ is ( )', key: m(key), wrong: wrong, check: invCheck(f, TS), sol: 'Swap $x$ and $y$ and solve for $y$: ' + how + ', hence $' + key + '$.' };
+    return { stem: 'The inverse function of $y = ' + expr + '$ is ( )', key: m(key), wrong: wrong, check: invCheck(f, TS), sol: 'Swap $x$ and $y$ and solve for $y$: ' + how + '. Take the cube root of both sides: $' + key + '$.' };
   });
 
   def({ id: 'FN-inv.cubic-mix', code: 'FN-inv', lesson: '1.11', tier: 'E', level: '+1', fmt: 'V',
@@ -3349,7 +3406,7 @@
     var num = neg ? F.sum([[c, ''], [-1, 'x']]) : h.lin(1, 'x', -c), numBad = neg ? h.lin(1, 'x', -c) : h.lin(1, 'x', c);
     var key = 'y = \\sqrt[3]{\\dfrac{' + num + '}{' + k + '}}';
     var wrong = [[m('y = \\sqrt[3]{\\dfrac{' + numBad + '}{' + k + '}}'), 'sign'], [m('y = \\dfrac{\\sqrt[3]{' + num + '}}{' + k + '}'), 'slip'], [m('y = \\sqrt[3]{' + k + '\\left(' + num + '\\right)}'), 'reciprocal'], [m('y = \\sqrt{\\dfrac{' + num + '}{' + k + '}}'), 'near-miss']];
-    return { stem: 'The inverse function of $y = ' + expr + '$ is ( )', key: m(key), wrong: wrong, check: invCheck(f, TS), sol: 'Swap $x$ and $y$: $x = ' + expr.replace(/x/g, 'y') + '$. Isolate $y^3 = \\dfrac{' + num + '}{' + k + '}$ and take the cube root: $' + key + '$.' };
+    return { stem: 'The inverse function of $y = ' + expr + '$ is ( )', key: m(key), wrong: wrong, check: invCheck(f, TS), sol: 'Swap $x$ and $y$: $x = ' + expr.replace(/x/g, 'y') + '$. Then $' + k + 'y^3 = ' + num + '$, so $y^3 = \\dfrac{' + num + '}{' + k + '}$. Take the cube root of both sides: $' + key + '$.' };
   });
 
   def({ id: 'FN-inv.restricted', code: 'FN-inv', lesson: '1.11', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -3385,7 +3442,7 @@
     ];
     return {
       stem: 'The inverse function of $y = ' + h.lin(k, 'x', b) + '$, $x \\in [' + lo + ', ' + hi + ']$ is ( )', key: key, wrong: wrong, check: check,
-      sol: 'Solving $x = ' + h.lin(k, 'y', b) + '$ gives $y = ' + rule(k, b) + '$. The domain of the inverse is the range of the original function: as $x$ runs over $[' + lo + ', ' + hi + ']$, $' + h.lin(k, 'x', b) + '$ runs over $[' + ylo + ', ' + yhi + ']$.'
+      sol: 'Swap $x$ and $y$: $x = ' + h.lin(k, 'y', b) + '$, so $y = ' + rule(k, b) + '$. The domain of the inverse is the range of the original function. The function is increasing, so as $x$ runs over $[' + lo + ', ' + hi + ']$, $' + h.lin(k, 'x', b) + '$ runs from $' + ylo + '$ to $' + yhi + '$. So the inverse is ' + key + '.'
     };
   });
 
@@ -3411,7 +3468,7 @@
     ];
     return {
       stem: 'The inverse function of $y = \\dfrac{' + h.lin(a, 'x', b) + '}{' + h.lin(c, 'x', d) + '}$ is ( )', key: m(key), wrong: wrong, check: invCheck(f, ts),
-      sol: 'Swap $x$ and $y$: $x = \\dfrac{' + h.lin(a, 'y', b) + '}{' + h.lin(c, 'y', d) + '}$. Cross-multiply: $x(' + h.lin(c, 'y', d) + ') = ' + h.lin(a, 'y', b) + '$, collect $y$: $y(' + h.lin(c, 'x', -a) + ') = ' + h.lin(-d, 'x', b) + '$, so $' + key + '$. Check with one point: $f(0) = ' + F.n(q(b, d)) + '$, and the inverse sends $' + F.n(q(b, d)) + '$ back to $0$.'
+      sol: 'Swap $x$ and $y$: $x = \\dfrac{' + h.lin(a, 'y', b) + '}{' + h.lin(c, 'y', d) + '}$. Multiply both sides by $' + h.lin(c, 'y', d) + '$: $' + F.sum([[c, 'xy'], [d, 'x']]) + ' = ' + h.lin(a, 'y', b) + '$. Collect the terms in $y$ on one side: $y(' + h.lin(c, 'x', -a) + ') = ' + h.lin(-d, 'x', b) + '$, so $y = \\dfrac{' + h.lin(-d, 'x', b) + '}{' + h.lin(c, 'x', -a) + '}' + (-d < 0 ? ' = ' + key.replace(/^y = /, '') : '') + '$. Check with one point: $f(0) = ' + F.n(q(b, d)) + '$, and the inverse sends $' + F.n(q(b, d)) + '$ back to $0$.'
     };
   }
   def({ id: 'FN-inv.frac', code: 'FN-inv', lesson: '1.11', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -3426,13 +3483,13 @@
     var f = function (x) { return k * x + b; }, g = function (x) { return (x - b) / k; };
     var y1 = f(1);
     var pool = [
-      h.factS('Its inverse function is $y = \\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}$', true, function () { return TS.every(function (t) { return ev.close(ev.expr('\\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}', { x: f(t) }), t); }); }, 'swap $x$ and $y$ and solve.', { g: 'rule' }),
+      h.factS('Its inverse function is $y = \\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}$', true, function () { return TS.every(function (t) { return ev.close(ev.expr('\\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}', { x: f(t) }), t); }); }, 'swapping $x$ and $y$ gives $x = ' + h.lin(k, 'y', b) + '$, so $y = \\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}$.', { g: 'rule' }),
       h.factS('The graph of its inverse function passes through the point $(0, ' + r + ')$', true, function () { return ev.close(g(0), r); }, '$f(' + r + ') = 0$, so the inverse sends $0$ to $' + r + '$.', { g: 'pt' }),
       h.factS('The graph of its inverse function passes through the point $(' + y1 + ', 1)$', true, function () { return ev.close(g(y1), 1); }, '$f(1) = ' + y1 + '$, so the inverse sends $' + y1 + '$ to $1$.', { g: 'pt2' }),
-      h.factS('Its inverse function is $y = \\dfrac{1}{' + h.lin(k, 'x', b) + '}$', false, function () { return TS.every(function (t) { return ev.close(1 / (k * f(t) + b), t); }); }, 'that is the reciprocal, not the inverse function.', { g: 'rule', trap: 'reciprocal' }),
-      h.factS('Its inverse function is $y = \\dfrac{' + h.lin(1, 'x', b) + '}{' + k + '}$', false, function () { return TS.every(function (t) { return ev.close((f(t) + b) / k, t); }); }, 'the sign of $' + Math.abs(b) + '$ is wrong.', { g: 'rule2', trap: 'sign' }),
-      h.factS('The graph of its inverse function passes through the point $(' + r + ', 0)$', false, function () { return ev.close(g(r), 0); }, '$(' + r + ', 0)$ is on the graph of $f$; the inverse passes through $(0, ' + r + ')$.', { g: 'pt', trap: 'swap' }),
-      h.factS('The graphs of the function and its inverse are symmetric about the $x$-axis', false, function () { return TS.every(function (t) { return ev.close(g(t), -f(t)); }); }, 'they are symmetric about the line $y = x$.', { g: 'sym', trap: 'axis' })
+      h.factS('Its inverse function is $y = \\dfrac{1}{' + h.lin(k, 'x', b) + '}$', false, function () { return TS.every(function (t) { return ev.close(1 / (k * f(t) + b), t); }); }, '$\\dfrac{1}{' + h.lin(k, 'x', b) + '}$ is the reciprocal of $f(x)$, not its inverse. The inverse is $y = \\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}$.', { g: 'rule', trap: 'reciprocal' }),
+      h.factS('Its inverse function is $y = \\dfrac{' + h.lin(1, 'x', b) + '}{' + k + '}$', false, function () { return TS.every(function (t) { return ev.close((f(t) + b) / k, t); }); }, 'solving $x = ' + h.lin(k, 'y', b) + '$ gives $y = \\dfrac{' + h.lin(1, 'x', -b) + '}{' + k + '}$, so the sign in front of $' + Math.abs(b) + '$ is wrong.', { g: 'rule2', trap: 'sign' }),
+      h.factS('The graph of its inverse function passes through the point $(' + r + ', 0)$', false, function () { return ev.close(g(r), 0); }, '$(' + r + ', 0)$ is on the graph of $f$. Swapping the coordinates gives the point $(0, ' + r + ')$ on the inverse.', { g: 'pt', trap: 'swap' }),
+      h.factS('The graphs of the function and its inverse are symmetric about the $x$-axis', false, function () { return TS.every(function (t) { return ev.close(g(t), -f(t)); }); }, 'the graphs of a function and its inverse are symmetric about the line $y = x$, because swapping $x$ and $y$ reflects a point in that line.', { g: 'sym', trap: 'axis' })
     ];
     return out('Which of the following statements about the function $y = ' + h.lin(k, 'x', b) + '$ is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -3441,27 +3498,28 @@
   function monoLib(R) {
     var k = R.int(2, 5), b = R.int(1, 6), a = R.pick([2, 3, 4]);
     var slash = function (n, d) { return '\\left(\\dfrac{' + n + '}{' + d + '}\\right)^x'; };
+    var V = 'it decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$', A = 'it increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$';
     return [
-      // [tex, f, incR, decR, incPos, decPos]
-      [h.lin(k, 'x', b), function (x) { return k * x + b; }, 1, 0, 1, 0],
-      [h.lin(k, 'x', -b), function (x) { return k * x - b; }, 1, 0, 1, 0],
-      ['x^3', function (x) { return x * x * x; }, 1, 0, 1, 0],
-      [a + '^x', function (x) { return P(a, x); }, 1, 0, 1, 0],
-      ['e^x', Math.exp, 1, 0, 1, 0],
-      [h.lin(-k, 'x', b), function (x) { return -k * x + b; }, 0, 1, 0, 1],
-      [slash(1, a), function (x) { return P(1 / a, x); }, 0, 1, 0, 1],
-      ['-x^3', function (x) { return -x * x * x; }, 0, 1, 0, 1],
-      [a + '^{-x}', function (x) { return P(a, -x); }, 0, 1, 0, 1],
-      ['x^2', function (x) { return x * x; }, 0, 0, 1, 0],
-      ['\\lvert x \\rvert', Math.abs, 0, 0, 1, 0],
-      ['x^2 + ' + b, function (x) { return x * x + b; }, 0, 0, 1, 0],
-      ['-x^2', function (x) { return -x * x; }, 0, 0, 0, 1],
-      ['-x^2 + ' + b, function (x) { return -x * x + b; }, 0, 0, 0, 1],
-      ['\\dfrac{' + k + '}{x}', function (x) { return k * M.inv(x); }, 0, 0, 0, 1],
-      ['-\\dfrac{' + k + '}{x}', function (x) { return -k * M.inv(x); }, 0, 0, 1, 0],
-      ['\\ln x', function (x) { return M.ln(x); }, 0, 0, 1, 0],
-      ['\\sqrt{x}', function (x) { return M.sq(x); }, 0, 0, 1, 0],
-      ['\\log_{\\frac{1}{2}} x', function (x) { return -M.ln(x) / Math.LN2; }, 0, 0, 0, 1]
+      // [tex, f, incR, decR, incPos, decPos, reason, shape group]
+      [h.lin(k, 'x', b), function (x) { return k * x + b; }, 1, 0, 1, 0, 'it is a linear function with positive slope $' + k + '$, so it is increasing on $\\mathbb{R}$', 'lin+'],
+      [h.lin(k, 'x', -b), function (x) { return k * x - b; }, 1, 0, 1, 0, 'it is a linear function with positive slope $' + k + '$, so it is increasing on $\\mathbb{R}$', 'lin+'],
+      ['x^3', function (x) { return x * x * x; }, 1, 0, 1, 0, 'cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$', 'cube'],
+      [a + '^x', function (x) { return P(a, x); }, 1, 0, 1, 0, 'the base $' + a + '$ is greater than $1$, so it is increasing on $\\mathbb{R}$', 'exp+'],
+      ['e^x', Math.exp, 1, 0, 1, 0, 'the base $e \\approx 2.718$ is greater than $1$, so it is increasing on $\\mathbb{R}$', 'exp+'],
+      [h.lin(-k, 'x', b), function (x) { return -k * x + b; }, 0, 1, 0, 1, 'it is a linear function with negative slope $-' + k + '$, so it is decreasing on $\\mathbb{R}$', 'lin-'],
+      [slash(1, a), function (x) { return P(1 / a, x); }, 0, 1, 0, 1, 'the base $\\dfrac{1}{' + a + '}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$', 'exp-'],
+      ['-x^3', function (x) { return -x * x * x; }, 0, 1, 0, 1, '$x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$', 'cube'],
+      [a + '^{-x}', function (x) { return P(a, -x); }, 0, 1, 0, 1, '$' + a + '^{-x} = \\left(\\dfrac{1}{' + a + '}\\right)^x$ has a base between $0$ and $1$, so it is decreasing on $\\mathbb{R}$', 'exp-'],
+      ['x^2', function (x) { return x * x; }, 0, 0, 1, 0, V, 'v'],
+      ['\\lvert x \\rvert', Math.abs, 0, 0, 1, 0, V, 'v'],
+      ['x^2 + ' + b, function (x) { return x * x + b; }, 0, 0, 1, 0, V, 'v'],
+      ['-x^2', function (x) { return -x * x; }, 0, 0, 0, 1, A, 'a'],
+      ['-x^2 + ' + b, function (x) { return -x * x + b; }, 0, 0, 0, 1, A, 'a'],
+      ['\\dfrac{' + k + '}{x}', function (x) { return k * M.inv(x); }, 0, 0, 0, 1, 'it is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$', 'rec'],
+      ['-\\dfrac{' + k + '}{x}', function (x) { return -k * M.inv(x); }, 0, 0, 1, 0, 'it is not defined at $x = 0$, and it increases on each of $(-\\infty, 0)$ and $(0, +\\infty)$', 'rec'],
+      ['\\ln x', function (x) { return M.ln(x); }, 0, 0, 1, 0, 'it is defined only for $x > 0$, where it is increasing', 'log'],
+      ['\\sqrt{x}', function (x) { return M.sq(x); }, 0, 0, 1, 0, 'it is defined only for $x \\ge 0$, where it is increasing', 'root'],
+      ['\\log_{\\frac{1}{2}} x', function (x) { return -M.ln(x) / Math.LN2; }, 0, 0, 0, 1, 'it is defined only for $x > 0$, where it is decreasing because the base $\\dfrac{1}{2}$ is less than $1$', 'log']
     ];
   }
   function whichMono(R, dir, where) {
@@ -3471,7 +3529,7 @@
     var lo = where === 'R' ? -Infinity : 0, test = function (e) { return function () { return dir === 'inc' ? nt.incOn(e[1], lo, Infinity) : nt.decOn(e[1], lo, Infinity); }; };
     var iv = where === 'R' ? '(-\\infty, +\\infty)' : '(0, +\\infty)';
     var pool = lib.map(function (e) {
-      return h.factS('$y = ' + e[0] + '$', !!e[idx], test(e), e[idx] ? 'on $' + iv + '$ a larger $x$ always gives a ' + (dir === 'inc' ? 'larger' : 'smaller') + ' value.' : 'it is not ' + (dir === 'inc' ? 'increasing' : 'decreasing') + ' on the whole of $' + iv + '$.', { trap: 'slip' });
+      return h.factS('$y = ' + e[0] + '$', !!e[idx], test(e), e[6] + '.', { trap: 'slip', g: e[7] });
     });
     var real = { 'inc-R': '$y = 2x + 1$', 'dec-R': '$y = -x + 5$', 'dec-pos': '$y = \\dfrac{1}{x}$' }[dir + '-' + where];
     var st = QF.pickStmts(R, 'S', pool);
@@ -3491,38 +3549,44 @@
     form: 'y = x² or y = |x|: which conclusion about monotonicity is correct', basis: 'Jan Q11' }, function (R) {
     var c = R.int(1, 5);
     var lib = [
-      ['x^2', function (x) { return x * x; }, 'up'], ['\\lvert x \\rvert + ' + c, function (x) { return Math.abs(x) + c; }, 'up'], ['x^2 + ' + c, function (x) { return x * x + c; }, 'up'],
-      ['-x^2', function (x) { return -x * x; }, 'down'], ['-\\lvert x \\rvert', function (x) { return -Math.abs(x); }, 'down'], ['x^4', function (x) { return P(x, 4); }, 'up'], ['2\\lvert x \\rvert', function (x) { return 2 * Math.abs(x); }, 'up']
+      ['x^2', function (x) { return x * x; }, 'up', 'a parabola opening upward with its lowest point at $(0, 0)$'], ['\\lvert x \\rvert + ' + c, function (x) { return Math.abs(x) + c; }, 'up', 'a V shape with its lowest point at $(0, ' + c + ')$'],
+      ['x^2 + ' + c, function (x) { return x * x + c; }, 'up', 'a parabola opening upward with its lowest point at $(0, ' + c + ')$'],
+      ['-x^2', function (x) { return -x * x; }, 'down', 'a parabola opening downward with its highest point at $(0, 0)$'], ['-\\lvert x \\rvert', function (x) { return -Math.abs(x); }, 'down', 'an upside-down V shape with its highest point at $(0, 0)$'],
+      ['x^4', function (x) { return P(x, 4); }, 'up', 'a U shape with its lowest point at $(0, 0)$'], ['2\\lvert x \\rvert', function (x) { return 2 * Math.abs(x); }, 'up', 'a V shape with its lowest point at $(0, 0)$']
     ];
     var e = R.pick(lib), f = e[1], up = e[2] === 'up';
     function s(text, ok, test, why, extra) { return h.factS(text, ok, test, why, extra); }
+    var onPos = 'for $x > 0$ the function is ' + (up ? 'increasing' : 'decreasing') + '.', onNeg = 'for $x < 0$ the function is ' + (up ? 'decreasing' : 'increasing') + '.';
     var pool = [
-      s('When $x > 0$, the function is increasing', up, function () { return nt.incOn(f, 0, Infinity); }, up ? 'for positive $x$ the values grow with $x$.' : 'for positive $x$ the values fall as $x$ grows.', { g: 'pos', trap: 'sign' }),
-      s('When $x > 0$, the function is decreasing', !up, function () { return nt.decOn(f, 0, Infinity); }, !up ? 'for positive $x$ the values fall as $x$ grows.' : 'for positive $x$ the values grow with $x$.', { g: 'pos', trap: 'sign' }),
-      s('When $x < 0$, the function is decreasing', up, function () { return nt.decOn(f, -Infinity, 0); }, up ? 'for negative $x$ the values fall as $x$ grows towards $0$.' : 'for negative $x$ the values grow as $x$ grows towards $0$.', { g: 'neg', trap: 'sign' }),
-      s('When $x < 0$, the function is increasing', !up, function () { return nt.incOn(f, -Infinity, 0); }, !up ? 'for negative $x$ the values grow as $x$ grows towards $0$.' : 'for negative $x$ the values fall as $x$ grows towards $0$.', { g: 'neg', trap: 'sign' }),
+      s('When $x > 0$, the function is increasing', up, function () { return nt.incOn(f, 0, Infinity); }, up ? '' : onPos, { g: 'pos', trap: 'sign' }),
+      s('When $x > 0$, the function is decreasing', !up, function () { return nt.decOn(f, 0, Infinity); }, !up ? '' : onPos, { g: 'pos', trap: 'sign' }),
+      s('When $x < 0$, the function is decreasing', up, function () { return nt.decOn(f, -Infinity, 0); }, up ? '' : onNeg, { g: 'neg', trap: 'sign' }),
+      s('When $x < 0$, the function is increasing', !up, function () { return nt.incOn(f, -Infinity, 0); }, !up ? '' : onNeg, { g: 'neg', trap: 'sign' }),
       s('When $x \\in \\mathbb{R}$, the function is increasing', false, function () { return nt.incOn(f, -Infinity, Infinity); }, 'the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.', { g: 'allinc', trap: 'domain' }),
       s('When $x \\in \\mathbb{R}$, the function is decreasing', false, function () { return nt.decOn(f, -Infinity, Infinity); }, 'the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.', { g: 'alldec', trap: 'domain' })
     ];
     var st = QF.pickStmts(R, 'S', pool);
     if (e[0] === '\\lvert x \\rvert' && /x > 0/.test(st.key)) retry('real item');
-    return out('Given the function $y = ' + e[0] + '$, which of the following conclusions is correct? ( )', st);
+    return out('Given the function $y = ' + e[0] + '$, which of the following conclusions is correct? ( )', st,
+      'The graph of $y = ' + e[0] + '$ is ' + e[3] + ', so the function ' + (up ? 'decreases for $x < 0$ and increases for $x > 0$.' : 'increases for $x < 0$ and decreases for $x > 0$.'));
   });
 
   def({ id: 'FN-mono.recip', code: 'FN-mono', lesson: '1.12', tier: 'E', level: '+1', fmt: 'S',
-    form: 'y = k/x: decreasing on each piece, NOT on the whole domain', basis: 'Course plan deck 1.12 (y = k/x)' }, function (R) {
+    form: 'y = k/x: decreasing on each piece, not on the whole domain', basis: 'Course plan deck 1.12 (y = k/x)' }, function (R) {
     var k = R.int(1, 6), neg = R.bool(0.3), f = function (x) { return (neg ? -k : k) * M.inv(x); };
     var tex = (neg ? '-' : '') + '\\dfrac{' + k + '}{x}', dn = !neg;
     var whole = function (dirInc) { return function () { var xs = [-3, -1, -0.5, 0.5, 1, 3], okk = true; for (var i = 0; i + 1 < xs.length; i++) { if (dirInc ? !(f(xs[i + 1]) > f(xs[i])) : !(f(xs[i + 1]) < f(xs[i]))) okk = false; } return okk; }; };
+    var dir = dn ? 'decreasing' : 'increasing';
     var pool = [
-      h.factS('It is ' + (dn ? 'decreasing' : 'increasing') + ' on $(0, +\\infty)$', true, function () { return dn ? nt.decOn(f, 0, Infinity) : nt.incOn(f, 0, Infinity); }, 'on $(0, +\\infty)$ the values ' + (dn ? 'fall' : 'rise') + ' as $x$ grows.', { g: 'pos' }),
-      h.factS('It is ' + (dn ? 'decreasing' : 'increasing') + ' on $(-\\infty, 0)$', true, function () { return dn ? nt.decOn(f, -Infinity, 0) : nt.incOn(f, -Infinity, 0); }, 'on $(-\\infty, 0)$ the values ' + (dn ? 'fall' : 'rise') + ' as $x$ grows.', { g: 'neg' }),
-      h.factS('It is ' + (dn ? 'decreasing' : 'increasing') + ' on its whole domain', false, whole(!dn), 'compare $x = -1$ and $x = 1$: $f(-1) = ' + f(-1) + '$ and $f(1) = ' + f(1) + '$, so the direction fails across $0$.', { g: 'whole', trap: 'domain' }),
-      h.factS('It is ' + (dn ? 'increasing' : 'decreasing') + ' on $(0, +\\infty)$', false, function () { return dn ? nt.incOn(f, 0, Infinity) : nt.decOn(f, 0, Infinity); }, 'the direction is the other way.', { g: 'pos', trap: 'sign' }),
-      h.factS('It is ' + (dn ? 'increasing' : 'decreasing') + ' on $(-\\infty, 0)$', false, function () { return dn ? nt.incOn(f, -Infinity, 0) : nt.decOn(f, -Infinity, 0); }, 'the direction is the other way.', { g: 'neg', trap: 'sign' }),
-      h.factS('Its domain is $\\mathbb{R}$', false, function () { return isFinite(f(0)); }, '$x = 0$ is excluded.', { g: 'dom', trap: 'domain' })
+      h.factS('It is ' + dir + ' on $(0, +\\infty)$', true, function () { return dn ? nt.decOn(f, 0, Infinity) : nt.incOn(f, 0, Infinity); }, 'on the branch where $x > 0$, $y$ ' + (dn ? 'falls' : 'rises') + ' as $x$ increases.', { g: 'pos' }),
+      h.factS('It is ' + dir + ' on $(-\\infty, 0)$', true, function () { return dn ? nt.decOn(f, -Infinity, 0) : nt.incOn(f, -Infinity, 0); }, 'on the branch where $x < 0$, $y$ ' + (dn ? 'falls' : 'rises') + ' as $x$ increases.', { g: 'neg' }),
+      h.factS('It is ' + dir + ' on its whole domain', false, whole(!dn), '$-1 < 1$, but $f(-1) = ' + f(-1) + '$ and $f(1) = ' + f(1) + '$, so the function is not ' + dir + ' across the two branches.', { g: 'whole', trap: 'domain' }),
+      h.factS('It is ' + (dn ? 'increasing' : 'decreasing') + ' on $(0, +\\infty)$', false, function () { return dn ? nt.incOn(f, 0, Infinity) : nt.decOn(f, 0, Infinity); }, 'it is ' + dir + ' on $(0, +\\infty)$.', { g: 'pos', trap: 'sign' }),
+      h.factS('It is ' + (dn ? 'increasing' : 'decreasing') + ' on $(-\\infty, 0)$', false, function () { return dn ? nt.incOn(f, -Infinity, 0) : nt.decOn(f, -Infinity, 0); }, 'it is ' + dir + ' on $(-\\infty, 0)$.', { g: 'neg', trap: 'sign' }),
+      h.factS('Its domain is $\\mathbb{R}$', false, function () { return isFinite(f(0)); }, '$x = 0$ makes the denominator zero, so $0$ is not in the domain.', { g: 'dom', trap: 'domain' })
     ];
-    return out('Which of the following statements about the function $y = ' + tex + '$ is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('Which of the following statements about the function $y = ' + tex + '$ is correct? ( )', QF.pickStmts(R, 'S', pool),
+      'The graph of $y = ' + tex + '$ has two branches, in the ' + (dn ? 'first and third' : 'second and fourth') + ' quadrants, and on each branch $y$ ' + (dn ? 'falls' : 'rises') + ' as $x$ increases.');
   });
 
   def({ id: 'FN-mono.quad', code: 'FN-mono', lesson: '1.12', tier: 'E', level: '+1', fmt: 'V',
@@ -3543,7 +3607,7 @@
     var sameSet = function (t1, t2) { var p1 = ev.pred(t1), p2 = ev.pred(t2); return grid.every(function (x) { return p1(x) === p2(x); }); };
     return {
       stem: 'The function $y = ' + poly + '$ is monotonically ' + (wantDec ? 'decreasing' : 'increasing') + ' on the interval ( )', key: m(key.tex()), wrong: wrong, check: chk.custom({ isTrue: onInterval, same: sameSet }),
-      sol: 'The axis of symmetry is $x = -\\dfrac{b}{2a} = ' + hv + '$ and the parabola opens ' + (up ? 'upward' : 'downward') + ', so the function is ' + (up ? 'decreasing to the left of the axis and increasing to the right' : 'increasing to the left of the axis and decreasing to the right') + '. Answer: $' + key.tex() + '$.'
+      sol: 'The axis of symmetry is $x = -\\dfrac{b}{2a} = -\\dfrac{' + (up ? -2 * hv : 2 * hv) + '}{' + (up ? 2 : -2) + '} = ' + hv + '$. The parabola opens ' + (up ? 'upward' : 'downward') + ', so the function is ' + (up ? 'decreasing to the left of the axis and increasing to the right of it' : 'increasing to the left of the axis and decreasing to the right of it') + '. So it is ' + (wantDec ? 'decreasing' : 'increasing') + ' on $' + key.tex() + '$.'
     };
   });
 
@@ -3559,26 +3623,26 @@
     var k = R.int(2, 5);
     // [f tex, g tex, f, g, same?, why]
     return [
-      ['x', '\\sqrt[3]{x^3}', function (x) { return x; }, function (x) { return M.cbrt(x * x * x); }, 1, 'a cube root has no domain restriction and $\\sqrt[3]{x^3} = x$ for every $x$.'],
-      ['\\lvert x \\rvert', '\\sqrt{x^2}', Math.abs, function (x) { return M.sq(x * x); }, 1, '$\\sqrt{x^2} = \\lvert x \\rvert$ for every real $x$.'],
+      ['x', '\\sqrt[3]{x^3}', function (x) { return x; }, function (x) { return M.cbrt(x * x * x); }, 1, 'both are defined on $\\mathbb{R}$, and $\\sqrt[3]{x^3} = x$ for every real $x$.'],
+      ['\\lvert x \\rvert', '\\sqrt{x^2}', Math.abs, function (x) { return M.sq(x * x); }, 1, 'both are defined on $\\mathbb{R}$, and $\\sqrt{x^2} = \\lvert x \\rvert$ for every real $x$.'],
       ['x^2 - ' + k * k, '\\dfrac{x^4 - ' + P(k, 4) + '}{x^2 + ' + k * k + '}', function (x) { return x * x - k * k; }, function (x) { return (P(x, 4) - P(k, 4)) * M.inv(x * x + k * k); }, 1, 'the denominator $x^2 + ' + k * k + '$ is never zero, so both are defined on $\\mathbb{R}$ and the fraction simplifies to $x^2 - ' + k * k + '$.'],
-      ['\\lvert x - ' + k + ' \\rvert', '\\sqrt{(x - ' + k + ')^2}', function (x) { return Math.abs(x - k); }, function (x) { return M.sq((x - k) * (x - k)); }, 1, '$\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$.'],
+      ['\\lvert x - ' + k + ' \\rvert', '\\sqrt{(x - ' + k + ')^2}', function (x) { return Math.abs(x - k); }, function (x) { return M.sq((x - k) * (x - k)); }, 1, 'both are defined on $\\mathbb{R}$, and $\\sqrt{(x - ' + k + ')^2} = \\lvert x - ' + k + ' \\rvert$ for every real $x$.'],
       ['x', '\\log_{' + k + '}' + k + '^x', function (x) { return x; }, function (x) { return M.ln(P(k, x)) / Math.log(k); }, 1, '$' + k + '^x > 0$ for every $x$, so both are defined on $\\mathbb{R}$ and $\\log_{' + k + '}' + k + '^x = x$.'],
-      ['x + ' + k, '\\sqrt[3]{(x + ' + k + ')^3}', function (x) { return x + k; }, function (x) { return M.cbrt(P(x + k, 3)); }, 1, 'a cube root undoes a cube for every real number.'],
-      ['x', '\\sqrt{x^2}', function (x) { return x; }, function (x) { return M.sq(x * x); }, 0, '$\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$.'],
-      ['x', '(\\sqrt{x})^2', function (x) { return x; }, function (x) { return P(M.sq(x), 2); }, 0, '$(\\sqrt{x})^2$ is defined only for $x \\ge 0$.'],
-      ['x + ' + k, '\\dfrac{x^2 - ' + k * k + '}{x - ' + k + '}', function (x) { return x + k; }, function (x) { return (x * x - k * k) * M.inv(x - k); }, 0, 'the fraction is not defined at $x = ' + k + '$.'],
-      ['\\lvert x \\rvert', '(\\sqrt{x})^2', Math.abs, function (x) { return P(M.sq(x), 2); }, 0, '$(\\sqrt{x})^2$ is defined only for $x \\ge 0$.'],
-      ['x', '\\dfrac{x^2}{x}', function (x) { return x; }, function (x) { return x * x * M.inv(x); }, 0, '$\\dfrac{x^2}{x}$ is not defined at $x = 0$.'],
-      ['x', 'e^{\\ln x}', function (x) { return x; }, function (x) { return Math.exp(M.ln(x)); }, 0, '$e^{\\ln x}$ is defined only for $x > 0$.'],
-      ['\\ln x^2', '2\\ln x', function (x) { return M.ln(x * x); }, function (x) { return 2 * M.ln(x); }, 0, '$\\ln x^2$ is defined for $x \\ne 0$, but $2\\ln x$ only for $x > 0$.'],
-      ['x - ' + k, '\\dfrac{x^2 - ' + k * k + '}{x + ' + k + '}', function (x) { return x - k; }, function (x) { return (x * x - k * k) * M.inv(x + k); }, 0, 'the fraction is not defined at $x = -' + k + '$.'],
-      ['1', '\\dfrac{x}{x}', function () { return 1; }, function (x) { return x * M.inv(x); }, 0, '$\\dfrac{x}{x}$ is not defined at $x = 0$.'],
-      ['x', k + '^{\\log_{' + k + '} x}', function (x) { return x; }, function (x) { return P(k, M.ln(x) / Math.log(k)); }, 0, '$' + k + '^{\\log_{' + k + '} x}$ is defined only for $x > 0$.']
+      ['x + ' + k, '\\sqrt[3]{(x + ' + k + ')^3}', function (x) { return x + k; }, function (x) { return M.cbrt(P(x + k, 3)); }, 1, 'both are defined on $\\mathbb{R}$, and a cube root undoes a cube for every real number.'],
+      ['x', '\\sqrt{x^2}', function (x) { return x; }, function (x) { return M.sq(x * x); }, 0, '$\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. At $x = -1$ the two rules give $-1$ and $1$.'],
+      ['x', '(\\sqrt{x})^2', function (x) { return x; }, function (x) { return P(M.sq(x), 2); }, 0, '$(\\sqrt{x})^2$ is defined only for $x \\ge 0$, while $y = x$ is defined on $\\mathbb{R}$.'],
+      ['x + ' + k, '\\dfrac{x^2 - ' + k * k + '}{x - ' + k + '}', function (x) { return x + k; }, function (x) { return (x * x - k * k) * M.inv(x - k); }, 0, 'the fraction is not defined at $x = ' + k + '$, while $y = x + ' + k + '$ is.'],
+      ['\\lvert x \\rvert', '(\\sqrt{x})^2', Math.abs, function (x) { return P(M.sq(x), 2); }, 0, '$(\\sqrt{x})^2$ is defined only for $x \\ge 0$, while $y = \\lvert x \\rvert$ is defined on $\\mathbb{R}$.'],
+      ['x', '\\dfrac{x^2}{x}', function (x) { return x; }, function (x) { return x * x * M.inv(x); }, 0, '$\\dfrac{x^2}{x}$ is not defined at $x = 0$, while $y = x$ is.'],
+      ['x', 'e^{\\ln x}', function (x) { return x; }, function (x) { return Math.exp(M.ln(x)); }, 0, '$e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$.'],
+      ['\\ln x^2', '2\\ln x', function (x) { return M.ln(x * x); }, function (x) { return 2 * M.ln(x); }, 0, '$\\ln x^2$ is defined for every $x \\ne 0$, but $2\\ln x$ only for $x > 0$.'],
+      ['x - ' + k, '\\dfrac{x^2 - ' + k * k + '}{x + ' + k + '}', function (x) { return x - k; }, function (x) { return (x * x - k * k) * M.inv(x + k); }, 0, 'the fraction is not defined at $x = -' + k + '$, while $y = x - ' + k + '$ is.'],
+      ['1', '\\dfrac{x}{x}', function () { return 1; }, function (x) { return x * M.inv(x); }, 0, '$\\dfrac{x}{x}$ is not defined at $x = 0$, while $y = 1$ is.'],
+      ['x', k + '^{\\log_{' + k + '} x}', function (x) { return x; }, function (x) { return P(k, M.ln(x) / Math.log(k)); }, 0, '$' + k + '^{\\log_{' + k + '} x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$.']
     ];
   }
   def({ id: 'FN-same.pairs', code: 'FN-same', lesson: '1.13', tier: 'M', level: '=', fmt: 'S', w: 1.5,
-    form: 'In which pair are the two functions the same (rule AND domain)', basis: 'Jan Q35, undated Q35' }, function (R) {
+    form: 'In which pair are the two functions the same (rule and domain)', basis: 'Jan Q35, undated Q35' }, function (R) {
     var pool = sameLib(R).map(function (e) {
       return h.factS('$y = ' + e[0] + '$ and $y = ' + e[1] + '$', !!e[4], function () { return sameFn(e[2], e[3]); }, e[5], { trap: 'domain' });
     });
@@ -3590,21 +3654,24 @@
     var s = kind === 'abs' ? R.nz(-4, 4) : R.int(-4, 4);
     var u = h.lin(1, 'x', s), ub = s === 0 ? 'x' : '(' + u + ')';
     var U = function (x) { return x + s; };
+    var tgt = kind === 'abs' ? '\\lvert ' + u + ' \\rvert' : u, x0 = -s - 1;   // at x0 the inside u equals -1
     var cands = {
-      id: ['y = ' + u, U, 'the rule is $' + u + '$ itself.'],
+      id: ['y = ' + u, U, ''],
       abs: ['y = \\lvert ' + u + ' \\rvert', function (x) { return Math.abs(U(x)); }, ''],
       cbrt: ['y = \\sqrt[3]{' + ub + '^3}', function (x) { return M.cbrt(P(U(x), 3)); }, 'a cube root undoes a cube for every real number, so it equals $' + u + '$ on $\\mathbb{R}$.'],
       sqrtsq: ['y = \\sqrt{' + ub + '^2}', function (x) { return M.sq(P(U(x), 2)); }, '$\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert ' + u + ' \\rvert$ on $\\mathbb{R}$.'],
-      sqsqrt: ['y = \\left(\\sqrt{' + u + '}\\right)^2', function (x) { return P(M.sq(U(x)), 2); }, 'it is defined only for $' + u + ' \\ge 0$.'],
-      quot: ['y = \\dfrac{' + ub + '^2}{' + u + '}', function (x) { return P(U(x), 2) * M.inv(U(x)); }, 'it is not defined at $x = ' + (-s) + '$.']
+      sqsqrt: ['y = \\left(\\sqrt{' + u + '}\\right)^2', function (x) { return P(M.sq(U(x)), 2); }, 'it is defined only for $' + u + ' \\ge 0$, while $y = ' + tgt + '$ is defined on $\\mathbb{R}$.'],
+      quot: ['y = \\dfrac{' + ub + '^2}{' + u + '}', function (x) { return P(U(x), 2) * M.inv(U(x)); }, 'it is not defined at $x = ' + (-s) + '$, while $y = ' + tgt + '$ is.']
     };
     var target = kind === 'abs' ? cands.abs : cands.id, good = kind === 'abs' ? 'sqrtsq' : 'cbrt';
     var others = kind === 'abs' ? ['cbrt', 'sqsqrt', 'quot', 'id'] : ['sqrtsq', 'sqsqrt', 'quot', 'abs'];
+    var at = 'At $x = ' + x0 + '$ it gives ' + (kind === 'abs' ? '$-1$, but $y = ' + tgt + '$ gives $1$.' : '$1$, but $y = ' + tgt + '$ gives $-1$.');
     function st(name, ok) {
-      var c = cands[name], why = c[2] || (name === 'abs' ? 'the rule differs when $' + u + ' < 0$.' : '');
-      if (name === 'id' && !ok) why = 'the rule differs when $' + u + ' < 0$.';
-      if (name === 'cbrt' && !ok) why = 'it equals $' + u + '$, which differs from $\\lvert ' + u + ' \\rvert$ when $' + u + ' < 0$.';
-      if (name === 'sqrtsq' && !ok) why = 'it equals $\\lvert ' + u + ' \\rvert$, which differs from $' + u + '$ when $' + u + ' < 0$.';
+      var c = cands[name], why = c[2];
+      if (name === 'abs' && !ok) why = 'it equals $' + u + '$ only when $' + u + ' \\ge 0$. ' + at;
+      if (name === 'id' && !ok) why = 'it differs from $\\lvert ' + u + ' \\rvert$ when $' + u + ' < 0$. ' + at;
+      if (name === 'cbrt' && !ok) why = 'it equals $' + u + '$, which differs from $\\lvert ' + u + ' \\rvert$ when $' + u + ' < 0$. ' + at;
+      if (name === 'sqrtsq' && !ok) why = 'it equals $\\lvert ' + u + ' \\rvert$, which differs from $' + u + '$ when $' + u + ' < 0$. ' + at;
       return h.factS('$' + c[0] + '$', ok, function () { return sameFn(target[1], c[1]); }, why, { trap: (name === 'sqsqrt' || name === 'quot') ? 'domain' : 'near-miss' });
     }
     var key = st(good, true), wrongs = R.sample(others, 3).map(function (n) { return st(n, false); });
@@ -3629,13 +3696,13 @@
       .filter(function (w) { return /^\$-?\d+\$$/.test(w[0]); });
     return {
       stem: 'If $f(' + h.lin(a, 'x', b) + ') = ' + h.lin(c, 'x', d) + '$, then $f(' + t + ') =$ ( )', key: m(val), wrong: wrong, check: chk.num(fu(t)),
-      sol: 'Choose $x$ so that the inside equals $' + t + '$: $' + h.lin(a, 'x', b) + ' = ' + t + '$ gives $x = ' + x0 + '$. Then $f(' + t + ') = ' + h.lin(c, 'x', d).replace(/x/, '(' + x0 + ')') + ' = ' + val + '$. (Substituting $' + t + '$ straight into $' + h.lin(c, 'x', d) + '$ is the trap.)'
+      sol: 'Choose $x$ so that the expression inside $f$ equals $' + t + '$: $' + h.lin(a, 'x', b) + ' = ' + t + '$ gives $x = ' + x0 + '$. Put $x = ' + x0 + '$ into the right side: $f(' + t + ') = ' + (c === 1 ? '' : c === -1 ? '-' : c + ' \\times ') + (x0 < 0 || c === -1 ? '(' + x0 + ')' : x0) + ' ' + h.signed(d) + ' = ' + val + '$. Putting $' + t + '$ into $' + h.lin(c, 'x', d) + '$ directly is wrong, because $' + t + '$ is the value of $' + h.lin(a, 'x', b) + '$, not of $x$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/fn2.js ---- */
-/* ACE CSCA Question Factory · templates/fn2.js — Functions II: FN-cmp, FN-log, FN-prop (exponential, logarithmic and power functions). */
+/* ACE CSCA Question Factory · templates/fn2.js: Functions II: FN-cmp, FN-log, FN-prop (exponential, logarithmic and power functions). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, F = QF.fmt, IS = QF.iset, chk = QF.chk, ev = QF.ev, h = QF.h, nt = QF.nt, m = F.m, M = QF.M;
@@ -3655,17 +3722,17 @@
   function pw(b, e) { return b + '^{' + e + '}'; }
   /** one comparison statement of the given type, made true or false */
   function cmpStmt(R, type, truthy, used) {
-    var L, Rr, bigger, why, guard = 0;
+    var L, Rr, bigger, why, small2, guard = 0;   // small2: the smaller base or exponent, then the larger one
     do {
       if (type === 'pexp' || type === 'nexp') {
         var bs = R.sample(POW_BASES, 2).sort(function (a, b) { return val(a) - val(b); }), e = R.pick(type === 'pexp' ? POS_EXP : NEG_EXP);
         // same exponent: power function x^e, increasing for e > 0 and decreasing for e < 0 (x > 0)
-        L = pw(bs[0], e); Rr = pw(bs[1], e); bigger = type === 'pexp' ? 'R' : 'L';
-        why = 'same exponent $' + e + '$: $y = x^{' + e + '}$ is ' + (type === 'pexp' ? 'increasing' : 'decreasing') + ' on $(0, +\\infty)$, so the larger base gives the ' + (type === 'pexp' ? 'larger' : 'smaller') + ' value.';
+        L = pw(bs[0], e); Rr = pw(bs[1], e); bigger = type === 'pexp' ? 'R' : 'L'; small2 = bs;
+        why = 'both powers have the exponent $' + e + '$, and $y = x^{' + e + '}$ is ' + (type === 'pexp' ? 'increasing' : 'decreasing') + ' on $(0, +\\infty)$ because $' + e + (type === 'pexp' ? ' > 0' : ' < 0') + '$.';
       } else {
         var a = R.pick(type === 'bgt1' ? BIG : SMALL), es = R.sample(R.pick(EXPFAM), 2).sort(function (x, y) { return val(x) - val(y); });
-        L = pw(a, es[0]); Rr = pw(a, es[1]); bigger = type === 'bgt1' ? 'R' : 'L';
-        why = 'same base $' + a + '$: $y = ' + a + '^x$ is ' + (type === 'bgt1' ? 'increasing' : 'decreasing') + ', so the larger exponent gives the ' + (type === 'bgt1' ? 'larger' : 'smaller') + ' value.';
+        L = pw(a, es[0]); Rr = pw(a, es[1]); bigger = type === 'bgt1' ? 'R' : 'L'; small2 = es;
+        why = 'both powers have the base $' + a + '$, and $y = ' + a + '^x$ is ' + (type === 'bgt1' ? 'increasing because $' + a + ' > 1$' : 'decreasing because $0 < ' + a + ' < 1$') + '.';
       }
       if (++guard > 50) retry();
     } while (used[L] || used[Rr] || /2\.1\^\{2\/3\}/.test(L + Rr));
@@ -3673,12 +3740,13 @@
     var swap = R.bool(), left = swap ? Rr : L, right = swap ? L : Rr;
     var leftBigger = swap ? bigger === 'R' : bigger === 'L';
     var rel = (leftBigger === truthy) ? '>' : '<';
+    why += ' Since $' + small2[0] + ' < ' + small2[1] + '$, ' + (bigger === 'R' ? '$' + L + ' < ' + Rr + '$' : '$' + L + ' > ' + Rr + '$') + '.';
     return h.numS(left + ' ' + rel + ' ' + right, truthy, why, { trap: 'near-miss' });
   }
   function cmpItem(R, types) {
     var used = {}, order = R.shuffle(types), key = cmpStmt(R, order[0], true, used);
     var wrongs = order.slice(1, 4).map(function (t) { return cmpStmt(R, t, false, used); });
-    return out('Which of the following inequalities is correct? ( )', QF.useStmts('S', key, wrongs), 'Decide for each option whether the two powers share a base (exponential function) or an exponent (power function).');
+    return out('Which of the following inequalities is correct? ( )', QF.useStmts('S', key, wrongs), 'In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function.');
   }
   def({ id: 'FN-cmp.r07', code: 'FN-cmp', lesson: '7.4', tier: 'M', level: '=', fmt: 'S', rep: 'R07', trick: 'T12', w: 3,
     form: 'Four comparisons (two same-base, two same-exponent): which is correct', basis: 'R07 · Dec Q15, Jan Q27, Mar Q19' }, function (R) {
@@ -3692,9 +3760,11 @@
     });
   });
 
-  var NEGV = [[lg('0.5', '3'), 'base below $1$, argument above $1$'], [lg('0.3', '2'), 'base below $1$, argument above $1$'], [lg('2', '0.3'), 'base above $1$, argument below $1$'], [lg('3', '0.5'), 'base above $1$, argument below $1$'], ['\\ln 0.5', 'the argument is below $1$'], ['\\lg 0.3', 'the argument is below $1$'], [lg('0.2', '4'), 'base below $1$, argument above $1$']];
-  var MIDV = [[lg('3', '2'), '$1 < 2 < 3$'], [lg('5', '3'), '$1 < 3 < 5$'], ['0.5^{0.2}', 'a base below $1$ with a positive exponent'], ['0.3^{0.5}', 'a base below $1$ with a positive exponent'], ['\\lg 5', '$1 < 5 < 10$'], [lg('4', '3'), '$1 < 3 < 4$'], ['\\ln 2', '$1 < 2 < e$'], ['0.8^{2}', 'a base below $1$ with a positive exponent']];
-  var BIGV = [['2^{0.3}', 'a base above $1$ with a positive exponent'], ['3^{0.2}', 'a base above $1$ with a positive exponent'], [lg('2', '3'), '$3 > 2$'], ['\\ln 3', '$3 > e$'], ['1.5^{0.5}', 'a base above $1$ with a positive exponent'], [lg('3', '5'), '$5 > 3$'], ['0.5^{-0.3}', 'a base below $1$ with a negative exponent']];
+  var BA = 'the base is below $1$ and the argument is above $1$', AB = 'the base is above $1$ and the argument is below $1$', PB = 'a base between $0$ and $1$ raised to a positive power gives a value between $0$ and $1$', PA = 'a base above $1$ raised to a positive power gives a value above $1$';
+  function between(b, x) { return '$\\log_{' + b + '}1 = 0$, $\\log_{' + b + '}' + b + ' = 1$ and $1 < ' + x + ' < ' + b + '$'; }
+  var NEGV = [[lg('0.5', '3'), BA], [lg('0.3', '2'), BA], [lg('2', '0.3'), AB], [lg('3', '0.5'), AB], ['\\ln 0.5', 'the base $e$ is above $1$ and the argument $0.5$ is below $1$'], ['\\lg 0.3', 'the base $10$ is above $1$ and the argument $0.3$ is below $1$'], [lg('0.2', '4'), BA]];
+  var MIDV = [[lg('3', '2'), between(3, 2)], [lg('5', '3'), between(5, 3)], ['0.5^{0.2}', PB], ['0.3^{0.5}', PB], ['\\lg 5', '$\\lg 1 = 0$, $\\lg 10 = 1$ and $1 < 5 < 10$'], [lg('4', '3'), between(4, 3)], ['\\ln 2', '$\\ln 1 = 0$, $\\ln e = 1$ and $1 < 2 < e$'], ['0.8^{2}', PB]];
+  var BIGV = [['2^{0.3}', PA], ['3^{0.2}', PA], [lg('2', '3'), 'the argument $3$ is greater than the base $2$, so the value is above $\\log_{2}2 = 1$'], ['\\ln 3', '$3 > e$, so the value is above $\\ln e = 1$'], ['1.5^{0.5}', PA], [lg('3', '5'), 'the argument $5$ is greater than the base $3$, so the value is above $\\log_{3}3 = 1$'], ['0.5^{-0.3}', '$0.5^{-0.3} = 2^{0.3}$, and ' + PA]];
   def({ id: 'FN-cmp.order3', code: 'FN-cmp', lesson: '7.4', tier: 'M', level: '=', fmt: 'S', w: 0.8,
     form: 'Order three values (a log, an exponential, a log) using 0 and 1 as benchmarks', basis: 'undated Q42' }, function (R) {
     var vals = [R.pick(NEGV), R.pick(MIDV), R.pick(BIGV)];   // negative < between 0 and 1 < above 1
@@ -3707,7 +3777,7 @@
     function st(p) { var t = p.join(' < '); return h.factS('$' + t + '$', t === good, function () { return ev.rel(t, env); }, '', { trap: 'swap' }); }
     var key = st(names), wrongs = R.sample(perms.filter(function (p) { return p.join(' < ') !== good; }), 3).map(st);
     var s = QF.useStmts('S', key, wrongs);
-    s.sol = 'Compare each value with $0$ and $1$. $' + names[0] + ' = ' + vals[0][0] + ' < 0$ (' + vals[0][1] + '); $0 < ' + names[1] + ' = ' + vals[1][0] + ' < 1$ (' + vals[1][1] + '); $' + names[2] + ' = ' + vals[2][0] + ' > 1$ (' + vals[2][1] + '). So $' + good + '$.';
+    s.sol = 'Compare each value with $0$ and $1$. $' + names[0] + ' = ' + vals[0][0] + ' < 0$, because ' + vals[0][1] + '. $0 < ' + names[1] + ' = ' + vals[1][0] + ' < 1$, because ' + vals[1][1] + '. $' + names[2] + ' = ' + vals[2][0] + ' > 1$, because ' + vals[2][1] + '. So $' + good + '$.';
     return out('Given $a = ' + texOf.a[0] + '$, $b = ' + texOf.b[0] + '$ and $c = ' + texOf.c[0] + '$, the order of $a$, $b$, $c$ is ( )', s);
   });
 
@@ -3717,17 +3787,17 @@
     var hi = Math.max(big[0], big[1]), lo = Math.min(big[0], big[1]);
     var sLo = Math.min(Number(small[0]), Number(small[1])), sHi = Math.max(Number(small[0]), Number(small[1]));
     var pool = [
-      h.numS(lg(lo, hi) + ' > 1', true, 'base $' + lo + ' > 1$ and the argument exceeds the base.', { g: 'g1' }),
-      h.numS(lg(small[2], big[2]) + ' < 0', true, 'base and argument lie on opposite sides of $1$, so the logarithm is negative.', { g: 'g2' }),
-      h.numS('0 < ' + lg(hi, lo) + ' < 1', true, '$1 < ' + lo + ' < ' + hi + '$, so the logarithm lies between $0$ and $1$.', { g: 'g3' }),
-      h.numS(lg(sHi, sLo) + ' > 1', true, 'both numbers are below $1$ and the argument is smaller than the base, so the logarithm exceeds $1$.', { g: 'g4' }),
-      h.numS(lg(big[2], small[2]) + ' > 0', false, 'base above $1$ with an argument below $1$ gives a negative logarithm.', { g: 'g5', trap: 'sign' }),
-      h.numS(lg(sLo, sHi) + ' < 0', false, 'base and argument are on the same side of $1$, so the logarithm is positive.', { g: 'g6', trap: 'sign' }),
-      h.numS(lg(hi, lo) + ' > 1', false, 'the argument $' + lo + '$ is smaller than the base $' + hi + '$, so the logarithm is below $1$.', { g: 'g3', trap: 'swap' }),
-      h.numS(lg(small[2], big[2]) + ' > 0', false, 'base and argument lie on opposite sides of $1$, so the logarithm is negative.', { g: 'g2', trap: 'sign' }),
-      h.numS(lg(lo, hi) + ' < 1', false, 'the argument exceeds the base (both above $1$), so the logarithm exceeds $1$.', { g: 'g1', trap: 'swap' })
+      h.numS(lg(lo, hi) + ' > 1', true, '$y = \\log_{' + lo + '} x$ is increasing and $' + hi + ' > ' + lo + '$, so $' + lg(lo, hi) + ' > ' + lg(lo, lo) + ' = 1$.', { g: 'g1' }),
+      h.numS(lg(small[2], big[2]) + ' < 0', true, 'the base $' + small[2] + '$ is below $1$ and the argument $' + big[2] + '$ is above $1$, so the logarithm is negative.', { g: 'g2' }),
+      h.numS('0 < ' + lg(hi, lo) + ' < 1', true, '$' + lg(hi, 1) + ' = 0$, $' + lg(hi, hi) + ' = 1$ and $1 < ' + lo + ' < ' + hi + '$, so the logarithm lies between $0$ and $1$.', { g: 'g3' }),
+      h.numS(lg(sHi, sLo) + ' > 1', true, '$y = \\log_{' + sHi + '} x$ is decreasing because its base is below $1$, and $' + sLo + ' < ' + sHi + '$, so $' + lg(sHi, sLo) + ' > ' + lg(sHi, sHi) + ' = 1$.', { g: 'g4' }),
+      h.numS(lg(big[2], small[2]) + ' > 0', false, 'the base $' + big[2] + '$ is above $1$ and the argument $' + small[2] + '$ is below $1$, so the logarithm is negative.', { g: 'g5', trap: 'sign' }),
+      h.numS(lg(sLo, sHi) + ' < 0', false, 'the base $' + sLo + '$ and the argument $' + sHi + '$ are both below $1$, so the logarithm is positive.', { g: 'g6', trap: 'sign' }),
+      h.numS(lg(hi, lo) + ' > 1', false, '$y = \\log_{' + hi + '} x$ is increasing and $' + lo + ' < ' + hi + '$, so $' + lg(hi, lo) + ' < ' + lg(hi, hi) + ' = 1$.', { g: 'g3', trap: 'swap' }),
+      h.numS(lg(small[2], big[2]) + ' > 0', false, 'the base $' + small[2] + '$ is below $1$ and the argument $' + big[2] + '$ is above $1$, so the logarithm is negative.', { g: 'g2', trap: 'sign' }),
+      h.numS(lg(lo, hi) + ' < 1', false, '$y = \\log_{' + lo + '} x$ is increasing and $' + hi + ' > ' + lo + '$, so $' + lg(lo, hi) + ' > ' + lg(lo, lo) + ' = 1$.', { g: 'g1', trap: 'swap' })
     ];
-    return out('Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'A logarithm $\\log_a b$ is positive exactly when $a$ and $b$ lie on the same side of $1$.');
+    return out('Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'A logarithm $\\log_a b$ is positive when $a$ and $b$ lie on the same side of $1$, and negative when they lie on opposite sides.');
   });
 
   /* ===================== FN-log · logarithm rules and inequalities ===================== */
@@ -3740,7 +3810,7 @@
     var wrong = [[m(mm + n), 'sign'], [m(n - mm), 'sign'], [m(0), 'old-answer'], [m(mm), 'partial'], [m(mm * n), 'operation'], [m(mm - n + 1), 'slip']];
     return {
       stem: 'The value of $' + lg(a, A) + ' + ' + lg(INVB[a], B) + '$ is ( )', key: m(mm - n), wrong: wrong, check: chk.num(truth),
-      sol: '$' + lg(a, A) + ' = ' + mm + '$ because $' + a + '^{' + mm + '} = ' + A + '$. A base $\\dfrac{1}{' + a + '}$ changes the sign: $' + lg(INVB[a], B) + ' = -' + lg(a, B) + ' = -' + n + '$. Sum: $' + (mm - n) + '$.'
+      sol: '$' + lg(a, A) + ' = ' + mm + '$ because $' + a + '^{' + mm + '} = ' + A + '$. Changing the base to $\\dfrac{1}{' + a + '}$ changes the sign: $' + lg(INVB[a], B) + ' = -' + n + '$, because $\\left(\\dfrac{1}{' + a + '}\\right)^{-' + n + '} = ' + a + '^{' + n + '} = ' + B + '$. So the value is $' + mm + ' + (-' + n + ') = ' + (mm - n) + '$.'
     };
   });
 
@@ -3760,10 +3830,11 @@
     }
     stem = kind === 'ab' ? 'Let $a = \\lg ' + P(2, k) + '$ and $b = \\lg 5$. Then $a + ' + k + 'b =$ ( )' : '$' + expr + ' =$ ( )';
     var wrong = [[m('\\lg ' + sumArg), 'near-miss'], [m(k + 1), 'slip'], [m(1), 'partial'], [m(k - 1), 'slip'], [m(P(10, k)), 'slip']];
-    return { stem: stem, key: m(truth), wrong: wrong, check: chk.num(kind === 'ab' ? Math.log10(P(2, k)) + k * Math.log10(5) : ev.expr(expr)), sol: how + ' ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)' };
+    return { stem: stem, key: m(truth), wrong: wrong, check: chk.num(kind === 'ab' ? Math.log10(P(2, k)) + k * Math.log10(5) : ev.expr(expr)), sol: how + ' The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.' };
   });
 
   function coefLog(c, a, b) { return (c.eq(1) ? '' : F.n(c)) + lg(a, b); }
+  function pwr(b, e) { return e === 1 ? String(b) : b + '^{' + e + '}'; }
   var LOGTAB = [[2, 4, 2], [2, 8, 3], [2, 16, 4], [2, 32, 5], [3, 9, 2], [3, 27, 3], [3, 81, 4], [5, 25, 2], [5, 125, 3], [4, 16, 2], [4, 64, 3]];   // [base, arg, value]
   var FRACTAB = [[4, 8, 3, 2], [9, 27, 3, 2], [8, 4, 2, 3], [27, 9, 2, 3], [9, 3, 1, 2], [8, 2, 1, 3], [4, 2, 1, 2], [16, 8, 3, 4], [4, 32, 5, 2], [27, 3, 1, 3], [8, 16, 4, 3], [25, 5, 1, 2], [25, 125, 3, 2]]; // [base, arg, num, den]
   def({ id: 'FN-log.product', code: 'FN-log', lesson: '7.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -3776,7 +3847,7 @@
     var swap = R.bool(), A = '(' + lg(x[0], x[1]) + ')', B = '(' + lg(y[0], y[1]) + ')';
     return {
       stem: '$' + (swap ? B + ' \\cdot ' + A : A + ' \\cdot ' + B) + ' =$ ( )', key: m(v), wrong: wrong, check: chk.num(truth),
-      sol: '$' + lg(x[0], x[1]) + ' = ' + x[2] + '$ since $' + x[0] + '^{' + x[2] + '} = ' + x[1] + '$. $' + lg(y[0], y[1]) + ' = ' + F.n(q(y[2], y[3])) + '$ since $' + y[0] + '^{' + (y[3] === 1 ? y[2] : y[2] + '/' + y[3]) + '} = ' + y[1] + '$. Product: $' + F.n(v) + '$.'
+      sol: '$' + lg(x[0], x[1]) + ' = ' + x[2] + '$ because $' + x[0] + '^{' + x[2] + '} = ' + x[1] + '$, and $' + lg(y[0], y[1]) + ' = ' + F.n(q(y[2], y[3])) + '$ because $' + y[0] + '^{' + (y[3] === 1 ? y[2] : y[2] + '/' + y[3]) + '} = ' + y[1] + '$. So the product is $' + x[2] + ' \\times ' + F.n(q(y[2], y[3])) + ' = ' + F.n(v) + '$.'
     };
   });
 
@@ -3787,7 +3858,7 @@
     var wrong = [[m(q(1, t[2])), 'reciprocal'], [m(t[2] + 1), 'slip'], [m(lg(t[0], mid * t[1])), 'near-miss'], [m(t[1]), 'partial'], [m(t[2] * 2), 'half']];
     return {
       stem: '$' + lg(t[0], mid) + ' \\cdot ' + lg(mid, t[1]) + ' =$ ( )', key: m(t[2]), wrong: wrong, check: chk.num(truth),
-      sol: 'By the change-of-base formula $\\log_a b \\cdot \\log_b c = \\log_a c$: the product is $' + lg(t[0], t[1]) + ' = ' + t[2] + '$.'
+      sol: 'Change both logarithms to base $10$: $' + lg(t[0], mid) + ' \\cdot ' + lg(mid, t[1]) + ' = \\dfrac{\\lg ' + mid + '}{\\lg ' + t[0] + '} \\cdot \\dfrac{\\lg ' + t[1] + '}{\\lg ' + mid + '} = \\dfrac{\\lg ' + t[1] + '}{\\lg ' + t[0] + '} = ' + lg(t[0], t[1]) + '$. Since $' + t[0] + '^{' + t[2] + '} = ' + t[1] + '$, the value is $' + t[2] + '$.'
     };
   });
 
@@ -3805,7 +3876,7 @@
     var wrong = [[m(v.inv()), 'reciprocal'], [m(q(s, t)), 'half'], [m(v.add(1)), 'near-miss'], [m(q(s * p, r * t)), 'swap'], [m(v.mul(2)), 'half'], [m(q(s * t, p * r)), 'slip']];
     return {
       stem: '$' + expr + ' =$ ( )', key: m(v), wrong: wrong, check: chk.num(truth),
-      sol: 'Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $' + lg(a, b) + '$: the numerator is $' + coefLog(q(s, p), a, b) + '$ and the denominator is $' + coefLog(q(t, r), a, b) + '$, so $' + lg(a, b) + '$ cancels and the quotient is $' + F.n(v) + '$' + (plus ? '. Also $' + lg(c, 1) + ' = 0$' : '') + '. Answer: $' + F.n(v) + '$.'
+      sol: 'Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $' + lg(a, b) + '$. The numerator is $' + (p === 1 && s === 1 ? '' : lg(pwr(a, p), pwr(b, s)) + ' = ') + coefLog(q(s, p), a, b) + '$ and the denominator is $' + (r === 1 && t === 1 ? '' : lg(pwr(a, r), pwr(b, t)) + ' = ') + coefLog(q(t, r), a, b) + '$. Dividing, $' + lg(a, b) + '$ cancels and the quotient is $' + F.n(v) + '$.' + (plus ? ' Also $' + lg(c, 1) + ' = 0$, so the value is $' + F.n(v) + '$.' : '')
     };
   });
 
@@ -3817,22 +3888,22 @@
   }
   function logRules() {
     return [
-      identM('\\log_a(MN)', '\\log_a M + \\log_a N', true, 'the logarithm of a product is the sum of the logarithms.', { g: 'prod' }),
-      identM('\\log_a \\dfrac{M}{N}', '\\log_a M - \\log_a N', true, 'the logarithm of a quotient is the difference of the logarithms.', { g: 'quot' }),
-      identM('\\log_a M^n', 'n\\log_a M', true, 'the exponent comes down as a factor.', { g: 'pow' }),
+      identM('\\log_a(MN)', '\\log_a M + \\log_a N', true, 'this is the product rule: the logarithm of a product is the sum of the logarithms.', { g: 'prod' }),
+      identM('\\log_a \\dfrac{M}{N}', '\\log_a M - \\log_a N', true, 'this is the quotient rule: the logarithm of a quotient is the difference of the logarithms.', { g: 'quot' }),
+      identM('\\log_a M^n', 'n\\log_a M', true, 'this is the power rule: the exponent comes down as a factor.', { g: 'pow' }),
       identM('\\log_a b', '\\dfrac{\\ln b}{\\ln a}', true, 'this is the change-of-base formula.', { g: 'base' }),
-      identM('a^{\\log_a M}', 'M', true, 'exponential and logarithm with the same base undo each other.', { g: 'undo' }),
-      identM('\\log_a(M + N)', '\\log_a M + \\log_a N', false, 'there is no rule for the logarithm of a sum; $\\log_a M + \\log_a N = \\log_a(MN)$.', { g: 'prod', trap: 'near-miss' }),
-      identM('\\log_a(MN)', '\\log_a M \\cdot \\log_a N', false, 'a product inside becomes a SUM of logarithms.', { g: 'prod2', trap: 'near-miss' }),
-      identM('\\log_a b', '\\dfrac{\\ln a}{\\ln b}', false, 'the fraction is upside down: $\\log_a b = \\dfrac{\\ln b}{\\ln a}$.', { g: 'base', trap: 'reciprocal' }),
-      identM('\\log_a M^n', '(\\log_a M)^n', false, 'the exponent comes down as a factor: $n\\log_a M$.', { g: 'pow', trap: 'near-miss' }),
-      identM('\\log_a \\dfrac{M}{N}', '\\dfrac{\\log_a M}{\\log_a N}', false, 'a quotient inside becomes a DIFFERENCE of logarithms.', { g: 'quot', trap: 'near-miss' }),
-      identM('\\log_a(M - N)', '\\log_a M - \\log_a N', false, 'there is no rule for the logarithm of a difference.', { g: 'quot2', trap: 'near-miss' })
+      identM('a^{\\log_a M}', 'M', true, '$\\log_a M$ is the exponent that turns $a$ into $M$.', { g: 'undo' }),
+      identM('\\log_a(M + N)', '\\log_a M + \\log_a N', false, 'there is no rule for the logarithm of a sum. The product rule gives $\\log_a M + \\log_a N = \\log_a(MN)$.', { g: 'prod', trap: 'near-miss' }),
+      identM('\\log_a(MN)', '\\log_a M \\cdot \\log_a N', false, 'the logarithm of a product is the sum $\\log_a M + \\log_a N$, not the product of the logarithms.', { g: 'prod2', trap: 'near-miss' }),
+      identM('\\log_a b', '\\dfrac{\\ln a}{\\ln b}', false, 'the fraction is upside down. The change-of-base formula is $\\log_a b = \\dfrac{\\ln b}{\\ln a}$.', { g: 'base', trap: 'reciprocal' }),
+      identM('\\log_a M^n', '(\\log_a M)^n', false, 'the exponent comes down as a factor: $\\log_a M^n = n\\log_a M$.', { g: 'pow', trap: 'near-miss' }),
+      identM('\\log_a \\dfrac{M}{N}', '\\dfrac{\\log_a M}{\\log_a N}', false, 'the logarithm of a quotient is the difference $\\log_a M - \\log_a N$, not the quotient of the logarithms.', { g: 'quot', trap: 'near-miss' }),
+      identM('\\log_a(M - N)', '\\log_a M - \\log_a N', false, 'there is no rule for the logarithm of a difference. The quotient rule gives $\\log_a M - \\log_a N = \\log_a \\dfrac{M}{N}$.', { g: 'quot2', trap: 'near-miss' })
     ];
   }
   var LOGSTEM = 'Let $a > 0$, $a \\ne 1$, $b > 0$, $M > 0$ and $N > 0$. Which of the following statements about logarithms is ';
   def({ id: 'FN-log.incorrect-rule', code: 'FN-log', lesson: '7.2', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'Logarithm rules: which is INCORRECT', basis: 'Jan Q29' }, function (R) {
+    form: 'Logarithm rules: which is incorrect', basis: 'Jan Q29' }, function (R) {
     var st = QF.pickStmts(R, 'N', logRules());
     if (/\\ln a\}\{\\ln b\}/.test(st.key)) retry('real item');
     return out(LOGSTEM + 'incorrect? ( )', st);
@@ -3875,7 +3946,7 @@
     return {
       stem: 'The solution set of the inequality $' + name + '(' + arg + ') ' + relT + ' ' + cTex + '$ is ( )', key: show(key), wrong: wrong,
       check: chk.set(truth, [x0.num, d0.num, q(c - n, mm).num, 0, -x0.num]),
-      sol: 'Domain first: $' + arg + ' > 0$. Write $' + cTex + ' = ' + name + ' ' + F.n(B) + '$. Because the base is ' + (small ? 'between $0$ and $1$, the logarithm is decreasing and the direction reverses' : 'greater than $1$, the logarithm is increasing and the direction is kept') + ': $' + arg + ' ' + h.REL[eff] + ' ' + F.n(B) + '$. Together with the domain: $' + (style === 'sb' ? key.texB() : key.tex()) + '$.'
+      sol: 'First, the expression inside the logarithm must be positive: $' + arg + ' > 0$, that is $x ' + (mm > 0 ? '>' : '<') + ' ' + F.n(d0) + '$. Next, write $' + cTex + ' = ' + name + ' ' + F.n(B) + '$. The base is ' + (small ? 'between $0$ and $1$, so the logarithm is decreasing and the inequality sign reverses' : 'greater than $1$, so the logarithm is increasing and the inequality sign is kept') + ': $' + arg + ' ' + h.REL[eff] + ' ' + F.n(B) + '$, that is $x ' + h.REL[mm > 0 ? eff : { '<': '>', '>': '<', '<=': '>=', '>=': '<=' }[eff]] + ' ' + F.n(x0) + '$. Both conditions must hold, so the solution set is $' + (style === 'sb' ? key.texB() : key.tex()) + '$.'
     };
   }
   def({ id: 'FN-log.ineq', code: 'FN-log', lesson: '7.3', tier: 'M', level: '=', fmt: 'V', w: 1.5,
@@ -3893,16 +3964,16 @@
     }
     var L = function (a, x) { return Math.log(x) / Math.log(a); };
     var pool = [
-      h.numS('\\lg ' + p + ' + \\lg ' + qv + ' = \\lg ' + p * qv, true, 'the sum of two logarithms is the logarithm of the product.', { g: 'sum' }),
+      h.numS('\\lg ' + p + ' + \\lg ' + qv + ' = \\lg ' + p * qv, true, 'the sum of two logarithms is the logarithm of the product, and $' + p + ' \\times ' + qv + ' = ' + p * qv + '$.', { g: 'sum' }),
       h.numS(lg(ft[0], ft[1]) + ' = ' + F.n(q(ft[2], ft[3])), true, '$' + ft[0] + '^{' + ft[2] + '/' + ft[3] + '} = ' + ft[1] + '$.', { g: 'val' }),
-      h.numS(lg(Math.min(bb, cc), Math.max(bb, cc)) + ' > ' + lg(Math.max(bb, cc), Math.min(bb, cc)), true, 'the left side is greater than $1$ and the right side is less than $1$.', { g: 'cmp' }),
+      h.numS(lg(Math.min(bb, cc), Math.max(bb, cc)) + ' > ' + lg(Math.max(bb, cc), Math.min(bb, cc)), true, 'the left side is greater than $1$, because its argument is greater than its base, and the right side is less than $1$, because its argument is smaller than its base.', { g: 'cmp' }),
       impl('If $0 < a < 1$ and $\\log_a x < \\log_a x^2$, then $0 < x < 1$', true, as, function (a, x) { return L(a, x) < L(a, x * x) - 1e-12; }, function (x) { return x > 0 && x < 1; }, 'for $0 < a < 1$ the logarithm is decreasing, so $x > x^2 > 0$, which gives $0 < x < 1$.', { g: 'imp2' }),
-      h.numS('\\lg ' + p + ' + \\lg ' + qv + ' = \\lg ' + (p + qv), false, '$\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.', { g: 'sum', trap: 'near-miss' }),
-      h.numS(lg(ft[0], ft[1]) + ' = ' + lg(ft[1], ft[0]), false, 'the two values are reciprocals: $' + F.n(q(ft[2], ft[3])) + '$ and $' + F.n(q(ft[3], ft[2])) + '$.', { g: 'val', trap: 'reciprocal' }),
-      h.numS(lg(Math.max(bb, cc), Math.min(bb, cc)) + ' > ' + lg(Math.min(bb, cc), Math.max(bb, cc)), false, 'the left side is less than $1$ and the right side is greater than $1$.', { g: 'cmp', trap: 'swap' }),
+      h.numS('\\lg ' + p + ' + \\lg ' + qv + ' = \\lg ' + (p + qv), false, '$\\lg ' + p + ' + \\lg ' + qv + ' = \\lg ' + p * qv + '$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.', { g: 'sum', trap: 'near-miss' }),
+      h.numS(lg(ft[0], ft[1]) + ' = ' + lg(ft[1], ft[0]), false, 'the two values are reciprocals of each other: $' + lg(ft[0], ft[1]) + ' = ' + F.n(q(ft[2], ft[3])) + '$ and $' + lg(ft[1], ft[0]) + ' = ' + F.n(q(ft[3], ft[2])) + '$.', { g: 'val', trap: 'reciprocal' }),
+      h.numS(lg(Math.max(bb, cc), Math.min(bb, cc)) + ' > ' + lg(Math.min(bb, cc), Math.max(bb, cc)), false, 'the left side is less than $1$, because its argument is smaller than its base, and the right side is greater than $1$.', { g: 'cmp', trap: 'swap' }),
       impl('If $a > 1$ and $\\log_a x > \\log_a x^2$, then $x > 1$', false, As, function (a, x) { return L(a, x) > L(a, x * x) + 1e-12; }, function (x) { return x > 1; }, 'for $a > 1$ the logarithm is increasing, so $x > x^2$, which forces $0 < x < 1$.', { g: 'imp1', trap: 'sign' }),
-      h.numS(lg(ft2[0], ft2[1]) + ' = ' + (ft2[2] + 1), false, '$' + ft2[0] + '^{' + ft2[2] + '} = ' + ft2[1] + '$, so the value is $' + ft2[2] + '$.', { g: 'val2', trap: 'off-by-one' }),
-      h.numS(lg('\\frac{1}{' + bb + '}', bb * bb) + ' = 2', false, 'a base $\\dfrac{1}{' + bb + '}$ gives $-2$.', { g: 'neg', trap: 'sign' })
+      h.numS(lg(ft2[0], ft2[1]) + ' = ' + (ft2[2] + 1), false, '$' + ft2[0] + '^{' + ft2[2] + '} = ' + ft2[1] + '$, so the value is $' + ft2[2] + '$, not $' + (ft2[2] + 1) + '$.', { g: 'val2', trap: 'off-by-one' }),
+      h.numS(lg('\\frac{1}{' + bb + '}', bb * bb) + ' = 2', false, '$\\left(\\dfrac{1}{' + bb + '}\\right)^{-2} = ' + bb * bb + '$, so the value is $-2$.', { g: 'neg', trap: 'sign' })
     ];
     return out('Which of the following statements about logarithms is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -3916,34 +3987,41 @@
     var wrong = [[m(t1[2] + (s2 === '+' ? k2 : -k2) + (s3 === '+' ? k3 : -k3)), 'sign'], [m(v + 1), 'slip'], [m(v - 1), 'slip'], [m(t1[2] + (s2 === '+' ? -k2 : k2) + (s3 === '+' ? P(10, k3) : -P(10, k3))), 'near-miss'], [m(-v), 'sign']];
     return {
       stem: 'The value of $' + expr + '$ is ( )', key: m(v), wrong: wrong, check: chk.num(truth),
-      sol: '$' + lg(t1[0], t1[1]) + ' = ' + t1[2] + '$; $' + lg(b2, '\\dfrac{1}{' + P(b2, k2) + '}') + ' = -' + k2 + '$ (a reciprocal gives a negative exponent); $\\lg ' + P(10, k3) + ' = ' + k3 + '$. Combining with the signs gives $' + v + '$.'
+      sol: 'Work out each term. $' + lg(t1[0], t1[1]) + ' = ' + t1[2] + '$, because $' + t1[0] + '^{' + t1[2] + '} = ' + t1[1] + '$. $' + lg(b2, '\\dfrac{1}{' + P(b2, k2) + '}') + ' = ' + lg(b2, b2 + '^{-' + k2 + '}') + ' = -' + k2 + '$. $\\lg ' + P(10, k3) + ' = ' + k3 + '$. So the value is $' + t1[2] + ' ' + s2 + ' (-' + k2 + ') ' + s3 + ' ' + k3 + ' = ' + v + '$.'
     };
   });
 
   def({ id: 'FN-log.power-base', code: 'FN-log', lesson: '7.2', tier: 'E', level: '+1', fmt: 'V',
     form: 'log of a power with a power base: log_{aᵐ}(aⁿ) = n/m', basis: 'Course plan 7.2 Q7' }, function (R) {
-    var t = R.pick(FRACTAB), v = q(t[2], t[3]);
+    var t = R.pick(FRACTAB), v = q(t[2], t[3]), rb = Math.round(P(t[0], 1 / t[3]));
+    if (P(rb, t[3]) !== t[0] || P(rb, t[2]) !== t[1]) throw new Error('FN-log.power-base: table entry without a common base');
     var wrong = [[m(v.inv()), 'reciprocal'], [m(t[2] * t[3]), 'operation'], [m(q(t[2] + t[3], t[3])), 'slip'], [m(Math.abs(t[2] - t[3]) || 2), 'slip'], [m(q(t[1], t[0])), 'near-miss']];
     return {
       stem: 'The value of $' + lg(t[0], t[1]) + '$ is ( )', key: m(v), wrong: wrong, check: chk.num(Math.log(t[1]) / Math.log(t[0])),
-      sol: 'Write both numbers as powers of the same base and use $\\log_{a^m} a^n = \\dfrac{n}{m}$: the value is $' + F.n(v) + '$ (check: $' + t[0] + '^{' + t[2] + '/' + t[3] + '} = ' + t[1] + '$).'
+      sol: 'Write both numbers as powers of $' + rb + '$: $' + t[0] + ' = ' + pwr(rb, t[3]) + '$ and $' + t[1] + ' = ' + pwr(rb, t[2]) + '$. Then $' + lg(t[0], t[1]) + ' = ' + lg(pwr(rb, t[3]), pwr(rb, t[2])) + ' = \\dfrac{' + t[2] + '}{' + t[3] + '}$. Check: $' + t[0] + '^{' + t[2] + '/' + t[3] + '} = ' + t[1] + '$.'
     };
   });
 
   /* ===================== FN-prop · properties of exponential, logarithmic and power functions ===================== */
+  /** a rational number given as a float, as a fraction (denominators up to 12) */
+  function fracOf(x) {
+    for (var d = 1; d <= 12; d++) if (Math.abs(x * d - Math.round(x * d)) < 1e-9) return q(Math.round(x * d), d);
+    throw new Error('fracOf: not a simple fraction ' + x);
+  }
   function expFacts(aTex, a, coef) {
     coef = coef || 1;
-    var f = function (x) { return coef * P(a, x); }, inc = a > 1;
+    var f = function (x) { return coef * P(a, x); }, inc = a > 1, bT = aTex.replace(/\\left\(|\\right\)/g, '');
     var onGrid = function (pred) { var okk = true; for (var x = -30; x <= 30; x += 0.5) if (!pred(f(x))) okk = false; return okk; };
+    var monoWhy = 'the base $' + bT + '$ is ' + (inc ? 'greater than $1$, so the function is increasing' : 'between $0$ and $1$, so the function is decreasing') + '.';
     return [
-      h.factS('It is monotonically ' + (inc ? 'increasing' : 'decreasing') + ' on $\\mathbb{R}$', true, function () { return inc ? nt.incOn(f, -30, 30) : nt.decOn(f, -30, 30); }, 'the base is ' + (inc ? 'greater than $1$' : 'between $0$ and $1$') + '.', { g: 'mono' }),
-      h.factS('Its graph passes through the point $(0, ' + coef + ')$', true, function () { return ev.close(f(0), coef); }, 'at $x = 0$ the power equals $1$.', { g: 'pt' }),
-      h.factS('Its range is $(0, +\\infty)$', true, function () { return onGrid(function (v) { return v > 0; }) && f(inc ? -30 : 30) < 1e-3 && f(inc ? 30 : -30) > 1e3; }, 'an exponential takes every positive value and no other.', { g: 'rng' }),
-      h.factS('Its domain is $\\mathbb{R}$', true, function () { return onGrid(isFinite); }, 'an exponential is defined for every real $x$.', { g: 'dom' }),
-      h.factS('It is monotonically ' + (inc ? 'decreasing' : 'increasing') + ' on $\\mathbb{R}$', false, function () { return inc ? nt.decOn(f, -30, 30) : nt.incOn(f, -30, 30); }, 'the base is ' + (inc ? 'greater than $1$, so the function increases' : 'between $0$ and $1$, so the function decreases') + '.', { g: 'mono', trap: 'sign' }),
-      h.factS('Its range is $\\mathbb{R}$', false, function () { return !onGrid(function (v) { return v > 0; }); }, 'its values are always positive.', { g: 'rng', trap: 'domain' }),
-      h.factS('Its graph passes through the point $(1, 0)$', false, function () { return ev.close(f(1), 0); }, 'that point belongs to logarithmic functions; here $f(1) = ' + (coef === 1 ? aTex : coef + ' \\cdot ' + aTex) + '$.', { g: 'pt2', trap: 'swap' }),
-      h.factS('Its graph is symmetric about the $y$-axis', false, function () { return nt.even(f); }, 'it is not an even function.', { g: 'sym', trap: 'near-miss' }),
+      h.factS('It is monotonically ' + (inc ? 'increasing' : 'decreasing') + ' on $\\mathbb{R}$', true, function () { return inc ? nt.incOn(f, -30, 30) : nt.decOn(f, -30, 30); }, monoWhy, { g: 'mono' }),
+      h.factS('Its graph passes through the point $(0, ' + coef + ')$', true, function () { return ev.close(f(0), coef); }, 'at $x = 0$ the power is $1$, so $y = ' + coef + '$.', { g: 'pt' }),
+      h.factS('Its range is $(0, +\\infty)$', true, function () { return onGrid(function (v) { return v > 0; }) && f(inc ? -30 : 30) < 1e-3 && f(inc ? 30 : -30) > 1e3; }, 'every power of a positive base is positive, and the function takes every positive value.', { g: 'rng' }),
+      h.factS('Its domain is $\\mathbb{R}$', true, function () { return onGrid(isFinite); }, 'a power of a positive base is defined for every real exponent.', { g: 'dom' }),
+      h.factS('It is monotonically ' + (inc ? 'decreasing' : 'increasing') + ' on $\\mathbb{R}$', false, function () { return inc ? nt.decOn(f, -30, 30) : nt.incOn(f, -30, 30); }, monoWhy, { g: 'mono', trap: 'sign' }),
+      h.factS('Its range is $\\mathbb{R}$', false, function () { return !onGrid(function (v) { return v > 0; }); }, 'every power of a positive base is positive, so the function never takes the value $0$ or a negative value.', { g: 'rng', trap: 'domain' }),
+      h.factS('Its graph passes through the point $(1, 0)$', false, function () { return ev.close(f(1), 0); }, 'at $x = 1$ the value is $' + (coef === 1 ? bT : coef + ' \\times ' + bT + ' = ' + F.n(fracOf(coef * a))) + '$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions.', { g: 'pt2', trap: 'swap' }),
+      h.factS('Its graph is symmetric about the $y$-axis', false, function () { return nt.even(f); }, 'the function is ' + (inc ? 'increasing' : 'decreasing') + ', so $f(-1) \\ne f(1)$ and it is not even.', { g: 'sym', trap: 'near-miss' }),
       h.factS('Its graph passes through the origin', false, function () { return ev.close(f(0), 0); }, 'at $x = 0$ the value is $' + coef + '$, not $0$.', { g: 'pt', trap: 'slip' })
     ];
   }
@@ -3958,7 +4036,7 @@
     form: 'Statements about y = c·a⁻ˣ (rewrite as (1/a)ˣ first)', basis: 'Course plan 7.1 Q5' }, function (R) {
     var a = R.pick([2, 3, 4]), coef = R.pick([1, 2, 3]);
     var st = QF.pickStmts(R, 'S', expFacts('\\dfrac{1}{' + a + '}', 1 / a, coef));
-    return out('Which of the following statements about the function $y = ' + (coef === 1 ? '' : coef + ' \\cdot ') + a + '^{-x}$ is correct? ( )', st, 'Rewrite $' + a + '^{-x} = \\left(\\dfrac{1}{' + a + '}\\right)^x$: the base is between $0$ and $1$.');
+    return out('Which of the following statements about the function $y = ' + (coef === 1 ? '' : coef + ' \\cdot ') + a + '^{-x}$ is correct? ( )', st, 'First rewrite $' + a + '^{-x} = \\left(\\dfrac{1}{' + a + '}\\right)^x$, so the base is $\\dfrac{1}{' + a + '}$, which lies between $0$ and $1$.');
   });
 
   /* statements about a whole family (every admissible base a): true only if it holds for all sampled bases */
@@ -3966,39 +4044,39 @@
   function famS(text, expected, pred, why, extra) { return h.factS(text, expected, function () { return FAM.every(pred); }, why, extra); }
   function expFamily() {
     return [
-      famS('Its graph passes through the point $(0, 1)$', true, function (a) { return ev.close(P(a, 0), 1); }, '$a^0 = 1$ for every base.', { g: 'pt' }),
-      famS('Its domain is $\\mathbb{R}$', true, function (a) { return isFinite(P(a, -7)) && isFinite(P(a, 7)); }, '', { g: 'dom' }),
-      famS('Its range is $(0, +\\infty)$', true, function (a) { return P(a, -40) > 0 && P(a, 40) > 0 && Math.min(P(a, -40), P(a, 40)) < 1e-3; }, '', { g: 'rng' }),
-      famS('It is monotonic on $\\mathbb{R}$', true, function (a) { var f = function (x) { return P(a, x); }; return nt.incOn(f, -20, 20) || nt.decOn(f, -20, 20); }, '', { g: 'mono0' }),
-      famS('It is increasing on its domain', false, function (a) { return nt.incOn(function (x) { return P(a, x); }, -20, 20); }, 'that holds only when $a > 1$; for $0 < a < 1$ the function is decreasing.', { g: 'mono', trap: 'domain' }),
-      famS('It is decreasing on its domain', false, function (a) { return nt.decOn(function (x) { return P(a, x); }, -20, 20); }, 'that holds only when $0 < a < 1$; for $a > 1$ the function is increasing.', { g: 'mono', trap: 'domain' }),
-      famS('Its graph passes through the point $(1, 0)$', false, function (a) { return ev.close(P(a, 1), 0); }, 'the fixed point of $y = a^x$ is $(0, 1)$; $(1, 0)$ belongs to $y = \\log_a x$.', { g: 'pt2', trap: 'swap' }),
-      famS('Its range is $\\mathbb{R}$', false, function (a) { return P(a, 3) <= 0 || P(a, -3) <= 0; }, 'its values are always positive.', { g: 'rng', trap: 'domain' })
+      famS('Its graph passes through the point $(0, 1)$', true, function (a) { return ev.close(P(a, 0), 1); }, '$a^0 = 1$ for every base $a$.', { g: 'pt' }),
+      famS('Its domain is $\\mathbb{R}$', true, function (a) { return isFinite(P(a, -7)) && isFinite(P(a, 7)); }, 'for $a > 0$, $a^x$ is defined for every real $x$.', { g: 'dom' }),
+      famS('Its range is $(0, +\\infty)$', true, function (a) { return P(a, -40) > 0 && P(a, 40) > 0 && Math.min(P(a, -40), P(a, 40)) < 1e-3; }, 'for $a > 0$, $a^x$ is always positive and takes every positive value.', { g: 'rng' }),
+      famS('It is monotonic on $\\mathbb{R}$', true, function (a) { var f = function (x) { return P(a, x); }; return nt.incOn(f, -20, 20) || nt.decOn(f, -20, 20); }, 'it is increasing when $a > 1$ and decreasing when $0 < a < 1$, so it is monotonic in both cases.', { g: 'mono0' }),
+      famS('It is increasing on its domain', false, function (a) { return nt.incOn(function (x) { return P(a, x); }, -20, 20); }, 'this holds only when $a > 1$. For $0 < a < 1$ the function is decreasing.', { g: 'mono', trap: 'domain' }),
+      famS('It is decreasing on its domain', false, function (a) { return nt.decOn(function (x) { return P(a, x); }, -20, 20); }, 'this holds only when $0 < a < 1$. For $a > 1$ the function is increasing.', { g: 'mono', trap: 'domain' }),
+      famS('Its graph passes through the point $(1, 0)$', false, function (a) { return ev.close(P(a, 1), 0); }, 'at $x = 1$ the value is $a^1 = a \\ne 0$. The fixed point of $y = a^x$ is $(0, 1)$, and $(1, 0)$ is the fixed point of $y = \\log_a x$.', { g: 'pt2', trap: 'swap' }),
+      famS('Its range is $\\mathbb{R}$', false, function (a) { return P(a, 3) <= 0 || P(a, -3) <= 0; }, 'for $a > 0$, $a^x$ is always positive, so its range is $(0, +\\infty)$.', { g: 'rng', trap: 'domain' })
     ];
   }
   function logFamily() {
     var L = function (a, x) { return Math.log(x) / Math.log(a); };
     return [
-      famS('Its graph always passes through the point $(1, 0)$', true, function (a) { return ev.close(L(a, 1), 0); }, '$\\log_a 1 = 0$ for every base.', { g: 'pt' }),
-      famS('Its domain is $(0, +\\infty)$', true, function (a) { return isFinite(L(a, 0.01)) && isNaN(M.ln(-1)); }, '', { g: 'dom' }),
-      famS('Its range is $\\mathbb{R}$', true, function (a) { var u = L(a, 1e-9), v = L(a, 1e9); return Math.min(u, v) < -5 && Math.max(u, v) > 5; }, '', { g: 'rng' }),
-      famS('When $0 < a < 1$, it is decreasing on $(0, +\\infty)$', true, function (a) { return a > 1 || nt.decOn(function (x) { return L(a, x); }, 0, Infinity); }, 'a base between $0$ and $1$ gives a decreasing logarithm.', { g: 'small' }),
-      famS('When $a > 1$, it is increasing on $(0, +\\infty)$', true, function (a) { return a < 1 || nt.incOn(function (x) { return L(a, x); }, 0, Infinity); }, 'a base greater than $1$ gives an increasing logarithm.', { g: 'big' }),
-      famS('It is increasing on its domain', false, function (a) { return nt.incOn(function (x) { return L(a, x); }, 0, Infinity); }, 'that holds only when $a > 1$.', { g: 'mono', trap: 'domain' }),
-      famS('When $a > 1$, it is decreasing on $(0, +\\infty)$', false, function (a) { return a < 1 || nt.decOn(function (x) { return L(a, x); }, 0, Infinity); }, 'a base greater than $1$ gives an increasing logarithm.', { g: 'big', trap: 'sign' }),
-      famS('When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$', false, function (a) { return a > 1 || [1.5, 2, 9].every(function (x) { return L(a, x) > 0; }); }, 'base and argument are on opposite sides of $1$, so the value is negative.', { g: 'small', trap: 'sign' }),
-      famS('Its domain is $(-\\infty, +\\infty)$', false, function () { return isFinite(M.ln(-1)); }, 'the argument of a logarithm must be positive.', { g: 'dom', trap: 'domain' }),
-      famS('Its graph always passes through the point $(0, 1)$', false, function (a) { return ev.close(L(a, 0), 1); }, '$(0, 1)$ belongs to $y = a^x$; $x = 0$ is not even in the domain here.', { g: 'pt2', trap: 'swap' })
+      famS('Its graph always passes through the point $(1, 0)$', true, function (a) { return ev.close(L(a, 1), 0); }, '$\\log_a 1 = 0$ for every base $a$, because $a^0 = 1$.', { g: 'pt' }),
+      famS('Its domain is $(0, +\\infty)$', true, function (a) { return isFinite(L(a, 0.01)) && isNaN(M.ln(-1)); }, 'the expression inside a logarithm must be positive.', { g: 'dom' }),
+      famS('Its range is $\\mathbb{R}$', true, function (a) { var u = L(a, 1e-9), v = L(a, 1e9); return Math.min(u, v) < -5 && Math.max(u, v) > 5; }, 'every real number $t$ is a value, because $\\log_a a^t = t$.', { g: 'rng' }),
+      famS('When $0 < a < 1$, it is decreasing on $(0, +\\infty)$', true, function (a) { return a > 1 || nt.decOn(function (x) { return L(a, x); }, 0, Infinity); }, 'a logarithm with a base between $0$ and $1$ is decreasing.', { g: 'small' }),
+      famS('When $a > 1$, it is increasing on $(0, +\\infty)$', true, function (a) { return a < 1 || nt.incOn(function (x) { return L(a, x); }, 0, Infinity); }, 'a logarithm with a base greater than $1$ is increasing.', { g: 'big' }),
+      famS('It is increasing on its domain', false, function (a) { return nt.incOn(function (x) { return L(a, x); }, 0, Infinity); }, 'this holds only when $a > 1$. For $0 < a < 1$ the function is decreasing.', { g: 'mono', trap: 'domain' }),
+      famS('When $a > 1$, it is decreasing on $(0, +\\infty)$', false, function (a) { return a < 1 || nt.decOn(function (x) { return L(a, x); }, 0, Infinity); }, 'a logarithm with a base greater than $1$ is increasing.', { g: 'big', trap: 'sign' }),
+      famS('When $0 < a < 1$, $\\log_a x > 0$ for every $x > 1$', false, function (a) { return a > 1 || [1.5, 2, 9].every(function (x) { return L(a, x) > 0; }); }, 'when $0 < a < 1$ and $x > 1$, the base and the argument lie on opposite sides of $1$, so $\\log_a x < 0$.', { g: 'small', trap: 'sign' }),
+      famS('Its domain is $(-\\infty, +\\infty)$', false, function () { return isFinite(M.ln(-1)); }, 'the expression inside a logarithm must be positive, so the domain is $(0, +\\infty)$.', { g: 'dom', trap: 'domain' }),
+      famS('Its graph always passes through the point $(0, 1)$', false, function (a) { return ev.close(L(a, 0), 1); }, '$x = 0$ is not in the domain of $y = \\log_a x$. The point $(0, 1)$ is the fixed point of $y = a^x$.', { g: 'pt2', trap: 'swap' })
     ];
   }
   def({ id: 'FN-prop.exp-incorrect', code: 'FN-prop', lesson: '7.1', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'y = aˣ (a > 0, a ≠ 1): which statement is INCORRECT', basis: 'Jan Q23' }, function (R) {
+    form: 'y = aˣ (a > 0, a ≠ 1): which statement is incorrect', basis: 'Jan Q23' }, function (R) {
     var st = QF.pickStmts(R, 'N', expFamily());
     if (/increasing on its domain/.test(st.key)) retry('real item');
     return out('About the exponential function $y = a^x$ ($a > 0$ and $a \\ne 1$), which of the following statements is incorrect? ( )', st);
   });
   def({ id: 'FN-prop.log-incorrect', code: 'FN-prop', lesson: '7.3', tier: 'E', level: '=', fmt: 'N', w: 0.4,
-    form: 'y = log_a x (a > 0, a ≠ 1): which statement is INCORRECT', basis: 'Jan Q23 (log version)' }, function (R) {
+    form: 'y = log_a x (a > 0, a ≠ 1): which statement is incorrect', basis: 'Jan Q23 (log version)' }, function (R) {
     return out('About the logarithmic function $y = \\log_a x$ ($a > 0$ and $a \\ne 1$), which of the following statements is incorrect? ( )', QF.pickStmts(R, 'N', logFamily()));
   });
   def({ id: 'FN-prop.log-stmt', code: 'FN-prop', lesson: '7.3', tier: 'M', level: '=', fmt: 'S', w: 1,
@@ -4035,7 +4113,7 @@
       stem = 'If the function $y = a^x$ ($a > 0$, $a \\ne 1$) satisfies $a^{' + p + '} ' + relc + ' a^{' + qq + '}$, then the range of values of $a$ is ( )';
       holds = function (a) { return relc === '<' ? P(a, pv) < P(a, qvv) : P(a, pv) > P(a, qvv); };
       var bigFirst = pv > qvv, incr = (relc === '>') === bigFirst;
-      sol = 'Compare the exponents: $' + p + (bigFirst ? ' > ' : ' < ') + qq + '$, and the values are in ' + (incr ? 'the same' : 'the opposite') + ' order, so $y = a^x$ is ' + (incr ? 'increasing: $a > 1$' : 'decreasing: $0 < a < 1$') + '.';
+      sol = 'The exponents satisfy $' + p + (bigFirst ? ' > ' : ' < ') + qq + '$, and the powers satisfy $a^{' + p + '} ' + relc + ' a^{' + qq + '}$. So the larger exponent gives the ' + (incr ? 'larger' : 'smaller') + ' power, which means $y = a^x$ is ' + (incr ? 'increasing. This happens exactly when $a > 1$.' : 'decreasing. This happens exactly when $0 < a < 1$.');
     }
     return rangeItem(R, stem, holds, sol);
   });
@@ -4045,17 +4123,17 @@
     if (kind === 'inc') {
       stem = 'If the function $y = \\log_a x$ ($a > 0$, $a \\ne 1$) is increasing on $(0, +\\infty)$, then the range of values of $a$ is ( )';
       holds = function (a) { return nt.incOn(function (x) { return L(a, x); }, 0, Infinity); };
-      sol = 'A logarithmic function is increasing exactly when its base is greater than $1$: $a > 1$.';
+      sol = 'A logarithmic function $y = \\log_a x$ is increasing exactly when its base is greater than $1$. So $a > 1$.';
     } else if (kind === 'dec') {
       stem = 'If the function $y = \\log_a x$ ($a > 0$, $a \\ne 1$) is decreasing on $(0, +\\infty)$, then the range of values of $a$ is ( )';
       holds = function (a) { return nt.decOn(function (x) { return L(a, x); }, 0, Infinity); };
-      sol = 'A logarithmic function is decreasing exactly when its base is between $0$ and $1$: $0 < a < 1$.';
+      sol = 'A logarithmic function $y = \\log_a x$ is decreasing exactly when its base is between $0$ and $1$. So $0 < a < 1$.';
     } else {
       var ps = R.sample([2, 3, 5, 7, 0.5], 2), relc = R.pick(['<', '>']);
       stem = 'If $\\log_a ' + ps[0] + ' ' + relc + ' \\log_a ' + ps[1] + '$ ($a > 0$, $a \\ne 1$), then the range of values of $a$ is ( )';
       holds = function (a) { return relc === '<' ? L(a, ps[0]) < L(a, ps[1]) : L(a, ps[0]) > L(a, ps[1]); };
       var incr = (relc === '<') === (ps[0] < ps[1]);
-      sol = 'Compare the arguments: $' + ps[0] + (ps[0] < ps[1] ? ' < ' : ' > ') + ps[1] + '$, and the logarithms are in ' + (incr ? 'the same' : 'the opposite') + ' order, so $y = \\log_a x$ is ' + (incr ? 'increasing: $a > 1$' : 'decreasing: $0 < a < 1$') + '.';
+      sol = 'The arguments satisfy $' + ps[0] + (ps[0] < ps[1] ? ' < ' : ' > ') + ps[1] + '$, and the logarithms satisfy $\\log_a ' + ps[0] + ' ' + relc + ' \\log_a ' + ps[1] + '$. So the larger argument gives the ' + (incr ? 'larger' : 'smaller') + ' logarithm, which means $y = \\log_a x$ is ' + (incr ? 'increasing. This happens exactly when $a > 1$.' : 'decreasing. This happens exactly when $0 < a < 1$.');
     }
     return rangeItem(R, stem, holds, sol);
   });
@@ -4074,7 +4152,7 @@
     var arg = hh === 0 ? 'x' : '(' + xm(hh) + ')';
     return {
       stem: 'The graph of the function $f(x) = ' + k + ' + \\log_a' + arg + '$ ($a > 0$ and $a \\ne 1$) always passes through the fixed point ( )', key: m(F.pt(hh + 1, k)), wrong: wrong, check: fixedCheck(f, hh + 1, k),
-      sol: '$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: ' + (hh === 0 ? '$x = 1$' : '$' + xm(hh) + ' = 1$, i.e. $x = ' + (hh + 1) + '$') + '. Then $f(' + (hh + 1) + ') = ' + k + ' + 0 = ' + k + '$. Fixed point: $' + F.pt(hh + 1, k) + '$.'
+      sol: '$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: ' + (hh === 0 ? '$x = 1$' : '$' + xm(hh) + ' = 1$, so $x = ' + (hh + 1) + '$') + '. Then $f(' + (hh + 1) + ') = ' + k + ' + 0 = ' + k + '$ whatever $a$ is. So the fixed point is $' + F.pt(hh + 1, k) + '$.'
     };
   });
   def({ id: 'FN-prop.fixed-exp', code: 'FN-prop', lesson: '7.1', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -4084,7 +4162,7 @@
     var wrong = [[m(F.pt(hh, k)), 'partial'], [m(F.pt(-hh, 1 + k)), 'sign'], [m(F.pt(0, 1 + k)), 'slip'], [m(F.pt(1 + k, hh)), 'swap'], [m(F.pt(hh + 1, k)), 'near-miss']];
     return {
       stem: 'The graph of the function $f(x) = a^{' + xm(hh) + '} ' + h.signed(k) + '$ ($a > 0$ and $a \\ne 1$) always passes through the fixed point ( )', key: m(F.pt(hh, 1 + k)), wrong: wrong, check: fixedCheck(f, hh, 1 + k),
-      sol: '$a^0 = 1$ for every base, so make the exponent $0$: $x = ' + hh + '$. Then $f(' + hh + ') = 1 ' + h.signed(k) + ' = ' + (1 + k) + '$. Fixed point: $' + F.pt(hh, 1 + k) + '$.'
+      sol: '$a^0 = 1$ for every base $a$, so make the exponent $0$: $' + xm(hh) + ' = 0$, so $x = ' + hh + '$. Then $f(' + hh + ') = 1 ' + h.signed(k) + ' = ' + (1 + k) + '$ whatever $a$ is. So the fixed point is $' + F.pt(hh, 1 + k) + '$.'
     };
   });
   def({ id: 'FN-prop.fixed-exp-coef', code: 'FN-prop', lesson: '7.1', tier: 'M', level: '+1', fmt: 'V',
@@ -4095,7 +4173,7 @@
     var wrong = [[m(F.pt(d, 1 + k)), 'partial'], [m(F.pt(x0, k)), 'partial'], [m(F.pt(x0.neg(), 1 + k)), 'sign'], [m(F.pt(q(c, d), 1 + k)), 'reciprocal'], [m(F.pt(0, 1 + k)), 'slip']];
     return {
       stem: 'The graph of the function $f(x) = a^{' + h.lin(c, 'x', -d) + '} ' + h.signed(k) + '$ ($a > 0$ and $a \\ne 1$) always passes through the fixed point ( )', key: m(F.pt(x0, 1 + k)), wrong: wrong, check: fixedCheck(f, x0.num, 1 + k),
-      sol: 'Make the exponent $0$: $' + h.lin(c, 'x', -d) + ' = 0$ gives $x = ' + F.n(x0) + '$. Then $f = a^0 ' + h.signed(k) + ' = ' + (1 + k) + '$. Fixed point: $' + F.pt(x0, 1 + k) + '$.'
+      sol: '$a^0 = 1$ for every base $a$, so make the exponent $0$: $' + h.lin(c, 'x', -d) + ' = 0$ gives $x = ' + F.n(x0) + '$. Then $f' + (x0.isInt ? '(' + F.n(x0) + ')' : '\\left(' + F.n(x0) + '\\right)') + ' = a^0 ' + h.signed(k) + ' = 1 ' + h.signed(k) + ' = ' + (1 + k) + '$ whatever $a$ is. So the fixed point is $' + F.pt(x0, 1 + k) + '$.'
     };
   });
 
@@ -4120,14 +4198,26 @@
       origin: function () { return ts.every(function (t) { return ev.close(g(t), -f(-t), 1e-8) && ev.close(g(-t), -f(t), 1e-8); }); }
     };
     var labels = { inv: 'the line $y = x$', yaxis: 'the $y$-axis', xaxis: 'the $x$-axis', origin: 'the origin' };
-    var sts = ['inv', 'yaxis', 'xaxis', 'origin'].map(function (n) { return h.factS('Their graphs are symmetric about ' + labels[n], n === e[4], tests[n], n === e[4] ? e[5] : '', { trap: 'axis' }); });
+    var image = { inv: function (x, y) { return [y, x]; }, yaxis: function (x, y) { return [-x, y]; }, xaxis: function (x, y) { return [x, -y]; }, origin: function (x, y) { return [-x, -y]; } };
+    function counter(n) {   // a point of the first graph whose mirror image is not on the second graph
+      var cand = [1, 2, a, 3];
+      for (var i = 0; i < cand.length; i++) {
+        var t = cand[i], y = f(t);
+        if (!Number.isInteger(y) || Math.abs(y) > 1000) continue;
+        var im = image[n](t, y), gy = g(im[0]);
+        if (isFinite(gy) && ev.close(gy, im[1], 1e-9)) continue;
+        return 'the point $(' + t + ', ' + y + ')$ lies on $y = ' + e[0] + '$, but its mirror image in ' + labels[n] + ', $(' + im[0] + ', ' + im[1] + ')$, does not lie on $y = ' + e[1] + '$.';
+      }
+      throw new Error('FN-prop.symmetric: no counterexample point');
+    }
+    var sts = ['inv', 'yaxis', 'xaxis', 'origin'].map(function (n) { return h.factS('Their graphs are symmetric about ' + labels[n], n === e[4], tests[n], n === e[4] ? e[5] : counter(n), { trap: 'axis' }); });
     var key = sts.filter(function (s) { return s.ok; })[0], wrongs = sts.filter(function (s) { return !s.ok; });
     return out('Regarding the functions $y = ' + e[0] + '$ and $y = ' + e[1] + '$, which of the following conclusions is correct? ( )', QF.useStmts('S', key, wrongs));
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/tr1.js ---- */
-/* ACE CSCA Question Factory · templates/tr1.js — Trigonometry I: TR-val, TR-def, TR-id, TR-red, TR-graph. */
+/* ACE CSCA Question Factory · templates/tr1.js: Trigonometry I: TR-val, TR-def, TR-id, TR-red, TR-graph. */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, trig = N.trig, F = QF.fmt, IS = QF.iset, chk = QF.chk, ev = QF.ev, h = QF.h, nt = QF.nt, m = F.m;
@@ -4179,6 +4269,20 @@
   function angTex(deg, useDeg) { return useDeg ? F.deg(deg) : F.rad(deg); }
   /** \sin\dfrac{5\pi}{6} or \sin 150^\circ */
   function call(fn, deg, useDeg) { var a = angTex(deg, useDeg); return '\\' + fn + (/^\\dfrac|^\d|^\\pi|^-/.test(a) ? ' ' : '') + a; }
+  var FNAME = { sin: 'sine', cos: 'cosine', tan: 'tangent' };
+  /** the value of fn at an angle in [0, 360) worked out from its reference angle:
+   *  \sin\dfrac{5\pi}{6} = \sin\left(\pi - \dfrac{\pi}{6}\right) = \sin\dfrac{\pi}{6} = \dfrac{1}{2}  (no $ signs) */
+  function reduceTex(fn, A, useDeg) {
+    var d = ((A % 360) + 360) % 360, qd = trig.quadrant(d), v = val(fn, d), head = call(fn, A, useDeg);
+    if (qd === 0 || qd === 1) return head + ' = ' + F.n(v);
+    var ref = qd === 2 ? 180 - d : qd === 3 ? d - 180 : 360 - d;
+    var full = qd === 4 ? (useDeg ? '360^\\circ' : '2\\pi') : (useDeg ? '180^\\circ' : '\\pi');
+    var sign = { sin: qd === 2 ? 1 : -1, cos: qd === 4 ? 1 : -1, tan: qd === 3 ? 1 : -1 }[fn];
+    return head + ' = \\' + fn + '\\left(' + full + (qd === 3 ? ' + ' : ' - ') + angTex(ref, useDeg) + '\\right) = ' + (sign < 0 ? '-' : '') + call(fn, ref, useDeg) + ' = ' + F.n(v);
+  }
+  T.reduceTex = reduceTex;
+  /** a value inside a longer expression: negative values in brackets */
+  function par(v) { return v.sgn < 0 ? '\\left(' + F.n(v) + '\\right)' : F.n(v); }
 
   /* ===================== TR-val · special-angle values ===================== */
   var Q1 = [30, 45, 60], Q2 = [120, 135, 150], Q3 = [210, 225, 240], Q4 = [300, 315, 330];
@@ -4201,9 +4305,10 @@
       bad = [[sA.add(cB).add(tC), 'sign'], [trig.cos(A).add(cB).sub(tC), 'companion'], [sA.add(trig.sin(B)).sub(tC), 'companion'], [sA.add(cB), 'partial'], [key.neg(), 'sign']];
     }
     if (key.isZero) retry();
+    var sub = form === 1 ? '\\left(' + F.sum([[sA, ''], [cB, '']]) + '\\right) \\cdot ' + par(tC) : form === 2 ? F.n(sA) + ' \\cdot ' + par(cB) + ' ' + h.signed(tC) : F.sum([[sA, ''], [cB, ''], [tC.neg(), '']]);
     return {
       stem: '$' + expr + ' =$ ( )', key: m(key), wrong: bad.map(function (b) { return [m(b[0]), b[1]]; }), check: chk.num(truth),
-      sol: 'Use the special values: $' + S(A) + ' = ' + F.n(sA) + '$, $' + Cc(B) + ' = ' + F.n(cB) + '$, $' + Tt(C) + ' = ' + F.n(tC) + '$ (reference angle, then the sign of the quadrant). Substituting gives $' + F.n(key) + '$.'
+      sol: 'Find each value: $' + reduceTex('sin', A) + '$, $' + reduceTex('cos', B) + '$ and $' + reduceTex('tan', C) + '$. Substituting, the expression equals $' + sub + ' = ' + F.n(key) + '$.'
     };
   }
   def({ id: 'TR-val.combo', code: 'TR-val', lesson: '2.1', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -4223,32 +4328,36 @@
     var bad = [[sg === '+' ? sA.add(cB).sub(tC) : sA.add(cB).add(tC), 'sign'], [sA.sub(cB).add(sg === '+' ? tC : tC.neg()), 'sign'], [sA.neg().add(cB).add(sg === '+' ? tC : tC.neg()), 'sign'], [trig.cos(A).add(cB).add(sg === '+' ? tC : tC.neg()), 'companion'], [key.neg(), 'sign']];
     return {
       stem: '$' + call('sin', A) + ' + ' + call('cos', B) + ' ' + sg + ' ' + call('tan', C) + ' =$ ( )', key: m(key), wrong: bad.map(function (b) { return [m(b[0]), b[1]]; }), check: chk.num(truth),
-      sol: 'Reference angle first, then the sign of the quadrant: $' + call('sin', A) + ' = ' + F.n(sA) + '$ (QII, sine positive), $' + call('cos', B) + ' = ' + F.n(cB) + '$ (QIII, cosine negative), $' + call('tan', C) + ' = ' + F.n(tC) + '$ (QIV, tangent negative). The result is $' + F.n(key) + '$.'
+      sol: 'Use the reference angle and the sign in each quadrant. $' + reduceTex('sin', A) + '$, because sine is positive in the second quadrant. $' + reduceTex('cos', B) + '$, because cosine is negative in the third quadrant. $' + reduceTex('tan', C) + '$, because tangent is negative in the fourth quadrant. So the value is $' + F.sum([[sA, ''], [cB, ''], [sg === '+' ? tC : tC.neg(), '']]) + ' = ' + F.n(key) + '$.'
     };
   });
 
   function alphaTrue(R, angs, level) {
     var A = R.pick(angs), useDeg = R.bool(0.4), a = rad(A), tanOk = A % 180 !== 90;
     var s = trig.sin(A), c = trig.cos(A), t = tanOk ? trig.tan(A) : null;
+    var qd = trig.quadrant(A), where = qd === 1 ? 'in the first quadrant' : 'in the second quadrant';
+    function signWhy(fn, v) { return FNAME[fn] + ' is ' + (v.sgn > 0 ? 'positive' : 'negative') + ' ' + where + ', so $\\' + fn + '\\alpha = ' + F.n(v) + '$.'; }
     var pool = [
-      ratS('sin', s, a, true, 'reference angle and quadrant sign give $\\sin\\alpha = ' + F.n(s) + '$.', { g: 'sin' }),
-      ratS('cos', c, a, true, 'reference angle and quadrant sign give $\\cos\\alpha = ' + F.n(c) + '$.', { g: 'cos' }),
-      ratS('sin', c, a, false, 'that is the value of $\\cos\\alpha$.', { g: 'sin', trap: 'companion' }),
-      ratS('cos', s, a, false, 'that is the value of $\\sin\\alpha$.', { g: 'cos', trap: 'companion' }),
-      ratS('sin', s.neg(), a, false, 'the sign is wrong for this quadrant.', { g: 'sin2', trap: 'sign' }),
-      ratS('cos', c.neg(), a, false, 'the sign is wrong for this quadrant.', { g: 'cos2', trap: 'sign' })
+      ratS('sin', s, a, true, '', { g: 'sin' }),
+      ratS('cos', c, a, true, '', { g: 'cos' }),
+      ratS('sin', c, a, false, 'this is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = ' + F.n(s) + '$.', { g: 'sin', trap: 'companion' }),
+      ratS('cos', s, a, false, 'this is the value of $\\sin\\alpha$. In fact $\\cos\\alpha = ' + F.n(c) + '$.', { g: 'cos', trap: 'companion' }),
+      ratS('sin', s.neg(), a, false, signWhy('sin', s), { g: 'sin2', trap: 'sign' }),
+      ratS('cos', c.neg(), a, false, signWhy('cos', c), { g: 'cos2', trap: 'sign' })
     ];
     if (t) {
-      pool.push(ratS('tan', t, a, true, '$\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$.', { g: 'tan' }));
-      pool.push(ratS('tan', sd(1).div(t), a, false, 'that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.', { g: 'tan', trap: 'reciprocal' }));
-      pool.push(ratS('tan', t.neg(), a, false, 'the sign is wrong for this quadrant.', { g: 'tan2', trap: 'sign' }));
+      pool.push(ratS('tan', t, a, true, '', { g: 'tan' }));
+      pool.push(ratS('tan', sd(1).div(t), a, false, 'this is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$.', { g: 'tan', trap: 'reciprocal' }));
+      pool.push(ratS('tan', t.neg(), a, false, signWhy('tan', t), { g: 'tan2', trap: 'sign' }));
     }
     // drop statements that coincide in value with a true one (45°-type angles)
     pool = pool.filter(function (st) { return st.ok || !st.test(); });
     var st = QF.pickStmts(R, 'S', pool);
     if ((A === 30 && /cos/.test(st.key)) || (A === 150 && /sin/.test(st.key))) retry('real item');
     var stem = R.pick(['Suppose that an angle $\\alpha = ' + angTex(A, useDeg) + '$. Then which of the following statements is correct? ( )', 'Given the angle $\\alpha = ' + angTex(A, useDeg) + '$, which of the following conclusions is correct? ( )']);
-    return out(stem, st);
+    var pre = 'For $\\alpha = ' + angTex(A, useDeg) + '$: $' + reduceTex('sin', A, useDeg).replace(call('sin', A, useDeg), '\\sin\\alpha') + '$, $' + reduceTex('cos', A, useDeg).replace(call('cos', A, useDeg), '\\cos\\alpha') + '$' +
+      (t ? ' and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$.' : '.');
+    return out(stem, st, pre);
   }
   def({ id: 'TR-val.alpha-true', code: 'TR-val', lesson: '2.1', tier: 'E', level: '=', fmt: 'S', w: 1.6,
     form: 'α = a special angle (QI or QII): which statement is true', basis: 'Jan Q7, undated Q6' }, function (R) { return alphaTrue(R, Q1.concat(Q2)); });
@@ -4263,7 +4372,7 @@
     var ref = A < 180 ? 180 - A : A - 180, qd = trig.quadrant(A);
     return {
       stem: stem, key: m(v), wrong: wrong, check: chk.num(numv(fn, A)),
-      sol: 'The reference angle is $' + angTex(ref, useDeg) + '$ and the angle lies in the ' + F.ord(qd) + ' quadrant, where ' + { sin: 'sine', cos: 'cosine', tan: 'tangent' }[fn] + ' is ' + (v.sgn > 0 ? 'positive' : 'negative') + '. So the value is $' + F.n(v) + '$.'
+      sol: 'The angle $' + angTex(A, useDeg) + '$ lies in the ' + F.ord(qd) + ' quadrant, where ' + FNAME[fn] + ' is ' + (v.sgn > 0 ? 'positive' : 'negative') + ', and its reference angle is $' + angTex(ref, useDeg) + '$. So $' + reduceTex(fn, A, useDeg) + '$.'
     };
   });
 
@@ -4279,9 +4388,11 @@
       if (fn === 'tan' && A % 180 === 90) continue;
       if (seen[fn + A]) continue; seen[fn + A] = 1;
       var v = val(fn, A), alt = fn === 'sin' ? trig.cos(A) : fn === 'cos' ? trig.sin(A) : sd(1).div(v.isZero ? sd(1) : v);
-      pool.push(stt(fn, A, v, true, 'this is the correct special value.'));
-      if (!alt.eq(v)) pool.push(stt(fn, A, alt, false, 'the correct value is $' + F.n(v) + '$.', 'companion'));
-      if (!v.isZero) pool.push(stt(fn, A, v.neg(), false, 'the correct value is $' + F.n(v) + '$ (check the sign of the quadrant).', 'sign'));
+      var work = '$' + reduceTex(fn, A) + '$.';
+      pool.push(stt(fn, A, v, true, trig.quadrant(A) <= 1 ? '' : work));
+      if (!alt.eq(v)) pool.push(stt(fn, A, alt, false, (fn === 'tan' ? 'this is the reciprocal of the correct value. In fact ' : 'this is the value of $' + call(fn === 'sin' ? 'cos' : 'sin', A) + '$. In fact ') + work, 'companion'));
+      var qd = trig.quadrant(A), sgnWhy = qd ? 'in the ' + ['', 'first', 'second', 'third', 'fourth'][qd] + ' quadrant ' + { sin: 'the sine', cos: 'the cosine', tan: 'the tangent' }[fn] + ' is ' + (v.num > 0 ? 'positive' : 'negative') + '. In fact ' : 'in fact ';
+      if (!v.isZero) pool.push(stt(fn, A, v.neg(), false, sgnWhy + work, 'sign'));
     }
     (extra || []).forEach(function (e) { pool.push(stt(e[0], e[1], e[2], e[3], e[4], 'slip')); });
     var st = QF.pickStmts(R, 'S', pool);
@@ -4290,10 +4401,10 @@
   }
   def({ id: 'TR-val.which-correct', code: 'TR-val', lesson: '2.1', tier: 'E', level: '=', fmt: 'S', w: 1,
     form: 'Four special values (QI and the axes): which is correct', basis: 'Jun Q6' }, function (R) {
-    return whichCorrect(R, [30, 45, 60, 30, 60], [['sin', 90, sd(0), false, '$\\sin\\dfrac{\\pi}{2} = 1$.'], ['cos', 0, sd(0), false, '$\\cos 0 = 1$.'], ['sin', 90, sd(1), true, '$\\sin\\dfrac{\\pi}{2} = 1$.'], ['cos', 90, sd(0), true, '$\\cos\\dfrac{\\pi}{2} = 0$.']]);
+    return whichCorrect(R, [30, 45, 60, 30, 60], [['sin', 90, sd(0), false, 'in fact $\\sin\\dfrac{\\pi}{2} = 1$.'], ['cos', 0, sd(0), false, 'in fact $\\cos 0 = 1$.'], ['sin', 90, sd(1), true, ''], ['cos', 90, sd(0), true, '']]);
   });
   def({ id: 'TR-val.which-correct-quad', code: 'TR-val', lesson: '2.1', tier: 'E', level: '+1', fmt: 'S',
-    form: 'Four special values in QII–QIV: which is correct', basis: 'Course plan 2.1 Q7' }, function (R) { return whichCorrect(R, Q2.concat(Q3, Q4)); });
+    form: 'Four special values in QII-QIV: which is correct', basis: 'Course plan 2.1 Q7' }, function (R) { return whichCorrect(R, Q2.concat(Q3, Q4)); });
 
   def({ id: 'TR-val.beyond', code: 'TR-val', lesson: '2.1', tier: 'E', level: '+1', fmt: 'V',
     form: 'Special value of an angle beyond 2π or negative (reduce first)', basis: 'Course plan 2.1 Q5' }, function (R) {
@@ -4304,7 +4415,7 @@
     var useDeg = R.bool(0.3);
     return {
       stem: '$' + call(fn, A, useDeg) + ' =$ ( )', key: m(v), wrong: wrong, check: chk.num(numv(fn, A)),
-      sol: 'Remove full turns: $' + angTex(A, useDeg) + '$ has the same terminal side as $' + angTex(base, useDeg) + '$, which lies in the ' + F.ord(trig.quadrant(base)) + ' quadrant. Hence the value is $' + F.n(v) + '$.'
+      sol: 'Since $' + angTex(A, useDeg) + ' = ' + angTex(base, useDeg) + (shift > 0 ? ' + ' : ' - ') + angTex(Math.abs(shift), useDeg) + '$, the angle has the same terminal side as $' + angTex(base, useDeg) + '$, so the two angles have the same trigonometric values. Then $' + reduceTex(fn, base, useDeg) + '$.'
     };
   });
 
@@ -4313,6 +4424,12 @@
   function ptRatios(x, y) {
     var r = Sd.sqrt(x * x + y * y);
     return { r: r, sin: sd(y).div(r), cos: sd(x).div(r), tan: sd(q(y, x)) };
+  }
+  /** "$\sin\alpha = \dfrac{y}{r} = \dfrac{-4}{5} = -\dfrac{4}{5}$" with the raw fraction shown before it is simplified */
+  function ratioStep(fn, x, y, t) {
+    var top = fn === 'cos' ? x : y, bot = fn === 'tan' ? String(x) : F.n(t.r), v = t[fn];
+    var raw = '\\dfrac{' + top + '}{' + bot + '}', out = '$\\' + fn + '\\alpha = ' + { sin: '\\dfrac{y}{r}', cos: '\\dfrac{x}{r}', tan: '\\dfrac{y}{x}' }[fn] + ' = ' + raw;
+    return out + (raw === F.n(v) ? '' : ' = ' + F.n(v)) + '$';
   }
   function pointItem(R, quads, real) {
     var p = R.pick(PTS), qd = R.pick(quads), x = p[0] * QD[qd].cs, y = p[1] * QD[qd].ss, fn = R.pick(['sin', 'sin', 'cos', 'tan']);
@@ -4324,7 +4441,7 @@
     var name = R.pick(['P', 'P', 'M']);
     return {
       stem: 'If the terminal side of angle $\\alpha$ passes through the point $' + name + F.pt(x, y) + '$, then $\\' + fn + '\\alpha =$ ( )', key: m(key), wrong: cands.map(function (c) { return [m(c[0]), c[1]]; }), check: chk.num(Math[fn](a)),
-      sol: '$r = \\sqrt{x^2 + y^2} = \\sqrt{' + (x * x + y * y) + '}' + (t.r.isRational ? ' = ' + F.n(t.r) : '') + '$. ' + (fn === 'sin' ? '$\\sin\\alpha = \\dfrac{y}{r}$' : fn === 'cos' ? '$\\cos\\alpha = \\dfrac{x}{r}$' : '$\\tan\\alpha = \\dfrac{y}{x}$') + ' $= ' + F.n(key) + '$ (the signs come from the coordinates).'
+      sol: 'Here $x = ' + x + '$, $y = ' + y + '$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{' + (x * x + y * y) + '}' + (t.r.isRational ? ' = ' + F.n(t.r) : '') + '$. So ' + ratioStep(fn, x, y, t) + '.'
     };
   }
   def({ id: 'TR-def.point', code: 'TR-def', lesson: '2.2', tier: 'E', level: '=', fmt: 'V', w: 2.5,
@@ -4347,7 +4464,7 @@
     var wrong = [[m(alt), 'reciprocal'], [m(key.neg()), 'sign'], [m(alt.neg()), 'reciprocal'], [m(tn), 'partial'], [m(key.add(1)), 'slip']];
     return {
       stem: 'If the point $P(' + (findY ? known + ', y' : 'x, ' + known) + ')$ lies on the terminal side of angle $\\alpha$ and $\\tan\\alpha = ' + F.n(tn) + '$, then $' + (findY ? 'y' : 'x') + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(findY ? y : x),
-      sol: '$\\tan\\alpha = \\dfrac{y}{x}$, so ' + (findY ? '$\\dfrac{y}{' + known + '} = ' + F.n(tn) + '$ and $y = ' + F.n(key) + '$.' : '$\\dfrac{' + known + '}{x} = ' + F.n(tn) + '$ and $x = ' + F.n(key) + '$.')
+      sol: 'By definition $\\tan\\alpha = \\dfrac{y}{x}$, so ' + (findY ? '$\\dfrac{y}{' + known + '} = ' + F.n(tn) + '$, which gives $y = ' + F.n(tn) + ' \\times ' + par(sd(known)) + ' = ' + F.n(key) + '$.' : '$\\dfrac{' + known + '}{x} = ' + F.n(tn) + '$, which gives $x = ' + known + ' \\div ' + par(sd(tn)) + ' = ' + F.n(key) + '$.')
     };
   });
 
@@ -4364,7 +4481,8 @@
     var order = R.shuffle(['AC = ' + ac, 'BC = ' + bc, 'AB = ' + ab]);
     return {
       stem: 'In $\\triangle ABC$, $' + order[0] + '$, $' + order[1] + '$ and $' + order[2] + '$. Then $\\' + fn + ' ' + V + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[fn](angle)),
-      sol: 'Since $' + ac + '^2 + ' + bc + '^2 = ' + ab + '^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $' + V + '$ the opposite side is $' + (V === 'A' ? 'BC' : 'AC') + ' = ' + opp + '$ and the adjacent side is $' + adj + '$, so $\\' + fn + ' ' + V + ' = ' + F.n(key) + '$.'
+      sol: 'Since $' + ac + '^2 + ' + bc + '^2 = ' + ab + '^2$, the triangle has a right angle at $C$ and $AB = ' + ab + '$ is the hypotenuse. For angle $' + V + '$ the opposite side is $' + (V === 'A' ? 'BC' : 'AC') + ' = ' + opp + '$ and the adjacent side is $' + (V === 'A' ? 'AC' : 'BC') + ' = ' + adj + '$, so $\\' + fn + ' ' + V + ' = ' +
+        (fn === 'sin' ? '\\dfrac{' + opp + '}{' + ab + '}' : fn === 'cos' ? '\\dfrac{' + adj + '}{' + ab + '}' : '\\dfrac{' + opp + '}{' + adj + '}') + (key.d === (fn === 'tan' ? adj : ab) ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
 
@@ -4379,20 +4497,20 @@
     return {
       stem: 'If the point $P(x, y)$ lies on the terminal side of angle $\\alpha$ and $|OP| = r$ ($r > 0$' + (fn === 'tan' ? ', $x \\ne 0$' : '') + '), then $\\' + fn + '\\alpha =$ ( )',
       key: m(fr(all[fn])), wrong: R.shuffle(opts).map(function (s) { return [m(fr(s)), 'near-miss']; }), check: chk.fn(truth, samples),
-      sol: 'By definition, for a point $P(x, y)$ on the terminal side with $|OP| = r$: $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$, $\\tan\\alpha = \\dfrac{y}{x}$.'
+      sol: 'For a point $P(x, y)$ on the terminal side with $|OP| = r$, the definitions are $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$ and $\\tan\\alpha = \\dfrac{y}{x}$. So $\\' + fn + '\\alpha = ' + fr(all[fn]) + '$.'
     };
   });
 
   def({ id: 'TR-def.four', code: 'TR-def', lesson: '2.2', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Four statements about α whose terminal side passes through a point in QII–QIV', basis: 'Course plan 2.2 Q8 (2.5)' }, function (R) {
+    form: 'Four statements about α whose terminal side passes through a point in QII-QIV', basis: 'Course plan 2.2 Q8 (2.5)' }, function (R) {
     var p = R.pick(PTS), qd = R.pick([3, 3, 2, 4]), x = p[0] * QD[qd].cs, y = p[1] * QD[qd].ss, t = ptRatios(x, y), a = Math.atan2(y, x);
     var pool = [
-      ratS('sin', t.sin, a, true, '$\\sin\\alpha = \\dfrac{y}{r}$.', { g: 's' }), ratS('cos', t.cos, a, true, '$\\cos\\alpha = \\dfrac{x}{r}$.', { g: 'c' }), ratS('tan', t.tan, a, true, '$\\tan\\alpha = \\dfrac{y}{x}$.', { g: 't' }),
-      ratS('sin', t.sin.neg(), a, false, 'the sign of $y$ decides the sign of the sine.', { g: 's', trap: 'sign' }), ratS('cos', t.cos.neg(), a, false, 'the sign of $x$ decides the sign of the cosine.', { g: 'c', trap: 'sign' }),
-      ratS('tan', t.tan.neg(), a, false, '$\\tan\\alpha = \\dfrac{y}{x}$ keeps both signs.', { g: 't', trap: 'sign' }), ratS('sin', t.cos, a, false, 'that is $\\cos\\alpha$.', { g: 's2', trap: 'companion' }),
-      ratS('tan', sd(q(x, y)), a, false, 'that is $\\dfrac{x}{y}$; the tangent is $\\dfrac{y}{x}$.', { g: 't2', trap: 'reciprocal' })
+      ratS('sin', t.sin, a, true, ratioStep('sin', x, y, t) + '.', { g: 's' }), ratS('cos', t.cos, a, true, ratioStep('cos', x, y, t) + '.', { g: 'c' }), ratS('tan', t.tan, a, true, ratioStep('tan', x, y, t) + '.', { g: 't' }),
+      ratS('sin', t.sin.neg(), a, false, 'the sine has the sign of $y = ' + y + '$: ' + ratioStep('sin', x, y, t) + '.', { g: 's', trap: 'sign' }), ratS('cos', t.cos.neg(), a, false, 'the cosine has the sign of $x = ' + x + '$: ' + ratioStep('cos', x, y, t) + '.', { g: 'c', trap: 'sign' }),
+      ratS('tan', t.tan.neg(), a, false, ratioStep('tan', x, y, t) + '.', { g: 't', trap: 'sign' }), ratS('sin', t.cos, a, false, 'this is the value of $\\cos\\alpha = \\dfrac{x}{r}$. In fact ' + ratioStep('sin', x, y, t) + '.', { g: 's2', trap: 'companion' }),
+      ratS('tan', sd(q(x, y)), a, false, 'this is $\\dfrac{x}{y}$. In fact ' + ratioStep('tan', x, y, t) + '.', { g: 't2', trap: 'reciprocal' })
     ].filter(function (s) { return s.ok || !s.test(); });
-    return out('The terminal side of angle $\\alpha$ passes through the point $P' + F.pt(x, y) + '$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'Here $r = \\sqrt{' + (x * x + y * y) + '}' + (t.r.isRational ? ' = ' + F.n(t.r) : '') + '$.');
+    return out('The terminal side of angle $\\alpha$ passes through the point $P' + F.pt(x, y) + '$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'Here $x = ' + x + '$, $y = ' + y + '$ and $r = \\sqrt{' + x * x + ' + ' + y * y + '} = ' + (t.r.isRational ? F.n(t.r) : '\\sqrt{' + (x * x + y * y) + '}') + '$.');
   });
 
   def({ id: 'TR-def.chain', code: 'TR-def', lesson: '2.2', tier: 'M', level: '+1', fmt: 'V',
@@ -4405,7 +4523,7 @@
     var wrong = [[m(key.neg()), 'sign'], [m(ask === 'cos' ? q(y, r) : q(x, r)), 'companion'], [m((ask === 'cos' ? q(y, r) : q(x, r)).neg()), 'companion'], [m(tn.inv()), 'reciprocal']];
     return {
       stem: 'The point $P(x, ' + y + ')$ lies on the terminal side of angle $\\alpha$ and $\\tan\\alpha = ' + F.n(tn) + '$. Then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](a)),
-      sol: 'From $\\tan\\alpha = \\dfrac{y}{x}$: $\\dfrac{' + y + '}{x} = ' + F.n(tn) + '$, so $x = ' + x + '$. Then $r = \\sqrt{' + x * x + ' + ' + y * y + '} = ' + r + '$ and $\\' + ask + '\\alpha = ' + F.n(key) + '$.'
+      sol: 'By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{' + y + '}{x} = ' + F.n(tn) + '$ and $x = ' + x + '$. Then $r = \\sqrt{x^2 + y^2} = \\sqrt{' + x * x + ' + ' + y * y + '} = ' + r + '$, so $\\' + ask + '\\alpha = \\dfrac{' + (ask === 'cos' ? 'x' : 'y') + '}{r} = \\dfrac{' + (ask === 'cos' ? x : y) + '}{' + r + '}' + (key.d === r ? '' : ' = ' + F.n(key)) + (key.d === r && key.n < 0 ? ' = ' + F.n(key) : '') + '$.'
     };
   });
 
@@ -4416,10 +4534,11 @@
     var key = A[ask], other = ask === 'tan' ? sd(1).div(key) : (ask === 'sin' ? A.cos : A.sin);
     var wrong = [[m(key.neg()), 'sign'], [m(ask === 'tan' ? other : A.tan), ask === 'tan' ? 'reciprocal' : 'near-miss'], [m(given === ask ? other : A[given]), 'companion'], [m(other.neg()), 'companion'], [m(sd(1).div(A.tan)), 'reciprocal']];
     var cond = quad === 1 ? R.pick(['$\\alpha$ is an acute angle', '$0 < \\alpha < \\dfrac{\\pi}{2}$']) : inQuad(R, quad);
-    var how = given === 'sin' ? '$\\cos^2\\alpha = 1 - \\sin^2\\alpha$' : '$\\sin^2\\alpha = 1 - \\cos^2\\alpha$';
+    var oth = given === 'sin' ? 'cos' : 'sin', g = A[given], g2 = g.mul(g), o = A[oth];
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + cond + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
-      sol: how + ' gives $\\' + (given === 'sin' ? 'cos' : 'sin') + '\\alpha = \\pm ' + F.n(F.absOf(given === 'sin' ? A.cos : A.sin)) + '$; in the ' + QD[quad].name + ' quadrant ' + (given === 'sin' ? 'cosine' : 'sine') + ' is ' + ((given === 'sin' ? A.cos : A.sin).sgn > 0 ? 'positive' : 'negative') + '.' + (ask === 'tan' ? ' Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(key) + '$.' : ' So $\\' + ask + '\\alpha = ' + F.n(key) + '$.')
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(g) + '$ and ' + cond + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
+      sol: 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + oth + '^2\\alpha = 1 - ' + par(g).replace(/^(?!\\left)(.*)$/, '\\left($1\\right)') + '^2 = 1 - ' + F.n(g2) + ' = ' + F.n(sd(1).sub(g2)) + '$, so $\\' + oth + '\\alpha = \\pm ' + F.n(F.absOf(o)) + '$. In the ' + QD[quad].name + ' quadrant ' + FNAME[oth] + ' is ' + (o.sgn > 0 ? 'positive' : 'negative') + ', so $\\' + oth + '\\alpha = ' + F.n(o) + '$.' +
+        (ask === 'tan' ? ' Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(key) + '$.' : '')
     };
   }
   def({ id: 'TR-id.acute', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'V', w: 2,
@@ -4428,7 +4547,7 @@
     return idItem(R, 1, given, ask, { real: function (A, g, a) { return (g === 'cos' && A.cos.eq(sd(q(2, 3))) && a === 'tan'); } });
   });
   def({ id: 'TR-id.quad-v', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'V', w: 0.5,
-    form: 'One ratio and the quadrant (QII–QIV) → another ratio', basis: 'Dec Q19 (EX/TG version)' }, function (R) {
+    form: 'One ratio and the quadrant (QII-QIV) → another ratio', basis: 'Dec Q19 (EX/TG version)' }, function (R) {
     var quad = R.pick([2, 2, 3, 4]), given = R.pick(['sin', 'cos']), ask = given === 'sin' ? 'cos' : 'sin';
     return idItem(R, quad, given, ask, { kind: 'rat', real: function (A, g) { return quad === 2 && g === 'sin' && A.sin.eq(sd(q(3, 5))); } });
   });
@@ -4436,31 +4555,39 @@
     form: 'tan α and the quadrant → sin α or cos α', basis: 'Course plan 2.3 Q7' }, function (R) {
     var quad = R.pick([2, 3, 3, 4]), A = mkAng(R, quad, 'rat'), ask = R.pick(['sin', 'cos']);
     var key = A[ask], other = ask === 'sin' ? A.cos : A.sin;
+    var fs = F.absOf(A.sin).toFr(), fc = F.absOf(A.cos).toFr(), legS = fs.n, legC = fc.n, hyp = fs.d;
+    if (fc.d !== hyp) throw new Error('TR-id.from-tan: legs over different denominators');
     var wrong = [[m(key.neg()), 'sign'], [m(other), 'companion'], [m(other.neg()), 'companion'], [m(A.tan), 'partial']];
     return {
-      stem: 'Given $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
-      sol: 'From $\\tan\\alpha = ' + F.n(A.tan) + '$, think of a right triangle with legs $' + F.n(F.absOf(A.sin.scale(q(1).div(1)))) .replace(/\\dfrac\{(\d+)\}\{\d+\}/, '$1') + '$ and $' + F.n(F.absOf(A.cos)).replace(/\\dfrac\{(\d+)\}\{\d+\}/, '$1') + '$: $\\lvert\\sin\\alpha\\rvert = ' + F.n(F.absOf(A.sin)) + '$ and $\\lvert\\cos\\alpha\\rvert = ' + F.n(F.absOf(A.cos)) + '$. In the ' + QD[quad].name + ' quadrant ' + (ask === 'sin' ? 'sine' : 'cosine') + ' is ' + (key.sgn > 0 ? 'positive' : 'negative') + ', so $\\' + ask + '\\alpha = ' + F.n(key) + '$.'
+      stem: 'If $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
+      sol: 'Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{' + legS + '}{' + legC + '}$, take a right triangle with legs $' + legS + '$ and $' + legC + '$. Its hypotenuse is $\\sqrt{' + legS + '^2 + ' + legC + '^2} = ' + hyp + '$, so $\\lvert\\sin\\alpha\\rvert = \\dfrac{' + legS + '}{' + hyp + '}$ and $\\lvert\\cos\\alpha\\rvert = \\dfrac{' + legC + '}{' + hyp + '}$. In the ' + QD[quad].name + ' quadrant ' + FNAME[ask] + ' is ' + (key.sgn > 0 ? 'positive' : 'negative') + ', so $\\' + ask + '\\alpha = ' + F.n(key) + '$.'
     };
   });
 
   function quadStmts(A) {
     var a = A.num;
+    function sgnWhy(fn) { return FNAME[fn] + ' is ' + (A[fn].sgn > 0 ? 'positive' : 'negative') + ' in the ' + A.Q.name + ' quadrant, so $\\' + fn + '\\alpha = ' + F.n(A[fn]) + '$.'; }
     return [
-      ratS('cos', A.cos, a, true, 'the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant.', { g: 'c' }),
-      ratS('tan', A.tan, a, true, '$\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ with the correct signs.', { g: 't' }),
-      ratS('sin', A.sin, a, true, 'the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant.', { g: 's' }),
-      ratS('cos', A.cos.neg(), a, false, 'the sign of the cosine is wrong for the ' + A.Q.name + ' quadrant.', { g: 'c', trap: 'sign' }),
-      ratS('tan', A.tan.neg(), a, false, 'the sign of the tangent is wrong for the ' + A.Q.name + ' quadrant.', { g: 't', trap: 'sign' }),
-      ratS('sin', A.sin.neg(), a, false, 'the sign of the sine is wrong for the ' + A.Q.name + ' quadrant.', { g: 's', trap: 'sign' }),
-      ratS('tan', sd(1).div(A.tan), a, false, 'that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.', { g: 't2', trap: 'reciprocal' }),
-      ratS('tan', sd(1).div(A.tan).neg(), a, false, 'that is the reciprocal of the tangent with the wrong sign.', { g: 't3', trap: 'reciprocal' })
+      ratS('cos', A.cos, a, true, '', { g: 'c' }),
+      ratS('tan', A.tan, a, true, '', { g: 't' }),
+      ratS('sin', A.sin, a, true, '', { g: 's' }),
+      ratS('cos', A.cos.neg(), a, false, sgnWhy('cos'), { g: 'c', trap: 'sign' }),
+      ratS('tan', A.tan.neg(), a, false, sgnWhy('tan'), { g: 't', trap: 'sign' }),
+      ratS('sin', A.sin.neg(), a, false, sgnWhy('sin'), { g: 's', trap: 'sign' }),
+      ratS('tan', sd(1).div(A.tan), a, false, 'this is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.', { g: 't2', trap: 'reciprocal' }),
+      ratS('tan', sd(1).div(A.tan).neg(), a, false, 'this is $-\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.', { g: 't3', trap: 'reciprocal' })
     ];
+  }
+  /** the working that gives the other two ratios from sin α (or cos α) and the quadrant */
+  function quadWork(A, given) {
+    var oth = given === 'sin' ? 'cos' : 'sin', g = A[given], g2 = g.mul(g);
+    return 'In the ' + A.Q.name + ' quadrant $\\sin\\alpha ' + (A.sin.sgn > 0 ? '> 0' : '< 0') + '$ and $\\cos\\alpha ' + (A.cos.sgn > 0 ? '> 0' : '< 0') + '$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + oth + '^2\\alpha = 1 - ' + F.n(g2) + ' = ' + F.n(sd(1).sub(g2)) + '$, so $\\' + oth + '\\alpha = ' + F.n(A[oth]) + '$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.';
   }
   function quadStmtItem(R, quads, real) {
     var quad = R.pick(quads), A = mkAng(R, quad, 'rat'), given = R.pick(['sin', 'cos']);
     if (real && real(A, quad, given)) retry('real item');
     var pool = quadStmts(A).filter(function (s) { return !new RegExp('\\\\' + given + '\\\\alpha').test(s.t); });
-    return out('Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), quadWork(A, given));
   }
   def({ id: 'TR-id.quad', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'S', w: 1,
     form: 'sin α or cos α given with the quadrant: which statement about the other ratios is true', basis: 'Jan Q20' }, function (R) {
@@ -4470,17 +4597,17 @@
   function identPool() {
     var I = function (l, r, ok, why, extra) { return h.identS(l, r, ok, 'alpha', why, extra); };
     return [
-      I('\\sin^2\\alpha + \\cos^2\\alpha', '1', true, 'the Pythagorean identity.', { g: 'py' }),
-      I('\\tan\\alpha', '\\dfrac{\\sin\\alpha}{\\cos\\alpha}', true, 'the definition of the tangent (for $\\cos\\alpha \\ne 0$).', { g: 'tan' }),
+      I('\\sin^2\\alpha + \\cos^2\\alpha', '1', true, 'this is the Pythagorean identity.', { g: 'py' }),
+      I('\\tan\\alpha', '\\dfrac{\\sin\\alpha}{\\cos\\alpha}', true, 'this is the definition of the tangent, valid whenever $\\cos\\alpha \\ne 0$.', { g: 'tan' }),
       I('1 + \\tan^2\\alpha', '\\dfrac{1}{\\cos^2\\alpha}', true, 'divide $\\sin^2\\alpha + \\cos^2\\alpha = 1$ by $\\cos^2\\alpha$.', { g: 'sec' }),
       I('(\\sin\\alpha + \\cos\\alpha)^2', '1 + 2\\sin\\alpha\\cos\\alpha', true, 'expand the square and use $\\sin^2\\alpha + \\cos^2\\alpha = 1$.', { g: 'sq' }),
       I('\\sin\\alpha', '\\tan\\alpha\\cos\\alpha', true, 'multiply $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ by $\\cos\\alpha$.', { g: 'tan2' }),
-      I('\\sin\\alpha + \\cos\\alpha', '1', false, 'only the squares add up to $1$.', { g: 'py', trap: 'near-miss' }),
+      I('\\sin\\alpha + \\cos\\alpha', '1', false, 'only the squares add up to $1$. For example, at $\\alpha = \\dfrac{\\pi}{4}$ the left side is $\\sqrt{2}$.', { g: 'py', trap: 'near-miss' }),
       I('\\sin^2\\alpha - \\cos^2\\alpha', '1', false, 'the identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$.', { g: 'py2', trap: 'near-miss' }),
       I('\\tan\\alpha', '\\dfrac{\\cos\\alpha}{\\sin\\alpha}', false, 'the fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$.', { g: 'tan', trap: 'reciprocal' }),
       I('1 + \\tan^2\\alpha', '\\dfrac{1}{\\sin^2\\alpha}', false, 'the right side should be $\\dfrac{1}{\\cos^2\\alpha}$.', { g: 'sec', trap: 'near-miss' }),
       I('(\\sin\\alpha + \\cos\\alpha)^2', '1', false, 'the middle term $2\\sin\\alpha\\cos\\alpha$ is missing.', { g: 'sq', trap: 'partial' }),
-      I('\\tan\\alpha', '\\sin\\alpha\\cos\\alpha', false, 'the tangent is a quotient, not a product.', { g: 'tan3', trap: 'operation' }),
+      I('\\tan\\alpha', '\\sin\\alpha\\cos\\alpha', false, 'the tangent is the quotient $\\dfrac{\\sin\\alpha}{\\cos\\alpha}$, not the product.', { g: 'tan3', trap: 'operation' }),
       I('(\\sin\\alpha - \\cos\\alpha)^2', '1 + 2\\sin\\alpha\\cos\\alpha', false, 'the middle term is negative: $1 - 2\\sin\\alpha\\cos\\alpha$.', { g: 'sq2', trap: 'sign' })
     ];
   }
@@ -4491,7 +4618,7 @@
     return out('Which of the following identities is correct? ( )', st);
   });
   def({ id: 'TR-id.identity-n', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'N', w: 0.3,
-    form: 'Which same-angle identity is INCORRECT', basis: 'Course plan 2.3 Set B Q4' }, function (R) {
+    form: 'Which same-angle identity is incorrect', basis: 'Course plan 2.3 Set B Q4' }, function (R) {
     return out('Which of the following identities is incorrect? ( )', QF.pickStmts(R, 'N', identPool()));
   });
 
@@ -4505,7 +4632,7 @@
     if (!ev.close(Math.pow(Math[given](a), 2), k.num)) throw new Error('TR-id.noquad inconsistent');
     return {
       stem: 'If $\\' + given + '^2\\alpha = ' + F.n(k) + '$, then $\\tan\\alpha =$ ( )', key: m(F.pm(t)), wrong: wrong, check: chk.alts([Math.tan(a), -Math.tan(a)]),
-      sol: '$\\' + (given === 'cos' ? 'sin' : 'cos') + '^2\\alpha = 1 - ' + F.n(k) + ' = ' + F.n(q(1).sub(k)) + '$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = ' + F.n(s2.div(c2)) + '$. No quadrant is given, so both signs are possible: $\\tan\\alpha = ' + F.pm(t) + '$.'
+      sol: 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + (given === 'cos' ? 'sin' : 'cos') + '^2\\alpha = 1 - ' + F.n(k) + ' = ' + F.n(q(1).sub(k)) + '$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = ' + F.n(s2.div(c2)) + '$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = ' + F.pm(t) + '$.'
     };
   });
 
@@ -4514,12 +4641,14 @@
     var quad = R.pick([2, 2, 3, 4]), A = mkAng(R, quad, 'rat'), a = A.num;
     var prod = A.sin.mul(A.cos), sum = A.sin.add(A.cos);
     var pool = quadStmts(A).filter(function (s) { return !/\\tan\\alpha/.test(s.t); }).concat([
-      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$', true, function () { return ev.close(Math.sin(a) * Math.cos(a), prod.num); }, 'multiply the two values with their signs.', { g: 'p' }),
-      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod.neg()) + '$', false, function () { return ev.close(Math.sin(a) * Math.cos(a), -prod.num); }, 'the sign of the product is wrong.', { g: 'p', trap: 'sign' }),
-      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(sum) + '$', true, function () { return ev.close(Math.sin(a) + Math.cos(a), sum.num); }, 'add the two values with their signs.', { g: 'q' }),
-      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(A.sin.sub(A.cos)) + '$', false, function () { return ev.close(Math.sin(a) + Math.cos(a), A.sin.sub(A.cos).num); }, 'one of the two signs is wrong.', { g: 'q', trap: 'sign' })
+      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$', true, function () { return ev.close(Math.sin(a) * Math.cos(a), prod.num); }, '$\\sin\\alpha\\cos\\alpha = ' + par(A.sin) + ' \\times ' + par(A.cos) + ' = ' + F.n(prod) + '$.', { g: 'p' }),
+      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod.neg()) + '$', false, function () { return ev.close(Math.sin(a) * Math.cos(a), -prod.num); }, '$\\sin\\alpha\\cos\\alpha = ' + par(A.sin) + ' \\times ' + par(A.cos) + ' = ' + F.n(prod) + '$.', { g: 'p', trap: 'sign' }),
+      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(sum) + '$', true, function () { return ev.close(Math.sin(a) + Math.cos(a), sum.num); }, '$\\sin\\alpha + \\cos\\alpha = ' + F.sum([[A.sin, ''], [A.cos, '']]) + ' = ' + F.n(sum) + '$.', { g: 'q' }),
+      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(A.sin.sub(A.cos)) + '$', false, function () { return ev.close(Math.sin(a) + Math.cos(a), A.sin.sub(A.cos).num); }, '$\\sin\\alpha + \\cos\\alpha = ' + F.sum([[A.sin, ''], [A.cos, '']]) + ' = ' + F.n(sum) + '$.', { g: 'q', trap: 'sign' })
     ]);
-    return out('Given $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'Here $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$.');
+    var fs = F.absOf(A.sin).toFr(), fc = F.absOf(A.cos).toFr();
+    return out('If $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      'Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{' + fs.n + '}{' + fc.n + '}$, a right triangle with legs $' + fs.n + '$ and $' + fc.n + '$ has hypotenuse $' + fs.d + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (A.sin.sgn > 0 ? '> 0' : '< 0') + '$ and $\\cos\\alpha ' + (A.cos.sgn > 0 ? '> 0' : '< 0') + '$, so $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$.');
   });
 
   def({ id: 'TR-id.pair', code: 'TR-id', lesson: '2.3', tier: 'M', level: '+1', fmt: 'V',
@@ -4529,7 +4658,7 @@
     var wrong = [[pr(A[o1].neg(), A.tan.neg()), 'sign'], [pr(A[o1], A.tan.neg()), 'sign'], [pr(A[o1].neg(), A.tan), 'sign'], [pr(A[o1], sd(1).div(A.tan)), 'reciprocal']];
     return {
       stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, which of the following pairs is correct? ( )', key: pr(A[o1], A.tan), wrong: wrong, check: chk.tuple([Math[o1](A.num), Math.tan(A.num)]),
-      sol: 'In the ' + QD[quad].name + ' quadrant ' + (o1 === 'cos' ? 'cosine' : 'sine') + ' is ' + (A[o1].sgn > 0 ? 'positive' : 'negative') + ': $\\' + o1 + '\\alpha = ' + F.n(A[o1]) + '$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.'
+      sol: 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + o1 + '^2\\alpha = 1 - ' + F.n(A[given].mul(A[given])) + ' = ' + F.n(sd(1).sub(A[given].mul(A[given]))) + '$. In the ' + QD[quad].name + ' quadrant ' + FNAME[o1] + ' is ' + (A[o1].sgn > 0 ? 'positive' : 'negative') + ', so $\\' + o1 + '\\alpha = ' + F.n(A[o1]) + '$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.'
     };
   });
 
@@ -4541,9 +4670,10 @@
     var wrong = ask === 'prod' ? [[m(prod.neg()), 'sign'], [m(prod.scale(2)), 'half'], [m(k.mul(k).sub(1)), 'half'], [m(k.mul(k)), 'partial']]
       : [[m(diff.neg()), 'sign'], [m(F.pm(F.absOf(diff))), 'pm'], [m(diff.mul(diff)), 'partial'], [m(k), 'slip']];
     return {
-      stem: 'Given $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + (ask === 'prod' ? '\\sin\\alpha\\cos\\alpha' : '\\sin\\alpha - \\cos\\alpha') + ' =$ ( )', key: m(key), wrong: wrong,
+      stem: 'If $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + (ask === 'prod' ? '\\sin\\alpha\\cos\\alpha' : '\\sin\\alpha - \\cos\\alpha') + ' =$ ( )', key: m(key), wrong: wrong,
       check: chk.num(ask === 'prod' ? Math.sin(A.num) * Math.cos(A.num) : Math.sin(A.num) - Math.cos(A.num)),
-      sol: 'Square: $(\\sin\\alpha + \\cos\\alpha)^2 = 1 + 2\\sin\\alpha\\cos\\alpha = ' + F.n(k.mul(k)) + '$, so $\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$.' + (ask === 'diff' ? ' Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = ' + F.n(diff.mul(diff)) + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') + ' \\cos\\alpha$, so the difference is ' + (diff.sgn > 0 ? 'positive' : 'negative') + ': $' + F.n(diff) + '$.' : '')
+      sol: 'Square both sides: $(\\sin\\alpha + \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha + 2\\sin\\alpha\\cos\\alpha = 1 + 2\\sin\\alpha\\cos\\alpha = ' + F.n(k.mul(k)) + '$, so $2\\sin\\alpha\\cos\\alpha = ' + F.n(prod.scale(2)) + '$ and $\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$.' +
+        (ask === 'diff' ? ' Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = 1 - ' + par(prod.scale(2)) + ' = ' + F.n(diff.mul(diff)) + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') + ' \\cos\\alpha$, so $\\sin\\alpha - \\cos\\alpha$ is ' + (diff.sgn > 0 ? 'positive' : 'negative') + ' and equals $' + F.n(diff) + '$.' : '')
     };
   });
 
@@ -4551,11 +4681,13 @@
     form: 'tan α and the quadrant → a combination such as 2 sin α − cos α', basis: 'Course plan 2.3 Set C' }, function (R) {
     var quad = R.pick([3, 3, 2, 4]), A = mkAng(R, quad, 'rat'), p = R.pick([2, 3, 1]), qq = R.pick([-1, 1, -2, 2]);
     var key = A.sin.scale(p).add(A.cos.scale(qq));
+    var ls = F.absOf(A.sin).toFr(), lc = F.absOf(A.cos).toFr();
     var expr = F.sum([[p, '\\sin\\alpha'], [qq, '\\cos\\alpha']]);
     var wrong = [[m(key.neg()), 'sign'], [m(A.sin.scale(p).sub(A.cos.scale(qq))), 'sign'], [m(A.sin.scale(-p).add(A.cos.scale(qq))), 'sign'], [m(A.cos.scale(p).add(A.sin.scale(qq))), 'companion']];
     return {
-      stem: 'Given $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(p * Math.sin(A.num) + qq * Math.cos(A.num)),
-      sol: 'From the tangent and the quadrant: $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$. Substituting: $' + expr + ' = ' + F.n(key) + '$.'
+      stem: 'If $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(p * Math.sin(A.num) + qq * Math.cos(A.num)),
+      sol: 'Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{' + ls.n + '}{' + lc.n + '}$, a right triangle with legs $' + ls.n + '$ and $' + lc.n + '$ has hypotenuse $' + ls.d + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (A.sin.sgn > 0 ? '> 0' : '< 0') + '$ and $\\cos\\alpha ' + (A.cos.sgn > 0 ? '> 0' : '< 0') + '$, so $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$. Substituting: $' + expr + ' = ' +
+        (p === 1 ? '' : p + ' \\times ') + par(A.sin) + (qq > 0 ? ' + ' : ' - ') + (Math.abs(qq) === 1 ? '' : Math.abs(qq) + ' \\times ') + par(A.cos) + ' = ' + F.n(key) + '$.'
     };
   });
 
@@ -4577,6 +4709,13 @@
     return hit;       // null when the result is a cotangent
   }
   function lhs(fn, sh) { return '\\' + fn + '\\left(' + sh.tex + '\\right)'; }
+  /** why fn(shift) reduces to c[0]: the landing quadrant for an acute α gives the sign, the shift decides the name */
+  function redWhy(fn, sh) {
+    var a0 = 0.4321, land = ((sh.f(a0) % (2 * PI)) + 2 * PI) % (2 * PI), qd = Math.floor(land / (PI / 2)) + 1, pos = Math[fn](sh.f(a0)) > 0;
+    var swap = /2\}/.test(sh.tex);
+    return 'if $\\alpha$ is acute, $' + sh.tex + '$ lies in the ' + F.ord(qd) + ' quadrant, where ' + FNAME[fn] + ' is ' + (pos ? 'positive' : 'negative') + '. ' +
+      (swap ? 'The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.' : 'The shift is a multiple of $\\pi$, so the function name stays the same.');
+  }
   function redPool(R, shiftIdx, fns) {
     var pool = [];
     shiftIdx.forEach(function (i) {
@@ -4585,11 +4724,11 @@
         var c = reduce(fn, sh);
         if (!c) return;
         var L = lhs(fn, sh), name = c[0].replace('-', ''), swapped = name === '\\sin\\alpha' ? '\\cos\\alpha' : name === '\\cos\\alpha' ? '\\sin\\alpha' : null;
-        var rule = /2\}/.test(sh.tex) ? 'an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine' : 'a multiple of $\\pi$ keeps the name';
-        pool.push(h.identS(L, c[0], true, 'alpha', rule + '; the sign is that of $\\' + fn + '$ where the angle lands (take $\\alpha$ acute).', { g: fn + i }));
+        var why = redWhy(fn, sh), fix = ' So $' + L + ' = ' + c[0] + '$.';
+        pool.push(h.identS(L, c[0], true, 'alpha', why, { g: fn + i }));
         var flip = c[2] > 0 ? '-' + c[0] : name;
-        pool.push(h.identS(L, flip, false, 'alpha', 'the sign is wrong: the correct result is $' + c[0] + '$.', { g: fn + i, trap: 'sign' }));
-        if (swapped && R.bool(0.5)) pool.push(h.identS(L, (R.bool() ? '' : '-') + swapped, false, 'alpha', 'the name is wrong: the correct result is $' + c[0] + '$.', { g: fn + i, trap: 'near-miss' }));
+        pool.push(h.identS(L, flip, false, 'alpha', why + fix, { g: fn + i, trap: 'sign' }));
+        if (swapped && R.bool(0.5)) pool.push(h.identS(L, (R.bool() ? '' : '-') + swapped, false, 'alpha', why + fix, { g: fn + i, trap: 'near-miss' }));
       });
     });
     return pool;
@@ -4602,7 +4741,7 @@
     return out(R.pick(['Which of the following reduction formulas is correct? ( )', 'Which of the following formulas is correct? ( )', 'Which of the following equalities is correct? ( )']), st);
   });
   def({ id: 'TR-red.incorrect', code: 'TR-red', lesson: '2.4', tier: 'E', level: '=', fmt: 'N', trick: 'T04', w: 1,
-    form: 'Which reduction formula is INCORRECT', basis: 'Dec Q38' }, function (R) {
+    form: 'Which reduction formula is incorrect', basis: 'Dec Q38' }, function (R) {
     var st = QF.pickStmts(R, 'N', redPool(R, R.sample(BASIC, 5), ['sin', 'cos', 'tan']));
     if (/tan\\left\(\\pi \+ \\alpha\\right\) = -\\tan/.test(st.key)) retry('real item');
     return out('Regarding the reduction formulas, which of the following is incorrect? ( )', st);
@@ -4614,7 +4753,7 @@
     return out('Which of the following equalities is correct? ( )', st);
   });
   def({ id: 'TR-red.incorrect-3half', code: 'TR-red', lesson: '2.4', tier: 'M', level: '+1', fmt: 'N', trick: 'T04',
-    form: 'Which formula with 3π/2 is INCORRECT', basis: 'Course plan 2.4 Set C' }, function (R) {
+    form: 'Which formula with 3π/2 is incorrect', basis: 'Course plan 2.4 Set C' }, function (R) {
     return out('Which of the following formulas is incorrect? ( )', QF.pickStmts(R, 'N', redPool(R, [6, 7, 0, 1, 2, 3], ['sin', 'cos'])));
   });
 
@@ -4632,7 +4771,7 @@
     var wrong = [[m(key.neg()), 'sign'], [m(comp), 'companion'], [m(comp.neg()), 'companion'], [m(F.pm(F.absOf(k))), 'pm']];
     return {
       stem: 'If $\\' + given + '\\alpha = ' + F.n(k) + '$, then $' + lhs(fn, sh) + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[fn](sh.f(a))),
-      sol: '$' + lhs(fn, sh) + ' = ' + c[0] + '$ (' + (/2\}/.test(sh.tex) ? 'odd multiple of $\\dfrac{\\pi}{2}$: the name changes' : 'multiple of $\\pi$: the name stays') + '; sign from the quadrant where the angle lands). So the value is $' + F.n(key) + '$ — no quadrant is needed.'
+      sol: QF.sentence(redWhy(fn, sh)) + ' So $' + lhs(fn, sh) + ' = ' + c[0] + ' = ' + F.n(key) + '$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.'
     };
   });
 
@@ -4655,8 +4794,8 @@
     var truth = Math[Aq[0]](Aq[1].f(A.num));
     var wrong = [[m(key.neg()), 'sign'], [m(endTan ? sd(1).div(key) : A[gFn]), endTan ? 'reciprocal' : 'companion'], [m(endTan ? sd(1).div(key).neg() : A[gFn].neg()), 'companion'], [m(F.pm(F.absOf(key))), 'pm']];
     return {
-      stem: 'Given $' + lhs(G[0], G[1]) + ' = ' + F.n(gVal) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + lhs(Aq[0], Aq[1]) + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
-      sol: 'Step 1: $' + lhs(G[0], G[1]) + ' = ' + G[2][0] + '$, so $\\' + gFn + '\\alpha = ' + F.n(A[gFn]) + '$. Step 2: in the ' + QD[quad].name + ' quadrant $\\' + other + '\\alpha = ' + F.n(A[other]) + '$' + (endTan ? ' and $\\tan\\alpha = ' + F.n(A.tan) + '$' : '') + '. Step 3: $' + lhs(Aq[0], Aq[1]) + ' = ' + (endTan ? (Aq[2][2] > 0 ? '' : '-') + '\\tan\\alpha' : Aq[2][0]) + ' = ' + F.n(key) + '$.'
+      stem: 'If $' + lhs(G[0], G[1]) + ' = ' + F.n(gVal) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + lhs(Aq[0], Aq[1]) + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
+      sol: 'Step 1: $' + lhs(G[0], G[1]) + ' = ' + G[2][0] + '$, so $\\' + gFn + '\\alpha = ' + F.n(A[gFn]) + '$. Step 2: $\\' + other + '^2\\alpha = 1 - ' + F.n(A[gFn].mul(A[gFn])) + ' = ' + F.n(sd(1).sub(A[gFn].mul(A[gFn]))) + '$, and in the ' + QD[quad].name + ' quadrant ' + FNAME[other] + ' is ' + (A[other].sgn > 0 ? 'positive' : 'negative') + ', so $\\' + other + '\\alpha = ' + F.n(A[other]) + '$' + (endTan ? ' and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$' : '') + '. Step 3: $' + lhs(Aq[0], Aq[1]) + ' = ' + (endTan ? (Aq[2][2] > 0 ? '' : '-') + '\\tan\\alpha' : Aq[2][0]) + ' = ' + F.n(key) + '$.'
     };
   });
 
@@ -4670,13 +4809,19 @@
     function red(p) { var c = reduce(p[1], SHIFTS[p[0]]); return { sgn: c[2], name: c[0].replace('-', '').replace('\\', '').replace('\\alpha', ''), tex: c[0] }; }
     var r1 = red(top[0]), r2 = red(top[1]), r3 = red(bot);
     var key = A[r1.name].mul(A[r2.name]).div(A[r3.name]).scale(r1.sgn * r2.sgn * r3.sgn);
+    function pTex(t) { return '\\left(' + t + '\\right)'; }
+    var sg = r1.sgn * r2.sgn * r3.sgn, nm = [r1.name, r2.name], cut = nm.indexOf(r3.name), simp;
+    if (cut >= 0) { simp = (sg < 0 ? '-' : '') + '\\' + nm[1 - cut] + '\\alpha'; }
+    else simp = (sg < 0 ? '-' : '') + '\\dfrac{\\' + nm[0] + '\\alpha' + (nm[0] === nm[1] ? '' : '\\' + nm[1] + '\\alpha').replace(/^$/, '') + (nm[0] === nm[1] ? '' : '') + '}{\\' + r3.name + '\\alpha}';
+    if (cut < 0 && nm[0] === nm[1]) simp = (sg < 0 ? '-' : '') + '\\dfrac{\\' + nm[0] + '^2\\alpha}{\\' + r3.name + '\\alpha}';
     if (!ev.close(key.num, truth, 1e-8)) throw new Error('TR-red.quotient exact value mismatch');
     if (key.t.length > 1) retry();
     var expr = '\\dfrac{' + lhs(top[0][1], SHIFTS[top[0][0]]) + '\\cdot' + lhs(top[1][1], SHIFTS[top[1][0]]) + '}{' + lhs(bot[1], SHIFTS[bot[0]]) + '}';
     var wrong = [[m(key.neg()), 'sign'], [m(A.sin), 'partial'], [m(A.cos), 'partial'], [m(A.sin.neg()), 'sign'], [m(A.cos.neg()), 'sign'], [m(sd(1).div(key)), 'reciprocal']];
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
-      sol: 'Reduce each factor: $' + lhs(top[0][1], SHIFTS[top[0][0]]) + ' = ' + r1.tex + '$, $' + lhs(top[1][1], SHIFTS[top[1][0]]) + ' = ' + r2.tex + '$, $' + lhs(bot[1], SHIFTS[bot[0]]) + ' = ' + r3.tex + '$. With $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$ the quotient equals $' + F.n(key) + '$.'
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
+      sol: 'Reduce each factor: $' + lhs(top[0][1], SHIFTS[top[0][0]]) + ' = ' + r1.tex + '$, $' + lhs(top[1][1], SHIFTS[top[1][0]]) + ' = ' + r2.tex + '$ and $' + lhs(bot[1], SHIFTS[bot[0]]) + ' = ' + r3.tex + '$. So the expression is $\\dfrac{' + pTex(r1.tex) + pTex(r2.tex) + '}{' + r3.tex + '} = ' + simp + '$. ' +
+        'Here $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$' + (given === 'tan' ? ' (from $\\tan\\alpha = ' + F.n(A.tan) + '$ and the quadrant)' : '') + ', so the value is $' + F.n(key) + '$.'
     };
   });
 
@@ -4705,7 +4850,7 @@
     var wrong = [[m(F.piMul(q(1).div(w))), 'near-miss'], [m(F.piMul(w.mul(2))), 'reciprocal'], [m(F.piMul(q(2 * A))), 'slip'], [m(F.piMul(q(4).div(w))), 'half'], [m(F.piMul(q(2))), 'partial']];
     return {
       stem: 'The minimum positive period of the function $y = ' + waveTex(A, fn, w, phi, 0) + '$ is ( )', key: m(F.piMul(Tm)), wrong: wrong, check: chk.num(Tm.num * PI),
-      sol: 'For $y = A\\' + fn + '(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = ' + F.n(w) + '$, so $T = ' + F.piMul(Tm) + '$.'
+      sol: 'For $y = A\\' + fn + '(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = ' + F.n(w) + '$, so $T = \\dfrac{2\\pi}{' + F.n(w) + '} = ' + F.piMul(Tm) + '$.'
     };
   });
   def({ id: 'TR-graph.period-frac', code: 'TR-graph', lesson: '2.5', tier: 'E', level: '+1', fmt: 'V',
@@ -4716,7 +4861,7 @@
     var wrong = [[m(F.piMul(w.mul(2))), 'reciprocal'], [m(F.piMul(q(1).div(w))), 'near-miss'], [m(F.piMul(q(2))), 'partial'], [m(F.piMul(w)), 'reciprocal'], [m(F.piMul(q(4).div(w))), 'half']];
     return {
       stem: 'The minimum positive period of the function $y = ' + waveTex(A, fn, w, phi, k) + '$ is ( )', key: m(F.piMul(Tm)), wrong: wrong, check: chk.num(Tm.num * PI),
-      sol: '$T = \\dfrac{2\\pi}{|\\omega|}$ with $\\omega = ' + F.n(w) + '$: dividing by a fraction multiplies by its reciprocal, so $T = ' + F.piMul(Tm) + '$.'
+      sol: 'For $y = A\\' + fn + '(\\omega x + \\varphi) + k$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$, $\\varphi$ and $k$ are. Here $\\omega = ' + F.n(w) + '$, and dividing by a fraction means multiplying by its reciprocal: $T = 2\\pi \\div ' + F.n(w) + ' = 2\\pi \\times ' + F.n(q(1).div(w)) + ' = ' + F.piMul(Tm) + '$.'
     };
   });
   def({ id: 'TR-graph.tan-period', code: 'TR-graph', lesson: '2.6', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -4728,7 +4873,7 @@
     var wrong = [[m(F.piMul(q(2).div(w))), 'near-miss'], [m(F.piMul(w)), 'reciprocal'], [m(F.piMul(q(1))), 'partial'], [m(F.piMul(q(1).div(w.mul(2)))), 'half'], [m(F.piMul(q(2))), 'slip']];
     return {
       stem: 'The minimum positive period of the function $y = ' + waveTex(A, 'tan', w, phi, 0) + '$ is ( )', key: m(F.piMul(Tm)), wrong: wrong, check: chk.num(Tm.num * PI),
-      sol: 'The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$ (not $\\dfrac{2\\pi}{|\\omega|}$).'
+      sol: 'The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = ' + F.n(w) + '$, so $T = ' + (w.d === 1 ? '\\dfrac{\\pi}{' + F.n(w) + '}' : '\\pi \\div ' + F.n(w)) + ' = ' + F.piMul(Tm) + '$.'
     };
   });
 
@@ -4741,7 +4886,7 @@
     var wrong = [[m(wantMax ? k - Math.abs(A) : k + Math.abs(A)), 'companion'], [m(wantMax ? Math.abs(A) : -Math.abs(A)), 'partial'], [m(k), 'partial'], [m(wantMax ? k + Math.abs(A) * w.num : k - Math.abs(A) * w.num), 'slip'], [m(wantMax ? 1 : -1), 'slip']];
     return {
       stem: 'The ' + (wantMax ? 'maximum' : 'minimum') + ' value of the function $y = ' + waveTex(A, fn, w, q(0), k) + '$ is ( )', key: m(key), wrong: wrong, check: chk.num(Math.round(truth * 1e6) / 1e6),
-      sol: 'Since $-1 \\le \\' + fn + ' ' + (w.eq(1) ? '' : w.n) + 'x \\le 1$, the function $A\\' + fn + '(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = ' + k + '$ and $|A| = ' + Math.abs(A) + '$, so the ' + (wantMax ? 'maximum' : 'minimum') + ' is $' + key + '$.'
+      sol: 'Since $-1 \\le \\' + fn + ' ' + (w.eq(1) ? '' : w.n) + 'x \\le 1$, the function $y = A\\' + fn + ' \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = ' + A + '$ and $k = ' + k + '$, so the ' + (wantMax ? 'maximum is $' + k + ' + ' + Math.abs(A) : 'minimum is $' + k + ' - ' + Math.abs(A)) + ' = ' + key + '$.' + (A < 0 ? ' Because $A$ is negative, the ' + (wantMax ? 'maximum' : 'minimum') + ' occurs where $\\' + fn + ' ' + (w.eq(1) ? '' : w.n) + 'x = ' + (wantMax ? '-1' : '1') + '$.' : '')
     };
   });
 
@@ -4749,24 +4894,24 @@
   function waveFacts(fn) {
     var f = Math[fn], odd = fn === 'sin', other = odd ? 'cos' : 'sin';
     var zeros = function () { var c = 0; for (var x = -30; x <= 30; x += 0.001) if (f(x) * f(x + 0.001) < 0) c++; return c; };
-    var S = h.factS;
+    var S = h.factS, top = odd ? '\\dfrac{\\pi}{2}' : '0', parity = odd ? '$\\sin(-x) = -\\sin x$, so it is odd' : '$\\cos(-x) = \\cos x$, so it is even';
     return [
-      S('It is a periodic function with minimum positive period $2\\pi$', true, function () { return nt.minPeriod(f, 2 * PI); }, '', { g: 'per' }),
-      S('Its maximum value is $1$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6); }, '', { g: 'max' }),
-      S('Its range is $[-1, 1]$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6) && ev.close(nt.min(f, 0, 2 * PI), -1, 1e-6); }, '', { g: 'rng' }),
+      S('It is a periodic function with minimum positive period $2\\pi$', true, function () { return nt.minPeriod(f, 2 * PI); }, '$\\' + fn + '(x + 2\\pi) = \\' + fn + ' x$ for every $x$, and no smaller positive number has this property.', { g: 'per' }),
+      S('Its maximum value is $1$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6); }, 'its values never exceed $1$, and $\\' + fn + ' ' + top + ' = 1$.', { g: 'max' }),
+      S('Its range is $[-1, 1]$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6) && ev.close(nt.min(f, 0, 2 * PI), -1, 1e-6); }, 'its values lie between $-1$ and $1$, and both ends are reached.', { g: 'rng' }),
       S('It has infinitely many zeros', true, function () { return zeros() > 10; }, 'it is zero at $x = ' + (odd ? 'k\\pi' : '\\dfrac{\\pi}{2} + k\\pi') + '$ for every integer $k$.', { g: 'zero' }),
-      S('It is an ' + (odd ? 'odd' : 'even') + ' function', true, function () { return odd ? nt.odd(f) : nt.even(f); }, '', { g: 'par' }),
-      S('Its graph is symmetric about the ' + (odd ? 'origin' : '$y$-axis'), true, function () { return odd ? nt.odd(f) : nt.even(f); }, '', { g: 'sym' }),
-      S(odd ? 'It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$' : 'It is monotonically decreasing on $[0, \\pi]$', true, function () { return odd ? nt.incOn(f, -PI / 2, PI / 2) : nt.decOn(f, 0, PI); }, '', { g: 'mono' }),
-      S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the minimum positive period of $y = \\' + fn + ' x$ is $2\\pi$.', { g: 'per', trap: 'near-miss' }),
+      S('It is an ' + (odd ? 'odd' : 'even') + ' function', true, function () { return odd ? nt.odd(f) : nt.even(f); }, parity + '.', { g: 'par' }),
+      S('Its graph is symmetric about the ' + (odd ? 'origin' : '$y$-axis'), true, function () { return odd ? nt.odd(f) : nt.even(f); }, parity + '.', { g: 'sym' }),
+      S(odd ? 'It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$' : 'It is monotonically decreasing on $[0, \\pi]$', true, function () { return odd ? nt.incOn(f, -PI / 2, PI / 2) : nt.decOn(f, 0, PI); }, odd ? 'on this interval $\\sin x$ rises steadily from $-1$ to $1$.' : 'on this interval $\\cos x$ falls steadily from $1$ to $-1$.', { g: 'mono' }),
+      S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the minimum positive period is $2\\pi$. For example, $\\' + fn + ' ' + top + ' = 1$ but $\\' + fn + '\\left(' + (odd ? '\\dfrac{\\pi}{2} + \\pi' : '0 + \\pi') + '\\right) = -1$.', { g: 'per', trap: 'near-miss' }),
       S('Its maximum value is $2$', false, function () { return ev.close(nt.max(f, 0, 2 * PI), 2, 1e-6); }, 'its values never exceed $1$.', { g: 'max', trap: 'slip' }),
-      S('Its maximum value is $\\dfrac{\\pi}{2}$', false, function () { return ev.close(nt.max(f, 0, 2 * PI), PI / 2, 1e-6); }, 'its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it).', { g: 'max2', trap: 'swap' }),
-      S('It has exactly one zero', false, function () { return zeros() === 1; }, 'it has infinitely many zeros.', { g: 'zero', trap: 'partial' }),
-      S('It is an ' + (odd ? 'even' : 'odd') + ' function', false, function () { return odd ? nt.even(f) : nt.odd(f); }, '$y = \\' + fn + ' x$ is ' + (odd ? 'odd' : 'even') + '.', { g: 'par', trap: 'companion' }),
-      S('Its graph is symmetric about the ' + (odd ? '$y$-axis' : 'origin'), false, function () { return odd ? nt.even(f) : nt.odd(f); }, '$y = \\' + fn + ' x$ is ' + (odd ? 'odd, so its graph is symmetric about the origin' : 'even, so its graph is symmetric about the $y$-axis') + '.', { g: 'sym', trap: 'companion' }),
-      S('It is monotonically increasing on $[0, \\pi]$', false, function () { return nt.incOn(f, 0, PI); }, odd ? 'on $[0, \\pi]$ it rises to $1$ and then falls.' : 'on $[0, \\pi]$ it is decreasing.', { g: 'mono', trap: 'slip' }),
-      S('$\\' + fn + (odd ? '\\dfrac{\\pi}{2}' : ' 0') + ' = 0$', false, function () { return ev.close(f(odd ? PI / 2 : 0), 0); }, 'the value there is $1$.', { g: 'val', trap: 'companion' }),
-      S('Its range is $\\mathbb{R}$', false, function () { return nt.max(f, 0, 7) > 5; }, 'its values stay between $-1$ and $1$.', { g: 'rng', trap: 'domain' })
+      S('Its maximum value is $\\dfrac{\\pi}{2}$', false, function () { return ev.close(nt.max(f, 0, 2 * PI), PI / 2, 1e-6); }, 'its maximum value is $1$.' + (odd ? ' The number $\\dfrac{\\pi}{2}$ is a value of $x$ where the maximum is reached, not the maximum itself.' : ''), { g: 'max2', trap: 'swap' }),
+      S('It has exactly one zero', false, function () { return zeros() === 1; }, 'it is zero at $x = ' + (odd ? 'k\\pi' : '\\dfrac{\\pi}{2} + k\\pi') + '$ for every integer $k$, so it has infinitely many zeros.', { g: 'zero', trap: 'partial' }),
+      S('It is an ' + (odd ? 'even' : 'odd') + ' function', false, function () { return odd ? nt.even(f) : nt.odd(f); }, parity + ', not ' + (odd ? 'even' : 'odd') + '.', { g: 'par', trap: 'companion' }),
+      S('Its graph is symmetric about the ' + (odd ? '$y$-axis' : 'origin'), false, function () { return odd ? nt.even(f) : nt.odd(f); }, parity + ', so its graph is symmetric about the ' + (odd ? 'origin' : '$y$-axis') + '.', { g: 'sym', trap: 'companion' }),
+      S('It is monotonically increasing on $[0, \\pi]$', false, function () { return nt.incOn(f, 0, PI); }, odd ? 'on $[0, \\pi]$ it rises from $0$ to $1$ and then falls back to $0$.' : 'on $[0, \\pi]$ it falls from $1$ to $-1$, so it is decreasing there.', { g: 'mono', trap: 'slip' }),
+      S('$\\' + fn + (odd ? '\\dfrac{\\pi}{2}' : ' 0') + ' = 0$', false, function () { return ev.close(f(odd ? PI / 2 : 0), 0); }, 'in fact $\\' + fn + (odd ? '\\dfrac{\\pi}{2}' : ' 0') + ' = 1$.', { g: 'val', trap: 'companion' }),
+      S('Its range is $\\mathbb{R}$', false, function () { return nt.max(f, 0, 7) > 5; }, 'its values stay between $-1$ and $1$, so its range is $[-1, 1]$.', { g: 'rng', trap: 'domain' })
     ];
   }
   def({ id: 'TR-graph.stmt', code: 'TR-graph', lesson: '2.5', tier: 'E', level: '=', fmt: 'S', w: 2,
@@ -4777,7 +4922,7 @@
     return out(R.pick(['Which of the following statements about the function $y = \\' + fn + ' x$ is correct? ( )', 'Regarding the function $y = \\' + fn + ' x$, which of the following conclusions is correct? ( )']), st);
   });
   def({ id: 'TR-graph.stmt-n', code: 'TR-graph', lesson: '2.5', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'y = sin x or y = cos x: which statement is INCORRECT', basis: 'Jan Q30' }, function (R) {
+    form: 'y = sin x or y = cos x: which statement is incorrect', basis: 'Jan Q30' }, function (R) {
     var fn = R.pick(['sin', 'cos']);
     var st = QF.pickStmts(R, 'N', waveFacts(fn));
     if (fn === 'sin' && /even function/.test(st.key)) retry('real item');
@@ -4798,27 +4943,42 @@
     var expect = { 'sin-dec': [0.5, 1.5], 'cos-dec': [0, 1], 'cos-inc': [-1, 0] }[fn + '-' + dir];
     pool.forEach(function (s, i) { var v = ivs[i]; var should = (v[0] === expect[0] && v[1] === expect[1]) || (fn === 'cos' && dir === 'inc' && v[0] === 1); if (s.ok !== should) throw new Error('TR-graph.mono-interval: unexpected truth'); });
     var st = QF.pickStmts(R, 'S', pool), word = dir === 'inc' ? 'increasing' : 'decreasing';
+    function onIv(text) {   // what the function does on one interval of the pool
+      var v = ivs[pool.map(function (s) { return s.t; }).indexOf(text)], a = v[0] * PI, b = v[1] * PI;
+      if (nt.incOn(f, a, b)) return 'on ' + text + ' it is increasing';
+      if (nt.decOn(f, a, b)) return 'on ' + text + ' it is decreasing';
+      var turn = (fn === 'sin' ? [-0.5, 0.5, 1.5] : [-1, 0, 1, 2]).filter(function (t) { return t > v[0] && t < v[1]; })[0];
+      return 'on ' + text + ' it changes direction at $x = ' + F.piMul(q(Math.round(turn * 2), 2)) + '$';
+    }
     st.sol = (fn === 'sin' ? '$\\sin x$ increases on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ and decreases on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$' : '$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$') +
-      ' (then the pattern repeats every $2\\pi$). So the function is monotonically ' + word + ' on $' + st.key.replace(/\$/g, '') + '$. On each of the other three intervals it changes direction or moves the other way.';
+      ', and this pattern repeats every $2\\pi$. So the function is monotonically ' + word + ' on ' + st.key + '. For the other options, ' + h.joinAnd(st.wrongStmts.map(function (s) { return onIv(s.t); })) + '.';
     return out('The function $f(x) = \\' + fn + ' x$ is monotonically ' + word + ' on ( )', st);
   });
 
   def({ id: 'TR-graph.four', code: 'TR-graph', lesson: '2.5', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Four statements about y = A sin(ωx + φ) + k (period, maximum, minimum, value)', basis: 'Course plan 2.5 Q7–Q8' }, function (R) {
+    form: 'Four statements about y = A sin(ωx + φ) + k (period, maximum, minimum, value)', basis: 'Course plan 2.5 Q7-Q8' }, function (R) {
     var fn = R.pick(['sin', 'cos']), A = R.pick([2, 3, 4]), w = R.pick([q(2), q(3), q(1, 2), q(4)]), phi = R.pick([q(0), q(1, 3), q(-1, 6), q(1, 6), q(1, 2)]), k = R.pick([0, 1, -1, 2]);
     var f = function (x) { return A * Math[fn](w.num * x + phi.num * PI) + k; }, Tm = q(2).div(w), S = h.factS;
     var mx = k + A, mn = k - A, f0 = f(0);
     var isEven = nt.even(f), isOdd = nt.odd(f);
+    var f0x = sd(A).mul(fn === 'sin' ? trig.sin(phi.num * 180) : trig.cos(phi.num * 180)).add(sd(k));     // exact f(0)
+    if (!ev.close(f0x.num, f0, 1e-9)) throw new Error('TR-graph.four: f(0) mismatch');
+    var wv = 'x', wTx = w.d === 1 ? w.n + 'x' : '\\dfrac{' + (w.n === 1 ? '' : w.n) + 'x}{' + w.d + '}';
+    var evenWhy = isEven ? (fn === 'cos' ? '$\\cos(-u) = \\cos u$, so $f(-x) = f(x)$.' : '$\\sin\\left(' + wTx + ' + \\dfrac{\\pi}{2}\\right) = \\cos ' + wTx + '$, so $f(x) = ' + A + '\\cos ' + wTx + (k ? ' ' + h.signed(k) : '') + '$, which is even.')
+      : '$f(0) = ' + F.n(f0x) + '$ is neither the maximum $' + mx + '$ nor the minimum $' + mn + '$, so the $y$-axis is not an axis of symmetry of the graph.';
+    var oddWhy = isOdd ? (fn === 'sin' ? '$\\sin(-u) = -\\sin u$, so $f(-x) = -f(x)$.' : '$\\cos\\left(' + wTx + ' + \\dfrac{\\pi}{2}\\right) = -\\sin ' + wTx + '$, so $f(x) = -' + A + '\\sin ' + wTx + '$, which is odd.')
+      : (k !== 0 ? 'for an odd function the maximum and the minimum are opposite numbers, but here they are $' + mx + '$ and $' + mn + '$.' : '$f(0) = ' + F.n(f0x) + ' \\ne 0$, but an odd function defined at $0$ has $f(0) = 0$.');
+    var perW = '$T = \\dfrac{2\\pi}{|\\omega|} = ' + (w.d === 1 ? '\\dfrac{2\\pi}{' + w.n + '}' : '2\\pi \\div ' + F.n(w)) + ' = ' + F.piMul(Tm) + '$.';
     var pool = [
-      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, '$T = \\dfrac{2\\pi}{|\\omega|}$.', { g: 'per' }),
-      S('Its maximum value is $' + mx + '$', true, function () { return ev.close(nt.max(f, 0, Tm.num * PI), mx, 1e-6); }, 'the maximum is $k + |A|$.', { g: 'max' }),
-      S('Its minimum value is $' + mn + '$', true, function () { return ev.close(nt.min(f, 0, Tm.num * PI), mn, 1e-6); }, 'the minimum is $k - |A|$.', { g: 'min' }),
-      S('Its minimum positive period is $' + F.piMul(q(1).div(w)) + '$', false, function () { return nt.minPeriod(f, PI / w.num); }, 'that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$.', { g: 'per', trap: 'near-miss' }),
-      S('Its minimum positive period is $' + F.piMul(w.mul(2)) + '$', false, function () { return nt.minPeriod(f, 2 * PI * w.num); }, 'divide by $\\omega$, do not multiply: $T = ' + F.piMul(Tm) + '$.', { g: 'per2', trap: 'reciprocal' }),
-      S('Its maximum value is $' + A + '$', k === 0, function () { return ev.close(nt.max(f, 0, Tm.num * PI), A, 1e-6); }, k === 0 ? 'the maximum is $k + |A|$.' : 'the vertical shift $' + k + '$ was forgotten: the maximum is $' + mx + '$.', { g: 'max', trap: 'partial' }),
-      S('Its minimum value is $' + (-A) + '$', k === 0, function () { return ev.close(nt.min(f, 0, Tm.num * PI), -A, 1e-6); }, k === 0 ? 'the minimum is $k - |A|$.' : 'the vertical shift $' + k + '$ was forgotten: the minimum is $' + mn + '$.', { g: 'min', trap: 'partial' }),
-      S('It is an even function', isEven, function () { return nt.even(f); }, isEven ? '$f(-x) = f(x)$.' : '$f(-x) \\ne f(x)$ in general.', { g: 'par', trap: 'slip' }),
-      S('It is an odd function', isOdd, function () { return nt.odd(f); }, isOdd ? '$f(-x) = -f(x)$.' : '$f(-x) \\ne -f(x)$ in general.', { g: 'par2', trap: 'slip' })
+      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, perW, { g: 'per' }),
+      S('Its maximum value is $' + mx + '$', true, function () { return ev.close(nt.max(f, 0, Tm.num * PI), mx, 1e-6); }, 'the maximum is $k + |A| = ' + k + ' + ' + A + ' = ' + mx + '$.', { g: 'max' }),
+      S('Its minimum value is $' + mn + '$', true, function () { return ev.close(nt.min(f, 0, Tm.num * PI), mn, 1e-6); }, 'the minimum is $k - |A| = ' + k + ' - ' + A + ' = ' + mn + '$.', { g: 'min' }),
+      S('Its minimum positive period is $' + F.piMul(q(1).div(w)) + '$', false, function () { return nt.minPeriod(f, PI / w.num); }, '$\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here ' + perW, { g: 'per', trap: 'near-miss' }),
+      S('Its minimum positive period is $' + F.piMul(w.mul(2)) + '$', false, function () { return nt.minPeriod(f, 2 * PI * w.num); }, 'the period is found by dividing $2\\pi$ by $|\\omega|$, not by multiplying: ' + perW, { g: 'per2', trap: 'reciprocal' }),
+      S('Its maximum value is $' + A + '$', k === 0, function () { return ev.close(nt.max(f, 0, Tm.num * PI), A, 1e-6); }, k === 0 ? 'the maximum is $k + |A| = ' + A + '$.' : 'the vertical shift is missing. The maximum is $k + |A| = ' + k + ' + ' + A + ' = ' + mx + '$.', { g: 'max', trap: 'partial' }),
+      S('Its minimum value is $' + (-A) + '$', k === 0, function () { return ev.close(nt.min(f, 0, Tm.num * PI), -A, 1e-6); }, k === 0 ? 'the minimum is $k - |A| = ' + (-A) + '$.' : 'the vertical shift is missing. The minimum is $k - |A| = ' + k + ' - ' + A + ' = ' + mn + '$.', { g: 'min', trap: 'partial' }),
+      S('It is an even function', isEven, function () { return nt.even(f); }, evenWhy, { g: 'par', trap: 'slip' }),
+      S('It is an odd function', isOdd, function () { return nt.odd(f); }, oddWhy, { g: 'par2', trap: 'slip' })
     ];
     // de-duplicate statements that coincide when k = 0
     var seen = {}; pool = pool.filter(function (s) { if (seen[s.t]) return false; seen[s.t] = 1; return true; });
@@ -4833,15 +4993,25 @@
     var base = fn === 'sin' ? (dir === 'inc' ? [q(-1, 2), q(1, 2)] : [q(1, 2), q(3, 2)]) : (dir === 'inc' ? [q(-1), q(0)] : [q(0), q(1)]);
     function ivT(a, b) { return '\\left[' + F.piMul(a) + ', ' + F.piMul(b) + '\\right]'; }
     function st(a, b, ok, why, tr) { return h.factS('$' + ivT(a, b) + '$', ok, function () { return dir === 'inc' ? nt.incOn(f, a.num * PI, b.num * PI) : nt.decOn(f, a.num * PI, b.num * PI); }, why, { trap: tr }); }
-    var key = st(base[0].sub(phi), base[1].sub(phi), true, 'solve $' + F.piMul(base[0]) + ' \\le x ' + (phi.n > 0 ? '+ ' : '- ') + F.piMul(phi.abs()) + ' \\le ' + F.piMul(base[1]) + '$.');
+    var key = st(base[0].sub(phi), base[1].sub(phi), true, '');
     var wrongs = [
-      st(base[0].add(phi), base[1].add(phi), false, 'the shift goes the other way: subtract $\\varphi$.', 'sign'),
-      st(base[0], base[1], false, 'that is the interval for the unshifted function.', 'partial'),
-      st(base[0].sub(phi).add(1), base[1].sub(phi).add(1), false, 'on this interval the function moves in the opposite direction.', 'complement')
+      st(base[0].add(phi), base[1].add(phi), false, '', 'sign'),
+      st(base[0], base[1], false, '', 'partial'),
+      st(base[0].sub(phi).add(1), base[1].sub(phi).add(1), false, '', 'complement')
     ];
     var st2 = QF.useStmts('S', key, wrongs), word = dir === 'inc' ? 'increasing' : 'decreasing', u = wArg(q(1), phi);
-    st2.sol = 'Let $u = ' + u + '$. The function $\\' + fn + ' u$ is ' + word + ' for $' + F.piMul(base[0]) + ' \\le u \\le ' + F.piMul(base[1]) + '$. Solve $' + F.piMul(base[0]) + ' \\le ' + u + ' \\le ' + F.piMul(base[1]) + '$: $x \\in ' + ivT(base[0].sub(phi), base[1].sub(phi)) + '$. ' +
-      'Moving the interval the other way (adding instead of subtracting), or using the interval of the unshifted function, gives a wrong option; half a period later the function moves in the opposite direction.';
+    function onIv(s) {
+      var v = s.t.match(/\\left\[(.*), (.*)\\right\]/), a = ev.expr(v[1]), b = ev.expr(v[2]);
+      if (nt.incOn(f, a, b)) return 'on ' + s.t + ' it is increasing';
+      if (nt.decOn(f, a, b)) return 'on ' + s.t + ' it is decreasing';
+      for (var k = -3; k <= 3; k++) {   // turning points: u = π/2 + kπ for sine, u = kπ for cosine
+        var t = (fn === 'sin' ? q(1, 2) : q(0)).add(k).sub(phi);
+        if (t.num * PI > a + 1e-9 && t.num * PI < b - 1e-9) return 'on ' + s.t + ' it changes direction at $x = ' + F.piMul(t) + '$';
+      }
+      throw new Error('TR-graph.mono-shift: no turning point found');
+    }
+    st2.sol = 'Let $u = ' + u + '$. The function $\\' + fn + ' u$ is ' + word + ' for $' + F.piMul(base[0]) + ' \\le u \\le ' + F.piMul(base[1]) + '$. Solving $' + F.piMul(base[0]) + ' \\le ' + u + ' \\le ' + F.piMul(base[1]) + '$ gives $' + F.piMul(base[0].sub(phi)) + ' \\le x \\le ' + F.piMul(base[1].sub(phi)) + '$, so the function is ' + word + ' on ' + st2.key + '. ' +
+      'For the other options, ' + h.joinAnd(st2.wrongStmts.map(onIv)) + '.';
     return out('The function $y = \\' + fn + '\\left(' + u + '\\right)$ is monotonically ' + word + ' on ( )', st2);
   });
 
@@ -4851,18 +5021,19 @@
     var lo = -half.num * PI, hi = half.num * PI, ivTex = '\\left(-' + F.piMul(half) + ', ' + F.piMul(half) + '\\right)';
     var inner = function (dirInc) { return function () { var prev = null; for (var i = 1; i < 200; i++) { var x = lo + (hi - lo) * i / 200, v = f(x); if (prev !== null && (dirInc ? v <= prev : v >= prev)) return false; prev = v; } return true; }; };
     var whole = function (dirInc) { return function () { var a = f(0.9 * hi), b = f(1.1 * hi); return dirInc ? b > a : b < a; }; };   // across an asymptote the order breaks
+    var perW = 'for $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$', monoW = neg ? '$\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $' + ivTex + '$.' : 'the tangent is increasing on each interval between consecutive asymptotes, and $' + ivTex + '$ is one of them.';
     return [
-      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, 'for a tangent $T = \\dfrac{\\pi}{|\\omega|}$.', { g: 'per' }),
-      S('It is an odd function', true, function () { return nt.odd(f, [0.1, 0.2, 0.33]); }, '', { g: 'par' }),
-      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on $' + ivTex + '$', true, inner(!neg), neg ? '$\\tan(-u) = -\\tan u$, and $-\\tan$ is decreasing on each interval between asymptotes.' : 'the tangent is increasing on each interval between consecutive asymptotes.', { g: 'mono' }),
-      S('Its range is $\\mathbb{R}$', true, function () { return f(0.999 * hi) * (neg ? -1 : 1) > 100; }, '', { g: 'rng' }),
-      S('Its minimum positive period is $' + F.piMul(Tm.mul(2)) + '$', false, function () { return nt.minPeriod(f, Tm.num * 2 * PI); }, 'that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$.', { g: 'per', trap: 'near-miss' }),
-      S('It is an even function', false, function () { return nt.even(f, [0.1, 0.2, 0.33]); }, 'the tangent is odd.', { g: 'par', trap: 'companion' }),
-      S('It is ' + (neg ? 'increasing' : 'decreasing') + ' on $' + ivTex + '$', false, inner(neg), 'the direction is the other way.', { g: 'mono', trap: 'sign' }),
-      S('Its domain is $\\mathbb{R}$', false, function () { return isFinite(f(hi)) && Math.abs(f(hi)) < 1e6; }, 'the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$.', { g: 'dom', trap: 'domain' }),
-      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on its whole domain', false, whole(!neg), 'it is monotonic on each interval between asymptotes, but not across them.', { g: 'whole', trap: 'domain' }),
-      S('Its maximum value is $1$', false, function () { return Math.abs(f(0.999 * hi)) < 2; }, 'the tangent is unbounded.', { g: 'rng', trap: 'slip' })
-    ].concat(wq.eq(1) || wq.eq(2) ? [] : [S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the coefficient of $x$ changes the period: $T = ' + F.piMul(Tm) + '$.', { g: 'per2', trap: 'partial' })]);
+      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, perW + '.', { g: 'per' }),
+      S('It is an odd function', true, function () { return nt.odd(f, [0.1, 0.2, 0.33]); }, '$\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$.', { g: 'par' }),
+      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on $' + ivTex + '$', true, inner(!neg), monoW, { g: 'mono' }),
+      S('Its range is $\\mathbb{R}$', true, function () { return f(0.999 * hi) * (neg ? -1 : 1) > 100; }, 'between two consecutive asymptotes the tangent takes every real value.', { g: 'rng' }),
+      S('Its minimum positive period is $' + F.piMul(Tm.mul(2)) + '$', false, function () { return nt.minPeriod(f, Tm.num * 2 * PI); }, '$\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. ' + QF.sentence(perW), { g: 'per', trap: 'near-miss' }),
+      S('It is an even function', false, function () { return nt.even(f, [0.1, 0.2, 0.33]); }, '$\\tan(-u) = -\\tan u$, so the function is odd, not even.', { g: 'par', trap: 'companion' }),
+      S('It is ' + (neg ? 'increasing' : 'decreasing') + ' on $' + ivTex + '$', false, inner(neg), monoW, { g: 'mono', trap: 'sign' }),
+      S('Its domain is $\\mathbb{R}$', false, function () { return isFinite(f(hi)) && Math.abs(f(hi)) < 1e6; }, 'the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = ' + F.piMul(half) + '$.', { g: 'dom', trap: 'domain' }),
+      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on its whole domain', false, whole(!neg), 'it is monotonic on each interval between consecutive asymptotes, but not across an asymptote.', { g: 'whole', trap: 'domain' }),
+      S('Its maximum value is $1$', false, function () { return Math.abs(f(0.999 * hi)) < 2; }, 'the tangent takes arbitrarily large values, so it has no maximum.', { g: 'rng', trap: 'slip' })
+    ].concat(wq.eq(1) || wq.eq(2) ? [] : [S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the coefficient of $x$ changes the period. ' + QF.sentence(perW), { g: 'per2', trap: 'partial' })]);
   }
   function tanName(wq, neg) { return '\\tan' + (wq.eq(1) && !neg ? ' x' : wq.d === 1 ? (neg ? '(-' + (wq.n === 1 ? '' : wq.n) + 'x)' : ' ' + wq.n + 'x') : '\\left(' + (neg ? '-' : '') + '\\dfrac{x}{' + wq.d + '}\\right)').replace('\\left(\\dfrac{x}', ' \\dfrac{x}').replace(/x\}\{(\d)\}\\right\)$/, function (s) { return neg ? s : s.replace('\\right)', ''); }); }
   def({ id: 'TR-graph.tan-stmt', code: 'TR-graph', lesson: '2.6', tier: 'E', level: '=', fmt: 'S', w: 1,
@@ -4873,7 +5044,7 @@
     return out('Which of the following statements about the function $y = ' + tanName(w, false) + '$ is correct? ( )', st);
   });
   def({ id: 'TR-graph.tan-n', code: 'TR-graph', lesson: '2.6', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'y = tan x: which statement is INCORRECT', basis: 'Mar Q40, undated Q38' }, function (R) {
+    form: 'y = tan x: which statement is incorrect', basis: 'Mar Q40, undated Q38' }, function (R) {
     var w = R.pick([q(1), q(1), q(2)]);
     var st = QF.pickStmts(R, 'N', tanFacts(w, false));
     if (w.eq(1) && /even function/.test(st.key)) retry('real item');
@@ -4883,7 +5054,7 @@
     form: 'y = tan(−kx) or tan(x/k): which statement is correct (monotonicity between asymptotes)', basis: 'Jun Q39' }, function (R) {
     var neg = R.bool(0.6), w = R.pick(neg ? [q(1), q(3), q(1, 2), q(4)] : [q(1, 2), q(1, 3), q(3), q(4)]);
     var st = QF.pickStmts(R, 'S', tanFacts(w, neg));
-    return out('Which of the following statements about the function $y = ' + tanName(w, neg) + '$ is correct? ( )', st, neg ? 'Rewrite $\\tan(-u) = -\\tan u$ first.' : '');
+    return out('Which of the following statements about the function $y = ' + tanName(w, neg) + '$ is correct? ( )', st);
   });
 
   def({ id: 'TR-graph.tan-domain', code: 'TR-graph', lesson: '2.6', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -4898,13 +5069,13 @@
     var wrong = [[m(setT(phi, 1)), 'partial'], [m(setT(q(1, 2).sub(phi), 1)), 'sign'], [m(setT(c, 2)), 'near-miss'], [m(setT(q(1, 2), 1)), 'domain'], [m('\\mathbb{R}'), 'domain']];
     return {
       stem: 'The domain of the function $y = ' + (A === 1 ? '' : A) + '\\tan\\left(' + wArg(q(1), phi.neg()) + '\\right)$ is ( )', key: m(setT(c, 1)), wrong: wrong, check: chk.set(truth, crit),
-      sol: 'The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $' + wArg(q(1), phi.neg()) + ' \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + ' + F.piMul(c) + '$ ($k \\in \\mathbb{Z}$).'
+      sol: 'The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $' + wArg(q(1), phi.neg()) + ' \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + ' + F.piMul(c) + '$ for every integer $k$. The domain is $' + setT(c, 1) + '$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/tr2.js ---- */
-/* ACE CSCA Question Factory · templates/tr2.js — Trigonometry II: TR-sum, TR-dbl, TR-half, TR-hom. */
+/* ACE CSCA Question Factory · templates/tr2.js: Trigonometry II: TR-sum, TR-dbl, TR-half, TR-hom. */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Sd = N.Sd, trig = N.trig, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, T = QF.T;
@@ -4916,9 +5087,31 @@
     return list.filter(function (b) { return b && b[0] !== null && b[0] !== undefined; }).map(function (b) { return [typeof b[0] === 'string' ? b[0] : m(b[0]), b[1]]; });
   }
   function par(v) { var t = F.n(v); return /^-/.test(t) ? '\\left(' + t + '\\right)' : t; }
+  /** " = \dfrac{n}{d} = \dfrac{n'}{d'} = value": the fraction, then (when n or d is a fraction) both parts multiplied by their common denominator, then the value */
+  function chain(n, d, key) {
+    var parts = [d.n === 1 && d.d === 1 ? F.n(n) : '\\dfrac{' + F.n(n) + '}{' + F.n(d) + '}'];
+    if (!(n.d === 1 && d.d === 1)) {
+      var L = N.lcm(n.d, d.d), n2 = n.mul(L), d2 = d.mul(L);
+      if (!(d2.n === 1 && d2.d === 1)) parts.push('\\dfrac{' + F.n(n2) + '}{' + F.n(d2) + '}');
+    }
+    parts.push(F.n(key));
+    return ' = ' + parts.filter(function (p, i) { return i === 0 || p !== parts[i - 1]; }).join(' = ');
+  }
   function word(fn) { return { sin: 'sine', cos: 'cosine', tan: 'tangent' }[fn]; }
   function sgnWord(v) { return v.sgn > 0 ? 'positive' : 'negative'; }
   function relAt(tex, a) { return function () { return ev.rel(tex, { alpha: a }); }; }
+  /** the other ratio of α from sin²α + cos²α = 1 and the sign in the quadrant */
+  function otherRatio(A, given, where) {
+    var o = given === 'sin' ? 'cos' : 'sin', g2 = A[given].mul(A[given]);
+    return 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + o + '^2\\alpha = 1 - ' + F.n(g2) + ' = ' + F.n(sd(1).sub(g2)) + '$. ' + where.charAt(0).toUpperCase() + where.slice(1) + ' the ' + word(o) + ' is ' + sgnWord(A[o]) + ', so $\\' + o + '\\alpha = ' + F.n(A[o]) + '$.';
+  }
+  /** rationalising the value of tan(A ± B) for the splits 45 ± 30 and 60 ± 45 */
+  var TANRAT = {
+    '45+30': '\\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6}',
+    '45-30': '\\dfrac{3 - \\sqrt{3}}{3 + \\sqrt{3}} = \\dfrac{(3 - \\sqrt{3})^2}{9 - 3} = \\dfrac{12 - 6\\sqrt{3}}{6}',
+    '60+45': '\\dfrac{(\\sqrt{3} + 1)^2}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\dfrac{4 + 2\\sqrt{3}}{-2}',
+    '60-45': '\\dfrac{(\\sqrt{3} - 1)^2}{(1 + \\sqrt{3})(\\sqrt{3} - 1)} = \\dfrac{4 - 2\\sqrt{3}}{2}'
+  };
 
   /* ===================== TR-sum · sum and difference formulas ===================== */
   var SPLIT = { 15: [45, 30, '-'], 75: [45, 30, '+'], 105: [60, 45, '+'] };
@@ -4949,11 +5142,11 @@
       wrong = [[comp.scale(s), 'companion'], [key.neg(), 'sign']].concat(R.shuffle([[comp.scale(-s), 'companion'], [(sg === '+' ? fA.add(fB) : fA.sub(fB)).scale(s), 'operation'], [kAbs.scale(2).scale(s), 'slip']]));
     }
     var call = fc(fn, deg, useDeg), stem;
-    if (givenStyle && deg === ref) stem = 'Given $' + fc(fn, A, useDeg) + ' = ' + F.n(trig[fn](A)) + '$ and $' + fc(fn, B, useDeg) + ' = ' + F.n(trig[fn](B)) + '$, then $' + call + ' =$ ( )';
+    if (givenStyle && deg === ref) stem = 'Given that $' + fc(fn, A, useDeg) + ' = ' + F.n(trig[fn](A)) + '$ and $' + fc(fn, B, useDeg) + ' = ' + F.n(trig[fn](B)) + '$, the value of $' + call + '$ is ( )';
     else stem = R.pick(['$' + call + ' =$ ( )', 'The value of $' + call + '$ is ( )']);
-    var work = tan ? '\\tan\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expandTan(A, B, sg, useDeg) : '\\' + fn + '\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expand(fn, A, B, sg, useDeg);
+    var work = tan ? '\\tan\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expandTan(A, B, sg, useDeg) + ' = ' + TANRAT[A + sg + B] : '\\' + fn + '\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expand(fn, A, B, sg, useDeg);
     var sol;
-    if (deg === ref) sol = 'Write $' + splitTex(ref, sp, useDeg) + '$. Then $' + work + ' = ' + F.n(key) + '$' + (tan ? ' (rationalise the denominator).' : '.');
+    if (deg === ref) sol = 'Write $' + splitTex(ref, sp, useDeg) + '$. Then $' + work + ' = ' + F.n(key) + '$.' + (tan ? ' The denominator was rationalised in the last steps.' : '');
     else {
       sol = 'The angle $' + ang(deg, useDeg) + '$ lies in the ' + QD[trig.quadrant(deg)].name + ' quadrant and its reference angle is $' + ang(ref, useDeg) + '$, so $' + call + ' = ' + (key.sgn === base.sgn ? '' : '-') + fc(fn, ref, useDeg) + '$. ' +
         'With $' + splitTex(ref, sp, useDeg) + '$: $' + work + ' = ' + F.n(base) + '$. Hence the value is $' + F.n(key) + '$.';
@@ -5001,8 +5194,8 @@
       .concat([[key.neg(), 'sign'], [fn === 'sin' ? A.sin.add(sb) : A.cos.add(cb), 'operation']]);
     var first = sg === '+' && R.bool(0.3), arg = first ? BETA[b] + ' + \\alpha' : '\\alpha ' + sg + ' ' + BETA[b], ask = '\\' + fn + '\\left(' + arg + '\\right)';
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', then $' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: 'In the ' + QD[quad].name + ' quadrant the ' + word(other) + ' is ' + sgnWord(A[other]) + ', so $\\' + other + '\\alpha = ' + F.n(A[other]) + '$. Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', ' ' + BETA[b], sg) + ' = ' +
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', then $' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
+      sol: otherRatio(A, given, 'in the ' + QD[quad].name + ' quadrant') + ' Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', ' ' + BETA[b], sg) + ' = ' +
         sumNumbers(fn, A.sin, A.cos, sb, cb, sg) + ' = ' + F.n(key) + '$.'
     };
   });
@@ -5020,14 +5213,14 @@
       S('\\sin(\\alpha - \\beta) < \\sin\\alpha', true, '$-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval.', { g: 'sa' }),
       S('\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)', false, '$\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$.', { g: 'sd', trap: 'sign' }),
       S('\\cos(\\alpha + \\beta) > \\cos(\\alpha - \\beta)', false, 'the difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$.', { g: 'cc', trap: 'sign' }),
-      S('\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta', false, 'the sine of a sum is not the sum of the sines.', { g: 'ss', trap: 'operation' }),
-      S('\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta', false, 'the cosine of a sum is not the sum of the cosines.', { g: 'cs', trap: 'operation' }),
-      S('\\cos(\\alpha + \\beta) > \\cos\\alpha', false, '$\\alpha + \\beta > \\alpha$ and the cosine is decreasing on $(0, \\pi)$.', { g: 'ca', trap: 'sign' }),
-      S('\\cos(\\alpha + \\beta) > 0', false, '$\\alpha + \\beta$ can be obtuse, for example $\\alpha = \\beta = 60^\\circ$.', { g: 'c0', trap: 'domain' }),
-      S('\\sin(\\alpha + \\beta) > \\sin\\alpha', false, 'not always: for $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ < \\sin 80^\\circ$.', { g: 'sb', trap: 'domain' }),
-      S('\\sin(\\alpha - \\beta) > 0', false, 'it is negative when $\\alpha < \\beta$.', { g: 's0', trap: 'domain' }),
-      S('\\tan(\\alpha + \\beta) > 0', false, 'it is negative when $\\alpha + \\beta$ is obtuse.', { g: 't0', trap: 'domain' }),
-      S('\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta', false, '$\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger.', { g: 'cp', trap: 'sign' })
+      S('\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta', false, 'the sine of a sum is not the sum of the sines. For $\\alpha = \\beta = 30^\\circ$ the left side is $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and the right side is $1$.', { g: 'ss', trap: 'operation' }),
+      S('\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta', false, 'the cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$.', { g: 'cs', trap: 'operation' }),
+      S('\\cos(\\alpha + \\beta) > \\cos\\alpha', false, '$0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$, so $\\cos(\\alpha + \\beta) < \\cos\\alpha$.', { g: 'ca', trap: 'sign' }),
+      S('\\cos(\\alpha + \\beta) > 0', false, '$\\alpha + \\beta$ can be obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\cos 120^\\circ = -\\dfrac{1}{2} < 0$.', { g: 'c0', trap: 'domain' }),
+      S('\\sin(\\alpha + \\beta) > \\sin\\alpha', false, 'this is not always true. For $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ = \\sin 20^\\circ < \\sin 80^\\circ$.', { g: 'sb', trap: 'domain' }),
+      S('\\sin(\\alpha - \\beta) > 0', false, 'it is negative when $\\alpha < \\beta$. For $\\alpha = 30^\\circ$ and $\\beta = 60^\\circ$, $\\sin(-30^\\circ) = -\\dfrac{1}{2}$.', { g: 's0', trap: 'domain' }),
+      S('\\tan(\\alpha + \\beta) > 0', false, 'it is negative when $\\alpha + \\beta$ is obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\tan 120^\\circ = -\\sqrt{3}$.', { g: 't0', trap: 'domain' }),
+      S('\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta', false, '$\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one.', { g: 'cp', trap: 'sign' })
     ];
     return out(R.pick(['Let $\\alpha$ and $\\beta$ be acute angles. Which of the following must be true? ( )', 'If $\\alpha$ and $\\beta$ are both acute angles, which of the following always holds? ( )']), QF.pickStmts(R, 'S', pool));
   });
@@ -5039,8 +5232,8 @@
     if (R.bool(0.45)) {
       var quad = R.pick([3, 3, 2, 4]), A = mkAng(R, quad, 'rat'), g = R.pick(['sin', 'cos']);
       t = A.tan.toFr(); a = A.num;
-      lead = 'Given $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
-      pre = 'From the quadrant, $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$, so $\\tan\\alpha = ' + F.n(t) + '$. ';
+      lead = 'If $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
+      pre = otherRatio(A, g, 'in the ' + QD[quad].name + ' quadrant') + ' So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$. ';
     } else { t = R.pick(TLIST); a = Math.atan(t.num); lead = 'If $\\tan\\alpha = ' + F.n(t) + '$, then'; }
     if ((sg === '+' && t.eq(1)) || (sg === '-' && t.eq(-1))) retry();
     var one = q(1), key = sg === '+' ? t.add(1).div(one.sub(t)) : t.sub(1).div(one.add(t));
@@ -5049,7 +5242,7 @@
     var ask = '\\tan\\left(\\alpha ' + sg + ' \\dfrac{\\pi}{4}\\right)', op = sg === '+' ? '-' : '+';
     return {
       stem: lead + ' $' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.tan(a + (sg === '+' ? 1 : -1) * PI / 4)),
-      sol: pre + '$' + ask + ' = \\dfrac{\\tan\\alpha ' + sg + ' \\tan\\dfrac{\\pi}{4}}{1 ' + op + ' \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{' + F.n(sg === '+' ? t.add(1) : t.sub(1)) + '}{' + F.n(sg === '+' ? one.sub(t) : one.add(t)) + '} = ' + F.n(key) + '$.'
+      sol: pre + 'With $\\tan\\dfrac{\\pi}{4} = 1$: $' + ask + ' = \\dfrac{\\tan\\alpha ' + sg + ' \\tan\\dfrac{\\pi}{4}}{1 ' + op + ' \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha ' + sg + ' 1}{1 ' + op + ' \\tan\\alpha}' + chain(sg === '+' ? t.add(1) : t.sub(1), sg === '+' ? one.sub(t) : one.add(t), key) + '$.'
     };
   });
 
@@ -5064,9 +5257,9 @@
       .concat([[key.neg(), 'sign'], [sumVal(fn, as, ac, bs, bc, sg), 'sign']]);
     var oa = ga === 'sin' ? 'cos' : 'sin', ob = gb === 'sin' ? 'cos' : 'sin', ask = '\\' + fn + '(\\alpha ' + sg + ' \\beta)';
     return {
-      stem: 'Given $\\' + ga + '\\alpha = ' + F.n(A[ga]) + '$, $\\alpha \\in ' + QD[qa].iv + '$, and $\\' + gb + '\\beta = ' + F.n(B[gb]) + '$, $\\beta \\in ' + QD[qb].iv + '$. Then $' + ask + ' =$ ( )',
+      stem: 'Let $\\' + ga + '\\alpha = ' + F.n(A[ga]) + '$ with $\\alpha \\in ' + QD[qa].iv + '$, and $\\' + gb + '\\beta = ' + F.n(B[gb]) + '$ with $\\beta \\in ' + QD[qb].iv + '$. Then $' + ask + ' =$ ( )',
       key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: 'Signs from the quadrants: $\\' + oa + '\\alpha = ' + F.n(A[oa]) + '$ and $\\' + ob + '\\beta = ' + F.n(B[ob]) + '$. Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', '\\beta', sg) + ' = ' + sumNumbers(fn, A.sin, A.cos, B.sin, B.cos, sg) + ' = ' + F.n(key) + '$.'
+      sol: 'From $\\sin^2 + \\cos^2 = 1$ and the sign in each quadrant: $\\' + oa + '\\alpha = ' + F.n(A[oa]) + '$, because the ' + word(oa) + ' is ' + sgnWord(A[oa]) + ' in the ' + QD[qa].name + ' quadrant, and $\\' + ob + '\\beta = ' + F.n(B[ob]) + '$, because the ' + word(ob) + ' is ' + sgnWord(B[ob]) + ' in the ' + QD[qb].name + ' quadrant. Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', '\\beta', sg) + ' = ' + sumNumbers(fn, A.sin, A.cos, B.sin, B.cos, sg) + ' = ' + F.n(key) + '$.'
     };
   });
 
@@ -5140,8 +5333,8 @@
     var key = A.sin.mul(A.cos).scale(2), cos2 = A.cos.sq().sub(A.sin.sq());
     var wrong = [[key.neg(), 'sign'], [A.sin.mul(A.cos), 'partial'], [cos2, 'companion'], [A[given].scale(2), 'operation'], [cos2.neg(), 'companion']];
     return {
-      stem: R.pick(['If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ', 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ']) + T.inQuad(R, quad) + ', then $\\sin 2\\alpha =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.sin(2 * A.num)),
-      sol: 'In the ' + QD[quad].name + ' quadrant the ' + word(other) + ' is ' + sgnWord(A[other]) + ': $\\' + other + '\\alpha = ' + F.n(A[other]) + '$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot ' + par(A.sin) + ' \\cdot ' + par(A.cos) + ' = ' + F.n(key) + '$.'
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', then $\\sin 2\\alpha =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.sin(2 * A.num)),
+      sol: otherRatio(A, given, 'in the ' + QD[quad].name + ' quadrant') + ' Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot ' + par(A.sin) + ' \\cdot ' + par(A.cos) + ' = ' + F.n(key) + '$.'
     };
   }
   def({ id: 'TR-dbl.sin2', code: 'TR-dbl', lesson: '3.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -5149,7 +5342,7 @@
     return sin2Item(R, [1, 1, 1, 4, 2], 'rat', function (A, quad, given) { return quad === 1 && given === 'sin' && A.sin.eq(sd(q(3, 5))); });
   });
   def({ id: 'TR-dbl.sin2-surd', code: 'TR-dbl', lesson: '3.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'sin 2α with a surd ratio and a QII–QIV sign', basis: 'Course plan 3.2 Q6' }, function (R) { return sin2Item(R, [2, 4, 3], 'surd'); });
+    form: 'sin 2α with a surd ratio and a QII-QIV sign', basis: 'Course plan 3.2 Q6' }, function (R) { return sin2Item(R, [2, 4, 3], 'surd'); });
 
   def({ id: 'TR-dbl.squared', code: 'TR-dbl', lesson: '3.2', tier: 'E', level: '=', fmt: 'V', trick: 'T06', w: 1,
     form: 'sin²α or cos²α given → cos 2α (the answer for "sin α = k" is kept as an old-answer distractor)', basis: 'Jun Q25' }, function (R) {
@@ -5159,7 +5352,7 @@
     var truth = given === 'sin' ? Math.cos(2 * Math.asin(Math.sqrt(k.num))) : Math.cos(2 * Math.acos(Math.sqrt(k.num)));
     return {
       stem: 'If $\\' + given + '^2\\alpha = ' + F.n(k) + '$, then $\\cos 2\\alpha =$ ( )', key: m(key), wrong: W([[old, 'old-answer'], [key.neg(), 'companion'], [one.sub(k), 'partial'], [k.mul(2), 'operation']]), check: chk.num(truth),
-      sol: (given === 'sin' ? '$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot ' + F.n(k) : '$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot ' + F.n(k) + ' - 1') + ' = ' + F.n(key) + '$. The given value is already the square: squaring it again gives the trap answer $' + F.n(old) + '$.'
+      sol: (given === 'sin' ? '$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot ' + F.n(k) : '$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot ' + F.n(k) + ' - 1') + ' = ' + F.n(key) + '$. The given number is already $\\' + given + '^2\\alpha$, so it must not be squared again. Squaring it would give $' + F.n(old) + '$.'
     };
   });
 
@@ -5174,8 +5367,8 @@
     else { expr = '\\dfrac{\\sin 2\\alpha}{1 - \\cos 2\\alpha}'; key = sd(1).div(t); truth = s2 / (1 - c2); why = expr + ' = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\sin^2\\alpha} = \\dfrac{\\cos\\alpha}{\\sin\\alpha}'; }
     var wrong = [[sd(1).div(key), 'reciprocal'], [A.sin.mul(A.cos).scale(2), 'partial'], [A[other], 'partial'], [key.scale(2), 'operation'], [key.neg(), 'sign']];
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $' + expr + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: 'Simplify first: $' + why + '$. With $\\alpha$ acute, $\\' + other + '\\alpha = ' + F.n(A[other]) + '$, so the value is $' + F.n(key) + '$.'
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $' + expr + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
+      sol: 'Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $' + why + '$. ' + otherRatio(A, given, 'since $\\alpha$ is acute') + ' So $\\tan\\alpha = ' + F.n(t) + '$ and the value is $' + F.n(key) + '$.'
     };
   });
 
@@ -5185,8 +5378,8 @@
     if (R.bool(0.45)) {
       var quad = R.pick([2, 4, 3, 1]), A = mkAng(R, quad, 'rat'), g = R.pick(['sin', 'cos']);
       t = A.tan.toFr(); a = A.num;
-      lead = 'Given $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
-      pre = 'From the quadrant, $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$, so $\\tan\\alpha = ' + F.n(t) + '$. ';
+      lead = 'If $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
+      pre = otherRatio(A, g, 'in the ' + QD[quad].name + ' quadrant') + ' So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$. ';
     } else { t = R.pick(TLIST); a = Math.atan(t.num); lead = 'If $\\tan\\alpha = ' + F.n(t) + '$, then'; }
     var t2 = t.mul(t), one = q(1);
     if (t2.eq(1)) retry();
@@ -5194,7 +5387,7 @@
     var wrong = [[t.mul(2).div(one.add(t2)), 'sign'], [key.neg(), 'sign'], [t.mul(2), 'operation'], [key.inv(), 'reciprocal']];
     return {
       stem: lead + ' $\\tan 2\\alpha =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.tan(2 * a)),
-      sol: pre + '$\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{' + F.n(t.mul(2)) + '}{1 - ' + F.n(t2) + '} = ' + F.n(key) + '$.'
+      sol: pre + 'Then $\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{' + F.n(t.mul(2)) + '}{1 - ' + F.n(t2) + '}' + chain(t.mul(2), one.sub(t2), key) + '$.'
     };
   });
 
@@ -5206,7 +5399,7 @@
     var a = Math.asin(k.num / Math.SQRT2) - (sg === '+' ? 1 : -1) * PI / 4;      // sin α ± cos α = √2 sin(α ± π/4) = k
     return {
       stem: 'If $\\sin\\alpha ' + sg + ' \\cos\\alpha = ' + F.n(k) + '$, then $\\sin 2\\alpha =$ ( )', key: m(key), wrong: W([[key.neg(), 'sign'], [k2, 'partial'], [key.div(2), 'half'], [k.mul(2), 'operation']]), check: chk.num(Math.sin(2 * a)),
-      sol: 'Square both sides: $(\\sin\\alpha ' + sg + ' \\cos\\alpha)^2 = 1 ' + sg + ' 2\\sin\\alpha\\cos\\alpha = 1 ' + sg + ' \\sin 2\\alpha = ' + F.n(k2) + '$. So $\\sin 2\\alpha = ' + F.n(key) + '$.'
+      sol: 'Square both sides: $(\\sin\\alpha ' + sg + ' \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha ' + sg + ' 2\\sin\\alpha\\cos\\alpha = 1 ' + sg + ' \\sin 2\\alpha$, so $1 ' + sg + ' \\sin 2\\alpha = ' + F.n(k2) + '$. Therefore $\\sin 2\\alpha = ' + (sg === '+' ? F.n(k2) + ' - 1' : '1 - ' + F.n(k2)) + ' = ' + F.n(key) + '$.'
     };
   });
   def({ id: 'TR-dbl.sumk-cos', code: 'TR-dbl', lesson: '3.2', tier: 'H', level: '+1', fmt: 'V', w: 0.3,
@@ -5214,9 +5407,9 @@
     var quad = R.pick([2, 4]), A = mkAng(R, quad, 'rat'), k = A.sin.add(A.cos), key = A.cos.sq().sub(A.sin.sq()), sin2 = A.sin.mul(A.cos).scale(2), diff = A.sin.sub(A.cos);
     if (k.isZero || key.isZero) retry();
     return {
-      stem: 'Given $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $\\cos 2\\alpha =$ ( )', key: m(key),
+      stem: 'If $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $\\cos 2\\alpha =$ ( )', key: m(key),
       wrong: W([[key.neg(), 'sign'], [m(F.pm(F.absOf(key))), 'pm'], [sin2, 'companion'], [sin2.neg(), 'companion']]), check: chk.num(Math.cos(2 * A.num)),
-      sol: 'Square: $1 + \\sin 2\\alpha = ' + F.n(k.sq()) + '$, so $\\sin 2\\alpha = ' + F.n(sin2) + '$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - \\sin 2\\alpha = ' + F.n(diff.sq()) + '$; in the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') +
+      sol: 'Square both sides: $1 + \\sin 2\\alpha = ' + F.n(k.sq()) + '$, so $\\sin 2\\alpha = ' + F.n(sin2) + '$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - \\sin 2\\alpha = ' + F.n(diff.sq()) + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') +
         ' \\cos\\alpha$, so $\\sin\\alpha - \\cos\\alpha = ' + F.n(diff) + '$. Finally $\\cos 2\\alpha = (\\cos\\alpha - \\sin\\alpha)(\\cos\\alpha + \\sin\\alpha) = ' + par(diff.neg()) + ' \\cdot ' + par(k) + ' = ' + F.n(key) + '$.'
     };
   });
@@ -5235,17 +5428,18 @@
     var quad = R.pick([2, 3, 4, 1]), A = mkAng(R, quad, 'rat'), given = R.pick(['sin', 'cos']), a = A.num;
     var s2 = A.sin.mul(A.cos).scale(2), c2 = A.cos.sq().sub(A.sin.sq()), t2 = s2.div(c2);
     function st(fn, v, ok, why, extra) { var tex = '\\' + fn + ' 2\\alpha = ' + F.n(v); return h.factS('$' + tex + '$', ok, relAt(tex, a), why, extra); }
+    var sW = '$\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot ' + par(A.sin) + ' \\cdot ' + par(A.cos) + ' = ' + F.n(s2) + '$.', cW = '$\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha = ' + F.n(A.cos.sq()) + ' - ' + F.n(A.sin.sq()) + ' = ' + F.n(c2) + '$.', tW = '$\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha} = ' + F.n(t2) + '$.';
     var pool = [
-      st('sin', s2, true, '$\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$.', { g: 's' }), st('cos', c2, true, '$\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha$.', { g: 'c' }), st('tan', t2, true, '$\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha}$.', { g: 't' }),
-      st('sin', s2.neg(), false, 'the sign is wrong: use the signs of $\\sin\\alpha$ and $\\cos\\alpha$ in this quadrant.', { g: 's', trap: 'sign' }),
-      st('sin', A.sin.mul(A.cos), false, 'the factor $2$ is missing.', { g: 's', trap: 'partial' }),
-      st('cos', c2.neg(), false, 'that is $\\sin^2\\alpha - \\cos^2\\alpha$.', { g: 'c', trap: 'sign' }),
-      st('cos', s2, false, 'that is the value of $\\sin 2\\alpha$.', { g: 'c', trap: 'companion' }),
-      st('tan', t2.neg(), false, 'the sign is wrong.', { g: 't', trap: 'sign' }),
-      st('tan', sd(1).div(t2), false, 'that is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$.', { g: 't', trap: 'reciprocal' })
+      st('sin', s2, true, sW, { g: 's' }), st('cos', c2, true, cW, { g: 'c' }), st('tan', t2, true, tW, { g: 't' }),
+      st('sin', s2.neg(), false, sW, { g: 's', trap: 'sign' }),
+      st('sin', A.sin.mul(A.cos), false, 'the factor $2$ is missing: ' + sW, { g: 's', trap: 'partial' }),
+      st('cos', c2.neg(), false, 'this is $\\sin^2\\alpha - \\cos^2\\alpha$. In fact ' + cW, { g: 'c', trap: 'sign' }),
+      st('cos', s2, false, 'this is the value of $\\sin 2\\alpha$. In fact ' + cW, { g: 'c', trap: 'companion' }),
+      st('tan', t2.neg(), false, tW, { g: 't', trap: 'sign' }),
+      st('tan', sd(1).div(t2), false, 'this is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$. In fact ' + tW, { g: 't', trap: 'reciprocal' })
     ].filter(function (s) { return s.ok || !s.test(); });
-    return out('Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
-      'Here $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$.');
+    return out('If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      otherRatio(A, given, 'in the ' + QD[quad].name + ' quadrant'));
   });
 
   /* ===================== TR-half · half-angle formulas with the sign rule ===================== */
@@ -5271,27 +5465,28 @@
   function halfTex(fn) { return '\\' + fn + '\\dfrac{\\alpha}{2}'; }
   function halfLead(V, given) {
     var G = given === 'cos' ? '$\\cos\\alpha = ' + F.n(V.c) + '$' : '$\\sin\\alpha = ' + F.n(V.s) + '$';
-    return { G: G, pre: given === 'sin' ? 'On this interval the cosine is ' + (V.c.sgn > 0 ? 'positive' : 'negative') + ', so $\\cos\\alpha = ' + F.n(V.c) + '$. ' : '' };
+    var s2 = V.s.mul(V.s);
+    return { G: G, pre: given === 'sin' ? 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - ' + F.n(s2) + ' = ' + F.n(sd(1).sub(s2)) + '$. On the given interval the cosine is ' + (V.c.sgn > 0 ? 'positive' : 'negative') + ', so $\\cos\\alpha = ' + F.n(V.c) + '$. ' : '' };
   }
   function halfStem(R, V, given, askTex) {
     var L = halfLead(V, given), cond = R.pick(V.H.say);
-    return R.pick(['Given ' + L.G + ' and ' + cond + ', then $' + askTex + ' =$ ( )', 'It is known that ' + L.G + ' and ' + cond + '. Then $' + askTex + ' =$ ( )', 'If ' + cond + ' and ' + L.G + ', then $' + askTex + ' =$ ( )']);
+    return R.pick(['If ' + L.G + ' and ' + cond + ', then $' + askTex + ' =$ ( )', 'Suppose ' + L.G + ' and ' + cond + '. Then $' + askTex + ' =$ ( )', 'If ' + cond + ' and ' + L.G + ', then $' + askTex + ' =$ ( )']);
   }
-  function halfLocate(V, fn) { return 'Locate the half angle first: $\\alpha \\in ' + IVT[V.iv] + '$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$, where the ' + word(fn) + ' is ' + (V.H.sg[fn] > 0 ? 'positive' : 'negative') + '. '; }
+  function halfLocate(V, fn) { return 'Find where the half angle lies: $\\alpha \\in ' + IVT[V.iv] + '$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$, where the ' + word(fn) + ' is ' + (V.H.sg[fn] > 0 ? 'positive' : 'negative') + '. '; }
   function halfItem(R, iv, c, ask, given) {
     var V = halfVals(iv, c), key = V[ask], truth = Math[ask](V.a / 2), other = ask === 'sin' ? 'cos' : 'sin', kAbs = F.absOf(key), wrong, work;
     if (ask === 'tan') {
       wrong = [[m(F.pm(kAbs)), 'pm'], [key.neg(), 'sign']].concat(R.shuffle([[sd(1).div(key), 'reciprocal'], [V.s.div(sd(V.c)), 'partial']])).concat([[sd(1).div(key).neg(), 'reciprocal']]);
-      work = (given === 'cos' ? 'The sine is ' + (V.s.sgn > 0 ? 'positive' : 'negative') + ' on the given interval: $\\sin\\alpha = ' + F.n(V.s) + '$. ' : '') +
-        'So $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(key) + '$.';
+      work = (given === 'cos' ? 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - ' + F.n(V.c.mul(V.c)) + ' = ' + F.n(q(1).sub(V.c.mul(V.c))) + '$, and the sine is ' + (V.s.sgn > 0 ? 'positive' : 'negative') + ' on the given interval, so $\\sin\\alpha = ' + F.n(V.s) + '$. ' : '') +
+        'Then $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(key) + '$.';
     } else {
       var comp = [F.absOf(V[other]).scale(key.sgn), 'companion'], part = [sd(ask === 'sin' ? V.sin2 : V.cos2).scale(key.sgn), 'partial'];
       wrong = [[m(F.pm(kAbs)), 'pm'], [key.neg(), 'sign']].concat(R.bool(0.75) ? [comp, part] : [part, comp]);
-      work = (ask === 'sin' ? '$\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = ' + F.n(V.sin2) : '$\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2)) + '$, so $' + halfTex(ask) + ' = ' + F.n(key) + '$.';
+      work = (ask === 'sin' ? '$\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - ' + par(V.c) + '}{2} = ' + F.n(V.sin2) : '$\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 ' + h.signed(V.c) + '}{2} = ' + F.n(V.cos2)) + '$, so $' + halfTex(ask) + ' = ' + F.n(key) + '$.';
     }
     return {
       stem: halfStem(R, V, given, halfTex(ask)), key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: halfLead(V, given).pre + halfLocate(V, ask) + work + ' The interval fixes the sign, so an option with $\\pm$ is a trap.',
+      sol: halfLead(V, given).pre + halfLocate(V, ask) + work + ' The interval fixes the sign, so the answer is not $\\pm' + F.n(kAbs) + '$.',
       sig: iv + '|' + given + '|' + F.n(c) + '|' + ask
     };
   }
@@ -5332,7 +5527,7 @@
     return halfItem(R, 'q4', c, 'sin', 'cos');
   });
   def({ id: 'TR-half.mixed', code: 'TR-half', lesson: '3.3', tier: 'M', level: '+1', fmt: 'V', trick: 'T05', w: 1,
-    form: 'Half-angle value on a less usual interval (QIII, QIV or negative angles; sine or cosine given)', basis: 'Course plan 3.3 Q5–7 and Set B Q8' }, function (R) {
+    form: 'Half-angle value on a less usual interval (QIII, QIV or negative angles; sine or cosine given)', basis: 'Course plan 3.3 Q5-7 and Set B Q8' }, function (R) {
     var c3 = R.pick([['q3', 'cos', 'sin'], ['q3', 'cos', 'cos'], ['q3', 'cos', 'tan'], ['q3', 'sin', 'tan'], ['q3', 'sin', 'sin'], ['q4', 'cos', 'cos'], ['q4', 'cos', 'tan'], ['neg', 'cos', 'sin'], ['neg', 'cos', 'cos'],
       ['q2', 'sin', 'sin'], ['q2', 'sin', 'cos'], ['q2', 'sin', 'tan'], ['q4', 'sin', 'sin'], ['q4', 'sin', 'cos']]);
     var iv = c3[0], given = c3[1], ask = c3[2], c;
@@ -5347,25 +5542,25 @@
       st('sin', V.sin, true, '$\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = ' + F.n(V.sin2) + '$ and the sine of the half angle is ' + sgnWord(V.sin) + ' here.', { g: 's' }),
       st('cos', V.cos, true, '$\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2) + '$ and the cosine of the half angle is ' + sgnWord(V.cos) + ' here.', { g: 'c' }),
       st('tan', V.tan, true, '$\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha}$ with $\\sin\\alpha = ' + F.n(V.s) + '$.', { g: 't' }),
-      st('sin', V.sin.neg(), false, 'the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$.', { g: 's', trap: 'sign' }),
-      st('sin', F.absOf(V.cos).scale(V.sin.sgn), false, 'that is the size of $\\cos\\dfrac{\\alpha}{2}$.', { g: 's', trap: 'companion' }),
-      st('cos', V.cos.neg(), false, 'the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$.', { g: 'c', trap: 'sign' }),
-      st('cos', F.absOf(V.sin).scale(V.cos.sgn), false, 'that is the size of $\\sin\\dfrac{\\alpha}{2}$.', { g: 'c', trap: 'companion' }),
-      st('tan', V.tan.neg(), false, 'the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$.', { g: 't', trap: 'sign' }),
-      st('tan', sd(1).div(V.tan), false, 'that is the reciprocal.', { g: 't', trap: 'reciprocal' })
+      st('sin', V.sin.neg(), false, 'on $' + V.H.half + '$ the sine is ' + sgnWord(V.sin) + ', so $' + halfTex('sin') + ' = ' + F.n(V.sin) + '$.', { g: 's', trap: 'sign' }),
+      st('sin', F.absOf(V.cos).scale(V.sin.sgn), false, 'this has the size of $\\cos\\dfrac{\\alpha}{2}$. In fact $' + halfTex('sin') + ' = ' + F.n(V.sin) + '$.', { g: 's', trap: 'companion' }),
+      st('cos', V.cos.neg(), false, 'on $' + V.H.half + '$ the cosine is ' + sgnWord(V.cos) + ', so $' + halfTex('cos') + ' = ' + F.n(V.cos) + '$.', { g: 'c', trap: 'sign' }),
+      st('cos', F.absOf(V.sin).scale(V.cos.sgn), false, 'this has the size of $\\sin\\dfrac{\\alpha}{2}$. In fact $' + halfTex('cos') + ' = ' + F.n(V.cos) + '$.', { g: 'c', trap: 'companion' }),
+      st('tan', V.tan.neg(), false, 'on $' + V.H.half + '$ the tangent is ' + sgnWord(V.tan) + ', so $' + halfTex('tan') + ' = ' + F.n(V.tan) + '$.', { g: 't', trap: 'sign' }),
+      st('tan', sd(1).div(V.tan), false, 'this is the reciprocal of $' + halfTex('tan') + ' = ' + F.n(V.tan) + '$.', { g: 't', trap: 'reciprocal' })
     ].filter(function (s) { return s.ok || !s.test(); });
-    return out('Given $\\cos\\alpha = ' + F.n(c) + '$ and ' + R.pick(V.H.say) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
-      'Halving the interval, $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$.');
+    return out('If $\\cos\\alpha = ' + F.n(c) + '$ and ' + R.pick(V.H.say) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      'Halving the interval of $\\alpha$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$.');
   });
   def({ id: 'TR-half.pair', code: 'TR-half', lesson: '3.3', tier: 'H', level: '+1', fmt: 'V', trick: 'T05', w: 0.4,
-    form: 'sin α given in QII–QIV → the correct pair cos(α/2), tan(α/2)', basis: 'Course plan 3.3 Set C' }, function (R) {
+    form: 'sin α given in QII-QIV → the correct pair cos(α/2), tan(α/2)', basis: 'Course plan 3.3 Set C' }, function (R) {
     var iv = R.pick(['q3', 'q3', 'q4', 'q2']), t = R.pick(HT), V = halfVals(iv, q(t[1] * HQ[iv].cs, t[2]));
     function pr(u, v) { return '$' + halfTex('cos') + ' = ' + F.n(u) + '$, $' + halfTex('tan') + ' = ' + F.n(v) + '$'; }
     var wrong = R.shuffle([[pr(V.cos.neg(), V.tan.neg()), 'sign'], [pr(V.cos, V.tan.neg()), 'sign'], [pr(V.cos.neg(), V.tan), 'sign']]).concat([[pr(F.absOf(V.sin).scale(V.cos.sgn), V.tan), 'companion'], [pr(V.cos, sd(1).div(V.tan)), 'reciprocal']]);
     return {
-      stem: 'Given $\\sin\\alpha = ' + F.n(V.s) + '$ and ' + R.pick(V.H.say) + ', which of the following pairs is correct? ( )', key: pr(V.cos, V.tan), wrong: wrong, check: chk.tuple([Math.cos(V.a / 2), Math.tan(V.a / 2)]),
-      sol: halfLead(V, 'sin').pre + 'Since $\\alpha \\in ' + IVT[iv] + '$, $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$: the cosine of the half angle is ' + sgnWord(V.cos) + ' and its tangent is ' + sgnWord(V.tan) + '. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2) +
-        '$, so $\\cos\\dfrac{\\alpha}{2} = ' + F.n(V.cos) + '$; $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(V.tan) + '$.'
+      stem: 'If $\\sin\\alpha = ' + F.n(V.s) + '$ and ' + R.pick(V.H.say) + ', which of the following pairs is correct? ( )', key: pr(V.cos, V.tan), wrong: wrong, check: chk.tuple([Math.cos(V.a / 2), Math.tan(V.a / 2)]),
+      sol: halfLead(V, 'sin').pre + 'Since $\\alpha \\in ' + IVT[iv] + '$, $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$, where the cosine is ' + sgnWord(V.cos) + ' and the tangent is ' + sgnWord(V.tan) + '. Then $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2) +
+        '$, so $\\cos\\dfrac{\\alpha}{2} = ' + F.n(V.cos) + '$, and $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(V.tan) + '$.'
     };
   });
 
@@ -5376,7 +5571,7 @@
   }
   function inT(a, b) { return F.sum([[a, '\\tan\\alpha'], [b, '']]); }
   /** " = \dfrac{n}{d}" as an intermediate step, omitted when it already is the final value */
-  function fracStep(n, d, key) { var t = '\\dfrac{' + F.n(n) + '}{' + F.n(d) + '}'; return t === F.n(key) ? '' : ' = ' + t; }
+  function fracStep(n, d, key) { var c = chain(n, d, key), last = ' = ' + F.n(key); return c.slice(0, c.length - last.length); }
   function forward(R, ts, block) {
     var t = R.pick(ts), a = R.pick([1, 2, 3, 4]), b = R.nz(-4, 4), c = R.pick([1, 2, 3, 4]), d = R.nz(-4, 4);
     if (a * d - b * c === 0 || N.gcd(a, b) !== 1 || N.gcd(c, d) !== 1) retry();
@@ -5420,7 +5615,7 @@
     form: 'A ratio of sin α and cos α is given → tan α', basis: 'Dec Q40' }, function (R) {
     var B = backData(R), t = B.t;
     return {
-      stem: R.pick(['It is known that $' + B.expr + ' = ' + F.n(B.k) + '$. Then $\\tan\\alpha =$ ( )', 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\tan\\alpha =$ ( )']), key: m(t),
+      stem: R.pick(['Suppose $' + B.expr + ' = ' + F.n(B.k) + '$. Then $\\tan\\alpha =$ ( )', 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\tan\\alpha =$ ( )']), key: m(t),
       wrong: W([[t.inv(), 'reciprocal'], [t.neg(), 'sign'], [B.k, 'partial'], [t.inv().neg(), 'reciprocal'], [B.k.inv(), 'reciprocal']]), check: chk.num(B.tNum), sol: B.sol
     };
   });
@@ -5430,7 +5625,7 @@
     return {
       stem: 'If $\\tan\\alpha = ' + F.n(t) + '$, then $\\sin\\alpha\\cos\\alpha =$ ( )', key: m(key),
       wrong: W([[t.mul(2).div(one.add(t2)), 'operation'], [key.neg(), 'sign'], [one.div(one.add(t2)), 'partial'], [t2.div(one.add(t2)), 'partial'], [t2.eq(1) ? null : t.div(one.sub(t2)), 'sign']]), check: chk.num(Math.sin(a) * Math.cos(a)),
-      sol: 'Divide by $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and then by $\\cos^2\\alpha$: $\\sin\\alpha\\cos\\alpha = \\dfrac{\\sin\\alpha\\cos\\alpha}{\\sin^2\\alpha + \\cos^2\\alpha} = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1} = \\dfrac{' + F.n(t) + '}{' + F.n(t2.add(1)) + '} = ' + F.n(key) + '$.'
+      sol: 'Write the expression over $\\sin^2\\alpha + \\cos^2\\alpha = 1$, then divide the numerator and the denominator by $\\cos^2\\alpha$: $\\sin\\alpha\\cos\\alpha = \\dfrac{\\sin\\alpha\\cos\\alpha}{\\sin^2\\alpha + \\cos^2\\alpha} = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1}' + chain(t, t2.add(1), key) + '$.'
     };
   });
   def({ id: 'TR-hom.back-sin2', code: 'TR-hom', lesson: '3.4', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -5439,7 +5634,7 @@
     return {
       stem: 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\sin 2\\alpha =$ ( )', key: m(key),
       wrong: W([[key.neg(), 'sign'], [key.div(2), 'half'], [one.sub(t2).div(one.add(t2)), 'companion'], [t, 'partial'], [t2.eq(1) ? null : t.mul(2).div(one.sub(t2)), 'sign']]), check: chk.num(Math.sin(2 * a)),
-      sol: B.sol + ' Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{' + F.n(t.mul(2)) + '}{' + F.n(one.add(t2)) + '} = ' + F.n(key) + '$.'
+      sol: B.sol + ' Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha}' + chain(t.mul(2), one.add(t2), key) + '$.'
     };
   });
   def({ id: 'TR-hom.back-cos2', code: 'TR-hom', lesson: '3.4', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -5449,7 +5644,7 @@
     return {
       stem: 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\cos 2\\alpha =$ ( )', key: m(key),
       wrong: W([[key.neg(), 'sign'], [t.mul(2).div(one.add(t2)), 'companion'], [one.div(one.add(t2)), 'partial'], [t, 'partial']]), check: chk.num(Math.cos(2 * a)),
-      sol: B.sol + ' Then $\\cos 2\\alpha = \\dfrac{1 - \\tan^2\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{' + F.n(one.sub(t2)) + '}{' + F.n(one.add(t2)) + '} = ' + F.n(key) + '$.'
+      sol: B.sol + ' Then $\\cos 2\\alpha = \\dfrac{1 - \\tan^2\\alpha}{1 + \\tan^2\\alpha}' + chain(one.sub(t2), one.add(t2), key) + '$.'
     };
   });
   def({ id: 'TR-hom.quadratic', code: 'TR-hom', lesson: '3.4', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -5468,7 +5663,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/sq1.js ---- */
-/* ACE CSCA Question Factory · templates/sq1.js — Sequences I: SQ-ar, SQ-geo, SQ-mean, SQ-gen, SQ-type. */
+/* ACE CSCA Question Factory · templates/sq1.js: Sequences I (SQ-ar, SQ-geo, SQ-mean, SQ-gen, SQ-type). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m;
@@ -5515,7 +5710,7 @@
     var wrong = [[a1.add(d.mul(n)), 'off-by-one'], [d.mul(n), 'partial'], [a1.add(d.mul(n - 2)), 'off-by-one'], [a1.add(d.mul(n + 1)), 'off-by-one'], [key.neg(), 'sign']];
     return {
       stem: stem || arStem(R, a1, d, n), key: m(key), wrong: W(wrong), check: chk.num(walk(a1.num, d.num, n)),
-      sol: (lead || '') + '$a_n = a_1 + (n - 1)d$, so $' + A(n) + ' = ' + F.n(a1) + ' + ' + (n - 1) + ' \\cdot ' + par(d) + ' = ' + F.n(key) + '$. Counting $' + n + '$ steps instead of $' + (n - 1) + '$ is the off-by-one trap.',
+      sol: (lead || '') + 'Since $a_n = a_1 + (n - 1)d$, we get $' + A(n) + ' = ' + F.n(a1) + ' + ' + (n - 1) + ' \\cdot ' + par(d) + ' = ' + F.n(key) + '$. From $a_1$ to $' + A(n) + '$ there are $' + (n - 1) + '$ steps of size $d$, not $' + n + '$.',
       sig: 'ar|' + F.n(a1) + '|' + F.n(d) + '|' + n
     };
   }
@@ -5559,7 +5754,7 @@
     return {
       stem: 'In the arithmetic sequence ' + SEQ + ', $' + A(i) + ' = ' + ai + '$ and $' + A(j) + ' = ' + aj + '$. Then $a_1$ and the common difference $d$ are ( )', key: pr(a1, d), wrong: wrong,
       check: chk.tuple([ai - (i - 1) * ((aj - ai) / (j - i)), (aj - ai) / (j - i)]),
-      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $d = \\dfrac{' + F.sum([[aj, ''], [-ai, '']]).replace(/^(-?\d+) ([+-]) (\d+)$/, '$1 $2 $3') + '}{' + (j - i) + '} = ' + d + '$. Then $a_1 = ' + A(i) + ' - ' + (i - 1 === 1 ? '' : (i - 1)) + 'd = ' + a1 + '$.'
+      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $d = \\dfrac{' + F.sum([[aj, ''], [-ai, '']]).replace(/^(-?\d+) ([+-]) (\d+)$/, '$1 $2 $3') + '}{' + (j - i) + '} = ' + d + '$. Then $a_1 = ' + A(i) + ' - ' + (i - 1 === 1 ? '' : (i - 1)) + 'd = ' + ai + ' - ' + (i - 1 === 1 ? '' : (i - 1) + ' \\cdot ') + par(d) + ' = ' + a1 + '$.'
     };
   });
   def({ id: 'SQ-ar.frac-d', code: 'SQ-ar', lesson: '5.1', tier: 'E', level: '+1', fmt: 'V', trick: 'T09',
@@ -5576,14 +5771,14 @@
       stem: 'In the arithmetic sequence ' + SEQ + ', $' + A(i) + ' = ' + ai + '$ and $' + A(j) + ' = ' + aj + '$. Then $' + A(k) + ' =$ ( )', key: m(key),
       wrong: W([[key + d, 'off-by-one'], [ai + k * d, 'partial'], [key - d, 'off-by-one'], [a1 + (k - 1) * (aj - ai), 'partial'], [aj + k * d, 'partial']]),
       check: chk.num(ai + (k - i) * ((aj - ai) / (j - i))),
-      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$ gives $d = ' + d + '$. Then $' + A(k) + ' = ' + A(i) + ' + ' + (k - i) + 'd = ' + ai + ' + ' + (k - i) + ' \\cdot ' + par(d) + ' = ' + key + '$.'
+      sol: '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $' + (j - i) + 'd = ' + aj + ' - ' + par(ai) + ' = ' + (aj - ai) + '$ and $d = ' + d + '$. Then $' + A(k) + ' = ' + A(i) + ' + ' + (k - i) + 'd = ' + ai + ' + ' + (k - i) + ' \\cdot ' + par(d) + ' = ' + key + '$.'
     };
   });
   function genTerm(R, stem, a1, d, sol) {
     var key = lin(d, a1 - d);
     return {
       stem: stem, key: m(key), wrong: W([[lin(d, a1), 'off-by-one'], [lin(a1, d), 'swap'], [lin(d, a1 + d), 'off-by-one'], [lin(d, d - a1), 'sign'], [lin(-d, a1 + d), 'sign']]),
-      check: chk.seq(function (n) { return walk(a1, d, n); }, 6), sol: sol + ' Check: $n = 1$ gives $' + a1 + '$.'
+      check: chk.seq(function (n) { return walk(a1, d, n); }, 6), sol: sol + ' Check with $n = 1$: the formula gives $' + a1 + '$, which is $a_1$.'
     };
   }
   def({ id: 'SQ-ar.general', code: 'SQ-ar', lesson: '5.1', tier: 'E', level: '+1', fmt: 'V',
@@ -5591,7 +5786,7 @@
     var a1 = R.int(-5, 9), d = R.nz(-4, 6), two = R.bool(0.4);
     if (a1 === d || a1 === 0) retry();
     return genTerm(R, 'In the arithmetic sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and ' + (two ? '$a_2 = ' + (a1 + d) + '$' : 'the common difference is $d = ' + d + '$') + '. The general term is $a_n =$ ( )', a1, d,
-      (two ? '$d = a_2 - a_1 = ' + d + '$. ' : '') + '$a_n = a_1 + (n - 1)d = ' + a1 + ' + ' + par(d) + '(n - 1) = ' + lin(d, a1 - d) + '$.');
+      (two ? '$d = a_2 - a_1 = ' + d + '$. ' : '') + '$a_n = a_1 + (n - 1)d = ' + F.sum([[a1, ''], [d, '(n - 1)']]) + ' = ' + lin(d, a1 - d) + '$.');
   });
   def({ id: 'SQ-ar.far-general', code: 'SQ-ar', lesson: '5.1', tier: 'M', level: '+1', fmt: 'V',
     form: 'Two far terms → aₙ = pn + q', basis: 'Course plan 5.1 Q8 (2.5)' }, function (R) {
@@ -5599,7 +5794,7 @@
     if (a1 === d || a1 === 0) retry();
     var ai = a1 + (i - 1) * d, aj = a1 + (j - 1) * d;
     return genTerm(R, 'In the arithmetic sequence ' + SEQ + ', $' + A(i) + ' = ' + ai + '$ and $' + A(j) + ' = ' + aj + '$. The general term is $a_n =$ ( )', a1, d,
-      '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$ gives $d = ' + d + '$, and $a_1 = ' + A(i) + ' - ' + (i - 1) + 'd = ' + a1 + '$. So $a_n = ' + a1 + ' + ' + par(d) + '(n - 1) = ' + lin(d, a1 - d) + '$.');
+      '$' + A(j) + ' - ' + A(i) + ' = ' + (j - i) + 'd$, so $' + (j - i) + 'd = ' + aj + ' - ' + par(ai) + ' = ' + (aj - ai) + '$ and $d = ' + d + '$. Then $a_1 = ' + A(i) + ' - ' + (i - 1) + 'd = ' + a1 + '$, so $a_n = ' + F.sum([[a1, ''], [d, '(n - 1)']]) + ' = ' + lin(d, a1 - d) + '$.');
   });
 
   /* ===================== SQ-geo · geometric sequences ===================== */
@@ -5614,7 +5809,7 @@
     return {
       stem: R.pick(['If the first three terms of the geometric sequence ' + SEQ + ' are $' + listT(terms) + '$, then the general term $a_n =$ ( )', 'The general term of the geometric sequence $' + listT(terms, true) + '$ is $a_n =$ ( )']),
       key: m(key), wrong: W(wrong), check: chk.seq(function (n) { var v = terms[0]; for (var i = 1; i < n; i++) v *= terms[1] / terms[0]; return v; }, 6),
-      sol: 'The common ratio is $q = \\dfrac{' + terms[1] + '}{' + terms[0] + '} = ' + r + '$, so $a_n = a_1q^{n-1} = ' + key + '$. Check $n = 1$: the exponent must be $n - 1$, not $n$.'
+      sol: 'The common ratio is $q = \\dfrac{' + terms[1] + '}{' + terms[0] + '} = ' + r + '$, so $a_n = a_1q^{n-1} = ' + key + '$. Check with $n = 1$: the formula gives $' + geoT(a1, r, 0) + ' = ' + a1 + '$, the first term. With the exponent $n$ instead of $n - 1$, it would give $' + (a1 * r) + '$.'
     };
   });
   def({ id: 'SQ-geo.middle', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -5626,7 +5821,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $a_4 = ' + a4 + '$. Then $' + A(k) + ' =$ ( )', key: m(key),
       wrong: W([[other, 'off-by-one'], [-key, 'sign'], [(a4 - a1) % 3 === 0 ? a1 + (a4 - a1) / 3 * (k - 1) : null, 'companion'], [(a1 + a4) % 2 === 0 ? (a1 + a4) / 2 : null, 'operation'], [-other, 'sign'], [a1 * r * (k - 1) * 2, 'operation']]),
       check: chk.num(a1 * Math.pow(Math.cbrt(a4 / a1), k - 1)),
-      sol: '$q^3 = \\dfrac{a_4}{a_1} = ' + (r * r * r) + '$, so $q = ' + r + '$ (a negative cube root is allowed). Then $' + A(k) + ' = a_1q^{' + (k - 1) + '} = ' + key + '$.'
+      sol: '$q^3 = \\dfrac{a_4}{a_1} = ' + (r * r * r) + '$, so $q = ' + r + '$. Then $' + A(k) + ' = a_1q^{' + (k - 1) + '} = ' + key + '$.'
     };
   });
   def({ id: 'SQ-geo.ratio', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -5642,7 +5837,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $a_4 = ' + F.n(a4) + '$. Then the common ratio $q =$ ( )', key: m(r),
       wrong: W([[r.neg(), 'sign'], [r.inv(), 'reciprocal'], [a4.div(a1), 'partial'], [r.inv().neg(), 'reciprocal'], [a4.sub(a1).div(3), 'companion']]),
       check: chk.num(Math.cbrt(a4.num / a1)),
-      sol: '$a_4 = a_1q^3$, so $q^3 = \\dfrac{' + F.n(a4) + '}{' + a1 + '} = ' + F.n(a4.div(a1)) + '$ and $q = ' + F.n(r) + '$. A negative cube keeps its sign.'
+      sol: '$a_4 = a_1q^3$, so $q^3 = ' + (function () { var raw = '\\dfrac{' + F.n(a4) + '}{' + a1 + '}', v = F.n(a4.div(a1)); return raw === v ? v : raw + ' = ' + v; })() + '$ and $q = ' + F.n(r) + '$. The value $' + F.n(r.neg()) + '$ does not work, because its cube is $' + F.n(r.neg().pow(3)) + '$.'
     };
   });
   def({ id: 'SQ-geo.term', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -5687,15 +5882,15 @@
     var formula = start === '+' ? geoT(c, -1, R.pick(['n+1', 'n-1'])) : geoT(c, -1, 'n'), P = altPool(R, c, start, formula);
     var st = QF.pickStmts(R, fmt, P.pool);
     if (block && block(c, start, st)) retry('real item');
-    return out('Given that the general term of the geometric sequence ' + SEQ + ' is $a_n = ' + formula + '$' + (fmt === 'N' ? ', which of the following statements is incorrect? ( )' : ', which of the following statements is correct? ( )'),
-      st, 'The terms are $' + listT([P.a(1), P.a(2), P.a(3), P.a(4)], true) + '$ ($S_n$ denotes the sum of the first $n$ terms).');
+    return out('The general term of the geometric sequence ' + SEQ + ' is $a_n = ' + formula + '$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is ' + (fmt === 'N' ? 'incorrect' : 'correct') + '? ( )',
+      st, 'The terms are $' + listT([P.a(1), P.a(2), P.a(3), P.a(4)], true) + '$.');
   }
   def({ id: 'SQ-geo.alt-stmt', code: 'SQ-geo', lesson: '5.2', tier: 'M', level: '=', fmt: 'S', w: 1,
     form: 'aₙ = c·(−1)ⁿ: which statement is correct (even partial sums are 0)', basis: 'Jun Q21' }, function (R) {
     return altItem(R, 'S', function (c, start, st) { return c === 2 && start === '+' && /S_\{10\} = 0/.test(st.key); });
   });
   def({ id: 'SQ-geo.alt-n', code: 'SQ-geo', lesson: '5.2', tier: 'M', level: '+1', fmt: 'N',
-    form: 'aₙ = c·(−1)ⁿ: which statement is INCORRECT (S₂₁, a₁, q)', basis: 'Course plan 5.2 Q8 (2.5)' }, function (R) { return altItem(R, 'N'); });
+    form: 'aₙ = c·(−1)ⁿ: which statement is incorrect (S₂₁, a₁, q)', basis: 'Course plan 5.2 Q8 (2.5)' }, function (R) { return altItem(R, 'N'); });
   def({ id: 'SQ-geo.term-frac', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '+1', fmt: 'V',
     form: 'a₂ and a fractional ratio → a later term', basis: 'Course plan 5.2 Q5' }, function (R) {
     var r = R.pick([q(1, 2), q(-1, 2), q(1, 3), q(-1, 3), q(3, 2), q(2, 3), q(-3, 2)]), a2 = R.pick(r.d === 2 ? [4, 6, 8, 12, 16, -8, 24] : [6, 9, 18, 27, -9, 54]), n = R.int(4, 6);
@@ -5704,7 +5899,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_2 = ' + a2 + '$ and the common ratio is $q = ' + F.n(r) + '$. Then $' + A(n) + ' =$ ( )', key: m(key),
       wrong: W([[q(a2).mul(r.pow(n - 1)), 'off-by-one'], [key.neg(), 'sign'], [q(a2).mul(r.pow(n - 3)), 'off-by-one'], [q(a2).add(r.mul(n - 2)), 'companion'], [q(a2).mul(r.inv().pow(n - 2)), 'reciprocal']]),
       check: chk.num((function () { var v = a2; for (var i = 2; i < n; i++) v *= r.num; return v; })()),
-      sol: 'Start from $a_2$: $' + A(n) + ' = a_2q^{' + (n - 2) + '} = ' + a2 + ' \\cdot ' + powT(r, n - 2) + ' = ' + F.n(key) + '$ (the exponent counts the steps from $a_2$, not from $a_1$).'
+      sol: 'Start from $a_2$: $' + A(n) + ' = a_2q^{' + (n - 2) + '} = ' + a2 + ' \\cdot ' + powT(r, n - 2) + ' = ' + F.n(key) + '$. The exponent is $' + (n - 2) + '$ because there are $' + (n - 2) + '$ steps from $a_2$ to $' + A(n) + '$.'
     };
   });
   def({ id: 'SQ-geo.sum-small', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '+1', fmt: 'V',
@@ -5718,7 +5913,7 @@
       stem: 'In the geometric sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $q = ' + r + '$. The sum of the first $' + n + '$ terms is $' + Sn(n) + ' =$ ( )', key: m(s),
       wrong: W([[s + gterm(a1, r, n + 1), 'off-by-one'], [s - terms[n - 1], 'off-by-one'], [terms[n - 1], 'partial'], [n * (a1 + terms[n - 1]) / 2 === s ? null : q(n * (a1 + terms[n - 1]), 2), 'companion'], [-s, 'sign']]),
       check: chk.num(terms.reduce(function (x, y) { return x + y; }, 0)),
-      sol: 'The terms are $' + listT(terms) + '$; their sum is $' + s + '$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)'
+      sol: 'Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $' + Sn(n) + ' = \\dfrac{' + (a1 === 1 ? powT(r, n) + ' - 1' : par(a1) + '\\left(' + powT(r, n) + ' - 1\\right)') + '}{' + par(r) + ' - 1} = ' + (r - 1 === 1 ? '' : '\\dfrac{' + (a1 * (Math.pow(r, n) - 1)) + '}{' + (r - 1) + '} = ') + s + '$. Adding the terms $' + listT(terms) + '$ gives the same result.'
     };
   });
 
@@ -5731,7 +5926,7 @@
     return {
       stem: 'If $' + x + ', a, ' + z + '$ form an arithmetic sequence, then $a =$ ( )', key: m(key),
       wrong: W([[q(z - x, 2), 'operation'], [x + z, 'partial'], [gm, 'companion'], [key + 1, 'slip'], [key - 1, 'slip'], [-key, 'sign']]), check: chk.num((x + z) / 2),
-      sol: 'For an arithmetic sequence $2a = ' + x + ' + ' + par(q(z)) + '$, so $a = ' + key + '$.'
+      sol: 'In an arithmetic sequence the middle term is the average of its neighbours, so $2a = ' + x + ' + ' + par(q(z)) + ' = ' + (x + z) + '$ and $a = ' + key + '$.'
     };
   });
   def({ id: 'SQ-mean.sum-given', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -5740,7 +5935,7 @@
     return {
       stem: 'If $a, b, c$ form an arithmetic sequence and $a + c = ' + s + '$, then $b =$ ( )', key: m(s / 2),
       wrong: W([[s, 'partial'], [2 * s, 'operation'], [s > 0 ? m(F.pm(s / 2)) : null, 'pm'], [q(s, 4), 'half'], [s > 0 && N.isSquare(s) ? Math.sqrt(s) : null, 'companion'], [-s / 2, 'sign']]), check: chk.num(s / 2),
-      sol: 'In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = ' + s + '$, so $b = ' + (s / 2) + '$ (one value only).'
+      sol: 'In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = ' + s + '$, so $b = ' + (s / 2) + '$. An arithmetic mean has only one value.'
     };
   });
   var SURD = [[2, 3], [3, 2], [3, 5], [4, 7], [2, 2], [3, 7], [4, 3], [5, 2], [3, 8], [4, 15], [5, 21], [6, 11], [4, 12], [5, 24]];   // p ± √r with p² > r
@@ -5752,7 +5947,7 @@
     return {
       stem: R.pick(['Given that $a = ' + F.n(a) + '$ and $b = ' + F.n(b) + '$, the arithmetic mean of $a$ and $b$ is ( )', 'The arithmetic mean of $' + F.n(a) + '$ and $' + F.n(b) + '$ is ( )']), key: m(p),
       wrong: W([[m(F.pm(g)), 'companion'], [2 * p, 'partial'], [g.eq(p) ? null : g, 'companion'], [Sd.sqrt(r), 'operation'], [m(F.pm(p)), 'pm']]), check: chk.num((a.num + b.num) / 2),
-      sol: 'The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{' + (2 * p) + '}{2} = ' + p + '$ — the surds cancel, and there is only one value. ($\\pm ' + F.n(g) + '$ is the geometric mean.)'
+      sol: 'The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{' + (2 * p) + '}{2} = ' + p + '$, because the surds cancel. The value $\\pm ' + F.n(g) + '$ is the geometric mean, since $ab = ' + p + '^2 - ' + r + ' = ' + (p * p - r) + '$.'
     };
   });
   def({ id: 'SQ-mean.geo', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -5762,16 +5957,16 @@
     return {
       stem: R.pick(['The geometric mean of $' + x + '$ and $' + y + '$ is ( )', 'If $' + x + ', G, ' + y + '$ form a geometric sequence, then $G =$ ( )']), key: m(F.pm(g)),
       wrong: W([[g, 'pm'], [q(x + y, 2), 'companion'], [-g, 'pm'], [x * y, 'partial'], [m(F.pm(q(x + y, 2))), 'companion']]), check: chk.alts([Math.sqrt(x * y), -Math.sqrt(x * y)]),
-      sol: 'The geometric mean $G$ satisfies $G^2 = ' + x + ' \\cdot ' + y + ' = ' + (x * y) + '$, so $G = \\pm ' + g + '$ — both signs (the CSCA convention). $' + F.n(q(x + y, 2)) + '$ is the arithmetic mean.'
+      sol: 'The geometric mean $G$ satisfies $G^2 = ' + x + ' \\cdot ' + y + ' = ' + (x * y) + '$, so $G = \\pm ' + g + '$. Both signs work, since $' + x + ', ' + g + ', ' + y + '$ and $' + x + ', ' + (-g) + ', ' + y + '$ are both geometric. The value $' + F.n(q(x + y, 2)) + '$ is the arithmetic mean.'
     };
   });
   def({ id: 'SQ-mean.prod-given', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '=', fmt: 'V', w: 1,
     form: 'a, b, c geometric with ac given → b = ±√(ac)', basis: 'Jun Q12' }, function (R) {
     var g = R.pick([2, 3, 4, 5, 6, 7, 8, 9, 11, 12]), p = g * g;
     return {
-      stem: R.pick(['Given that $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )', 'If $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )']), key: m(F.pm(g)),
+      stem: R.pick(['If $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )', 'The numbers $a, b, c$ form a geometric sequence and $ac = ' + p + '$. Then $b =$ ( )']), key: m(F.pm(g)),
       wrong: W([[g, 'pm'], [q(p, 2), 'half'], [-g, 'pm'], [m(F.pm(q(p, 2))), 'half'], [p, 'partial']]), check: chk.alts([g, -g]),
-      sol: 'In a geometric sequence $b^2 = ac = ' + p + '$, so $b = \\pm ' + g + '$ — both signs are possible.'
+      sol: 'In a geometric sequence $b^2 = ac = ' + p + '$, so $b = \\pm ' + g + '$. Both signs are possible: for example $1, ' + g + ', ' + p + '$ and $1, ' + (-g) + ', ' + p + '$ are both geometric.'
     };
   });
   var SURDG = [['\\sqrt{5} + 1', '\\sqrt{5} - 1', 4], ['\\sqrt{10} + 1', '\\sqrt{10} - 1', 9], ['\\sqrt{5} + 2', '\\sqrt{5} - 2', 1], ['\\sqrt{13} + 2', '\\sqrt{13} - 2', 9], ['\\sqrt{17} + 1', '\\sqrt{17} - 1', 16], ['\\sqrt{3} + 1', '\\sqrt{3} - 1', 2],
@@ -5784,18 +5979,18 @@
     return {
       stem: R.pick(['Given $a = ' + c[0] + '$ and $b = ' + c[1] + '$, the geometric mean of $a$ and $b$ is ( )', 'The geometric mean of $' + c[0] + '$ and $' + c[1] + '$ is ( )']), key: m(F.pm(g)),
       wrong: W([[g, 'pm'], [amT, 'companion'], [c[2] === 1 ? null : m(F.pm(c[2])), 'partial'], [g.neg(), 'pm'], ['$\\pm ' + amT + '$', 'companion']]), check: chk.alts([Math.sqrt(a * b), -Math.sqrt(a * b)]),
-      sol: 'The product is a difference of squares: $ab = ' + c[2] + '$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$ (two values). $' + amT + '$ is the arithmetic mean.'
+      sol: 'The product is a difference of squares: $ab = ' + c[0].split(' + ').map(function (x) { return (/^\d+$/.test(x) ? x : '\\left(' + x + '\\right)') + '^2'; }).join(' - ') + ' = ' + c[2] + '$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$. The value $' + amT + '$ is the arithmetic mean.'
     };
   });
   def({ id: 'SQ-mean.positive', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '+1', fmt: 'V',
-    form: '"Positive" geometric mean → one value (the ± option is the trap)', basis: 'Course plan 5.3 Q7' }, function (R) {
+    form: '"Positive" geometric mean → one value (not ±)', basis: 'Course plan 5.3 Q7' }, function (R) {
     var g = R.pick([2, 3, 4, 5, 6, 7, 8, 9, 10, 12]), p = g * g, pairs = [];
     for (var x = 1; x < g; x++) if (p % x === 0) pairs.push([x, p / x]);
     var c = R.pick(pairs), kind = R.pick(['num', 'abc']);
     return {
       stem: kind === 'num' ? 'The positive geometric mean of $' + c[0] + '$ and $' + c[1] + '$ is ( )' : 'If the positive numbers $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )', key: m(g),
       wrong: W([[m(F.pm(g)), 'pm'], [-g, 'sign'], [kind === 'num' ? q(c[0] + c[1], 2) : q(p, 2), kind === 'num' ? 'companion' : 'half'], [p, 'partial']]), check: chk.num(Math.sqrt(p)),
-      sol: (kind === 'num' ? '$G^2 = ' + c[0] + ' \\cdot ' + c[1] + ' = ' + p + '$' : '$b^2 = ac = ' + p + '$') + ' gives $\\pm ' + g + '$, but the stem asks for the positive value only: $' + g + '$.'
+      sol: (kind === 'num' ? '$G^2 = ' + c[0] + ' \\cdot ' + c[1] + ' = ' + p + '$' : '$b^2 = ac = ' + p + '$') + ' gives $\\pm ' + g + '$. The question asks for the positive value, so the answer is $' + g + '$.'
     };
   });
   def({ id: 'SQ-mean.four', code: 'SQ-mean', lesson: '5.3', tier: 'M', level: '+1', fmt: 'S',
@@ -5807,9 +6002,9 @@
     }
     var pool = [
       st('a', F.n(p), true, '$\\dfrac{a + b}{2} = ' + p + '$.', { g: 'a' }), st('g', F.pm(g), true, '$ab = ' + (p * p - r) + '$, so the geometric mean is $\\pm ' + F.n(g) + '$.', { g: 'g' }),
-      st('a', F.pm(p), false, 'an arithmetic mean has one value.', { g: 'a', trap: 'pm' }), st('a', String(2 * p), false, 'that is the sum $a + b$; divide by $2$.', { g: 'a2', trap: 'partial' }),
-      st('g', F.n(g), false, 'a geometric mean has two values, $\\pm ' + F.n(g) + '$.', { g: 'g', trap: 'pm' }), st('g', F.pm(p), false, 'that is the arithmetic mean with a $\\pm$ sign.', { g: 'g2', trap: 'companion' }),
-      st('g', F.pm(p * p - r), false, 'that is $\\pm ab$; take the square root.', { g: 'g3', trap: 'partial' }), st('a', F.n(g), false, 'that is the size of the geometric mean.', { g: 'a3', trap: 'companion' })
+      st('a', F.pm(p), false, 'an arithmetic mean has one value, $\\dfrac{a + b}{2} = ' + p + '$.', { g: 'a', trap: 'pm' }), st('a', String(2 * p), false, '$' + (2 * p) + '$ is the sum $a + b$. The mean is $\\dfrac{' + (2 * p) + '}{2} = ' + p + '$.', { g: 'a2', trap: 'partial' }),
+      st('g', F.n(g), false, 'the geometric mean has two values, $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$.', { g: 'g', trap: 'pm' }), st('g', F.pm(p), false, '$' + p + '$ is the arithmetic mean. The geometric mean is $\\pm\\sqrt{ab} = \\pm ' + F.n(g) + '$.', { g: 'g2', trap: 'companion' }),
+      st('g', F.pm(p * p - r), false, '$' + (p * p - r) + '$ is the product $ab$. The geometric mean is its square root with both signs, $\\pm ' + F.n(g) + '$.', { g: 'g3', trap: 'partial' }), st('a', F.n(g), false, 'the arithmetic mean is $\\dfrac{a + b}{2} = ' + p + '$, and $' + F.n(g) + '$ is $\\sqrt{ab}$.', { g: 'a3', trap: 'companion' })
     ].filter(function (s) { return s.ok === s.test(); });
     return out('Let $a = ' + F.n(a) + '$ and $b = ' + F.n(b) + '$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
   });
@@ -5824,7 +6019,7 @@
     return {
       stem: 'If $x$, $' + t(p) + '$, $' + t(r) + '$ form a geometric sequence, then $x =$ ( )', key: m(x),
       wrong: W([[-x, 'sign'], [r + 2 * p === 0 ? null : q(p * p, r + 2 * p), 'sign'], [x + p, 'partial'], [r - 2 * p, 'partial'], [q(p * p, r), 'slip']]), check: chk.num(p * p / (r - 2 * p)),
-      sol: 'Middle term squared: $(' + t(p) + ')^2 = x(' + t(r) + ')$. Expanding, $' + F.sum([[2 * p, 'x'], [p * p, '']]) + ' = ' + F.sum([[r, 'x']]) + '$, so $x = ' + x + '$. The terms are $' + listT([x, x + p, x + r]) + '$.'
+      sol: 'The square of the middle term equals the product of its neighbours: $(' + t(p) + ')^2 = x(' + t(r) + ')$. Expanding and cancelling $x^2$ gives $' + F.sum([[2 * p, 'x'], [p * p, '']]) + ' = ' + F.sum([[r, 'x']]) + '$, so $x = ' + x + '$. The terms are $' + listT([x, x + p, x + r]) + '$.'
     };
   });
 
@@ -5844,7 +6039,7 @@
     return {
       stem: R.pick(['If the first ' + (count === 3 ? 'three' : 'four') + ' terms of the sequence ' + SEQ + ' are $' + listT(terms) + '$, then the general term $a_n =$ ( )', 'If the sequence ' + SEQ + ' is $' + listT(terms, true) + '$, then the general term $a_n =$ ( )']),
       key: m(key), wrong: W(wrong), check: chk.seq(function (n) { return frac ? sgn(start, n) / Math.pow(b, n) : sgn(start, n) * Math.pow(b, n); }, 6),
-      sol: 'Separate the sign and the size. Size: ' + (frac ? '$\\dfrac{1}{' + pw + '}$' : '$' + pw + '$') + '. Sign: the first term is ' + (start === '+' ? 'positive' : 'negative') + ', so use $' + s1 + '$. Hence $a_n = ' + key + '$; test $n = 1$ and $n = 2$ in each option.'
+      sol: 'Separate the sign and the size. Size: ' + (frac ? '$\\dfrac{1}{' + pw + '}$' : '$' + pw + '$') + '. Sign: the first term is ' + (start === '+' ? 'positive' : 'negative') + ', so use $' + s1 + '$. Hence $a_n = ' + key + '$. Check with $n = 1$ and $n = 2$: the formula gives $' + F.n(val(1)) + '$ and $' + F.n(val(2)) + '$.'
     };
   });
   def({ id: 'SQ-gen.linear-den', code: 'SQ-gen', lesson: '5.4', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -5860,7 +6055,7 @@
       stem: R.pick(['The general term of the sequence $' + listT(terms, true) + '$ is $a_n =$ ( )', 'If the sequence ' + SEQ + ' is $' + listT(terms, true) + '$, then the general term $a_n =$ ( )']), key: m(key),
       wrong: W([[fr(s2, lin(p, r)), 'sign'], [fr(s1, lin(p, r - p)), 'off-by-one'], [fr(s1, lin(1, p + r - 1)), 'near-miss'], [fr(s1, lin(p, r + p)), 'off-by-one'], [fr('1', lin(p, r)), 'partial']]),
       check: chk.seq(function (n) { return sgn(start, n) / (p * n + r); }, 6),
-      sol: 'Denominators $' + [1, 2, 3, 4].map(function (n) { return p * n + r; }).join(', ') + '$ increase by $' + p + '$: they are $' + lin(p, r) + '$. The first term is ' + (start === '+' ? 'positive' : 'negative') + ': sign $' + s1 + '$. So $a_n = ' + key + '$.'
+      sol: 'Denominators $' + [1, 2, 3, 4].map(function (n) { return p * n + r; }).join(', ') + '$ increase by $' + p + '$, so they are $' + lin(p, r) + '$. The first term is ' + (start === '+' ? 'positive' : 'negative') + ', so the sign factor is $' + s1 + '$. So $a_n = ' + key + '$.'
     };
   });
   var SHAPES = [['n', 'n + 1', function (n) { return [n, n + 1]; }], ['n', '2n - 1', function (n) { return [n, 2 * n - 1]; }], ['n', '2n + 1', function (n) { return [n, 2 * n + 1]; }], ['n', '3n + 1', function (n) { return [n, 3 * n + 1]; }], ['n', '3n - 1', function (n) { return [n, 3 * n - 1]; }],
@@ -5877,8 +6072,8 @@
     var wrong = [[mk(s2, sh[0], sh[1]), 'sign'], [mk(s1, cand[0][0], cand[0][1]), 'near-miss'], [mk(s1, sh[1], sh[0]), 'reciprocal'], [mk(s2, cand[1][0], cand[1][1]), 'near-miss'], [mk(s1, cand[2][0], cand[2][1]), 'near-miss']];
     return {
       stem: 'The general term of the sequence $' + listT(terms, true) + '$ is $a_n =$ ( )', key: m(key), wrong: W(wrong), check: chk.seq(function (n) { var t = sh[2](n); return sgn(start, n) * t[0] / t[1]; }, 6),
-      sol: 'Treat the three parts separately. Numerators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[0]; }).join(', ') + '$, i.e. $' + sh[0] + '$. Denominators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[1]; }).join(', ') + '$, i.e. $' + sh[1] +
-        '$. Sign: the first term is ' + (start === '+' ? 'positive' : 'negative') + ', $' + s1 + '$. So $a_n = ' + key + '$.'
+      sol: 'Treat the three parts separately. Numerators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[0]; }).join(', ') + '$, that is $' + sh[0] + '$. Denominators: $' + [1, 2, 3, 4].map(function (n) { return sh[2](n)[1]; }).join(', ') + '$, that is $' + sh[1] +
+        '$. The first term is ' + (start === '+' ? 'positive' : 'negative') + ', so the sign factor is $' + s1 + '$. So $a_n = ' + key + '$.'
     };
   }
   def({ id: 'SQ-gen.n-over', code: 'SQ-gen', lesson: '5.4', tier: 'M', level: '+1', fmt: 'V',
@@ -5898,13 +6093,24 @@
     return {
       stem: R.pick(['If the first four terms of the sequence ' + SEQ + ' are $' + listT(terms) + '$, then a possible general term is $a_n =$ ( )', 'A general term of the sequence $' + listT(terms, true) + '$ is $a_n =$ ( )']), key: m(P[0]), wrong: wrong,
       check: { type: 'custom', isTrue: function (text) { var f = ev.fnOf(text); return [1, 2, 3, 4].every(function (n) { return ev.close(f({ n: n }), terms[n - 1]); }); }, same: function (x, y) { var f = ev.fnOf(x), g = ev.fnOf(y); return [1, 2, 3, 4, 5, 6].every(function (n) { return ev.close(f({ n: n }), g({ n: n })); }); } },
-      sol: 'Test $n = 1, 2, 3, 4$ in each option: only $' + P[0] + '$ gives $' + listT(terms) + '$. An option that fits $a_1$ alone is not enough.'
+      sol: 'Put $n = 1, 2, 3, 4$ into each option. Only $' + P[0] + '$ gives $' + listT(terms) + '$.' + (function () {
+        var w = near.concat(far)[0]; if (!w) return '';
+        var j = [1, 2, 3, 4].filter(function (n) { return w[1](n) !== terms[n - 1]; })[0];
+        return ' For example, $' + w[0] + '$ gives $' + w[1](j) + '$ at $n = ' + j + '$ instead of $' + terms[j - 1] + '$.';
+      })()
     };
   });
 
   /* ===================== SQ-type · arithmetic or geometric? ===================== */
   function isAr(t) { for (var i = 2; i < t.length; i++) if (Math.abs((t[i] - t[i - 1]) - (t[1] - t[0])) > 1e-9) return false; return true; }
   function isGeo(t) { if (t.some(function (x) { return x === 0; })) return false; for (var i = 2; i < t.length; i++) if (Math.abs(t[i] * t[0] - t[i - 1] * t[1]) > 1e-9 * Math.abs(t[0] * t[i]) + 1e-12) return false; return true; }
+  function steps(s, f) { var o = []; for (var i = 1; i < s.length; i++) o.push(f(s[i], s[i - 1])); return o.join(', '); }
+  /** why a listed sequence is (or is not) arithmetic or geometric, from its actual differences or ratios */
+  function typeWhy(s, want) {
+    if (want === 'ar') return 'the differences are $' + steps(s, function (x, y) { return F.n(x - y); }) + '$';
+    if (s.some(function (x) { return x === 0; })) return 'one of its terms is $0$, and a geometric sequence has no zero terms';
+    return 'the ratios are $' + steps(s, function (x, y) { return F.n(q(x, y)); }) + '$';
+  }
   function mkSeq(R, kind) {
     var a = R.int(-6, 9), d = R.nz(-5, 6), r = R.pick([2, 3, -2, -3]), c = R.pick([1, 2, 3, -1, 5, 4]);
     switch (kind) {
@@ -5928,8 +6134,9 @@
     return {
       stem: 'Among the four sequences ' + seqs.map(function (s, i) { return '(' + (i + 1) + ') $' + listT(s) + '$'; }).join('; ') + ', the number of ' + want + ' sequences is ( )', key: m(count),
       wrong: W(opts.filter(function (x) { return x !== count; }).map(function (x) { return [x, 'slip']; })), check: chk.num(count),
-      sol: (want === 'arithmetic' ? 'A sequence is arithmetic when consecutive differences are equal (a constant sequence counts, with $d = 0$).' : 'A sequence is geometric when consecutive ratios are equal (a constant non-zero sequence counts, with $q = 1$).') + ' Here ' +
-        (which.length ? which.join(', ') + (which.length === 1 ? ' is' : ' are') : 'none is') + ' ' + want + ', so the number is $' + count + '$.'
+      sol: 'A sequence is ' + want + ' when the ' + (want === 'arithmetic' ? 'differences' : 'ratios') + ' of consecutive terms are all equal. ' +
+        seqs.map(function (s, i) { var ok = (want === 'arithmetic' ? isAr : isGeo)(s); return 'In (' + (i + 1) + ') ' + typeWhy(s, want === 'arithmetic' ? 'ar' : 'geo') + ', so it is ' + (ok ? '' : 'not ') + want + '.'; }).join(' ') +
+        ' So the number of ' + want + ' sequences is $' + count + '$.'
     };
   });
   function formulaSeq(R, kinds) {
@@ -5944,13 +6151,13 @@
     form: 'The sequence with general term aₙ = pn + q (or c·kⁿ) is …', basis: 'Apr Q17' }, function (R) {
     var G = formulaSeq(R, ['lin', 'lin', 'exp', 'exp', 'expm', 'quad']);
     if (G.kind === 'lin' && G.p === 2 && G.r === -1) retry('real item');
-    var ar = isAr(G.terms), ge = isGeo(G.terms);
-    var why = G.kind === 'quad' ? 'neither the differences nor the ratios of consecutive terms are constant.' : G.kind === 'lin' ? '$a_{n+1} - a_n = ' + G.p + '$ is constant.' : '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$ is constant.';
+    var ar = isAr(G.terms), ge = isGeo(G.terms), t4 = G.terms.slice(0, 4);
+    var why = G.kind === 'quad' ? typeWhy(t4, 'ar') + ', which are not all equal, and ' + typeWhy(t4, 'geo') + ', which are not all equal either.' : G.kind === 'lin' ? '$a_{n+1} - a_n = ' + G.p + '$ for every $n$.' : '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$ for every $n$.';
     var S4 = [
-      h.factS('an arithmetic sequence', ar, function () { return isAr(G.terms); }, ar ? why : 'the differences of consecutive terms are not constant.', { trap: 'companion' }),
-      h.factS('a geometric sequence', ge, function () { return isGeo(G.terms); }, ge ? why : 'the ratios of consecutive terms are not constant.', { trap: 'companion' }),
-      h.factS('both arithmetic and geometric', ar && ge, function () { return isAr(G.terms) && isGeo(G.terms); }, ar && ge ? '' : 'only a constant non-zero sequence is both.', { trap: 'slip' }),
-      h.factS('neither arithmetic nor geometric', !ar && !ge, function () { return !isAr(G.terms) && !isGeo(G.terms); }, !ar && !ge ? why : 'check the differences and the ratios of the first terms $' + listT(G.terms.slice(0, 4)) + '$.', { trap: 'slip' })
+      h.factS('an arithmetic sequence', ar, function () { return isAr(G.terms); }, ar ? why : typeWhy(t4, 'ar') + ', which are not all equal.', { trap: 'companion' }),
+      h.factS('a geometric sequence', ge, function () { return isGeo(G.terms); }, ge ? why : typeWhy(t4, 'geo') + (t4.some(function (x) { return x === 0; }) ? '.' : ', which are not all equal.'), { trap: 'companion' }),
+      h.factS('both arithmetic and geometric', ar && ge, function () { return isAr(G.terms) && isGeo(G.terms); }, ar && ge ? '' : 'a sequence that is both must be constant, and here $a_1 = ' + t4[0] + '$ while $a_2 = ' + t4[1] + '$.', { trap: 'slip' }),
+      h.factS('neither arithmetic nor geometric', !ar && !ge, function () { return !isAr(G.terms) && !isGeo(G.terms); }, !ar && !ge ? why : 'it is ' + (ar ? 'arithmetic' : 'geometric') + ', because ' + why, { trap: 'slip' })
     ];
     var key = S4.filter(function (s) { return s.ok; });
     if (key.length !== 1) retry();
@@ -5963,13 +6170,12 @@
     var test = want === 'ar' ? isAr : isGeo, name = want === 'ar' ? 'arithmetic' : 'geometric';
     function st(s) {
       var ok = test(s);
-      return h.factS('$' + listT(s, true) + '$', ok, function () { return test(s); }, ok ? (want === 'ar' ? 'the common difference is $' + (s[1] - s[0]) + '$.' : 'the common ratio is $' + F.n(q(s[1], s[0])) + '$.') :
-        (want === 'ar' ? 'the differences are $' + [s[1] - s[0], s[2] - s[1], s[3] - s[2]].join(', ') + '$ — not constant.' : 'the ratios of consecutive terms are not constant.'), { trap: (want === 'ar' ? isGeo(s) : isAr(s)) ? 'companion' : 'slip' });
+      return h.factS('$' + listT(s, true) + '$', ok, function () { return test(s); }, typeWhy(s, want) + '.', { trap: (want === 'ar' ? isGeo(s) : isAr(s)) ? 'companion' : 'slip' });
     }
     var key = st(keySeq), wrong = ws.map(st);
     if (!key.ok || wrong.some(function (w) { return w.ok; })) retry();
     var st4 = QF.useStmts('S', key, wrong);
-    st4.sol = '$' + listT(keySeq, true) + '$ is ' + name + ': ' + key.why + ' In each of the other three sequences the ' + (want === 'ar' ? 'differences' : 'ratios') + ' of consecutive terms are not constant.';
+    st4.sol = [keySeq].concat(ws).map(function (s) { return '$' + listT(s, true) + '$ is ' + (test(s) ? '' : 'not ') + name + ', because ' + typeWhy(s, want) + '.'; }).join(' ');
     return out('Which of the following sequences is ' + (want === 'ar' ? 'an arithmetic' : 'a geometric') + ' sequence? ( )', st4);
   }
   def({ id: 'SQ-type.which-arith', code: 'SQ-type', lesson: '5.4', tier: 'E', level: '=', fmt: 'S', w: 0.5,
@@ -5980,17 +6186,22 @@
     form: 'aₙ = c·kⁿ with a negative k (or aₙ = pn + q): which description is correct (type, ratio or difference, first term)', basis: 'Course plan 5.4 Q5' }, function (R) {
     var G = formulaSeq(R, ['exp', 'exp', 'expm', 'lin']), t = G.terms, a1 = t[0];
     if (G.kind !== 'lin' && G.k > 0 && R.bool(0.7)) retry();
-    var d = t[1] - t[0];
+    var d = t[1] - t[0], t4 = t.slice(0, 4), lin1 = G.kind === 'lin';
+    function at(n) {                                     // the formula with a number put in for n
+      if (lin1) return (G.p === 1 ? '' : G.p === -1 ? '-' : F.n(G.p) + ' \\cdot ') + n + (G.r ? (G.r > 0 ? ' + ' : ' - ') + Math.abs(G.r) : '');
+      return geoT(G.c, G.k, G.kind === 'exp' ? n : n - 1);
+    }
+    var ratioW = '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$ for every $n$', diffW = '$a_{n+1} - a_n = ' + G.p + '$ for every $n$';
     function st(text, test, why, extra) { var ok = test(); return h.factS(text, ok, test, why, extra); }
     var pool = [
-      st('It is a geometric sequence with common ratio $' + F.n(G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], G.k); }, G.kind === 'lin' ? 'the ratios of consecutive terms are not constant.' : '$\\dfrac{a_{n+1}}{a_n} = ' + G.k + '$.', { g: 'q', trap: 'companion' }),
-      st('It is a geometric sequence with common ratio $' + F.n(-G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], -G.k); }, 'the ratio keeps the sign of the base.', { g: 'q', trap: 'sign' }),
-      st('It is an arithmetic sequence with common difference $' + F.n(G.kind === 'lin' ? G.p : G.k) + '$', function () { return isAr(t) && ev.close(d, G.kind === 'lin' ? G.p : G.k); }, G.kind === 'lin' ? '$a_{n+1} - a_n = ' + G.p + '$.' : 'the differences of consecutive terms are not constant.', { g: 'd', trap: 'companion' }),
-      st('Its first term is $a_1 = ' + a1 + '$', function () { return true; }, 'put $n = 1$.', { g: 'a1' }),
-      st('Its first term is $a_1 = ' + (G.kind === 'lin' ? G.r : G.c) + '$', function () { return a1 === (G.kind === 'lin' ? G.r : G.c); }, 'put $n = 1$: $a_1 = ' + a1 + '$.', { g: 'a1', trap: 'off-by-one' }),
-      st('It is neither arithmetic nor geometric', function () { return !isAr(t) && !isGeo(t); }, 'one of the two tests succeeds.', { g: 'no', trap: 'slip' }),
-      st('$a_2 = ' + t[1] + '$', function () { return true; }, 'put $n = 2$.', { g: 'a2' }),
-      st('$a_3 = ' + (-t[2]) + '$', function () { return t[2] === -t[2]; }, 'put $n = 3$: $a_3 = ' + t[2] + '$.', { g: 'a3', trap: 'sign' })
+      st('It is a geometric sequence with common ratio $' + F.n(G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], G.k); }, lin1 ? typeWhy(t4, 'geo') + (t4.indexOf(0) >= 0 ? '.' : ', which are not all equal.') : ratioW + '.', { g: 'q', trap: 'companion' }),
+      st('It is a geometric sequence with common ratio $' + F.n(-G.k) + '$', function () { return isGeo(t) && ev.close(t[1] / t[0], -G.k); }, lin1 ? typeWhy(t4, 'geo') + (t4.indexOf(0) >= 0 ? '.' : ', which are not all equal.') : '$\\dfrac{a_2}{a_1} = \\dfrac{' + t[1] + '}{' + par(t[0]) + '} = ' + G.k + '$, so the common ratio is $' + G.k + '$.', { g: 'q', trap: 'sign' }),
+      st('It is an arithmetic sequence with common difference $' + F.n(lin1 ? G.p : G.k) + '$', function () { return isAr(t) && ev.close(d, lin1 ? G.p : G.k); }, lin1 ? diffW + '.' : typeWhy(t4, 'ar') + ', which are not all equal.', { g: 'd', trap: 'companion' }),
+      st('Its first term is $a_1 = ' + a1 + '$', function () { return true; }, '$a_1 = ' + at(1) + ' = ' + a1 + '$.', { g: 'a1' }),
+      st('Its first term is $a_1 = ' + (lin1 ? G.r : G.c) + '$', function () { return a1 === (lin1 ? G.r : G.c); }, '$a_1 = ' + at(1) + ' = ' + a1 + '$.', { g: 'a1', trap: 'off-by-one' }),
+      st('It is neither arithmetic nor geometric', function () { return !isAr(t) && !isGeo(t); }, lin1 ? 'it is arithmetic, because ' + diffW + '.' : 'it is geometric, because ' + ratioW + '.', { g: 'no', trap: 'slip' }),
+      st('$a_2 = ' + t[1] + '$', function () { return true; }, '$a_2 = ' + at(2) + ' = ' + t[1] + '$.', { g: 'a2' }),
+      st('$a_3 = ' + (-t[2]) + '$', function () { return t[2] === -t[2]; }, '$a_3 = ' + at(3) + ' = ' + t[2] + '$.', { g: 'a3', trap: 'sign' })
     ];
     var seen = {};
     pool = pool.filter(function (s) { var k2 = QF.normText(s.t); if (seen[k2]) return false; seen[k2] = 1; return true; });
@@ -5999,7 +6210,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/sq2.js ---- */
-/* ACE CSCA Question Factory · templates/sq2.js — Sequences II: SQ-sn, SQ-rec, SQ-sum. */
+/* ACE CSCA Question Factory · templates/sq2.js: Sequences II (SQ-sn, SQ-rec, SQ-sum). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.SQ;
@@ -6016,7 +6227,7 @@
   }
   function snForm(c, base, e) { return geoT(c, base, e) + ' - ' + F.n(c); }
   function r10sol(k, mm, D) {
-    return 'Subtract the relation for $n - 1$ from the relation for $n$: $' + F.sum([[k, 'a_n']]) + ' = ' + F.sum([[mm, 'a_{n+1}'], [-mm, 'a_n']]) + '$, so $q = \\dfrac{a_{n+1}}{a_n} = ' + F.n(D.q) + '$. ' +
+    return 'Subtract the relation for $n - 1$ from the relation for $n$: $' + F.sum([[k, 'a_n']]) + ' = ' + F.sum([[mm, 'a_{n+1}'], [-mm, 'a_n']]) + '$, that is $' + F.sum([[k + mm, 'a_n']]) + ' = ' + F.sum([[mm, 'a_{n+1}']]) + '$, so $q = \\dfrac{a_{n+1}}{a_n} = ' + F.n(D.q) + '$. ' +
       'Put $n = 1$: $' + F.sum([[k, 'a_1']]) + ' = ' + F.sum([[mm, 'a_2'], [-mm, '']]) + ' = ' + F.sum([[k + mm, 'a_1'], [-mm, '']]) + '$, so $a_1 = 1$. ';
   }
   def({ id: 'SQ-sn.r10', code: 'SQ-sn', lesson: '5.5', tier: 'H', level: '=', fmt: 'V', rep: 'R10', w: 2,
@@ -6026,7 +6237,7 @@
     var wrong = [[snForm(D.c.inv(), D.q, 'n'), 'reciprocal'], [powT(D.q, 'n') + ' - 1', 'partial'], [snForm(D.c, D.q, 'n-1'), 'off-by-one'], [snForm(D.c, q(k + mm, k), 'n'), 'swap'], [snForm(D.c, D.q, 'n+1'), 'off-by-one']];
     return {
       stem: SUMDEF + 'a geometric sequence ' + SEQ + ', and $' + D.rel + '$ ($n = 1, 2, \\ldots$). Then $S_n =$ ( )', key: m(key), wrong: W(wrong), check: chk.seq(D.S, 6),
-      sol: r10sol(k, mm, D) + 'Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = ' + key + '$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.'
+      sol: r10sol(k, mm, D) + 'Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = ' + key + '$. Check with $n = 1$: the formula gives $' + F.n(D.c) + ' \\cdot ' + F.n(D.q) + ' - ' + F.n(D.c) + ' = 1$, which is $a_1$.'
     };
   });
   def({ id: 'SQ-sn.r10-partial', code: 'SQ-sn', lesson: '5.5', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -6069,7 +6280,7 @@
       stem: 'If the sum of the first $n$ terms of the sequence ' + SEQ + ' is $' + L.rel + '$, then $a_1 + a_3 + a_5 =$ ( )', key: m(key),
       wrong: W([[q(a1).mul(qv.mul(qv).add(qv).add(1)), 'partial'], [q(a1).mul(qv.add(qv.pow(3)).add(qv.pow(5))), 'off-by-one'], [q(a1).mul(qv.pow(4).add(qv.pow(3)).add(q2).add(qv).add(1)), 'partial'], [key.neg(), 'sign'], [q(a1).mul(q2.mul(q2)), 'partial']]),
       check: chk.num(L.a[1] + L.a[3] + L.a[5]),
-      sol: lamSol(L, qv, a1) + 'The terms are $' + listT([1, 2, 3, 4, 5].map(function (n) { return q(a1).mul(qv.pow(n - 1)); })) + '$, so $a_1 + a_3 + a_5 = ' + F.n(key) + '$' + (close(s5, key.num) ? '.' : ' (not $S_5 = ' + F.n(q(a1).mul(qv.pow(4).add(qv.pow(3)).add(q2).add(qv).add(1))) + '$).')
+      sol: lamSol(L, qv, a1) + 'The terms are $' + listT([1, 2, 3, 4, 5].map(function (n) { return q(a1).mul(qv.pow(n - 1)); })) + '$, so $a_1 + a_3 + a_5 = ' + F.n(key) + '$' + (close(s5, key.num) ? '.' : '. This is not $S_5 = ' + F.n(q(a1).mul(qv.pow(4).add(qv.pow(3)).add(q2).add(qv).add(1))) + '$, which also includes $a_2$ and $a_4$.')
     };
   });
   def({ id: 'SQ-sn.cubic', code: 'SQ-sn', lesson: '5.5', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -6077,22 +6288,24 @@
     var a = R.pick([1, 1, 2]), b = R.int(-2, 3), c = R.int(-3, 3);
     if (a === 1 && b === 1 && c === 1) retry('real item');
     var S = function (n) { return a * n * n * n + b * n * n + c * n; }, key = F.poly([3 * a, 2 * b - 3 * a, a - b + c], 'n');
+    var der = F.poly([3 * a, 2 * b, c], 'n'), work = F.sum([[a, '(3n^2 - 3n + 1)'], [b, '(2n - 1)'], [c, '']]);
     return {
       stem: 'If the sum of the first $n$ terms of the sequence ' + SEQ + ' is $S_n = ' + F.poly([a, b, c, 0], 'n') + '$, then the general term $a_n =$ ( )', key: m(key),
       wrong: W([[F.poly([3 * a, 2 * b, c], 'n'), 'near-miss'], [F.poly([a, b, c], 'n'), 'operation'], [F.poly([3 * a, 3 * a + 2 * b, a + b + c], 'n'), 'off-by-one'], [F.poly([3 * a, -3 * a, a], 'n'), 'partial'], [F.poly([3 * a, 2 * b - 3 * a, -(a - b + c)], 'n'), 'sign']]),
       check: chk.seq(function (n) { return S(n) - S(n - 1); }, 6),
-      sol: 'For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = ' + key + '$. Check $n = 1$: $a_1 = S_1 = ' + S(1) + '$ fits the formula. (Differentiating $S_n$ is the trap.)'
+      sol: 'For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$' + (b ? ' and $n^2 - (n-1)^2 = 2n - 1$' : '') + ', this gives $a_n = ' + work + ' = ' + key + '$. For $n = 1$, $a_1 = S_1 = ' + S(1) + '$, and the formula also gives $' + S(1) + '$. ' +
+        'Differentiating $S_n$ gives $' + der + '$, which is not $a_n$: at $n = 2$ it gives $' + (12 * a + 4 * b + c) + '$, while $a_2 = S_2 - S_1 = ' + (S(2) - S(1)) + '$.'
     };
   });
   def({ id: 'SQ-sn.quad-term', code: 'SQ-sn', lesson: '5.5', tier: 'E', level: '=', fmt: 'V', w: 0.5,
-    form: 'Quadratic Sₙ → a single term aₖ = Sₖ − Sₖ₋₁', basis: 'CSC sample, Course plan 5.5 Q1–3' }, function (R) {
+    form: 'Quadratic Sₙ → a single term aₖ = Sₖ − Sₖ₋₁', basis: 'CSC sample, Course plan 5.5 Q1-3' }, function (R) {
     var p = R.pick([1, 1, 2, 3]), b = R.int(-3, 4), c = R.pick([0, 0, 1, -1, 2, 3]), k = R.int(3, 12);
     if (p === 1 && b === 0 && c === 1 && k === 10) retry('real item');
     var S = function (n) { return p * n * n + b * n + c; }, key = p * (2 * k - 1) + b;
     return {
       stem: 'If the sum of the first $n$ terms of the sequence ' + SEQ + ' is $S_n = ' + F.poly([p, b, c], 'n') + '$, then $' + A(k) + ' =$ ( )', key: m(key),
       wrong: W([[S(k), 'partial'], [p * (2 * k + 1) + b, 'off-by-one'], [2 * p * k + b, 'near-miss'], [key + c, 'slip'], [S(k) - S(k - 2), 'off-by-one']]), check: chk.num(S(k) - S(k - 1)),
-      sol: '$' + A(k) + ' = ' + Sn(k) + ' - ' + Sn(k - 1) + ' = ' + S(k) + ' - ' + par(q(S(k - 1))) + ' = ' + key + '$. ($' + Sn(k) + ' = ' + S(k) + '$ is the sum, not the term.)'
+      sol: '$' + A(k) + ' = ' + Sn(k) + ' - ' + Sn(k - 1) + ' = ' + S(k) + ' - ' + par(q(S(k - 1))) + ' = ' + key + '$. The value $' + S(k) + '$ is $' + Sn(k) + '$, the sum of the first $' + k + '$ terms, not the term $' + A(k) + '$ itself.'
     };
   });
   def({ id: 'SQ-sn.quad-general', code: 'SQ-sn', lesson: '5.5', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -6103,7 +6316,7 @@
     return {
       stem: 'If the sum of the first $n$ terms of the sequence ' + SEQ + ' is $S_n = ' + F.poly([p, b, 0], 'n') + '$, then the general term $a_n =$ ( )', key: m(key),
       wrong: W([[lin(2 * p, b), 'near-miss'], [lin(2 * p, b + p), 'off-by-one'], [lin(p, b), 'operation'], [lin(2 * p, p - b), 'sign'], [lin(p, b - p), 'partial']]), check: chk.seq(function (n) { return S(n) - S(n - 1); }, 6),
-      sol: 'For $n \\ge 2$: $a_n = S_n - S_{n-1} = ' + F.sum([[p, '(2n - 1)'], [b, '']]) + ' = ' + key + '$. For $n = 1$: $a_1 = S_1 = ' + S(1) + '$, which fits. So $a_n = ' + key + '$.'
+      sol: 'For $n \\ge 2$, $a_n = S_n - S_{n-1} = ' + F.sum([[p, '\\left[n^2 - (n - 1)^2\\right]'], [b, '\\left[n - (n - 1)\\right]']]) + ' = ' + F.sum([[p, '(2n - 1)'], [b, '']]) + ' = ' + key + '$. For $n = 1$, $a_1 = S_1 = ' + S(1) + '$, and the formula also gives $' + S(1) + '$. So $a_n = ' + key + '$.'
     };
   });
   def({ id: 'SQ-sn.exp', code: 'SQ-sn', lesson: '5.5', tier: 'M', level: '+1', fmt: 'V',
@@ -6114,24 +6327,24 @@
       stem: 'If the sum of the first $n$ terms of the sequence ' + SEQ + ' is $S_n = ' + geoT(c, b, 'n') + ' - ' + c + '$, then the general term $a_n =$ ( )', key: m(key),
       wrong: W([[geoT(c, b, 'n-1'), 'partial'], [geoT(c * (b - 1), b, 'n'), 'off-by-one'], [geoT(c, b, 'n'), 'partial'], [c * (b - 1) === b ? null : geoT(b, c * (b - 1), 'n-1'), 'swap'], [geoT(c * b, b, 'n-1') + ' - ' + c, 'slip']]),
       check: chk.seq(function (n) { return S(n) - S(n - 1); }, 6),
-      sol: 'For $n \\ge 2$: $a_n = S_n - S_{n-1} = ' + geoT(c, b, 'n') + ' - ' + geoT(c, b, 'n-1') + ' = ' + key + '$. For $n = 1$: $a_1 = S_1 = ' + S(1) + '$, which fits the formula.'
+      sol: 'For $n \\ge 2$, $a_n = S_n - S_{n-1} = ' + geoT(c, b, 'n') + ' - ' + geoT(c, b, 'n-1') + ' = ' + geoT(c, b, 'n-1') + '(' + b + ' - 1) = ' + key + '$. For $n = 1$, $a_1 = S_1 = ' + S(1) + '$, and the formula also gives $' + S(1) + '$.'
     };
   });
   def({ id: 'SQ-sn.const-stmt', code: 'SQ-sn', lesson: '5.5', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Sₙ = pn² + qn + c with c ≠ 0: which statement about {aₙ} is true (the "+ constant" trap)', basis: 'Course plan 5.5 Set C and video 3:00' }, function (R) {
+    form: 'Sₙ = pn² + qn + c with c ≠ 0: which statement about {aₙ} is true (the constant term changes a₁)', basis: 'Course plan 5.5 Set C and video 3:00' }, function (R) {
     var p = R.pick([1, 1, 2, 3]), b = R.int(-2, 4), c = R.pick([1, 2, 3, -1, -2, 4]);
     var S = function (n) { return n === 0 ? 0 : p * n * n + b * n + c; }, a = function (n) { return S(n) - (n === 1 ? 0 : S(n - 1)); }, f = lin(2 * p, b - p), fv = function (n) { return 2 * p * n + b - p; };
     var arith = function () { return [2, 3, 4, 5].every(function (n) { return close(a(n) - a(n - 1), a(2) - a(1)); }); };
     var pool = [
       h.factS('$a_1 = ' + a(1) + '$', true, function () { return close(S(1), a(1)); }, '$a_1 = S_1 = ' + S(1) + '$.', { g: 'a1' }),
       h.factS('$a_n = ' + f + '$ for $n \\ge 2$, but not for $n = 1$', true, function () { return [2, 3, 4, 5].every(function (n) { return close(a(n), fv(n)); }) && !close(a(1), fv(1)); }, '$S_n - S_{n-1} = ' + f + '$ holds for $n \\ge 2$, while $a_1 = S_1 = ' + a(1) + ' \\ne ' + fv(1) + '$.', { g: 'f' }),
-      h.factS('$a_2 = ' + a(2) + '$', true, function () { return close(S(2) - S(1), a(2)); }, '$a_2 = S_2 - S_1 = ' + S(2) + ' - ' + par(q(S(1))) + '$.', { g: 'a2' }),
+      h.factS('$a_2 = ' + a(2) + '$', true, function () { return close(S(2) - S(1), a(2)); }, '$a_2 = S_2 - S_1 = ' + S(2) + ' - ' + par(q(S(1))) + ' = ' + a(2) + '$.', { g: 'a2' }),
       h.factS('$\\{a_n\\}$ is not an arithmetic sequence', true, function () { return !arith(); }, '$a_2 - a_1 = ' + (a(2) - a(1)) + '$ but $a_3 - a_2 = ' + (a(3) - a(2)) + '$.', { g: 'ar' }),
       h.factS('$a_n = ' + f + '$ for every $n \\ge 1$', false, function () { return [1, 2, 3, 4].every(function (n) { return close(a(n), fv(n)); }); }, 'the formula fails at $n = 1$: $a_1 = S_1 = ' + a(1) + '$, not $' + fv(1) + '$.', { g: 'f', trap: 'domain' }),
-      h.factS('$\\{a_n\\}$ is an arithmetic sequence', false, arith, 'the constant term of $S_n$ breaks the pattern at the first term.', { g: 'ar', trap: 'domain' }),
-      h.factS('$a_1 = ' + fv(1) + '$', false, function () { return close(a(1), fv(1)); }, '$a_1 = S_1 = ' + a(1) + '$; the formula for $n \\ge 2$ does not apply.', { g: 'a1', trap: 'domain' }),
+      h.factS('$\\{a_n\\}$ is an arithmetic sequence', false, arith, '$a_2 - a_1 = ' + (a(2) - a(1)) + '$ but $a_3 - a_2 = ' + (a(3) - a(2)) + '$, so the differences are not all equal.', { g: 'ar', trap: 'domain' }),
+      h.factS('$a_1 = ' + fv(1) + '$', false, function () { return close(a(1), fv(1)); }, '$a_1 = S_1 = ' + a(1) + '$. The value $' + fv(1) + '$ comes from the formula $a_n = ' + f + '$, which holds only for $n \\ge 2$.', { g: 'a1', trap: 'domain' }),
       h.factS('$a_2 = ' + (a(2) + c) + '$', false, function () { return close(a(2), a(2) + c); }, '$a_2 = S_2 - S_1 = ' + a(2) + '$.', { g: 'a2', trap: 'slip' }),
-      h.factS('$a_3 = ' + S(3) + '$', false, function () { return close(a(3), S(3)); }, 'that is $S_3$; $a_3 = S_3 - S_2 = ' + a(3) + '$.', { g: 'a3', trap: 'partial' })
+      h.factS('$a_3 = ' + S(3) + '$', false, function () { return close(a(3), S(3)); }, '$' + S(3) + '$ is $S_3$, the sum of the first three terms. In fact $a_3 = S_3 - S_2 = ' + a(3) + '$.', { g: 'a3', trap: 'partial' })
     ];
     pool = pool.filter(function (s) { return s.ok || !s.test(); });        // drop a "false" statement that is true for these numbers (e.g. a₃ = S₃ when S₂ = 0)
     return out('The sum of the first $n$ terms of the sequence ' + SEQ + ' is $S_n = ' + F.poly([p, b, c], 'n') + '$. Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
@@ -6145,7 +6358,7 @@
       stem: lead + ' Then $' + A(n) + ' =$ ( )', key: m(key),
       wrong: W([[q(1, c + n * k), 'off-by-one'], [c === 0 ? null : q(1, c + (n - 2) * k), 'off-by-one'], [q(c + (n - 1) * k), 'reciprocal'], [q(1, n * k) , 'partial'], [q(1, (n - 1) * k), 'partial']]),
       check: chk.num(recip(c, k, n)),
-      sol: note + '$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $' + c + '$ and common difference $' + k + '$. So $\\dfrac{1}{' + A(n) + '} = ' + c + ' + ' + (n - 1) + ' \\cdot ' + k + ' = ' + (c + (n - 1) * k) + '$ and $' + A(n) + ' = ' + F.n(key) + '$.'
+      sol: (note ? note + 'So ' : 'The relation says that ') + '$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = ' + c + '$ and common difference $' + k + '$. So $\\dfrac{1}{' + A(n) + '} = ' + c + ' + ' + (n - 1) + ' \\cdot ' + k + ' = ' + (c + (n - 1) * k) + '$ and $' + A(n) + ' = ' + F.n(key) + '$.'
     };
   }
   def({ id: 'SQ-rec.recip-far', code: 'SQ-rec', lesson: '5.6', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -6176,7 +6389,7 @@
     return {
       stem: 'In the sequence ' + SEQ + ', $a_1 = ' + F.n(a1) + '$ and $a_n = ' + sgTex + ' \\cdot ' + (r.d === 1 ? F.n(r) : F.n(r)) + 'a_{n-1}$ ($n \\ge 2$). Then $' + A(n) + ' =$ ( )', key: m(key),
       wrong: W([[key.neg(), 'sign'], [t[n - 1], 'off-by-one'], [t[n + 1], 'off-by-one'], [t[n - 1].neg(), 'off-by-one'], [key.mul(r), 'off-by-one']]), check: chk.num(v),
-      sol: 'Write the terms out, one sign at a time: ' + steps.join(', ') + '.'
+      sol: 'Work out the terms in order, taking the sign from $' + sgTex + '$ at each step: ' + steps.join(', ') + '.'
     };
   }
   def({ id: 'SQ-rec.alt', code: 'SQ-rec', lesson: '5.6', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -6212,7 +6425,7 @@
     return {
       stem: 'In the sequence ' + SEQ + ', $a_1 = ' + F.n(a1) + '$ and $a_n = ' + c + ' + \\dfrac{1}{a_{n-1}}$ ($n \\ge 2$). Then $' + A(n) + ' =$ ( )', key: m(t[n]),
       wrong: W([[t[n - 1], 'off-by-one'], [t[n + 1], 'off-by-one'], [t[n].inv(), 'reciprocal'], [t[n].sub(c), 'partial'], [t[n - 1].inv(), 'partial']]), check: chk.num(v),
-      sol: 'Compute the terms one by one: $' + listT(t.slice(1, n + 1)) + '$. So $' + A(n) + ' = ' + F.n(t[n]) + '$.'
+      sol: 'Work out the terms in order: ' + (function () { var o = []; for (var s = 2; s <= n; s++) o.push('$' + A(s) + ' = ' + c + ' + ' + F.n(t[s - 1].inv()) + ' = ' + F.n(t[s]) + '$'); return h.joinAnd(o); })() + '. So $' + A(n) + ' = ' + F.n(t[n]) + '$.'
     };
   });
   /** A(ρⁿ − 1)/(ρ − 1) written in exam style, for an integer ratio t or a ratio 1/t */
@@ -6237,8 +6450,8 @@
     var wrong = [[signed, 'sign'], [geoSumT(a1, t, small, 'n-1'), 'off-by-one'], [small ? '1 - \\dfrac{1}{' + powT(t, 'n') + '}' : powT(t, 'n') + ' - 1', 'partial'], [bn, 'partial'], [geoSumT(a1, t, !small, 'n'), 'reciprocal']];
     return {
       stem: 'Suppose that in the sequence ' + SEQ + ', $a_1 = ' + a1 + '$ and $\\dfrac{' + p + '}{a_n} + \\dfrac{' + s + '}{a_{n+1}} = 0$ ($n = 1, 2, \\ldots$). Let $b_n = |a_n|$. Then $b_1 + b_2 + \\cdots + b_n =$ ( )', key: m(key), wrong: W(wrong), check: chk.seq(truth, 6),
-      sol: 'From the relation, $a_{n+1} = ' + F.n(q(-s, p)) + 'a_n$, so ' + SEQ + ' is geometric with ratio $' + F.n(q(-s, p)) + '$ and $b_n = |a_n|$ is geometric with first term $' + a1 + '$ and ratio $' + F.n(q(s, p)) + '$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = ' + key + '$. ' +
-        'Forgetting the absolute value (ratio $' + F.n(q(-s, p)) + '$) gives a wrong option.'
+      sol: 'From the relation, $a_{n+1} = ' + F.n(q(-s, p)) + 'a_n$, so ' + SEQ + ' is geometric with ratio $' + F.n(q(-s, p)) + '$ and $b_n = |a_n|$ is geometric with first term $' + a1 + '$ and ratio $' + F.n(q(s, p)) + '$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{' + (a1 === 1 ? '1 - ' + powT(q(s, p), 'n') : a1 + '\\left(1 - ' + powT(q(s, p), 'n') + '\\right)') + '}{1 - ' + F.n(q(s, p)) + '} = ' + key + '$. ' +
+        'Without the absolute value the ratio would stay $' + F.n(q(-s, p)) + '$, and the sum would be the different expression $' + signed + '$.'
     };
   });
   /** a·n² + b·n with a = k/2 */
@@ -6280,9 +6493,9 @@
     var sums = [0.7, -1.3].map(function (d) { var a1 = (T - (u + v - 2) * d) / 2, s = 0; for (var i = 1; i <= Nn; i++) s += a1 + (i - 1) * d; return s; });
     if (!close(sums[0], sums[1]) || !close(sums[0], key)) throw new Error('SQ-sum.two-group: the sum is not determined');
     return {
-      stem: 'It is known that the arithmetic sequence ' + SEQ + ' satisfies $' + rel + '$. Then the sum of the first $' + Nn + '$ terms $' + Sn(Nn) + ' =$ ( )', key: m(key),
+      stem: 'The arithmetic sequence ' + SEQ + ' satisfies $' + rel + '$. Then the sum of its first $' + Nn + '$ terms is $' + Sn(Nn) + ' =$ ( )', key: m(key),
       wrong: W([[Nn * T, 'half'], [V, 'partial'], [q((Nn + 1) * T, 2), 'off-by-one'], [q((Nn - 1) * T, 2), 'off-by-one'], [T, 'partial'], [Nn * T / 2 + T, 'slip']]), check: chk.num(sums[0]),
-      sol: 'Index property: $' + A(pc - e) + ' + ' + A(pc + e) + ' = 2' + A(pc) + '$ and $' + A(tc - f) + ' + ' + A(tc) + ' + ' + A(tc + f) + ' = 3' + A(tc) + '$. The condition becomes $6' + A(u) + ' + 6' + A(v) + ' = ' + V + '$, so $' + A(u) + ' + ' + A(v) + ' = ' + T +
+      sol: 'In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $' + A(pc - e) + ' + ' + A(pc + e) + ' = 2' + A(pc) + '$ and $' + A(tc - f) + ' + ' + A(tc) + ' + ' + A(tc + f) + ' = 3' + A(tc) + '$. The condition becomes $6' + A(u) + ' + 6' + A(v) + ' = ' + V + '$, so $' + A(u) + ' + ' + A(v) + ' = ' + T +
         '$. Because $' + u + ' + ' + v + ' = 1 + ' + Nn + '$, $a_1 + ' + A(Nn) + ' = ' + T + '$ and $' + Sn(Nn) + ' = \\dfrac{' + Nn + '(a_1 + ' + A(Nn) + ')}{2} = ' + key + '$.'
     };
   });
@@ -6317,7 +6530,7 @@
       stem: 'If $a_n = ' + D.aT + '$, then the sum of the first $n$ terms $S_n =$ ( )', key: m(key),
       wrong: W([[D.tex('ok', 'minus'), 'off-by-one'], [D.tex('low', 'ok'), 'off-by-one'], [D.tex('bare', 'ok'), 'partial'], [D.tex('ok', 'full'), 'partial'], [D.tex('low', 'minus'), 'off-by-one']]), check: chk.seq(truth, 6),
       sol: 'Group the two parts. Geometric part: $' + [1, 2, 3].map(function (n) { return powT(b, n + e); }).join(' + ') + ' + \\cdots$ has first term $' + Math.pow(b, 1 + e) + '$ and ratio $' + b + '$, so it sums to $' + (b === 2 ? Math.pow(b, 1 + e) + '(2^n - 1)' : '\\dfrac{' + Math.pow(b, 1 + e) + '(' + b + '^n - 1)}{' + (b - 1) + '}') + '$. ' +
-        'Linear part: the terms $' + lin(p, r) + '$ add up to $' + F.sum([[p > 0 ? 1 : -1, '\\dfrac{' + (Math.abs(p) === 1 ? '' : Math.abs(p)) + 'n(n + 1)}{2}'], [r, 'n']]) + '$. Together: $S_n = ' + key + '$. Check with $n = 1$: $S_1 = a_1 = ' + D.a(1) + '$.'
+        'Linear part: the terms $' + lin(p, r) + '$ add up to $' + F.sum([[p > 0 ? 1 : -1, '\\dfrac{' + (Math.abs(p) === 1 ? '' : Math.abs(p)) + 'n(n + 1)}{2}'], [r, 'n']]) + '$. Adding the two parts gives $S_n = ' + key + '$. Check with $n = 1$: $S_1 = a_1 = ' + D.a(1) + '$.'
     };
   });
   def({ id: 'SQ-sum.blocks', code: 'SQ-sum', lesson: '5.7', tier: 'H', level: '=', fmt: 'V', w: 0.5,
@@ -6330,8 +6543,9 @@
     return {
       stem: SUMDEF + 'a geometric sequence ' + SEQ + '. If $S_2 = ' + s + '$ and $S_4 = ' + S4 + '$, then $' + Sn(ask) + ' =$ ( )', key: m(key),
       wrong: W([[ask === 6 ? S8 : S6, 'off-by-one'], [ask === 6 ? 2 * S4 - s : 3 * S4 - 2 * s, 'companion'], [S4 * (1 + r), 'operation'], [s + S4, 'partial'], [ask === 6 ? S4 + s * r : S6 + s * r * r, 'slip']]), check: chk.num(sum),
-      sol: 'The blocks $S_2$, $S_4 - S_2$, $S_6 - S_4$, $\\ldots$ form a geometric sequence with ratio $q^2$. Here $S_4 - S_2 = ' + (S4 - s) + '$, so $q^2 = ' + r + '$. Then $S_6 - S_4 = ' + (s * r * r) + '$ and $S_6 = ' + S6 + '$' +
-        (ask === 8 ? '; $S_8 - S_6 = ' + (s * r * r * r) + '$ and $S_8 = ' + S8 + '$.' : '.')
+      sol: 'The blocks $S_2 = a_1 + a_2$, $S_4 - S_2 = a_3 + a_4$, $S_6 - S_4 = a_5 + a_6$, $\\ldots$ form a geometric sequence with ratio $q^2$, because $a_3 + a_4 = q^2(a_1 + a_2)$, and so on. ' +
+        'Here $S_4 - S_2 = ' + (S4 - s) + '$ and $S_2 = ' + s + '$, so $q^2 = ' + (s === 1 ? '' : '\\dfrac{' + (S4 - s) + '}{' + s + '} = ') + r + '$. Then $S_6 - S_4 = ' + (S4 - s) + ' \\cdot ' + r + ' = ' + (s * r * r) + '$ and $S_6 = ' + S4 + ' + ' + (s * r * r) + ' = ' + S6 + '$.' +
+        (ask === 8 ? ' Next, $S_8 - S_6 = ' + (s * r * r) + ' \\cdot ' + r + ' = ' + (s * r * r * r) + '$ and $S_8 = ' + S6 + ' + ' + (s * r * r * r) + ' = ' + S8 + '$.' : '')
     };
   });
   def({ id: 'SQ-sum.odd-sn', code: 'SQ-sum', lesson: '5.7', tier: 'E', level: '=', fmt: 'V', w: 0.3,
@@ -6366,13 +6580,13 @@
     return {
       stem: 'If $a_n = ' + F.sum([[1, b + '^{n}'], [p, 'n']]) + '$, then the sum of the first $' + n + '$ terms $' + Sn(n) + ' =$ ( )', key: m(key),
       wrong: W([[an, 'partial'], [key - Math.pow(b, n), 'off-by-one'], [geo + b + ar, 'slip'], [geo + p * n * n, 'partial'], [key + Math.pow(b, n + 1), 'off-by-one'], [geo - ar === key ? null : geo - ar, 'sign']]), check: chk.num(key),
-      sol: 'Group: $(' + [1, 2].map(function (k) { return b + '^{' + k + '}'; }).join(' + ') + ' + \\cdots + ' + b + '^{' + n + '}) + ' + par(q(p)) + '(1 + 2 + \\cdots + ' + n + ') = ' + geo + ' + ' + par(q(ar)) + ' = ' + key + '$.'
+      sol: 'Add the powers and the linear parts separately: $S_' + n + ' = ' + F.sum([[1, '(' + [1, 2].map(function (k) { return b + '^{' + k + '}'; }).join(' + ') + ' + \\cdots + ' + b + '^{' + n + '})'], [p, '(1 + 2 + \\cdots + ' + n + ')']]) + ' = ' + F.sum([[geo, ''], [ar, '']]) + ' = ' + key + '$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/ln1.js ---- */
-/* ACE CSCA Question Factory · templates/ln1.js — Lines I: LN-quad, LN-pt, LN-dist, LN-slope. */
+/* ACE CSCA Question Factory · templates/ln1.js: Lines I (LN-quad, LN-pt, LN-dist, LN-slope). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m;
@@ -6414,7 +6628,7 @@
       stem: R.pick(['Which of the following points lies in the ' + QW[target] + ' quadrant? ( )', 'Which of the following points is in the ' + QW[target] + ' quadrant? ( )', 'In the rectangular coordinate system, which of the following points lies in the ' + QW[target] + ' quadrant? ( )']),
       key: P(target), wrong: R.shuffle(wrong),
       check: chk.custom({ isTrue: function (t) { var p = ptOf(t); return quadOf(p[0], p[1]) === target; }, same: function (x, y) { var p = ptOf(x), r = ptOf(y); return ev.close(p[0], r[0]) && ev.close(p[1], r[1]); } }),
-      sol: 'Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The ' + QW[target] + ' quadrant needs $' + SGT[target] + '$, so the point is $' + pt(SG[target][0] * a, SG[target][1] * b) + '$.' + (axis ? ' A point on an axis belongs to no quadrant.' : ''),
+      sol: 'A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $' + SGT[target] + '$, namely $' + pt(SG[target][0] * a, SG[target][1] * b) + '$.' + (axis ? ' A point on an axis belongs to no quadrant.' : ''),
       sig: 'r02|' + target + '|' + a + '|' + b
     };
   });
@@ -6430,6 +6644,7 @@
     var notes = [];
     if (hx || both) notes.push('Since $' + H1[1] + '$, $' + H1[0] + (ev.expr(H1[0], {}) > 0 ? ' > 0' : ' < 0') + '$.');
     if (!hx || both) notes.push('Since $' + H2[1] + '$, $' + H2[0] + (ev.expr(H2[0], {}) > 0 ? ' > 0' : ' < 0') + '$.');
+    if (notes.length === 2 && notes[0] === notes[1]) notes.pop();
     var st = quadOptions(qf, notes.join(' ') + ' The signs are $' + SGT[k] + '$, so the point lies in ' + QN[k] + '.');
     return out(R.pick(['The point $(' + xT + ', ' + yT + ')$ lies in ( )', 'In the rectangular coordinate system, the point $P(' + xT + ', ' + yT + ')$ lies in ( )']), st);
   });
@@ -6455,7 +6670,7 @@
     if (kind === 'sum') { cond = '$ab > 0$ and $a + b ' + sum + ' 0$'; sa = sb = sum === '<' ? -1 : 1; why = '$ab > 0$ means $a$ and $b$ have the same sign, and $a + b ' + sum + ' 0$ makes both ' + (sum === '<' ? 'negative' : 'positive') + '.'; }
     else if (kind === 'a') { cond = '$a = ' + c + '$ and $ab ' + prod + ' 0$'; sa = c > 0 ? 1 : -1; sb = prod === '<' ? -sa : sa; why = '$a ' + (c > 0 ? '>' : '<') + ' 0$ and $ab ' + prod + ' 0$ give $b ' + (sb > 0 ? '>' : '<') + ' 0$.'; }
     else { cond = '$b = ' + c + '$ and $ab ' + prod + ' 0$'; sb = c > 0 ? 1 : -1; sa = prod === '<' ? -sb : sb; why = '$b ' + (c > 0 ? '>' : '<') + ' 0$ and $ab ' + prod + ' 0$ give $a ' + (sa > 0 ? '>' : '<') + ' 0$.'; }
-    var st = quadOptions(qf, why + ' So the point ' + (swap ? '$(b, a)$' : '$(a, b)$') + ' has signs $' + SGT[k] + '$: ' + QN[k] + '.');
+    var st = quadOptions(qf, why + ' So the point ' + (swap ? '$(b, a)$' : '$(a, b)$') + ' has signs $' + SGT[k] + '$ and lies in ' + QN[k] + '.');
     return out('If ' + cond + ', then the point ' + (swap ? '$P(b, a)$' : '$P(a, b)$') + ' lies in ( )', st);
   });
   def({ id: 'LN-quad.transformed', code: 'LN-quad', lesson: '4.1', tier: 'E', level: '=', fmt: 'V', trick: 'T07', w: 1,
@@ -6472,7 +6687,7 @@
     };
     var k = qf(), X = F.sum([[c, swap ? 'y' : 'x']]), Y = F.sum([[d, swap ? 'x' : 'y']]);
     var sx = SG[p][0] > 0 ? '>' : '<', sy = SG[p][1] > 0 ? '>' : '<';
-    var st = quadOptions(qf, 'In the ' + QW[p] + ' quadrant $x ' + sx + ' 0$ and $y ' + sy + ' 0$. Then $' + X + (SG[k][0] > 0 ? ' > 0' : ' < 0') + '$ and $' + Y + (SG[k][1] > 0 ? ' > 0' : ' < 0') + '$, so $Q$ has signs $' + SGT[k] + '$: ' + QN[k] + '.');
+    var st = quadOptions(qf, 'In the ' + QW[p] + ' quadrant $x ' + sx + ' 0$ and $y ' + sy + ' 0$. Then $' + X + (SG[k][0] > 0 ? ' > 0' : ' < 0') + '$ and $' + Y + (SG[k][1] > 0 ? ' > 0' : ' < 0') + '$, so $Q$ has signs $' + SGT[k] + '$ and lies in ' + QN[k] + '.');
     return out('If the point $P(x, y)$ lies in the ' + QW[p] + ' quadrant, then the point $Q(' + X + ', ' + Y + ')$ lies in ( )', st);
   });
   function reflect(a, b, axis) {          // geometric reflection (independent of the sign table)
@@ -6492,13 +6707,13 @@
     var kq = quadOf(a, b), wq = R.pick([1, 2, 3, 4].filter(function (k) { return k !== kq; })), kq2 = quadOf(-a, b);
     var pool = [
       sym('x', a, -b, 'reflection in the $x$-axis keeps $x$ and changes the sign of $y$.', { g: 'x' }), sym('y', -a, b, 'reflection in the $y$-axis changes the sign of $x$ and keeps $y$.', { g: 'y' }), sym('origin', -a, -b, 'reflection in the origin changes both signs.', { g: 'o' }),
-      sym('x', -a, b, 'that is the reflection in the $y$-axis; about the $x$-axis the point is $' + pt(a, -b) + '$.', { g: 'x', trap: 'axis' }), sym('y', a, -b, 'that is the reflection in the $x$-axis; about the $y$-axis the point is $' + pt(-a, b) + '$.', { g: 'y', trap: 'axis' }),
-      sym('origin', b, a, 'that swaps the coordinates; about the origin the point is $' + pt(-a, -b) + '$.', { g: 'o', trap: 'swap' }),
+      sym('x', -a, b, 'reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $' + pt(a, -b) + '$. The point $' + pt(-a, b) + '$ is the reflection in the $y$-axis.', { g: 'x', trap: 'axis' }), sym('y', a, -b, 'reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $' + pt(-a, b) + '$. The point $' + pt(a, -b) + '$ is the reflection in the $x$-axis.', { g: 'y', trap: 'axis' }),
+      sym('origin', b, a, 'reflection in the origin changes both signs, which gives $' + pt(-a, -b) + '$. Swapping the coordinates is a different operation.', { g: 'o', trap: 'swap' }),
       h.factS('$P$ lies in ' + QN[kq], false, function () { return quadOf(a, b) === kq; }, 'its signs are $' + SGT[kq] + '$.', { g: 'q' }),
       h.factS('$P$ lies in ' + QN[wq], false, function () { return quadOf(a, b) === wq; }, 'its signs are $' + SGT[kq] + '$, so it lies in ' + QN[kq] + '.', { g: 'q', trap: 'sign' }),
-      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(b) + '$', false, function () { return Math.abs(b) === Math.abs(b); }, 'the distance to the $x$-axis is $|y|$.', { g: 'd' }),
-      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(a) + '$', false, function () { return Math.abs(b) === Math.abs(a); }, 'the distance to the $x$-axis is $|y| = ' + Math.abs(b) + '$; $|x|$ is the distance to the $y$-axis.', { g: 'd', trap: 'axis' }),
-      h.factS('The point $' + pt(-a, b) + '$ lies in ' + QN[kq], false, function () { return quadOf(-a, b) === kq; }, 'changing the sign of $x$ moves it to ' + QN[kq2] + '.', { g: 'q2', trap: 'sign' })
+      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(b) + '$', false, function () { return Math.abs(b) === Math.abs(b); }, 'the distance to the $x$-axis is $|y| = ' + Math.abs(b) + '$.', { g: 'd' }),
+      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(a) + '$', false, function () { return Math.abs(b) === Math.abs(a); }, 'the distance to the $x$-axis is $|y| = ' + Math.abs(b) + '$. The number $' + Math.abs(a) + '$ is the distance to the $y$-axis.', { g: 'd', trap: 'axis' }),
+      h.factS('The point $' + pt(-a, b) + '$ lies in ' + QN[kq], false, function () { return quadOf(-a, b) === kq; }, 'its signs are $' + SGT[kq2] + '$, so it lies in ' + QN[kq2] + '.', { g: 'q2', trap: 'sign' })
     ];
     pool.forEach(function (s) { s.ok = !!s.test(); });
     return out('Given the point $P' + pt(a, b) + '$, which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
@@ -6515,7 +6730,7 @@
     var rule = { x: 'keeps $x$ and changes the sign of $y$', y: 'changes the sign of $x$ and keeps $y$', origin: 'changes both signs' }[axis];
     return {
       stem: R.pick(['Let $P' + pt(a, b) + '$ be a point in the rectangular coordinate system. If point $Q$ and point $P$ are symmetric about ' + AX[axis] + ', then the coordinates of $Q$ are ( )', 'The point symmetric to $P' + pt(a, b) + '$ about ' + AX[axis] + ' is ( )']),
-      key: m(pt(key[0], key[1])), wrong: wrong, check: chk.tuple(truth), sol: 'Symmetry about ' + AX[axis] + ' ' + rule + ': $' + pt(a, b) + ' \\to ' + pt(key[0], key[1]) + '$.'
+      key: m(pt(key[0], key[1])), wrong: wrong, check: chk.tuple(truth), sol: 'Symmetry about ' + AX[axis] + ' ' + rule + ', so $' + pt(a, b) + '$ becomes $' + pt(key[0], key[1]) + '$.'
     };
   });
   def({ id: 'LN-pt.dist-axis', code: 'LN-pt', lesson: '4.1', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -6529,7 +6744,7 @@
     return {
       stem: 'If the $' + (xGiven ? 'x' : 'y') + '$-coordinate of point $P$ is $' + c + '$ and the distance from $P$ to the $' + (xGiven ? 'x' : 'y') + '$-axis is $' + d + '$, then the coordinates of $P$ are ( )', key: two(A1, A2), wrong: R.shuffle(wrong.slice(0, 2)).concat(wrong.slice(2)),
       check: chk.tuples([A1, A2]),
-      sol: 'The distance from $(x, y)$ to the $' + (xGiven ? 'x' : 'y') + '$-axis is $' + (xGiven ? '|y|' : '|x|') + '$, so $' + (xGiven ? 'y' : 'x') + ' = \\pm ' + d + '$: there are two points, $' + pt(A1[0], A1[1]) + '$ and $' + pt(A2[0], A2[1]) + '$. An option with only one of them is incomplete.'
+      sol: 'The distance from $(x, y)$ to the $' + (xGiven ? 'x' : 'y') + '$-axis is $' + (xGiven ? '|y|' : '|x|') + '$, so $' + (xGiven ? 'y' : 'x') + ' = \\pm ' + d + '$. Hence there are two points, $' + pt(A1[0], A1[1]) + '$ and $' + pt(A2[0], A2[1]) + '$, and an option with only one of them is incomplete.'
     };
   });
   def({ id: 'LN-pt.on-axis', code: 'LN-pt', lesson: '4.1', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -6546,7 +6761,7 @@
       stem: 'If the point $' + name + '(' + X + ', ' + Y + ')$ lies on the $' + (onX ? 'x' : 'y') + '$-axis, then the coordinates of $' + name + '$ are ( )', key: m(pt(key[0], key[1])),
       wrong: [[m(pt(other[0], other[1])), 'axis'], [m(onX ? pt(0, v) : pt(v, 0)), 'axis'], [m(onX ? pt(-v, 0) : pt(0, -v)), 'sign'], [m(onX ? pt(v, a) : pt(a, v)), 'partial'], [m(onX ? pt(a, 0) : pt(0, a)), 'partial']],
       check: chk.tuple(onX ? [al * (-r / be) + p, be * (-r / be) + r] : [al * (-p / al) + p, be * (-p / al) + r]),
-      sol: 'A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + ' = 0$: $' + (onX ? Y : X) + ' = 0$, so $a = ' + a + '$. Hence $' + name + pt(key[0], key[1]) + '$.'
+      sol: 'A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + ' = 0$, so $' + (onX ? Y : X) + ' = 0$ and $a = ' + a + '$. Then $' + (onX ? X : Y) + ' = ' + v + '$, so the point is $' + name + pt(key[0], key[1]) + '$.'
     };
   });
   def({ id: 'LN-pt.sym-param', code: 'LN-pt', lesson: '4.1', tier: 'E', level: '+1', fmt: 'V',
@@ -6588,9 +6803,9 @@
     var wrong = [[Sd.sqrt(sx * sx + sy * sy), 'sign'], [d2, 'partial'], [Math.abs(dx) + Math.abs(dy), 'operation'], [Math.max(Math.abs(dx), Math.abs(dy)), 'partial'], [dx * dx === dy * dy ? null : Sd.sqrt(Math.abs(dx * dx - dy * dy)), 'sign'], [Sd.sqrt(d2 + 1), 'slip']];
     var A = names[0], B = names[1], a = '$' + A + pt(P[0], P[1]) + '$', b = '$' + B + pt(Q[0], Q[1]) + '$';
     return {
-      stem: R.pick(['The distance between the points ' + a + ' and ' + b + ' is ( )', 'The distance from the point ' + a + ' to the point ' + b + ' is ( )', 'Given points ' + a + ' and ' + b + ', then $|' + A + B + '| =$ ( )']),
+      stem: R.pick(['The distance between the points ' + a + ' and ' + b + ' is ( )', 'The distance from the point ' + a + ' to the point ' + b + ' is ( )', 'For the points ' + a + ' and ' + b + ', $|' + A + B + '| =$ ( )']),
       key: m(key), wrong: W(wrong), check: chk.num(Math.hypot(Q[0] - P[0], Q[1] - P[1])),
-      sol: '$|' + A + B + '| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$. Subtract the coordinates before squaring, and do not forget the square root.',
+      sol: 'The coordinate differences are $' + Q[0] + ' - ' + par(P[0]) + ' = ' + dx + '$ and $' + Q[1] + ' - ' + par(P[1]) + ' = ' + dy + '$. By the distance formula, $|' + A + B + '| = \\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + (dx * dx) + ' + ' + (dy * dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.',
       sig: 'dist|' + [P[0], P[1], Q[0], Q[1]].join(',') + (extraSig || '')
     };
   }
@@ -6624,7 +6839,7 @@
     return {
       stem: 'The distance from point $P(' + L[0] + ', ' + L[1] + ')$ to point $Q(' + X + ', ' + Y + ')$ is ( )', key: m(key),
       wrong: W([[d2, 'partial'], [Math.abs(p) + Math.abs(r), 'operation'], [Math.max(Math.abs(p), Math.abs(r)), 'partial'], [p * p === r * r ? null : Sd.sqrt(Math.abs(p * p - r * r)), 'sign'], [Sd.sqrt(d2).scale(2), 'slip']]), check: chk.num(Math.hypot(p, r)),
-      sol: 'The differences of the coordinates are $' + p + '$ and $' + r + '$ — the letters cancel. So $|PQ| = \\sqrt{' + sqT(p) + ' + ' + sqT(r) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
+      sol: 'The differences of the coordinates are $(' + X + ') - ' + L[0] + ' = ' + p + '$ and $(' + Y + ') - ' + L[1] + ' = ' + r + '$, so the letters cancel. Then $|PQ| = \\sqrt{' + sqT(p) + ' + ' + sqT(r) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
   function paramItem(R, x1, y1, y2, leg, h2, hT, onY, block) {
@@ -6638,9 +6853,9 @@
       : [[m(v1), 'partial'], [m(v2), 'partial'], [F.or(-v2, -v1), 'sign'], [m(F.pm(leg)), 'partial'], [F.or(v1 + 1, v2 - 1), 'slip']];
     var roots = [x1 + Math.sqrt(h2 - dy * dy), x1 - Math.sqrt(h2 - dy * dy)];
     return {
-      stem: 'Given points $A' + A + '$ and $B' + B + '$, if $|AB| = ' + hT + '$, then $' + L + ' =$ ( )', key: key, wrong: sym ? wrong : R.shuffle(wrong.slice(0, 2)).concat(wrong.slice(2)), check: chk.alts(roots),
-      sol: sym ? '$|AB|^2 = ' + h2 + '$ gives $' + L + '^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $' + L + '^2 = ' + (leg * leg) + '$ and $' + L + ' = \\pm ' + leg + '$ — two answers.'
-        : '$|AB|^2 = ' + h2 + '$ gives $(' + F.sum([[1, L], [-x1, '']]) + ')^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $(' + F.sum([[1, L], [-x1, '']]) + ')^2 = ' + (leg * leg) + '$ and $' + F.sum([[1, L], [-x1, '']]) + ' = \\pm ' + leg + '$. Hence $' + L + ' = ' + v1 + '$ or $' + v2 + '$ — two answers.'
+      stem: 'The points $A' + A + '$ and $B' + B + '$ satisfy $|AB| = ' + hT + '$. Then $' + L + ' =$ ( )', key: key, wrong: sym ? wrong : R.shuffle(wrong.slice(0, 2)).concat(wrong.slice(2)), check: chk.alts(roots),
+      sol: sym ? '$|AB|^2 = ' + h2 + '$ gives $' + L + '^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $' + L + '^2 = ' + (leg * leg) + '$ and $' + L + ' = \\pm ' + leg + '$. Both values give $|AB| = ' + hT + '$.'
+        : '$|AB|^2 = ' + h2 + '$ gives $(' + F.sum([[1, L], [-x1, '']]) + ')^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $(' + F.sum([[1, L], [-x1, '']]) + ')^2 = ' + (leg * leg) + '$ and $' + F.sum([[1, L], [-x1, '']]) + ' = \\pm ' + leg + '$. Hence $' + L + ' = ' + v1 + '$ or $' + L + ' = ' + v2 + '$, and both give $|AB| = ' + hT + '$.'
     };
   }
   var TRI = [[3, 4, 5], [4, 3, 5], [6, 8, 10], [8, 6, 10], [5, 12, 13], [12, 5, 13]];
@@ -6655,7 +6870,7 @@
     return paramItem(R, 0, y1, y2, t[0], t[2] * t[2], String(t[2]), onY, !onY && y1 === 3 && y2 === -1 && t[2] === 5);
   });
   def({ id: 'LN-dist.param-surd', code: 'LN-dist', lesson: '4.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'Distance parameter with |AB| = √n', basis: 'Course plan 4.2 Q6–8' }, function (R) {
+    form: 'Distance parameter with |AB| = √n', basis: 'Course plan 4.2 Q6-8' }, function (R) {
     var leg = R.int(1, 5), dy = R.nz(-5, 5), h2 = leg * leg + dy * dy, x1 = R.int(-5, 5), y1 = R.int(-4, 4);
     if (N.isSquare(h2)) retry();
     return paramItem(R, x1, y1, y1 + dy, leg, h2, F.n(Sd.sqrt(h2)), R.bool(0.3), false);
@@ -6669,7 +6884,7 @@
       stem: 'The distance between the points $' + nm[0] + pt(P[0], P[1]) + '$ and $' + nm[1] + pt(Q[0], Q[1]) + '$ is ( )', key: m(key),
       wrong: W([[d2, 'partial'], [Math.abs(dx) + Math.abs(dy), 'operation'], [Sd.sqrt(P[0].add(Q[0]).mul(P[0].add(Q[0])).add(P[1].add(Q[1]).mul(P[1].add(Q[1])))), 'sign'], [Math.max(Math.abs(dx), Math.abs(dy)), 'partial'], [Sd.sqrt(d2 + 2), 'slip']]),
       check: chk.num(Math.hypot(Q[0].num - P[0].num, Q[1].num - P[1].num)),
-      sol: 'The differences are $' + dx + '$ and $' + dy + '$ (the fractions cancel). So the distance is $\\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
+      sol: 'The differences are $' + F.n(Q[0]) + ' - ' + par(P[0]) + ' = ' + dx + '$ and $' + F.n(Q[1]) + ' - ' + par(P[1]) + ' = ' + dy + '$, so the fractions cancel. The distance is $\\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
 
@@ -6691,7 +6906,7 @@
     return {
       stem: R.pick(['The slope of the line passing through the points $A' + pt(x1, y1) + '$ and $B' + pt(x2, y2) + '$ is ( )', 'If the straight line $l$ passes through the points $A' + pt(x1, y1) + '$ and $B' + pt(x2, y2) + '$, then the slope of $l$ is ( )']), key: m(k),
       wrong: W([[k.inv(), 'reciprocal'], [k.neg(), 'sign'], [k.inv().neg(), 'reciprocal'], [sumK, 'sign'], [k.add(1), 'slip']]), check: chk.num((y2 - y1) / (x2 - x1)),
-      sol: '$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{' + y2 + ' - ' + par(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$. Keep the same order of the points in the numerator and the denominator.'
+      sol: '$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{' + y2 + ' - ' + par(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$.'
     };
   });
   def({ id: 'LN-slope.incl-si', code: 'LN-slope', lesson: '4.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -6701,7 +6916,7 @@
     var A = angOpts(R, c[0], useDeg), eq = 'y = ' + F.sum([[c[1], 'x'], [b, '']]);
     return {
       stem: 'The angle of inclination of the line $' + eq + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(incOf(c[1].num)),
-      sol: 'The slope is $k = ' + F.n(c[1]) + ' = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = ' + F.deg(c[0]) + (useDeg ? '' : ' = ' + F.rad(c[0])) + '$. The intercept does not matter' + (c[0] > 90 ? ', and a negative slope gives an obtuse angle, never a negative one.' : '.'),
+      sol: 'The slope is $k = ' + F.n(c[1]) + ' = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = ' + F.deg(c[0]) + (useDeg ? '' : ' = ' + F.rad(c[0])) + '$.' + (b ? ' The intercept $' + b + '$ does not affect the angle.' : '') + (c[0] > 90 ? ' The value $' + F.deg(c[0] - 180) + '$ is not an inclination, because an inclination is never negative.' : ''),
       sig: 'incl|' + eq + '|' + useDeg
     };
   });
@@ -6713,7 +6928,7 @@
     var k = c[0].neg().div(c[1]), th = Math.round(incOf(k.num) * 180 / PI), A = angOpts(R, th, useDeg), eq = F.sum([[c[0], 'x'], [c[1], 'y'], [cc, '']]) + ' = 0';
     return {
       stem: 'The angle of inclination of the line $' + eq + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(incOf(-c[0].num / c[1].num)),
-      sol: 'For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = ' + F.n(k) + '$. With $\\tan\\theta = ' + F.n(k) + '$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = ' + F.deg(th) + (useDeg ? '' : ' = ' + F.rad(th)) + '$.'
+      sol: 'For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{' + F.n(c[0]) + '}{' + F.n(c[1]) + '} = ' + F.n(k) + '$. Since $\\tan\\theta = ' + F.n(k) + '$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = ' + F.deg(th) + (useDeg ? '' : ' = ' + F.rad(th)) + '$.'
     };
   });
   def({ id: 'LN-slope.from-incl', code: 'LN-slope', lesson: '4.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -6723,7 +6938,7 @@
     var wrong = [[k.neg(), 'sign'], [k.eq(rec) ? null : rec, 'reciprocal'], [k.eq(rec) ? null : rec.neg(), 'reciprocal'], [N.trig.sin(th), 'companion'], [N.trig.cos(th), 'companion'], [N.trig.sin(th).neg(), 'companion']];
     return {
       stem: R.pick(['If the angle of inclination of a line is $' + (useDeg ? F.deg(th) : F.rad(th)) + '$, then its slope is ( )', 'The slope of a line whose angle of inclination is $' + (useDeg ? F.deg(th) : F.rad(th)) + '$ is ( )']), key: m(k), wrong: W(wrong), check: chk.num(Math.tan(th * PI / 180)),
-      sol: '$k = \\tan\\theta = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$' + (th > 90 ? ' (an obtuse inclination gives a negative slope).' : '.')
+      sol: '$k = \\tan\\theta = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$' + '.' + (th > 90 ? ' An obtuse inclination gives a negative slope.' : '')
     };
   });
   def({ id: 'LN-slope.incl-two-points', code: 'LN-slope', lesson: '4.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -6741,8 +6956,8 @@
     form: 'Inclination of a general-form line with integer coefficients (x + y − 2 = 0), incl. vertical and horizontal lines', basis: 'Course plan 4.3 Q5' }, function (R) {
     var kind = R.pick(['d', 'd', 'd', 'v', 'h']), t = R.pick([1, 2, 3]), c = R.nz(-7, 7), useDeg = R.bool(0.8), eq, th, why;
     if (kind === 'd') { var sgn = R.sign(); eq = F.line(t, sgn * t, c); th = sgn > 0 ? 135 : 45; why = 'The slope is $k = -\\dfrac{A}{B} = ' + (-sgn) + '$, so $\\theta = ' + F.deg(th) + '$.'; }
-    else if (kind === 'v') { eq = R.bool() ? 'x = ' + c : F.line(1, 0, -c); th = 90; why = 'The line is vertical: its inclination is $90^\\circ$ and it has no slope.'; }
-    else { eq = R.bool() ? 'y = ' + c : F.line(0, 1, -c); th = 0; why = 'The line is horizontal: its slope is $0$ and its inclination is $0^\\circ$.'; }
+    else if (kind === 'v') { eq = R.bool() ? 'x = ' + c : F.line(1, 0, -c); th = 90; why = 'The line is vertical, so its inclination is $90^\\circ$ and it has no slope.'; }
+    else { eq = R.bool() ? 'y = ' + c : F.line(0, 1, -c); th = 0; why = 'The line is horizontal, so its slope is $0$ and its inclination is $0^\\circ$.'; }
     var A = angOpts(R, th, useDeg);
     return { stem: 'The angle of inclination of the line $' + eq + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(th * PI / 180), sol: why };
   });
@@ -6754,16 +6969,16 @@
     var V = [[a, 0], [a, 1]], H = [[0, b], [1, b]], V2 = [[x0, y0], [x0, y0 + t]], H2 = [[x0, y0], [x0 + t, y0]];
     var S = function (text, test, why, extra) { return h.factS(text, test(), test, why, extra); };
     var pool = [
-      S('The line $x = ' + a + '$ has inclination $90^\\circ$', function () { return slope(V[0], V[1]) === null; }, 'it is vertical.', { g: 'vi' }),
+      S('The line $x = ' + a + '$ has inclination $90^\\circ$', function () { return slope(V[0], V[1]) === null; }, 'it is vertical, so its inclination is $90^\\circ$.', { g: 'vi' }),
       S('The line $x = ' + a + '$ has no slope', function () { return slope(V[0], V[1]) === null; }, 'for a vertical line $\\tan 90^\\circ$ is undefined.', { g: 'vs' }),
-      S('The line $y = ' + b + '$ has slope $0$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal.', { g: 'hs' }),
-      S('The line $y = ' + b + '$ has inclination $0^\\circ$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal.', { g: 'hi' }),
+      S('The line $y = ' + b + '$ has slope $0$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal, so its slope is $0$.', { g: 'hs' }),
+      S('The line $y = ' + b + '$ has inclination $0^\\circ$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal, so its inclination is $0^\\circ$.', { g: 'hi' }),
       S('The line through $' + pt(V2[0][0], V2[0][1]) + '$ and $' + pt(V2[1][0], V2[1][1]) + '$ has no slope', function () { return slope(V2[0], V2[1]) === null; }, 'the two points have the same $x$-coordinate, so the line is vertical.', { g: 'p' }),
-      S('The line $x = ' + a + '$ has slope $0$', function () { return slope(V[0], V[1]) === 0; }, 'a vertical line has no slope; slope $0$ belongs to horizontal lines.', { g: 'vs', trap: 'axis' }),
+      S('The line $x = ' + a + '$ has slope $0$', function () { return slope(V[0], V[1]) === 0; }, 'a vertical line has no slope, because $\\tan 90^\\circ$ is undefined. Slope $0$ belongs to horizontal lines.', { g: 'vs', trap: 'axis' }),
       S('The line $y = ' + b + '$ has no slope', function () { return slope(H[0], H[1]) === null; }, 'a horizontal line has slope $0$.', { g: 'hs', trap: 'axis' }),
       S('The line $y = ' + b + '$ has inclination $90^\\circ$', function () { return slope(H[0], H[1]) === null; }, 'a horizontal line has inclination $0^\\circ$.', { g: 'hi', trap: 'axis' }),
       S('The line $x = ' + a + '$ has inclination $0^\\circ$', function () { return slope(V[0], V[1]) === 0; }, 'a vertical line has inclination $90^\\circ$.', { g: 'vi', trap: 'axis' }),
-      S('The line through $' + pt(H2[0][0], H2[0][1]) + '$ and $' + pt(H2[1][0], H2[1][1]) + '$ has no slope', function () { return slope(H2[0], H2[1]) === null; }, 'the two points have the same $y$-coordinate: the line is horizontal with slope $0$.', { g: 'p', trap: 'axis' }),
+      S('The line through $' + pt(H2[0][0], H2[0][1]) + '$ and $' + pt(H2[1][0], H2[1][1]) + '$ has no slope', function () { return slope(H2[0], H2[1]) === null; }, 'the two points have the same $y$-coordinate, so the line is horizontal and its slope is $0$.', { g: 'p', trap: 'axis' }),
       S('A line with inclination $135^\\circ$ has slope $1$', function () { return ev.close(Math.tan(135 * PI / 180), 1); }, '$\\tan 135^\\circ = -1$.', { g: 't', trap: 'sign' })
     ];
     return out('Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
@@ -6773,11 +6988,13 @@
     var k = R.pick([q(2), q(3), q(-2), q(-1), q(1, 2), q(-1, 2), q(3, 2), q(-3), q(1, 3), q(2, 3)]), x1 = R.int(-4, 4), y1 = R.int(-4, 4), dx = R.nz(-3, 3) * k.d, dy = k.mul(dx).n, unkX = R.bool(0.6);
     var x2 = x1 + dx, y2 = y1 + dy;
     var B = unkX ? '(a, ' + y2 + ')' : '(' + x2 + ', a)', key = unkX ? x2 : y2;
+    function aM(v) { return F.sum([[1, 'a'], [-v, '']]); }
     var wrongV = unkX ? [x1 - dx, x1 + dy * k.n / k.d === x2 ? null : q(x1).add(k.mul(dy)), x1 + dy, -x2] : [y1 - dy, q(y1).add(q(dx).div(k)), y1 + dx, -y2];
     return {
       stem: 'If the slope of the line through $A' + pt(x1, y1) + '$ and $B' + B + '$ is $' + F.n(k) + '$, then $a =$ ( )', key: m(key),
       wrong: W(wrongV.map(function (v, i) { return [v, ['sign', 'reciprocal', 'partial', 'sign'][i]]; }).concat([[key + 1, 'slip']])), check: chk.num(unkX ? x1 + (y2 - y1) / k.num : y1 + k.num * (x2 - x1)),
-      sol: unkX ? '$\\dfrac{' + y2 + ' - ' + par(y1) + '}{a - ' + par(x1) + '} = ' + F.n(k) + '$, so $a - ' + par(x1) + ' = ' + dx + '$ and $a = ' + x2 + '$.' : '$\\dfrac{a - ' + par(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$, so $a - ' + par(y1) + ' = ' + dy + '$ and $a = ' + y2 + '$.'
+      sol: unkX ? '$\\dfrac{' + y2 + ' - ' + par(y1) + '}{' + aM(x1) + '} = ' + F.n(k) + '$, so $' + (k.eq(1) ? '' : k.eq(-1) ? '-' : F.n(k)) + '(' + aM(x1) + ') = ' + dy + '$. Then $' + aM(x1) + ' = ' + dx + '$ and $a = ' + x2 + '$.'
+        : '$\\dfrac{' + aM(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$, so $' + aM(y1) + ' = ' + F.n(k) + ' \\cdot ' + par(dx) + ' = ' + dy + '$ and $a = ' + y2 + '$.'
     };
   });
   def({ id: 'LN-slope.incl-surd-points', code: 'LN-slope', lesson: '4.3', tier: 'M', level: '+1', fmt: 'V',
@@ -6789,13 +7006,13 @@
     var A = angOpts(R, th, useDeg);
     return {
       stem: 'The angle of inclination of the line through $A' + pt(P[0], P[1]) + '$ and $B' + pt(Q[0], Q[1]) + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(incOf((Q[1].num - P[1].num) / (Q[0].num - P[0].num))),
-      sol: 'The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = ' + F.n(k) + '$, and $\\tan\\theta = ' + F.n(k) + '$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = ' + F.deg(th) + '$.'
+      sol: 'Here $\\Delta x = ' + F.n(Q[0].sub(P[0])) + '$ and $\\Delta y = ' + F.n(Q[1].sub(P[1])) + '$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = ' + (steep ? '' : '\\dfrac{' + F.n(Q[1].sub(P[1])) + '}{' + F.n(Q[0].sub(P[0])) + '} = ') + F.n(k) + '$, and $\\tan\\theta = ' + F.n(k) + '$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = ' + F.deg(th) + '$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/ln2.js ---- */
-/* ACE CSCA Question Factory · templates/ln2.js — Lines II: LN-eq, LN-int, LN-pp, LN-perp. */
+/* ACE CSCA Question Factory · templates/ln2.js: Lines II (LN-eq, LN-int, LN-pp, LN-perp). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.LN;
@@ -6830,6 +7047,33 @@
     }
     retry();
   }
+  function parX(v) { var t = F.n(v); return /^-/.test(t) ? '\\left(' + t + '\\right)' : t; }
+  /** c·v as text, for a number c and a value v */
+  function cTimes(c, v) { c = Fr.of(c); return c.eq(1) ? F.n(v) : c.eq(-1) ? '-' + parX(v) : F.n(c) + ' \\cdot ' + parX(v); }
+  /** the coefficient k in front of a bracket: "", "-" or the number */
+  function kCo(k) { var t = F.n(k); return t === '1' ? '' : t === '-1' ? '-' : t; }
+  /** point-slope form y − y0 = k(x − x0) with the zero cases written out cleanly */
+  function psT(k, x0, y0) { var xs = F.sum([[1, 'x'], [Fr.of(x0).neg(), '']]); var kt = kCo(k); return F.sum([[1, 'y'], [Fr.of(y0).neg(), '']]) + ' = ' + kt + (Fr.of(x0).eq(0) ? 'x' : kt === '' ? xs : '(' + xs + ')'); }
+  /** the worked solution of the system ax + by + c = 0 (two lines with integer coefficients) */
+  function solveText(A, B) {
+    A = F.normLine(A[0], A[1], A[2]); B = F.normLine(B[0], B[1], B[2]);
+    var P = inter(A, B), names = ['first', 'second'], pick = null;
+    [[A, B, 0], [B, A, 1]].some(function (c) { if (Math.abs(c[0][1]) === 1 && c[0][0] !== 0) { pick = [c[0], c[1], c[2], 'y']; return true; } return false; });
+    if (!pick) [[A, B, 0], [B, A, 1]].some(function (c) { if (Math.abs(c[0][0]) === 1 && c[0][1] !== 0) { pick = [c[0], c[1], c[2], 'x']; return true; } return false; });
+    if (pick) {
+      var Ls = pick[0], Lo = pick[1], v = pick[3], iv = v === 'y' ? 1 : 0, io = 1 - iv, w = v === 'y' ? 'x' : 'y', s = Ls[iv];
+      var cw = -Ls[io] * s, c0 = -Ls[2] * s, e = F.sum([[cw, w], [c0, '']]);          // v = cw·w + c0
+      var plug = v === 'y' ? F.sum([[Lo[0], 'x'], [Lo[1], '(' + e + ')'], [Lo[2], '']]) : F.sum([[Lo[0], '(' + e + ')'], [Lo[1], 'y'], [Lo[2], '']]);
+      return 'From the ' + names[pick[2]] + ' equation, $' + v + ' = ' + e + '$. Substituting this into the other equation gives $' + plug + ' = 0$, that is $' + F.sum([[Lo[io] + Lo[iv] * cw, w], [Lo[2] + Lo[iv] * c0, '']]) + ' = 0$, so $' + w + ' = ' + F.n(P[io]) +
+        '$. Then $' + v + ' = ' + cTimes(cw, P[io]) + (c0 ? (c0 > 0 ? ' + ' : ' - ') + Math.abs(c0) : '') + ' = ' + F.n(P[iv]) + '$.';
+    }
+    var g = N.gcd(Math.abs(A[1]), Math.abs(B[1])), m1 = B[1] / g, m2 = A[1] / g, how, E;
+    if (Math.abs(m1) === 1 && m1 === m2) { how = 'Subtracting the second equation from the first'; E = [A[0] - B[0], A[2] - B[2]]; }
+    else if (Math.abs(m1) === 1 && m1 === -m2) { how = 'Adding the two equations'; E = [A[0] + B[0], A[2] + B[2]]; }
+    else { how = 'Multiplying the first equation by $' + m1 + '$, the second by $' + m2 + '$ and subtracting'; E = [A[0] * m1 - B[0] * m2, A[2] * m1 - B[2] * m2]; }
+    return how + ' removes $y$ and gives $' + F.sum([[E[0], 'x'], [E[1], '']]) + ' = 0$, so $x = ' + F.n(P[0]) + '$. Putting this into the first equation gives $' + F.sum([[A[1], 'y'], [q(A[0]).mul(P[0]).add(A[2]), '']]) + ' = 0$, so $y = ' + F.n(P[1]) + '$.';
+  }
+  X.solve = solveText; X.psT = psT;
   function eqCustom(test) {
     return chk.custom({ isTrue: function (t) { return test(coef(t)); }, same: function (x, y) { return sameLine(coef(x), coef(y)); } });
   }
@@ -6848,7 +7092,7 @@
     }
     return {
       stem: stem, key: m(key), wrong: W(wrong), check: chk.eq([[P0, P1]]),
-      sol: 'Point-slope form: $y - ' + par(y0) + ' = ' + F.n(k) + '(x - ' + par(x0) + ')$, i.e. $' + si(k, b) + '$' + (form === 'si' ? '' : ', or $' + key + '$') + '. Check: the point $' + pt(x0, y0) + '$ satisfies it.'
+      sol: 'By the point-slope form, $' + psT(k, x0, y0) + '$, that is $' + si(k, b) + '$' + (form === 'si' ? '' : ', or $' + key + '$ in general form') + '.'
     };
   }
   def({ id: 'LN-eq.point-slope', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '=', fmt: 'V', w: 2,
@@ -6874,7 +7118,8 @@
     }
     return {
       stem: 'The equation of the line passing through the points $' + names[0] + pt(P[0], P[1]) + '$ and $' + names[1] + pt(Q[0], Q[1]) + '$ is ( )', key: m(key), wrong: W(wrong), check: chk.eq([[P, Q]]),
-      sol: 'Slope first: $k = \\dfrac{' + Q[1] + ' - ' + par(P[1]) + '}{' + Q[0] + ' - ' + par(P[0]) + '} = ' + F.n(k) + '$. Then $y - ' + par(P[1]) + ' = ' + F.n(k) + '(x - ' + par(P[0]) + ')$, i.e. $' + key + '$. Check both points: an option that fits only one of them is a trap.'
+      sol: 'The slope is $k = \\dfrac{' + Q[1] + ' - ' + par(P[1]) + '}{' + Q[0] + ' - ' + par(P[0]) + '} = ' + F.n(k) + '$. By the point-slope form through $' + names[0] + '$, $' + psT(k, P[0], P[1]) + '$, that is $' + key + '$. ' +
+        'Check with $' + names[1] + '$: ' + (form === 'si' ? '$' + cTimes(k, Q[0]) + (b.eq(0) ? '' : (b.n > 0 ? ' + ' : ' - ') + F.n(b.n > 0 ? b : b.neg())) + ' = ' + Q[1] + '$.' : 'putting $x = ' + Q[0] + '$ and $y = ' + Q[1] + '$ into $' + key + '$ gives $0$.')
     };
   }
   def({ id: 'LN-eq.two-points', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '=', fmt: 'V', w: 2,
@@ -6900,7 +7145,7 @@
     var wrong = [[eq(k.neg(), unit ? Sd.of(y0).add(k.scale(x0)) : b), 'sign'], [eq(k, b.neg()), 'sign'], [eq(k.neg(), b.neg()), 'sign'], [unit ? (x0 === 0 ? null : eq(k, Sd.of(y0))) : eq(Sd.of(1).div(k), b), unit ? 'partial' : 'companion'], [eq(k, b.add(1)), 'slip']];
     return {
       stem: 'The equation of the line with angle of inclination $' + F.deg(th) + '$ passing through the point $' + pt(x0, y0) + '$ is ( )', key: m(eq(k, b)), wrong: W(wrong), check: chk.eq([[[x0, y0], [x0 + 1, y0 + k.num]]]),
-      sol: 'The slope is $k = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$. Through $' + pt(x0, y0) + '$: $y - ' + par(y0) + ' = ' + F.n(k) + '(x - ' + par(x0) + ')$, i.e. $' + eq(k, b) + '$.'
+      sol: 'The slope is $k = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$. By the point-slope form through $' + pt(x0, y0) + '$, $' + psT(k, x0, y0) + '$, that is $' + eq(k, b) + '$.'
     };
   });
   def({ id: 'LN-eq.incl-general', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '+1', fmt: 'V',
@@ -6911,7 +7156,7 @@
     return {
       stem: 'The equation of the line with angle of inclination $' + F.deg(th) + '$ passing through the point $' + pt(x0, y0) + '$ is ( )', key: m(key),
       wrong: W([[gl(-k, -1, y0 + k * x0), 'sign'], [gl(k, -1, -(y0 - k * x0)), 'sign'], [gl(-k, -1, -(y0 + k * x0)), 'sign'], [gl(k, -1, y0 + k * x0), 'sign'], [gl(k, -1, y0 - k * x0 + 1), 'slip']]), check: chk.eq([[[x0, y0], [x0 + 1, y0 + k]]]),
-      sol: '$k = \\tan ' + F.deg(th) + ' = ' + k + '$. So $y - ' + par(y0) + ' = ' + (k === 1 ? '' : '-') + '(x - ' + par(x0) + ')$, which is $' + key + '$.'
+      sol: 'The slope is $k = \\tan ' + F.deg(th) + ' = ' + k + '$. By the point-slope form, $' + psT(k, x0, y0) + '$, which is $' + key + '$.'
     };
   });
   def({ id: 'LN-eq.intercepts', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '+1', fmt: 'V',
@@ -6922,7 +7167,7 @@
     return {
       stem: viaPts ? 'The equation of the line passing through $A' + pt(a, 0) + '$ and $B' + pt(0, b) + '$ is ( )' : 'The equation of the line whose $x$-intercept is $' + a + '$ and whose $y$-intercept is $' + b + '$ is ( )', key: m(key),
       wrong: W([[gl(a, b, -a * b), 'swap'], [gl(b, a, a * b), 'sign'], [gl(b, -a, -a * b), 'sign'], [gl(a, -b, -a * b), 'swap'], [gl(b, a, -a * b + 1), 'slip']]), check: chk.eq([[[a, 0], [0, b]]]),
-      sol: 'Intercept form: $\\dfrac{x}{' + a + '} + \\dfrac{y}{' + b + '} = 1$. Multiply by $' + (a * b) + '$ and collect: $' + key + '$. Check with $' + pt(a, 0) + '$ and $' + pt(0, b) + '$.'
+      sol: 'The intercept form is $\\dfrac{x}{' + a + '} + \\dfrac{y}{' + b + '} = 1$. Multiplying by $' + (a * b) + '$ gives $' + F.sum([[b, 'x'], [a, 'y']]) + ' = ' + (a * b) + '$, that is $' + key + '$. Both $' + pt(a, 0) + '$ and $' + pt(0, b) + '$ satisfy it.'
     };
   });
 
@@ -6944,7 +7189,7 @@
     return {
       stem: (extra && extra.stem) || R.pick(['The point of intersection of the lines $l_1: ' + t1 + '$ and $l_2: ' + t2 + '$ is ( )', 'The intersection point of the lines $' + t1 + '$ and $' + t2 + '$ is ( )', 'The coordinates of the intersection point of the lines $' + t1 + '$ and $' + t2 + '$ are ( )']),
       key: m(pt(P[0], P[1])), wrong: R.shuffle(w.slice(0, 2)).concat(w.slice(2)), check: chk.tuple([tx, ty]),
-      sol: ((extra && extra.pre) || '') + 'Solve the two equations together (elimination or substitution): $x = ' + F.n(P[0]) + '$, $y = ' + F.n(P[1]) + '$. Check by substituting into both equations — a point that fits only one of them is a trap.'
+      sol: ((extra && extra.pre) || '') + solveText((extra && extra.L1) || L1, (extra && extra.L2) || L2) + ' So the intersection point is $' + pt(P[0], P[1]) + '$.'
     };
   }
   var REAL_INT = [['3,-1,8', '1,2,-9'], ['3,-1,2', '4,-1,3'], ['3,2,4', '1,-1,3'], ['2,-1,1', '1,1,1']];
@@ -6971,7 +7216,7 @@
     if (k1 === 1 && b1 === 3 && ((A[0] === 1 && A[1] === 0 && B[0] === 0 && B[1] === 1) || (B[0] === 1 && B[1] === 0 && A[0] === 0 && A[1] === 1))) retry('real item');
     var L1 = [k1, -1, b1], L2 = [v, -u, u * y0 - v * x0], it = intItem(R, L1, L2, si(k1, b1), '', {
       stem: 'Given the line $l_1: ' + si(k1, b1) + '$ and the line $l_2$ passing through $A' + pt(A[0], A[1]) + '$ and $B' + pt(B[0], B[1]) + '$, the intersection point of $l_1$ and $l_2$ is ( )',
-      pre: 'First find $l_2$: its slope is $' + F.n(q(v, u)) + '$, so $l_2: ' + gl(L2[0], L2[1], L2[2]) + '$. '
+      pre: 'First find $l_2$. Its slope is $\\dfrac{' + B[1] + ' - ' + par(A[1]) + '}{' + B[0] + ' - ' + par(A[0]) + '} = ' + F.n(q(v, u)) + '$, so $l_2$ is $' + gl(L2[0], L2[1], L2[2]) + '$. '
     });
     it.wrong = [[m(pt(A[0], A[1])), 'partial'], [m(pt(0, b1)), 'partial']].concat(it.wrong);
     return it;
@@ -6992,7 +7237,8 @@
       return {
         stem: 'If the three lines $' + t1 + '$, $' + t2 + '$ and $' + t3 + '$ pass through one point, then $a =$ ( )', key: m(a),
         wrong: W([[a.neg(), 'sign'], [sw && !sw.eq(a) ? sw : null, 'swap'], [oth.mul(b3).sub(c3).neg().div(div), 'sign'], [a.add(1), 'slip'], [a.sub(1), 'slip'], [a.add(2), 'slip']]), check: chk.num(truth),
-        sol: 'Intersect the two complete lines first: $' + pt(P[0], P[1]) + '$. The third line must pass through this point: substitute $x = ' + F.n(P[0]) + '$, $y = ' + F.n(P[1]) + '$ into $' + t3 + '$ and solve: $a = ' + F.n(a) + '$.'
+        sol: 'First find where the first two lines meet. ' + solveText(L1, L2) + ' The third line must also pass through $' + pt(P[0], P[1]) + '$, so $' +
+          (kind === 'x' ? F.sum([[x0, 'a'], [y0.mul(b3), ''], [c3, '']]) : F.sum([[x0.mul(b3), ''], [y0, 'a'], [c3, '']])) + ' = 0$ and $a = ' + F.n(a) + '$.'
       };
     }
     retry();
@@ -7017,7 +7263,7 @@
     var L1 = through(R, x0, y0, [L2]);
     return intItem(R, L1, L2, lineT(L1), '', {
       stem: 'The intersection point of the lines $' + lineT(L1) + '$ and $\\dfrac{x}{' + a + '} + \\dfrac{y}{' + b + '} = 1$ is ( )',
-      pre: 'Clear the fractions: the second line is $' + gl(L2[0], L2[1], L2[2]) + '$. '
+      pre: 'Multiplying by $' + (a * b) + '$ clears the fractions, so the second line is $' + gl(L2[0], L2[1], L2[2]) + '$. '
     });
   });
   def({ id: 'LN-int.on-axis', code: 'LN-int', lesson: '4.5', tier: 'M', level: '+1', fmt: 'V',
@@ -7031,7 +7277,7 @@
     return {
       stem: 'If the lines $l_1: ' + lineT(L1) + '$ and $l_2: ' + t2 + '$ intersect at a point on the $' + (onX ? 'x' : 'y') + '$-axis, then $a =$ ( )', key: m(a),
       wrong: W([[-a, 'sign'], [Number.isInteger(other) && other !== a && Math.abs(other) <= 20 ? other : null, 'axis'], [v, 'partial'], [a + 1, 'slip'], [a - 1, 'slip'], [2 * a, 'slip']]), check: chk.num(onX ? -(a2 * ax) : -(b2 * ax)),
-      sol: 'The point where $l_1$ meets the $' + (onX ? 'x' : 'y') + '$-axis: put $' + (onX ? 'y' : 'x') + ' = 0$ in $l_1$ to get $' + pt(P[0], P[1]) + '$. It must lie on $l_2$: ' + '$' + F.sum([[a2 * P[0] + b2 * P[1], ''], [1, 'a']]) + ' = 0$, so $a = ' + a + '$.'
+      sol: 'Putting $' + (onX ? 'y' : 'x') + ' = 0$ in $l_1$ gives $' + (onX ? 'x' : 'y') + ' = ' + v + '$, so $l_1$ meets the $' + (onX ? 'x' : 'y') + '$-axis at $' + pt(P[0], P[1]) + '$. This point lies on $l_2$, so $' + F.sum([[a2 * P[0] + b2 * P[1], ''], [1, 'a']]) + ' = 0$ and $a = ' + a + '$.'
     };
   });
 
@@ -7050,8 +7296,8 @@
     var k0 = q(-a, b), kk = rel === 'perp' ? k0.inv().neg() : k0;
     return {
       stem: 'Which of the following lines is ' + (rel === 'perp' ? 'perpendicular' : 'parallel') + ' to the line $' + lineT(base) + '$? ( )', key: m(keyT), wrong: W(cand.map(function (x) { return [show(x[0]), x[1]]; })), check: eqCustom(test),
-      sol: 'The given line has slope $' + F.n(k0) + '$. ' + (rel === 'perp' ? 'A perpendicular line needs slope $' + F.n(kk) + '$ (product $-1$)' : 'A parallel line needs the same slope $' + F.n(kk) + '$ and a different intercept') + '; that is $' + keyT + '$.' +
-        (rel === 'perp' ? ' In general form: $A_1A_2 + B_1B_2 = 0$.' : ' In general form: $A_1B_2 - A_2B_1 = 0$.')
+      sol: 'The given line has slope $' + F.n(k0) + '$. ' + (rel === 'perp' ? 'A perpendicular line has slope $' + F.n(kk) + '$, because $' + F.n(k0) + ' \\cdot ' + parX(kk) + ' = -1$. The only option with slope $' + F.n(kk) + '$ is $' + keyT + '$.'
+        : 'A parallel line has the same slope $' + F.n(kk) + '$ but is a different line. The option with these properties is $' + keyT + '$.')
     };
   }
   def({ id: 'LN-pp.which-perp', code: 'LN-pp', lesson: '4.6', tier: 'E', level: '=', fmt: 'S', w: 2,
@@ -7077,10 +7323,10 @@
       var why = 'the slopes are $' + F.n(ki) + '$ and $' + F.n(kj) + '$';
       var p1 = isPerp(Ls[i], Ls[j]), p2 = isPar(Ls[i], Ls[j]);
       pool.push(h.factS(name + ' is perpendicular to ' + name2, p1, function () { return isPerp(Ls[i], Ls[j]); }, why + (p1 ? ', and their product is $-1$.' : ', and their product is not $-1$.'), { g: 'p' + i + j, trap: 'sign' }));
-      pool.push(h.factS(name + ' is parallel to ' + name2, p2, function () { return isPar(Ls[i], Ls[j]); }, why + (p2 ? ', equal, with different intercepts.' : ', which are not equal.'), { g: 'q' + i + j, trap: 'parallel' }));
+      pool.push(h.factS(name + ' is parallel to ' + name2, p2, function () { return isPar(Ls[i], Ls[j]); }, p2 ? 'both slopes are $' + F.n(ki) + '$, and the two lines are different.' : why + ', which are not equal.', { g: 'q' + i + j, trap: 'parallel' }));
     });
     return out('Which of the following statements about the three lines $l_1: ' + lineT(Ls[0]) + '$, $l_2: ' + lineT(Ls[1]) + '$ and $l_3: ' + lineT(Ls[2]) + '$ is correct? ( )', QF.pickStmts(R, 'S', pool),
-      'Slopes: $l_1$: $' + F.n(q(-Ls[0][0], Ls[0][1])) + '$, $l_2$: $' + F.n(q(-Ls[1][0], Ls[1][1])) + '$, $l_3$: $' + F.n(q(-Ls[2][0], Ls[2][1])) + '$.');
+      'The slopes are $' + F.n(q(-Ls[0][0], Ls[0][1])) + '$ for $l_1$, $' + F.n(q(-Ls[1][0], Ls[1][1])) + '$ for $l_2$ and $' + F.n(q(-Ls[2][0], Ls[2][1])) + '$ for $l_3$.');
   });
   /** coefficient of the form a + p, as text: "a", "(a + 2)" */
   function ap(p, sym) { return p === 0 ? 'a' + sym : '(' + F.sum([[1, 'a'], [p, '']]) + ')' + sym; }
@@ -7092,29 +7338,29 @@
   }
   def({ id: 'LN-pp.perp-param', code: 'LN-pp', lesson: '4.6', tier: 'M', level: '=', fmt: 'V', w: 1,
     form: 'Two lines with a parameter are perpendicular → a (two answers)', basis: 'Jan Q32' }, function (R) {
-    var fam = R.pick([1, 1, 2, 3]), c1 = R.nz(-6, 6), c2 = R.nz(-6, 6), t1, t2, at, u, v, eqn;
+    var fam = R.pick([1, 1, 2, 3]), c1 = R.nz(-6, 6), c2 = R.nz(-6, 6), t1, t2, at, u, v, eqn, expn;
     if (fam === 1) {           // a x + (a + p) y + c1 = 0 ⊥ s x + a y + c2 = 0  →  a(a + p + s) = 0
       var p = R.nz(-4, 4), s = R.pick([1, 2, 3, -1, -2].filter(function (z) { return z + p !== 0; }));
       if (p === -1 && s === 2) retry('real item');
       t1 = 'ax + ' + ap(p, 'y') + ' ' + (c1 < 0 ? '- ' : '+ ') + Math.abs(c1) + ' = 0'; t2 = F.sum([[s, 'x'], [1, 'ay'], [c2, '']]) + ' = 0';
-      at = function (a) { return [[a, a + p, c1], [s, a, c2]]; }; u = 0; v = -(p + s); eqn = 'a(' + F.sum([[1, 'a'], [p + s, '']]) + ') = 0';
+      at = function (a) { return [[a, a + p, c1], [s, a, c2]]; }; u = 0; v = -(p + s); eqn = 'a(' + F.sum([[1, 'a'], [p + s, '']]) + ') = 0'; expn = F.sum([[s, 'a'], [1, 'a' + ap(p, '')]]);
     } else if (fam === 2) {    // (a + p) x + r y + c1 = 0 ⊥ a x + s y + c2 = 0  →  a² + pa + rs = 0
       u = R.nz(-4, 4); v = R.pick([-4, -3, -2, -1, 1, 2, 3, 4].filter(function (z) { return z !== u; }));
       var prod = u * v, sgn2 = R.pick([1, -1]), ds = [1, 2, 3, 4].filter(function (d) { return prod % d === 0; }), s2 = R.pick(ds) * sgn2, r = prod / s2, p2 = -(u + v);
       if (p2 === 0) retry();
       t1 = ap(p2, 'x') + ' ' + (r < 0 ? '- ' : '+ ') + (Math.abs(r) === 1 ? '' : Math.abs(r)) + 'y ' + (c1 < 0 ? '- ' : '+ ') + Math.abs(c1) + ' = 0'; t2 = F.sum([[1, 'ax'], [s2, 'y'], [c2, '']]) + ' = 0';
-      at = function (a) { return [[a + p2, r, c1], [a, s2, c2]]; }; eqn = F.poly([1, p2, prod], 'a') + ' = 0';
+      at = function (a) { return [[a + p2, r, c1], [a, s2, c2]]; }; eqn = F.poly([1, p2, prod], 'a') + ' = 0'; expn = F.sum([[1, 'a' + ap(p2, '')], [r * s2, '']]);
     } else {                   // a x + r y + c1 = 0 ⊥ (a + p) x − a y + c2 = 0  →  a(a + p − r) = 0
       var r3 = R.int(1, 4), p3 = R.pick([-3, -2, -1, 1, 2, 3].filter(function (z) { return z !== r3; }));
       t1 = F.sum([[1, 'ax'], [r3, 'y'], [c1, '']]) + ' = 0'; t2 = ap(p3, 'x') + ' - ay ' + (c2 < 0 ? '- ' : '+ ') + Math.abs(c2) + ' = 0';
-      at = function (a) { return [[a, r3, c1], [a + p3, -a, c2]]; }; u = 0; v = r3 - p3; eqn = 'a(' + F.sum([[1, 'a'], [p3 - r3, '']]) + ') = 0';
+      at = function (a) { return [[a, r3, c1], [a + p3, -a, c2]]; }; u = 0; v = r3 - p3; eqn = 'a(' + F.sum([[1, 'a'], [p3 - r3, '']]) + ') = 0'; expn = F.sum([[1, 'a' + ap(p3, '')], [-r3, 'a']]);
     }
     var found = roots(function (a) { var L = at(a); return isPerp(L[0], L[1]) && (L[0][0] !== 0 || L[0][1] !== 0) && (L[1][0] !== 0 || L[1][1] !== 0); });
     if (found.length !== 2 || found.indexOf(u) < 0 || found.indexOf(v) < 0) retry();
     var O = paramOpts(u, v);
     return {
       stem: 'If the line $l_1: ' + t1 + '$ is perpendicular to the line $l_2: ' + t2 + '$, then $a =$ ( )', key: O.key, wrong: O.wrong, check: chk.alts(found),
-      sol: 'Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $' + eqn + '$, so $a = ' + Math.max(u, v) + '$ or $a = ' + Math.min(u, v) + '$ — both values are valid.'
+      sol: 'Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $' + expn + ' = 0$, that is $' + eqn + '$, so $a = ' + Math.max(u, v) + '$ or $a = ' + Math.min(u, v) + '$. Both values are valid.'
     };
   });
   function parParam(R, coincide) {
@@ -7129,9 +7375,10 @@
     if (coincide ? (found.length !== 1 || found[0] !== v) : (found.length !== 2)) retry();
     var O = coincide ? paramOpts(u, v, v) : paramOpts(u, v);
     return {
-      stem: 'Given that the lines $l_1: ' + t1 + '$ and $l_2: ' + t2 + '$ are parallel, then $a =$ ( )', key: O.key, wrong: O.wrong, check: chk.alts(found),
-      sol: 'Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a' + ap(p, '').replace(/^a$/, ' \\cdot a') + ' - ' + par(r) + ' = 0$, i.e. $' + F.poly([1, p, -r], 'a') + ' = 0$, so $a = ' + u + '$ or $a = ' + v + '$. ' +
-        (coincide ? 'Check each root: for $a = ' + u + '$ the two equations describe the same line, so it is rejected. Hence $a = ' + v + '$.' : 'Check each root: neither makes the two lines coincide, so both are valid.')
+      stem: 'If the lines $l_1: ' + t1 + '$ and $l_2: ' + t2 + '$ are parallel, then $a =$ ( )', key: O.key, wrong: O.wrong, check: chk.alts(found),
+      sol: 'Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a' + ap(p, '').replace(/^a$/, ' \\cdot a') + ' - ' + par(r) + ' = 0$, that is $' + F.poly([1, p, -r], 'a') + ' = 0$, so $a = ' + u + '$ or $a = ' + v + '$. ' +
+        'The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $' + F.sum([[c2, 'a'], [-c1, '']]) + ' = 0$. ' +
+        (coincide ? 'This holds for $a = ' + u + '$, so that value gives one line, not two parallel lines. Hence $a = ' + v + '$.' : 'Neither root satisfies this, so both values are valid.')
     };
   }
   def({ id: 'LN-pp.par-param', code: 'LN-pp', lesson: '4.6', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -7146,7 +7393,7 @@
       stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and perpendicular to the line $' + si(k, b0) + '$ is ( )', key: m(si(kp, b)),
       wrong: W([[si(k, q(y0).sub(k.mul(x0))), 'parallel'], [si(k.inv(), q(y0).sub(k.inv().mul(x0))), 'sign'], [si(kp, b.neg()), 'sign'], [si(k.neg(), q(y0).add(k.mul(x0))), 'near-miss'], [si(kp, q(y0)), 'partial']]),
       check: chk.eq([[[x0, y0], [x0 + kp.d, y0 + kp.n]]]),
-      sol: 'The given slope is $' + F.n(k) + '$, so the perpendicular slope is $-\\dfrac{1}{k} = ' + F.n(kp) + '$. Through $' + pt(x0, y0) + '$: $y - ' + par(y0) + ' = ' + F.n(kp) + '(x - ' + par(x0) + ')$, i.e. $' + si(kp, b) + '$.'
+      sol: 'The given slope is $' + F.n(k) + '$, so the perpendicular slope is $-\\dfrac{1}{k} = ' + F.n(kp) + '$. By the point-slope form through $' + pt(x0, y0) + '$, $' + psT(kp, x0, y0) + '$, that is $' + si(kp, b) + '$.'
     };
   });
   def({ id: 'LN-pp.par-through', code: 'LN-pp', lesson: '4.6', tier: 'E', level: '+1', fmt: 'V',
@@ -7157,7 +7404,7 @@
       stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and parallel to the line $' + F.line(a, b, c) + '$ is ( )', key: m(gl(a, b, k)),
       wrong: W([[gl(a, b, -k), 'sign'], [gl(b, -a, -(b * x0 - a * y0)), 'companion'], [gl(a, b, -(a * y0 + b * x0)), 'swap'], [gl(a, -b, -(a * x0 - b * y0)), 'sign'], [gl(a, b, k + 1), 'slip']]),
       check: chk.eq([[[x0, y0], [x0 + b, y0 - a]]]),
-      sol: 'A line parallel to $' + F.line(a, b, c) + '$ has the form $' + F.sum([[a, 'x'], [b, 'y'], [1, 'k']]) + ' = 0$. Substitute $' + pt(x0, y0) + '$: $k = ' + k + '$. So the line is $' + gl(a, b, k) + '$.'
+      sol: 'A line parallel to $' + F.line(a, b, c) + '$ has the form $' + F.sum([[a, 'x'], [b, 'y'], [1, 'k']]) + ' = 0$. Substituting $' + pt(x0, y0) + '$ gives $' + F.sum([[a * x0, ''], [b * y0, ''], [1, 'k']]) + ' = 0$, so $k = ' + k + '$. So the line is $' + gl(a, b, k) + '$.'
     };
   });
 
@@ -7177,8 +7424,10 @@
     var kShown = o.rel === 'perp' ? kPerp.mul(flip) : kPar;
     return {
       stem: o.stem, key: m(key), wrong: W(wrong), check: chk.eq([[[x0.num, y0.num], [x0.num + dir[0], y0.num + dir[1]]]]),
-      sol: (o.pre || 'Step 1 — the intersection: solving the two equations gives $' + pt(x0, y0) + '$. ') + 'Step 2 — ' + (o.rel === 'perp' ? 'swap and flip: a line perpendicular to $' + lineT(L0) + '$ has the form $' + form + '$. ' : 'a line parallel to $' + lineT(L0) + '$ has the form $' + form + '$. ') +
-        'Step 3 — substitute the point: $k = ' + F.n(kShown) + '$' + (kShown.isInt ? '' : ' (then clear the fraction)') + '. So $l$: $' + key + '$.'
+      sol: (o.pre !== undefined ? o.pre : 'First find the intersection point. ' + solveText(o.L1, o.L2) + ' ') +
+        (o.rel === 'perp' ? 'Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $' + (o.given ? o.given + '$, that is $' + lineT(L0) + '$,' : lineT(L0) + '$') + ' has the form $' + form + '$. ' : 'A line parallel to $' + lineT(L0) + '$ keeps the same coefficients of $x$ and $y$, so it has the form $' + form + '$. ') +
+        'Substituting $' + pt(x0, y0) + '$ gives $' + F.sum(o.rel === 'perp' ? [[x0.mul(flip * b0), ''], [y0.mul(-flip * a0), ''], [1, 'k']] : [[x0.mul(a0), ''], [y0.mul(b0), ''], [1, 'k']]) + ' = 0$, so $k = ' + F.n(kShown) + '$' +
+        (kShown.isInt ? '. So $l$ is $' + key + '$.' : '. Clearing the fraction, $l$ is $' + key + '$.')
     };
   }
   function r06base(R) {
@@ -7208,7 +7457,7 @@
     var x0 = R.int(-4, 4), y0 = R.int(-4, 4), a0 = R.int(1, 4), b0 = R.nz(-4, 4), c0 = R.int(-6, 6);
     if (N.gcd(a0, b0) !== 1) retry();
     var L0 = [a0, b0, c0];
-    return r06(R, { P: [q(x0), q(y0)], L0: L0, rel: 'perp', stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and perpendicular to the line $' + lineT(L0) + '$ is ( )', pre: 'Step 1 — the point is given: $' + pt(x0, y0) + '$. ' });
+    return r06(R, { P: [q(x0), q(y0)], L0: L0, rel: 'perp', stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and perpendicular to the line $' + lineT(L0) + '$ is ( )', pre: '' });
   });
   def({ id: 'LN-perp.r06-frac', code: 'LN-perp', lesson: '4.7', tier: 'M', level: '+1', fmt: 'V', trick: 'T08',
     form: 'R06 with a fractional intersection point', basis: 'Course plan 4.7 Q5' }, function (R) {
@@ -7221,7 +7470,7 @@
   def({ id: 'LN-perp.r06-slope-form', code: 'LN-perp', lesson: '4.7', tier: 'M', level: '+1', fmt: 'V', trick: 'T08',
     form: 'R06 with the given line in slope-intercept form', basis: 'Course plan 4.7 Q6' }, function (R) {
     var B = r06base(R), k = R.pick([q(2), q(-2), q(3), q(-3), q(1, 2), q(-1, 2), q(1, 3), q(2, 3), q(-3, 2)]), b = R.int(-5, 5);
-    B.L0 = F.normLine(k.n, -k.d, b * k.d); B.rel = 'perp'; B.stem = r06stem(B, 'perp', si(k, b));
+    B.L0 = F.normLine(k.n, -k.d, b * k.d); B.rel = 'perp'; B.stem = r06stem(B, 'perp', si(k, b)); B.given = si(k, b);
     return r06(R, B);
   });
   def({ id: 'LN-perp.r06-axis', code: 'LN-perp', lesson: '4.7', tier: 'M', level: '+1', fmt: 'V', trick: 'T08',
@@ -7238,7 +7487,7 @@
     var A = [ax, ay], Bp = [ax + b0 * t, ay - a0 * t];          // direction (b0, −a0) lies on a line with normal (a0, b0)
     B.L0 = F.normLine(a0, b0, -(a0 * ax + b0 * ay)); B.rel = 'perp';
     B.stem = 'A line $l$ is perpendicular to the line through $A' + pt(A[0], A[1]) + '$ and $B' + pt(Bp[0], Bp[1]) + '$ and passes through the intersection point of the lines $' + lineT(B.L1) + '$ and $' + lineT(B.L2) + '$. The equation of $l$ is ( )';
-    B.pre = 'The line $AB$ is $' + lineT(B.L0) + '$. Step 1 — the intersection: solving the two equations gives $' + pt(B.P[0], B.P[1]) + '$. ';
+    B.pre = 'The line $AB$ has slope $' + F.n(q(Bp[1] - A[1], Bp[0] - A[0])) + '$ and passes through $A$, so it is $' + lineT(B.L0) + '$. Next find the intersection point. ' + solveText(B.L1, B.L2) + ' ';
     return r06(R, B);
   });
   def({ id: 'LN-perp.equal-intercepts', code: 'LN-perp', lesson: '4.7', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -7251,13 +7500,14 @@
     return {
       stem: 'A line $l$ passes through the intersection point of the lines $' + lineT(L1) + '$ and $' + lineT(L2) + '$ and has equal intercepts on the two coordinate axes. The equation of $l$ is ( )', key: two(e1, e2),
       wrong: [[m(e1), 'partial'], [m(e2), 'partial'], [two(e3, e2), 'sign'], [two(e1, e3), 'sign'], [two(gl(1, 1, s), e2), 'sign']], check: chk.eq([[[x0, y0], [s, 0]], [[x0, y0], [0, 0]]]),
-      sol: 'The intersection point is $' + pt(x0, y0) + '$. Case 1: both intercepts are $0$ — the line passes through the origin: $' + e2 + '$. Case 2: equal non-zero intercepts $c$: $x + y = c$, and the point gives $c = ' + s + '$: $' + e1 + '$. Both lines are answers; forgetting the line through the origin is the trap.'
+      sol: 'First find the intersection point. ' + solveText(L1, L2) + ' If both intercepts are $0$, the line passes through the origin and $' + pt(x0, y0) + '$, so it is $' + e2 + '$. ' +
+        'If the two intercepts are equal and not $0$, the line is $x + y = c$, and the point gives $c = ' + x0 + ' + ' + par(y0) + ' = ' + s + '$, so it is $' + e1 + '$. Both lines satisfy the condition.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/cn1.js ---- */
-/* ACE CSCA Question Factory · templates/cn1.js — Conics I: CN-cir (circles), CN-par (parabolas). */
+/* ACE CSCA Question Factory · templates/cn1.js: Conics I, circles (CN-cir) and parabolas (CN-par). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.LN;
@@ -7273,6 +7523,8 @@
     var u = [Fp[0] / len, Fp[1] / len];
     return pts.every(function (p) { return close(Math.hypot(p[0] - Fp[0], p[1] - Fp[1]), Math.abs((p[0] + Fp[0]) * u[0] + (p[1] + Fp[1]) * u[1])); });
   }
+  /** "x - a" for a bracket (x − a)² */
+  function brk(v, a) { return F.sum([[1, v], [Fr.of(a).neg(), '']]); }
   QF.CN = { close: close, circlePts: circlePts, parPts: parPts, focusOK: focusOK };
 
   /* ===================== CN-cir · circles ===================== */
@@ -7289,32 +7541,33 @@
     return { stem: stem, key: m(key), wrong: W(R.shuffle(wrong.slice(0, 3)).concat(wrong.slice(3))), check: chk.eq([circlePts(a, b, r)]), sol: sol + ' So the equation is $' + key + '$.' };
   }
   def({ id: 'CN-cir.r08', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', rep: 'R08', trick: 'T10', w: 5,
-    form: 'Centre and radius given → the standard equation', basis: 'R08: Dec Q18, Jan Q28, Mar Q20, Mar Q24; Jun Q19' }, function (R) {
+    form: 'Center and radius given → the standard equation', basis: 'R08: Dec Q18, Jan Q28, Mar Q20, Mar Q24; Jun Q19' }, function (R) {
     var a = R.int(-6, 6), b = R.int(-6, 6), r = R.int(2, 7);
     if (a === 0 && b === 0) retry();
     if ((a === -3 && b === 2 && r <= 4) || (a === 2 && b === 5 && r === 5)) retry('real item');
-    return stdItem(R, a, b, r * r, r, R.pick(CSTEM)(a, b, r), 'Standard form $(x - a)^2 + (y - b)^2 = r^2$: flip the signs of the centre inside the brackets and square the radius ($r^2 = ' + (r * r) + '$).');
+    return stdItem(R, a, b, r * r, r, R.pick(CSTEM)(a, b, r), 'A circle with center $(a, b)$ and radius $r$ has the equation $(x - a)^2 + (y - b)^2 = r^2$. Here $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r + '^2 = ' + (r * r) + '$.');
   });
   def({ id: 'CN-cir.sqrt-radius', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '+1', fmt: 'V', trick: 'T10',
-    form: 'Centre and a surd radius (r = √7) → the standard equation', basis: 'Course plan 6.1 Q6' }, function (R) {
+    form: 'Center and a surd radius (r = √7) → the standard equation', basis: 'Course plan 6.1 Q6' }, function (R) {
     var a = R.int(-6, 6), b = R.int(-6, 6), n = R.pick([2, 3, 5, 6, 7, 10, 11, 13]);
     if (a === 0 && b === 0) retry();
     var key = circ(a, b, n);
     return {
       stem: 'The equation of the circle with center $' + pt(a, b) + '$ and radius $\\sqrt{' + n + '}$ is ( )', key: m(key),
       wrong: W([[circ(a, b, n * n), 'radius'], [circ(-a, -b, n), 'sign'], [circ(a, b, '\\sqrt{' + n + '}'), 'radius'], [circ(-a, -b, n * n), 'sign'], [a === b ? null : circ(b, a, n), 'swap']]), check: chk.eq([circlePts(a, b, Math.sqrt(n))]),
-      sol: 'The right-hand side is $r^2 = (\\sqrt{' + n + '})^2 = ' + n + '$, not $' + (n * n) + '$ and not $\\sqrt{' + n + '}$. Flip the signs of the centre: $' + key + '$.'
+      sol: 'The right-hand side is $r^2 = (\\sqrt{' + n + '})^2 = ' + n + '$. With the center $' + pt(a, b) + '$ the equation is $' + key + '$.'
     };
   });
   def({ id: 'CN-cir.read', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', trick: 'T10', w: 0.5,
-    form: 'Standard equation → centre and radius', basis: 'Course plan 6.1 Q2' }, function (R) {
+    form: 'Standard equation → center and radius', basis: 'Course plan 6.1 Q2' }, function (R) {
     var a = R.int(-6, 6), b = R.int(-6, 6), sq = R.bool(0.6), r2 = sq ? Math.pow(R.int(2, 7), 2) : R.pick([2, 3, 5, 6, 7, 10]), r = Sd.sqrt(r2);
     if (a === 0 && b === 0) retry();
     var pr = function (x, y, rr) { return m(pt(x, y)) + ', ' + m(rr); };
     return {
       stem: 'The center and radius of the circle $' + circ(a, b, r2) + '$ are ( )', key: pr(a, b, r),
       wrong: [[pr(-a, -b, r), 'sign'], [pr(a, b, r2), 'radius'], [pr(-a, -b, r2), 'sign'], [a === b ? null : pr(b, a, r), 'swap'], [pr(a, -b, r), 'sign']].filter(function (x) { return x[0]; }), check: chk.tuple([a, b, Math.sqrt(r2)]),
-      sol: 'Compare with $(x - a)^2 + (y - b)^2 = r^2$: the centre is $' + pt(a, b) + '$ (signs flipped) and $r^2 = ' + r2 + '$, so $r = ' + F.n(r) + '$.'
+      sol: 'Comparing with $(x - a)^2 + (y - b)^2 = r^2$ gives $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r2 + '$. So the center is $' + pt(a, b) + '$ and $r = ' + F.n(r) + '$.' +
+        (a < 0 ? ' The bracket $' + brk('x', a) + '$ is $x - (' + a + ')$, which is why $a = ' + a + '$.' : b < 0 ? ' The bracket $' + brk('y', b) + '$ is $y - (' + b + ')$, which is why $b = ' + b + '$.' : '')
     };
   });
   def({ id: 'CN-cir.r-trap', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -7324,7 +7577,7 @@
     return {
       stem: 'The ' + (dia ? 'diameter' : 'radius') + ' of the circle $' + circ(a, b, r2) + '$ is ( )', key: m(key),
       wrong: W([[r2, 'radius'], [dia ? r : r.scale(2), 'half'], [q(r2, 2), 'half'], [r2 * r2, 'radius'], [2 * r2, 'radius']]), check: chk.num((dia ? 2 : 1) * Math.sqrt(r2)),
-      sol: 'The right-hand side is $r^2 = ' + r2 + '$, so $r = ' + F.n(r) + '$' + (dia ? ' and the diameter is $' + F.n(key) + '$.' : '.')
+      sol: 'The right-hand side is $r^2 = ' + r2 + '$, so $r = ' + rootT(r2, r) + '$' + (dia ? ' and the diameter is $' + F.n(key) + '$.' : '.')
     };
   });
   function throughItem(R, a, b, px, py, form) {
@@ -7334,23 +7587,23 @@
     return {
       stem: R.pick(['If a circle passes through the point $A' + pt(px, py) + '$ and has center $' + pt(a, b) + '$, then its equation is ( )', 'If a circle has center $' + pt(a, b) + '$ and passes through the point $' + pt(px, py) + '$, then its equation is ( )']).replace('its equation', form === 'gen' ? 'its general equation' : 'its equation'),
       key: m(key), wrong: W(wrong), check: chk.eq([circlePts(a, b, Math.hypot(px - a, py - b))]),
-      sol: 'The radius is the distance from the centre to the point: $r^2 = ' + (px - a < 0 ? '(' + (px - a) + ')' : (px - a)) + '^2 + ' + (py - b < 0 ? '(' + (py - b) + ')' : (py - b)) + '^2 = ' + r2 + '$. So the circle is $' + circ(a, b, r2) + '$' + (form === 'gen' ? ', i.e. $' + key + '$.' : '.')
+      sol: 'The radius is the distance from the center to the point: $r^2 = ' + (px - a < 0 ? '(' + (px - a) + ')' : (px - a)) + '^2 + ' + (py - b < 0 ? '(' + (py - b) + ')' : (py - b)) + '^2 = ' + r2 + '$. So the circle is $' + circ(a, b, r2) + '$' + (form === 'gen' ? '. Expanding, $' + F.sum([[1, 'x^2'], [-2 * a, 'x'], [a * a, ''], [1, 'y^2'], [-2 * b, 'y'], [b * b, '']]) + ' = ' + r2 + '$, that is $' + key + '$.' : '.')
     };
   }
   def({ id: 'CN-cir.r13', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', rep: 'R13', trick: 'T10', w: 2,
-    form: 'Centre and a point on the circle → the standard equation', basis: 'R13: Apr Q23, Jun Q27' }, function (R) {
+    form: 'Center and a point on the circle → the standard equation', basis: 'R13: Apr Q23, Jun Q27' }, function (R) {
     var a = R.int(-4, 4), b = R.int(-4, 4), d = R.pick([[0, 2], [0, 3], [3, 0], [0, 4], [3, 4], [4, 3], [2, 0], [0, 5], [1, 1], [1, 2], [2, 1], [2, 2], [1, 3], [-3, 4], [4, 0], [-2, 1]]), sx = R.sign(), sy = R.sign();
     var px = a + d[0] * sx, py = b + d[1] * sy;
     if (a === 2 && b === 0 && px === 2 && py === 2) retry('real item');
     return throughItem(R, a, b, px, py, 'std');
   });
   def({ id: 'CN-cir.far-point', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '+1', fmt: 'V', trick: 'T10',
-    form: 'Centre and a far point (5-12-13 or 8-15-17 distance) → the standard equation', basis: 'Course plan 6.1 Q7' }, function (R) {
+    form: 'Center and a far point (5-12-13 or 8-15-17 distance) → the standard equation', basis: 'Course plan 6.1 Q7' }, function (R) {
     var a = R.int(-5, 5), b = R.int(-5, 5), d = R.pick([[5, 12], [12, 5], [8, 15], [15, 8], [6, 8], [8, 6], [7, 24]]);
     return throughItem(R, a, b, a + d[0] * R.sign(), b + d[1] * R.sign(), 'std');
   });
   def({ id: 'CN-cir.gen-through', code: 'CN-cir', lesson: '6.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'Centre and a point on the circle → the general equation', basis: 'Course plan 6.2 Q7' }, function (R) {
+    form: 'Center and a point on the circle → the general equation', basis: 'Course plan 6.2 Q7' }, function (R) {
     var a = R.int(-4, 4), b = R.int(-4, 4), d = R.pick([[0, 2], [0, 3], [3, 4], [4, 3], [1, 2], [2, 1], [2, 2], [1, 3], [3, 0]]);
     if (a === 0 && b === 0) retry();
     return throughItem(R, a, b, a + d[0] * R.sign(), b + d[1] * R.sign(), 'gen');
@@ -7367,7 +7620,13 @@
     }
     retry();
   }
-  function compSq(C) { return 'Complete the square: $' + circ(C.a, C.b, C.r2) + '$ (or use centre $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right)$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F$).'; }
+  function compSq(C) {
+    var parts = [];
+    if (C.a) parts.push('$' + F.sum([[1, 'x^2'], [C.D, 'x']]) + ' = (' + brk('x', C.a) + ')^2 - ' + (C.a * C.a) + '$');
+    if (C.b) parts.push('$' + F.sum([[1, 'y^2'], [C.E, 'y']]) + ' = (' + brk('y', C.b) + ')^2 - ' + (C.b * C.b) + '$');
+    return 'Completing the square, ' + h.joinAnd(parts) + ', so the equation becomes $' + circ(C.a, C.b, C.r2) + '$, since $' + F.sum([[C.a * C.a, ''], [C.b * C.b, ''], [-C.F, '']]) + ' = ' + C.r2 + '$.';
+  }
+  function rootT(r2, r) { return F.n(r) === '\\sqrt{' + r2 + '}' ? F.n(r) : '\\sqrt{' + r2 + '} = ' + F.n(r); }
   def({ id: 'CN-cir.gen-radius', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
     form: 'Radius of a circle in general form', basis: 'Dec Q21' }, function (R) {
     var C = genCircle(R, true);
@@ -7375,30 +7634,30 @@
     return {
       stem: 'The radius of the circle $' + C.tex + '$ is ( )', key: m(C.r),
       wrong: W([[C.r2, 'radius'], [Sd.sqrt(C.D * C.D + C.E * C.E - 4 * C.F), 'partial'], [C.a * C.a + C.b * C.b + C.F <= 0 ? null : Sd.sqrt(C.a * C.a + C.b * C.b + C.F), 'sign'], [C.F > 0 ? Sd.sqrt(C.F) : (C.F < 0 ? Sd.sqrt(-C.F) : null), 'partial'], [Sd.sqrt(C.r2 + 1), 'slip'], [C.r.scale(2), 'partial']]),
-      check: chk.num(Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)), sol: compSq(C) + ' So $r = ' + F.n(C.r) + '$ ($' + C.r2 + '$ is $r^2$).'
+      check: chk.num(Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)), sol: compSq(C) + ' So $r = ' + rootT(C.r2, C.r) + '$.'
     };
   });
   def({ id: 'CN-cir.gen-centre', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 0.5,
-    form: 'Centre of a circle in general form', basis: 'Course plan 6.2 Q2' }, function (R) {
+    form: 'Center of a circle in general form', basis: 'Course plan 6.2 Q2' }, function (R) {
     var C = genCircle(R, true), T = function (x, y) { return m(pt(x, y)); };
     return {
       stem: 'The center of the circle $' + C.tex + '$ is ( )', key: T(C.a, C.b),
       wrong: [[T(-C.a, -C.b), 'sign'], [T(C.D, C.E), 'half'], [T(-C.D, -C.E), 'half'], [C.a === C.b ? null : T(C.b, C.a), 'swap'], [T(C.a, -C.b), 'sign'], [T(-C.a, C.b), 'sign']].filter(function (x) { return x[0]; }),
-      check: chk.tuple([-C.D / 2, -C.E / 2]), sol: compSq(C) + ' The centre is $' + pt(C.a, C.b) + '$: halve the coefficients of $x$ and $y$ and change their signs.'
+      check: chk.tuple([-C.D / 2, -C.E / 2]), sol: compSq(C) + ' So the center is $' + pt(C.a, C.b) + '$.'
     };
   });
   def({ id: 'CN-cir.gen-both', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
-    form: 'Centre and radius of a circle in general form (often with one variable missing)', basis: 'Jan Q19' }, function (R) {
+    form: 'Center and radius of a circle in general form (often with one variable missing)', basis: 'Jan Q19' }, function (R) {
     var C = genCircle(R, true), pr = function (x, y, rr) { return m(pt(x, y)) + ', ' + m(rr); };
     if (C.D === -4 && C.E === 0 && C.F === -3) retry('real item');
     return {
       stem: 'The center and radius of the circle $' + C.tex + '$ are ( )', key: pr(C.a, C.b, C.r),
       wrong: [[pr(-C.a, -C.b, C.r), 'sign'], [pr(C.a, C.b, C.r2), 'radius'], [C.a === C.b ? null : pr(C.b, C.a, C.r), 'swap'], [pr(-C.a, -C.b, C.r2), 'sign'], [pr(C.D, C.E, C.r), 'half']].filter(function (x) { return x[0]; }),
-      check: chk.tuple([-C.D / 2, -C.E / 2, Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)]), sol: compSq(C) + ' Centre $' + pt(C.a, C.b) + '$, radius $' + F.n(C.r) + '$.'
+      check: chk.tuple([-C.D / 2, -C.E / 2, Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)]), sol: compSq(C) + ' So the center is $' + pt(C.a, C.b) + '$ and the radius is $' + rootT(C.r2, C.r) + '$.'
     };
   });
   def({ id: 'CN-cir.to-general', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
-    form: 'Centre and radius → the general equation x² + y² + Dx + Ey + F = 0', basis: 'Apr Q20' }, function (R) {
+    form: 'Center and radius → the general equation x² + y² + Dx + Ey + F = 0', basis: 'Apr Q20' }, function (R) {
     var a = R.int(-5, 5), b = R.int(-5, 5), r = R.int(1, 6), Fc = a * a + b * b - r * r;
     if ((a === 0 && b === 0) || Fc === 0) retry();
     if (a === -1 && b === 2 && r === 3) retry('real item');
@@ -7406,11 +7665,11 @@
     return {
       stem: 'The general equation of the circle with center $' + pt(a, b) + '$ and radius $' + r + '$ is ( )', key: m(key),
       wrong: W([[F.circleG(-2 * a, -2 * b, -Fc), 'sign'], [F.circleG(2 * a, 2 * b, Fc), 'sign'], [F.circleG(-2 * a, -2 * b, -r * r), 'partial'], [F.circleG(-a, -b, Fc), 'half'], [F.circleG(2 * a, 2 * b, -Fc), 'sign']]), check: chk.eq([circlePts(a, b, r)]),
-      sol: 'Start from $' + circ(a, b, r * r) + '$ and expand: $' + key + '$. The constant term is $a^2 + b^2 - r^2 = ' + Fc + '$, not $-r^2$.'
+      sol: 'Start from $' + circ(a, b, r * r) + '$ and expand: $' + F.sum([[1, 'x^2'], [-2 * a, 'x'], [a * a, ''], [1, 'y^2'], [-2 * b, 'y'], [b * b, '']]) + ' = ' + (r * r) + '$, that is $' + key + '$. The constant term is $' + F.sum([[a * a, ''], [b * b, ''], [-r * r, '']]) + ' = ' + Fc + '$.'
     };
   });
   def({ id: 'CN-cir.gen-frac', code: 'CN-cir', lesson: '6.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'General form with odd coefficients → a fractional centre (and the radius)', basis: 'Course plan 6.2 Q5–6' }, function (R) {
+    form: 'General form with odd coefficients → a fractional center (and the radius)', basis: 'Course plan 6.2 Q5-6' }, function (R) {
     var D = R.pick([-5, -3, -1, 1, 3, 5]), E = R.pick([-4, -2, 0, 2, 4, -3, 1, 3]), r2 = R.pick([q(5, 4), q(9, 4), q(13, 4), q(17, 4), q(25, 4), q(5, 2), q(9, 2), q(1, 2), q(1, 4), q(29, 4), q(4), q(9)]);
     var a = q(-D, 2), b = q(-E, 2), Fc = a.mul(a).add(b.mul(b)).sub(r2);
     if (!Fc.isInt || Math.abs(Fc.n) > 12) retry();
@@ -7421,25 +7680,24 @@
     else { key = m(r); wrong = W([[r2, 'radius'], [Sd.sqrt(r2.mul(4)), 'partial'], [Sd.sqrt(r2.add(1)), 'slip'], [r2.mul(4), 'radius'], [r.scale(2), 'partial']]); check = chk.num(Math.sqrt((D * D + E * E) / 4 - Fc.n)); }
     return {
       stem: 'The ' + { centre: 'center', both: 'center and radius', radius: 'radius' }[ask] + ' of the circle $' + tex + '$ ' + (ask === 'both' ? 'are' : 'is') + ' ( )', key: key, wrong: wrong.filter(function (x) { return x[0]; }), check: check,
-      sol: 'Centre $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + pt(a, b) + '$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F = ' + F.n(r2) + '$, so $r = ' + F.n(r) + '$.'
+      sol: 'Here $D = ' + D + '$, $E = ' + E + '$ and $F = ' + Fc.n + '$. The center is $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + pt(a, b) + '$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F = \\dfrac{' + (D * D) + ' + ' + (E * E) + '}{4} - ' + par(Fc.n) + ' = ' + F.n(r2) + '$, so $r = ' + F.n(r) + '$.'
     };
   });
   def({ id: 'CN-cir.axis-param', code: 'CN-cir', lesson: '6.1', tier: 'M', level: '+1', fmt: 'V',
-    form: 'A circle whose centre (with a parameter) lies on an axis → the centre', basis: 'Course plan 6.1 Q5' }, function (R) {
+    form: 'A circle whose center (with a parameter) lies on an axis → the center', basis: 'Course plan 6.1 Q5' }, function (R) {
     var p = R.int(-5, 5), r = R.nz(-5, 5), be = R.pick([1, 2, -1]), onX = R.bool(0.5), rr = R.int(2, 6);
     // centre (a + p, be·a + r)
     var a, key;
     if (onX) { if (r % be !== 0) retry(); a = -r / be; key = [a + p, 0]; } else { a = -p; key = [0, be * a + r]; }
     if (key[0] === 0 && key[1] === 0) retry();
     var cx = F.sum([[1, 'a'], [p, '']]), cy = F.sum([[be, 'a'], [r, '']]);
-    var eq = '\\left(x - ' + (p === 0 ? 'a' : '(' + cx + ')') + '\\right)^2 + \\left(y - ' + '(' + cy + ')' + '\\right)^2 = ' + (rr * rr);
-    eq = '[x - (' + cx + ')]^2 + [y - (' + cy + ')]^2 = ' + (rr * rr);
+    var eq = (p === 0 ? '(x - a)^2' : '[x - (' + cx + ')]^2') + ' + [y - (' + cy + ')]^2 = ' + (rr * rr), zero = onX ? cy : cx;
     var v = onX ? key[0] : key[1], other = onX ? [0, be * (-p) + r] : (r % be === 0 ? [(-r / be) + p, 0] : null), T = function (x, y) { return m(pt(x, y)); };
     return {
       stem: 'The center of the circle $' + eq + '$ lies on the $' + (onX ? 'x' : 'y') + '$-axis. Then the center is ( )', key: T(key[0], key[1]),
       wrong: [[other ? T(other[0], other[1]) : null, 'axis'], [onX ? T(0, v) : T(v, 0), 'axis'], [onX ? T(-v, 0) : T(0, -v), 'sign'], [onX ? T(v, rr) : T(rr, v), 'partial'], [onX ? T(a, 0) : T(0, a), 'partial']].filter(function (x) { return x[0]; }),
       check: chk.tuple(onX ? [(-r / be) + p, 0] : [0, be * (-p) + r]),
-      sol: 'The centre is $(' + cx + ', ' + cy + ')$. On the $' + (onX ? 'x' : 'y') + '$-axis its $' + (onX ? 'y' : 'x') + '$-coordinate is $0$: $' + (onX ? cy : cx) + ' = 0$, so $a = ' + a + '$ and the centre is $' + pt(key[0], key[1]) + '$.'
+      sol: 'The center is $(' + cx + ', ' + cy + ')$. A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + '$-coordinate $0$, so ' + (zero === 'a' ? '$a = 0$' : '$' + zero + ' = 0$ and $a = ' + a + '$') + '. Then the center is $' + pt(key[0], key[1]) + '$.'
     };
   });
 
@@ -7460,8 +7718,8 @@
     var O = dirOptions(mm, axis);
     return {
       stem: 'The equation of the directrix of the parabola $' + parEq(mm, axis) + '$ is ( )', key: m(O.key), wrong: W(O.wrong), check: chk.eq([dirPts(axis, O.d.num)]),
-      sol: 'A quarter of the coefficient: for $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ the focus is $' + (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)$ and the directrix is $x = -\\dfrac{m}{4}' : '\\left(0, \\dfrac{m}{4}\\right)$ and the directrix is $y = -\\dfrac{m}{4}') +
-        '$. Here $m = ' + F.n(mm) + '$, so the directrix is $' + O.key + '$ — on the opposite side of the vertex from the focus.', sig: 'dir|' + axis + '|' + F.n(mm)
+      sol: 'For $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ the focus is $' + (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)$ and the directrix is $x = -\\dfrac{m}{4}' : '\\left(0, \\dfrac{m}{4}\\right)$ and the directrix is $y = -\\dfrac{m}{4}') +
+        '$. Here $m = ' + F.n(mm) + '$, so $\\dfrac{m}{4} = ' + F.n(mm.div(4)) + '$ and the directrix is $' + O.key + '$, on the opposite side of the vertex from the focus.', sig: 'dir|' + axis + '|' + F.n(mm)
     };
   });
   function yax2(a) { a = Fr.of(a); return 'y = ' + (a.n === 1 && a.d === 1 ? 'x^2' : a.n === -1 && a.d === 1 ? '-x^2' : a.d === 1 ? a.n + 'x^2' : (a.n < 0 ? '-' : '') + '\\dfrac{' + (Math.abs(a.n) === 1 ? '' : Math.abs(a.n)) + 'x^2}{' + a.d + '}'); }
@@ -7472,7 +7730,7 @@
     var wrong = [[lineEq('y', a.div(4).neg()), 'partial'], [lineEq('y', O.d.neg()), 'sign'], [lineEq('x', O.d), 'axis'], [lineEq('y', a.div(4)), 'partial'], [lineEq('y', mm.div(2).neg()), 'partial']];
     return {
       stem: 'The equation of the directrix of the parabola $' + yax2(a) + '$ is ( )', key: m(O.key), wrong: W(wrong), check: chk.eq([dirPts('y', O.d.num)]),
-      sol: 'Rewrite first: $x^2 = ' + F.sum([[mm, 'y']]) + '$. For $x^2 = my$ the directrix is $y = -\\dfrac{m}{4}$; with $m = ' + F.n(mm) + '$ this gives $' + O.key + '$. Using the coefficient $' + F.n(a) + '$ directly is the trap.'
+      sol: 'First rewrite the equation as $x^2 = ' + F.sum([[mm, 'y']]) + '$. For $x^2 = my$ the directrix is $y = -\\dfrac{m}{4}$, and with $m = ' + F.n(mm) + '$ this gives $' + O.key + '$. Using $' + F.n(a) + '$ in place of $m$ would give $y = ' + F.n(a.div(4).neg()) + '$, which is wrong.'
     };
   });
   def({ id: 'CN-par.focus', code: 'CN-par', lesson: '6.3', tier: 'E', level: '=', fmt: 'V', trick: 'T11', w: 0.5,
@@ -7481,7 +7739,7 @@
     return {
       stem: 'The coordinates of the focus of the parabola $' + parEq(mm, axis) + '$ are ( )', key: T(f, axis),
       wrong: [[T(f.neg(), axis), 'sign'], [T(f, o), 'axis'], [T(mm.div(2), axis), 'partial'], [T(mm, axis), 'partial'], [T(f.neg(), o), 'axis']], check: chk.tuple(axis === 'x' ? [mm.num / 4, 0] : [0, mm.num / 4]),
-      sol: 'A quarter of the coefficient: $\\dfrac{m}{4} = ' + F.n(f) + '$. The focus lies on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis (the axis of the linear variable): $' + (axis === 'x' ? pt(f, 0) : pt(0, f)) + '$.'
+      sol: 'For $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ the focus is $' + (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)' : '\\left(0, \\dfrac{m}{4}\\right)') + '$. Here $m = ' + F.n(mm) + '$, so the focus is $' + (axis === 'x' ? pt(f, 0) : pt(0, f)) + '$. It lies on the $' + axis + '$-axis because $' + axis + '$ is the variable that is not squared.'
     };
   });
   function parStmts(R, mm, axis, formTex) {
@@ -7494,20 +7752,25 @@
     var openTest = function (w) { return function () { var far = pts[0]; return w === 'to the right' ? axis === 'x' && far[0] > 0 : w === 'to the left' ? axis === 'x' && far[0] < 0 : w === 'upward' ? axis === 'y' && far[1] > 0 : axis === 'y' && far[1] < 0; }; };
     var on = pts[4], t0 = R.pick([1, 2, -2, 4, -4, 3]), P = axis === 'x' ? [q(t0 * t0).div(mm), q(t0)] : [q(t0), q(t0 * t0).div(mm)], Pw = axis === 'x' ? [P[0].neg(), P[1]] : [P[0], P[1].neg()];
     var onCurve = function (p) { return function () { return axis === 'x' ? close(p[1].num * p[1].num, mm.num * p[0].num) : close(p[0].num * p[0].num, mm.num * p[1].num); }; };
+    var sides = function (p) {             // the two sides of the equation at the point p
+      var l = axis === 'x' ? p[1].mul(p[1]) : p[0].mul(p[0]), r = mm.mul(axis === 'x' ? p[0] : p[1]);
+      return 'with $x = ' + F.n(p[0]) + '$ and $y = ' + F.n(p[1]) + '$, ' + (l.eq(r) ? 'both sides equal $' + F.n(l) + '$.' : 'the left side is $' + F.n(l) + '$ but the right side is $' + F.n(r) + '$.');
+    };
+    var fF = (axis === 'x' ? '\\left(\\dfrac{m}{4}, 0\\right)' : '\\left(0, \\dfrac{m}{4}\\right)');
     var pool = [
-      focusS(f, axis, 'the focus is a quarter of the coefficient along the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis.', { g: 'f' }),
-      dirS(v, d, 'the directrix is $' + lineEq(v, d) + '$, opposite to the focus.', { g: 'd' }),
-      h.factS('It opens ' + opens, false, openTest(opens), 'the sign of the coefficient and the squared variable decide the direction.', { g: 'o' }),
-      h.factS('Its axis of symmetry is the $' + v + '$-axis', false, function () { return pts.every(function (p) { return onCurve(axis === 'x' ? [q(1), q(1)] : [q(1), q(1)]) || true; }) && true; }, 'the axis of symmetry is the axis of the linear variable.', { g: 's' }),
-      h.factS('It passes through the point $' + pt(P[0], P[1]) + '$', false, onCurve(P), 'the coordinates satisfy the equation.', { g: 'p' }),
-      focusS(f.neg(), axis, 'the focus is $' + FT(f, axis) + '$; the sign follows the coefficient.', { g: 'f', trap: 'sign' }),
-      focusS(f, o, 'the focus lies on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis: $' + FT(f, axis) + '$.', { g: 'f2', trap: 'axis' }),
-      focusS(mm.div(2), axis, 'use a quarter of the coefficient, not a half: the focus is $' + FT(f, axis) + '$.', { g: 'f3', trap: 'partial' }),
-      dirS(v, f, 'the directrix is on the opposite side of the vertex: $' + lineEq(v, d) + '$.', { g: 'd', trap: 'sign' }),
-      dirS(o, d, 'the directrix is perpendicular to the axis of symmetry: $' + lineEq(v, d) + '$.', { g: 'd2', trap: 'axis' }),
-      h.factS('It opens ' + wrongOpen, false, openTest(wrongOpen), 'it opens ' + opens + '.', { g: 'o', trap: 'axis' }),
-      h.factS('Its axis of symmetry is the $' + o + '$-axis', false, function () { return false; }, 'the axis of symmetry is the $' + v + '$-axis.', { g: 's', trap: 'axis' }),
-      h.factS('It passes through the point $' + pt(Pw[0], Pw[1]) + '$', false, onCurve(Pw), 'substituting the point does not satisfy the equation.', { g: 'p', trap: 'sign' })
+      focusS(f, axis, 'the focus is $' + fF + ' = ' + FT(f, axis) + '$ with $m = ' + F.n(mm) + '$.', { g: 'f' }),
+      dirS(v, d, 'the directrix is $' + v + ' = -\\dfrac{m}{4} = ' + F.n(d) + '$.', { g: 'd' }),
+      h.factS('It opens ' + opens, false, openTest(opens), 'the coefficient $' + F.n(mm) + '$ is ' + (mm.n > 0 ? 'positive' : 'negative') + ', so $' + v + '$ is never ' + (mm.n > 0 ? 'negative' : 'positive') + ' on the curve.', { g: 'o' }),
+      h.factS('Its axis of symmetry is the $' + v + '$-axis', false, function () { return pts.every(function (p) { return onCurve(axis === 'x' ? [q(1), q(1)] : [q(1), q(1)]) || true; }) && true; }, 'replacing $' + o + '$ by $-' + o + '$ does not change the equation.', { g: 's' }),
+      h.factS('It passes through the point $' + pt(P[0], P[1]) + '$', false, onCurve(P), sides(P), { g: 'p' }),
+      focusS(f.neg(), axis, 'the focus is $' + FT(f, axis) + '$, which has the same sign as $m = ' + F.n(mm) + '$.', { g: 'f', trap: 'sign' }),
+      focusS(f, o, 'the focus lies on the $' + v + '$-axis, at $' + FT(f, axis) + '$.', { g: 'f2', trap: 'axis' }),
+      focusS(mm.div(2), axis, 'the focus is at $\\dfrac{m}{4}$, not $\\dfrac{m}{2}$, so it is $' + FT(f, axis) + '$.', { g: 'f3', trap: 'partial' }),
+      dirS(v, f, 'the directrix is on the opposite side of the vertex from the focus, so it is $' + lineEq(v, d) + '$.', { g: 'd', trap: 'sign' }),
+      dirS(o, d, 'the directrix is perpendicular to the axis of symmetry, so it is $' + lineEq(v, d) + '$.', { g: 'd2', trap: 'axis' }),
+      h.factS('It opens ' + wrongOpen, false, openTest(wrongOpen), 'only $' + o + '$ is squared, so the curve opens along the $' + v + '$-axis, ' + opens + '.', { g: 'o', trap: 'axis' }),
+      h.factS('Its axis of symmetry is the $' + o + '$-axis', false, function () { return false; }, 'only $' + o + '$ is squared, so the axis of symmetry is the $' + v + '$-axis.', { g: 's', trap: 'axis' }),
+      h.factS('It passes through the point $' + pt(Pw[0], Pw[1]) + '$', false, onCurve(Pw), sides(Pw), { g: 'p', trap: 'sign' })
     ];
     // symmetry test by reflection of sample points
     pool[3].test = function () { return pts.every(function (p) { var r = axis === 'x' ? [p[0], -p[1]] : [-p[0], p[1]]; return onCurve([q(0), q(0)]) && (axis === 'x' ? close(r[1] * r[1], mm.num * r[0]) : close(r[0] * r[0], mm.num * r[1])); }); };
@@ -7521,14 +7784,14 @@
     else { mm = q(R.pick(MS)); axis = R.pick(['x', 'x', 'y']); tex = parEq(mm, axis); }
     var st = QF.pickStmts(R, fmt, parStmts(R, mm, axis, tex));
     if (block && block(mm, axis, st)) retry('real item');
-    return out('Which of the following statements about the parabola $' + tex + '$ is ' + (fmt === 'N' ? 'incorrect' : 'correct') + '? ( )', st, useY ? 'Rewrite as $x^2 = ' + F.sum([[mm, 'y']]) + '$.' : '');
+    return out('Which of the following statements about the parabola $' + tex + '$ is ' + (fmt === 'N' ? 'incorrect' : 'correct') + '? ( )', st, useY ? 'First rewrite the equation as $x^2 = ' + F.sum([[mm, 'y']]) + '$.' : '');
   }
   def({ id: 'CN-par.stmt', code: 'CN-par', lesson: '6.3', tier: 'E', level: '=', fmt: 'S', trick: 'T11', w: 2,
     form: 'Which statement about a parabola is correct (focus, directrix, direction, axis, a point)', basis: 'Dec Q32, Jun Q32' }, function (R) {
     return parStmtItem(R, 'S', function (mm, axis, st) { return (axis === 'x' && mm.eq(4) && /focus is \$\(1, 0\)/.test(st.key)) || (axis === 'y' && mm.eq(4) && /directrix is \$y = -1\$/.test(st.key)); });
   });
   def({ id: 'CN-par.stmt-n', code: 'CN-par', lesson: '6.3', tier: 'M', level: '+1', fmt: 'N', trick: 'T11',
-    form: 'Which statement about a parabola is INCORRECT (focus / directrix / axis traps)', basis: 'Course plan 6.3 Set B Q8, Set C' }, function (R) { return parStmtItem(R, 'N'); });
+    form: 'Which statement about a parabola is incorrect (focus, directrix or axis errors)', basis: 'Course plan 6.3 Set B Q8, Set C' }, function (R) { return parStmtItem(R, 'N'); });
   def({ id: 'CN-par.focal-dist', code: 'CN-par', lesson: '6.3', tier: 'M', level: '=', fmt: 'V', w: 1,
     form: 'Parabola y² = mx (or x² = my): a point with a given coordinate → |PF|', basis: 'Jan Q31' }, function (R) {
     var mm = R.pick([4, 8, 12, 16, 2, 6, 20]), axis = R.pick(['x', 'x', 'y']), x0 = R.int(1, 9), key = q(x0).add(q(mm, 4));
@@ -7537,7 +7800,7 @@
     return {
       stem: 'Let $F$ be the focus of the parabola $' + parEq(mm, axis) + '$. If a point $P$ on the parabola has $' + v + '$-coordinate $' + x0 + '$, then $|PF| =$ ( )', key: m(key),
       wrong: W([[q(x0).add(q(mm, 2)), 'partial'], [x0, 'partial'], [q(x0).add(mm), 'partial'], [q(x0).sub(q(mm, 4)).n === 0 ? null : q(x0).sub(q(mm, 4)).abs(), 'sign'], [Sd.sqrt(mm * x0), 'companion']]), check: chk.num(Math.hypot(P[0] - Fp[0], P[1] - Fp[1])),
-      sol: 'On a parabola the distance to the focus equals the distance to the directrix $' + lineEq(v, q(-mm, 4)) + '$. So $|PF| = ' + x0 + ' + ' + F.n(q(mm, 4)) + ' = ' + F.n(key) + '$ (add a quarter of the coefficient, $\\dfrac{p}{2}$, not $p$).'
+      sol: 'On a parabola the distance to the focus equals the distance to the directrix $' + lineEq(v, q(-mm, 4)) + '$. The point has $' + v + ' = ' + x0 + '$, so its distance to the directrix is $' + x0 + ' + ' + F.n(q(mm, 4)) + ' = ' + F.n(key) + '$. Hence $|PF| = ' + F.n(key) + '$.'
     };
   });
   def({ id: 'CN-par.through', code: 'CN-par', lesson: '6.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -7549,7 +7812,7 @@
       return {
         stem: 'If the parabola $y = ax^2$ passes through the point $' + pt(x0, y0) + '$, then $a =$ ( )', key: m(a),
         wrong: W([[a.inv(), 'reciprocal'], [q(y0, x0), 'partial'], [y0 * x0 * x0, 'operation'], [a.neg(), 'sign'], [q(y0, 2 * x0), 'slip']]), check: chk.num(y0 / (x0 * x0)),
-        sol: 'Substitute the point: $' + y0 + ' = a \\cdot ' + par(x0) + '^2 = ' + (x0 * x0) + 'a$, so $a = ' + F.n(a) + '$.'
+        sol: 'Substitute the point: $' + y0 + ' = a \\cdot ' + par(x0) + '^2 = ' + (x0 * x0 === 1 ? '' : x0 * x0) + 'a$, so $a = ' + F.n(a) + '$.'
       };
     }
     var mm = q(y0 * y0, x0);
@@ -7567,7 +7830,7 @@
     return {
       stem: 'The standard equation of the parabola with vertex at the origin and focus $F' + (axis === 'x' ? pt(f, 0) : pt(0, f)) + '$ is ( )', key: m(key),
       wrong: W([[parEq(mm.neg(), axis), 'sign'], [parEq(mm, o), 'axis'], [parEq(f.mul(2), axis), 'partial'], [parEq(f, axis), 'partial'], [parEq(mm.neg(), o), 'axis']]), check: chk.eq([parPts(mm.num, axis)]),
-      sol: 'The focus is on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis, so the equation is $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ with $\\dfrac{m}{4} = ' + F.n(f) + '$, i.e. $m = ' + F.n(mm) + '$: $' + key + '$.'
+      sol: 'The focus is on the ' + (axis === 'x' ? '$x$' : '$y$') + '-axis, so the equation is $' + (axis === 'x' ? 'y^2 = mx' : 'x^2 = my') + '$ with $\\dfrac{m}{4} = ' + F.n(f) + '$. So $m = ' + F.n(mm) + '$ and the equation is $' + key + '$.'
     };
   });
   def({ id: 'CN-par.through-focus', code: 'CN-par', lesson: '6.3', tier: 'M', level: '+1', fmt: 'V', trick: 'T11',
@@ -7577,7 +7840,7 @@
     return {
       stem: 'If the parabola $y = ax^2$ passes through the point $' + pt(x0, y0) + '$, then the coordinates of its focus are ( )', key: T(f, 'y'),
       wrong: [[T(a.div(4), 'y'), 'partial'], [T(f, 'x'), 'axis'], [T(f.neg(), 'y'), 'sign'], [T(a.inv().div(2), 'y'), 'partial'], [T(a, 'y'), 'partial']], check: chk.tuple([0, 1 / (4 * (y0.num / (x0 * x0)))]),
-      sol: 'Substituting the point gives $a = ' + F.n(a) + '$. Rewrite $y = ' + (a.eq(1) ? '' : F.n(a)) + 'x^2$ as $x^2 = ' + F.sum([[a.inv(), 'y']]) + '$: the focus is $\\left(0, \\dfrac{m}{4}\\right) = ' + pt(0, f) + '$.'
+      sol: 'Substituting the point gives $' + F.n(y0) + ' = a \\cdot ' + par(x0) + '^2$, so $a = ' + F.n(a) + '$. Rewriting $y = ' + (a.eq(1) ? '' : a.eq(-1) ? '-' : F.n(a)) + 'x^2$ as $x^2 = ' + F.sum([[a.inv(), 'y']]) + '$ gives $m = ' + F.n(a.inv()) + '$, so the focus is $\\left(0, \\dfrac{m}{4}\\right) = ' + pt(0, f) + '$.'
     };
   });
   def({ id: 'CN-par.point-from-pf', code: 'CN-par', lesson: '6.3', tier: 'H', level: '+1', fmt: 'V', w: 0.5,
@@ -7589,13 +7852,13 @@
       stem: 'A point $P$ on the parabola $' + parEq(mm, 'x') + '$ is at distance $' + d + '$ from the focus. The coordinates of $P$ are ( )', key: two(x0, y0),
       wrong: [[one(x0, y0), 'partial'], [two(d, Sd.sqrt(mm * d)), 'partial'], [two(d - mm / 2 > 0 ? d - mm / 2 : d + mm / 2, Sd.sqrt(mm * Math.abs(d - mm / 2 > 0 ? d - mm / 2 : d + mm / 2))), 'partial'], [one(x0, y0.neg()), 'partial'], ['$(\\pm ' + F.n(y0) + ', ' + x0 + ')$', 'swap']],
       check: chk.tuples([[x0, Math.sqrt(mm * x0)], [x0, -Math.sqrt(mm * x0)]]),
-      sol: '$|PF| = x_0 + \\dfrac{m}{4} = x_0 + ' + (mm / 4) + ' = ' + d + '$, so $x_0 = ' + x0 + '$. Then $y_0^2 = ' + mm + ' \\cdot ' + x0 + ' = ' + (mm * x0) + '$ and $y_0 = \\pm ' + F.n(y0) + '$ — two points.'
+      sol: '$|PF| = x_0 + \\dfrac{m}{4} = x_0 + ' + (mm / 4) + ' = ' + d + '$, so $x_0 = ' + x0 + '$. Then $y_0^2 = ' + mm + ' \\cdot ' + x0 + ' = ' + (mm * x0) + '$ and $y_0 = \\pm ' + F.n(y0) + '$. So there are two such points.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/cn2.js ---- */
-/* ACE CSCA Question Factory · templates/cn2.js — Conics II: CN-ell (ellipses), CN-hyp (hyperbolas). */
+/* ACE CSCA Question Factory · templates/cn2.js: Conics II, ellipses (CN-ell) and hyperbolas (CN-hyp). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.LN, C = QF.CN;
@@ -7612,7 +7875,7 @@
   /** definition tests for a pair of foci */
   function constSum(pts, F1, F2) { return spread(pts.map(function (p) { return dist(p, F1) + dist(p, F2); })) < 1e-9; }
   function constDiff(pts, F1, F2) { var d = pts.map(function (p) { return Math.abs(dist(p, F1) - dist(p, F2)); }); return spread(d) < 1e-9 && d[0] > 1e-9; }
-  /** largest and smallest distance from the centre to the ellipse x²/A + y²/B = 1 (i.e. a and b), found numerically */
+  /** largest and smallest distance from the center to the ellipse x²/A + y²/B = 1 (i.e. a and b), found numerically */
   function radii(A, B) {
     var mx = 0, mn = Infinity, a = Math.sqrt(num(A)), b = Math.sqrt(num(B));
     for (var i = 0; i < 3600; i++) { var t = i * Math.PI / 1800, r = Math.hypot(a * Math.cos(t), b * Math.sin(t)); if (r > mx) mx = r; if (r < mn) mn = r; }
@@ -7653,22 +7916,22 @@
   function ellEqItem(R, a2, b2, axis, stem, sol, extraWrong) {
     var key = ell(a2, b2, axis), o = other(axis), c2 = Fr.of(a2).sub(b2);
     var wrong = [[ell(a2, b2, o), 'axis']].concat(extraWrong || []).concat([[ell(Fr.of(a2).add(c2), a2, axis), 'sign'], [ell(a2, c2, axis), 'partial']]);
-    return { stem: stem, key: m(key), wrong: W(wrong), check: chk.eq([ellPts(axis === 'x' ? a2 : b2, axis === 'x' ? b2 : a2)]), sol: sol + ' The foci are on the ' + axName(axis) + ', so $a^2$ goes under $' + axis + '^2$: $' + key + '$.' };
+    return { stem: stem, key: m(key), wrong: W(wrong), check: chk.eq([ellPts(axis === 'x' ? a2 : b2, axis === 'x' ? b2 : a2)]), sol: sol + ' The foci are on the ' + axName(axis) + ', so $a^2$ goes under $' + axis + '^2$ and the equation is $' + key + '$.' };
   }
   def({ id: 'CN-ell.from-2a-foci', code: 'CN-ell', lesson: '6.5', tier: 'E', level: '=', fmt: 'V', w: 1,
     form: 'Major axis length and the foci → the equation', basis: 'Mar Q43' }, function (R) {
     var p = R.pick(AC), a = p[0], c = p[1], axis = R.pick(['x', 'y']), b2 = a * a - c * c;
     if (a === 5 && c === 3 && axis === 'x') retry('real item');
     return ellEqItem(R, a * a, b2, axis, 'An ellipse has a major axis of length $' + (2 * a) + '$ and foci $' + pmPt(c, axis) + '$. Its equation is ( )',
-      '$2a = ' + (2 * a) + '$ gives $a = ' + a + '$; the foci give $c = ' + c + '$. Then $b^2 = a^2 - c^2 = ' + b2 + '$.', [[ell(4 * a * a, 4 * a * a - c * c, axis), 'partial']]);
+      '$2a = ' + (2 * a) + '$ gives $a = ' + a + '$, and the foci give $c = ' + c + '$. Then $b^2 = a^2 - c^2 = ' + (a * a) + ' - ' + (c * c) + ' = ' + b2 + '$.', [[ell(4 * a * a, 4 * a * a - c * c, axis), 'partial']]);
   });
   def({ id: 'CN-ell.r09', code: 'CN-ell', lesson: '6.5', tier: 'M', level: '=', fmt: 'V', rep: 'R09', w: 2,
-    form: 'Centre O, the axis of the foci, the focal distance and e → the equation', basis: 'R09: Apr Q40, Jun Q40' }, function (R) {
+    form: 'Center O, the axis of the foci, the focal distance and e → the equation', basis: 'R09: Apr Q40, Jun Q40' }, function (R) {
     var p = R.pick(AC), a = p[0], c = p[1], axis = R.pick(['x', 'y', 'y']), b2 = a * a - c * c, e = q(c, a);
     if (axis === 'y' && c === 2 && a === 3) retry('real item');
     var a2w = q(2 * c).div(e).pow(2);           // using 2c as c
     return ellEqItem(R, a * a, b2, axis, 'If the center of ellipse $C$ is at the origin, its foci are on the ' + axName(axis) + ', the focal distance is $' + (2 * c) + '$, and the eccentricity is $' + F.n(e) + '$, then the equation of $C$ is ( )',
-      'Focal distance $2c = ' + (2 * c) + '$ gives $c = ' + c + '$. From $e = \\dfrac{c}{a} = ' + F.n(e) + '$: $a = ' + a + '$. Then $b^2 = a^2 - c^2 = ' + b2 + '$.', [[ell(a2w, a2w.sub(4 * c * c), axis), 'partial']]);
+      'The focal distance $2c = ' + (2 * c) + '$ gives $c = ' + c + '$. From $e = \\dfrac{c}{a} = ' + F.n(e) + '$ we get $a = ' + a + '$. Then $b^2 = a^2 - c^2 = ' + (a * a) + ' - ' + (c * c) + ' = ' + b2 + '$.', [[ell(a2w, a2w.sub(4 * c * c), axis), 'partial']]);
   });
   def({ id: 'CN-ell.same-foci', code: 'CN-ell', lesson: '6.5', tier: 'M', level: '=', fmt: 'V', w: 1,
     form: 'Same foci as a given ellipse, minor axis given → the equation', basis: 'Apr Q43' }, function (R) {
@@ -7678,7 +7941,7 @@
     var minor = Sd.sqrt(4 * b2);
     var wrong = [[b2 - c2 > 0 ? ell(b2, b2 - c2, axis) : null, 'sign'], [ell(4 * b2 + c2, 4 * b2, axis), 'partial']];
     return ellEqItem(R, a2, b2, axis, 'An ellipse has the same foci as the ellipse $' + ell(m2, n2, axis) + '$, and the length of its minor axis is $' + F.n(minor) + '$. Then its equation is ( )',
-      'The given ellipse has $c^2 = ' + m2 + ' - ' + n2 + ' = ' + c2 + '$, and the same foci mean the same $c$. Minor axis $2b = ' + F.n(minor) + '$ gives $b^2 = ' + b2 + '$. Then $a^2 = b^2 + c^2 = ' + a2 + '$.', wrong);
+      'The given ellipse has $c^2 = ' + m2 + ' - ' + n2 + ' = ' + c2 + '$, and the same foci mean the same $c$. Minor axis $2b = ' + F.n(minor) + '$ gives $b^2 = ' + b2 + '$. Then $a^2 = b^2 + c^2 = ' + b2 + ' + ' + c2 + ' = ' + a2 + '$.', wrong);
   });
   function ellStmts(R, a2, b2, axis) {
     var A = axis === 'x' ? a2 : b2, B = axis === 'x' ? b2 : a2, pts = ellPts(A, B), rr = radii(A, B), o = other(axis);
@@ -7687,20 +7950,20 @@
     var len = function (name, v, target, why, extra) { return h.factS('The length of its ' + name + ' axis is $' + F.n(v) + '$', false, function () { return close(num(v), target()); }, why, extra); };
     var major = function () { return 2 * rr[0]; }, minor = function () { return 2 * rr[1]; }, cnum = function () { return Math.sqrt(rr[0] * rr[0] - rr[1] * rr[1]); };
     var pool = [
-      foc(c, axis, '$c^2 = ' + a2 + ' - ' + b2 + ' = ' + (a2 - b2) + '$ and the larger denominator is under $' + axis + '^2$.', { g: 'f' }),
+      foc(c, axis, '$c^2 = ' + a2 + ' - ' + b2 + ' = ' + (a2 - b2) + '$, so $c = ' + F.n(c) + '$, and the foci are on the ' + axName(axis) + ' because the larger denominator is under $' + axis + '^2$.', { g: 'f' }),
       len('major', a.scale(2), major, '$a^2 = ' + a2 + '$, so $2a = ' + F.n(a.scale(2)) + '$.', { g: 'M' }),
       len('minor', b.scale(2), minor, '$b^2 = ' + b2 + '$, so $2b = ' + F.n(b.scale(2)) + '$.', { g: 'm' }),
-      h.factS('Its eccentricity is $' + F.n(e) + '$', false, function () { return close(e.num, cnum() / rr[0]); }, '$e = \\dfrac{c}{a} = ' + F.n(e) + '$.', { g: 'e' }),
+      h.factS('Its eccentricity is $' + F.n(e) + '$', false, function () { return close(e.num, cnum() / rr[0]); }, '$e = \\dfrac{c}{a} = \\dfrac{' + F.n(c) + '}{' + F.n(a) + '} = ' + F.n(e) + '$.', { g: 'e' }),
       h.factS('Its focal distance is $' + F.n(c.scale(2)) + '$', false, function () { return close(2 * c.num, 2 * cnum()); }, 'the focal distance is $2c = ' + F.n(c.scale(2)) + '$.', { g: 'd' }),
-      foc(c, o, 'the foci are on the ' + axName(axis) + ' (the larger denominator is under $' + axis + '^2$): $' + pmPt(c, axis) + '$.', { g: 'f', trap: 'axis' }),
-      foc(Sd.sqrt(a2 + b2), axis, 'for an ellipse $c^2 = a^2 - b^2$, not $a^2 + b^2$.', { g: 'f2', trap: 'sign' }),
-      len('major', b.scale(2), major, 'that is the minor axis; the major axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'M', trap: 'axis' }),
-      len('major', a, major, 'that is $a$; the major axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'M2', trap: 'half' }),
-      len('minor', a.scale(2), minor, 'that is the major axis; the minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'm', trap: 'axis' }),
-      len('minor', Sd.of(b2), minor, 'that is $b^2$; the minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'm2', trap: 'partial' }),
-      h.factS('Its eccentricity is $' + F.n(c.div(b)) + '$', false, function () { return close(c.div(b).num, cnum() / rr[0]); }, 'divide by $a$, not $b$: $e = \\dfrac{c}{a} = ' + F.n(e) + '$.', { g: 'e', trap: 'axis' }),
-      h.factS('Its eccentricity is $' + F.n(b.div(a)) + '$', false, function () { return close(b.div(a).num, cnum() / rr[0]); }, 'that is $\\dfrac{b}{a}$; $e = \\dfrac{c}{a} = ' + F.n(e) + '$.', { g: 'e2', trap: 'companion' }),
-      h.factS('Its focal distance is $' + F.n(c) + '$', false, function () { return close(c.num, 2 * cnum()); }, 'that is $c$; the focal distance is $2c = ' + F.n(c.scale(2)) + '$.', { g: 'd', trap: 'half' })
+      foc(c, o, 'the larger denominator is under $' + axis + '^2$, so the foci are on the ' + axName(axis) + ', at $' + pmPt(c, axis) + '$.', { g: 'f', trap: 'axis' }),
+      foc(Sd.sqrt(a2 + b2), axis, 'for an ellipse $c^2 = a^2 - b^2 = ' + (a2 - b2) + '$, so the foci are $' + pmPt(c, axis) + '$.', { g: 'f2', trap: 'sign' }),
+      len('major', b.scale(2), major, 'the minor axis has length $2b = ' + F.n(b.scale(2)) + '$, and the major axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'M', trap: 'axis' }),
+      len('major', a, major, '$a = ' + F.n(a) + '$, so the major axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'M2', trap: 'half' }),
+      len('minor', a.scale(2), minor, 'the major axis has length $2a = ' + F.n(a.scale(2)) + '$, and the minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'm', trap: 'axis' }),
+      len('minor', Sd.of(b2), minor, '$b^2 = ' + b2 + '$, so $b = ' + F.n(b) + '$ and the minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'm2', trap: 'partial' }),
+      h.factS('Its eccentricity is $' + F.n(c.div(b)) + '$', false, function () { return close(c.div(b).num, cnum() / rr[0]); }, 'the eccentricity is $e = \\dfrac{c}{a} = ' + F.n(e) + '$. The value $' + F.n(c.div(b)) + '$ is $\\dfrac{c}{b}$.', { g: 'e', trap: 'axis' }),
+      h.factS('Its eccentricity is $' + F.n(b.div(a)) + '$', false, function () { return close(b.div(a).num, cnum() / rr[0]); }, 'the value $' + F.n(b.div(a)) + '$ is $\\dfrac{b}{a}$, but $e = \\dfrac{c}{a} = ' + F.n(e) + '$.', { g: 'e2', trap: 'companion' }),
+      h.factS('Its focal distance is $' + F.n(c) + '$', false, function () { return close(c.num, 2 * cnum()); }, '$c = ' + F.n(c) + '$, so the focal distance is $2c = ' + F.n(c.scale(2)) + '$.', { g: 'd', trap: 'half' })
     ];
     pool.forEach(function (s) { s.ok = !!s.test(); });
     var seen = {};
@@ -7710,14 +7973,14 @@
     var e0 = R.pick(ELL), a2 = e0[0], b2 = e0[1], axis = R.pick(axes), st = QF.pickStmts(R, fmt, ellStmts(R, a2, b2, axis));
     if (block && block(a2, b2, axis, st)) retry('real item');
     return out('Which of the following statements about the ellipse $' + ell(a2, b2, axis) + '$ is ' + (fmt === 'N' ? 'incorrect' : 'correct') + '? ( )', st,
-      'Here $a^2 = ' + a2 + '$ (under $' + axis + '^2$), $b^2 = ' + b2 + '$ and $c^2 = ' + (a2 - b2) + '$.');
+      'Here $a^2 = ' + a2 + '$ is under $' + axis + '^2$, $b^2 = ' + b2 + '$, and $c^2 = a^2 - b^2 = ' + (a2 - b2) + '$.');
   }
   def({ id: 'CN-ell.stmt', code: 'CN-ell', lesson: '6.4', tier: 'M', level: '=', fmt: 'S', w: 1,
     form: 'Which statement about an ellipse is correct (foci, axes, eccentricity, focal distance)', basis: 'Dec Q43' }, function (R) {
     return ellStmtItem(R, 'S', ['x', 'y', 'y'], function (a2, b2, axis, st) { return a2 === 20 && b2 === 4 && axis === 'y' && /foci are \$\(0, \\pm 4\)/.test(st.key); });
   });
   def({ id: 'CN-ell.stmt-n', code: 'CN-ell', lesson: '6.4', tier: 'M', level: '+1', fmt: 'N',
-    form: 'Which statement about an ellipse with foci on the y-axis is INCORRECT', basis: 'Course plan 6.4 Q8 (2.5) and Set C' }, function (R) { return ellStmtItem(R, 'N', ['y']); });
+    form: 'Which statement about an ellipse with foci on the y-axis is incorrect', basis: 'Course plan 6.4 Q8 (2.5) and Set C' }, function (R) { return ellStmtItem(R, 'N', ['y']); });
   def({ id: 'CN-ell.stmt-general', code: 'CN-ell', lesson: '6.4', tier: 'M', level: '=', fmt: 'S', w: 1,
     form: 'Statements about x²/m + y²/n = 1 for all positive m ≠ n: which must be true', basis: 'Jun Q43' }, function (R) {
     var L = R.pick([['m', 'n'], ['m', 'n'], ['s', 't'], ['p', 'q']]), u = L[0], v = L[1], MN = [[4, 9], [9, 4], [2, 5], [7, 3], [1, 6], [5, 1]];
@@ -7726,18 +7989,18 @@
     var S = function (text, fn, why, extra) { var t = all(fn); return h.factS(text, t(), t, why, extra); };
     var pool = [   // the real key ("its centre is the origin") is not used
       S('It is symmetric about the origin', function (A, B, pts) { return pts.every(function (p) { return on(-p[0], -p[1], A, B); }); }, 'replacing $(x, y)$ by $(-x, -y)$ leaves the equation unchanged.', { g: 'so' }),
-      S('It is symmetric about the $x$-axis and about the $y$-axis', function (A, B, pts) { return pts.every(function (p) { return on(p[0], -p[1], A, B) && on(-p[0], p[1], A, B); }); }, 'only $x^2$ and $y^2$ appear.', { g: 'sa' }),
-      S('It passes through the point $(\\sqrt{' + u + '}, 0)$', function (A, B) { return on(Math.sqrt(A), 0, A, B); }, 'put $y = 0$: $x^2 = ' + u + '$.', { g: 'px' }),
-      S('It passes through the point $(0, -\\sqrt{' + v + '})$', function (A, B) { return on(0, -Math.sqrt(B), A, B); }, 'put $x = 0$: $y^2 = ' + v + '$.', { g: 'py' }),
-      S('Its foci are on the $x$-axis', function (A, B) { return A > B; }, 'only when $' + u + ' > ' + v + '$; if $' + u + ' < ' + v + '$ they are on the $y$-axis.', { g: 'fx', trap: 'axis' }),
-      S('Its foci are on the $y$-axis', function (A, B) { return B > A; }, 'only when $' + v + ' > ' + u + '$.', { g: 'fy', trap: 'axis' }),
-      S('The length of its major axis is $2\\sqrt{' + u + '}$', function (A, B) { return close(2 * Math.sqrt(A), 2 * radii(A, B)[0]); }, 'only when $' + u + ' > ' + v + '$.', { g: 'M', trap: 'axis' }),
+      S('It is symmetric about the $x$-axis and about the $y$-axis', function (A, B, pts) { return pts.every(function (p) { return on(p[0], -p[1], A, B) && on(-p[0], p[1], A, B); }); }, 'replacing $x$ by $-x$, or $y$ by $-y$, leaves the equation unchanged.', { g: 'sa' }),
+      S('It passes through the point $(\\sqrt{' + u + '}, 0)$', function (A, B) { return on(Math.sqrt(A), 0, A, B); }, 'putting $y = 0$ gives $x^2 = ' + u + '$, so $x = \\pm\\sqrt{' + u + '}$.', { g: 'px' }),
+      S('It passes through the point $(0, -\\sqrt{' + v + '})$', function (A, B) { return on(0, -Math.sqrt(B), A, B); }, 'putting $x = 0$ gives $y^2 = ' + v + '$, so $y = \\pm\\sqrt{' + v + '}$.', { g: 'py' }),
+      S('Its foci are on the $x$-axis', function (A, B) { return A > B; }, 'this holds only when $' + u + ' > ' + v + '$. If $' + u + ' < ' + v + '$, the foci are on the $y$-axis.', { g: 'fx', trap: 'axis' }),
+      S('Its foci are on the $y$-axis', function (A, B) { return B > A; }, 'this holds only when $' + v + ' > ' + u + '$. If $' + u + ' > ' + v + '$, the foci are on the $x$-axis.', { g: 'fy', trap: 'axis' }),
+      S('The length of its major axis is $2\\sqrt{' + u + '}$', function (A, B) { return close(2 * Math.sqrt(A), 2 * radii(A, B)[0]); }, 'this holds only when $' + u + ' > ' + v + '$. If $' + u + ' < ' + v + '$, the major axis is $2\\sqrt{' + v + '}$.', { g: 'M', trap: 'axis' }),
       S('It passes through the point $(' + u + ', 0)$', function (A, B) { return on(A, 0, A, B); }, 'the $x$-intercepts are $\\pm\\sqrt{' + u + '}$, not $\\pm ' + u + '$.', { g: 'px', trap: 'partial' }),
-      S('Its focal distance is $2\\sqrt{' + u + ' - ' + v + '}$', function (A, B) { return A > B && close(2 * Math.sqrt(A - B), 2 * Math.sqrt(Math.pow(radii(A, B)[0], 2) - Math.pow(radii(A, B)[1], 2))); }, 'only when $' + u + ' > ' + v + '$; in general it is $2\\sqrt{|' + u + ' - ' + v + '|}$.', { g: 'd', trap: 'axis' }),
+      S('Its focal distance is $2\\sqrt{' + u + ' - ' + v + '}$', function (A, B) { return A > B && close(2 * Math.sqrt(A - B), 2 * Math.sqrt(Math.pow(radii(A, B)[0], 2) - Math.pow(radii(A, B)[1], 2))); }, 'this holds only when $' + u + ' > ' + v + '$. In general the focal distance is $2\\sqrt{|' + u + ' - ' + v + '|}$.', { g: 'd', trap: 'axis' }),
       S('Its eccentricity is greater than $1$', function (A, B) { var r = radii(A, B); return Math.sqrt(r[0] * r[0] - r[1] * r[1]) / r[0] > 1; }, 'for an ellipse $0 < e < 1$.', { g: 'e', trap: 'companion' })
     ];
     return out('Which of the following statements about the ellipse $\\dfrac{x^2}{' + u + '} + \\dfrac{y^2}{' + v + '} = 1$ ($' + u + ' > 0$, $' + v + ' > 0$, $' + u + ' \\ne ' + v + '$) is correct? ( )', QF.pickStmts(R, 'S', pool),
-      'Nothing says which of $' + u + '$, $' + v + '$ is larger, so only statements that hold in both cases are correct.');
+      'The question does not say which of $' + u + '$ and $' + v + '$ is larger, so a correct statement must hold in both cases.');
   });
   def({ id: 'CN-ell.two-case', code: 'CN-ell', lesson: '6.5', tier: 'H', level: '=', fmt: 'V', w: 0.5,
     form: 'Major axis = k × minor axis, through a point on an axis → two equations', basis: 'undated Q43' }, function (R) {
@@ -7751,7 +8014,8 @@
     return {
       stem: 'An ellipse is centered at the origin with its axes on the coordinate axes. Its major axis is ' + (k === 2 ? 'twice' : 'three times') + ' as long as its minor axis, and it passes through the point $P' + P + '$. Its equation is ( )', key: two(e1, e2),
       wrong: [[m(e1), 'partial'], [m(e2), 'partial'], [two(e1, e3), 'axis'], [two(e1, e4), 'slip'], [two(e3, e2), 'axis']], check: chk.eq([ellPts(E1[0], E1[1]), ellPts(E2[0], E2[1])]),
-      sol: 'A point on an axis is a vertex, but it may be on the major or on the minor axis. Case 1: $a = ' + Math.abs(p) + '$, $b = ' + b0 + '$ gives $' + e1 + '$. Case 2: $b = ' + Math.abs(p) + '$, $a = ' + (k * Math.abs(p)) + '$ gives $' + e2 + '$. Both are answers; an option with one case only is incomplete.'
+      sol: 'A point on an axis is a vertex, but it can be an end of the major axis or of the minor axis. If it is on the major axis, then $a = ' + Math.abs(p) + '$ and $b = ' + b0 + '$, which gives $' + e1 + '$. ' +
+        'If it is on the minor axis, then $b = ' + Math.abs(p) + '$ and $a = ' + (k * Math.abs(p)) + '$, which gives $' + e2 + '$. Both equations are possible, so an option with only one of them is incomplete.'
     };
   });
   def({ id: 'CN-ell.a-e-b', code: 'CN-ell', lesson: '6.5', tier: 'E', level: '=', fmt: 'V', w: 0.3,
@@ -7760,7 +8024,7 @@
     return {
       stem: full ? 'If the major axis of an ellipse has length $' + (2 * a) + '$ and its eccentricity is $' + F.n(e) + '$, then the length of its minor axis is ( )' : 'If an ellipse has $a = ' + a + '$ and eccentricity $e = ' + F.n(e) + '$, then $b =$ ( )', key: m(key),
       wrong: W([[full ? b : b.scale(2), 'half'], [full ? 2 * c : c, 'companion'], [a * a - c * c, 'partial'], [full ? Sd.sqrt(a * a + c * c).scale(2) : Sd.sqrt(a * a + c * c), 'sign'], [full ? 2 * a : a, 'partial']]), check: chk.num((full ? 2 : 1) * Math.sqrt(a * a - Math.pow(a * e.num, 2))),
-      sol: '$c = ae = ' + c + '$, so $b^2 = a^2 - c^2 = ' + (a * a - c * c) + '$ and $b = ' + F.n(b) + '$' + (full ? '; the minor axis is $2b = ' + F.n(key) + '$.' : '.')
+      sol: (full ? '$2a = ' + (2 * a) + '$ gives $a = ' + a + '$. Then ' : '') + '$c = ae = ' + a + ' \\cdot ' + F.n(e) + ' = ' + c + '$, so $b^2 = a^2 - c^2 = ' + (a * a) + ' - ' + (c * c) + ' = ' + (a * a - c * c) + '$ and $b = ' + F.n(b) + '$.' + (full ? ' The minor axis is $2b = ' + F.n(key) + '$.' : '')
     };
   });
   def({ id: 'CN-ell.vertex-e', code: 'CN-ell', lesson: '6.5', tier: 'M', level: '=', fmt: 'V', w: 0.3,
@@ -7769,28 +8033,28 @@
     if (b2 === 1 && a2 === 5 && axis === 'x') retry('real item');
     var b = Sd.sqrt(b2), e = Sd.sqrt(q(a2 - b2, a2)), V = axis === 'x' ? pt(0, b) : pt(b, 0);
     return ellEqItem(R, a2, b2, axis, 'An ellipse centered at the origin has its foci on the ' + axName(axis) + ', one vertex at $' + V + '$ and eccentricity $' + F.n(e) + '$. Its equation is ( )',
-      'The vertex $' + V + '$ is on the minor axis, so $b^2 = ' + b2 + '$. From $e^2 = 1 - \\dfrac{b^2}{a^2} = ' + F.n(q(a2 - b2, a2)) + '$: $a^2 = ' + a2 + '$.', [[ell(a2 + b2, b2, axis), 'slip']]);
+      'The vertex $' + V + '$ is on the minor axis, so $b^2 = ' + b2 + '$. From $e^2 = 1 - \\dfrac{b^2}{a^2} = ' + F.n(q(a2 - b2, a2)) + '$ we get $\\dfrac{b^2}{a^2} = ' + F.n(q(b2, a2)) + '$, so $a^2 = ' + a2 + '$.', [[ell(a2 + b2, b2, axis), 'slip']]);
   });
   def({ id: 'CN-ell.ecc', code: 'CN-ell', lesson: '6.4', tier: 'E', level: '+1', fmt: 'V',
-    form: 'Eccentricity of an ellipse whose foci are on the y-axis (axis trap)', basis: 'Course plan 6.4 Q5' }, function (R) {
+    form: 'Eccentricity of an ellipse whose foci are on the y-axis (a² is under y²)', basis: 'Course plan 6.4 Q5' }, function (R) {
     var e0 = R.pick(ELL), a2 = e0[0], b2 = e0[1], axis = R.pick(['y', 'y', 'x']), a = Sd.sqrt(a2), b = Sd.sqrt(b2), c = Sd.sqrt(a2 - b2), e = c.div(a), rr = radii(axis === 'x' ? a2 : b2, axis === 'x' ? b2 : a2);
     return {
       stem: 'The eccentricity of the ellipse $' + ell(a2, b2, axis) + '$ is ( )', key: m(e),
       wrong: W([[c.div(b), 'axis'], [b.div(a), 'companion'], [a.div(c), 'reciprocal'], [q(a2 - b2, a2), 'partial'], [Sd.sqrt(q(a2 + b2, a2)), 'sign']]), check: chk.num(Math.sqrt(rr[0] * rr[0] - rr[1] * rr[1]) / rr[0]),
-      sol: '$a^2 = ' + a2 + '$ is the larger denominator' + (axis === 'y' ? ' (it is under $y^2$)' : '') + ', $b^2 = ' + b2 + '$, $c^2 = ' + (a2 - b2) + '$. So $e = \\dfrac{c}{a} = ' + F.n(e) + '$, a number between $0$ and $1$.'
+      sol: 'The larger denominator is $a^2 = ' + a2 + '$' + (axis === 'y' ? ', under $y^2$' : '') + '. So $b^2 = ' + b2 + '$ and $c^2 = a^2 - b^2 = ' + (a2 - b2) + '$, which gives $e = \\dfrac{c}{a} = \\dfrac{' + F.n(c) + '}{' + F.n(a) + '} = ' + F.n(e) + '$, a number between $0$ and $1$.'
     };
   });
   def({ id: 'CN-ell.from-2c-vertex', code: 'CN-ell', lesson: '6.5', tier: 'M', level: '+1', fmt: 'V',
     form: 'Focal distance and a vertex on the major axis → the equation', basis: 'Course plan 6.4 Q7' }, function (R) {
     var p = R.pick(AC), a = p[0], c = p[1], axis = R.pick(['x', 'y']), b2 = a * a - c * c, sg = R.sign(), V = axis === 'x' ? pt(sg * a, 0) : pt(0, sg * a);
     return ellEqItem(R, a * a, b2, axis, 'An ellipse centered at the origin has its foci on the ' + axName(axis) + ', focal distance $' + (2 * c) + '$, and passes through the point $' + V + '$. Its equation is ( )',
-      'The point $' + V + '$ lies on the axis of the foci, so it is a vertex of the major axis: $a = ' + a + '$. Focal distance $2c = ' + (2 * c) + '$ gives $c = ' + c + '$, so $b^2 = ' + b2 + '$.', [[4 * c * c < a * a ? ell(a * a, a * a - 4 * c * c, axis) : null, 'partial']]);
+      'The point $' + V + '$ lies on the axis of the foci, so it is a vertex of the major axis: $a = ' + a + '$. Focal distance $2c = ' + (2 * c) + '$ gives $c = ' + c + '$, so $b^2 = a^2 - c^2 = ' + (a * a) + ' - ' + (c * c) + ' = ' + b2 + '$.', [[4 * c * c < a * a ? ell(a * a, a * a - 4 * c * c, axis) : null, 'partial']]);
   });
   def({ id: 'CN-ell.2c-minor', code: 'CN-ell', lesson: '6.5', tier: 'M', level: '+1', fmt: 'V',
     form: 'Focal distance and the minor axis → the equation', basis: 'Course plan 6.5 Q7' }, function (R) {
     var c = R.int(1, 5), b = R.int(1, 5), axis = R.pick(['x', 'y']), a2 = b * b + c * c;
     return ellEqItem(R, a2, b * b, axis, 'An ellipse centered at the origin has its foci on the ' + axName(axis) + ', focal distance $' + (2 * c) + '$ and a minor axis of length $' + (2 * b) + '$. Its equation is ( )',
-      '$2c = ' + (2 * c) + '$ gives $c = ' + c + '$ and $2b = ' + (2 * b) + '$ gives $b = ' + b + '$. Then $a^2 = b^2 + c^2 = ' + a2 + '$.', [[ell(4 * b * b + 4 * c * c, 4 * b * b, axis), 'partial'], [b > c ? ell(b * b, b * b - c * c, axis) : null, 'sign']]);
+      '$2c = ' + (2 * c) + '$ gives $c = ' + c + '$ and $2b = ' + (2 * b) + '$ gives $b = ' + b + '$. Then $a^2 = b^2 + c^2 = ' + (b * b) + ' + ' + (c * c) + ' = ' + a2 + '$.', [[ell(4 * b * b + 4 * c * c, 4 * b * b, axis), 'partial'], [b > c ? ell(b * b, b * b - c * c, axis) : null, 'sign']]);
   });
 
   /* ===================== CN-hyp · hyperbolas ===================== */
@@ -7805,7 +8069,7 @@
     return {
       stem: R.pick(['The coordinates of the foci of the hyperbola $' + hyp(A, B, axis) + '$ are ( )', 'The foci of the hyperbola $' + hyp(A, B, axis) + '$ are ( )']), key: m(pmPt(c, axis)),
       wrong: W([[A === B ? null : pmPt(Sd.sqrt(Math.abs(A - B)), axis), 'sign'], [pmPt(c, o), 'axis'], [F.n(c) === String(A + B) ? null : pmPt(A + B, axis), 'partial'], [pmPt(Sd.sqrt(A), axis), 'partial'], [A === B ? null : pmPt(Sd.sqrt(Math.abs(A - B)), o), 'sign'], [pmPt(A + B, o), 'axis']]), check: chk.tuples(Fn),
-      sol: 'For a hyperbola $c^2 = a^2 + b^2 = ' + A + ' + ' + B + ' = ' + (A + B) + '$ (plus, not minus), so $c = ' + F.n(c) + '$. The foci are on the axis of the positive term, the ' + axName(axis) + ': $' + pmPt(c, axis) + '$.'
+      sol: 'Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = ' + A + ' + ' + B + ' = ' + (A + B) + '$, so $c = ' + F.n(c) + '$. The foci lie on the axis of the positive term, the ' + axName(axis) + ', so they are $' + pmPt(c, axis) + '$.'
     };
   });
   def({ id: 'CN-hyp.neg-lead', code: 'CN-hyp', lesson: '6.6', tier: 'M', level: '+1', fmt: 'V',
@@ -7817,7 +8081,7 @@
     return {
       stem: 'The coordinates of the foci of the hyperbola $' + tex + '$ are ( )', key: m(pmPt(c, axis)),
       wrong: W([[pmPt(c, o), 'axis'], [A === B ? null : pmPt(Sd.sqrt(Math.abs(A - B)), axis), 'sign'], [pmPt(Sd.sqrt(A + B).scale(1), axis) === pmPt(A + B, axis) ? null : pmPt(A + B, axis), 'partial'], [A === B ? null : pmPt(Sd.sqrt(Math.abs(A - B)), o), 'sign'], [pmPt(Sd.sqrt(A), axis), 'partial']]), check: chk.tuples(Fn),
-      sol: 'Rewrite in standard form: $' + hyp(A, B, axis) + '$. The positive term is $' + axis + '^2$, so the foci are on the ' + axName(axis) + '; $c^2 = ' + A + ' + ' + B + ' = ' + (A + B) + '$, $c = ' + F.n(c) + '$. Foci: $' + pmPt(c, axis) + '$.'
+      sol: (kind === 'neg' ? 'Reordering the terms gives' : 'Dividing both sides by $' + (A * B) + '$ gives') + ' the standard form $' + hyp(A, B, axis) + '$. The positive term is $' + axis + '^2$, so the foci are on the ' + axName(axis) + '. Also $c^2 = ' + A + ' + ' + B + ' = ' + (A + B) + '$, so $c = ' + F.n(c) + '$ and the foci are $' + pmPt(c, axis) + '$.'
     };
   });
   def({ id: 'CN-hyp.real-axis', code: 'CN-hyp', lesson: '6.6', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -7844,16 +8108,16 @@
       S('The length of its real axis is $' + F.n(a.scale(2)) + '$', function () { return close(2 * a.num, 2 * aNum); }, '$a^2 = ' + A + '$, so $2a = ' + F.n(a.scale(2)) + '$.', { g: 'r' }),
       S('The length of its imaginary axis is $' + F.n(b.scale(2)) + '$', function () { return close(2 * b.num, 2 * bNum()); }, '$b^2 = ' + B + '$, so $2b = ' + F.n(b.scale(2)) + '$.', { g: 'i' }),
       S('Its eccentricity is $' + F.n(e) + '$', function () { return isFoc(e.num * aNum, axis); }, '$e = \\dfrac{c}{a} = ' + F.n(e) + '$.', { g: 'e' }),
-      foc(c, axis, 'the foci are on the axis of the positive term.', { g: 'f' }),
-      S('Its focal distance is $' + F.n(c) + '$', function () { return isFoc(c.num / 2, axis); }, 'that is $c$; the focal distance is $2c = ' + F.n(c.scale(2)) + '$.', { g: 'd', trap: 'half' }),
+      foc(c, axis, '$c^2 = ' + A + ' + ' + B + ' = ' + (A + B) + '$, so $c = ' + F.n(c) + '$, and the foci are on the axis of the positive term, the ' + axName(axis) + '.', { g: 'f' }),
+      S('Its focal distance is $' + F.n(c) + '$', function () { return isFoc(c.num / 2, axis); }, '$c = ' + F.n(c) + '$, so the focal distance is $2c = ' + F.n(c.scale(2)) + '$.', { g: 'd', trap: 'half' }),
       A === B ? null : S('Its focal distance is $' + F.n(Sd.sqrt(Math.abs(A - B)).scale(2)) + '$', function () { return isFoc(Math.sqrt(Math.abs(A - B)), axis); }, 'for a hyperbola $c^2 = a^2 + b^2$, so $2c = ' + F.n(c.scale(2)) + '$.', { g: 'd2', trap: 'sign' }),
-      A === B ? null : S('The length of its real axis is $' + F.n(b.scale(2)) + '$', function () { return close(2 * b.num, 2 * aNum); }, 'that is the imaginary axis; the real axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'r', trap: 'axis' }),
-      S('The length of its real axis is $' + F.n(a) + '$', function () { return close(a.num, 2 * aNum); }, 'that is $a$; the real axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'r2', trap: 'half' }),
-      A === B ? null : S('The length of its imaginary axis is $' + F.n(a.scale(2)) + '$', function () { return close(2 * a.num, 2 * bNum()); }, 'that is the real axis; the imaginary axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'i', trap: 'axis' }),
-      S('Its eccentricity is $' + F.n(a.div(c)) + '$', function () { return isFoc(a.div(c).num * aNum, axis); }, 'for a hyperbola $e = \\dfrac{c}{a} > 1$; here $e = ' + F.n(e) + '$.', { g: 'e', trap: 'reciprocal' }),
-      A === B ? null : S('Its eccentricity is $' + F.n(c.div(b)) + '$', function () { return isFoc(c.div(b).num * aNum, axis); }, 'divide by $a$, not $b$: $e = ' + F.n(e) + '$.', { g: 'e2', trap: 'axis' }),
-      foc(c, o, 'the foci are on the ' + axName(axis) + ': $' + pmPt(c, axis) + '$.', { g: 'f', trap: 'axis' }),
-      A === B ? null : foc(Sd.sqrt(Math.abs(A - B)), axis, '$c^2 = a^2 + b^2$, not $a^2 - b^2$: the foci are $' + pmPt(c, axis) + '$.', { g: 'f2', trap: 'sign' })
+      A === B ? null : S('The length of its real axis is $' + F.n(b.scale(2)) + '$', function () { return close(2 * b.num, 2 * aNum); }, 'the imaginary axis has length $2b = ' + F.n(b.scale(2)) + '$, and the real axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'r', trap: 'axis' }),
+      S('The length of its real axis is $' + F.n(a) + '$', function () { return close(a.num, 2 * aNum); }, '$a = ' + F.n(a) + '$, so the real axis is $2a = ' + F.n(a.scale(2)) + '$.', { g: 'r2', trap: 'half' }),
+      A === B ? null : S('The length of its imaginary axis is $' + F.n(a.scale(2)) + '$', function () { return close(2 * a.num, 2 * bNum()); }, 'the real axis has length $2a = ' + F.n(a.scale(2)) + '$, and the imaginary axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'i', trap: 'axis' }),
+      S('Its eccentricity is $' + F.n(a.div(c)) + '$', function () { return isFoc(a.div(c).num * aNum, axis); }, 'for a hyperbola $e = \\dfrac{c}{a} > 1$. Here $e = ' + F.n(e) + '$.', { g: 'e', trap: 'reciprocal' }),
+      A === B ? null : S('Its eccentricity is $' + F.n(c.div(b)) + '$', function () { return isFoc(c.div(b).num * aNum, axis); }, '$e = \\dfrac{c}{a} = ' + F.n(e) + '$. The value $' + F.n(c.div(b)) + '$ is $\\dfrac{c}{b}$.', { g: 'e2', trap: 'axis' }),
+      foc(c, o, 'the positive term is $' + axis + '^2$, so the foci are on the ' + axName(axis) + ', at $' + pmPt(c, axis) + '$.', { g: 'f', trap: 'axis' }),
+      A === B ? null : foc(Sd.sqrt(Math.abs(A - B)), axis, 'for a hyperbola $c^2 = a^2 + b^2 = ' + (A + B) + '$, so the foci are $' + pmPt(c, axis) + '$.', { g: 'f2', trap: 'sign' })
     ].filter(Boolean);
     pool.forEach(function (s) { s.ok = !!s.test(); });
     var seen = {};
@@ -7870,7 +8134,7 @@
     return hypStmtItem(R, 'S', function (A, B, axis, st) { return A === 64 && B === 16 && axis === 'x' && /focal distance/.test(st.key); });
   });
   def({ id: 'CN-hyp.stmt-n', code: 'CN-hyp', lesson: '6.6', tier: 'M', level: '+1', fmt: 'N',
-    form: 'Which statement about a hyperbola is INCORRECT (needs a, b, c and e)', basis: 'Course plan 6.6 Q8 (2.5) and Set C' }, function (R) { return hypStmtItem(R, 'N'); });
+    form: 'Which statement about a hyperbola is incorrect (needs a, b, c and e)', basis: 'Course plan 6.6 Q8 (2.5) and Set C' }, function (R) { return hypStmtItem(R, 'N'); });
   /** options that are conditions on m: tests compare them with the true condition on a grid */
   function condItem(R, stem, isHyp, opts, sol) {
     var grid = [];
@@ -7890,10 +8154,10 @@
     form: 'An equation with a parameter represents a hyperbola → the condition on m', basis: 'Mar Q28' }, function (R) {
     var p = R.int(-5, 6), qv = R.pick([2, 3, 4, 5, 6, 9]), kind = R.pick(['a', 'b', 'c', 'd']), tex, isHyp, key, sol;
     var den = function (neg) { return neg ? F.sum([[p, ''], [-1, 'm']]) : F.sum([[1, 'm'], [-p, '']]); };
-    if (kind === 'a') { tex = '\\dfrac{x^2}{' + den(false) + '} + \\dfrac{y^2}{' + qv + '} = 1'; isHyp = function (mv) { return (mv - p) * qv < 0; }; key = 'm < ' + p; sol = 'The denominators must have opposite signs. Since $' + qv + ' > 0$, we need $' + den(false) + ' < 0$, i.e. $m < ' + p + '$.'; }
-    else if (kind === 'b') { tex = '\\dfrac{x^2}{' + qv + '} + \\dfrac{y^2}{' + den(false) + '} = 1'; isHyp = function (mv) { return (mv - p) * qv < 0; }; key = 'm < ' + p; sol = 'The denominators must have opposite signs. Since $' + qv + ' > 0$, we need $' + den(false) + ' < 0$, i.e. $m < ' + p + '$.'; }
-    else if (kind === 'c') { tex = '\\dfrac{x^2}{' + den(true) + '} + \\dfrac{y^2}{' + qv + '} = 1'; isHyp = function (mv) { return (p - mv) * qv < 0; }; key = 'm > ' + p; sol = 'The denominators must have opposite signs. Since $' + qv + ' > 0$, we need $' + den(true) + ' < 0$, i.e. $m > ' + p + '$.'; }
-    else { tex = '\\dfrac{x^2}{' + den(false) + '} - \\dfrac{y^2}{' + qv + '} = 1'; isHyp = function (mv) { return mv - p > 0; }; key = 'm > ' + p; sol = 'With the minus sign already in the equation, both denominators must be positive: $' + den(false) + ' > 0$, i.e. $m > ' + p + '$ (if it were negative, the left side could never equal $1$).'; }
+    if (kind === 'a') { tex = '\\dfrac{x^2}{' + den(false) + '} + \\dfrac{y^2}{' + qv + '} = 1'; isHyp = function (mv) { return (mv - p) * qv < 0; }; key = 'm < ' + p; sol = 'The denominators must have opposite signs. Since $' + qv + ' > 0$, we need $' + den(false) + ' < 0$, that is $m < ' + p + '$.'; }
+    else if (kind === 'b') { tex = '\\dfrac{x^2}{' + qv + '} + \\dfrac{y^2}{' + den(false) + '} = 1'; isHyp = function (mv) { return (mv - p) * qv < 0; }; key = 'm < ' + p; sol = 'The denominators must have opposite signs. Since $' + qv + ' > 0$, we need $' + den(false) + ' < 0$, that is $m < ' + p + '$.'; }
+    else if (kind === 'c') { tex = '\\dfrac{x^2}{' + den(true) + '} + \\dfrac{y^2}{' + qv + '} = 1'; isHyp = function (mv) { return (p - mv) * qv < 0; }; key = 'm > ' + p; sol = 'The denominators must have opposite signs. Since $' + qv + ' > 0$, we need $' + den(true) + ' < 0$, that is $m > ' + p + '$.'; }
+    else { tex = '\\dfrac{x^2}{' + den(false) + '} - \\dfrac{y^2}{' + qv + '} = 1'; isHyp = function (mv) { return mv - p > 0; }; key = 'm > ' + p; sol = 'The equation already has a minus sign, so both denominators must be positive. If $' + den(false) + '$ were negative, both terms on the left would be at most $0$ and the left side could never equal $1$. So $' + den(false) + ' > 0$, that is $m > ' + p + '$.'; }
     var flip = key.charAt(2) === '<' ? 'm > ' + p : 'm < ' + p, hi = p + qv;
     var opts = R.shuffle([[key, null], [flip, 'sign'], ['m > ' + hi, 'slip'], [p + ' < m < ' + hi, 'companion'], ['m < ' + hi, 'slip']]);
     return condItem(R, 'If the equation $' + tex + '$ represents a hyperbola, then the range of values of $m$ is ( )', isHyp, opts, sol);
@@ -7906,7 +8170,7 @@
     var isHyp = function (mv) { return (mv - lo) * (mv - hi) < 0; };
     var opts = R.shuffle([[lo + ' < m < ' + hi, null], ['m < ' + lo + '\\text{ or }m > ' + hi, 'complement'], ['m > ' + hi, 'partial'], ['m < ' + lo, 'partial'], ['m > ' + lo, 'partial']]);
     return condItem(R, 'If the equation $' + tex + '$ represents a hyperbola, then the range of $m$ is ( )', isHyp, opts,
-      'A hyperbola needs denominators of opposite signs: $(' + d1 + ')(' + d2 + ') < 0$, so $' + lo + ' < m < ' + hi + '$. (Both positive and different would give an ellipse.)');
+      'A hyperbola needs denominators of opposite signs: $' + (d1 === 'm' ? 'm(' + d2 + ')' : d2 === 'm' ? 'm(' + d1 + ')' : '(' + d1 + ')(' + d2 + ')') + ' < 0$, so $' + lo + ' < m < ' + hi + '$. If both were positive and different, the curve would be an ellipse.');
   });
   def({ id: 'CN-hyp.e-b', code: 'CN-hyp', lesson: '6.6', tier: 'M', level: '=', fmt: 'V', w: 1,
     form: 'x²/a² − y²/B = 1 with the eccentricity given → a', basis: 'Apr Q28' }, function (R) {
@@ -7918,7 +8182,7 @@
     return {
       stem: 'If the eccentricity of the hyperbola $' + tex + '$ ($a > 0$) is $' + F.n(e) + '$, then $a =$ ( )', key: m(a),
       wrong: W([[a * a, 'partial'], [c, 'companion'], [Sd.sqrt(B.div(e.sq().toFr().add(1))), 'sign'], [Sd.sqrt(Bn), 'partial'], [a + 1, 'slip'], [2 * a, 'slip']]), check: chk.num(Math.sqrt(Bn / (e.num * e.num - 1))),
-      sol: '$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + ' + Bn + '}{a^2} = ' + F.n(e.sq()) + '$, so $' + Bn + ' = ' + F.n(e.sq().toFr().sub(1)) + 'a^2$ and $a^2 = ' + (a * a) + '$. Since $a > 0$, $a = ' + a + '$.'
+      sol: '$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + ' + Bn + '}{a^2} = ' + F.n(e.sq()) + '$, so $a^2 + ' + Bn + ' = ' + F.n(e.sq()) + 'a^2$ and $' + Bn + ' = ' + (function (t) { return t === '1' ? '' : t; })(F.n(e.sq().toFr().sub(1))) + 'a^2$. Hence $a^2 = ' + (a * a) + '$, and since $a > 0$, $a = ' + a + '$.'
     };
   });
   def({ id: 'CN-hyp.ecc', code: 'CN-hyp', lesson: '6.6', tier: 'E', level: '+1', fmt: 'V',
@@ -7928,13 +8192,13 @@
     return {
       stem: 'The eccentricity of the hyperbola $' + hyp(A, B, axis) + '$ is ( )', key: m(e),
       wrong: W([[A === B ? null : c.div(b), 'axis'], [a.div(c), 'reciprocal'], [A === B ? null : Sd.sqrt(q(Math.abs(A - B), Math.max(A, B))), 'sign'], [q(A + B, A), 'partial'], [b.div(a).eq(e) ? null : b.div(a), 'companion']]), check: chk.num(Math.sqrt(A + B) / Math.sqrt(A)),
-      sol: '$a^2 = ' + A + '$ (the positive term), $b^2 = ' + B + '$, $c^2 = ' + (A + B) + '$. So $e = \\dfrac{c}{a} = ' + F.n(e) + '$, which is greater than $1$.'
+      sol: 'The positive term gives $a^2 = ' + A + '$, and $b^2 = ' + B + '$, so $c^2 = a^2 + b^2 = ' + (A + B) + '$. Then $e = \\dfrac{c}{a} = \\dfrac{' + F.n(c) + '}{' + F.n(a) + '} = ' + F.n(e) + '$, which is greater than $1$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- templates/vcp.js ---- */
-/* ACE CSCA Question Factory · templates/vcp.js — VEC (plane vectors), CPX (complex numbers), PRB (classical probability). */
+/* ACE CSCA Question Factory · templates/vcp.js: plane vectors (VEC), complex numbers (CPX) and classical probability (PRB). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.LN;
@@ -7961,7 +8225,7 @@
     var expr = comb(p, r);
     return {
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$ and $' + VB + ' = ' + pt(b[0], b[1]) + '$. Then $' + expr + ' =$ ( )', key: T(key[0], key[1]), wrong: wrong, check: chk.tuple([p * a[0] + r * b[0], p * a[1] + r * b[1]]),
-      sol: 'Work coordinate by coordinate: $' + expr + ' = (' + F.sum([[p * a[0], ''], [r * b[0], '']]).replace(/^(-?\d+) ([+-]) (\d+)$/, '$1 $2 $3') + ', ' + F.sum([[p * a[1], ''], [r * b[1], '']]) + ') = ' + pt(key[0], key[1]) + '$. Multiply first, then watch the signs when subtracting.'
+      sol: 'Work coordinate by coordinate. ' + [[p, VA, a], [r, VB, b]].map(function (t) { return '$' + (t[0] === 1 ? '' : t[0] === -1 ? '-' : t[0]) + t[1] + ' = ' + pt(t[0] * t[2][0], t[0] * t[2][1]) + '$'; }).join(' and ') + ', so $' + expr + ' = (' + F.sum([[p * a[0], ''], [r * b[0], '']]) + ', ' + F.sum([[p * a[1], ''], [r * b[1], '']]) + ') = ' + pt(key[0], key[1]) + '$.'
     };
   });
   def({ id: 'VEC.midpoint', code: 'VEC', lesson: '7.5', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -7972,16 +8236,16 @@
     var lead = 'Let $' + M + '$ be the midpoint of segment $' + A + B + '$ and $O$ any point in the plane. Then, as vectors, ', ask, key, wrong, truth, why;
     if (kind === 'sum') {
       ask = OA + ' + ' + OB; key = '2' + OM; truth = function (e) { return e['vO' + A] + e['vO' + B]; };
-      wrong = [[AB, 'operation'], [OM, 'half'], ['\\dfrac{1}{2}' + OM, 'half'], ['2' + AB, 'operation'], [vec(B + A), 'sign']]; why = 'Since $' + OM + ' = \\dfrac{1}{2}(' + OA + ' + ' + OB + ')$, the sum is $2' + OM + '$.';
+      wrong = [[AB, 'operation'], [OM, 'half'], ['\\dfrac{1}{2}' + OM, 'half'], ['2' + AB, 'operation'], [vec(B + A), 'sign']]; why = 'Multiplying by $2$ gives $' + OA + ' + ' + OB + ' = 2' + OM + '$.';
     } else if (kind === 'end') {
       ask = OB; key = '2' + OM + ' - ' + OA; truth = function (e) { return e['vO' + B]; };
-      wrong = [[OM + ' - ' + OA, 'half'], ['2' + OM + ' + ' + OA, 'sign'], [OM + ' + ' + OA, 'operation'], ['2' + OA + ' - ' + OM, 'swap'], ['\\dfrac{1}{2}(' + OM + ' + ' + OA + ')', 'operation']]; why = 'From $' + OM + ' = \\dfrac{1}{2}(' + OA + ' + ' + OB + ')$: $' + OB + ' = 2' + OM + ' - ' + OA + '$.';
+      wrong = [[OM + ' - ' + OA, 'half'], ['2' + OM + ' + ' + OA, 'sign'], [OM + ' + ' + OA, 'operation'], ['2' + OA + ' - ' + OM, 'swap'], ['\\dfrac{1}{2}(' + OM + ' + ' + OA + ')', 'operation']]; why = 'Multiplying by $2$ gives $' + OA + ' + ' + OB + ' = 2' + OM + '$, so $' + OB + ' = 2' + OM + ' - ' + OA + '$.';
     } else if (kind === 'half') {
       ask = AM; key = '\\dfrac{1}{2}(' + OB + ' - ' + OA + ')'; truth = function (e) { return e['v' + A + M]; };
-      wrong = [['\\dfrac{1}{2}(' + OA + ' - ' + OB + ')', 'sign'], ['\\dfrac{1}{2}(' + OA + ' + ' + OB + ')', 'companion'], [OB + ' - ' + OA, 'half'], [OA + ' - ' + OB, 'sign'], ['2(' + OB + ' - ' + OA + ')', 'half']]; why = '$' + AM + ' = \\dfrac{1}{2}' + AB + '$ and $' + AB + ' = ' + OB + ' - ' + OA + '$ (end minus start).';
+      wrong = [['\\dfrac{1}{2}(' + OA + ' - ' + OB + ')', 'sign'], ['\\dfrac{1}{2}(' + OA + ' + ' + OB + ')', 'companion'], [OB + ' - ' + OA, 'half'], [OA + ' - ' + OB, 'sign'], ['2(' + OB + ' - ' + OA + ')', 'half']]; why = 'Also $' + AM + ' = \\dfrac{1}{2}' + AB + '$, and $' + AB + ' = ' + OB + ' - ' + OA + '$ because a vector is its end point minus its start point.';
     } else {
       ask = OM + ' - ' + OA; key = '\\dfrac{1}{2}' + AB; truth = function (e) { return e['vO' + M] - e['vO' + A]; };
-      wrong = [[AB, 'half'], ['\\dfrac{1}{2}' + vec(B + A), 'sign'], [vec(M + B) + ' + ' + AB, 'operation'], ['2' + AB, 'half'], [vec(B + A), 'sign']]; why = '$' + OM + ' - ' + OA + ' = ' + AM + '$, half of $' + AB + '$.';
+      wrong = [[AB, 'half'], ['\\dfrac{1}{2}' + vec(B + A), 'sign'], [vec(M + B) + ' + ' + AB, 'operation'], ['2' + AB, 'half'], [vec(B + A), 'sign']]; why = 'Also $' + OM + ' - ' + OA + ' = ' + AM + '$, which is half of $' + AB + '$.';
     }
     if (kind === 'sum' && M === 'P') retry('real item');
     return { stem: lead + '$' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.fn(truth, envs), sol: 'For a midpoint, $' + OM + ' = \\dfrac{1}{2}(' + OA + ' + ' + OB + ')$. ' + why };
@@ -8021,7 +8285,15 @@
     return {
       stem: 'In ' + shape + ' $ABCD$, let the vectors $' + vec('AB') + ' = ' + VA + '$ and $' + vec('AD') + ' = ' + VB + '$, and let $' + E + '$ be the midpoint of $' + side + '$. Then the vector $' + vec(from + E) + ' =$ ( )', key: m(T(ca, cb)), wrong: W(wrong),
       check: chk.fn(function (e) { return ca.num * e.va + cb.num * e.vb; }, [{ va: 0.7, vb: 2.3 }, { va: -1.9, vb: 0.4 }, { va: 3.1, vb: -2.2 }]),
-      sol: 'Walk along the sides from $' + from + '$ to $' + E + '$: opposite sides give $' + vec('DC') + ' = ' + VA + '$ and $' + vec('BC') + ' = ' + VB + '$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $' + vec(from + E) + ' = ' + T(ca, cb) + '$.'
+      sol: (function () {
+        var rel = function (V) { return V === 'A' ? '' : T(CORNER[V][0], CORNER[V][1]); };      // the vector from A to a corner
+        var usesC = side.indexOf('C') >= 0 || from === 'C';
+        var lead = 'Measure every point from $A$: $' + vec('AB') + ' = ' + VA + '$, $' + vec('AD') + ' = ' + VB + '$' + (usesC ? ' and, since $ABCD$ is a parallelogram, $' + vec('AC') + ' = ' + T(1, 1) + '$' : '') + '. ';
+        var hasA = side.indexOf('A') >= 0, other = hasA ? side.replace('A', '') : null;
+        var mid2 = 'Since $' + E + '$ is the midpoint of $' + side + '$, $' + vec('A' + E) + ' = ' + (hasA ? '\\dfrac{1}{2}' + vec('A' + other) : '\\dfrac{1}{2}(' + vec('A' + side[0]) + ' + ' + vec('A' + side[1]) + ')') + ' = ' + T(mid[0], mid[1]) + '$. ';
+        var last = from === 'A' ? 'So $' + vec('A' + E) + ' = ' + T(ca, cb) + '$.' : 'Then $' + vec(from + E) + ' = ' + vec('A' + E) + ' - ' + vec('A' + from) + ' = ' + T(ca, cb) + '$.';
+        return lead + mid2 + last;
+      })()
     };
   });
   function minNorm(p2, r2, d) {            // min over λ of |λa + (1 − λ)b|², |a|² = p2, |b|² = r2, a·b = d
@@ -8041,7 +8313,7 @@
       stem: 'Given plane vectors $' + VA + '$, $' + VB + '$, $\\boldsymbol{c}$ with $|' + VA + '| = ' + p + '$, $|' + VB + '| = ' + r + '$, $' + VA + ' \\cdot ' + VB + ' = ' + F.n(d) + '$ and $\\boldsymbol{c} = \\lambda' + VA + ' + (1 - \\lambda)' + VB + '$ ($\\lambda \\in \\mathbb{R}$), the minimum value of $|\\boldsymbol{c}|$ is ( )', key: m(key),
       wrong: W([[min2.isInt && N.isSquare(min2.n) && min2.n !== 1 ? min2 : (min2.eq(1) ? null : min2), 'partial'], [Math.min(p, r), 'partial'], [Sd.sqrt(q(p2 + r2).add(d.mul(2)).div(4)).eq(key) ? null : Sd.sqrt(q(p2 + r2).add(d.mul(2)).div(4)), 'slip'], [d.n === 0 ? null : Sd.sqrt(d.abs()), 'partial'], [key.scale(2), 'half'], [Sd.sqrt(min2.add(1)), 'slip']]),
       check: chk.num(minNorm(p2, r2, d.num)),
-      sol: 'Square it: $|\\boldsymbol{c}|^2 = ' + p2 + '\\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot ' + par(d) + ' + ' + r2 + '(1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = ' + F.n(lam) + '$, where $|\\boldsymbol{c}|^2 = ' + F.n(min2) + '$. So the minimum of $|\\boldsymbol{c}|$ is $' + F.n(key) + '$.'
+      sol: 'Square it: $|\\boldsymbol{c}|^2 = ' + (p2 === 1 ? '' : p2) + '\\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot ' + par(d) + ' + ' + (r2 === 1 ? '' : r2) + '(1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = ' + F.n(lam) + '$, where $|\\boldsymbol{c}|^2 = ' + F.n(min2) + '$. So the minimum of $|\\boldsymbol{c}|$ is $' + F.n(key) + '$.'
     };
   });
   def({ id: 'VEC.dot', code: 'VEC', lesson: '7.5', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -8050,7 +8322,7 @@
     return {
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$ and $' + VB + ' = ' + pt(b[0], b[1]) + '$. Then $' + VA + ' \\cdot ' + VB + ' =$ ( )', key: m(key),
       wrong: W([[a[0] * b[0] - a[1] * b[1], 'sign'], [a[0] * b[1] + a[1] * b[0], 'swap'], [m(pt(a[0] * b[0], a[1] * b[1])), 'operation'], [-key, 'sign'], [a[0] + b[0] + a[1] + b[1], 'operation'], [key + 1, 'slip']]), check: chk.num(a[0] * b[0] + a[1] * b[1]),
-      sol: '$' + VA + ' \\cdot ' + VB + ' = x_1x_2 + y_1y_2 = ' + par(a[0]) + ' \\cdot ' + par(b[0]) + ' + ' + par(a[1]) + ' \\cdot ' + par(b[1]) + ' = ' + key + '$ — a number, not a vector.'
+      sol: '$' + VA + ' \\cdot ' + VB + ' = x_1x_2 + y_1y_2 = ' + par(a[0]) + ' \\cdot ' + par(b[0]) + ' + ' + par(a[1]) + ' \\cdot ' + par(b[1]) + ' = ' + key + '$. The dot product is a number, not a vector.'
     };
   });
   def({ id: 'VEC.magnitude', code: 'VEC', lesson: '7.5', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -8062,7 +8334,7 @@
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$' + (c[1] === 0 ? '' : ' and $' + VB + ' = ' + pt(b[0], b[1]) + '$') + '. Then $|' + expr + '| =$ ( )', key: m(key),
       wrong: W([[d2, 'partial'], [Math.abs(v[0]) + Math.abs(v[1]), 'operation'], [v[0] * v[0] === v[1] * v[1] ? null : Sd.sqrt(Math.abs(v[0] * v[0] - v[1] * v[1])), 'sign'], [c[1] === 0 ? null : Sd.sqrt(a[0] * a[0] + a[1] * a[1]).add(Sd.sqrt(b[0] * b[0] + b[1] * b[1]).scale(Math.abs(c[1]))), 'operation'], [Sd.sqrt(d2 + 1), 'slip'], [Math.max(Math.abs(v[0]), Math.abs(v[1])), 'partial']]),
       check: chk.num(Math.hypot(c[0] * a[0] + c[1] * b[0], c[0] * a[1] + c[1] * b[1])),
-      sol: (c[1] === 0 ? '' : '$' + expr + ' = ' + pt(v[0], v[1]) + '$. ') + '$|' + expr + '| = \\sqrt{' + par(v[0]) + '^2 + ' + par(v[1]) + '^2} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
+      sol: (c[1] === 0 ? '' : 'First $' + expr + ' = ' + pt(v[0], v[1]) + '$. Then ') + '$|' + expr + '| = \\sqrt{' + par(v[0]) + '^2 + ' + par(v[1]) + '^2} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
   def({ id: 'VEC.perp-param', code: 'VEC', lesson: '7.5', tier: 'M', level: '+1', fmt: 'V',
@@ -8075,7 +8347,7 @@
     return {
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$ and $' + VB + ' = (k, ' + y2 + ')$. If $' + VA + (rel === 'perp' ? ' \\perp ' : ' \\parallel ') + VB + '$, then $k =$ ( )', key: m(k),
       wrong: W([[rel === 'perp' ? kq : kp, 'companion'], [k.neg(), 'sign'], [(rel === 'perp' ? kq : kp).neg(), 'companion'], [k.n === 0 ? null : k.inv(), 'reciprocal'], [k.add(1), 'slip']]), check: chk.num(rel === 'perp' ? -a[1] * y2 / a[0] : a[0] * y2 / a[1]),
-      sol: rel === 'perp' ? 'Perpendicular vectors have dot product $0$: $' + par(a[0]) + 'k + ' + par(a[1]) + ' \\cdot ' + par(y2) + ' = 0$, so $k = ' + F.n(k) + '$.' : 'Parallel vectors satisfy $x_1y_2 - x_2y_1 = 0$: $' + par(a[0]) + ' \\cdot ' + par(y2) + ' - ' + par(a[1]) + 'k = 0$, so $k = ' + F.n(k) + '$.'
+      sol: rel === 'perp' ? 'Perpendicular vectors have dot product $0$: $' + (a[0] === 1 ? '' : a[0] === -1 ? '-' : par(a[0])) + 'k + ' + par(a[1]) + ' \\cdot ' + par(y2) + ' = 0$, so $k = ' + F.n(k) + '$.' : 'Parallel vectors satisfy $x_1y_2 - x_2y_1 = 0$: $' + par(a[0]) + ' \\cdot ' + par(y2) + ' - ' + par(a[1]) + 'k = 0$, so $k = ' + F.n(k) + '$.'
     };
   });
   def({ id: 'VEC.norm-sum', code: 'VEC', lesson: '7.5', tier: 'M', level: '+1', fmt: 'V',
@@ -8086,10 +8358,10 @@
     var expr = comb(c[0], c[1]), given = useAngle ? 'the angle between $' + VA + '$ and $' + VB + '$ is $' + ang + '^\\circ$' : '$' + VA + ' \\cdot ' + VB + ' = ' + F.n(d) + '$';
     var wrongSign = q(c[0] * c[0] * p * p).sub(d.mul(2 * c[0] * c[1])).add(c[1] * c[1] * r * r);
     return {
-      stem: 'Given $|' + VA + '| = ' + p + '$, $|' + VB + '| = ' + r + '$ and ' + given + ', then $|' + expr + '| =$ ( )', key: m(key),
+      stem: 'If $|' + VA + '| = ' + p + '$, $|' + VB + '| = ' + r + '$ and ' + given + ', then $|' + expr + '| =$ ( )', key: m(key),
       wrong: W([[v2.isInt && v2.n === 1 ? null : v2, 'partial'], [d.n === 0 ? null : Sd.sqrt(wrongSign), 'sign'], [Sd.sqrt(q(c[0] * c[0] * p * p + c[1] * c[1] * r * r)).eq(key) ? null : Sd.sqrt(q(c[0] * c[0] * p * p + c[1] * c[1] * r * r)), 'partial'], [Math.abs(c[0]) * p + Math.abs(c[1]) * r, 'operation'], [Sd.sqrt(v2.add(1)), 'slip'], [key.scale(2), 'slip']]),
       check: chk.num(Math.sqrt(c[0] * c[0] * p * p + 2 * c[0] * c[1] * p * r * Math.cos(ang * Math.PI / 180) + c[1] * c[1] * r * r)),
-      sol: (useAngle ? '$' + VA + ' \\cdot ' + VB + ' = |' + VA + '||' + VB + '|\\cos ' + ang + '^\\circ = ' + F.n(d) + '$. ' : '') + '$|' + expr + '|^2 = ' + (c[0] * c[0] === 1 ? '' : c[0] * c[0]) + '|' + VA + '|^2 ' + (c[0] * c[1] < 0 ? '- ' : '+ ') + Math.abs(2 * c[0] * c[1]) + VA + ' \\cdot ' + VB + ' + ' + (c[1] * c[1] === 1 ? '' : c[1] * c[1]) + '|' + VB + '|^2 = ' + F.n(v2) + '$, so $|' + expr + '| = ' + F.n(key) + '$.'
+      sol: (useAngle ? '$' + VA + ' \\cdot ' + VB + ' = |' + VA + '||' + VB + '|\\cos ' + ang + '^\\circ = ' + F.n(d) + '$. ' : '') + '$|' + expr + '|^2 = ' + (c[0] * c[0] === 1 ? '' : c[0] * c[0]) + '|' + VA + '|^2 ' + (c[0] * c[1] < 0 ? '- ' : '+ ') + Math.abs(2 * c[0] * c[1]) + VA + ' \\cdot ' + VB + ' + ' + (c[1] * c[1] === 1 ? '' : c[1] * c[1]) + '|' + VB + '|^2 = ' + F.sum([[c[0] * c[0] * p * p, ''], [d.mul(2 * c[0] * c[1]), ''], [c[1] * c[1] * r * r, '']]) + ' = ' + F.n(v2) + '$, so $|' + expr + '| = ' + (F.n(key) === F.n(v2) ? '' : '\\sqrt{' + F.n(v2) + '} = ') + F.n(key) + '$.'
     };
   });
 
@@ -8169,7 +8441,7 @@
     return {
       stem: 'If the complex number $z$ satisfies $|z| = ' + r + '$, then the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' value of $|' + wT + '|$ is ( )', key: m(key),
       wrong: W([[kind === 'max' ? Math.abs(wm - kr) : kr + wm, 'companion'], [wm, 'partial'], [Sd.sqrt(kr * kr + wm * wm), 'operation'], [kr, 'partial'], [kind === 'max' ? r + wm : Math.abs(wm - r), 'slip'], [key + 1, 'slip']]), check: chk.num(truth),
-      sol: 'The points $' + (k === 1 ? 'z' : k + 'z') + '$ lie on the circle with centre $0$ and radius $' + kr + '$, and $|' + wT + '|$ is the distance from such a point to $' + cx(-w[0], -w[1]).tex() + '$, which is $' + wm + '$ from the centre. The ' + (kind === 'max' ? 'largest distance is $' + kr + ' + ' + wm + ' = ' + key + '$.' : 'smallest distance is $|' + wm + ' - ' + kr + '| = ' + key + '$.')
+      sol: 'The points $' + (k === 1 ? 'z' : k + 'z') + '$ lie on the circle with center $0$ and radius $' + kr + '$, and $|' + wT + '|$ is the distance from such a point to $' + cx(-w[0], -w[1]).tex() + '$, which is $' + wm + '$ from the center. The ' + (kind === 'max' ? 'largest distance is $' + kr + ' + ' + wm + ' = ' + key + '$.' : 'smallest distance is $|' + wm + ' - ' + kr + '| = ' + key + '$.')
     };
   }
   def({ id: 'CPX.max-mod', code: 'CPX', lesson: '7.6', tier: 'M', level: '=', fmt: 'V', w: 0.6,
@@ -8187,7 +8459,7 @@
     return {
       stem: 'If the complex number $z$ satisfies $|z - (' + cx(w[0], w[1]).tex() + ')| = ' + r + '$, then the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' value of $|z|$ is ( )', key: m(key),
       wrong: W([[kind === 'max' ? Math.abs(wm - r) : wm + r, 'companion'], [wm, 'partial'], [r, 'partial'], [Sd.sqrt(wm * wm + r * r), 'operation'], [key + 1, 'slip']]), check: chk.num(truth),
-      sol: '$z$ lies on the circle with centre $' + cx(w[0], w[1]).tex() + '$ and radius $' + r + '$. The centre is $' + wm + '$ from the origin, so $|z|$ ranges from $' + Math.abs(wm - r) + '$ to $' + (wm + r) + '$; the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' is $' + key + '$.'
+      sol: '$z$ lies on the circle with center $' + cx(w[0], w[1]).tex() + '$ and radius $' + r + '$. The center is $' + wm + '$ from the origin, so $|z|$ ranges from $' + Math.abs(wm - r) + '$ to $' + (wm + r) + '$; the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' is $' + key + '$.'
     };
   });
   /** value of a simple expression in z when z = ω (a primitive cube root of 1): 0, 1, −1, z, −z, z², −z², 1 + z … */
@@ -8212,8 +8484,8 @@
     var wrong = ['0', '1', '-1', 'z', 'z^2', '-z', '1 + z^2'].filter(function (x) { return x !== key; });
     return {
       stem: 'If the complex number $z$ satisfies $z^3 = 1$ and $z \\ne 1$, then $1 + z + z^2 + \\cdots + z^{' + n + '} =$ ( )', key: m(key), wrong: W(R.shuffle(wrong.slice(0, 4)).concat(wrong.slice(4)).map(function (x) { return [x, 'slip']; })), check: omegaCheck(omegaSum(n)),
-      sol: 'From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $' + terms + '$ terms: ' + Math.floor(terms / 3) + ' complete blocks of three (each $0$)' +
-        (rem === 0 ? ', so the sum is $0$.' : rem === 1 ? ' and one more term, $z^{' + n + '} = 1$. So the sum is $1$.' : ' and two more terms, $z^{' + (n - 1) + '} + z^{' + n + '} = 1 + z = -z^2$.')
+      sol: 'Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $' + terms + '$ terms, which is $' + Math.floor(terms / 3) + '$ blocks of three' +
+        (rem === 0 ? ' exactly, so the sum is $0$.' : rem === 1 ? ' and one more term, $z^{' + n + '} = 1$. So the sum is $1$.' : ' and two more terms, $z^{' + (n - 1) + '} + z^{' + n + '} = 1 + z = -z^2$.')
     };
   }
   def({ id: 'CPX.omega', code: 'CPX', lesson: '7.6', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -8244,8 +8516,8 @@
     return {
       stem: 'On the complex plane, the point representing a non-real complex number $z$ lies on the line $' + L[2] + '$. If $z$ is a root of the equation $x^2 + mx + ' + F.n(c) + ' = 0$ ($m \\in \\mathbb{R}$), then $m =$ ( )', key: m(F.pm(mv)),
       wrong: W([[mv, 'pm'], [Sd.sqrt(c).eq(mv) ? null : m(F.pm(Sd.sqrt(c))), 'partial'], [m(F.pm(mv.scale(q(1, 2)))), 'half'], [mv.neg(), 'pm'], [Sd.sqrt(c.mul(2)).eq(mv) ? null : m(F.pm(Sd.sqrt(c.mul(2)))), 'slip'], [m(F.pm(mv.scale(2))), 'slip']]), check: chk.alts([mv.num, -mv.num]),
-      sol: 'The coefficients are real, so the other root is $\\bar{z}$. Write $z = ' + (L[0] === 1 ? 't' : L[0] + 't') + ' ' + (L[1] < 0 ? '- ' : '+ ') + (Math.abs(L[1]) === 1 ? '' : Math.abs(L[1])) + 'ti$ (a point of $' + L[2] + '$). Product of the roots: $z\\bar{z} = ' + s2 + 't^2 = ' + F.n(c) + '$, so $t = \\pm ' + F.n(Sd.sqrt(t2)) +
-        '$. Sum of the roots: $z + \\bar{z} = ' + (2 * L[0]) + 't = -m$. Hence $m = \\pm ' + F.n(mv) + '$ — both signs.'
+      sol: 'The coefficients are real, so the other root is $\\bar{z}$. Write $z = ' + (L[0] === 1 ? 't' : L[0] + 't') + ' ' + (L[1] < 0 ? '- ' : '+ ') + (Math.abs(L[1]) === 1 ? '' : Math.abs(L[1])) + 'ti$, since $z$ lies on $' + L[2] + '$. The product of the roots is $z\\bar{z} = ' + s2 + 't^2 = ' + F.n(c) + '$, so $t = \\pm ' + F.n(Sd.sqrt(t2)) +
+        '$. The sum of the roots is $z + \\bar{z} = ' + (2 * L[0]) + 't = -m$. Hence $m = \\pm ' + F.n(mv) + '$, with both signs possible because $t$ can be positive or negative.'
     };
   });
   function rootsOf(p, qq) { return 'z^2 ' + (p < 0 ? '+ ' : '- ') + (Math.abs(2 * p) === 1 ? '' : Math.abs(2 * p)) + 'z + ' + (p * p + qq * qq) + ' = 0'; }       // roots p ± qi
@@ -8261,7 +8533,7 @@
     return {
       stem: 'Let $z_1$ and $z_2$ be the two complex roots of $' + rootsOf(p, qq) + '$, and let $a_n = (z_1^n ' + sg + ' z_2^n)^2$. Then $a_' + n + ' =$ ( )', key: m(key),
       wrong: W([[key.n === 0 ? null : key.neg(), 'sign'], [other.eq(key) ? null : other, 'companion'], [sg === '+' ? z1.re.mul(2) : z1.im.mul(2), 'partial'], [key.n === 0 ? q(4) : q(0), 'slip'], [other.neg(), 'companion'], [key.div(4), 'partial']]), check: chk.num(sq[0]),
-      sol: 'The roots are $' + cx(p, qq).tex() + '$ and $' + cx(p, -qq).tex() + '$ (conjugates). $z_1^{' + n + '} = ' + z1.tex() + '$ and $z_2^{' + n + '}$ is its conjugate, so $z_1^{' + n + '} ' + sg + ' z_2^{' + n + '} = ' + (sg === '+' ? F.n(z1.re.mul(2)) : cx(0, z1.im.mul(2)).tex()) + '$. Squaring gives $' + F.n(key) + '$' + (sg === '-' && key.n !== 0 ? ' (remember $i^2 = -1$).' : '.')
+      sol: 'The roots are $' + cx(p, qq).tex() + '$ and $' + cx(p, -qq).tex() + '$, a conjugate pair. Then $z_1^{' + n + '} = ' + z1.tex() + '$ and $z_2^{' + n + '}$ is its conjugate, so $z_1^{' + n + '} ' + sg + ' z_2^{' + n + '} = ' + (sg === '+' ? F.n(z1.re.mul(2)) : cx(0, z1.im.mul(2)).tex()) + '$. Squaring gives $' + F.n(key) + '$' + (sg === '-' && key.n !== 0 ? ', because $i^2 = -1$.' : '.')
     };
   });
   def({ id: 'CPX.vieta', code: 'CPX', lesson: '7.6', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -8293,6 +8565,8 @@
   function combos(n, k) { var res = [], cur = []; (function rec(s) { if (cur.length === k) { res.push(cur.slice()); return; } for (var i = s; i < n; i++) { cur.push(i); rec(i + 1); cur.pop(); } })(0); return res; }
   function perms(n, k) { var res = [], cur = [], used = []; (function rec() { if (cur.length === k) { res.push(cur.slice()); return; } for (var i = 0; i < n; i++) { if (used[i]) continue; used[i] = 1; cur.push(i); rec(); cur.pop(); used[i] = 0; } })(); return res; }
   function prob(outcomes, pred) { var c = 0; outcomes.forEach(function (o) { if (pred(o)) c++; }); return q(c, outcomes.length); }
+  /** "\\dfrac{a}{b} = key", or just the fraction when it does not reduce */
+  function fracEq(a, b, key) { var t = '\\dfrac{' + a + '}{' + b + '}'; return F.n(key) === t ? t : t + ' = ' + F.n(key); }
   function fracOpts(key, list) { return W(list.filter(function (x) { return x && x[0] !== null && x[0] !== undefined; }).filter(function (x) { var v = Fr.of(x[0]); return v.n >= 0 && v.cmp(1) <= 0; })); }
   var CNT = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
   var COL = ['red', 'white', 'black', 'yellow', 'green', 'blue'];
@@ -8305,12 +8579,12 @@
     var c2 = function (x) { return x * (x - 1) / 2; };
     if (kind === 'same') {
       key = prob(all, same); ask = 'the two balls have the same colour';
-      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs. Same-colour pairs: $' + counts.map(c2).join(' + ') + ' = ' + counts.map(c2).reduce(function (x, y) { return x + y; }) + '$. So the probability is $' + F.n(key) + '$.';
+      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs. The pairs of the same colour number $' + counts.map(function (c) { return 'C(' + c + ', 2)'; }).join(' + ') + ' = ' + counts.map(c2).join(' + ') + ' = ' + counts.map(c2).reduce(function (x, y) { return x + y; }) + '$. So the probability is $' + fracEq(counts.map(c2).reduce(function (x, y) { return x + y; }), tot, key) + '$.';
       wrong = [[q(1).sub(key), 'complement'], [counts.reduce(function (s, c) { return s.add(q(c * c, n * n)); }, q(0)), 'operation'], [q(c2(counts[0]), tot), 'partial'], [q(1, counts.length), 'slip'], [key.div(2), 'slip']];
     } else if (kind === 'both') {
       if (counts[0] < 2) retry();
       key = prob(all, function (o) { return bag[o[0]] === 0 && bag[o[1]] === 0; }); ask = 'both balls are ' + names[0];
-      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs, and $C(' + counts[0] + ', 2) = ' + c2(counts[0]) + '$ of them are two ' + names[0] + ' balls. So the probability is $' + F.n(key) + '$.';
+      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs, and $C(' + counts[0] + ', 2) = ' + c2(counts[0]) + '$ of them are two ' + names[0] + ' balls. So the probability is $' + fracEq(c2(counts[0]), tot, key) + '$.';
       wrong = [[q(counts[0] * counts[0], n * n), 'operation'], [q(counts[0], n), 'partial'], [q(1).sub(key), 'complement'], [q(2 * counts[0], n * (n - 1)), 'slip'], [q(c2(counts[0]) * 2, tot).cmp(1) <= 0 ? q(c2(counts[0]) * 2, tot) : null, 'slip']];
     } else {
       key = prob(all, function (o) { return bag[o[0]] === 0 || bag[o[1]] === 0; }); ask = 'at least one of the two balls is ' + names[0];
@@ -8386,7 +8660,7 @@
     return {
       stem: c[0] + ', $' + n1 + '$ ' + c[1] + ' and $' + n2 + '$ ' + c[2] + ' were surveyed. ' + G1 + ': ' + list(a) + '. ' + G2 + ': ' + list(b) + '. The two groups choose independently. If one person is chosen at random from each group, the probability that they ' + (same ? c[4].replace('different', 'the same').replace(/s$/, '').replace('travel in the same way', 'travel in the same way') : c[4]) + ' is ( )', key: m(key),
       wrong: fracOpts(key, [[q(1).sub(key), 'complement'], [same ? q(1, k) : q(k - 1, k), 'partial'], [q(Math.max.apply(null, a), n1).mul(q(Math.max.apply(null, b), n2)), 'partial'], [key.add(q(1, 10)).cmp(1) < 0 ? key.add(q(1, 10)) : key.sub(q(1, 10)), 'slip'], [key.sub(q(1, 20)), 'slip']]), check: chk.num(key.num),
-      sol: 'P(same choice) $= ' + terms + ' = ' + F.n(pSame) + '$ (multiply within each option, then add).' + (same ? '' : ' So P(different) $= 1 - ' + F.n(pSame) + ' = ' + F.n(key) + '$.')
+      sol: 'For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= ' + terms + ' = ' + F.n(pSame) + '$.' + (same ? '' : ' So P(different) $= 1 - ' + F.n(pSame) + ' = ' + F.n(key) + '$.')
     };
   }
   def({ id: 'PRB.two-way', code: 'PRB', lesson: '7.7', tier: 'H', level: '=', fmt: 'V', w: 1,
@@ -8400,8 +8674,8 @@
     for (var j = 1; j <= y; j++) balls.push([1, j]);
     var n = balls.length, all = combos(n, 2), e2 = R.pick(['labels', 'labels', 'one', 'sum']);
     var p1 = prob(all, function (o) { return balls[o[0]][0] !== balls[o[1]][0]; }), p2, t2, why2;
-    if (e2 === 'labels') { p2 = prob(all, function (o) { return balls[o[0]][1] !== balls[o[1]][1]; }); t2 = 'they have different labels'; why2 = 'same-label pairs: $' + Math.min(r, y) + '$, so different labels: $1 - \\dfrac{' + Math.min(r, y) + '}{' + all.length + '} = ' + F.n(p2) + '$'; }
-    else if (e2 === 'one') { p2 = prob(all, function (o) { return balls[o[0]][1] === 1 || balls[o[1]][1] === 1; }); t2 = 'at least one of them is labelled $1$'; why2 = 'pairs with no ball labelled $1$: $C(' + (n - 2) + ', 2) = ' + ((n - 2) * (n - 3) / 2) + '$, so at least one label $1$: $' + F.n(p2) + '$'; }
+    if (e2 === 'labels') { p2 = prob(all, function (o) { return balls[o[0]][1] !== balls[o[1]][1]; }); t2 = 'they have different labels'; why2 = 'exactly $' + Math.min(r, y) + '$ pairs share a label, one for each label that both colours carry, so the probability of different labels is $1 - \\dfrac{' + Math.min(r, y) + '}{' + all.length + '} = ' + F.n(p2) + '$'; }
+    else if (e2 === 'one') { p2 = prob(all, function (o) { return balls[o[0]][1] === 1 || balls[o[1]][1] === 1; }); t2 = 'at least one of them is labelled $1$'; why2 = 'there are $C(' + (n - 2) + ', 2) = ' + ((n - 2) * (n - 3) / 2) + '$ pairs with no ball labelled $1$, so the probability of at least one label $1$ is $1 - \\dfrac{' + ((n - 2) * (n - 3) / 2) + '}{' + all.length + '} = ' + F.n(p2) + '$'; }
     else { p2 = prob(all, function (o) { return (balls[o[0]][1] + balls[o[1]][1]) % 2 === 0; }); t2 = 'the sum of their labels is even'; why2 = 'counting the pairs whose labels are both even or both odd gives $' + F.n(p2) + '$'; }
     if (p1.eq(p2) || p2.n === 0 || p2.eq(1) || p1.eq(q(1).sub(p2))) retry();
     var pr = function (u, v) { return m(u) + ', ' + m(v); };
@@ -8409,7 +8683,7 @@
       stem: 'A box contains $' + n + '$ balls of the same size: $' + r + '$ ' + names[0] + ' balls labelled $' + Array.from({ length: r }, function (_, k) { return k + 1; }).join(', ') + '$ and $' + y + '$ ' + names[1] + ' balls labelled $' + Array.from({ length: y }, function (_, k) { return k + 1; }).join(', ') +
         '$. Two balls are drawn at random at the same time. The probability that the two balls have different colours and the probability that ' + t2 + ' are, respectively, ( )', key: pr(p1, p2),
       wrong: [[pr(p1, q(1).sub(p2)), 'complement'], [pr(q(1).sub(p1), p2), 'complement'], [pr(p2, p1), 'swap'], [pr(q(1).sub(p1), q(1).sub(p2)), 'complement'], [pr(q(1, 2), p2), 'slip']], check: chk.tuple([p1.num, p2.num]),
-      sol: 'There are $C(' + n + ', 2) = ' + all.length + '$ equally likely pairs. Different colours: $' + r + ' \\cdot ' + y + ' = ' + (r * y) + '$ pairs, so $' + F.n(p1) + '$. For the second event, ' + why2 + '.'
+      sol: 'There are $C(' + n + ', 2) = ' + all.length + '$ equally likely pairs. There are $' + r + ' \\cdot ' + y + ' = ' + (r * y) + '$ pairs with different colours, so the first probability is $' + fracEq(r * y, all.length, p1) + '$. For the second event, ' + why2 + '.'
     };
   });
   def({ id: 'PRB.sums', code: 'PRB', lesson: '7.7', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -8425,7 +8699,7 @@
       stem: 'A bag contains $' + Nn + '$ balls of the same size: ' + names.join(', ').replace(/, ([^,]*)$/, ' and $1') + '. When one ball is drawn at random, $P(\\text{' + names[0] + '}) = ' + F.n(r) + '$, $P(\\text{' + names[2] + ' or ' + names[1] + '}) = ' + F.n(s1) + '$ and $P(\\text{' + names[1] + ' or ' + names[3] + '}) = ' + F.n(s2) +
         '$. Then the probabilities of drawing a ' + names[1] + ', a ' + names[2] + ' and a ' + names[3] + ' ball are, respectively, ( )', key: tr(P[0], P[1], P[2]),
       wrong: [[tr(P[2], P[1], P[0]), 'swap'], [tr(P[0], P[2], P[1]), 'swap'], [tr(P[1], P[0], P[2]), 'swap'], [tr(P[1], P[2], P[0]), 'swap'], [tr(P[2], P[0], P[1]), 'swap']], check: chk.tuple([p2, p3, p4]),
-      sol: 'The four probabilities add up to $1$. So $P(\\text{' + names[3] + '}) = 1 - ' + F.n(r) + ' - ' + F.n(s1) + ' = ' + F.n(P[2]) + '$; then $P(\\text{' + names[1] + '}) = ' + F.n(s2) + ' - ' + F.n(P[2]) + ' = ' + F.n(P[0]) + '$ and $P(\\text{' + names[2] + '}) = ' + F.n(s1) + ' - ' + F.n(P[0]) + ' = ' + F.n(P[1]) + '$. Match each value to its colour — the options differ only in the order.'
+      sol: 'The four probabilities add up to $1$. So $P(\\text{' + names[3] + '}) = 1 - ' + F.n(r) + ' - ' + F.n(s1) + ' = ' + F.n(P[2]) + '$. Then $P(\\text{' + names[1] + '}) = ' + F.n(s2) + ' - ' + F.n(P[2]) + ' = ' + F.n(P[0]) + '$ and $P(\\text{' + names[2] + '}) = ' + F.n(s1) + ' - ' + F.n(P[0]) + ' = ' + F.n(P[1]) + '$. The options use the same three numbers in different orders, so the order ' + names[1] + ', ' + names[2] + ', ' + names[3] + ' decides the answer.'
     };
   });
   def({ id: 'PRB.compare-n', code: 'PRB', lesson: '7.7', tier: 'H', level: '=', fmt: 'V', w: 1,
@@ -8466,9 +8740,9 @@
     if (key.n === 0 || key.eq(1)) retry();
     var alt = prob(all, function (o) { return holds(o, rel === '\\le' ? '<' : rel === '<' ? '\\le' : '\\le'); });
     return {
-      stem: 'There are $' + Nn + '$ identical balls labelled $1, 2, \\ldots, ' + Nn + '$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| ' + rel + ' ' + F.n(th) + '$ is ( )', key: m(key),
+      stem: 'There are $' + Nn + '$ identical balls labelled $' + (Nn <= 5 ? Array.from({ length: Nn }, function (_, k) { return k + 1; }).join(', ') : '1, 2, \\ldots, ' + Nn) + '$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| ' + rel + ' ' + F.n(th) + '$ is ( )', key: m(key),
       wrong: fracOpts(key, [[q(1).sub(key), 'complement'], [alt.eq(key) || rel === '>' ? null : alt, 'endpoint'], [key.add(q(1, 15)).cmp(1) < 0 ? key.add(q(1, 15)) : null, 'slip'], [key.sub(q(1, 15)).n > 0 ? key.sub(q(1, 15)) : null, 'slip'], [q(1, 2).eq(key) ? null : q(1, 2), 'slip'], [key.add(q(1, 10)).cmp(1) < 0 ? key.add(q(1, 10)) : null, 'slip'], [q(1, 3).eq(key) ? null : q(1, 3), 'slip']]), check: chk.num(key.num),
-      sol: 'If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| ' + rel + ' ' + F.n(th.mul(6)) + '$. Counting the ordered draws that satisfy it gives $' + all.filter(function (o) { return holds(o, rel); }).length + '$ out of $' + all.length + '$, i.e. $' + F.n(key) + '$.'
+      sol: 'If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| ' + rel + ' ' + F.n(th.mul(6)) + '$. Counting the ordered draws that satisfy it gives $' + all.filter(function (o) { return holds(o, rel); }).length + '$ out of $' + all.length + '$, so the probability is $' + F.n(key) + '$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
@@ -8477,7 +8751,7 @@
 /* ACE CSCA Question Factory · templates/extra.js
  * (1) "Which is correct" forms for the lessons whose real items are all compute-type. The Course Plan asks for one
  *     "which is true" item in every daily set (§1.4) and counts the four-statement version of a form as level +1 (§1.3).
- * (2) A few +1 forms named in the daily-set recipes (2.5 Set C, 2.6 Q5–7).
+ * (2) A few +1 forms named in the daily-set recipes (2.5 Set C, 2.6 Q5-7).
  * Every statement carries an independent numeric test; the verifier re-runs it on the finished item. */
 ;(function (root) {
   'use strict';
@@ -8511,16 +8785,16 @@
       st('\\sin\\alpha\\cos\\alpha', sc, true, '$\\sin\\alpha\\cos\\alpha = \\dfrac{\\sin\\alpha\\cos\\alpha}{\\sin^2\\alpha + \\cos^2\\alpha} = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1} = ' + F.n(sc) + '$.', { g: 'sc' }),
       st('\\sin^2\\alpha', s2, true, '$\\sin^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\sin^2\\alpha + \\cos^2\\alpha} = \\dfrac{\\tan^2\\alpha}{\\tan^2\\alpha + 1} = ' + F.n(s2) + '$.', { g: 's2' }),
       st('\\cos^2\\alpha', c2, true, '$\\cos^2\\alpha = \\dfrac{\\cos^2\\alpha}{\\sin^2\\alpha + \\cos^2\\alpha} = \\dfrac{1}{\\tan^2\\alpha + 1} = ' + F.n(c2) + '$.', { g: 'c2' }),
-      st(rt, ratio.inv(), false, 'the fraction is upside down; the value is $' + F.n(ratio) + '$.', { g: 'r', trap: 'reciprocal' }),
-      swapDen.n === 0 ? null : st(rt, swapNum.div(swapDen), false, 'after dividing by $\\cos\\alpha$, $\\tan\\alpha$ stands where $\\sin\\alpha$ was; the value is $' + F.n(ratio) + '$.', { g: 'r', trap: 'swap' }),
-      st('\\sin\\alpha\\cos\\alpha', s2, false, 'that is $\\sin^2\\alpha$; $\\sin\\alpha\\cos\\alpha = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1} = ' + F.n(sc) + '$.', { g: 'sc', trap: 'companion' }),
-      st('\\sin\\alpha\\cos\\alpha', sc.neg(), false, 'the sign is wrong: $\\sin\\alpha\\cos\\alpha$ has the sign of $\\tan\\alpha$, so it equals $' + F.n(sc) + '$.', { g: 'sc', trap: 'sign' }),
-      st('\\sin^2\\alpha', c2, false, 'that is $\\cos^2\\alpha$; $\\sin^2\\alpha = ' + F.n(s2) + '$.', { g: 's2', trap: 'companion' }),
-      st('\\cos^2\\alpha', s2, false, 'that is $\\sin^2\\alpha$; $\\cos^2\\alpha = ' + F.n(c2) + '$.', { g: 'c2', trap: 'companion' }),
-      st('\\cos^2\\alpha', q(1).div(t2), false, 'the denominator is $\\tan^2\\alpha + 1$, not $\\tan^2\\alpha$: $\\cos^2\\alpha = ' + F.n(c2) + '$.', { g: 'c2', trap: 'partial' })
+      st(rt, ratio.inv(), false, 'the value is $' + F.n(ratio) + '$, and $' + F.n(ratio.inv()) + '$ is its reciprocal.', { g: 'r', trap: 'reciprocal' }),
+      swapDen.n === 0 ? null : st(rt, swapNum.div(swapDen), false, 'dividing by $\\cos\\alpha$ turns $\\sin\\alpha$ into $\\tan\\alpha$ and $\\cos\\alpha$ into $1$, which gives $' + F.n(ratio) + '$.', { g: 'r', trap: 'swap' }),
+      st('\\sin\\alpha\\cos\\alpha', s2, false, '$' + F.n(s2) + '$ is the value of $\\sin^2\\alpha$. In fact $\\sin\\alpha\\cos\\alpha = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1} = ' + F.n(sc) + '$.', { g: 'sc', trap: 'companion' }),
+      st('\\sin\\alpha\\cos\\alpha', sc.neg(), false, '$\\sin\\alpha\\cos\\alpha$ has the same sign as $\\tan\\alpha = ' + F.n(t) + '$, so it equals $' + F.n(sc) + '$.', { g: 'sc', trap: 'sign' }),
+      st('\\sin^2\\alpha', c2, false, '$' + F.n(c2) + '$ is the value of $\\cos^2\\alpha$. In fact $\\sin^2\\alpha = ' + F.n(s2) + '$.', { g: 's2', trap: 'companion' }),
+      st('\\cos^2\\alpha', s2, false, '$' + F.n(s2) + '$ is the value of $\\sin^2\\alpha$. In fact $\\cos^2\\alpha = ' + F.n(c2) + '$.', { g: 'c2', trap: 'companion' }),
+      st('\\cos^2\\alpha', q(1).div(t2), false, '$\\cos^2\\alpha = \\dfrac{1}{\\tan^2\\alpha + 1} = ' + F.n(c2) + '$. The denominator is $\\tan^2\\alpha + 1$, not $\\tan^2\\alpha$.', { g: 'c2', trap: 'partial' })
     ];
     return out('Given $\\tan\\alpha = ' + F.n(t) + '$, which of the following is correct? ( )', choose(R, pool),
-      'Write each expression in terms of $\\tan\\alpha$: divide by $\\cos\\alpha$, or by $\\sin^2\\alpha + \\cos^2\\alpha = 1$.');
+      'Write each expression in terms of $\\tan\\alpha$, either by dividing by $\\cos\\alpha$ or by dividing by $\\sin^2\\alpha + \\cos^2\\alpha = 1$.');
   });
 
   /* ===================== LN-dist · 4.2 ===================== */
@@ -8539,9 +8813,9 @@
     ['AB', 'AC', 'BC'].forEach(function (nm) {
       var P = pts[nm[0]], Q = pts[nm[1]], ax = Math.abs(P[0] - Q[0]), ay = Math.abs(P[1] - Q[1]), D2 = d2(P, Q);
       pool.push(ds(nm, Sd.sqrt(D2), true, work(nm) + '.', { g: nm }));
-      pool.push(ds(nm, ax + ay, false, 'the differences are added without squaring; ' + work(nm) + '.', { g: nm, trap: 'operation' }));
-      pool.push(ds(nm, D2, false, 'the square root is missing; ' + work(nm) + '.', { g: nm, trap: 'partial' }));
-      if (ax !== ay) pool.push(ds(nm, Sd.sqrt(Math.abs(ax * ax - ay * ay)), false, 'the squares are subtracted instead of added; ' + work(nm) + '.', { g: nm, trap: 'sign' }));
+      pool.push(ds(nm, ax + ay, false, 'adding the differences without squaring gives $' + (ax + ay) + '$, but ' + work(nm) + '.', { g: nm, trap: 'operation' }));
+      pool.push(ds(nm, D2, false, '$' + D2 + '$ is $' + seg(nm) + '^2$, and ' + work(nm) + '.', { g: nm, trap: 'partial' }));
+      if (ax !== ay) pool.push(ds(nm, Sd.sqrt(Math.abs(ax * ax - ay * ay)), false, 'the squares must be added, not subtracted, so ' + work(nm) + '.', { g: nm, trap: 'sign' }));
     });
     var dAB = dist(A, B), dAC = dist(A, C), dBC = dist(B, C);
     function cmp(n1, n2, op, ok, extra) {
@@ -8552,7 +8826,7 @@
     if (!close(dAC, dBC)) { pool.push(cmp('AC', 'BC', dAC > dBC ? '>' : '<', true, { g: 'cmp' })); pool.push(cmp('AC', 'BC', dAC > dBC ? '<' : '>', false, { g: 'cmp', trap: 'sign' })); }
     if (!close(dAB, dBC)) pool.push(cmp('AB', 'BC', dAB > dBC ? '<' : '>', false, { g: 'cmp', trap: 'sign' }));
     return out('Given the points $A' + F.pt(A[0], A[1]) + '$, $B' + F.pt(B[0], B[1]) + '$ and $C' + F.pt(C[0], C[1]) + '$, which of the following is correct? ( )', choose(R, pool),
-      'Use $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points.');
+      'Use the distance formula $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points.');
   });
 
   /* ===================== lines: small helpers ===================== */
@@ -8579,21 +8853,21 @@
     var C1 = [A[0] - s * dx, A[1] - s * dy], C2 = [C1[1], C1[0]], si = F.lineSI(k, b0);
     var pool = [
       vs('The slope of $l$ is', k, kN, true, '$k = \\dfrac{' + B[1] + ' - ' + par(A[1]) + '}{' + B[0] + ' - ' + par(A[0]) + '} = ' + F.n(k) + '$.', { g: 'k' }),
-      vs('The $y$-intercept of $l$ is', b0, yInt, true, 'put $x = 0$ in $' + si + '$.', { g: 'b' }),
-      vs('The $x$-intercept of $l$ is', x0, xInt, true, 'put $y = 0$ in $' + si + '$: $x = ' + F.n(x0) + '$.', { g: 'x' }),
+      vs('The $y$-intercept of $l$ is', b0, yInt, true, 'putting $x = 0$ in $' + si + '$ gives $y = ' + F.n(b0) + '$.', { g: 'b' }),
+      vs('The $x$-intercept of $l$ is', x0, xInt, true, 'putting $y = 0$ in $' + si + '$ gives $x = ' + F.n(x0) + '$.', { g: 'x' }),
       es(L, true, 'both points satisfy it.', { g: 'e' }),
       ps(C1, true, 'its coordinates satisfy $' + si + '$.', { g: 'p' }),
-      vs('The slope of $l$ is', k.inv(), kN, false, 'that is $\\dfrac{\\Delta x}{\\Delta y}$; the slope is $\\dfrac{\\Delta y}{\\Delta x} = ' + F.n(k) + '$.', { g: 'k', trap: 'reciprocal' }),
-      vs('The slope of $l$ is', k.neg(), kN, false, 'the sign is wrong; $k = ' + F.n(k) + '$.', { g: 'k', trap: 'sign' }),
-      vs('The $y$-intercept of $l$ is', x0, yInt, false, 'that is the $x$-intercept; the $y$-intercept is $' + F.n(b0) + '$.', { g: 'b', trap: 'axis' }),
-      vs('The $y$-intercept of $l$ is', b0.neg(), yInt, false, 'the sign is wrong; the $y$-intercept is $' + F.n(b0) + '$.', { g: 'b', trap: 'sign' }),
-      vs('The $x$-intercept of $l$ is', b0, xInt, false, 'that is the $y$-intercept; the $x$-intercept is $' + F.n(x0) + '$.', { g: 'x', trap: 'axis' }),
-      es([L[0], L[1], -L[2]], false, 'the constant term has the wrong sign, so $A$ and $B$ do not satisfy it; $l$: $' + lineT(L) + '$.', { g: 'e', trap: 'sign' }),
-      es([L[0], -L[1], L[2]], false, 'that line has slope $' + F.n(k.neg()) + '$ and does not pass through both points; $l$: $' + lineT(L) + '$.', { g: 'e', trap: 'sign' }),
+      vs('The slope of $l$ is', k.inv(), kN, false, 'the slope is $\\dfrac{\\Delta y}{\\Delta x} = ' + F.n(k) + '$, and $' + F.n(k.inv()) + '$ is $\\dfrac{\\Delta x}{\\Delta y}$.', { g: 'k', trap: 'reciprocal' }),
+      vs('The slope of $l$ is', k.neg(), kN, false, 'the slope is $k = ' + F.n(k) + '$.', { g: 'k', trap: 'sign' }),
+      vs('The $y$-intercept of $l$ is', x0, yInt, false, '$' + F.n(x0) + '$ is the $x$-intercept. The $y$-intercept is $' + F.n(b0) + '$.', { g: 'b', trap: 'axis' }),
+      vs('The $y$-intercept of $l$ is', b0.neg(), yInt, false, 'putting $x = 0$ in $' + si + '$ gives $y = ' + F.n(b0) + '$.', { g: 'b', trap: 'sign' }),
+      vs('The $x$-intercept of $l$ is', b0, xInt, false, '$' + F.n(b0) + '$ is the $y$-intercept. The $x$-intercept is $' + F.n(x0) + '$.', { g: 'x', trap: 'axis' }),
+      es([L[0], L[1], -L[2]], false, 'with that constant term the line misses $A$ and $B$. The line $l$ is $' + lineT(L) + '$.', { g: 'e', trap: 'sign' }),
+      es([L[0], -L[1], L[2]], false, 'that line has slope $' + F.n(k.neg()) + '$, so it is not $l$. The line $l$ is $' + lineT(L) + '$.', { g: 'e', trap: 'sign' }),
       ps(C2, false, 'its coordinates do not satisfy $' + si + '$.', { g: 'p', trap: 'swap' })
     ];
     return out('The line $l$ passes through the points $A' + F.pt(A[0], A[1]) + '$ and $B' + F.pt(B[0], B[1]) + '$. ' + CORRECT, choose(R, pool),
-      'The slope is $k = ' + F.n(k) + '$, so $l$: $' + si + '$, that is $' + lineT(L) + '$.');
+      'The slope is $k = ' + F.n(k) + '$, so $l$ is $' + si + '$, that is $' + lineT(L) + '$.');
   });
 
   /* ===================== LN-int · 4.5 ===================== */
@@ -8617,21 +8891,26 @@
     }
     function qs(k, ok, why, extra) { return S('The intersection point of $l_1$ and $l_2$ lies in the ' + QW[k] + ' quadrant', ok, function () { return quad(P[0], P[1]) === k; }, why, extra); }
     var xi1 = q(-L1[2], L1[0]), yi1 = q(-L1[2], L1[1]), xi2 = q(-L2[2], L2[0]), yi2 = q(-L2[2], L2[1]), here = 'the intersection point is $' + F.pt(x0, y0) + '$';
+    var plug = function (L, Pt) { return F.sum([[L[0] * Pt[0], ''], [L[1] * Pt[1], ''], [L[2], '']]); };
+    var miss = function (Pt) {         // why a point is not the intersection: it fails one of the equations
+      var i = onLine(L1, Pt) ? 2 : 1, L = i === 1 ? L1 : L2, v = L[0] * Pt[0] + L[1] * Pt[1] + L[2];
+      return 'putting it into the equation of $l_' + i + '$ gives $' + plug(L, Pt) + ' = ' + v + '$, not $0$. In fact ' + here + '.';
+    };
     var pool = [
-      is([x0, y0], true, 'it satisfies both equations.', { g: 'i' }),
-      ax(1, 'x', xi1, true, 'put $y = 0$ in the equation of $l_1$: $x = ' + F.n(xi1) + '$.', { g: 'x1' }),
-      ax(2, 'y', yi2, true, 'put $x = 0$ in the equation of $l_2$: $y = ' + F.n(yi2) + '$.', { g: 'y2' }),
+      is([x0, y0], true, 'it satisfies both equations, since $' + plug(L1, [x0, y0]) + ' = 0$ and $' + plug(L2, [x0, y0]) + ' = 0$.', { g: 'i' }),
+      ax(1, 'x', xi1, true, 'putting $y = 0$ in the equation of $l_1$ gives $x = ' + F.n(xi1) + '$.', { g: 'x1' }),
+      ax(2, 'y', yi2, true, 'putting $x = 0$ in the equation of $l_2$ gives $y = ' + F.n(yi2) + '$.', { g: 'y2' }),
       qs(quad(x0, y0), true, here + '.', { g: 'q' }),
-      is([y0, x0], false, 'the coordinates are swapped; ' + here + '.', { g: 'i', trap: 'swap' }),
-      is([-x0, -y0], false, 'the signs are wrong; ' + here + '.', { g: 'i', trap: 'sign' }),
-      ax(1, 'x', yi1, false, 'that number is the $y$-intercept; $y = 0$ gives $x = ' + F.n(xi1) + '$.', { g: 'x1', trap: 'axis' }),
-      ax(1, 'x', xi1.neg(), false, 'the sign is wrong: $y = 0$ gives $x = ' + F.n(xi1) + '$.', { g: 'x1', trap: 'sign' }),
-      ax(2, 'y', xi2, false, 'that number is the $x$-intercept; $x = 0$ gives $y = ' + F.n(yi2) + '$.', { g: 'y2', trap: 'axis' }),
-      ax(2, 'y', yi2.neg(), false, 'the sign is wrong: $x = 0$ gives $y = ' + F.n(yi2) + '$.', { g: 'y2', trap: 'sign' }),
+      is([y0, x0], false, miss([y0, x0]), { g: 'i', trap: 'swap' }),
+      is([-x0, -y0], false, miss([-x0, -y0]), { g: 'i', trap: 'sign' }),
+      ax(1, 'x', yi1, false, 'putting $y = 0$ in the equation of $l_1$ gives $x = ' + F.n(xi1) + '$. The number $' + F.n(yi1) + '$ is the $y$-intercept of $l_1$.', { g: 'x1', trap: 'axis' }),
+      ax(1, 'x', xi1.neg(), false, 'putting $y = 0$ in the equation of $l_1$ gives $x = ' + F.n(xi1) + '$.', { g: 'x1', trap: 'sign' }),
+      ax(2, 'y', xi2, false, 'putting $x = 0$ in the equation of $l_2$ gives $y = ' + F.n(yi2) + '$. The number $' + F.n(xi2) + '$ is the $x$-intercept of $l_2$.', { g: 'y2', trap: 'axis' }),
+      ax(2, 'y', yi2.neg(), false, 'putting $x = 0$ in the equation of $l_2$ gives $y = ' + F.n(yi2) + '$.', { g: 'y2', trap: 'sign' }),
       qs(quad(-x0, y0), false, here + ', which is in the ' + QW[quad(x0, y0)] + ' quadrant.', { g: 'q', trap: 'sign' })
     ];
     return out('Which of the following statements about the lines $l_1: ' + lineT(L1) + '$ and $l_2: ' + lineT(L2) + '$ is correct? ( )', choose(R, pool),
-      'Solving the two equations together gives the intersection point $' + F.pt(x0, y0) + '$.');
+      QF.LN.solve(L1, L2) + ' So the intersection point is $' + F.pt(x0, y0) + '$.');
   });
 
   /* ===================== LN-perp · 4.7 ===================== */
@@ -8652,21 +8931,21 @@
     function ps(Pt, ok, why, extra) { return S('$l$ passes through the point $' + F.pt(Pt[0], Pt[1]) + '$', ok, function () { return close(Pt[1] - P[1], sN * (Pt[0] - P[0])); }, why, extra); }
     var eqT = lineT(Lk);
     var pool = [
-      vs('The slope of $l$ is', slope, sN, true, 'the given line has slope $' + F.n(q(-a3, b3)) + '$, and the product of the two slopes is $-1$.', { g: 'k' }),
-      ps([x0, y0], true, 'that is the intersection point of the two lines.', { g: 'p' }),
+      vs('The slope of $l$ is', slope, sN, true, 'the given line has slope $' + F.n(q(-a3, b3)) + '$, and $' + F.n(q(-a3, b3)) + ' \\cdot ' + (slope.n < 0 ? '\\left(' + F.n(slope) + '\\right)' : F.n(slope)) + ' = -1$.', { g: 'k' }),
+      ps([x0, y0], true, 'it is the intersection point of the two given lines, and $l$ passes through it.', { g: 'p' }),
       es(Lk, true, 'it is perpendicular to the given line and passes through $' + F.pt(x0, y0) + '$.', { g: 'e' }),
-      vs('The $y$-intercept of $l$ is', yint, yN, true, 'put $x = 0$ in $' + eqT + '$.', { g: 'b' }),
-      vs('The slope of $l$ is', q(-a3, b3), sN, false, 'that is the slope of the given line; a perpendicular line has slope $' + F.n(slope) + '$.', { g: 'k', trap: 'parallel' }),
+      vs('The $y$-intercept of $l$ is', yint, yN, true, 'putting $x = 0$ in $' + eqT + '$ gives $y = ' + F.n(yint) + '$.', { g: 'b' }),
+      vs('The slope of $l$ is', q(-a3, b3), sN, false, '$' + F.n(q(-a3, b3)) + '$ is the slope of the given line. A perpendicular line has slope $' + F.n(slope) + '$.', { g: 'k', trap: 'parallel' }),
       vs('The slope of $l$ is', slope.neg(), sN, false, 'the negative reciprocal of $' + F.n(q(-a3, b3)) + '$ is $' + F.n(slope) + '$.', { g: 'k', trap: 'sign' }),
       ps([y0, x0], false, 'the intersection point is $' + F.pt(x0, y0) + '$, and this point does not satisfy $' + eqT + '$.', { g: 'p', trap: 'swap' }),
       ps([-x0, -y0], false, 'the intersection point is $' + F.pt(x0, y0) + '$, and this point does not satisfy $' + eqT + '$.', { g: 'p', trap: 'sign' }),
-      es(Lpar, false, 'that line is parallel to the given line, not perpendicular; $l$: $' + eqT + '$.', { g: 'e', trap: 'parallel' }),
-      es([Lk[0], Lk[1], -Lk[2]], false, 'the constant term has the wrong sign: it does not pass through $' + F.pt(x0, y0) + '$; $l$: $' + eqT + '$.', { g: 'e', trap: 'sign' }),
-      vs('The $y$-intercept of $l$ is', yint.neg(), yN, false, 'the sign is wrong; $x = 0$ in $' + eqT + '$ gives $y = ' + F.n(yint) + '$.', { g: 'b', trap: 'sign' }),
-      vs('The $y$-intercept of $l$ is', q(-kc, b3), yN, false, 'that is the $x$-intercept; $x = 0$ in $' + eqT + '$ gives $y = ' + F.n(yint) + '$.', { g: 'b', trap: 'axis' })
+      es(Lpar, false, 'that line is parallel to the given line, not perpendicular. The line $l$ is $' + eqT + '$.', { g: 'e', trap: 'parallel' }),
+      es([Lk[0], Lk[1], -Lk[2]], false, 'with that constant term the line does not pass through $' + F.pt(x0, y0) + '$. The line $l$ is $' + eqT + '$.', { g: 'e', trap: 'sign' }),
+      vs('The $y$-intercept of $l$ is', yint.neg(), yN, false, 'putting $x = 0$ in $' + eqT + '$ gives $y = ' + F.n(yint) + '$.', { g: 'b', trap: 'sign' }),
+      vs('The $y$-intercept of $l$ is', q(-kc, b3), yN, false, '$' + F.n(q(-kc, b3)) + '$ is the $x$-intercept. Putting $x = 0$ in $' + eqT + '$ gives $y = ' + F.n(yint) + '$.', { g: 'b', trap: 'axis' })
     ];
     return out('A line $l$ is perpendicular to the line $' + lineT(L3) + '$ and passes through the intersection point of the lines $' + lineT(L1) + '$ and $' + lineT(L2) + '$. ' + CORRECT, choose(R, pool),
-      'The two lines meet at $' + F.pt(x0, y0) + '$. Swap and flip: a line perpendicular to $' + lineT(L3) + '$ has slope $' + F.n(slope) + '$, and through that point it is $' + eqT + '$.');
+      QF.LN.solve(L1, L2) + ' A line perpendicular to $' + lineT(L3) + '$ has slope $' + F.n(slope) + '$, so through $' + F.pt(x0, y0) + '$ it is $' + eqT + '$.');
   });
 
   /* ===================== SQ-ar · 5.1 ===================== */
@@ -8687,12 +8966,12 @@
       vs('a_1', a1, seq[1], true, '$a_1 = ' + sub('a', p) + ' - ' + (p - 1) + 'd = ' + a1 + '$.', { g: 'a1' }),
       vs(sub('a', kk), term(kk), seq[kk], true, '$' + sub('a', kk) + ' = a_1 + ' + (kk - 1) + 'd = ' + term(kk) + '$.', { g: 'ak' }),
       fs(d, a1 - d, true, '$a_n = a_1 + (n - 1)d = ' + lin(d, a1 - d) + '$.', { g: 'f' }),
-      vs('d', q(aq - ap, gap + 1), dN, false, 'the gap between the two terms is $' + qi + ' - ' + p + ' = ' + gap + '$ steps, not $' + (gap + 1) + '$; ' + dWork + '.', { g: 'd', trap: 'off-by-one' }),
-      vs('d', -d, dN, false, 'the sign is wrong; ' + dWork + '.', { g: 'd', trap: 'sign' }),
-      vs('a_1', ap - p * d, seq[1], false, 'from $' + sub('a', p) + '$ back to $a_1$ there are $' + (p - 1) + '$ steps, not $' + p + '$: $a_1 = ' + a1 + '$.', { g: 'a1', trap: 'off-by-one' }),
-      vs('a_1', ap + (p - 1) * d, seq[1], false, 'going back to $a_1$ subtracts $' + (p - 1) + 'd$: $a_1 = ' + a1 + '$.', { g: 'a1', trap: 'sign' }),
-      vs(sub('a', kk), a1 + kk * d, seq[kk], false, 'term number minus one: $' + sub('a', kk) + ' = a_1 + ' + (kk - 1) + 'd = ' + term(kk) + '$.', { g: 'ak', trap: 'off-by-one' }),
-      fs(d, a1, false, 'that formula gives $a_1 = ' + (a1 + d) + '$; the correct one is $a_n = ' + lin(d, a1 - d) + '$.', { g: 'f', trap: 'off-by-one' })
+      vs('d', q(aq - ap, gap + 1), dN, false, 'from $' + sub('a', p) + '$ to $' + sub('a', qi) + '$ there are $' + qi + ' - ' + p + ' = ' + gap + '$ steps, not $' + (gap + 1) + '$, so ' + dWork + '.', { g: 'd', trap: 'off-by-one' }),
+      vs('d', -d, dN, false, dWork + '.', { g: 'd', trap: 'sign' }),
+      vs('a_1', ap - p * d, seq[1], false, 'from $' + sub('a', p) + '$ back to $a_1$ there are $' + (p - 1) + '$ steps, not $' + p + '$, so $a_1 = ' + ap + ' - ' + (p - 1) + ' \\cdot ' + par(d) + ' = ' + a1 + '$.', { g: 'a1', trap: 'off-by-one' }),
+      vs('a_1', ap + (p - 1) * d, seq[1], false, 'going back from $' + sub('a', p) + '$ to $a_1$ subtracts $' + (p - 1) + 'd$, so $a_1 = ' + ap + ' - ' + (p - 1) + ' \\cdot ' + par(d) + ' = ' + a1 + '$.', { g: 'a1', trap: 'sign' }),
+      vs(sub('a', kk), a1 + kk * d, seq[kk], false, '$' + sub('a', kk) + ' = a_1 + ' + (kk - 1) + 'd = ' + term(kk) + '$, with $' + (kk - 1) + '$ steps from $a_1$, not $' + kk + '$.', { g: 'ak', trap: 'off-by-one' }),
+      fs(d, a1, false, 'that formula gives $a_1 = ' + (a1 + d) + '$, but $a_1 = ' + a1 + '$. The correct formula is $a_n = ' + lin(d, a1 - d) + '$.', { g: 'f', trap: 'off-by-one' })
     ];
     return out('In the arithmetic sequence ' + SEQ + ', $' + sub('a', p) + ' = ' + ap + '$ and $' + sub('a', qi) + ' = ' + aq + '$. Which of the following is correct? ( )', choose(R, pool));
   });
@@ -8713,9 +8992,9 @@
       pre = 'Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1}{a_n} + ' + k + '$, so $\\dfrac{1}{a_n} = ' + lin(k, c0 - k) + '$.';
       var arith = function (dd) { return [1, 2, 3, 4, 5].every(function (n) { return close(1 / cf(n + 1) - 1 / cf(n), dd); }); };
       pool.push(S('$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with common difference $' + k + '$', true, function () { return arith(k); }, 'taking reciprocals of the recursion gives $\\dfrac{1}{a_{n+1}} - \\dfrac{1}{a_n} = ' + k + '$.', { g: 's' }));
-      pool.push(S(SEQ + ' is an arithmetic sequence', false, function () { return [1, 2, 3].every(function (n) { return close(cf(n + 2) - cf(n + 1), cf(n + 1) - cf(n)); }); }, 'the differences $a_2 - a_1$ and $a_3 - a_2$ are not equal; it is $\\left\\{\\dfrac{1}{a_n}\\right\\}$ that is arithmetic.', { g: 's', trap: 'companion' }));
-      pool.push(vs(n1, a[n1].inv(), false, 'that is $\\dfrac{1}{' + A(n1) + '}$; $' + A(n1) + ' = ' + F.n(a[n1]) + '$.', { g: 'n1', trap: 'reciprocal' }));
-      pool.push(vs(n2, q(1, c0 + n2 * k), false, 'term number minus one: $\\dfrac{1}{' + A(n2) + '} = ' + c0 + ' + ' + (n2 - 1) + ' \\cdot ' + k + '$, so $' + A(n2) + ' = ' + F.n(a[n2]) + '$.', { g: 'n2', trap: 'off-by-one' }));
+      pool.push(S(SEQ + ' is an arithmetic sequence', false, function () { return [1, 2, 3].every(function (n) { return close(cf(n + 2) - cf(n + 1), cf(n + 1) - cf(n)); }); }, '$a_2 - a_1 = ' + F.n(a[2].sub(a[1])) + '$ but $a_3 - a_2 = ' + F.n(a[3].sub(a[2])) + '$. It is $\\left\\{\\dfrac{1}{a_n}\\right\\}$ that is arithmetic.', { g: 's', trap: 'companion' }));
+      pool.push(vs(n1, a[n1].inv(), false, '$' + F.n(a[n1].inv()) + '$ is $\\dfrac{1}{' + A(n1) + '}$, so $' + A(n1) + ' = ' + F.n(a[n1]) + '$.', { g: 'n1', trap: 'reciprocal' }));
+      pool.push(vs(n2, q(1, c0 + n2 * k), false, '$\\dfrac{1}{' + A(n2) + '} = ' + c0 + ' + ' + (n2 - 1) + ' \\cdot ' + k + ' = ' + (c0 + (n2 - 1) * k) + '$, so $' + A(n2) + ' = ' + F.n(a[n2]) + '$.', { g: 'n2', trap: 'off-by-one' }));
     } else if (kind === 'linear') {
       var c = R.pick([2, 3, -2, 2, -1]), e = R.pick([1, -1, 2, 3, -2]);
       a1 = q(R.pick([1, 2, -1, 3, 0]));
@@ -8725,9 +9004,9 @@
       cf = function (n) { return Math.pow(c, n - 1) * (a1.num + Lm) - Lm; };
       rule = 'a_{n+1} = ' + F.sum([[c, 'a_n'], [e, '']]);
       pre = 'Apply the rule step by step: $' + [1, 2, 3, 4, 5].map(function (n) { return A(n) + ' = ' + F.n(a[n]); }).join('$, $') + '$.';
-      pool.push(S(SEQ + ' is a geometric sequence', false, function () { return Math.abs(cf(1)) > 1e-12 && Math.abs(cf(2)) > 1e-12 && close(cf(2) / cf(1), cf(3) / cf(2)) && close(cf(3) / cf(2), cf(4) / cf(3)); }, 'the ratios $\\dfrac{a_2}{a_1}$ and $\\dfrac{a_3}{a_2}$ are not equal (the added constant breaks the pattern).', { g: 's', trap: 'companion' }));
-      pool.push(vs(n1, a[n1 - 1].mul(c), false, 'the constant $' + F.n(e) + '$ was not added; $' + A(n1) + ' = ' + F.n(a[n1]) + '$.', { g: 'n1', trap: 'partial' }));
-      pool.push(vs(n2, a[n2 + 1], false, 'that is $' + A(n2 + 1) + '$; $' + A(n2) + ' = ' + F.n(a[n2]) + '$.', { g: 'n2', trap: 'off-by-one' }));
+      pool.push(S(SEQ + ' is a geometric sequence', false, function () { return Math.abs(cf(1)) > 1e-12 && Math.abs(cf(2)) > 1e-12 && close(cf(2) / cf(1), cf(3) / cf(2)) && close(cf(3) / cf(2), cf(4) / cf(3)); }, (a[1].n === 0 || a[2].n === 0 ? 'one of the first two terms is $0$, and a geometric sequence has no zero terms.' : '$\\dfrac{a_2}{a_1} = ' + F.n(a[2].div(a[1])) + '$ but $\\dfrac{a_3}{a_2} = ' + F.n(a[3].div(a[2])) + '$.'), { g: 's', trap: 'companion' }));
+      pool.push(vs(n1, a[n1 - 1].mul(c), false, 'the rule gives $' + A(n1) + ' = ' + c + ' \\cdot ' + par(a[n1 - 1]) + (e > 0 ? ' + ' : ' - ') + Math.abs(e) + ' = ' + F.n(a[n1]) + '$, so the constant $' + F.n(e) + '$ is missing.', { g: 'n1', trap: 'partial' }));
+      pool.push(vs(n2, a[n2 + 1], false, 'the value $' + F.n(a[n2 + 1]) + '$ belongs to $' + A(n2 + 1) + '$, while $' + A(n2) + ' = ' + F.n(a[n2]) + '$.', { g: 'n2', trap: 'off-by-one' }));
     } else {
       var mlt = R.pick([1, 2, 2, 3]);
       a1 = q(R.pick([1, 2, 3, -1, 0]));
@@ -8737,13 +9016,14 @@
       rule = 'a_{n+1} = ' + F.sum([[1, 'a_n'], [mlt, 'n']]);
       pre = 'Apply the rule with $n = 1, 2, 3, \\ldots$: $' + [1, 2, 3, 4, 5].map(function (n) { return A(n) + ' = ' + F.n(a[n]); }).join('$, $') + '$.';
       pool.push(S(SEQ + ' is an arithmetic sequence', false, function () { return [1, 2, 3].every(function (n) { return close(cf(n + 2) - cf(n + 1), cf(n + 1) - cf(n)); }); }, 'the difference $a_{n+1} - a_n = ' + F.sum([[mlt, 'n']]) + '$ changes with $n$.', { g: 's', trap: 'companion' }));
-      pool.push(vs(n1, a[n1 - 1].add(mlt * n1), false, 'to get $' + A(n1) + '$ use $n = ' + (n1 - 1) + '$ in the rule, not $n = ' + n1 + '$; $' + A(n1) + ' = ' + F.n(a[n1]) + '$.', { g: 'n1', trap: 'off-by-one' }));
-      pool.push(vs(n2, a[n2 - 1], false, 'that is $' + A(n2 - 1) + '$; $' + A(n2) + ' = ' + F.n(a[n2]) + '$.', { g: 'n2', trap: 'off-by-one' }));
+      pool.push(vs(n1, a[n1 - 1].add(mlt * n1), false, 'to get $' + A(n1) + '$ use $n = ' + (n1 - 1) + '$ in the rule, not $n = ' + n1 + '$. So $' + A(n1) + ' = ' + F.n(a[n1]) + '$.', { g: 'n1', trap: 'off-by-one' }));
+      pool.push(vs(n2, a[n2 - 1], false, 'the value $' + F.n(a[n2 - 1]) + '$ belongs to $' + A(n2 - 1) + '$, while $' + A(n2) + ' = ' + F.n(a[n2]) + '$.', { g: 'n2', trap: 'off-by-one' }));
     }
-    pool.push(vs(2, a[2], true, 'put $n = 1$ in the rule.', { g: 'n0' }));
-    pool.push(vs(n1, a[n1], true, 'apply the rule ' + (n1 - 1) + ' times.', { g: 'n1' }));
-    pool.push(vs(n2, a[n2], true, 'apply the rule ' + (n2 - 1) + ' times.', { g: 'n2' }));
-    pool.push(vs(2, a[3], false, 'that is $a_3$; $a_2 = ' + F.n(a[2]) + '$.', { g: 'n0', trap: 'off-by-one' }));
+    var got = function (n) { return kind === 'recip' ? '$\\dfrac{1}{' + A(n) + '} = ' + (c0 + (n - 1) * k) + '$, so $' + A(n) + ' = ' + F.n(a[n]) + '$.' : 'it matches the terms worked out above.'; };
+    pool.push(vs(2, a[2], true, got(2), { g: 'n0' }));
+    pool.push(vs(n1, a[n1], true, got(n1), { g: 'n1' }));
+    pool.push(vs(n2, a[n2], true, got(n2), { g: 'n2' }));
+    pool.push(vs(2, a[3], false, 'the value $' + F.n(a[3]) + '$ belongs to $a_3$, while $a_2 = ' + F.n(a[2]) + '$.', { g: 'n0', trap: 'off-by-one' }));
     return out('In the sequence ' + SEQ + ', $a_1 = ' + F.n(a1) + '$ and $' + rule + '$. Which of the following is correct? ( )', choose(R, pool), pre);
   });
 
@@ -8762,14 +9042,14 @@
       ss(n * v, true, snWhy + '.', { g: 's' }),
       pr(i1, j1, 2 * v, true, '$' + i1 + ' + ' + j1 + ' = 2 \\cdot ' + k + '$, so the sum is $2' + ak + ' = ' + (2 * v) + '$.', { g: 'p' }),
       pr(1, n, 2 * v, true, '$1 + ' + n + ' = 2 \\cdot ' + k + '$, so the sum is $2' + ak + ' = ' + (2 * v) + '$.', { g: 'e' }),
-      ss((n - 1) * v, false, 'there are $' + n + '$ terms, not $' + (n - 1) + '$: ' + snWhy + '.', { g: 's', trap: 'off-by-one' }),
-      ss(2 * n * v, false, 'the factor $\\dfrac{1}{2}$ is missing: ' + snWhy + '.', { g: 's', trap: 'operation' }),
+      ss((n - 1) * v, false, 'there are $' + n + '$ terms, not $' + (n - 1) + '$, so ' + snWhy + '.', { g: 's', trap: 'off-by-one' }),
+      ss(2 * n * v, false, 'the sum formula has a factor $\\dfrac{1}{2}$, so ' + snWhy + '.', { g: 's', trap: 'operation' }),
       pr(i1, j1, v, false, 'the two terms add up to $2' + ak + ' = ' + (2 * v) + '$, not $' + ak + '$.', { g: 'p', trap: 'half' }),
-      pr(1, n, n * v, false, 'that is $' + Sn + '$; $a_1 + ' + sub('a', n) + ' = 2' + ak + ' = ' + (2 * v) + '$.', { g: 'e', trap: 'companion' }),
+      pr(1, n, n * v, false, 'the value $' + (n * v) + '$ is $' + Sn + '$, while $a_1 + ' + sub('a', n) + ' = 2' + ak + ' = ' + (2 * v) + '$.', { g: 'e', trap: 'companion' }),
       pr(1, n, v, false, 'the two terms add up to $2' + ak + ' = ' + (2 * v) + '$.', { g: 'e', trap: 'half' })
     ];
     return out('In the arithmetic sequence ' + SEQ + ', $' + ak + ' = ' + v + '$, and $S_n$ is the sum of the first $n$ terms. Which of the following is correct? ( )', choose(R, pool),
-      'Index property: if $m + n = p + q$, then $a_m + a_n = a_p + a_q$.');
+      'In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$.');
   });
 
   /* ===================== CN-cir · 6.1 and 6.2 ===================== */
@@ -8787,19 +9067,20 @@
     var lat = [], dx, dy;
     for (dx = -5; dx <= 5; dx++) for (dy = -5; dy <= 5; dy++) if (dx * dx + dy * dy === r2) lat.push([a + dx, b + dy]);
     if (!lat.length) throw new Error('circleItem: no lattice point for r² = ' + r2);
-    var on = R.pick(lat), inn = R.pick([[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [-1, 1], [1, -1]].filter(function (d) { return d[0] * d[0] + d[1] * d[1] < r2; })), inner = [a + inn[0], b + inn[1]], cWhy = general ? 'complete the square: $' + circ(a, b, r2) + '$.' : 'compare with $(x - a)^2 + (y - b)^2 = r^2$; the signs flip.';
+    var on = R.pick(lat), inn = R.pick([[1, 0], [0, 1], [-1, 0], [0, -1], [1, 1], [-1, 1], [1, -1]].filter(function (d) { return d[0] * d[0] + d[1] * d[1] < r2; })), inner = [a + inn[0], b + inn[1]], cWhy = general ? 'completing the square gives $' + circ(a, b, r2) + '$, so the center is $' + F.pt(a, b) + '$.' : 'comparing with $(x - a)^2 + (y - b)^2 = r^2$ gives $a = ' + a + '$ and $b = ' + b + '$, so the center is $' + F.pt(a, b) + '$.';
+    var sqT = function (v) { return v < 0 ? '(' + v + ')^2' : v + '^2'; };
     var o1 = R.sign() * (Math.floor(Math.sqrt(r2)) + 1), outer = R.bool() ? [a + o1, b] : [a, b + o1];
     var pool = [
       cs(a, b, true, cWhy, { g: 'c' }),
       rs(r, true, '$r^2 = ' + r2 + '$, so $r = ' + F.n(r) + '$.', { g: 'r' }),
-      ps(on, true, 'its coordinates satisfy the equation.', { g: 'p' }),
-      ins(inner, true, 'its distance from the center is less than $' + F.n(r) + '$.', { g: 'in' }),
-      cs(-a, -b, false, 'the signs are flipped: the center is $' + F.pt(a, b) + '$.', { g: 'c', trap: 'sign' }),
-      cs(b, a, false, 'the coordinates are swapped: the center is $' + F.pt(a, b) + '$.', { g: 'c', trap: 'swap' }),
-      general ? cs(D, E, false, 'halve the coefficients and change the signs: the center is $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + F.pt(a, b) + '$.', { g: 'c', trap: 'partial' }) : null,
-      rs(r2, false, 'that is $r^2$; the radius is $' + F.n(r) + '$.', { g: 'r', trap: 'radius' }),
-      rs(Sd.sqrt(4 * r2), false, general ? 'use $r^2 = \\dfrac{D^2 + E^2}{4} - F = ' + r2 + '$; the radius is $' + F.n(r) + '$.' : 'that is the diameter; the radius is $' + F.n(r) + '$.', { g: 'r', trap: general ? 'partial' : 'half' }),
-      ps([a, b], false, 'that is the center, which is not on the circle.', { g: 'p', trap: 'companion' }),
+      ps(on, true, 'its distance from the center is $\\sqrt{' + sqT(on[0] - a) + ' + ' + sqT(on[1] - b) + '} = ' + F.n(r) + '$, the radius.', { g: 'p' }),
+      ins(inner, true, 'its distance from the center is $' + F.n(Sd.sqrt(inn[0] * inn[0] + inn[1] * inn[1])) + '$, which is less than the radius $' + F.n(r) + '$.', { g: 'in' }),
+      cs(-a, -b, false, cWhy, { g: 'c', trap: 'sign' }),
+      cs(b, a, false, cWhy, { g: 'c', trap: 'swap' }),
+      general ? cs(D, E, false, 'the center is $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + F.pt(a, b) + '$, not $(D, E)$.', { g: 'c', trap: 'partial' }) : null,
+      rs(r2, false, '$' + r2 + '$ is $r^2$, so the radius is $' + (F.n(r) === '\\sqrt{' + r2 + '}' ? '' : '\\sqrt{' + r2 + '} = ') + F.n(r) + '$.', { g: 'r', trap: 'radius' }),
+      rs(Sd.sqrt(4 * r2), false, general ? '$r^2 = \\dfrac{D^2 + E^2}{4} - F = ' + r2 + '$, so the radius is $' + F.n(r) + '$.' : 'the value $' + F.n(Sd.sqrt(4 * r2)) + '$ is the diameter. The radius is $' + F.n(r) + '$.', { g: 'r', trap: general ? 'partial' : 'half' }),
+      ps([a, b], false, 'that point is the center, which is not on the circle.', { g: 'p', trap: 'companion' }),
       ps([a + r2, b], false, 'that point is $' + r2 + '$ units from the center, and the radius is $' + F.n(r) + '$.', { g: 'p', trap: 'radius' }),
       ins(outer, false, 'its distance from the center is $' + Math.abs(o1) + '$, which is greater than the radius $' + F.n(r) + '$.', { g: 'in', trap: 'distance' })
     ];
@@ -8835,14 +9116,14 @@
       vs('The length of its minor axis is', b.scale(2), 2 * bN, true, '$b = ' + F.n(b) + '$, so $2b = ' + F.n(b.scale(2)) + '$.', { g: 'b' }),
       vs('Its eccentricity is', q(c, a), c / a, true, '$e = \\dfrac{c}{a} = ' + F.n(q(c, a)) + '$.', { g: 'ecc' }),
       fs(axis, c, true, '$c = ' + c + '$ and the foci are on the $' + axis + '$-axis.', { g: 'f' }),
-      es(key[1], key[0], false, 'the foci are on the $' + axis + '$-axis, so the larger denominator $a^2 = ' + (a * a) + '$ goes under $' + axis + '^2$: $' + eqT + '$.', { g: 'e', trap: 'axis' }),
-      es(axis === 'x' ? a * a : c * c, axis === 'x' ? c * c : a * a, false, '$c^2$ was used in place of $b^2 = a^2 - c^2 = ' + b2 + '$: $' + eqT + '$.', { g: 'e', trap: 'companion' }),
-      vs('The length of its minor axis is', b, 2 * bN, false, 'that is $b$; the minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'b', trap: 'half' }),
-      vs('The length of its minor axis is', 2 * c, 2 * bN, false, 'that is the focal distance $2c$; the minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'b', trap: 'companion' }),
-      vs('Its eccentricity is', b.scale(q(1, a)), c / a, false, 'that is $\\dfrac{b}{a}$; $e = \\dfrac{c}{a} = ' + F.n(q(c, a)) + '$.', { g: 'ecc', trap: 'companion' }),
-      vs('Its eccentricity is', q(a, c), c / a, false, 'that is $\\dfrac{a}{c}$; an ellipse has $e = \\dfrac{c}{a} = ' + F.n(q(c, a)) + ' < 1$.', { g: 'ecc', trap: 'reciprocal' }),
-      fs(other, c, false, 'the foci are on the $' + axis + '$-axis.', { g: 'f', trap: 'axis' }),
-      fs(axis, 2 * c, false, 'that uses the focal distance $2c$; $c = ' + c + '$.', { g: 'f', trap: 'half' })
+      es(key[1], key[0], false, 'the foci are on the $' + axis + '$-axis, so the larger denominator $a^2 = ' + (a * a) + '$ goes under $' + axis + '^2$ and the equation is $' + eqT + '$.', { g: 'e', trap: 'axis' }),
+      es(axis === 'x' ? a * a : c * c, axis === 'x' ? c * c : a * a, false, 'the second denominator is $b^2 = a^2 - c^2 = ' + b2 + '$, not $c^2 = ' + (c * c) + '$. The equation is $' + eqT + '$.', { g: 'e', trap: 'companion' }),
+      vs('The length of its minor axis is', b, 2 * bN, false, '$b = ' + F.n(b) + '$, so the minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'b', trap: 'half' }),
+      vs('The length of its minor axis is', 2 * c, 2 * bN, false, '$' + (2 * c) + '$ is the focal distance $2c$. The minor axis is $2b = ' + F.n(b.scale(2)) + '$.', { g: 'b', trap: 'companion' }),
+      vs('Its eccentricity is', b.scale(q(1, a)), c / a, false, 'the value is $\\dfrac{b}{a}$, but $e = \\dfrac{c}{a} = ' + F.n(q(c, a)) + '$.', { g: 'ecc', trap: 'companion' }),
+      vs('Its eccentricity is', q(a, c), c / a, false, 'the value is $\\dfrac{a}{c}$. An ellipse has $e = \\dfrac{c}{a} = ' + F.n(q(c, a)) + ' < 1$.', { g: 'ecc', trap: 'reciprocal' }),
+      fs(other, c, false, 'the question says the foci are on the $' + axis + '$-axis.', { g: 'f', trap: 'axis' }),
+      fs(axis, 2 * c, false, 'the focal distance is $2c = ' + (2 * c) + '$, so $c = ' + c + '$.', { g: 'f', trap: 'half' })
     ];
     return out('An ellipse has its center at the origin and its foci on the $' + axis + '$-axis. The length of its major axis is $' + (2 * a) + '$ and its focal distance is $' + (2 * c) + '$. ' + CORRECT, choose(R, pool),
       'Here $2a = ' + (2 * a) + '$ and $2c = ' + (2 * c) + '$, so $a = ' + a + '$, $c = ' + c + '$ and $b^2 = a^2 - c^2 = ' + b2 + '$.');
@@ -8869,15 +9150,15 @@
       cs('z^2', a * a - b * b, 2 * a * b, sq, true, '$z^2 = ' + par(a) + '^2 + 2 \\cdot ' + par(a) + ' \\cdot ' + par(b) + 'i + ' + par(b) + '^2 i^2 = ' + sqT + '$.', { g: 's' }),
       cs('z\\bar{z}', n2, 0, prod, true, '$z\\bar{z} = |z|^2 = ' + n2 + '$.', { g: 'p' }),
       cs('\\dfrac{1}{z}', q(a, n2), q(-b, n2), inv, true, '$\\dfrac{1}{z} = \\dfrac{\\bar{z}}{z\\bar{z}} = \\dfrac{' + cx(a, -b) + '}{' + n2 + '}$.', { g: 'i' }),
-      ms(n2, false, 'that is $|z|^2$; $|z| = ' + F.n(mod) + '$.', { g: 'm', trap: 'radius' }),
-      Math.abs(a) === Math.abs(b) ? null : ms(Sd.sqrt(Math.abs(a * a - b * b)), false, 'the squares are added: $|z| = \\sqrt{a^2 + b^2} = ' + F.n(mod) + '$.', { g: 'm', trap: 'sign' }),
-      cs('\\bar{z}', -a, b, zb, false, 'only the imaginary part changes sign: $\\bar{z} = ' + cx(a, -b) + '$.', { g: 'c', trap: 'sign' }),
-      cs('\\bar{z}', -a, -b, zb, false, 'only the imaginary part changes sign: $\\bar{z} = ' + cx(a, -b) + '$.', { g: 'c', trap: 'sign' }),
-      cs('z^2', n2, 2 * a * b, sq, false, '$i^2 = -1$, so the real part is $a^2 - b^2$: $z^2 = ' + sqT + '$.', { g: 's', trap: 'sign' }),
-      cs('z^2', a * a - b * b, 0, sq, false, 'the middle term $2abi$ is missing: $z^2 = ' + sqT + '$.', { g: 's', trap: 'partial' }),
+      ms(n2, false, '$' + n2 + '$ is $|z|^2$, so $|z| = ' + (F.n(mod) === '\\sqrt{' + n2 + '}' ? '' : '\\sqrt{' + n2 + '} = ') + F.n(mod) + '$.', { g: 'm', trap: 'radius' }),
+      Math.abs(a) === Math.abs(b) ? null : ms(Sd.sqrt(Math.abs(a * a - b * b)), false, 'the squares are added, not subtracted, so $|z| = \\sqrt{a^2 + b^2} = ' + F.n(mod) + '$.', { g: 'm', trap: 'sign' }),
+      cs('\\bar{z}', -a, b, zb, false, 'only the imaginary part changes sign, so $\\bar{z} = ' + cx(a, -b) + '$.', { g: 'c', trap: 'sign' }),
+      cs('\\bar{z}', -a, -b, zb, false, 'only the imaginary part changes sign, so $\\bar{z} = ' + cx(a, -b) + '$.', { g: 'c', trap: 'sign' }),
+      cs('z^2', n2, 2 * a * b, sq, false, 'since $i^2 = -1$, the real part is $a^2 - b^2 = ' + (a * a - b * b) + '$, so $z^2 = ' + sqT + '$.', { g: 's', trap: 'sign' }),
+      cs('z^2', a * a - b * b, 0, sq, false, '$z^2$ also has the middle term $2abi = ' + F.sum([[2 * a * b, 'i']]) + '$, so $z^2 = ' + sqT + '$.', { g: 's', trap: 'partial' }),
       cs('z\\bar{z}', a * a - b * b, 0, prod, false, '$z\\bar{z} = a^2 + b^2 = ' + n2 + '$.', { g: 'p', trap: 'sign' }),
-      cs('\\dfrac{1}{z}', q(a, n2), q(b, n2), inv, false, 'multiply by the conjugate: $\\dfrac{1}{z} = ' + invT + '$.', { g: 'i', trap: 'sign' }),
-      cs('\\dfrac{1}{z}', a, -b, inv, false, 'the denominator $z\\bar{z} = ' + n2 + '$ is missing: $\\dfrac{1}{z} = ' + invT + '$.', { g: 'i', trap: 'partial' })
+      cs('\\dfrac{1}{z}', q(a, n2), q(b, n2), inv, false, 'multiplying the numerator and the denominator by $\\bar{z}$ gives $\\dfrac{1}{z} = ' + invT + '$.', { g: 'i', trap: 'sign' }),
+      cs('\\dfrac{1}{z}', a, -b, inv, false, 'dividing $\\bar{z}$ by $z\\bar{z} = ' + n2 + '$ gives $\\dfrac{1}{z} = ' + invT + '$.', { g: 'i', trap: 'partial' })
     ];
     return out('Let the complex number $z = ' + zT + '$, where $i$ is the imaginary unit. Which of the following is correct? ( )', choose(R, pool));
   });
@@ -8899,13 +9180,13 @@
       ps(T.rr, pRR, C.rr, true, 'there are $C(' + r + ', 2) = ' + N.nCr(r, 2) + '$ such pairs out of $C(' + n + ', 2) = ' + tot + '$.', { g: 'rr' }),
       ps(T.rw, pRW, C.rw, true, 'there are $' + r + ' \\cdot ' + w + ' = ' + (r * w) + '$ such pairs out of $' + tot + '$.', { g: 'rw' }),
       ps(T.same, pSame, C.same, true, 'there are $' + N.nCr(r, 2) + ' + ' + N.nCr(w, 2) + ' = ' + (N.nCr(r, 2) + N.nCr(w, 2)) + '$ such pairs out of $' + tot + '$.', { g: 'same' }),
-      ps(T.any, pAny, C.any, true, 'it is $1 - P(\\text{both ' + c2 + '}) = 1 - ' + F.n(pWW) + '$.', { g: 'any' }),
-      ps(T.rr, q(r * r, n * n), C.rr, false, 'the balls are drawn together (no replacement): $\\dfrac{C(' + r + ', 2)}{C(' + n + ', 2)} = ' + fr(N.nCr(r, 2), tot) + '$.', { g: 'rr', trap: 'replacement' }),
-      ps(T.rw, q(r * w, n * (n - 1)), C.rw, false, 'that counts only one of the two orders; the probability is $' + fr(r * w, tot) + '$.', { g: 'rw', trap: 'order' }),
-      ps(T.rw, pSame, C.rw, false, 'that is the probability of the same colour; different colours: $' + F.n(pRW) + '$.', { g: 'rw', trap: 'complement' }),
-      ps(T.same, pRR, C.same, false, 'that counts only the ' + c1 + ' pairs; add the ' + c2 + ' pairs: $' + F.n(pSame) + '$.', { g: 'same', trap: 'partial' }),
+      ps(T.any, pAny, C.any, true, 'it is $1 - P(\\text{both ' + c2 + '}) = 1 - ' + F.n(pWW) + ' = ' + F.n(pAny) + '$.', { g: 'any' }),
+      ps(T.rr, q(r * r, n * n), C.rr, false, 'the balls are drawn together, so there is no replacement and the probability is $\\dfrac{C(' + r + ', 2)}{C(' + n + ', 2)} = ' + fr(N.nCr(r, 2), tot) + '$.', { g: 'rr', trap: 'replacement' }),
+      ps(T.rw, q(r * w, n * (n - 1)), C.rw, false, 'the pairs are unordered, so there are $' + (r * w) + '$ such pairs out of $' + tot + '$ and the probability is $' + fr(r * w, tot) + '$.', { g: 'rw', trap: 'order' }),
+      ps(T.rw, pSame, C.rw, false, 'the value $' + F.n(pSame) + '$ is the probability of the same colour. The probability of different colours is $' + F.n(pRW) + '$.', { g: 'rw', trap: 'complement' }),
+      ps(T.same, pRR, C.same, false, 'that value counts only the ' + c1 + ' pairs. Adding the ' + c2 + ' pairs gives $' + F.n(pSame) + '$.', { g: 'same', trap: 'partial' }),
       ps(T.any, q(1).sub(pRR), C.any, false, 'the complement of \u201cat least one ' + c1 + '\u201d is \u201cboth ' + c2 + '\u201d: $1 - ' + F.n(pWW) + ' = ' + F.n(pAny) + '$.', { g: 'any', trap: 'complement' }),
-      ps(T.any, pRW, C.any, false, 'that is \u201cexactly one ' + c1 + '\u201d; add the case of two ' + c1 + ' balls: $' + F.n(pAny) + '$.', { g: 'any', trap: 'partial' })
+      ps(T.any, pRW, C.any, false, 'that value is the probability of exactly one ' + c1 + ' ball. Adding the case of two ' + c1 + ' balls gives $' + F.n(pAny) + '$.', { g: 'any', trap: 'partial' })
     ];
     return out('A bag contains $' + r + '$ ' + c1 + ' balls and $' + w + '$ ' + c2 + ' balls of the same size. Two balls are drawn at random at the same time. ' + CORRECT, choose(R, pool),
       'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs.');
@@ -8924,11 +9205,13 @@
     pool.push(h.numS(dL + ' = ' + L(b1, x1 - y1), false, 'a difference of logarithms is the logarithm of the quotient: $' + L(b1, P(b1, k1)) + ' = ' + k1 + '$.', { g: 'diff', trap: 'operation' }));
     var a2 = R.pick([2, 3]), c2 = R.pick([3, 5, 7].filter(function (v) { return v !== a2; })), k2 = R.pick([2, 3, 4]), pL = L(a2, c2) + ' \\cdot ' + L(c2, P(a2, k2));
     pool.push(h.numS(pL + ' = ' + k2, true, 'change of base: $' + pL + ' = ' + L(a2, P(a2, k2)) + ' = ' + k2 + '$.', { g: 'prod' }));
-    pool.push(h.numS(pL + ' = ' + L(a2, c2 * P(a2, k2)), false, 'the product is $' + L(a2, P(a2, k2)) + ' = ' + k2 + '$ (change of base), not the logarithm of the product of the arguments.', { g: 'prod', trap: 'operation' }));
+    pool.push(h.numS(pL + ' = ' + L(a2, c2 * P(a2, k2)), false, 'by the change of base formula the product is $' + L(a2, P(a2, k2)) + ' = ' + k2 + '$. It is not the logarithm of the product of the arguments.', { g: 'prod', trap: 'operation' }));
     var pw = R.pick([[4, 8, q(3, 2)], [8, 4, q(2, 3)], [9, 27, q(3, 2)], [4, 32, q(5, 2)], [27, 9, q(2, 3)], [8, 16, q(4, 3)], [9, 3, q(1, 2)], [8, 2, q(1, 3)]]), wL = L(pw[0], pw[1]);
-    pool.push(h.numS(wL + ' = ' + F.n(pw[2]), true, 'write both numbers as powers of the same base: the value is $' + F.n(pw[2]) + '$.', { g: 'pow' }));
-    pool.push(h.numS(wL + ' = ' + F.n(pw[0] > pw[1] ? q(pw[0], pw[1]) : q(pw[1], pw[0])), false, 'dividing the two numbers is not a logarithm rule; as powers of the same base the value is $' + F.n(pw[2]) + '$.', { g: 'pow', trap: 'operation' }));
-    pool.push(h.numS(wL + ' = ' + F.n(pw[2].inv()), false, 'the exponents are the wrong way round; the value is $' + F.n(pw[2]) + '$.', { g: 'pow', trap: 'reciprocal' }));
+    var pb = pw[0] % 3 === 0 ? 3 : 2, ex = function (v) { return Math.round(Math.log(v) / Math.log(pb)); };
+    var pWork = '$' + pw[0] + ' = ' + pb + '^{' + ex(pw[0]) + '}$ and $' + pw[1] + ' = ' + pb + (ex(pw[1]) === 1 ? '' : '^{' + ex(pw[1]) + '}') + '$, so $' + wL + ' = \\dfrac{' + ex(pw[1]) + '}{' + ex(pw[0]) + '}' + (ex(pw[0]) === pw[2].d ? '' : ' = ' + F.n(pw[2])) + '$';
+    pool.push(h.numS(wL + ' = ' + F.n(pw[2]), true, pWork + '.', { g: 'pow' }));
+    pool.push(h.numS(wL + ' = ' + F.n(pw[0] > pw[1] ? q(pw[0], pw[1]) : q(pw[1], pw[0])), false, 'dividing the two numbers is not a logarithm rule. In fact ' + pWork + '.', { g: 'pow', trap: 'operation' }));
+    pool.push(h.numS(wL + ' = ' + F.n(pw[2].inv()), false, pWork + ', not its reciprocal.', { g: 'pow', trap: 'reciprocal' }));
     var b3 = R.pick([2, 3, 5]), k3 = R.pick([2, 3]), rL = L(b3, '\\dfrac{1}{' + P(b3, k3) + '}');
     pool.push(h.numS(rL + ' = ' + (-k3), true, '$\\dfrac{1}{' + P(b3, k3) + '} = ' + b3 + '^{-' + k3 + '}$.', { g: 'rec' }));
     pool.push(h.numS(rL + ' = ' + F.n(q(1, k3)), false, '$\\dfrac{1}{' + P(b3, k3) + '} = ' + b3 + '^{-' + k3 + '}$, so the value is $-' + k3 + '$.', { g: 'rec', trap: 'reciprocal' }));
@@ -8973,7 +9256,7 @@
   function tanT(wq) { return wq.eq(1) ? '\\tan x' : (wq.d === 1 ? '\\tan ' + wq.n + 'x' : '\\tan\\dfrac{x}{' + wq.d + '}'); }
   function piOf(degFr) { return F.piMul(q(degFr).div(180)); }
   def({ id: 'TR-graph.tan-mono', code: 'TR-graph', lesson: '2.6', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Interval on which y = tan ωx is increasing (an asymptote inside the interval is the trap)', basis: 'Course plan 2.6 Q7' }, function (R) {
+    form: 'Interval on which y = tan ωx is increasing (the wrong intervals contain an asymptote)', basis: 'Course plan 2.6 Q7' }, function (R) {
     var wq = R.pick([q(2), q(1, 2), q(3), q(2), q(1, 2)]), hw = q(90).div(wq), f = function (x) { return Math.tan(wq.num * x); };
     function st(l, r, ok) {
       var lo = hw.mul(l), hi = hw.mul(r), asy = null, kk;
@@ -8986,13 +9269,13 @@
       st(0, 2, false), st(-2, 2, false), st(q(1, 2), q(3, 2), false), st(0, 4, false), st(-2, 0, false), st(one.neg(), one, false), st(0, one, false)];
     var seen = {};
     pool = pool.filter(function (x) { if (seen[x.t]) return false; seen[x.t] = 1; return true; });
-    var s = choose(R, pool), asyT = piOf(hw) + ' + ' + (hw.mul(2).eq(180) ? 'k\\pi' : 'k \\cdot ' + piOf(hw.mul(2)));
-    s.sol = 'The function is undefined where $' + (wq.d === 1 ? wq.n + 'x' : '\\dfrac{x}{' + wq.d + '}') + ' = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = ' + asyT + '$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only ' + s.key + ' contains none of them; each of the other intervals contains one.';
+    var s = choose(R, pool), per = hw.mul(2), asyT = piOf(hw) + ' + ' + (per.eq(180) ? 'k\\pi' : per.eq(360) ? '2k\\pi' : per.eq(720) ? '4k\\pi' : per.eq(90) ? '\\dfrac{k\\pi}{2}' : per.eq(60) ? '\\dfrac{k\\pi}{3}' : 'k \\cdot ' + piOf(per));
+    s.sol = 'The function is undefined where $' + (wq.d === 1 ? wq.n + 'x' : '\\dfrac{x}{' + wq.d + '}') + ' = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = ' + asyT + '$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only ' + s.key + ' contains none of them. Each of the other intervals contains one.';
     return out('The function $y = ' + tanT(wq) + '$ is monotonically increasing on ( )', s);
   });
 
   def({ id: 'TR-graph.tan-shift', code: 'TR-graph', lesson: '2.6', tier: 'M', level: '+1', fmt: 'S',
-    form: 'y = tan(ωx + φ): which statement (period, domain, monotonic interval, zero, parity) is correct', basis: 'Course plan 2.6 Q5–7 and Set C' }, function (R) {
+    form: 'y = tan(ωx + φ): which statement (period, domain, monotonic interval, zero, parity) is correct', basis: 'Course plan 2.6 Q5-7 and Set C' }, function (R) {
     var wq = R.pick([q(1), q(2), q(1, 2), q(1), q(2)]), phi = R.pick([45, -45, 30, -30, 60, -60]), w = wq.num, ph = phi * PI / 180;
     var f = function (x) { return Math.tan(w * x + ph); };
     var T = q(180).div(wq), x0 = q(90 - phi).div(wq), x1 = q(-phi).div(wq);                      // degrees: period, an asymptote, a zero
@@ -9016,28 +9299,28 @@
     while (x0p.gt(T)) x0p = x0p.sub(T);
     var pool = [
       ps(T, true, '$T = \\dfrac{\\pi}{|\\omega|} = ' + piOf(T) + '$.', { g: 'p' }),
-      dsn(x0, T, true, 'solve ' + cond + '.', { g: 'd' }),
+      dsn(x0, T, true, 'it comes from solving ' + cond + '.', { g: 'd' }),
       mono(x0.sub(T), x0, true, true, 'the interval lies between two neighbouring points where the function is undefined.', { g: 'm' }),
       zs(x1, true, 'the angle $' + arg + '$ is $0$ there.', { g: 'z' }),
       ps(T.mul(2), false, 'the tangent has period $\\dfrac{\\pi}{|\\omega|}$, not $\\dfrac{2\\pi}{|\\omega|}$: $T = ' + piOf(T) + '$.', { g: 'p', trap: 'period' }),
       T.eq(180) ? null : ps(q(180), false, 'the coefficient of $x$ changes the period: $T = ' + piOf(T) + '$.', { g: 'p', trap: 'partial' }),
-      x0p.eq(x0) ? null : dsn(x0p, T, false, 'the shift was ignored; solve ' + cond + '.', { g: 'd', trap: 'shift' }),
-      dsn(x0, T.mul(2), false, 'that leaves out every second point; solve ' + cond + '.', { g: 'd', trap: 'near-miss' }),
+      x0p.eq(x0) ? null : dsn(x0p, T, false, 'the shift was ignored. The excluded points come from solving ' + cond + ', which gives $x \\ne ' + kT(T) + ' + ' + piOf(x0) + '$.', { g: 'd', trap: 'shift' }),
+      dsn(x0, T.mul(2), false, 'that list leaves out every second excluded point. Solving ' + cond + ' gives points $' + piOf(T) + '$ apart.', { g: 'd', trap: 'near-miss' }),
       mono(x0.sub(T.div(2)), x0.add(T.div(2)), true, false, 'the function is undefined at $x = ' + piOf(x0) + '$, which lies inside this interval.', { g: 'm', trap: 'domain' }),
       mono(x0.sub(T), x0, false, false, 'a tangent with a positive coefficient of $x$ increases on each interval of its domain.', { g: 'm', trap: 'sign' }),
       zs(x0, false, 'the function is undefined at $x = ' + piOf(x0) + '$.', { g: 'z', trap: 'companion' }),
-      zs(q(-phi), false, 'solve $' + arg + ' = 0$: $x = ' + piOf(x1) + '$.', { g: 'z', trap: 'partial' }),
-      S('It is an odd function', false, function () { return nt.odd(f); }, 'the shift moves the graph, so it is no longer symmetric about the origin.', { g: 'o', trap: 'shift' })
+      zs(q(-phi), false, 'solving $' + arg + ' = 0$ gives $x = ' + piOf(x1) + '$.', { g: 'z', trap: 'partial' }),
+      S('It is an odd function', false, function () { return nt.odd(f); }, 'at $x = 0$ the function equals $\\tan\\left(' + F.rad(phi) + '\\right) \\ne 0$, but an odd function defined at $0$ has the value $0$ there.', { g: 'o', trap: 'shift' })
     ];
     return out('Which of the following statements about the function $' + fT + '$ is correct? ( )', choose(R, pool));
   });
 
   var PAR = [
-    ['\\tan 2x', 'odd', '$\\tan(-2x) = -\\tan 2x$'], ['\\tan(x + \\pi)', 'odd', '$\\tan(x + \\pi) = \\tan x$'], ['-\\tan x', 'odd', '$-\\tan(-x) = \\tan x$'], ['\\tan x + \\sin x', 'odd', 'a sum of two odd functions is odd'],
-    ['2\\tan\\dfrac{x}{2}', 'odd', '$\\tan\\dfrac{-x}{2} = -\\tan\\dfrac{x}{2}$'], ['x^2\\tan x', 'odd', 'even times odd is odd'],
-    ['\\left|\\tan x\\right|', 'even', '$|\\tan(-x)| = |\\tan x|$'], ['\\tan^2 x', 'even', '$\\tan^2(-x) = \\tan^2 x$'], ['x\\tan x', 'even', 'odd times odd is even'],
-    ['\\tan x + 1', 'neither', '$f(-x) = -\\tan x + 1$ is neither $f(x)$ nor $-f(x)$'], ['\\tan\\left(x + \\dfrac{\\pi}{4}\\right)', 'neither', 'the shift breaks the symmetry: $f(0) = 1 \\ne 0$'],
-    ['\\tan x + \\cos x', 'neither', 'an odd function plus an even function is neither'], ['\\tan\\left(x - \\dfrac{\\pi}{3}\\right)', 'neither', 'the shift breaks the symmetry: $f(0) \\ne 0$'], ['\\tan x + x^2', 'neither', 'an odd function plus an even function is neither']
+    ['\\tan 2x', 'odd', '$\\tan(-2x) = -\\tan 2x$'], ['\\tan(x + \\pi)', 'odd', '$\\tan(x + \\pi) = \\tan x$, which is odd'], ['-\\tan x', 'odd', '$-\\tan(-x) = \\tan x = -(-\\tan x)$'], ['\\tan x + \\sin x', 'odd', '$\\tan(-x) + \\sin(-x) = -(\\tan x + \\sin x)$'],
+    ['2\\tan\\dfrac{x}{2}', 'odd', '$2\\tan\\dfrac{-x}{2} = -2\\tan\\dfrac{x}{2}$'], ['x^2\\tan x', 'odd', '$(-x)^2\\tan(-x) = -x^2\\tan x$'],
+    ['\\left|\\tan x\\right|', 'even', '$|\\tan(-x)| = |-\\tan x| = |\\tan x|$'], ['\\tan^2 x', 'even', '$\\tan^2(-x) = (-\\tan x)^2 = \\tan^2 x$'], ['x\\tan x', 'even', '$(-x)\\tan(-x) = x\\tan x$'],
+    ['\\tan x + 1', 'neither', '$f(-x) = -\\tan x + 1$, which is neither $f(x)$ nor $-f(x)$'], ['\\tan\\left(x + \\dfrac{\\pi}{4}\\right)', 'neither', 'it is undefined at $x = \\dfrac{\\pi}{4}$ but defined at $x = -\\dfrac{\\pi}{4}$, so its domain is not symmetric about $0$'],
+    ['\\tan x + \\cos x', 'neither', '$f(-x) = -\\tan x + \\cos x$, which is neither $f(x)$ nor $-f(x)$'], ['\\tan\\left(x - \\dfrac{\\pi}{3}\\right)', 'neither', 'it is undefined at $x = \\dfrac{5\\pi}{6}$ but defined at $x = -\\dfrac{5\\pi}{6}$, so its domain is not symmetric about $0$'], ['\\tan x + x^2', 'neither', '$f(-x) = -\\tan x + x^2$, which is neither $f(x)$ nor $-f(x)$']
   ];
   def({ id: 'TR-graph.tan-parity', code: 'TR-graph', lesson: '2.6', tier: 'M', level: '+1', fmt: 'S',
     form: 'Which tangent-type function is odd (or even)', basis: 'Course plan 2.6 Q5' }, function (R) {
@@ -9051,13 +9334,13 @@
     var nei = others.filter(function (s) { return s.kind === 'neither'; }), opp = others.filter(function (s) { return s.kind !== 'neither'; });
     var wrong = [opp[0], nei[0], R.bool() ? opp[1] : nei[1]];
     var st = QF.useStmts('S', key, wrong);
-    st.sol = 'Replace $x$ by $-x$ and compare with $f(x)$; remember that $\\tan(-x) = -\\tan x$. ' + key.t + ' is ' + ask + ': ' + key.why + ' The others: ' + wrong.map(function (x) { return x.t + ' — ' + x.why; }).join(' ');
+    st.sol = 'Replace $x$ by $-x$ and compare with $f(x)$, using $\\tan(-x) = -\\tan x$. ' + key.t + ' is ' + ask + ', because ' + key.why + ' ' + wrong.map(function (x) { return x.t + ' is not ' + ask + ', because ' + x.why; }).join(' ');
     return out('Which of the following functions is ' + (ask === 'odd' ? 'an odd' : 'an even') + ' function? ( )', st);
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- data/atlas.js ---- */
-/* ACE CSCA Question Factory · data/atlas.js — generated by tools/build-atlas.js from the Exam Structure Atlas.
+/* ACE CSCA Question Factory · data/atlas.js, generated by tools/build-atlas.js from the Exam Structure Atlas.
  * The structure of the five real sittings and the undated paper: for every slot its sub-domain code, tier, format,
  * repeated-template id and the template(s) that reproduce the form. No real item text, number or answer is stored. */
 ;(function (root) {
@@ -9373,7 +9656,7 @@
       A: { SI: 5, FN: 9, TR: 10, SQ: 6, LN: 9, CN: 6, VEC: 1, CPX: 1, PRB: 1 },
       B: { SI: 5, FN: 8, TR: 10, SQ: 8, LN: 8, CN: 6, VEC: 1, CPX: 1, PRB: 1 }
     },
-    /** repeated templates R01–R14 -> the template that reproduces them */
+    /** repeated templates R01-R14 -> the template that reproduces them */
     repeats: {'R07':'FN-cmp.r07', 'R01':'TR-half.r01', 'R03':'SQ-ar.r03', 'R12':'SQ-ar.r12', 'R14':'SQ-gen.r14', 'R10':'SQ-sn.r10', 'R02':'LN-quad.r02', 'R04':'LN-dist.r04', 'R11':'LN-slope.two-points', 'R06':'LN-perp.r06', 'R08':'CN-cir.r08', 'R13':'CN-cir.r13', 'R05':'CN-par.directrix', 'R09':'CN-ell.r09'},
     /** site papers (Course Plan §9): every one is exactly at exam level */
     site: { diagnostic: 'dec', 'mock-1': 'jan', 'mock-2': 'mar', 'mock-3': 'apr', 'mock-4': 'jun' }
@@ -9381,7 +9664,7 @@
 })(typeof globalThis !== 'undefined' ? globalThis : this);
 
 /* ---- data/course.js ---- */
-/* ACE CSCA Question Factory · data/course.js — the 56-day course as recipes (Course Plan 6th edition, §3–§8; Website Spec §3–§4).
+/* ACE CSCA Question Factory · data/course.js: the 56-day course as recipes (Course Plan 6th edition, §3-§8; Website Spec §3-§4).
  * A slot is: 'template.id' | ['id1', 'id2'] (one is drawn) | at(lesson, slot) (file the item under another lesson)
  *          | rev(lesson) (spaced review: a real exam form of that lesson) | trap() (a lesson-3.5 trap item).
  * Recipes follow the "Set A / Set B / Set C · Day N" paragraphs of the plan. Where a paragraph names no "which is true"
@@ -9493,13 +9776,13 @@
       c: { back: '6.5', items: ['PRB.share', 'PRB.two-way', 'PRB.compare-n', 'CN-ell.two-case'] } }
   ];
 
-  /* ---------------- weekly mocks W1–W7 (Course Plan §7) ----------------
-   * main: Q1–16 this week's topics in lesson order ([code, count, options]); review: Q17–20 (level =); hard: Q21–24 (2.5 points, +1).
+  /* ---------------- weekly mocks W1-W7 (Course Plan §7) ----------------
+   * main: Q1-16 this week's topics in lesson order ([code, count, options]); review: Q17-20 (level =); hard: Q21-24 (2.5 points, +1).
    * options: lessons (restrict a code to these lessons), rep (repeated templates that must appear), ids (explicit pool), trap. */
   var weekly = [
     { week: 1, day: 7,
       main: [['SET-el', 2], ['SET-op', 2], ['INQ-quad', 2], ['INQ-rat', 2], ['INQ-prop', 2], ['FN-dom', 3], ['FN-rng', 1], ['FN-par', 2]],
-      review: [['FN-inv', 2], ['FN-mono', 1], ['FN-same', 1]],          // Week 1 has no earlier week: Q17–20 continue the week's own list at level =
+      review: [['FN-inv', 2], ['FN-mono', 1], ['FN-same', 1]],          // Week 1 has no earlier week: Q17-20 continue the week's own list at level =
       hard: ['INQ-rat.lek', ['FN-dom.composite-sq', 'FN-dom.composite'], 'FN-dom.inv-ln-abs', ['FN-inv.frac-neg', 'FN-inv.frac']] },
     { week: 2, day: 14,
       main: [['TR-val', 3], ['TR-def', 3], ['TR-id', 3], ['TR-red', 3], ['TR-graph', 2, { lessons: ['2.5'] }], ['TR-graph', 2, { lessons: ['2.6'] }]],
@@ -9527,7 +9810,7 @@
       hard: ['VEC.min-norm', 'CPX.root-on-line', 'PRB.share', 'PRB.two-way'] }
   ];
 
-  /* ---------------- 41–48 drills, Weeks 1–7 (Course Plan §6): slot 41 … 48 ---------------- */
+  /* ---------------- 41-48 drills, Weeks 1-7 (Course Plan §6): slot 41 … 48 ---------------- */
   var drills = [
     { week: 1, day: 6, slots: [['INQ-rat.le1', 'INQ-rat.lek'], 'FN-dom.inv-ln-abs', 'FN-dom.composite', 'FN-dom.root-den-log', ['FN-rng.recip-quad', 'FN-rng.recip-abs'], 'FN-inv.frac', 'FN-same.pairs', 'INQ-rat.closed'] },
     { week: 2, day: 13, slots: ['TR-id.four', 'TR-id.noquad', 'TR-red.chain', 'TR-red.three-half', 'TR-graph.four', 'TR-graph.tan-neg', 'TR-graph.tan-domain', 'TR-def.chain'] },
@@ -9538,23 +9821,23 @@
     { week: 7, day: 47, slots: [['FN-prop.fixed-log', 'FN-prop.fixed-exp'], 'FN-log.ineq-small', 'FN-cmp.order3', ['VEC.min-norm', 'VEC.collinear'], 'FN-log.stmt4', 'CPX.root-on-line', ['CPX.power-diff', 'CPX.max-mod', 'CPX.conj-expr'], ['PRB.share', 'PRB.two-way']] }
   ];
 
-  /* ---------------- speed drill L1–L12 (Course Plan §8): exactly 8 item types per level, in this order ---------------- */
+  /* ---------------- speed drill L1-L12 (Course Plan §8): exactly 8 item types per level, in this order ---------------- */
   var speed = {
-    L01: { name: 'Sets & number sets', lessons: '1.3–1.4', types: ['SET-el.listed', 'SET-el.two-sets', 'SET-el.empty', 'SET-num.member', 'SET-el.roots', 'SET-op.fin-cap', 'SET-op.int-cap', 'SET-op.sb-cup'] },
-    L02: { name: 'Inequalities', lessons: '1.5–1.7', types: ['INQ-quad.lt', 'INQ-quad.gt', 'INQ-quad.closed', 'INQ-quad.factored', 'INQ-rat.closed', 'INQ-rat.const', 'INQ-prop.basic', 'INQ-prop.negc'] },
-    L03: { name: 'Function basics', lessons: '1.8–1.13', types: ['FN-dom.inv-sqrt', 'FN-dom.recip-root', 'FN-dom.ln-root', 'FN-par.classify', 'FN-inv.linear', 'FN-inv.cubic', 'FN-mono.inc-R', 'FN-same.as-x'] },
-    L04: { name: 'Angles & ratios', lessons: '2.1–2.3', types: ['TR-val.single', 'TR-val.combo', 'TR-val.alpha-true', 'TR-def.point', 'TR-def.point', 'TR-def.point', 'TR-id.quad-v', 'TR-id.noquad'] },
-    L05: { name: 'Reduction & graphs', lessons: '2.4–2.6', types: ['TR-red.correct', 'TR-red.value', 'TR-red.three-half', 'TR-graph.period', 'TR-graph.tan-period', 'TR-graph.extreme', 'TR-graph.stmt', 'TR-graph.mono-interval'] },
-    L06: { name: 'Sum & double angle', lessons: '3.1–3.2', types: ['TR-sum.exact', 'TR-sum.exact-tan', 'TR-sum.tan-shift', 'TR-sum.acute-stmt', 'TR-dbl.cos-from-sin', 'TR-dbl.cos-from-cos', 'TR-dbl.sin2', 'TR-dbl.squared'] },
-    L07: { name: 'Half-angle & homogeneous', lessons: '3.3–3.5', types: ['TR-half.q4', 'TR-half.r01', 'TR-half.cos-q2', 'TR-half.tan', 'TR-hom.forward', 'TR-hom.sincos', 'TR-hom.backward', 'TR-id.identity'] },
-    L08: { name: 'Points, distance, slope', lessons: '4.1–4.3', types: ['LN-quad.r02', 'LN-pt.symmetric', 'LN-pt.on-axis', 'LN-dist.integer', 'LN-pt.dist-axis', 'LN-slope.two-points', 'LN-slope.incl-si', 'LN-slope.from-incl'] },
-    L09: { name: 'Lines', lessons: '4.4–4.7', types: ['LN-eq.point-slope', 'LN-eq.two-points', 'LN-eq.intercepts', 'LN-int.integer', 'LN-pp.par-through', 'LN-pp.perp-through', 'LN-pp.which-perp', 'LN-pp.perp-param'] },
-    L10: { name: 'Sequences', lessons: '5.1–5.7', types: ['SQ-ar.r03', 'SQ-ar.r12', 'SQ-geo.term', 'SQ-geo.ratio', 'SQ-mean.geo', 'SQ-gen.r14', 'SQ-sn.quad-term', 'SQ-sum.index-pair'] },
-    L11: { name: 'Conics', lessons: '6.1–6.6', types: ['CN-cir.r08', 'CN-cir.gen-both', 'CN-cir.r13', 'CN-par.directrix', 'CN-ell.foci', 'CN-ell.from-2a-foci', 'CN-hyp.foci', 'CN-hyp.condition'] },
-    L12: { name: 'Exp, log, vectors, complex, probability', lessons: '7.1–7.7', types: ['FN-log.sum-inv', 'FN-log.product', 'FN-prop.fixed-exp', 'FN-cmp.r07', 'VEC.lincomb', 'VEC.dot', 'CPX.linear', 'PRB.same-colour'] }
+    L01: { name: 'Sets & number sets', lessons: '1.3-1.4', types: ['SET-el.listed', 'SET-el.two-sets', 'SET-el.empty', 'SET-num.member', 'SET-el.roots', 'SET-op.fin-cap', 'SET-op.int-cap', 'SET-op.sb-cup'] },
+    L02: { name: 'Inequalities', lessons: '1.5-1.7', types: ['INQ-quad.lt', 'INQ-quad.gt', 'INQ-quad.closed', 'INQ-quad.factored', 'INQ-rat.closed', 'INQ-rat.const', 'INQ-prop.basic', 'INQ-prop.negc'] },
+    L03: { name: 'Function basics', lessons: '1.8-1.13', types: ['FN-dom.inv-sqrt', 'FN-dom.recip-root', 'FN-dom.ln-root', 'FN-par.classify', 'FN-inv.linear', 'FN-inv.cubic', 'FN-mono.inc-R', 'FN-same.as-x'] },
+    L04: { name: 'Angles & ratios', lessons: '2.1-2.3', types: ['TR-val.single', 'TR-val.combo', 'TR-val.alpha-true', 'TR-def.point', 'TR-def.point', 'TR-def.point', 'TR-id.quad-v', 'TR-id.noquad'] },
+    L05: { name: 'Reduction & graphs', lessons: '2.4-2.6', types: ['TR-red.correct', 'TR-red.value', 'TR-red.three-half', 'TR-graph.period', 'TR-graph.tan-period', 'TR-graph.extreme', 'TR-graph.stmt', 'TR-graph.mono-interval'] },
+    L06: { name: 'Sum & double angle', lessons: '3.1-3.2', types: ['TR-sum.exact', 'TR-sum.exact-tan', 'TR-sum.tan-shift', 'TR-sum.acute-stmt', 'TR-dbl.cos-from-sin', 'TR-dbl.cos-from-cos', 'TR-dbl.sin2', 'TR-dbl.squared'] },
+    L07: { name: 'Half-angle & homogeneous', lessons: '3.3-3.5', types: ['TR-half.q4', 'TR-half.r01', 'TR-half.cos-q2', 'TR-half.tan', 'TR-hom.forward', 'TR-hom.sincos', 'TR-hom.backward', 'TR-id.identity'] },
+    L08: { name: 'Points, distance, slope', lessons: '4.1-4.3', types: ['LN-quad.r02', 'LN-pt.symmetric', 'LN-pt.on-axis', 'LN-dist.integer', 'LN-pt.dist-axis', 'LN-slope.two-points', 'LN-slope.incl-si', 'LN-slope.from-incl'] },
+    L09: { name: 'Lines', lessons: '4.4-4.7', types: ['LN-eq.point-slope', 'LN-eq.two-points', 'LN-eq.intercepts', 'LN-int.integer', 'LN-pp.par-through', 'LN-pp.perp-through', 'LN-pp.which-perp', 'LN-pp.perp-param'] },
+    L10: { name: 'Sequences', lessons: '5.1-5.7', types: ['SQ-ar.r03', 'SQ-ar.r12', 'SQ-geo.term', 'SQ-geo.ratio', 'SQ-mean.geo', 'SQ-gen.r14', 'SQ-sn.quad-term', 'SQ-sum.index-pair'] },
+    L11: { name: 'Conics', lessons: '6.1-6.6', types: ['CN-cir.r08', 'CN-cir.gen-both', 'CN-cir.r13', 'CN-par.directrix', 'CN-ell.foci', 'CN-ell.from-2a-foci', 'CN-hyp.foci', 'CN-hyp.condition'] },
+    L12: { name: 'Exp, log, vectors, complex, probability', lessons: '7.1-7.7', types: ['FN-log.sum-inv', 'FN-log.product', 'FN-prop.fixed-exp', 'FN-cmp.r07', 'VEC.lincomb', 'VEC.dot', 'CPX.linear', 'PRB.same-colour'] }
   };
 
-  /* ---------------- easy-trick drill T01–T12 (Course Plan §5): one generator per trick ---------------- */
+  /* ---------------- easy-trick drill T01-T12 (Course Plan §5): one generator per trick ---------------- */
   var tricks = {
     T01: ['SET-el.listed', 'SET-el.two-sets', 'SET-el.roots', 'SET-el.empty'],
     T02: ['INQ-quad.lt', 'INQ-quad.gt', 'INQ-quad.closed', 'INQ-quad.factored', 'INQ-rat.basic', 'INQ-rat.closed'],
@@ -9597,7 +9880,7 @@
 /* ---- assemble.js ---- */
 /* ACE CSCA Question Factory · assemble.js
  * Turns verified templates into papers: full mocks (slot-by-slot replicas of the six papers, and blueprint A/B mocks),
- * the diagnostic, weekly mocks W1–W7, Set A / Set B / Set C for every lesson day, 41–48 drills, and custom practice
+ * the diagnostic, weekly mocks W1-W7, Set A / Set B / Set C for every lesson day, 41-48 drills, and custom practice
  * tests by domain, sub-domain or lesson. Everything is seeded: the same seed gives the same paper. */
 ;(function (root) {
   'use strict';
@@ -9709,7 +9992,7 @@
   };
 
   /* ---------------- answer letters ---------------- */
-  /** balanced key strip: equal counts of A–D (±1), no run longer than maxRun */
+  /** balanced key strip: equal counts of A-D (±1), no run longer than maxRun */
   function keyStrip(n, R, maxRun) {
     var base = [], i;
     for (i = 0; i < n; i++) base.push(i % 4);
@@ -9758,8 +10041,8 @@
 
   /**
    * mock({ source: 'dec'|'jan'|'mar'|'apr'|'jun'|'und', mode: 'replica'|'blueprint', seed, ref, kind, registry })
-   * replica   — every slot keeps the form of the source paper (same code, tier, format, repeated template), new numbers
-   * blueprint — every slot keeps the source paper's code and tier; repeated-template slots stay; other slots take any
+   * replica:   every slot keeps the form of the source paper (same code, tier, format, repeated template), new numbers
+   * blueprint: every slot keeps the source paper's code and tier; repeated-template slots stay; other slots take any
    *             real exam form of that sub-domain, so the paper is new but still fits blueprint A or B
    */
   A.mock = function (o) {
@@ -9814,7 +10097,7 @@
   }
   /**
    * dailySet(day, 'a' | 'b' | 'c', { seed, registry })
-   * Set A / Set B: 8 items, Q1–4 exam level, Q5–7 one notch harder (Set B of a one-video day: spaced review), Q8 worth 2.5.
+   * Set A / Set B: 8 items, Q1-4 exam level, Q5-7 one notch harder (Set B of a one-video day: spaced review), Q8 worth 2.5.
    * Set C: 4 hard items worth 2.5 on the 20 one-video days.
    */
   A.dailySet = function (day, which, o) {
@@ -9835,13 +10118,13 @@
       if (!it) throw new Error(ref + ': no fresh item for slot ' + slot);
       if (it.format === 'S') needS = false;
       var level;
-      if (which === 'c') level = it.level;                                            // hardest form +1, or the 41–48-band form
+      if (which === 'c') level = it.level;                                            // hardest form +1, or the 41-48-band form
       else if (slot <= 4) level = '=';
       else if (slot <= 7) level = isReview ? it.level : '+1';                           // spaced review may be = or +1
       else level = it.level;
       items[i] = finish(it, { id: ref + '-q' + slot, kind: kind, ref: ref, slot: slot, level: level, lesson: r.lesson });
     });
-    if (which !== 'c' && !items.some(function (it) { return it.format === 'S'; })) throw new Error(ref + ': no "which is true" item — fix the recipe');
+    if (which !== 'c' && !items.some(function (it) { return it.format === 'S'; })) throw new Error(ref + ': no "which is true" item, so the recipe needs one');
     A.balance(items, ref + ':' + seed, 2);
     return paper({ ref: ref, kind: kind, seed: seed, items: items,
       title: 'Day ' + day + ' · Set ' + which.toUpperCase() + (which === 'c' ? ' (85+)' : '') + ' · ' + (which === 'c' ? d.a.lessons : rec.lessons).join(', '),
@@ -9852,7 +10135,7 @@
   A.weekly = function (week, o) {
     o = o || {};
     var spec = course.weekly[week - 1];
-    if (!spec) throw new Error('weekly mocks exist for weeks 1–7');
+    if (!spec) throw new Error('weekly mocks exist for weeks 1-7');
     var seed = String(o.seed === undefined ? 1 : o.seed), ref = 'w' + week + '-test', R = QF.rng('weekly:' + ref + ':' + seed), reg = (o.registry || new Registry(1)).begin();
     var items = [], used = {}, q = 0;
     function entryPool(e) {
@@ -9881,7 +10164,7 @@
             if (!cands.length) cands = list.filter(function (t) { return t.level === want; });
             if (!cands.length) cands = list.filter(function (t) { return !used[t.id]; });
           }
-          var soft = cands.filter(function (t) { return t.tier !== 'H'; });                  // H forms are kept for Q21–24
+          var soft = cands.filter(function (t) { return t.tier !== 'H'; });                  // H forms are kept for Q21-24
           if (soft.length) cands = soft;
           var ids = weightedOrder(R, cands).concat(weightedOrder(R, list.filter(function (t) { return cands.indexOf(t) < 0; }))).map(function (t) { return t.id; });
           add(ids, { level: null, lesson: opt.trap ? '3.5' : null });
@@ -9889,19 +10172,19 @@
         if (reps.length) throw new Error(ref + ': repeated template ' + reps.join(', ') + ' did not fit (' + e[0] + ')');
       });
     }
-    fill(spec.main, function (slot) { return slot % 2 ? '=' : '+1'; });                // Q1–16: about half = and half +1
-    fill(spec.review, function () { return '='; });                                    // Q17–20: spaced review at exam level
-    spec.hard.forEach(function (h) { add(Array.isArray(h) ? R.shuffle(h) : [h], { level: '+1' }); });   // Q21–24: 2.5 points, level +1
+    fill(spec.main, function (slot) { return slot % 2 ? '=' : '+1'; });                // Q1-16: about half = and half +1
+    fill(spec.review, function () { return '='; });                                    // Q17-20: spaced review at exam level
+    spec.hard.forEach(function (h) { add(Array.isArray(h) ? R.shuffle(h) : [h], { level: '+1' }); });   // Q21-24: 2.5 points, level +1
     if (items.length !== 24) throw new Error(ref + ': ' + items.length + ' items');
     A.balance(items, ref + ':' + seed, 3);
     return paper({ ref: ref, kind: 'weekly', seed: seed, items: items, title: 'Weekly mock W' + week + ' · 24 questions · 30 minutes', meta: { week: week, day: spec.day } });
   };
 
-  /* ---------------- 41–48 drills ---------------- */
+  /* ---------------- 41-48 drills ---------------- */
   A.drill = function (week, o) {
     o = o || {};
     var spec = course.drills[week - 1];
-    if (!spec) throw new Error('41–48 drills exist for weeks 1–7');
+    if (!spec) throw new Error('41-48 drills exist for weeks 1-7');
     var version = o.version || 'a', seed = String(o.seed === undefined ? 1 : o.seed), ref = 'd4148-w' + week, R = QF.rng('drill:' + ref + ':' + version + ':' + seed), reg = (o.registry || new Registry(1)).begin();
     var items = spec.slots.map(function (s, i) {
       var slot = 41 + i, it = A.draw(Array.isArray(s) ? R.shuffle(s) : [s], ref + ':' + version + ':' + seed + ':q' + slot, reg);
@@ -9909,7 +10192,7 @@
       return finish(it, { id: ref + '-q' + slot, kind: 'd4148', ref: ref, slot: slot, version: version });
     });
     A.balance(items, ref + ':' + version + ':' + seed, 2);
-    return paper({ ref: ref, kind: 'd4148', seed: seed, items: items, title: '41–48 drill · Week ' + week + ' · version ' + version.toUpperCase(), meta: { week: week, day: spec.day, version: version } });
+    return paper({ ref: ref, kind: 'd4148', seed: seed, items: items, title: '41-48 drill · Week ' + week + ' · version ' + version.toUpperCase(), meta: { week: week, day: spec.day, version: version } });
   };
 
   /* ---------------- custom practice tests ---------------- */
@@ -9970,7 +10253,7 @@
     A.balance(picked, ref, 3);
     return paper({ ref: ref, kind: 'practice', seed: seed, items: picked, title: o.title || 'Practice test · ' + picked.length + ' questions', meta: { filter: { domains: o.domains, codes: o.codes, lessons: o.lessons, tiers: o.tiers, level: level }, domains: domainCount(picked), tiers: tierCount(picked) } });
   };
-  /** 1 when the form belongs to the Q41–48 band (2.5 points on a real paper), else 0 */
+  /** 1 when the form belongs to the Q41-48 band (2.5 points on a real paper), else 0 */
   var bandCache = {};
   A.band = function (id) {
     if (bandCache[id] !== undefined) return bandCache[id];
@@ -10027,7 +10310,7 @@
     }
     if (o.solutions !== false) {
       L.push('## Solutions', '');
-      p.items.forEach(function (it, i) { L.push('**' + (it.slot || i + 1) + '. ' + LETTERS[it.answer] + '** — ' + it.solution, ''); });
+      p.items.forEach(function (it, i) { L.push('**' + (it.slot || i + 1) + '. Answer ' + LETTERS[it.answer] + '.** ' + it.solution, ''); });
     }
     return L.join('\n');
   };
@@ -10213,15 +10496,15 @@
       var vals = QF.plainValues(o);                 // null for statements, sets, intervals and equations
       if (vals) for (i = 0; i < 4; i++) for (j = i + 1; j < 4; j++) if (QF.ev.sameAlts(vals[i], vals[j])) err('options ' + 'ABCD'[i] + ' and ' + 'ABCD'[j] + ' are equal in value');
     }
-    if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3) err('answer must be 0–3');
+    if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3) err('answer must be 0-3');
     if (q.level !== '=' && q.level !== '+1') err('level must be "=" or "+1"');
     if (!/^[EMH]$/.test(q.tier || '')) err('tier must be E, M or H');
     if (!/^[VSN]$/.test(q.format || '')) err('format must be V, S or N');
     if (!/\( \)$/.test(q.stem || '')) err('stem must end with "( )"');
     if (!tax.lesson(q.lesson)) err('lesson ' + q.lesson + ' does not exist');
     if (!tax.code(q.code)) err('topic code ' + q.code + ' does not exist');
-    if (q.repeat !== null && q.repeat !== undefined && !tax.repeats[q.repeat]) err('repeat must be R01–R14 or null');
-    if (q.trick !== null && q.trick !== undefined && !tax.tricks[q.trick]) err('trick must be T01–T12 or null');
+    if (q.repeat !== null && q.repeat !== undefined && !tax.repeats[q.repeat]) err('repeat must be R01-R14 or null');
+    if (q.trick !== null && q.trick !== undefined && !tax.tricks[q.trick]) err('trick must be T01-T12 or null');
     [q.stem, q.solution].concat(o || []).forEach(function (s) { var l = QF.lintTex(s === undefined || s === null ? '' : s); if (l) err('KaTeX: ' + l + ' in "' + String(s).slice(0, 50) + '"'); });
     if (Array.isArray(q.traps)) {
       if (q.traps.length !== 4) err('traps must list 4 entries');
@@ -10241,13 +10524,13 @@
         if (q.ref !== refFromId) err('ref "' + q.ref + '" does not match the id');
       }
       if ((q.kind === 'mock' || q.kind === 'diagnostic') && q.level !== '=') err('mock and diagnostic items must be level "="');
-      if (q.kind === 'weekly' && q.slot >= 21 && q.level !== '+1') err('weekly Q21–24 must be level "+1"');
-      if (q.kind === 'd4148' && q.version !== 'a' && q.version !== 'b') err('41–48 drill items need version a or b');
+      if (q.kind === 'weekly' && q.slot >= 21 && q.level !== '+1') err('weekly Q21-24 must be level "+1"');
+      if (q.kind === 'd4148' && q.version !== 'a' && q.version !== 'b') err('41-48 drill items need version a or b');
       if (q.kind === 'set') {
         var day = Number(m && m[1]), which = m && m[2];
         if (m && lessonDays().indexOf(day) < 0) err('day ' + day + ' is not a lesson day');
-        if (q.slot <= 4 && q.level !== '=') err('Q1–4 of a daily set must be level "="');
-        if (q.slot >= 5 && q.slot <= 7 && q.level !== '+1' && !(which === 'b' && oneVideo(day))) err('Q5–7 must be level "+1" (only Set B of a one-video day may use "=")');
+        if (q.slot <= 4 && q.level !== '=') err('Q1-4 of a daily set must be level "="');
+        if (q.slot >= 5 && q.slot <= 7 && q.level !== '+1' && !(which === 'b' && oneVideo(day))) err('Q5-7 must be level "+1" (only Set B of a one-video day may use "=")');
       }
       if (q.kind === 'setc' && m && !oneVideo(Number(m[1]))) err('Set C exists only on the 20 one-video days');
     }
@@ -10273,7 +10556,7 @@
       if (!opt.partial) {
         if (qs.length !== n) E.push(g + ': ' + qs.length + ' items, expected ' + n);
         var first = kind === 'd4148' ? 41 : 1, slots = qs.map(function (q) { return q.slot; }).sort(function (a, b) { return a - b; });
-        for (var i = 0; i < Math.min(n, slots.length); i++) if (slots[i] !== first + i) { E.push(g + ': slots must run ' + first + '–' + (first + n - 1)); break; }
+        for (var i = 0; i < Math.min(n, slots.length); i++) if (slots[i] !== first + i) { E.push(g + ': slots must run ' + first + '-' + (first + n - 1)); break; }
         if (kind === 'set' && !qs.some(function (q) { return q.format === 'S'; })) E.push(g + ': a daily set needs at least one format-S item');
       }
       if (kind === 'mock' || kind === 'diagnostic') {
@@ -10289,7 +10572,7 @@
 
 /* ---- adapters.js ---- */
 /* ACE CSCA Question Factory · adapters.js
- * Generators for the website's speed drill (L01–L12) and easy-trick drill (T01–T12) in the shape the site expects
+ * Generators for the website's speed drill (L01-L12) and easy-trick drill (T01-T12) in the shape the site expects
  * (Website Spec §4):  ACE_GEN.L04 = [8 functions],  ACE_GEN.T05 = function;  each  rng => ({ stem, options, answer, explain }).
  * The site's seeded rng drives the choice, so a stored seed replays the same round. */
 ;(function (root) {

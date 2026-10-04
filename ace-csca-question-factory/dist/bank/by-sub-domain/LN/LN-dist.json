@@ -12,7 +12,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $A(-4, -3)$ and $B(-7, -4)$, then $|AB| =$ ( )",
+  "stem": "For the points $A(-4, -3)$ and $B(-7, -4)$, $|AB| =$ ( )",
   "options": [
    "$\\sqrt{170}$",
    "$\\sqrt{10}$",
@@ -26,7 +26,7 @@
    "partial",
    "operation"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-7 - (-4) = -3$ and $-4 - (-3) = -1$. By the distance formula, $|AB| = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{9 + 1} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -64,7 +64,7 @@
    null,
    "partial"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + 4^2} = \\sqrt{41}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-6 - (-1) = -5$ and $4 - 0 = 4$. By the distance formula, $|MN| = \\sqrt{(-5)^2 + 4^2} = \\sqrt{25 + 16} = \\sqrt{41}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -102,7 +102,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-2)^2 + 1^2} = \\sqrt{5}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-6 - (-4) = -2$ and $-1 - (-2) = 1$. By the distance formula, $|PQ| = \\sqrt{(-2)^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -126,7 +126,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $M(1, 1)$ and $N(4, 0)$, then $|MN| =$ ( )",
+  "stem": "For the points $M(1, 1)$ and $N(4, 0)$, $|MN| =$ ( )",
   "options": [
    "$4$",
    "$\\sqrt{10}$",
@@ -140,7 +140,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + (-1)^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $4 - 1 = 3$ and $0 - 1 = -1$. By the distance formula, $|MN| = \\sqrt{3^2 + (-1)^2} = \\sqrt{9 + 1} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -178,7 +178,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + 2^2} = \\sqrt{29}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $4 - (-1) = 5$ and $-2 - (-4) = 2$. By the distance formula, $|MN| = \\sqrt{5^2 + 2^2} = \\sqrt{25 + 4} = \\sqrt{29}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -216,7 +216,7 @@
    null,
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-2)^2 + 1^2} = \\sqrt{5}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $2 - 4 = -2$ and $1 - 0 = 1$. By the distance formula, $|PQ| = \\sqrt{(-2)^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -254,7 +254,7 @@
    "partial",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + (-1)^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - 0 = 1$ and $1 - 2 = -1$. By the distance formula, $|PQ| = \\sqrt{1^2 + (-1)^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -292,7 +292,7 @@
    null,
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $2 - 1 = 1$ and $0 - 2 = -2$. By the distance formula, $|MN| = \\sqrt{1^2 + (-2)^2} = \\sqrt{1 + 4} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -330,7 +330,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + 5^2} = \\sqrt{34}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $5 - 2 = 3$ and $8 - 3 = 5$. By the distance formula, $|MN| = \\sqrt{3^2 + 5^2} = \\sqrt{9 + 25} = \\sqrt{34}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -354,7 +354,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $P(0, 0)$ and $Q(1, 1)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(0, 0)$ and $Q(1, 1)$, $|PQ| =$ ( )",
   "options": [
    "$1$",
    "$\\sqrt{2}$",
@@ -368,7 +368,7 @@
    "partial",
    "slip"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - 0 = 1$ and $1 - 0 = 1$. By the distance formula, $|PQ| = \\sqrt{1^2 + 1^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -406,7 +406,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + (-1)^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $0 - (-1) = 1$ and $-4 - (-3) = -1$. By the distance formula, $|PQ| = \\sqrt{1^2 + (-1)^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -430,7 +430,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $P(-1, 4)$ and $Q(-2, 5)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(-1, 4)$ and $Q(-2, 5)$, $|PQ| =$ ( )",
   "options": [
    "$\\sqrt{2}$",
    "$1$",
@@ -444,7 +444,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-1)^2 + 1^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-2 - (-1) = -1$ and $5 - 4 = 1$. By the distance formula, $|PQ| = \\sqrt{(-1)^2 + 1^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -468,7 +468,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $A(-1, 2)$ and $B(1, 7)$, then $|AB| =$ ( )",
+  "stem": "For the points $A(-1, 2)$ and $B(1, 7)$, $|AB| =$ ( )",
   "options": [
    "$\\sqrt{29}$",
    "$9$",
@@ -482,7 +482,7 @@
    "operation",
    "partial"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{2^2 + 5^2} = \\sqrt{29}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - (-1) = 2$ and $7 - 2 = 5$. By the distance formula, $|AB| = \\sqrt{2^2 + 5^2} = \\sqrt{4 + 25} = \\sqrt{29}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -506,7 +506,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $P(-3, 0)$ and $Q(-8, -1)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(-3, 0)$ and $Q(-8, -1)$, $|PQ| =$ ( )",
   "options": [
    "$\\sqrt{122}$",
    "$26$",
@@ -520,7 +520,7 @@
    null,
    "operation"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{26}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-8 - (-3) = -5$ and $-1 - 0 = -1$. By the distance formula, $|PQ| = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{25 + 1} = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -558,7 +558,7 @@
    "partial",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + 1^2} = \\sqrt{26}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-4 - 1 = -5$ and $-1 - (-2) = 1$. By the distance formula, $|PQ| = \\sqrt{(-5)^2 + 1^2} = \\sqrt{25 + 1} = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -596,7 +596,7 @@
    "partial",
    null
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + (-1)^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - (-2) = 3$ and $-2 - (-1) = -1$. By the distance formula, $|MN| = \\sqrt{3^2 + (-1)^2} = \\sqrt{9 + 1} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -634,7 +634,7 @@
    null,
    "operation"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{26}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-8 - (-3) = -5$ and $-3 - (-2) = -1$. By the distance formula, $|AB| = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{25 + 1} = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -658,7 +658,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $P(-3, 5)$ and $Q(-7, 8)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(-3, 5)$ and $Q(-7, 8)$, $|PQ| =$ ( )",
   "options": [
    "$25$",
    "$7$",
@@ -672,7 +672,7 @@
    "sign",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-4)^2 + 3^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-7 - (-3) = -4$ and $8 - 5 = 3$. By the distance formula, $|PQ| = \\sqrt{(-4)^2 + 3^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -710,7 +710,7 @@
    "partial",
    "operation"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-3)^2 + 4^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-6 - (-3) = -3$ and $3 - (-1) = 4$. By the distance formula, $|PQ| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -748,7 +748,7 @@
    "operation",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-6)^2 + (-8)^2} = \\sqrt{100} = 10$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-9 - (-3) = -6$ and $-11 - (-3) = -8$. By the distance formula, $|PQ| = \\sqrt{(-6)^2 + (-8)^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -786,7 +786,7 @@
    "operation",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-2 - (-5) = 3$ and $6 - 2 = 4$. By the distance formula, $|PQ| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -824,7 +824,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-4)^2 + (-3)^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-1 - 3 = -4$ and $2 - 5 = -3$. By the distance formula, $|MN| = \\sqrt{(-4)^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -848,7 +848,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $P(3, 3)$ and $Q(8, -9)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(3, 3)$ and $Q(8, -9)$, $|PQ| =$ ( )",
   "options": [
    "$17$",
    "$13$",
@@ -862,7 +862,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + (-12)^2} = \\sqrt{169} = 13$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $8 - 3 = 5$ and $-9 - 3 = -12$. By the distance formula, $|PQ| = \\sqrt{5^2 + (-12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -900,7 +900,7 @@
    "sign",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-7)^2 + 1^2} = \\sqrt{50} = 5\\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-11 - (-4) = -7$ and $-2 - (-3) = 1$. By the distance formula, $|PQ| = \\sqrt{(-7)^2 + 1^2} = \\sqrt{49 + 1} = \\sqrt{50} = 5\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -938,7 +938,7 @@
    null,
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-1)^2 + 6^2} = \\sqrt{37}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-1 - 0 = -1$ and $4 - (-2) = 6$. By the distance formula, $|PQ| = \\sqrt{(-1)^2 + 6^2} = \\sqrt{1 + 36} = \\sqrt{37}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -962,7 +962,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $M(5, 4)$ and $N(11, 11)$, then $|MN| =$ ( )",
+  "stem": "For the points $M(5, 4)$ and $N(11, 11)$, $|MN| =$ ( )",
   "options": [
    "$85$",
    "$\\sqrt{85}$",
@@ -976,7 +976,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{6^2 + 7^2} = \\sqrt{85}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $11 - 5 = 6$ and $11 - 4 = 7$. By the distance formula, $|MN| = \\sqrt{6^2 + 7^2} = \\sqrt{36 + 49} = \\sqrt{85}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1014,7 +1014,7 @@
    "operation",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + (-8)^2} = \\sqrt{89}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $4 - (-1) = 5$ and $-12 - (-4) = -8$. By the distance formula, $|PQ| = \\sqrt{5^2 + (-8)^2} = \\sqrt{25 + 64} = \\sqrt{89}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1052,7 +1052,7 @@
    null,
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + (-7)^2} = \\sqrt{74}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $7 - 2 = 5$ and $-5 - 2 = -7$. By the distance formula, $|PQ| = \\sqrt{5^2 + (-7)^2} = \\sqrt{25 + 49} = \\sqrt{74}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1076,7 +1076,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-2, 2)$ and $B(5, -4)$, then $|AB| =$ ( )",
+  "stem": "For the points $A(-2, 2)$ and $B(5, -4)$, $|AB| =$ ( )",
   "options": [
    "$85$",
    "$\\sqrt{13}$",
@@ -1090,7 +1090,7 @@
    null,
    "operation"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{7^2 + (-6)^2} = \\sqrt{85}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $5 - (-2) = 7$ and $-4 - 2 = -6$. By the distance formula, $|AB| = \\sqrt{7^2 + (-6)^2} = \\sqrt{49 + 36} = \\sqrt{85}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1128,7 +1128,7 @@
    "partial",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{7^2 + 8^2} = \\sqrt{113}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $9 - 2 = 7$ and $7 - (-1) = 8$. By the distance formula, $|PQ| = \\sqrt{7^2 + 8^2} = \\sqrt{49 + 64} = \\sqrt{113}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1166,7 +1166,7 @@
    "sign",
    null
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-3)^2 + (-3)^2} = \\sqrt{18} = 3\\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-3 - 0 = -3$ and $-6 - (-3) = -3$. By the distance formula, $|AB| = \\sqrt{(-3)^2 + (-3)^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1204,7 +1204,7 @@
    "operation",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-6)^2 + 5^2} = \\sqrt{61}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-1 - 5 = -6$ and $8 - 3 = 5$. By the distance formula, $|PQ| = \\sqrt{(-6)^2 + 5^2} = \\sqrt{36 + 25} = \\sqrt{61}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1242,7 +1242,7 @@
    "partial",
    "operation"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-6)^2 + 4^2} = \\sqrt{52} = 2\\sqrt{13}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-3 - 3 = -6$ and $-1 - (-5) = 4$. By the distance formula, $|MN| = \\sqrt{(-6)^2 + 4^2} = \\sqrt{36 + 16} = \\sqrt{52} = 2\\sqrt{13}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1280,7 +1280,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{8^2 + (-5)^2} = \\sqrt{89}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $7 - (-1) = 8$ and $-1 - 4 = -5$. By the distance formula, $|PQ| = \\sqrt{8^2 + (-5)^2} = \\sqrt{64 + 25} = \\sqrt{89}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1318,7 +1318,7 @@
    "operation",
    null
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + 8^2} = \\sqrt{65}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $0 - (-1) = 1$ and $6 - (-2) = 8$. By the distance formula, $|AB| = \\sqrt{1^2 + 8^2} = \\sqrt{1 + 64} = \\sqrt{65}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1356,7 +1356,7 @@
    null,
    "slip"
   ],
-  "solution": "The differences of the coordinates are $1$ and $1$ — the letters cancel. So $|PQ| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$.",
+  "solution": "The differences of the coordinates are $(s + 1) - s = 1$ and $(t + 1) - t = 1$, so the letters cancel. Then $|PQ| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1394,7 +1394,7 @@
    "partial",
    "operation"
   ],
-  "solution": "The differences of the coordinates are $-1$ and $-4$ — the letters cancel. So $|PQ| = \\sqrt{(-1)^2 + (-4)^2} = \\sqrt{17}$.",
+  "solution": "The differences of the coordinates are $(a - 1) - a = -1$ and $(b - 4) - b = -4$, so the letters cancel. Then $|PQ| = \\sqrt{(-1)^2 + (-4)^2} = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1432,7 +1432,7 @@
    "partial",
    "partial"
   ],
-  "solution": "The differences of the coordinates are $-4$ and $-4$ — the letters cancel. So $|PQ| = \\sqrt{(-4)^2 + (-4)^2} = \\sqrt{32} = 4\\sqrt{2}$.",
+  "solution": "The differences of the coordinates are $(a - 4) - a = -4$ and $(b - 4) - b = -4$, so the letters cancel. Then $|PQ| = \\sqrt{(-4)^2 + (-4)^2} = \\sqrt{32} = 4\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1470,7 +1470,7 @@
    "partial",
    "operation"
   ],
-  "solution": "The differences of the coordinates are $3$ and $1$ — the letters cancel. So $|PQ| = \\sqrt{3^2 + 1^2} = \\sqrt{10}$.",
+  "solution": "The differences of the coordinates are $(a + 3) - a = 3$ and $(b + 1) - b = 1$, so the letters cancel. Then $|PQ| = \\sqrt{3^2 + 1^2} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1508,7 +1508,7 @@
    "operation",
    null
   ],
-  "solution": "The differences of the coordinates are $-3$ and $-1$ — the letters cancel. So $|PQ| = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{10}$.",
+  "solution": "The differences of the coordinates are $(a - 3) - a = -3$ and $(b - 1) - b = -1$, so the letters cancel. Then $|PQ| = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1546,7 +1546,7 @@
    null,
    "partial"
   ],
-  "solution": "The differences of the coordinates are $1$ and $-2$ — the letters cancel. So $|PQ| = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}$.",
+  "solution": "The differences of the coordinates are $(a + 1) - a = 1$ and $(b - 2) - b = -2$, so the letters cancel. Then $|PQ| = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1570,7 +1570,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(1, 0)$ and $B(a, -12)$, if $|AB| = 13$, then $a =$ ( )",
+  "stem": "The points $A(1, 0)$ and $B(a, -12)$ satisfy $|AB| = 13$. Then $a =$ ( )",
   "options": [
    "$6$",
    "$-4$",
@@ -1584,7 +1584,7 @@
    "sign",
    null
   ],
-  "solution": "$|AB|^2 = 169$ gives $(a - 1)^2 + (-12)^2 = 169$, so $(a - 1)^2 = 25$ and $a - 1 = \\pm 5$. Hence $a = 6$ or $-4$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $(a - 1)^2 + (-12)^2 = 169$, so $(a - 1)^2 = 25$ and $a - 1 = \\pm 5$. Hence $a = 6$ or $a = -4$, and both give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1608,7 +1608,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(1, -3)$ and $B(6, b)$, if $|AB| = 13$, then $b =$ ( )",
+  "stem": "The points $A(1, -3)$ and $B(6, b)$ satisfy $|AB| = 13$. Then $b =$ ( )",
   "options": [
    "$9$",
    "$15$ or $-9$",
@@ -1622,7 +1622,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 169$ gives $(b + 3)^2 + 5^2 = 169$, so $(b + 3)^2 = 144$ and $b + 3 = \\pm 12$. Hence $b = 9$ or $-15$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $(b + 3)^2 + 5^2 = 169$, so $(b + 3)^2 = 144$ and $b + 3 = \\pm 12$. Hence $b = 9$ or $b = -15$, and both give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1646,7 +1646,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-3, 1)$ and $B(-11, b)$, if $|AB| = 10$, then $b =$ ( )",
+  "stem": "The points $A(-3, 1)$ and $B(-11, b)$ satisfy $|AB| = 10$. Then $b =$ ( )",
   "options": [
    "$-5$",
    "$7$ or $-5$",
@@ -1660,7 +1660,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|AB|^2 = 100$ gives $(b - 1)^2 + (-8)^2 = 100$, so $(b - 1)^2 = 36$ and $b - 1 = \\pm 6$. Hence $b = 7$ or $-5$ — two answers.",
+  "solution": "$|AB|^2 = 100$ gives $(b - 1)^2 + (-8)^2 = 100$, so $(b - 1)^2 = 36$ and $b - 1 = \\pm 6$. Hence $b = 7$ or $b = -5$, and both give $|AB| = 10$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1684,7 +1684,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-2, 0)$ and $B(a, -3)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(-2, 0)$ and $B(a, -3)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$-6$",
    "$6$ or $-2$",
@@ -1698,7 +1698,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 25$ gives $(a + 2)^2 + (-3)^2 = 25$, so $(a + 2)^2 = 16$ and $a + 2 = \\pm 4$. Hence $a = 2$ or $-6$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $(a + 2)^2 + (-3)^2 = 25$, so $(a + 2)^2 = 16$ and $a + 2 = \\pm 4$. Hence $a = 2$ or $a = -6$, and both give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1722,7 +1722,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(2, 3)$ and $B(a, -1)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(2, 3)$ and $B(a, -1)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$5$",
    "$5$ or $-1$",
@@ -1736,7 +1736,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|AB|^2 = 25$ gives $(a - 2)^2 + (-4)^2 = 25$, so $(a - 2)^2 = 9$ and $a - 2 = \\pm 3$. Hence $a = 5$ or $-1$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $(a - 2)^2 + (-4)^2 = 25$, so $(a - 2)^2 = 9$ and $a - 2 = \\pm 3$. Hence $a = 5$ or $a = -1$, and both give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1760,7 +1760,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-2, 1)$ and $B(a, -4)$, if $|AB| = 13$, then $a =$ ( )",
+  "stem": "The points $A(-2, 1)$ and $B(a, -4)$ satisfy $|AB| = 13$. Then $a =$ ( )",
   "options": [
    "$10$",
    "$14$ or $-10$",
@@ -1774,7 +1774,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 169$ gives $(a + 2)^2 + (-5)^2 = 169$, so $(a + 2)^2 = 144$ and $a + 2 = \\pm 12$. Hence $a = 10$ or $-14$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $(a + 2)^2 + (-5)^2 = 169$, so $(a + 2)^2 = 144$ and $a + 2 = \\pm 12$. Hence $a = 10$ or $a = -14$, and both give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1798,7 +1798,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, -2)$ and $B(a, 1)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(0, -2)$ and $B(a, 1)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$4$",
    "$-4$",
@@ -1812,7 +1812,7 @@
    "companion",
    null
   ],
-  "solution": "$|AB|^2 = 25$ gives $a^2 + 3^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $a^2 + 3^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1836,7 +1836,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(3, 0)$ and $B(-3, b)$, if $|AB| = 10$, then $b =$ ( )",
+  "stem": "The points $A(3, 0)$ and $B(-3, b)$ satisfy $|AB| = 10$. Then $b =$ ( )",
   "options": [
    "$-8$",
    "$8$",
@@ -1850,7 +1850,7 @@
    "companion",
    null
   ],
-  "solution": "$|AB|^2 = 100$ gives $b^2 + (-6)^2 = 100$, so $b^2 = 64$ and $b = \\pm 8$ — two answers.",
+  "solution": "$|AB|^2 = 100$ gives $b^2 + (-6)^2 = 100$, so $b^2 = 64$ and $b = \\pm 8$. Both values give $|AB| = 10$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1874,7 +1874,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 0)$ and $B(-3, b)$, if $|AB| = 5$, then $b =$ ( )",
+  "stem": "The points $A(0, 0)$ and $B(-3, b)$ satisfy $|AB| = 5$. Then $b =$ ( )",
   "options": [
    "$\\pm 4$",
    "$-4$",
@@ -1888,7 +1888,7 @@
    "companion",
    "pm"
   ],
-  "solution": "$|AB|^2 = 25$ gives $b^2 + (-3)^2 = 25$, so $b^2 = 16$ and $b = \\pm 4$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $b^2 + (-3)^2 = 25$, so $b^2 = 16$ and $b = \\pm 4$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1912,7 +1912,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 1)$ and $B(a, -4)$, if $|AB| = 13$, then $a =$ ( )",
+  "stem": "The points $A(0, 1)$ and $B(a, -4)$ satisfy $|AB| = 13$. Then $a =$ ( )",
   "options": [
    "$\\pm 5$",
    "$12$",
@@ -1926,7 +1926,7 @@
    null,
    "pm"
   ],
-  "solution": "$|AB|^2 = 169$ gives $a^2 + (-5)^2 = 169$, so $a^2 = 144$ and $a = \\pm 12$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $a^2 + (-5)^2 = 169$, so $a^2 = 144$ and $a = \\pm 12$. Both values give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1950,7 +1950,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 4)$ and $B(a, 1)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(0, 4)$ and $B(a, 1)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$\\pm 3$",
    "$\\pm 4$",
@@ -1964,7 +1964,7 @@
    "pm",
    "pm"
   ],
-  "solution": "$|AB|^2 = 25$ gives $a^2 + (-3)^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $a^2 + (-3)^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -1988,7 +1988,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, -4)$ and $B(a, 0)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(0, -4)$ and $B(a, 0)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$3$",
    "$\\pm 3$",
@@ -2002,7 +2002,7 @@
    "pm",
    "companion"
   ],
-  "solution": "$|AB|^2 = 25$ gives $a^2 + 4^2 = 25$, so $a^2 = 9$ and $a = \\pm 3$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $a^2 + 4^2 = 25$, so $a^2 = 9$ and $a = \\pm 3$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2026,7 +2026,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 2)$ and $B(-1, b)$, if $|AB| = \\sqrt{17}$, then $b =$ ( )",
+  "stem": "The points $A(0, 2)$ and $B(-1, b)$ satisfy $|AB| = \\sqrt{17}$. Then $b =$ ( )",
   "options": [
    "$-2$",
    "$2$ or $-6$",
@@ -2040,7 +2040,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 17$ gives $(b - 2)^2 + (-1)^2 = 17$, so $(b - 2)^2 = 16$ and $b - 2 = \\pm 4$. Hence $b = 6$ or $-2$ — two answers.",
+  "solution": "$|AB|^2 = 17$ gives $(b - 2)^2 + (-1)^2 = 17$, so $(b - 2)^2 = 16$ and $b - 2 = \\pm 4$. Hence $b = 6$ or $b = -2$, and both give $|AB| = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2064,7 +2064,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-3, 3)$ and $B(a, 1)$, if $|AB| = \\sqrt{29}$, then $a =$ ( )",
+  "stem": "The points $A(-3, 3)$ and $B(a, 1)$ satisfy $|AB| = \\sqrt{29}$. Then $a =$ ( )",
   "options": [
    "$-8$",
    "$2$ or $-8$",
@@ -2078,7 +2078,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|AB|^2 = 29$ gives $(a + 3)^2 + (-2)^2 = 29$, so $(a + 3)^2 = 25$ and $a + 3 = \\pm 5$. Hence $a = 2$ or $-8$ — two answers.",
+  "solution": "$|AB|^2 = 29$ gives $(a + 3)^2 + (-2)^2 = 29$, so $(a + 3)^2 = 25$ and $a + 3 = \\pm 5$. Hence $a = 2$ or $a = -8$, and both give $|AB| = \\sqrt{29}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2102,7 +2102,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-5, -3)$ and $B(a, 2)$, if $|AB| = \\sqrt{26}$, then $a =$ ( )",
+  "stem": "The points $A(-5, -3)$ and $B(a, 2)$ satisfy $|AB| = \\sqrt{26}$. Then $a =$ ( )",
   "options": [
    "$6$ or $4$",
    "$-6$",
@@ -2116,7 +2116,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 26$ gives $(a + 5)^2 + 5^2 = 26$, so $(a + 5)^2 = 1$ and $a + 5 = \\pm 1$. Hence $a = -4$ or $-6$ — two answers.",
+  "solution": "$|AB|^2 = 26$ gives $(a + 5)^2 + 5^2 = 26$, so $(a + 5)^2 = 1$ and $a + 5 = \\pm 1$. Hence $a = -4$ or $a = -6$, and both give $|AB| = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2140,7 +2140,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(1, -3)$ and $B(-4, b)$, if $|AB| = 5\\sqrt{2}$, then $b =$ ( )",
+  "stem": "The points $A(1, -3)$ and $B(-4, b)$ satisfy $|AB| = 5\\sqrt{2}$. Then $b =$ ( )",
   "options": [
    "$2$ or $-8$",
    "$8$ or $-2$",
@@ -2154,7 +2154,7 @@
    "partial",
    "partial"
   ],
-  "solution": "$|AB|^2 = 50$ gives $(b + 3)^2 + (-5)^2 = 50$, so $(b + 3)^2 = 25$ and $b + 3 = \\pm 5$. Hence $b = 2$ or $-8$ — two answers.",
+  "solution": "$|AB|^2 = 50$ gives $(b + 3)^2 + (-5)^2 = 50$, so $(b + 3)^2 = 25$ and $b + 3 = \\pm 5$. Hence $b = 2$ or $b = -8$, and both give $|AB| = 5\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2178,7 +2178,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-3, -2)$ and $B(a, -6)$, if $|AB| = \\sqrt{17}$, then $a =$ ( )",
+  "stem": "The points $A(-3, -2)$ and $B(a, -6)$ satisfy $|AB| = \\sqrt{17}$. Then $a =$ ( )",
   "options": [
    "$-2$ or $-4$",
    "$4$ or $2$",
@@ -2192,7 +2192,7 @@
    "partial",
    "partial"
   ],
-  "solution": "$|AB|^2 = 17$ gives $(a + 3)^2 + (-4)^2 = 17$, so $(a + 3)^2 = 1$ and $a + 3 = \\pm 1$. Hence $a = -2$ or $-4$ — two answers.",
+  "solution": "$|AB|^2 = 17$ gives $(a + 3)^2 + (-4)^2 = 17$, so $(a + 3)^2 = 1$ and $a + 3 = \\pm 1$. Hence $a = -2$ or $a = -4$, and both give $|AB| = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2230,7 +2230,7 @@
    "sign",
    "operation"
   ],
-  "solution": "The differences are $2$ and $2$ (the fractions cancel). So the distance is $\\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$.",
+  "solution": "The differences are $\\dfrac{5}{2} - \\dfrac{1}{2} = 2$ and $\\dfrac{7}{2} - \\dfrac{3}{2} = 2$, so the fractions cancel. The distance is $\\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2268,7 +2268,7 @@
    null,
    "partial"
   ],
-  "solution": "The differences are $4$ and $-5$ (the fractions cancel). So the distance is $\\sqrt{4^2 + (-5)^2} = \\sqrt{41}$.",
+  "solution": "The differences are $\\dfrac{13}{2} - \\dfrac{5}{2} = 4$ and $-5 - 0 = -5$, so the fractions cancel. The distance is $\\sqrt{4^2 + (-5)^2} = \\sqrt{41}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2306,7 +2306,7 @@
    "partial",
    "sign"
   ],
-  "solution": "The differences are $1$ and $-6$ (the fractions cancel). So the distance is $\\sqrt{1^2 + (-6)^2} = \\sqrt{37}$.",
+  "solution": "The differences are $\\dfrac{7}{2} - \\dfrac{5}{2} = 1$ and $-6 - 0 = -6$, so the fractions cancel. The distance is $\\sqrt{1^2 + (-6)^2} = \\sqrt{37}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2344,7 +2344,7 @@
    "partial",
    null
   ],
-  "solution": "The differences are $-6$ and $1$ (the fractions cancel). So the distance is $\\sqrt{(-6)^2 + 1^2} = \\sqrt{37}$.",
+  "solution": "The differences are $-\\dfrac{11}{2} - \\dfrac{1}{2} = -6$ and $\\dfrac{1}{2} - (-\\dfrac{1}{2}) = 1$, so the fractions cancel. The distance is $\\sqrt{(-6)^2 + 1^2} = \\sqrt{37}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2382,7 +2382,7 @@
    "sign",
    null
   ],
-  "solution": "The differences are $4$ and $5$ (the fractions cancel). So the distance is $\\sqrt{4^2 + 5^2} = \\sqrt{41}$.",
+  "solution": "The differences are $\\dfrac{9}{2} - \\dfrac{1}{2} = 4$ and $5 - 0 = 5$, so the fractions cancel. The distance is $\\sqrt{4^2 + 5^2} = \\sqrt{41}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2420,7 +2420,7 @@
    "partial",
    null
   ],
-  "solution": "Use $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. The correct statement is $|AC| = \\sqrt{13}$ — $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|BC| = 2\\sqrt{33}$ is false: the squares are subtracted instead of added; $|BC| = \\sqrt{8^2 + 14^2} = 2\\sqrt{65}$. $|AC| = 13$ is false: the square root is missing; $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|AB| = 169$ is false: the square root is missing; $|AB| = \\sqrt{5^2 + 12^2} = 13$.",
+  "solution": "Use the distance formula $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. $|AC| = \\sqrt{13}$ is correct. $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|BC| = 2\\sqrt{33}$ is incorrect. The squares must be added, not subtracted, so $|BC| = \\sqrt{8^2 + 14^2} = 2\\sqrt{65}$. $|AC| = 13$ is incorrect. $13$ is $|AC|^2$, and $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|AB| = 169$ is incorrect. $169$ is $|AB|^2$, and $|AB| = \\sqrt{5^2 + 12^2} = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2458,7 +2458,7 @@
    "operation",
    "sign"
   ],
-  "solution": "Use $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. The correct statement is $|BC| = 13$ — $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| > |BC|$ is false: $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$ and $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|BC| = \\sqrt{119}$ is false: the squares are subtracted instead of added; $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| = 5$ is false: the differences are added without squaring; $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
+  "solution": "Use the distance formula $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. $|BC| = 13$ is correct. $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| > |BC|$ is incorrect. $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$ and $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|BC| = \\sqrt{119}$ is incorrect. The squares must be added, not subtracted, so $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| = 5$ is incorrect. Adding the differences without squaring gives $5$, but $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -2496,7 +2496,7 @@
    "sign",
    "operation"
   ],
-  "solution": "Use $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. The correct statement is $|BC| = \\sqrt{10}$ — $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| < |BC|$ is false: $|AB| = \\sqrt{3^2 + 4^2} = 5$ and $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| = 7$ is false: the differences are added without squaring; $|AB| = \\sqrt{3^2 + 4^2} = 5$. $|AC| = 5$ is false: the differences are added without squaring; $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
+  "solution": "Use the distance formula $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. $|BC| = \\sqrt{10}$ is correct. $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| < |BC|$ is incorrect. $|AB| = \\sqrt{3^2 + 4^2} = 5$ and $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| = 7$ is incorrect. Adding the differences without squaring gives $7$, but $|AB| = \\sqrt{3^2 + 4^2} = 5$. $|AC| = 5$ is incorrect. Adding the differences without squaring gives $5$, but $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",

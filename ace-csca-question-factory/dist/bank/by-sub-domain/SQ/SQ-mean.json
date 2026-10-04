@@ -26,7 +26,7 @@
    "slip",
    null
   ],
-  "solution": "For an arithmetic sequence $2a = 3 + \\left(-5\\right)$, so $a = -1$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = 3 + \\left(-5\\right) = -2$ and $a = -1$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -64,7 +64,7 @@
    null,
    "partial"
   ],
-  "solution": "For an arithmetic sequence $2a = -4 + \\left(-14\\right)$, so $a = -9$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = -4 + \\left(-14\\right) = -18$ and $a = -9$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -102,7 +102,7 @@
    "partial",
    "operation"
   ],
-  "solution": "For an arithmetic sequence $2a = 10 + 0$, so $a = 5$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = 10 + 0 = 10$ and $a = 5$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -140,7 +140,7 @@
    "partial",
    "operation"
   ],
-  "solution": "For an arithmetic sequence $2a = 11 + 7$, so $a = 9$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = 11 + 7 = 18$ and $a = 9$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -178,7 +178,7 @@
    "slip",
    null
   ],
-  "solution": "For an arithmetic sequence $2a = 3 + \\left(-11\\right)$, so $a = -4$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = 3 + \\left(-11\\right) = -8$ and $a = -4$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -216,7 +216,7 @@
    "partial",
    null
   ],
-  "solution": "For an arithmetic sequence $2a = -1 + \\left(-11\\right)$, so $a = -6$.",
+  "solution": "In an arithmetic sequence the middle term is the average of its neighbours, so $2a = -1 + \\left(-11\\right) = -12$ and $a = -6$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -254,7 +254,7 @@
    null,
    "partial"
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 28$, so $b = 14$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 28$, so $b = 14$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -292,7 +292,7 @@
    null,
    "operation"
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 40$, so $b = 20$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 40$, so $b = 20$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -330,7 +330,7 @@
    "half",
    "operation"
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = -12$, so $b = -6$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = -12$, so $b = -6$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -368,7 +368,7 @@
    "operation",
    null
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 24$, so $b = 12$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 24$, so $b = 12$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -406,7 +406,7 @@
    "partial",
    "operation"
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 14$, so $b = 7$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 14$, so $b = 7$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -444,7 +444,7 @@
    "partial",
    null
   ],
-  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 12$, so $b = 6$ (one value only).",
+  "solution": "In an arithmetic sequence the middle term is the arithmetic mean: $2b = a + c = 12$, so $b = 6$. An arithmetic mean has only one value.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -482,7 +482,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{10}{2} = 5$ — the surds cancel, and there is only one value. ($\\pm \\sqrt{23}$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{10}{2} = 5$, because the surds cancel. The value $\\pm \\sqrt{23}$ is the geometric mean, since $ab = 5^2 - 2 = 23$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -520,7 +520,7 @@
    "companion",
    "partial"
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{8}{2} = 4$ — the surds cancel, and there is only one value. ($\\pm 1$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{8}{2} = 4$, because the surds cancel. The value $\\pm 1$ is the geometric mean, since $ab = 4^2 - 15 = 1$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -558,7 +558,7 @@
    "companion",
    "partial"
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{4}{2} = 2$ — the surds cancel, and there is only one value. ($\\pm \\sqrt{2}$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{4}{2} = 2$, because the surds cancel. The value $\\pm \\sqrt{2}$ is the geometric mean, since $ab = 2^2 - 2 = 2$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -596,7 +596,7 @@
    "companion",
    null
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{6}{2} = 3$ — the surds cancel, and there is only one value. ($\\pm 1$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{6}{2} = 3$, because the surds cancel. The value $\\pm 1$ is the geometric mean, since $ab = 3^2 - 8 = 1$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -634,7 +634,7 @@
    "companion",
    "partial"
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{6}{2} = 3$ — the surds cancel, and there is only one value. ($\\pm \\sqrt{2}$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{6}{2} = 3$, because the surds cancel. The value $\\pm \\sqrt{2}$ is the geometric mean, since $ab = 3^2 - 7 = 2$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -672,7 +672,7 @@
    "companion",
    "partial"
   ],
-  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{8}{2} = 4$ — the surds cancel, and there is only one value. ($\\pm 3$ is the geometric mean.)",
+  "solution": "The arithmetic mean is $\\dfrac{a + b}{2} = \\dfrac{8}{2} = 4$, because the surds cancel. The value $\\pm 3$ is the geometric mean, since $ab = 4^2 - 7 = 9$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -710,7 +710,7 @@
    "companion",
    null
   ],
-  "solution": "The geometric mean $G$ satisfies $G^2 = 4 \\cdot 9 = 36$, so $G = \\pm 6$ — both signs (the CSCA convention). $\\dfrac{13}{2}$ is the arithmetic mean.",
+  "solution": "The geometric mean $G$ satisfies $G^2 = 4 \\cdot 9 = 36$, so $G = \\pm 6$. Both signs work, since $4, 6, 9$ and $4, -6, 9$ are both geometric. The value $\\dfrac{13}{2}$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -748,7 +748,7 @@
    "pm",
    null
   ],
-  "solution": "The geometric mean $G$ satisfies $G^2 = 4 \\cdot 36 = 144$, so $G = \\pm 12$ — both signs (the CSCA convention). $20$ is the arithmetic mean.",
+  "solution": "The geometric mean $G$ satisfies $G^2 = 4 \\cdot 36 = 144$, so $G = \\pm 12$. Both signs work, since $4, 12, 36$ and $4, -12, 36$ are both geometric. The value $20$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -786,7 +786,7 @@
    null,
    "companion"
   ],
-  "solution": "The geometric mean $G$ satisfies $G^2 = 2 \\cdot 18 = 36$, so $G = \\pm 6$ — both signs (the CSCA convention). $10$ is the arithmetic mean.",
+  "solution": "The geometric mean $G$ satisfies $G^2 = 2 \\cdot 18 = 36$, so $G = \\pm 6$. Both signs work, since $2, 6, 18$ and $2, -6, 18$ are both geometric. The value $10$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -824,7 +824,7 @@
    "companion",
    "pm"
   ],
-  "solution": "The geometric mean $G$ satisfies $G^2 = 2 \\cdot 8 = 16$, so $G = \\pm 4$ — both signs (the CSCA convention). $5$ is the arithmetic mean.",
+  "solution": "The geometric mean $G$ satisfies $G^2 = 2 \\cdot 8 = 16$, so $G = \\pm 4$. Both signs work, since $2, 4, 8$ and $2, -4, 8$ are both geometric. The value $5$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -862,7 +862,7 @@
    "pm",
    "pm"
   ],
-  "solution": "The geometric mean $G$ satisfies $G^2 = 1 \\cdot 4 = 4$, so $G = \\pm 2$ — both signs (the CSCA convention). $\\dfrac{5}{2}$ is the arithmetic mean.",
+  "solution": "The geometric mean $G$ satisfies $G^2 = 1 \\cdot 4 = 4$, so $G = \\pm 2$. Both signs work, since $1, 2, 4$ and $1, -2, 4$ are both geometric. The value $\\dfrac{5}{2}$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -900,7 +900,7 @@
    "pm",
    null
   ],
-  "solution": "The geometric mean $G$ satisfies $G^2 = 1 \\cdot 25 = 25$, so $G = \\pm 5$ — both signs (the CSCA convention). $13$ is the arithmetic mean.",
+  "solution": "The geometric mean $G$ satisfies $G^2 = 1 \\cdot 25 = 25$, so $G = \\pm 5$. Both signs work, since $1, 5, 25$ and $1, -5, 25$ are both geometric. The value $13$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -924,7 +924,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "If $a, b, c$ form a geometric sequence and $ac = 81$, then $b =$ ( )",
+  "stem": "The numbers $a, b, c$ form a geometric sequence and $ac = 81$. Then $b =$ ( )",
   "options": [
    "$\\pm 9$",
    "$9$",
@@ -938,7 +938,7 @@
    "half",
    "pm"
   ],
-  "solution": "In a geometric sequence $b^2 = ac = 81$, so $b = \\pm 9$ — both signs are possible.",
+  "solution": "In a geometric sequence $b^2 = ac = 81$, so $b = \\pm 9$. Both signs are possible: for example $1, 9, 81$ and $1, -9, 81$ are both geometric.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -962,7 +962,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that $a, b, c$ form a geometric sequence and $ac = 64$, then $b =$ ( )",
+  "stem": "If $a, b, c$ form a geometric sequence and $ac = 64$, then $b =$ ( )",
   "options": [
    "$32$",
    "$8$",
@@ -976,7 +976,7 @@
    null,
    "pm"
   ],
-  "solution": "In a geometric sequence $b^2 = ac = 64$, so $b = \\pm 8$ — both signs are possible.",
+  "solution": "In a geometric sequence $b^2 = ac = 64$, so $b = \\pm 8$. Both signs are possible: for example $1, 8, 64$ and $1, -8, 64$ are both geometric.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1000,7 +1000,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that $a, b, c$ form a geometric sequence and $ac = 81$, then $b =$ ( )",
+  "stem": "If $a, b, c$ form a geometric sequence and $ac = 81$, then $b =$ ( )",
   "options": [
    "$\\pm 9$",
    "$\\dfrac{81}{2}$",
@@ -1014,7 +1014,7 @@
    "pm",
    "pm"
   ],
-  "solution": "In a geometric sequence $b^2 = ac = 81$, so $b = \\pm 9$ — both signs are possible.",
+  "solution": "In a geometric sequence $b^2 = ac = 81$, so $b = \\pm 9$. Both signs are possible: for example $1, 9, 81$ and $1, -9, 81$ are both geometric.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1038,7 +1038,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "If $a, b, c$ form a geometric sequence and $ac = 144$, then $b =$ ( )",
+  "stem": "The numbers $a, b, c$ form a geometric sequence and $ac = 144$. Then $b =$ ( )",
   "options": [
    "$12$",
    "$72$",
@@ -1052,7 +1052,7 @@
    null,
    "pm"
   ],
-  "solution": "In a geometric sequence $b^2 = ac = 144$, so $b = \\pm 12$ — both signs are possible.",
+  "solution": "In a geometric sequence $b^2 = ac = 144$, so $b = \\pm 12$. Both signs are possible: for example $1, 12, 144$ and $1, -12, 144$ are both geometric.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1076,7 +1076,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that $a, b, c$ form a geometric sequence and $ac = 36$, then $b =$ ( )",
+  "stem": "If $a, b, c$ form a geometric sequence and $ac = 36$, then $b =$ ( )",
   "options": [
    "$6$",
    "$\\pm 6$",
@@ -1090,7 +1090,7 @@
    "half",
    "pm"
   ],
-  "solution": "In a geometric sequence $b^2 = ac = 36$, so $b = \\pm 6$ — both signs are possible.",
+  "solution": "In a geometric sequence $b^2 = ac = 36$, so $b = \\pm 6$. Both signs are possible: for example $1, 6, 36$ and $1, -6, 36$ are both geometric.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1114,7 +1114,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "If $a, b, c$ form a geometric sequence and $ac = 16$, then $b =$ ( )",
+  "stem": "The numbers $a, b, c$ form a geometric sequence and $ac = 16$. Then $b =$ ( )",
   "options": [
    "$-4$",
    "$\\pm 4$",
@@ -1128,7 +1128,7 @@
    "half",
    "pm"
   ],
-  "solution": "In a geometric sequence $b^2 = ac = 16$, so $b = \\pm 4$ — both signs are possible.",
+  "solution": "In a geometric sequence $b^2 = ac = 16$, so $b = \\pm 4$. Both signs are possible: for example $1, 4, 16$ and $1, -4, 16$ are both geometric.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1166,7 +1166,7 @@
    "partial",
    "companion"
   ],
-  "solution": "The product is a difference of squares: $ab = 9$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 3$ (two values). $\\sqrt{10}$ is the arithmetic mean.",
+  "solution": "The product is a difference of squares: $ab = \\left(\\sqrt{10}\\right)^2 - 1^2 = 9$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 3$. The value $\\sqrt{10}$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1204,7 +1204,7 @@
    null,
    "pm"
   ],
-  "solution": "The product is a difference of squares: $ab = 16$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 4$ (two values). $\\sqrt{17}$ is the arithmetic mean.",
+  "solution": "The product is a difference of squares: $ab = \\left(\\sqrt{17}\\right)^2 - 1^2 = 16$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 4$. The value $\\sqrt{17}$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1242,7 +1242,7 @@
    "pm",
    "pm"
   ],
-  "solution": "The product is a difference of squares: $ab = 1$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 1$ (two values). $\\sqrt{5}$ is the arithmetic mean.",
+  "solution": "The product is a difference of squares: $ab = \\left(\\sqrt{5}\\right)^2 - 2^2 = 1$. So the geometric mean is $\\pm\\sqrt{ab} = \\pm 1$. The value $\\sqrt{5}$ is the arithmetic mean.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1280,13 +1280,13 @@
    null,
    "pm"
   ],
-  "solution": "$b^2 = ac = 64$ gives $\\pm 8$, but the stem asks for the positive value only: $8$.",
+  "solution": "$b^2 = ac = 64$ gives $\\pm 8$. The question asks for the positive value, so the answer is $8$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
   "template": "SQ-mean.positive",
   "seed": "bank:1:SQ-mean.positive:0",
-  "form": "\"Positive\" geometric mean → one value (the ± option is the trap)",
+  "form": "\"Positive\" geometric mean → one value (not ±)",
   "answer_letter": "C",
   "answer_value": "$8$",
   "verified": "val"
@@ -1318,13 +1318,13 @@
    null,
    "sign"
   ],
-  "solution": "$G^2 = 3 \\cdot 48 = 144$ gives $\\pm 12$, but the stem asks for the positive value only: $12$.",
+  "solution": "$G^2 = 3 \\cdot 48 = 144$ gives $\\pm 12$. The question asks for the positive value, so the answer is $12$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
   "template": "SQ-mean.positive",
   "seed": "bank:1:SQ-mean.positive:1",
-  "form": "\"Positive\" geometric mean → one value (the ± option is the trap)",
+  "form": "\"Positive\" geometric mean → one value (not ±)",
   "answer_letter": "C",
   "answer_value": "$12$",
   "verified": "val"
@@ -1356,7 +1356,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “The arithmetic mean of $a$ and $b$ is $4$” — $\\dfrac{a + b}{2} = 4$. “The geometric mean of $a$ and $b$ is $\\pm 4$” is false: that is the arithmetic mean with a $\\pm$ sign. “The arithmetic mean of $a$ and $b$ is $3$” is false: that is the size of the geometric mean. “The geometric mean of $a$ and $b$ is $\\pm 9$” is false: that is $\\pm ab$; take the square root.",
+  "solution": "“The arithmetic mean of $a$ and $b$ is $4$” is correct. $\\dfrac{a + b}{2} = 4$. “The geometric mean of $a$ and $b$ is $\\pm 4$” is incorrect. $4$ is the arithmetic mean. The geometric mean is $\\pm\\sqrt{ab} = \\pm 3$. “The arithmetic mean of $a$ and $b$ is $3$” is incorrect. The arithmetic mean is $\\dfrac{a + b}{2} = 4$, and $3$ is $\\sqrt{ab}$. “The geometric mean of $a$ and $b$ is $\\pm 9$” is incorrect. $9$ is the product $ab$. The geometric mean is its square root with both signs, $\\pm 3$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1394,7 +1394,7 @@
    "companion",
    "pm"
   ],
-  "solution": "The correct statement is “The arithmetic mean of $a$ and $b$ is $2$” — $\\dfrac{a + b}{2} = 2$. “The geometric mean of $a$ and $b$ is $\\sqrt{2}$” is false: a geometric mean has two values, $\\pm \\sqrt{2}$. “The arithmetic mean of $a$ and $b$ is $\\sqrt{2}$” is false: that is the size of the geometric mean. “The arithmetic mean of $a$ and $b$ is $\\pm 2$” is false: an arithmetic mean has one value.",
+  "solution": "“The arithmetic mean of $a$ and $b$ is $2$” is correct. $\\dfrac{a + b}{2} = 2$. “The geometric mean of $a$ and $b$ is $\\sqrt{2}$” is incorrect. The geometric mean has two values, $\\pm\\sqrt{ab} = \\pm \\sqrt{2}$. “The arithmetic mean of $a$ and $b$ is $\\sqrt{2}$” is incorrect. The arithmetic mean is $\\dfrac{a + b}{2} = 2$, and $\\sqrt{2}$ is $\\sqrt{ab}$. “The arithmetic mean of $a$ and $b$ is $\\pm 2$” is incorrect. An arithmetic mean has one value, $\\dfrac{a + b}{2} = 2$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1432,7 +1432,7 @@
    "pm",
    "companion"
   ],
-  "solution": "The correct statement is “The arithmetic mean of $a$ and $b$ is $3$” — $\\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $\\pm 3$” is false: an arithmetic mean has one value. “The geometric mean of $a$ and $b$ is $\\pm 3$” is false: that is the arithmetic mean with a $\\pm$ sign. “The geometric mean of $a$ and $b$ is $1$” is false: a geometric mean has two values, $\\pm 1$.",
+  "solution": "“The arithmetic mean of $a$ and $b$ is $3$” is correct. $\\dfrac{a + b}{2} = 3$. “The arithmetic mean of $a$ and $b$ is $\\pm 3$” is incorrect. An arithmetic mean has one value, $\\dfrac{a + b}{2} = 3$. “The geometric mean of $a$ and $b$ is $\\pm 3$” is incorrect. $3$ is the arithmetic mean. The geometric mean is $\\pm\\sqrt{ab} = \\pm 1$. “The geometric mean of $a$ and $b$ is $1$” is incorrect. The geometric mean has two values, $\\pm\\sqrt{ab} = \\pm 1$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1470,7 +1470,7 @@
    null,
    "partial"
   ],
-  "solution": "Middle term squared: $(x + 4)^2 = x(x + 24)$. Expanding, $8x + 16 = 24x$, so $x = 1$. The terms are $1, 5, 25$.",
+  "solution": "The square of the middle term equals the product of its neighbours: $(x + 4)^2 = x(x + 24)$. Expanding and cancelling $x^2$ gives $8x + 16 = 24x$, so $x = 1$. The terms are $1, 5, 25$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1508,7 +1508,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Middle term squared: $(x - 4)^2 = x(x - 16)$. Expanding, $-8x + 16 = -16x$, so $x = -2$. The terms are $-2, -6, -18$.",
+  "solution": "The square of the middle term equals the product of its neighbours: $(x - 4)^2 = x(x - 16)$. Expanding and cancelling $x^2$ gives $-8x + 16 = -16x$, so $x = -2$. The terms are $-2, -6, -18$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",
@@ -1546,7 +1546,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Middle term squared: $(x - 4)^2 = x(x + 8)$. Expanding, $-8x + 16 = 8x$, so $x = 1$. The terms are $1, -3, 9$.",
+  "solution": "The square of the middle term equals the product of its neighbours: $(x - 4)^2 = x(x + 8)$. Expanding and cancelling $x^2$ gives $-8x + 16 = 8x$, so $x = 1$. The terms are $1, -3, 9$.",
   "video": "V29",
   "version": "a",
   "domain": "SQ",

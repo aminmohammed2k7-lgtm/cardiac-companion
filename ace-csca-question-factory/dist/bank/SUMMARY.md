@@ -1,4 +1,4 @@
-# ACE CSCA question bank — 2000 questions
+# ACE CSCA question bank: 2000 questions
 
 Seed 1 · built 2026-10-04 · every question verified (stmt 550, set 198, eq 219, custom 74, val 871, fn 88)
 

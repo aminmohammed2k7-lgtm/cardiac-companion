@@ -26,7 +26,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x + 3)(x + 1) < 0$. The roots are $-3$ and $-1$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-3, -1)$.",
+  "solution": "Factor the left side: $(x + 3)(x + 1) < 0$. The roots are $-3$ and $-1$. The graph of $y = (x + 3)(x + 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-3, -1)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -64,7 +64,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 6)(x + 3) < 0$. The roots are $-6$ and $-3$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-6, -3)$.",
+  "solution": "Factor the left side: $(x + 6)(x + 3) < 0$. The roots are $-6$ and $-3$. The graph of $y = (x + 6)(x + 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-6, -3)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -102,7 +102,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x - 3)(x - 8) < 0$. The roots are $3$ and $8$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(3, 8)$.",
+  "solution": "Factor the left side: $(x - 3)(x - 8) < 0$. The roots are $3$ and $8$. The graph of $y = (x - 3)(x - 8)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(3, 8)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -140,7 +140,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x - 4)(x - 9) < 0$. The roots are $4$ and $9$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(4, 9)$.",
+  "solution": "Factor the left side: $(x - 4)(x - 9) < 0$. The roots are $4$ and $9$. The graph of $y = (x - 4)(x - 9)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(4, 9)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -178,7 +178,7 @@
    "sign",
    null
   ],
-  "solution": "Factor: $(x)(x - 2) < 0$. The roots are $0$ and $2$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(0, 2)$.",
+  "solution": "Factor the left side: $(x)(x - 2) < 0$. The roots are $0$ and $2$. The graph of $y = (x)(x - 2)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(0, 2)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -216,7 +216,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 2)(x) < 0$. The roots are $-2$ and $0$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-2, 0)$.",
+  "solution": "Factor the left side: $(x + 2)(x) < 0$. The roots are $-2$ and $0$. The graph of $y = (x + 2)(x)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-2, 0)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -254,7 +254,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x)(x - 3) > 0$. The roots are $0$ and $3$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 0 \\text{ or } x > 3\\}$.",
+  "solution": "Factor the left side: $(x)(x - 3) > 0$. The roots are $0$ and $3$. The graph of $y = (x)(x - 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 0 \\text{ or } x > 3\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -292,7 +292,7 @@
    "sign",
    null
   ],
-  "solution": "Factor: $(x + 7)(x + 6) > 0$. The roots are $-7$ and $-6$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -7 \\text{ or } x > -6\\}$.",
+  "solution": "Factor the left side: $(x + 7)(x + 6) > 0$. The roots are $-7$ and $-6$. The graph of $y = (x + 7)(x + 6)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -7 \\text{ or } x > -6\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -330,7 +330,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x - 2)(x - 6) > 0$. The roots are $2$ and $6$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 2 \\text{ or } x > 6\\}$.",
+  "solution": "Factor the left side: $(x - 2)(x - 6) > 0$. The roots are $2$ and $6$. The graph of $y = (x - 2)(x - 6)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 2 \\text{ or } x > 6\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -368,7 +368,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x - 3)(x - 5) > 0$. The roots are $3$ and $5$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 3 \\text{ or } x > 5\\}$.",
+  "solution": "Factor the left side: $(x - 3)(x - 5) > 0$. The roots are $3$ and $5$. The graph of $y = (x - 3)(x - 5)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 3 \\text{ or } x > 5\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -406,7 +406,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 4)(x + 1) > 0$. The roots are $-4$ and $-1$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -4 \\text{ or } x > -1\\}$.",
+  "solution": "Factor the left side: $(x + 4)(x + 1) > 0$. The roots are $-4$ and $-1$. The graph of $y = (x + 4)(x + 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -4 \\text{ or } x > -1\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -444,7 +444,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(x + 6)(x + 2) > 0$. The roots are $-6$ and $-2$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -6 \\text{ or } x > -2\\}$.",
+  "solution": "Factor the left side: $(x + 6)(x + 2) > 0$. The roots are $-6$ and $-2$. The graph of $y = (x + 6)(x + 2)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -6 \\text{ or } x > -2\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -482,7 +482,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x + 5)(x) > 0$. The roots are $-5$ and $0$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -5 \\text{ or } x > 0\\}$.",
+  "solution": "Factor the left side: $(x + 5)(x) > 0$. The roots are $-5$ and $0$. The graph of $y = (x + 5)(x)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -5 \\text{ or } x > 0\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -520,7 +520,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 4)(x - 3) > 0$. The roots are $-4$ and $3$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -4 \\text{ or } x > 3\\}$.",
+  "solution": "Factor the left side: $(x + 4)(x - 3) > 0$. The roots are $-4$ and $3$. The graph of $y = (x + 4)(x - 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -4 \\text{ or } x > 3\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -558,7 +558,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 5)(x - 1) > 0$. The roots are $-5$ and $1$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -5 \\text{ or } x > 1\\}$.",
+  "solution": "Factor the left side: $(x + 5)(x - 1) > 0$. The roots are $-5$ and $1$. The graph of $y = (x + 5)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -5 \\text{ or } x > 1\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -596,7 +596,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 1)(x - 4) > 0$. The roots are $-1$ and $4$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -1 \\text{ or } x > 4\\}$.",
+  "solution": "Factor the left side: $(x + 1)(x - 4) > 0$. The roots are $-1$ and $4$. The graph of $y = (x + 1)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -1 \\text{ or } x > 4\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -634,7 +634,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x + 3)(x + 2) > 0$. The roots are $-3$ and $-2$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -3 \\text{ or } x > -2\\}$.",
+  "solution": "Factor the left side: $(x + 3)(x + 2) > 0$. The roots are $-3$ and $-2$. The graph of $y = (x + 3)(x + 2)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -3 \\text{ or } x > -2\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -672,7 +672,7 @@
    null,
    "complement"
   ],
-  "solution": "Factor: $(x)(x - 4) > 0$. The roots are $0$ and $4$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 0 \\text{ or } x > 4\\}$.",
+  "solution": "Factor the left side: $(x)(x - 4) > 0$. The roots are $0$ and $4$. The graph of $y = (x)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 0 \\text{ or } x > 4\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -710,7 +710,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Factor: $(x - 5)(x - 10) > 0$. The roots are $5$ and $10$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 5 \\text{ or } x > 10\\}$.",
+  "solution": "Factor the left side: $(x - 5)(x - 10) > 0$. The roots are $5$ and $10$. The graph of $y = (x - 5)(x - 10)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 5 \\text{ or } x > 10\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -748,7 +748,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "Factor: $(x - 4)(x - 7) \\ge 0$. The roots are $4$ and $7$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, 4] \\cup [7, +\\infty)$.",
+  "solution": "Factor the left side: $(x - 4)(x - 7) \\ge 0$. The roots are $4$ and $7$. The graph of $y = (x - 4)(x - 7)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, 4] \\cup [7, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -786,7 +786,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Factor: $(x + 2)(x + 1) \\ge 0$. The roots are $-2$ and $-1$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -2] \\cup [-1, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 2)(x + 1) \\ge 0$. The roots are $-2$ and $-1$. The graph of $y = (x + 2)(x + 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -2] \\cup [-1, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -824,7 +824,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 1)(x - 4) \\ge 0$. The roots are $-1$ and $4$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -1] \\cup [4, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 1)(x - 4) \\ge 0$. The roots are $-1$ and $4$. The graph of $y = (x + 1)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -1] \\cup [4, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -862,7 +862,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 1)(x - 7) \\ge 0$. The roots are $-1$ and $7$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -1] \\cup [7, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 1)(x - 7) \\ge 0$. The roots are $-1$ and $7$. The graph of $y = (x + 1)(x - 7)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -1] \\cup [7, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -900,7 +900,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(x - 5)(x - 9) \\le 0$. The roots are $5$ and $9$ and the parabola opens upward, so the product is negative between the roots, and the roots themselves are included. Solution set: $[5, 9]$.",
+  "solution": "Factor the left side: $(x - 5)(x - 9) \\le 0$. The roots are $5$ and $9$. The graph of $y = (x - 5)(x - 9)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\le 0$, so $x$ lies between the roots, with the roots included. The solution set is $[5, 9]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -938,7 +938,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 2)(x - 1) \\ge 0$. The roots are $-2$ and $1$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -2] \\cup [1, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 2)(x - 1) \\ge 0$. The roots are $-2$ and $1$. The graph of $y = (x + 2)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -2] \\cup [1, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -976,7 +976,7 @@
    "sign",
    null
   ],
-  "solution": "Factor: $(x + 6)(x) \\le 0$. The roots are $-6$ and $0$ and the parabola opens upward, so the product is negative between the roots, and the roots themselves are included. Solution set: $[-6, 0]$.",
+  "solution": "Factor the left side: $(x + 6)(x) \\le 0$. The roots are $-6$ and $0$. The graph of $y = (x + 6)(x)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\le 0$, so $x$ lies between the roots, with the roots included. The solution set is $[-6, 0]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1014,7 +1014,7 @@
    "complement",
    null
   ],
-  "solution": "Divide by $4$: $(x - 1)(x - 5) < 0$. The roots are $1$ and $5$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(1, 5)$.",
+  "solution": "Divide both sides by $4$: $(x - 1)(x - 5) < 0$. The roots are $1$ and $5$. The graph of $y = (x - 1)(x - 5)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(1, 5)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1052,7 +1052,7 @@
    null,
    "complement"
   ],
-  "solution": "Divide by $4$: $(x)(x - 1) > 0$. The roots are $0$ and $1$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $(-\\infty, 0) \\cup (1, +\\infty)$.",
+  "solution": "Divide both sides by $4$: $(x)(x - 1) > 0$. The roots are $0$ and $1$. The graph of $y = (x)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $(-\\infty, 0) \\cup (1, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1090,7 +1090,7 @@
    null,
    "sign"
   ],
-  "solution": "Divide by $-2$ and reverse the inequality sign: $(x - 4)(x - 8) < 0$. The roots are $4$ and $8$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(4, 8)$.",
+  "solution": "Divide both sides by $-2$ and reverse the inequality sign, because $-2$ is negative: $(x - 4)(x - 8) < 0$. The roots are $4$ and $8$. The graph of $y = (x - 4)(x - 8)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(4, 8)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1128,7 +1128,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Divide by $3$: $(x + 4)(x + 3) > 0$. The roots are $-4$ and $-3$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $(-\\infty, -4) \\cup (-3, +\\infty)$.",
+  "solution": "Divide both sides by $3$: $(x + 4)(x + 3) > 0$. The roots are $-4$ and $-3$. The graph of $y = (x + 4)(x + 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $(-\\infty, -4) \\cup (-3, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1166,7 +1166,7 @@
    null,
    "sign"
   ],
-  "solution": "Divide by $-1$ and reverse the inequality sign: $(x - 2)(x - 3) < 0$. The roots are $2$ and $3$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(2, 3)$.",
+  "solution": "Divide both sides by $-1$ and reverse the inequality sign, because $-1$ is negative: $(x - 2)(x - 3) < 0$. The roots are $2$ and $3$. The graph of $y = (x - 2)(x - 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(2, 3)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1204,7 +1204,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Divide by $-2$ and reverse the inequality sign: $(x - 4)(x - 11) < 0$. The roots are $4$ and $11$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(4, 11)$.",
+  "solution": "Divide both sides by $-2$ and reverse the inequality sign, because $-2$ is negative: $(x - 4)(x - 11) < 0$. The roots are $4$ and $11$. The graph of $y = (x - 4)(x - 11)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(4, 11)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1242,7 +1242,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Divide by $-1$ and reverse the inequality sign: $(x + 3)(x - 1) < 0$. The roots are $-3$ and $1$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-3, 1)$.",
+  "solution": "Divide both sides by $-1$ and reverse the inequality sign, because $-1$ is negative: $(x + 3)(x - 1) < 0$. The roots are $-3$ and $1$. The graph of $y = (x + 3)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-3, 1)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1280,7 +1280,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(2x - 5)(x + 3) < 0$. The roots are $-3$ and $\\dfrac{5}{2}$ and the parabola opens upward, so the expression is negative between the roots. Solution set: $\\{x \\mid -3 < x < \\dfrac{5}{2}\\}$.",
+  "solution": "Factor the left side: $(2x - 5)(x + 3) < 0$. The roots are $-3$ and $\\dfrac{5}{2}$. The leading coefficient $2$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. Here the expression must be negative, so $x$ lies between the roots. The solution set is $\\{x \\mid -3 < x < \\dfrac{5}{2}\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1318,7 +1318,7 @@
    "endpoint",
    "sign"
   ],
-  "solution": "Factor: $(2x - 1)(x + 3) \\le 0$. The roots are $-3$ and $\\dfrac{1}{2}$ and the parabola opens upward, so the expression is negative between the roots (roots included). Solution set: $\\{x \\mid -3 \\le x \\le \\dfrac{1}{2}\\}$.",
+  "solution": "Factor the left side: $(2x - 1)(x + 3) \\le 0$. The roots are $-3$ and $\\dfrac{1}{2}$. The leading coefficient $2$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. Here the expression must be negative or zero, so $x$ lies between the roots, with the roots included. The solution set is $\\{x \\mid -3 \\le x \\le \\dfrac{1}{2}\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1356,7 +1356,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(3x + 5)(x - 1) < 0$. The roots are $-\\dfrac{5}{3}$ and $1$ and the parabola opens upward, so the expression is negative between the roots. Solution set: $\\{x \\mid -\\dfrac{5}{3} < x < 1\\}$.",
+  "solution": "Factor the left side: $(3x + 5)(x - 1) < 0$. The roots are $-\\dfrac{5}{3}$ and $1$. The leading coefficient $3$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. Here the expression must be negative, so $x$ lies between the roots. The solution set is $\\{x \\mid -\\dfrac{5}{3} < x < 1\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1394,7 +1394,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The left side is a perfect square: $\\left(x + 2\\right)^2 \\le 0$. A square is never negative, so it is $\\le 0$ only where it equals $0$, at $x = -2$: $\\{-2\\}$.",
+  "solution": "The left side is a perfect square: $\\left(x + 2\\right)^2 \\le 0$. A square is never negative, so it can only be $\\le 0$ by being equal to $0$, which happens only at $x = -2$. The solution set is $\\{-2\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1432,7 +1432,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The left side is a perfect square: $\\left(x - 4\\right)^2 \\le 0$. A square is never negative, so it is $\\le 0$ only where it equals $0$, at $x = 4$: $\\{4\\}$.",
+  "solution": "The left side is a perfect square: $\\left(x - 4\\right)^2 \\le 0$. A square is never negative, so it can only be $\\le 0$ by being equal to $0$, which happens only at $x = 4$. The solution set is $\\{4\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1470,7 +1470,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The left side is a perfect square: $\\left(x + 5\\right)^2 > 0$. A square is positive except where it is zero, so every $x$ except $-5$ works: $\\{x \\mid x \\ne -5\\}$.",
+  "solution": "The left side is a perfect square: $\\left(x + 5\\right)^2 > 0$. A square is never negative, and it equals $0$ only at $x = -5$. So it is positive for every $x$ except $-5$, and the solution set is $\\{x \\mid x \\ne -5\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1508,7 +1508,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $x^2 - 5x - 6 < 0$ — its roots are $-1$ and $6$, and \"less than zero\" means between the roots. $x^2 - 5x - 6 > 0$ is false: this one holds outside the roots. $x^2 + 5x - 6 < 0$ is false: its roots are $-6$ and $1$ (signs reversed). $x^2 - 5x - 6 \\le 0$ is false: the end points are included here but the given set excludes them.",
+  "solution": "$x^2 - 5x - 6 < 0$ is correct. It factors as $(x + 1)(x - 6) < 0$. The roots are $-1$ and $6$, and an upward parabola is negative between its roots. $x^2 - 5x - 6 > 0$ is incorrect. This inequality holds outside the roots, so its solution set is $(-\\infty, -1) \\cup (6, +\\infty)$. $x^2 + 5x - 6 < 0$ is incorrect. Its roots are $-6$ and $1$, so its solution set is $(-6, 1)$. $x^2 - 5x - 6 \\le 0$ is incorrect. Its solution set is $[-1, 6]$, which includes the roots $-1$ and $6$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -1546,7 +1546,7 @@
    null,
    "complement"
   ],
-  "solution": "The correct statement is $x^2 + x - 12 > 0$ — its roots are $-4$ and $3$, and \"greater than zero\" means outside the roots. $x^2 + x - 12 < 0$ is false: this one holds between the roots. $x^2 - x - 12 > 0$ is false: its roots are $-3$ and $4$ (signs reversed). $x^2 + x - 12 \\ge 0$ is false: the end points are included here but the given set excludes them.",
+  "solution": "$x^2 + x - 12 > 0$ is correct. It factors as $(x + 4)(x - 3) > 0$. The roots are $-4$ and $3$, and an upward parabola is positive outside its roots. $x^2 + x - 12 < 0$ is incorrect. This inequality holds between the roots, so its solution set is $(-4, 3)$. $x^2 - x - 12 > 0$ is incorrect. Its roots are $-3$ and $4$, so its solution set is $(-\\infty, -3) \\cup (4, +\\infty)$. $x^2 + x - 12 \\ge 0$ is incorrect. Its solution set is $(-\\infty, -4] \\cup [3, +\\infty)$, which includes the roots $-4$ and $3$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",

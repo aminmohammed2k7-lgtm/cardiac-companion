@@ -26,7 +26,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 3$, so $T = \\dfrac{2\\pi}{3}$.",
+  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 3$, so $T = \\dfrac{2\\pi}{3} = \\dfrac{2\\pi}{3}$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -64,7 +64,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 5$, so $T = \\dfrac{2\\pi}{5}$.",
+  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 5$, so $T = \\dfrac{2\\pi}{5} = \\dfrac{2\\pi}{5}$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -102,7 +102,7 @@
    "near-miss",
    null
   ],
-  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 4$, so $T = \\dfrac{\\pi}{2}$.",
+  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 4$, so $T = \\dfrac{2\\pi}{4} = \\dfrac{\\pi}{2}$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -140,7 +140,7 @@
    null,
    "near-miss"
   ],
-  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 2$, so $T = \\pi$.",
+  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 2$, so $T = \\dfrac{2\\pi}{2} = \\pi$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -178,7 +178,7 @@
    "slip",
    "reciprocal"
   ],
-  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 2$, so $T = \\pi$.",
+  "solution": "For $y = A\\sin(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 2$, so $T = \\dfrac{2\\pi}{2} = \\pi$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -216,7 +216,7 @@
    "near-miss",
    null
   ],
-  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = 2$, so $T = \\pi$.",
+  "solution": "For $y = A\\cos(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = 2$, so $T = \\dfrac{2\\pi}{2} = \\pi$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -254,7 +254,7 @@
    "near-miss",
    "reciprocal"
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = \\dfrac{1}{3}$, so $T = \\pi \\div \\dfrac{1}{3} = 3\\pi$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -292,7 +292,7 @@
    null,
    "partial"
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 2\\pi$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = \\dfrac{1}{2}$, so $T = \\pi \\div \\dfrac{1}{2} = 2\\pi$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -330,7 +330,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = 4$, so $T = \\dfrac{\\pi}{4} = \\dfrac{\\pi}{4}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -368,7 +368,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{3}$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = 3$, so $T = \\dfrac{\\pi}{3} = \\dfrac{\\pi}{3}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -406,7 +406,7 @@
    "partial",
    null
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = \\dfrac{1}{3}$, so $T = \\pi \\div \\dfrac{1}{3} = 3\\pi$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -444,7 +444,7 @@
    "near-miss",
    null
   ],
-  "solution": "The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$ (not $\\dfrac{2\\pi}{|\\omega|}$).",
+  "solution": "The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = \\dfrac{1}{3}$, so $T = \\pi \\div \\dfrac{1}{3} = 3\\pi$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -482,7 +482,7 @@
    "companion",
    "partial"
   ],
-  "solution": "Since $-1 \\le \\sin 3x \\le 1$, the function $A\\sin(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 1$ and $|A| = 3$, so the maximum is $4$.",
+  "solution": "Since $-1 \\le \\sin 3x \\le 1$, the function $y = A\\sin \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = 3$ and $k = 1$, so the maximum is $1 + 3 = 4$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -520,7 +520,7 @@
    "partial",
    "companion"
   ],
-  "solution": "Since $-1 \\le \\cos 2x \\le 1$, the function $A\\cos(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 5$ and $|A| = 4$, so the maximum is $9$.",
+  "solution": "Since $-1 \\le \\cos 2x \\le 1$, the function $y = A\\cos \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = 4$ and $k = 5$, so the maximum is $5 + 4 = 9$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -558,7 +558,7 @@
    "partial",
    null
   ],
-  "solution": "Since $-1 \\le \\sin 4x \\le 1$, the function $A\\sin(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 2$ and $|A| = 4$, so the minimum is $-2$.",
+  "solution": "Since $-1 \\le \\sin 4x \\le 1$, the function $y = A\\sin \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = 4$ and $k = 2$, so the minimum is $2 - 4 = -2$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -596,7 +596,7 @@
    null,
    "partial"
   ],
-  "solution": "Since $-1 \\le \\sin 4x \\le 1$, the function $A\\sin(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = -3$ and $|A| = 2$, so the maximum is $-1$.",
+  "solution": "Since $-1 \\le \\sin 4x \\le 1$, the function $y = A\\sin \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = -2$ and $k = -3$, so the maximum is $-3 + 2 = -1$. Because $A$ is negative, the maximum occurs where $\\sin 4x = -1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -634,7 +634,7 @@
    "partial",
    null
   ],
-  "solution": "Since $-1 \\le \\cos 5x \\le 1$, the function $A\\cos(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 2$ and $|A| = 4$, so the minimum is $-2$.",
+  "solution": "Since $-1 \\le \\cos 5x \\le 1$, the function $y = A\\cos \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = 4$ and $k = 2$, so the minimum is $2 - 4 = -2$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -672,7 +672,7 @@
    "companion",
    "partial"
   ],
-  "solution": "Since $-1 \\le \\sin 2x \\le 1$, the function $A\\sin(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 4$ and $|A| = 2$, so the minimum is $2$.",
+  "solution": "Since $-1 \\le \\sin 2x \\le 1$, the function $y = A\\sin \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = 2$ and $k = 4$, so the minimum is $4 - 2 = 2$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -710,7 +710,7 @@
    "partial",
    "companion"
   ],
-  "solution": "Since $-1 \\le \\sin 4x \\le 1$, the function $A\\sin(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = 4$ and $|A| = 1$, so the minimum is $3$.",
+  "solution": "Since $-1 \\le \\sin 4x \\le 1$, the function $y = A\\sin \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = 1$ and $k = 4$, so the minimum is $4 - 1 = 3$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -748,7 +748,7 @@
    "slip",
    "companion"
   ],
-  "solution": "The correct statement is “It has infinitely many zeros” — it is zero at $x = k\\pi$ for every integer $k$. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$. “It is monotonically increasing on $[0, \\pi]$” is false: on $[0, \\pi]$ it rises to $1$ and then falls. “Its graph is symmetric about the $y$-axis” is false: $y = \\sin x$ is odd, so its graph is symmetric about the origin.",
+  "solution": "“It has infinitely many zeros” is correct. It is zero at $x = k\\pi$ for every integer $k$. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. “It is monotonically increasing on $[0, \\pi]$” is incorrect. On $[0, \\pi]$ it rises from $0$ to $1$ and then falls back to $0$. “Its graph is symmetric about the $y$-axis” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, so its graph is symmetric about the origin.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -786,7 +786,7 @@
    null,
    "swap"
   ],
-  "solution": "The correct statement is “It is an odd function”. “Its maximum value is $\\dfrac{\\pi}{2}$” is false: its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it). $\\sin\\dfrac{\\pi}{2} = 0$ is false: the value there is $1$. “Its maximum value is $2$” is false: its values never exceed $1$.",
+  "solution": "“It is an odd function” is correct. $\\sin(-x) = -\\sin x$, so it is odd. “Its maximum value is $\\dfrac{\\pi}{2}$” is incorrect. Its maximum value is $1$. The number $\\dfrac{\\pi}{2}$ is a value of $x$ where the maximum is reached, not the maximum itself. $\\sin\\dfrac{\\pi}{2} = 0$ is incorrect. In fact $\\sin\\dfrac{\\pi}{2} = 1$. “Its maximum value is $2$” is incorrect. Its values never exceed $1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -824,7 +824,7 @@
    "swap",
    "companion"
   ],
-  "solution": "The correct statement is “It is an even function”. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$. $\\cos 0 = 0$ is false: the value there is $1$. “Its maximum value is $\\dfrac{\\pi}{2}$” is false: its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it).",
+  "solution": "“It is an even function” is correct. $\\cos(-x) = \\cos x$, so it is even. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. $\\cos 0 = 0$ is incorrect. In fact $\\cos 0 = 1$. “Its maximum value is $\\dfrac{\\pi}{2}$” is incorrect. Its maximum value is $1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -862,7 +862,7 @@
    "companion",
    "slip"
   ],
-  "solution": "The correct statement is “It is an odd function”. $\\sin\\dfrac{\\pi}{2} = 0$ is false: the value there is $1$. “It is an even function” is false: $y = \\sin x$ is odd. “Its maximum value is $2$” is false: its values never exceed $1$.",
+  "solution": "“It is an odd function” is correct. $\\sin(-x) = -\\sin x$, so it is odd. $\\sin\\dfrac{\\pi}{2} = 0$ is incorrect. In fact $\\sin\\dfrac{\\pi}{2} = 1$. “It is an even function” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, not even. “Its maximum value is $2$” is incorrect. Its values never exceed $1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -900,7 +900,7 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is “It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$”. “It has exactly one zero” is false: it has infinitely many zeros. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$. $\\sin\\dfrac{\\pi}{2} = 0$ is false: the value there is $1$.",
+  "solution": "“It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$” is correct. On this interval $\\sin x$ rises steadily from $-1$ to $1$. “It has exactly one zero” is incorrect. It is zero at $x = k\\pi$ for every integer $k$, so it has infinitely many zeros. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. $\\sin\\dfrac{\\pi}{2} = 0$ is incorrect. In fact $\\sin\\dfrac{\\pi}{2} = 1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -938,7 +938,7 @@
    "partial",
    "slip"
   ],
-  "solution": "The correct statement is “Its maximum value is $1$”. $\\cos 0 = 0$ is false: the value there is $1$. “It has exactly one zero” is false: it has infinitely many zeros. “It is monotonically increasing on $[0, \\pi]$” is false: on $[0, \\pi]$ it is decreasing.",
+  "solution": "“Its maximum value is $1$” is correct. Its values never exceed $1$, and $\\cos 0 = 1$. $\\cos 0 = 0$ is incorrect. In fact $\\cos 0 = 1$. “It has exactly one zero” is incorrect. It is zero at $x = \\dfrac{\\pi}{2} + k\\pi$ for every integer $k$, so it has infinitely many zeros. “It is monotonically increasing on $[0, \\pi]$” is incorrect. On $[0, \\pi]$ it falls from $1$ to $-1$, so it is decreasing there.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -976,7 +976,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “It has infinitely many zeros” — it is zero at $x = k\\pi$ for every integer $k$. “Its maximum value is $2$” is false: its values never exceed $1$. “It is an even function” is false: $y = \\sin x$ is odd. “Its maximum value is $\\dfrac{\\pi}{2}$” is false: its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it).",
+  "solution": "“It has infinitely many zeros” is correct. It is zero at $x = k\\pi$ for every integer $k$. “Its maximum value is $2$” is incorrect. Its values never exceed $1$. “It is an even function” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, not even. “Its maximum value is $\\dfrac{\\pi}{2}$” is incorrect. Its maximum value is $1$. The number $\\dfrac{\\pi}{2}$ is a value of $x$ where the maximum is reached, not the maximum itself.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1014,7 +1014,7 @@
    "partial",
    "slip"
   ],
-  "solution": "The correct statement is “Its graph is symmetric about the $y$-axis”. “Its maximum value is $2$” is false: its values never exceed $1$. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$. “It has exactly one zero” is false: it has infinitely many zeros.",
+  "solution": "“Its graph is symmetric about the $y$-axis” is correct. $\\cos(-x) = \\cos x$, so it is even. “Its maximum value is $2$” is incorrect. Its values never exceed $1$. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. “It has exactly one zero” is incorrect. It is zero at $x = \\dfrac{\\pi}{2} + k\\pi$ for every integer $k$, so it has infinitely many zeros.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1052,7 +1052,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is “Its graph is symmetric about the origin”. “Its minimum positive period is $\\pi$” is false: the minimum positive period of $y = \\sin x$ is $2\\pi$. “It is monotonically increasing on $[0, \\pi]$” is false: on $[0, \\pi]$ it rises to $1$ and then falls. $\\sin\\dfrac{\\pi}{2} = 0$ is false: the value there is $1$.",
+  "solution": "“Its graph is symmetric about the origin” is correct. $\\sin(-x) = -\\sin x$, so it is odd. “Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\sin \\dfrac{\\pi}{2} = 1$ but $\\sin\\left(\\dfrac{\\pi}{2} + \\pi\\right) = -1$. “It is monotonically increasing on $[0, \\pi]$” is incorrect. On $[0, \\pi]$ it rises from $0$ to $1$ and then falls back to $0$. $\\sin\\dfrac{\\pi}{2} = 0$ is incorrect. In fact $\\sin\\dfrac{\\pi}{2} = 1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1090,7 +1090,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "The correct statement is “It is a periodic function with minimum positive period $2\\pi$”. “Its maximum value is $2$” is false: its values never exceed $1$. “Its graph is symmetric about the $y$-axis” is false: $y = \\sin x$ is odd, so its graph is symmetric about the origin. “Its minimum positive period is $\\pi$” is false: the minimum positive period of $y = \\sin x$ is $2\\pi$.",
+  "solution": "“It is a periodic function with minimum positive period $2\\pi$” is correct. $\\sin(x + 2\\pi) = \\sin x$ for every $x$, and no smaller positive number has this property. “Its maximum value is $2$” is incorrect. Its values never exceed $1$. “Its graph is symmetric about the $y$-axis” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, so its graph is symmetric about the origin. “Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\sin \\dfrac{\\pi}{2} = 1$ but $\\sin\\left(\\dfrac{\\pi}{2} + \\pi\\right) = -1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1128,7 +1128,7 @@
    "domain",
    "companion"
   ],
-  "solution": "The correct statement is “It is a periodic function with minimum positive period $2\\pi$”. $\\sin\\dfrac{\\pi}{2} = 0$ is false: the value there is $1$. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$. “It is an even function” is false: $y = \\sin x$ is odd.",
+  "solution": "“It is a periodic function with minimum positive period $2\\pi$” is correct. $\\sin(x + 2\\pi) = \\sin x$ for every $x$, and no smaller positive number has this property. $\\sin\\dfrac{\\pi}{2} = 0$ is incorrect. In fact $\\sin\\dfrac{\\pi}{2} = 1$. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. “It is an even function” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, not even.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1166,7 +1166,7 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is “Its maximum value is $1$”. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$. $\\sin\\dfrac{\\pi}{2} = 0$ is false: the value there is $1$. “It is an even function” is false: $y = \\sin x$ is odd.",
+  "solution": "“Its maximum value is $1$” is correct. Its values never exceed $1$, and $\\sin \\dfrac{\\pi}{2} = 1$. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$. $\\sin\\dfrac{\\pi}{2} = 0$ is incorrect. In fact $\\sin\\dfrac{\\pi}{2} = 1$. “It is an even function” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, not even.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1204,7 +1204,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “Its maximum value is $1$”. “It is monotonically increasing on $[0, \\pi]$” is false: on $[0, \\pi]$ it is decreasing. “Its graph is symmetric about the origin” is false: $y = \\cos x$ is even, so its graph is symmetric about the $y$-axis. “Its range is $\\mathbb{R}$” is false: its values stay between $-1$ and $1$.",
+  "solution": "“Its maximum value is $1$” is correct. Its values never exceed $1$, and $\\cos 0 = 1$. “It is monotonically increasing on $[0, \\pi]$” is incorrect. On $[0, \\pi]$ it falls from $1$ to $-1$, so it is decreasing there. “Its graph is symmetric about the origin” is incorrect. $\\cos(-x) = \\cos x$, so it is even, so its graph is symmetric about the $y$-axis. “Its range is $\\mathbb{R}$” is incorrect. Its values stay between $-1$ and $1$, so its range is $[-1, 1]$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1242,7 +1242,7 @@
    "partial",
    null
   ],
-  "solution": "The correct statement is “It is an odd function”. “Its graph is symmetric about the $y$-axis” is false: $y = \\sin x$ is odd, so its graph is symmetric about the origin. “It has exactly one zero” is false: it has infinitely many zeros. “It is monotonically increasing on $[0, \\pi]$” is false: on $[0, \\pi]$ it rises to $1$ and then falls.",
+  "solution": "“It is an odd function” is correct. $\\sin(-x) = -\\sin x$, so it is odd. “Its graph is symmetric about the $y$-axis” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, so its graph is symmetric about the origin. “It has exactly one zero” is incorrect. It is zero at $x = k\\pi$ for every integer $k$, so it has infinitely many zeros. “It is monotonically increasing on $[0, \\pi]$” is incorrect. On $[0, \\pi]$ it rises from $0$ to $1$ and then falls back to $0$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1280,13 +1280,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its graph is symmetric about the $y$-axis” — $y = \\sin x$ is odd, so its graph is symmetric about the origin. The other three statements are true.",
+  "solution": "“Its graph is symmetric about the $y$-axis” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, so its graph is symmetric about the origin. “It is a periodic function with minimum positive period $2\\pi$” is correct. $\\sin(x + 2\\pi) = \\sin x$ for every $x$, and no smaller positive number has this property. “Its maximum value is $1$” is correct. Its values never exceed $1$, and $\\sin \\dfrac{\\pi}{2} = 1$. “It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$” is correct. On this interval $\\sin x$ rises steadily from $-1$ to $1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.stmt-n",
   "seed": "bank:1:TR-graph.stmt-n:0",
-  "form": "y = sin x or y = cos x: which statement is INCORRECT",
+  "form": "y = sin x or y = cos x: which statement is incorrect",
   "answer_letter": "C",
   "answer_value": "Its graph is symmetric about the $y$-axis",
   "verified": "stmt"
@@ -1318,13 +1318,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its minimum positive period is $\\pi$” — the minimum positive period of $y = \\cos x$ is $2\\pi$. The other three statements are true.",
+  "solution": "“Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\cos 0 = 1$ but $\\cos\\left(0 + \\pi\\right) = -1$. “Its range is $[-1, 1]$” is correct. Its values lie between $-1$ and $1$, and both ends are reached. “Its graph is symmetric about the $y$-axis” is correct. $\\cos(-x) = \\cos x$, so it is even. “It is an even function” is correct. $\\cos(-x) = \\cos x$, so it is even.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.stmt-n",
   "seed": "bank:1:TR-graph.stmt-n:1",
-  "form": "y = sin x or y = cos x: which statement is INCORRECT",
+  "form": "y = sin x or y = cos x: which statement is incorrect",
   "answer_letter": "A",
   "answer_value": "Its minimum positive period is $\\pi$",
   "verified": "stmt"
@@ -1356,13 +1356,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its minimum positive period is $\\pi$” — the minimum positive period of $y = \\cos x$ is $2\\pi$. The other three statements are true.",
+  "solution": "“Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\cos 0 = 1$ but $\\cos\\left(0 + \\pi\\right) = -1$. “Its maximum value is $1$” is correct. Its values never exceed $1$, and $\\cos 0 = 1$. “It has infinitely many zeros” is correct. It is zero at $x = \\dfrac{\\pi}{2} + k\\pi$ for every integer $k$. “Its range is $[-1, 1]$” is correct. Its values lie between $-1$ and $1$, and both ends are reached.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.stmt-n",
   "seed": "bank:1:TR-graph.stmt-n:2",
-  "form": "y = sin x or y = cos x: which statement is INCORRECT",
+  "form": "y = sin x or y = cos x: which statement is incorrect",
   "answer_letter": "A",
   "answer_value": "Its minimum positive period is $\\pi$",
   "verified": "stmt"
@@ -1394,13 +1394,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its graph is symmetric about the $y$-axis” — $y = \\sin x$ is odd, so its graph is symmetric about the origin. The other three statements are true.",
+  "solution": "“Its graph is symmetric about the $y$-axis” is incorrect. $\\sin(-x) = -\\sin x$, so it is odd, so its graph is symmetric about the origin. “Its graph is symmetric about the origin” is correct. $\\sin(-x) = -\\sin x$, so it is odd. “Its maximum value is $1$” is correct. Its values never exceed $1$, and $\\sin \\dfrac{\\pi}{2} = 1$. “It is a periodic function with minimum positive period $2\\pi$” is correct. $\\sin(x + 2\\pi) = \\sin x$ for every $x$, and no smaller positive number has this property.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.stmt-n",
   "seed": "bank:1:TR-graph.stmt-n:3",
-  "form": "y = sin x or y = cos x: which statement is INCORRECT",
+  "form": "y = sin x or y = cos x: which statement is incorrect",
   "answer_letter": "C",
   "answer_value": "Its graph is symmetric about the $y$-axis",
   "verified": "stmt"
@@ -1432,13 +1432,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its minimum positive period is $\\pi$” — the minimum positive period of $y = \\sin x$ is $2\\pi$. The other three statements are true.",
+  "solution": "“Its minimum positive period is $\\pi$” is incorrect. The minimum positive period is $2\\pi$. For example, $\\sin \\dfrac{\\pi}{2} = 1$ but $\\sin\\left(\\dfrac{\\pi}{2} + \\pi\\right) = -1$. “It is a periodic function with minimum positive period $2\\pi$” is correct. $\\sin(x + 2\\pi) = \\sin x$ for every $x$, and no smaller positive number has this property. “Its graph is symmetric about the origin” is correct. $\\sin(-x) = -\\sin x$, so it is odd. “It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$” is correct. On this interval $\\sin x$ rises steadily from $-1$ to $1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.stmt-n",
   "seed": "bank:1:TR-graph.stmt-n:4~1",
-  "form": "y = sin x or y = cos x: which statement is INCORRECT",
+  "form": "y = sin x or y = cos x: which statement is incorrect",
   "answer_letter": "B",
   "answer_value": "Its minimum positive period is $\\pi$",
   "verified": "stmt"
@@ -1470,13 +1470,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “Its maximum value is $\\dfrac{\\pi}{2}$” — its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it). The other three statements are true.",
+  "solution": "“Its maximum value is $\\dfrac{\\pi}{2}$” is incorrect. Its maximum value is $1$. The number $\\dfrac{\\pi}{2}$ is a value of $x$ where the maximum is reached, not the maximum itself. “Its range is $[-1, 1]$” is correct. Its values lie between $-1$ and $1$, and both ends are reached. “Its maximum value is $1$” is correct. Its values never exceed $1$, and $\\sin \\dfrac{\\pi}{2} = 1$. “Its graph is symmetric about the origin” is correct. $\\sin(-x) = -\\sin x$, so it is odd.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.stmt-n",
   "seed": "bank:1:TR-graph.stmt-n:5",
-  "form": "y = sin x or y = cos x: which statement is INCORRECT",
+  "form": "y = sin x or y = cos x: which statement is incorrect",
   "answer_letter": "D",
   "answer_value": "Its maximum value is $\\dfrac{\\pi}{2}$",
   "verified": "stmt"
@@ -1508,7 +1508,7 @@
    null,
    "slip"
   ],
-  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$ (then the pattern repeats every $2\\pi$). So the function is monotonically increasing on $\\left[\\pi, 2\\pi\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$, and this pattern repeats every $2\\pi$. So the function is monotonically increasing on $\\left[\\pi, 2\\pi\\right]$. For the other options, on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ it changes direction at $x = \\pi$, on $\\left[0, \\pi\\right]$ it is decreasing and on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = 0$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1546,7 +1546,7 @@
    "slip",
    "slip"
   ],
-  "solution": "$\\sin x$ increases on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ and decreases on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ (then the pattern repeats every $2\\pi$). So the function is monotonically decreasing on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\sin x$ increases on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ and decreases on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$, and this pattern repeats every $2\\pi$. So the function is monotonically decreasing on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$. For the other options, on $\\left[0, \\pi\\right]$ it changes direction at $x = \\dfrac{\\pi}{2}$, on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it is increasing and on $\\left[\\pi, 2\\pi\\right]$ it changes direction at $x = \\dfrac{3\\pi}{2}$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1584,7 +1584,7 @@
    "slip",
    "slip"
   ],
-  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$ (then the pattern repeats every $2\\pi$). So the function is monotonically decreasing on $\\left[0, \\pi\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$, and this pattern repeats every $2\\pi$. So the function is monotonically decreasing on $\\left[0, \\pi\\right]$. For the other options, on $\\left[\\pi, 2\\pi\\right]$ it is increasing, on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ it changes direction at $x = \\pi$ and on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = 0$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1622,7 +1622,7 @@
    "slip",
    "slip"
   ],
-  "solution": "$\\sin x$ increases on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ and decreases on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ (then the pattern repeats every $2\\pi$). So the function is monotonically decreasing on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\sin x$ increases on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ and decreases on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$, and this pattern repeats every $2\\pi$. So the function is monotonically decreasing on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$. For the other options, on $\\left[-\\pi, 0\\right]$ it changes direction at $x = -\\dfrac{\\pi}{2}$, on $\\left[\\pi, 2\\pi\\right]$ it changes direction at $x = \\dfrac{3\\pi}{2}$ and on $\\left[0, \\pi\\right]$ it changes direction at $x = \\dfrac{\\pi}{2}$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1660,7 +1660,7 @@
    "slip",
    "slip"
   ],
-  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$ (then the pattern repeats every $2\\pi$). So the function is monotonically increasing on $\\left[-\\pi, 0\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$, and this pattern repeats every $2\\pi$. So the function is monotonically increasing on $\\left[-\\pi, 0\\right]$. For the other options, on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = 0$, on $\\left[0, \\pi\\right]$ it is decreasing and on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ it changes direction at $x = \\pi$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1698,7 +1698,7 @@
    null,
    "slip"
   ],
-  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$ (then the pattern repeats every $2\\pi$). So the function is monotonically decreasing on $\\left[0, \\pi\\right]$. On each of the other three intervals it changes direction or moves the other way.",
+  "solution": "$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$, and this pattern repeats every $2\\pi$. So the function is monotonically decreasing on $\\left[0, \\pi\\right]$. For the other options, on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = 0$, on $\\left[-\\pi, 0\\right]$ it is increasing and on $\\left[\\pi, 2\\pi\\right]$ it is increasing.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -1736,7 +1736,7 @@
    "partial",
    null
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$”. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. “Its minimum positive period is $\\dfrac{2\\pi}{3}$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{3}$. “Its minimum positive period is $\\pi$” is false: the coefficient of $x$ changes the period: $T = \\dfrac{\\pi}{3}$.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{6}$. “Its minimum positive period is $\\dfrac{2\\pi}{3}$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{3}$. “Its minimum positive period is $\\pi$” is incorrect. The coefficient of $x$ changes the period. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{3}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -1774,7 +1774,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “Its minimum positive period is $\\dfrac{\\pi}{2}$” — for a tangent $T = \\dfrac{\\pi}{|\\omega|}$. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. “Its maximum value is $1$” is false: the tangent is unbounded. “It is an even function” is false: the tangent is odd.",
+  "solution": "“Its minimum positive period is $\\dfrac{\\pi}{2}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{4}$. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -1812,7 +1812,7 @@
    "near-miss",
    "slip"
   ],
-  "solution": "The correct statement is “Its minimum positive period is $\\dfrac{\\pi}{2}$” — for a tangent $T = \\dfrac{\\pi}{|\\omega|}$. “It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is false: the direction is the other way. “Its maximum value is $1$” is false: the tangent is unbounded. “Its minimum positive period is $\\pi$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$.",
+  "solution": "“Its minimum positive period is $\\dfrac{\\pi}{2}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. “It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “Its minimum positive period is $\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -1850,7 +1850,7 @@
    "companion",
    "partial"
   ],
-  "solution": "The correct statement is “It is increasing on $\\left(-\\pi, \\pi\\right)$” — the tangent is increasing on each interval between consecutive asymptotes. “Its minimum positive period is $\\pi$” is false: the coefficient of $x$ changes the period: $T = 2\\pi$. “It is an even function” is false: the tangent is odd. “Its maximum value is $1$” is false: the tangent is unbounded.",
+  "solution": "“It is increasing on $\\left(-\\pi, \\pi\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\pi, \\pi\\right)$ is one of them. “Its minimum positive period is $\\pi$” is incorrect. The coefficient of $x$ changes the period. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 2\\pi$. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -1888,7 +1888,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is “It is an odd function”. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. “It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is false: the direction is the other way. “It is an even function” is false: the tangent is odd.",
+  "solution": "“It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{4}$. “It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -1926,7 +1926,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” — the tangent is increasing on each interval between consecutive asymptotes. “It is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is false: the direction is the other way. “It is an even function” is false: the tangent is odd. “Its maximum value is $1$” is false: the tangent is unbounded.",
+  "solution": "“It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$ is one of them. “It is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$ is one of them. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -1964,13 +1964,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “Its minimum positive period is $2\\pi$” — that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\pi$. The other three statements are true.",
+  "solution": "“Its minimum positive period is $2\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$ is one of them. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-n",
   "seed": "bank:1:TR-graph.tan-n:0",
-  "form": "y = tan x: which statement is INCORRECT",
+  "form": "y = tan x: which statement is incorrect",
   "answer_letter": "D",
   "answer_value": "Its minimum positive period is $2\\pi$",
   "verified": "stmt"
@@ -2002,13 +2002,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its domain is $\\mathbb{R}$” — the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. The other three statements are true.",
+  "solution": "“Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{4}$. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “It is increasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-n",
   "seed": "bank:1:TR-graph.tan-n:1",
-  "form": "y = tan x: which statement is INCORRECT",
+  "form": "y = tan x: which statement is incorrect",
   "answer_letter": "B",
   "answer_value": "Its domain is $\\mathbb{R}$",
   "verified": "stmt"
@@ -2040,13 +2040,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its minimum positive period is $\\pi$” — that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. The other three statements are true.",
+  "solution": "“Its minimum positive period is $\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-n",
   "seed": "bank:1:TR-graph.tan-n:2",
-  "form": "y = tan x: which statement is INCORRECT",
+  "form": "y = tan x: which statement is incorrect",
   "answer_letter": "B",
   "answer_value": "Its minimum positive period is $\\pi$",
   "verified": "stmt"
@@ -2078,13 +2078,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its maximum value is $1$” — the tangent is unbounded. The other three statements are true.",
+  "solution": "“Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$ is one of them. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its minimum positive period is $\\pi$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-n",
   "seed": "bank:1:TR-graph.tan-n:3",
-  "form": "y = tan x: which statement is INCORRECT",
+  "form": "y = tan x: which statement is incorrect",
   "answer_letter": "C",
   "answer_value": "Its maximum value is $1$",
   "verified": "stmt"
@@ -2116,13 +2116,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” — the direction is the other way. The other three statements are true.",
+  "solution": "“It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “It is increasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$” is correct. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$ is one of them. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{2}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-n",
   "seed": "bank:1:TR-graph.tan-n:4",
-  "form": "y = tan x: which statement is INCORRECT",
+  "form": "y = tan x: which statement is incorrect",
   "answer_letter": "B",
   "answer_value": "It is decreasing on $\\left(-\\dfrac{\\pi}{4}, \\dfrac{\\pi}{4}\\right)$",
   "verified": "stmt"
@@ -2154,13 +2154,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “It is increasing on its whole domain” — it is monotonic on each interval between asymptotes, but not across them. The other three statements are true.",
+  "solution": "“It is increasing on its whole domain” is incorrect. It is monotonic on each interval between consecutive asymptotes, but not across an asymptote. “It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “Its minimum positive period is $\\pi$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$. “Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-n",
   "seed": "bank:1:TR-graph.tan-n:5",
-  "form": "y = tan x: which statement is INCORRECT",
+  "form": "y = tan x: which statement is incorrect",
   "answer_letter": "D",
   "answer_value": "It is increasing on its whole domain",
   "verified": "stmt"
@@ -2192,7 +2192,7 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$”. “It is increasing on its whole domain” is false: it is monotonic on each interval between asymptotes, but not across them. “It is decreasing on $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$” is false: the direction is the other way. “Its minimum positive period is $6\\pi$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “It is increasing on its whole domain” is incorrect. It is monotonic on each interval between consecutive asymptotes, but not across an asymptote. “It is decreasing on $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\dfrac{3\\pi}{2}, \\dfrac{3\\pi}{2}\\right)$ is one of them. “Its minimum positive period is $6\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 3\\pi$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2230,7 +2230,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “Its minimum positive period is $2\\pi$” — for a tangent $T = \\dfrac{\\pi}{|\\omega|}$. “It is decreasing on $\\left(-\\pi, \\pi\\right)$” is false: the direction is the other way. “Its maximum value is $1$” is false: the tangent is unbounded. “It is an even function” is false: the tangent is odd.",
+  "solution": "“Its minimum positive period is $2\\pi$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 2\\pi$. “It is decreasing on $\\left(-\\pi, \\pi\\right)$” is incorrect. The tangent is increasing on each interval between consecutive asymptotes, and $\\left(-\\pi, \\pi\\right)$ is one of them. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2268,7 +2268,7 @@
    "sign",
    "domain"
   ],
-  "solution": "Rewrite $\\tan(-u) = -\\tan u$ first. The correct statement is “Its range is $\\mathbb{R}$”. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is false: the direction is the other way. “Its minimum positive period is $2\\pi$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\pi$. “Its domain is $\\mathbb{R}$” is false: the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Between two consecutive asymptotes the tangent takes every real value. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is incorrect. $\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$. “Its minimum positive period is $2\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$. “Its domain is $\\mathbb{R}$” is incorrect. The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = \\dfrac{\\pi}{2}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2306,7 +2306,7 @@
    "partial",
    "slip"
   ],
-  "solution": "The correct statement is “Its minimum positive period is $2\\pi$” — for a tangent $T = \\dfrac{\\pi}{|\\omega|}$. “Its minimum positive period is $\\pi$” is false: the coefficient of $x$ changes the period: $T = 2\\pi$. “Its maximum value is $1$” is false: the tangent is unbounded. “It is an even function” is false: the tangent is odd.",
+  "solution": "“Its minimum positive period is $2\\pi$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 2\\pi$. “Its minimum positive period is $\\pi$” is incorrect. The coefficient of $x$ changes the period. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = 2\\pi$. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2344,7 +2344,7 @@
    null,
    "partial"
   ],
-  "solution": "Rewrite $\\tan(-u) = -\\tan u$ first. The correct statement is “It is decreasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{\\pi}{8}\\right)$” — $\\tan(-u) = -\\tan u$, and $-\\tan$ is decreasing on each interval between asymptotes. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$. “It is decreasing on its whole domain” is false: it is monotonic on each interval between asymptotes, but not across them. “Its minimum positive period is $\\pi$” is false: the coefficient of $x$ changes the period: $T = \\dfrac{\\pi}{4}$.",
+  "solution": "“It is decreasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{\\pi}{8}\\right)$” is correct. $\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $\\left(-\\dfrac{\\pi}{8}, \\dfrac{\\pi}{8}\\right)$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$. “It is decreasing on its whole domain” is incorrect. It is monotonic on each interval between consecutive asymptotes, but not across an asymptote. “Its minimum positive period is $\\pi$” is incorrect. The coefficient of $x$ changes the period. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\dfrac{\\pi}{4}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2382,7 +2382,7 @@
    null,
    "sign"
   ],
-  "solution": "Rewrite $\\tan(-u) = -\\tan u$ first. The correct statement is “Its minimum positive period is $\\pi$” — for a tangent $T = \\dfrac{\\pi}{|\\omega|}$. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is false: the direction is the other way. “Its maximum value is $1$” is false: the tangent is unbounded. “Its minimum positive period is $2\\pi$” is false: that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = \\pi$.",
+  "solution": "“Its minimum positive period is $\\pi$” is correct. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$. “It is increasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$” is incorrect. $\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $\\left(-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right)$. “Its maximum value is $1$” is incorrect. The tangent takes arbitrarily large values, so it has no maximum. “Its minimum positive period is $2\\pi$” is incorrect. $\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. For $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = \\pi$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2420,7 +2420,7 @@
    "sign",
    null
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{2\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2458,7 +2458,7 @@
    "partial",
    null
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{2\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2496,7 +2496,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{2\\pi}{3}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{2\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -2534,7 +2534,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$T = \\dfrac{2\\pi}{|\\omega|}$ with $\\omega = \\dfrac{1}{2}$: dividing by a fraction multiplies by its reciprocal, so $T = 4\\pi$.",
+  "solution": "For $y = A\\sin(\\omega x + \\varphi) + k$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$, $\\varphi$ and $k$ are. Here $\\omega = \\dfrac{1}{2}$, and dividing by a fraction means multiplying by its reciprocal: $T = 2\\pi \\div \\dfrac{1}{2} = 2\\pi \\times 2 = 4\\pi$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2572,7 +2572,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "$T = \\dfrac{2\\pi}{|\\omega|}$ with $\\omega = \\dfrac{3}{2}$: dividing by a fraction multiplies by its reciprocal, so $T = \\dfrac{4\\pi}{3}$.",
+  "solution": "For $y = A\\sin(\\omega x + \\varphi) + k$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$, $\\varphi$ and $k$ are. Here $\\omega = \\dfrac{3}{2}$, and dividing by a fraction means multiplying by its reciprocal: $T = 2\\pi \\div \\dfrac{3}{2} = 2\\pi \\times \\dfrac{2}{3} = \\dfrac{4\\pi}{3}$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2610,7 +2610,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "The correct statement is “Its minimum value is $-2$” — the minimum is $k - |A|$. “Its minimum positive period is $\\dfrac{\\pi}{3}$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{3}$. “Its minimum positive period is $6\\pi$” is false: divide by $\\omega$, do not multiply: $T = \\dfrac{2\\pi}{3}$. “Its minimum value is $-3$” is false: the vertical shift $1$ was forgotten: the minimum is $-2$.",
+  "solution": "“Its minimum value is $-2$” is correct. The minimum is $k - |A| = 1 - 3 = -2$. “Its minimum positive period is $\\dfrac{\\pi}{3}$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{3} = \\dfrac{2\\pi}{3}$. “Its minimum positive period is $6\\pi$” is incorrect. The period is found by dividing $2\\pi$ by $|\\omega|$, not by multiplying: $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{3} = \\dfrac{2\\pi}{3}$. “Its minimum value is $-3$” is incorrect. The vertical shift is missing. The minimum is $k - |A| = 1 - 3 = -2$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2648,7 +2648,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The correct statement is “Its maximum value is $5$” — the maximum is $k + |A|$. “Its minimum positive period is $\\dfrac{\\pi}{3}$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{3}$. “It is an even function” is false: $f(-x) \\ne f(x)$ in general. “It is an odd function” is false: $f(-x) \\ne -f(x)$ in general.",
+  "solution": "“Its maximum value is $5$” is correct. The maximum is $k + |A| = 2 + 3 = 5$. “Its minimum positive period is $\\dfrac{\\pi}{3}$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{3} = \\dfrac{2\\pi}{3}$. “It is an even function” is incorrect. $f(0) = 2$ is neither the maximum $5$ nor the minimum $-1$, so the $y$-axis is not an axis of symmetry of the graph. “It is an odd function” is incorrect. For an odd function the maximum and the minimum are opposite numbers, but here they are $5$ and $-1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2686,7 +2686,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The correct statement is “It is an even function” — $f(-x) = f(x)$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = \\pi$. “Its minimum value is $-3$” is false: the vertical shift $2$ was forgotten: the minimum is $-1$. “It is an odd function” is false: $f(-x) \\ne -f(x)$ in general.",
+  "solution": "“It is an even function” is correct. $\\cos(-u) = \\cos u$, so $f(-x) = f(x)$. “Its minimum positive period is $\\dfrac{\\pi}{2}$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = \\dfrac{2\\pi}{2} = \\pi$. “Its minimum value is $-3$” is incorrect. The vertical shift is missing. The minimum is $k - |A| = 2 - 3 = -1$. “It is an odd function” is incorrect. For an odd function the maximum and the minimum are opposite numbers, but here they are $5$ and $-1$.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2724,7 +2724,7 @@
    "complement",
    "partial"
   ],
-  "solution": "Let $u = x + \\dfrac{\\pi}{3}$. The function $\\sin u$ is decreasing for $\\dfrac{\\pi}{2} \\le u \\le \\dfrac{3\\pi}{2}$. Solve $\\dfrac{\\pi}{2} \\le x + \\dfrac{\\pi}{3} \\le \\dfrac{3\\pi}{2}$: $x \\in \\left[\\dfrac{\\pi}{6}, \\dfrac{7\\pi}{6}\\right]$. Moving the interval the other way (adding instead of subtracting), or using the interval of the unshifted function, gives a wrong option; half a period later the function moves in the opposite direction.",
+  "solution": "Let $u = x + \\dfrac{\\pi}{3}$. The function $\\sin u$ is decreasing for $\\dfrac{\\pi}{2} \\le u \\le \\dfrac{3\\pi}{2}$. Solving $\\dfrac{\\pi}{2} \\le x + \\dfrac{\\pi}{3} \\le \\dfrac{3\\pi}{2}$ gives $\\dfrac{\\pi}{6} \\le x \\le \\dfrac{7\\pi}{6}$, so the function is decreasing on $\\left[\\dfrac{\\pi}{6}, \\dfrac{7\\pi}{6}\\right]$. For the other options, on $\\left[\\dfrac{5\\pi}{6}, \\dfrac{11\\pi}{6}\\right]$ it changes direction at $x = \\dfrac{7\\pi}{6}$, on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ it changes direction at $x = \\dfrac{7\\pi}{6}$ and on $\\left[\\dfrac{7\\pi}{6}, \\dfrac{13\\pi}{6}\\right]$ it is increasing.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2762,7 +2762,7 @@
    "partial",
    "complement"
   ],
-  "solution": "Let $u = x + \\dfrac{\\pi}{3}$. The function $\\sin u$ is increasing for $-\\dfrac{\\pi}{2} \\le u \\le \\dfrac{\\pi}{2}$. Solve $-\\dfrac{\\pi}{2} \\le x + \\dfrac{\\pi}{3} \\le \\dfrac{\\pi}{2}$: $x \\in \\left[-\\dfrac{5\\pi}{6}, \\dfrac{\\pi}{6}\\right]$. Moving the interval the other way (adding instead of subtracting), or using the interval of the unshifted function, gives a wrong option; half a period later the function moves in the opposite direction.",
+  "solution": "Let $u = x + \\dfrac{\\pi}{3}$. The function $\\sin u$ is increasing for $-\\dfrac{\\pi}{2} \\le u \\le \\dfrac{\\pi}{2}$. Solving $-\\dfrac{\\pi}{2} \\le x + \\dfrac{\\pi}{3} \\le \\dfrac{\\pi}{2}$ gives $-\\dfrac{5\\pi}{6} \\le x \\le \\dfrac{\\pi}{6}$, so the function is increasing on $\\left[-\\dfrac{5\\pi}{6}, \\dfrac{\\pi}{6}\\right]$. For the other options, on $\\left[-\\dfrac{\\pi}{6}, \\dfrac{5\\pi}{6}\\right]$ it changes direction at $x = \\dfrac{\\pi}{6}$, on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ it changes direction at $x = \\dfrac{\\pi}{6}$ and on $\\left[\\dfrac{\\pi}{6}, \\dfrac{7\\pi}{6}\\right]$ it is decreasing.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2800,7 +2800,7 @@
    "sign",
    null
   ],
-  "solution": "Let $u = x - \\dfrac{\\pi}{2}$. The function $\\sin u$ is decreasing for $\\dfrac{\\pi}{2} \\le u \\le \\dfrac{3\\pi}{2}$. Solve $\\dfrac{\\pi}{2} \\le x - \\dfrac{\\pi}{2} \\le \\dfrac{3\\pi}{2}$: $x \\in \\left[\\pi, 2\\pi\\right]$. Moving the interval the other way (adding instead of subtracting), or using the interval of the unshifted function, gives a wrong option; half a period later the function moves in the opposite direction.",
+  "solution": "Let $u = x - \\dfrac{\\pi}{2}$. The function $\\sin u$ is decreasing for $\\dfrac{\\pi}{2} \\le u \\le \\dfrac{3\\pi}{2}$. Solving $\\dfrac{\\pi}{2} \\le x - \\dfrac{\\pi}{2} \\le \\dfrac{3\\pi}{2}$ gives $\\pi \\le x \\le 2\\pi$, so the function is decreasing on $\\left[\\pi, 2\\pi\\right]$. For the other options, on $\\left[0, \\pi\\right]$ it is increasing, on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$ it changes direction at $x = \\pi$ and on $\\left[2\\pi, 3\\pi\\right]$ it is increasing.",
   "video": "V13",
   "version": "a",
   "domain": "TR",
@@ -2952,13 +2952,13 @@
    null,
    "domain"
   ],
-  "solution": "The function is undefined where $\\dfrac{x}{2} = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\pi + k \\cdot 2\\pi$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\pi, 0\\right)$ contains none of them; each of the other intervals contains one.",
+  "solution": "The function is undefined where $\\dfrac{x}{2} = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\pi + 2k\\pi$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\pi, 0\\right)$ contains none of them. Each of the other intervals contains one.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-mono",
   "seed": "bank:1:TR-graph.tan-mono:0",
-  "form": "Interval on which y = tan ωx is increasing (an asymptote inside the interval is the trap)",
+  "form": "Interval on which y = tan ωx is increasing (the wrong intervals contain an asymptote)",
   "answer_letter": "C",
   "answer_value": "$\\left(-\\pi, 0\\right)$",
   "verified": "stmt"
@@ -2990,13 +2990,13 @@
    "domain",
    "domain"
   ],
-  "solution": "The function is undefined where $\\dfrac{x}{2} = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\pi + k \\cdot 2\\pi$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\pi, \\pi\\right)$ contains none of them; each of the other intervals contains one.",
+  "solution": "The function is undefined where $\\dfrac{x}{2} = \\dfrac{\\pi}{2} + k\\pi$, that is at $x = \\pi + 2k\\pi$ ($k \\in \\mathbb{Z}$), and it is increasing on every interval between two neighbouring such points. Only $\\left(-\\pi, \\pi\\right)$ contains none of them. Each of the other intervals contains one.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
   "template": "TR-graph.tan-mono",
   "seed": "bank:1:TR-graph.tan-mono:1",
-  "form": "Interval on which y = tan ωx is increasing (an asymptote inside the interval is the trap)",
+  "form": "Interval on which y = tan ωx is increasing (the wrong intervals contain an asymptote)",
   "answer_letter": "B",
   "answer_value": "$\\left(-\\pi, \\pi\\right)$",
   "verified": "stmt"
@@ -3028,7 +3028,7 @@
    "period",
    "shift"
   ],
-  "solution": "The correct statement is “It is monotonically increasing on $\\left(-\\dfrac{\\pi}{3}, \\dfrac{2\\pi}{3}\\right)$” — the interval lies between two neighbouring points where the function is undefined. “Its domain is $\\left\\{x \\mid x \\ne 2k\\pi + \\dfrac{2\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$” is false: that leaves out every second point; solve $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$. “Its minimum positive period is $2\\pi$” is false: the tangent has period $\\dfrac{\\pi}{|\\omega|}$, not $\\dfrac{2\\pi}{|\\omega|}$: $T = \\pi$. “It is an odd function” is false: the shift moves the graph, so it is no longer symmetric about the origin.",
+  "solution": "“It is monotonically increasing on $\\left(-\\dfrac{\\pi}{3}, \\dfrac{2\\pi}{3}\\right)$” is correct. The interval lies between two neighbouring points where the function is undefined. “Its domain is $\\left\\{x \\mid x \\ne 2k\\pi + \\dfrac{2\\pi}{3},\\ k \\in \\mathbb{Z}\\right\\}$” is incorrect. That list leaves out every second excluded point. Solving $x - \\dfrac{\\pi}{6} \\ne \\dfrac{\\pi}{2} + k\\pi$ gives points $\\pi$ apart. “Its minimum positive period is $2\\pi$” is incorrect. The tangent has period $\\dfrac{\\pi}{|\\omega|}$, not $\\dfrac{2\\pi}{|\\omega|}$: $T = \\pi$. “It is an odd function” is incorrect. At $x = 0$ the function equals $\\tan\\left(-\\dfrac{\\pi}{6}\\right) \\ne 0$, but an odd function defined at $0$ has the value $0$ there.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -3066,7 +3066,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “Its domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{5\\pi}{6},\\ k \\in \\mathbb{Z}\\right\\}$” — solve $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$. “Its graph passes through the point $\\left(\\dfrac{5\\pi}{6}, 0\\right)$” is false: the function is undefined at $x = \\dfrac{5\\pi}{6}$. “It is monotonically increasing on $\\left(\\dfrac{\\pi}{3}, \\dfrac{4\\pi}{3}\\right)$” is false: the function is undefined at $x = \\dfrac{5\\pi}{6}$, which lies inside this interval. “Its domain is $\\left\\{x \\mid x \\ne 2k\\pi + \\dfrac{5\\pi}{6},\\ k \\in \\mathbb{Z}\\right\\}$” is false: that leaves out every second point; solve $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$.",
+  "solution": "“Its domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{5\\pi}{6},\\ k \\in \\mathbb{Z}\\right\\}$” is correct. It comes from solving $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$. “Its graph passes through the point $\\left(\\dfrac{5\\pi}{6}, 0\\right)$” is incorrect. The function is undefined at $x = \\dfrac{5\\pi}{6}$. “It is monotonically increasing on $\\left(\\dfrac{\\pi}{3}, \\dfrac{4\\pi}{3}\\right)$” is incorrect. The function is undefined at $x = \\dfrac{5\\pi}{6}$, which lies inside this interval. “Its domain is $\\left\\{x \\mid x \\ne 2k\\pi + \\dfrac{5\\pi}{6},\\ k \\in \\mathbb{Z}\\right\\}$” is incorrect. That list leaves out every second excluded point. Solving $x - \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$ gives points $\\pi$ apart.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -3104,7 +3104,7 @@
    "companion",
    null
   ],
-  "solution": "Replace $x$ by $-x$ and compare with $f(x)$; remember that $\\tan(-x) = -\\tan x$. $y = -\\tan x$ is odd: $-\\tan(-x) = \\tan x$. The others: $y = \\tan^2 x$ — $\\tan^2(-x) = \\tan^2 x$, so it is even. $y = \\tan\\left(x + \\dfrac{\\pi}{4}\\right)$ — the shift breaks the symmetry: $f(0) = 1 \\ne 0$, so it is neither odd nor even. $y = x\\tan x$ — odd times odd is even, so it is even.",
+  "solution": "Replace $x$ by $-x$ and compare with $f(x)$, using $\\tan(-x) = -\\tan x$. $y = -\\tan x$ is odd, because $-\\tan(-x) = \\tan x = -(-\\tan x)$. $y = \\tan^2 x$ is not odd, because $\\tan^2(-x) = (-\\tan x)^2 = \\tan^2 x$, so it is even. $y = \\tan\\left(x + \\dfrac{\\pi}{4}\\right)$ is not odd, because it is undefined at $x = \\dfrac{\\pi}{4}$ but defined at $x = -\\dfrac{\\pi}{4}$, so its domain is not symmetric about $0$, so it is neither odd nor even. $y = x\\tan x$ is not odd, because $(-x)\\tan(-x) = x\\tan x$, so it is even.",
   "video": "V14",
   "version": "a",
   "domain": "TR",
@@ -3142,7 +3142,7 @@
    "companion",
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$ and compare with $f(x)$; remember that $\\tan(-x) = -\\tan x$. $y = \\tan 2x$ is odd: $\\tan(-2x) = -\\tan 2x$. The others: $y = x\\tan x$ — odd times odd is even, so it is even. $y = \\tan x + 1$ — $f(-x) = -\\tan x + 1$ is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = \\tan x + x^2$ — an odd function plus an even function is neither, so it is neither odd nor even.",
+  "solution": "Replace $x$ by $-x$ and compare with $f(x)$, using $\\tan(-x) = -\\tan x$. $y = \\tan 2x$ is odd, because $\\tan(-2x) = -\\tan 2x$. $y = x\\tan x$ is not odd, because $(-x)\\tan(-x) = x\\tan x$, so it is even. $y = \\tan x + 1$ is not odd, because $f(-x) = -\\tan x + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = \\tan x + x^2$ is not odd, because $f(-x) = -\\tan x + x^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V14",
   "version": "a",
   "domain": "TR",

@@ -26,7 +26,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $y = 3^x$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = -2x + 6$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = \\left(\\dfrac{1}{3}\\right)^x$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = -x^3$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 3^x$ is correct. The base $3$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = -2x + 6$ is incorrect. It is a linear function with negative slope $-2$, so it is decreasing on $\\mathbb{R}$. $y = \\left(\\dfrac{1}{3}\\right)^x$ is incorrect. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = -x^3$ is incorrect. $x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -64,7 +64,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = 4x - 4$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = x^2$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = \\left(\\dfrac{1}{3}\\right)^x$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = -4x + 4$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 4x - 4$ is correct. It is a linear function with positive slope $4$, so it is increasing on $\\mathbb{R}$. $y = x^2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = \\left(\\dfrac{1}{3}\\right)^x$ is incorrect. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = -4x + 4$ is incorrect. It is a linear function with negative slope $-4$, so it is decreasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -102,7 +102,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $y = x^3$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = x^2$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = \\dfrac{5}{x}$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = 2^{-x}$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = x^3$ is correct. Cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$. $y = x^2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = \\dfrac{5}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = 2^{-x}$ is incorrect. $2^{-x} = \\left(\\dfrac{1}{2}\\right)^x$ has a base between $0$ and $1$, so it is decreasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -140,7 +140,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = 3x - 2$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = \\left(\\dfrac{1}{2}\\right)^x$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = -x^2 + 2$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = \\lvert x \\rvert$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 3x - 2$ is correct. It is a linear function with positive slope $3$, so it is increasing on $\\mathbb{R}$. $y = \\left(\\dfrac{1}{2}\\right)^x$ is incorrect. The base $\\dfrac{1}{2}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = -x^2 + 2$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$. $y = \\lvert x \\rvert$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -178,7 +178,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = 4^x$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a larger value. $y = -x^2$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = -\\dfrac{3}{x}$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$. $y = -x^3$ is false: it is not increasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 4^x$ is correct. The base $4$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = -x^2$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$. $y = -\\dfrac{3}{x}$ is incorrect. It is not defined at $x = 0$, and it increases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = -x^3$ is incorrect. $x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -216,7 +216,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = -3x + 1$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = -\\dfrac{3}{x}$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = x^2 + 1$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = -x^2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = -3x + 1$ is correct. It is a linear function with negative slope $-3$, so it is decreasing on $\\mathbb{R}$. $y = -\\dfrac{3}{x}$ is incorrect. It is not defined at $x = 0$, and it increases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = x^2 + 1$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = -x^2$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -254,7 +254,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = \\left(\\dfrac{1}{2}\\right)^x$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = 2x - 2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = -\\dfrac{2}{x}$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = x^2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = \\left(\\dfrac{1}{2}\\right)^x$ is correct. The base $\\dfrac{1}{2}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = 2x - 2$ is incorrect. It is a linear function with positive slope $2$, so it is increasing on $\\mathbb{R}$. $y = -\\dfrac{2}{x}$ is incorrect. It is not defined at $x = 0$, and it increases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = x^2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -292,7 +292,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $y = -x^3$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = e^x$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = 3x + 2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = \\dfrac{3}{x}$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = -x^3$ is correct. $x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$. $y = e^x$ is incorrect. The base $e \\approx 2.718$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = 3x + 2$ is incorrect. It is a linear function with positive slope $3$, so it is increasing on $\\mathbb{R}$. $y = \\dfrac{3}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -330,7 +330,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = -x^3$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = \\dfrac{5}{x}$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = e^x$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = x^2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = -x^3$ is correct. $x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$. $y = \\dfrac{5}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = e^x$ is incorrect. The base $e \\approx 2.718$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = x^2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -357,7 +357,7 @@
   "stem": "Which of the following functions is monotonically decreasing on $(-\\infty, +\\infty)$? ( )",
   "options": [
    "$y = 5x - 4$",
-   "$y = -x^2$",
+   "$y = x^2 + 4$",
    "$y = -x^2 + 4$",
    "$y = 2^{-x}$"
   ],
@@ -368,7 +368,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $y = 2^{-x}$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = -x^2 + 4$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = 5x - 4$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = -x^2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 2^{-x}$ is correct. $2^{-x} = \\left(\\dfrac{1}{2}\\right)^x$ has a base between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = -x^2 + 4$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$. $y = 5x - 4$ is incorrect. It is a linear function with positive slope $5$, so it is increasing on $\\mathbb{R}$. $y = x^2 + 4$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -406,7 +406,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $y = -4x + 4$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = x^3$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = 4x - 4$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = \\dfrac{4}{x}$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = -4x + 4$ is correct. It is a linear function with negative slope $-4$, so it is decreasing on $\\mathbb{R}$. $y = x^3$ is incorrect. Cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$. $y = 4x - 4$ is incorrect. It is a linear function with positive slope $4$, so it is increasing on $\\mathbb{R}$. $y = \\dfrac{4}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -444,7 +444,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = -5x + 6$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = \\lvert x \\rvert$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = x^3$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = \\dfrac{5}{x}$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = -5x + 6$ is correct. It is a linear function with negative slope $-5$, so it is decreasing on $\\mathbb{R}$. $y = \\lvert x \\rvert$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = x^3$ is incorrect. Cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$. $y = \\dfrac{5}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -482,7 +482,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = -5x + 6$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = x^3$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = -x^2 + 6$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = \\dfrac{5}{x}$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = -5x + 6$ is correct. It is a linear function with negative slope $-5$, so it is decreasing on $\\mathbb{R}$. $y = x^3$ is incorrect. Cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$. $y = -x^2 + 6$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$. $y = \\dfrac{5}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -520,7 +520,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = -4x + 2$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = x^3$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = 3^x$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = x^2 + 2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = -4x + 2$ is correct. It is a linear function with negative slope $-4$, so it is decreasing on $\\mathbb{R}$. $y = x^3$ is incorrect. Cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$. $y = 3^x$ is incorrect. The base $3$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = x^2 + 2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -558,7 +558,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $y = 2^{-x}$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = x^2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = 4x + 4$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = -x^2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = 2^{-x}$ is correct. $2^{-x} = \\left(\\dfrac{1}{2}\\right)^x$ has a base between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = x^2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = 4x + 4$ is incorrect. It is a linear function with positive slope $4$, so it is increasing on $\\mathbb{R}$. $y = -x^2$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -596,7 +596,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $y = \\left(\\dfrac{1}{3}\\right)^x$ — on $(-\\infty, +\\infty)$ a larger $x$ always gives a smaller value. $y = e^x$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = -x^2$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$. $y = 2x - 5$ is false: it is not decreasing on the whole of $(-\\infty, +\\infty)$.",
+  "solution": "$y = \\left(\\dfrac{1}{3}\\right)^x$ is correct. The base $\\dfrac{1}{3}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = e^x$ is incorrect. The base $e \\approx 2.718$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = -x^2$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$. $y = 2x - 5$ is incorrect. It is a linear function with positive slope $2$, so it is increasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -625,7 +625,7 @@
    "$y = 3x - 5$",
    "$y = \\left(\\dfrac{1}{2}\\right)^x$",
    "$y = x^2 + 5$",
-   "$y = 3x + 5$"
+   "$y = \\sqrt{x}$"
   ],
   "answer": 1,
   "traps": [
@@ -634,7 +634,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = \\left(\\dfrac{1}{2}\\right)^x$ — on $(0, +\\infty)$ a larger $x$ always gives a smaller value. $y = x^2 + 5$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = 3x - 5$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = 3x + 5$ is false: it is not decreasing on the whole of $(0, +\\infty)$.",
+  "solution": "$y = \\left(\\dfrac{1}{2}\\right)^x$ is correct. The base $\\dfrac{1}{2}$ is between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = x^2 + 5$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = 3x - 5$ is incorrect. It is a linear function with positive slope $3$, so it is increasing on $\\mathbb{R}$. $y = \\sqrt{x}$ is incorrect. It is defined only for $x \\ge 0$, where it is increasing.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -660,7 +660,7 @@
   "trick": null,
   "stem": "Which of the following functions is monotonically decreasing on $(0, +\\infty)$? ( )",
   "options": [
-   "$y = e^x$",
+   "$y = 5x + 1$",
    "$y = x^2$",
    "$y = -5x + 1$",
    "$y = 4^x$"
@@ -672,7 +672,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $y = -5x + 1$ — on $(0, +\\infty)$ a larger $x$ always gives a smaller value. $y = 4^x$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = x^2$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = e^x$ is false: it is not decreasing on the whole of $(0, +\\infty)$.",
+  "solution": "$y = -5x + 1$ is correct. It is a linear function with negative slope $-5$, so it is decreasing on $\\mathbb{R}$. $y = 4^x$ is incorrect. The base $4$ is greater than $1$, so it is increasing on $\\mathbb{R}$. $y = x^2$ is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. $y = 5x + 1$ is incorrect. It is a linear function with positive slope $5$, so it is increasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -710,7 +710,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = -x^3$ — on $(0, +\\infty)$ a larger $x$ always gives a smaller value. $y = 2x + 6$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = \\sqrt{x}$ is false: it is not decreasing on the whole of $(0, +\\infty)$. $y = 2^x$ is false: it is not decreasing on the whole of $(0, +\\infty)$.",
+  "solution": "$y = -x^3$ is correct. $x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$. $y = 2x + 6$ is incorrect. It is a linear function with positive slope $2$, so it is increasing on $\\mathbb{R}$. $y = \\sqrt{x}$ is incorrect. It is defined only for $x \\ge 0$, where it is increasing. $y = 2^x$ is incorrect. The base $2$ is greater than $1$, so it is increasing on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -748,7 +748,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $y = x^3$ — on $(0, +\\infty)$ a larger $x$ always gives a larger value. $y = 4^{-x}$ is false: it is not increasing on the whole of $(0, +\\infty)$. $y = \\dfrac{3}{x}$ is false: it is not increasing on the whole of $(0, +\\infty)$. $y = -x^2$ is false: it is not increasing on the whole of $(0, +\\infty)$.",
+  "solution": "$y = x^3$ is correct. Cubing keeps the order of real numbers, so it is increasing on $\\mathbb{R}$. $y = 4^{-x}$ is incorrect. $4^{-x} = \\left(\\dfrac{1}{4}\\right)^x$ has a base between $0$ and $1$, so it is decreasing on $\\mathbb{R}$. $y = \\dfrac{3}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = -x^2$ is incorrect. It increases on $(-\\infty, 0]$ and decreases on $[0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -786,7 +786,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $y = \\ln x$ — on $(0, +\\infty)$ a larger $x$ always gives a larger value. $y = -x^3$ is false: it is not increasing on the whole of $(0, +\\infty)$. $y = \\dfrac{3}{x}$ is false: it is not increasing on the whole of $(0, +\\infty)$. $y = \\log_{\\frac{1}{2}} x$ is false: it is not increasing on the whole of $(0, +\\infty)$.",
+  "solution": "$y = \\ln x$ is correct. It is defined only for $x > 0$, where it is increasing. $y = -x^3$ is incorrect. $x^3$ is increasing on $\\mathbb{R}$, so $-x^3$ is decreasing on $\\mathbb{R}$. $y = \\dfrac{3}{x}$ is incorrect. It is not defined at $x = 0$, and it decreases on each of $(-\\infty, 0)$ and $(0, +\\infty)$. $y = \\log_{\\frac{1}{2}} x$ is incorrect. It is defined only for $x > 0$, where it is decreasing because the base $\\dfrac{1}{2}$ is less than $1$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -824,7 +824,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “When $x < 0$, the function is decreasing” — for negative $x$ the values fall as $x$ grows towards $0$. “When $x \\in \\mathbb{R}$, the function is decreasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x < 0$, the function is increasing” is false: for negative $x$ the values fall as $x$ grows towards $0$. “When $x \\in \\mathbb{R}$, the function is increasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
+  "solution": "The graph of $y = x^2$ is a parabola opening upward with its lowest point at $(0, 0)$, so the function decreases for $x < 0$ and increases for $x > 0$. “When $x < 0$, the function is decreasing” is correct. “When $x \\in \\mathbb{R}$, the function is decreasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x < 0$, the function is increasing” is incorrect. For $x < 0$ the function is decreasing. “When $x \\in \\mathbb{R}$, the function is increasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -862,7 +862,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is “When $x > 0$, the function is increasing” — for positive $x$ the values grow with $x$. “When $x \\in \\mathbb{R}$, the function is increasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x < 0$, the function is increasing” is false: for negative $x$ the values fall as $x$ grows towards $0$. “When $x \\in \\mathbb{R}$, the function is decreasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
+  "solution": "The graph of $y = x^2 + 3$ is a parabola opening upward with its lowest point at $(0, 3)$, so the function decreases for $x < 0$ and increases for $x > 0$. “When $x > 0$, the function is increasing” is correct. “When $x \\in \\mathbb{R}$, the function is increasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x < 0$, the function is increasing” is incorrect. For $x < 0$ the function is decreasing. “When $x \\in \\mathbb{R}$, the function is decreasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -900,7 +900,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is “When $x > 0$, the function is increasing” — for positive $x$ the values grow with $x$. “When $x < 0$, the function is increasing” is false: for negative $x$ the values fall as $x$ grows towards $0$. “When $x \\in \\mathbb{R}$, the function is increasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x > 0$, the function is decreasing” is false: for positive $x$ the values grow with $x$.",
+  "solution": "The graph of $y = x^2$ is a parabola opening upward with its lowest point at $(0, 0)$, so the function decreases for $x < 0$ and increases for $x > 0$. “When $x > 0$, the function is increasing” is correct. “When $x < 0$, the function is increasing” is incorrect. For $x < 0$ the function is decreasing. “When $x \\in \\mathbb{R}$, the function is increasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x > 0$, the function is decreasing” is incorrect. For $x > 0$ the function is increasing.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -938,7 +938,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is “When $x > 0$, the function is increasing” — for positive $x$ the values grow with $x$. “When $x > 0$, the function is decreasing” is false: for positive $x$ the values grow with $x$. “When $x < 0$, the function is increasing” is false: for negative $x$ the values fall as $x$ grows towards $0$. “When $x \\in \\mathbb{R}$, the function is decreasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
+  "solution": "The graph of $y = x^4$ is a U shape with its lowest point at $(0, 0)$, so the function decreases for $x < 0$ and increases for $x > 0$. “When $x > 0$, the function is increasing” is correct. “When $x > 0$, the function is decreasing” is incorrect. For $x > 0$ the function is increasing. “When $x < 0$, the function is increasing” is incorrect. For $x < 0$ the function is decreasing. “When $x \\in \\mathbb{R}$, the function is decreasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -976,7 +976,7 @@
    "domain",
    "sign"
   ],
-  "solution": "The correct statement is “When $x > 0$, the function is increasing” — for positive $x$ the values grow with $x$. “When $x < 0$, the function is increasing” is false: for negative $x$ the values fall as $x$ grows towards $0$. “When $x \\in \\mathbb{R}$, the function is increasing” is false: the function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x > 0$, the function is decreasing” is false: for positive $x$ the values grow with $x$.",
+  "solution": "The graph of $y = \\lvert x \\rvert + 5$ is a V shape with its lowest point at $(0, 5)$, so the function decreases for $x < 0$ and increases for $x > 0$. “When $x > 0$, the function is increasing” is correct. “When $x < 0$, the function is increasing” is incorrect. For $x < 0$ the function is decreasing. “When $x \\in \\mathbb{R}$, the function is increasing” is incorrect. The function changes direction at $x = 0$, so it is not monotonic on $\\mathbb{R}$. “When $x > 0$, the function is decreasing” is incorrect. For $x > 0$ the function is increasing.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -1014,13 +1014,13 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is “It is decreasing on $(0, +\\infty)$” — on $(0, +\\infty)$ the values fall as $x$ grows. “It is increasing on $(-\\infty, 0)$” is false: the direction is the other way. “It is decreasing on its whole domain” is false: compare $x = -1$ and $x = 1$: $f(-1) = -3$ and $f(1) = 3$, so the direction fails across $0$. “Its domain is $\\mathbb{R}$” is false: $x = 0$ is excluded.",
+  "solution": "The graph of $y = \\dfrac{3}{x}$ has two branches, in the first and third quadrants, and on each branch $y$ falls as $x$ increases. “It is decreasing on $(0, +\\infty)$” is correct. On the branch where $x > 0$, $y$ falls as $x$ increases. “It is increasing on $(-\\infty, 0)$” is incorrect. It is decreasing on $(-\\infty, 0)$. “It is decreasing on its whole domain” is incorrect. $-1 < 1$, but $f(-1) = -3$ and $f(1) = 3$, so the function is not decreasing across the two branches. “Its domain is $\\mathbb{R}$” is incorrect. $x = 0$ makes the denominator zero, so $0$ is not in the domain.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-mono.recip",
   "seed": "bank:1:FN-mono.recip:0",
-  "form": "y = k/x: decreasing on each piece, NOT on the whole domain",
+  "form": "y = k/x: decreasing on each piece, not on the whole domain",
   "answer_letter": "D",
   "answer_value": "It is decreasing on $(0, +\\infty)$",
   "verified": "stmt"
@@ -1052,13 +1052,13 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is “It is decreasing on $(-\\infty, 0)$” — on $(-\\infty, 0)$ the values fall as $x$ grows. “Its domain is $\\mathbb{R}$” is false: $x = 0$ is excluded. “It is increasing on $(-\\infty, 0)$” is false: the direction is the other way. “It is increasing on $(0, +\\infty)$” is false: the direction is the other way.",
+  "solution": "The graph of $y = \\dfrac{6}{x}$ has two branches, in the first and third quadrants, and on each branch $y$ falls as $x$ increases. “It is decreasing on $(-\\infty, 0)$” is correct. On the branch where $x < 0$, $y$ falls as $x$ increases. “Its domain is $\\mathbb{R}$” is incorrect. $x = 0$ makes the denominator zero, so $0$ is not in the domain. “It is increasing on $(-\\infty, 0)$” is incorrect. It is decreasing on $(-\\infty, 0)$. “It is increasing on $(0, +\\infty)$” is incorrect. It is decreasing on $(0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-mono.recip",
   "seed": "bank:1:FN-mono.recip:1",
-  "form": "y = k/x: decreasing on each piece, NOT on the whole domain",
+  "form": "y = k/x: decreasing on each piece, not on the whole domain",
   "answer_letter": "D",
   "answer_value": "It is decreasing on $(-\\infty, 0)$",
   "verified": "stmt"
@@ -1090,13 +1090,13 @@
    "sign",
    "domain"
   ],
-  "solution": "The correct statement is “It is decreasing on $(-\\infty, 0)$” — on $(-\\infty, 0)$ the values fall as $x$ grows. “It is decreasing on its whole domain” is false: compare $x = -1$ and $x = 1$: $f(-1) = -5$ and $f(1) = 5$, so the direction fails across $0$. “It is increasing on $(-\\infty, 0)$” is false: the direction is the other way. “It is increasing on $(0, +\\infty)$” is false: the direction is the other way.",
+  "solution": "The graph of $y = \\dfrac{5}{x}$ has two branches, in the first and third quadrants, and on each branch $y$ falls as $x$ increases. “It is decreasing on $(-\\infty, 0)$” is correct. On the branch where $x < 0$, $y$ falls as $x$ increases. “It is decreasing on its whole domain” is incorrect. $-1 < 1$, but $f(-1) = -5$ and $f(1) = 5$, so the function is not decreasing across the two branches. “It is increasing on $(-\\infty, 0)$” is incorrect. It is decreasing on $(-\\infty, 0)$. “It is increasing on $(0, +\\infty)$” is incorrect. It is decreasing on $(0, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-mono.recip",
   "seed": "bank:1:FN-mono.recip:2",
-  "form": "y = k/x: decreasing on each piece, NOT on the whole domain",
+  "form": "y = k/x: decreasing on each piece, not on the whole domain",
   "answer_letter": "A",
   "answer_value": "It is decreasing on $(-\\infty, 0)$",
   "verified": "stmt"
@@ -1128,7 +1128,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = 3$ and the parabola opens downward, so the function is increasing to the left of the axis and decreasing to the right. Answer: $[3, +\\infty)$.",
+  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = -\\dfrac{6}{-2} = 3$. The parabola opens downward, so the function is increasing to the left of the axis and decreasing to the right of it. So it is decreasing on $[3, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -1166,7 +1166,7 @@
    null,
    "half"
   ],
-  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = -5$ and the parabola opens upward, so the function is decreasing to the left of the axis and increasing to the right. Answer: $[-5, +\\infty)$.",
+  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = -\\dfrac{10}{2} = -5$. The parabola opens upward, so the function is decreasing to the left of the axis and increasing to the right of it. So it is increasing on $[-5, +\\infty)$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -1204,7 +1204,7 @@
    "half",
    "sign"
   ],
-  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = 1$ and the parabola opens downward, so the function is increasing to the left of the axis and decreasing to the right. Answer: $(-\\infty, 1]$.",
+  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = -\\dfrac{2}{-2} = 1$. The parabola opens downward, so the function is increasing to the left of the axis and decreasing to the right of it. So it is increasing on $(-\\infty, 1]$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -1242,7 +1242,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = -3$ and the parabola opens upward, so the function is decreasing to the left of the axis and increasing to the right. Answer: $(-\\infty, -3]$.",
+  "solution": "The axis of symmetry is $x = -\\dfrac{b}{2a} = -\\dfrac{6}{2} = -3$. The parabola opens upward, so the function is decreasing to the left of the axis and increasing to the right of it. So it is decreasing on $(-\\infty, -3]$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",

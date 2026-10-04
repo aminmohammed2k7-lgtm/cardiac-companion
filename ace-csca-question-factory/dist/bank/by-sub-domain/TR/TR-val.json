@@ -26,7 +26,7 @@
    "reciprocal",
    "partial"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{\\sqrt{6} + \\sqrt{3}}{2}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ and $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. Substituting, the expression equals $\\left(\\dfrac{1}{2} + \\dfrac{\\sqrt{2}}{2}\\right) \\cdot \\sqrt{3} = \\dfrac{\\sqrt{6} + \\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -64,7 +64,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$, $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ (reference angle, then the sign of the quadrant). Substituting gives $3$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$ and $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. Substituting, the expression equals $\\left(\\dfrac{\\sqrt{3}}{2} + \\dfrac{\\sqrt{3}}{2}\\right) \\cdot \\sqrt{3} = 3$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -102,7 +102,7 @@
    "operation",
    "sign"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$, $\\tan \\dfrac{\\pi}{4} = 1$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{4 + \\sqrt{3}}{4}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$ and $\\tan \\dfrac{\\pi}{4} = 1$. Substituting, the expression equals $\\dfrac{\\sqrt{3}}{2} \\cdot \\dfrac{1}{2} + 1 = \\dfrac{4 + \\sqrt{3}}{4}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -140,7 +140,7 @@
    "sign",
    null
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{3 + 2\\sqrt{3}}{6}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ and $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. Substituting, the expression equals $\\dfrac{\\sqrt{2}}{2} \\cdot \\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{3}}{3} = \\dfrac{3 + 2\\sqrt{3}}{6}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -178,7 +178,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$, $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{1 - \\sqrt{3}}{2}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$ and $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. Substituting, the expression equals $\\dfrac{\\sqrt{3}}{2} + \\dfrac{1}{2} - \\sqrt{3} = \\dfrac{1 - \\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -216,7 +216,7 @@
    null,
    "sign"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{\\sqrt{6}}{3}$.",
+  "solution": "Find each value: $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ and $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. Substituting, the expression equals $\\left(\\dfrac{\\sqrt{2}}{2} + \\dfrac{\\sqrt{2}}{2}\\right) \\cdot \\dfrac{\\sqrt{3}}{3} = \\dfrac{\\sqrt{6}}{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -254,7 +254,7 @@
    "reciprocal",
    null
   ],
-  "solution": "The correct statement is $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ — reference angle and quadrant sign give $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is false: the sign is wrong for this quadrant. $\\sin\\alpha = \\dfrac{1}{2}$ is false: that is the value of $\\cos\\alpha$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is false: that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.",
+  "solution": "For $\\alpha = \\dfrac{\\pi}{3}$: $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$, $\\cos\\alpha = \\dfrac{1}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\sqrt{3}$. $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is incorrect. Sine is positive in the first quadrant, so $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\sin\\alpha = \\dfrac{1}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is incorrect. This is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -292,7 +292,7 @@
    "sign",
    "companion"
   ],
-  "solution": "The correct statement is $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ — $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{\\sqrt{3}}{3}$. $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ is false: that is the value of $\\cos\\alpha$. $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ is false: the sign is wrong for this quadrant. $\\cos\\alpha = \\dfrac{1}{2}$ is false: that is the value of $\\sin\\alpha$.",
+  "solution": "For $\\alpha = \\dfrac{\\pi}{6}$: $\\sin\\alpha = \\dfrac{1}{2}$, $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{\\sqrt{3}}{3}$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is correct. $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{1}{2}$. $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ is incorrect. Tangent is positive in the first quadrant, so $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$. $\\cos\\alpha = \\dfrac{1}{2}$ is incorrect. This is the value of $\\sin\\alpha$. In fact $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -330,7 +330,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ — $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{\\sqrt{3}}{3}$. $\\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is false: that is the value of $\\cos\\alpha$. $\\tan\\alpha = -\\sqrt{3}$ is false: that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent. $\\sin\\alpha = -\\dfrac{1}{2}$ is false: the sign is wrong for this quadrant.",
+  "solution": "For $\\alpha = \\dfrac{5\\pi}{6}$: $\\sin\\alpha = \\sin\\left(\\pi - \\dfrac{\\pi}{6}\\right) = \\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos\\alpha = \\cos\\left(\\pi - \\dfrac{\\pi}{6}\\right) = -\\cos \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{\\sqrt{3}}{3}$. $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ is correct. $\\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{1}{2}$. $\\tan\\alpha = -\\sqrt{3}$ is incorrect. This is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{\\sqrt{3}}{3}$. $\\sin\\alpha = -\\dfrac{1}{2}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -368,7 +368,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\alpha = 1$ — $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = 1$. $\\cos\\alpha = -\\dfrac{\\sqrt{2}}{2}$ is false: the sign is wrong for this quadrant. $\\sin\\alpha = -\\dfrac{\\sqrt{2}}{2}$ is false: the sign is wrong for this quadrant. $\\tan\\alpha = -1$ is false: the sign is wrong for this quadrant.",
+  "solution": "For $\\alpha = 45^\\circ$: $\\sin\\alpha = \\dfrac{\\sqrt{2}}{2}$, $\\cos\\alpha = \\dfrac{\\sqrt{2}}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = 1$. $\\tan\\alpha = 1$ is correct. $\\cos\\alpha = -\\dfrac{\\sqrt{2}}{2}$ is incorrect. Cosine is positive in the first quadrant, so $\\cos\\alpha = \\dfrac{\\sqrt{2}}{2}$. $\\sin\\alpha = -\\dfrac{\\sqrt{2}}{2}$ is incorrect. Sine is positive in the first quadrant, so $\\sin\\alpha = \\dfrac{\\sqrt{2}}{2}$. $\\tan\\alpha = -1$ is incorrect. Tangent is positive in the first quadrant, so $\\tan\\alpha = 1$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -406,7 +406,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ — reference angle and quadrant sign give $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is false: the sign is wrong for this quadrant. $\\sin\\alpha = -\\dfrac{1}{2}$ is false: that is the value of $\\cos\\alpha$. $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ is false: that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.",
+  "solution": "For $\\alpha = \\dfrac{2\\pi}{3}$: $\\sin\\alpha = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$, $\\cos\\alpha = \\cos\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\sqrt{3}$. $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\sin\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\sin\\alpha = -\\dfrac{1}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ is incorrect. This is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -444,7 +444,7 @@
    "reciprocal",
    "companion"
   ],
-  "solution": "The correct statement is $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ — reference angle and quadrant sign give $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\sin\\alpha = \\dfrac{1}{2}$ is false: that is the value of $\\cos\\alpha$. $\\cos\\alpha = -\\dfrac{1}{2}$ is false: the sign is wrong for this quadrant. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is false: that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.",
+  "solution": "For $\\alpha = 60^\\circ$: $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$, $\\cos\\alpha = \\dfrac{1}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\sqrt{3}$. $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\sin\\alpha = \\dfrac{1}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\cos\\alpha = -\\dfrac{1}{2}$ is incorrect. Cosine is positive in the first quadrant, so $\\cos\\alpha = \\dfrac{1}{2}$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is incorrect. This is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -482,7 +482,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ — $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{\\sqrt{3}}{3}$. $\\sin\\alpha = -\\dfrac{1}{2}$ is false: the sign is wrong for this quadrant. $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is false: the sign is wrong for this quadrant. $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ is false: the sign is wrong for this quadrant.",
+  "solution": "For $\\alpha = 30^\\circ$: $\\sin\\alpha = \\dfrac{1}{2}$, $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{\\sqrt{3}}{3}$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is correct. $\\sin\\alpha = -\\dfrac{1}{2}$ is incorrect. Sine is positive in the first quadrant, so $\\sin\\alpha = \\dfrac{1}{2}$. $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is incorrect. Cosine is positive in the first quadrant, so $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$ is incorrect. Tangent is positive in the first quadrant, so $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -520,7 +520,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{2}$ — reference angle and quadrant sign give $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{2}$. $\\cos\\alpha = \\dfrac{1}{2}$ is false: that is the value of $\\sin\\alpha$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is false: the sign is wrong for this quadrant. $\\sin\\alpha = -\\dfrac{1}{2}$ is false: the sign is wrong for this quadrant.",
+  "solution": "For $\\alpha = \\dfrac{5\\pi}{6}$: $\\sin\\alpha = \\sin\\left(\\pi - \\dfrac{\\pi}{6}\\right) = \\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos\\alpha = \\cos\\left(\\pi - \\dfrac{\\pi}{6}\\right) = -\\cos \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{\\sqrt{3}}{3}$. $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{2}$ is correct. $\\cos\\alpha = \\dfrac{1}{2}$ is incorrect. This is the value of $\\sin\\alpha$. In fact $\\cos\\alpha = -\\dfrac{\\sqrt{3}}{2}$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is incorrect. Tangent is negative in the second quadrant, so $\\tan\\alpha = -\\dfrac{\\sqrt{3}}{3}$. $\\sin\\alpha = -\\dfrac{1}{2}$ is incorrect. Sine is positive in the second quadrant, so $\\sin\\alpha = \\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -558,7 +558,7 @@
    "reciprocal",
    null
   ],
-  "solution": "The correct statement is $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ — reference angle and quadrant sign give $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ is false: that is the value of $\\sin\\alpha$. $\\sin\\alpha = \\dfrac{1}{2}$ is false: that is the value of $\\cos\\alpha$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is false: that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.",
+  "solution": "For $\\alpha = 60^\\circ$: $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$, $\\cos\\alpha = \\dfrac{1}{2}$ and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\sqrt{3}$. $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\sin\\alpha$. In fact $\\cos\\alpha = \\dfrac{1}{2}$. $\\sin\\alpha = \\dfrac{1}{2}$ is incorrect. This is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = \\dfrac{\\sqrt{3}}{2}$. $\\tan\\alpha = \\dfrac{\\sqrt{3}}{3}$ is incorrect. This is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -596,7 +596,7 @@
    null,
    "companion"
   ],
-  "solution": "The reference angle is $30^\\circ$ and the angle lies in the second quadrant, where tangent is negative. So the value is $-\\dfrac{\\sqrt{3}}{3}$.",
+  "solution": "The angle $150^\\circ$ lies in the second quadrant, where tangent is negative, and its reference angle is $30^\\circ$. So $\\tan 150^\\circ = \\tan\\left(180^\\circ - 30^\\circ\\right) = -\\tan 30^\\circ = -\\dfrac{\\sqrt{3}}{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -634,7 +634,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The reference angle is $\\dfrac{\\pi}{3}$ and the angle lies in the second quadrant, where cosine is negative. So the value is $-\\dfrac{1}{2}$.",
+  "solution": "The angle $\\dfrac{2\\pi}{3}$ lies in the second quadrant, where cosine is negative, and its reference angle is $\\dfrac{\\pi}{3}$. So $\\cos \\dfrac{2\\pi}{3} = \\cos\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -672,7 +672,7 @@
    "companion",
    null
   ],
-  "solution": "The reference angle is $60^\\circ$ and the angle lies in the third quadrant, where tangent is positive. So the value is $\\sqrt{3}$.",
+  "solution": "The angle $240^\\circ$ lies in the third quadrant, where tangent is positive, and its reference angle is $60^\\circ$. So $\\tan 240^\\circ = \\tan\\left(180^\\circ + 60^\\circ\\right) = \\tan 60^\\circ = \\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -710,7 +710,7 @@
    "companion",
    null
   ],
-  "solution": "The reference angle is $60^\\circ$ and the angle lies in the third quadrant, where sine is negative. So the value is $-\\dfrac{\\sqrt{3}}{2}$.",
+  "solution": "The angle $240^\\circ$ lies in the third quadrant, where sine is negative, and its reference angle is $60^\\circ$. So $\\sin 240^\\circ = \\sin\\left(180^\\circ + 60^\\circ\\right) = -\\sin 60^\\circ = -\\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -748,7 +748,7 @@
    "sign",
    "companion"
   ],
-  "solution": "The reference angle is $60^\\circ$ and the angle lies in the third quadrant, where sine is negative. So the value is $-\\dfrac{\\sqrt{3}}{2}$.",
+  "solution": "The angle $240^\\circ$ lies in the third quadrant, where sine is negative, and its reference angle is $60^\\circ$. So $\\sin 240^\\circ = \\sin\\left(180^\\circ + 60^\\circ\\right) = -\\sin 60^\\circ = -\\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -786,7 +786,7 @@
    null,
    "companion"
   ],
-  "solution": "The reference angle is $\\dfrac{\\pi}{6}$ and the angle lies in the second quadrant, where tangent is negative. So the value is $-\\dfrac{\\sqrt{3}}{3}$.",
+  "solution": "The angle $\\dfrac{5\\pi}{6}$ lies in the second quadrant, where tangent is negative, and its reference angle is $\\dfrac{\\pi}{6}$. So $\\tan \\dfrac{5\\pi}{6} = \\tan\\left(\\pi - \\dfrac{\\pi}{6}\\right) = -\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -824,7 +824,7 @@
    "companion",
    null
   ],
-  "solution": "The reference angle is $\\dfrac{\\pi}{6}$ and the angle lies in the second quadrant, where sine is positive. So the value is $\\dfrac{1}{2}$.",
+  "solution": "The angle $\\dfrac{5\\pi}{6}$ lies in the second quadrant, where sine is positive, and its reference angle is $\\dfrac{\\pi}{6}$. So $\\sin \\dfrac{5\\pi}{6} = \\sin\\left(\\pi - \\dfrac{\\pi}{6}\\right) = \\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -862,7 +862,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The reference angle is $\\dfrac{\\pi}{3}$ and the angle lies in the second quadrant, where tangent is negative. So the value is $-\\sqrt{3}$.",
+  "solution": "The angle $\\dfrac{2\\pi}{3}$ lies in the second quadrant, where tangent is negative, and its reference angle is $\\dfrac{\\pi}{3}$. So $\\tan \\dfrac{2\\pi}{3} = \\tan\\left(\\pi - \\dfrac{\\pi}{3}\\right) = -\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -900,7 +900,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The reference angle is $60^\\circ$ and the angle lies in the second quadrant, where cosine is negative. So the value is $-\\dfrac{1}{2}$.",
+  "solution": "The angle $120^\\circ$ lies in the second quadrant, where cosine is negative, and its reference angle is $60^\\circ$. So $\\cos 120^\\circ = \\cos\\left(180^\\circ - 60^\\circ\\right) = -\\cos 60^\\circ = -\\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -938,7 +938,7 @@
    "sign",
    "companion"
   ],
-  "solution": "The reference angle is $30^\\circ$ and the angle lies in the third quadrant, where cosine is negative. So the value is $-\\dfrac{\\sqrt{3}}{2}$.",
+  "solution": "The angle $210^\\circ$ lies in the third quadrant, where cosine is negative, and its reference angle is $30^\\circ$. So $\\cos 210^\\circ = \\cos\\left(180^\\circ + 30^\\circ\\right) = -\\cos 30^\\circ = -\\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -976,7 +976,7 @@
    "companion",
    null
   ],
-  "solution": "The reference angle is $\\dfrac{\\pi}{3}$ and the angle lies in the third quadrant, where tangent is positive. So the value is $\\sqrt{3}$.",
+  "solution": "The angle $\\dfrac{4\\pi}{3}$ lies in the third quadrant, where tangent is positive, and its reference angle is $\\dfrac{\\pi}{3}$. So $\\tan \\dfrac{4\\pi}{3} = \\tan\\left(\\pi + \\dfrac{\\pi}{3}\\right) = \\tan \\dfrac{\\pi}{3} = \\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1014,7 +1014,7 @@
    null,
    "companion"
   ],
-  "solution": "The reference angle is $\\dfrac{\\pi}{6}$ and the angle lies in the third quadrant, where sine is negative. So the value is $-\\dfrac{1}{2}$.",
+  "solution": "The angle $\\dfrac{7\\pi}{6}$ lies in the third quadrant, where sine is negative, and its reference angle is $\\dfrac{\\pi}{6}$. So $\\sin \\dfrac{7\\pi}{6} = \\sin\\left(\\pi + \\dfrac{\\pi}{6}\\right) = -\\sin \\dfrac{\\pi}{6} = -\\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1052,7 +1052,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ — this is the correct special value. $\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{3}$ (check the sign of the quadrant). $\\sin \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$ is false: the correct value is $\\dfrac{1}{2}$. $\\cos \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{2}$.",
+  "solution": "$\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$ is incorrect. In the first quadrant the tangent is positive. In fact $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. $\\sin \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\cos \\dfrac{\\pi}{6}$. In fact $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$. $\\cos \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is incorrect. This is the value of $\\sin \\dfrac{\\pi}{6}$. In fact $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1090,7 +1090,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ — this is the correct special value. $\\cos \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is false: the correct value is $\\dfrac{\\sqrt{2}}{2}$ (check the sign of the quadrant). $\\cos \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{2}$. $\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ is false: the correct value is $\\dfrac{1}{2}$ (check the sign of the quadrant).",
+  "solution": "$\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\cos \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is incorrect. In the first quadrant the cosine is positive. In fact $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$. $\\cos \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is incorrect. This is the value of $\\sin \\dfrac{\\pi}{6}$. In fact $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$. $\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ is incorrect. In the first quadrant the cosine is positive. In fact $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1128,7 +1128,7 @@
    "slip",
    "companion"
   ],
-  "solution": "The correct statement is $\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ — this is the correct special value. $\\cos 0 = 0$ is false: $\\cos 0 = 1$. $\\sin \\dfrac{\\pi}{3} = \\dfrac{1}{2}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{2}$. $\\cos \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is false: the correct value is $\\dfrac{1}{2}$.",
+  "solution": "$\\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is correct. $\\cos 0 = 0$ is incorrect. In fact $\\cos 0 = 1$. $\\sin \\dfrac{\\pi}{3} = \\dfrac{1}{2}$ is incorrect. This is the value of $\\cos \\dfrac{\\pi}{3}$. In fact $\\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$. $\\cos \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\sin \\dfrac{\\pi}{3}$. In fact $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1166,7 +1166,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ — this is the correct special value. $\\cos \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is false: the correct value is $\\dfrac{1}{2}$. $\\sin \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is false: the correct value is $\\dfrac{\\sqrt{2}}{2}$ (check the sign of the quadrant). $\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{3}$ (check the sign of the quadrant).",
+  "solution": "$\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$ is correct. $\\cos \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\sin \\dfrac{\\pi}{3}$. In fact $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$. $\\sin \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is incorrect. In the first quadrant the sine is positive. In fact $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$. $\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$ is incorrect. In the first quadrant the tangent is positive. In fact $\\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1204,7 +1204,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is $\\tan \\dfrac{\\pi}{4} = 1$ — this is the correct special value. $\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$ is false: the correct value is $\\sqrt{3}$ (check the sign of the quadrant). $\\cos \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{2}$. $\\cos \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is false: the correct value is $\\dfrac{\\sqrt{2}}{2}$ (check the sign of the quadrant).",
+  "solution": "$\\tan \\dfrac{\\pi}{4} = 1$ is correct. $\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$ is incorrect. In the first quadrant the tangent is positive. In fact $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. $\\cos \\dfrac{\\pi}{6} = \\dfrac{1}{2}$ is incorrect. This is the value of $\\sin \\dfrac{\\pi}{6}$. In fact $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$. $\\cos \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is incorrect. In the first quadrant the cosine is positive. In fact $\\cos \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1242,7 +1242,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$ — this is the correct special value. $\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ is false: the correct value is $\\dfrac{1}{2}$ (check the sign of the quadrant). $\\sin \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is false: the correct value is $\\dfrac{\\sqrt{2}}{2}$ (check the sign of the quadrant). $\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$ is false: the correct value is $\\sqrt{3}$ (check the sign of the quadrant).",
+  "solution": "$\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ is incorrect. In the first quadrant the cosine is positive. In fact $\\cos \\dfrac{\\pi}{3} = \\dfrac{1}{2}$. $\\sin \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$ is incorrect. In the first quadrant the sine is positive. In fact $\\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$. $\\tan \\dfrac{\\pi}{3} = -\\sqrt{3}$ is incorrect. In the first quadrant the tangent is positive. In fact $\\tan \\dfrac{\\pi}{3} = \\sqrt{3}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1280,7 +1280,7 @@
    "companion",
    "sign"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{5\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{4\\pi}{3} = -\\dfrac{1}{2}$, $\\tan \\dfrac{5\\pi}{4} = 1$ (reference angle, then the sign of the quadrant). Substituting gives $-1$.",
+  "solution": "Find each value: $\\sin \\dfrac{5\\pi}{6} = \\sin\\left(\\pi - \\dfrac{\\pi}{6}\\right) = \\sin \\dfrac{\\pi}{6} = \\dfrac{1}{2}$, $\\cos \\dfrac{4\\pi}{3} = \\cos\\left(\\pi + \\dfrac{\\pi}{3}\\right) = -\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$ and $\\tan \\dfrac{5\\pi}{4} = \\tan\\left(\\pi + \\dfrac{\\pi}{4}\\right) = \\tan \\dfrac{\\pi}{4} = 1$. Substituting, the expression equals $\\dfrac{1}{2} - \\dfrac{1}{2} - 1 = -1$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1318,7 +1318,7 @@
    "operation",
    "sign"
   ],
-  "solution": "Use the special values: $\\sin \\dfrac{3\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{7\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$, $\\tan \\dfrac{7\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$ (reference angle, then the sign of the quadrant). Substituting gives $\\dfrac{4\\sqrt{3} - 3\\sqrt{6}}{12}$.",
+  "solution": "Find each value: $\\sin \\dfrac{3\\pi}{4} = \\sin\\left(\\pi - \\dfrac{\\pi}{4}\\right) = \\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, $\\cos \\dfrac{7\\pi}{6} = \\cos\\left(\\pi + \\dfrac{\\pi}{6}\\right) = -\\cos \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$ and $\\tan \\dfrac{7\\pi}{6} = \\tan\\left(\\pi + \\dfrac{\\pi}{6}\\right) = \\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. Substituting, the expression equals $\\dfrac{\\sqrt{2}}{2} \\cdot \\left(-\\dfrac{\\sqrt{3}}{2}\\right) + \\dfrac{\\sqrt{3}}{3} = \\dfrac{4\\sqrt{3} - 3\\sqrt{6}}{12}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1356,7 +1356,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Reference angle first, then the sign of the quadrant: $\\sin \\dfrac{3\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ (QII, sine positive), $\\cos \\dfrac{4\\pi}{3} = -\\dfrac{1}{2}$ (QIII, cosine negative), $\\tan \\dfrac{11\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$ (QIV, tangent negative). The result is $\\dfrac{3\\sqrt{2} - 3 - 2\\sqrt{3}}{6}$.",
+  "solution": "Use the reference angle and the sign in each quadrant. $\\sin \\dfrac{3\\pi}{4} = \\sin\\left(\\pi - \\dfrac{\\pi}{4}\\right) = \\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, because sine is positive in the second quadrant. $\\cos \\dfrac{4\\pi}{3} = \\cos\\left(\\pi + \\dfrac{\\pi}{3}\\right) = -\\cos \\dfrac{\\pi}{3} = -\\dfrac{1}{2}$, because cosine is negative in the third quadrant. $\\tan \\dfrac{11\\pi}{6} = \\tan\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = -\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$, because tangent is negative in the fourth quadrant. So the value is $\\dfrac{\\sqrt{2}}{2} - \\dfrac{1}{2} - \\dfrac{\\sqrt{3}}{3} = \\dfrac{3\\sqrt{2} - 3 - 2\\sqrt{3}}{6}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1394,7 +1394,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Reference angle first, then the sign of the quadrant: $\\sin \\dfrac{3\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ (QII, sine positive), $\\cos \\dfrac{7\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$ (QIII, cosine negative), $\\tan \\dfrac{11\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$ (QIV, tangent negative). The result is $\\dfrac{3\\sqrt{2} - 5\\sqrt{3}}{6}$.",
+  "solution": "Use the reference angle and the sign in each quadrant. $\\sin \\dfrac{3\\pi}{4} = \\sin\\left(\\pi - \\dfrac{\\pi}{4}\\right) = \\sin \\dfrac{\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$, because sine is positive in the second quadrant. $\\cos \\dfrac{7\\pi}{6} = \\cos\\left(\\pi + \\dfrac{\\pi}{6}\\right) = -\\cos \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{2}$, because cosine is negative in the third quadrant. $\\tan \\dfrac{11\\pi}{6} = \\tan\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = -\\tan \\dfrac{\\pi}{6} = -\\dfrac{\\sqrt{3}}{3}$, because tangent is negative in the fourth quadrant. So the value is $\\dfrac{\\sqrt{2}}{2} - \\dfrac{\\sqrt{3}}{2} - \\dfrac{\\sqrt{3}}{3} = \\dfrac{3\\sqrt{2} - 5\\sqrt{3}}{6}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1432,13 +1432,13 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is $\\sin \\dfrac{2\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ — this is the correct special value. $\\tan \\dfrac{3\\pi}{4} = 1$ is false: the correct value is $-1$ (check the sign of the quadrant). $\\sin \\dfrac{7\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ is false: the correct value is $-\\dfrac{\\sqrt{2}}{2}$ (check the sign of the quadrant). $\\cos \\dfrac{11\\pi}{6} = -\\dfrac{1}{2}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{2}$.",
+  "solution": "$\\sin \\dfrac{2\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$ is correct. $\\sin \\dfrac{2\\pi}{3} = \\sin\\left(\\pi - \\dfrac{\\pi}{3}\\right) = \\sin \\dfrac{\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$. $\\tan \\dfrac{3\\pi}{4} = 1$ is incorrect. In the second quadrant the tangent is negative. In fact $\\tan \\dfrac{3\\pi}{4} = \\tan\\left(\\pi - \\dfrac{\\pi}{4}\\right) = -\\tan \\dfrac{\\pi}{4} = -1$. $\\sin \\dfrac{7\\pi}{4} = \\dfrac{\\sqrt{2}}{2}$ is incorrect. In the fourth quadrant the sine is negative. In fact $\\sin \\dfrac{7\\pi}{4} = \\sin\\left(2\\pi - \\dfrac{\\pi}{4}\\right) = -\\sin \\dfrac{\\pi}{4} = -\\dfrac{\\sqrt{2}}{2}$. $\\cos \\dfrac{11\\pi}{6} = -\\dfrac{1}{2}$ is incorrect. This is the value of $\\sin \\dfrac{11\\pi}{6}$. In fact $\\cos \\dfrac{11\\pi}{6} = \\cos\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = \\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
   "template": "TR-val.which-correct-quad",
   "seed": "bank:1:TR-val.which-correct-quad:0",
-  "form": "Four special values in QII–QIV: which is correct",
+  "form": "Four special values in QII-QIV: which is correct",
   "answer_letter": "C",
   "answer_value": "$\\sin \\dfrac{2\\pi}{3} = \\dfrac{\\sqrt{3}}{2}$",
   "verified": "stmt"
@@ -1470,13 +1470,13 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is $\\tan \\dfrac{7\\pi}{4} = -1$ — this is the correct special value. $\\tan \\dfrac{4\\pi}{3} = \\dfrac{\\sqrt{3}}{3}$ is false: the correct value is $\\sqrt{3}$. $\\tan \\dfrac{7\\pi}{6} = \\sqrt{3}$ is false: the correct value is $\\dfrac{\\sqrt{3}}{3}$. $\\sin \\dfrac{11\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$ is false: the correct value is $-\\dfrac{1}{2}$.",
+  "solution": "$\\tan \\dfrac{7\\pi}{4} = -1$ is correct. $\\tan \\dfrac{7\\pi}{4} = \\tan\\left(2\\pi - \\dfrac{\\pi}{4}\\right) = -\\tan \\dfrac{\\pi}{4} = -1$. $\\tan \\dfrac{4\\pi}{3} = \\dfrac{\\sqrt{3}}{3}$ is incorrect. This is the reciprocal of the correct value. In fact $\\tan \\dfrac{4\\pi}{3} = \\tan\\left(\\pi + \\dfrac{\\pi}{3}\\right) = \\tan \\dfrac{\\pi}{3} = \\sqrt{3}$. $\\tan \\dfrac{7\\pi}{6} = \\sqrt{3}$ is incorrect. This is the reciprocal of the correct value. In fact $\\tan \\dfrac{7\\pi}{6} = \\tan\\left(\\pi + \\dfrac{\\pi}{6}\\right) = \\tan \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{3}$. $\\sin \\dfrac{11\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$ is incorrect. This is the value of $\\cos \\dfrac{11\\pi}{6}$. In fact $\\sin \\dfrac{11\\pi}{6} = \\sin\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = -\\sin \\dfrac{\\pi}{6} = -\\dfrac{1}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
   "template": "TR-val.which-correct-quad",
   "seed": "bank:1:TR-val.which-correct-quad:1",
-  "form": "Four special values in QII–QIV: which is correct",
+  "form": "Four special values in QII-QIV: which is correct",
   "answer_letter": "B",
   "answer_value": "$\\tan \\dfrac{7\\pi}{4} = -1$",
   "verified": "stmt"
@@ -1508,7 +1508,7 @@
    "companion",
    "sign"
   ],
-  "solution": "Remove full turns: $-\\dfrac{11\\pi}{6}$ has the same terminal side as $\\dfrac{\\pi}{6}$, which lies in the first quadrant. Hence the value is $\\dfrac{\\sqrt{3}}{2}$.",
+  "solution": "Since $-\\dfrac{11\\pi}{6} = \\dfrac{\\pi}{6} - 2\\pi$, the angle has the same terminal side as $\\dfrac{\\pi}{6}$, so the two angles have the same trigonometric values. Then $\\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",
@@ -1546,7 +1546,7 @@
    "companion",
    "sign"
   ],
-  "solution": "Remove full turns: $\\dfrac{23\\pi}{6}$ has the same terminal side as $\\dfrac{11\\pi}{6}$, which lies in the fourth quadrant. Hence the value is $\\dfrac{\\sqrt{3}}{2}$.",
+  "solution": "Since $\\dfrac{23\\pi}{6} = \\dfrac{11\\pi}{6} + 2\\pi$, the angle has the same terminal side as $\\dfrac{11\\pi}{6}$, so the two angles have the same trigonometric values. Then $\\cos \\dfrac{11\\pi}{6} = \\cos\\left(2\\pi - \\dfrac{\\pi}{6}\\right) = \\cos \\dfrac{\\pi}{6} = \\dfrac{\\sqrt{3}}{2}$.",
   "video": "V09",
   "version": "a",
   "domain": "TR",

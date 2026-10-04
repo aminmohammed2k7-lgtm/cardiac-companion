@@ -26,7 +26,7 @@
    "sign",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{8 - 1}{-4 - 2} = -\\dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{8 - 1}{-4 - 2} = -\\dfrac{7}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -64,7 +64,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - 2}{-1 - 5} = \\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - 2}{-1 - 5} = \\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -102,7 +102,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - (-4)}{-7 - (-1)} = -\\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - (-4)}{-7 - (-1)} = -\\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -140,7 +140,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - 3}{0 - 3} = -\\dfrac{1}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - 3}{0 - 3} = -\\dfrac{1}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -178,7 +178,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - 1}{-5 - 1} = -\\dfrac{1}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - 1}{-5 - 1} = -\\dfrac{1}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -216,7 +216,7 @@
    "reciprocal",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-2)}{1 - (-5)} = \\dfrac{2}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-2)}{1 - (-5)} = \\dfrac{2}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -254,7 +254,7 @@
    "reciprocal",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-5 - (-4)}{-3 - 0} = \\dfrac{1}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-5 - (-4)}{-3 - 0} = \\dfrac{1}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -292,7 +292,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{7 - 2}{-5 - (-1)} = -\\dfrac{5}{4}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{7 - 2}{-5 - (-1)} = -\\dfrac{5}{4}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -330,7 +330,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-1)}{-1 - (-5)} = \\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-1)}{-1 - (-5)} = \\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -368,7 +368,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - 4}{-6 - 0} = \\dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - 4}{-6 - 0} = \\dfrac{7}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -406,7 +406,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-10 - (-3)}{4 - 0} = -\\dfrac{7}{4}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-10 - (-3)}{4 - 0} = -\\dfrac{7}{4}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -444,7 +444,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-4 - (-1)}{-4 - (-3)} = 3$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-4 - (-1)}{-4 - (-3)} = 3$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -482,7 +482,7 @@
    null,
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{9 - 5}{9 - 3} = \\dfrac{2}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{9 - 5}{9 - 3} = \\dfrac{2}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -520,7 +520,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-4)}{4 - 3} = 5$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-4)}{4 - 3} = 5$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -558,7 +558,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-6 - 1}{-3 - (-4)} = -7$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-6 - 1}{-3 - (-4)} = -7$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -596,7 +596,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - (-3)}{-2 - 1} = -\\dfrac{7}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - (-3)}{-2 - 1} = -\\dfrac{7}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -634,7 +634,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - (-1)}{-1 - 0} = 2$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - (-1)}{-1 - 0} = 2$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -672,7 +672,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-5)}{3 - (-3)} = \\dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-5)}{3 - (-3)} = \\dfrac{7}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -710,7 +710,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - 3}{-3 - 1} = \\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - 3}{-3 - 1} = \\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -748,7 +748,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-3)}{11 - 5} = \\dfrac{5}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-3)}{11 - 5} = \\dfrac{5}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -786,7 +786,7 @@
    null,
    "sign"
   ],
-  "solution": "The slope is $k = -1 = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 135^\\circ$. The intercept does not matter, and a negative slope gives an obtuse angle, never a negative one.",
+  "solution": "The slope is $k = -1 = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 135^\\circ$. The intercept $-1$ does not affect the angle. The value $-45^\\circ$ is not an inclination, because an inclination is never negative.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -824,7 +824,7 @@
    "companion",
    null
   ],
-  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ$. The intercept does not matter, and a negative slope gives an obtuse angle, never a negative one.",
+  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ$. The intercept $-6$ does not affect the angle. The value $-30^\\circ$ is not an inclination, because an inclination is never negative.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -862,7 +862,7 @@
    "sign",
    null
   ],
-  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ = \\dfrac{\\pi}{6}$. The intercept does not matter.",
+  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ = \\dfrac{\\pi}{6}$. The intercept $-1$ does not affect the angle.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -900,7 +900,7 @@
    null,
    "sign"
   ],
-  "solution": "The slope is $k = \\sqrt{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 60^\\circ$. The intercept does not matter.",
+  "solution": "The slope is $k = \\sqrt{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 60^\\circ$. The intercept $8$ does not affect the angle.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -938,7 +938,7 @@
    "domain",
    "sign"
   ],
-  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$. The intercept does not matter, and a negative slope gives an obtuse angle, never a negative one.",
+  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$. The intercept $10$ does not affect the angle. The value $-30^\\circ$ is not an inclination, because an inclination is never negative.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -976,7 +976,7 @@
    null,
    "sign"
   ],
-  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ$. The intercept does not matter.",
+  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ$. The intercept $-1$ does not affect the angle.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1014,7 +1014,7 @@
    null,
    "domain"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{3}$. With $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$. Since $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1052,7 +1052,7 @@
    "companion",
    "sign"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = \\sqrt{3}$. With $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 60^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{-1} = \\sqrt{3}$. Since $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1090,7 +1090,7 @@
    null,
    "sign"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\sqrt{3}$. With $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{3}{\\sqrt{3}} = -\\sqrt{3}$. Since $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1128,7 +1128,7 @@
    "domain",
    null
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{3}$. With $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 150^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$. Since $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 150^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1166,7 +1166,7 @@
    "companion",
    "sign"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = \\sqrt{3}$. With $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 60^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{-1} = \\sqrt{3}$. Since $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1204,7 +1204,7 @@
    "companion",
    "domain"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\sqrt{3}$. With $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{1} = -\\sqrt{3}$. Since $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1242,7 +1242,7 @@
    "companion",
    null
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = \\sqrt{3}$. With $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 60^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{3}{-\\sqrt{3}} = \\sqrt{3}$. Since $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1318,7 +1318,7 @@
    null,
    "sign"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 135^\\circ = -1$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 135^\\circ = -1$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1356,7 +1356,7 @@
    "reciprocal",
    "reciprocal"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1394,7 +1394,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 120^\\circ = -\\sqrt{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 120^\\circ = -\\sqrt{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1432,7 +1432,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1508,7 +1508,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1774,7 +1774,7 @@
    "axis",
    "domain"
   ],
-  "solution": "The line is horizontal: its slope is $0$ and its inclination is $0^\\circ$.",
+  "solution": "The line is horizontal, so its slope is $0$ and its inclination is $0^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1812,7 +1812,7 @@
    "axis",
    "slip"
   ],
-  "solution": "The line is vertical: its inclination is $90^\\circ$ and it has no slope.",
+  "solution": "The line is vertical, so its inclination is $90^\\circ$ and it has no slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1888,7 +1888,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The line $x = 4$ has no slope” — for a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = 4$ has slope $0$” is false: a vertical line has no slope; slope $0$ belongs to horizontal lines. “A line with inclination $135^\\circ$ has slope $1$” is false: $\\tan 135^\\circ = -1$. “The line $x = 4$ has inclination $0^\\circ$” is false: a vertical line has inclination $90^\\circ$.",
+  "solution": "“The line $x = 4$ has no slope” is correct. For a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = 4$ has slope $0$” is incorrect. A vertical line has no slope, because $\\tan 90^\\circ$ is undefined. Slope $0$ belongs to horizontal lines. “A line with inclination $135^\\circ$ has slope $1$” is incorrect. $\\tan 135^\\circ = -1$. “The line $x = 4$ has inclination $0^\\circ$” is incorrect. A vertical line has inclination $90^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1926,7 +1926,7 @@
    "axis",
    "axis"
   ],
-  "solution": "The correct statement is “The line $x = -2$ has no slope” — for a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = -2$ has slope $0$” is false: a vertical line has no slope; slope $0$ belongs to horizontal lines. “The line through $(3, 1)$ and $(4, 1)$ has no slope” is false: the two points have the same $y$-coordinate: the line is horizontal with slope $0$. “The line $x = -2$ has inclination $0^\\circ$” is false: a vertical line has inclination $90^\\circ$.",
+  "solution": "“The line $x = -2$ has no slope” is correct. For a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = -2$ has slope $0$” is incorrect. A vertical line has no slope, because $\\tan 90^\\circ$ is undefined. Slope $0$ belongs to horizontal lines. “The line through $(3, 1)$ and $(4, 1)$ has no slope” is incorrect. The two points have the same $y$-coordinate, so the line is horizontal and its slope is $0$. “The line $x = -2$ has inclination $0^\\circ$” is incorrect. A vertical line has inclination $90^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -1964,7 +1964,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “The line $x = -4$ has no slope” — for a vertical line $\\tan 90^\\circ$ is undefined. “The line $y = -4$ has no slope” is false: a horizontal line has slope $0$. “A line with inclination $135^\\circ$ has slope $1$” is false: $\\tan 135^\\circ = -1$. “The line through $(-3, 3)$ and $(-2, 3)$ has no slope” is false: the two points have the same $y$-coordinate: the line is horizontal with slope $0$.",
+  "solution": "“The line $x = -4$ has no slope” is correct. For a vertical line $\\tan 90^\\circ$ is undefined. “The line $y = -4$ has no slope” is incorrect. A horizontal line has slope $0$. “A line with inclination $135^\\circ$ has slope $1$” is incorrect. $\\tan 135^\\circ = -1$. “The line through $(-3, 3)$ and $(-2, 3)$ has no slope” is incorrect. The two points have the same $y$-coordinate, so the line is horizontal and its slope is $0$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -2002,7 +2002,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\dfrac{0 - 1}{a - 2} = \\dfrac{1}{2}$, so $a - 2 = -2$ and $a = 0$.",
+  "solution": "$\\dfrac{0 - 1}{a - 2} = \\dfrac{1}{2}$, so $\\dfrac{1}{2}(a - 2) = -1$. Then $a - 2 = -2$ and $a = 0$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -2040,7 +2040,7 @@
    "slip",
    "sign"
   ],
-  "solution": "$\\dfrac{-3 - (-4)}{a - 4} = -1$, so $a - 4 = -1$ and $a = 3$.",
+  "solution": "$\\dfrac{-3 - (-4)}{a - 4} = -1$, so $-(a - 4) = 1$. Then $a - 4 = -1$ and $a = 3$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -2078,7 +2078,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$\\dfrac{a - 2}{1 - 2} = -3$, so $a - 2 = 3$ and $a = 5$.",
+  "solution": "$\\dfrac{a - 2}{1 - 2} = -3$, so $a - 2 = -3 \\cdot (-1) = 3$ and $a = 5$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -2116,7 +2116,7 @@
    null,
    "companion"
   ],
-  "solution": "The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
+  "solution": "Here $\\Delta x = \\sqrt{3}$ and $\\Delta y = -1$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\dfrac{-1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -2154,7 +2154,7 @@
    "sign",
    "domain"
   ],
-  "solution": "The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
+  "solution": "Here $\\Delta x = \\sqrt{3}$ and $\\Delta y = -1$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\dfrac{-1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -2192,7 +2192,7 @@
    "sign",
    "domain"
   ],
-  "solution": "The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\sqrt{3}$, and $\\tan\\theta = \\sqrt{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 60^\\circ$.",
+  "solution": "Here $\\Delta x = 1$ and $\\Delta y = \\sqrt{3}$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\sqrt{3}$, and $\\tan\\theta = \\sqrt{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",

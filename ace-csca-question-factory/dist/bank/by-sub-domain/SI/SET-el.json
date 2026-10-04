@@ -26,7 +26,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $2 \\in A$ — $2$ is listed in $A$, and an element is linked to a set by $\\in$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $5 \\in A$ is false: $5$ is not listed in $A$. $4 \\notin A$ is false: $4$ is listed in $A$.",
+  "solution": "$2 \\in A$ is correct. $2$ is one of the listed elements of $A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $5 \\in A$ is incorrect. $5$ is not one of the listed elements. $4 \\notin A$ is incorrect. $4$ is one of the listed elements, so $4 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -64,7 +64,7 @@
    "slip",
    "symbol"
   ],
-  "solution": "The correct statement is $\\{2\\} \\subseteq A$ — $\\{2\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $4 \\notin A$ is false: $4$ is listed in $A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $\\{4\\} \\in A$ is false: $\\{4\\}$ is a set, and the elements of $A$ are numbers; write $\\{4\\} \\subseteq A$.",
+  "solution": "$\\{2\\} \\subseteq A$ is correct. The only element of $\\{2\\}$ is $2$, and $2 \\in A$, so $\\{2\\}$ is a subset of $A$. $4 \\notin A$ is incorrect. $4$ is one of the listed elements, so $4 \\in A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $\\{4\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{4\\}$ is a set. The correct statement is $\\{4\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -102,7 +102,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $\\{1\\} \\subseteq A$ — $\\{1\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $1 \\subseteq A$ is false: $\\subseteq$ links two sets, but $1$ is an element; write $1 \\in A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $\\{5\\} \\in A$ is false: $\\{5\\}$ is a set, and the elements of $A$ are numbers; write $\\{5\\} \\subseteq A$.",
+  "solution": "$\\{1\\} \\subseteq A$ is correct. The only element of $\\{1\\}$ is $1$, and $1 \\in A$, so $\\{1\\}$ is a subset of $A$. $1 \\subseteq A$ is incorrect. $1$ is an element, not a set. An element is related to a set by $\\in$, so the correct statement is $1 \\in A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $\\{5\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{5\\}$ is a set. The correct statement is $\\{5\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -140,7 +140,7 @@
    "slip",
    "symbol"
   ],
-  "solution": "The correct statement is $\\{5\\} \\subseteq A$ — $\\{5\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $\\{2\\} \\in A$ is false: $\\{2\\}$ is a set, and the elements of $A$ are numbers; write $\\{2\\} \\subseteq A$. $2 \\notin A$ is false: $2$ is listed in $A$. $13 \\in A$ is false: $13$ is not listed in $A$.",
+  "solution": "$\\{5\\} \\subseteq A$ is correct. The only element of $\\{5\\}$ is $5$, and $5 \\in A$, so $\\{5\\}$ is a subset of $A$. $\\{2\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{2\\}$ is a set. The correct statement is $\\{2\\} \\subseteq A$. $2 \\notin A$ is incorrect. $2$ is one of the listed elements, so $2 \\in A$. $13 \\in A$ is incorrect. $13$ is not one of the listed elements.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -178,7 +178,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $\\{10\\} \\subseteq A$ — $\\{10\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $9 \\in A$ is false: $9$ is not listed in $A$. $4 \\notin A$ is false: $4$ is listed in $A$. $10 \\subseteq A$ is false: $\\subseteq$ links two sets, but $10$ is an element; write $10 \\in A$.",
+  "solution": "$\\{10\\} \\subseteq A$ is correct. The only element of $\\{10\\}$ is $10$, and $10 \\in A$, so $\\{10\\}$ is a subset of $A$. $9 \\in A$ is incorrect. $9$ is not one of the listed elements. $4 \\notin A$ is incorrect. $4$ is one of the listed elements, so $4 \\in A$. $10 \\subseteq A$ is incorrect. $10$ is an element, not a set. An element is related to a set by $\\in$, so the correct statement is $10 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -216,7 +216,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $\\{2\\} \\subseteq A$ — $\\{2\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $1 \\notin A$ is false: $1$ is listed in $A$. $\\{1\\} \\in A$ is false: $\\{1\\}$ is a set, and the elements of $A$ are numbers; write $\\{1\\} \\subseteq A$.",
+  "solution": "$\\{2\\} \\subseteq A$ is correct. The only element of $\\{2\\}$ is $2$, and $2 \\in A$, so $\\{2\\}$ is a subset of $A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $1 \\notin A$ is incorrect. $1$ is one of the listed elements, so $1 \\in A$. $\\{1\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{1\\}$ is a set. The correct statement is $\\{1\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -254,7 +254,7 @@
    "symbol",
    "swap"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A = B$ is false: the two sets do not have the same elements. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\subseteq B$ is incorrect. $7 \\in A$ but $7 \\notin B$. $A = B$ is incorrect. $7 \\in A$ but $7 \\notin B$, so the two sets are not equal. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -292,7 +292,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $A = B$ is false: the two sets do not have the same elements. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $A = B$ is incorrect. $4 \\in B$ but $4 \\notin A$, so the two sets are not equal. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -330,7 +330,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A = B$ is false: the two sets do not have the same elements. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A = B$ is incorrect. $7 \\in A$ but $7 \\notin B$, so the two sets are not equal. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -368,7 +368,7 @@
    null,
    "swap"
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $A = B$ is false: the two sets do not have the same elements. $B \\subseteq A$ is false: $B$ has an element that is not in $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $A = B$ is incorrect. $3 \\in B$ but $3 \\notin A$, so the two sets are not equal. $B \\subseteq A$ is incorrect. $3 \\in B$ but $3 \\notin A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -406,7 +406,7 @@
    "symbol",
    "swap"
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $B \\subseteq A$ is false: $B$ has an element that is not in $A$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $B \\subseteq A$ is incorrect. $4 \\in B$ but $4 \\notin A$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -444,7 +444,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $6 \\in A$ but $6 \\notin B$, so the two sets are not equal.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -482,7 +482,7 @@
    "swap",
    "symbol"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\subseteq B$ is incorrect. $6 \\in A$ but $6 \\notin B$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $6 \\in A$ but $6 \\notin B$, so the two sets are not equal.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -520,7 +520,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements. $A \\subseteq B$ is false: $A$ has an element that is not in $B$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $8 \\in A$ but $8 \\notin B$, so the two sets are not equal. $A \\subseteq B$ is incorrect. $8 \\in A$ but $8 \\notin B$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -558,7 +558,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A = B$ is false: the two sets do not have the same elements.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\subseteq B$ is incorrect. $7 \\in A$ but $7 \\notin B$. $A = B$ is incorrect. $7 \\in A$ but $7 \\notin B$, so the two sets are not equal.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -596,7 +596,7 @@
    "swap",
    null
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\subseteq B$ is incorrect. $5 \\in A$ but $5 \\notin B$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -634,7 +634,7 @@
    "slip",
    "swap"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements. $A \\subseteq B$ is false: $A$ has an element that is not in $B$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $1 \\in A$ but $1 \\notin B$, so the two sets are not equal. $A \\subseteq B$ is incorrect. $1 \\in A$ but $1 \\notin B$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -672,7 +672,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements. $B \\subseteq A$ is false: $B$ has an element that is not in $A$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $3 \\in B$ but $3 \\notin A$, so the two sets are not equal. $B \\subseteq A$ is incorrect. $3 \\in B$ but $3 \\notin A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -710,7 +710,7 @@
    "slip",
    "symbol"
   ],
-  "solution": "The correct statement is $\\{5\\} \\subseteq A$ — the equation gives $x = \\pm 5$, so $A = \\{-5, 5\\}$ and $\\{5\\}$ is a subset of it. $A = \\{25\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $5 \\subseteq A$ is false: $5$ is an element, so the symbol must be $\\in$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not an element.",
+  "solution": "Solving $x^2 - 25 = 0$ gives $x = \\pm 5$, so $A = \\{-5, 5\\}$. $\\{5\\} \\subseteq A$ is correct. $5 \\in A$, so the set $\\{5\\}$ is a subset of $A$. $A = \\{25\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $5 \\subseteq A$ is incorrect. $5$ is an element, not a set, so the correct symbol is $\\in$: $5 \\in A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $-5$ and $5$. The empty set is a subset of $A$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -748,7 +748,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $2 \\in A$ — the equation gives $x = \\pm 2$, so $A = \\{-2, 2\\}$ contains $2$. $A = \\{4\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $\\{2\\} \\in A$ is false: $\\{2\\}$ is a set; it is a subset of $A$, not an element. $-2 \\notin A$ is false: $(-2)^2 = 4$, so $-2$ belongs to $A$.",
+  "solution": "Solving $x^2 = 4$ gives $x = \\pm 2$, so $A = \\{-2, 2\\}$. $2 \\in A$ is correct. $2$ is one of the two solutions. $A = \\{4\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $\\{2\\} \\in A$ is incorrect. The elements of $A$ are the numbers $-2$ and $2$. The set $\\{2\\}$ is a subset of $A$, not an element. $-2 \\notin A$ is incorrect. $(-2)^2 = 4$, so $-2$ is a solution and $-2 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -786,7 +786,7 @@
    "symbol",
    "symbol"
   ],
-  "solution": "The correct statement is $-6 \\in A$ — the equation gives $x = \\pm 6$, so $A = \\{-6, 6\\}$ contains $-6$. $6 \\subseteq A$ is false: $6$ is an element, so the symbol must be $\\in$. $\\{6\\} \\in A$ is false: $\\{6\\}$ is a set; it is a subset of $A$, not an element. $-6 \\notin A$ is false: $(-6)^2 = 36$, so $-6$ belongs to $A$.",
+  "solution": "Solving $x^2 - 36 = 0$ gives $x = \\pm 6$, so $A = \\{-6, 6\\}$. $-6 \\in A$ is correct. $-6$ is one of the two solutions. $6 \\subseteq A$ is incorrect. $6$ is an element, not a set, so the correct symbol is $\\in$: $6 \\in A$. $\\{6\\} \\in A$ is incorrect. The elements of $A$ are the numbers $-6$ and $6$. The set $\\{6\\}$ is a subset of $A$, not an element. $-6 \\notin A$ is incorrect. $(-6)^2 = 36$, so $-6$ is a solution and $-6 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -824,7 +824,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $\\{-2\\} \\subseteq A$ — the equation gives $x = \\pm 2$, so $A = \\{-2, 2\\}$ and $\\{-2\\}$ is a subset of it. $\\{2\\} \\in A$ is false: $\\{2\\}$ is a set; it is a subset of $A$, not an element. $2 \\subseteq A$ is false: $2$ is an element, so the symbol must be $\\in$. $-2 \\notin A$ is false: $(-2)^2 = 4$, so $-2$ belongs to $A$.",
+  "solution": "Solving $x^2 - 4 = 0$ gives $x = \\pm 2$, so $A = \\{-2, 2\\}$. $\\{-2\\} \\subseteq A$ is correct. $-2 \\in A$, so the set $\\{-2\\}$ is a subset of $A$. $\\{2\\} \\in A$ is incorrect. The elements of $A$ are the numbers $-2$ and $2$. The set $\\{2\\}$ is a subset of $A$, not an element. $2 \\subseteq A$ is incorrect. $2$ is an element, not a set, so the correct symbol is $\\in$: $2 \\in A$. $-2 \\notin A$ is incorrect. $(-2)^2 = 4$, so $-2$ is a solution and $-2 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -862,7 +862,7 @@
    "symbol",
    "sign"
   ],
-  "solution": "The correct statement is $-8 \\in A$ — the equation gives $x = \\pm 8$, so $A = \\{-8, 8\\}$ contains $-8$. $-8 \\notin A$ is false: $(-8)^2 = 64$, so $-8$ belongs to $A$. $A = \\{64\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not an element.",
+  "solution": "Solving $x^2 - 64 = 0$ gives $x = \\pm 8$, so $A = \\{-8, 8\\}$. $-8 \\in A$ is correct. $-8$ is one of the two solutions. $-8 \\notin A$ is incorrect. $(-8)^2 = 64$, so $-8$ is a solution and $-8 \\in A$. $A = \\{64\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $-8$ and $8$. The empty set is a subset of $A$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -900,7 +900,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $\\{-2\\} \\subseteq A$ — the equation gives $x = \\pm 2$, so $A = \\{-2, 2\\}$ and $\\{-2\\}$ is a subset of it. $2 \\subseteq A$ is false: $2$ is an element, so the symbol must be $\\in$. $A = \\{4\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not an element.",
+  "solution": "Solving $x^2 = 4$ gives $x = \\pm 2$, so $A = \\{-2, 2\\}$. $\\{-2\\} \\subseteq A$ is correct. $-2 \\in A$, so the set $\\{-2\\}$ is a subset of $A$. $2 \\subseteq A$ is incorrect. $2$ is an element, not a set, so the correct symbol is $\\in$: $2 \\in A$. $A = \\{4\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $-2$ and $2$. The empty set is a subset of $A$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -938,7 +938,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $4 \\notin A$ — the end point $4$ is excluded (strict inequality). $1 \\notin A$ is false: the end point $1$ is included (the sign there is $\\le$). $2 \\notin A$ is false: $2$ lies between $1$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$4 \\notin A$ is correct. The inequality at $4$ is strict, so the end point $4$ is not in $A$. $1 \\notin A$ is incorrect. The sign at $1$ is $\\le$, so $1$ satisfies the condition and $1 \\in A$. $2 \\notin A$ is incorrect. $1 < 2 < 4$, so $2 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -976,7 +976,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $1 \\in A$ — the end point $1$ is included (the sign there is $\\le$). $5 \\in A$ is false: the end point $5$ is excluded (strict inequality). $2 \\notin A$ is false: $2$ lies between $1$ and $5$. $-1 \\in A$ is false: $-1$ lies outside the interval.",
+  "solution": "$1 \\in A$ is correct. The sign at $1$ is $\\le$, so the end point $1$ satisfies the condition. $5 \\in A$ is incorrect. The inequality at $5$ is strict, so the end point $5$ is not in $A$. $2 \\notin A$ is incorrect. $1 < 2 < 5$, so $2 \\in A$. $-1 \\in A$ is incorrect. $-1 < 1$, so $-1$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1014,7 +1014,7 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $-5 \\in A$ — the end point $-5$ is included (the sign there is $\\le$). $0 \\in A$ is false: the end point $0$ is excluded (strict inequality). $-3 \\notin A$ is false: $-3$ lies between $-5$ and $0$. $2 \\in A$ is false: $2$ lies outside the interval.",
+  "solution": "$-5 \\in A$ is correct. The sign at $-5$ is $\\le$, so the end point $-5$ satisfies the condition. $0 \\in A$ is incorrect. The inequality at $0$ is strict, so the end point $0$ is not in $A$. $-3 \\notin A$ is incorrect. $-5 < -3 < 0$, so $-3 \\in A$. $2 \\in A$ is incorrect. $2 > 0$, so $2$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1052,7 +1052,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $1 \\in A$ — the end point $1$ is included (the sign there is $\\le$). $5 \\in A$ is false: the end point $5$ is excluded (strict inequality). $3 \\notin A$ is false: $3$ lies between $1$ and $5$. $-1 \\in A$ is false: $-1$ lies outside the interval.",
+  "solution": "$1 \\in A$ is correct. The sign at $1$ is $\\le$, so the end point $1$ satisfies the condition. $5 \\in A$ is incorrect. The inequality at $5$ is strict, so the end point $5$ is not in $A$. $3 \\notin A$ is incorrect. $1 < 3 < 5$, so $3 \\in A$. $-1 \\in A$ is incorrect. $-1 < 1$, so $-1$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1090,7 +1090,7 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $-3 \\in A$ — the end point $-3$ is included (the sign there is $\\le$). $4 \\in A$ is false: the end point $4$ is excluded (strict inequality). $1 \\notin A$ is false: $1$ lies between $-3$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$-3 \\in A$ is correct. The sign at $-3$ is $\\le$, so the end point $-3$ satisfies the condition. $4 \\in A$ is incorrect. The inequality at $4$ is strict, so the end point $4$ is not in $A$. $1 \\notin A$ is incorrect. $-3 < 1 < 4$, so $1 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1128,7 +1128,7 @@
    "slip",
    "endpoint"
   ],
-  "solution": "The correct statement is $-3 \\in A$ — the end point $-3$ is included (the sign there is $\\le$). $4 \\in A$ is false: the end point $4$ is excluded (strict inequality). $0 \\notin A$ is false: $0$ lies between $-3$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$-3 \\in A$ is correct. The sign at $-3$ is $\\le$, so the end point $-3$ satisfies the condition. $4 \\in A$ is incorrect. The inequality at $4$ is strict, so the end point $4$ is not in $A$. $0 \\notin A$ is incorrect. $-3 < 0 < 4$, so $0 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1166,7 +1166,7 @@
    "symbol",
    "symbol"
   ],
-  "solution": "The correct statement is $\\varnothing \\subseteq \\{4\\}$ — the empty set is a subset of every set. $0 \\in \\varnothing$ is false: the empty set has no elements. $\\{2\\} \\in \\{2, 4\\}$ is false: $\\{2\\}$ is a set; it is a subset, not an element. $\\varnothing \\in \\{2\\}$ is false: the only element of $\\{2\\}$ is the number $2$.",
+  "solution": "$\\varnothing \\subseteq \\{4\\}$ is correct. The empty set is a subset of every set. $0 \\in \\varnothing$ is incorrect. The empty set has no elements at all. $\\{2\\} \\in \\{2, 4\\}$ is incorrect. The elements of $\\{2, 4\\}$ are numbers. The set $\\{2\\}$ is a subset of it, not an element. $\\varnothing \\in \\{2\\}$ is incorrect. The only element of $\\{2\\}$ is the number $2$. The empty set is a subset of $\\{2\\}$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1204,7 +1204,7 @@
    "symbol",
    "symbol"
   ],
-  "solution": "The correct statement is $1 \\in \\{1, 2\\}$ — $1$ is an element of the set. $2 \\subseteq \\{1, 2\\}$ is false: $2$ is an element, so the symbol must be $\\in$. $\\{1, 2\\} \\subseteq \\{1\\}$ is false: $2$ is not in $\\{1\\}$. $\\{1\\} \\in \\{1, 2\\}$ is false: $\\{1\\}$ is a set; it is a subset, not an element.",
+  "solution": "$1 \\in \\{1, 2\\}$ is correct. $1$ is one of the two listed elements. $2 \\subseteq \\{1, 2\\}$ is incorrect. $2$ is an element, not a set, so the correct statement is $2 \\in \\{1, 2\\}$. $\\{1, 2\\} \\subseteq \\{1\\}$ is incorrect. $2 \\in \\{1, 2\\}$ but $2 \\notin \\{1\\}$. $\\{1\\} \\in \\{1, 2\\}$ is incorrect. The elements of $\\{1, 2\\}$ are numbers. The set $\\{1\\}$ is a subset of it, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1242,7 +1242,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $\\{4\\} \\subseteq \\{2, 4\\}$ — $\\{4\\}$ is a set and its element $4$ is in the larger set. $0 \\in \\varnothing$ is false: the empty set has no elements. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element, the number $0$; the empty set has none. $4 \\subseteq \\{2, 4\\}$ is false: $4$ is an element, so the symbol must be $\\in$.",
+  "solution": "$\\{4\\} \\subseteq \\{2, 4\\}$ is correct. The only element of $\\{4\\}$ is $4$, which belongs to $\\{2, 4\\}$. $0 \\in \\varnothing$ is incorrect. The empty set has no elements at all. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $4 \\subseteq \\{2, 4\\}$ is incorrect. $4$ is an element, not a set, so the correct statement is $4 \\in \\{2, 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1280,7 +1280,7 @@
    "partial",
    null
   ],
-  "solution": "The correct statement is $0 \\in A$ — $\\mathbb{N}$ contains $0$, and $0$ satisfies the condition; $A = \\{0, 1, 2\\}$. $A = \\{1, 2\\}$ is false: $0$ is a natural number and satisfies the condition, so it is missing. $0 \\subseteq A$ is false: $0$ is an element, so the symbol must be $\\in$. $3 \\in A$ is false: it does not satisfy $-2 < x \\le 2$.",
+  "solution": "The natural numbers that satisfy $-2 < x \\le 2$ are $0$, $1$ and $2$, so $A = \\{0, 1, 2\\}$. $0 \\in A$ is correct. $0$ is a natural number and satisfies $-2 < x \\le 2$. $A = \\{1, 2\\}$ is incorrect. $0$ is a natural number and satisfies the condition, so $0$ is missing from this list. $0 \\subseteq A$ is incorrect. $0$ is an element, not a set, so the correct symbol is $\\in$: $0 \\in A$. $3 \\in A$ is incorrect. $3$ does not satisfy $-2 < x \\le 2$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1318,7 +1318,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $\\{2, 4\\} \\subseteq A$ — both numbers are in $A = \\{-2, -1, 0, 1, 2, 3, 4\\}$. $-3 \\in A$ is false: the end point $-3$ is excluded (strict inequality). $2 \\subseteq A$ is false: $2$ is an element, so the symbol must be $\\in$. $A = \\{-2, -1, 0, 1, 2, 3\\}$ is false: the included end point $4$ is missing.",
+  "solution": "The integers that satisfy $-3 < x \\le 4$ are $-2$, $-1$, $0$, $1$, $2$, $3$ and $4$, so $A = \\{-2, -1, 0, 1, 2, 3, 4\\}$. $\\{2, 4\\} \\subseteq A$ is correct. Both $2$ and $4$ are elements of $A$. $-3 \\in A$ is incorrect. The inequality at $-3$ is strict, so $-3$ is not in $A$. $2 \\subseteq A$ is incorrect. $2$ is an element, not a set, so the correct symbol is $\\in$: $2 \\in A$. $A = \\{-2, -1, 0, 1, 2, 3\\}$ is incorrect. The end point $4$ is included, so it is missing from this list.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1356,7 +1356,7 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $-1 \\in A$ — the end point $-1$ is included; $A = \\{-1, 0, 1, 2, 3\\}$. $A = \\{0, 1, 2, 3\\}$ is false: the included end point $-1$ is missing. $\\{4, 0\\} \\subseteq A$ is false: $4$ is not in $A$. $4 \\in A$ is false: the end point $4$ is excluded (strict inequality).",
+  "solution": "The integers that satisfy $-1 \\le x < 4$ are $-1$, $0$, $1$, $2$ and $3$, so $A = \\{-1, 0, 1, 2, 3\\}$. $-1 \\in A$ is correct. The sign at $-1$ is $\\le$, so the end point $-1$ belongs to $A$. $A = \\{0, 1, 2, 3\\}$ is incorrect. The end point $-1$ is included, so it is missing from this list. $\\{4, 0\\} \\subseteq A$ is incorrect. The inequality at $4$ is strict, so $4 \\notin A$. $4 \\in A$ is incorrect. The inequality at $4$ is strict, so $4$ is not in $A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1394,7 +1394,7 @@
    null,
    "partial"
   ],
-  "solution": "The correct statement is $\\{0\\} \\subseteq A$ — $0 \\in A$, so the set $\\{0\\}$ is a subset of $A$. $A = \\{1, 2\\}$ is false: the element $0$ is missing. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element; the empty set has none. $\\{0\\} \\in A$ is false: $\\{0\\}$ is a set; the elements of $A$ are numbers.",
+  "solution": "$\\{0\\} \\subseteq A$ is correct. $0 \\in A$, so the set $\\{0\\}$ is a subset of $A$. $A = \\{1, 2\\}$ is incorrect. $A$ also contains the element $0$. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $\\{0\\} \\in A$ is incorrect. $\\{0\\}$ is a set, while the elements of $A$ are numbers. The correct statement is $\\{0\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1432,7 +1432,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $\\{0, 4\\} \\subseteq A$ — both $0$ and $4$ are elements of $A$. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element; the empty set has none. $0 \\notin A$ is false: $0$ is listed in $A$. $0 \\subseteq A$ is false: $0$ is an element, so the symbol must be $\\in$.",
+  "solution": "$\\{0, 4\\} \\subseteq A$ is correct. Both $0$ and $4$ are elements of $A$. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $0 \\notin A$ is incorrect. $0$ is one of the listed elements of $A$. $0 \\subseteq A$ is incorrect. $0$ is an element, not a set, so the correct statement is $0 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1470,7 +1470,7 @@
    "partial",
    "domain"
   ],
-  "solution": "The correct statement is “The set $A$ has exactly $16$ subsets” — $A = \\{0, 1, 2, 3\\}$ has $4$ elements, hence $2^{4} = 16$ subsets. “The set $A$ has exactly $8$ subsets” is false: a set with $4$ elements has $2^{4} = 16$ subsets. $A = \\{1, 2, 3\\}$ is false: the element $0$ is missing. $0 \\notin A$ is false: $0 \\in \\mathbb{N}$ and it satisfies the condition.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2, 3\\}$. “The set $A$ has exactly $16$ subsets” is correct. A set with $4$ elements has $2^{4} = 16$ subsets. “The set $A$ has exactly $8$ subsets” is incorrect. A set with $4$ elements has $2^{4} = 16$ subsets, not $2 \\times 4 = 8$. $A = \\{1, 2, 3\\}$ is incorrect. The element $0$ is missing from this list. $0 \\notin A$ is incorrect. $0$ is a natural number and satisfies $x \\le 3$, so $0 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1508,7 +1508,7 @@
    "endpoint",
    "domain"
   ],
-  "solution": "The correct statement is $\\{0, 4\\} \\subseteq A$ — $A = \\{0, 1, 2, 3, 4\\}$ contains $0$ and $4$. $0 \\notin A$ is false: $0 \\in \\mathbb{N}$ and it satisfies the condition. $A = \\{1, 2, 3, 4\\}$ is false: the element $0$ is missing. $5 \\in A$ is false: $5$ does not satisfy $x < 5$.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2, 3, 4\\}$. $\\{0, 4\\} \\subseteq A$ is correct. Both $0$ and $4$ are elements of $A$. $0 \\notin A$ is incorrect. $0$ is a natural number and satisfies $x < 5$, so $0 \\in A$. $A = \\{1, 2, 3, 4\\}$ is incorrect. The element $0$ is missing from this list. $5 \\in A$ is incorrect. $5$ does not satisfy $x < 5$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1546,7 +1546,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "The correct statement is “The set $A$ has exactly $8$ subsets” — $A = \\{0, 1, 2\\}$ has $3$ elements, hence $2^{3} = 8$ subsets. “The set $A$ has exactly $4$ subsets” is false: $A$ has $3$ elements (it includes $0$), so it has $2^{3}$ subsets. $3 \\in A$ is false: $3$ does not satisfy $x < 3$. $0 \\notin A$ is false: $0 \\in \\mathbb{N}$ and it satisfies the condition.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2\\}$. “The set $A$ has exactly $8$ subsets” is correct. A set with $3$ elements has $2^{3} = 8$ subsets. “The set $A$ has exactly $4$ subsets” is incorrect. $A$ has $3$ elements, including $0$, so it has $2^{3} = 8$ subsets. $3 \\in A$ is incorrect. $3$ does not satisfy $x < 3$. $0 \\notin A$ is incorrect. $0$ is a natural number and satisfies $x < 3$, so $0 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",

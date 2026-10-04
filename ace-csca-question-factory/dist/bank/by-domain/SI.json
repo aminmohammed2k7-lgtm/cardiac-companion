@@ -26,7 +26,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $2 \\in A$ — $2$ is listed in $A$, and an element is linked to a set by $\\in$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $5 \\in A$ is false: $5$ is not listed in $A$. $4 \\notin A$ is false: $4$ is listed in $A$.",
+  "solution": "$2 \\in A$ is correct. $2$ is one of the listed elements of $A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $5 \\in A$ is incorrect. $5$ is not one of the listed elements. $4 \\notin A$ is incorrect. $4$ is one of the listed elements, so $4 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -64,7 +64,7 @@
    "slip",
    "symbol"
   ],
-  "solution": "The correct statement is $\\{2\\} \\subseteq A$ — $\\{2\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $4 \\notin A$ is false: $4$ is listed in $A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $\\{4\\} \\in A$ is false: $\\{4\\}$ is a set, and the elements of $A$ are numbers; write $\\{4\\} \\subseteq A$.",
+  "solution": "$\\{2\\} \\subseteq A$ is correct. The only element of $\\{2\\}$ is $2$, and $2 \\in A$, so $\\{2\\}$ is a subset of $A$. $4 \\notin A$ is incorrect. $4$ is one of the listed elements, so $4 \\in A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $\\{4\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{4\\}$ is a set. The correct statement is $\\{4\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -102,7 +102,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $\\{1\\} \\subseteq A$ — $\\{1\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $1 \\subseteq A$ is false: $\\subseteq$ links two sets, but $1$ is an element; write $1 \\in A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $\\{5\\} \\in A$ is false: $\\{5\\}$ is a set, and the elements of $A$ are numbers; write $\\{5\\} \\subseteq A$.",
+  "solution": "$\\{1\\} \\subseteq A$ is correct. The only element of $\\{1\\}$ is $1$, and $1 \\in A$, so $\\{1\\}$ is a subset of $A$. $1 \\subseteq A$ is incorrect. $1$ is an element, not a set. An element is related to a set by $\\in$, so the correct statement is $1 \\in A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $\\{5\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{5\\}$ is a set. The correct statement is $\\{5\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -140,7 +140,7 @@
    "slip",
    "symbol"
   ],
-  "solution": "The correct statement is $\\{5\\} \\subseteq A$ — $\\{5\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $\\{2\\} \\in A$ is false: $\\{2\\}$ is a set, and the elements of $A$ are numbers; write $\\{2\\} \\subseteq A$. $2 \\notin A$ is false: $2$ is listed in $A$. $13 \\in A$ is false: $13$ is not listed in $A$.",
+  "solution": "$\\{5\\} \\subseteq A$ is correct. The only element of $\\{5\\}$ is $5$, and $5 \\in A$, so $\\{5\\}$ is a subset of $A$. $\\{2\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{2\\}$ is a set. The correct statement is $\\{2\\} \\subseteq A$. $2 \\notin A$ is incorrect. $2$ is one of the listed elements, so $2 \\in A$. $13 \\in A$ is incorrect. $13$ is not one of the listed elements.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -178,7 +178,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $\\{10\\} \\subseteq A$ — $\\{10\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $9 \\in A$ is false: $9$ is not listed in $A$. $4 \\notin A$ is false: $4$ is listed in $A$. $10 \\subseteq A$ is false: $\\subseteq$ links two sets, but $10$ is an element; write $10 \\in A$.",
+  "solution": "$\\{10\\} \\subseteq A$ is correct. The only element of $\\{10\\}$ is $10$, and $10 \\in A$, so $\\{10\\}$ is a subset of $A$. $9 \\in A$ is incorrect. $9$ is not one of the listed elements. $4 \\notin A$ is incorrect. $4$ is one of the listed elements, so $4 \\in A$. $10 \\subseteq A$ is incorrect. $10$ is an element, not a set. An element is related to a set by $\\in$, so the correct statement is $10 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -216,7 +216,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $\\{2\\} \\subseteq A$ — $\\{2\\}$ is a set whose only element belongs to $A$, so it is a subset of $A$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not one of its elements. $1 \\notin A$ is false: $1$ is listed in $A$. $\\{1\\} \\in A$ is false: $\\{1\\}$ is a set, and the elements of $A$ are numbers; write $\\{1\\} \\subseteq A$.",
+  "solution": "$\\{2\\} \\subseteq A$ is correct. The only element of $\\{2\\}$ is $2$, and $2 \\in A$, so $\\{2\\}$ is a subset of $A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are numbers. The empty set is a subset of $A$, not an element of it. $1 \\notin A$ is incorrect. $1$ is one of the listed elements, so $1 \\in A$. $\\{1\\} \\in A$ is incorrect. The elements of $A$ are numbers, and $\\{1\\}$ is a set. The correct statement is $\\{1\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -254,7 +254,7 @@
    "symbol",
    "swap"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A = B$ is false: the two sets do not have the same elements. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\subseteq B$ is incorrect. $7 \\in A$ but $7 \\notin B$. $A = B$ is incorrect. $7 \\in A$ but $7 \\notin B$, so the two sets are not equal. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -292,7 +292,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $A = B$ is false: the two sets do not have the same elements. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $A = B$ is incorrect. $4 \\in B$ but $4 \\notin A$, so the two sets are not equal. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -330,7 +330,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A = B$ is false: the two sets do not have the same elements. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A = B$ is incorrect. $7 \\in A$ but $7 \\notin B$, so the two sets are not equal. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -368,7 +368,7 @@
    null,
    "swap"
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $A = B$ is false: the two sets do not have the same elements. $B \\subseteq A$ is false: $B$ has an element that is not in $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $A = B$ is incorrect. $3 \\in B$ but $3 \\notin A$, so the two sets are not equal. $B \\subseteq A$ is incorrect. $3 \\in B$ but $3 \\notin A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -406,7 +406,7 @@
    "symbol",
    "swap"
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $B \\subseteq A$ is false: $B$ has an element that is not in $A$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $B \\subseteq A$ is incorrect. $4 \\in B$ but $4 \\notin A$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -444,7 +444,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $6 \\in A$ but $6 \\notin B$, so the two sets are not equal.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -482,7 +482,7 @@
    "swap",
    "symbol"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\subseteq B$ is incorrect. $6 \\in A$ but $6 \\notin B$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $6 \\in A$ but $6 \\notin B$, so the two sets are not equal.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -520,7 +520,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements. $A \\subseteq B$ is false: $A$ has an element that is not in $B$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $8 \\in A$ but $8 \\notin B$, so the two sets are not equal. $A \\subseteq B$ is incorrect. $8 \\in A$ but $8 \\notin B$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -558,7 +558,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A = B$ is false: the two sets do not have the same elements.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\subseteq B$ is incorrect. $7 \\in A$ but $7 \\notin B$. $A = B$ is incorrect. $7 \\in A$ but $7 \\notin B$, so the two sets are not equal.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -596,7 +596,7 @@
    "swap",
    null
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A \\subseteq B$ is false: $A$ has an element that is not in $B$. $A \\in B$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A \\subseteq B$ is incorrect. $5 \\in A$ but $5 \\notin B$. $A \\in B$ is incorrect. The elements of $B$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -634,7 +634,7 @@
    "slip",
    "swap"
   ],
-  "solution": "The correct statement is $B \\subseteq A$ — every element of $B$ is also an element of $A$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements. $A \\subseteq B$ is false: $A$ has an element that is not in $B$.",
+  "solution": "$B \\subseteq A$ is correct. Every element of $B$ is also an element of $A$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $1 \\in A$ but $1 \\notin B$, so the two sets are not equal. $A \\subseteq B$ is incorrect. $1 \\in A$ but $1 \\notin B$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -672,7 +672,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $A \\subseteq B$ — every element of $A$ is also an element of $B$. $B \\in A$ is false: $\\in$ links an element to a set; between two sets use $\\subseteq$. $A = B$ is false: the two sets do not have the same elements. $B \\subseteq A$ is false: $B$ has an element that is not in $A$.",
+  "solution": "$A \\subseteq B$ is correct. Every element of $A$ is also an element of $B$. $B \\in A$ is incorrect. The elements of $A$ are numbers, not sets. Two sets are related by $\\subseteq$, not by $\\in$. $A = B$ is incorrect. $3 \\in B$ but $3 \\notin A$, so the two sets are not equal. $B \\subseteq A$ is incorrect. $3 \\in B$ but $3 \\notin A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -710,7 +710,7 @@
    "slip",
    "symbol"
   ],
-  "solution": "The correct statement is $\\{5\\} \\subseteq A$ — the equation gives $x = \\pm 5$, so $A = \\{-5, 5\\}$ and $\\{5\\}$ is a subset of it. $A = \\{25\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $5 \\subseteq A$ is false: $5$ is an element, so the symbol must be $\\in$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not an element.",
+  "solution": "Solving $x^2 - 25 = 0$ gives $x = \\pm 5$, so $A = \\{-5, 5\\}$. $\\{5\\} \\subseteq A$ is correct. $5 \\in A$, so the set $\\{5\\}$ is a subset of $A$. $A = \\{25\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $5 \\subseteq A$ is incorrect. $5$ is an element, not a set, so the correct symbol is $\\in$: $5 \\in A$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $-5$ and $5$. The empty set is a subset of $A$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -748,7 +748,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $2 \\in A$ — the equation gives $x = \\pm 2$, so $A = \\{-2, 2\\}$ contains $2$. $A = \\{4\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $\\{2\\} \\in A$ is false: $\\{2\\}$ is a set; it is a subset of $A$, not an element. $-2 \\notin A$ is false: $(-2)^2 = 4$, so $-2$ belongs to $A$.",
+  "solution": "Solving $x^2 = 4$ gives $x = \\pm 2$, so $A = \\{-2, 2\\}$. $2 \\in A$ is correct. $2$ is one of the two solutions. $A = \\{4\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $\\{2\\} \\in A$ is incorrect. The elements of $A$ are the numbers $-2$ and $2$. The set $\\{2\\}$ is a subset of $A$, not an element. $-2 \\notin A$ is incorrect. $(-2)^2 = 4$, so $-2$ is a solution and $-2 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -786,7 +786,7 @@
    "symbol",
    "symbol"
   ],
-  "solution": "The correct statement is $-6 \\in A$ — the equation gives $x = \\pm 6$, so $A = \\{-6, 6\\}$ contains $-6$. $6 \\subseteq A$ is false: $6$ is an element, so the symbol must be $\\in$. $\\{6\\} \\in A$ is false: $\\{6\\}$ is a set; it is a subset of $A$, not an element. $-6 \\notin A$ is false: $(-6)^2 = 36$, so $-6$ belongs to $A$.",
+  "solution": "Solving $x^2 - 36 = 0$ gives $x = \\pm 6$, so $A = \\{-6, 6\\}$. $-6 \\in A$ is correct. $-6$ is one of the two solutions. $6 \\subseteq A$ is incorrect. $6$ is an element, not a set, so the correct symbol is $\\in$: $6 \\in A$. $\\{6\\} \\in A$ is incorrect. The elements of $A$ are the numbers $-6$ and $6$. The set $\\{6\\}$ is a subset of $A$, not an element. $-6 \\notin A$ is incorrect. $(-6)^2 = 36$, so $-6$ is a solution and $-6 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -824,7 +824,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $\\{-2\\} \\subseteq A$ — the equation gives $x = \\pm 2$, so $A = \\{-2, 2\\}$ and $\\{-2\\}$ is a subset of it. $\\{2\\} \\in A$ is false: $\\{2\\}$ is a set; it is a subset of $A$, not an element. $2 \\subseteq A$ is false: $2$ is an element, so the symbol must be $\\in$. $-2 \\notin A$ is false: $(-2)^2 = 4$, so $-2$ belongs to $A$.",
+  "solution": "Solving $x^2 - 4 = 0$ gives $x = \\pm 2$, so $A = \\{-2, 2\\}$. $\\{-2\\} \\subseteq A$ is correct. $-2 \\in A$, so the set $\\{-2\\}$ is a subset of $A$. $\\{2\\} \\in A$ is incorrect. The elements of $A$ are the numbers $-2$ and $2$. The set $\\{2\\}$ is a subset of $A$, not an element. $2 \\subseteq A$ is incorrect. $2$ is an element, not a set, so the correct symbol is $\\in$: $2 \\in A$. $-2 \\notin A$ is incorrect. $(-2)^2 = 4$, so $-2$ is a solution and $-2 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -862,7 +862,7 @@
    "symbol",
    "sign"
   ],
-  "solution": "The correct statement is $-8 \\in A$ — the equation gives $x = \\pm 8$, so $A = \\{-8, 8\\}$ contains $-8$. $-8 \\notin A$ is false: $(-8)^2 = 64$, so $-8$ belongs to $A$. $A = \\{64\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not an element.",
+  "solution": "Solving $x^2 - 64 = 0$ gives $x = \\pm 8$, so $A = \\{-8, 8\\}$. $-8 \\in A$ is correct. $-8$ is one of the two solutions. $-8 \\notin A$ is incorrect. $(-8)^2 = 64$, so $-8$ is a solution and $-8 \\in A$. $A = \\{64\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $-8$ and $8$. The empty set is a subset of $A$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -900,7 +900,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $\\{-2\\} \\subseteq A$ — the equation gives $x = \\pm 2$, so $A = \\{-2, 2\\}$ and $\\{-2\\}$ is a subset of it. $2 \\subseteq A$ is false: $2$ is an element, so the symbol must be $\\in$. $A = \\{4\\}$ is false: $A$ holds the solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is false: the empty set is a subset of $A$, not an element.",
+  "solution": "Solving $x^2 = 4$ gives $x = \\pm 2$, so $A = \\{-2, 2\\}$. $\\{-2\\} \\subseteq A$ is correct. $-2 \\in A$, so the set $\\{-2\\}$ is a subset of $A$. $2 \\subseteq A$ is incorrect. $2$ is an element, not a set, so the correct symbol is $\\in$: $2 \\in A$. $A = \\{4\\}$ is incorrect. $A$ is the set of solutions $x$, not the value of $x^2$. $\\varnothing \\in A$ is incorrect. The elements of $A$ are the numbers $-2$ and $2$. The empty set is a subset of $A$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -938,7 +938,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $4 \\notin A$ — the end point $4$ is excluded (strict inequality). $1 \\notin A$ is false: the end point $1$ is included (the sign there is $\\le$). $2 \\notin A$ is false: $2$ lies between $1$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$4 \\notin A$ is correct. The inequality at $4$ is strict, so the end point $4$ is not in $A$. $1 \\notin A$ is incorrect. The sign at $1$ is $\\le$, so $1$ satisfies the condition and $1 \\in A$. $2 \\notin A$ is incorrect. $1 < 2 < 4$, so $2 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -976,7 +976,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $1 \\in A$ — the end point $1$ is included (the sign there is $\\le$). $5 \\in A$ is false: the end point $5$ is excluded (strict inequality). $2 \\notin A$ is false: $2$ lies between $1$ and $5$. $-1 \\in A$ is false: $-1$ lies outside the interval.",
+  "solution": "$1 \\in A$ is correct. The sign at $1$ is $\\le$, so the end point $1$ satisfies the condition. $5 \\in A$ is incorrect. The inequality at $5$ is strict, so the end point $5$ is not in $A$. $2 \\notin A$ is incorrect. $1 < 2 < 5$, so $2 \\in A$. $-1 \\in A$ is incorrect. $-1 < 1$, so $-1$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1014,7 +1014,7 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $-5 \\in A$ — the end point $-5$ is included (the sign there is $\\le$). $0 \\in A$ is false: the end point $0$ is excluded (strict inequality). $-3 \\notin A$ is false: $-3$ lies between $-5$ and $0$. $2 \\in A$ is false: $2$ lies outside the interval.",
+  "solution": "$-5 \\in A$ is correct. The sign at $-5$ is $\\le$, so the end point $-5$ satisfies the condition. $0 \\in A$ is incorrect. The inequality at $0$ is strict, so the end point $0$ is not in $A$. $-3 \\notin A$ is incorrect. $-5 < -3 < 0$, so $-3 \\in A$. $2 \\in A$ is incorrect. $2 > 0$, so $2$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1052,7 +1052,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $1 \\in A$ — the end point $1$ is included (the sign there is $\\le$). $5 \\in A$ is false: the end point $5$ is excluded (strict inequality). $3 \\notin A$ is false: $3$ lies between $1$ and $5$. $-1 \\in A$ is false: $-1$ lies outside the interval.",
+  "solution": "$1 \\in A$ is correct. The sign at $1$ is $\\le$, so the end point $1$ satisfies the condition. $5 \\in A$ is incorrect. The inequality at $5$ is strict, so the end point $5$ is not in $A$. $3 \\notin A$ is incorrect. $1 < 3 < 5$, so $3 \\in A$. $-1 \\in A$ is incorrect. $-1 < 1$, so $-1$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1090,7 +1090,7 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $-3 \\in A$ — the end point $-3$ is included (the sign there is $\\le$). $4 \\in A$ is false: the end point $4$ is excluded (strict inequality). $1 \\notin A$ is false: $1$ lies between $-3$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$-3 \\in A$ is correct. The sign at $-3$ is $\\le$, so the end point $-3$ satisfies the condition. $4 \\in A$ is incorrect. The inequality at $4$ is strict, so the end point $4$ is not in $A$. $1 \\notin A$ is incorrect. $-3 < 1 < 4$, so $1 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1128,7 +1128,7 @@
    "slip",
    "endpoint"
   ],
-  "solution": "The correct statement is $-3 \\in A$ — the end point $-3$ is included (the sign there is $\\le$). $4 \\in A$ is false: the end point $4$ is excluded (strict inequality). $0 \\notin A$ is false: $0$ lies between $-3$ and $4$. $6 \\in A$ is false: $6$ lies outside the interval.",
+  "solution": "$-3 \\in A$ is correct. The sign at $-3$ is $\\le$, so the end point $-3$ satisfies the condition. $4 \\in A$ is incorrect. The inequality at $4$ is strict, so the end point $4$ is not in $A$. $0 \\notin A$ is incorrect. $-3 < 0 < 4$, so $0 \\in A$. $6 \\in A$ is incorrect. $6 > 4$, so $6$ does not satisfy the condition.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1166,7 +1166,7 @@
    "symbol",
    "symbol"
   ],
-  "solution": "The correct statement is $\\varnothing \\subseteq \\{4\\}$ — the empty set is a subset of every set. $0 \\in \\varnothing$ is false: the empty set has no elements. $\\{2\\} \\in \\{2, 4\\}$ is false: $\\{2\\}$ is a set; it is a subset, not an element. $\\varnothing \\in \\{2\\}$ is false: the only element of $\\{2\\}$ is the number $2$.",
+  "solution": "$\\varnothing \\subseteq \\{4\\}$ is correct. The empty set is a subset of every set. $0 \\in \\varnothing$ is incorrect. The empty set has no elements at all. $\\{2\\} \\in \\{2, 4\\}$ is incorrect. The elements of $\\{2, 4\\}$ are numbers. The set $\\{2\\}$ is a subset of it, not an element. $\\varnothing \\in \\{2\\}$ is incorrect. The only element of $\\{2\\}$ is the number $2$. The empty set is a subset of $\\{2\\}$, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1204,7 +1204,7 @@
    "symbol",
    "symbol"
   ],
-  "solution": "The correct statement is $1 \\in \\{1, 2\\}$ — $1$ is an element of the set. $2 \\subseteq \\{1, 2\\}$ is false: $2$ is an element, so the symbol must be $\\in$. $\\{1, 2\\} \\subseteq \\{1\\}$ is false: $2$ is not in $\\{1\\}$. $\\{1\\} \\in \\{1, 2\\}$ is false: $\\{1\\}$ is a set; it is a subset, not an element.",
+  "solution": "$1 \\in \\{1, 2\\}$ is correct. $1$ is one of the two listed elements. $2 \\subseteq \\{1, 2\\}$ is incorrect. $2$ is an element, not a set, so the correct statement is $2 \\in \\{1, 2\\}$. $\\{1, 2\\} \\subseteq \\{1\\}$ is incorrect. $2 \\in \\{1, 2\\}$ but $2 \\notin \\{1\\}$. $\\{1\\} \\in \\{1, 2\\}$ is incorrect. The elements of $\\{1, 2\\}$ are numbers. The set $\\{1\\}$ is a subset of it, not an element.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1242,7 +1242,7 @@
    "symbol",
    null
   ],
-  "solution": "The correct statement is $\\{4\\} \\subseteq \\{2, 4\\}$ — $\\{4\\}$ is a set and its element $4$ is in the larger set. $0 \\in \\varnothing$ is false: the empty set has no elements. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element, the number $0$; the empty set has none. $4 \\subseteq \\{2, 4\\}$ is false: $4$ is an element, so the symbol must be $\\in$.",
+  "solution": "$\\{4\\} \\subseteq \\{2, 4\\}$ is correct. The only element of $\\{4\\}$ is $4$, which belongs to $\\{2, 4\\}$. $0 \\in \\varnothing$ is incorrect. The empty set has no elements at all. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $4 \\subseteq \\{2, 4\\}$ is incorrect. $4$ is an element, not a set, so the correct statement is $4 \\in \\{2, 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1280,7 +1280,7 @@
    "partial",
    null
   ],
-  "solution": "The correct statement is $0 \\in A$ — $\\mathbb{N}$ contains $0$, and $0$ satisfies the condition; $A = \\{0, 1, 2\\}$. $A = \\{1, 2\\}$ is false: $0$ is a natural number and satisfies the condition, so it is missing. $0 \\subseteq A$ is false: $0$ is an element, so the symbol must be $\\in$. $3 \\in A$ is false: it does not satisfy $-2 < x \\le 2$.",
+  "solution": "The natural numbers that satisfy $-2 < x \\le 2$ are $0$, $1$ and $2$, so $A = \\{0, 1, 2\\}$. $0 \\in A$ is correct. $0$ is a natural number and satisfies $-2 < x \\le 2$. $A = \\{1, 2\\}$ is incorrect. $0$ is a natural number and satisfies the condition, so $0$ is missing from this list. $0 \\subseteq A$ is incorrect. $0$ is an element, not a set, so the correct symbol is $\\in$: $0 \\in A$. $3 \\in A$ is incorrect. $3$ does not satisfy $-2 < x \\le 2$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1318,7 +1318,7 @@
    null,
    "symbol"
   ],
-  "solution": "The correct statement is $\\{2, 4\\} \\subseteq A$ — both numbers are in $A = \\{-2, -1, 0, 1, 2, 3, 4\\}$. $-3 \\in A$ is false: the end point $-3$ is excluded (strict inequality). $2 \\subseteq A$ is false: $2$ is an element, so the symbol must be $\\in$. $A = \\{-2, -1, 0, 1, 2, 3\\}$ is false: the included end point $4$ is missing.",
+  "solution": "The integers that satisfy $-3 < x \\le 4$ are $-2$, $-1$, $0$, $1$, $2$, $3$ and $4$, so $A = \\{-2, -1, 0, 1, 2, 3, 4\\}$. $\\{2, 4\\} \\subseteq A$ is correct. Both $2$ and $4$ are elements of $A$. $-3 \\in A$ is incorrect. The inequality at $-3$ is strict, so $-3$ is not in $A$. $2 \\subseteq A$ is incorrect. $2$ is an element, not a set, so the correct symbol is $\\in$: $2 \\in A$. $A = \\{-2, -1, 0, 1, 2, 3\\}$ is incorrect. The end point $4$ is included, so it is missing from this list.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1356,7 +1356,7 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $-1 \\in A$ — the end point $-1$ is included; $A = \\{-1, 0, 1, 2, 3\\}$. $A = \\{0, 1, 2, 3\\}$ is false: the included end point $-1$ is missing. $\\{4, 0\\} \\subseteq A$ is false: $4$ is not in $A$. $4 \\in A$ is false: the end point $4$ is excluded (strict inequality).",
+  "solution": "The integers that satisfy $-1 \\le x < 4$ are $-1$, $0$, $1$, $2$ and $3$, so $A = \\{-1, 0, 1, 2, 3\\}$. $-1 \\in A$ is correct. The sign at $-1$ is $\\le$, so the end point $-1$ belongs to $A$. $A = \\{0, 1, 2, 3\\}$ is incorrect. The end point $-1$ is included, so it is missing from this list. $\\{4, 0\\} \\subseteq A$ is incorrect. The inequality at $4$ is strict, so $4 \\notin A$. $4 \\in A$ is incorrect. The inequality at $4$ is strict, so $4$ is not in $A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1394,7 +1394,7 @@
    null,
    "partial"
   ],
-  "solution": "The correct statement is $\\{0\\} \\subseteq A$ — $0 \\in A$, so the set $\\{0\\}$ is a subset of $A$. $A = \\{1, 2\\}$ is false: the element $0$ is missing. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element; the empty set has none. $\\{0\\} \\in A$ is false: $\\{0\\}$ is a set; the elements of $A$ are numbers.",
+  "solution": "$\\{0\\} \\subseteq A$ is correct. $0 \\in A$, so the set $\\{0\\}$ is a subset of $A$. $A = \\{1, 2\\}$ is incorrect. $A$ also contains the element $0$. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $\\{0\\} \\in A$ is incorrect. $\\{0\\}$ is a set, while the elements of $A$ are numbers. The correct statement is $\\{0\\} \\subseteq A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1432,7 +1432,7 @@
    "symbol",
    "slip"
   ],
-  "solution": "The correct statement is $\\{0, 4\\} \\subseteq A$ — both $0$ and $4$ are elements of $A$. $\\varnothing = \\{0\\}$ is false: $\\{0\\}$ has one element; the empty set has none. $0 \\notin A$ is false: $0$ is listed in $A$. $0 \\subseteq A$ is false: $0$ is an element, so the symbol must be $\\in$.",
+  "solution": "$\\{0, 4\\} \\subseteq A$ is correct. Both $0$ and $4$ are elements of $A$. $\\varnothing = \\{0\\}$ is incorrect. $\\{0\\}$ has one element, the number $0$, while the empty set has no elements. $0 \\notin A$ is incorrect. $0$ is one of the listed elements of $A$. $0 \\subseteq A$ is incorrect. $0$ is an element, not a set, so the correct statement is $0 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1470,7 +1470,7 @@
    "partial",
    "domain"
   ],
-  "solution": "The correct statement is “The set $A$ has exactly $16$ subsets” — $A = \\{0, 1, 2, 3\\}$ has $4$ elements, hence $2^{4} = 16$ subsets. “The set $A$ has exactly $8$ subsets” is false: a set with $4$ elements has $2^{4} = 16$ subsets. $A = \\{1, 2, 3\\}$ is false: the element $0$ is missing. $0 \\notin A$ is false: $0 \\in \\mathbb{N}$ and it satisfies the condition.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2, 3\\}$. “The set $A$ has exactly $16$ subsets” is correct. A set with $4$ elements has $2^{4} = 16$ subsets. “The set $A$ has exactly $8$ subsets” is incorrect. A set with $4$ elements has $2^{4} = 16$ subsets, not $2 \\times 4 = 8$. $A = \\{1, 2, 3\\}$ is incorrect. The element $0$ is missing from this list. $0 \\notin A$ is incorrect. $0$ is a natural number and satisfies $x \\le 3$, so $0 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1508,7 +1508,7 @@
    "endpoint",
    "domain"
   ],
-  "solution": "The correct statement is $\\{0, 4\\} \\subseteq A$ — $A = \\{0, 1, 2, 3, 4\\}$ contains $0$ and $4$. $0 \\notin A$ is false: $0 \\in \\mathbb{N}$ and it satisfies the condition. $A = \\{1, 2, 3, 4\\}$ is false: the element $0$ is missing. $5 \\in A$ is false: $5$ does not satisfy $x < 5$.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2, 3, 4\\}$. $\\{0, 4\\} \\subseteq A$ is correct. Both $0$ and $4$ are elements of $A$. $0 \\notin A$ is incorrect. $0$ is a natural number and satisfies $x < 5$, so $0 \\in A$. $A = \\{1, 2, 3, 4\\}$ is incorrect. The element $0$ is missing from this list. $5 \\in A$ is incorrect. $5$ does not satisfy $x < 5$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1546,7 +1546,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "The correct statement is “The set $A$ has exactly $8$ subsets” — $A = \\{0, 1, 2\\}$ has $3$ elements, hence $2^{3} = 8$ subsets. “The set $A$ has exactly $4$ subsets” is false: $A$ has $3$ elements (it includes $0$), so it has $2^{3}$ subsets. $3 \\in A$ is false: $3$ does not satisfy $x < 3$. $0 \\notin A$ is false: $0 \\in \\mathbb{N}$ and it satisfies the condition.",
+  "solution": "$\\mathbb{N}$ starts at $0$, so $A = \\{0, 1, 2\\}$. “The set $A$ has exactly $8$ subsets” is correct. A set with $3$ elements has $2^{3} = 8$ subsets. “The set $A$ has exactly $4$ subsets” is incorrect. $A$ has $3$ elements, including $0$, so it has $2^{3} = 8$ subsets. $3 \\in A$ is incorrect. $3$ does not satisfy $x < 3$. $0 \\notin A$ is incorrect. $0$ is a natural number and satisfies $x < 3$, so $0 \\in A$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1584,7 +1584,7 @@
    "slip",
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{1}{3} \\in \\mathbb{Q}$ — a quotient of two integers is rational. $\\dfrac{1}{3} \\in \\mathbb{Z}$ is false: $\\dfrac{1}{3}$ is not a whole number. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is false: natural numbers are not negative.",
+  "solution": "$\\dfrac{1}{3} \\in \\mathbb{Q}$ is correct. $\\dfrac{1}{3}$ is a quotient of two integers, so it is rational. $\\dfrac{1}{3} \\in \\mathbb{Z}$ is incorrect. $0 < \\dfrac{1}{3} < 1$, so $\\dfrac{1}{3}$ is not an integer. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1622,7 +1622,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $0 \\in \\mathbb{N}$ — in the CSCA (Chinese) convention $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$. $-9 \\in \\mathbb{N}$ is false: natural numbers are not negative. $\\sqrt{2} \\notin \\mathbb{R}$ is false: every square root of a positive number is real. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational.",
+  "solution": "$0 \\in \\mathbb{N}$ is correct. The natural numbers are $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$, so $0$ is a natural number. $-9 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative. $\\sqrt{2} \\notin \\mathbb{R}$ is incorrect. The square root of a positive number is a real number. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1660,7 +1660,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $\\dfrac{2}{5} \\in \\mathbb{Q}$ — a quotient of two integers is rational. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational. $\\dfrac{2}{5} \\in \\mathbb{Z}$ is false: $\\dfrac{2}{5}$ is not a whole number. $\\sqrt{7} \\notin \\mathbb{R}$ is false: every square root of a positive number is real.",
+  "solution": "$\\dfrac{2}{5} \\in \\mathbb{Q}$ is correct. $\\dfrac{2}{5}$ is a quotient of two integers, so it is rational. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational. $\\dfrac{2}{5} \\in \\mathbb{Z}$ is incorrect. $0 < \\dfrac{2}{5} < 1$, so $\\dfrac{2}{5}$ is not an integer. $\\sqrt{7} \\notin \\mathbb{R}$ is incorrect. The square root of a positive number is a real number.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1698,7 +1698,7 @@
    "slip",
    "domain"
   ],
-  "solution": "The correct statement is $-2 \\in \\mathbb{Z}$ — negative whole numbers are integers. $0 \\notin \\mathbb{N}$ is false: $\\mathbb{N}$ includes $0$ in the CSCA convention. $\\sqrt{5} \\in \\mathbb{Q}$ is false: $\\sqrt{5}$ is irrational. $-2 \\in \\mathbb{N}$ is false: natural numbers are not negative.",
+  "solution": "$-2 \\in \\mathbb{Z}$ is correct. The integers include the negative whole numbers. $0 \\notin \\mathbb{N}$ is incorrect. $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$ contains $0$. $\\sqrt{5} \\in \\mathbb{Q}$ is incorrect. $5$ is not a perfect square, so $\\sqrt{5}$ is irrational. $-2 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1736,7 +1736,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $-5 \\in \\mathbb{Z}$ — negative whole numbers are integers. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is false: natural numbers are not negative. $\\sqrt{3} \\notin \\mathbb{R}$ is false: every square root of a positive number is real.",
+  "solution": "$-5 \\in \\mathbb{Z}$ is correct. The integers include the negative whole numbers. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative. $\\sqrt{3} \\notin \\mathbb{R}$ is incorrect. The square root of a positive number is a real number.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1774,7 +1774,7 @@
    null,
    "endpoint"
   ],
-  "solution": "$\\mathbb{N}$ starts at $0$. The whole numbers that satisfy $x < 3$ are $0, 1, 2$, so the set is $\\{0, 1, 2\\}$.",
+  "solution": "$\\mathbb{N}$ starts at $0$. The natural numbers that satisfy $x < 3$ are $0, 1, 2$, so the set is $\\{0, 1, 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1812,7 +1812,7 @@
    "endpoint",
    null
   ],
-  "solution": "The whole numbers that satisfy $-3 \\le x < 4$ are $-3, -2, -1, 0, 1, 2, 3$, so the set is $\\{-3, -2, -1, 0, 1, 2, 3\\}$.",
+  "solution": "The integers that satisfy $-3 \\le x < 4$ are $-3, -2, -1, 0, 1, 2, 3$, so the set is $\\{-3, -2, -1, 0, 1, 2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1850,7 +1850,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "$\\mathbb{N}$ starts at $0$. The whole numbers that satisfy $x \\le 5$ are $0, 1, 2, 3, 4, 5$, so the set is $\\{0, 1, 2, 3, 4, 5\\}$.",
+  "solution": "$\\mathbb{N}$ starts at $0$. The natural numbers that satisfy $x \\le 5$ are $0, 1, 2, 3, 4, 5$, so the set is $\\{0, 1, 2, 3, 4, 5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1874,7 +1874,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = [-3, 3)$ and $B = [1, 7)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = [-3, 3)$ and $B = [1, 7)$, then $A \\cap B =$ ( )",
   "options": [
    "$[1, 3)$",
    "$[1, 3]$",
@@ -1888,7 +1888,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $1$ to $3$. $1$ is included and $3$ is excluded (each end point keeps the bracket of the set it comes from), so the answer is $[1, 3)$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-3$ to $3$ and $B$ runs from $1$ to $7$, so they overlap from $1$ to $3$. The end point $1$ comes from $B$, where it is included, and $3$ comes from $A$, where it is excluded. So $A \\cap B = [1, 3)$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1912,7 +1912,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = (-3, 5]$ and $B = (1, 9)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = (-3, 5]$ and $B = (1, 9)$, then $A \\cap B =$ ( )",
   "options": [
    "$(1, 5]$",
    "$[1, 5)$",
@@ -1926,7 +1926,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $1$ to $5$. $1$ is excluded and $5$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(1, 5]$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-3$ to $5$ and $B$ runs from $1$ to $9$, so they overlap from $1$ to $5$. The end point $1$ comes from $B$, where it is excluded, and $5$ comes from $A$, where it is included. So $A \\cap B = (1, 5]$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1950,7 +1950,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = (-2, 4)$ and $B = [0, 5)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = (-2, 4)$ and $B = [0, 5)$, then $A \\cap B =$ ( )",
   "options": [
    "$[0, 4]$",
    "$[0, 4)$",
@@ -1964,7 +1964,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $0$ to $4$. $0$ is included and $4$ is excluded (each end point keeps the bracket of the set it comes from), so the answer is $[0, 4)$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-2$ to $4$ and $B$ runs from $0$ to $5$, so they overlap from $0$ to $4$. The end point $0$ comes from $B$, where it is included, and $4$ comes from $A$, where it is excluded. So $A \\cap B = [0, 4)$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -1988,7 +1988,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = [-2, 3]$ and $B = (0, 7)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = [-2, 3]$ and $B = (0, 7)$, then $A \\cap B =$ ( )",
   "options": [
    "$[0, 3)$",
    "$(0, 3]$",
@@ -2002,7 +2002,7 @@
    "endpoint",
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $0$ to $3$. $0$ is excluded and $3$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(0, 3]$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-2$ to $3$ and $B$ runs from $0$ to $7$, so they overlap from $0$ to $3$. The end point $0$ comes from $B$, where it is excluded, and $3$ comes from $A$, where it is included. So $A \\cap B = (0, 3]$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2026,7 +2026,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = [-5, 0]$ and $B = (-3, 2)$, then $A \\cap B =$ ( )",
+  "stem": "If $A = [-5, 0]$ and $B = (-3, 2)$, then $A \\cap B =$ ( )",
   "options": [
    "$(-3, 0)$",
    "$[-5, 2)$",
@@ -2040,7 +2040,7 @@
    "endpoint",
    null
   ],
-  "solution": "The intersection keeps the numbers that lie in both sets: from $-3$ to $0$. $-3$ is excluded and $0$ is included (each end point keeps the bracket of the set it comes from), so the answer is $(-3, 0]$.",
+  "solution": "The intersection is the part that lies in both sets. $A$ runs from $-5$ to $0$ and $B$ runs from $-3$ to $2$, so they overlap from $-3$ to $0$. The end point $-3$ comes from $B$, where it is excluded, and $0$ comes from $A$, where it is included. So $A \\cap B = (-3, 0]$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2078,7 +2078,7 @@
    "operation",
    "operation"
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything up to $3$, with $3$ included: $\\{x \\mid x \\le 3\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $A$ runs from $-1$ to $3$, and $B$ contains every number up to $1$. Since $-1 < 1 < 3$, the two sets overlap, so together they cover every number up to $3$. The end point $3$ comes from $A$, where it is included. So $A \\cup B = \\{x \\mid x \\le 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2116,7 +2116,7 @@
    "operation",
    null
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $2$ upward, with $2$ included: $\\{x \\mid x \\ge 2\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $P$ runs from $2$ to $6$, and $Q$ contains every number from $3$ upward. Since $2 < 3 < 6$, the two sets overlap, so together they cover every number from $2$ upward. The end point $2$ comes from $P$, where it is included. So $P \\cup Q = \\{x \\mid x \\ge 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2154,7 +2154,7 @@
    "operation",
    "operation"
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $-5$ upward, with $-5$ included: $\\{x \\mid x \\ge -5\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $M$ runs from $-5$ to $0$, and $N$ contains every number from $-3$ upward. Since $-5 < -3 < 0$, the two sets overlap, so together they cover every number from $-5$ upward. The end point $-5$ comes from $M$, where it is included. So $M \\cup N = \\{x \\mid x \\ge -5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2192,7 +2192,7 @@
    "partial",
    "operation"
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $1$ upward, with $1$ included: $\\{x \\mid x \\ge 1\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $A$ runs from $1$ to $3$, and $B$ contains every number from $2$ upward. Since $1 < 2 < 3$, the two sets overlap, so together they cover every number from $1$ upward. The end point $1$ comes from $A$, where it is included. So $A \\cup B = \\{x \\mid x \\ge 1\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2230,7 +2230,7 @@
    "partial",
    null
   ],
-  "solution": "The union takes every number that is in at least one of the sets. On a number line the two sets overlap, and together they cover everything from $-3$ upward, with $-3$ included: $\\{x \\mid x \\ge -3\\}$.",
+  "solution": "The union contains every number that lies in at least one of the two sets. $P$ runs from $-3$ to $2$, and $Q$ contains every number from $-1$ upward. Since $-3 < -1 < 2$, the two sets overlap, so together they cover every number from $-3$ upward. The end point $-3$ comes from $P$, where it is included. So $P \\cup Q = \\{x \\mid x \\ge -3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2268,7 +2268,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $3$ (excluded) to $4$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 3 < x \\le 4\\}$.",
+  "solution": "A number in $P \\cap Q$ must satisfy both conditions. The larger lower bound is $3$, from $Q$, where it is excluded. The smaller upper bound is $4$, from $P$, where it is included. So $P \\cap Q = \\{x \\mid 3 < x \\le 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2306,7 +2306,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-4$ (excluded) to $-2$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -4 < x \\le -2\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $-4$, from $N$, where it is excluded. The smaller upper bound is $-2$, from $M$, where it is included. So $M \\cap N = \\{x \\mid -4 < x \\le -2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2344,7 +2344,7 @@
    "endpoint",
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $1$ (included) to $2$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 1 \\le x \\le 2\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $1$, from $B$, where it is included. The smaller upper bound is $2$, from $A$, where it is included. So $A \\cap B = \\{x \\mid 1 \\le x \\le 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2382,7 +2382,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-3$ (excluded) to $0$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -3 < x \\le 0\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $-3$, from $B$, where it is excluded. The smaller upper bound is $0$, from $A$, where it is included. So $A \\cap B = \\{x \\mid -3 < x \\le 0\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2420,7 +2420,7 @@
    "operation",
    null
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-1$ (included) to $3$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -1 \\le x \\le 3\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $-1$, from $N$, where it is included. The smaller upper bound is $3$, from $M$, where it is included. So $M \\cap N = \\{x \\mid -1 \\le x \\le 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2458,7 +2458,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-2$ (included) to $-1$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -2 \\le x \\le -1\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $-2$, from $B$, where it is included. The smaller upper bound is $-1$, from $A$, where it is included. So $A \\cap B = \\{x \\mid -2 \\le x \\le -1\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2496,7 +2496,7 @@
    null,
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $4$ (included) to $7$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 4 \\le x < 7\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $4$, from $N$, where it is included. The smaller upper bound is $7$, from $M$, where it is excluded. So $M \\cap N = \\{x \\mid 4 \\le x < 7\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2534,7 +2534,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $3$ (excluded) to $4$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 3 < x < 4\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $3$, from $B$, where it is excluded. The smaller upper bound is $4$, from $A$, where it is excluded. So $A \\cap B = \\{x \\mid 3 < x < 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2572,7 +2572,7 @@
    "endpoint",
    null
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $-2$ (excluded) to $2$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid -2 < x < 2\\}$.",
+  "solution": "A number in $A \\cap B$ must satisfy both conditions. The larger lower bound is $-2$, from $B$, where it is excluded. The smaller upper bound is $2$, from $A$, where it is excluded. So $A \\cap B = \\{x \\mid -2 < x < 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2610,7 +2610,7 @@
    "operation",
    "operation"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $4$ (included) to $6$ (included), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 4 \\le x \\le 6\\}$.",
+  "solution": "A number in $P \\cap Q$ must satisfy both conditions. The larger lower bound is $4$, from $Q$, where it is included. The smaller upper bound is $6$, from $P$, where it is included. So $P \\cap Q = \\{x \\mid 4 \\le x \\le 6\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2648,7 +2648,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The intersection keeps the numbers that satisfy both conditions: it runs from $0$ (excluded) to $3$ (excluded), each end point keeping the bracket of the set it comes from. So the answer is $\\{x \\mid 0 < x < 3\\}$.",
+  "solution": "A number in $M \\cap N$ must satisfy both conditions. The larger lower bound is $0$, from $N$, where it is excluded. The smaller upper bound is $3$, from $M$, where it is excluded. So $M \\cap N = \\{x \\mid 0 < x < 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2686,7 +2686,7 @@
    "partial",
    null
   ],
-  "solution": "The intersection keeps the elements of $M$ that are also in $N$, i.e. those that are at least $4$: $\\{4, 5\\}$.",
+  "solution": "$N$ contains every whole number from $4$ to $2026$. The elements of $M$ that are at least $4$ are $4$ and $5$, so $M \\cap N = \\{4, 5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2724,7 +2724,7 @@
    "partial",
    "complement"
   ],
-  "solution": "The intersection keeps the elements of $P$ that are also in $Q$, i.e. those that are at least $2$: $\\{2, 3\\}$.",
+  "solution": "$Q$ contains every whole number from $2$ to $100$. The elements of $P$ that are at least $2$ are $2$ and $3$, so $P \\cap Q = \\{2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2762,7 +2762,7 @@
    "partial",
    null
   ],
-  "solution": "The intersection keeps the elements of $A$ that are also in $B$, i.e. those that are at least $3$: $\\{3, 4, 5\\}$.",
+  "solution": "$B$ contains every whole number from $3$ to $2026$. The elements of $A$ that are at least $3$ are $3$, $4$ and $5$, so $A \\cap B = \\{3, 4, 5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2800,7 +2800,7 @@
    null,
    "complement"
   ],
-  "solution": "The intersection keeps the elements of $A$ that are also in $B$, i.e. those that are at least $2$: $\\{2, 3\\}$.",
+  "solution": "$B$ contains every whole number from $2$ to $2026$. The elements of $A$ that are at least $2$ are $2$ and $3$, so $A \\cap B = \\{2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2838,7 +2838,7 @@
    "operation",
    "partial"
   ],
-  "solution": "The intersection keeps the elements of $A$ that are also in $B$, i.e. those that are at least $1$: $\\{1, 2, 3\\}$.",
+  "solution": "$B$ contains every whole number from $1$ to $2026$. The elements of $A$ that are at least $1$ are $1$, $2$ and $3$, so $A \\cap B = \\{1, 2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2862,7 +2862,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $M = \\{0, 3, 4, 11\\}$ and $N = \\{0, 4, 10\\}$, then $M \\cap N =$ ( )",
+  "stem": "If $M = \\{0, 3, 4, 11\\}$ and $N = \\{0, 4, 10\\}$, then $M \\cap N =$ ( )",
   "options": [
    "$\\{0, 4\\}$",
    "$\\{0, 3, 4, 10, 11\\}$",
@@ -2876,7 +2876,7 @@
    "complement",
    "complement"
   ],
-  "solution": "The intersection holds the elements that belong to both sets: $\\{0, 4\\}$.",
+  "solution": "The intersection contains the elements that appear in both lists. Only $0$ and $4$ appear in both, so $M \\cap N = \\{0, 4\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2900,7 +2900,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $P = \\{0, 1, 6, 10\\}$ and $Q = \\{1, 6, 7\\}$, then $P \\cap Q =$ ( )",
+  "stem": "If $P = \\{0, 1, 6, 10\\}$ and $Q = \\{1, 6, 7\\}$, then $P \\cap Q =$ ( )",
   "options": [
    "$\\{0, 1, 6, 7, 10\\}$",
    "$\\{1, 6\\}$",
@@ -2914,7 +2914,7 @@
    "complement",
    "complement"
   ],
-  "solution": "The intersection holds the elements that belong to both sets: $\\{1, 6\\}$.",
+  "solution": "The intersection contains the elements that appear in both lists. Only $1$ and $6$ appear in both, so $P \\cap Q = \\{1, 6\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2938,7 +2938,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $P = \\{0, 4, 11\\}$ and $Q = \\{0, 8, 9\\}$, then $P \\cup Q =$ ( )",
+  "stem": "If $P = \\{0, 4, 11\\}$ and $Q = \\{0, 8, 9\\}$, then $P \\cup Q =$ ( )",
   "options": [
    "$\\{0, 4, 8, 9, 11\\}$",
    "$\\{0\\}$",
@@ -2952,7 +2952,7 @@
    "partial",
    "partial"
   ],
-  "solution": "The union holds every element that belongs to at least one of the sets, each written once: $\\{0, 4, 8, 9, 11\\}$.",
+  "solution": "The union contains every element that appears in at least one of the lists. Combine the two lists and write the common element $0$ only once: $P \\cup Q = \\{0, 4, 8, 9, 11\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -2976,7 +2976,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given sets $A = \\{1, 3, 6, 8\\}$ and $B = \\{0, 1, 6, 7\\}$, then $A \\cup B =$ ( )",
+  "stem": "If $A = \\{1, 3, 6, 8\\}$ and $B = \\{0, 1, 6, 7\\}$, then $A \\cup B =$ ( )",
   "options": [
    "$\\{1, 6\\}$",
    "$\\{0, 1, 3, 6, 7, 8\\}$",
@@ -2990,7 +2990,7 @@
    "partial",
    "partial"
   ],
-  "solution": "The union holds every element that belongs to at least one of the sets, each written once: $\\{0, 1, 3, 6, 7, 8\\}$.",
+  "solution": "The union contains every element that appears in at least one of the lists. Combine the two lists and write the common elements $1$ and $6$ only once: $A \\cup B = \\{0, 1, 3, 6, 7, 8\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3028,7 +3028,7 @@
    null,
    "complement"
   ],
-  "solution": "The correct statement is $A \\cup B = \\{1, 5, 6, 8, 10, 11\\}$ — all elements of the two sets together are $\\{1, 5, 6, 8, 10, 11\\}$. $A \\cap B = \\{1, 5, 8, 10, 11\\}$ is false: these are the elements that are NOT shared. $A \\cap B = \\{1, 5, 6, 8, 10, 11\\}$ is false: that is the union, not the intersection. $A \\cup B = \\{5, 6, 8, 11\\}$ is false: the elements of $B$ that are not in $A$ are missing.",
+  "solution": "$A \\cup B = \\{1, 5, 6, 8, 10, 11\\}$ is correct. Combining the two lists, with each common element written once, gives $\\{1, 5, 6, 8, 10, 11\\}$. $A \\cap B = \\{1, 5, 8, 10, 11\\}$ is incorrect. These are the elements that belong to only one of the two sets. The intersection is $A \\cap B = \\{6\\}$. $A \\cap B = \\{1, 5, 6, 8, 10, 11\\}$ is incorrect. $\\{1, 5, 6, 8, 10, 11\\}$ is the union. The intersection is $A \\cap B = \\{6\\}$. $A \\cup B = \\{5, 6, 8, 11\\}$ is incorrect. This set is $A$ itself. The union must also contain $1$ and $10$ from $B$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3066,7 +3066,7 @@
    "operation",
    "complement"
   ],
-  "solution": "The correct statement is $A \\cup B = \\{0, 3, 5, 9, 12\\}$ — all elements of the two sets together are $\\{0, 3, 5, 9, 12\\}$. $A \\cap B = \\{0, 3, 9\\}$ is false: these are the elements that are NOT shared. $A \\cap B = \\{0, 3, 5, 9, 12\\}$ is false: that is the union, not the intersection. $A \\cup B = \\{5, 12\\}$ is false: that is the intersection, not the union.",
+  "solution": "$A \\cup B = \\{0, 3, 5, 9, 12\\}$ is correct. Combining the two lists, with each common element written once, gives $\\{0, 3, 5, 9, 12\\}$. $A \\cap B = \\{0, 3, 9\\}$ is incorrect. These are the elements that belong to only one of the two sets. The intersection is $A \\cap B = \\{5, 12\\}$. $A \\cap B = \\{0, 3, 5, 9, 12\\}$ is incorrect. $\\{0, 3, 5, 9, 12\\}$ is the union. The intersection is $A \\cap B = \\{5, 12\\}$. $A \\cup B = \\{5, 12\\}$ is incorrect. $\\{5, 12\\}$ is the intersection. The union is $A \\cup B = \\{0, 3, 5, 9, 12\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3104,7 +3104,7 @@
    "operation",
    null
   ],
-  "solution": "The correct statement is $P \\cup Q = \\{0, 2, 3, 7, 9, 12\\}$ — all elements of the two sets together are $\\{0, 2, 3, 7, 9, 12\\}$. $P \\cup Q = \\{0, 2, 7, 9\\}$ is false: the elements of $Q$ that are not in $P$ are missing. $P \\cup Q = \\{2, 7\\}$ is false: that is the intersection, not the union. $P \\cap Q = \\{0, 2, 3, 7, 9, 12\\}$ is false: that is the union, not the intersection.",
+  "solution": "$P \\cup Q = \\{0, 2, 3, 7, 9, 12\\}$ is correct. Combining the two lists, with each common element written once, gives $\\{0, 2, 3, 7, 9, 12\\}$. $P \\cup Q = \\{0, 2, 7, 9\\}$ is incorrect. This set is $P$ itself. The union must also contain $3$ and $12$ from $Q$. $P \\cup Q = \\{2, 7\\}$ is incorrect. $\\{2, 7\\}$ is the intersection. The union is $P \\cup Q = \\{0, 2, 3, 7, 9, 12\\}$. $P \\cap Q = \\{0, 2, 3, 7, 9, 12\\}$ is incorrect. $\\{0, 2, 3, 7, 9, 12\\}$ is the union. The intersection is $P \\cap Q = \\{2, 7\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3142,7 +3142,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Both sets start at $-4$, but only one of them contains $-4$, so $-4$ is not in the intersection. The right end is the smaller one, $0$, with the bracket of its own set. Answer: $\\{x \\mid -4 < x < 0\\}$.",
+  "solution": "A number in the intersection must lie in both sets. Both sets start at $-4$, but $-4$ belongs to $A$ only, so $-4$ is not in $A \\cap B$. The intersection ends at the smaller right end point, $0$, which is excluded as it is in $A$. So $A \\cap B = \\{x \\mid -4 < x < 0\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3180,7 +3180,7 @@
    "operation",
    "endpoint"
   ],
-  "solution": "Both sets end at $3$, but only one of them contains $3$, so $3$ is not in the intersection. The left end is the larger one, $2$, with the bracket of its own set. Answer: $[2, 3)$.",
+  "solution": "A number in the intersection must lie in both sets. Both sets end at $3$, but $3$ belongs to $A$ only, so $3$ is not in $A \\cap B$. The intersection starts at the larger left end point, $2$, which is included as it is in $B$. So $A \\cap B = [2, 3)$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3218,7 +3218,7 @@
    "endpoint",
    null
   ],
-  "solution": "The first set covers everything below $0$ and the second continues from $-1$ to $1$; since $-1 < 0$ there is no gap, so the union is everything up to $1$ (included). Answer: $\\{x \\mid x \\le 1\\}$.",
+  "solution": "$A$ contains every number below $0$, and $B$ runs from $-1$ to $1$. Since $-1 < 0$, the two sets overlap and leave no gap, so the union contains every number up to $1$. The end point $1$ is included, as it is in $B$. So $A \\cup B = \\{x \\mid x \\le 1\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3256,7 +3256,7 @@
    "partial",
    null
   ],
-  "solution": "The first set covers everything below $-1$ and the second continues from $-3$ to $0$; since $-3 < -1$ there is no gap, so the union is everything up to $0$ (included). Answer: $\\{x \\mid x \\le 0\\}$.",
+  "solution": "$P$ contains every number below $-1$, and $Q$ runs from $-3$ to $0$. Since $-3 < -1$, the two sets overlap and leave no gap, so the union contains every number up to $0$. The end point $0$ is included, as it is in $Q$. So $P \\cup Q = \\{x \\mid x \\le 0\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3294,7 +3294,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The number $4$ belongs to one of the two sets, so the two pieces join without a gap: the union runs from $0$ to $7$ with the outer brackets unchanged. Answer: $\\{x \\mid 0 < x \\le 7\\}$.",
+  "solution": "$P$ runs from $0$ to $4$ and $Q$ runs from $4$ to $7$. The number $4$ belongs to $P$, so there is no gap at $4$ and the union runs from $0$ to $7$. The outer end points keep their brackets: $0$ is excluded and $7$ is included. So $P \\cup Q = \\{x \\mid 0 < x \\le 7\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -3332,13 +3332,13 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The correct statement is $A \\cap B = \\{x \\mid -2 < x \\le 0\\}$ — both conditions hold from $-2$ to $0$, each end point keeping its own bracket. $A \\cap B = \\{x \\mid -2 < x < 0\\}$ is false: the bracket at $0$ is wrong: $0$ is included in $A$. $A \\cup B = \\{x \\mid -3 \\le x < 2\\}$ is false: the bracket at $-3$ is wrong: $-3$ is excluded in $A$. $A \\cap B = \\{x \\mid -2 \\le x \\le 0\\}$ is false: the bracket at $-2$ is wrong: $-2$ is excluded in $B$.",
+  "solution": "$A \\cap B = \\{x \\mid -2 < x \\le 0\\}$ is correct. The sets overlap from $-2$ to $0$. The end point $-2$ comes from $B$ (excluded there) and $0$ comes from $A$ (included there). $A \\cap B = \\{x \\mid -2 < x < 0\\}$ is incorrect. $0$ is included in $A$, so it is included in $A \\cap B$ as well. $A \\cup B = \\{x \\mid -3 \\le x < 2\\}$ is incorrect. $-3$ is excluded in $A$, so it is excluded in $A \\cup B$ as well. $A \\cap B = \\{x \\mid -2 \\le x \\le 0\\}$ is incorrect. $-2$ is excluded in $B$, so it is excluded in $A \\cap B$ as well.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
   "template": "SET-op.four",
   "seed": "bank:1:SET-op.four:0",
-  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap",
+  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error",
   "answer_letter": "A",
   "answer_value": "$A \\cap B = \\{x \\mid -2 < x \\le 0\\}$",
   "verified": "stmt"
@@ -3370,13 +3370,13 @@
    "endpoint",
    null
   ],
-  "solution": "The correct statement is $M \\cup N = \\{x \\mid -3 \\le x < 3\\}$ — together the sets cover from $-3$ to $3$ with the outer brackets. $M \\cap N = \\{x \\mid -1 < x < 0\\}$ is false: the bracket at $0$ is wrong: $0$ is included in $M$. $M \\cap N = \\{x \\mid -1 \\le x \\le 0\\}$ is false: the bracket at $-1$ is wrong: $-1$ is excluded in $N$. $M \\cup N = \\{x \\mid -3 \\le x \\le 3\\}$ is false: the bracket at $3$ is wrong: $3$ is excluded in $N$.",
+  "solution": "$M \\cup N = \\{x \\mid -3 \\le x < 3\\}$ is correct. Together the sets cover every number from $-3$ to $3$. The end point $-3$ comes from $M$ (included there) and $3$ comes from $N$ (excluded there). $M \\cap N = \\{x \\mid -1 < x < 0\\}$ is incorrect. $0$ is included in $M$, so it is included in $M \\cap N$ as well. $M \\cap N = \\{x \\mid -1 \\le x \\le 0\\}$ is incorrect. $-1$ is excluded in $N$, so it is excluded in $M \\cap N$ as well. $M \\cup N = \\{x \\mid -3 \\le x \\le 3\\}$ is incorrect. $3$ is excluded in $N$, so it is excluded in $M \\cup N$ as well.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
   "template": "SET-op.four",
   "seed": "bank:1:SET-op.four:1",
-  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap",
+  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error",
   "answer_letter": "D",
   "answer_value": "$M \\cup N = \\{x \\mid -3 \\le x < 3\\}$",
   "verified": "stmt"
@@ -3408,13 +3408,13 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The correct statement is $P \\cap Q = \\{x \\mid 3 < x < 6\\}$ — both conditions hold from $3$ to $6$, each end point keeping its own bracket. $P \\cap Q = \\{x \\mid 3 \\le x < 6\\}$ is false: the bracket at $3$ is wrong: $3$ is excluded in $Q$. $P \\cup Q = \\{x \\mid 0 \\le x < 7\\}$ is false: the bracket at $0$ is wrong: $0$ is excluded in $P$. $P \\cap Q = \\{x \\mid 3 < x \\le 6\\}$ is false: the bracket at $6$ is wrong: $6$ is excluded in $P$.",
+  "solution": "$P \\cap Q = \\{x \\mid 3 < x < 6\\}$ is correct. The sets overlap from $3$ to $6$. The end point $3$ comes from $Q$ (excluded there) and $6$ comes from $P$ (excluded there). $P \\cap Q = \\{x \\mid 3 \\le x < 6\\}$ is incorrect. $3$ is excluded in $Q$, so it is excluded in $P \\cap Q$ as well. $P \\cup Q = \\{x \\mid 0 \\le x < 7\\}$ is incorrect. $0$ is excluded in $P$, so it is excluded in $P \\cup Q$ as well. $P \\cap Q = \\{x \\mid 3 < x \\le 6\\}$ is incorrect. $6$ is excluded in $P$, so it is excluded in $P \\cap Q$ as well.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
   "template": "SET-op.four",
   "seed": "bank:1:SET-op.four:2",
-  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap",
+  "form": "Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error",
   "answer_letter": "A",
   "answer_value": "$P \\cap Q = \\{x \\mid 3 < x < 6\\}$",
   "verified": "stmt"
@@ -3446,7 +3446,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x + 3)(x + 1) < 0$. The roots are $-3$ and $-1$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-3, -1)$.",
+  "solution": "Factor the left side: $(x + 3)(x + 1) < 0$. The roots are $-3$ and $-1$. The graph of $y = (x + 3)(x + 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-3, -1)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3484,7 +3484,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 6)(x + 3) < 0$. The roots are $-6$ and $-3$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-6, -3)$.",
+  "solution": "Factor the left side: $(x + 6)(x + 3) < 0$. The roots are $-6$ and $-3$. The graph of $y = (x + 6)(x + 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-6, -3)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3522,7 +3522,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x - 3)(x - 8) < 0$. The roots are $3$ and $8$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(3, 8)$.",
+  "solution": "Factor the left side: $(x - 3)(x - 8) < 0$. The roots are $3$ and $8$. The graph of $y = (x - 3)(x - 8)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(3, 8)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3560,7 +3560,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x - 4)(x - 9) < 0$. The roots are $4$ and $9$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(4, 9)$.",
+  "solution": "Factor the left side: $(x - 4)(x - 9) < 0$. The roots are $4$ and $9$. The graph of $y = (x - 4)(x - 9)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(4, 9)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3598,7 +3598,7 @@
    "sign",
    null
   ],
-  "solution": "Factor: $(x)(x - 2) < 0$. The roots are $0$ and $2$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(0, 2)$.",
+  "solution": "Factor the left side: $(x)(x - 2) < 0$. The roots are $0$ and $2$. The graph of $y = (x)(x - 2)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(0, 2)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3636,7 +3636,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 2)(x) < 0$. The roots are $-2$ and $0$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-2, 0)$.",
+  "solution": "Factor the left side: $(x + 2)(x) < 0$. The roots are $-2$ and $0$. The graph of $y = (x + 2)(x)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-2, 0)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3674,7 +3674,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x)(x - 3) > 0$. The roots are $0$ and $3$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 0 \\text{ or } x > 3\\}$.",
+  "solution": "Factor the left side: $(x)(x - 3) > 0$. The roots are $0$ and $3$. The graph of $y = (x)(x - 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 0 \\text{ or } x > 3\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3712,7 +3712,7 @@
    "sign",
    null
   ],
-  "solution": "Factor: $(x + 7)(x + 6) > 0$. The roots are $-7$ and $-6$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -7 \\text{ or } x > -6\\}$.",
+  "solution": "Factor the left side: $(x + 7)(x + 6) > 0$. The roots are $-7$ and $-6$. The graph of $y = (x + 7)(x + 6)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -7 \\text{ or } x > -6\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3750,7 +3750,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x - 2)(x - 6) > 0$. The roots are $2$ and $6$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 2 \\text{ or } x > 6\\}$.",
+  "solution": "Factor the left side: $(x - 2)(x - 6) > 0$. The roots are $2$ and $6$. The graph of $y = (x - 2)(x - 6)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 2 \\text{ or } x > 6\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3788,7 +3788,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x - 3)(x - 5) > 0$. The roots are $3$ and $5$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 3 \\text{ or } x > 5\\}$.",
+  "solution": "Factor the left side: $(x - 3)(x - 5) > 0$. The roots are $3$ and $5$. The graph of $y = (x - 3)(x - 5)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 3 \\text{ or } x > 5\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3826,7 +3826,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 4)(x + 1) > 0$. The roots are $-4$ and $-1$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -4 \\text{ or } x > -1\\}$.",
+  "solution": "Factor the left side: $(x + 4)(x + 1) > 0$. The roots are $-4$ and $-1$. The graph of $y = (x + 4)(x + 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -4 \\text{ or } x > -1\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3864,7 +3864,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(x + 6)(x + 2) > 0$. The roots are $-6$ and $-2$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -6 \\text{ or } x > -2\\}$.",
+  "solution": "Factor the left side: $(x + 6)(x + 2) > 0$. The roots are $-6$ and $-2$. The graph of $y = (x + 6)(x + 2)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -6 \\text{ or } x > -2\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3902,7 +3902,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x + 5)(x) > 0$. The roots are $-5$ and $0$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -5 \\text{ or } x > 0\\}$.",
+  "solution": "Factor the left side: $(x + 5)(x) > 0$. The roots are $-5$ and $0$. The graph of $y = (x + 5)(x)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -5 \\text{ or } x > 0\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3940,7 +3940,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 4)(x - 3) > 0$. The roots are $-4$ and $3$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -4 \\text{ or } x > 3\\}$.",
+  "solution": "Factor the left side: $(x + 4)(x - 3) > 0$. The roots are $-4$ and $3$. The graph of $y = (x + 4)(x - 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -4 \\text{ or } x > 3\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -3978,7 +3978,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 5)(x - 1) > 0$. The roots are $-5$ and $1$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -5 \\text{ or } x > 1\\}$.",
+  "solution": "Factor the left side: $(x + 5)(x - 1) > 0$. The roots are $-5$ and $1$. The graph of $y = (x + 5)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -5 \\text{ or } x > 1\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4016,7 +4016,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(x + 1)(x - 4) > 0$. The roots are $-1$ and $4$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -1 \\text{ or } x > 4\\}$.",
+  "solution": "Factor the left side: $(x + 1)(x - 4) > 0$. The roots are $-1$ and $4$. The graph of $y = (x + 1)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -1 \\text{ or } x > 4\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4054,7 +4054,7 @@
    "complement",
    "sign"
   ],
-  "solution": "Factor: $(x + 3)(x + 2) > 0$. The roots are $-3$ and $-2$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < -3 \\text{ or } x > -2\\}$.",
+  "solution": "Factor the left side: $(x + 3)(x + 2) > 0$. The roots are $-3$ and $-2$. The graph of $y = (x + 3)(x + 2)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < -3 \\text{ or } x > -2\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4092,7 +4092,7 @@
    null,
    "complement"
   ],
-  "solution": "Factor: $(x)(x - 4) > 0$. The roots are $0$ and $4$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 0 \\text{ or } x > 4\\}$.",
+  "solution": "Factor the left side: $(x)(x - 4) > 0$. The roots are $0$ and $4$. The graph of $y = (x)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 0 \\text{ or } x > 4\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4130,7 +4130,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Factor: $(x - 5)(x - 10) > 0$. The roots are $5$ and $10$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $\\{x \\mid x < 5 \\text{ or } x > 10\\}$.",
+  "solution": "Factor the left side: $(x - 5)(x - 10) > 0$. The roots are $5$ and $10$. The graph of $y = (x - 5)(x - 10)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $\\{x \\mid x < 5 \\text{ or } x > 10\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4168,7 +4168,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "Factor: $(x - 4)(x - 7) \\ge 0$. The roots are $4$ and $7$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, 4] \\cup [7, +\\infty)$.",
+  "solution": "Factor the left side: $(x - 4)(x - 7) \\ge 0$. The roots are $4$ and $7$. The graph of $y = (x - 4)(x - 7)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, 4] \\cup [7, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4206,7 +4206,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Factor: $(x + 2)(x + 1) \\ge 0$. The roots are $-2$ and $-1$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -2] \\cup [-1, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 2)(x + 1) \\ge 0$. The roots are $-2$ and $-1$. The graph of $y = (x + 2)(x + 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -2] \\cup [-1, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4244,7 +4244,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 1)(x - 4) \\ge 0$. The roots are $-1$ and $4$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -1] \\cup [4, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 1)(x - 4) \\ge 0$. The roots are $-1$ and $4$. The graph of $y = (x + 1)(x - 4)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -1] \\cup [4, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4282,7 +4282,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 1)(x - 7) \\ge 0$. The roots are $-1$ and $7$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -1] \\cup [7, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 1)(x - 7) \\ge 0$. The roots are $-1$ and $7$. The graph of $y = (x + 1)(x - 7)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -1] \\cup [7, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4320,7 +4320,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(x - 5)(x - 9) \\le 0$. The roots are $5$ and $9$ and the parabola opens upward, so the product is negative between the roots, and the roots themselves are included. Solution set: $[5, 9]$.",
+  "solution": "Factor the left side: $(x - 5)(x - 9) \\le 0$. The roots are $5$ and $9$. The graph of $y = (x - 5)(x - 9)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\le 0$, so $x$ lies between the roots, with the roots included. The solution set is $[5, 9]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4358,7 +4358,7 @@
    "complement",
    null
   ],
-  "solution": "Factor: $(x + 2)(x - 1) \\ge 0$. The roots are $-2$ and $1$ and the parabola opens upward, so the product is positive outside the roots, and the roots themselves are included. Solution set: $(-\\infty, -2] \\cup [1, +\\infty)$.",
+  "solution": "Factor the left side: $(x + 2)(x - 1) \\ge 0$. The roots are $-2$ and $1$. The graph of $y = (x + 2)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\ge 0$, so $x$ lies outside the roots, with the roots included. The solution set is $(-\\infty, -2] \\cup [1, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4396,7 +4396,7 @@
    "sign",
    null
   ],
-  "solution": "Factor: $(x + 6)(x) \\le 0$. The roots are $-6$ and $0$ and the parabola opens upward, so the product is negative between the roots, and the roots themselves are included. Solution set: $[-6, 0]$.",
+  "solution": "Factor the left side: $(x + 6)(x) \\le 0$. The roots are $-6$ and $0$. The graph of $y = (x + 6)(x)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y \\le 0$, so $x$ lies between the roots, with the roots included. The solution set is $[-6, 0]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4434,7 +4434,7 @@
    "complement",
    null
   ],
-  "solution": "Divide by $4$: $(x - 1)(x - 5) < 0$. The roots are $1$ and $5$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(1, 5)$.",
+  "solution": "Divide both sides by $4$: $(x - 1)(x - 5) < 0$. The roots are $1$ and $5$. The graph of $y = (x - 1)(x - 5)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(1, 5)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4472,7 +4472,7 @@
    null,
    "complement"
   ],
-  "solution": "Divide by $4$: $(x)(x - 1) > 0$. The roots are $0$ and $1$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $(-\\infty, 0) \\cup (1, +\\infty)$.",
+  "solution": "Divide both sides by $4$: $(x)(x - 1) > 0$. The roots are $0$ and $1$. The graph of $y = (x)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $(-\\infty, 0) \\cup (1, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4510,7 +4510,7 @@
    null,
    "sign"
   ],
-  "solution": "Divide by $-2$ and reverse the inequality sign: $(x - 4)(x - 8) < 0$. The roots are $4$ and $8$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(4, 8)$.",
+  "solution": "Divide both sides by $-2$ and reverse the inequality sign, because $-2$ is negative: $(x - 4)(x - 8) < 0$. The roots are $4$ and $8$. The graph of $y = (x - 4)(x - 8)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(4, 8)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4548,7 +4548,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Divide by $3$: $(x + 4)(x + 3) > 0$. The roots are $-4$ and $-3$ and the parabola opens upward, so the product is positive outside the roots. Solution set: $(-\\infty, -4) \\cup (-3, +\\infty)$.",
+  "solution": "Divide both sides by $3$: $(x + 4)(x + 3) > 0$. The roots are $-4$ and $-3$. The graph of $y = (x + 4)(x + 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y > 0$, so $x$ lies outside the roots. The solution set is $(-\\infty, -4) \\cup (-3, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4586,7 +4586,7 @@
    null,
    "sign"
   ],
-  "solution": "Divide by $-1$ and reverse the inequality sign: $(x - 2)(x - 3) < 0$. The roots are $2$ and $3$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(2, 3)$.",
+  "solution": "Divide both sides by $-1$ and reverse the inequality sign, because $-1$ is negative: $(x - 2)(x - 3) < 0$. The roots are $2$ and $3$. The graph of $y = (x - 2)(x - 3)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(2, 3)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4624,7 +4624,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Divide by $-2$ and reverse the inequality sign: $(x - 4)(x - 11) < 0$. The roots are $4$ and $11$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(4, 11)$.",
+  "solution": "Divide both sides by $-2$ and reverse the inequality sign, because $-2$ is negative: $(x - 4)(x - 11) < 0$. The roots are $4$ and $11$. The graph of $y = (x - 4)(x - 11)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(4, 11)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4662,7 +4662,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Divide by $-1$ and reverse the inequality sign: $(x + 3)(x - 1) < 0$. The roots are $-3$ and $1$ and the parabola opens upward, so the product is negative between the roots. Solution set: $(-3, 1)$.",
+  "solution": "Divide both sides by $-1$ and reverse the inequality sign, because $-1$ is negative: $(x + 3)(x - 1) < 0$. The roots are $-3$ and $1$. The graph of $y = (x + 3)(x - 1)$ opens upward, so $y$ is negative between the roots and positive outside them. Here we need $y < 0$, so $x$ lies between the roots. The solution set is $(-3, 1)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4700,7 +4700,7 @@
    "sign",
    "complement"
   ],
-  "solution": "Factor: $(2x - 5)(x + 3) < 0$. The roots are $-3$ and $\\dfrac{5}{2}$ and the parabola opens upward, so the expression is negative between the roots. Solution set: $\\{x \\mid -3 < x < \\dfrac{5}{2}\\}$.",
+  "solution": "Factor the left side: $(2x - 5)(x + 3) < 0$. The roots are $-3$ and $\\dfrac{5}{2}$. The leading coefficient $2$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. Here the expression must be negative, so $x$ lies between the roots. The solution set is $\\{x \\mid -3 < x < \\dfrac{5}{2}\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4738,7 +4738,7 @@
    "endpoint",
    "sign"
   ],
-  "solution": "Factor: $(2x - 1)(x + 3) \\le 0$. The roots are $-3$ and $\\dfrac{1}{2}$ and the parabola opens upward, so the expression is negative between the roots (roots included). Solution set: $\\{x \\mid -3 \\le x \\le \\dfrac{1}{2}\\}$.",
+  "solution": "Factor the left side: $(2x - 1)(x + 3) \\le 0$. The roots are $-3$ and $\\dfrac{1}{2}$. The leading coefficient $2$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. Here the expression must be negative or zero, so $x$ lies between the roots, with the roots included. The solution set is $\\{x \\mid -3 \\le x \\le \\dfrac{1}{2}\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4776,7 +4776,7 @@
    null,
    "sign"
   ],
-  "solution": "Factor: $(3x + 5)(x - 1) < 0$. The roots are $-\\dfrac{5}{3}$ and $1$ and the parabola opens upward, so the expression is negative between the roots. Solution set: $\\{x \\mid -\\dfrac{5}{3} < x < 1\\}$.",
+  "solution": "Factor the left side: $(3x + 5)(x - 1) < 0$. The roots are $-\\dfrac{5}{3}$ and $1$. The leading coefficient $3$ is positive, so the parabola opens upward: the expression is negative between the roots and positive outside them. Here the expression must be negative, so $x$ lies between the roots. The solution set is $\\{x \\mid -\\dfrac{5}{3} < x < 1\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4814,7 +4814,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The left side is a perfect square: $\\left(x + 2\\right)^2 \\le 0$. A square is never negative, so it is $\\le 0$ only where it equals $0$, at $x = -2$: $\\{-2\\}$.",
+  "solution": "The left side is a perfect square: $\\left(x + 2\\right)^2 \\le 0$. A square is never negative, so it can only be $\\le 0$ by being equal to $0$, which happens only at $x = -2$. The solution set is $\\{-2\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4852,7 +4852,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The left side is a perfect square: $\\left(x - 4\\right)^2 \\le 0$. A square is never negative, so it is $\\le 0$ only where it equals $0$, at $x = 4$: $\\{4\\}$.",
+  "solution": "The left side is a perfect square: $\\left(x - 4\\right)^2 \\le 0$. A square is never negative, so it can only be $\\le 0$ by being equal to $0$, which happens only at $x = 4$. The solution set is $\\{4\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4890,7 +4890,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The left side is a perfect square: $\\left(x + 5\\right)^2 > 0$. A square is positive except where it is zero, so every $x$ except $-5$ works: $\\{x \\mid x \\ne -5\\}$.",
+  "solution": "The left side is a perfect square: $\\left(x + 5\\right)^2 > 0$. A square is never negative, and it equals $0$ only at $x = -5$. So it is positive for every $x$ except $-5$, and the solution set is $\\{x \\mid x \\ne -5\\}$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4928,7 +4928,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $x^2 - 5x - 6 < 0$ — its roots are $-1$ and $6$, and \"less than zero\" means between the roots. $x^2 - 5x - 6 > 0$ is false: this one holds outside the roots. $x^2 + 5x - 6 < 0$ is false: its roots are $-6$ and $1$ (signs reversed). $x^2 - 5x - 6 \\le 0$ is false: the end points are included here but the given set excludes them.",
+  "solution": "$x^2 - 5x - 6 < 0$ is correct. It factors as $(x + 1)(x - 6) < 0$. The roots are $-1$ and $6$, and an upward parabola is negative between its roots. $x^2 - 5x - 6 > 0$ is incorrect. This inequality holds outside the roots, so its solution set is $(-\\infty, -1) \\cup (6, +\\infty)$. $x^2 + 5x - 6 < 0$ is incorrect. Its roots are $-6$ and $1$, so its solution set is $(-6, 1)$. $x^2 - 5x - 6 \\le 0$ is incorrect. Its solution set is $[-1, 6]$, which includes the roots $-1$ and $6$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -4966,7 +4966,7 @@
    null,
    "complement"
   ],
-  "solution": "The correct statement is $x^2 + x - 12 > 0$ — its roots are $-4$ and $3$, and \"greater than zero\" means outside the roots. $x^2 + x - 12 < 0$ is false: this one holds between the roots. $x^2 - x - 12 > 0$ is false: its roots are $-3$ and $4$ (signs reversed). $x^2 + x - 12 \\ge 0$ is false: the end points are included here but the given set excludes them.",
+  "solution": "$x^2 + x - 12 > 0$ is correct. It factors as $(x + 4)(x - 3) > 0$. The roots are $-4$ and $3$, and an upward parabola is positive outside its roots. $x^2 + x - 12 < 0$ is incorrect. This inequality holds between the roots, so its solution set is $(-4, 3)$. $x^2 - x - 12 > 0$ is incorrect. Its roots are $-3$ and $4$, so its solution set is $(-\\infty, -3) \\cup (4, +\\infty)$. $x^2 + x - 12 \\ge 0$ is incorrect. Its solution set is $(-\\infty, -4] \\cup [3, +\\infty)$, which includes the roots $-4$ and $3$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5004,7 +5004,7 @@
    "sign",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = -2$ and the denominator at $x = -1$. The quotient has the same sign as $(x + 2)(x + 1)$, which is negative between these two numbers and positive outside them. Both end points are excluded. Solution set: $(-2, -1)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x + 2)(x + 1)$ is zero at $x = -2$ and $x = -1$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative, so $x$ lies between them. Both end points are excluded. The solution set is $(-2, -1)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5042,7 +5042,7 @@
    "endpoint",
    null
   ],
-  "solution": "The numerator is zero at $x = -5$ and the denominator at $x = -4$. The quotient has the same sign as $(x + 5)(x + 4)$, which is negative between these two numbers and positive outside them. Both end points are excluded. Solution set: $(-\\infty, -5) \\cup (-4, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x + 5)(x + 4)$ is zero at $x = -5$ and $x = -4$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive, so $x$ lies outside them. Both end points are excluded. The solution set is $(-\\infty, -5) \\cup (-4, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5080,7 +5080,7 @@
    "sign",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = 4$ and the denominator at $x = 5$. The quotient has the same sign as $(x - 4)(x - 5)$, which is negative between these two numbers and positive outside them. Both end points are excluded. Solution set: $(-\\infty, 4) \\cup (5, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x - 4)(x - 5)$ is zero at $x = 4$ and $x = 5$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive, so $x$ lies outside them. Both end points are excluded. The solution set is $(-\\infty, 4) \\cup (5, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5118,7 +5118,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = 6$ and the denominator at $x = 2$. The quotient has the same sign as $(x - 6)(x - 2)$, which is negative between these two numbers and positive outside them. Both end points are excluded. Solution set: $(2, 6)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x - 6)(x - 2)$ is zero at $x = 6$ and $x = 2$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative, so $x$ lies between them. Both end points are excluded. The solution set is $(2, 6)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5156,7 +5156,7 @@
    "sign",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = -3$ and the denominator at $x = -1$. The quotient has the same sign as $(x + 3)(x + 1)$, which is negative between these two numbers and positive outside them. Both end points are excluded. Solution set: $(-\\infty, -3) \\cup (-1, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x + 3)(x + 1)$ is zero at $x = -3$ and $x = -1$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive, so $x$ lies outside them. Both end points are excluded. The solution set is $(-\\infty, -3) \\cup (-1, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5194,7 +5194,7 @@
    null,
    "complement"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{4}{3}$ and the denominator at $x = -5$. The quotient has the same sign as $(3x - 4)(x + 5)$, which is negative between these two numbers and positive outside them. Both end points are excluded. Solution set: $\\left(-5, \\dfrac{4}{3}\\right)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 4)(x + 5)$ is zero at $x = \\dfrac{4}{3}$ and $x = -5$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative, so $x$ lies between them. Both end points are excluded. The solution set is $\\left(-5, \\dfrac{4}{3}\\right)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5232,13 +5232,13 @@
    "endpoint",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{3}{2}$ and the denominator at $x = -2$. The quotient has the same sign as $(2x - 3)(x + 2)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-2$ never is. Solution set: $(-\\infty, -2) \\cup \\left[\\dfrac{3}{2}, +\\infty\\right)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(2x - 3)(x + 2)$ is zero at $x = \\dfrac{3}{2}$ and $x = -2$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = \\dfrac{3}{2}$, so this end point is included. The denominator is zero at $x = -2$, so this end point is excluded. The solution set is $(-\\infty, -2) \\cup \\left[\\dfrac{3}{2}, +\\infty\\right)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:0",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "B",
   "answer_value": "$(-\\infty, -2) \\cup \\left[\\dfrac{3}{2}, +\\infty\\right)$",
   "verified": "set"
@@ -5270,13 +5270,13 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{2}{3}$ and the denominator at $x = -2$. The quotient has the same sign as $(3x - 2)(x + 2)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-2$ never is. Solution set: $\\left(-2, \\dfrac{2}{3}\\right]$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 2)(x + 2)$ is zero at $x = \\dfrac{2}{3}$ and $x = -2$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative or zero, so $x$ lies between them. The numerator is zero at $x = \\dfrac{2}{3}$, so this end point is included. The denominator is zero at $x = -2$, so this end point is excluded. The solution set is $\\left(-2, \\dfrac{2}{3}\\right]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:1",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "A",
   "answer_value": "$\\left(-2, \\dfrac{2}{3}\\right]$",
   "verified": "set"
@@ -5308,13 +5308,13 @@
    "complement",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{3}{4}$ and the denominator at $x = -2$. The quotient has the same sign as $(4x - 3)(x + 2)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-2$ never is. Solution set: $\\left(-2, \\dfrac{3}{4}\\right]$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(4x - 3)(x + 2)$ is zero at $x = \\dfrac{3}{4}$ and $x = -2$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative or zero, so $x$ lies between them. The numerator is zero at $x = \\dfrac{3}{4}$, so this end point is included. The denominator is zero at $x = -2$, so this end point is excluded. The solution set is $\\left(-2, \\dfrac{3}{4}\\right]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:2",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "B",
   "answer_value": "$\\left(-2, \\dfrac{3}{4}\\right]$",
   "verified": "set"
@@ -5346,13 +5346,13 @@
    "endpoint",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{1}{3}$ and the denominator at $x = -3$. The quotient has the same sign as $(3x - 1)(x + 3)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-3$ never is. Solution set: $\\left(-3, \\dfrac{1}{3}\\right]$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 1)(x + 3)$ is zero at $x = \\dfrac{1}{3}$ and $x = -3$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative or zero, so $x$ lies between them. The numerator is zero at $x = \\dfrac{1}{3}$, so this end point is included. The denominator is zero at $x = -3$, so this end point is excluded. The solution set is $\\left(-3, \\dfrac{1}{3}\\right]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:3",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "B",
   "answer_value": "$\\left(-3, \\dfrac{1}{3}\\right]$",
   "verified": "set"
@@ -5384,13 +5384,13 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = -\\dfrac{7}{3}$ and the denominator at $x = \\dfrac{7}{3}$. The quotient has the same sign as $(3x + 7)(3x - 7)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $\\dfrac{7}{3}$ never is. Solution set: $\\left(-\\infty, -\\dfrac{7}{3}\\right] \\cup \\left(\\dfrac{7}{3}, +\\infty\\right)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x + 7)(3x - 7)$ is zero at $x = -\\dfrac{7}{3}$ and $x = \\dfrac{7}{3}$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = -\\dfrac{7}{3}$, so this end point is included. The denominator is zero at $x = \\dfrac{7}{3}$, so this end point is excluded. The solution set is $\\left(-\\infty, -\\dfrac{7}{3}\\right] \\cup \\left(\\dfrac{7}{3}, +\\infty\\right)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:4",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "B",
   "answer_value": "$\\left(-\\infty, -\\dfrac{7}{3}\\right] \\cup \\left(\\dfrac{7}{3}, +\\infty\\right)$",
   "verified": "set"
@@ -5422,13 +5422,13 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = -\\dfrac{5}{2}$ and the denominator at $x = -4$. The quotient has the same sign as $(2x + 5)(x + 4)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-4$ never is. Solution set: $(-\\infty, -4) \\cup \\left[-\\dfrac{5}{2}, +\\infty\\right)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(2x + 5)(x + 4)$ is zero at $x = -\\dfrac{5}{2}$ and $x = -4$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = -\\dfrac{5}{2}$, so this end point is included. The denominator is zero at $x = -4$, so this end point is excluded. The solution set is $(-\\infty, -4) \\cup \\left[-\\dfrac{5}{2}, +\\infty\\right)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:5",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "A",
   "answer_value": "$(-\\infty, -4) \\cup \\left[-\\dfrac{5}{2}, +\\infty\\right)$",
   "verified": "set"
@@ -5460,13 +5460,13 @@
    null,
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{7}{3}$ and the denominator at $x = -\\dfrac{4}{3}$. The quotient has the same sign as $(3x - 7)(3x + 4)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-\\dfrac{4}{3}$ never is. Solution set: $\\left(-\\dfrac{4}{3}, \\dfrac{7}{3}\\right]$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 7)(3x + 4)$ is zero at $x = \\dfrac{7}{3}$ and $x = -\\dfrac{4}{3}$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative or zero, so $x$ lies between them. The numerator is zero at $x = \\dfrac{7}{3}$, so this end point is included. The denominator is zero at $x = -\\dfrac{4}{3}$, so this end point is excluded. The solution set is $\\left(-\\dfrac{4}{3}, \\dfrac{7}{3}\\right]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:6",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "C",
   "answer_value": "$\\left(-\\dfrac{4}{3}, \\dfrac{7}{3}\\right]$",
   "verified": "set"
@@ -5498,13 +5498,13 @@
    "endpoint",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = -\\dfrac{1}{2}$ and the denominator at $x = -4$. The quotient has the same sign as $(2x + 1)(x + 4)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-4$ never is. Solution set: $\\left(-4, -\\dfrac{1}{2}\\right]$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(2x + 1)(x + 4)$ is zero at $x = -\\dfrac{1}{2}$ and $x = -4$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative or zero, so $x$ lies between them. The numerator is zero at $x = -\\dfrac{1}{2}$, so this end point is included. The denominator is zero at $x = -4$, so this end point is excluded. The solution set is $\\left(-4, -\\dfrac{1}{2}\\right]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:7",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "A",
   "answer_value": "$\\left(-4, -\\dfrac{1}{2}\\right]$",
   "verified": "set"
@@ -5536,13 +5536,13 @@
    "complement",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{1}{3}$ and the denominator at $x = 7$. The quotient has the same sign as $(3x - 1)(x - 7)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $7$ never is. Solution set: $\\left(-\\infty, \\dfrac{1}{3}\\right] \\cup (7, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 1)(x - 7)$ is zero at $x = \\dfrac{1}{3}$ and $x = 7$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = \\dfrac{1}{3}$, so this end point is included. The denominator is zero at $x = 7$, so this end point is excluded. The solution set is $\\left(-\\infty, \\dfrac{1}{3}\\right] \\cup (7, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:8",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "A",
   "answer_value": "$\\left(-\\infty, \\dfrac{1}{3}\\right] \\cup (7, +\\infty)$",
   "verified": "set"
@@ -5574,13 +5574,13 @@
    "endpoint",
    null
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{5}{4}$ and the denominator at $x = -1$. The quotient has the same sign as $(4x - 5)(x + 1)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-1$ never is. Solution set: $\\left(-1, \\dfrac{5}{4}\\right]$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(4x - 5)(x + 1)$ is zero at $x = \\dfrac{5}{4}$ and $x = -1$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative or zero, so $x$ lies between them. The numerator is zero at $x = \\dfrac{5}{4}$, so this end point is included. The denominator is zero at $x = -1$, so this end point is excluded. The solution set is $\\left(-1, \\dfrac{5}{4}\\right]$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:9",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "D",
   "answer_value": "$\\left(-1, \\dfrac{5}{4}\\right]$",
   "verified": "set"
@@ -5612,13 +5612,13 @@
    "complement",
    null
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{5}{3}$ and the denominator at $x = 6$. The quotient has the same sign as $(3x - 5)(x - 6)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $6$ never is. Solution set: $\\left(-\\infty, \\dfrac{5}{3}\\right] \\cup (6, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 5)(x - 6)$ is zero at $x = \\dfrac{5}{3}$ and $x = 6$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = \\dfrac{5}{3}$, so this end point is included. The denominator is zero at $x = 6$, so this end point is excluded. The solution set is $\\left(-\\infty, \\dfrac{5}{3}\\right] \\cup (6, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:10",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "D",
   "answer_value": "$\\left(-\\infty, \\dfrac{5}{3}\\right] \\cup (6, +\\infty)$",
   "verified": "set"
@@ -5650,13 +5650,13 @@
    "complement",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{7}{3}$ and the denominator at $x = 1$. The quotient has the same sign as $(3x - 7)(x - 1)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $1$ never is. Solution set: $(-\\infty, 1) \\cup \\left[\\dfrac{7}{3}, +\\infty\\right)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 7)(x - 1)$ is zero at $x = \\dfrac{7}{3}$ and $x = 1$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = \\dfrac{7}{3}$, so this end point is included. The denominator is zero at $x = 1$, so this end point is excluded. The solution set is $(-\\infty, 1) \\cup \\left[\\dfrac{7}{3}, +\\infty\\right)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
   "template": "INQ-rat.closed",
   "seed": "bank:1:INQ-rat.closed:11",
-  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)",
+  "form": "(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)",
   "answer_letter": "A",
   "answer_value": "$(-\\infty, 1) \\cup \\left[\\dfrac{7}{3}, +\\infty\\right)$",
   "verified": "set"
@@ -5688,7 +5688,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "The numerator $-5$ is negative and never zero, so the fraction is positive exactly when the denominator is negative: $x < -3$. The value $x = -3$ is excluded because the denominator cannot be zero. Solution set: $(-\\infty, -3)$.",
+  "solution": "The numerator $-5$ is negative and never zero, so the fraction is never $0$ and it is positive exactly when the denominator is negative: $x + 3 < 0$, that is $x < -3$. The value $x = -3$ is excluded because the denominator cannot be zero. The solution set is $(-\\infty, -3)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5726,7 +5726,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "The numerator $4$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x < -3$. The value $x = -3$ is excluded because the denominator cannot be zero. Solution set: $(-\\infty, -3)$.",
+  "solution": "The numerator $4$ is positive and never zero, so the fraction is never $0$ and it is negative exactly when the denominator is negative: $x + 3 < 0$, that is $x < -3$. The value $x = -3$ is excluded because the denominator cannot be zero. The solution set is $(-\\infty, -3)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5764,7 +5764,7 @@
    "sign",
    null
   ],
-  "solution": "The numerator $4$ is positive and never zero, so the fraction is positive exactly when the denominator is positive: $x > -3$. The value $x = -3$ is excluded because the denominator cannot be zero. Solution set: $(-3, +\\infty)$.",
+  "solution": "The numerator $4$ is positive and never zero, so the fraction is never $0$ and it is positive exactly when the denominator is positive: $x + 3 > 0$, that is $x > -3$. The value $x = -3$ is excluded because the denominator cannot be zero. The solution set is $(-3, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5802,7 +5802,7 @@
    "endpoint",
    "sign"
   ],
-  "solution": "The numerator $1$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x < 4$. The value $x = 4$ is excluded because the denominator cannot be zero. Solution set: $(-\\infty, 4)$.",
+  "solution": "The numerator $1$ is positive and never zero, so the fraction is never $0$ and it is negative exactly when the denominator is negative: $x - 4 < 0$, that is $x < 4$. The value $x = 4$ is excluded because the denominator cannot be zero. The solution set is $(-\\infty, 4)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5840,7 +5840,7 @@
    null,
    "sign"
   ],
-  "solution": "The numerator $1$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x < -4$. The value $x = -4$ is excluded because the denominator cannot be zero. Solution set: $(-\\infty, -4)$.",
+  "solution": "The numerator $1$ is positive and never zero, so the fraction is never $0$ and it is negative exactly when the denominator is negative: $x + 4 < 0$, that is $x < -4$. The value $x = -4$ is excluded because the denominator cannot be zero. The solution set is $(-\\infty, -4)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5878,7 +5878,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "The numerator $-3$ is negative and never zero, so the fraction is negative exactly when the denominator is positive: $x > 3$. The value $x = 3$ is excluded because the denominator cannot be zero. Solution set: $(3, +\\infty)$.",
+  "solution": "The numerator $-3$ is negative and never zero, so the fraction is never $0$ and it is negative exactly when the denominator is positive: $x - 3 > 0$, that is $x > 3$. The value $x = 3$ is excluded because the denominator cannot be zero. The solution set is $(3, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5916,7 +5916,7 @@
    null,
    "complement"
   ],
-  "solution": "The numerator is zero at $x = -5$ and the denominator at $x = 5$. The quotient has the same sign as $(x + 5)(x - 5)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $5$ never is. Solution set: $(-\\infty, -5] \\cup (5, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x + 5)(x - 5)$ is zero at $x = -5$ and $x = 5$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = -5$, so this end point is included. The denominator is zero at $x = 5$, so this end point is excluded. The solution set is $(-\\infty, -5] \\cup (5, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5954,7 +5954,7 @@
    "endpoint",
    "complement"
   ],
-  "solution": "The numerator is zero at $x = 4$ and the denominator at $x = -5$. The quotient has the same sign as $(x - 4)(x + 5)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-5$ never is. Solution set: $(-\\infty, -5) \\cup [4, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x - 4)(x + 5)$ is zero at $x = 4$ and $x = -5$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = 4$, so this end point is included. The denominator is zero at $x = -5$, so this end point is excluded. The solution set is $(-\\infty, -5) \\cup [4, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -5992,7 +5992,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = -5$ and the denominator at $x = 4$. The quotient has the same sign as $(x + 5)(x - 4)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $4$ never is. Solution set: $(-\\infty, -5] \\cup (4, +\\infty)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(x + 5)(x - 4)$ is zero at $x = -5$ and $x = 4$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = -5$, so this end point is included. The denominator is zero at $x = 4$, so this end point is excluded. The solution set is $(-\\infty, -5] \\cup (4, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6030,7 +6030,7 @@
    null,
    "sign"
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x + 3}{x - 6} - 1 = \\dfrac{9}{x - 6} < 0$. The numerator is positive, so the denominator must be negative: $x < 6$ ($x = 6$ is never allowed). Solution set: $(-\\infty, 6)$. Do not multiply both sides by $x - 6$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x + 3}{x - 6} - 1 = \\dfrac{(x + 3) - (x - 6)}{x - 6} = \\dfrac{9}{x - 6}$, so the inequality becomes $\\dfrac{9}{x - 6} < 0$. The numerator $9$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x - 6 < 0$, that is $x < 6$. The solution set is $(-\\infty, 6)$. Multiplying both sides by $x - 6$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6068,7 +6068,7 @@
    "endpoint",
    null
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x + 1}{x + 6} - 1 = \\dfrac{-5}{x + 6} \\le 0$. The numerator is negative, so the denominator must be positive: $x > -6$ ($x = -6$ is never allowed). Solution set: $(-6, +\\infty)$. Do not multiply both sides by $x + 6$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x + 1}{x + 6} - 1 = \\dfrac{(x + 1) - (x + 6)}{x + 6} = \\dfrac{-5}{x + 6}$, so the inequality becomes $\\dfrac{-5}{x + 6} \\le 0$. The numerator $-5$ is negative and never zero, so the fraction is negative exactly when the denominator is positive: $x + 6 > 0$, that is $x > -6$. The solution set is $(-6, +\\infty)$. Multiplying both sides by $x + 6$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6106,7 +6106,7 @@
    "sign",
    null
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x - 6}{x - 1} - 1 = \\dfrac{-5}{x - 1} < 0$. The numerator is negative, so the denominator must be positive: $x > 1$ ($x = 1$ is never allowed). Solution set: $(1, +\\infty)$. Do not multiply both sides by $x - 1$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x - 6}{x - 1} - 1 = \\dfrac{(x - 6) - (x - 1)}{x - 1} = \\dfrac{-5}{x - 1}$, so the inequality becomes $\\dfrac{-5}{x - 1} < 0$. The numerator $-5$ is negative and never zero, so the fraction is negative exactly when the denominator is positive: $x - 1 > 0$, that is $x > 1$. The solution set is $(1, +\\infty)$. Multiplying both sides by $x - 1$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6144,7 +6144,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x + 6}{x + 2} - 1 = \\dfrac{4}{x + 2} \\le 0$. The numerator is positive, so the denominator must be negative: $x < -2$ ($x = -2$ is never allowed). Solution set: $(-\\infty, -2)$. Do not multiply both sides by $x + 2$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x + 6}{x + 2} - 1 = \\dfrac{(x + 6) - (x + 2)}{x + 2} = \\dfrac{4}{x + 2}$, so the inequality becomes $\\dfrac{4}{x + 2} \\le 0$. The numerator $4$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x + 2 < 0$, that is $x < -2$. The solution set is $(-\\infty, -2)$. Multiplying both sides by $x + 2$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6182,7 +6182,7 @@
    "near-miss",
    null
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x - 3}{x + 6} - 1 = \\dfrac{-9}{x + 6} \\le 0$. The numerator is negative, so the denominator must be positive: $x > -6$ ($x = -6$ is never allowed). Solution set: $(-6, +\\infty)$. Do not multiply both sides by $x + 6$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x - 3}{x + 6} - 1 = \\dfrac{(x - 3) - (x + 6)}{x + 6} = \\dfrac{-9}{x + 6}$, so the inequality becomes $\\dfrac{-9}{x + 6} \\le 0$. The numerator $-9$ is negative and never zero, so the fraction is negative exactly when the denominator is positive: $x + 6 > 0$, that is $x > -6$. The solution set is $(-6, +\\infty)$. Multiplying both sides by $x + 6$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6220,7 +6220,7 @@
    "near-miss",
    null
   ],
-  "solution": "Move $1$ to the left and combine: $\\dfrac{x + 6}{x + 1} - 1 = \\dfrac{5}{x + 1} \\le 0$. The numerator is positive, so the denominator must be negative: $x < -1$ ($x = -1$ is never allowed). Solution set: $(-\\infty, -1)$. Do not multiply both sides by $x + 1$: its sign is unknown.",
+  "solution": "Subtract $1$ from both sides and combine into one fraction: $\\dfrac{x + 6}{x + 1} - 1 = \\dfrac{(x + 6) - (x + 1)}{x + 1} = \\dfrac{5}{x + 1}$, so the inequality becomes $\\dfrac{5}{x + 1} \\le 0$. The numerator $5$ is positive and never zero, so the fraction is negative exactly when the denominator is negative: $x + 1 < 0$, that is $x < -1$. The solution set is $(-\\infty, -1)$. Multiplying both sides by $x + 1$ at the start would be a mistake, because its sign is not known.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6258,7 +6258,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "Move $2$ to the left and combine into one fraction: $\\dfrac{-x - 6}{x + 2} \\le 0$. The numerator is zero at $x = -6$ and the denominator at $x = -2$. The quotient has the same sign as $(-x - 6)(x + 2)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $-2$ never is. Solution set: $(-\\infty, -6] \\cup (-2, +\\infty)$.",
+  "solution": "Subtract $2$ from both sides and combine into one fraction: $\\dfrac{x - 2}{x + 2} - 2 = \\dfrac{-x - 6}{x + 2}$, so the inequality becomes $\\dfrac{-x - 6}{x + 2} \\le 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(-x - 6)(x + 2)$ is zero at $x = -6$ and $x = -2$, and it is positive between these two numbers and negative outside them. We need the quotient to be negative or zero, so $x$ lies outside them. The numerator is zero at $x = -6$, so this end point is included. The denominator is zero at $x = -2$, so this end point is excluded. The solution set is $(-\\infty, -6] \\cup (-2, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6296,7 +6296,7 @@
    null,
    "complement"
   ],
-  "solution": "Move $3$ to the left and combine into one fraction: $\\dfrac{-2x - 10}{x + 3} \\le 0$. The numerator is zero at $x = -5$ and the denominator at $x = -3$. The quotient has the same sign as $(-2x - 10)(x + 3)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $-3$ never is. Solution set: $(-\\infty, -5] \\cup (-3, +\\infty)$.",
+  "solution": "Subtract $3$ from both sides and combine into one fraction: $\\dfrac{x - 1}{x + 3} - 3 = \\dfrac{-2x - 10}{x + 3}$, so the inequality becomes $\\dfrac{-2x - 10}{x + 3} \\le 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(-2x - 10)(x + 3)$ is zero at $x = -5$ and $x = -3$, and it is positive between these two numbers and negative outside them. We need the quotient to be negative or zero, so $x$ lies outside them. The numerator is zero at $x = -5$, so this end point is included. The denominator is zero at $x = -3$, so this end point is excluded. The solution set is $(-\\infty, -5] \\cup (-3, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6334,7 +6334,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Move $-1$ to the left and combine into one fraction: $\\dfrac{2x - 1}{x - 3} \\ge 0$. The numerator is zero at $x = \\dfrac{1}{2}$ and the denominator at $x = 3$. The quotient has the same sign as $(2x - 1)(x - 3)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $3$ never is. Solution set: $\\left(-\\infty, \\dfrac{1}{2}\\right] \\cup (3, +\\infty)$.",
+  "solution": "Add $1$ to both sides and combine into one fraction: $\\dfrac{x + 2}{x - 3} + 1 = \\dfrac{2x - 1}{x - 3}$, so the inequality becomes $\\dfrac{2x - 1}{x - 3} \\ge 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(2x - 1)(x - 3)$ is zero at $x = \\dfrac{1}{2}$ and $x = 3$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = \\dfrac{1}{2}$, so this end point is included. The denominator is zero at $x = 3$, so this end point is excluded. The solution set is $\\left(-\\infty, \\dfrac{1}{2}\\right] \\cup (3, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6372,7 +6372,7 @@
    "complement",
    null
   ],
-  "solution": "The numerator is zero at $x = 3$ and the denominator at $x = -6$. The quotient has the same sign as $(-x + 3)(x + 6)$, which is positive between these two numbers and negative outside them. Both end points are excluded. Solution set: $(-6, 3)$.",
+  "solution": "The numerator is $3 - x = -(x - 3)$. Multiply both sides by $-1$ and reverse the inequality sign: $\\dfrac{x - 3}{x + 6} < 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(x - 3)(x + 6)$ is zero at $x = 3$ and $x = -6$, and it is negative between these two numbers and positive outside them. We need the quotient to be negative, so $x$ lies between them. Both end points are excluded. The solution set is $(-6, 3)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6410,7 +6410,7 @@
    "complement",
    null
   ],
-  "solution": "The numerator is zero at $x = -2$ and the denominator at $x = -4$. The quotient has the same sign as $(-x - 2)(x + 4)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $-4$ never is. Solution set: $(-\\infty, -4) \\cup [-2, +\\infty)$.",
+  "solution": "The numerator is $-2 - x = -(x + 2)$. Multiply both sides by $-1$ and reverse the inequality sign: $\\dfrac{x + 2}{x + 4} \\ge 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(x + 2)(x + 4)$ is zero at $x = -2$ and $x = -4$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = -2$, so this end point is included. The denominator is zero at $x = -4$, so this end point is excluded. The solution set is $(-\\infty, -4) \\cup [-2, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6448,7 +6448,7 @@
    "complement",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = 2$ and the denominator at $x = -5$. The quotient has the same sign as $(-x + 2)(x + 5)$, which is positive between these two numbers and negative outside them. Both end points are excluded. Solution set: $(-\\infty, -5) \\cup (2, +\\infty)$.",
+  "solution": "The numerator is $2 - x = -(x - 2)$. Multiply both sides by $-1$ and reverse the inequality sign: $\\dfrac{x - 2}{x + 5} > 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(x - 2)(x + 5)$ is zero at $x = 2$ and $x = -5$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive, so $x$ lies outside them. Both end points are excluded. The solution set is $(-\\infty, -5) \\cup (2, +\\infty)$.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6486,7 +6486,7 @@
    null,
    "endpoint"
   ],
-  "solution": "The correct statement is “The solution set of $\\dfrac{x - 5}{x + 3} < 0$ is $(-3, 5)$” — the quotient is negative strictly between $-3$ and $5$. “The solution set of $\\dfrac{x - 5}{x + 3} \\ge 0$ is $(-\\infty, -3] \\cup [5, +\\infty)$” is false: the denominator root $-3$ can never be included. “The solution set of $\\dfrac{x - 5}{x + 3} < 0$ is $(-\\infty, -3) \\cup (5, +\\infty)$” is false: the quotient is negative between the two numbers, not outside. “The solution set of $\\dfrac{x - 5}{x + 3} > 0$ is $(-3, 5)$” is false: the quotient is positive outside the two numbers, not between.",
+  "solution": "“The solution set of $\\dfrac{x - 5}{x + 3} < 0$ is $(-3, 5)$” is correct. The quotient is negative exactly when the numerator and denominator have opposite signs, which happens strictly between $-3$ and $5$. “The solution set of $\\dfrac{x - 5}{x + 3} \\ge 0$ is $(-\\infty, -3] \\cup [5, +\\infty)$” is incorrect. $x = -3$ makes the denominator zero, so it can never be in the solution set. “The solution set of $\\dfrac{x - 5}{x + 3} < 0$ is $(-\\infty, -3) \\cup (5, +\\infty)$” is incorrect. The quotient is negative between $-3$ and $5$, not outside them. “The solution set of $\\dfrac{x - 5}{x + 3} > 0$ is $(-3, 5)$” is incorrect. The quotient is positive outside $-3$ and $5$, not between them.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6524,7 +6524,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The correct statement is “The solution set of $\\dfrac{x - 2}{x + 4} < 0$ is $(-4, 2)$” — the quotient is negative strictly between $-4$ and $2$. “The solution set of $\\dfrac{x - 2}{x + 4} \\le 0$ is $[-4, 2)$” is false: the brackets are the wrong way round: $2$ is included and $-4$ is not. “The solution set of $\\dfrac{x - 2}{x + 4} \\ge 0$ is $(-\\infty, -4] \\cup [2, +\\infty)$” is false: the denominator root $-4$ can never be included. “The solution set of $\\dfrac{x - 2}{x + 4} \\le 0$ is $[-4, 2]$” is false: the denominator root $-4$ can never be included.",
+  "solution": "“The solution set of $\\dfrac{x - 2}{x + 4} < 0$ is $(-4, 2)$” is correct. The quotient is negative exactly when the numerator and denominator have opposite signs, which happens strictly between $-4$ and $2$. “The solution set of $\\dfrac{x - 2}{x + 4} \\le 0$ is $[-4, 2)$” is incorrect. $x = 2$ makes the numerator zero, so it must be included, and $x = -4$ makes the denominator zero, so it must be excluded. The brackets here are the other way round. “The solution set of $\\dfrac{x - 2}{x + 4} \\ge 0$ is $(-\\infty, -4] \\cup [2, +\\infty)$” is incorrect. $x = -4$ makes the denominator zero, so it can never be in the solution set. “The solution set of $\\dfrac{x - 2}{x + 4} \\le 0$ is $[-4, 2]$” is incorrect. $x = -4$ makes the denominator zero, so it can never be in the solution set.",
   "video": "V03",
   "version": "a",
   "domain": "SI",
@@ -6548,7 +6548,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-4a > -4b$",
    "$\\dfrac{1}{a} < \\dfrac{1}{b}$",
@@ -6562,7 +6562,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2^a > 2^b$ — $y = 2^x$ is increasing, so it keeps the order. $-4a > -4b$ is false: multiplying by a negative number reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$.",
+  "solution": "$2^a > 2^b$ is correct. $y = 2^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $-4a > -4b$ is incorrect. Multiplying both sides by the negative number $-4$ reverses the direction, so $-4a < -4b$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6600,7 +6600,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $4^a > 4^b$ — $y = 4^x$ is increasing, so it keeps the order. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$4^a > 4^b$ is correct. $y = 4^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6624,7 +6624,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$\\dfrac{a}{b} > 1$",
    "$2^a > 2^b$",
@@ -6638,7 +6638,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2^a > 2^b$ — $y = 2^x$ is increasing, so it keeps the order. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$2^a > 2^b$ is correct. $y = 2^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6662,7 +6662,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-7a > -7b$",
    "$-a > -b$",
@@ -6676,7 +6676,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a^3 > b^3$ — $y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order. $-7a > -7b$ is false: multiplying by a negative number reverses the direction. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$a^3 > b^3$ is correct. $y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction. $-7a > -7b$ is incorrect. Multiplying both sides by the negative number $-7$ reverses the direction, so $-7a < -7b$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6714,7 +6714,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $3^a > 3^b$ — $y = 3^x$ is increasing, so it keeps the order. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$3^a > 3^b$ is correct. $y = 3^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6738,7 +6738,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-a < -b$",
    "$ab > b^2$",
@@ -6752,7 +6752,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $-a < -b$ — multiplying by $-1$ reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$.",
+  "solution": "$-a < -b$ is correct. Multiplying both sides by $-1$ reverses the direction. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6776,7 +6776,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$\\dfrac{a}{b} > 1$",
    "$\\lvert a \\rvert > \\lvert b \\rvert$",
@@ -6790,7 +6790,7 @@
    "reciprocal",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a + 9 > b + 9$ — adding the same number to both sides keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$a + 9 > b + 9$ is correct. Adding the same number to both sides keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6828,7 +6828,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $7a > 7b$ — multiplying by the positive number $7$ keeps the direction. $-7a > -7b$ is false: multiplying by a negative number reverses the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$7a > 7b$ is correct. Multiplying both sides by the positive number $7$ keeps the direction. $-7a > -7b$ is incorrect. Multiplying both sides by the negative number $-7$ reverses the direction, so $-7a < -7b$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6866,7 +6866,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a - 8 > b - 8$ — subtracting the same number from both sides keeps the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$a - 8 > b - 8$ is correct. Subtracting the same number from both sides keeps the direction. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6904,7 +6904,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a^3 > b^3$ — $y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $-a > -b$ is false: multiplying by $-1$ reverses the direction.",
+  "solution": "$a^3 > b^3$ is correct. $y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6928,7 +6928,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-2a > -2b$",
    "$\\lvert a \\rvert > \\lvert b \\rvert$",
@@ -6942,7 +6942,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2a > 2b$ — multiplying by the positive number $2$ keeps the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $-2a > -2b$ is false: multiplying by a negative number reverses the direction.",
+  "solution": "$2a > 2b$ is correct. Multiplying both sides by the positive number $2$ keeps the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -6980,7 +6980,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2^a > 2^b$ — $y = 2^x$ is increasing, so it keeps the order. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $-4a > -4b$ is false: multiplying by a negative number reverses the direction. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$2^a > 2^b$ is correct. $y = 2^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $-4a > -4b$ is incorrect. Multiplying both sides by the negative number $-4$ reverses the direction, so $-4a < -4b$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7018,7 +7018,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $\\dfrac{a}{5} > \\dfrac{b}{5}$ — dividing by the positive number $5$ keeps the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$\\dfrac{a}{5} > \\dfrac{b}{5}$ is correct. Dividing both sides by the positive number $5$ keeps the direction. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7056,7 +7056,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $-a < -b$ — multiplying by $-1$ reverses the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $-2a > -2b$ is false: multiplying by a negative number reverses the direction. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$-a < -b$ is correct. Multiplying both sides by $-1$ reverses the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7080,7 +7080,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$ab > b^2$",
    "$a - 7 > b - 7$",
@@ -7094,7 +7094,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a - 7 > b - 7$ — subtracting the same number from both sides keeps the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$.",
+  "solution": "$a - 7 > b - 7$ is correct. Subtracting the same number from both sides keeps the direction. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7132,7 +7132,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $4^a > 4^b$ — $y = 4^x$ is increasing, so it keeps the order. $-5a > -5b$ is false: multiplying by a negative number reverses the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$.",
+  "solution": "$4^a > 4^b$ is correct. $y = 4^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $-5a > -5b$ is incorrect. Multiplying both sides by the negative number $-5$ reverses the direction, so $-5a < -5b$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7170,7 +7170,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $\\dfrac{a}{6} > \\dfrac{b}{6}$ — dividing by the positive number $6$ keeps the direction. $-6a > -6b$ is false: multiplying by a negative number reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$\\dfrac{a}{6} > \\dfrac{b}{6}$ is correct. Dividing both sides by the positive number $6$ keeps the direction. $-6a > -6b$ is incorrect. Multiplying both sides by the negative number $-6$ reverses the direction, so $-6a < -6b$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7194,7 +7194,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$\\dfrac{a}{b} > 1$",
    "$-a > -b$",
@@ -7208,7 +7208,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $-a < -b$ — multiplying by $-1$ reverses the direction. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $-2a > -2b$ is false: multiplying by a negative number reverses the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$-a < -b$ is correct. Multiplying both sides by $-1$ reverses the direction. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7246,7 +7246,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $3^a > 3^b$ — $y = 3^x$ is increasing, so it keeps the order. $-2a > -2b$ is false: multiplying by a negative number reverses the direction. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$3^a > 3^b$ is correct. $y = 3^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7284,7 +7284,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = -2$, $b = 1$. The correct statement is $a - 4 < b - 4$ — subtracting the same number from both sides keeps the direction. $\\lvert a \\rvert < \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = -2$, $b = 1$. $-4a < -4b$ is false: multiplying by a negative number reverses the direction. $-a < -b$ is false: multiplying by $-1$ reverses the direction.",
+  "solution": "$a - 4 < b - 4$ is correct. Subtracting the same number from both sides keeps the direction. $\\lvert a \\rvert < \\lvert b \\rvert$ is incorrect. Take $a = -2$, $b = 1$: $\\lvert a \\rvert = 2$ and $\\lvert b \\rvert = 1$. $-4a < -4b$ is incorrect. Multiplying both sides by the negative number $-4$ reverses the direction, so $-4a > -4b$. $-a < -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a > -b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7322,7 +7322,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = -2$, $b = 1$. The correct statement is $a - 8 < b - 8$ — subtracting the same number from both sides keeps the direction. $a^2 < b^2$ is false: squares need information about signs: try $a = -2$, $b = 1$. $\\lvert a \\rvert < \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = -2$, $b = 1$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = -2$, $b = 1$.",
+  "solution": "$a - 8 < b - 8$ is correct. Subtracting the same number from both sides keeps the direction. $a^2 < b^2$ is incorrect. Take $a = -2$, $b = 1$: $a^2 = 4$ and $b^2 = 1$, so $a^2 > b^2$. $\\lvert a \\rvert < \\lvert b \\rvert$ is incorrect. Take $a = -2$, $b = 1$: $\\lvert a \\rvert = 2$ and $\\lvert b \\rvert = 1$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is incorrect. Take $a = -2$, $b = 1$: $\\dfrac{1}{a} = -\\dfrac{1}{2}$ and $\\dfrac{1}{b} = 1$, so $\\dfrac{1}{a} < \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7360,7 +7360,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = -2$, $b = 1$. The correct statement is $a - 6 < b - 6$ — subtracting the same number from both sides keeps the direction. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = -2$, $b = 1$. $-6a < -6b$ is false: multiplying by a negative number reverses the direction. $ab < b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$.",
+  "solution": "$a - 6 < b - 6$ is correct. Subtracting the same number from both sides keeps the direction. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is incorrect. Take $a = -2$, $b = 1$: $\\dfrac{1}{a} = -\\dfrac{1}{2}$ and $\\dfrac{1}{b} = 1$, so $\\dfrac{1}{a} < \\dfrac{1}{b}$. $-6a < -6b$ is incorrect. Multiplying both sides by the negative number $-6$ reverses the direction, so $-6a > -6b$. $ab < b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = -2$, $b = -1$: $ab = 2$ and $b^2 = 1$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7398,7 +7398,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is “If $a > b$ and $c < 0$, then $ac < bc$” — multiplying by a negative number reverses the direction. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $a^2 > b^2$” is false: try $a = 1$, $b = -2$.",
+  "solution": "“If $a > b$ and $c < 0$, then $ac < bc$” is correct. Multiplying both sides by a negative number reverses the direction. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$. “If $a > b$, then $a^2 > b^2$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7436,7 +7436,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is “If $a > b$ and $c > 0$, then $ac > bc$” — multiplying by a positive number keeps the direction. “If $a^2 > b^2$, then $a > b$” is false: try $a = -2$, $b = 1$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $a^2 > b^2$” is false: try $a = 1$, $b = -2$.",
+  "solution": "“If $a > b$ and $c > 0$, then $ac > bc$” is correct. Multiplying both sides by a positive number keeps the direction. “If $a^2 > b^2$, then $a > b$” is incorrect. Take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$. “If $a > b$, then $a^2 > b^2$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7474,7 +7474,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "The correct statement is “If $a > b$ and $c > 0$, then $ac > bc$” — multiplying by a positive number keeps the direction. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$. “If $a^2 > b^2$, then $a > b$” is false: try $a = -2$, $b = 1$. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$.",
+  "solution": "“If $a > b$ and $c > 0$, then $ac > bc$” is correct. Multiplying both sides by a positive number keeps the direction. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$. “If $a^2 > b^2$, then $a > b$” is incorrect. Take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7512,7 +7512,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "The correct statement is “If $a > b$, then $a - c > b - c$” — subtracting $c$ from both sides is always safe. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is false: try $a = 1$, $b = -2$. “If $a^2 > b^2$, then $a > b$” is false: try $a = -2$, $b = 1$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$.",
+  "solution": "“If $a > b$, then $a - c > b - c$” is correct. Subtracting the same number $c$ from both sides keeps the direction, whatever $c$ is. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$. “If $a^2 > b^2$, then $a > b$” is incorrect. Take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7550,7 +7550,7 @@
    "sign",
    "slip"
   ],
-  "solution": "The correct statement is “If $a > b$ and $c < 0$, then $ac < bc$” — multiplying by a negative number reverses the direction. “If $a > b$, then $ac^2 > bc^2$” is false: it fails when $c = 0$. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$. “If $a > b$, then $ac > bc$” is false: it fails when $c \\le 0$.",
+  "solution": "“If $a > b$ and $c < 0$, then $ac < bc$” is correct. Multiplying both sides by a negative number reverses the direction. “If $a > b$, then $ac^2 > bc^2$” is incorrect. If $c = 0$, both sides equal $0$. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$. “If $a > b$, then $ac > bc$” is incorrect. If $c = 0$, then $ac = bc = 0$, and if $c < 0$ the direction is reversed.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7588,7 +7588,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "The correct statement is “If $a > b$, then $a - c > b - c$” — subtracting $c$ from both sides is always safe. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $a^2 > b^2$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $ac^2 > bc^2$” is false: it fails when $c = 0$.",
+  "solution": "“If $a > b$, then $a - c > b - c$” is correct. Subtracting the same number $c$ from both sides keeps the direction, whatever $c$ is. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$. “If $a > b$, then $a^2 > b^2$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$. “If $a > b$, then $ac^2 > bc^2$” is incorrect. If $c = 0$, both sides equal $0$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7626,7 +7626,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is “If $a > b$, then $a + c > b + c$” — adding $c$ to both sides is always safe. “If $a > b$, then $ac > bc$” is false: it fails when $c \\le 0$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$.",
+  "solution": "“If $a > b$, then $a + c > b + c$” is correct. Adding the same number $c$ to both sides keeps the direction, whatever $c$ is. “If $a > b$, then $ac > bc$” is incorrect. If $c = 0$, then $ac = bc = 0$, and if $c < 0$ the direction is reversed. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7664,7 +7664,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a - c > 0$ — $a > c$. $ab > bc$ is false: multiplying $a > c$ by $b$ is safe only if $b > 0$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is false: dividing by $c$ is safe only if $c > 0$. $\\lvert a \\rvert > \\lvert c \\rvert$ is false: try $a = 1$, $c = -3$.",
+  "solution": "$a - c > 0$ is correct. $a > c$, so $a - c > 0$. $ab > bc$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is incorrect. Dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$. $\\lvert a \\rvert > \\lvert c \\rvert$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7702,7 +7702,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a - c > 0$ — $a > c$. $a^2 > b^2$ is false: try $a = 1$, $b = -2$, $c = -3$. $ab > bc$ is false: multiplying $a > c$ by $b$ is safe only if $b > 0$. $a - b > b - c$ is false: the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$.",
+  "solution": "$a - c > 0$ is correct. $a > c$, so $a - c > 0$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$. $ab > bc$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$. $a - b > b - c$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7740,7 +7740,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a + c > b + c$ — adding the same number keeps the direction. $a - b > b - c$ is false: the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$. $\\lvert a \\rvert > \\lvert c \\rvert$ is false: try $a = 1$, $c = -3$. $a^2 > b^2$ is false: try $a = 1$, $b = -2$, $c = -3$.",
+  "solution": "$a + c > b + c$ is correct. Adding $c$ to both sides of $a > b$ keeps the direction. $a - b > b - c$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$. $\\lvert a \\rvert > \\lvert c \\rvert$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7778,7 +7778,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a + c > b + c$ — adding the same number keeps the direction. $\\lvert a \\rvert > \\lvert c \\rvert$ is false: try $a = 1$, $c = -3$. $a - b > b - c$ is false: the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$. $ac > bc$ is false: multiplying by $c$ is safe only if $c > 0$.",
+  "solution": "$a + c > b + c$ is correct. Adding $c$ to both sides of $a > b$ keeps the direction. $\\lvert a \\rvert > \\lvert c \\rvert$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$. $a - b > b - c$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$. $ac > bc$ is incorrect. Multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7816,7 +7816,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{a}{b} > 1$ — divide $a > b$ by the positive number $b$. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is false: for positive numbers the reciprocal reverses the order. $\\dfrac{b}{a} > 1$ is false: $0 < b < a$ gives $\\dfrac{b}{a} < 1$.",
+  "solution": "$\\dfrac{a}{b} > 1$ is correct. Dividing both sides of $a > b$ by the positive number $b$ gives $\\dfrac{a}{b} > 1$. $-a > -b$ is incorrect. Multiplying both sides of $a > b$ by $-1$ gives $-a < -b$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is incorrect. Dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$, the opposite order. $\\dfrac{b}{a} > 1$ is incorrect. Dividing both sides of $b < a$ by the positive number $a$ gives $\\dfrac{b}{a} < 1$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7854,7 +7854,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "The correct statement is $\\dfrac{1}{a} < \\dfrac{1}{b}$ — for positive numbers the reciprocal reverses the order. $\\dfrac{b}{a} > 1$ is false: $0 < b < a$ gives $\\dfrac{b}{a} < 1$. $ab < b^2$ is false: multiply $a > b$ by the positive number $b$: $ab > b^2$. $a - b < 0$ is false: $a > b$ means $a - b > 0$.",
+  "solution": "$\\dfrac{1}{a} < \\dfrac{1}{b}$ is correct. Dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$. $\\dfrac{b}{a} > 1$ is incorrect. Dividing both sides of $b < a$ by the positive number $a$ gives $\\dfrac{b}{a} < 1$. $ab < b^2$ is incorrect. Multiplying both sides of $a > b$ by the positive number $b$ gives $ab > b^2$. $a - b < 0$ is incorrect. $a > b$ means $a - b > 0$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7878,7 +7878,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "Given $a > b$ and $c < 0$, then ( )",
+  "stem": "If $a > b$ and $c < 0$, then ( )",
   "options": [
    "$a + c < b + c$",
    "$\\dfrac{a}{c} > \\dfrac{b}{c}$",
@@ -7892,7 +7892,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{a}{c} < \\dfrac{b}{c}$ — dividing by the negative number $c$ reverses the direction. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is false: dividing by a negative number reverses the direction. $a + c < b + c$ is false: adding $c$ never changes the direction. $ac > bc$ is false: multiplying by a negative number reverses the direction.",
+  "solution": "$\\dfrac{a}{c} < \\dfrac{b}{c}$ is correct. Dividing both sides of $a > b$ by the negative number $c$ reverses the direction. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is incorrect. Dividing by the negative number $c$ reverses the direction, so $\\dfrac{a}{c} < \\dfrac{b}{c}$. $a + c < b + c$ is incorrect. Adding $c$ to both sides keeps the direction, so $a + c > b + c$. $ac > bc$ is incorrect. Multiplying by the negative number $c$ reverses the direction, so $ac < bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7916,7 +7916,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "Given $a > b$ and $c < 0$, then ( )",
+  "stem": "If $a > b$ and $c < 0$, then ( )",
   "options": [
    "$\\dfrac{a}{c} < \\dfrac{b}{c}$",
    "$a + c < b + c$",
@@ -7930,7 +7930,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{a}{c} < \\dfrac{b}{c}$ — dividing by the negative number $c$ reverses the direction. $ac^2 < bc^2$ is false: $c^2$ is positive. $a + c < b + c$ is false: adding $c$ never changes the direction. $ac > bc$ is false: multiplying by a negative number reverses the direction.",
+  "solution": "$\\dfrac{a}{c} < \\dfrac{b}{c}$ is correct. Dividing both sides of $a > b$ by the negative number $c$ reverses the direction. $ac^2 < bc^2$ is incorrect. $c^2 > 0$, so multiplying by $c^2$ keeps the direction: $ac^2 > bc^2$. $a + c < b + c$ is incorrect. Adding $c$ to both sides keeps the direction, so $a + c > b + c$. $ac > bc$ is incorrect. Multiplying by the negative number $c$ reverses the direction, so $ac < bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -7968,7 +7968,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $a - d > b - c$ — $-d > -c$; add this to $a > b$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is false: quotients are not safe. $ac > bd$ is false: products need positive numbers: try $a = 1, b = -2, c = 1, d = -2$. $a + d > b + c$ is false: try $a = 1, b = 0, c = 5, d = 0$.",
+  "solution": "$a - d > b - c$ is correct. From $c > d$ we get $-d > -c$, and adding this to $a > b$ gives $a - d > b - c$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is incorrect. Take $a = 2$, $b = 1$, $c = 4$, $d = 1$: then $\\dfrac{a}{c} = \\dfrac{1}{2} < 1 = \\dfrac{b}{d}$. $ac > bd$ is incorrect. Take $a = 1$, $b = -2$, $c = 1$, $d = -2$: then $ac = 1 < 4 = bd$. $a + d > b + c$ is incorrect. Take $a = 1$, $b = 0$, $c = 5$, $d = 0$: then $a + d = 1 < 5 = b + c$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -8006,7 +8006,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "The correct statement is $a + c > b + d$ — inequalities of the same direction can be added. $a - c > b - d$ is false: same-direction inequalities must not be subtracted: try $a = 1, b = 0, c = 3, d = 0$. $a + d > b + c$ is false: try $a = 1, b = 0, c = 5, d = 0$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is false: quotients are not safe.",
+  "solution": "$a + c > b + d$ is correct. Two inequalities in the same direction can be added. $a - c > b - d$ is incorrect. Two inequalities in the same direction cannot be subtracted. Take $a = 1$, $b = 0$, $c = 3$, $d = 0$: then $a - c = -2 < 0 = b - d$. $a + d > b + c$ is incorrect. Take $a = 1$, $b = 0$, $c = 5$, $d = 0$: then $a + d = 1 < 5 = b + c$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is incorrect. Take $a = 2$, $b = 1$, $c = 4$, $d = 1$: then $\\dfrac{a}{c} = \\dfrac{1}{2} < 1 = \\dfrac{b}{d}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -8030,7 +8030,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b > c$. Which of the following must be true? ( )",
+  "stem": "If $a > b > c$, which of the following must be true? ( )",
   "options": [
    "$ab > bc$",
    "$ac > bc$",
@@ -8044,7 +8044,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a + c > b + c$ — adding the same number keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{c}$ is false: reciprocals need both numbers to have the same sign. $ab > bc$ is false: multiplying $a > c$ by $b$ is safe only if $b > 0$. $ac > bc$ is false: multiplying by $c$ is safe only if $c > 0$.",
+  "solution": "$a + c > b + c$ is correct. Adding $c$ to both sides of $a > b$ keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{c}$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $\\dfrac{1}{a} = 1 > -\\dfrac{1}{3} = \\dfrac{1}{c}$. $ab > bc$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$. $ac > bc$ is incorrect. Multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -8068,7 +8068,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b > c$. Which of the following must be true? ( )",
+  "stem": "If $a > b > c$, which of the following must be true? ( )",
   "options": [
    "$\\dfrac{a}{c} > \\dfrac{b}{c}$",
    "$a^2 > b^2$",
@@ -8082,7 +8082,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $2a > b + c$ — $a > b$ and $a > c$; add the two inequalities. $a^2 > b^2$ is false: try $a = 1$, $b = -2$, $c = -3$. $ac > bc$ is false: multiplying by $c$ is safe only if $c > 0$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is false: dividing by $c$ is safe only if $c > 0$.",
+  "solution": "$2a > b + c$ is correct. Adding $a > b$ and $a > c$ gives $2a > b + c$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$. $ac > bc$ is incorrect. Multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is incorrect. Dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",

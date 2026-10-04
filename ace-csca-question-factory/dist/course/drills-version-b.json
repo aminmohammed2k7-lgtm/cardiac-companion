@@ -26,7 +26,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "Move $3$ to the left and combine into one fraction: $\\dfrac{-2x - 12}{x + 3} \\le 0$. The numerator is zero at $x = -6$ and the denominator at $x = -3$. The quotient has the same sign as $(-2x - 12)(x + 3)$, which is positive between these two numbers and negative outside them. The numerator root is included, but the denominator root $-3$ never is. Solution set: $(-\\infty, -6] \\cup (-3, +\\infty)$.",
+  "solution": "Subtract $3$ from both sides and combine into one fraction: $\\dfrac{x - 3}{x + 3} - 3 = \\dfrac{-2x - 12}{x + 3}$, so the inequality becomes $\\dfrac{-2x - 12}{x + 3} \\le 0$. A quotient has the same sign as the product of its numerator and denominator. The product $(-2x - 12)(x + 3)$ is zero at $x = -6$ and $x = -3$, and it is positive between these two numbers and negative outside them. We need the quotient to be negative or zero, so $x$ lies outside them. The numerator is zero at $x = -6$, so this end point is included. The denominator is zero at $x = -3$, so this end point is excluded. The solution set is $(-\\infty, -6] \\cup (-3, +\\infty)$.",
   "video": "V03",
   "version": "b"
  },
@@ -57,7 +57,7 @@
    "partial",
    null
   ],
-  "solution": "Two conditions: the argument of the logarithm must be positive, $\\lvert x + 6 \\rvert > 0$, so $x \\ne -6$; and the logarithm (a denominator) must not be zero, $\\lvert x + 6 \\rvert \\ne 1$, so $x \\ne -7$ and $x \\ne -5$. Domain: $\\{x \\mid x \\ne -7,\\ x \\ne -6 \\text{ and } x \\ne -5\\}$.",
+  "solution": "There are two conditions. First, the expression inside the logarithm must be positive: $\\lvert x + 6 \\rvert > 0$, so $x \\ne -6$. Second, the logarithm is in the denominator, so it must not be zero: $\\lvert x + 6 \\rvert \\ne 1$, so $x \\ne -7$ and $x \\ne -5$. The domain is $\\{x \\mid x \\ne -7,\\ x \\ne -6 \\text{ and } x \\ne -5\\}$.",
   "video": "V05",
   "version": "b"
  },
@@ -88,7 +88,7 @@
    "partial",
    null
   ],
-  "solution": "The inside $-x - 3$ must lie in the domain of $f$: $-4 < -x - 3 < 0$. Solve for $x$ (dividing by a negative number reverses the signs): $(-3, 1)$.",
+  "solution": "The expression $-x - 3$ takes the place of $x$, so it must lie in the domain of $f$: $-4 < -x - 3 < 0$. Subtract $-3$: $-1 < -x < 3$. Divide by $-1$, reversing both inequality signs because $-1$ is negative: $-3 < x < 1$. So the domain of $f(-x - 3)$ is $(-3, 1)$.",
   "video": "V05",
   "version": "b"
  },
@@ -119,7 +119,7 @@
    "endpoint",
    "domain"
   ],
-  "solution": "The root needs $x \\le 5$, the denominator needs $x \\ne 3$ and the logarithm needs $x > 0$. Domain: $(0, 3) \\cup (3, 5]$.",
+  "solution": "The square root needs $x \\le 5$, the denominator needs $x \\ne 3$ and the logarithm needs $x > 0$. All three must hold. The domain is $(0, 3) \\cup (3, 5]$.",
   "video": "V05",
   "version": "b"
  },
@@ -150,7 +150,7 @@
    null,
    "partial"
   ],
-  "solution": "Since $\\lvert x \\rvert \\ge 0$, the denominator satisfies $4 + \\lvert x \\rvert \\ge 4$, so $0 < f(x) \\le 1$; the value $1$ is reached at $x = 0$ and $0$ is never reached. Range: $(0, 1]$.",
+  "solution": "Since $\\lvert x \\rvert \\ge 0$, the denominator satisfies $4 + \\lvert x \\rvert \\ge 4$, so $0 < f(x) \\le \\dfrac{4}{4} = 1$. The largest value $1$ is reached at $x = 0$. As $\\lvert x \\rvert$ grows, $f(x)$ comes as close to $0$ as we like, but it is never $0$. So the range is $(0, 1]$.",
   "video": "V05",
   "version": "b"
  },
@@ -181,7 +181,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y + 4}{3y + 1}$. Cross-multiply: $x(3y + 1) = 4y + 4$, collect $y$: $y(3x - 4) = -x + 4$, so $y = -\\dfrac{x - 4}{3x - 4}$. Check with one point: $f(0) = 4$, and the inverse sends $4$ back to $0$.",
+  "solution": "Swap $x$ and $y$: $x = \\dfrac{4y + 4}{3y + 1}$. Multiply both sides by $3y + 1$: $3xy + x = 4y + 4$. Collect the terms in $y$ on one side: $y(3x - 4) = -x + 4$, so $y = \\dfrac{-x + 4}{3x - 4} = -\\dfrac{x - 4}{3x - 4}$. Check with one point: $f(0) = 4$, and the inverse sends $4$ back to $0$.",
   "video": "V07",
   "version": "b"
  },
@@ -212,7 +212,7 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x$ and $y = \\sqrt[3]{x^3}$” — a cube root has no domain restriction and $\\sqrt[3]{x^3} = x$ for every $x$. “$y = 1$ and $y = \\dfrac{x}{x}$” is false: $\\dfrac{x}{x}$ is not defined at $x = 0$. “$y = x - 3$ and $y = \\dfrac{x^2 - 9}{x + 3}$” is false: the fraction is not defined at $x = -3$. “$y = x$ and $y = (\\sqrt{x})^2$” is false: $(\\sqrt{x})^2$ is defined only for $x \\ge 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x$ and $y = \\sqrt[3]{x^3}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt[3]{x^3} = x$ for every real $x$. “$y = 1$ and $y = \\dfrac{x}{x}$” is incorrect. $\\dfrac{x}{x}$ is not defined at $x = 0$, while $y = 1$ is. “$y = x - 3$ and $y = \\dfrac{x^2 - 9}{x + 3}$” is incorrect. The fraction is not defined at $x = -3$, while $y = x - 3$ is. “$y = x$ and $y = (\\sqrt{x})^2$” is incorrect. $(\\sqrt{x})^2$ is defined only for $x \\ge 0$, while $y = x$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "b"
  },
@@ -243,7 +243,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "The numerator is zero at $x = \\dfrac{4}{3}$ and the denominator at $x = -\\dfrac{3}{2}$. The quotient has the same sign as $(3x - 4)(2x + 3)$, which is negative between these two numbers and positive outside them. The numerator root is included, but the denominator root $-\\dfrac{3}{2}$ never is. Solution set: $\\left(-\\infty, -\\dfrac{3}{2}\\right) \\cup \\left[\\dfrac{4}{3}, +\\infty\\right)$.",
+  "solution": "A quotient has the same sign as the product of its numerator and denominator. The product $(3x - 4)(2x + 3)$ is zero at $x = \\dfrac{4}{3}$ and $x = -\\dfrac{3}{2}$, and it is negative between these two numbers and positive outside them. We need the quotient to be positive or zero, so $x$ lies outside them. The numerator is zero at $x = \\dfrac{4}{3}$, so this end point is included. The denominator is zero at $x = -\\dfrac{3}{2}$, so this end point is excluded. The solution set is $\\left(-\\infty, -\\dfrac{3}{2}\\right) \\cup \\left[\\dfrac{4}{3}, +\\infty\\right)$.",
   "video": "V03",
   "version": "b"
  },
@@ -260,7 +260,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\tan\\alpha = \\dfrac{15}{8}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\tan\\alpha = \\dfrac{15}{8}$ and $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\sin\\alpha + \\cos\\alpha = -\\dfrac{23}{17}$",
    "$\\sin\\alpha\\cos\\alpha = -\\dfrac{120}{289}$",
@@ -274,7 +274,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\cos\\alpha = -\\dfrac{8}{17}$. The correct statement is $\\sin\\alpha + \\cos\\alpha = -\\dfrac{23}{17}$ — add the two values with their signs. $\\sin\\alpha = \\dfrac{15}{17}$ is false: the sign of the sine is wrong for the third quadrant. $\\cos\\alpha = \\dfrac{8}{17}$ is false: the sign of the cosine is wrong for the third quadrant. $\\sin\\alpha\\cos\\alpha = -\\dfrac{120}{289}$ is false: the sign of the product is wrong.",
+  "solution": "Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{15}{8}$, a right triangle with legs $15$ and $8$ has hypotenuse $17$. In the third quadrant $\\sin\\alpha < 0$ and $\\cos\\alpha < 0$, so $\\sin\\alpha = -\\dfrac{15}{17}$ and $\\cos\\alpha = -\\dfrac{8}{17}$. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{23}{17}$ is correct. $\\sin\\alpha + \\cos\\alpha = -\\dfrac{15}{17} - \\dfrac{8}{17} = -\\dfrac{23}{17}$. $\\sin\\alpha = \\dfrac{15}{17}$ is incorrect. Sine is negative in the third quadrant, so $\\sin\\alpha = -\\dfrac{15}{17}$. $\\cos\\alpha = \\dfrac{8}{17}$ is incorrect. Cosine is negative in the third quadrant, so $\\cos\\alpha = -\\dfrac{8}{17}$. $\\sin\\alpha\\cos\\alpha = -\\dfrac{120}{289}$ is incorrect. $\\sin\\alpha\\cos\\alpha = \\left(-\\dfrac{15}{17}\\right) \\times \\left(-\\dfrac{8}{17}\\right) = \\dfrac{120}{289}$.",
   "video": "V11",
   "version": "b"
  },
@@ -305,7 +305,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\cos^2\\alpha = 1 - \\dfrac{1}{5} = \\dfrac{4}{5}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = \\dfrac{1}{4}$. No quadrant is given, so both signs are possible: $\\tan\\alpha = \\pm \\dfrac{1}{2}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{1}{5} = \\dfrac{4}{5}$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = \\dfrac{1}{4}$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = \\pm \\dfrac{1}{2}$.",
   "video": "V11",
   "version": "b"
  },
@@ -322,7 +322,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T04",
-  "stem": "Given $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\dfrac{12}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\pi - \\alpha\\right) =$ ( )",
+  "stem": "If $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\dfrac{12}{13}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin\\left(\\pi - \\alpha\\right) =$ ( )",
   "options": [
    "$\\dfrac{12}{13}$",
    "$-\\dfrac{12}{13}$",
@@ -336,7 +336,7 @@
    "sign",
    null
   ],
-  "solution": "Step 1: $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$, so $\\cos\\alpha = -\\dfrac{12}{13}$. Step 2: in the second quadrant $\\sin\\alpha = \\dfrac{5}{13}$. Step 3: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha = \\dfrac{5}{13}$.",
+  "solution": "Step 1: $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$, so $\\cos\\alpha = -\\dfrac{12}{13}$. Step 2: $\\sin^2\\alpha = 1 - \\dfrac{144}{169} = \\dfrac{25}{169}$, and in the second quadrant sine is positive, so $\\sin\\alpha = \\dfrac{5}{13}$. Step 3: $\\sin\\left(\\pi - \\alpha\\right) = \\sin\\alpha = \\dfrac{5}{13}$.",
   "video": "V12",
   "version": "b"
  },
@@ -367,7 +367,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\cos\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\sin\\alpha$ — an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine; the sign is that of $\\cos$ where the angle lands (take $\\alpha$ acute). $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ is false: the sign is wrong: the correct result is $-\\cos\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is false: the sign is wrong: the correct result is $\\sin\\alpha$. $\\sin\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = -\\cos\\alpha$ is false: the sign is wrong: the correct result is $\\cos\\alpha$.",
+  "solution": "$\\cos\\left(\\alpha - \\dfrac{\\pi}{2}\\right) = \\sin\\alpha$ is correct. If $\\alpha$ is acute, $\\alpha - \\dfrac{\\pi}{2}$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = \\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} - \\alpha$ lies in the third quadrant, where sine is negative. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\dfrac{3\\pi}{2} - \\alpha\\right) = -\\cos\\alpha$. $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = -\\sin\\alpha$ is incorrect. If $\\alpha$ is acute, $\\dfrac{3\\pi}{2} + \\alpha$ lies in the fourth quadrant, where cosine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\cos\\left(\\dfrac{3\\pi}{2} + \\alpha\\right) = \\sin\\alpha$. $\\sin\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = -\\cos\\alpha$ is incorrect. If $\\alpha$ is acute, $\\alpha - \\dfrac{3\\pi}{2}$ lies in the second quadrant, where sine is positive. The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap. So $\\sin\\left(\\alpha - \\dfrac{3\\pi}{2}\\right) = \\cos\\alpha$.",
   "video": "V12",
   "version": "b"
  },
@@ -398,7 +398,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “Its minimum positive period is $4\\pi$” — $T = \\dfrac{2\\pi}{|\\omega|}$. “It is an even function” is false: $f(-x) \\ne f(x)$ in general. “Its minimum positive period is $\\pi$” is false: divide by $\\omega$, do not multiply: $T = 4\\pi$. “Its minimum positive period is $2\\pi$” is false: that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = 4\\pi$.",
+  "solution": "“Its minimum positive period is $4\\pi$” is correct. $T = \\dfrac{2\\pi}{|\\omega|} = 2\\pi \\div \\dfrac{1}{2} = 4\\pi$. “It is an even function” is incorrect. $f(0) = 1$ is neither the maximum $2$ nor the minimum $-2$, so the $y$-axis is not an axis of symmetry of the graph. “Its minimum positive period is $\\pi$” is incorrect. The period is found by dividing $2\\pi$ by $|\\omega|$, not by multiplying: $T = \\dfrac{2\\pi}{|\\omega|} = 2\\pi \\div \\dfrac{1}{2} = 4\\pi$. “Its minimum positive period is $2\\pi$” is incorrect. $\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here $T = \\dfrac{2\\pi}{|\\omega|} = 2\\pi \\div \\dfrac{1}{2} = 4\\pi$.",
   "video": "V13",
   "version": "b"
  },
@@ -429,7 +429,7 @@
    "domain",
    "sign"
   ],
-  "solution": "Rewrite $\\tan(-u) = -\\tan u$ first. The correct statement is “It is an odd function”. “It is increasing on $\\left(-\\dfrac{\\pi}{6}, \\dfrac{\\pi}{6}\\right)$” is false: the direction is the other way. “It is decreasing on its whole domain” is false: it is monotonic on each interval between asymptotes, but not across them. “It is an even function” is false: the tangent is odd.",
+  "solution": "“It is an odd function” is correct. $\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$. “It is increasing on $\\left(-\\dfrac{\\pi}{6}, \\dfrac{\\pi}{6}\\right)$” is incorrect. $\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $\\left(-\\dfrac{\\pi}{6}, \\dfrac{\\pi}{6}\\right)$. “It is decreasing on its whole domain” is incorrect. It is monotonic on each interval between consecutive asymptotes, but not across an asymptote. “It is an even function” is incorrect. $\\tan(-u) = -\\tan u$, so the function is odd, not even.",
   "video": "V14",
   "version": "b"
  },
@@ -460,7 +460,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $x + \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + \\dfrac{\\pi}{6}$ ($k \\in \\mathbb{Z}$).",
+  "solution": "The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $x + \\dfrac{\\pi}{3} \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + \\dfrac{\\pi}{6}$ for every integer $k$. The domain is $\\left\\{x \\mid x \\ne k\\pi + \\dfrac{\\pi}{6},\\ k \\in \\mathbb{Z}\\right\\}$.",
   "video": "V14",
   "version": "b"
  },
@@ -491,7 +491,7 @@
    null,
    "companion"
   ],
-  "solution": "From $\\tan\\alpha = \\dfrac{y}{x}$: $\\dfrac{-12}{x} = \\dfrac{12}{5}$, so $x = -5$. Then $r = \\sqrt{25 + 144} = 13$ and $\\cos\\alpha = -\\dfrac{5}{13}$.",
+  "solution": "By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{-12}{x} = \\dfrac{12}{5}$ and $x = -5$. Then $r = \\sqrt{x^2 + y^2} = \\sqrt{25 + 144} = 13$, so $\\cos\\alpha = \\dfrac{x}{r} = \\dfrac{-5}{13} = -\\dfrac{5}{13}$.",
   "video": "V10",
   "version": "b"
  },
@@ -508,7 +508,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{1}{3}$ and $\\alpha$ is in the second quadrant, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{1}{3}$ and $\\alpha$ is in the second quadrant, then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) =$ ( )",
   "options": [
    "$\\dfrac{2\\sqrt{6} - 1}{6}$",
    "$\\dfrac{1 - 2\\sqrt{6}}{6}$",
@@ -522,7 +522,7 @@
    "sign",
    "companion"
   ],
-  "solution": "In the second quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{2\\sqrt{2}}{3}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} + \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\dfrac{1}{3} \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{2\\sqrt{2}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{1 - 2\\sqrt{6}}{6}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{1}{9} = \\dfrac{8}{9}$. In the second quadrant the cosine is negative, so $\\cos\\alpha = -\\dfrac{2\\sqrt{2}}{3}$. Then $\\sin\\left(\\alpha + \\dfrac{\\pi}{3}\\right) = \\sin\\alpha\\cos \\dfrac{\\pi}{3} + \\cos\\alpha\\sin \\dfrac{\\pi}{3} = \\dfrac{1}{3} \\cdot \\dfrac{1}{2} + \\left(-\\dfrac{2\\sqrt{2}}{3}\\right) \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{1 - 2\\sqrt{6}}{6}$.",
   "video": "V15",
   "version": "b"
  },
@@ -539,7 +539,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}$ and $\\sin 30^\\circ = \\dfrac{1}{2}$, then $\\sin 15^\\circ =$ ( )",
+  "stem": "Given that $\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{2}$ and $\\sin 30^\\circ = \\dfrac{1}{2}$, the value of $\\sin 15^\\circ$ is ( )",
   "options": [
    "$\\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$",
    "$\\dfrac{\\sqrt{6} + \\sqrt{2}}{4}$",
@@ -584,7 +584,7 @@
    "domain",
    null
   ],
-  "solution": "The correct statement is $\\cos(\\alpha + \\beta) < \\cos\\alpha$ — $0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$. $\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)$ is false: $\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is false: not always: for $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ < \\sin 80^\\circ$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is false: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger.",
+  "solution": "$\\cos(\\alpha + \\beta) < \\cos\\alpha$ is correct. $0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$. $\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)$ is incorrect. $\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$. $\\sin(\\alpha + \\beta) > \\sin\\alpha$ is incorrect. This is not always true. For $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ = \\sin 20^\\circ < \\sin 80^\\circ$. $\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta$ is incorrect. $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one.",
   "video": "V15",
   "version": "b"
  },
@@ -615,7 +615,7 @@
    "companion",
    "sign"
   ],
-  "solution": "On this interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{20}{29}$. Locate the half angle first: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{9}{58}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{58}}{58}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{441}{841} = \\dfrac{400}{841}$. On the given interval the cosine is negative, so $\\cos\\alpha = -\\dfrac{20}{29}$. Find where the half angle lies: $\\alpha \\in \\left(\\pi, \\dfrac{3\\pi}{2}\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{4}\\right)$, where the cosine is negative. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 - \\dfrac{20}{29}}{2} = \\dfrac{9}{58}$, so $\\cos\\dfrac{\\alpha}{2} = -\\dfrac{3\\sqrt{58}}{58}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{3\\sqrt{58}}{58}$.",
   "video": "V17",
   "version": "b"
  },
@@ -632,7 +632,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = \\dfrac{5}{6}$ and $-\\dfrac{\\pi}{2} < \\alpha < 0$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = \\dfrac{5}{6}$ and $-\\dfrac{\\pi}{2} < \\alpha < 0$. Then $\\tan\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$-\\dfrac{\\sqrt{11}}{5}$",
    "$\\pm \\dfrac{\\sqrt{11}}{11}$",
@@ -646,7 +646,7 @@
    "sign",
    null
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. The sine is negative on the given interval: $\\sin\\alpha = -\\dfrac{\\sqrt{11}}{6}$. So $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{\\sqrt{11}}{11}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(-\\dfrac{\\pi}{2}, 0\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(-\\dfrac{\\pi}{4}, 0\\right)$, where the tangent is negative. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{25}{36} = \\dfrac{11}{36}$, and the sine is negative on the given interval, so $\\sin\\alpha = -\\dfrac{\\sqrt{11}}{6}$. Then $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = -\\dfrac{\\sqrt{11}}{11}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{\\sqrt{11}}{11}$.",
   "video": "V17",
   "version": "b"
  },
@@ -663,7 +663,7 @@
   "points": 2.5,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{2}{7}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{2}{7}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{\\sqrt{70}}{14}$",
    "$-\\dfrac{3\\sqrt{14}}{14}$",
@@ -677,7 +677,7 @@
    null,
    "pm"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{9}{14}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{3\\sqrt{14}}{14}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{2}{7}\\right)}{2} = \\dfrac{9}{14}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{3\\sqrt{14}}{14}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{3\\sqrt{14}}{14}$.",
   "video": "V17",
   "version": "b"
  },
@@ -725,7 +725,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{4}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} - \\tan\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{4}{5}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} - \\tan\\alpha =$ ( )",
   "options": [
    "$\\dfrac{3}{4}$",
    "$\\dfrac{24}{25}$",
@@ -739,7 +739,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "Simplify first: $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{4\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = 2\\tan\\alpha$, so the expression equals $2\\tan\\alpha - \\tan\\alpha = \\tan\\alpha$. With $\\alpha$ acute, $\\sin\\alpha = \\dfrac{3}{5}$, so the value is $\\dfrac{3}{4}$.",
+  "solution": "Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $\\dfrac{2\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{4\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = 2\\tan\\alpha$, so the expression equals $2\\tan\\alpha - \\tan\\alpha = \\tan\\alpha$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. Since $\\alpha$ is acute the sine is positive, so $\\sin\\alpha = \\dfrac{3}{5}$. So $\\tan\\alpha = \\dfrac{3}{4}$ and the value is $\\dfrac{3}{4}$.",
   "video": "V16",
   "version": "b"
  },
@@ -756,7 +756,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-5, -3)$ and $B(a, -6)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(-5, -3)$ and $B(a, -6)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$9$ or $1$",
    "$-1$",
@@ -770,7 +770,7 @@
    "partial",
    null
   ],
-  "solution": "$|AB|^2 = 25$ gives $(a + 5)^2 + (-3)^2 = 25$, so $(a + 5)^2 = 16$ and $a + 5 = \\pm 4$. Hence $a = -1$ or $-9$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $(a + 5)^2 + (-3)^2 = 25$, so $(a + 5)^2 = 16$ and $a + 5 = \\pm 4$. Hence $a = -1$ or $a = -9$, and both give $|AB| = 5$.",
   "video": "V21",
   "version": "b"
  },
@@ -801,7 +801,7 @@
    null,
    "partial"
   ],
-  "solution": "Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a(a - 2) = 0$, so $a = 2$ or $a = 0$ — both values are valid.",
+  "solution": "Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $a + a(a - 3) = 0$, that is $a(a - 2) = 0$, so $a = 2$ or $a = 0$. Both values are valid.",
   "video": "V25",
   "version": "b"
  },
@@ -818,7 +818,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax - 2y + 4 = 0$ and $l_2: x + (a + 3)y - 2 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax - 2y + 4 = 0$ and $l_2: x + (a + 3)y - 2 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$-2$",
    "$-1$",
@@ -832,7 +832,7 @@
    "coincidence",
    "sign"
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a + 3) - (-2) = 0$, i.e. $a^2 + 3a + 2 = 0$, so $a = -2$ or $a = -1$. Check each root: for $a = -2$ the two equations describe the same line, so it is rejected. Hence $a = -1$.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a + 3) - (-2) = 0$, that is $a^2 + 3a + 2 = 0$, so $a = -2$ or $a = -1$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $-2a - 4 = 0$. This holds for $a = -2$, so that value gives one line, not two parallel lines. Hence $a = -1$.",
   "video": "V25",
   "version": "b"
  },
@@ -863,7 +863,7 @@
    "parallel",
    "slip"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(3, 1)$. Step 2 — swap and flip: a line perpendicular to $x + y - 6 = 0$ has the form $x - y + k = 0$. Step 3 — substitute the point: $k = -2$. So $l$: $x - y - 2 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = -2x + 7$. Substituting this into the other equation gives $4x + (-2x + 7) - 13 = 0$, that is $2x - 6 = 0$, so $x = 3$. Then $y = -2 \\cdot 3 + 7 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x + y - 6 = 0$ has the form $x - y + k = 0$. Substituting $(3, 1)$ gives $3 - 1 + k = 0$, so $k = -2$. So $l$ is $x - y - 2 = 0$.",
   "video": "V26",
   "version": "b"
  },
@@ -894,7 +894,7 @@
    "sign",
    "companion"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-3, 3)$. Step 2 — a line parallel to $3x - y + 5 = 0$ has the form $3x - y + k = 0$. Step 3 — substitute the point: $k = 12$. So $l$: $3x - y + 12 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = -2y + 3$. Substituting this into the other equation gives $(-2y + 3) + 3y - 6 = 0$, that is $y - 3 = 0$, so $y = 3$. Then $x = -2 \\cdot 3 + 3 = -3$. A line parallel to $3x - y + 5 = 0$ keeps the same coefficients of $x$ and $y$, so it has the form $3x - y + k = 0$. Substituting $(-3, 3)$ gives $-9 - 3 + k = 0$, so $k = 12$. So $l$ is $3x - y + 12 = 0$.",
   "video": "V26",
   "version": "b"
  },
@@ -925,7 +925,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(-1, 1)$. The third line must pass through this point: substitute $x = -1$, $y = 1$ into $ax + y + 3 = 0$ and solve: $a = 4$.",
+  "solution": "First find where the first two lines meet. From the first equation, $y = 3x + 4$. Substituting this into the other equation gives $2x - (3x + 4) + 3 = 0$, that is $-x - 1 = 0$, so $x = -1$. Then $y = 3 \\cdot \\left(-1\\right) + 4 = 1$. The third line must also pass through $(-1, 1)$, so $-a + 1 + 3 = 0$ and $a = 4$.",
   "video": "V24",
   "version": "b"
  },
@@ -956,7 +956,7 @@
    "sign",
    null
   ],
-  "solution": "The slope is $k = \\tan 135^\\circ = -1$. Through $(0, 2)$: $y - 2 = -1(x - 0)$, i.e. $y = -x + 2$.",
+  "solution": "The slope is $k = \\tan 135^\\circ = -1$. By the point-slope form through $(0, 2)$, $y - 2 = -x$, that is $y = -x + 2$.",
   "video": "V23",
   "version": "b"
  },
@@ -987,7 +987,7 @@
    null,
    "swap"
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $2$” — the distance to the $x$-axis is $|y|$. “The point symmetric to $P$ about the origin is $(2, -1)$” is false: that swaps the coordinates; about the origin the point is $(1, -2)$. “The point $(1, 2)$ lies in the second quadrant” is false: changing the sign of $x$ moves it to the first quadrant. “The distance from $P$ to the $x$-axis is $1$” is false: the distance to the $x$-axis is $|y| = 2$; $|x|$ is the distance to the $y$-axis.",
+  "solution": "“The distance from $P$ to the $x$-axis is $2$” is correct. The distance to the $x$-axis is $|y| = 2$. “The point symmetric to $P$ about the origin is $(2, -1)$” is incorrect. Reflection in the origin changes both signs, which gives $(1, -2)$. Swapping the coordinates is a different operation. “The point $(1, 2)$ lies in the second quadrant” is incorrect. Its signs are $(+, +)$, so it lies in the first quadrant. “The distance from $P$ to the $x$-axis is $1$” is incorrect. The distance to the $x$-axis is $|y| = 2$. The number $1$ is the distance to the $y$-axis.",
   "video": "V20",
   "version": "b"
  },
@@ -1018,7 +1018,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $5$ and common difference $1$. So $\\dfrac{1}{a_{101}} = 5 + 100 \\cdot 1 = 105$ and $a_{101} = \\dfrac{1}{105}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 5$ and common difference $1$. So $\\dfrac{1}{a_{101}} = 5 + 100 \\cdot 1 = 105$ and $a_{101} = \\dfrac{1}{105}$.",
   "video": "V32",
   "version": "b"
  },
@@ -1049,7 +1049,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 2 \\cdot 1 = 2$, $a_3 = -2 \\cdot 2 = -4$, $a_4 = 2 \\cdot \\left(-4\\right) = -8$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 2 \\cdot 1 = 2$, $a_3 = -2 \\cdot 2 = -4$, $a_4 = 2 \\cdot \\left(-4\\right) = -8$.",
   "video": "V32",
   "version": "b"
  },
@@ -1080,7 +1080,7 @@
    "off-by-one",
    "near-miss"
   ],
-  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Use $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$: $a_n = 6n^2 - 8n + 5$. Check $n = 1$: $a_1 = S_1 = 3$ fits the formula. (Differentiating $S_n$ is the trap.)",
+  "solution": "For $n \\ge 2$, $a_n = S_n - S_{n-1}$. Since $n^3 - (n-1)^3 = 3n^2 - 3n + 1$ and $n^2 - (n-1)^2 = 2n - 1$, this gives $a_n = 2(3n^2 - 3n + 1) - (2n - 1) + 2 = 6n^2 - 8n + 5$. For $n = 1$, $a_1 = S_1 = 3$, and the formula also gives $3$. Differentiating $S_n$ gives $6n^2 - 2n + 2$, which is not $a_n$: at $n = 2$ it gives $22$, while $a_2 = S_2 - S_1 = 13$.",
   "video": "V31",
   "version": "b"
  },
@@ -1097,7 +1097,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 2 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 2 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "The first term is $a_1 = -2$",
    "$a_7 = 2$",
@@ -1111,7 +1111,7 @@
    "companion",
    "off-by-one"
   ],
-  "solution": "The terms are $-2, 2, -2, 2, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is “The first term is $a_1 = -2$” — put $n = 1$ into the formula. $S_{50} = -2$ is false: an even number of terms cancels completely: $S_{50} = 0$. “It is an arithmetic sequence” is false: the differences alternate between $4$ and $-4$. $a_7 = 2$ is false: put $n = 7$ into the formula: $a_7 = -2$.",
+  "solution": "The terms are $-2, 2, -2, 2, \\ldots$. “The first term is $a_1 = -2$” is correct. Put $n = 1$ into the formula. $S_{50} = -2$ is incorrect. An even number of terms cancels completely: $S_{50} = 0$. “It is an arithmetic sequence” is incorrect. The differences alternate between $4$ and $-4$. $a_7 = 2$ is incorrect. Put $n = 7$ into the formula: $a_7 = -2$.",
   "video": "V28",
   "version": "b"
  },
@@ -1142,7 +1142,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $3a_n = 5a_{n+1} - 5a_n$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{5}$. Put $n = 1$: $3a_1 = 5a_2 - 5 = 8a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{5}{3}\\left(\\dfrac{8}{5}\\right)^{n} - \\dfrac{5}{3}$. Test $n = 1$ in the options: $S_1 = a_1 = 1$.",
+  "solution": "Subtract the relation for $n - 1$ from the relation for $n$: $3a_n = 5a_{n+1} - 5a_n$, that is $8a_n = 5a_{n+1}$, so $q = \\dfrac{a_{n+1}}{a_n} = \\dfrac{8}{5}$. Put $n = 1$: $3a_1 = 5a_2 - 5 = 8a_1 - 5$, so $a_1 = 1$. Then $S_n = \\dfrac{a_1(q^n - 1)}{q - 1} = \\dfrac{5}{3}\\left(\\dfrac{8}{5}\\right)^{n} - \\dfrac{5}{3}$. Check with $n = 1$: the formula gives $\\dfrac{5}{3} \\cdot \\dfrac{8}{5} - \\dfrac{5}{3} = 1$, which is $a_1$.",
   "video": "V31",
   "version": "b"
  },
@@ -1190,7 +1190,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "It is known that the arithmetic sequence $\\{a_n\\}$ satisfies $3(a_3 + a_7) + 2(a_5 + a_7 + a_9) = 48$. Then the sum of the first $11$ terms $S_{11} =$ ( )",
+  "stem": "The arithmetic sequence $\\{a_n\\}$ satisfies $3(a_3 + a_7) + 2(a_5 + a_7 + a_9) = 48$. Then the sum of its first $11$ terms is $S_{11} =$ ( )",
   "options": [
    "$48$",
    "$40$",
@@ -1204,7 +1204,7 @@
    "half",
    null
   ],
-  "solution": "Index property: $a_3 + a_7 = 2a_5$ and $a_5 + a_7 + a_9 = 3a_7$. The condition becomes $6a_5 + 6a_7 = 48$, so $a_5 + a_7 = 8$. Because $5 + 7 = 1 + 11$, $a_1 + a_{11} = 8$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 44$.",
+  "solution": "In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $a_3 + a_7 = 2a_5$ and $a_5 + a_7 + a_9 = 3a_7$. The condition becomes $6a_5 + 6a_7 = 48$, so $a_5 + a_7 = 8$. Because $5 + 7 = 1 + 11$, $a_1 + a_{11} = 8$ and $S_{11} = \\dfrac{11(a_1 + a_{11})}{2} = 44$.",
   "video": "V33",
   "version": "b"
  },
@@ -1235,7 +1235,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $-3n + 1$ add up to $-\\dfrac{3n(n + 1)}{2} + n$. Together: $S_n = 2^{n+2} - \\dfrac{3n(n + 1)}{2} + n - 4$. Check with $n = 1$: $S_1 = a_1 = 2$.",
+  "solution": "Group the two parts. Geometric part: $2^{2} + 2^{3} + 2^{4} + \\cdots$ has first term $4$ and ratio $2$, so it sums to $4(2^n - 1)$. Linear part: the terms $-3n + 1$ add up to $-\\dfrac{3n(n + 1)}{2} + n$. Adding the two parts gives $S_n = 2^{n+2} - \\dfrac{3n(n + 1)}{2} + n - 4$. Check with $n = 1$: $S_1 = a_1 = 2$.",
   "video": "V33",
   "version": "b"
  },
@@ -1266,7 +1266,7 @@
    null,
    "partial"
   ],
-  "solution": "$|PF| = x_0 + \\dfrac{m}{4} = x_0 + 2 = 5$, so $x_0 = 3$. Then $y_0^2 = 8 \\cdot 3 = 24$ and $y_0 = \\pm 2\\sqrt{6}$ — two points.",
+  "solution": "$|PF| = x_0 + \\dfrac{m}{4} = x_0 + 2 = 5$, so $x_0 = 3$. Then $y_0^2 = 8 \\cdot 3 = 24$ and $y_0 = \\pm 2\\sqrt{6}$. So there are two such points.",
   "video": "V36",
   "version": "b"
  },
@@ -1297,7 +1297,7 @@
    "partial",
    "sign"
   ],
-  "solution": "A quarter of the coefficient: for $x^2 = my$ the focus is $\\left(0, \\dfrac{m}{4}\\right)$ and the directrix is $y = -\\dfrac{m}{4}$. Here $m = -6$, so the directrix is $y = \\dfrac{3}{2}$ — on the opposite side of the vertex from the focus.",
+  "solution": "For $x^2 = my$ the focus is $\\left(0, \\dfrac{m}{4}\\right)$ and the directrix is $y = -\\dfrac{m}{4}$. Here $m = -6$, so $\\dfrac{m}{4} = -\\dfrac{3}{2}$ and the directrix is $y = \\dfrac{3}{2}$, on the opposite side of the vertex from the focus.",
   "video": "V36",
   "version": "b"
  },
@@ -1328,7 +1328,7 @@
    "axis",
    null
   ],
-  "solution": "Here $a^2 = 16$ (under $x^2$), $b^2 = 7$ and $c^2 = 9$. The correct statement is “Its foci are $(\\pm 3, 0)$” — $c^2 = 16 - 7 = 9$ and the larger denominator is under $x^2$. “Its foci are $(0, \\pm 3)$” is false: the foci are on the $x$-axis (the larger denominator is under $x^2$): $(\\pm 3, 0)$. “Its eccentricity is $\\dfrac{\\sqrt{7}}{4}$” is false: that is $\\dfrac{b}{a}$; $e = \\dfrac{c}{a} = \\dfrac{3}{4}$. “The length of its major axis is $2\\sqrt{7}$” is false: that is the minor axis; the major axis is $2a = 8$.",
+  "solution": "Here $a^2 = 16$ is under $x^2$, $b^2 = 7$, and $c^2 = a^2 - b^2 = 9$. “Its foci are $(\\pm 3, 0)$” is correct. $c^2 = 16 - 7 = 9$, so $c = 3$, and the foci are on the $x$-axis because the larger denominator is under $x^2$. “Its foci are $(0, \\pm 3)$” is incorrect. The larger denominator is under $x^2$, so the foci are on the $x$-axis, at $(\\pm 3, 0)$. “Its eccentricity is $\\dfrac{\\sqrt{7}}{4}$” is incorrect. The value $\\dfrac{\\sqrt{7}}{4}$ is $\\dfrac{b}{a}$, but $e = \\dfrac{c}{a} = \\dfrac{3}{4}$. “The length of its major axis is $2\\sqrt{7}$” is incorrect. The minor axis has length $2b = 2\\sqrt{7}$, and the major axis is $2a = 8$.",
   "video": "V37",
   "version": "b"
  },
@@ -1359,7 +1359,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Focal distance $2c = 6$ gives $c = 3$. From $e = \\dfrac{c}{a} = \\dfrac{3}{5}$: $a = 5$. Then $b^2 = a^2 - c^2 = 16$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$: $\\dfrac{x^2}{16} + \\dfrac{y^2}{25} = 1$.",
+  "solution": "The focal distance $2c = 6$ gives $c = 3$. From $e = \\dfrac{c}{a} = \\dfrac{3}{5}$ we get $a = 5$. Then $b^2 = a^2 - c^2 = 25 - 9 = 16$. The foci are on the $y$-axis, so $a^2$ goes under $y^2$ and the equation is $\\dfrac{x^2}{16} + \\dfrac{y^2}{25} = 1$.",
   "video": "V38",
   "version": "b"
  },
@@ -1390,7 +1390,7 @@
    "sign",
    "axis"
   ],
-  "solution": "The given ellipse has $c^2 = 20 - 16 = 4$, and the same foci mean the same $c$. Minor axis $2b = 4\\sqrt{5}$ gives $b^2 = 20$. Then $a^2 = b^2 + c^2 = 24$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{24} + \\dfrac{y^2}{20} = 1$.",
+  "solution": "The given ellipse has $c^2 = 20 - 16 = 4$, and the same foci mean the same $c$. Minor axis $2b = 4\\sqrt{5}$ gives $b^2 = 20$. Then $a^2 = b^2 + c^2 = 20 + 4 = 24$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{24} + \\dfrac{y^2}{20} = 1$.",
   "video": "V38",
   "version": "b"
  },
@@ -1421,7 +1421,7 @@
    null,
    "axis"
   ],
-  "solution": "A point on an axis is a vertex, but it may be on the major or on the minor axis. Case 1: $a = 2$, $b = 1$ gives $x^2 + \\dfrac{y^2}{4} = 1$. Case 2: $b = 2$, $a = 4$ gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{4} = 1$. Both are answers; an option with one case only is incomplete.",
+  "solution": "A point on an axis is a vertex, but it can be an end of the major axis or of the minor axis. If it is on the major axis, then $a = 2$ and $b = 1$, which gives $x^2 + \\dfrac{y^2}{4} = 1$. If it is on the minor axis, then $b = 2$ and $a = 4$, which gives $\\dfrac{x^2}{16} + \\dfrac{y^2}{4} = 1$. Both equations are possible, so an option with only one of them is incomplete.",
   "video": "V38",
   "version": "b"
  },
@@ -1452,7 +1452,7 @@
    "sign",
    "companion"
   ],
-  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 1}{a^2} = 2$, so $1 = 1a^2$ and $a^2 = 1$. Since $a > 0$, $a = 1$.",
+  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 1}{a^2} = 2$, so $a^2 + 1 = 2a^2$ and $1 = a^2$. Hence $a^2 = 1$, and since $a > 0$, $a = 1$.",
   "video": "V39",
   "version": "b"
  },
@@ -1483,7 +1483,7 @@
    "half",
    null
   ],
-  "solution": "Here $a^2 = 4$, $b^2 = 5$ and $c^2 = a^2 + b^2 = 9$. The correct statement is “Its eccentricity is $\\dfrac{3}{2}$” — $e = \\dfrac{c}{a} = \\dfrac{3}{2}$. “Its focal distance is $3$” is false: that is $c$; the focal distance is $2c = 6$. “The length of its real axis is $2$” is false: that is $a$; the real axis is $2a = 4$. “Its focal distance is $2$” is false: for a hyperbola $c^2 = a^2 + b^2$, so $2c = 6$.",
+  "solution": "Here $a^2 = 4$, $b^2 = 5$ and $c^2 = a^2 + b^2 = 9$. “Its eccentricity is $\\dfrac{3}{2}$” is correct. $e = \\dfrac{c}{a} = \\dfrac{3}{2}$. “Its focal distance is $3$” is incorrect. $c = 3$, so the focal distance is $2c = 6$. “The length of its real axis is $2$” is incorrect. $a = 2$, so the real axis is $2a = 4$. “Its focal distance is $2$” is incorrect. For a hyperbola $c^2 = a^2 + b^2$, so $2c = 6$.",
   "video": "V39",
   "version": "b"
  },
@@ -1514,7 +1514,7 @@
    "swap",
    "near-miss"
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x + 1 = 1$, i.e. $x = 0$. Then $f(0) = -2 + 0 = -2$. Fixed point: $(0, -2)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x + 1 = 1$, so $x = 0$. Then $f(0) = -2 + 0 = -2$ whatever $a$ is. So the fixed point is $(0, -2)$.",
   "video": "V42",
   "version": "b"
  },
@@ -1545,7 +1545,7 @@
    "slip",
    "endpoint"
   ],
-  "solution": "Domain first: $x + 5 > 0$. Write $-2 = \\log_{\\frac{1}{3}} 9$. Because the base is between $0$ and $1$, the logarithm is decreasing and the direction reverses: $x + 5 \\ge 9$. Together with the domain: $\\{x \\mid x \\ge 4\\}$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x + 5 > 0$, that is $x > -5$. Next, write $-2 = \\log_{\\frac{1}{3}} 9$. The base is between $0$ and $1$, so the logarithm is decreasing and the inequality sign reverses: $x + 5 \\ge 9$, that is $x \\ge 4$. Both conditions must hold, so the solution set is $\\{x \\mid x \\ge 4\\}$.",
   "video": "V42",
   "version": "b"
  },
@@ -1576,7 +1576,7 @@
    null,
    "swap"
   ],
-  "solution": "Compare each value with $0$ and $1$. $b = \\log_{3}0.5 < 0$ (base above $1$, argument below $1$); $0 < c = \\lg 5 < 1$ ($1 < 5 < 10$); $a = 1.5^{0.5} > 1$ (a base above $1$ with a positive exponent). So $b < c < a$.",
+  "solution": "Compare each value with $0$ and $1$. $b = \\log_{3}0.5 < 0$, because the base is above $1$ and the argument is below $1$. $0 < c = \\lg 5 < 1$, because $\\lg 1 = 0$, $\\lg 10 = 1$ and $1 < 5 < 10$. $a = 1.5^{0.5} > 1$, because a base above $1$ raised to a positive power gives a value above $1$. So $b < c < a$.",
   "video": "V43",
   "version": "b"
  },
@@ -1638,7 +1638,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "The correct statement is $\\lg 2 + \\lg 5 = \\lg 10$ — the sum of two logarithms is the logarithm of the product. $\\log_{4}2 = \\log_{2}4$ is false: the two values are reciprocals: $\\dfrac{1}{2}$ and $2$. $\\log_{3}2 > \\log_{2}3$ is false: the left side is less than $1$ and the right side is greater than $1$. $\\log_{\\frac{1}{2}}4 = 2$ is false: a base $\\dfrac{1}{2}$ gives $-2$.",
+  "solution": "$\\lg 2 + \\lg 5 = \\lg 10$ is correct. The sum of two logarithms is the logarithm of the product, and $2 \\times 5 = 10$. $\\log_{4}2 = \\log_{2}4$ is incorrect. The two values are reciprocals of each other: $\\log_{4}2 = \\dfrac{1}{2}$ and $\\log_{2}4 = 2$. $\\log_{3}2 > \\log_{2}3$ is incorrect. The left side is less than $1$, because its argument is smaller than its base, and the right side is greater than $1$. $\\log_{\\frac{1}{2}}4 = 2$ is incorrect. $\\left(\\dfrac{1}{2}\\right)^{-2} = 4$, so the value is $-2$.",
   "video": "V42",
   "version": "b"
  },
@@ -1669,7 +1669,7 @@
    null,
    "partial"
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t - 2ti$ (a point of $y = -2x$). Product of the roots: $z\\bar{z} = 5t^2 = 40$, so $t = \\pm 2\\sqrt{2}$. Sum of the roots: $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 4\\sqrt{2}$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t - 2ti$, since $z$ lies on $y = -2x$. The product of the roots is $z\\bar{z} = 5t^2 = 40$, so $t = \\pm 2\\sqrt{2}$. The sum of the roots is $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 4\\sqrt{2}$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "b"
  },
@@ -1731,7 +1731,7 @@
    "complement",
    null
   ],
-  "solution": "P(same choice) $= \\dfrac{10}{60} \\cdot \\dfrac{5}{30} + \\dfrac{5}{60} \\cdot \\dfrac{10}{30} + \\dfrac{40}{60} \\cdot \\dfrac{5}{30} + \\dfrac{5}{60} \\cdot \\dfrac{10}{30} = \\dfrac{7}{36}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{7}{36} = \\dfrac{29}{36}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{10}{60} \\cdot \\dfrac{5}{30} + \\dfrac{5}{60} \\cdot \\dfrac{10}{30} + \\dfrac{40}{60} \\cdot \\dfrac{5}{30} + \\dfrac{5}{60} \\cdot \\dfrac{10}{30} = \\dfrac{7}{36}$. So P(different) $= 1 - \\dfrac{7}{36} = \\dfrac{29}{36}$.",
   "video": "V46",
   "version": "b"
  }

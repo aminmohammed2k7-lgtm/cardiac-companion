@@ -26,7 +26,7 @@
    "sign",
    "axis"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -1)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -1)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -64,7 +64,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-6, -3)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-6, -3)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -102,7 +102,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-5, -7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-5, -7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -140,7 +140,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(8, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(8, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -178,7 +178,7 @@
    null,
    "axis"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-7, 5)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-7, 5)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -216,7 +216,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(9, 7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(9, 7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -254,7 +254,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-3, 8)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-3, 8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -292,7 +292,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-1, -1)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-1, -1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -330,7 +330,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -368,7 +368,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(8, -1)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(8, -1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -406,7 +406,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-2, 1)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-2, 1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -444,7 +444,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-2, 6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-2, 6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -482,7 +482,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -9)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -9)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -520,7 +520,7 @@
    "axis",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -2)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -2)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -558,7 +558,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -596,7 +596,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-8, -8)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-8, -8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -634,7 +634,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(6, 2)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(6, 2)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -672,7 +672,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-1, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-1, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -710,7 +710,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(1, 8)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(1, 8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -748,7 +748,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-3, 4)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-3, 4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -786,7 +786,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-5, 4)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-5, 4)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -824,7 +824,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(2, 3)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(2, 3)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -862,7 +862,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-7, 3)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-7, 3)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -900,7 +900,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-2, -7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-2, -7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -938,7 +938,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(3, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(3, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -976,7 +976,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-2, -2)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-2, -2)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1014,7 +1014,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-5, -4)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-5, -4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1052,7 +1052,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -4)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1090,7 +1090,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-1, -9)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-1, -9)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1128,7 +1128,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-7, -9)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-7, -9)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1166,7 +1166,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -5)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -5)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1204,7 +1204,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-6, 4)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-6, 4)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1242,7 +1242,7 @@
    "axis",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(9, 6)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(9, 6)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1546,7 +1546,7 @@
    "sign",
    null
   ],
-  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b < 0$ makes both negative. So the point $(a, b)$ has signs $(-, -)$: the third quadrant.",
+  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b < 0$ makes both negative. So the point $(a, b)$ has signs $(-, -)$ and lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1584,7 +1584,7 @@
    null,
    "sign"
   ],
-  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1622,7 +1622,7 @@
    null,
    "sign"
   ],
-  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1660,7 +1660,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1698,7 +1698,7 @@
    "sign",
    null
   ],
-  "solution": "$a < 0$ and $ab > 0$ give $b < 0$. So the point $(a, b)$ has signs $(-, -)$: the third quadrant.",
+  "solution": "$a < 0$ and $ab > 0$ give $b < 0$. So the point $(a, b)$ has signs $(-, -)$ and lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1736,7 +1736,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b > 0$ makes both positive. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b > 0$ makes both positive. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1774,7 +1774,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$a < 0$ and $ab < 0$ give $b > 0$. So the point $(b, a)$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "$a < 0$ and $ab < 0$ give $b > 0$. So the point $(b, a)$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1812,7 +1812,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-x > 0$ and $3y > 0$, so $Q$ has signs $(+, +)$: the first quadrant.",
+  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-x > 0$ and $3y > 0$, so $Q$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1850,7 +1850,7 @@
    null,
    "sign"
   ],
-  "solution": "In the fourth quadrant $x > 0$ and $y < 0$. Then $3x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the fourth quadrant $x > 0$ and $y < 0$. Then $3x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1888,7 +1888,7 @@
    "sign",
    null
   ],
-  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $3y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $3y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1926,7 +1926,7 @@
    "sign",
    null
   ],
-  "solution": "In the first quadrant $x > 0$ and $y > 0$. Then $3x > 0$ and $-2y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the first quadrant $x > 0$ and $y > 0$. Then $3x > 0$ and $-2y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1964,7 +1964,7 @@
    null,
    "sign"
   ],
-  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-3y < 0$ and $2x < 0$, so $Q$ has signs $(-, -)$: the third quadrant.",
+  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-3y < 0$ and $2x < 0$, so $Q$ has signs $(-, -)$ and lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2002,7 +2002,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2040,7 +2040,7 @@
    "swap",
    "sign"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $y$-axis is $(-2, 3)$” — reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The point symmetric to $P$ about the $x$-axis is $(-2, 3)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(2, -3)$. “The point symmetric to $P$ about the origin is $(3, 2)$” is false: that swaps the coordinates; about the origin the point is $(-2, -3)$. “$P$ lies in the third quadrant” is false: its signs are $(+, +)$, so it lies in the first quadrant.",
+  "solution": "“The point symmetric to $P$ about the $y$-axis is $(-2, 3)$” is correct. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The point symmetric to $P$ about the $x$-axis is $(-2, 3)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(2, -3)$. The point $(-2, 3)$ is the reflection in the $y$-axis. “The point symmetric to $P$ about the origin is $(3, 2)$” is incorrect. Reflection in the origin changes both signs, which gives $(-2, -3)$. Swapping the coordinates is a different operation. “$P$ lies in the third quadrant” is incorrect. Its signs are $(+, +)$, so it lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2078,7 +2078,7 @@
    "swap",
    "axis"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $x$-axis is $(4, -1)$” — reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $y$-axis is $(4, -1)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-4, 1)$. “The point symmetric to $P$ about the origin is $(1, 4)$” is false: that swaps the coordinates; about the origin the point is $(-4, -1)$. “The point symmetric to $P$ about the $x$-axis is $(-4, 1)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(4, -1)$.",
+  "solution": "“The point symmetric to $P$ about the $x$-axis is $(4, -1)$” is correct. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $y$-axis is $(4, -1)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-4, 1)$. The point $(4, -1)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the origin is $(1, 4)$” is incorrect. Reflection in the origin changes both signs, which gives $(-4, -1)$. Swapping the coordinates is a different operation. “The point symmetric to $P$ about the $x$-axis is $(-4, 1)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(4, -1)$. The point $(-4, 1)$ is the reflection in the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2116,7 +2116,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $7$” — the distance to the $x$-axis is $|y|$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-2, 7)$. “The point symmetric to $P$ about the $x$-axis is $(-2, 7)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(2, -7)$. “The distance from $P$ to the $x$-axis is $2$” is false: the distance to the $x$-axis is $|y| = 7$; $|x|$ is the distance to the $y$-axis.",
+  "solution": "“The distance from $P$ to the $x$-axis is $7$” is correct. The distance to the $x$-axis is $|y| = 7$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-2, 7)$. The point $(2, -7)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the $x$-axis is $(-2, 7)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(2, -7)$. The point $(-2, 7)$ is the reflection in the $y$-axis. “The distance from $P$ to the $x$-axis is $2$” is incorrect. The distance to the $x$-axis is $|y| = 7$. The number $2$ is the distance to the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2154,7 +2154,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “$P$ lies in the fourth quadrant” — its signs are $(+, -)$. “The point symmetric to $P$ about the $y$-axis is $(3, 4)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-3, -4)$. “The point symmetric to $P$ about the origin is $(-4, 3)$” is false: that swaps the coordinates; about the origin the point is $(-3, 4)$. “The distance from $P$ to the $x$-axis is $3$” is false: the distance to the $x$-axis is $|y| = 4$; $|x|$ is the distance to the $y$-axis.",
+  "solution": "“$P$ lies in the fourth quadrant” is correct. Its signs are $(+, -)$. “The point symmetric to $P$ about the $y$-axis is $(3, 4)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-3, -4)$. The point $(3, 4)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the origin is $(-4, 3)$” is incorrect. Reflection in the origin changes both signs, which gives $(-3, 4)$. Swapping the coordinates is a different operation. “The distance from $P$ to the $x$-axis is $3$” is incorrect. The distance to the $x$-axis is $|y| = 4$. The number $3$ is the distance to the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2192,7 +2192,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $7$” — the distance to the $x$-axis is $|y|$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-2, 7)$. “The point symmetric to $P$ about the origin is $(7, 2)$” is false: that swaps the coordinates; about the origin the point is $(-2, -7)$. “The point $(-2, 7)$ lies in the first quadrant” is false: changing the sign of $x$ moves it to the second quadrant.",
+  "solution": "“The distance from $P$ to the $x$-axis is $7$” is correct. The distance to the $x$-axis is $|y| = 7$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-2, 7)$. The point $(2, -7)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the origin is $(7, 2)$” is incorrect. Reflection in the origin changes both signs, which gives $(-2, -7)$. Swapping the coordinates is a different operation. “The point $(-2, 7)$ lies in the first quadrant” is incorrect. Its signs are $(-, +)$, so it lies in the second quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2230,7 +2230,7 @@
    "axis",
    "axis"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $x$-axis is $(-1, 7)$” — reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $x$-axis is $(1, -7)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-1, 7)$. “The distance from $P$ to the $x$-axis is $1$” is false: the distance to the $x$-axis is $|y| = 7$; $|x|$ is the distance to the $y$-axis. “The point symmetric to $P$ about the $y$-axis is $(-1, 7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(1, -7)$.",
+  "solution": "“The point symmetric to $P$ about the $x$-axis is $(-1, 7)$” is correct. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $x$-axis is $(1, -7)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-1, 7)$. The point $(1, -7)$ is the reflection in the $y$-axis. “The distance from $P$ to the $x$-axis is $1$” is incorrect. The distance to the $x$-axis is $|y| = 7$. The number $1$ is the distance to the $y$-axis. “The point symmetric to $P$ about the $y$-axis is $(-1, 7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(1, -7)$. The point $(-1, 7)$ is the reflection in the $x$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2268,7 +2268,7 @@
    "sign",
    "swap"
   ],
-  "solution": "The correct statement is “$P$ lies in the fourth quadrant” — its signs are $(+, -)$. “$P$ lies in the first quadrant” is false: its signs are $(+, -)$, so it lies in the fourth quadrant. “The point symmetric to $P$ about the $x$-axis is $(-5, -6)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(5, 6)$. “The point symmetric to $P$ about the origin is $(-6, 5)$” is false: that swaps the coordinates; about the origin the point is $(-5, 6)$.",
+  "solution": "“$P$ lies in the fourth quadrant” is correct. Its signs are $(+, -)$. “$P$ lies in the first quadrant” is incorrect. Its signs are $(+, -)$, so it lies in the fourth quadrant. “The point symmetric to $P$ about the $x$-axis is $(-5, -6)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(5, 6)$. The point $(-5, -6)$ is the reflection in the $y$-axis. “The point symmetric to $P$ about the origin is $(-6, 5)$” is incorrect. Reflection in the origin changes both signs, which gives $(-5, 6)$. Swapping the coordinates is a different operation.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2306,7 +2306,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $y$-axis is $(7, 4)$” — reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “$P$ lies in the first quadrant” is false: its signs are $(-, +)$, so it lies in the second quadrant. “The point symmetric to $P$ about the $x$-axis is $(7, 4)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-7, -4)$. “The distance from $P$ to the $x$-axis is $7$” is false: the distance to the $x$-axis is $|y| = 4$; $|x|$ is the distance to the $y$-axis.",
+  "solution": "“The point symmetric to $P$ about the $y$-axis is $(7, 4)$” is correct. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “$P$ lies in the first quadrant” is incorrect. Its signs are $(-, +)$, so it lies in the second quadrant. “The point symmetric to $P$ about the $x$-axis is $(7, 4)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-7, -4)$. The point $(7, 4)$ is the reflection in the $y$-axis. “The distance from $P$ to the $x$-axis is $7$” is incorrect. The distance to the $x$-axis is $|y| = 4$. The number $7$ is the distance to the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2344,7 +2344,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $2$” — the distance to the $x$-axis is $|y|$. “The point $(3, -2)$ lies in the third quadrant” is false: changing the sign of $x$ moves it to the fourth quadrant. “$P$ lies in the first quadrant” is false: its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $x$-axis is $(3, -2)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-3, 2)$.",
+  "solution": "“The distance from $P$ to the $x$-axis is $2$” is correct. The distance to the $x$-axis is $|y| = 2$. “The point $(3, -2)$ lies in the third quadrant” is incorrect. Its signs are $(+, -)$, so it lies in the fourth quadrant. “$P$ lies in the first quadrant” is incorrect. Its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $x$-axis is $(3, -2)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-3, 2)$. The point $(3, -2)$ is the reflection in the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2382,7 +2382,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $y$-axis is $(1, 4)$” — reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The distance from $P$ to the $x$-axis is $1$” is false: the distance to the $x$-axis is $|y| = 4$; $|x|$ is the distance to the $y$-axis. “The point symmetric to $P$ about the origin is $(4, -1)$” is false: that swaps the coordinates; about the origin the point is $(1, -4)$. “The point $(1, 4)$ lies in the second quadrant” is false: changing the sign of $x$ moves it to the first quadrant.",
+  "solution": "“The point symmetric to $P$ about the $y$-axis is $(1, 4)$” is correct. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The distance from $P$ to the $x$-axis is $1$” is incorrect. The distance to the $x$-axis is $|y| = 4$. The number $1$ is the distance to the $y$-axis. “The point symmetric to $P$ about the origin is $(4, -1)$” is incorrect. Reflection in the origin changes both signs, which gives $(1, -4)$. Swapping the coordinates is a different operation. “The point $(1, 4)$ lies in the second quadrant” is incorrect. Its signs are $(+, +)$, so it lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2420,7 +2420,7 @@
    "swap",
    "sign"
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $2$” — the distance to the $x$-axis is $|y|$. “The point symmetric to $P$ about the origin is $(-2, 4)$” is false: that swaps the coordinates; about the origin the point is $(-4, 2)$. “The point symmetric to $P$ about the $y$-axis is $(4, 2)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-4, -2)$. “The point $(-4, -2)$ lies in the fourth quadrant” is false: changing the sign of $x$ moves it to the third quadrant.",
+  "solution": "“The distance from $P$ to the $x$-axis is $2$” is correct. The distance to the $x$-axis is $|y| = 2$. “The point symmetric to $P$ about the origin is $(-2, 4)$” is incorrect. Reflection in the origin changes both signs, which gives $(-4, 2)$. Swapping the coordinates is a different operation. “The point symmetric to $P$ about the $y$-axis is $(4, 2)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-4, -2)$. The point $(4, 2)$ is the reflection in the $x$-axis. “The point $(-4, -2)$ lies in the fourth quadrant” is incorrect. Its signs are $(-, -)$, so it lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2458,7 +2458,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “$P$ lies in the third quadrant” — its signs are $(-, -)$. “The point symmetric to $P$ about the origin is $(-7, -4)$” is false: that swaps the coordinates; about the origin the point is $(4, 7)$. “$P$ lies in the second quadrant” is false: its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $y$-axis is $(-4, 7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(4, -7)$.",
+  "solution": "“$P$ lies in the third quadrant” is correct. Its signs are $(-, -)$. “The point symmetric to $P$ about the origin is $(-7, -4)$” is incorrect. Reflection in the origin changes both signs, which gives $(4, 7)$. Swapping the coordinates is a different operation. “$P$ lies in the second quadrant” is incorrect. Its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $y$-axis is $(-4, 7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(4, -7)$. The point $(-4, 7)$ is the reflection in the $x$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2496,7 +2496,7 @@
    null,
    "axis"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $x$-axis is $(-1, 3)$” — reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the origin is $(-3, -1)$” is false: that swaps the coordinates; about the origin the point is $(1, 3)$. “The point symmetric to $P$ about the $y$-axis is $(-1, 3)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(1, -3)$. “The point symmetric to $P$ about the $x$-axis is $(1, -3)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-1, 3)$.",
+  "solution": "“The point symmetric to $P$ about the $x$-axis is $(-1, 3)$” is correct. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the origin is $(-3, -1)$” is incorrect. Reflection in the origin changes both signs, which gives $(1, 3)$. Swapping the coordinates is a different operation. “The point symmetric to $P$ about the $y$-axis is $(-1, 3)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(1, -3)$. The point $(-1, 3)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the $x$-axis is $(1, -3)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-1, 3)$. The point $(1, -3)$ is the reflection in the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",

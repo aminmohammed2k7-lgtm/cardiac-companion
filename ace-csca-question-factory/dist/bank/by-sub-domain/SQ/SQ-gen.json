@@ -26,7 +26,7 @@
    "off-by-one",
    "operation"
   ],
-  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{4^{n}}$. Sign: the first term is positive, so use $(-1)^{n-1}$. Hence $a_n = \\dfrac{(-1)^{n-1}}{4^{n}}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{4^{n}}$. Sign: the first term is positive, so use $(-1)^{n-1}$. Hence $a_n = \\dfrac{(-1)^{n-1}}{4^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $\\dfrac{1}{4}$ and $-\\dfrac{1}{16}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -64,7 +64,7 @@
    "off-by-one",
    "sign"
   ],
-  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{4^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{4^{n}}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{4^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{4^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $-\\dfrac{1}{4}$ and $\\dfrac{1}{16}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -102,7 +102,7 @@
    "operation",
    "off-by-one"
   ],
-  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is positive, so use $(-1)^{n-1}$. Hence $a_n = (-1)^{n-1} \\cdot 3^{n}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is positive, so use $(-1)^{n-1}$. Hence $a_n = (-1)^{n-1} \\cdot 3^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $3$ and $-9$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -140,7 +140,7 @@
    null,
    "operation"
   ],
-  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{5^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{5^{n}}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{5^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{5^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $-\\dfrac{1}{5}$ and $\\dfrac{1}{25}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -178,7 +178,7 @@
    null,
    "sign"
   ],
-  "solution": "Separate the sign and the size. Size: $2^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 2^{n}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $2^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 2^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $-2$ and $4$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -216,7 +216,7 @@
    "operation",
    null
   ],
-  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{2^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{2^{n}}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{2^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{2^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $-\\dfrac{1}{2}$ and $\\dfrac{1}{4}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -254,7 +254,7 @@
    "operation",
    "sign"
   ],
-  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{2^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{2^{n}}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{2^{n}}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = \\dfrac{(-1)^{n}}{2^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $-\\dfrac{1}{2}$ and $\\dfrac{1}{4}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -292,7 +292,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 3^{n}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 3^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $-3$ and $9$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -330,7 +330,7 @@
    "operation",
    "off-by-one"
   ],
-  "solution": "Separate the sign and the size. Size: $2^{n}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = (-1)^{n+1} \\cdot 2^{n}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $2^{n}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = (-1)^{n+1} \\cdot 2^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $2$ and $-4$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -368,7 +368,7 @@
    "off-by-one",
    "operation"
   ],
-  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = (-1)^{n+1} \\cdot 3^{n}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $3^{n}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = (-1)^{n+1} \\cdot 3^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $3$ and $-9$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -406,7 +406,7 @@
    "sign",
    null
   ],
-  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{5^{n}}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = \\dfrac{(-1)^{n+1}}{5^{n}}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $\\dfrac{1}{5^{n}}$. Sign: the first term is positive, so use $(-1)^{n+1}$. Hence $a_n = \\dfrac{(-1)^{n+1}}{5^{n}}$. Check with $n = 1$ and $n = 2$: the formula gives $\\dfrac{1}{5}$ and $-\\dfrac{1}{25}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -444,7 +444,7 @@
    "near-miss",
    "off-by-one"
   ],
-  "solution": "Denominators $9, 11, 13, 15$ increase by $2$: they are $2n + 7$. The first term is positive: sign $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{2n + 7}$.",
+  "solution": "Denominators $9, 11, 13, 15$ increase by $2$, so they are $2n + 7$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{2n + 7}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -482,7 +482,7 @@
    null,
    "sign"
   ],
-  "solution": "Denominators $7, 9, 11, 13$ increase by $2$: they are $2n + 5$. The first term is negative: sign $(-1)^{n}$. So $a_n = \\dfrac{(-1)^{n}}{2n + 5}$.",
+  "solution": "Denominators $7, 9, 11, 13$ increase by $2$, so they are $2n + 5$. The first term is negative, so the sign factor is $(-1)^{n}$. So $a_n = \\dfrac{(-1)^{n}}{2n + 5}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -520,7 +520,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Denominators $9, 13, 17, 21$ increase by $4$: they are $4n + 5$. The first term is positive: sign $(-1)^{n+1}$. So $a_n = \\dfrac{(-1)^{n+1}}{4n + 5}$.",
+  "solution": "Denominators $9, 13, 17, 21$ increase by $4$, so they are $4n + 5$. The first term is positive, so the sign factor is $(-1)^{n+1}$. So $a_n = \\dfrac{(-1)^{n+1}}{4n + 5}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -558,7 +558,7 @@
    "off-by-one",
    "sign"
   ],
-  "solution": "Denominators $3, 5, 7, 9$ increase by $2$: they are $2n + 1$. The first term is positive: sign $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{2n + 1}$.",
+  "solution": "Denominators $3, 5, 7, 9$ increase by $2$, so they are $2n + 1$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{2n + 1}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -596,7 +596,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "Denominators $7, 9, 11, 13$ increase by $2$: they are $2n + 5$. The first term is positive: sign $(-1)^{n+1}$. So $a_n = \\dfrac{(-1)^{n+1}}{2n + 5}$.",
+  "solution": "Denominators $7, 9, 11, 13$ increase by $2$, so they are $2n + 5$. The first term is positive, so the sign factor is $(-1)^{n+1}$. So $a_n = \\dfrac{(-1)^{n+1}}{2n + 5}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -634,7 +634,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Denominators $8, 11, 14, 17$ increase by $3$: they are $3n + 5$. The first term is positive: sign $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{3n + 5}$.",
+  "solution": "Denominators $8, 11, 14, 17$ increase by $3$, so they are $3n + 5$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = \\dfrac{(-1)^{n-1}}{3n + 5}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -672,7 +672,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Test $n = 1, 2, 3, 4$ in each option: only $2n + 1$ gives $3, 5, 7, 9$. An option that fits $a_1$ alone is not enough.",
+  "solution": "Put $n = 1, 2, 3, 4$ into each option. Only $2n + 1$ gives $3, 5, 7, 9$. For example, $2^{n} + 1$ gives $9$ at $n = 3$ instead of $7$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -710,7 +710,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test $n = 1, 2, 3, 4$ in each option: only $n^3$ gives $1, 8, 27, 64$. An option that fits $a_1$ alone is not enough.",
+  "solution": "Put $n = 1, 2, 3, 4$ into each option. Only $n^3$ gives $1, 8, 27, 64$. For example, $2^{n-1}$ gives $2$ at $n = 2$ instead of $8$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -748,7 +748,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test $n = 1, 2, 3, 4$ in each option: only $2^{n} + 1$ gives $3, 5, 9, 17$. An option that fits $a_1$ alone is not enough.",
+  "solution": "Put $n = 1, 2, 3, 4$ into each option. Only $2^{n} + 1$ gives $3, 5, 9, 17$. For example, $3n - 1$ gives $2$ at $n = 1$ instead of $3$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -786,7 +786,7 @@
    "near-miss",
    "reciprocal"
   ],
-  "solution": "Treat the three parts separately. Numerators: $1, 3, 5, 7$, i.e. $2n - 1$. Denominators: $2, 4, 6, 8$, i.e. $2n$. Sign: the first term is positive, $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{2n - 1}{2n}$.",
+  "solution": "Treat the three parts separately. Numerators: $1, 3, 5, 7$, that is $2n - 1$. Denominators: $2, 4, 6, 8$, that is $2n$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{2n - 1}{2n}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -824,7 +824,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, i.e. $n$. Denominators: $2, 3, 4, 5$, i.e. $n + 1$. Sign: the first term is negative, $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n}{n + 1}$.",
+  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, that is $n$. Denominators: $2, 3, 4, 5$, that is $n + 1$. The first term is negative, so the sign factor is $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n}{n + 1}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -862,7 +862,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Treat the three parts separately. Numerators: $2, 3, 4, 5$, i.e. $n + 1$. Denominators: $3, 5, 7, 9$, i.e. $2n + 1$. Sign: the first term is positive, $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{n + 1}{2n + 1}$.",
+  "solution": "Treat the three parts separately. Numerators: $2, 3, 4, 5$, that is $n + 1$. Denominators: $3, 5, 7, 9$, that is $2n + 1$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{n + 1}{2n + 1}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -900,7 +900,7 @@
    "near-miss",
    null
   ],
-  "solution": "Treat the three parts separately. Numerators: $2, 3, 4, 5$, i.e. $n + 1$. Denominators: $3, 5, 7, 9$, i.e. $2n + 1$. Sign: the first term is negative, $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n + 1}{2n + 1}$.",
+  "solution": "Treat the three parts separately. Numerators: $2, 3, 4, 5$, that is $n + 1$. Denominators: $3, 5, 7, 9$, that is $2n + 1$. The first term is negative, so the sign factor is $(-1)^{n}$. So $a_n = (-1)^{n} \\cdot \\dfrac{n + 1}{2n + 1}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -938,7 +938,7 @@
    "reciprocal",
    null
   ],
-  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, i.e. $n$. Denominators: $3, 5, 7, 9$, i.e. $2n + 1$. Sign: the first term is positive, $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{n}{2n + 1}$.",
+  "solution": "Treat the three parts separately. Numerators: $1, 2, 3, 4$, that is $n$. Denominators: $3, 5, 7, 9$, that is $2n + 1$. The first term is positive, so the sign factor is $(-1)^{n-1}$. So $a_n = (-1)^{n-1} \\cdot \\dfrac{n}{2n + 1}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",

@@ -748,7 +748,7 @@
    null,
    "sign"
   ],
-  "solution": "In the second quadrant the sine is positive: $\\sin\\alpha = \\dfrac{3}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{3}{5} \\cdot \\left(-\\dfrac{4}{5}\\right) = -\\dfrac{24}{25}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{3}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{3}{5} \\cdot \\left(-\\dfrac{4}{5}\\right) = -\\dfrac{24}{25}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -775,18 +775,18 @@
   "stem": "If $\\sin\\alpha = -\\dfrac{5}{13}$ and $\\alpha$ is in the fourth quadrant, then $\\sin 2\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{60}{169}$",
-   "$\\dfrac{119}{169}$",
+   "$\\dfrac{120}{169}$",
    "$-\\dfrac{120}{169}$",
-   "$\\dfrac{120}{169}$"
+   "$\\dfrac{119}{169}$"
   ],
   "answer": 2,
   "traps": [
    "partial",
-   "companion",
+   "sign",
    null,
-   "sign"
+   "companion"
   ],
-  "solution": "In the fourth quadrant the cosine is positive: $\\cos\\alpha = \\dfrac{12}{13}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{5}{13}\\right) \\cdot \\dfrac{12}{13} = -\\dfrac{120}{169}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$. In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{12}{13}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{5}{13}\\right) \\cdot \\dfrac{12}{13} = -\\dfrac{120}{169}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -810,21 +810,21 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{8}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{8}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
   "options": [
    "$\\dfrac{240}{289}$",
+   "$-\\dfrac{240}{289}$",
    "$-\\dfrac{161}{289}$",
-   "$\\dfrac{120}{289}$",
-   "$-\\dfrac{240}{289}$"
+   "$\\dfrac{120}{289}$"
   ],
   "answer": 0,
   "traps": [
    null,
+   "sign",
    "companion",
-   "partial",
-   "sign"
+   "partial"
   ],
-  "solution": "In the first quadrant the sine is positive: $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{15}{17} \\cdot \\dfrac{8}{17} = \\dfrac{240}{289}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the first quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{15}{17} \\cdot \\dfrac{8}{17} = \\dfrac{240}{289}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -848,21 +848,21 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "If $\\sin\\alpha = \\dfrac{15}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{15}{17}$ and $\\alpha$ is in the first quadrant, then $\\sin 2\\alpha =$ ( )",
   "options": [
    "$\\dfrac{240}{289}$",
-   "$-\\dfrac{161}{289}$",
    "$-\\dfrac{240}{289}$",
-   "$\\dfrac{120}{289}$"
+   "$\\dfrac{120}{289}$",
+   "$-\\dfrac{161}{289}$"
   ],
   "answer": 0,
   "traps": [
    null,
-   "companion",
    "sign",
-   "partial"
+   "partial",
+   "companion"
   ],
-  "solution": "In the first quadrant the cosine is positive: $\\cos\\alpha = \\dfrac{8}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{15}{17} \\cdot \\dfrac{8}{17} = \\dfrac{240}{289}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$. In the first quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{8}{17}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{15}{17} \\cdot \\dfrac{8}{17} = \\dfrac{240}{289}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -888,19 +888,19 @@
   "trick": null,
   "stem": "If $\\cos\\alpha = \\dfrac{4}{5}$ and $\\alpha$ is in the first quadrant, then $\\sin 2\\alpha =$ ( )",
   "options": [
-   "$\\dfrac{7}{25}$",
    "$\\dfrac{12}{25}$",
+   "$\\dfrac{7}{25}$",
    "$\\dfrac{24}{25}$",
    "$-\\dfrac{24}{25}$"
   ],
   "answer": 2,
   "traps": [
-   "companion",
    "partial",
+   "companion",
    null,
    "sign"
   ],
-  "solution": "In the first quadrant the sine is positive: $\\sin\\alpha = \\dfrac{3}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{3}{5} \\cdot \\dfrac{4}{5} = \\dfrac{24}{25}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{16}{25} = \\dfrac{9}{25}$. In the first quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{3}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{3}{5} \\cdot \\dfrac{4}{5} = \\dfrac{24}{25}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -924,21 +924,21 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\sin 2\\alpha =$ ( )",
   "options": [
-   "$-\\dfrac{120}{169}$",
-   "$-\\dfrac{119}{169}$",
    "$\\dfrac{60}{169}$",
+   "$-\\dfrac{119}{169}$",
+   "$-\\dfrac{120}{169}$",
    "$\\dfrac{120}{169}$"
   ],
   "answer": 3,
   "traps": [
-   "sign",
-   "companion",
    "partial",
+   "companion",
+   "sign",
    null
   ],
-  "solution": "In the first quadrant the sine is positive: $\\sin\\alpha = \\dfrac{12}{13}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{12}{13} \\cdot \\dfrac{5}{13} = \\dfrac{120}{169}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$. In the first quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{12}{13}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{12}{13} \\cdot \\dfrac{5}{13} = \\dfrac{120}{169}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -976,7 +976,7 @@
    "partial",
    "companion"
   ],
-  "solution": "$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot \\dfrac{5}{6} - 1 = \\dfrac{2}{3}$. The given value is already the square: squaring it again gives the trap answer $\\dfrac{7}{18}$.",
+  "solution": "$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot \\dfrac{5}{6} - 1 = \\dfrac{2}{3}$. The given number is already $\\cos^2\\alpha$, so it must not be squared again. Squaring it would give $\\dfrac{7}{18}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1014,7 +1014,7 @@
    "old-answer",
    null
   ],
-  "solution": "$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot \\dfrac{1}{4} - 1 = -\\dfrac{1}{2}$. The given value is already the square: squaring it again gives the trap answer $-\\dfrac{7}{8}$.",
+  "solution": "$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot \\dfrac{1}{4} - 1 = -\\dfrac{1}{2}$. The given number is already $\\cos^2\\alpha$, so it must not be squared again. Squaring it would give $-\\dfrac{7}{8}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1052,7 +1052,7 @@
    "partial",
    "companion"
   ],
-  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{1}{8} = \\dfrac{3}{4}$. The given value is already the square: squaring it again gives the trap answer $\\dfrac{31}{32}$.",
+  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{1}{8} = \\dfrac{3}{4}$. The given number is already $\\sin^2\\alpha$, so it must not be squared again. Squaring it would give $\\dfrac{31}{32}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1090,7 +1090,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{7}{9} = -\\dfrac{5}{9}$. The given value is already the square: squaring it again gives the trap answer $-\\dfrac{17}{81}$.",
+  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{7}{9} = -\\dfrac{5}{9}$. The given number is already $\\sin^2\\alpha$, so it must not be squared again. Squaring it would give $-\\dfrac{17}{81}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1128,7 +1128,7 @@
    "old-answer",
    "partial"
   ],
-  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{5}{9} = -\\dfrac{1}{9}$. The given value is already the square: squaring it again gives the trap answer $\\dfrac{31}{81}$.",
+  "solution": "$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot \\dfrac{5}{9} = -\\dfrac{1}{9}$. The given number is already $\\sin^2\\alpha$, so it must not be squared again. Squaring it would give $\\dfrac{31}{81}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1152,7 +1152,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{5}{13}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
   "options": [
    "$\\dfrac{120}{169}$",
    "$\\dfrac{12}{5}$",
@@ -1166,7 +1166,7 @@
    "reciprocal",
    "partial"
   ],
-  "solution": "Simplify first: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. With $\\alpha$ acute, $\\sin\\alpha = \\dfrac{12}{13}$, so the value is $\\dfrac{12}{5}$.",
+  "solution": "Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$. Since $\\alpha$ is acute the sine is positive, so $\\sin\\alpha = \\dfrac{12}{13}$. So $\\tan\\alpha = \\dfrac{12}{5}$ and the value is $\\dfrac{12}{5}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1190,7 +1190,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{8}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{8}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} =$ ( )",
   "options": [
    "$\\dfrac{8}{15}$",
    "$\\dfrac{15}{8}$",
@@ -1204,7 +1204,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Simplify first: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. With $\\alpha$ acute, $\\sin\\alpha = \\dfrac{15}{17}$, so the value is $\\dfrac{15}{8}$.",
+  "solution": "Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $\\dfrac{\\sin 2\\alpha}{1 + \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\cos^2\\alpha} = \\tan\\alpha$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. Since $\\alpha$ is acute the sine is positive, so $\\sin\\alpha = \\dfrac{15}{17}$. So $\\tan\\alpha = \\dfrac{15}{8}$ and the value is $\\dfrac{15}{8}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1228,7 +1228,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = \\dfrac{15}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 - \\cos 2\\alpha} =$ ( )",
+  "stem": "If $\\sin\\alpha = \\dfrac{15}{17}$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $\\dfrac{\\sin 2\\alpha}{1 - \\cos 2\\alpha} =$ ( )",
   "options": [
    "$\\dfrac{240}{289}$",
    "$\\dfrac{15}{8}$",
@@ -1242,7 +1242,7 @@
    "partial",
    null
   ],
-  "solution": "Simplify first: $\\dfrac{\\sin 2\\alpha}{1 - \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\sin^2\\alpha} = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$. With $\\alpha$ acute, $\\cos\\alpha = \\dfrac{8}{17}$, so the value is $\\dfrac{8}{15}$.",
+  "solution": "Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $\\dfrac{\\sin 2\\alpha}{1 - \\cos 2\\alpha} = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\sin^2\\alpha} = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{225}{289} = \\dfrac{64}{289}$. Since $\\alpha$ is acute the cosine is positive, so $\\cos\\alpha = \\dfrac{8}{17}$. So $\\tan\\alpha = \\dfrac{15}{8}$ and the value is $\\dfrac{8}{15}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1266,27 +1266,27 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = -\\dfrac{2\\sqrt{5}}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin 2\\alpha =$ ( )",
+  "stem": "If $\\cos\\alpha = -\\dfrac{2\\sqrt{5}}{5}$ and $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$, then $\\sin 2\\alpha =$ ( )",
   "options": [
+   "$-\\dfrac{2}{5}$",
    "$\\dfrac{4}{5}$",
    "$\\dfrac{3}{5}$",
-   "$-\\dfrac{2}{5}$",
    "$-\\dfrac{4}{5}$"
   ],
   "answer": 3,
   "traps": [
+   "partial",
    "sign",
    "companion",
-   "partial",
    null
   ],
-  "solution": "In the second quadrant the sine is positive: $\\sin\\alpha = \\dfrac{\\sqrt{5}}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{\\sqrt{5}}{5} \\cdot \\left(-\\dfrac{2\\sqrt{5}}{5}\\right) = -\\dfrac{4}{5}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{4}{5} = \\dfrac{1}{5}$. In the second quadrant the sine is positive, so $\\sin\\alpha = \\dfrac{\\sqrt{5}}{5}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\dfrac{\\sqrt{5}}{5} \\cdot \\left(-\\dfrac{2\\sqrt{5}}{5}\\right) = -\\dfrac{4}{5}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
   "template": "TR-dbl.sin2-surd",
   "seed": "bank:1:TR-dbl.sin2-surd:0",
-  "form": "sin 2α with a surd ratio and a QII–QIV sign",
+  "form": "sin 2α with a surd ratio and a QII-QIV sign",
   "answer_letter": "D",
   "answer_value": "$-\\dfrac{4}{5}$",
   "verified": "val"
@@ -1306,25 +1306,25 @@
   "trick": null,
   "stem": "If $\\sin\\alpha = -\\dfrac{\\sqrt{7}}{4}$ and $\\alpha$ is in the fourth quadrant, then $\\sin 2\\alpha =$ ( )",
   "options": [
-   "$\\dfrac{1}{8}$",
    "$-\\dfrac{3\\sqrt{7}}{16}$",
+   "$\\dfrac{3\\sqrt{7}}{8}$",
    "$-\\dfrac{3\\sqrt{7}}{8}$",
-   "$\\dfrac{3\\sqrt{7}}{8}$"
+   "$\\dfrac{1}{8}$"
   ],
   "answer": 2,
   "traps": [
-   "companion",
    "partial",
+   "sign",
    null,
-   "sign"
+   "companion"
   ],
-  "solution": "In the fourth quadrant the cosine is positive: $\\cos\\alpha = \\dfrac{3}{4}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{\\sqrt{7}}{4}\\right) \\cdot \\dfrac{3}{4} = -\\dfrac{3\\sqrt{7}}{8}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{7}{16} = \\dfrac{9}{16}$. In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{3}{4}$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{\\sqrt{7}}{4}\\right) \\cdot \\dfrac{3}{4} = -\\dfrac{3\\sqrt{7}}{8}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
   "template": "TR-dbl.sin2-surd",
   "seed": "bank:1:TR-dbl.sin2-surd:1",
-  "form": "sin 2α with a surd ratio and a QII–QIV sign",
+  "form": "sin 2α with a surd ratio and a QII-QIV sign",
   "answer_letter": "C",
   "answer_value": "$-\\dfrac{3\\sqrt{7}}{8}$",
   "verified": "val"
@@ -1342,7 +1342,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the fourth quadrant, then $\\tan 2\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\alpha$ is in the fourth quadrant, then $\\tan 2\\alpha =$ ( )",
   "options": [
    "$-\\dfrac{240}{161}$",
    "$-\\dfrac{16}{15}$",
@@ -1356,7 +1356,7 @@
    "sign",
    "sign"
   ],
-  "solution": "From the quadrant, $\\sin\\alpha = -\\dfrac{8}{17}$ and $\\cos\\alpha = \\dfrac{15}{17}$, so $\\tan\\alpha = -\\dfrac{8}{15}$. $\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{-\\dfrac{16}{15}}{1 - \\dfrac{64}{225}} = -\\dfrac{240}{161}$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{64}{289} = \\dfrac{225}{289}$. In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{15}{17}$. So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = -\\dfrac{8}{15}$. Then $\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{-\\dfrac{16}{15}}{1 - \\dfrac{64}{225}} = \\dfrac{-\\dfrac{16}{15}}{\\dfrac{161}{225}} = \\dfrac{-240}{161} = -\\dfrac{240}{161}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1394,7 +1394,7 @@
    "partial",
    null
   ],
-  "solution": "Square both sides: $(\\sin\\alpha + \\cos\\alpha)^2 = 1 + 2\\sin\\alpha\\cos\\alpha = 1 + \\sin 2\\alpha = \\dfrac{25}{16}$. So $\\sin 2\\alpha = \\dfrac{9}{16}$.",
+  "solution": "Square both sides: $(\\sin\\alpha + \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha + 2\\sin\\alpha\\cos\\alpha = 1 + \\sin 2\\alpha$, so $1 + \\sin 2\\alpha = \\dfrac{25}{16}$. Therefore $\\sin 2\\alpha = \\dfrac{25}{16} - 1 = \\dfrac{9}{16}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1418,7 +1418,7 @@
   "points": 2.5,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha + \\cos\\alpha = \\dfrac{7}{13}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos 2\\alpha =$ ( )",
+  "stem": "If $\\sin\\alpha + \\cos\\alpha = \\dfrac{7}{13}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, then $\\cos 2\\alpha =$ ( )",
   "options": [
    "$\\dfrac{119}{169}$",
    "$-\\dfrac{119}{169}$",
@@ -1432,7 +1432,7 @@
    "pm",
    "companion"
   ],
-  "solution": "Square: $1 + \\sin 2\\alpha = \\dfrac{49}{169}$, so $\\sin 2\\alpha = -\\dfrac{120}{169}$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - \\sin 2\\alpha = \\dfrac{289}{169}$; in the fourth quadrant $\\sin\\alpha < 0 < \\cos\\alpha$, so $\\sin\\alpha - \\cos\\alpha = -\\dfrac{17}{13}$. Finally $\\cos 2\\alpha = (\\cos\\alpha - \\sin\\alpha)(\\cos\\alpha + \\sin\\alpha) = \\dfrac{17}{13} \\cdot \\dfrac{7}{13} = \\dfrac{119}{169}$.",
+  "solution": "Square both sides: $1 + \\sin 2\\alpha = \\dfrac{49}{169}$, so $\\sin 2\\alpha = -\\dfrac{120}{169}$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - \\sin 2\\alpha = \\dfrac{289}{169}$. In the fourth quadrant $\\sin\\alpha < 0 < \\cos\\alpha$, so $\\sin\\alpha - \\cos\\alpha = -\\dfrac{17}{13}$. Finally $\\cos 2\\alpha = (\\cos\\alpha - \\sin\\alpha)(\\cos\\alpha + \\sin\\alpha) = \\dfrac{17}{13} \\cdot \\dfrac{7}{13} = \\dfrac{119}{169}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1494,7 +1494,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\cos\\alpha = \\dfrac{24}{25}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\cos\\alpha = \\dfrac{24}{25}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\cos 2\\alpha = -\\dfrac{527}{625}$",
    "$\\cos 2\\alpha = \\dfrac{527}{625}$",
@@ -1508,7 +1508,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "Here $\\sin\\alpha = -\\dfrac{7}{25}$ and $\\cos\\alpha = \\dfrac{24}{25}$. The correct statement is $\\cos 2\\alpha = \\dfrac{527}{625}$ — $\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha$. $\\tan 2\\alpha = -\\dfrac{527}{336}$ is false: that is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$. $\\cos 2\\alpha = -\\dfrac{527}{625}$ is false: that is $\\sin^2\\alpha - \\cos^2\\alpha$. $\\sin 2\\alpha = \\dfrac{336}{625}$ is false: the sign is wrong: use the signs of $\\sin\\alpha$ and $\\cos\\alpha$ in this quadrant.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - \\dfrac{576}{625} = \\dfrac{49}{625}$. In the fourth quadrant the sine is negative, so $\\sin\\alpha = -\\dfrac{7}{25}$. $\\cos 2\\alpha = \\dfrac{527}{625}$ is correct. $\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha = \\dfrac{576}{625} - \\dfrac{49}{625} = \\dfrac{527}{625}$. $\\tan 2\\alpha = -\\dfrac{527}{336}$ is incorrect. This is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$. In fact $\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha} = -\\dfrac{336}{527}$. $\\cos 2\\alpha = -\\dfrac{527}{625}$ is incorrect. This is $\\sin^2\\alpha - \\cos^2\\alpha$. In fact $\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha = \\dfrac{576}{625} - \\dfrac{49}{625} = \\dfrac{527}{625}$. $\\sin 2\\alpha = \\dfrac{336}{625}$ is incorrect. $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{7}{25}\\right) \\cdot \\dfrac{24}{25} = -\\dfrac{336}{625}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",
@@ -1532,7 +1532,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following is correct? ( )",
+  "stem": "If $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\alpha \\in \\left(\\dfrac{3\\pi}{2}, 2\\pi\\right)$, which of the following is correct? ( )",
   "options": [
    "$\\sin 2\\alpha = \\dfrac{24}{25}$",
    "$\\cos 2\\alpha = -\\dfrac{7}{25}$",
@@ -1546,7 +1546,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Here $\\sin\\alpha = -\\dfrac{3}{5}$ and $\\cos\\alpha = \\dfrac{4}{5}$. The correct statement is $\\tan 2\\alpha = -\\dfrac{24}{7}$ — $\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha}$. $\\tan 2\\alpha = -\\dfrac{7}{24}$ is false: that is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$. $\\sin 2\\alpha = \\dfrac{24}{25}$ is false: the sign is wrong: use the signs of $\\sin\\alpha$ and $\\cos\\alpha$ in this quadrant. $\\cos 2\\alpha = -\\dfrac{7}{25}$ is false: that is $\\sin^2\\alpha - \\cos^2\\alpha$.",
+  "solution": "From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - \\dfrac{9}{25} = \\dfrac{16}{25}$. In the fourth quadrant the cosine is positive, so $\\cos\\alpha = \\dfrac{4}{5}$. $\\tan 2\\alpha = -\\dfrac{24}{7}$ is correct. $\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha} = -\\dfrac{24}{7}$. $\\tan 2\\alpha = -\\dfrac{7}{24}$ is incorrect. This is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$. In fact $\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha} = -\\dfrac{24}{7}$. $\\sin 2\\alpha = \\dfrac{24}{25}$ is incorrect. $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot \\left(-\\dfrac{3}{5}\\right) \\cdot \\dfrac{4}{5} = -\\dfrac{24}{25}$. $\\cos 2\\alpha = -\\dfrac{7}{25}$ is incorrect. This is $\\sin^2\\alpha - \\cos^2\\alpha$. In fact $\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha = \\dfrac{16}{25} - \\dfrac{9}{25} = \\dfrac{7}{25}$.",
   "video": "V16",
   "version": "a",
   "domain": "TR",

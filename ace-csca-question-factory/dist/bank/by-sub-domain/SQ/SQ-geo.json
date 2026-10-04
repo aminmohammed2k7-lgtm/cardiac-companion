@@ -26,7 +26,7 @@
    "companion",
    "off-by-one"
   ],
-  "solution": "The common ratio is $q = \\dfrac{18}{6} = 3$, so $a_n = a_1q^{n-1} = 6 \\cdot 3^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{18}{6} = 3$, so $a_n = a_1q^{n-1} = 6 \\cdot 3^{n-1}$. Check with $n = 1$: the formula gives $6 \\cdot 3^{0} = 6$, the first term. With the exponent $n$ instead of $n - 1$, it would give $18$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -64,7 +64,7 @@
    "swap",
    "off-by-one"
   ],
-  "solution": "The common ratio is $q = \\dfrac{-9}{3} = -3$, so $a_n = a_1q^{n-1} = 3 \\cdot (-3)^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{-9}{3} = -3$, so $a_n = a_1q^{n-1} = 3 \\cdot (-3)^{n-1}$. Check with $n = 1$: the formula gives $3 \\cdot (-3)^{0} = 3$, the first term. With the exponent $n$ instead of $n - 1$, it would give $-9$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -102,7 +102,7 @@
    "companion",
    null
   ],
-  "solution": "The common ratio is $q = \\dfrac{-2}{1} = -2$, so $a_n = a_1q^{n-1} = (-2)^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{-2}{1} = -2$, so $a_n = a_1q^{n-1} = (-2)^{n-1}$. Check with $n = 1$: the formula gives $(-2)^{0} = 1$, the first term. With the exponent $n$ instead of $n - 1$, it would give $-2$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -140,7 +140,7 @@
    "off-by-one",
    null
   ],
-  "solution": "The common ratio is $q = \\dfrac{6}{2} = 3$, so $a_n = a_1q^{n-1} = 2 \\cdot 3^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{6}{2} = 3$, so $a_n = a_1q^{n-1} = 2 \\cdot 3^{n-1}$. Check with $n = 1$: the formula gives $2 \\cdot 3^{0} = 2$, the first term. With the exponent $n$ instead of $n - 1$, it would give $6$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -178,7 +178,7 @@
    null,
    "companion"
   ],
-  "solution": "The common ratio is $q = \\dfrac{-5}{-1} = 5$, so $a_n = a_1q^{n-1} = -5^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{-5}{-1} = 5$, so $a_n = a_1q^{n-1} = -5^{n-1}$. Check with $n = 1$: the formula gives $-5^{0} = -1$, the first term. With the exponent $n$ instead of $n - 1$, it would give $-5$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -216,7 +216,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "The common ratio is $q = \\dfrac{-3}{-1} = 3$, so $a_n = a_1q^{n-1} = -3^{n-1}$. Check $n = 1$: the exponent must be $n - 1$, not $n$.",
+  "solution": "The common ratio is $q = \\dfrac{-3}{-1} = 3$, so $a_n = a_1q^{n-1} = -3^{n-1}$. Check with $n = 1$: the formula gives $-3^{0} = -1$, the first term. With the exponent $n$ instead of $n - 1$, it would give $-3$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -254,7 +254,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 64$, so $q = 4$ (a negative cube root is allowed). Then $a_2 = a_1q^{1} = 24$.",
+  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 64$, so $q = 4$. Then $a_2 = a_1q^{1} = 24$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -292,7 +292,7 @@
    "off-by-one",
    null
   ],
-  "solution": "$q^3 = \\dfrac{a_4}{a_1} = -27$, so $q = -3$ (a negative cube root is allowed). Then $a_3 = a_1q^{2} = -18$.",
+  "solution": "$q^3 = \\dfrac{a_4}{a_1} = -27$, so $q = -3$. Then $a_3 = a_1q^{2} = -18$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -330,7 +330,7 @@
    "companion",
    "sign"
   ],
-  "solution": "$q^3 = \\dfrac{a_4}{a_1} = -27$, so $q = -3$ (a negative cube root is allowed). Then $a_2 = a_1q^{1} = -9$.",
+  "solution": "$q^3 = \\dfrac{a_4}{a_1} = -27$, so $q = -3$. Then $a_2 = a_1q^{1} = -9$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -368,7 +368,7 @@
    null,
    "sign"
   ],
-  "solution": "$q^3 = \\dfrac{a_4}{a_1} = -27$, so $q = -3$ (a negative cube root is allowed). Then $a_2 = a_1q^{1} = -18$.",
+  "solution": "$q^3 = \\dfrac{a_4}{a_1} = -27$, so $q = -3$. Then $a_2 = a_1q^{1} = -18$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -406,7 +406,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 27$, so $q = 3$ (a negative cube root is allowed). Then $a_3 = a_1q^{2} = 54$.",
+  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 27$, so $q = 3$. Then $a_3 = a_1q^{2} = 54$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -444,7 +444,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 27$, so $q = 3$ (a negative cube root is allowed). Then $a_3 = a_1q^{2} = -18$.",
+  "solution": "$q^3 = \\dfrac{a_4}{a_1} = 27$, so $q = 3$. Then $a_3 = a_1q^{2} = -18$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -482,7 +482,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{-8}{64} = -\\dfrac{1}{8}$ and $q = -\\dfrac{1}{2}$. A negative cube keeps its sign.",
+  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{-8}{64} = -\\dfrac{1}{8}$ and $q = -\\dfrac{1}{2}$. The value $\\dfrac{1}{2}$ does not work, because its cube is $\\dfrac{1}{8}$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -520,7 +520,7 @@
    "partial",
    "reciprocal"
   ],
-  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{16}{2} = 8$ and $q = 2$. A negative cube keeps its sign.",
+  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{16}{2} = 8$ and $q = 2$. The value $-2$ does not work, because its cube is $-8$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -558,7 +558,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{-54}{-2} = 27$ and $q = 3$. A negative cube keeps its sign.",
+  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{-54}{-2} = 27$ and $q = 3$. The value $-3$ does not work, because its cube is $-27$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -596,7 +596,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{27}{-1} = -27$ and $q = -3$. A negative cube keeps its sign.",
+  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{27}{-1} = -27$ and $q = -3$. The value $3$ does not work, because its cube is $27$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -634,7 +634,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{1}{8} = \\dfrac{1}{8}$ and $q = \\dfrac{1}{2}$. A negative cube keeps its sign.",
+  "solution": "$a_4 = a_1q^3$, so $q^3 = \\dfrac{1}{8}$ and $q = \\dfrac{1}{2}$. The value $-\\dfrac{1}{2}$ does not work, because its cube is $-\\dfrac{1}{8}$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -772,7 +772,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 7 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 7 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "It is an arithmetic sequence",
    "$a_5 = 7$",
@@ -786,7 +786,7 @@
    null,
    "sign"
   ],
-  "solution": "The terms are $-7, 7, -7, 7, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is “The common ratio is $q = -1$” — each term is the previous one times $-1$. “It is an arithmetic sequence” is false: the differences alternate between $14$ and $-14$. $a_5 = 7$ is false: put $n = 5$ into the formula: $a_5 = -7$. “The first term is $a_1 = 7$” is false: put $n = 1$ into the formula: $a_1 = -7$.",
+  "solution": "The terms are $-7, 7, -7, 7, \\ldots$. “The common ratio is $q = -1$” is correct. Each term is the previous one times $-1$. “It is an arithmetic sequence” is incorrect. The differences alternate between $14$ and $-14$. $a_5 = 7$ is incorrect. Put $n = 5$ into the formula: $a_5 = -7$. “The first term is $a_1 = 7$” is incorrect. Put $n = 1$ into the formula: $a_1 = -7$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -810,7 +810,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 2 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 2 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "$a_4 = 2$",
    "The first term is $a_1 = 2$",
@@ -824,7 +824,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The terms are $-2, 2, -2, 2, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is $a_4 = 2$ — put $n = 4$ into the formula. $S_{50} = 100$ is false: the terms alternate in sign and cancel in pairs: $S_{50} = 0$. $a_5 = 2$ is false: put $n = 5$ into the formula: $a_5 = -2$. “The first term is $a_1 = 2$” is false: put $n = 1$ into the formula: $a_1 = -2$.",
+  "solution": "The terms are $-2, 2, -2, 2, \\ldots$. $a_4 = 2$ is correct. Put $n = 4$ into the formula. $S_{50} = 100$ is incorrect. The terms alternate in sign and cancel in pairs: $S_{50} = 0$. $a_5 = 2$ is incorrect. Put $n = 5$ into the formula: $a_5 = -2$. “The first term is $a_1 = 2$” is incorrect. Put $n = 1$ into the formula: $a_1 = -2$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -848,7 +848,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 4 \\cdot (-1)^{n-1}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 4 \\cdot (-1)^{n-1}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "The first term is $a_1 = -4$",
    "$S_{20} = 4$",
@@ -862,7 +862,7 @@
    "sign",
    null
   ],
-  "solution": "The terms are $4, -4, 4, -4, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is “The common ratio is $q = -1$” — each term is the previous one times $-1$. $S_{20} = 4$ is false: an even number of terms cancels completely: $S_{20} = 0$. “The common ratio is $q = 1$” is false: consecutive terms have opposite signs, so $q = -1$. “The first term is $a_1 = -4$” is false: put $n = 1$ into the formula: $a_1 = 4$.",
+  "solution": "The terms are $4, -4, 4, -4, \\ldots$. “The common ratio is $q = -1$” is correct. Each term is the previous one times $-1$. $S_{20} = 4$ is incorrect. An even number of terms cancels completely: $S_{20} = 0$. “The common ratio is $q = 1$” is incorrect. Consecutive terms have opposite signs, so $q = -1$. “The first term is $a_1 = -4$” is incorrect. Put $n = 1$ into the formula: $a_1 = 4$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -886,7 +886,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 6 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 6 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "It is an arithmetic sequence",
    "$S_{99} = 0$",
@@ -900,7 +900,7 @@
    null,
    "sign"
   ],
-  "solution": "The terms are $-6, 6, -6, 6, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is “The common ratio is $q = -1$” — each term is the previous one times $-1$. “It is an arithmetic sequence” is false: the differences alternate between $12$ and $-12$. “The first term is $a_1 = 6$” is false: put $n = 1$ into the formula: $a_1 = -6$. $S_{99} = 0$ is false: an odd number of terms leaves one term: $S_{99} = -6$.",
+  "solution": "The terms are $-6, 6, -6, 6, \\ldots$. “The common ratio is $q = -1$” is correct. Each term is the previous one times $-1$. “It is an arithmetic sequence” is incorrect. The differences alternate between $12$ and $-12$. “The first term is $a_1 = 6$” is incorrect. Put $n = 1$ into the formula: $a_1 = -6$. $S_{99} = 0$ is incorrect. An odd number of terms leaves one term: $S_{99} = -6$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -924,7 +924,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 2 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 2 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "The first term is $a_1 = -2$",
    "The first term is $a_1 = 2$",
@@ -938,7 +938,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The terms are $-2, 2, -2, 2, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is “The first term is $a_1 = -2$” — put $n = 1$ into the formula. $S_{50} = 100$ is false: the terms alternate in sign and cancel in pairs: $S_{50} = 0$. “The first term is $a_1 = 2$” is false: put $n = 1$ into the formula: $a_1 = -2$. $a_3 = 2$ is false: put $n = 3$ into the formula: $a_3 = -2$.",
+  "solution": "The terms are $-2, 2, -2, 2, \\ldots$. “The first term is $a_1 = -2$” is correct. Put $n = 1$ into the formula. $S_{50} = 100$ is incorrect. The terms alternate in sign and cancel in pairs: $S_{50} = 0$. “The first term is $a_1 = 2$” is incorrect. Put $n = 1$ into the formula: $a_1 = -2$. $a_3 = 2$ is incorrect. Put $n = 3$ into the formula: $a_3 = -2$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -962,7 +962,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 7 \\cdot (-1)^{n}$, which of the following statements is correct? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 7 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is correct? ( )",
   "options": [
    "It is an arithmetic sequence",
    "$S_{20} = 0$",
@@ -976,7 +976,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "The terms are $-7, 7, -7, 7, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The correct statement is $S_{20} = 0$ — the terms cancel in pairs, so every even-numbered partial sum is $0$. $S_{15} = 0$ is false: an odd number of terms leaves one term: $S_{15} = -7$. “It is an arithmetic sequence” is false: the differences alternate between $14$ and $-14$. “The common ratio is $q = 1$” is false: consecutive terms have opposite signs, so $q = -1$.",
+  "solution": "The terms are $-7, 7, -7, 7, \\ldots$. $S_{20} = 0$ is correct. The terms cancel in pairs, so every even-numbered partial sum is $0$. $S_{15} = 0$ is incorrect. An odd number of terms leaves one term: $S_{15} = -7$. “It is an arithmetic sequence” is incorrect. The differences alternate between $14$ and $-14$. “The common ratio is $q = 1$” is incorrect. Consecutive terms have opposite signs, so $q = -1$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -1000,7 +1000,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 3 \\cdot (-1)^{n}$, which of the following statements is incorrect? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 3 \\cdot (-1)^{n}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is incorrect? ( )",
   "options": [
    "The first term is $a_1 = -3$",
    "The first term is $a_1 = 3$",
@@ -1014,13 +1014,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The terms are $-3, 3, -3, 3, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The incorrect statement is “The first term is $a_1 = 3$” — put $n = 1$ into the formula: $a_1 = -3$. The other three statements are true.",
+  "solution": "The terms are $-3, 3, -3, 3, \\ldots$. “The first term is $a_1 = 3$” is incorrect. Put $n = 1$ into the formula: $a_1 = -3$. “The first term is $a_1 = -3$” is correct. Put $n = 1$ into the formula. “The common ratio is $q = -1$” is correct. Each term is the previous one times $-1$. $S_{100} = 0$ is correct. The terms cancel in pairs, so every even-numbered partial sum is $0$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
   "template": "SQ-geo.alt-n",
   "seed": "bank:1:SQ-geo.alt-n:0",
-  "form": "aₙ = c·(−1)ⁿ: which statement is INCORRECT (S₂₁, a₁, q)",
+  "form": "aₙ = c·(−1)ⁿ: which statement is incorrect (S₂₁, a₁, q)",
   "answer_letter": "B",
   "answer_value": "The first term is $a_1 = 3$",
   "verified": "stmt"
@@ -1038,7 +1038,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 4 \\cdot (-1)^{n-1}$, which of the following statements is incorrect? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 4 \\cdot (-1)^{n-1}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is incorrect? ( )",
   "options": [
    "The common ratio is $q = -1$",
    "The first term is $a_1 = 4$",
@@ -1052,13 +1052,13 @@
    "true-statement",
    null
   ],
-  "solution": "The terms are $4, -4, 4, -4, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The incorrect statement is $S_{21} = 0$ — an odd number of terms leaves one term: $S_{21} = 4$. The other three statements are true.",
+  "solution": "The terms are $4, -4, 4, -4, \\ldots$. $S_{21} = 0$ is incorrect. An odd number of terms leaves one term: $S_{21} = 4$. “The common ratio is $q = -1$” is correct. Each term is the previous one times $-1$. “The first term is $a_1 = 4$” is correct. Put $n = 1$ into the formula. $a_4 = -4$ is correct. Put $n = 4$ into the formula.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
   "template": "SQ-geo.alt-n",
   "seed": "bank:1:SQ-geo.alt-n:1",
-  "form": "aₙ = c·(−1)ⁿ: which statement is INCORRECT (S₂₁, a₁, q)",
+  "form": "aₙ = c·(−1)ⁿ: which statement is incorrect (S₂₁, a₁, q)",
   "answer_letter": "D",
   "answer_value": "$S_{21} = 0$",
   "verified": "stmt"
@@ -1076,7 +1076,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the general term of the geometric sequence $\\{a_n\\}$ is $a_n = 7 \\cdot (-1)^{n+1}$, which of the following statements is incorrect? ( )",
+  "stem": "The general term of the geometric sequence $\\{a_n\\}$ is $a_n = 7 \\cdot (-1)^{n+1}$, and $S_n$ is the sum of its first $n$ terms. Which of the following statements is incorrect? ( )",
   "options": [
    "It is an arithmetic sequence",
    "$a_8 = -7$",
@@ -1090,13 +1090,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The terms are $7, -7, 7, -7, \\ldots$ ($S_n$ denotes the sum of the first $n$ terms). The incorrect statement is “It is an arithmetic sequence” — the differences alternate between $-14$ and $14$. The other three statements are true.",
+  "solution": "The terms are $7, -7, 7, -7, \\ldots$. “It is an arithmetic sequence” is incorrect. The differences alternate between $-14$ and $14$. $a_8 = -7$ is correct. Put $n = 8$ into the formula. $S_8 = 0$ is correct. The terms cancel in pairs, so every even-numbered partial sum is $0$. “The first term is $a_1 = 7$” is correct. Put $n = 1$ into the formula.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
   "template": "SQ-geo.alt-n",
   "seed": "bank:1:SQ-geo.alt-n:2",
-  "form": "aₙ = c·(−1)ⁿ: which statement is INCORRECT (S₂₁, a₁, q)",
+  "form": "aₙ = c·(−1)ⁿ: which statement is incorrect (S₂₁, a₁, q)",
   "answer_letter": "A",
   "answer_value": "It is an arithmetic sequence",
   "verified": "stmt"
@@ -1128,7 +1128,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Start from $a_2$: $a_5 = a_2q^{3} = 6 \\cdot \\left(\\dfrac{1}{2}\\right)^{3} = \\dfrac{3}{4}$ (the exponent counts the steps from $a_2$, not from $a_1$).",
+  "solution": "Start from $a_2$: $a_5 = a_2q^{3} = 6 \\cdot \\left(\\dfrac{1}{2}\\right)^{3} = \\dfrac{3}{4}$. The exponent is $3$ because there are $3$ steps from $a_2$ to $a_5$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -1166,7 +1166,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "Start from $a_2$: $a_4 = a_2q^{2} = 12 \\cdot \\left(-\\dfrac{1}{2}\\right)^{2} = 3$ (the exponent counts the steps from $a_2$, not from $a_1$).",
+  "solution": "Start from $a_2$: $a_4 = a_2q^{2} = 12 \\cdot \\left(-\\dfrac{1}{2}\\right)^{2} = 3$. The exponent is $2$ because there are $2$ steps from $a_2$ to $a_4$.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -1204,7 +1204,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "The terms are $4, -12, 36, -108, 324$; their sum is $244$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)",
+  "solution": "Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $S_5 = \\dfrac{4\\left((-3)^{5} - 1\\right)}{\\left(-3\\right) - 1} = \\dfrac{-976}{-4} = 244$. Adding the terms $4, -12, 36, -108, 324$ gives the same result.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",
@@ -1242,7 +1242,7 @@
    "off-by-one",
    "partial"
   ],
-  "solution": "The terms are $-2, -4, -8, -16$; their sum is $-30$. (Formula: $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$ for $q \\ne 1$.)",
+  "solution": "Since $q \\ne 1$, $S_n = \\dfrac{a_1(q^n - 1)}{q - 1}$, so $S_4 = \\dfrac{\\left(-2\\right)\\left(2^{4} - 1\\right)}{2 - 1} = -30$. Adding the terms $-2, -4, -8, -16$ gives the same result.",
   "video": "V28",
   "version": "a",
   "domain": "SQ",

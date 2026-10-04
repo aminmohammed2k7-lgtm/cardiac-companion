@@ -26,7 +26,7 @@
    null,
    "sign"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 2 + 7 = 9$ (plus, not minus), so $c = 3$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 3, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 2 + 7 = 9$, so $c = 3$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 3, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -64,7 +64,7 @@
    "axis",
    "partial"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 15 + 1 = 16$ (plus, not minus), so $c = 4$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 4, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 15 + 1 = 16$, so $c = 4$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 4, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -102,7 +102,7 @@
    "partial",
    null
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 7 + 2 = 9$ (plus, not minus), so $c = 3$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 3, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 7 + 2 = 9$, so $c = 3$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 3, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -140,7 +140,7 @@
    "partial",
    "axis"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 144 + 25 = 169$ (plus, not minus), so $c = 13$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 13, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 144 + 25 = 169$, so $c = 13$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 13, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -178,7 +178,7 @@
    "axis",
    "partial"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 2 + 2 = 4$ (plus, not minus), so $c = 2$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 2, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 2 + 2 = 4$, so $c = 2$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 2, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -216,7 +216,7 @@
    "partial",
    null
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 1 + 8 = 9$ (plus, not minus), so $c = 3$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 3, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 1 + 8 = 9$, so $c = 3$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 3, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -254,7 +254,7 @@
    "axis",
    "partial"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 144 + 25 = 169$ (plus, not minus), so $c = 13$. The foci are on the axis of the positive term, the $y$-axis: $(0, \\pm 13)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 144 + 25 = 169$, so $c = 13$. The foci lie on the axis of the positive term, the $y$-axis, so they are $(0, \\pm 13)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -292,7 +292,7 @@
    "sign",
    "axis"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 12 + 4 = 16$ (plus, not minus), so $c = 4$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 4, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 12 + 4 = 16$, so $c = 4$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 4, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -330,7 +330,7 @@
    null,
    "partial"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 6 + 3 = 9$ (plus, not minus), so $c = 3$. The foci are on the axis of the positive term, the $y$-axis: $(0, \\pm 3)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 6 + 3 = 9$, so $c = 3$. The foci lie on the axis of the positive term, the $y$-axis, so they are $(0, \\pm 3)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -368,7 +368,7 @@
    "sign",
    "axis"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 4 + 12 = 16$ (plus, not minus), so $c = 4$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 4, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 4 + 12 = 16$, so $c = 4$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 4, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -406,7 +406,7 @@
    "sign",
    "partial"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 3 + 1 = 4$ (plus, not minus), so $c = 2$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 2, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 3 + 1 = 4$, so $c = 2$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 2, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -444,7 +444,7 @@
    "axis",
    "sign"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 144 + 25 = 169$ (plus, not minus), so $c = 13$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 13, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 144 + 25 = 169$, so $c = 13$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 13, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -482,7 +482,7 @@
    "axis",
    "partial"
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 3 + 1 = 4$ (plus, not minus), so $c = 2$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 2, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 3 + 1 = 4$, so $c = 2$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 2, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -634,7 +634,7 @@
    "axis",
    "half"
   ],
-  "solution": "Here $a^2 = 2$, $b^2 = 2$ and $c^2 = a^2 + b^2 = 4$. The correct statement is “The length of its real axis is $2\\sqrt{2}$” — $a^2 = 2$, so $2a = 2\\sqrt{2}$. “Its focal distance is $2$” is false: that is $c$; the focal distance is $2c = 4$. “The length of its real axis is $\\sqrt{2}$” is false: that is $a$; the real axis is $2a = 2\\sqrt{2}$. “Its foci are $(0, \\pm 2)$” is false: the foci are on the $x$-axis: $(\\pm 2, 0)$.",
+  "solution": "Here $a^2 = 2$, $b^2 = 2$ and $c^2 = a^2 + b^2 = 4$. “The length of its real axis is $2\\sqrt{2}$” is correct. $a^2 = 2$, so $2a = 2\\sqrt{2}$. “Its focal distance is $2$” is incorrect. $c = 2$, so the focal distance is $2c = 4$. “The length of its real axis is $\\sqrt{2}$” is incorrect. $a = \\sqrt{2}$, so the real axis is $2a = 2\\sqrt{2}$. “Its foci are $(0, \\pm 2)$” is incorrect. The positive term is $x^2$, so the foci are on the $x$-axis, at $(\\pm 2, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -672,7 +672,7 @@
    "reciprocal",
    "half"
   ],
-  "solution": "Here $a^2 = 64$, $b^2 = 36$ and $c^2 = a^2 + b^2 = 100$. The correct statement is “The length of its imaginary axis is $12$” — $b^2 = 36$, so $2b = 12$. “The length of its real axis is $8$” is false: that is $a$; the real axis is $2a = 16$. “Its focal distance is $10$” is false: that is $c$; the focal distance is $2c = 20$. “Its eccentricity is $\\dfrac{4}{5}$” is false: for a hyperbola $e = \\dfrac{c}{a} > 1$; here $e = \\dfrac{5}{4}$.",
+  "solution": "Here $a^2 = 64$, $b^2 = 36$ and $c^2 = a^2 + b^2 = 100$. “The length of its imaginary axis is $12$” is correct. $b^2 = 36$, so $2b = 12$. “The length of its real axis is $8$” is incorrect. $a = 8$, so the real axis is $2a = 16$. “Its focal distance is $10$” is incorrect. $c = 10$, so the focal distance is $2c = 20$. “Its eccentricity is $\\dfrac{4}{5}$” is incorrect. For a hyperbola $e = \\dfrac{c}{a} > 1$. Here $e = \\dfrac{5}{4}$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -710,7 +710,7 @@
    "axis",
    null
   ],
-  "solution": "Here $a^2 = 4$, $b^2 = 12$ and $c^2 = a^2 + b^2 = 16$. The correct statement is “The length of its real axis is $4$” — $a^2 = 4$, so $2a = 4$. “Its eccentricity is $\\dfrac{1}{2}$” is false: for a hyperbola $e = \\dfrac{c}{a} > 1$; here $e = 2$. “The length of its real axis is $4\\sqrt{3}$” is false: that is the imaginary axis; the real axis is $2a = 4$. “Its foci are $(\\pm 2\\sqrt{2}, 0)$” is false: $c^2 = a^2 + b^2$, not $a^2 - b^2$: the foci are $(\\pm 4, 0)$.",
+  "solution": "Here $a^2 = 4$, $b^2 = 12$ and $c^2 = a^2 + b^2 = 16$. “The length of its real axis is $4$” is correct. $a^2 = 4$, so $2a = 4$. “Its eccentricity is $\\dfrac{1}{2}$” is incorrect. For a hyperbola $e = \\dfrac{c}{a} > 1$. Here $e = 2$. “The length of its real axis is $4\\sqrt{3}$” is incorrect. The imaginary axis has length $2b = 4\\sqrt{3}$, and the real axis is $2a = 4$. “Its foci are $(\\pm 2\\sqrt{2}, 0)$” is incorrect. For a hyperbola $c^2 = a^2 + b^2 = 16$, so the foci are $(\\pm 4, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -748,7 +748,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "Here $a^2 = 144$, $b^2 = 25$ and $c^2 = a^2 + b^2 = 169$. The correct statement is “Its focal distance is $26$” — $c^2 = 144 + 25 = 169$, so $2c = 26$. “Its eccentricity is $\\dfrac{12}{13}$” is false: for a hyperbola $e = \\dfrac{c}{a} > 1$; here $e = \\dfrac{13}{12}$. “The length of its real axis is $12$” is false: that is $a$; the real axis is $2a = 24$. “Its focal distance is $2\\sqrt{119}$” is false: for a hyperbola $c^2 = a^2 + b^2$, so $2c = 26$.",
+  "solution": "Here $a^2 = 144$, $b^2 = 25$ and $c^2 = a^2 + b^2 = 169$. “Its focal distance is $26$” is correct. $c^2 = 144 + 25 = 169$, so $2c = 26$. “Its eccentricity is $\\dfrac{12}{13}$” is incorrect. For a hyperbola $e = \\dfrac{c}{a} > 1$. Here $e = \\dfrac{13}{12}$. “The length of its real axis is $12$” is incorrect. $a = 12$, so the real axis is $2a = 24$. “Its focal distance is $2\\sqrt{119}$” is incorrect. For a hyperbola $c^2 = a^2 + b^2$, so $2c = 26$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -786,7 +786,7 @@
    null,
    "half"
   ],
-  "solution": "Here $a^2 = 7$, $b^2 = 9$ and $c^2 = a^2 + b^2 = 16$. The correct statement is “The length of its real axis is $2\\sqrt{7}$” — $a^2 = 7$, so $2a = 2\\sqrt{7}$. “Its focal distance is $4$” is false: that is $c$; the focal distance is $2c = 8$. “Its focal distance is $2\\sqrt{2}$” is false: for a hyperbola $c^2 = a^2 + b^2$, so $2c = 8$. “Its foci are $(\\pm \\sqrt{2}, 0)$” is false: $c^2 = a^2 + b^2$, not $a^2 - b^2$: the foci are $(\\pm 4, 0)$.",
+  "solution": "Here $a^2 = 7$, $b^2 = 9$ and $c^2 = a^2 + b^2 = 16$. “The length of its real axis is $2\\sqrt{7}$” is correct. $a^2 = 7$, so $2a = 2\\sqrt{7}$. “Its focal distance is $4$” is incorrect. $c = 4$, so the focal distance is $2c = 8$. “Its focal distance is $2\\sqrt{2}$” is incorrect. For a hyperbola $c^2 = a^2 + b^2$, so $2c = 8$. “Its foci are $(\\pm \\sqrt{2}, 0)$” is incorrect. For a hyperbola $c^2 = a^2 + b^2 = 16$, so the foci are $(\\pm 4, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -824,7 +824,7 @@
    "sign",
    null
   ],
-  "solution": "Here $a^2 = 64$, $b^2 = 36$ and $c^2 = a^2 + b^2 = 100$. The correct statement is “Its focal distance is $20$” — $c^2 = 64 + 36 = 100$, so $2c = 20$. “Its foci are $(0, \\pm 10)$” is false: the foci are on the $x$-axis: $(\\pm 10, 0)$. “The length of its real axis is $12$” is false: that is the imaginary axis; the real axis is $2a = 16$. “Its foci are $(\\pm 2\\sqrt{7}, 0)$” is false: $c^2 = a^2 + b^2$, not $a^2 - b^2$: the foci are $(\\pm 10, 0)$.",
+  "solution": "Here $a^2 = 64$, $b^2 = 36$ and $c^2 = a^2 + b^2 = 100$. “Its focal distance is $20$” is correct. $c^2 = 64 + 36 = 100$, so $2c = 20$. “Its foci are $(0, \\pm 10)$” is incorrect. The positive term is $x^2$, so the foci are on the $x$-axis, at $(\\pm 10, 0)$. “The length of its real axis is $12$” is incorrect. The imaginary axis has length $2b = 12$, and the real axis is $2a = 16$. “Its foci are $(\\pm 2\\sqrt{7}, 0)$” is incorrect. For a hyperbola $c^2 = a^2 + b^2 = 100$, so the foci are $(\\pm 10, 0)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -862,7 +862,7 @@
    null,
    "slip"
   ],
-  "solution": "The denominators must have opposite signs. Since $3 > 0$, we need $m < 0$, i.e. $m < 0$.",
+  "solution": "The denominators must have opposite signs. Since $3 > 0$, we need $m < 0$, that is $m < 0$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -900,7 +900,7 @@
    null,
    "slip"
   ],
-  "solution": "The denominators must have opposite signs. Since $2 > 0$, we need $m - 1 < 0$, i.e. $m < 1$.",
+  "solution": "The denominators must have opposite signs. Since $2 > 0$, we need $m - 1 < 0$, that is $m < 1$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -938,7 +938,7 @@
    "sign",
    "slip"
   ],
-  "solution": "The denominators must have opposite signs. Since $6 > 0$, we need $m - 4 < 0$, i.e. $m < 4$.",
+  "solution": "The denominators must have opposite signs. Since $6 > 0$, we need $m - 4 < 0$, that is $m < 4$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -976,7 +976,7 @@
    "sign",
    null
   ],
-  "solution": "The denominators must have opposite signs. Since $3 > 0$, we need $m - 3 < 0$, i.e. $m < 3$.",
+  "solution": "The denominators must have opposite signs. Since $3 > 0$, we need $m - 3 < 0$, that is $m < 3$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1014,7 +1014,7 @@
    "sign",
    "slip"
   ],
-  "solution": "The denominators must have opposite signs. Since $4 > 0$, we need $m < 0$, i.e. $m < 0$.",
+  "solution": "The denominators must have opposite signs. Since $4 > 0$, we need $m < 0$, that is $m < 0$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1052,7 +1052,7 @@
    "sign",
    null
   ],
-  "solution": "The denominators must have opposite signs. Since $3 > 0$, we need $m - 1 < 0$, i.e. $m < 1$.",
+  "solution": "The denominators must have opposite signs. Since $3 > 0$, we need $m - 1 < 0$, that is $m < 1$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1090,7 +1090,7 @@
    null,
    "partial"
   ],
-  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 5}{a^2} = \\dfrac{9}{4}$, so $5 = \\dfrac{5}{4}a^2$ and $a^2 = 4$. Since $a > 0$, $a = 2$.",
+  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 5}{a^2} = \\dfrac{9}{4}$, so $a^2 + 5 = \\dfrac{9}{4}a^2$ and $5 = \\dfrac{5}{4}a^2$. Hence $a^2 = 4$, and since $a > 0$, $a = 2$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1128,7 +1128,7 @@
    null,
    "companion"
   ],
-  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 27}{a^2} = 4$, so $27 = 3a^2$ and $a^2 = 9$. Since $a > 0$, $a = 3$.",
+  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 27}{a^2} = 4$, so $a^2 + 27 = 4a^2$ and $27 = 3a^2$. Hence $a^2 = 9$, and since $a > 0$, $a = 3$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1166,7 +1166,7 @@
    "companion",
    "partial"
   ],
-  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 4}{a^2} = 2$, so $4 = 1a^2$ and $a^2 = 4$. Since $a > 0$, $a = 2$.",
+  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 4}{a^2} = 2$, so $a^2 + 4 = 2a^2$ and $4 = a^2$. Hence $a^2 = 4$, and since $a > 0$, $a = 2$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1204,7 +1204,7 @@
    null,
    "companion"
   ],
-  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 16}{a^2} = 5$, so $16 = 4a^2$ and $a^2 = 4$. Since $a > 0$, $a = 2$.",
+  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 16}{a^2} = 5$, so $a^2 + 16 = 5a^2$ and $16 = 4a^2$. Hence $a^2 = 4$, and since $a > 0$, $a = 2$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1242,7 +1242,7 @@
    "partial",
    "partial"
   ],
-  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 12}{a^2} = 4$, so $12 = 3a^2$ and $a^2 = 4$. Since $a > 0$, $a = 2$.",
+  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 12}{a^2} = 4$, so $a^2 + 12 = 4a^2$ and $12 = 3a^2$. Hence $a^2 = 4$, and since $a > 0$, $a = 2$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1280,7 +1280,7 @@
    "sign",
    "companion"
   ],
-  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 8}{a^2} = 3$, so $8 = 2a^2$ and $a^2 = 4$. Since $a > 0$, $a = 2$.",
+  "solution": "$e^2 = \\dfrac{c^2}{a^2} = \\dfrac{a^2 + 8}{a^2} = 3$, so $a^2 + 8 = 3a^2$ and $8 = 2a^2$. Hence $a^2 = 4$, and since $a > 0$, $a = 2$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1318,7 +1318,7 @@
    "axis",
    "sign"
   ],
-  "solution": "Rewrite in standard form: $\\dfrac{y^2}{16} - \\dfrac{x^2}{9} = 1$. The positive term is $y^2$, so the foci are on the $y$-axis; $c^2 = 16 + 9 = 25$, $c = 5$. Foci: $(0, \\pm 5)$.",
+  "solution": "Dividing both sides by $144$ gives the standard form $\\dfrac{y^2}{16} - \\dfrac{x^2}{9} = 1$. The positive term is $y^2$, so the foci are on the $y$-axis. Also $c^2 = 16 + 9 = 25$, so $c = 5$ and the foci are $(0, \\pm 5)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1356,7 +1356,7 @@
    null,
    "sign"
   ],
-  "solution": "Rewrite in standard form: $\\dfrac{y^2}{16} - \\dfrac{x^2}{9} = 1$. The positive term is $y^2$, so the foci are on the $y$-axis; $c^2 = 16 + 9 = 25$, $c = 5$. Foci: $(0, \\pm 5)$.",
+  "solution": "Reordering the terms gives the standard form $\\dfrac{y^2}{16} - \\dfrac{x^2}{9} = 1$. The positive term is $y^2$, so the foci are on the $y$-axis. Also $c^2 = 16 + 9 = 25$, so $c = 5$ and the foci are $(0, \\pm 5)$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1394,13 +1394,13 @@
    "true-statement",
    null
   ],
-  "solution": "Here $a^2 = 15$, $b^2 = 1$ and $c^2 = a^2 + b^2 = 16$. The incorrect statement is “Its focal distance is $4$” — that is $c$; the focal distance is $2c = 8$. The other three statements are true.",
+  "solution": "Here $a^2 = 15$, $b^2 = 1$ and $c^2 = a^2 + b^2 = 16$. “Its focal distance is $4$” is incorrect. $c = 4$, so the focal distance is $2c = 8$. “The length of its imaginary axis is $2$” is correct. $b^2 = 1$, so $2b = 2$. “Its eccentricity is $\\dfrac{4\\sqrt{15}}{15}$” is correct. $e = \\dfrac{c}{a} = \\dfrac{4\\sqrt{15}}{15}$. “Its foci are $(0, \\pm 4)$” is correct. $c^2 = 15 + 1 = 16$, so $c = 4$, and the foci are on the axis of the positive term, the $y$-axis.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
   "template": "CN-hyp.stmt-n",
   "seed": "bank:1:CN-hyp.stmt-n:0",
-  "form": "Which statement about a hyperbola is INCORRECT (needs a, b, c and e)",
+  "form": "Which statement about a hyperbola is incorrect (needs a, b, c and e)",
   "answer_letter": "D",
   "answer_value": "Its focal distance is $4$",
   "verified": "stmt"
@@ -1432,13 +1432,13 @@
    "true-statement",
    null
   ],
-  "solution": "Here $a^2 = 64$, $b^2 = 36$ and $c^2 = a^2 + b^2 = 100$. The incorrect statement is “The length of its real axis is $8$” — that is $a$; the real axis is $2a = 16$. The other three statements are true.",
+  "solution": "Here $a^2 = 64$, $b^2 = 36$ and $c^2 = a^2 + b^2 = 100$. “The length of its real axis is $8$” is incorrect. $a = 8$, so the real axis is $2a = 16$. “Its eccentricity is $\\dfrac{5}{4}$” is correct. $e = \\dfrac{c}{a} = \\dfrac{5}{4}$. “The length of its imaginary axis is $12$” is correct. $b^2 = 36$, so $2b = 12$. “Its focal distance is $20$” is correct. $c^2 = 64 + 36 = 100$, so $2c = 20$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
   "template": "CN-hyp.stmt-n",
   "seed": "bank:1:CN-hyp.stmt-n:1",
-  "form": "Which statement about a hyperbola is INCORRECT (needs a, b, c and e)",
+  "form": "Which statement about a hyperbola is incorrect (needs a, b, c and e)",
   "answer_letter": "D",
   "answer_value": "The length of its real axis is $8$",
   "verified": "stmt"
@@ -1470,7 +1470,7 @@
    "partial",
    null
   ],
-  "solution": "A hyperbola needs denominators of opposite signs: $(m - 3)(m - 9) < 0$, so $3 < m < 9$. (Both positive and different would give an ellipse.)",
+  "solution": "A hyperbola needs denominators of opposite signs: $(m - 3)(m - 9) < 0$, so $3 < m < 9$. If both were positive and different, the curve would be an ellipse.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1508,7 +1508,7 @@
    "partial",
    "partial"
   ],
-  "solution": "A hyperbola needs denominators of opposite signs: $(m + 6)(m + 4) < 0$, so $-6 < m < -4$. (Both positive and different would give an ellipse.)",
+  "solution": "A hyperbola needs denominators of opposite signs: $(m + 6)(m + 4) < 0$, so $-6 < m < -4$. If both were positive and different, the curve would be an ellipse.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1546,7 +1546,7 @@
    null,
    "sign"
   ],
-  "solution": "$a^2 = 16$ (the positive term), $b^2 = 9$, $c^2 = 25$. So $e = \\dfrac{c}{a} = \\dfrac{5}{4}$, which is greater than $1$.",
+  "solution": "The positive term gives $a^2 = 16$, and $b^2 = 9$, so $c^2 = a^2 + b^2 = 25$. Then $e = \\dfrac{c}{a} = \\dfrac{5}{4} = \\dfrac{5}{4}$, which is greater than $1$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",
@@ -1584,7 +1584,7 @@
    "axis",
    "reciprocal"
   ],
-  "solution": "$a^2 = 9$ (the positive term), $b^2 = 7$, $c^2 = 16$. So $e = \\dfrac{c}{a} = \\dfrac{4}{3}$, which is greater than $1$.",
+  "solution": "The positive term gives $a^2 = 9$, and $b^2 = 7$, so $c^2 = a^2 + b^2 = 16$. Then $e = \\dfrac{c}{a} = \\dfrac{4}{3} = \\dfrac{4}{3}$, which is greater than $1$.",
   "video": "V39",
   "version": "a",
   "domain": "CN",

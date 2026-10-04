@@ -26,7 +26,7 @@
    "off-by-one",
    "reciprocal"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $3$ and common difference $1$. So $\\dfrac{1}{a_{20}} = 3 + 19 \\cdot 1 = 22$ and $a_{20} = \\dfrac{1}{22}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 3$ and common difference $1$. So $\\dfrac{1}{a_{20}} = 3 + 19 \\cdot 1 = 22$ and $a_{20} = \\dfrac{1}{22}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -64,7 +64,7 @@
    "off-by-one",
    "reciprocal"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $4$ and common difference $1$. So $\\dfrac{1}{a_{50}} = 4 + 49 \\cdot 1 = 53$ and $a_{50} = \\dfrac{1}{53}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 4$ and common difference $1$. So $\\dfrac{1}{a_{50}} = 4 + 49 \\cdot 1 = 53$ and $a_{50} = \\dfrac{1}{53}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -102,7 +102,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $5$ and common difference $1$. So $\\dfrac{1}{a_{101}} = 5 + 100 \\cdot 1 = 105$ and $a_{101} = \\dfrac{1}{105}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 5$ and common difference $1$. So $\\dfrac{1}{a_{101}} = 5 + 100 \\cdot 1 = 105$ and $a_{101} = \\dfrac{1}{105}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -140,7 +140,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $2$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 2 + 98 \\cdot 1 = 100$ and $a_{99} = \\dfrac{1}{100}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 2$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 2 + 98 \\cdot 1 = 100$ and $a_{99} = \\dfrac{1}{100}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -178,7 +178,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $1$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 1 + 98 \\cdot 1 = 99$ and $a_{99} = \\dfrac{1}{99}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_n} = \\dfrac{1}{a_{n-1}} + 1$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 1$ and common difference $1$. So $\\dfrac{1}{a_{99}} = 1 + 98 \\cdot 1 = 99$ and $a_{99} = \\dfrac{1}{99}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -216,7 +216,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $4$ and common difference $3$. So $\\dfrac{1}{a_8} = 4 + 7 \\cdot 3 = 25$ and $a_8 = \\dfrac{1}{25}$.",
+  "solution": "The relation says that $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 4$ and common difference $3$. So $\\dfrac{1}{a_8} = 4 + 7 \\cdot 3 = 25$ and $a_8 = \\dfrac{1}{25}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -254,7 +254,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $3$ and common difference $4$. So $\\dfrac{1}{a_9} = 3 + 8 \\cdot 4 = 35$ and $a_9 = \\dfrac{1}{35}$.",
+  "solution": "The relation says that $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 3$ and common difference $4$. So $\\dfrac{1}{a_9} = 3 + 8 \\cdot 4 = 35$ and $a_9 = \\dfrac{1}{35}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -292,7 +292,7 @@
    "off-by-one",
    "reciprocal"
   ],
-  "solution": "$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $3$ and common difference $4$. So $\\dfrac{1}{a_8} = 3 + 7 \\cdot 4 = 31$ and $a_8 = \\dfrac{1}{31}$.",
+  "solution": "The relation says that $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 3$ and common difference $4$. So $\\dfrac{1}{a_8} = 3 + 7 \\cdot 4 = 31$ and $a_8 = \\dfrac{1}{31}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -330,7 +330,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $4$ and common difference $2$. So $\\dfrac{1}{a_5} = 4 + 4 \\cdot 2 = 12$ and $a_5 = \\dfrac{1}{12}$.",
+  "solution": "The relation says that $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 4$ and common difference $2$. So $\\dfrac{1}{a_5} = 4 + 4 \\cdot 2 = 12$ and $a_5 = \\dfrac{1}{12}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -368,7 +368,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "$\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $3$ and common difference $4$. So $\\dfrac{1}{a_6} = 3 + 5 \\cdot 4 = 23$ and $a_6 = \\dfrac{1}{23}$.",
+  "solution": "The relation says that $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 3$ and common difference $4$. So $\\dfrac{1}{a_6} = 3 + 5 \\cdot 4 = 23$ and $a_6 = \\dfrac{1}{23}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -406,7 +406,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 2 \\cdot \\dfrac{3}{2} = 3$, $a_3 = -2 \\cdot 3 = -6$, $a_4 = 2 \\cdot \\left(-6\\right) = -12$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 2 \\cdot \\dfrac{3}{2} = 3$, $a_3 = -2 \\cdot 3 = -6$, $a_4 = 2 \\cdot \\left(-6\\right) = -12$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -444,7 +444,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 2 \\cdot \\dfrac{2}{3} = \\dfrac{4}{3}$, $a_3 = -2 \\cdot \\dfrac{4}{3} = -\\dfrac{8}{3}$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 2 \\cdot \\dfrac{2}{3} = \\dfrac{4}{3}$, $a_3 = -2 \\cdot \\dfrac{4}{3} = -\\dfrac{8}{3}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -482,7 +482,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = -3 \\cdot \\dfrac{3}{2} = -\\dfrac{9}{2}$, $a_3 = 3 \\cdot \\left(-\\dfrac{9}{2}\\right) = -\\dfrac{27}{2}$, $a_4 = -3 \\cdot \\left(-\\dfrac{27}{2}\\right) = \\dfrac{81}{2}$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n+1}$ at each step: $a_2 = -3 \\cdot \\dfrac{3}{2} = -\\dfrac{9}{2}$, $a_3 = 3 \\cdot \\left(-\\dfrac{9}{2}\\right) = -\\dfrac{27}{2}$, $a_4 = -3 \\cdot \\left(-\\dfrac{27}{2}\\right) = \\dfrac{81}{2}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -520,7 +520,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = -3 \\cdot \\dfrac{2}{3} = -2$, $a_3 = 3 \\cdot \\left(-2\\right) = -6$, $a_4 = -3 \\cdot \\left(-6\\right) = 18$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n+1}$ at each step: $a_2 = -3 \\cdot \\dfrac{2}{3} = -2$, $a_3 = 3 \\cdot \\left(-2\\right) = -6$, $a_4 = -3 \\cdot \\left(-6\\right) = 18$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -558,7 +558,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = -3 \\cdot \\dfrac{3}{2} = -\\dfrac{9}{2}$, $a_3 = 3 \\cdot \\left(-\\dfrac{9}{2}\\right) = -\\dfrac{27}{2}$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n+1}$ at each step: $a_2 = -3 \\cdot \\dfrac{3}{2} = -\\dfrac{9}{2}$, $a_3 = 3 \\cdot \\left(-\\dfrac{9}{2}\\right) = -\\dfrac{27}{2}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -596,7 +596,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 2 \\cdot 2 = 4$, $a_3 = -2 \\cdot 4 = -8$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 2 \\cdot 2 = 4$, $a_3 = -2 \\cdot 4 = -8$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -748,7 +748,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "Compute the terms one by one: $2, \\dfrac{5}{2}, \\dfrac{12}{5}, \\dfrac{29}{12}, \\dfrac{70}{29}$. So $a_5 = \\dfrac{70}{29}$.",
+  "solution": "Work out the terms in order: $a_2 = 2 + \\dfrac{1}{2} = \\dfrac{5}{2}$, $a_3 = 2 + \\dfrac{2}{5} = \\dfrac{12}{5}$, $a_4 = 2 + \\dfrac{5}{12} = \\dfrac{29}{12}$ and $a_5 = 2 + \\dfrac{12}{29} = \\dfrac{70}{29}$. So $a_5 = \\dfrac{70}{29}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -786,7 +786,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Compute the terms one by one: $2, \\dfrac{3}{2}, \\dfrac{5}{3}, \\dfrac{8}{5}$. So $a_4 = \\dfrac{8}{5}$.",
+  "solution": "Work out the terms in order: $a_2 = 1 + \\dfrac{1}{2} = \\dfrac{3}{2}$, $a_3 = 1 + \\dfrac{2}{3} = \\dfrac{5}{3}$ and $a_4 = 1 + \\dfrac{3}{5} = \\dfrac{8}{5}$. So $a_4 = \\dfrac{8}{5}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -824,7 +824,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Compute the terms one by one: $1, 2, \\dfrac{3}{2}, \\dfrac{5}{3}, \\dfrac{8}{5}$. So $a_5 = \\dfrac{8}{5}$.",
+  "solution": "Work out the terms in order: $a_2 = 1 + 1 = 2$, $a_3 = 1 + \\dfrac{1}{2} = \\dfrac{3}{2}$, $a_4 = 1 + \\dfrac{2}{3} = \\dfrac{5}{3}$ and $a_5 = 1 + \\dfrac{3}{5} = \\dfrac{8}{5}$. So $a_5 = \\dfrac{8}{5}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -862,7 +862,7 @@
    "partial",
    "sign"
   ],
-  "solution": "From the relation, $a_{n+1} = -\\dfrac{1}{3}a_n$, so $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{3}$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $\\dfrac{1}{3}$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = 3\\left(1 - \\dfrac{1}{3^{n}}\\right)$. Forgetting the absolute value (ratio $-\\dfrac{1}{3}$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -\\dfrac{1}{3}a_n$, so $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{3}$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $\\dfrac{1}{3}$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{2\\left(1 - \\left(\\dfrac{1}{3}\\right)^{n}\\right)}{1 - \\dfrac{1}{3}} = 3\\left(1 - \\dfrac{1}{3^{n}}\\right)$. Without the absolute value the ratio would stay $-\\dfrac{1}{3}$, and the sum would be the different expression $\\dfrac{3}{2}\\left(1 - \\left(-\\dfrac{1}{3}\\right)^{n}\\right)$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -900,7 +900,7 @@
    null,
    "partial"
   ],
-  "solution": "From the relation, $a_{n+1} = -3a_n$, so $\\{a_n\\}$ is geometric with ratio $-3$ and $b_n = |a_n|$ is geometric with first term $3$ and ratio $3$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{3\\left(3^{n} - 1\\right)}{2}$. Forgetting the absolute value (ratio $-3$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -3a_n$, so $\\{a_n\\}$ is geometric with ratio $-3$ and $b_n = |a_n|$ is geometric with first term $3$ and ratio $3$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{3\\left(1 - 3^{n}\\right)}{1 - 3} = \\dfrac{3\\left(3^{n} - 1\\right)}{2}$. Without the absolute value the ratio would stay $-3$, and the sum would be the different expression $\\dfrac{3\\left(1 - (-3)^{n}\\right)}{4}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -938,7 +938,7 @@
    "partial",
    "sign"
   ],
-  "solution": "From the relation, $a_{n+1} = -4a_n$, so $\\{a_n\\}$ is geometric with ratio $-4$ and $b_n = |a_n|$ is geometric with first term $3$ and ratio $4$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = 4^{n} - 1$. Forgetting the absolute value (ratio $-4$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -4a_n$, so $\\{a_n\\}$ is geometric with ratio $-4$ and $b_n = |a_n|$ is geometric with first term $3$ and ratio $4$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{3\\left(1 - 4^{n}\\right)}{1 - 4} = 4^{n} - 1$. Without the absolute value the ratio would stay $-4$, and the sum would be the different expression $\\dfrac{3\\left(1 - (-4)^{n}\\right)}{5}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -976,7 +976,7 @@
    null,
    "sign"
   ],
-  "solution": "From the relation, $a_{n+1} = -4a_n$, so $\\{a_n\\}$ is geometric with ratio $-4$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $4$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{2\\left(4^{n} - 1\\right)}{3}$. Forgetting the absolute value (ratio $-4$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -4a_n$, so $\\{a_n\\}$ is geometric with ratio $-4$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $4$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{2\\left(1 - 4^{n}\\right)}{1 - 4} = \\dfrac{2\\left(4^{n} - 1\\right)}{3}$. Without the absolute value the ratio would stay $-4$, and the sum would be the different expression $\\dfrac{2\\left(1 - (-4)^{n}\\right)}{5}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1014,7 +1014,7 @@
    null,
    "off-by-one"
   ],
-  "solution": "From the relation, $a_{n+1} = -3a_n$, so $\\{a_n\\}$ is geometric with ratio $-3$ and $b_n = |a_n|$ is geometric with first term $1$ and ratio $3$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{3^{n} - 1}{2}$. Forgetting the absolute value (ratio $-3$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -3a_n$, so $\\{a_n\\}$ is geometric with ratio $-3$ and $b_n = |a_n|$ is geometric with first term $1$ and ratio $3$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{1 - 3^{n}}{1 - 3} = \\dfrac{3^{n} - 1}{2}$. Without the absolute value the ratio would stay $-3$, and the sum would be the different expression $\\dfrac{1 - (-3)^{n}}{4}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1052,7 +1052,7 @@
    "sign",
    null
   ],
-  "solution": "From the relation, $a_{n+1} = -\\dfrac{1}{4}a_n$, so $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{4}$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $\\dfrac{1}{4}$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{8}{3}\\left(1 - \\dfrac{1}{4^{n}}\\right)$. Forgetting the absolute value (ratio $-\\dfrac{1}{4}$) gives a wrong option.",
+  "solution": "From the relation, $a_{n+1} = -\\dfrac{1}{4}a_n$, so $\\{a_n\\}$ is geometric with ratio $-\\dfrac{1}{4}$ and $b_n = |a_n|$ is geometric with first term $2$ and ratio $\\dfrac{1}{4}$. Its sum is $\\dfrac{b_1(1 - q^n)}{1 - q} = \\dfrac{2\\left(1 - \\left(\\dfrac{1}{4}\\right)^{n}\\right)}{1 - \\dfrac{1}{4}} = \\dfrac{8}{3}\\left(1 - \\dfrac{1}{4^{n}}\\right)$. Without the absolute value the ratio would stay $-\\dfrac{1}{4}$, and the sum would be the different expression $\\dfrac{8}{5}\\left(1 - \\left(-\\dfrac{1}{4}\\right)^{n}\\right)$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1280,7 +1280,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 2a_n}{a_n} = \\dfrac{1}{a_n} + 2$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $2$ and common difference $2$. So $\\dfrac{1}{a_{12}} = 2 + 11 \\cdot 2 = 24$ and $a_{12} = \\dfrac{1}{24}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 2a_n}{a_n} = \\dfrac{1}{a_n} + 2$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 2$ and common difference $2$. So $\\dfrac{1}{a_{12}} = 2 + 11 \\cdot 2 = 24$ and $a_{12} = \\dfrac{1}{24}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1318,7 +1318,7 @@
    "reciprocal",
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 4a_n}{a_n} = \\dfrac{1}{a_n} + 4$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $2$ and common difference $4$. So $\\dfrac{1}{a_{20}} = 2 + 19 \\cdot 4 = 78$ and $a_{20} = \\dfrac{1}{78}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 4a_n}{a_n} = \\dfrac{1}{a_n} + 4$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 2$ and common difference $4$. So $\\dfrac{1}{a_{20}} = 2 + 19 \\cdot 4 = 78$ and $a_{20} = \\dfrac{1}{78}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1356,7 +1356,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 5a_n}{a_n} = \\dfrac{1}{a_n} + 5$. $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $2$ and common difference $5$. So $\\dfrac{1}{a_{12}} = 2 + 11 \\cdot 5 = 57$ and $a_{12} = \\dfrac{1}{57}$.",
+  "solution": "Take reciprocals: $\\dfrac{1}{a_{n+1}} = \\dfrac{1 + 5a_n}{a_n} = \\dfrac{1}{a_n} + 5$. So $\\left\\{\\dfrac{1}{a_n}\\right\\}$ is an arithmetic sequence with first term $\\dfrac{1}{a_1} = 2$ and common difference $5$. So $\\dfrac{1}{a_{12}} = 2 + 11 \\cdot 5 = 57$ and $a_{12} = \\dfrac{1}{57}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1394,7 +1394,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 3 \\cdot \\dfrac{1}{2} = \\dfrac{3}{2}$, $a_3 = -3 \\cdot \\dfrac{3}{2} = -\\dfrac{9}{2}$, $a_4 = 3 \\cdot \\left(-\\dfrac{9}{2}\\right) = -\\dfrac{27}{2}$, $a_5 = -3 \\cdot \\left(-\\dfrac{27}{2}\\right) = \\dfrac{81}{2}$, $a_6 = 3 \\cdot \\dfrac{81}{2} = \\dfrac{243}{2}$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 3 \\cdot \\dfrac{1}{2} = \\dfrac{3}{2}$, $a_3 = -3 \\cdot \\dfrac{3}{2} = -\\dfrac{9}{2}$, $a_4 = 3 \\cdot \\left(-\\dfrac{9}{2}\\right) = -\\dfrac{27}{2}$, $a_5 = -3 \\cdot \\left(-\\dfrac{27}{2}\\right) = \\dfrac{81}{2}$, $a_6 = 3 \\cdot \\dfrac{81}{2} = \\dfrac{243}{2}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1432,7 +1432,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = 3 \\cdot \\dfrac{1}{3} = 1$, $a_3 = -3 \\cdot 1 = -3$, $a_4 = 3 \\cdot \\left(-3\\right) = -9$, $a_5 = -3 \\cdot \\left(-9\\right) = 27$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n}$ at each step: $a_2 = 3 \\cdot \\dfrac{1}{3} = 1$, $a_3 = -3 \\cdot 1 = -3$, $a_4 = 3 \\cdot \\left(-3\\right) = -9$, $a_5 = -3 \\cdot \\left(-9\\right) = 27$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1470,7 +1470,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Write the terms out, one sign at a time: $a_2 = -2 \\cdot \\dfrac{1}{3} = -\\dfrac{2}{3}$, $a_3 = 2 \\cdot \\left(-\\dfrac{2}{3}\\right) = -\\dfrac{4}{3}$, $a_4 = -2 \\cdot \\left(-\\dfrac{4}{3}\\right) = \\dfrac{8}{3}$, $a_5 = 2 \\cdot \\dfrac{8}{3} = \\dfrac{16}{3}$.",
+  "solution": "Work out the terms in order, taking the sign from $(-1)^{n+1}$ at each step: $a_2 = -2 \\cdot \\dfrac{1}{3} = -\\dfrac{2}{3}$, $a_3 = 2 \\cdot \\left(-\\dfrac{2}{3}\\right) = -\\dfrac{4}{3}$, $a_4 = -2 \\cdot \\left(-\\dfrac{4}{3}\\right) = \\dfrac{8}{3}$, $a_5 = 2 \\cdot \\dfrac{8}{3} = \\dfrac{16}{3}$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1508,7 +1508,7 @@
    "off-by-one",
    "off-by-one"
   ],
-  "solution": "Apply the rule with $n = 1, 2, 3, \\ldots$: $a_1 = 2$, $a_2 = 4$, $a_3 = 8$, $a_4 = 14$, $a_5 = 22$. The correct statement is $a_5 = 22$ — apply the rule 4 times. $a_2 = 8$ is false: that is $a_3$; $a_2 = 4$. “$\\{a_n\\}$ is an arithmetic sequence” is false: the difference $a_{n+1} - a_n = 2n$ changes with $n$. $a_4 = 16$ is false: to get $a_4$ use $n = 3$ in the rule, not $n = 4$; $a_4 = 14$.",
+  "solution": "Apply the rule with $n = 1, 2, 3, \\ldots$: $a_1 = 2$, $a_2 = 4$, $a_3 = 8$, $a_4 = 14$, $a_5 = 22$. $a_5 = 22$ is correct. It matches the terms worked out above. $a_2 = 8$ is incorrect. The value $8$ belongs to $a_3$, while $a_2 = 4$. “$\\{a_n\\}$ is an arithmetic sequence” is incorrect. The difference $a_{n+1} - a_n = 2n$ changes with $n$. $a_4 = 16$ is incorrect. To get $a_4$ use $n = 3$ in the rule, not $n = 4$. So $a_4 = 14$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",
@@ -1546,7 +1546,7 @@
    "off-by-one",
    null
   ],
-  "solution": "Apply the rule with $n = 1, 2, 3, \\ldots$: $a_1 = 0$, $a_2 = 1$, $a_3 = 3$, $a_4 = 6$, $a_5 = 10$. The correct statement is $a_4 = 6$ — apply the rule 3 times. “$\\{a_n\\}$ is an arithmetic sequence” is false: the difference $a_{n+1} - a_n = n$ changes with $n$. $a_3 = 4$ is false: to get $a_3$ use $n = 2$ in the rule, not $n = 3$; $a_3 = 3$. $a_4 = 3$ is false: that is $a_3$; $a_4 = 6$.",
+  "solution": "Apply the rule with $n = 1, 2, 3, \\ldots$: $a_1 = 0$, $a_2 = 1$, $a_3 = 3$, $a_4 = 6$, $a_5 = 10$. $a_4 = 6$ is correct. It matches the terms worked out above. “$\\{a_n\\}$ is an arithmetic sequence” is incorrect. The difference $a_{n+1} - a_n = n$ changes with $n$. $a_3 = 4$ is incorrect. To get $a_3$ use $n = 2$ in the rule, not $n = 3$. So $a_3 = 3$. $a_4 = 3$ is incorrect. The value $3$ belongs to $a_3$, while $a_4 = 6$.",
   "video": "V32",
   "version": "a",
   "domain": "SQ",

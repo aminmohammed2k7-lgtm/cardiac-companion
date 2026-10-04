@@ -26,7 +26,7 @@
    "sign",
    "axis"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -1)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -1)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -64,7 +64,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-6, -3)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-6, -3)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -102,7 +102,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-5, -7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-5, -7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -140,7 +140,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(8, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(8, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -178,7 +178,7 @@
    null,
    "axis"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-7, 5)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-7, 5)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -216,7 +216,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(9, 7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(9, 7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -254,7 +254,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-3, 8)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-3, 8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -292,7 +292,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-1, -1)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-1, -1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -330,7 +330,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -368,7 +368,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(8, -1)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(8, -1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -406,7 +406,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-2, 1)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-2, 1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -444,7 +444,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-2, 6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-2, 6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -482,7 +482,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -9)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -9)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -520,7 +520,7 @@
    "axis",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -2)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -2)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -558,7 +558,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -596,7 +596,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-8, -8)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-8, -8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -634,7 +634,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(6, 2)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(6, 2)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -672,7 +672,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-1, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-1, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -710,7 +710,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(1, 8)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(1, 8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -748,7 +748,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-3, 4)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-3, 4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -786,7 +786,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-5, 4)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-5, 4)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -824,7 +824,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(2, 3)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(2, 3)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -862,7 +862,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-7, 3)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-7, 3)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -900,7 +900,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-2, -7)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-2, -7)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -938,7 +938,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(3, -6)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(3, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -976,7 +976,7 @@
    null,
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-2, -2)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-2, -2)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1014,7 +1014,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-5, -4)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-5, -4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1052,7 +1052,7 @@
    "sign",
    null
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(5, -4)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(5, -4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1090,7 +1090,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-1, -9)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-1, -9)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1128,7 +1128,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The third quadrant needs $(-, -)$, so the point is $(-7, -9)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, -)$, namely $(-7, -9)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1166,7 +1166,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The fourth quadrant needs $(+, -)$, so the point is $(7, -5)$.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, -)$, namely $(7, -5)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1204,7 +1204,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The second quadrant needs $(-, +)$, so the point is $(-6, 4)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(-, +)$, namely $(-6, 4)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1242,7 +1242,7 @@
    "axis",
    "sign"
   ],
-  "solution": "Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The first quadrant needs $(+, +)$, so the point is $(9, 6)$. A point on an axis belongs to no quadrant.",
+  "solution": "A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $(+, +)$, namely $(9, 6)$. A point on an axis belongs to no quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1546,7 +1546,7 @@
    "sign",
    null
   ],
-  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b < 0$ makes both negative. So the point $(a, b)$ has signs $(-, -)$: the third quadrant.",
+  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b < 0$ makes both negative. So the point $(a, b)$ has signs $(-, -)$ and lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1584,7 +1584,7 @@
    null,
    "sign"
   ],
-  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1622,7 +1622,7 @@
    null,
    "sign"
   ],
-  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1660,7 +1660,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$a > 0$ and $ab > 0$ give $b > 0$. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1698,7 +1698,7 @@
    "sign",
    null
   ],
-  "solution": "$a < 0$ and $ab > 0$ give $b < 0$. So the point $(a, b)$ has signs $(-, -)$: the third quadrant.",
+  "solution": "$a < 0$ and $ab > 0$ give $b < 0$. So the point $(a, b)$ has signs $(-, -)$ and lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1736,7 +1736,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b > 0$ makes both positive. So the point $(a, b)$ has signs $(+, +)$: the first quadrant.",
+  "solution": "$ab > 0$ means $a$ and $b$ have the same sign, and $a + b > 0$ makes both positive. So the point $(a, b)$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1774,7 +1774,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$a < 0$ and $ab < 0$ give $b > 0$. So the point $(b, a)$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "$a < 0$ and $ab < 0$ give $b > 0$. So the point $(b, a)$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1812,7 +1812,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-x > 0$ and $3y > 0$, so $Q$ has signs $(+, +)$: the first quadrant.",
+  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-x > 0$ and $3y > 0$, so $Q$ has signs $(+, +)$ and lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1850,7 +1850,7 @@
    null,
    "sign"
   ],
-  "solution": "In the fourth quadrant $x > 0$ and $y < 0$. Then $3x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the fourth quadrant $x > 0$ and $y < 0$. Then $3x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1888,7 +1888,7 @@
    "sign",
    null
   ],
-  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $3y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $3y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1926,7 +1926,7 @@
    "sign",
    null
   ],
-  "solution": "In the first quadrant $x > 0$ and $y > 0$. Then $3x > 0$ and $-2y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the first quadrant $x > 0$ and $y > 0$. Then $3x > 0$ and $-2y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -1964,7 +1964,7 @@
    null,
    "sign"
   ],
-  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-3y < 0$ and $2x < 0$, so $Q$ has signs $(-, -)$: the third quadrant.",
+  "solution": "In the second quadrant $x < 0$ and $y > 0$. Then $-3y < 0$ and $2x < 0$, so $Q$ has signs $(-, -)$ and lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2002,7 +2002,7 @@
    "sign",
    "sign"
   ],
-  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$: the fourth quadrant.",
+  "solution": "In the third quadrant $x < 0$ and $y < 0$. Then $-2x > 0$ and $2y < 0$, so $Q$ has signs $(+, -)$ and lies in the fourth quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2040,7 +2040,7 @@
    "swap",
    "sign"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $y$-axis is $(-2, 3)$” — reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The point symmetric to $P$ about the $x$-axis is $(-2, 3)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(2, -3)$. “The point symmetric to $P$ about the origin is $(3, 2)$” is false: that swaps the coordinates; about the origin the point is $(-2, -3)$. “$P$ lies in the third quadrant” is false: its signs are $(+, +)$, so it lies in the first quadrant.",
+  "solution": "“The point symmetric to $P$ about the $y$-axis is $(-2, 3)$” is correct. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The point symmetric to $P$ about the $x$-axis is $(-2, 3)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(2, -3)$. The point $(-2, 3)$ is the reflection in the $y$-axis. “The point symmetric to $P$ about the origin is $(3, 2)$” is incorrect. Reflection in the origin changes both signs, which gives $(-2, -3)$. Swapping the coordinates is a different operation. “$P$ lies in the third quadrant” is incorrect. Its signs are $(+, +)$, so it lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2078,7 +2078,7 @@
    "swap",
    "axis"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $x$-axis is $(4, -1)$” — reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $y$-axis is $(4, -1)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-4, 1)$. “The point symmetric to $P$ about the origin is $(1, 4)$” is false: that swaps the coordinates; about the origin the point is $(-4, -1)$. “The point symmetric to $P$ about the $x$-axis is $(-4, 1)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(4, -1)$.",
+  "solution": "“The point symmetric to $P$ about the $x$-axis is $(4, -1)$” is correct. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $y$-axis is $(4, -1)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-4, 1)$. The point $(4, -1)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the origin is $(1, 4)$” is incorrect. Reflection in the origin changes both signs, which gives $(-4, -1)$. Swapping the coordinates is a different operation. “The point symmetric to $P$ about the $x$-axis is $(-4, 1)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(4, -1)$. The point $(-4, 1)$ is the reflection in the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2116,7 +2116,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $7$” — the distance to the $x$-axis is $|y|$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-2, 7)$. “The point symmetric to $P$ about the $x$-axis is $(-2, 7)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(2, -7)$. “The distance from $P$ to the $x$-axis is $2$” is false: the distance to the $x$-axis is $|y| = 7$; $|x|$ is the distance to the $y$-axis.",
+  "solution": "“The distance from $P$ to the $x$-axis is $7$” is correct. The distance to the $x$-axis is $|y| = 7$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-2, 7)$. The point $(2, -7)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the $x$-axis is $(-2, 7)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(2, -7)$. The point $(-2, 7)$ is the reflection in the $y$-axis. “The distance from $P$ to the $x$-axis is $2$” is incorrect. The distance to the $x$-axis is $|y| = 7$. The number $2$ is the distance to the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2154,7 +2154,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “$P$ lies in the fourth quadrant” — its signs are $(+, -)$. “The point symmetric to $P$ about the $y$-axis is $(3, 4)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-3, -4)$. “The point symmetric to $P$ about the origin is $(-4, 3)$” is false: that swaps the coordinates; about the origin the point is $(-3, 4)$. “The distance from $P$ to the $x$-axis is $3$” is false: the distance to the $x$-axis is $|y| = 4$; $|x|$ is the distance to the $y$-axis.",
+  "solution": "“$P$ lies in the fourth quadrant” is correct. Its signs are $(+, -)$. “The point symmetric to $P$ about the $y$-axis is $(3, 4)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-3, -4)$. The point $(3, 4)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the origin is $(-4, 3)$” is incorrect. Reflection in the origin changes both signs, which gives $(-3, 4)$. Swapping the coordinates is a different operation. “The distance from $P$ to the $x$-axis is $3$” is incorrect. The distance to the $x$-axis is $|y| = 4$. The number $3$ is the distance to the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2192,7 +2192,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $7$” — the distance to the $x$-axis is $|y|$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-2, 7)$. “The point symmetric to $P$ about the origin is $(7, 2)$” is false: that swaps the coordinates; about the origin the point is $(-2, -7)$. “The point $(-2, 7)$ lies in the first quadrant” is false: changing the sign of $x$ moves it to the second quadrant.",
+  "solution": "“The distance from $P$ to the $x$-axis is $7$” is correct. The distance to the $x$-axis is $|y| = 7$. “The point symmetric to $P$ about the $y$-axis is $(2, -7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-2, 7)$. The point $(2, -7)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the origin is $(7, 2)$” is incorrect. Reflection in the origin changes both signs, which gives $(-2, -7)$. Swapping the coordinates is a different operation. “The point $(-2, 7)$ lies in the first quadrant” is incorrect. Its signs are $(-, +)$, so it lies in the second quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2230,7 +2230,7 @@
    "axis",
    "axis"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $x$-axis is $(-1, 7)$” — reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $x$-axis is $(1, -7)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-1, 7)$. “The distance from $P$ to the $x$-axis is $1$” is false: the distance to the $x$-axis is $|y| = 7$; $|x|$ is the distance to the $y$-axis. “The point symmetric to $P$ about the $y$-axis is $(-1, 7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(1, -7)$.",
+  "solution": "“The point symmetric to $P$ about the $x$-axis is $(-1, 7)$” is correct. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the $x$-axis is $(1, -7)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-1, 7)$. The point $(1, -7)$ is the reflection in the $y$-axis. “The distance from $P$ to the $x$-axis is $1$” is incorrect. The distance to the $x$-axis is $|y| = 7$. The number $1$ is the distance to the $y$-axis. “The point symmetric to $P$ about the $y$-axis is $(-1, 7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(1, -7)$. The point $(-1, 7)$ is the reflection in the $x$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2268,7 +2268,7 @@
    "sign",
    "swap"
   ],
-  "solution": "The correct statement is “$P$ lies in the fourth quadrant” — its signs are $(+, -)$. “$P$ lies in the first quadrant” is false: its signs are $(+, -)$, so it lies in the fourth quadrant. “The point symmetric to $P$ about the $x$-axis is $(-5, -6)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(5, 6)$. “The point symmetric to $P$ about the origin is $(-6, 5)$” is false: that swaps the coordinates; about the origin the point is $(-5, 6)$.",
+  "solution": "“$P$ lies in the fourth quadrant” is correct. Its signs are $(+, -)$. “$P$ lies in the first quadrant” is incorrect. Its signs are $(+, -)$, so it lies in the fourth quadrant. “The point symmetric to $P$ about the $x$-axis is $(-5, -6)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(5, 6)$. The point $(-5, -6)$ is the reflection in the $y$-axis. “The point symmetric to $P$ about the origin is $(-6, 5)$” is incorrect. Reflection in the origin changes both signs, which gives $(-5, 6)$. Swapping the coordinates is a different operation.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2306,7 +2306,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $y$-axis is $(7, 4)$” — reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “$P$ lies in the first quadrant” is false: its signs are $(-, +)$, so it lies in the second quadrant. “The point symmetric to $P$ about the $x$-axis is $(7, 4)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-7, -4)$. “The distance from $P$ to the $x$-axis is $7$” is false: the distance to the $x$-axis is $|y| = 4$; $|x|$ is the distance to the $y$-axis.",
+  "solution": "“The point symmetric to $P$ about the $y$-axis is $(7, 4)$” is correct. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “$P$ lies in the first quadrant” is incorrect. Its signs are $(-, +)$, so it lies in the second quadrant. “The point symmetric to $P$ about the $x$-axis is $(7, 4)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-7, -4)$. The point $(7, 4)$ is the reflection in the $y$-axis. “The distance from $P$ to the $x$-axis is $7$” is incorrect. The distance to the $x$-axis is $|y| = 4$. The number $7$ is the distance to the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2344,7 +2344,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $2$” — the distance to the $x$-axis is $|y|$. “The point $(3, -2)$ lies in the third quadrant” is false: changing the sign of $x$ moves it to the fourth quadrant. “$P$ lies in the first quadrant” is false: its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $x$-axis is $(3, -2)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-3, 2)$.",
+  "solution": "“The distance from $P$ to the $x$-axis is $2$” is correct. The distance to the $x$-axis is $|y| = 2$. “The point $(3, -2)$ lies in the third quadrant” is incorrect. Its signs are $(+, -)$, so it lies in the fourth quadrant. “$P$ lies in the first quadrant” is incorrect. Its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $x$-axis is $(3, -2)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-3, 2)$. The point $(3, -2)$ is the reflection in the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2382,7 +2382,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $y$-axis is $(1, 4)$” — reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The distance from $P$ to the $x$-axis is $1$” is false: the distance to the $x$-axis is $|y| = 4$; $|x|$ is the distance to the $y$-axis. “The point symmetric to $P$ about the origin is $(4, -1)$” is false: that swaps the coordinates; about the origin the point is $(1, -4)$. “The point $(1, 4)$ lies in the second quadrant” is false: changing the sign of $x$ moves it to the first quadrant.",
+  "solution": "“The point symmetric to $P$ about the $y$-axis is $(1, 4)$” is correct. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$. “The distance from $P$ to the $x$-axis is $1$” is incorrect. The distance to the $x$-axis is $|y| = 4$. The number $1$ is the distance to the $y$-axis. “The point symmetric to $P$ about the origin is $(4, -1)$” is incorrect. Reflection in the origin changes both signs, which gives $(1, -4)$. Swapping the coordinates is a different operation. “The point $(1, 4)$ lies in the second quadrant” is incorrect. Its signs are $(+, +)$, so it lies in the first quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2420,7 +2420,7 @@
    "swap",
    "sign"
   ],
-  "solution": "The correct statement is “The distance from $P$ to the $x$-axis is $2$” — the distance to the $x$-axis is $|y|$. “The point symmetric to $P$ about the origin is $(-2, 4)$” is false: that swaps the coordinates; about the origin the point is $(-4, 2)$. “The point symmetric to $P$ about the $y$-axis is $(4, 2)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(-4, -2)$. “The point $(-4, -2)$ lies in the fourth quadrant” is false: changing the sign of $x$ moves it to the third quadrant.",
+  "solution": "“The distance from $P$ to the $x$-axis is $2$” is correct. The distance to the $x$-axis is $|y| = 2$. “The point symmetric to $P$ about the origin is $(-2, 4)$” is incorrect. Reflection in the origin changes both signs, which gives $(-4, 2)$. Swapping the coordinates is a different operation. “The point symmetric to $P$ about the $y$-axis is $(4, 2)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(-4, -2)$. The point $(4, 2)$ is the reflection in the $x$-axis. “The point $(-4, -2)$ lies in the fourth quadrant” is incorrect. Its signs are $(-, -)$, so it lies in the third quadrant.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2458,7 +2458,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “$P$ lies in the third quadrant” — its signs are $(-, -)$. “The point symmetric to $P$ about the origin is $(-7, -4)$” is false: that swaps the coordinates; about the origin the point is $(4, 7)$. “$P$ lies in the second quadrant” is false: its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $y$-axis is $(-4, 7)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(4, -7)$.",
+  "solution": "“$P$ lies in the third quadrant” is correct. Its signs are $(-, -)$. “The point symmetric to $P$ about the origin is $(-7, -4)$” is incorrect. Reflection in the origin changes both signs, which gives $(4, 7)$. Swapping the coordinates is a different operation. “$P$ lies in the second quadrant” is incorrect. Its signs are $(-, -)$, so it lies in the third quadrant. “The point symmetric to $P$ about the $y$-axis is $(-4, 7)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(4, -7)$. The point $(-4, 7)$ is the reflection in the $x$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2496,7 +2496,7 @@
    null,
    "axis"
   ],
-  "solution": "The correct statement is “The point symmetric to $P$ about the $x$-axis is $(-1, 3)$” — reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the origin is $(-3, -1)$” is false: that swaps the coordinates; about the origin the point is $(1, 3)$. “The point symmetric to $P$ about the $y$-axis is $(-1, 3)$” is false: that is the reflection in the $x$-axis; about the $y$-axis the point is $(1, -3)$. “The point symmetric to $P$ about the $x$-axis is $(1, -3)$” is false: that is the reflection in the $y$-axis; about the $x$-axis the point is $(-1, 3)$.",
+  "solution": "“The point symmetric to $P$ about the $x$-axis is $(-1, 3)$” is correct. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$. “The point symmetric to $P$ about the origin is $(-3, -1)$” is incorrect. Reflection in the origin changes both signs, which gives $(1, 3)$. Swapping the coordinates is a different operation. “The point symmetric to $P$ about the $y$-axis is $(-1, 3)$” is incorrect. Reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $(1, -3)$. The point $(-1, 3)$ is the reflection in the $x$-axis. “The point symmetric to $P$ about the $x$-axis is $(1, -3)$” is incorrect. Reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $(-1, 3)$. The point $(1, -3)$ is the reflection in the $y$-axis.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2534,7 +2534,7 @@
    "swap",
    "axis"
   ],
-  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$: $(5, -6) \\to (5, 6)$.",
+  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$, so $(5, -6)$ becomes $(5, 6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2572,7 +2572,7 @@
    null,
    "swap"
   ],
-  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$: $(-9, 1) \\to (-9, -1)$.",
+  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$, so $(-9, 1)$ becomes $(-9, -1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2610,7 +2610,7 @@
    "swap",
    "axis"
   ],
-  "solution": "Symmetry about the origin changes both signs: $(8, -4) \\to (-8, 4)$.",
+  "solution": "Symmetry about the origin changes both signs, so $(8, -4)$ becomes $(-8, 4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2648,7 +2648,7 @@
    null,
    "swap"
   ],
-  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$: $(7, 6) \\to (7, -6)$.",
+  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$, so $(7, 6)$ becomes $(7, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2686,7 +2686,7 @@
    "swap",
    null
   ],
-  "solution": "Symmetry about the $y$-axis changes the sign of $x$ and keeps $y$: $(-4, 8) \\to (4, 8)$.",
+  "solution": "Symmetry about the $y$-axis changes the sign of $x$ and keeps $y$, so $(-4, 8)$ becomes $(4, 8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2724,7 +2724,7 @@
    "swap",
    null
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 3$: there are two points, $(-1, 3)$ and $(-1, -3)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 3$. Hence there are two points, $(-1, 3)$ and $(-1, -3)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2762,7 +2762,7 @@
    "swap",
    "partial"
   ],
-  "solution": "The distance from $(x, y)$ to the $y$-axis is $|x|$, so $x = \\pm 6$: there are two points, $(6, -3)$ and $(-6, -3)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $y$-axis is $|x|$, so $x = \\pm 6$. Hence there are two points, $(6, -3)$ and $(-6, -3)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2800,7 +2800,7 @@
    null,
    "partial"
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$: there are two points, $(1, 2)$ and $(1, -2)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$. Hence there are two points, $(1, 2)$ and $(1, -2)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2838,7 +2838,7 @@
    "partial",
    "swap"
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 4$: there are two points, $(-1, 4)$ and $(-1, -4)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 4$. Hence there are two points, $(-1, 4)$ and $(-1, -4)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2876,7 +2876,7 @@
    "swap",
    null
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$: there are two points, $(-6, 2)$ and $(-6, -2)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$. Hence there are two points, $(-6, 2)$ and $(-6, -2)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2914,7 +2914,7 @@
    "swap",
    "partial"
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 7$: there are two points, $(-3, 7)$ and $(-3, -7)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 7$. Hence there are two points, $(-3, 7)$ and $(-3, -7)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2952,7 +2952,7 @@
    null,
    "sign"
   ],
-  "solution": "A point on the $x$-axis has $y = 0$: $a + 5 = 0$, so $a = -5$. Hence $A(-1, 0)$.",
+  "solution": "A point on the $x$-axis has $y = 0$, so $a + 5 = 0$ and $a = -5$. Then $-a - 6 = -1$, so the point is $A(-1, 0)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -2990,7 +2990,7 @@
    "axis",
    "axis"
   ],
-  "solution": "A point on the $y$-axis has $x = 0$: $a + 5 = 0$, so $a = -5$. Hence $P(0, -12)$.",
+  "solution": "A point on the $y$-axis has $x = 0$, so $a + 5 = 0$ and $a = -5$. Then $2a - 2 = -12$, so the point is $P(0, -12)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -3028,7 +3028,7 @@
    "sign",
    "axis"
   ],
-  "solution": "A point on the $x$-axis has $y = 0$: $a - 5 = 0$, so $a = 5$. Hence $M(1, 0)$.",
+  "solution": "A point on the $x$-axis has $y = 0$, so $a - 5 = 0$ and $a = 5$. Then $a - 4 = 1$, so the point is $M(1, 0)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -3166,7 +3166,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $A(-4, -3)$ and $B(-7, -4)$, then $|AB| =$ ( )",
+  "stem": "For the points $A(-4, -3)$ and $B(-7, -4)$, $|AB| =$ ( )",
   "options": [
    "$\\sqrt{170}$",
    "$\\sqrt{10}$",
@@ -3180,7 +3180,7 @@
    "partial",
    "operation"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-7 - (-4) = -3$ and $-4 - (-3) = -1$. By the distance formula, $|AB| = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{9 + 1} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3218,7 +3218,7 @@
    null,
    "partial"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + 4^2} = \\sqrt{41}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-6 - (-1) = -5$ and $4 - 0 = 4$. By the distance formula, $|MN| = \\sqrt{(-5)^2 + 4^2} = \\sqrt{25 + 16} = \\sqrt{41}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3256,7 +3256,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-2)^2 + 1^2} = \\sqrt{5}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-6 - (-4) = -2$ and $-1 - (-2) = 1$. By the distance formula, $|PQ| = \\sqrt{(-2)^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3280,7 +3280,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $M(1, 1)$ and $N(4, 0)$, then $|MN| =$ ( )",
+  "stem": "For the points $M(1, 1)$ and $N(4, 0)$, $|MN| =$ ( )",
   "options": [
    "$4$",
    "$\\sqrt{10}$",
@@ -3294,7 +3294,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + (-1)^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $4 - 1 = 3$ and $0 - 1 = -1$. By the distance formula, $|MN| = \\sqrt{3^2 + (-1)^2} = \\sqrt{9 + 1} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3332,7 +3332,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + 2^2} = \\sqrt{29}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $4 - (-1) = 5$ and $-2 - (-4) = 2$. By the distance formula, $|MN| = \\sqrt{5^2 + 2^2} = \\sqrt{25 + 4} = \\sqrt{29}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3370,7 +3370,7 @@
    null,
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-2)^2 + 1^2} = \\sqrt{5}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $2 - 4 = -2$ and $1 - 0 = 1$. By the distance formula, $|PQ| = \\sqrt{(-2)^2 + 1^2} = \\sqrt{4 + 1} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3408,7 +3408,7 @@
    "partial",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + (-1)^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - 0 = 1$ and $1 - 2 = -1$. By the distance formula, $|PQ| = \\sqrt{1^2 + (-1)^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3446,7 +3446,7 @@
    null,
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $2 - 1 = 1$ and $0 - 2 = -2$. By the distance formula, $|MN| = \\sqrt{1^2 + (-2)^2} = \\sqrt{1 + 4} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3484,7 +3484,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + 5^2} = \\sqrt{34}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $5 - 2 = 3$ and $8 - 3 = 5$. By the distance formula, $|MN| = \\sqrt{3^2 + 5^2} = \\sqrt{9 + 25} = \\sqrt{34}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3508,7 +3508,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $P(0, 0)$ and $Q(1, 1)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(0, 0)$ and $Q(1, 1)$, $|PQ| =$ ( )",
   "options": [
    "$1$",
    "$\\sqrt{2}$",
@@ -3522,7 +3522,7 @@
    "partial",
    "slip"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + 1^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - 0 = 1$ and $1 - 0 = 1$. By the distance formula, $|PQ| = \\sqrt{1^2 + 1^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3560,7 +3560,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + (-1)^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $0 - (-1) = 1$ and $-4 - (-3) = -1$. By the distance formula, $|PQ| = \\sqrt{1^2 + (-1)^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3584,7 +3584,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $P(-1, 4)$ and $Q(-2, 5)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(-1, 4)$ and $Q(-2, 5)$, $|PQ| =$ ( )",
   "options": [
    "$\\sqrt{2}$",
    "$1$",
@@ -3598,7 +3598,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-1)^2 + 1^2} = \\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-2 - (-1) = -1$ and $5 - 4 = 1$. By the distance formula, $|PQ| = \\sqrt{(-1)^2 + 1^2} = \\sqrt{1 + 1} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3622,7 +3622,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $A(-1, 2)$ and $B(1, 7)$, then $|AB| =$ ( )",
+  "stem": "For the points $A(-1, 2)$ and $B(1, 7)$, $|AB| =$ ( )",
   "options": [
    "$\\sqrt{29}$",
    "$9$",
@@ -3636,7 +3636,7 @@
    "operation",
    "partial"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{2^2 + 5^2} = \\sqrt{29}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - (-1) = 2$ and $7 - 2 = 5$. By the distance formula, $|AB| = \\sqrt{2^2 + 5^2} = \\sqrt{4 + 25} = \\sqrt{29}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3660,7 +3660,7 @@
   "points": 2,
   "repeat": "R04",
   "trick": null,
-  "stem": "Given points $P(-3, 0)$ and $Q(-8, -1)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(-3, 0)$ and $Q(-8, -1)$, $|PQ| =$ ( )",
   "options": [
    "$\\sqrt{122}$",
    "$26$",
@@ -3674,7 +3674,7 @@
    null,
    "operation"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{26}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-8 - (-3) = -5$ and $-1 - 0 = -1$. By the distance formula, $|PQ| = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{25 + 1} = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3712,7 +3712,7 @@
    "partial",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + 1^2} = \\sqrt{26}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-4 - 1 = -5$ and $-1 - (-2) = 1$. By the distance formula, $|PQ| = \\sqrt{(-5)^2 + 1^2} = \\sqrt{25 + 1} = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3750,7 +3750,7 @@
    "partial",
    null
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + (-1)^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $1 - (-2) = 3$ and $-2 - (-1) = -1$. By the distance formula, $|MN| = \\sqrt{3^2 + (-1)^2} = \\sqrt{9 + 1} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3788,7 +3788,7 @@
    null,
    "operation"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{26}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-8 - (-3) = -5$ and $-3 - (-2) = -1$. By the distance formula, $|AB| = \\sqrt{(-5)^2 + (-1)^2} = \\sqrt{25 + 1} = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3812,7 +3812,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $P(-3, 5)$ and $Q(-7, 8)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(-3, 5)$ and $Q(-7, 8)$, $|PQ| =$ ( )",
   "options": [
    "$25$",
    "$7$",
@@ -3826,7 +3826,7 @@
    "sign",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-4)^2 + 3^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-7 - (-3) = -4$ and $8 - 5 = 3$. By the distance formula, $|PQ| = \\sqrt{(-4)^2 + 3^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3864,7 +3864,7 @@
    "partial",
    "operation"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-3)^2 + 4^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-6 - (-3) = -3$ and $3 - (-1) = 4$. By the distance formula, $|PQ| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3902,7 +3902,7 @@
    "operation",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-6)^2 + (-8)^2} = \\sqrt{100} = 10$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-9 - (-3) = -6$ and $-11 - (-3) = -8$. By the distance formula, $|PQ| = \\sqrt{(-6)^2 + (-8)^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3940,7 +3940,7 @@
    "operation",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-2 - (-5) = 3$ and $6 - 2 = 4$. By the distance formula, $|PQ| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -3978,7 +3978,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-4)^2 + (-3)^2} = \\sqrt{25} = 5$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-1 - 3 = -4$ and $2 - 5 = -3$. By the distance formula, $|MN| = \\sqrt{(-4)^2 + (-3)^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4002,7 +4002,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $P(3, 3)$ and $Q(8, -9)$, then $|PQ| =$ ( )",
+  "stem": "For the points $P(3, 3)$ and $Q(8, -9)$, $|PQ| =$ ( )",
   "options": [
    "$17$",
    "$13$",
@@ -4016,7 +4016,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + (-12)^2} = \\sqrt{169} = 13$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $8 - 3 = 5$ and $-9 - 3 = -12$. By the distance formula, $|PQ| = \\sqrt{5^2 + (-12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4054,7 +4054,7 @@
    "sign",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-7)^2 + 1^2} = \\sqrt{50} = 5\\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-11 - (-4) = -7$ and $-2 - (-3) = 1$. By the distance formula, $|PQ| = \\sqrt{(-7)^2 + 1^2} = \\sqrt{49 + 1} = \\sqrt{50} = 5\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4092,7 +4092,7 @@
    null,
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-1)^2 + 6^2} = \\sqrt{37}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-1 - 0 = -1$ and $4 - (-2) = 6$. By the distance formula, $|PQ| = \\sqrt{(-1)^2 + 6^2} = \\sqrt{1 + 36} = \\sqrt{37}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4116,7 +4116,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $M(5, 4)$ and $N(11, 11)$, then $|MN| =$ ( )",
+  "stem": "For the points $M(5, 4)$ and $N(11, 11)$, $|MN| =$ ( )",
   "options": [
    "$85$",
    "$\\sqrt{85}$",
@@ -4130,7 +4130,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{6^2 + 7^2} = \\sqrt{85}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $11 - 5 = 6$ and $11 - 4 = 7$. By the distance formula, $|MN| = \\sqrt{6^2 + 7^2} = \\sqrt{36 + 49} = \\sqrt{85}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4168,7 +4168,7 @@
    "operation",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + (-8)^2} = \\sqrt{89}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $4 - (-1) = 5$ and $-12 - (-4) = -8$. By the distance formula, $|PQ| = \\sqrt{5^2 + (-8)^2} = \\sqrt{25 + 64} = \\sqrt{89}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4206,7 +4206,7 @@
    null,
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{5^2 + (-7)^2} = \\sqrt{74}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $7 - 2 = 5$ and $-5 - 2 = -7$. By the distance formula, $|PQ| = \\sqrt{5^2 + (-7)^2} = \\sqrt{25 + 49} = \\sqrt{74}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4230,7 +4230,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-2, 2)$ and $B(5, -4)$, then $|AB| =$ ( )",
+  "stem": "For the points $A(-2, 2)$ and $B(5, -4)$, $|AB| =$ ( )",
   "options": [
    "$85$",
    "$\\sqrt{13}$",
@@ -4244,7 +4244,7 @@
    null,
    "operation"
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{7^2 + (-6)^2} = \\sqrt{85}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $5 - (-2) = 7$ and $-4 - 2 = -6$. By the distance formula, $|AB| = \\sqrt{7^2 + (-6)^2} = \\sqrt{49 + 36} = \\sqrt{85}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4282,7 +4282,7 @@
    "partial",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{7^2 + 8^2} = \\sqrt{113}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $9 - 2 = 7$ and $7 - (-1) = 8$. By the distance formula, $|PQ| = \\sqrt{7^2 + 8^2} = \\sqrt{49 + 64} = \\sqrt{113}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4320,7 +4320,7 @@
    "sign",
    null
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-3)^2 + (-3)^2} = \\sqrt{18} = 3\\sqrt{2}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-3 - 0 = -3$ and $-6 - (-3) = -3$. By the distance formula, $|AB| = \\sqrt{(-3)^2 + (-3)^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4358,7 +4358,7 @@
    "operation",
    "partial"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-6)^2 + 5^2} = \\sqrt{61}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-1 - 5 = -6$ and $8 - 3 = 5$. By the distance formula, $|PQ| = \\sqrt{(-6)^2 + 5^2} = \\sqrt{36 + 25} = \\sqrt{61}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4396,7 +4396,7 @@
    "partial",
    "operation"
   ],
-  "solution": "$|MN| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-6)^2 + 4^2} = \\sqrt{52} = 2\\sqrt{13}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $-3 - 3 = -6$ and $-1 - (-5) = 4$. By the distance formula, $|MN| = \\sqrt{(-6)^2 + 4^2} = \\sqrt{36 + 16} = \\sqrt{52} = 2\\sqrt{13}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4434,7 +4434,7 @@
    "operation",
    "sign"
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{8^2 + (-5)^2} = \\sqrt{89}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $7 - (-1) = 8$ and $-1 - 4 = -5$. By the distance formula, $|PQ| = \\sqrt{8^2 + (-5)^2} = \\sqrt{64 + 25} = \\sqrt{89}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4472,7 +4472,7 @@
    "operation",
    null
   ],
-  "solution": "$|AB| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{1^2 + 8^2} = \\sqrt{65}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $0 - (-1) = 1$ and $6 - (-2) = 8$. By the distance formula, $|AB| = \\sqrt{1^2 + 8^2} = \\sqrt{1 + 64} = \\sqrt{65}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4510,7 +4510,7 @@
    null,
    "slip"
   ],
-  "solution": "The differences of the coordinates are $1$ and $1$ — the letters cancel. So $|PQ| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$.",
+  "solution": "The differences of the coordinates are $(s + 1) - s = 1$ and $(t + 1) - t = 1$, so the letters cancel. Then $|PQ| = \\sqrt{1^2 + 1^2} = \\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4548,7 +4548,7 @@
    "partial",
    "operation"
   ],
-  "solution": "The differences of the coordinates are $-1$ and $-4$ — the letters cancel. So $|PQ| = \\sqrt{(-1)^2 + (-4)^2} = \\sqrt{17}$.",
+  "solution": "The differences of the coordinates are $(a - 1) - a = -1$ and $(b - 4) - b = -4$, so the letters cancel. Then $|PQ| = \\sqrt{(-1)^2 + (-4)^2} = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4586,7 +4586,7 @@
    "partial",
    "partial"
   ],
-  "solution": "The differences of the coordinates are $-4$ and $-4$ — the letters cancel. So $|PQ| = \\sqrt{(-4)^2 + (-4)^2} = \\sqrt{32} = 4\\sqrt{2}$.",
+  "solution": "The differences of the coordinates are $(a - 4) - a = -4$ and $(b - 4) - b = -4$, so the letters cancel. Then $|PQ| = \\sqrt{(-4)^2 + (-4)^2} = \\sqrt{32} = 4\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4624,7 +4624,7 @@
    "partial",
    "operation"
   ],
-  "solution": "The differences of the coordinates are $3$ and $1$ — the letters cancel. So $|PQ| = \\sqrt{3^2 + 1^2} = \\sqrt{10}$.",
+  "solution": "The differences of the coordinates are $(a + 3) - a = 3$ and $(b + 1) - b = 1$, so the letters cancel. Then $|PQ| = \\sqrt{3^2 + 1^2} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4662,7 +4662,7 @@
    "operation",
    null
   ],
-  "solution": "The differences of the coordinates are $-3$ and $-1$ — the letters cancel. So $|PQ| = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{10}$.",
+  "solution": "The differences of the coordinates are $(a - 3) - a = -3$ and $(b - 1) - b = -1$, so the letters cancel. Then $|PQ| = \\sqrt{(-3)^2 + (-1)^2} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4700,7 +4700,7 @@
    null,
    "partial"
   ],
-  "solution": "The differences of the coordinates are $1$ and $-2$ — the letters cancel. So $|PQ| = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}$.",
+  "solution": "The differences of the coordinates are $(a + 1) - a = 1$ and $(b - 2) - b = -2$, so the letters cancel. Then $|PQ| = \\sqrt{1^2 + (-2)^2} = \\sqrt{5}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4724,7 +4724,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(1, 0)$ and $B(a, -12)$, if $|AB| = 13$, then $a =$ ( )",
+  "stem": "The points $A(1, 0)$ and $B(a, -12)$ satisfy $|AB| = 13$. Then $a =$ ( )",
   "options": [
    "$6$",
    "$-4$",
@@ -4738,7 +4738,7 @@
    "sign",
    null
   ],
-  "solution": "$|AB|^2 = 169$ gives $(a - 1)^2 + (-12)^2 = 169$, so $(a - 1)^2 = 25$ and $a - 1 = \\pm 5$. Hence $a = 6$ or $-4$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $(a - 1)^2 + (-12)^2 = 169$, so $(a - 1)^2 = 25$ and $a - 1 = \\pm 5$. Hence $a = 6$ or $a = -4$, and both give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4762,7 +4762,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(1, -3)$ and $B(6, b)$, if $|AB| = 13$, then $b =$ ( )",
+  "stem": "The points $A(1, -3)$ and $B(6, b)$ satisfy $|AB| = 13$. Then $b =$ ( )",
   "options": [
    "$9$",
    "$15$ or $-9$",
@@ -4776,7 +4776,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 169$ gives $(b + 3)^2 + 5^2 = 169$, so $(b + 3)^2 = 144$ and $b + 3 = \\pm 12$. Hence $b = 9$ or $-15$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $(b + 3)^2 + 5^2 = 169$, so $(b + 3)^2 = 144$ and $b + 3 = \\pm 12$. Hence $b = 9$ or $b = -15$, and both give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4800,7 +4800,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-3, 1)$ and $B(-11, b)$, if $|AB| = 10$, then $b =$ ( )",
+  "stem": "The points $A(-3, 1)$ and $B(-11, b)$ satisfy $|AB| = 10$. Then $b =$ ( )",
   "options": [
    "$-5$",
    "$7$ or $-5$",
@@ -4814,7 +4814,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|AB|^2 = 100$ gives $(b - 1)^2 + (-8)^2 = 100$, so $(b - 1)^2 = 36$ and $b - 1 = \\pm 6$. Hence $b = 7$ or $-5$ — two answers.",
+  "solution": "$|AB|^2 = 100$ gives $(b - 1)^2 + (-8)^2 = 100$, so $(b - 1)^2 = 36$ and $b - 1 = \\pm 6$. Hence $b = 7$ or $b = -5$, and both give $|AB| = 10$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4838,7 +4838,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-2, 0)$ and $B(a, -3)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(-2, 0)$ and $B(a, -3)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$-6$",
    "$6$ or $-2$",
@@ -4852,7 +4852,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 25$ gives $(a + 2)^2 + (-3)^2 = 25$, so $(a + 2)^2 = 16$ and $a + 2 = \\pm 4$. Hence $a = 2$ or $-6$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $(a + 2)^2 + (-3)^2 = 25$, so $(a + 2)^2 = 16$ and $a + 2 = \\pm 4$. Hence $a = 2$ or $a = -6$, and both give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4876,7 +4876,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(2, 3)$ and $B(a, -1)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(2, 3)$ and $B(a, -1)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$5$",
    "$5$ or $-1$",
@@ -4890,7 +4890,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|AB|^2 = 25$ gives $(a - 2)^2 + (-4)^2 = 25$, so $(a - 2)^2 = 9$ and $a - 2 = \\pm 3$. Hence $a = 5$ or $-1$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $(a - 2)^2 + (-4)^2 = 25$, so $(a - 2)^2 = 9$ and $a - 2 = \\pm 3$. Hence $a = 5$ or $a = -1$, and both give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4914,7 +4914,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-2, 1)$ and $B(a, -4)$, if $|AB| = 13$, then $a =$ ( )",
+  "stem": "The points $A(-2, 1)$ and $B(a, -4)$ satisfy $|AB| = 13$. Then $a =$ ( )",
   "options": [
    "$10$",
    "$14$ or $-10$",
@@ -4928,7 +4928,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 169$ gives $(a + 2)^2 + (-5)^2 = 169$, so $(a + 2)^2 = 144$ and $a + 2 = \\pm 12$. Hence $a = 10$ or $-14$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $(a + 2)^2 + (-5)^2 = 169$, so $(a + 2)^2 = 144$ and $a + 2 = \\pm 12$. Hence $a = 10$ or $a = -14$, and both give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4952,7 +4952,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, -2)$ and $B(a, 1)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(0, -2)$ and $B(a, 1)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$4$",
    "$-4$",
@@ -4966,7 +4966,7 @@
    "companion",
    null
   ],
-  "solution": "$|AB|^2 = 25$ gives $a^2 + 3^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $a^2 + 3^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -4990,7 +4990,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(3, 0)$ and $B(-3, b)$, if $|AB| = 10$, then $b =$ ( )",
+  "stem": "The points $A(3, 0)$ and $B(-3, b)$ satisfy $|AB| = 10$. Then $b =$ ( )",
   "options": [
    "$-8$",
    "$8$",
@@ -5004,7 +5004,7 @@
    "companion",
    null
   ],
-  "solution": "$|AB|^2 = 100$ gives $b^2 + (-6)^2 = 100$, so $b^2 = 64$ and $b = \\pm 8$ — two answers.",
+  "solution": "$|AB|^2 = 100$ gives $b^2 + (-6)^2 = 100$, so $b^2 = 64$ and $b = \\pm 8$. Both values give $|AB| = 10$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5028,7 +5028,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 0)$ and $B(-3, b)$, if $|AB| = 5$, then $b =$ ( )",
+  "stem": "The points $A(0, 0)$ and $B(-3, b)$ satisfy $|AB| = 5$. Then $b =$ ( )",
   "options": [
    "$\\pm 4$",
    "$-4$",
@@ -5042,7 +5042,7 @@
    "companion",
    "pm"
   ],
-  "solution": "$|AB|^2 = 25$ gives $b^2 + (-3)^2 = 25$, so $b^2 = 16$ and $b = \\pm 4$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $b^2 + (-3)^2 = 25$, so $b^2 = 16$ and $b = \\pm 4$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5066,7 +5066,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 1)$ and $B(a, -4)$, if $|AB| = 13$, then $a =$ ( )",
+  "stem": "The points $A(0, 1)$ and $B(a, -4)$ satisfy $|AB| = 13$. Then $a =$ ( )",
   "options": [
    "$\\pm 5$",
    "$12$",
@@ -5080,7 +5080,7 @@
    null,
    "pm"
   ],
-  "solution": "$|AB|^2 = 169$ gives $a^2 + (-5)^2 = 169$, so $a^2 = 144$ and $a = \\pm 12$ — two answers.",
+  "solution": "$|AB|^2 = 169$ gives $a^2 + (-5)^2 = 169$, so $a^2 = 144$ and $a = \\pm 12$. Both values give $|AB| = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5104,7 +5104,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 4)$ and $B(a, 1)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(0, 4)$ and $B(a, 1)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$\\pm 3$",
    "$\\pm 4$",
@@ -5118,7 +5118,7 @@
    "pm",
    "pm"
   ],
-  "solution": "$|AB|^2 = 25$ gives $a^2 + (-3)^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $a^2 + (-3)^2 = 25$, so $a^2 = 16$ and $a = \\pm 4$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5142,7 +5142,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, -4)$ and $B(a, 0)$, if $|AB| = 5$, then $a =$ ( )",
+  "stem": "The points $A(0, -4)$ and $B(a, 0)$ satisfy $|AB| = 5$. Then $a =$ ( )",
   "options": [
    "$3$",
    "$\\pm 3$",
@@ -5156,7 +5156,7 @@
    "pm",
    "companion"
   ],
-  "solution": "$|AB|^2 = 25$ gives $a^2 + 4^2 = 25$, so $a^2 = 9$ and $a = \\pm 3$ — two answers.",
+  "solution": "$|AB|^2 = 25$ gives $a^2 + 4^2 = 25$, so $a^2 = 9$ and $a = \\pm 3$. Both values give $|AB| = 5$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5180,7 +5180,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(0, 2)$ and $B(-1, b)$, if $|AB| = \\sqrt{17}$, then $b =$ ( )",
+  "stem": "The points $A(0, 2)$ and $B(-1, b)$ satisfy $|AB| = \\sqrt{17}$. Then $b =$ ( )",
   "options": [
    "$-2$",
    "$2$ or $-6$",
@@ -5194,7 +5194,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 17$ gives $(b - 2)^2 + (-1)^2 = 17$, so $(b - 2)^2 = 16$ and $b - 2 = \\pm 4$. Hence $b = 6$ or $-2$ — two answers.",
+  "solution": "$|AB|^2 = 17$ gives $(b - 2)^2 + (-1)^2 = 17$, so $(b - 2)^2 = 16$ and $b - 2 = \\pm 4$. Hence $b = 6$ or $b = -2$, and both give $|AB| = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5218,7 +5218,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-3, 3)$ and $B(a, 1)$, if $|AB| = \\sqrt{29}$, then $a =$ ( )",
+  "stem": "The points $A(-3, 3)$ and $B(a, 1)$ satisfy $|AB| = \\sqrt{29}$. Then $a =$ ( )",
   "options": [
    "$-8$",
    "$2$ or $-8$",
@@ -5232,7 +5232,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$|AB|^2 = 29$ gives $(a + 3)^2 + (-2)^2 = 29$, so $(a + 3)^2 = 25$ and $a + 3 = \\pm 5$. Hence $a = 2$ or $-8$ — two answers.",
+  "solution": "$|AB|^2 = 29$ gives $(a + 3)^2 + (-2)^2 = 29$, so $(a + 3)^2 = 25$ and $a + 3 = \\pm 5$. Hence $a = 2$ or $a = -8$, and both give $|AB| = \\sqrt{29}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5256,7 +5256,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-5, -3)$ and $B(a, 2)$, if $|AB| = \\sqrt{26}$, then $a =$ ( )",
+  "stem": "The points $A(-5, -3)$ and $B(a, 2)$ satisfy $|AB| = \\sqrt{26}$. Then $a =$ ( )",
   "options": [
    "$6$ or $4$",
    "$-6$",
@@ -5270,7 +5270,7 @@
    null,
    "partial"
   ],
-  "solution": "$|AB|^2 = 26$ gives $(a + 5)^2 + 5^2 = 26$, so $(a + 5)^2 = 1$ and $a + 5 = \\pm 1$. Hence $a = -4$ or $-6$ — two answers.",
+  "solution": "$|AB|^2 = 26$ gives $(a + 5)^2 + 5^2 = 26$, so $(a + 5)^2 = 1$ and $a + 5 = \\pm 1$. Hence $a = -4$ or $a = -6$, and both give $|AB| = \\sqrt{26}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5294,7 +5294,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(1, -3)$ and $B(-4, b)$, if $|AB| = 5\\sqrt{2}$, then $b =$ ( )",
+  "stem": "The points $A(1, -3)$ and $B(-4, b)$ satisfy $|AB| = 5\\sqrt{2}$. Then $b =$ ( )",
   "options": [
    "$2$ or $-8$",
    "$8$ or $-2$",
@@ -5308,7 +5308,7 @@
    "partial",
    "partial"
   ],
-  "solution": "$|AB|^2 = 50$ gives $(b + 3)^2 + (-5)^2 = 50$, so $(b + 3)^2 = 25$ and $b + 3 = \\pm 5$. Hence $b = 2$ or $-8$ — two answers.",
+  "solution": "$|AB|^2 = 50$ gives $(b + 3)^2 + (-5)^2 = 50$, so $(b + 3)^2 = 25$ and $b + 3 = \\pm 5$. Hence $b = 2$ or $b = -8$, and both give $|AB| = 5\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5332,7 +5332,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given points $A(-3, -2)$ and $B(a, -6)$, if $|AB| = \\sqrt{17}$, then $a =$ ( )",
+  "stem": "The points $A(-3, -2)$ and $B(a, -6)$ satisfy $|AB| = \\sqrt{17}$. Then $a =$ ( )",
   "options": [
    "$-2$ or $-4$",
    "$4$ or $2$",
@@ -5346,7 +5346,7 @@
    "partial",
    "partial"
   ],
-  "solution": "$|AB|^2 = 17$ gives $(a + 3)^2 + (-4)^2 = 17$, so $(a + 3)^2 = 1$ and $a + 3 = \\pm 1$. Hence $a = -2$ or $-4$ — two answers.",
+  "solution": "$|AB|^2 = 17$ gives $(a + 3)^2 + (-4)^2 = 17$, so $(a + 3)^2 = 1$ and $a + 3 = \\pm 1$. Hence $a = -2$ or $a = -4$, and both give $|AB| = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5384,7 +5384,7 @@
    "sign",
    "operation"
   ],
-  "solution": "The differences are $2$ and $2$ (the fractions cancel). So the distance is $\\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$.",
+  "solution": "The differences are $\\dfrac{5}{2} - \\dfrac{1}{2} = 2$ and $\\dfrac{7}{2} - \\dfrac{3}{2} = 2$, so the fractions cancel. The distance is $\\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5422,7 +5422,7 @@
    null,
    "partial"
   ],
-  "solution": "The differences are $4$ and $-5$ (the fractions cancel). So the distance is $\\sqrt{4^2 + (-5)^2} = \\sqrt{41}$.",
+  "solution": "The differences are $\\dfrac{13}{2} - \\dfrac{5}{2} = 4$ and $-5 - 0 = -5$, so the fractions cancel. The distance is $\\sqrt{4^2 + (-5)^2} = \\sqrt{41}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5460,7 +5460,7 @@
    "partial",
    "sign"
   ],
-  "solution": "The differences are $1$ and $-6$ (the fractions cancel). So the distance is $\\sqrt{1^2 + (-6)^2} = \\sqrt{37}$.",
+  "solution": "The differences are $\\dfrac{7}{2} - \\dfrac{5}{2} = 1$ and $-6 - 0 = -6$, so the fractions cancel. The distance is $\\sqrt{1^2 + (-6)^2} = \\sqrt{37}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5498,7 +5498,7 @@
    "partial",
    null
   ],
-  "solution": "The differences are $-6$ and $1$ (the fractions cancel). So the distance is $\\sqrt{(-6)^2 + 1^2} = \\sqrt{37}$.",
+  "solution": "The differences are $-\\dfrac{11}{2} - \\dfrac{1}{2} = -6$ and $\\dfrac{1}{2} - (-\\dfrac{1}{2}) = 1$, so the fractions cancel. The distance is $\\sqrt{(-6)^2 + 1^2} = \\sqrt{37}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5536,7 +5536,7 @@
    "sign",
    null
   ],
-  "solution": "The differences are $4$ and $5$ (the fractions cancel). So the distance is $\\sqrt{4^2 + 5^2} = \\sqrt{41}$.",
+  "solution": "The differences are $\\dfrac{9}{2} - \\dfrac{1}{2} = 4$ and $5 - 0 = 5$, so the fractions cancel. The distance is $\\sqrt{4^2 + 5^2} = \\sqrt{41}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5574,7 +5574,7 @@
    "partial",
    null
   ],
-  "solution": "Use $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. The correct statement is $|AC| = \\sqrt{13}$ — $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|BC| = 2\\sqrt{33}$ is false: the squares are subtracted instead of added; $|BC| = \\sqrt{8^2 + 14^2} = 2\\sqrt{65}$. $|AC| = 13$ is false: the square root is missing; $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|AB| = 169$ is false: the square root is missing; $|AB| = \\sqrt{5^2 + 12^2} = 13$.",
+  "solution": "Use the distance formula $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. $|AC| = \\sqrt{13}$ is correct. $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|BC| = 2\\sqrt{33}$ is incorrect. The squares must be added, not subtracted, so $|BC| = \\sqrt{8^2 + 14^2} = 2\\sqrt{65}$. $|AC| = 13$ is incorrect. $13$ is $|AC|^2$, and $|AC| = \\sqrt{3^2 + 2^2} = \\sqrt{13}$. $|AB| = 169$ is incorrect. $169$ is $|AB|^2$, and $|AB| = \\sqrt{5^2 + 12^2} = 13$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5612,7 +5612,7 @@
    "operation",
    "sign"
   ],
-  "solution": "Use $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. The correct statement is $|BC| = 13$ — $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| > |BC|$ is false: $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$ and $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|BC| = \\sqrt{119}$ is false: the squares are subtracted instead of added; $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| = 5$ is false: the differences are added without squaring; $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
+  "solution": "Use the distance formula $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. $|BC| = 13$ is correct. $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| > |BC|$ is incorrect. $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$ and $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|BC| = \\sqrt{119}$ is incorrect. The squares must be added, not subtracted, so $|BC| = \\sqrt{12^2 + 5^2} = 13$. $|AC| = 5$ is incorrect. Adding the differences without squaring gives $5$, but $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5650,7 +5650,7 @@
    "sign",
    "operation"
   ],
-  "solution": "Use $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. The correct statement is $|BC| = \\sqrt{10}$ — $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| < |BC|$ is false: $|AB| = \\sqrt{3^2 + 4^2} = 5$ and $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| = 7$ is false: the differences are added without squaring; $|AB| = \\sqrt{3^2 + 4^2} = 5$. $|AC| = 5$ is false: the differences are added without squaring; $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
+  "solution": "Use the distance formula $d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$ for each pair of points. $|BC| = \\sqrt{10}$ is correct. $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| < |BC|$ is incorrect. $|AB| = \\sqrt{3^2 + 4^2} = 5$ and $|BC| = \\sqrt{1^2 + 3^2} = \\sqrt{10}$. $|AB| = 7$ is incorrect. Adding the differences without squaring gives $7$, but $|AB| = \\sqrt{3^2 + 4^2} = 5$. $|AC| = 5$ is incorrect. Adding the differences without squaring gives $5$, but $|AC| = \\sqrt{4^2 + 1^2} = \\sqrt{17}$.",
   "video": "V21",
   "version": "a",
   "domain": "LN",
@@ -5688,7 +5688,7 @@
    "sign",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{8 - 1}{-4 - 2} = -\\dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{8 - 1}{-4 - 2} = -\\dfrac{7}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5726,7 +5726,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - 2}{-1 - 5} = \\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - 2}{-1 - 5} = \\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5764,7 +5764,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - (-4)}{-7 - (-1)} = -\\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-1 - (-4)}{-7 - (-1)} = -\\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5802,7 +5802,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - 3}{0 - 3} = -\\dfrac{1}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - 3}{0 - 3} = -\\dfrac{1}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5840,7 +5840,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - 1}{-5 - 1} = -\\dfrac{1}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - 1}{-5 - 1} = -\\dfrac{1}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5878,7 +5878,7 @@
    "reciprocal",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-2)}{1 - (-5)} = \\dfrac{2}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-2)}{1 - (-5)} = \\dfrac{2}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5916,7 +5916,7 @@
    "reciprocal",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-5 - (-4)}{-3 - 0} = \\dfrac{1}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-5 - (-4)}{-3 - 0} = \\dfrac{1}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5954,7 +5954,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{7 - 2}{-5 - (-1)} = -\\dfrac{5}{4}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{7 - 2}{-5 - (-1)} = -\\dfrac{5}{4}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -5992,7 +5992,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-1)}{-1 - (-5)} = \\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-1)}{-1 - (-5)} = \\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6030,7 +6030,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - 4}{-6 - 0} = \\dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - 4}{-6 - 0} = \\dfrac{7}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6068,7 +6068,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-10 - (-3)}{4 - 0} = -\\dfrac{7}{4}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-10 - (-3)}{4 - 0} = -\\dfrac{7}{4}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6106,7 +6106,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-4 - (-1)}{-4 - (-3)} = 3$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-4 - (-1)}{-4 - (-3)} = 3$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6144,7 +6144,7 @@
    null,
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{9 - 5}{9 - 3} = \\dfrac{2}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{9 - 5}{9 - 3} = \\dfrac{2}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6182,7 +6182,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-4)}{4 - 3} = 5$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - (-4)}{4 - 3} = 5$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6220,7 +6220,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-6 - 1}{-3 - (-4)} = -7$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-6 - 1}{-3 - (-4)} = -7$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6258,7 +6258,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - (-3)}{-2 - 1} = -\\dfrac{7}{3}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{4 - (-3)}{-2 - 1} = -\\dfrac{7}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6296,7 +6296,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - (-1)}{-1 - 0} = 2$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{-3 - (-1)}{-1 - 0} = 2$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6334,7 +6334,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-5)}{3 - (-3)} = \\dfrac{7}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-5)}{3 - (-3)} = \\dfrac{7}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6372,7 +6372,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - 3}{-3 - 1} = \\dfrac{1}{2}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{1 - 3}{-3 - 1} = \\dfrac{1}{2}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6410,7 +6410,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-3)}{11 - 5} = \\dfrac{5}{6}$. Keep the same order of the points in the numerator and the denominator.",
+  "solution": "$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{2 - (-3)}{11 - 5} = \\dfrac{5}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6448,7 +6448,7 @@
    null,
    "sign"
   ],
-  "solution": "The slope is $k = -1 = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 135^\\circ$. The intercept does not matter, and a negative slope gives an obtuse angle, never a negative one.",
+  "solution": "The slope is $k = -1 = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 135^\\circ$. The intercept $-1$ does not affect the angle. The value $-45^\\circ$ is not an inclination, because an inclination is never negative.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6486,7 +6486,7 @@
    "companion",
    null
   ],
-  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ$. The intercept does not matter, and a negative slope gives an obtuse angle, never a negative one.",
+  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ$. The intercept $-6$ does not affect the angle. The value $-30^\\circ$ is not an inclination, because an inclination is never negative.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6524,7 +6524,7 @@
    "sign",
    null
   ],
-  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ = \\dfrac{\\pi}{6}$. The intercept does not matter.",
+  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ = \\dfrac{\\pi}{6}$. The intercept $-1$ does not affect the angle.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6562,7 +6562,7 @@
    null,
    "sign"
   ],
-  "solution": "The slope is $k = \\sqrt{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 60^\\circ$. The intercept does not matter.",
+  "solution": "The slope is $k = \\sqrt{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 60^\\circ$. The intercept $8$ does not affect the angle.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6600,7 +6600,7 @@
    "domain",
    "sign"
   ],
-  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$. The intercept does not matter, and a negative slope gives an obtuse angle, never a negative one.",
+  "solution": "The slope is $k = -\\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$. The intercept $10$ does not affect the angle. The value $-30^\\circ$ is not an inclination, because an inclination is never negative.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6638,7 +6638,7 @@
    null,
    "sign"
   ],
-  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ$. The intercept does not matter.",
+  "solution": "The slope is $k = \\dfrac{\\sqrt{3}}{3} = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = 30^\\circ$. The intercept $-1$ does not affect the angle.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6676,7 +6676,7 @@
    null,
    "domain"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{3}$. With $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$. Since $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 150^\\circ = \\dfrac{5\\pi}{6}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6714,7 +6714,7 @@
    "companion",
    "sign"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = \\sqrt{3}$. With $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 60^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{-1} = \\sqrt{3}$. Since $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6752,7 +6752,7 @@
    null,
    "sign"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\sqrt{3}$. With $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{3}{\\sqrt{3}} = -\\sqrt{3}$. Since $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6790,7 +6790,7 @@
    "domain",
    null
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{3}$. With $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 150^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$. Since $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 150^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6828,7 +6828,7 @@
    "companion",
    "sign"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = \\sqrt{3}$. With $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 60^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{-1} = \\sqrt{3}$. Since $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6866,7 +6866,7 @@
    "companion",
    "domain"
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\sqrt{3}$. With $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{\\sqrt{3}}{1} = -\\sqrt{3}$. Since $\\tan\\theta = -\\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 120^\\circ = \\dfrac{2\\pi}{3}$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6904,7 +6904,7 @@
    "companion",
    null
   ],
-  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = \\sqrt{3}$. With $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = 60^\\circ$.",
+  "solution": "For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{3}{-\\sqrt{3}} = \\sqrt{3}$. Since $\\tan\\theta = \\sqrt{3}$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -6980,7 +6980,7 @@
    null,
    "sign"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 135^\\circ = -1$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 135^\\circ = -1$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7018,7 +7018,7 @@
    "reciprocal",
    "reciprocal"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7056,7 +7056,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 120^\\circ = -\\sqrt{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 120^\\circ = -\\sqrt{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7094,7 +7094,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7170,7 +7170,7 @@
    "reciprocal",
    null
   ],
-  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$ (an obtuse inclination gives a negative slope).",
+  "solution": "$k = \\tan\\theta = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. An obtuse inclination gives a negative slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7436,7 +7436,7 @@
    "axis",
    "domain"
   ],
-  "solution": "The line is horizontal: its slope is $0$ and its inclination is $0^\\circ$.",
+  "solution": "The line is horizontal, so its slope is $0$ and its inclination is $0^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7474,7 +7474,7 @@
    "axis",
    "slip"
   ],
-  "solution": "The line is vertical: its inclination is $90^\\circ$ and it has no slope.",
+  "solution": "The line is vertical, so its inclination is $90^\\circ$ and it has no slope.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7550,7 +7550,7 @@
    "axis",
    "sign"
   ],
-  "solution": "The correct statement is “The line $x = 4$ has no slope” — for a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = 4$ has slope $0$” is false: a vertical line has no slope; slope $0$ belongs to horizontal lines. “A line with inclination $135^\\circ$ has slope $1$” is false: $\\tan 135^\\circ = -1$. “The line $x = 4$ has inclination $0^\\circ$” is false: a vertical line has inclination $90^\\circ$.",
+  "solution": "“The line $x = 4$ has no slope” is correct. For a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = 4$ has slope $0$” is incorrect. A vertical line has no slope, because $\\tan 90^\\circ$ is undefined. Slope $0$ belongs to horizontal lines. “A line with inclination $135^\\circ$ has slope $1$” is incorrect. $\\tan 135^\\circ = -1$. “The line $x = 4$ has inclination $0^\\circ$” is incorrect. A vertical line has inclination $90^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7588,7 +7588,7 @@
    "axis",
    "axis"
   ],
-  "solution": "The correct statement is “The line $x = -2$ has no slope” — for a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = -2$ has slope $0$” is false: a vertical line has no slope; slope $0$ belongs to horizontal lines. “The line through $(3, 1)$ and $(4, 1)$ has no slope” is false: the two points have the same $y$-coordinate: the line is horizontal with slope $0$. “The line $x = -2$ has inclination $0^\\circ$” is false: a vertical line has inclination $90^\\circ$.",
+  "solution": "“The line $x = -2$ has no slope” is correct. For a vertical line $\\tan 90^\\circ$ is undefined. “The line $x = -2$ has slope $0$” is incorrect. A vertical line has no slope, because $\\tan 90^\\circ$ is undefined. Slope $0$ belongs to horizontal lines. “The line through $(3, 1)$ and $(4, 1)$ has no slope” is incorrect. The two points have the same $y$-coordinate, so the line is horizontal and its slope is $0$. “The line $x = -2$ has inclination $0^\\circ$” is incorrect. A vertical line has inclination $90^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7626,7 +7626,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “The line $x = -4$ has no slope” — for a vertical line $\\tan 90^\\circ$ is undefined. “The line $y = -4$ has no slope” is false: a horizontal line has slope $0$. “A line with inclination $135^\\circ$ has slope $1$” is false: $\\tan 135^\\circ = -1$. “The line through $(-3, 3)$ and $(-2, 3)$ has no slope” is false: the two points have the same $y$-coordinate: the line is horizontal with slope $0$.",
+  "solution": "“The line $x = -4$ has no slope” is correct. For a vertical line $\\tan 90^\\circ$ is undefined. “The line $y = -4$ has no slope” is incorrect. A horizontal line has slope $0$. “A line with inclination $135^\\circ$ has slope $1$” is incorrect. $\\tan 135^\\circ = -1$. “The line through $(-3, 3)$ and $(-2, 3)$ has no slope” is incorrect. The two points have the same $y$-coordinate, so the line is horizontal and its slope is $0$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7664,7 +7664,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\dfrac{0 - 1}{a - 2} = \\dfrac{1}{2}$, so $a - 2 = -2$ and $a = 0$.",
+  "solution": "$\\dfrac{0 - 1}{a - 2} = \\dfrac{1}{2}$, so $\\dfrac{1}{2}(a - 2) = -1$. Then $a - 2 = -2$ and $a = 0$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7702,7 +7702,7 @@
    "slip",
    "sign"
   ],
-  "solution": "$\\dfrac{-3 - (-4)}{a - 4} = -1$, so $a - 4 = -1$ and $a = 3$.",
+  "solution": "$\\dfrac{-3 - (-4)}{a - 4} = -1$, so $-(a - 4) = 1$. Then $a - 4 = -1$ and $a = 3$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7740,7 +7740,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$\\dfrac{a - 2}{1 - 2} = -3$, so $a - 2 = 3$ and $a = 5$.",
+  "solution": "$\\dfrac{a - 2}{1 - 2} = -3$, so $a - 2 = -3 \\cdot (-1) = 3$ and $a = 5$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7778,7 +7778,7 @@
    null,
    "companion"
   ],
-  "solution": "The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
+  "solution": "Here $\\Delta x = \\sqrt{3}$ and $\\Delta y = -1$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\dfrac{-1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7816,7 +7816,7 @@
    "sign",
    "domain"
   ],
-  "solution": "The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
+  "solution": "Here $\\Delta x = \\sqrt{3}$ and $\\Delta y = -1$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\dfrac{-1}{\\sqrt{3}} = -\\dfrac{\\sqrt{3}}{3}$, and $\\tan\\theta = -\\dfrac{\\sqrt{3}}{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 150^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7854,7 +7854,7 @@
    "sign",
    "domain"
   ],
-  "solution": "The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\sqrt{3}$, and $\\tan\\theta = \\sqrt{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 60^\\circ$.",
+  "solution": "Here $\\Delta x = 1$ and $\\Delta y = \\sqrt{3}$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = \\sqrt{3}$, and $\\tan\\theta = \\sqrt{3}$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = 60^\\circ$.",
   "video": "V22",
   "version": "a",
   "domain": "LN",
@@ -7892,7 +7892,7 @@
    "sign",
    null
   ],
-  "solution": "Point-slope form: $y - 1 = -1(x - (-4))$, i.e. $y = -x - 3$, or $x + y + 3 = 0$. Check: the point $(-4, 1)$ satisfies it.",
+  "solution": "By the point-slope form, $y - 1 = -(x + 4)$, that is $y = -x - 3$, or $x + y + 3 = 0$ in general form.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -7930,7 +7930,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Point-slope form: $y - (-1) = 3(x - (-3))$, i.e. $y = 3x + 8$, or $3x - y + 8 = 0$. Check: the point $(-3, -1)$ satisfies it.",
+  "solution": "By the point-slope form, $y + 1 = 3(x + 3)$, that is $y = 3x + 8$, or $3x - y + 8 = 0$ in general form.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -7968,7 +7968,7 @@
    "sign",
    null
   ],
-  "solution": "Point-slope form: $y - (-2) = 2(x - 0)$, i.e. $y = 2x - 2$, or $2x - y - 2 = 0$. Check: the point $(0, -2)$ satisfies it.",
+  "solution": "By the point-slope form, $y + 2 = 2x$, that is $y = 2x - 2$, or $2x - y - 2 = 0$ in general form.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8006,7 +8006,7 @@
    null,
    "sign"
   ],
-  "solution": "Point-slope form: $y - 3 = -1(x - 1)$, i.e. $y = -x + 4$. Check: the point $(1, 3)$ satisfies it.",
+  "solution": "By the point-slope form, $y - 3 = -(x - 1)$, that is $y = -x + 4$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8044,7 +8044,7 @@
    null,
    "sign"
   ],
-  "solution": "Point-slope form: $y - (-5) = -2(x - (-3))$, i.e. $y = -2x - 11$, or $2x + y + 11 = 0$. Check: the point $(-3, -5)$ satisfies it.",
+  "solution": "By the point-slope form, $y + 5 = -2(x + 3)$, that is $y = -2x - 11$, or $2x + y + 11 = 0$ in general form.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8082,7 +8082,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Point-slope form: $y - (-3) = -3(x - 3)$, i.e. $y = -3x + 6$. Check: the point $(3, -3)$ satisfies it.",
+  "solution": "By the point-slope form, $y + 3 = -3(x - 3)$, that is $y = -3x + 6$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8120,7 +8120,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Point-slope form: $y - (-1) = 3(x - (-3))$, i.e. $y = 3x + 8$. Check: the point $(-3, -1)$ satisfies it.",
+  "solution": "By the point-slope form, $y + 1 = 3(x + 3)$, that is $y = 3x + 8$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8158,7 +8158,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Point-slope form: $y - 4 = 2(x - 2)$, i.e. $y = 2x$, or $2x - y = 0$. Check: the point $(2, 4)$ satisfies it.",
+  "solution": "By the point-slope form, $y - 4 = 2(x - 2)$, that is $y = 2x$, or $2x - y = 0$ in general form.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8196,7 +8196,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Point-slope form: $y - (-1) = -3(x - 0)$, i.e. $y = -3x - 1$, or $3x + y + 1 = 0$. Check: the point $(0, -1)$ satisfies it.",
+  "solution": "By the point-slope form, $y + 1 = -3x$, that is $y = -3x - 1$, or $3x + y + 1 = 0$ in general form.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8234,7 +8234,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Point-slope form: $y - 5 = 1(x - (-1))$, i.e. $y = x + 6$. Check: the point $(-1, 5)$ satisfies it.",
+  "solution": "By the point-slope form, $y - 5 = x + 1$, that is $y = x + 6$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8272,7 +8272,7 @@
    null,
    "slip"
   ],
-  "solution": "Point-slope form: $y - 4 = 1(x - 4)$, i.e. $y = x$, or $x - y = 0$. Check: the point $(4, 4)$ satisfies it.",
+  "solution": "By the point-slope form, $y - 4 = x - 4$, that is $y = x$, or $x - y = 0$ in general form.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8310,7 +8310,7 @@
    null,
    "sign"
   ],
-  "solution": "Point-slope form: $y - 0 = 4(x - (-4))$, i.e. $y = 4x + 16$. Check: the point $(-4, 0)$ satisfies it.",
+  "solution": "By the point-slope form, $y = 4(x + 4)$, that is $y = 4x + 16$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8348,7 +8348,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Point-slope form: $y - (-2) = 2(x - (-2))$, i.e. $y = 2x + 2$. Check: the point $(-2, -2)$ satisfies it.",
+  "solution": "By the point-slope form, $y + 2 = 2(x + 2)$, that is $y = 2x + 2$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8386,7 +8386,7 @@
    "sign",
    null
   ],
-  "solution": "Slope first: $k = \\dfrac{0 - (-2)}{1 - (-2)} = \\dfrac{2}{3}$. Then $y - (-2) = \\dfrac{2}{3}(x - (-2))$, i.e. $2x - 3y - 2 = 0$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{0 - (-2)}{1 - (-2)} = \\dfrac{2}{3}$. By the point-slope form through $A$, $y + 2 = \\dfrac{2}{3}(x + 2)$, that is $2x - 3y - 2 = 0$. Check with $B$: putting $x = 1$ and $y = 0$ into $2x - 3y - 2 = 0$ gives $0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8424,7 +8424,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Slope first: $k = \\dfrac{3 - (-1)}{-2 - 0} = -2$. Then $y - (-1) = -2(x - 0)$, i.e. $y = -2x - 1$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{3 - (-1)}{-2 - 0} = -2$. By the point-slope form through $M$, $y + 1 = -2x$, that is $y = -2x - 1$. Check with $N$: $-2 \\cdot \\left(-2\\right) - 1 = 3$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8462,7 +8462,7 @@
    "partial",
    null
   ],
-  "solution": "Slope first: $k = \\dfrac{-6 - (-5)}{-2 - (-1)} = 1$. Then $y - (-5) = 1(x - (-1))$, i.e. $y = x - 4$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-6 - (-5)}{-2 - (-1)} = 1$. By the point-slope form through $P$, $y + 5 = x + 1$, that is $y = x - 4$. Check with $Q$: $-2 - 4 = -6$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8500,7 +8500,7 @@
    null,
    "partial"
   ],
-  "solution": "Slope first: $k = \\dfrac{-7 - (-1)}{-1 - (-3)} = -3$. Then $y - (-1) = -3(x - (-3))$, i.e. $y = -3x - 10$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-7 - (-1)}{-1 - (-3)} = -3$. By the point-slope form through $A$, $y + 1 = -3(x + 3)$, that is $y = -3x - 10$. Check with $B$: $-3 \\cdot \\left(-1\\right) - 10 = -7$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8538,7 +8538,7 @@
    "sign",
    null
   ],
-  "solution": "Slope first: $k = \\dfrac{2 - (-4)}{0 - (-2)} = 3$. Then $y - (-4) = 3(x - (-2))$, i.e. $y = 3x + 2$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{2 - (-4)}{0 - (-2)} = 3$. By the point-slope form through $M$, $y + 4 = 3(x + 2)$, that is $y = 3x + 2$. Check with $N$: $3 \\cdot 0 + 2 = 2$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8576,7 +8576,7 @@
    "slip",
    "partial"
   ],
-  "solution": "Slope first: $k = \\dfrac{5 - 1}{0 - 2} = -2$. Then $y - 1 = -2(x - 2)$, i.e. $y = -2x + 5$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{5 - 1}{0 - 2} = -2$. By the point-slope form through $M$, $y - 1 = -2(x - 2)$, that is $y = -2x + 5$. Check with $N$: $-2 \\cdot 0 + 5 = 5$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8614,7 +8614,7 @@
    "partial",
    null
   ],
-  "solution": "Slope first: $k = \\dfrac{-4 - 0}{-3 - (-1)} = 2$. Then $y - 0 = 2(x - (-1))$, i.e. $y = 2x + 2$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-4 - 0}{-3 - (-1)} = 2$. By the point-slope form through $P$, $y = 2(x + 1)$, that is $y = 2x + 2$. Check with $Q$: $2 \\cdot \\left(-3\\right) + 2 = -4$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8652,7 +8652,7 @@
    "partial",
    "slip"
   ],
-  "solution": "Slope first: $k = \\dfrac{-8 - (-4)}{-3 - (-2)} = 4$. Then $y - (-4) = 4(x - (-2))$, i.e. $y = 4x + 4$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-8 - (-4)}{-3 - (-2)} = 4$. By the point-slope form through $P$, $y + 4 = 4(x + 2)$, that is $y = 4x + 4$. Check with $Q$: $4 \\cdot \\left(-3\\right) + 4 = -8$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8690,7 +8690,7 @@
    "partial",
    "slip"
   ],
-  "solution": "Slope first: $k = \\dfrac{-3 - (-5)}{1 - 2} = -2$. Then $y - (-5) = -2(x - 2)$, i.e. $y = -2x - 1$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-3 - (-5)}{1 - 2} = -2$. By the point-slope form through $A$, $y + 5 = -2(x - 2)$, that is $y = -2x - 1$. Check with $B$: $-2 \\cdot 1 - 1 = -3$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8728,7 +8728,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "Slope first: $k = \\dfrac{-2 - 1}{-3 - 3} = \\dfrac{1}{2}$. Then $y - 1 = \\dfrac{1}{2}(x - 3)$, i.e. $x - 2y - 1 = 0$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-2 - 1}{-3 - 3} = \\dfrac{1}{2}$. By the point-slope form through $M$, $y - 1 = \\dfrac{1}{2}(x - 3)$, that is $x - 2y - 1 = 0$. Check with $N$: putting $x = -3$ and $y = -2$ into $x - 2y - 1 = 0$ gives $0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8766,7 +8766,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Slope first: $k = \\dfrac{-4 - (-2)}{9 - 3} = -\\dfrac{1}{3}$. Then $y - (-2) = -\\dfrac{1}{3}(x - 3)$, i.e. $x + 3y + 3 = 0$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-4 - (-2)}{9 - 3} = -\\dfrac{1}{3}$. By the point-slope form through $P$, $y + 2 = -\\dfrac{1}{3}(x - 3)$, that is $x + 3y + 3 = 0$. Check with $Q$: putting $x = 9$ and $y = -4$ into $x + 3y + 3 = 0$ gives $0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8804,7 +8804,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Slope first: $k = \\dfrac{9 - 3}{1 - 4} = -2$. Then $y - 3 = -2(x - 4)$, i.e. $y = -2x + 11$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{9 - 3}{1 - 4} = -2$. By the point-slope form through $M$, $y - 3 = -2(x - 4)$, that is $y = -2x + 11$. Check with $N$: $-2 \\cdot 1 + 11 = 9$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8842,7 +8842,7 @@
    null,
    "sign"
   ],
-  "solution": "Slope first: $k = \\dfrac{-3 - (-1)}{3 - 1} = -1$. Then $y - (-1) = -1(x - 1)$, i.e. $y = -x$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-3 - (-1)}{3 - 1} = -1$. By the point-slope form through $M$, $y + 1 = -(x - 1)$, that is $y = -x$. Check with $N$: $-3 = -3$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8880,7 +8880,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The slope is $k = \\tan 120^\\circ = -\\sqrt{3}$. Through $(0, -1)$: $y - (-1) = -\\sqrt{3}(x - 0)$, i.e. $y = -\\sqrt{3}x - 1$.",
+  "solution": "The slope is $k = \\tan 120^\\circ = -\\sqrt{3}$. By the point-slope form through $(0, -1)$, $y + 1 = -\\sqrt{3}x$, that is $y = -\\sqrt{3}x - 1$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8918,7 +8918,7 @@
    "sign",
    null
   ],
-  "solution": "The slope is $k = \\tan 120^\\circ = -\\sqrt{3}$. Through $(0, 5)$: $y - 5 = -\\sqrt{3}(x - 0)$, i.e. $y = -\\sqrt{3}x + 5$.",
+  "solution": "The slope is $k = \\tan 120^\\circ = -\\sqrt{3}$. By the point-slope form through $(0, 5)$, $y - 5 = -\\sqrt{3}x$, that is $y = -\\sqrt{3}x + 5$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8956,7 +8956,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The slope is $k = \\tan 120^\\circ = -\\sqrt{3}$. Through $(0, -2)$: $y - (-2) = -\\sqrt{3}(x - 0)$, i.e. $y = -\\sqrt{3}x - 2$.",
+  "solution": "The slope is $k = \\tan 120^\\circ = -\\sqrt{3}$. By the point-slope form through $(0, -2)$, $y + 2 = -\\sqrt{3}x$, that is $y = -\\sqrt{3}x - 2$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -8994,7 +8994,7 @@
    "sign",
    null
   ],
-  "solution": "The slope is $k = \\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3}$. Through $(0, -3)$: $y - (-3) = \\dfrac{\\sqrt{3}}{3}(x - 0)$, i.e. $y = \\dfrac{\\sqrt{3}}{3}x - 3$.",
+  "solution": "The slope is $k = \\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3}$. By the point-slope form through $(0, -3)$, $y + 3 = \\dfrac{\\sqrt{3}}{3}x$, that is $y = \\dfrac{\\sqrt{3}}{3}x - 3$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9032,7 +9032,7 @@
    null,
    "sign"
   ],
-  "solution": "The slope is $k = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. Through $(0, -4)$: $y - (-4) = -\\dfrac{\\sqrt{3}}{3}(x - 0)$, i.e. $y = -\\dfrac{\\sqrt{3}}{3}x - 4$.",
+  "solution": "The slope is $k = \\tan 150^\\circ = -\\dfrac{\\sqrt{3}}{3}$. By the point-slope form through $(0, -4)$, $y + 4 = -\\dfrac{\\sqrt{3}}{3}x$, that is $y = -\\dfrac{\\sqrt{3}}{3}x - 4$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9070,7 +9070,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The slope is $k = \\tan 135^\\circ = -1$. Through $(0, 4)$: $y - 4 = -1(x - 0)$, i.e. $y = -x + 4$.",
+  "solution": "The slope is $k = \\tan 135^\\circ = -1$. By the point-slope form through $(0, 4)$, $y - 4 = -x$, that is $y = -x + 4$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9108,7 +9108,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The slope is $k = \\tan 135^\\circ = -1$. Through $(0, 1)$: $y - 1 = -1(x - 0)$, i.e. $y = -x + 1$.",
+  "solution": "The slope is $k = \\tan 135^\\circ = -1$. By the point-slope form through $(0, 1)$, $y - 1 = -x$, that is $y = -x + 1$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9146,7 +9146,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Slope first: $k = \\dfrac{0 - (-2)}{9 - 4} = \\dfrac{2}{5}$. Then $y - (-2) = \\dfrac{2}{5}(x - 4)$, i.e. $2x - 5y - 18 = 0$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{0 - (-2)}{9 - 4} = \\dfrac{2}{5}$. By the point-slope form through $P$, $y + 2 = \\dfrac{2}{5}(x - 4)$, that is $2x - 5y - 18 = 0$. Check with $Q$: putting $x = 9$ and $y = 0$ into $2x - 5y - 18 = 0$ gives $0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9184,7 +9184,7 @@
    null,
    "sign"
   ],
-  "solution": "Slope first: $k = \\dfrac{-1 - (-4)}{0 - 2} = -\\dfrac{3}{2}$. Then $y - (-4) = -\\dfrac{3}{2}(x - 2)$, i.e. $3x + 2y + 2 = 0$. Check both points: an option that fits only one of them is a trap.",
+  "solution": "The slope is $k = \\dfrac{-1 - (-4)}{0 - 2} = -\\dfrac{3}{2}$. By the point-slope form through $M$, $y + 4 = -\\dfrac{3}{2}(x - 2)$, that is $3x + 2y + 2 = 0$. Check with $N$: putting $x = 0$ and $y = -1$ into $3x + 2y + 2 = 0$ gives $0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9222,7 +9222,7 @@
    "sign",
    "sign"
   ],
-  "solution": "$k = \\tan 135^\\circ = -1$. So $y - 3 = -(x - (-2))$, which is $x + y - 1 = 0$.",
+  "solution": "The slope is $k = \\tan 135^\\circ = -1$. By the point-slope form, $y - 3 = -(x + 2)$, which is $x + y - 1 = 0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9260,7 +9260,7 @@
    "sign",
    null
   ],
-  "solution": "$k = \\tan 45^\\circ = 1$. So $y - 2 = (x - (-3))$, which is $x - y + 5 = 0$.",
+  "solution": "The slope is $k = \\tan 45^\\circ = 1$. By the point-slope form, $y - 2 = x + 3$, which is $x - y + 5 = 0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9298,7 +9298,7 @@
    null,
    "sign"
   ],
-  "solution": "$k = \\tan 135^\\circ = -1$. So $y - (-4) = -(x - (-4))$, which is $x + y + 8 = 0$.",
+  "solution": "The slope is $k = \\tan 135^\\circ = -1$. By the point-slope form, $y + 4 = -(x + 4)$, which is $x + y + 8 = 0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9336,7 +9336,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Intercept form: $\\dfrac{x}{4} + \\dfrac{y}{-4} = 1$. Multiply by $-16$ and collect: $x - y - 4 = 0$. Check with $(4, 0)$ and $(0, -4)$.",
+  "solution": "The intercept form is $\\dfrac{x}{4} + \\dfrac{y}{-4} = 1$. Multiplying by $-16$ gives $-4x + 4y = -16$, that is $x - y - 4 = 0$. Both $(4, 0)$ and $(0, -4)$ satisfy it.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9374,7 +9374,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Intercept form: $\\dfrac{x}{-4} + \\dfrac{y}{6} = 1$. Multiply by $-24$ and collect: $3x - 2y + 12 = 0$. Check with $(-4, 0)$ and $(0, 6)$.",
+  "solution": "The intercept form is $\\dfrac{x}{-4} + \\dfrac{y}{6} = 1$. Multiplying by $-24$ gives $6x - 4y = -24$, that is $3x - 2y + 12 = 0$. Both $(-4, 0)$ and $(0, 6)$ satisfy it.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9412,7 +9412,7 @@
    "reciprocal",
    null
   ],
-  "solution": "The slope is $k = \\dfrac{1}{3}$, so $l$: $y = \\dfrac{1}{3}x - \\dfrac{5}{3}$, that is $x - 3y - 5 = 0$. The correct statement is “The slope of $l$ is $\\dfrac{1}{3}$” — $k = \\dfrac{0 - (-2)}{5 - (-1)} = \\dfrac{1}{3}$. “$l$ passes through the point $(-4, -7)$” is false: its coordinates do not satisfy $y = \\dfrac{1}{3}x - \\dfrac{5}{3}$. “The slope of $l$ is $3$” is false: that is $\\dfrac{\\Delta x}{\\Delta y}$; the slope is $\\dfrac{\\Delta y}{\\Delta x} = \\dfrac{1}{3}$. “The equation of $l$ is $x - 3y + 5 = 0$” is false: the constant term has the wrong sign, so $A$ and $B$ do not satisfy it; $l$: $x - 3y - 5 = 0$.",
+  "solution": "The slope is $k = \\dfrac{1}{3}$, so $l$ is $y = \\dfrac{1}{3}x - \\dfrac{5}{3}$, that is $x - 3y - 5 = 0$. “The slope of $l$ is $\\dfrac{1}{3}$” is correct. $k = \\dfrac{0 - (-2)}{5 - (-1)} = \\dfrac{1}{3}$. “$l$ passes through the point $(-4, -7)$” is incorrect. Its coordinates do not satisfy $y = \\dfrac{1}{3}x - \\dfrac{5}{3}$. “The slope of $l$ is $3$” is incorrect. The slope is $\\dfrac{\\Delta y}{\\Delta x} = \\dfrac{1}{3}$, and $3$ is $\\dfrac{\\Delta x}{\\Delta y}$. “The equation of $l$ is $x - 3y + 5 = 0$” is incorrect. With that constant term the line misses $A$ and $B$. The line $l$ is $x - 3y - 5 = 0$.",
   "video": "V23",
   "version": "a",
   "domain": "LN",
@@ -9450,7 +9450,7 @@
    null,
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -5$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -3x - 18$. Substituting this into the other equation gives $4x - 3(-3x - 18) + 11 = 0$, that is $13x + 65 = 0$, so $x = -5$. Then $y = -3 \\cdot \\left(-5\\right) - 18 = -3$. So the intersection point is $(-5, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9488,7 +9488,7 @@
    "swap",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 4$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $y = 3x - 11$. Substituting this into the other equation gives $x + 4(3x - 11) - 8 = 0$, that is $13x - 52 = 0$, so $x = 4$. Then $y = 3 \\cdot 4 - 11 = 1$. So the intersection point is $(4, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9526,7 +9526,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -4$, $y = 5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $y = -2x - 3$. Substituting this into the other equation gives $3x + 4(-2x - 3) - 8 = 0$, that is $-5x - 20 = 0$, so $x = -4$. Then $y = -2 \\cdot \\left(-4\\right) - 3 = 5$. So the intersection point is $(-4, 5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9564,7 +9564,7 @@
    null,
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 2$, $y = 3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $x = -3y + 11$. Substituting this into the other equation gives $3(-3y + 11) + 2y - 12 = 0$, that is $-7y + 21 = 0$, so $y = 3$. Then $x = -3 \\cdot 3 + 11 = 2$. So the intersection point is $(2, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9602,7 +9602,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 1$, $y = -5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $x = 4y + 21$. Substituting this into the other equation gives $2(4y + 21) - 3y - 17 = 0$, that is $5y + 25 = 0$, so $y = -5$. Then $x = 4 \\cdot \\left(-5\\right) + 21 = 1$. So the intersection point is $(1, -5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9640,7 +9640,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -2$, $y = -1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -3x - 7$. Substituting this into the other equation gives $x + 2(-3x - 7) + 4 = 0$, that is $-5x - 10 = 0$, so $x = -2$. Then $y = -3 \\cdot \\left(-2\\right) - 7 = -1$. So the intersection point is $(-2, -1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9678,7 +9678,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 5$, $y = 5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -x + 10$. Substituting this into the other equation gives $2x + (-x + 10) - 15 = 0$, that is $x - 5 = 0$, so $x = 5$. Then $y = -5 + 10 = 5$. So the intersection point is $(5, 5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9716,7 +9716,7 @@
    "swap",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 2$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 3x - 9$. Substituting this into the other equation gives $4x - 3(3x - 9) - 17 = 0$, that is $-5x + 10 = 0$, so $x = 2$. Then $y = 3 \\cdot 2 - 9 = -3$. So the intersection point is $(2, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9754,7 +9754,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 5$, $y = -1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $x = 3y + 8$. Substituting this into the other equation gives $3(3y + 8) - 2y - 17 = 0$, that is $7y + 7 = 0$, so $y = -1$. Then $x = 3 \\cdot \\left(-1\\right) + 8 = 5$. So the intersection point is $(5, -1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9792,7 +9792,7 @@
    "swap",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -3$, $y = 0$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -4x - 12$. Substituting this into the other equation gives $x - 2(-4x - 12) + 3 = 0$, that is $9x + 27 = 0$, so $x = -3$. Then $y = -4 \\cdot \\left(-3\\right) - 12 = 0$. So the intersection point is $(-3, 0)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9830,7 +9830,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 1$, $y = -4$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $x = 4y + 17$. Substituting this into the other equation gives $4(4y + 17) + 3y + 8 = 0$, that is $19y + 76 = 0$, so $y = -4$. Then $x = 4 \\cdot \\left(-4\\right) + 17 = 1$. So the intersection point is $(1, -4)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9868,7 +9868,7 @@
    null,
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -2$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 2x + 5$. Substituting this into the other equation gives $4x + 3(2x + 5) + 5 = 0$, that is $10x + 20 = 0$, so $x = -2$. Then $y = 2 \\cdot \\left(-2\\right) + 5 = 1$. So the intersection point is $(-2, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9906,7 +9906,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 4$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the second equation, $y = 3x - 15$. Substituting this into the other equation gives $x - 4(3x - 15) - 16 = 0$, that is $-11x + 44 = 0$, so $x = 4$. Then $y = 3 \\cdot 4 - 15 = -3$. So the intersection point is $(4, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9944,7 +9944,7 @@
    "partial",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 3$, $y = -5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = x - 8$. Substituting this into the other equation gives $4x - 3(x - 8) - 27 = 0$, that is $x - 3 = 0$, so $x = 3$. Then $y = 3 - 8 = -5$. So the intersection point is $(3, -5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -9982,7 +9982,7 @@
    "swap",
    null
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -3$, $y = -5$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $x = -2y - 13$. Substituting this into the other equation gives $(-2y - 13) + 3y + 18 = 0$, that is $y + 5 = 0$, so $y = -5$. Then $x = -2 \\cdot \\left(-5\\right) - 13 = -3$. So the intersection point is $(-3, -5)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10020,7 +10020,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = 1$, $y = -4$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Subtracting the second equation from the first removes $y$ and gives $-2x + 2 = 0$, so $x = 1$. Putting this into the first equation gives $3y + 12 = 0$, so $y = -4$. So the intersection point is $(1, -4)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10058,7 +10058,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{11}{2}$, $y = -\\dfrac{7}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = x + 2$. Substituting this into the other equation gives $x - 3(x + 2) - 5 = 0$, that is $-2x - 11 = 0$, so $x = -\\dfrac{11}{2}$. Then $y = -\\dfrac{11}{2} + 2 = -\\dfrac{7}{2}$. So the intersection point is $\\left(-\\dfrac{11}{2}, -\\dfrac{7}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10096,7 +10096,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = \\dfrac{2}{7}$, $y = \\dfrac{8}{7}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -3x + 2$. Substituting this into the other equation gives $2x + 3(-3x + 2) - 4 = 0$, that is $-7x + 2 = 0$, so $x = \\dfrac{2}{7}$. Then $y = -3 \\cdot \\dfrac{2}{7} + 2 = \\dfrac{8}{7}$. So the intersection point is $\\left(\\dfrac{2}{7}, \\dfrac{8}{7}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10134,7 +10134,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{1}{4}$, $y = \\dfrac{3}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 2x + 2$. Substituting this into the other equation gives $2x - 3(2x + 2) + 5 = 0$, that is $-4x - 1 = 0$, so $x = -\\dfrac{1}{4}$. Then $y = 2 \\cdot \\left(-\\dfrac{1}{4}\\right) + 2 = \\dfrac{3}{2}$. So the intersection point is $\\left(-\\dfrac{1}{4}, \\dfrac{3}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10172,7 +10172,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{1}{3}$, $y = \\dfrac{13}{3}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = -x + 4$. Substituting this into the other equation gives $2x - (-x + 4) + 5 = 0$, that is $3x + 1 = 0$, so $x = -\\dfrac{1}{3}$. Then $y = -\\left(-\\dfrac{1}{3}\\right) + 4 = \\dfrac{13}{3}$. So the intersection point is $\\left(-\\dfrac{1}{3}, \\dfrac{13}{3}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10210,7 +10210,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = \\dfrac{9}{4}$, $y = \\dfrac{3}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = 2x - 3$. Substituting this into the other equation gives $2x - 3(2x - 3) = 0$, that is $-4x + 9 = 0$, so $x = \\dfrac{9}{4}$. Then $y = 2 \\cdot \\dfrac{9}{4} - 3 = \\dfrac{3}{2}$. So the intersection point is $\\left(\\dfrac{9}{4}, \\dfrac{3}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10248,7 +10248,7 @@
    "swap",
    "partial"
   ],
-  "solution": "Solve the two equations together (elimination or substitution): $x = -\\dfrac{13}{2}$, $y = -\\dfrac{3}{2}$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "From the first equation, $y = x + 5$. Substituting this into the other equation gives $x - 3(x + 5) + 2 = 0$, that is $-2x - 13 = 0$, so $x = -\\dfrac{13}{2}$. Then $y = -\\dfrac{13}{2} + 5 = -\\dfrac{3}{2}$. So the intersection point is $\\left(-\\dfrac{13}{2}, -\\dfrac{3}{2}\\right)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10286,7 +10286,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $3$, so $l_2: 3x - y + 15 = 0$. Solve the two equations together (elimination or substitution): $x = -4$, $y = 3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-3 - 6}{-6 - (-3)} = 3$, so $l_2$ is $3x - y + 15 = 0$. From the first equation, $y = 2x + 11$. Substituting this into the other equation gives $3x - (2x + 11) + 15 = 0$, that is $x + 4 = 0$, so $x = -4$. Then $y = 2 \\cdot \\left(-4\\right) + 11 = 3$. So the intersection point is $(-4, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10324,7 +10324,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $2$, so $l_2: 2x - y + 3 = 0$. Solve the two equations together (elimination or substitution): $x = 0$, $y = 3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{7 - (-1)}{2 - (-2)} = 2$, so $l_2$ is $2x - y + 3 = 0$. From the first equation, $y = -2x + 3$. Substituting this into the other equation gives $2x - (-2x + 3) + 3 = 0$, that is $4x = 0$, so $x = 0$. Then $y = -2 \\cdot 0 + 3 = 3$. So the intersection point is $(0, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10362,7 +10362,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $-1$, so $l_2: x + y - 2 = 0$. Solve the two equations together (elimination or substitution): $x = 2$, $y = 0$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-3 - 1}{5 - 1} = -1$, so $l_2$ is $x + y - 2 = 0$. From the first equation, $y = x - 2$. Substituting this into the other equation gives $x + (x - 2) - 2 = 0$, that is $2x - 4 = 0$, so $x = 2$. Then $y = 2 - 2 = 0$. So the intersection point is $(2, 0)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10400,7 +10400,7 @@
    "partial",
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $1$, so $l_2: x - y = 0$. Solve the two equations together (elimination or substitution): $x = -3$, $y = -3$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-5 - (-4)}{-5 - (-4)} = 1$, so $l_2$ is $x - y = 0$. From the first equation, $y = 3x + 6$. Substituting this into the other equation gives $x - (3x + 6) = 0$, that is $-2x - 6 = 0$, so $x = -3$. Then $y = 3 \\cdot \\left(-3\\right) + 6 = -3$. So the intersection point is $(-3, -3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10438,7 +10438,7 @@
    null,
    "partial"
   ],
-  "solution": "First find $l_2$: its slope is $-2$, so $l_2: 2x + y + 7 = 0$. Solve the two equations together (elimination or substitution): $x = -4$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "First find $l_2$. Its slope is $\\dfrac{-3 - 3}{-2 - (-5)} = -2$, so $l_2$ is $2x + y + 7 = 0$. From the first equation, $y = -3x - 11$. Substituting this into the other equation gives $2x + (-3x - 11) + 7 = 0$, that is $-x - 4 = 0$, so $x = -4$. Then $y = -3 \\cdot \\left(-4\\right) - 11 = 1$. So the intersection point is $(-4, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10476,7 +10476,7 @@
    null,
    "swap"
   ],
-  "solution": "Intersect the two complete lines first: $(-2, -4)$. The third line must pass through this point: substitute $x = -2$, $y = -4$ into $ax - y - 8 = 0$ and solve: $a = -2$.",
+  "solution": "First find where the first two lines meet. Multiplying the first equation by $-2$, the second by $1$ and subtracting removes $y$ and gives $-9x - 18 = 0$, so $x = -2$. Putting this into the first equation gives $2y + 8 = 0$, so $y = -4$. The third line must also pass through $(-2, -4)$, so $-2a + 4 - 8 = 0$ and $a = -2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10514,7 +10514,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(-1, -3)$. The third line must pass through this point: substitute $x = -1$, $y = -3$ into $x + ay + 7 = 0$ and solve: $a = 2$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = 4x + 1$. Substituting this into the other equation gives $2x + 3(4x + 1) + 11 = 0$, that is $14x + 14 = 0$, so $x = -1$. Then $y = 4 \\cdot \\left(-1\\right) + 1 = -3$. The third line must also pass through $(-1, -3)$, so $-1 - 3a + 7 = 0$ and $a = 2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10552,7 +10552,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(2, 2)$. The third line must pass through this point: substitute $x = 2$, $y = 2$ into $ax - y - 6 = 0$ and solve: $a = 4$.",
+  "solution": "First find where the first two lines meet. From the first equation, $y = 3x - 4$. Substituting this into the other equation gives $x + 2(3x - 4) - 6 = 0$, that is $7x - 14 = 0$, so $x = 2$. Then $y = 3 \\cdot 2 - 4 = 2$. The third line must also pass through $(2, 2)$, so $2a - 2 - 6 = 0$ and $a = 4$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10590,7 +10590,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(-1, -1)$. The third line must pass through this point: substitute $x = -1$, $y = -1$ into $ax - 3y - 8 = 0$ and solve: $a = -5$.",
+  "solution": "First find where the first two lines meet. From the first equation, $x = -2y - 3$. Substituting this into the other equation gives $3(-2y - 3) - 4y - 1 = 0$, that is $-10y - 10 = 0$, so $y = -1$. Then $x = -2 \\cdot \\left(-1\\right) - 3 = -1$. The third line must also pass through $(-1, -1)$, so $-a + 3 - 8 = 0$ and $a = -5$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10628,7 +10628,7 @@
    "sign",
    null
   ],
-  "solution": "Intersect the two complete lines first: $(3, -1)$. The third line must pass through this point: substitute $x = 3$, $y = -1$ into $ax - y - 7 = 0$ and solve: $a = 2$.",
+  "solution": "First find where the first two lines meet. Multiplying the first equation by $-4$, the second by $3$ and subtracting removes $y$ and gives $-17x + 51 = 0$, so $x = 3$. Putting this into the first equation gives $3y + 3 = 0$, so $y = -1$. The third line must also pass through $(3, -1)$, so $3a + 1 - 7 = 0$ and $a = 2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10666,7 +10666,7 @@
    null,
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $(-2, 3)$. The third line must pass through this point: substitute $x = -2$, $y = 3$ into $ax + 2y + 2 = 0$ and solve: $a = 4$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = x + 5$. Substituting this into the other equation gives $3x + 4(x + 5) - 6 = 0$, that is $7x + 14 = 0$, so $x = -2$. Then $y = -2 + 5 = 3$. The third line must also pass through $(-2, 3)$, so $-2a + 6 + 2 = 0$ and $a = 4$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10704,7 +10704,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Intersect the two complete lines first: $\\left(\\dfrac{7}{5}, -\\dfrac{6}{5}\\right)$. The third line must pass through this point: substitute $x = \\dfrac{7}{5}$, $y = -\\dfrac{6}{5}$ into $ax - 2y + 6 = 0$ and solve: $a = -6$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = 2x - 4$. Substituting this into the other equation gives $x - 3(2x - 4) - 5 = 0$, that is $-5x + 7 = 0$, so $x = \\dfrac{7}{5}$. Then $y = 2 \\cdot \\dfrac{7}{5} - 4 = -\\dfrac{6}{5}$. The third line must also pass through $\\left(\\dfrac{7}{5}, -\\dfrac{6}{5}\\right)$, so $\\dfrac{7}{5}a + \\dfrac{12}{5} + 6 = 0$ and $a = -6$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10742,7 +10742,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Intersect the two complete lines first: $\\left(\\dfrac{1}{4}, -\\dfrac{1}{2}\\right)$. The third line must pass through this point: substitute $x = \\dfrac{1}{4}$, $y = -\\dfrac{1}{2}$ into $ax - y - 2 = 0$ and solve: $a = 6$.",
+  "solution": "First find where the first two lines meet. From the second equation, $y = 2x - 1$. Substituting this into the other equation gives $2x + 3(2x - 1) + 1 = 0$, that is $8x - 2 = 0$, so $x = \\dfrac{1}{4}$. Then $y = 2 \\cdot \\dfrac{1}{4} - 1 = -\\dfrac{1}{2}$. The third line must also pass through $\\left(\\dfrac{1}{4}, -\\dfrac{1}{2}\\right)$, so $\\dfrac{1}{4}a + \\dfrac{1}{2} - 2 = 0$ and $a = 6$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10780,7 +10780,7 @@
    "partial",
    "swap"
   ],
-  "solution": "Clear the fractions: the second line is $2x + 5y + 10 = 0$. Solve the two equations together (elimination or substitution): $x = -10$, $y = 2$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Multiplying by $10$ clears the fractions, so the second line is $2x + 5y + 10 = 0$. Multiplying the first equation by $5$, the second by $-2$ and subtracting removes $y$ and gives $19x + 190 = 0$, so $x = -10$. Putting this into the first equation gives $-2y + 4 = 0$, so $y = 2$. So the intersection point is $(-10, 2)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10818,7 +10818,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Clear the fractions: the second line is $x - 5y + 5 = 0$. Solve the two equations together (elimination or substitution): $x = 5$, $y = 2$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Multiplying by $-5$ clears the fractions, so the second line is $x - 5y + 5 = 0$. From the first equation, $x = -3y + 11$. Substituting this into the other equation gives $(-3y + 11) - 5y + 5 = 0$, that is $-8y + 16 = 0$, so $y = 2$. Then $x = -3 \\cdot 2 + 11 = 5$. So the intersection point is $(5, 2)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10856,7 +10856,7 @@
    "swap",
    null
   ],
-  "solution": "Clear the fractions: the second line is $x + 4y + 4 = 0$. Solve the two equations together (elimination or substitution): $x = -8$, $y = 1$. Check by substituting into both equations — a point that fits only one of them is a trap.",
+  "solution": "Multiplying by $4$ clears the fractions, so the second line is $x + 4y + 4 = 0$. From the second equation, $x = -4y - 4$. Substituting this into the other equation gives $3(-4y - 4) - 2y + 26 = 0$, that is $-14y + 14 = 0$, so $y = 1$. Then $x = -4 \\cdot 1 - 4 = -8$. So the intersection point is $(-8, 1)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10894,7 +10894,7 @@
    "axis",
    null
   ],
-  "solution": "The point where $l_1$ meets the $x$-axis: put $y = 0$ in $l_1$ to get $(5, 0)$. It must lie on $l_2$: $5 + a = 0$, so $a = -5$.",
+  "solution": "Putting $y = 0$ in $l_1$ gives $x = 5$, so $l_1$ meets the $x$-axis at $(5, 0)$. This point lies on $l_2$, so $5 + a = 0$ and $a = -5$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10932,7 +10932,7 @@
    null,
    "sign"
   ],
-  "solution": "The point where $l_1$ meets the $x$-axis: put $y = 0$ in $l_1$ to get $(1, 0)$. It must lie on $l_2$: $2 + a = 0$, so $a = -2$.",
+  "solution": "Putting $y = 0$ in $l_1$ gives $x = 1$, so $l_1$ meets the $x$-axis at $(1, 0)$. This point lies on $l_2$, so $2 + a = 0$ and $a = -2$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -10970,7 +10970,7 @@
    "swap",
    null
   ],
-  "solution": "Solving the two equations together gives the intersection point $(-1, 3)$. The correct statement is “$l_2$ crosses the $y$-axis at the point $\\left(0, \\dfrac{8}{3}\\right)$” — put $x = 0$ in the equation of $l_2$: $y = \\dfrac{8}{3}$. “$l_1$ crosses the $x$-axis at the point $\\left(\\dfrac{5}{2}, 0\\right)$” is false: the sign is wrong: $y = 0$ gives $x = -\\dfrac{5}{2}$. “The intersection point of $l_1$ and $l_2$ lies in the first quadrant” is false: the intersection point is $(-1, 3)$, which is in the second quadrant. “$l_1$ and $l_2$ intersect at the point $(3, -1)$” is false: the coordinates are swapped; the intersection point is $(-1, 3)$.",
+  "solution": "From the first equation, $y = 2x + 5$. Substituting this into the other equation gives $x + 3(2x + 5) - 8 = 0$, that is $7x + 7 = 0$, so $x = -1$. Then $y = 2 \\cdot \\left(-1\\right) + 5 = 3$. So the intersection point is $(-1, 3)$. “$l_2$ crosses the $y$-axis at the point $\\left(0, \\dfrac{8}{3}\\right)$” is correct. Putting $x = 0$ in the equation of $l_2$ gives $y = \\dfrac{8}{3}$. “$l_1$ crosses the $x$-axis at the point $\\left(\\dfrac{5}{2}, 0\\right)$” is incorrect. Putting $y = 0$ in the equation of $l_1$ gives $x = -\\dfrac{5}{2}$. “The intersection point of $l_1$ and $l_2$ lies in the first quadrant” is incorrect. The intersection point is $(-1, 3)$, which is in the second quadrant. “$l_1$ and $l_2$ intersect at the point $(3, -1)$” is incorrect. Putting it into the equation of $l_1$ gives $6 + 1 + 5 = 12$, not $0$. In fact the intersection point is $(-1, 3)$.",
   "video": "V24",
   "version": "a",
   "domain": "LN",
@@ -11008,7 +11008,7 @@
    null,
    "sign"
   ],
-  "solution": "The given line has slope $1$. A perpendicular line needs slope $-1$ (product $-1$); that is $x + y + 2 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $1$. A perpendicular line has slope $-1$, because $1 \\cdot \\left(-1\\right) = -1$. The only option with slope $-1$ is $x + y + 2 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11046,7 +11046,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The given line has slope $-\\dfrac{3}{2}$. A perpendicular line needs slope $\\dfrac{2}{3}$ (product $-1$); that is $2x - 3y - 4 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $-\\dfrac{3}{2}$. A perpendicular line has slope $\\dfrac{2}{3}$, because $-\\dfrac{3}{2} \\cdot \\dfrac{2}{3} = -1$. The only option with slope $\\dfrac{2}{3}$ is $2x - 3y - 4 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11084,7 +11084,7 @@
    "near-miss",
    "parallel"
   ],
-  "solution": "The given line has slope $2$. A perpendicular line needs slope $-\\dfrac{1}{2}$ (product $-1$); that is $x + 2y + 6 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $2$. A perpendicular line has slope $-\\dfrac{1}{2}$, because $2 \\cdot \\left(-\\dfrac{1}{2}\\right) = -1$. The only option with slope $-\\dfrac{1}{2}$ is $x + 2y + 6 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11122,7 +11122,7 @@
    "parallel",
    null
   ],
-  "solution": "The given line has slope $-\\dfrac{1}{2}$. A perpendicular line needs slope $2$ (product $-1$); that is $2x - y - 3 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $-\\dfrac{1}{2}$. A perpendicular line has slope $2$, because $-\\dfrac{1}{2} \\cdot 2 = -1$. The only option with slope $2$ is $2x - y - 3 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11160,7 +11160,7 @@
    "parallel",
    "sign"
   ],
-  "solution": "The given line has slope $\\dfrac{2}{3}$. A perpendicular line needs slope $-\\dfrac{3}{2}$ (product $-1$); that is $3x + 2y + 4 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $\\dfrac{2}{3}$. A perpendicular line has slope $-\\dfrac{3}{2}$, because $\\dfrac{2}{3} \\cdot \\left(-\\dfrac{3}{2}\\right) = -1$. The only option with slope $-\\dfrac{3}{2}$ is $3x + 2y + 4 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11198,7 +11198,7 @@
    "parallel",
    "near-miss"
   ],
-  "solution": "The given line has slope $\\dfrac{3}{2}$. A perpendicular line needs slope $-\\dfrac{2}{3}$ (product $-1$); that is $2x + 3y + 4 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $\\dfrac{3}{2}$. A perpendicular line has slope $-\\dfrac{2}{3}$, because $\\dfrac{3}{2} \\cdot \\left(-\\dfrac{2}{3}\\right) = -1$. The only option with slope $-\\dfrac{2}{3}$ is $2x + 3y + 4 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11236,7 +11236,7 @@
    "parallel",
    null
   ],
-  "solution": "The given line has slope $\\dfrac{2}{3}$. A perpendicular line needs slope $-\\dfrac{3}{2}$ (product $-1$); that is $3x + 2y - 2 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $\\dfrac{2}{3}$. A perpendicular line has slope $-\\dfrac{3}{2}$, because $\\dfrac{2}{3} \\cdot \\left(-\\dfrac{3}{2}\\right) = -1$. The only option with slope $-\\dfrac{3}{2}$ is $3x + 2y - 2 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11274,7 +11274,7 @@
    "parallel",
    "near-miss"
   ],
-  "solution": "The given line has slope $\\dfrac{2}{3}$. A perpendicular line needs slope $-\\dfrac{3}{2}$ (product $-1$); that is $3x + 2y - 5 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $\\dfrac{2}{3}$. A perpendicular line has slope $-\\dfrac{3}{2}$, because $\\dfrac{2}{3} \\cdot \\left(-\\dfrac{3}{2}\\right) = -1$. The only option with slope $-\\dfrac{3}{2}$ is $3x + 2y - 5 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11312,7 +11312,7 @@
    "sign",
    "parallel"
   ],
-  "solution": "The given line has slope $-\\dfrac{1}{2}$. A perpendicular line needs slope $2$ (product $-1$); that is $2x - y + 3 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $-\\dfrac{1}{2}$. A perpendicular line has slope $2$, because $-\\dfrac{1}{2} \\cdot 2 = -1$. The only option with slope $2$ is $2x - y + 3 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11350,7 +11350,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The given line has slope $-\\dfrac{2}{3}$. A perpendicular line needs slope $\\dfrac{3}{2}$ (product $-1$); that is $3x - 2y - 2 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $-\\dfrac{2}{3}$. A perpendicular line has slope $\\dfrac{3}{2}$, because $-\\dfrac{2}{3} \\cdot \\dfrac{3}{2} = -1$. The only option with slope $\\dfrac{3}{2}$ is $3x - 2y - 2 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11388,7 +11388,7 @@
    null,
    "parallel"
   ],
-  "solution": "The given line has slope $-4$. A perpendicular line needs slope $\\dfrac{1}{4}$ (product $-1$); that is $x - 4y + 6 = 0$. In general form: $A_1A_2 + B_1B_2 = 0$.",
+  "solution": "The given line has slope $-4$. A perpendicular line has slope $\\dfrac{1}{4}$, because $-4 \\cdot \\dfrac{1}{4} = -1$. The only option with slope $\\dfrac{1}{4}$ is $x - 4y + 6 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11426,7 +11426,7 @@
    "companion",
    null
   ],
-  "solution": "The given line has slope $-\\dfrac{1}{3}$. A parallel line needs the same slope $-\\dfrac{1}{3}$ and a different intercept; that is $x + 3y + 1 = 0$. In general form: $A_1B_2 - A_2B_1 = 0$.",
+  "solution": "The given line has slope $-\\dfrac{1}{3}$. A parallel line has the same slope $-\\dfrac{1}{3}$ but is a different line. The option with these properties is $x + 3y + 1 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11464,7 +11464,7 @@
    "slip",
    "sign"
   ],
-  "solution": "The given line has slope $1$. A parallel line needs the same slope $1$ and a different intercept; that is $x - y - 1 = 0$. In general form: $A_1B_2 - A_2B_1 = 0$.",
+  "solution": "The given line has slope $1$. A parallel line has the same slope $1$ but is a different line. The option with these properties is $x - y - 1 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11502,7 +11502,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "The given line has slope $-3$. A parallel line needs the same slope $-3$ and a different intercept; that is $3x + y + 4 = 0$. In general form: $A_1B_2 - A_2B_1 = 0$.",
+  "solution": "The given line has slope $-3$. A parallel line has the same slope $-3$ but is a different line. The option with these properties is $3x + y + 4 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11540,7 +11540,7 @@
    "reciprocal",
    "companion"
   ],
-  "solution": "The given line has slope $4$. A parallel line needs the same slope $4$ and a different intercept; that is $4x - y - 4 = 0$. In general form: $A_1B_2 - A_2B_1 = 0$.",
+  "solution": "The given line has slope $4$. A parallel line has the same slope $4$ but is a different line. The option with these properties is $4x - y - 4 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11578,7 +11578,7 @@
    "sign",
    null
   ],
-  "solution": "The given line has slope $\\dfrac{3}{2}$. A parallel line needs the same slope $\\dfrac{3}{2}$ and a different intercept; that is $3x - 2y - 2 = 0$. In general form: $A_1B_2 - A_2B_1 = 0$.",
+  "solution": "The given line has slope $\\dfrac{3}{2}$. A parallel line has the same slope $\\dfrac{3}{2}$ but is a different line. The option with these properties is $3x - 2y - 2 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11616,7 +11616,7 @@
    "parallel",
    "sign"
   ],
-  "solution": "Slopes: $l_1$: $-\\dfrac{2}{3}$, $l_2$: $\\dfrac{3}{2}$, $l_3$: $-3$. The correct statement is “$l_1$ is perpendicular to $l_2$” — the slopes are $-\\dfrac{2}{3}$ and $\\dfrac{3}{2}$, and their product is $-1$. “$l_1$ is perpendicular to $l_3$” is false: the slopes are $-\\dfrac{2}{3}$ and $-3$, and their product is not $-1$. “$l_2$ is perpendicular to $l_3$” is false: the slopes are $\\dfrac{3}{2}$ and $-3$, and their product is not $-1$. “$l_1$ is parallel to $l_2$” is false: the slopes are $-\\dfrac{2}{3}$ and $\\dfrac{3}{2}$, which are not equal.",
+  "solution": "The slopes are $-\\dfrac{2}{3}$ for $l_1$, $\\dfrac{3}{2}$ for $l_2$ and $-3$ for $l_3$. “$l_1$ is perpendicular to $l_2$” is correct. The slopes are $-\\dfrac{2}{3}$ and $\\dfrac{3}{2}$, and their product is $-1$. “$l_1$ is perpendicular to $l_3$” is incorrect. The slopes are $-\\dfrac{2}{3}$ and $-3$, and their product is not $-1$. “$l_2$ is perpendicular to $l_3$” is incorrect. The slopes are $\\dfrac{3}{2}$ and $-3$, and their product is not $-1$. “$l_1$ is parallel to $l_2$” is incorrect. The slopes are $-\\dfrac{2}{3}$ and $\\dfrac{3}{2}$, which are not equal.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11654,7 +11654,7 @@
    "sign",
    "parallel"
   ],
-  "solution": "Slopes: $l_1$: $2$, $l_2$: $1$, $l_3$: $-\\dfrac{1}{2}$. The correct statement is “$l_1$ is perpendicular to $l_3$” — the slopes are $2$ and $-\\dfrac{1}{2}$, and their product is $-1$. “$l_1$ is parallel to $l_3$” is false: the slopes are $2$ and $-\\dfrac{1}{2}$, which are not equal. “$l_2$ is parallel to $l_3$” is false: the slopes are $1$ and $-\\dfrac{1}{2}$, which are not equal. “$l_1$ is perpendicular to $l_2$” is false: the slopes are $2$ and $1$, and their product is not $-1$.",
+  "solution": "The slopes are $2$ for $l_1$, $1$ for $l_2$ and $-\\dfrac{1}{2}$ for $l_3$. “$l_1$ is perpendicular to $l_3$” is correct. The slopes are $2$ and $-\\dfrac{1}{2}$, and their product is $-1$. “$l_1$ is parallel to $l_3$” is incorrect. The slopes are $2$ and $-\\dfrac{1}{2}$, which are not equal. “$l_2$ is parallel to $l_3$” is incorrect. The slopes are $1$ and $-\\dfrac{1}{2}$, which are not equal. “$l_1$ is perpendicular to $l_2$” is incorrect. The slopes are $2$ and $1$, and their product is not $-1$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11692,7 +11692,7 @@
    null,
    "parallel"
   ],
-  "solution": "Slopes: $l_1$: $-2$, $l_2$: $1$, $l_3$: $-2$. The correct statement is “$l_1$ is parallel to $l_3$” — the slopes are $-2$ and $-2$, equal, with different intercepts. “$l_1$ is perpendicular to $l_2$” is false: the slopes are $-2$ and $1$, and their product is not $-1$. “$l_2$ is parallel to $l_3$” is false: the slopes are $1$ and $-2$, which are not equal. “$l_1$ is parallel to $l_2$” is false: the slopes are $-2$ and $1$, which are not equal.",
+  "solution": "The slopes are $-2$ for $l_1$, $1$ for $l_2$ and $-2$ for $l_3$. “$l_1$ is parallel to $l_3$” is correct. Both slopes are $-2$, and the two lines are different. “$l_1$ is perpendicular to $l_2$” is incorrect. The slopes are $-2$ and $1$, and their product is not $-1$. “$l_2$ is parallel to $l_3$” is incorrect. The slopes are $1$ and $-2$, which are not equal. “$l_1$ is parallel to $l_2$” is incorrect. The slopes are $-2$ and $1$, which are not equal.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11730,7 +11730,7 @@
    null,
    "sign"
   ],
-  "solution": "Slopes: $l_1$: $\\dfrac{3}{2}$, $l_2$: $2$, $l_3$: $-\\dfrac{2}{3}$. The correct statement is “$l_1$ is perpendicular to $l_3$” — the slopes are $\\dfrac{3}{2}$ and $-\\dfrac{2}{3}$, and their product is $-1$. “$l_2$ is perpendicular to $l_3$” is false: the slopes are $2$ and $-\\dfrac{2}{3}$, and their product is not $-1$. “$l_1$ is perpendicular to $l_2$” is false: the slopes are $\\dfrac{3}{2}$ and $2$, and their product is not $-1$. “$l_1$ is parallel to $l_3$” is false: the slopes are $\\dfrac{3}{2}$ and $-\\dfrac{2}{3}$, which are not equal.",
+  "solution": "The slopes are $\\dfrac{3}{2}$ for $l_1$, $2$ for $l_2$ and $-\\dfrac{2}{3}$ for $l_3$. “$l_1$ is perpendicular to $l_3$” is correct. The slopes are $\\dfrac{3}{2}$ and $-\\dfrac{2}{3}$, and their product is $-1$. “$l_2$ is perpendicular to $l_3$” is incorrect. The slopes are $2$ and $-\\dfrac{2}{3}$, and their product is not $-1$. “$l_1$ is perpendicular to $l_2$” is incorrect. The slopes are $\\dfrac{3}{2}$ and $2$, and their product is not $-1$. “$l_1$ is parallel to $l_3$” is incorrect. The slopes are $\\dfrac{3}{2}$ and $-\\dfrac{2}{3}$, which are not equal.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11768,7 +11768,7 @@
    "parallel",
    "parallel"
   ],
-  "solution": "Slopes: $l_1$: $\\dfrac{1}{2}$, $l_2$: $\\dfrac{1}{3}$, $l_3$: $-3$. The correct statement is “$l_2$ is perpendicular to $l_3$” — the slopes are $\\dfrac{1}{3}$ and $-3$, and their product is $-1$. “$l_1$ is parallel to $l_2$” is false: the slopes are $\\dfrac{1}{2}$ and $\\dfrac{1}{3}$, which are not equal. “$l_1$ is parallel to $l_3$” is false: the slopes are $\\dfrac{1}{2}$ and $-3$, which are not equal. “$l_1$ is perpendicular to $l_3$” is false: the slopes are $\\dfrac{1}{2}$ and $-3$, and their product is not $-1$.",
+  "solution": "The slopes are $\\dfrac{1}{2}$ for $l_1$, $\\dfrac{1}{3}$ for $l_2$ and $-3$ for $l_3$. “$l_2$ is perpendicular to $l_3$” is correct. The slopes are $\\dfrac{1}{3}$ and $-3$, and their product is $-1$. “$l_1$ is parallel to $l_2$” is incorrect. The slopes are $\\dfrac{1}{2}$ and $\\dfrac{1}{3}$, which are not equal. “$l_1$ is parallel to $l_3$” is incorrect. The slopes are $\\dfrac{1}{2}$ and $-3$, which are not equal. “$l_1$ is perpendicular to $l_3$” is incorrect. The slopes are $\\dfrac{1}{2}$ and $-3$, and their product is not $-1$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11806,7 +11806,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a^2 + 7a + 12 = 0$, so $a = -3$ or $a = -4$ — both values are valid.",
+  "solution": "Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $a(a + 7) + 12 = 0$, that is $a^2 + 7a + 12 = 0$, so $a = -3$ or $a = -4$. Both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11844,7 +11844,7 @@
    "sign",
    null
   ],
-  "solution": "Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a(a - 4) = 0$, so $a = 4$ or $a = 0$ — both values are valid.",
+  "solution": "Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $a(a - 3) - a = 0$, that is $a(a - 4) = 0$, so $a = 4$ or $a = 0$. Both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11882,7 +11882,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a(a + 6) = 0$, so $a = 0$ or $a = -6$ — both values are valid.",
+  "solution": "Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $3a + a(a + 3) = 0$, that is $a(a + 6) = 0$, so $a = 0$ or $a = -6$. Both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11920,7 +11920,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a(a - 4) = 0$, so $a = 4$ or $a = 0$ — both values are valid.",
+  "solution": "Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $-2a + a(a - 2) = 0$, that is $a(a - 4) = 0$, so $a = 4$ or $a = 0$. Both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11958,7 +11958,7 @@
    "partial",
    null
   ],
-  "solution": "Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a(a - 6) = 0$, so $a = 6$ or $a = 0$ — both values are valid.",
+  "solution": "Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $a(a - 2) - 4a = 0$, that is $a(a - 6) = 0$, so $a = 6$ or $a = 0$. Both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -11996,7 +11996,7 @@
    null,
    "partial"
   ],
-  "solution": "Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $a(a - 7) = 0$, so $a = 7$ or $a = 0$ — both values are valid.",
+  "solution": "Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $a(a - 3) - 4a = 0$, that is $a(a - 7) = 0$, so $a = 7$ or $a = 0$. Both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12020,7 +12020,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax + 8y + 6 = 0$ and $l_2: x + (a + 2)y + 2 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax + 8y + 6 = 0$ and $l_2: x + (a + 2)y + 2 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$2$ or $-4$",
    "$-4$",
@@ -12034,7 +12034,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a + 2) - 8 = 0$, i.e. $a^2 + 2a - 8 = 0$, so $a = -4$ or $a = 2$. Check each root: neither makes the two lines coincide, so both are valid.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a + 2) - 8 = 0$, that is $a^2 + 2a - 8 = 0$, so $a = -4$ or $a = 2$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $2a - 6 = 0$. Neither root satisfies this, so both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12058,7 +12058,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax - 3y - 4 = 0$ and $l_2: x + (a + 4)y + 5 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax - 3y - 4 = 0$ and $l_2: x + (a + 4)y + 5 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$-1$",
    "$3$ or $1$",
@@ -12072,7 +12072,7 @@
    "partial",
    null
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a + 4) - (-3) = 0$, i.e. $a^2 + 4a + 3 = 0$, so $a = -1$ or $a = -3$. Check each root: neither makes the two lines coincide, so both are valid.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a + 4) - (-3) = 0$, that is $a^2 + 4a + 3 = 0$, so $a = -1$ or $a = -3$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $5a + 4 = 0$. Neither root satisfies this, so both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12096,7 +12096,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax + 12y + 5 = 0$ and $l_2: x + (a - 1)y - 1 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax + 12y + 5 = 0$ and $l_2: x + (a - 1)y - 1 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$3$ or $-4$",
    "$4$ or $-3$",
@@ -12110,7 +12110,7 @@
    "partial",
    "partial"
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a - 1) - 12 = 0$, i.e. $a^2 - a - 12 = 0$, so $a = -3$ or $a = 4$. Check each root: neither makes the two lines coincide, so both are valid.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a - 1) - 12 = 0$, that is $a^2 - a - 12 = 0$, so $a = -3$ or $a = 4$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $-a - 5 = 0$. Neither root satisfies this, so both values are valid.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12148,7 +12148,7 @@
    "parallel",
    "sign"
   ],
-  "solution": "The given slope is $-1$, so the perpendicular slope is $-\\dfrac{1}{k} = 1$. Through $(2, -3)$: $y - (-3) = 1(x - 2)$, i.e. $y = x - 5$.",
+  "solution": "The given slope is $-1$, so the perpendicular slope is $-\\dfrac{1}{k} = 1$. By the point-slope form through $(2, -3)$, $y + 3 = x - 2$, that is $y = x - 5$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12186,7 +12186,7 @@
    null,
    "partial"
   ],
-  "solution": "The given slope is $-1$, so the perpendicular slope is $-\\dfrac{1}{k} = 1$. Through $(3, -2)$: $y - (-2) = 1(x - 3)$, i.e. $y = x - 5$.",
+  "solution": "The given slope is $-1$, so the perpendicular slope is $-\\dfrac{1}{k} = 1$. By the point-slope form through $(3, -2)$, $y + 2 = x - 3$, that is $y = x - 5$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12224,7 +12224,7 @@
    "partial",
    "parallel"
   ],
-  "solution": "The given slope is $-1$, so the perpendicular slope is $-\\dfrac{1}{k} = 1$. Through $(1, 5)$: $y - 5 = 1(x - 1)$, i.e. $y = x + 4$.",
+  "solution": "The given slope is $-1$, so the perpendicular slope is $-\\dfrac{1}{k} = 1$. By the point-slope form through $(1, 5)$, $y - 5 = x - 1$, that is $y = x + 4$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12248,7 +12248,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax + 2y - 4 = 0$ and $l_2: x + (a - 1)y + 4 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax + 2y - 4 = 0$ and $l_2: x + (a - 1)y + 4 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$-1$",
    "$2$",
@@ -12262,7 +12262,7 @@
    "sign",
    "coincidence"
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a - 1) - 2 = 0$, i.e. $a^2 - a - 2 = 0$, so $a = -1$ or $a = 2$. Check each root: for $a = -1$ the two equations describe the same line, so it is rejected. Hence $a = 2$.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a - 1) - 2 = 0$, that is $a^2 - a - 2 = 0$, so $a = -1$ or $a = 2$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $4a + 4 = 0$. This holds for $a = -1$, so that value gives one line, not two parallel lines. Hence $a = 2$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12286,7 +12286,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax - 8y - 20 = 0$ and $l_2: x + (a - 6)y - 5 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax - 8y - 20 = 0$ and $l_2: x + (a - 6)y - 5 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$-2$",
    "$4$ or $2$",
@@ -12300,7 +12300,7 @@
    null,
    "coincidence"
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a - 6) - (-8) = 0$, i.e. $a^2 - 6a + 8 = 0$, so $a = 4$ or $a = 2$. Check each root: for $a = 4$ the two equations describe the same line, so it is rejected. Hence $a = 2$.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a - 6) - (-8) = 0$, that is $a^2 - 6a + 8 = 0$, so $a = 4$ or $a = 2$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $-5a + 20 = 0$. This holds for $a = 4$, so that value gives one line, not two parallel lines. Hence $a = 2$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12324,7 +12324,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax - 3y + 15 = 0$ and $l_2: x + (a + 4)y - 5 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax - 3y + 15 = 0$ and $l_2: x + (a + 4)y - 5 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$-1$ or $-3$",
    "$1$",
@@ -12338,7 +12338,7 @@
    "coincidence",
    null
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a + 4) - (-3) = 0$, i.e. $a^2 + 4a + 3 = 0$, so $a = -3$ or $a = -1$. Check each root: for $a = -3$ the two equations describe the same line, so it is rejected. Hence $a = -1$.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a + 4) - (-3) = 0$, that is $a^2 + 4a + 3 = 0$, so $a = -3$ or $a = -1$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $-5a - 15 = 0$. This holds for $a = -3$, so that value gives one line, not two parallel lines. Hence $a = -1$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12362,7 +12362,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given that the lines $l_1: ax + 2y + 8 = 0$ and $l_2: x + (a + 1)y - 4 = 0$ are parallel, then $a =$ ( )",
+  "stem": "If the lines $l_1: ax + 2y + 8 = 0$ and $l_2: x + (a + 1)y - 4 = 0$ are parallel, then $a =$ ( )",
   "options": [
    "$-2$",
    "$1$",
@@ -12376,7 +12376,7 @@
    "coincidence",
    "sign"
   ],
-  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a(a + 1) - 2 = 0$, i.e. $a^2 + a - 2 = 0$, so $a = -2$ or $a = 1$. Check each root: for $a = -2$ the two equations describe the same line, so it is rejected. Hence $a = 1$.",
+  "solution": "Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a(a + 1) - 2 = 0$, that is $a^2 + a - 2 = 0$, so $a = -2$ or $a = 1$. The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $-4a - 8 = 0$. This holds for $a = -2$, so that value gives one line, not two parallel lines. Hence $a = 1$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12414,7 +12414,7 @@
    "swap",
    "companion"
   ],
-  "solution": "A line parallel to $2x - 3y - 2 = 0$ has the form $2x - 3y + k = 0$. Substitute $(-3, 0)$: $k = 6$. So the line is $2x - 3y + 6 = 0$.",
+  "solution": "A line parallel to $2x - 3y - 2 = 0$ has the form $2x - 3y + k = 0$. Substituting $(-3, 0)$ gives $-6 + k = 0$, so $k = 6$. So the line is $2x - 3y + 6 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12452,7 +12452,7 @@
    "sign",
    null
   ],
-  "solution": "A line parallel to $3x - 4y + 4 = 0$ has the form $3x - 4y + k = 0$. Substitute $(2, -2)$: $k = -14$. So the line is $3x - 4y - 14 = 0$.",
+  "solution": "A line parallel to $3x - 4y + 4 = 0$ has the form $3x - 4y + k = 0$. Substituting $(2, -2)$ gives $6 + 8 + k = 0$, so $k = -14$. So the line is $3x - 4y - 14 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12490,7 +12490,7 @@
    "swap",
    null
   ],
-  "solution": "A line parallel to $4x + 3y + 4 = 0$ has the form $4x + 3y + k = 0$. Substitute $(4, -3)$: $k = -7$. So the line is $4x + 3y - 7 = 0$.",
+  "solution": "A line parallel to $4x + 3y + 4 = 0$ has the form $4x + 3y + k = 0$. Substituting $(4, -3)$ gives $16 - 9 + k = 0$, so $k = -7$. So the line is $4x + 3y - 7 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12528,7 +12528,7 @@
    "slip",
    "companion"
   ],
-  "solution": "A line parallel to $x + y + 6 = 0$ has the form $x + y + k = 0$. Substitute $(-2, -3)$: $k = 5$. So the line is $x + y + 5 = 0$.",
+  "solution": "A line parallel to $x + y + 6 = 0$ has the form $x + y + k = 0$. Substituting $(-2, -3)$ gives $-2 - 3 + k = 0$, so $k = 5$. So the line is $x + y + 5 = 0$.",
   "video": "V25",
   "version": "a",
   "domain": "LN",
@@ -12566,7 +12566,7 @@
    "swap",
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, 2)$. Step 2 — swap and flip: a line perpendicular to $3x + 2y + 5 = 0$ has the form $2x - 3y + k = 0$. Step 3 — substitute the point: $k = 10$. So $l$: $2x - 3y + 10 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = 4y - 10$. Substituting this into the other equation gives $2(4y - 10) - 3y + 10 = 0$, that is $5y - 10 = 0$, so $y = 2$. Then $x = 4 \\cdot 2 - 10 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x + 2y + 5 = 0$ has the form $2x - 3y + k = 0$. Substituting $(-2, 2)$ gives $-4 - 6 + k = 0$, so $k = 10$. So $l$ is $2x - 3y + 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12604,7 +12604,7 @@
    "parallel",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(4, 1)$. Step 2 — swap and flip: a line perpendicular to $4x + y - 4 = 0$ has the form $x - 4y + k = 0$. Step 3 — substitute the point: $k = 0$. So $l$: $x - 4y = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = 4x - 15$. Substituting this into the other equation gives $4x - 3(4x - 15) - 13 = 0$, that is $-8x + 32 = 0$, so $x = 4$. Then $y = 4 \\cdot 4 - 15 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x + y - 4 = 0$ has the form $x - 4y + k = 0$. Substituting $(4, 1)$ gives $4 - 4 + k = 0$, so $k = 0$. So $l$ is $x - 4y = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12642,7 +12642,7 @@
    "parallel",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(3, -3)$. Step 2 — swap and flip: a line perpendicular to $4x + y = 0$ has the form $x - 4y + k = 0$. Step 3 — substitute the point: $k = -15$. So $l$: $x - 4y - 15 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = 3x - 12$. Substituting this into the other equation gives $x - 3(3x - 12) - 12 = 0$, that is $-8x + 24 = 0$, so $x = 3$. Then $y = 3 \\cdot 3 - 12 = -3$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x + y = 0$ has the form $x - 4y + k = 0$. Substituting $(3, -3)$ gives $3 + 12 + k = 0$, so $k = -15$. So $l$ is $x - 4y - 15 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12680,7 +12680,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(1, -1)$. Step 2 — swap and flip: a line perpendicular to $2x + y + 2 = 0$ has the form $x - 2y + k = 0$. Step 3 — substitute the point: $k = -3$. So $l$: $x - 2y - 3 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = 4x - 5$. Substituting this into the other equation gives $3x + 2(4x - 5) - 1 = 0$, that is $11x - 11 = 0$, so $x = 1$. Then $y = 4 \\cdot 1 - 5 = -1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $2x + y + 2 = 0$ has the form $x - 2y + k = 0$. Substituting $(1, -1)$ gives $1 + 2 + k = 0$, so $k = -3$. So $l$ is $x - 2y - 3 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12718,7 +12718,7 @@
    "sign",
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(1, -3)$. Step 2 — swap and flip: a line perpendicular to $x - 2y + 4 = 0$ has the form $2x + y + k = 0$. Step 3 — substitute the point: $k = 1$. So $l$: $2x + y + 1 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = -4y - 11$. Substituting this into the other equation gives $4(-4y - 11) + 3y + 5 = 0$, that is $-13y - 39 = 0$, so $y = -3$. Then $x = -4 \\cdot \\left(-3\\right) - 11 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 2y + 4 = 0$ has the form $2x + y + k = 0$. Substituting $(1, -3)$ gives $2 - 3 + k = 0$, so $k = 1$. So $l$ is $2x + y + 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12756,7 +12756,7 @@
    null,
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, -4)$. Step 2 — swap and flip: a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Step 3 — substitute the point: $k = 14$. So $l$: $x + 3y + 14 = 0$.",
+  "solution": "First find the intersection point. Multiplying the first equation by $3$, the second by $-2$ and subtracting removes $y$ and gives $13x + 26 = 0$, so $x = -2$. Putting this into the first equation gives $-2y - 8 = 0$, so $y = -4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Substituting $(-2, -4)$ gives $-2 - 12 + k = 0$, so $k = 14$. So $l$ is $x + 3y + 14 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12794,7 +12794,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, -4)$. Step 2 — swap and flip: a line perpendicular to $3x - 4y = 0$ has the form $4x + 3y + k = 0$. Step 3 — substitute the point: $k = 20$. So $l$: $4x + 3y + 20 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = 3y + 10$. Substituting this into the other equation gives $2(3y + 10) + 3y + 16 = 0$, that is $9y + 36 = 0$, so $y = -4$. Then $x = 3 \\cdot \\left(-4\\right) + 10 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - 4y = 0$ has the form $4x + 3y + k = 0$. Substituting $(-2, -4)$ gives $-8 - 12 + k = 0$, so $k = 20$. So $l$ is $4x + 3y + 20 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12832,7 +12832,7 @@
    "sign",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-3, 3)$. Step 2 — swap and flip: a line perpendicular to $x - 4y - 5 = 0$ has the form $4x + y + k = 0$. Step 3 — substitute the point: $k = 9$. So $l$: $4x + y + 9 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = 4x + 15$. Substituting this into the other equation gives $2x - (4x + 15) + 9 = 0$, that is $-2x - 6 = 0$, so $x = -3$. Then $y = 4 \\cdot \\left(-3\\right) + 15 = 3$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 4y - 5 = 0$ has the form $4x + y + k = 0$. Substituting $(-3, 3)$ gives $-12 + 3 + k = 0$, so $k = 9$. So $l$ is $4x + y + 9 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12870,7 +12870,7 @@
    null,
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, 1)$. Step 2 — swap and flip: a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Step 3 — substitute the point: $k = -1$. So $l$: $x + 3y - 1 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = 3y - 5$. Substituting this into the other equation gives $(3y - 5) + 2y = 0$, that is $5y - 5 = 0$, so $y = 1$. Then $x = 3 \\cdot 1 - 5 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - y - 6 = 0$ has the form $x + 3y + k = 0$. Substituting $(-2, 1)$ gives $-2 + 3 + k = 0$, so $k = -1$. So $l$ is $x + 3y - 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12908,7 +12908,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-1, -2)$. Step 2 — swap and flip: a line perpendicular to $x - 2y - 4 = 0$ has the form $2x + y + k = 0$. Step 3 — substitute the point: $k = 4$. So $l$: $2x + y + 4 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = -3y - 7$. Substituting this into the other equation gives $(-3y - 7) + 2y + 5 = 0$, that is $-y - 2 = 0$, so $y = -2$. Then $x = -3 \\cdot \\left(-2\\right) - 7 = -1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 2y - 4 = 0$ has the form $2x + y + k = 0$. Substituting $(-1, -2)$ gives $-2 - 2 + k = 0$, so $k = 4$. So $l$ is $2x + y + 4 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12946,7 +12946,7 @@
    "parallel",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-3, -4)$. Step 2 — swap and flip: a line perpendicular to $x - 3y + 4 = 0$ has the form $3x + y + k = 0$. Step 3 — substitute the point: $k = 13$. So $l$: $3x + y + 13 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = 3y + 9$. Substituting this into the other equation gives $3(3y + 9) - 4y - 7 = 0$, that is $5y + 20 = 0$, so $y = -4$. Then $x = 3 \\cdot \\left(-4\\right) + 9 = -3$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 3y + 4 = 0$ has the form $3x + y + k = 0$. Substituting $(-3, -4)$ gives $-9 - 4 + k = 0$, so $k = 13$. So $l$ is $3x + y + 13 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -12984,7 +12984,7 @@
    null,
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-1, -4)$. Step 2 — swap and flip: a line perpendicular to $3x + 2y + 4 = 0$ has the form $2x - 3y + k = 0$. Step 3 — substitute the point: $k = -10$. So $l$: $2x - 3y - 10 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = 2x - 2$. Substituting this into the other equation gives $3x - 2(2x - 2) - 5 = 0$, that is $-x - 1 = 0$, so $x = -1$. Then $y = 2 \\cdot \\left(-1\\right) - 2 = -4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x + 2y + 4 = 0$ has the form $2x - 3y + k = 0$. Substituting $(-1, -4)$ gives $-2 + 12 + k = 0$, so $k = -10$. So $l$ is $2x - 3y - 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13022,7 +13022,7 @@
    "parallel",
    "slip"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(2, 1)$. Step 2 — swap and flip: a line perpendicular to $x + y - 6 = 0$ has the form $x - y + k = 0$. Step 3 — substitute the point: $k = -1$. So $l$: $x - y - 1 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = -x + 3$. Substituting this into the other equation gives $3x + 4(-x + 3) - 10 = 0$, that is $-x + 2 = 0$, so $x = 2$. Then $y = -2 + 3 = 1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x + y - 6 = 0$ has the form $x - y + k = 0$. Substituting $(2, 1)$ gives $2 - 1 + k = 0$, so $k = -1$. So $l$ is $x - y - 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13060,7 +13060,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(1, -2)$. Step 2 — swap and flip: a line perpendicular to $3x + 4y + 6 = 0$ has the form $4x - 3y + k = 0$. Step 3 — substitute the point: $k = -10$. So $l$: $4x - 3y - 10 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = 4x - 6$. Substituting this into the other equation gives $x - 4(4x - 6) - 9 = 0$, that is $-15x + 15 = 0$, so $x = 1$. Then $y = 4 \\cdot 1 - 6 = -2$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x + 4y + 6 = 0$ has the form $4x - 3y + k = 0$. Substituting $(1, -2)$ gives $4 + 6 + k = 0$, so $k = -10$. So $l$ is $4x - 3y - 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13098,7 +13098,7 @@
    null,
    "parallel"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(0, 4)$. Step 2 — swap and flip: a line perpendicular to $x - 2y - 6 = 0$ has the form $2x + y + k = 0$. Step 3 — substitute the point: $k = -4$. So $l$: $2x + y - 4 = 0$.",
+  "solution": "First find the intersection point. Multiplying the first equation by $2$, the second by $-3$ and subtracting removes $y$ and gives $13x = 0$, so $x = 0$. Putting this into the first equation gives $-3y + 12 = 0$, so $y = 4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 2y - 6 = 0$ has the form $2x + y + k = 0$. Substituting $(0, 4)$ gives $4 + k = 0$, so $k = -4$. So $l$ is $2x + y - 4 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13136,7 +13136,7 @@
    "sign",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(2, 0)$. Step 2 — a line parallel to $x + 4y - 3 = 0$ has the form $x + 4y + k = 0$. Step 3 — substitute the point: $k = -2$. So $l$: $x + 4y - 2 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $x = 3y + 2$. Substituting this into the other equation gives $2(3y + 2) - 3y - 4 = 0$, that is $3y = 0$, so $y = 0$. Then $x = 3 \\cdot 0 + 2 = 2$. A line parallel to $x + 4y - 3 = 0$ keeps the same coefficients of $x$ and $y$, so it has the form $x + 4y + k = 0$. Substituting $(2, 0)$ gives $2 + k = 0$, so $k = -2$. So $l$ is $x + 4y - 2 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13174,7 +13174,7 @@
    "slip",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-2, 1)$. Step 2 — a line parallel to $x + y + 5 = 0$ has the form $x + y + k = 0$. Step 3 — substitute the point: $k = 1$. So $l$: $x + y + 1 = 0$.",
+  "solution": "First find the intersection point. Adding the two equations removes $y$ and gives $6x + 12 = 0$, so $x = -2$. Putting this into the first equation gives $3y - 3 = 0$, so $y = 1$. A line parallel to $x + y + 5 = 0$ keeps the same coefficients of $x$ and $y$, so it has the form $x + y + k = 0$. Substituting $(-2, 1)$ gives $-2 + 1 + k = 0$, so $k = 1$. So $l$ is $x + y + 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13212,7 +13212,7 @@
    "sign",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-3, 0)$. Step 2 — a line parallel to $3x + y + 1 = 0$ has the form $3x + y + k = 0$. Step 3 — substitute the point: $k = 9$. So $l$: $3x + y + 9 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $x = 4y - 3$. Substituting this into the other equation gives $2(4y - 3) - 3y + 6 = 0$, that is $5y = 0$, so $y = 0$. Then $x = 4 \\cdot 0 - 3 = -3$. A line parallel to $3x + y + 1 = 0$ keeps the same coefficients of $x$ and $y$, so it has the form $3x + y + k = 0$. Substituting $(-3, 0)$ gives $-9 + k = 0$, so $k = 9$. So $l$ is $3x + y + 9 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13250,7 +13250,7 @@
    "sign",
    "swap"
   ],
-  "solution": "Step 1 — the point is given: $(0, 2)$. Step 2 — swap and flip: a line perpendicular to $4x + 3y = 0$ has the form $3x - 4y + k = 0$. Step 3 — substitute the point: $k = 8$. So $l$: $3x - 4y + 8 = 0$.",
+  "solution": "Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x + 3y = 0$ has the form $3x - 4y + k = 0$. Substituting $(0, 2)$ gives $-8 + k = 0$, so $k = 8$. So $l$ is $3x - 4y + 8 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13288,7 +13288,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Step 1 — the point is given: $(3, 2)$. Step 2 — swap and flip: a line perpendicular to $3x - 4y - 2 = 0$ has the form $4x + 3y + k = 0$. Step 3 — substitute the point: $k = -18$. So $l$: $4x + 3y - 18 = 0$.",
+  "solution": "Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $3x - 4y - 2 = 0$ has the form $4x + 3y + k = 0$. Substituting $(3, 2)$ gives $12 + 6 + k = 0$, so $k = -18$. So $l$ is $4x + 3y - 18 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13326,7 +13326,7 @@
    null,
    "sign"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $\\left(\\dfrac{5}{4}, -\\dfrac{3}{2}\\right)$. Step 2 — swap and flip: a line perpendicular to $x + y + 3 = 0$ has the form $x - y + k = 0$. Step 3 — substitute the point: $k = -\\dfrac{11}{4}$ (then clear the fraction). So $l$: $4x - 4y - 11 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = -2x + 1$. Substituting this into the other equation gives $2x + 3(-2x + 1) + 2 = 0$, that is $-4x + 5 = 0$, so $x = \\dfrac{5}{4}$. Then $y = -2 \\cdot \\dfrac{5}{4} + 1 = -\\dfrac{3}{2}$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x + y + 3 = 0$ has the form $x - y + k = 0$. Substituting $\\left(\\dfrac{5}{4}, -\\dfrac{3}{2}\\right)$ gives $\\dfrac{5}{4} + \\dfrac{3}{2} + k = 0$, so $k = -\\dfrac{11}{4}$. Clearing the fraction, $l$ is $4x - 4y - 11 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13364,7 +13364,7 @@
    "swap",
    "sign"
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(2, 4)$. Step 2 — swap and flip: a line perpendicular to $2x - y = 0$ has the form $x + 2y + k = 0$. Step 3 — substitute the point: $k = -10$. So $l$: $x + 2y - 10 = 0$.",
+  "solution": "First find the intersection point. From the second equation, $y = -3x + 10$. Substituting this into the other equation gives $4x + 3(-3x + 10) - 20 = 0$, that is $-5x + 10 = 0$, so $x = 2$. Then $y = -3 \\cdot 2 + 10 = 4$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $y = 2x$, that is $2x - y = 0$, has the form $x + 2y + k = 0$. Substituting $(2, 4)$ gives $2 + 8 + k = 0$, so $k = -10$. So $l$ is $x + 2y - 10 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13402,7 +13402,7 @@
    "parallel",
    null
   ],
-  "solution": "Step 1 — the intersection: solving the two equations gives $(-1, 0)$. Step 2 — swap and flip: a line perpendicular to $4x - 3y - 4 = 0$ has the form $3x + 4y + k = 0$. Step 3 — substitute the point: $k = 3$. So $l$: $3x + 4y + 3 = 0$.",
+  "solution": "First find the intersection point. From the first equation, $y = x + 1$. Substituting this into the other equation gives $3x + 4(x + 1) + 3 = 0$, that is $7x + 7 = 0$, so $x = -1$. Then $y = -1 + 1 = 0$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $4x - 3y - 4 = 0$ has the form $3x + 4y + k = 0$. Substituting $(-1, 0)$ gives $-3 + k = 0$, so $k = 3$. So $l$ is $3x + 4y + 3 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13440,7 +13440,7 @@
    "parallel",
    "sign"
   ],
-  "solution": "The line $AB$ is $x - 3y + 11 = 0$. Step 1 — the intersection: solving the two equations gives $(0, -1)$. Step 2 — swap and flip: a line perpendicular to $x - 3y + 11 = 0$ has the form $3x + y + k = 0$. Step 3 — substitute the point: $k = 1$. So $l$: $3x + y + 1 = 0$.",
+  "solution": "The line $AB$ has slope $\\dfrac{1}{3}$ and passes through $A$, so it is $x - 3y + 11 = 0$. Next find the intersection point. From the second equation, $y = -4x - 1$. Substituting this into the other equation gives $x + 3(-4x - 1) + 3 = 0$, that is $-11x = 0$, so $x = 0$. Then $y = -4 \\cdot 0 - 1 = -1$. Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $x - 3y + 11 = 0$ has the form $3x + y + k = 0$. Substituting $(0, -1)$ gives $-1 + k = 0$, so $k = 1$. So $l$ is $3x + y + 1 = 0$.",
   "video": "V26",
   "version": "a",
   "domain": "LN",
@@ -13478,7 +13478,7 @@
    null,
    "sign"
   ],
-  "solution": "The intersection point is $(3, 4)$. Case 1: both intercepts are $0$ — the line passes through the origin: $4x - 3y = 0$. Case 2: equal non-zero intercepts $c$: $x + y = c$, and the point gives $c = 7$: $x + y - 7 = 0$. Both lines are answers; forgetting the line through the origin is the trap.",
+  "solution": "First find the intersection point. From the first equation, $x = 4y - 13$. Substituting this into the other equation gives $3(4y - 13) - 4y + 7 = 0$, that is $8y - 32 = 0$, so $y = 4$. Then $x = 4 \\cdot 4 - 13 = 3$. If both intercepts are $0$, the line passes through the origin and $(3, 4)$, so it is $4x - 3y = 0$. If the two intercepts are equal and not $0$, the line is $x + y = c$, and the point gives $c = 3 + 4 = 7$, so it is $x + y - 7 = 0$. Both lines satisfy the condition.",
   "video": "V26",
   "version": "a",
   "domain": "LN",

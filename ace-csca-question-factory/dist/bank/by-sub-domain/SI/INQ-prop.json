@@ -12,7 +12,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-4a > -4b$",
    "$\\dfrac{1}{a} < \\dfrac{1}{b}$",
@@ -26,7 +26,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2^a > 2^b$ — $y = 2^x$ is increasing, so it keeps the order. $-4a > -4b$ is false: multiplying by a negative number reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$.",
+  "solution": "$2^a > 2^b$ is correct. $y = 2^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $-4a > -4b$ is incorrect. Multiplying both sides by the negative number $-4$ reverses the direction, so $-4a < -4b$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -64,7 +64,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $4^a > 4^b$ — $y = 4^x$ is increasing, so it keeps the order. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$4^a > 4^b$ is correct. $y = 4^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -88,7 +88,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$\\dfrac{a}{b} > 1$",
    "$2^a > 2^b$",
@@ -102,7 +102,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2^a > 2^b$ — $y = 2^x$ is increasing, so it keeps the order. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$2^a > 2^b$ is correct. $y = 2^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -126,7 +126,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-7a > -7b$",
    "$-a > -b$",
@@ -140,7 +140,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a^3 > b^3$ — $y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order. $-7a > -7b$ is false: multiplying by a negative number reverses the direction. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$a^3 > b^3$ is correct. $y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction. $-7a > -7b$ is incorrect. Multiplying both sides by the negative number $-7$ reverses the direction, so $-7a < -7b$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -178,7 +178,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $3^a > 3^b$ — $y = 3^x$ is increasing, so it keeps the order. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$3^a > 3^b$ is correct. $y = 3^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -202,7 +202,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-a < -b$",
    "$ab > b^2$",
@@ -216,7 +216,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $-a < -b$ — multiplying by $-1$ reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$.",
+  "solution": "$-a < -b$ is correct. Multiplying both sides by $-1$ reverses the direction. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -240,7 +240,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$\\dfrac{a}{b} > 1$",
    "$\\lvert a \\rvert > \\lvert b \\rvert$",
@@ -254,7 +254,7 @@
    "reciprocal",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a + 9 > b + 9$ — adding the same number to both sides keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$a + 9 > b + 9$ is correct. Adding the same number to both sides keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -292,7 +292,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $7a > 7b$ — multiplying by the positive number $7$ keeps the direction. $-7a > -7b$ is false: multiplying by a negative number reverses the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$7a > 7b$ is correct. Multiplying both sides by the positive number $7$ keeps the direction. $-7a > -7b$ is incorrect. Multiplying both sides by the negative number $-7$ reverses the direction, so $-7a < -7b$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -330,7 +330,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a - 8 > b - 8$ — subtracting the same number from both sides keeps the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$a - 8 > b - 8$ is correct. Subtracting the same number from both sides keeps the direction. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -368,7 +368,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a^3 > b^3$ — $y = x^3$ is increasing on $\\mathbb{R}$, so cubes keep the order. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $-a > -b$ is false: multiplying by $-1$ reverses the direction.",
+  "solution": "$a^3 > b^3$ is correct. $y = x^3$ is increasing on $\\mathbb{R}$, so cubing both sides keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -392,7 +392,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$-2a > -2b$",
    "$\\lvert a \\rvert > \\lvert b \\rvert$",
@@ -406,7 +406,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2a > 2b$ — multiplying by the positive number $2$ keeps the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $-2a > -2b$ is false: multiplying by a negative number reverses the direction.",
+  "solution": "$2a > 2b$ is correct. Multiplying both sides by the positive number $2$ keeps the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -444,7 +444,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $2^a > 2^b$ — $y = 2^x$ is increasing, so it keeps the order. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $-4a > -4b$ is false: multiplying by a negative number reverses the direction. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$2^a > 2^b$ is correct. $y = 2^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $-4a > -4b$ is incorrect. Multiplying both sides by the negative number $-4$ reverses the direction, so $-4a < -4b$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -482,7 +482,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $\\dfrac{a}{5} > \\dfrac{b}{5}$ — dividing by the positive number $5$ keeps the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$\\dfrac{a}{5} > \\dfrac{b}{5}$ is correct. Dividing both sides by the positive number $5$ keeps the direction. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -520,7 +520,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $-a < -b$ — multiplying by $-1$ reverses the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $-2a > -2b$ is false: multiplying by a negative number reverses the direction. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$-a < -b$ is correct. Multiplying both sides by $-1$ reverses the direction. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -544,7 +544,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$ab > b^2$",
    "$a - 7 > b - 7$",
@@ -558,7 +558,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $a - 7 > b - 7$ — subtracting the same number from both sides keeps the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$.",
+  "solution": "$a - 7 > b - 7$ is correct. Subtracting the same number from both sides keeps the direction. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -596,7 +596,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $4^a > 4^b$ — $y = 4^x$ is increasing, so it keeps the order. $-5a > -5b$ is false: multiplying by a negative number reverses the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = 1$, $b = -2$.",
+  "solution": "$4^a > 4^b$ is correct. $y = 4^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $-5a > -5b$ is incorrect. Multiplying both sides by the negative number $-5$ reverses the direction, so $-5a < -5b$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$. $\\dfrac{1}{a} < \\dfrac{1}{b}$ is incorrect. Take $a = 1$, $b = -2$: $\\dfrac{1}{a} = 1$ and $\\dfrac{1}{b} = -\\dfrac{1}{2}$, so $\\dfrac{1}{a} > \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -634,7 +634,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $\\dfrac{a}{6} > \\dfrac{b}{6}$ — dividing by the positive number $6$ keeps the direction. $-6a > -6b$ is false: multiplying by a negative number reverses the direction. $ab > b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$\\dfrac{a}{6} > \\dfrac{b}{6}$ is correct. Dividing both sides by the positive number $6$ keeps the direction. $-6a > -6b$ is incorrect. Multiplying both sides by the negative number $-6$ reverses the direction, so $-6a < -6b$. $ab > b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $ab = -2$ and $b^2 = 4$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -658,7 +658,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b$. Then ( )",
+  "stem": "If $a > b$, then ( )",
   "options": [
    "$\\dfrac{a}{b} > 1$",
    "$-a > -b$",
@@ -672,7 +672,7 @@
    "sign",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $-a < -b$ — multiplying by $-1$ reverses the direction. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $-2a > -2b$ is false: multiplying by a negative number reverses the direction. $\\dfrac{a}{b} > 1$ is false: dividing by $b$ is safe only if $b > 0$.",
+  "solution": "$-a < -b$ is correct. Multiplying both sides by $-1$ reverses the direction. $-a > -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a < -b$. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$. $\\dfrac{a}{b} > 1$ is incorrect. Dividing both sides by $b$ keeps the direction only when $b > 0$. Take $a = 1$, $b = -2$: $\\dfrac{a}{b} = -\\dfrac{1}{2}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -710,7 +710,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$: only moves that are always safe survive. The correct statement is $3^a > 3^b$ — $y = 3^x$ is increasing, so it keeps the order. $-2a > -2b$ is false: multiplying by a negative number reverses the direction. $a^2 > b^2$ is false: squares need information about signs: try $a = 1$, $b = -2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = 1$, $b = -2$.",
+  "solution": "$3^a > 3^b$ is correct. $y = 3^x$ is increasing on $\\mathbb{R}$, so the larger exponent gives the larger power. $-2a > -2b$ is incorrect. Multiplying both sides by the negative number $-2$ reverses the direction, so $-2a < -2b$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$: $a^2 = 1$ and $b^2 = 4$, so $a^2 < b^2$. $\\lvert a \\rvert > \\lvert b \\rvert$ is incorrect. Take $a = 1$, $b = -2$: $\\lvert a \\rvert = 1$ and $\\lvert b \\rvert = 2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -748,7 +748,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = -2$, $b = 1$. The correct statement is $a - 4 < b - 4$ — subtracting the same number from both sides keeps the direction. $\\lvert a \\rvert < \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = -2$, $b = 1$. $-4a < -4b$ is false: multiplying by a negative number reverses the direction. $-a < -b$ is false: multiplying by $-1$ reverses the direction.",
+  "solution": "$a - 4 < b - 4$ is correct. Subtracting the same number from both sides keeps the direction. $\\lvert a \\rvert < \\lvert b \\rvert$ is incorrect. Take $a = -2$, $b = 1$: $\\lvert a \\rvert = 2$ and $\\lvert b \\rvert = 1$. $-4a < -4b$ is incorrect. Multiplying both sides by the negative number $-4$ reverses the direction, so $-4a > -4b$. $-a < -b$ is incorrect. Multiplying both sides by $-1$ reverses the direction, so $-a > -b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -786,7 +786,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = -2$, $b = 1$. The correct statement is $a - 8 < b - 8$ — subtracting the same number from both sides keeps the direction. $a^2 < b^2$ is false: squares need information about signs: try $a = -2$, $b = 1$. $\\lvert a \\rvert < \\lvert b \\rvert$ is false: absolute values need information about signs: try $a = -2$, $b = 1$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = -2$, $b = 1$.",
+  "solution": "$a - 8 < b - 8$ is correct. Subtracting the same number from both sides keeps the direction. $a^2 < b^2$ is incorrect. Take $a = -2$, $b = 1$: $a^2 = 4$ and $b^2 = 1$, so $a^2 > b^2$. $\\lvert a \\rvert < \\lvert b \\rvert$ is incorrect. Take $a = -2$, $b = 1$: $\\lvert a \\rvert = 2$ and $\\lvert b \\rvert = 1$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is incorrect. Take $a = -2$, $b = 1$: $\\dfrac{1}{a} = -\\dfrac{1}{2}$ and $\\dfrac{1}{b} = 1$, so $\\dfrac{1}{a} < \\dfrac{1}{b}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -824,7 +824,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Test with numbers such as $a = -2$, $b = 1$. The correct statement is $a - 6 < b - 6$ — subtracting the same number from both sides keeps the direction. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is false: reciprocals reverse the order only when both numbers have the same sign: try $a = -2$, $b = 1$. $-6a < -6b$ is false: multiplying by a negative number reverses the direction. $ab < b^2$ is false: multiplying both sides by $b$ is safe only if $b > 0$.",
+  "solution": "$a - 6 < b - 6$ is correct. Subtracting the same number from both sides keeps the direction. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is incorrect. Take $a = -2$, $b = 1$: $\\dfrac{1}{a} = -\\dfrac{1}{2}$ and $\\dfrac{1}{b} = 1$, so $\\dfrac{1}{a} < \\dfrac{1}{b}$. $-6a < -6b$ is incorrect. Multiplying both sides by the negative number $-6$ reverses the direction, so $-6a > -6b$. $ab < b^2$ is incorrect. Multiplying both sides by $b$ keeps the direction only when $b > 0$. Take $a = -2$, $b = -1$: $ab = 2$ and $b^2 = 1$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -862,7 +862,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is “If $a > b$ and $c < 0$, then $ac < bc$” — multiplying by a negative number reverses the direction. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $a^2 > b^2$” is false: try $a = 1$, $b = -2$.",
+  "solution": "“If $a > b$ and $c < 0$, then $ac < bc$” is correct. Multiplying both sides by a negative number reverses the direction. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$. “If $a > b$, then $a^2 > b^2$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -900,7 +900,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is “If $a > b$ and $c > 0$, then $ac > bc$” — multiplying by a positive number keeps the direction. “If $a^2 > b^2$, then $a > b$” is false: try $a = -2$, $b = 1$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $a^2 > b^2$” is false: try $a = 1$, $b = -2$.",
+  "solution": "“If $a > b$ and $c > 0$, then $ac > bc$” is correct. Multiplying both sides by a positive number keeps the direction. “If $a^2 > b^2$, then $a > b$” is incorrect. Take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$. “If $a > b$, then $a^2 > b^2$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -938,7 +938,7 @@
    "near-miss",
    "sign"
   ],
-  "solution": "The correct statement is “If $a > b$ and $c > 0$, then $ac > bc$” — multiplying by a positive number keeps the direction. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$. “If $a^2 > b^2$, then $a > b$” is false: try $a = -2$, $b = 1$. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$.",
+  "solution": "“If $a > b$ and $c > 0$, then $ac > bc$” is correct. Multiplying both sides by a positive number keeps the direction. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$. “If $a^2 > b^2$, then $a > b$” is incorrect. Take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -976,7 +976,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "The correct statement is “If $a > b$, then $a - c > b - c$” — subtracting $c$ from both sides is always safe. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is false: try $a = 1$, $b = -2$. “If $a^2 > b^2$, then $a > b$” is false: try $a = -2$, $b = 1$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$.",
+  "solution": "“If $a > b$, then $a - c > b - c$” is correct. Subtracting the same number $c$ from both sides keeps the direction, whatever $c$ is. “If $a > b$, then $\\dfrac{1}{a} < \\dfrac{1}{b}$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\dfrac{1}{a} = 1 > -\\dfrac{1}{2} = \\dfrac{1}{b}$. “If $a^2 > b^2$, then $a > b$” is incorrect. Take $a = -2$, $b = 1$: then $a^2 = 4 > 1 = b^2$, but $a < b$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1014,7 +1014,7 @@
    "sign",
    "slip"
   ],
-  "solution": "The correct statement is “If $a > b$ and $c < 0$, then $ac < bc$” — multiplying by a negative number reverses the direction. “If $a > b$, then $ac^2 > bc^2$” is false: it fails when $c = 0$. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$. “If $a > b$, then $ac > bc$” is false: it fails when $c \\le 0$.",
+  "solution": "“If $a > b$ and $c < 0$, then $ac < bc$” is correct. Multiplying both sides by a negative number reverses the direction. “If $a > b$, then $ac^2 > bc^2$” is incorrect. If $c = 0$, both sides equal $0$. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$. “If $a > b$, then $ac > bc$” is incorrect. If $c = 0$, then $ac = bc = 0$, and if $c < 0$ the direction is reversed.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1052,7 +1052,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "The correct statement is “If $a > b$, then $a - c > b - c$” — subtracting $c$ from both sides is always safe. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $a^2 > b^2$” is false: try $a = 1$, $b = -2$. “If $a > b$, then $ac^2 > bc^2$” is false: it fails when $c = 0$.",
+  "solution": "“If $a > b$, then $a - c > b - c$” is correct. Subtracting the same number $c$ from both sides keeps the direction, whatever $c$ is. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$. “If $a > b$, then $a^2 > b^2$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $a^2 = 1 < 4 = b^2$. “If $a > b$, then $ac^2 > bc^2$” is incorrect. If $c = 0$, both sides equal $0$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1090,7 +1090,7 @@
    "near-miss",
    null
   ],
-  "solution": "The correct statement is “If $a > b$, then $a + c > b + c$” — adding $c$ to both sides is always safe. “If $a > b$, then $ac > bc$” is false: it fails when $c \\le 0$. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is false: try $a = 1$, $b = -2$. “If $ac > bc$, then $a > b$” is false: it fails when $c < 0$.",
+  "solution": "“If $a > b$, then $a + c > b + c$” is correct. Adding the same number $c$ to both sides keeps the direction, whatever $c$ is. “If $a > b$, then $ac > bc$” is incorrect. If $c = 0$, then $ac = bc = 0$, and if $c < 0$ the direction is reversed. “If $a > b$, then $\\lvert a \\rvert > \\lvert b \\rvert$” is incorrect. Take $a = 1$, $b = -2$: then $a > b$, but $\\lvert a \\rvert = 1 < 2 = \\lvert b \\rvert$. “If $ac > bc$, then $a > b$” is incorrect. Take $a = 0$, $b = 1$, $c = -1$: then $ac = 0 > -1 = bc$, but $a < b$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1128,7 +1128,7 @@
    "near-miss",
    null
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a - c > 0$ — $a > c$. $ab > bc$ is false: multiplying $a > c$ by $b$ is safe only if $b > 0$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is false: dividing by $c$ is safe only if $c > 0$. $\\lvert a \\rvert > \\lvert c \\rvert$ is false: try $a = 1$, $c = -3$.",
+  "solution": "$a - c > 0$ is correct. $a > c$, so $a - c > 0$. $ab > bc$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is incorrect. Dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$. $\\lvert a \\rvert > \\lvert c \\rvert$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1166,7 +1166,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a - c > 0$ — $a > c$. $a^2 > b^2$ is false: try $a = 1$, $b = -2$, $c = -3$. $ab > bc$ is false: multiplying $a > c$ by $b$ is safe only if $b > 0$. $a - b > b - c$ is false: the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$.",
+  "solution": "$a - c > 0$ is correct. $a > c$, so $a - c > 0$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$. $ab > bc$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$. $a - b > b - c$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1204,7 +1204,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a + c > b + c$ — adding the same number keeps the direction. $a - b > b - c$ is false: the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$. $\\lvert a \\rvert > \\lvert c \\rvert$ is false: try $a = 1$, $c = -3$. $a^2 > b^2$ is false: try $a = 1$, $b = -2$, $c = -3$.",
+  "solution": "$a + c > b + c$ is correct. Adding $c$ to both sides of $a > b$ keeps the direction. $a - b > b - c$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$. $\\lvert a \\rvert > \\lvert c \\rvert$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1242,7 +1242,7 @@
    "slip",
    "near-miss"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a + c > b + c$ — adding the same number keeps the direction. $\\lvert a \\rvert > \\lvert c \\rvert$ is false: try $a = 1$, $c = -3$. $a - b > b - c$ is false: the two gaps are unrelated: try $a = 1$, $b = 0$, $c = -3$. $ac > bc$ is false: multiplying by $c$ is safe only if $c > 0$.",
+  "solution": "$a + c > b + c$ is correct. Adding $c$ to both sides of $a > b$ keeps the direction. $\\lvert a \\rvert > \\lvert c \\rvert$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $\\lvert a \\rvert = 1 < 3 = \\lvert c \\rvert$. $a - b > b - c$ is incorrect. Take $a = 1$, $b = 0$, $c = -3$: then $a - b = 1 < 3 = b - c$. $ac > bc$ is incorrect. Multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1280,7 +1280,7 @@
    "reciprocal",
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{a}{b} > 1$ — divide $a > b$ by the positive number $b$. $-a > -b$ is false: multiplying by $-1$ reverses the direction. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is false: for positive numbers the reciprocal reverses the order. $\\dfrac{b}{a} > 1$ is false: $0 < b < a$ gives $\\dfrac{b}{a} < 1$.",
+  "solution": "$\\dfrac{a}{b} > 1$ is correct. Dividing both sides of $a > b$ by the positive number $b$ gives $\\dfrac{a}{b} > 1$. $-a > -b$ is incorrect. Multiplying both sides of $a > b$ by $-1$ gives $-a < -b$. $\\dfrac{1}{a} > \\dfrac{1}{b}$ is incorrect. Dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$, the opposite order. $\\dfrac{b}{a} > 1$ is incorrect. Dividing both sides of $b < a$ by the positive number $a$ gives $\\dfrac{b}{a} < 1$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1318,7 +1318,7 @@
    "sign",
    "reciprocal"
   ],
-  "solution": "The correct statement is $\\dfrac{1}{a} < \\dfrac{1}{b}$ — for positive numbers the reciprocal reverses the order. $\\dfrac{b}{a} > 1$ is false: $0 < b < a$ gives $\\dfrac{b}{a} < 1$. $ab < b^2$ is false: multiply $a > b$ by the positive number $b$: $ab > b^2$. $a - b < 0$ is false: $a > b$ means $a - b > 0$.",
+  "solution": "$\\dfrac{1}{a} < \\dfrac{1}{b}$ is correct. Dividing both sides of $a > b$ by the positive number $ab$ gives $\\dfrac{1}{b} > \\dfrac{1}{a}$. $\\dfrac{b}{a} > 1$ is incorrect. Dividing both sides of $b < a$ by the positive number $a$ gives $\\dfrac{b}{a} < 1$. $ab < b^2$ is incorrect. Multiplying both sides of $a > b$ by the positive number $b$ gives $ab > b^2$. $a - b < 0$ is incorrect. $a > b$ means $a - b > 0$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1342,7 +1342,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "Given $a > b$ and $c < 0$, then ( )",
+  "stem": "If $a > b$ and $c < 0$, then ( )",
   "options": [
    "$a + c < b + c$",
    "$\\dfrac{a}{c} > \\dfrac{b}{c}$",
@@ -1356,7 +1356,7 @@
    null,
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{a}{c} < \\dfrac{b}{c}$ — dividing by the negative number $c$ reverses the direction. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is false: dividing by a negative number reverses the direction. $a + c < b + c$ is false: adding $c$ never changes the direction. $ac > bc$ is false: multiplying by a negative number reverses the direction.",
+  "solution": "$\\dfrac{a}{c} < \\dfrac{b}{c}$ is correct. Dividing both sides of $a > b$ by the negative number $c$ reverses the direction. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is incorrect. Dividing by the negative number $c$ reverses the direction, so $\\dfrac{a}{c} < \\dfrac{b}{c}$. $a + c < b + c$ is incorrect. Adding $c$ to both sides keeps the direction, so $a + c > b + c$. $ac > bc$ is incorrect. Multiplying by the negative number $c$ reverses the direction, so $ac < bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1380,7 +1380,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "Given $a > b$ and $c < 0$, then ( )",
+  "stem": "If $a > b$ and $c < 0$, then ( )",
   "options": [
    "$\\dfrac{a}{c} < \\dfrac{b}{c}$",
    "$a + c < b + c$",
@@ -1394,7 +1394,7 @@
    "sign",
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{a}{c} < \\dfrac{b}{c}$ — dividing by the negative number $c$ reverses the direction. $ac^2 < bc^2$ is false: $c^2$ is positive. $a + c < b + c$ is false: adding $c$ never changes the direction. $ac > bc$ is false: multiplying by a negative number reverses the direction.",
+  "solution": "$\\dfrac{a}{c} < \\dfrac{b}{c}$ is correct. Dividing both sides of $a > b$ by the negative number $c$ reverses the direction. $ac^2 < bc^2$ is incorrect. $c^2 > 0$, so multiplying by $c^2$ keeps the direction: $ac^2 > bc^2$. $a + c < b + c$ is incorrect. Adding $c$ to both sides keeps the direction, so $a + c > b + c$. $ac > bc$ is incorrect. Multiplying by the negative number $c$ reverses the direction, so $ac < bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1432,7 +1432,7 @@
    "sign",
    null
   ],
-  "solution": "The correct statement is $a - d > b - c$ — $-d > -c$; add this to $a > b$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is false: quotients are not safe. $ac > bd$ is false: products need positive numbers: try $a = 1, b = -2, c = 1, d = -2$. $a + d > b + c$ is false: try $a = 1, b = 0, c = 5, d = 0$.",
+  "solution": "$a - d > b - c$ is correct. From $c > d$ we get $-d > -c$, and adding this to $a > b$ gives $a - d > b - c$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is incorrect. Take $a = 2$, $b = 1$, $c = 4$, $d = 1$: then $\\dfrac{a}{c} = \\dfrac{1}{2} < 1 = \\dfrac{b}{d}$. $ac > bd$ is incorrect. Take $a = 1$, $b = -2$, $c = 1$, $d = -2$: then $ac = 1 < 4 = bd$. $a + d > b + c$ is incorrect. Take $a = 1$, $b = 0$, $c = 5$, $d = 0$: then $a + d = 1 < 5 = b + c$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1470,7 +1470,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "The correct statement is $a + c > b + d$ — inequalities of the same direction can be added. $a - c > b - d$ is false: same-direction inequalities must not be subtracted: try $a = 1, b = 0, c = 3, d = 0$. $a + d > b + c$ is false: try $a = 1, b = 0, c = 5, d = 0$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is false: quotients are not safe.",
+  "solution": "$a + c > b + d$ is correct. Two inequalities in the same direction can be added. $a - c > b - d$ is incorrect. Two inequalities in the same direction cannot be subtracted. Take $a = 1$, $b = 0$, $c = 3$, $d = 0$: then $a - c = -2 < 0 = b - d$. $a + d > b + c$ is incorrect. Take $a = 1$, $b = 0$, $c = 5$, $d = 0$: then $a + d = 1 < 5 = b + c$. $\\dfrac{a}{c} > \\dfrac{b}{d}$ is incorrect. Take $a = 2$, $b = 1$, $c = 4$, $d = 1$: then $\\dfrac{a}{c} = \\dfrac{1}{2} < 1 = \\dfrac{b}{d}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1494,7 +1494,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b > c$. Which of the following must be true? ( )",
+  "stem": "If $a > b > c$, which of the following must be true? ( )",
   "options": [
    "$ab > bc$",
    "$ac > bc$",
@@ -1508,7 +1508,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $a + c > b + c$ — adding the same number keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{c}$ is false: reciprocals need both numbers to have the same sign. $ab > bc$ is false: multiplying $a > c$ by $b$ is safe only if $b > 0$. $ac > bc$ is false: multiplying by $c$ is safe only if $c > 0$.",
+  "solution": "$a + c > b + c$ is correct. Adding $c$ to both sides of $a > b$ keeps the direction. $\\dfrac{1}{a} < \\dfrac{1}{c}$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $\\dfrac{1}{a} = 1 > -\\dfrac{1}{3} = \\dfrac{1}{c}$. $ab > bc$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $ab = -2$ and $bc = 6$. $ac > bc$ is incorrect. Multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",
@@ -1532,7 +1532,7 @@
   "points": 2,
   "repeat": null,
   "trick": "T03",
-  "stem": "It is known that $a > b > c$. Which of the following must be true? ( )",
+  "stem": "If $a > b > c$, which of the following must be true? ( )",
   "options": [
    "$\\dfrac{a}{c} > \\dfrac{b}{c}$",
    "$a^2 > b^2$",
@@ -1546,7 +1546,7 @@
    null,
    "sign"
   ],
-  "solution": "Test with numbers such as $a = 1$, $b = -2$, $c = -3$. The correct statement is $2a > b + c$ — $a > b$ and $a > c$; add the two inequalities. $a^2 > b^2$ is false: try $a = 1$, $b = -2$, $c = -3$. $ac > bc$ is false: multiplying by $c$ is safe only if $c > 0$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is false: dividing by $c$ is safe only if $c > 0$.",
+  "solution": "$2a > b + c$ is correct. Adding $a > b$ and $a > c$ gives $2a > b + c$. $a^2 > b^2$ is incorrect. Take $a = 1$, $b = -2$, $c = -3$: then $a^2 = 1 < 4 = b^2$. $ac > bc$ is incorrect. Multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$. $\\dfrac{a}{c} > \\dfrac{b}{c}$ is incorrect. Dividing by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $\\dfrac{a}{c} = -3 < -2 = \\dfrac{b}{c}$.",
   "video": "V04",
   "version": "a",
   "domain": "SI",

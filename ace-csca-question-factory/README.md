@@ -93,8 +93,19 @@ No stem appears twice, and no correct statement is used more than twice. The ban
 The test suite generates 24,480 questions from all 408 forms, builds every paper type several times, builds the bank, and renders every formula with KaTeX. A longer run of 1,224,000 draws in strict mode found no question that failed its check.
 
 ```
-npm test                       # about one minute
+npm test                       # about two minutes
 node test/sweep.js --n 1500    # the long run, about nine minutes
+```
+
+## How the solutions are written
+
+Every solution shows the working with the numbers of that question: the substitution, the subtraction, the counted pairs. For a "which statement" item it takes each option in turn and says why it is right or wrong, naming what a wrong value actually is (for example "the value $\dfrac{9}{13}$ is $\sin^2\alpha$") or giving a counterexample with numbers (for example "take $a = -2$, $b = -1$: then $ab = 2 > 1 = b^2$"). Solutions never refer to option letters, because the letters are shuffled when a paper is assembled.
+
+`test/style.js` holds the house style and runs as part of `npm test`. It fails on em or en dashes, "i.e." and "e.g.", words in capitals, chains of colons or semicolons, coaching words such as "trap", "remember" or "simply", asides in brackets, broken spacing, and stems of the form "Given X, then Y".
+
+```
+node test/style.js             # every form, 25 draws each
+node test/style.js SQ --n 40   # one domain or one form, with more draws
 ```
 
 What the checks do not cover: whether a stem reads naturally to a student, and whether a form matches the plan's intent in every detail. Those need a teacher's read. `dist/course/print/` has every course paper as text for that purpose.

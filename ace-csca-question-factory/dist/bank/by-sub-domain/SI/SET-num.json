@@ -26,7 +26,7 @@
    "slip",
    "sign"
   ],
-  "solution": "The correct statement is $\\dfrac{1}{3} \\in \\mathbb{Q}$ — a quotient of two integers is rational. $\\dfrac{1}{3} \\in \\mathbb{Z}$ is false: $\\dfrac{1}{3}$ is not a whole number. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is false: natural numbers are not negative.",
+  "solution": "$\\dfrac{1}{3} \\in \\mathbb{Q}$ is correct. $\\dfrac{1}{3}$ is a quotient of two integers, so it is rational. $\\dfrac{1}{3} \\in \\mathbb{Z}$ is incorrect. $0 < \\dfrac{1}{3} < 1$, so $\\dfrac{1}{3}$ is not an integer. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -64,7 +64,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is $0 \\in \\mathbb{N}$ — in the CSCA (Chinese) convention $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$. $-9 \\in \\mathbb{N}$ is false: natural numbers are not negative. $\\sqrt{2} \\notin \\mathbb{R}$ is false: every square root of a positive number is real. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational.",
+  "solution": "$0 \\in \\mathbb{N}$ is correct. The natural numbers are $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$, so $0$ is a natural number. $-9 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative. $\\sqrt{2} \\notin \\mathbb{R}$ is incorrect. The square root of a positive number is a real number. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -102,7 +102,7 @@
    "slip",
    "slip"
   ],
-  "solution": "The correct statement is $\\dfrac{2}{5} \\in \\mathbb{Q}$ — a quotient of two integers is rational. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational. $\\dfrac{2}{5} \\in \\mathbb{Z}$ is false: $\\dfrac{2}{5}$ is not a whole number. $\\sqrt{7} \\notin \\mathbb{R}$ is false: every square root of a positive number is real.",
+  "solution": "$\\dfrac{2}{5} \\in \\mathbb{Q}$ is correct. $\\dfrac{2}{5}$ is a quotient of two integers, so it is rational. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational. $\\dfrac{2}{5} \\in \\mathbb{Z}$ is incorrect. $0 < \\dfrac{2}{5} < 1$, so $\\dfrac{2}{5}$ is not an integer. $\\sqrt{7} \\notin \\mathbb{R}$ is incorrect. The square root of a positive number is a real number.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -140,7 +140,7 @@
    "slip",
    "domain"
   ],
-  "solution": "The correct statement is $-2 \\in \\mathbb{Z}$ — negative whole numbers are integers. $0 \\notin \\mathbb{N}$ is false: $\\mathbb{N}$ includes $0$ in the CSCA convention. $\\sqrt{5} \\in \\mathbb{Q}$ is false: $\\sqrt{5}$ is irrational. $-2 \\in \\mathbb{N}$ is false: natural numbers are not negative.",
+  "solution": "$-2 \\in \\mathbb{Z}$ is correct. The integers include the negative whole numbers. $0 \\notin \\mathbb{N}$ is incorrect. $\\mathbb{N} = \\{0, 1, 2, \\ldots\\}$ contains $0$. $\\sqrt{5} \\in \\mathbb{Q}$ is incorrect. $5$ is not a perfect square, so $\\sqrt{5}$ is irrational. $-2 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -178,7 +178,7 @@
    null,
    "slip"
   ],
-  "solution": "The correct statement is $-5 \\in \\mathbb{Z}$ — negative whole numbers are integers. $\\pi \\in \\mathbb{Q}$ is false: $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is false: natural numbers are not negative. $\\sqrt{3} \\notin \\mathbb{R}$ is false: every square root of a positive number is real.",
+  "solution": "$-5 \\in \\mathbb{Z}$ is correct. The integers include the negative whole numbers. $\\pi \\in \\mathbb{Q}$ is incorrect. $\\pi$ is irrational. $-5 \\in \\mathbb{N}$ is incorrect. Natural numbers are never negative. $\\sqrt{3} \\notin \\mathbb{R}$ is incorrect. The square root of a positive number is a real number.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -216,7 +216,7 @@
    null,
    "endpoint"
   ],
-  "solution": "$\\mathbb{N}$ starts at $0$. The whole numbers that satisfy $x < 3$ are $0, 1, 2$, so the set is $\\{0, 1, 2\\}$.",
+  "solution": "$\\mathbb{N}$ starts at $0$. The natural numbers that satisfy $x < 3$ are $0, 1, 2$, so the set is $\\{0, 1, 2\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -254,7 +254,7 @@
    "endpoint",
    null
   ],
-  "solution": "The whole numbers that satisfy $-3 \\le x < 4$ are $-3, -2, -1, 0, 1, 2, 3$, so the set is $\\{-3, -2, -1, 0, 1, 2, 3\\}$.",
+  "solution": "The integers that satisfy $-3 \\le x < 4$ are $-3, -2, -1, 0, 1, 2, 3$, so the set is $\\{-3, -2, -1, 0, 1, 2, 3\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",
@@ -292,7 +292,7 @@
    "endpoint",
    "endpoint"
   ],
-  "solution": "$\\mathbb{N}$ starts at $0$. The whole numbers that satisfy $x \\le 5$ are $0, 1, 2, 3, 4, 5$, so the set is $\\{0, 1, 2, 3, 4, 5\\}$.",
+  "solution": "$\\mathbb{N}$ starts at $0$. The natural numbers that satisfy $x \\le 5$ are $0, 1, 2, 3, 4, 5$, so the set is $\\{0, 1, 2, 3, 4, 5\\}$.",
   "video": "V02",
   "version": "a",
   "domain": "SI",

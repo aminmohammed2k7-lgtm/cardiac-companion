@@ -26,7 +26,7 @@
    "slip",
    null
   ],
-  "solution": "A sequence is arithmetic when consecutive differences are equal (a constant sequence counts, with $d = 0$). Here (3), (4) are arithmetic, so the number is $2$.",
+  "solution": "A sequence is arithmetic when the differences of consecutive terms are all equal. In (1) the differences are $4, 12, 36$, so it is not arithmetic. In (2) the differences are $-3, 6, -12$, so it is not arithmetic. In (3) the differences are $-5, -5, -5$, so it is arithmetic. In (4) the differences are $-1, -1, -1$, so it is arithmetic. So the number of arithmetic sequences is $2$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -64,7 +64,7 @@
    null,
    "slip"
   ],
-  "solution": "A sequence is arithmetic when consecutive differences are equal (a constant sequence counts, with $d = 0$). Here (3) is arithmetic, so the number is $1$.",
+  "solution": "A sequence is arithmetic when the differences of consecutive terms are all equal. In (1) the differences are $-6, 6, -6$, so it is not arithmetic. In (2) the differences are $-12, 24, -48$, so it is not arithmetic. In (3) the differences are $-2, -2, -2$, so it is arithmetic. In (4) the differences are $-1, -2, -4$, so it is not arithmetic. So the number of arithmetic sequences is $1$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -102,7 +102,7 @@
    "slip",
    "slip"
   ],
-  "solution": "A sequence is arithmetic when consecutive differences are equal (a constant sequence counts, with $d = 0$). Here (3) is arithmetic, so the number is $1$.",
+  "solution": "A sequence is arithmetic when the differences of consecutive terms are all equal. In (1) the differences are $1, 1, 2$, so it is not arithmetic. In (2) the differences are $5, 10, 20$, so it is not arithmetic. In (3) the differences are $0, 0, 0$, so it is arithmetic. In (4) the differences are $4, 8, 16$, so it is not arithmetic. So the number of arithmetic sequences is $1$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -140,7 +140,7 @@
    "slip",
    null
   ],
-  "solution": "A sequence is arithmetic when consecutive differences are equal (a constant sequence counts, with $d = 0$). Here (2) is arithmetic, so the number is $1$.",
+  "solution": "A sequence is arithmetic when the differences of consecutive terms are all equal. In (1) the differences are $2, 3, 4$, so it is not arithmetic. In (2) the differences are $2, 2, 2$, so it is arithmetic. In (3) the differences are $0, 1, 1$, so it is not arithmetic. In (4) the differences are $3, 6, 12$, so it is not arithmetic. So the number of arithmetic sequences is $1$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -178,7 +178,7 @@
    null,
    "slip"
   ],
-  "solution": "A sequence is arithmetic when consecutive differences are equal (a constant sequence counts, with $d = 0$). Here (1), (2), (3) are arithmetic, so the number is $3$.",
+  "solution": "A sequence is arithmetic when the differences of consecutive terms are all equal. In (1) the differences are $-3, -3, -3$, so it is arithmetic. In (2) the differences are $1, 1, 1$, so it is arithmetic. In (3) the differences are $-3, -3, -3$, so it is arithmetic. In (4) the differences are $2, 3, 4$, so it is not arithmetic. So the number of arithmetic sequences is $3$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -216,7 +216,7 @@
    null,
    "slip"
   ],
-  "solution": "The first terms are $-10, 20, -40, 80, \\ldots$. The correct statement is “a geometric sequence” — $\\dfrac{a_{n+1}}{a_n} = -2$ is constant. “an arithmetic sequence” is false: the differences of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both. “neither arithmetic nor geometric” is false: check the differences and the ratios of the first terms $-10, 20, -40, 80$.",
+  "solution": "The first terms are $-10, 20, -40, 80, \\ldots$. “a geometric sequence” is correct. $\\dfrac{a_{n+1}}{a_n} = -2$ for every $n$. “an arithmetic sequence” is incorrect. The differences are $30, -60, 120$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = -10$ while $a_2 = 20$. “neither arithmetic nor geometric” is incorrect. It is geometric, because $\\dfrac{a_{n+1}}{a_n} = -2$ for every $n$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -254,7 +254,7 @@
    "companion",
    null
   ],
-  "solution": "The first terms are $-6, -10, -14, -18, \\ldots$. The correct statement is “an arithmetic sequence” — $a_{n+1} - a_n = -4$ is constant. “a geometric sequence” is false: the ratios of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both. “neither arithmetic nor geometric” is false: check the differences and the ratios of the first terms $-6, -10, -14, -18$.",
+  "solution": "The first terms are $-6, -10, -14, -18, \\ldots$. “an arithmetic sequence” is correct. $a_{n+1} - a_n = -4$ for every $n$. “a geometric sequence” is incorrect. The ratios are $\\dfrac{5}{3}, \\dfrac{7}{5}, \\dfrac{9}{7}$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = -6$ while $a_2 = -10$. “neither arithmetic nor geometric” is incorrect. It is arithmetic, because $a_{n+1} - a_n = -4$ for every $n$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -292,7 +292,7 @@
    "companion",
    null
   ],
-  "solution": "The first terms are $-7, -10, -13, -16, \\ldots$. The correct statement is “an arithmetic sequence” — $a_{n+1} - a_n = -3$ is constant. “a geometric sequence” is false: the ratios of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both. “neither arithmetic nor geometric” is false: check the differences and the ratios of the first terms $-7, -10, -13, -16$.",
+  "solution": "The first terms are $-7, -10, -13, -16, \\ldots$. “an arithmetic sequence” is correct. $a_{n+1} - a_n = -3$ for every $n$. “a geometric sequence” is incorrect. The ratios are $\\dfrac{10}{7}, \\dfrac{13}{10}, \\dfrac{16}{13}$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = -7$ while $a_2 = -10$. “neither arithmetic nor geometric” is incorrect. It is arithmetic, because $a_{n+1} - a_n = -3$ for every $n$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -330,7 +330,7 @@
    "slip",
    "companion"
   ],
-  "solution": "The first terms are $-5, -25, -125, -625, \\ldots$. The correct statement is “a geometric sequence” — $\\dfrac{a_{n+1}}{a_n} = 5$ is constant. “an arithmetic sequence” is false: the differences of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both. “neither arithmetic nor geometric” is false: check the differences and the ratios of the first terms $-5, -25, -125, -625$.",
+  "solution": "The first terms are $-5, -25, -125, -625, \\ldots$. “a geometric sequence” is correct. $\\dfrac{a_{n+1}}{a_n} = 5$ for every $n$. “an arithmetic sequence” is incorrect. The differences are $-20, -100, -500$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = -5$ while $a_2 = -25$. “neither arithmetic nor geometric” is incorrect. It is geometric, because $\\dfrac{a_{n+1}}{a_n} = 5$ for every $n$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -368,7 +368,7 @@
    "slip",
    "companion"
   ],
-  "solution": "The first terms are $2, 5, 10, 17, \\ldots$. The correct statement is “neither arithmetic nor geometric” — neither the differences nor the ratios of consecutive terms are constant. “an arithmetic sequence” is false: the differences of consecutive terms are not constant. “a geometric sequence” is false: the ratios of consecutive terms are not constant. “both arithmetic and geometric” is false: only a constant non-zero sequence is both.",
+  "solution": "The first terms are $2, 5, 10, 17, \\ldots$. “neither arithmetic nor geometric” is correct. The differences are $3, 5, 7$, which are not all equal, and the ratios are $\\dfrac{5}{2}, 2, \\dfrac{17}{10}$, which are not all equal either. “an arithmetic sequence” is incorrect. The differences are $3, 5, 7$, which are not all equal. “a geometric sequence” is incorrect. The ratios are $\\dfrac{5}{2}, 2, \\dfrac{17}{10}$, which are not all equal. “both arithmetic and geometric” is incorrect. A sequence that is both must be constant, and here $a_1 = 2$ while $a_2 = 5$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -406,7 +406,7 @@
    "companion",
    "companion"
   ],
-  "solution": "$-3, -8, -13, -18, \\ldots$ is arithmetic: the common difference is $-5$. In each of the other three sequences the differences of consecutive terms are not constant.",
+  "solution": "$-3, -8, -13, -18, \\ldots$ is arithmetic, because the differences are $-5, -5, -5$. $1, 8, 27, 64, \\ldots$ is not arithmetic, because the differences are $7, 19, 37$. $5, -15, 45, -135, \\ldots$ is not arithmetic, because the differences are $-20, 60, -180$. $-1, -2, -4, -8, \\ldots$ is not arithmetic, because the differences are $-1, -2, -4$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -444,7 +444,7 @@
    null,
    "companion"
   ],
-  "solution": "$-3, -8, -13, -18, \\ldots$ is arithmetic: the common difference is $-5$. In each of the other three sequences the differences of consecutive terms are not constant.",
+  "solution": "$-3, -8, -13, -18, \\ldots$ is arithmetic, because the differences are $-5, -5, -5$. $3, 9, 27, 81, \\ldots$ is not arithmetic, because the differences are $6, 18, 54$. $1, 2, 4, 7, \\ldots$ is not arithmetic, because the differences are $1, 2, 3$. $1, -1, 1, -1, \\ldots$ is not arithmetic, because the differences are $-2, 2, -2$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -482,7 +482,7 @@
    "companion",
    "companion"
   ],
-  "solution": "$3, -6, 12, -24, \\ldots$ is geometric: the common ratio is $-2$. In each of the other three sequences the ratios of consecutive terms are not constant.",
+  "solution": "$3, -6, 12, -24, \\ldots$ is geometric, because the ratios are $-2, -2, -2$. $1, 1, 2, 3, \\ldots$ is not geometric, because the ratios are $1, 2, \\dfrac{3}{2}$. $0, -3, -6, -9, \\ldots$ is not geometric, because one of its terms is $0$, and a geometric sequence has no zero terms. $6, 5, 4, 3, \\ldots$ is not geometric, because the ratios are $\\dfrac{5}{6}, \\dfrac{4}{5}, \\dfrac{3}{4}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -520,7 +520,7 @@
    "companion",
    "slip"
   ],
-  "solution": "$-1, -3, -9, -27, \\ldots$ is geometric: the common ratio is $3$. In each of the other three sequences the ratios of consecutive terms are not constant.",
+  "solution": "$-1, -3, -9, -27, \\ldots$ is geometric, because the ratios are $3, 3, 3$. $-5, 0, 5, 10, \\ldots$ is not geometric, because one of its terms is $0$, and a geometric sequence has no zero terms. $0, 3, 8, 15, \\ldots$ is not geometric, because one of its terms is $0$, and a geometric sequence has no zero terms. $7, 10, 13, 16, \\ldots$ is not geometric, because the ratios are $\\dfrac{10}{7}, \\dfrac{13}{10}, \\dfrac{16}{13}$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -558,7 +558,7 @@
    "companion",
    "off-by-one"
   ],
-  "solution": "The first terms are $11, 17, 23, 29, \\ldots$. The correct statement is “It is an arithmetic sequence with common difference $6$” — $a_{n+1} - a_n = 6$. “It is a geometric sequence with common ratio $5$” is false: the ratios of consecutive terms are not constant. “It is neither arithmetic nor geometric” is false: one of the two tests succeeds. “Its first term is $a_1 = 5$” is false: put $n = 1$: $a_1 = 11$.",
+  "solution": "The first terms are $11, 17, 23, 29, \\ldots$. “It is an arithmetic sequence with common difference $6$” is correct. $a_{n+1} - a_n = 6$ for every $n$. “It is a geometric sequence with common ratio $5$” is incorrect. The ratios are $\\dfrac{17}{11}, \\dfrac{23}{17}, \\dfrac{29}{23}$, which are not all equal. “It is neither arithmetic nor geometric” is incorrect. It is arithmetic, because $a_{n+1} - a_n = 6$ for every $n$. “Its first term is $a_1 = 5$” is incorrect. $a_1 = 6 \\cdot 1 + 5 = 11$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -596,7 +596,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "The first terms are $-3, -1, 1, 3, \\ldots$. The correct statement is “It is an arithmetic sequence with common difference $2$” — $a_{n+1} - a_n = 2$. “It is a geometric sequence with common ratio $-2$” is false: the ratios of consecutive terms are not constant. “Its first term is $a_1 = -5$” is false: put $n = 1$: $a_1 = -3$. $a_3 = -1$ is false: put $n = 3$: $a_3 = 1$.",
+  "solution": "The first terms are $-3, -1, 1, 3, \\ldots$. “It is an arithmetic sequence with common difference $2$” is correct. $a_{n+1} - a_n = 2$ for every $n$. “It is a geometric sequence with common ratio $-2$” is incorrect. The ratios are $\\dfrac{1}{3}, -1, 3$, which are not all equal. “Its first term is $a_1 = -5$” is incorrect. $a_1 = 2 \\cdot 1 - 5 = -3$. $a_3 = -1$ is incorrect. $a_3 = 2 \\cdot 3 - 5 = 1$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",
@@ -634,7 +634,7 @@
    "sign",
    "off-by-one"
   ],
-  "solution": "The first terms are $5, 9, 13, 17, \\ldots$. The correct statement is “It is an arithmetic sequence with common difference $4$” — $a_{n+1} - a_n = 4$. “Its first term is $a_1 = 1$” is false: put $n = 1$: $a_1 = 5$. $a_3 = -13$ is false: put $n = 3$: $a_3 = 13$. “It is neither arithmetic nor geometric” is false: one of the two tests succeeds.",
+  "solution": "The first terms are $5, 9, 13, 17, \\ldots$. “It is an arithmetic sequence with common difference $4$” is correct. $a_{n+1} - a_n = 4$ for every $n$. “Its first term is $a_1 = 1$” is incorrect. $a_1 = 4 \\cdot 1 + 1 = 5$. $a_3 = -13$ is incorrect. $a_3 = 4 \\cdot 3 + 1 = 13$. “It is neither arithmetic nor geometric” is incorrect. It is arithmetic, because $a_{n+1} - a_n = 4$ for every $n$.",
   "video": "V30",
   "version": "a",
   "domain": "SQ",

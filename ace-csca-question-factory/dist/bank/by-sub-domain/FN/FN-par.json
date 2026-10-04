@@ -26,7 +26,7 @@
    "companion",
    null
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x + \\dfrac{1}{x}$ — it is odd: $f(-x) = -f(x)$. $y = 3x^2 - \\cos x$ is false: it is even: $f(-x) = f(x)$. $y = \\cos x$ is false: it is even: $f(-x) = f(x)$. $y = \\sqrt{x}$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x + \\dfrac{1}{x}$ is correct. $f(-x) = -x - \\dfrac{1}{x} = -f(x)$, so it is odd. $y = 3x^2 - \\cos x$ is incorrect. $f(-x) = 3x^2 - \\cos x = f(x)$, so it is even, not odd. $y = \\cos x$ is incorrect. $f(-x) = \\cos(-x) = \\cos x = f(x)$, so it is even, not odd. $y = \\sqrt{x}$ is incorrect. Its domain $[0, +\\infty)$ is not symmetric about the origin, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -64,7 +64,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^3 + \\sin x$ — it is odd: $f(-x) = -f(x)$. $y = x^2 - 2x$ is false: it is neither odd nor even. $y = (x - 1)^2$ is false: it is neither odd nor even. $y = x^4 - x^2$ is false: it is even: $f(-x) = f(x)$.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^3 + \\sin x$ is correct. $f(-x) = -x^3 - \\sin x = -f(x)$, so it is odd. $y = x^2 - 2x$ is incorrect. $f(-x) = x^2 + 2x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = (x - 1)^2$ is incorrect. $f(-x) = (-x - 1)^2 = (x + 1)^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^4 - x^2$ is incorrect. $f(-x) = x^4 - x^2 = f(x)$, so it is even, not odd.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -102,7 +102,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = \\dfrac{1}{x}$ — it is odd: $f(-x) = -f(x)$. $y = x^2 - 3$ is false: it is even: $f(-x) = f(x)$. $y = (x - 1)^2$ is false: it is neither odd nor even. $y = x^2 + x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = \\dfrac{1}{x}$ is correct. $f(-x) = -\\dfrac{1}{x} = -f(x)$, so it is odd. $y = x^2 - 3$ is incorrect. $f(-x) = x^2 - 3 = f(x)$, so it is even, not odd. $y = (x - 1)^2$ is incorrect. $f(-x) = (-x - 1)^2 = (x + 1)^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^2 + x$ is incorrect. $f(-x) = x^2 - x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -140,7 +140,7 @@
    null,
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = \\tan x$ — it is odd: $f(-x) = -f(x)$. $y = x^2 + \\cos x$ is false: it is even: $f(-x) = f(x)$. $y = \\sqrt{x}$ is false: it is neither odd nor even. $y = 2^x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = \\tan x$ is correct. $f(-x) = \\tan(-x) = -\\tan x = -f(x)$, so it is odd. $y = x^2 + \\cos x$ is incorrect. $f(-x) = x^2 + \\cos x = f(x)$, so it is even, not odd. $y = \\sqrt{x}$ is incorrect. Its domain $[0, +\\infty)$ is not symmetric about the origin, so it is neither odd nor even. $y = 2^x$ is incorrect. $f(-x) = 2^{-x}$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -178,7 +178,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = -2x$ — it is odd: $f(-x) = -f(x)$. $y = x^2 - 2x$ is false: it is neither odd nor even. $y = x^4$ is false: it is even: $f(-x) = f(x)$. $y = x^4 - x^2$ is false: it is even: $f(-x) = f(x)$.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = -2x$ is correct. $f(-x) = 2x = -f(x)$, so it is odd. $y = x^2 - 2x$ is incorrect. $f(-x) = x^2 + 2x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^4$ is incorrect. $f(-x) = (-x)^4 = x^4 = f(x)$, so it is even, not odd. $y = x^4 - x^2$ is incorrect. $f(-x) = x^4 - x^2 = f(x)$, so it is even, not odd.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -216,7 +216,7 @@
    "near-miss",
    null
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^3 + 2x$ — it is odd: $f(-x) = -f(x)$. $y = x^4 - x^2$ is false: it is even: $f(-x) = f(x)$. $y = x - 1$ is false: it is neither odd nor even. $y = x^2$ is false: it is even: $f(-x) = f(x)$.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^3 + 2x$ is correct. $f(-x) = -x^3 - 2x = -f(x)$, so it is odd. $y = x^4 - x^2$ is incorrect. $f(-x) = x^4 - x^2 = f(x)$, so it is even, not odd. $y = x - 1$ is incorrect. $f(-x) = -x - 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^2$ is incorrect. $f(-x) = (-x)^2 = x^2 = f(x)$, so it is even, not odd.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -254,7 +254,7 @@
    "companion",
    null
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^3 - x$ — it is odd: $f(-x) = -f(x)$. $y = 3x^2 - \\cos x$ is false: it is even: $f(-x) = f(x)$. $y = \\dfrac{1}{x^2}$ is false: it is even: $f(-x) = f(x)$. $y = x + 1$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^3 - x$ is correct. $f(-x) = -x^3 + x = -f(x)$, so it is odd. $y = 3x^2 - \\cos x$ is incorrect. $f(-x) = 3x^2 - \\cos x = f(x)$, so it is even, not odd. $y = \\dfrac{1}{x^2}$ is incorrect. $f(-x) = \\dfrac{1}{x^2} = f(x)$, so it is even, not odd. $y = x + 1$ is incorrect. $f(-x) = -x + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -292,7 +292,7 @@
    null,
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = -2x$ — it is odd: $f(-x) = -f(x)$. $y = x^2 - 2x$ is false: it is neither odd nor even. $y = x^2 - 3$ is false: it is even: $f(-x) = f(x)$. $y = x - 1$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = -2x$ is correct. $f(-x) = 2x = -f(x)$, so it is odd. $y = x^2 - 2x$ is incorrect. $f(-x) = x^2 + 2x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^2 - 3$ is incorrect. $f(-x) = x^2 - 3 = f(x)$, so it is even, not odd. $y = x - 1$ is incorrect. $f(-x) = -x - 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -330,7 +330,7 @@
    "companion",
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^3 + 2x$ — it is odd: $f(-x) = -f(x)$. $y = \\cos x$ is false: it is even: $f(-x) = f(x)$. $y = \\lvert x - 1 \\rvert$ is false: it is neither odd nor even. $y = x^2 - 2x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^3 + 2x$ is correct. $f(-x) = -x^3 - 2x = -f(x)$, so it is odd. $y = \\cos x$ is incorrect. $f(-x) = \\cos(-x) = \\cos x = f(x)$, so it is even, not odd. $y = \\lvert x - 1 \\rvert$ is incorrect. $f(-x) = \\lvert -x - 1 \\rvert = \\lvert x + 1 \\rvert$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^2 - 2x$ is incorrect. $f(-x) = x^2 + 2x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -368,7 +368,7 @@
    "near-miss",
    null
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = \\dfrac{1}{x}$ — it is odd: $f(-x) = -f(x)$. $y = x^2 - 2x$ is false: it is neither odd nor even. $y = x^2 + 1$ is false: it is even: $f(-x) = f(x)$. $y = x - 1$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = \\dfrac{1}{x}$ is correct. $f(-x) = -\\dfrac{1}{x} = -f(x)$, so it is odd. $y = x^2 - 2x$ is incorrect. $f(-x) = x^2 + 2x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x^2 + 1$ is incorrect. $f(-x) = x^2 + 1 = f(x)$, so it is even, not odd. $y = x - 1$ is incorrect. $f(-x) = -x - 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -406,7 +406,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^5$ — it is odd: $f(-x) = -f(x)$. $y = \\dfrac{1}{x^2}$ is false: it is even: $f(-x) = f(x)$. $y = (x - 1)^2$ is false: it is neither odd nor even. $y = x - 1$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^5$ is correct. $f(-x) = -x^5 = -f(x)$, so it is odd. $y = \\dfrac{1}{x^2}$ is incorrect. $f(-x) = \\dfrac{1}{x^2} = f(x)$, so it is even, not odd. $y = (x - 1)^2$ is incorrect. $f(-x) = (-x - 1)^2 = (x + 1)^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x - 1$ is incorrect. $f(-x) = -x - 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -444,7 +444,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^3$ — it is odd: $f(-x) = -f(x)$. $y = x^3 + 1$ is false: it is neither odd nor even. $y = \\lvert x \\rvert + 1$ is false: it is even: $f(-x) = f(x)$. $y = x^2 + x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^3$ is correct. $f(-x) = -x^3 = -f(x)$, so it is odd. $y = x^3 + 1$ is incorrect. $f(-x) = -x^3 + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = \\lvert x \\rvert + 1$ is incorrect. $f(-x) = \\lvert x \\rvert + 1 = f(x)$, so it is even, not odd. $y = x^2 + x$ is incorrect. $f(-x) = x^2 - x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -482,7 +482,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^2 + \\cos x$ — it is even: $f(-x) = f(x)$. $y = (x - 1)^2$ is false: it is neither odd nor even. $y = \\sin x$ is false: it is odd: $f(-x) = -f(x)$. $y = x^2 + x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^2 + \\cos x$ is correct. $f(-x) = x^2 + \\cos x = f(x)$, so it is even. $y = (x - 1)^2$ is incorrect. $f(-x) = (-x - 1)^2 = (x + 1)^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = \\sin x$ is incorrect. $f(-x) = \\sin(-x) = -\\sin x = -f(x)$, so it is odd, not even. $y = x^2 + x$ is incorrect. $f(-x) = x^2 - x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -520,7 +520,7 @@
    "companion",
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = 3x^2 - \\cos x$ — it is even: $f(-x) = f(x)$. $y = x^2 - 2x$ is false: it is neither odd nor even. $y = \\sin x + 1$ is false: it is neither odd nor even. $y = 2x$ is false: it is odd: $f(-x) = -f(x)$.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = 3x^2 - \\cos x$ is correct. $f(-x) = 3x^2 - \\cos x = f(x)$, so it is even. $y = x^2 - 2x$ is incorrect. $f(-x) = x^2 + 2x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = \\sin x + 1$ is incorrect. $f(-x) = -\\sin x + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = 2x$ is incorrect. $f(-x) = -2x = -f(x)$, so it is odd, not even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -558,7 +558,7 @@
    "near-miss",
    "companion"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = \\dfrac{1}{x^2}$ — it is even: $f(-x) = f(x)$. $y = \\dfrac{1}{x}$ is false: it is odd: $f(-x) = -f(x)$. $y = x + 1$ is false: it is neither odd nor even. $y = x + \\cos x$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = \\dfrac{1}{x^2}$ is correct. $f(-x) = \\dfrac{1}{x^2} = f(x)$, so it is even. $y = \\dfrac{1}{x}$ is incorrect. $f(-x) = -\\dfrac{1}{x} = -f(x)$, so it is odd, not even. $y = x + 1$ is incorrect. $f(-x) = -x + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x + \\cos x$ is incorrect. $f(-x) = -x + \\cos x$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -596,7 +596,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Replace $x$ by $-x$: an odd function gives $-f(x)$, an even function gives $f(x)$ again. The correct statement is $y = x^4$ — it is even: $f(-x) = f(x)$. $y = x^3 - 2x$ is false: it is odd: $f(-x) = -f(x)$. $y = x - 1$ is false: it is neither odd nor even. $y = x + 1$ is false: it is neither odd nor even.",
+  "solution": "For each function, replace $x$ by $-x$. An odd function gives $f(-x) = -f(x)$ and an even function gives $f(-x) = f(x)$, on a domain that is symmetric about the origin. $y = x^4$ is correct. $f(-x) = (-x)^4 = x^4 = f(x)$, so it is even. $y = x^3 - 2x$ is incorrect. $f(-x) = -x^3 + 2x = -f(x)$, so it is odd, not even. $y = x - 1$ is incorrect. $f(-x) = -x - 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. $y = x + 1$ is incorrect. $f(-x) = -x + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -634,7 +634,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = -x^5 + 4x = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -672,7 +672,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = -x^3 - 2x = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -710,7 +710,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an even function but not an odd function” — $f(-x) = f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = 3(-x)^4 + (-x)^2 = 3x^4 + x^2 = f(x)$, so $f$ is even. “an even function but not an odd function” is correct. It is even, and it is not also odd, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an odd function but not an even function” is incorrect. It is even, not odd. “neither an odd nor an even function” is incorrect. It is even. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -748,7 +748,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = -x^3 - x = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -786,7 +786,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “neither an odd nor an even function” — $f(-x)$ equals neither $f(x)$ nor $-f(x)$.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = -x^3 + 4$, which is neither $f(x)$ nor $-f(x)$. “neither an odd nor an even function” is correct. For example $f(-1) = 3$, while $f(1) = 5$ and $-f(1) = -5$. “an odd function but not an even function” is incorrect. $f(-1) = 3$ but $-f(1) = -5$. “an even function but not an odd function” is incorrect. $f(-1) = 3$ but $f(1) = 5$. “both an odd and an even function” is incorrect. It is not odd: $f(-1) = 3$ but $-f(1) = -5$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -824,7 +824,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = -x^5 + 2x = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -862,7 +862,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = (-x)^3\\lvert -x \\rvert = -x^3\\lvert x \\rvert = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -900,7 +900,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an even function but not an odd function” — $f(-x) = f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = \\lvert -x \\rvert\\cos(-x) = \\lvert x \\rvert\\cos x = f(x)$, so $f$ is even. “an even function but not an odd function” is correct. It is even, and it is not also odd, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an odd function but not an even function” is incorrect. It is even, not odd. “neither an odd nor an even function” is incorrect. It is even. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -938,7 +938,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = (-x)^2\\sin(-x) = -x^2\\sin x = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -976,7 +976,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an even function but not an odd function” — $f(-x) = f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $(-\\infty, 0) \\cup (0, +\\infty)$ is symmetric about the origin, and $f(-x) = \\ln\\lvert -x \\rvert = \\ln\\lvert x \\rvert = f(x)$, so $f$ is even. “an even function but not an odd function” is correct. It is even, and it is not also odd, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an odd function but not an even function” is incorrect. It is even, not odd. “neither an odd nor an even function” is incorrect. It is even. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1014,7 +1014,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “neither an odd nor an even function” — $f(-x)$ equals neither $f(x)$ nor $-f(x)$.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = -x + \\lvert x \\rvert$, which is neither $f(x)$ nor $-f(x)$. “neither an odd nor an even function” is correct. For example $f(-1) = 0$, while $f(1) = 2$ and $-f(1) = -2$. “an odd function but not an even function” is incorrect. $f(-1) = 0$ but $-f(1) = -2$. “an even function but not an odd function” is incorrect. $f(-1) = 0$ but $f(1) = 2$. “both an odd and an even function” is incorrect. It is not odd: $f(-1) = 0$ but $-f(1) = -2$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1052,7 +1052,7 @@
    "companion",
    "companion"
   ],
-  "solution": "The correct statement is “an odd function but not an even function” — $f(-x) = -f(x)$ for every $x$ in the (symmetric) domain.",
+  "solution": "The domain $\\mathbb{R}$ is symmetric about the origin, and $f(-x) = (-x)\\cos(-x) = -x\\cos x = -f(x)$, so $f$ is odd. “an odd function but not an even function” is correct. It is odd, and it is not also even, because a function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not. “an even function but not an odd function” is incorrect. It is odd, not even. “neither an odd nor an even function” is incorrect. It is odd. “both an odd and an even function” is incorrect. A function that is both odd and even satisfies $f(x) = f(-x) = -f(x)$, so it is $0$ everywhere, and this one is not.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1090,13 +1090,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its graph is symmetric about the $y$-axis” — symmetry about the $y$-axis belongs to even functions; the graph of an odd function is symmetric about the origin. The other three statements are true.",
+  "solution": "“Its graph is symmetric about the $y$-axis” is incorrect. Symmetry about the $y$-axis belongs to even functions. The graph of an odd function is symmetric about the origin. “$f(-x) = -f(x)$ for every $x$ in its domain” is correct. This is the definition of an odd function. “$f(-4) = -f(4)$ whenever $4$ is in its domain” is correct. This is the definition $f(-x) = -f(x)$ with $x = 4$. “If $0$ is in its domain, then $f(0) = 0$” is correct. Putting $x = 0$ into $f(-x) = -f(x)$ gives $f(0) = -f(0)$, so $f(0) = 0$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
   "template": "FN-par.incorrect",
   "seed": "bank:1:FN-par.incorrect:0",
-  "form": "Odd (or even) function y = f(x): which statement is INCORRECT",
+  "form": "Odd (or even) function y = f(x): which statement is incorrect",
   "answer_letter": "A",
   "answer_value": "Its graph is symmetric about the $y$-axis",
   "verified": "stmt"
@@ -1128,13 +1128,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its graph is symmetric about the origin” — symmetry about the origin belongs to odd functions; the graph of an even function is symmetric about the $y$-axis. The other three statements are true.",
+  "solution": "“Its graph is symmetric about the origin” is incorrect. Symmetry about the origin belongs to odd functions. The graph of an even function is symmetric about the $y$-axis. “Its graph is symmetric about the $y$-axis” is correct. If $(x, y)$ is on the graph, then so is $(-x, y)$, because $f(-x) = f(x)$. “Its domain is symmetric about the origin” is correct. The definition compares $f(x)$ with $f(-x)$, so $-x$ must be in the domain whenever $x$ is. “$f(-5) = f(5)$ whenever $5$ is in its domain” is correct. This is the definition $f(-x) = f(x)$ with $x = 5$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
   "template": "FN-par.incorrect",
   "seed": "bank:1:FN-par.incorrect:1",
-  "form": "Odd (or even) function y = f(x): which statement is INCORRECT",
+  "form": "Odd (or even) function y = f(x): which statement is incorrect",
   "answer_letter": "B",
   "answer_value": "Its graph is symmetric about the origin",
   "verified": "stmt"
@@ -1166,13 +1166,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “Its graph is symmetric about the origin” — symmetry about the origin belongs to odd functions; the graph of an even function is symmetric about the $y$-axis. The other three statements are true.",
+  "solution": "“Its graph is symmetric about the origin” is incorrect. Symmetry about the origin belongs to odd functions. The graph of an even function is symmetric about the $y$-axis. “$f(-1) = f(1)$ whenever $1$ is in its domain” is correct. This is the definition $f(-x) = f(x)$ with $x = 1$. “Its domain is symmetric about the origin” is correct. The definition compares $f(x)$ with $f(-x)$, so $-x$ must be in the domain whenever $x$ is. “$f(-x) = f(x)$ for every $x$ in its domain” is correct. This is the definition of an even function.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
   "template": "FN-par.incorrect",
   "seed": "bank:1:FN-par.incorrect:2",
-  "form": "Odd (or even) function y = f(x): which statement is INCORRECT",
+  "form": "Odd (or even) function y = f(x): which statement is incorrect",
   "answer_letter": "B",
   "answer_value": "Its graph is symmetric about the origin",
   "verified": "stmt"
@@ -1204,13 +1204,13 @@
    null,
    "true-statement"
   ],
-  "solution": "The incorrect statement is “$f(-x) = f(x)$ for every $x$ in its domain” — that is the definition of an EVEN function; an odd function satisfies $f(-x) = -f(x)$. The other three statements are true.",
+  "solution": "“$f(-x) = f(x)$ for every $x$ in its domain” is incorrect. This is the definition of an even function. An odd function satisfies $f(-x) = -f(x)$. “If $0$ is in its domain, then $f(0) = 0$” is correct. Putting $x = 0$ into $f(-x) = -f(x)$ gives $f(0) = -f(0)$, so $f(0) = 0$. “Its graph is symmetric about the origin” is correct. If $(x, y)$ is on the graph, then so is $(-x, -y)$, because $f(-x) = -f(x)$. “$f(-4) = -f(4)$ whenever $4$ is in its domain” is correct. This is the definition $f(-x) = -f(x)$ with $x = 4$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
   "template": "FN-par.incorrect",
   "seed": "bank:1:FN-par.incorrect:3",
-  "form": "Odd (or even) function y = f(x): which statement is INCORRECT",
+  "form": "Odd (or even) function y = f(x): which statement is incorrect",
   "answer_letter": "C",
   "answer_value": "$f(-x) = f(x)$ for every $x$ in its domain",
   "verified": "stmt"
@@ -1242,13 +1242,13 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is “$f(-x) = f(x)$ for every $x$ in its domain” — that is the definition of an EVEN function; an odd function satisfies $f(-x) = -f(x)$. The other three statements are true.",
+  "solution": "“$f(-x) = f(x)$ for every $x$ in its domain” is incorrect. This is the definition of an even function. An odd function satisfies $f(-x) = -f(x)$. “$f(-x) = -f(x)$ for every $x$ in its domain” is correct. This is the definition of an odd function. “$f(-2) = -f(2)$ whenever $2$ is in its domain” is correct. This is the definition $f(-x) = -f(x)$ with $x = 2$. “Its domain is symmetric about the origin” is correct. The definition compares $f(x)$ with $f(-x)$, so $-x$ must be in the domain whenever $x$ is.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
   "template": "FN-par.incorrect",
   "seed": "bank:1:FN-par.incorrect:4~1",
-  "form": "Odd (or even) function y = f(x): which statement is INCORRECT",
+  "form": "Odd (or even) function y = f(x): which statement is incorrect",
   "answer_letter": "B",
   "answer_value": "$f(-x) = f(x)$ for every $x$ in its domain",
   "verified": "stmt"
@@ -1280,13 +1280,13 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “$f(-x) = -f(x)$ for every $x$ in its domain” — that is the definition of an ODD function; an even function satisfies $f(-x) = f(x)$. The other three statements are true.",
+  "solution": "“$f(-x) = -f(x)$ for every $x$ in its domain” is incorrect. This is the definition of an odd function. An even function satisfies $f(-x) = f(x)$. “Its graph is symmetric about the $y$-axis” is correct. If $(x, y)$ is on the graph, then so is $(-x, y)$, because $f(-x) = f(x)$. “$f(-x) = f(x)$ for every $x$ in its domain” is correct. This is the definition of an even function. “$f(-3) = f(3)$ whenever $3$ is in its domain” is correct. This is the definition $f(-x) = f(x)$ with $x = 3$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
   "template": "FN-par.incorrect",
   "seed": "bank:1:FN-par.incorrect:5",
-  "form": "Odd (or even) function y = f(x): which statement is INCORRECT",
+  "form": "Odd (or even) function y = f(x): which statement is incorrect",
   "answer_letter": "D",
   "answer_value": "$f(-x) = -f(x)$ for every $x$ in its domain",
   "verified": "stmt"
@@ -1318,7 +1318,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “Its graph is symmetric about the $y$-axis” — $f(-x) = f(x)$, so it is even. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is false: it increases on part of its domain. “Its range is $\\mathbb{R}$” is false: it never goes below $5$. “Its graph is symmetric about the origin” is false: it is not an odd function.",
+  "solution": "“Its graph is symmetric about the $y$-axis” is correct. $f(-x) = f(x)$, so the function is even. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. “Its range is $\\mathbb{R}$” is incorrect. Its smallest value is $5$, at $x = 0$, so it never takes values below $5$. “Its graph is symmetric about the origin” is incorrect. $f(-1) = 6$ but $-f(1) = -6$, so the function is not odd.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1356,7 +1356,7 @@
    "slip",
    null
   ],
-  "solution": "The correct statement is “It is monotonically increasing on $(-\\infty, +\\infty)$” — larger $x$ always gives a larger value. “Its graph is symmetric about the $y$-axis” is false: it is not an even function. “Its range is $[0, +\\infty)$” is false: it also takes values below $0$. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is false: it increases on part of its domain.",
+  "solution": "“It is monotonically increasing on $(-\\infty, +\\infty)$” is correct. An odd power keeps the order of real numbers, so it is increasing on $(-\\infty, +\\infty)$. “Its graph is symmetric about the $y$-axis” is incorrect. $f(-1) = -1$ but $f(1) = 1$, so the function is not even. “Its range is $[0, +\\infty)$” is incorrect. Its range is $\\mathbb{R}$, so it also takes values below $0$, such as $-1$. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is incorrect. An odd power keeps the order of real numbers, so it is increasing on $(-\\infty, +\\infty)$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1394,7 +1394,7 @@
    "companion",
    "domain"
   ],
-  "solution": "The correct statement is “Its graph is symmetric about the $y$-axis” — $f(-x) = f(x)$, so it is even. “It is monotonically increasing on $(-\\infty, +\\infty)$” is false: it decreases on part of its domain. “Its graph is symmetric about the origin” is false: it is not an odd function. “Its range is $\\mathbb{R}$” is false: it never goes below $4$.",
+  "solution": "“Its graph is symmetric about the $y$-axis” is correct. $f(-x) = f(x)$, so the function is even. “It is monotonically increasing on $(-\\infty, +\\infty)$” is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. “Its graph is symmetric about the origin” is incorrect. $f(-1) = 5$ but $-f(1) = -5$, so the function is not odd. “Its range is $\\mathbb{R}$” is incorrect. Its smallest value is $4$, at $x = 0$, so it never takes values below $4$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1432,7 +1432,7 @@
    "slip",
    "companion"
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$” — it takes every real value. “Its range is $[0, +\\infty)$” is false: it also takes values below $0$. “Its graph is symmetric about the $y$-axis” is false: it is not an even function. “It is monotonically increasing on $(-\\infty, +\\infty)$” is false: it decreases on part of its domain.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. It takes every real value. “Its range is $[0, +\\infty)$” is incorrect. Its range is $\\mathbb{R}$, so it also takes values below $0$, such as $-1$. “Its graph is symmetric about the $y$-axis” is incorrect. $f(-1) = 1$ but $f(1) = -1$, so the function is not even. “It is monotonically increasing on $(-\\infty, +\\infty)$” is incorrect. $x^3$ is increasing on $(-\\infty, +\\infty)$, so $-x^3$ is decreasing there.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1470,7 +1470,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “Its range is $[0, +\\infty)$” — its smallest value is $0$ and it grows without bound. “It is monotonically increasing on $(-\\infty, +\\infty)$” is false: it decreases on part of its domain. “Its graph is symmetric about the origin” is false: it is not an odd function. “Its range is $\\mathbb{R}$” is false: it never goes below $0$.",
+  "solution": "“Its range is $[0, +\\infty)$” is correct. Its smallest value is $0$, at $x = 0$, and it takes every larger value. “It is monotonically increasing on $(-\\infty, +\\infty)$” is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. “Its graph is symmetric about the origin” is incorrect. $f(-1) = 1$ but $-f(1) = -1$, so the function is not odd. “Its range is $\\mathbb{R}$” is incorrect. Its smallest value is $0$, at $x = 0$, so it never takes values below $0$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1508,7 +1508,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “Its range is $[0, +\\infty)$” — its smallest value is $0$ and it grows without bound. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is false: it increases on part of its domain. “Its graph is symmetric about the origin” is false: it is not an odd function. “Its range is $\\mathbb{R}$” is false: it never goes below $0$.",
+  "solution": "“Its range is $[0, +\\infty)$” is correct. Its smallest value is $0$, at $x = 0$, and it takes every larger value. “It is monotonically decreasing on $(-\\infty, +\\infty)$” is incorrect. It decreases on $(-\\infty, 0]$ and increases on $[0, +\\infty)$. “Its graph is symmetric about the origin” is incorrect. $f(-1) = 1$ but $-f(1) = -1$, so the function is not odd. “Its range is $\\mathbb{R}$” is incorrect. Its smallest value is $0$, at $x = 0$, so it never takes values below $0$.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1546,7 +1546,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “$f(x) = x^4 - x^2$ is an even function” — $f(-x) = f(x)$. “$f(x) = x + 1$ is an even function” is false: it is neither odd nor even. “$f(x) = x^3 - 2x$ is an even function” is false: it is odd, not even. “$f(x) = x^2$, $x \\in [-1, 2]$, is an even function” is false: the domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even.",
+  "solution": "“$f(x) = x^4 - x^2$ is an even function” is correct. $f(-x) = x^4 - x^2 = f(x)$, so it is even. “$f(x) = x + 1$ is an even function” is incorrect. $f(-x) = -x + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. “$f(x) = x^3 - 2x$ is an even function” is incorrect. $f(-x) = -x^3 + 2x = -f(x)$, so it is odd, not even. “$f(x) = x^2$, $x \\in [-1, 2]$, is an even function” is incorrect. The domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1584,7 +1584,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “$f(x) = x^2 + \\cos x$ is an even function” — $f(-x) = f(x)$. “$f(x) = x^2$, $x \\in [-1, 2]$, is an even function” is false: the domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^3 + x^2$ is an odd function” is false: it is neither odd nor even. “$f(x) = \\tan x$ is an even function” is false: it is odd, not even.",
+  "solution": "“$f(x) = x^2 + \\cos x$ is an even function” is correct. $f(-x) = x^2 + \\cos x = f(x)$, so it is even. “$f(x) = x^2$, $x \\in [-1, 2]$, is an even function” is incorrect. The domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^3 + x^2$ is an odd function” is incorrect. $f(-x) = -x^3 + x^2$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. “$f(x) = \\tan x$ is an even function” is incorrect. $f(-x) = \\tan(-x) = -\\tan x = -f(x)$, so it is odd, not even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1622,7 +1622,7 @@
    null,
    "companion"
   ],
-  "solution": "The correct statement is “$f(x) = x^3 + \\sin x$ is an odd function” — $f(-x) = -f(x)$. “$f(x) = x + \\dfrac{1}{x}$ is an even function” is false: it is odd, not even. “$f(x) = \\lvert x - 1 \\rvert$ is an even function” is false: it is neither odd nor even. “$f(x) = x^2$, $x \\in [-3, 4]$, is an even function” is false: the domain $[-3, 4]$ is not symmetric about the origin, so the function is neither odd nor even.",
+  "solution": "“$f(x) = x^3 + \\sin x$ is an odd function” is correct. $f(-x) = -x^3 - \\sin x = -f(x)$, so it is odd. “$f(x) = x + \\dfrac{1}{x}$ is an even function” is incorrect. $f(-x) = -x - \\dfrac{1}{x} = -f(x)$, so it is odd, not even. “$f(x) = \\lvert x - 1 \\rvert$ is an even function” is incorrect. $f(-x) = \\lvert -x - 1 \\rvert = \\lvert x + 1 \\rvert$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. “$f(x) = x^2$, $x \\in [-3, 4]$, is an even function” is incorrect. The domain $[-3, 4]$ is not symmetric about the origin, so the function is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1660,7 +1660,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “$f(x) = x^3 - x$ is an odd function” — $f(-x) = -f(x)$. “$f(x) = x^4$ is an odd function” is false: it is even, not odd. “$f(x) = \\tan x$ is an even function” is false: it is odd, not even. “$f(x) = x^3$, $x \\in [-2, 3]$, is an odd function” is false: the domain $[-2, 3]$ is not symmetric about the origin, so the function is neither odd nor even.",
+  "solution": "“$f(x) = x^3 - x$ is an odd function” is correct. $f(-x) = -x^3 + x = -f(x)$, so it is odd. “$f(x) = x^4$ is an odd function” is incorrect. $f(-x) = (-x)^4 = x^4 = f(x)$, so it is even, not odd. “$f(x) = \\tan x$ is an even function” is incorrect. $f(-x) = \\tan(-x) = -\\tan x = -f(x)$, so it is odd, not even. “$f(x) = x^3$, $x \\in [-2, 3]$, is an odd function” is incorrect. The domain $[-2, 3]$ is not symmetric about the origin, so the function is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1698,7 +1698,7 @@
    "companion",
    "domain"
   ],
-  "solution": "The correct statement is “$f(x) = \\lvert x \\rvert$ is an even function” — $f(-x) = f(x)$. “$f(x) = x^5$ is an even function” is false: it is odd, not even. “$f(x) = x^2$, $x \\in [-2, 3]$, is an even function” is false: the domain $[-2, 3]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = \\lvert x - 1 \\rvert$ is an odd function” is false: it is neither odd nor even.",
+  "solution": "“$f(x) = \\lvert x \\rvert$ is an even function” is correct. $f(-x) = \\lvert -x \\rvert = \\lvert x \\rvert = f(x)$, so it is even. “$f(x) = x^5$ is an even function” is incorrect. $f(-x) = -x^5 = -f(x)$, so it is odd, not even. “$f(x) = x^2$, $x \\in [-2, 3]$, is an even function” is incorrect. The domain $[-2, 3]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = \\lvert x - 1 \\rvert$ is an odd function” is incorrect. $f(-x) = \\lvert -x - 1 \\rvert = \\lvert x + 1 \\rvert$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1736,7 +1736,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “$f(x) = \\lvert x \\rvert$ is an even function” — $f(-x) = f(x)$. “$f(x) = x^3$, $x \\in [-1, 2]$, is an odd function” is false: the domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^2 - 3$ is an odd function” is false: it is even, not odd. “$f(x) = 2x$ is an even function” is false: it is odd, not even.",
+  "solution": "“$f(x) = \\lvert x \\rvert$ is an even function” is correct. $f(-x) = \\lvert -x \\rvert = \\lvert x \\rvert = f(x)$, so it is even. “$f(x) = x^3$, $x \\in [-1, 2]$, is an odd function” is incorrect. The domain $[-1, 2]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^2 - 3$ is an odd function” is incorrect. $f(-x) = x^2 - 3 = f(x)$, so it is even, not odd. “$f(x) = 2x$ is an even function” is incorrect. $f(-x) = -2x = -f(x)$, so it is odd, not even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1774,7 +1774,7 @@
    "near-miss",
    "domain"
   ],
-  "solution": "The correct statement is “$f(x) = \\lvert x \\rvert + 1$ is an even function” — $f(-x) = f(x)$. “$f(x) = x^2$, $x \\in [-2, 3]$, is an even function” is false: the domain $[-2, 3]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x - 1$ is an even function” is false: it is neither odd nor even. “$f(x) = \\lvert x \\rvert$ is an odd function” is false: it is even, not odd.",
+  "solution": "“$f(x) = \\lvert x \\rvert + 1$ is an even function” is correct. $f(-x) = \\lvert x \\rvert + 1 = f(x)$, so it is even. “$f(x) = x^2$, $x \\in [-2, 3]$, is an even function” is incorrect. The domain $[-2, 3]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x - 1$ is an even function” is incorrect. $f(-x) = -x - 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. “$f(x) = \\lvert x \\rvert$ is an odd function” is incorrect. $f(-x) = \\lvert -x \\rvert = \\lvert x \\rvert = f(x)$, so it is even, not odd.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1812,7 +1812,7 @@
    "companion",
    "near-miss"
   ],
-  "solution": "The correct statement is “$f(x) = x^2 - 3$ is an even function” — $f(-x) = f(x)$. “$f(x) = \\ln x$ is an odd function” is false: it is neither odd nor even. “$f(x) = 2x$ is an even function” is false: it is odd, not even. “$f(x) = x^3$, $x \\in [-1, 3]$, is an odd function” is false: the domain $[-1, 3]$ is not symmetric about the origin, so the function is neither odd nor even.",
+  "solution": "“$f(x) = x^2 - 3$ is an even function” is correct. $f(-x) = x^2 - 3 = f(x)$, so it is even. “$f(x) = \\ln x$ is an odd function” is incorrect. Its domain $(0, +\\infty)$ is not symmetric about the origin, so it is neither odd nor even. “$f(x) = 2x$ is an even function” is incorrect. $f(-x) = -2x = -f(x)$, so it is odd, not even. “$f(x) = x^3$, $x \\in [-1, 3]$, is an odd function” is incorrect. The domain $[-1, 3]$ is not symmetric about the origin, so the function is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1850,7 +1850,7 @@
    "near-miss",
    "domain"
   ],
-  "solution": "The correct statement is “$f(x) = x^2 + 1$ is an even function” — $f(-x) = f(x)$. “$f(x) = x^3$, $x \\in [-2, 4]$, is an odd function” is false: the domain $[-2, 4]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = 2^x$ is an odd function” is false: it is neither odd nor even. “$f(x) = x^3 + 1$ is an even function” is false: it is neither odd nor even.",
+  "solution": "“$f(x) = x^2 + 1$ is an even function” is correct. $f(-x) = x^2 + 1 = f(x)$, so it is even. “$f(x) = x^3$, $x \\in [-2, 4]$, is an odd function” is incorrect. The domain $[-2, 4]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = 2^x$ is an odd function” is incorrect. $f(-x) = 2^{-x}$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even. “$f(x) = x^3 + 1$ is an even function” is incorrect. $f(-x) = -x^3 + 1$, which is neither $f(x)$ nor $-f(x)$, so it is neither odd nor even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",
@@ -1888,7 +1888,7 @@
    "companion",
    null
   ],
-  "solution": "The correct statement is “$f(x) = x^4 + 1$ is an even function” — $f(-x) = f(x)$. “$f(x) = \\lvert x \\rvert$ is an odd function” is false: it is even, not odd. “$f(x) = x^3$, $x \\in [-3, 4]$, is an odd function” is false: the domain $[-3, 4]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^3$ is an even function” is false: it is odd, not even.",
+  "solution": "“$f(x) = x^4 + 1$ is an even function” is correct. $f(-x) = x^4 + 1 = f(x)$, so it is even. “$f(x) = \\lvert x \\rvert$ is an odd function” is incorrect. $f(-x) = \\lvert -x \\rvert = \\lvert x \\rvert = f(x)$, so it is even, not odd. “$f(x) = x^3$, $x \\in [-3, 4]$, is an odd function” is incorrect. The domain $[-3, 4]$ is not symmetric about the origin, so the function is neither odd nor even. “$f(x) = x^3$ is an even function” is incorrect. $f(-x) = -x^3 = -f(x)$, so it is odd, not even.",
   "video": "V06",
   "version": "a",
   "domain": "FN",

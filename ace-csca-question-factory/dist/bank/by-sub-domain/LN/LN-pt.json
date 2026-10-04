@@ -26,7 +26,7 @@
    "swap",
    "axis"
   ],
-  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$: $(5, -6) \\to (5, 6)$.",
+  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$, so $(5, -6)$ becomes $(5, 6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -64,7 +64,7 @@
    null,
    "swap"
   ],
-  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$: $(-9, 1) \\to (-9, -1)$.",
+  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$, so $(-9, 1)$ becomes $(-9, -1)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -102,7 +102,7 @@
    "swap",
    "axis"
   ],
-  "solution": "Symmetry about the origin changes both signs: $(8, -4) \\to (-8, 4)$.",
+  "solution": "Symmetry about the origin changes both signs, so $(8, -4)$ becomes $(-8, 4)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -140,7 +140,7 @@
    null,
    "swap"
   ],
-  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$: $(7, 6) \\to (7, -6)$.",
+  "solution": "Symmetry about the $x$-axis keeps $x$ and changes the sign of $y$, so $(7, 6)$ becomes $(7, -6)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -178,7 +178,7 @@
    "swap",
    null
   ],
-  "solution": "Symmetry about the $y$-axis changes the sign of $x$ and keeps $y$: $(-4, 8) \\to (4, 8)$.",
+  "solution": "Symmetry about the $y$-axis changes the sign of $x$ and keeps $y$, so $(-4, 8)$ becomes $(4, 8)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -216,7 +216,7 @@
    "swap",
    null
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 3$: there are two points, $(-1, 3)$ and $(-1, -3)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 3$. Hence there are two points, $(-1, 3)$ and $(-1, -3)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -254,7 +254,7 @@
    "swap",
    "partial"
   ],
-  "solution": "The distance from $(x, y)$ to the $y$-axis is $|x|$, so $x = \\pm 6$: there are two points, $(6, -3)$ and $(-6, -3)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $y$-axis is $|x|$, so $x = \\pm 6$. Hence there are two points, $(6, -3)$ and $(-6, -3)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -292,7 +292,7 @@
    null,
    "partial"
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$: there are two points, $(1, 2)$ and $(1, -2)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$. Hence there are two points, $(1, 2)$ and $(1, -2)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -330,7 +330,7 @@
    "partial",
    "swap"
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 4$: there are two points, $(-1, 4)$ and $(-1, -4)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 4$. Hence there are two points, $(-1, 4)$ and $(-1, -4)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -368,7 +368,7 @@
    "swap",
    null
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$: there are two points, $(-6, 2)$ and $(-6, -2)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 2$. Hence there are two points, $(-6, 2)$ and $(-6, -2)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -406,7 +406,7 @@
    "swap",
    "partial"
   ],
-  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 7$: there are two points, $(-3, 7)$ and $(-3, -7)$. An option with only one of them is incomplete.",
+  "solution": "The distance from $(x, y)$ to the $x$-axis is $|y|$, so $y = \\pm 7$. Hence there are two points, $(-3, 7)$ and $(-3, -7)$, and an option with only one of them is incomplete.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -444,7 +444,7 @@
    null,
    "sign"
   ],
-  "solution": "A point on the $x$-axis has $y = 0$: $a + 5 = 0$, so $a = -5$. Hence $A(-1, 0)$.",
+  "solution": "A point on the $x$-axis has $y = 0$, so $a + 5 = 0$ and $a = -5$. Then $-a - 6 = -1$, so the point is $A(-1, 0)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -482,7 +482,7 @@
    "axis",
    "axis"
   ],
-  "solution": "A point on the $y$-axis has $x = 0$: $a + 5 = 0$, so $a = -5$. Hence $P(0, -12)$.",
+  "solution": "A point on the $y$-axis has $x = 0$, so $a + 5 = 0$ and $a = -5$. Then $2a - 2 = -12$, so the point is $P(0, -12)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",
@@ -520,7 +520,7 @@
    "sign",
    "axis"
   ],
-  "solution": "A point on the $x$-axis has $y = 0$: $a - 5 = 0$, so $a = 5$. Hence $M(1, 0)$.",
+  "solution": "A point on the $x$-axis has $y = 0$, so $a - 5 = 0$ and $a = 5$. Then $a - 4 = 1$, so the point is $M(1, 0)$.",
   "video": "V20",
   "version": "a",
   "domain": "LN",

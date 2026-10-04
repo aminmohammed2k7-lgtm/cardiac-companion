@@ -26,13 +26,13 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x$ and $y = \\log_{5}5^x$” — $5^x > 0$ for every $x$, so both are defined on $\\mathbb{R}$ and $\\log_{5}5^x = x$. “$y = x + 5$ and $y = \\dfrac{x^2 - 25}{x - 5}$” is false: the fraction is not defined at $x = 5$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is false: $\\dfrac{x^2}{x}$ is not defined at $x = 0$. “$y = 1$ and $y = \\dfrac{x}{x}$” is false: $\\dfrac{x}{x}$ is not defined at $x = 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x$ and $y = \\log_{5}5^x$” is correct. $5^x > 0$ for every $x$, so both are defined on $\\mathbb{R}$ and $\\log_{5}5^x = x$. “$y = x + 5$ and $y = \\dfrac{x^2 - 25}{x - 5}$” is incorrect. The fraction is not defined at $x = 5$, while $y = x + 5$ is. “$y = x$ and $y = \\dfrac{x^2}{x}$” is incorrect. $\\dfrac{x^2}{x}$ is not defined at $x = 0$, while $y = x$ is. “$y = 1$ and $y = \\dfrac{x}{x}$” is incorrect. $\\dfrac{x}{x}$ is not defined at $x = 0$, while $y = 1$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:0",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "B",
   "answer_value": "$y = x$ and $y = \\log_{5}5^x$",
   "verified": "stmt"
@@ -64,13 +64,13 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x$ and $y = \\sqrt[3]{x^3}$” — a cube root has no domain restriction and $\\sqrt[3]{x^3} = x$ for every $x$. “$y = \\lvert x \\rvert$ and $y = (\\sqrt{x})^2$” is false: $(\\sqrt{x})^2$ is defined only for $x \\ge 0$. “$y = x - 3$ and $y = \\dfrac{x^2 - 9}{x + 3}$” is false: the fraction is not defined at $x = -3$. “$y = x$ and $y = 3^{\\log_{3} x}$” is false: $3^{\\log_{3} x}$ is defined only for $x > 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x$ and $y = \\sqrt[3]{x^3}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt[3]{x^3} = x$ for every real $x$. “$y = \\lvert x \\rvert$ and $y = (\\sqrt{x})^2$” is incorrect. $(\\sqrt{x})^2$ is defined only for $x \\ge 0$, while $y = \\lvert x \\rvert$ is defined on $\\mathbb{R}$. “$y = x - 3$ and $y = \\dfrac{x^2 - 9}{x + 3}$” is incorrect. The fraction is not defined at $x = -3$, while $y = x - 3$ is. “$y = x$ and $y = 3^{\\log_{3} x}$” is incorrect. $3^{\\log_{3} x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:1",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "A",
   "answer_value": "$y = x$ and $y = \\sqrt[3]{x^3}$",
   "verified": "stmt"
@@ -102,13 +102,13 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x$ and $y = \\sqrt[3]{x^3}$” — a cube root has no domain restriction and $\\sqrt[3]{x^3} = x$ for every $x$. “$y = x$ and $y = \\sqrt{x^2}$” is false: $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. “$y = x$ and $y = e^{\\ln x}$” is false: $e^{\\ln x}$ is defined only for $x > 0$. “$y = x + 5$ and $y = \\dfrac{x^2 - 25}{x - 5}$” is false: the fraction is not defined at $x = 5$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x$ and $y = \\sqrt[3]{x^3}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt[3]{x^3} = x$ for every real $x$. “$y = x$ and $y = \\sqrt{x^2}$” is incorrect. $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. At $x = -1$ the two rules give $-1$ and $1$. “$y = x$ and $y = e^{\\ln x}$” is incorrect. $e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$. “$y = x + 5$ and $y = \\dfrac{x^2 - 25}{x - 5}$” is incorrect. The fraction is not defined at $x = 5$, while $y = x + 5$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:2",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "B",
   "answer_value": "$y = x$ and $y = \\sqrt[3]{x^3}$",
   "verified": "stmt"
@@ -140,13 +140,13 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = \\lvert x - 3 \\rvert$ and $y = \\sqrt{(x - 3)^2}$” — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$. “$y = x$ and $y = \\sqrt{x^2}$” is false: $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. “$y = x$ and $y = (\\sqrt{x})^2$” is false: $(\\sqrt{x})^2$ is defined only for $x \\ge 0$. “$y = x$ and $y = e^{\\ln x}$” is false: $e^{\\ln x}$ is defined only for $x > 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = \\lvert x - 3 \\rvert$ and $y = \\sqrt{(x - 3)^2}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt{(x - 3)^2} = \\lvert x - 3 \\rvert$ for every real $x$. “$y = x$ and $y = \\sqrt{x^2}$” is incorrect. $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. At $x = -1$ the two rules give $-1$ and $1$. “$y = x$ and $y = (\\sqrt{x})^2$” is incorrect. $(\\sqrt{x})^2$ is defined only for $x \\ge 0$, while $y = x$ is defined on $\\mathbb{R}$. “$y = x$ and $y = e^{\\ln x}$” is incorrect. $e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:3",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "C",
   "answer_value": "$y = \\lvert x - 3 \\rvert$ and $y = \\sqrt{(x - 3)^2}$",
   "verified": "stmt"
@@ -178,13 +178,13 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x^2 - 4$ and $y = \\dfrac{x^4 - 16}{x^2 + 4}$” — the denominator $x^2 + 4$ is never zero, so both are defined on $\\mathbb{R}$ and the fraction simplifies to $x^2 - 4$. “$y = 1$ and $y = \\dfrac{x}{x}$” is false: $\\dfrac{x}{x}$ is not defined at $x = 0$. “$y = x + 2$ and $y = \\dfrac{x^2 - 4}{x - 2}$” is false: the fraction is not defined at $x = 2$. “$y = x$ and $y = \\sqrt{x^2}$” is false: $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x^2 - 4$ and $y = \\dfrac{x^4 - 16}{x^2 + 4}$” is correct. The denominator $x^2 + 4$ is never zero, so both are defined on $\\mathbb{R}$ and the fraction simplifies to $x^2 - 4$. “$y = 1$ and $y = \\dfrac{x}{x}$” is incorrect. $\\dfrac{x}{x}$ is not defined at $x = 0$, while $y = 1$ is. “$y = x + 2$ and $y = \\dfrac{x^2 - 4}{x - 2}$” is incorrect. The fraction is not defined at $x = 2$, while $y = x + 2$ is. “$y = x$ and $y = \\sqrt{x^2}$” is incorrect. $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. At $x = -1$ the two rules give $-1$ and $1$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:4",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "C",
   "answer_value": "$y = x^2 - 4$ and $y = \\dfrac{x^4 - 16}{x^2 + 4}$",
   "verified": "stmt"
@@ -216,13 +216,13 @@
    "domain",
    null
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x$ and $y = \\sqrt[3]{x^3}$” — a cube root has no domain restriction and $\\sqrt[3]{x^3} = x$ for every $x$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is false: $\\dfrac{x^2}{x}$ is not defined at $x = 0$. “$y = \\ln x^2$ and $y = 2\\ln x$” is false: $\\ln x^2$ is defined for $x \\ne 0$, but $2\\ln x$ only for $x > 0$. “$y = x$ and $y = e^{\\ln x}$” is false: $e^{\\ln x}$ is defined only for $x > 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x$ and $y = \\sqrt[3]{x^3}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt[3]{x^3} = x$ for every real $x$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is incorrect. $\\dfrac{x^2}{x}$ is not defined at $x = 0$, while $y = x$ is. “$y = \\ln x^2$ and $y = 2\\ln x$” is incorrect. $\\ln x^2$ is defined for every $x \\ne 0$, but $2\\ln x$ only for $x > 0$. “$y = x$ and $y = e^{\\ln x}$” is incorrect. $e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:5",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "D",
   "answer_value": "$y = x$ and $y = \\sqrt[3]{x^3}$",
   "verified": "stmt"
@@ -254,13 +254,13 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x$ and $y = \\log_{3}3^x$” — $3^x > 0$ for every $x$, so both are defined on $\\mathbb{R}$ and $\\log_{3}3^x = x$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is false: $\\dfrac{x^2}{x}$ is not defined at $x = 0$. “$y = \\lvert x \\rvert$ and $y = (\\sqrt{x})^2$” is false: $(\\sqrt{x})^2$ is defined only for $x \\ge 0$. “$y = x + 3$ and $y = \\dfrac{x^2 - 9}{x - 3}$” is false: the fraction is not defined at $x = 3$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x$ and $y = \\log_{3}3^x$” is correct. $3^x > 0$ for every $x$, so both are defined on $\\mathbb{R}$ and $\\log_{3}3^x = x$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is incorrect. $\\dfrac{x^2}{x}$ is not defined at $x = 0$, while $y = x$ is. “$y = \\lvert x \\rvert$ and $y = (\\sqrt{x})^2$” is incorrect. $(\\sqrt{x})^2$ is defined only for $x \\ge 0$, while $y = \\lvert x \\rvert$ is defined on $\\mathbb{R}$. “$y = x + 3$ and $y = \\dfrac{x^2 - 9}{x - 3}$” is incorrect. The fraction is not defined at $x = 3$, while $y = x + 3$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:6",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "A",
   "answer_value": "$y = x$ and $y = \\log_{3}3^x$",
   "verified": "stmt"
@@ -292,13 +292,13 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x^2 - 16$ and $y = \\dfrac{x^4 - 256}{x^2 + 16}$” — the denominator $x^2 + 16$ is never zero, so both are defined on $\\mathbb{R}$ and the fraction simplifies to $x^2 - 16$. “$y = \\ln x^2$ and $y = 2\\ln x$” is false: $\\ln x^2$ is defined for $x \\ne 0$, but $2\\ln x$ only for $x > 0$. “$y = x + 4$ and $y = \\dfrac{x^2 - 16}{x - 4}$” is false: the fraction is not defined at $x = 4$. “$y = x$ and $y = \\sqrt{x^2}$” is false: $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x^2 - 16$ and $y = \\dfrac{x^4 - 256}{x^2 + 16}$” is correct. The denominator $x^2 + 16$ is never zero, so both are defined on $\\mathbb{R}$ and the fraction simplifies to $x^2 - 16$. “$y = \\ln x^2$ and $y = 2\\ln x$” is incorrect. $\\ln x^2$ is defined for every $x \\ne 0$, but $2\\ln x$ only for $x > 0$. “$y = x + 4$ and $y = \\dfrac{x^2 - 16}{x - 4}$” is incorrect. The fraction is not defined at $x = 4$, while $y = x + 4$ is. “$y = x$ and $y = \\sqrt{x^2}$” is incorrect. $\\sqrt{x^2} = \\lvert x \\rvert$, which differs from $x$ when $x < 0$. At $x = -1$ the two rules give $-1$ and $1$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:7",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "C",
   "answer_value": "$y = x^2 - 16$ and $y = \\dfrac{x^4 - 256}{x^2 + 16}$",
   "verified": "stmt"
@@ -330,13 +330,13 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = x^2 - 16$ and $y = \\dfrac{x^4 - 256}{x^2 + 16}$” — the denominator $x^2 + 16$ is never zero, so both are defined on $\\mathbb{R}$ and the fraction simplifies to $x^2 - 16$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is false: $\\dfrac{x^2}{x}$ is not defined at $x = 0$. “$y = x$ and $y = e^{\\ln x}$” is false: $e^{\\ln x}$ is defined only for $x > 0$. “$y = 1$ and $y = \\dfrac{x}{x}$” is false: $\\dfrac{x}{x}$ is not defined at $x = 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = x^2 - 16$ and $y = \\dfrac{x^4 - 256}{x^2 + 16}$” is correct. The denominator $x^2 + 16$ is never zero, so both are defined on $\\mathbb{R}$ and the fraction simplifies to $x^2 - 16$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is incorrect. $\\dfrac{x^2}{x}$ is not defined at $x = 0$, while $y = x$ is. “$y = x$ and $y = e^{\\ln x}$” is incorrect. $e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$. “$y = 1$ and $y = \\dfrac{x}{x}$” is incorrect. $\\dfrac{x}{x}$ is not defined at $x = 0$, while $y = 1$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:8",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "C",
   "answer_value": "$y = x^2 - 16$ and $y = \\dfrac{x^4 - 256}{x^2 + 16}$",
   "verified": "stmt"
@@ -368,13 +368,13 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is “$y = \\lvert x - 2 \\rvert$ and $y = \\sqrt{(x - 2)^2}$” — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$. “$y = x - 2$ and $y = \\dfrac{x^2 - 4}{x + 2}$” is false: the fraction is not defined at $x = -2$. “$y = x$ and $y = e^{\\ln x}$” is false: $e^{\\ln x}$ is defined only for $x > 0$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is false: $\\dfrac{x^2}{x}$ is not defined at $x = 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. “$y = \\lvert x - 2 \\rvert$ and $y = \\sqrt{(x - 2)^2}$” is correct. Both are defined on $\\mathbb{R}$, and $\\sqrt{(x - 2)^2} = \\lvert x - 2 \\rvert$ for every real $x$. “$y = x - 2$ and $y = \\dfrac{x^2 - 4}{x + 2}$” is incorrect. The fraction is not defined at $x = -2$, while $y = x - 2$ is. “$y = x$ and $y = e^{\\ln x}$” is incorrect. $e^{\\ln x}$ is defined only for $x > 0$, while $y = x$ is defined on $\\mathbb{R}$. “$y = x$ and $y = \\dfrac{x^2}{x}$” is incorrect. $\\dfrac{x^2}{x}$ is not defined at $x = 0$, while $y = x$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
   "template": "FN-same.pairs",
   "seed": "bank:1:FN-same.pairs:9",
-  "form": "In which pair are the two functions the same (rule AND domain)",
+  "form": "In which pair are the two functions the same (rule and domain)",
   "answer_letter": "B",
   "answer_value": "$y = \\lvert x - 2 \\rvert$ and $y = \\sqrt{(x - 2)^2}$",
   "verified": "stmt"
@@ -406,7 +406,7 @@
    "domain",
    "near-miss"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt[3]{(x + 2)^3}$ — a cube root undoes a cube for every real number, so it equals $x + 2$ on $\\mathbb{R}$. $y = \\sqrt{(x + 2)^2}$ is false: it equals $\\lvert x + 2 \\rvert$, which differs from $x + 2$ when $x + 2 < 0$. $y = \\lvert x + 2 \\rvert$ is false: the rule differs when $x + 2 < 0$. $y = \\left(\\sqrt{x + 2}\\right)^2$ is false: it is defined only for $x + 2 \\ge 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt[3]{(x + 2)^3}$ is correct. A cube root undoes a cube for every real number, so it equals $x + 2$ on $\\mathbb{R}$. $y = \\sqrt{(x + 2)^2}$ is incorrect. It equals $\\lvert x + 2 \\rvert$, which differs from $x + 2$ when $x + 2 < 0$. At $x = -3$ it gives $1$, but $y = x + 2$ gives $-1$. $y = \\lvert x + 2 \\rvert$ is incorrect. It equals $x + 2$ only when $x + 2 \\ge 0$. At $x = -3$ it gives $1$, but $y = x + 2$ gives $-1$. $y = \\left(\\sqrt{x + 2}\\right)^2$ is incorrect. It is defined only for $x + 2 \\ge 0$, while $y = x + 2$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -444,7 +444,7 @@
    "domain",
    null
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt[3]{(x - 2)^3}$ — a cube root undoes a cube for every real number, so it equals $x - 2$ on $\\mathbb{R}$. $y = \\lvert x - 2 \\rvert$ is false: the rule differs when $x - 2 < 0$. $y = \\dfrac{(x - 2)^2}{x - 2}$ is false: it is not defined at $x = 2$. $y = \\left(\\sqrt{x - 2}\\right)^2$ is false: it is defined only for $x - 2 \\ge 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt[3]{(x - 2)^3}$ is correct. A cube root undoes a cube for every real number, so it equals $x - 2$ on $\\mathbb{R}$. $y = \\lvert x - 2 \\rvert$ is incorrect. It equals $x - 2$ only when $x - 2 \\ge 0$. At $x = 1$ it gives $1$, but $y = x - 2$ gives $-1$. $y = \\dfrac{(x - 2)^2}{x - 2}$ is incorrect. It is not defined at $x = 2$, while $y = x - 2$ is. $y = \\left(\\sqrt{x - 2}\\right)^2$ is incorrect. It is defined only for $x - 2 \\ge 0$, while $y = x - 2$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -482,7 +482,7 @@
    "domain",
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt[3]{(x + 4)^3}$ — a cube root undoes a cube for every real number, so it equals $x + 4$ on $\\mathbb{R}$. $y = \\left(\\sqrt{x + 4}\\right)^2$ is false: it is defined only for $x + 4 \\ge 0$. $y = \\dfrac{(x + 4)^2}{x + 4}$ is false: it is not defined at $x = -4$. $y = \\lvert x + 4 \\rvert$ is false: the rule differs when $x + 4 < 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt[3]{(x + 4)^3}$ is correct. A cube root undoes a cube for every real number, so it equals $x + 4$ on $\\mathbb{R}$. $y = \\left(\\sqrt{x + 4}\\right)^2$ is incorrect. It is defined only for $x + 4 \\ge 0$, while $y = x + 4$ is defined on $\\mathbb{R}$. $y = \\dfrac{(x + 4)^2}{x + 4}$ is incorrect. It is not defined at $x = -4$, while $y = x + 4$ is. $y = \\lvert x + 4 \\rvert$ is incorrect. It equals $x + 4$ only when $x + 4 \\ge 0$. At $x = -5$ it gives $1$, but $y = x + 4$ gives $-1$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -520,7 +520,7 @@
    "domain",
    null
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt{(x - 2)^2}$ — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 2 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x - 2)^3}$ is false: it equals $x - 2$, which differs from $\\lvert x - 2 \\rvert$ when $x - 2 < 0$. $y = \\left(\\sqrt{x - 2}\\right)^2$ is false: it is defined only for $x - 2 \\ge 0$. $y = \\dfrac{(x - 2)^2}{x - 2}$ is false: it is not defined at $x = 2$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt{(x - 2)^2}$ is correct. $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 2 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x - 2)^3}$ is incorrect. It equals $x - 2$, which differs from $\\lvert x - 2 \\rvert$ when $x - 2 < 0$. At $x = 1$ it gives $-1$, but $y = \\lvert x - 2 \\rvert$ gives $1$. $y = \\left(\\sqrt{x - 2}\\right)^2$ is incorrect. It is defined only for $x - 2 \\ge 0$, while $y = \\lvert x - 2 \\rvert$ is defined on $\\mathbb{R}$. $y = \\dfrac{(x - 2)^2}{x - 2}$ is incorrect. It is not defined at $x = 2$, while $y = \\lvert x - 2 \\rvert$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -558,7 +558,7 @@
    "domain",
    "near-miss"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt{(x - 3)^2}$ — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 3 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x - 3)^3}$ is false: it equals $x - 3$, which differs from $\\lvert x - 3 \\rvert$ when $x - 3 < 0$. $y = x - 3$ is false: the rule differs when $x - 3 < 0$. $y = \\dfrac{(x - 3)^2}{x - 3}$ is false: it is not defined at $x = 3$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt{(x - 3)^2}$ is correct. $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 3 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x - 3)^3}$ is incorrect. It equals $x - 3$, which differs from $\\lvert x - 3 \\rvert$ when $x - 3 < 0$. At $x = 2$ it gives $-1$, but $y = \\lvert x - 3 \\rvert$ gives $1$. $y = x - 3$ is incorrect. It differs from $\\lvert x - 3 \\rvert$ when $x - 3 < 0$. At $x = 2$ it gives $-1$, but $y = \\lvert x - 3 \\rvert$ gives $1$. $y = \\dfrac{(x - 3)^2}{x - 3}$ is incorrect. It is not defined at $x = 3$, while $y = \\lvert x - 3 \\rvert$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -596,7 +596,7 @@
    null,
    "domain"
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt{(x + 4)^2}$ — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x + 4 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x + 4)^3}$ is false: it equals $x + 4$, which differs from $\\lvert x + 4 \\rvert$ when $x + 4 < 0$. $y = \\left(\\sqrt{x + 4}\\right)^2$ is false: it is defined only for $x + 4 \\ge 0$. $y = \\dfrac{(x + 4)^2}{x + 4}$ is false: it is not defined at $x = -4$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt{(x + 4)^2}$ is correct. $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x + 4 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x + 4)^3}$ is incorrect. It equals $x + 4$, which differs from $\\lvert x + 4 \\rvert$ when $x + 4 < 0$. At $x = -5$ it gives $-1$, but $y = \\lvert x + 4 \\rvert$ gives $1$. $y = \\left(\\sqrt{x + 4}\\right)^2$ is incorrect. It is defined only for $x + 4 \\ge 0$, while $y = \\lvert x + 4 \\rvert$ is defined on $\\mathbb{R}$. $y = \\dfrac{(x + 4)^2}{x + 4}$ is incorrect. It is not defined at $x = -4$, while $y = \\lvert x + 4 \\rvert$ is.",
   "video": "V08",
   "version": "a",
   "domain": "FN",
@@ -634,7 +634,7 @@
    "domain",
    null
   ],
-  "solution": "Two functions are the same only if they have the same domain and the same rule. The correct statement is $y = \\sqrt{(x - 3)^2}$ — $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 3 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x - 3)^3}$ is false: it equals $x - 3$, which differs from $\\lvert x - 3 \\rvert$ when $x - 3 < 0$. $y = x - 3$ is false: the rule differs when $x - 3 < 0$. $y = \\left(\\sqrt{x - 3}\\right)^2$ is false: it is defined only for $x - 3 \\ge 0$.",
+  "solution": "Two functions are the same only if they have the same domain and the same rule. $y = \\sqrt{(x - 3)^2}$ is correct. $\\sqrt{u^2} = \\lvert u \\rvert$ for every real $u$, so it equals $\\lvert x - 3 \\rvert$ on $\\mathbb{R}$. $y = \\sqrt[3]{(x - 3)^3}$ is incorrect. It equals $x - 3$, which differs from $\\lvert x - 3 \\rvert$ when $x - 3 < 0$. At $x = 2$ it gives $-1$, but $y = \\lvert x - 3 \\rvert$ gives $1$. $y = x - 3$ is incorrect. It differs from $\\lvert x - 3 \\rvert$ when $x - 3 < 0$. At $x = 2$ it gives $-1$, but $y = \\lvert x - 3 \\rvert$ gives $1$. $y = \\left(\\sqrt{x - 3}\\right)^2$ is incorrect. It is defined only for $x - 3 \\ge 0$, while $y = \\lvert x - 3 \\rvert$ is defined on $\\mathbb{R}$.",
   "video": "V08",
   "version": "a",
   "domain": "FN",

@@ -26,7 +26,7 @@
    null,
    "near-miss"
   ],
-  "solution": "The correct statement is “Its graph passes through the point $(0, 1)$” — at $x = 0$ the power equals $1$. “Its graph is symmetric about the $y$-axis” is false: it is not an even function. “It is monotonically increasing on $\\mathbb{R}$” is false: the base is between $0$ and $1$, so the function decreases. “Its range is $\\mathbb{R}$” is false: its values are always positive.",
+  "solution": "“Its graph passes through the point $(0, 1)$” is correct. At $x = 0$ the power is $1$, so $y = 1$. “Its graph is symmetric about the $y$-axis” is incorrect. The function is decreasing, so $f(-1) \\ne f(1)$ and it is not even. “It is monotonically increasing on $\\mathbb{R}$” is incorrect. The base $\\dfrac{1}{4}$ is between $0$ and $1$, so the function is decreasing. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value.",
   "video": "V40",
   "version": "a"
  },
@@ -57,7 +57,7 @@
    "domain",
    "slip"
   ],
-  "solution": "The correct statement is “Its graph passes through the point $(0, 1)$” — at $x = 0$ the power equals $1$. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “Its range is $\\mathbb{R}$” is false: its values are always positive. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 5$.",
+  "solution": "“Its graph passes through the point $(0, 1)$” is correct. At $x = 0$ the power is $1$, so $y = 1$. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $5$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions.",
   "video": "V40",
   "version": "a"
  },
@@ -88,7 +88,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Compare the exponents: $0.3 < 3$, and the values are in the same order, so $y = a^x$ is increasing: $a > 1$.",
+  "solution": "The exponents satisfy $0.3 < 3$, and the powers satisfy $a^{0.3} < a^{3}$. So the larger exponent gives the larger power, which means $y = a^x$ is increasing. This happens exactly when $a > 1$.",
   "video": "V40",
   "version": "a"
  },
@@ -119,7 +119,7 @@
    "true-statement",
    null
   ],
-  "solution": "The incorrect statement is “It is decreasing on its domain” — that holds only when $0 < a < 1$; for $a > 1$ the function is increasing. The other three statements are true.",
+  "solution": "“It is decreasing on its domain” is incorrect. This holds only when $0 < a < 1$. For $a > 1$ the function is increasing. “It is monotonic on $\\mathbb{R}$” is correct. It is increasing when $a > 1$ and decreasing when $0 < a < 1$, so it is monotonic in both cases. “Its domain is $\\mathbb{R}$” is correct. For $a > 0$, $a^x$ is defined for every real $x$. “Its range is $(0, +\\infty)$” is correct. For $a > 0$, $a^x$ is always positive and takes every positive value.",
   "video": "V40",
   "version": "a"
  },
@@ -150,7 +150,7 @@
    "near-miss",
    "slip"
   ],
-  "solution": "Rewrite $4^{-x} = \\left(\\dfrac{1}{4}\\right)^x$: the base is between $0$ and $1$. The correct statement is “Its domain is $\\mathbb{R}$” — an exponential is defined for every real $x$. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = \\dfrac{1}{4}$. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “Its graph is symmetric about the $y$-axis” is false: it is not an even function.",
+  "solution": "First rewrite $4^{-x} = \\left(\\dfrac{1}{4}\\right)^x$, so the base is $\\dfrac{1}{4}$, which lies between $0$ and $1$. “Its domain is $\\mathbb{R}$” is correct. A power of a positive base is defined for every real exponent. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $\\dfrac{1}{4}$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “Its graph is symmetric about the $y$-axis” is incorrect. The function is decreasing, so $f(-1) \\ne f(1)$ and it is not even.",
   "video": "V40",
   "version": "a"
  },
@@ -181,7 +181,7 @@
    null,
    "slip"
   ],
-  "solution": "$a^0 = 1$ for every base, so make the exponent $0$: $x = 1$. Then $f(1) = 1 - 5 = -4$. Fixed point: $(1, -4)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $x - 1 = 0$, so $x = 1$. Then $f(1) = 1 - 5 = -4$ whatever $a$ is. So the fixed point is $(1, -4)$.",
   "video": "V40",
   "version": "a"
  },
@@ -212,7 +212,7 @@
    "sign",
    null
   ],
-  "solution": "Compare the exponents: $-1 < -0.1$, and the values are in the same order, so $y = a^x$ is increasing: $a > 1$.",
+  "solution": "The exponents satisfy $-1 < -0.1$, and the powers satisfy $a^{-1} < a^{-0.1}$. So the larger exponent gives the larger power, which means $y = a^x$ is increasing. This happens exactly when $a > 1$.",
   "video": "V40",
   "version": "a"
  },
@@ -243,7 +243,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Make the exponent $0$: $3x + 5 = 0$ gives $x = -\\dfrac{5}{3}$. Then $f = a^0 - 1 = 0$. Fixed point: $\\left(-\\dfrac{5}{3}, 0\\right)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $3x + 5 = 0$ gives $x = -\\dfrac{5}{3}$. Then $f\\left(-\\dfrac{5}{3}\\right) = a^0 - 1 = 1 - 1 = 0$ whatever $a$ is. So the fixed point is $\\left(-\\dfrac{5}{3}, 0\\right)$.",
   "video": "V40",
   "version": "a"
  },
@@ -274,7 +274,7 @@
    "sign",
    null
   ],
-  "solution": "$\\log_{5}25 = 2$ because $5^{2} = 25$. A base $\\dfrac{1}{5}$ changes the sign: $\\log_{\\frac{1}{5}}5 = -\\log_{5}5 = -1$. Sum: $1$.",
+  "solution": "$\\log_{5}25 = 2$ because $5^{2} = 25$. Changing the base to $\\dfrac{1}{5}$ changes the sign: $\\log_{\\frac{1}{5}}5 = -1$, because $\\left(\\dfrac{1}{5}\\right)^{-1} = 5^{1} = 5$. So the value is $2 + (-1) = 1$.",
   "video": "V41",
   "version": "a"
  },
@@ -305,7 +305,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\lg 16 = 4\\lg 2$, so the sum is $4(\\lg 2 + \\lg 5) = 4\\lg 10 = 4$. ($\\lg M + \\lg N = \\lg(MN)$, never $\\lg(M + N)$.)",
+  "solution": "$\\lg 16 = 4\\lg 2$, so the sum is $4(\\lg 2 + \\lg 5) = 4\\lg 10 = 4$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$.",
   "video": "V41",
   "version": "a"
  },
@@ -336,7 +336,7 @@
    "half",
    null
   ],
-  "solution": "$\\log_{2}32 = 5$ since $2^{5} = 32$. $\\log_{9}27 = \\dfrac{3}{2}$ since $9^{3/2} = 27$. Product: $\\dfrac{15}{2}$.",
+  "solution": "$\\log_{2}32 = 5$ because $2^{5} = 32$, and $\\log_{9}27 = \\dfrac{3}{2}$ because $9^{3/2} = 27$. So the product is $5 \\times \\dfrac{3}{2} = \\dfrac{15}{2}$.",
   "video": "V41",
   "version": "a"
  },
@@ -367,7 +367,7 @@
    "true-statement",
    "true-statement"
   ],
-  "solution": "The incorrect statement is $\\log_a(M - N) = \\log_a M - \\log_a N$ — there is no rule for the logarithm of a difference. The other three statements are true.",
+  "solution": "$\\log_a(M - N) = \\log_a M - \\log_a N$ is incorrect. There is no rule for the logarithm of a difference. The quotient rule gives $\\log_a M - \\log_a N = \\log_a \\dfrac{M}{N}$. $\\log_a b = \\dfrac{\\ln b}{\\ln a}$ is correct. This is the change-of-base formula. $\\log_a \\dfrac{M}{N} = \\log_a M - \\log_a N$ is correct. This is the quotient rule: the logarithm of a quotient is the difference of the logarithms. $a^{\\log_a M} = M$ is correct. $\\log_a M$ is the exponent that turns $a$ into $M$.",
   "video": "V41",
   "version": "a"
  },
@@ -398,7 +398,7 @@
    null,
    "slip"
   ],
-  "solution": "$\\log_{2}4 = 2$; $\\log_{2}\\dfrac{1}{2} = -1$ (a reciprocal gives a negative exponent); $\\lg 1000 = 3$. Combining with the signs gives $6$.",
+  "solution": "Work out each term. $\\log_{2}4 = 2$, because $2^{2} = 4$. $\\log_{2}\\dfrac{1}{2} = \\log_{2}2^{-1} = -1$. $\\lg 1000 = 3$. So the value is $2 - (-1) + 3 = 6$.",
   "video": "V41",
   "version": "a"
  },
@@ -429,7 +429,7 @@
    "operation",
    "reciprocal"
   ],
-  "solution": "The correct statement is $\\lg 2 + \\lg 5 = 1$ — $\\lg 2 + \\lg 5 = \\lg 10 = 1$. $\\log_{9} 3 = 2$ is false: the exponents are the wrong way round; the value is $\\dfrac{1}{2}$. $\\log_{3} \\dfrac{1}{27} = 3$ is false: the argument is less than $1$, so the logarithm is negative: $-3$. $\\log_{3} 7 \\cdot \\log_{7} 81 = \\log_{3} 567$ is false: the product is $\\log_{3} 81 = 4$ (change of base), not the logarithm of the product of the arguments.",
+  "solution": "$\\lg 2 + \\lg 5 = 1$ is correct. $\\lg 2 + \\lg 5 = \\lg 10 = 1$. $\\log_{9} 3 = 2$ is incorrect. $9 = 3^{2}$ and $3 = 3$, so $\\log_{9} 3 = \\dfrac{1}{2}$, not its reciprocal. $\\log_{3} \\dfrac{1}{27} = 3$ is incorrect. The argument is less than $1$, so the logarithm is negative: $-3$. $\\log_{3} 7 \\cdot \\log_{7} 81 = \\log_{3} 567$ is incorrect. By the change of base formula the product is $\\log_{3} 81 = 4$. It is not the logarithm of the product of the arguments.",
   "video": "V41",
   "version": "a"
  },
@@ -460,7 +460,7 @@
    "slip",
    "reciprocal"
   ],
-  "solution": "Write both numbers as powers of the same base and use $\\log_{a^m} a^n = \\dfrac{n}{m}$: the value is $\\dfrac{1}{2}$ (check: $25^{1/2} = 5$).",
+  "solution": "Write both numbers as powers of $5$: $25 = 5^{2}$ and $5 = 5$. Then $\\log_{25}5 = \\log_{5^{2}}5 = \\dfrac{1}{2}$. Check: $25^{1/2} = 5$.",
   "video": "V41",
   "version": "a"
  },
@@ -491,7 +491,7 @@
    "reciprocal",
    "near-miss"
   ],
-  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms as multiples of $\\log_{2}7$: the numerator is $\\dfrac{1}{3}\\log_{2}7$ and the denominator is $2\\log_{2}7$, so $\\log_{2}7$ cancels and the quotient is $\\dfrac{1}{6}$. Answer: $\\dfrac{1}{6}$.",
+  "solution": "Use $\\log_{a^m} b^n = \\dfrac{n}{m}\\log_a b$ to write both logarithms in terms of $\\log_{2}7$. The numerator is $\\log_{2^{3}}7 = \\dfrac{1}{3}\\log_{2}7$ and the denominator is $\\log_{2}7^{2} = 2\\log_{2}7$. Dividing, $\\log_{2}7$ cancels and the quotient is $\\dfrac{1}{6}$.",
   "video": "V41",
   "version": "a"
  },
@@ -522,7 +522,7 @@
    null,
    "domain"
   ],
-  "solution": "The correct statement is “Its range is $\\mathbb{R}$”. “Its domain is $(-\\infty, +\\infty)$” is false: the argument of a logarithm must be positive. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is false: a base greater than $1$ gives an increasing logarithm. “Its graph always passes through the point $(0, 1)$” is false: $(0, 1)$ belongs to $y = a^x$; $x = 0$ is not even in the domain here.",
+  "solution": "“Its range is $\\mathbb{R}$” is correct. Every real number $t$ is a value, because $\\log_a a^t = t$. “Its domain is $(-\\infty, +\\infty)$” is incorrect. The expression inside a logarithm must be positive, so the domain is $(0, +\\infty)$. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is incorrect. A logarithm with a base greater than $1$ is increasing. “Its graph always passes through the point $(0, 1)$” is incorrect. $x = 0$ is not in the domain of $y = \\log_a x$. The point $(0, 1)$ is the fixed point of $y = a^x$.",
   "video": "V42",
   "version": "a"
  },
@@ -553,7 +553,7 @@
    "sign",
    null
   ],
-  "solution": "A logarithmic function is decreasing exactly when its base is between $0$ and $1$: $0 < a < 1$.",
+  "solution": "A logarithmic function $y = \\log_a x$ is decreasing exactly when its base is between $0$ and $1$. So $0 < a < 1$.",
   "video": "V42",
   "version": "a"
  },
@@ -584,7 +584,7 @@
    "sign",
    null
   ],
-  "solution": "The argument of a logarithm must be positive (the base does not matter): $3x > 0$, so $x > 0$. Domain: $(0, +\\infty)$.",
+  "solution": "Whatever the base, the expression inside a logarithm must be positive: $3x > 0$, so $x > 0$. The domain is $(0, +\\infty)$.",
   "video": "V42",
   "version": "a"
  },
@@ -615,7 +615,7 @@
    "endpoint",
    "domain"
   ],
-  "solution": "Domain first: $x + 1 > 0$. Write $0 = \\log_{5} 1$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x + 1 \\le 1$. Together with the domain: $(-1, 0]$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x + 1 > 0$, that is $x > -1$. Next, write $0 = \\log_{5} 1$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x + 1 \\le 1$, that is $x \\le 0$. Both conditions must hold, so the solution set is $(-1, 0]$.",
   "video": "V42",
   "version": "a"
  },
@@ -646,7 +646,7 @@
    "off-by-one",
    "swap"
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x + 1 = 1$, i.e. $x = 0$. Then $f(0) = 5 + 0 = 5$. Fixed point: $(0, 5)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x + 1 = 1$, so $x = 0$. Then $f(0) = 5 + 0 = 5$ whatever $a$ is. So the fixed point is $(0, 5)$.",
   "video": "V42",
   "version": "a"
  },
@@ -677,7 +677,7 @@
    "sign",
    "domain"
   ],
-  "solution": "Domain first: $x - 2 > 0$. Write $0 = \\log_{2} 1$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x - 2 < 1$. Together with the domain: $(2, 3)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x - 2 > 0$, that is $x > 2$. Next, write $0 = \\log_{2} 1$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x - 2 < 1$, that is $x < 3$. Both conditions must hold, so the solution set is $(2, 3)$.",
   "video": "V42",
   "version": "a"
  },
@@ -708,7 +708,7 @@
    "sign",
    "endpoint"
   ],
-  "solution": "Domain first: $x + 5 > 0$. Write $-2 = \\log_{\\frac{1}{3}} 9$. Because the base is between $0$ and $1$, the logarithm is decreasing and the direction reverses: $x + 5 > 9$. Together with the domain: $(4, +\\infty)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x + 5 > 0$, that is $x > -5$. Next, write $-2 = \\log_{\\frac{1}{3}} 9$. The base is between $0$ and $1$, so the logarithm is decreasing and the inequality sign reverses: $x + 5 > 9$, that is $x > 4$. Both conditions must hold, so the solution set is $(4, +\\infty)$.",
   "video": "V42",
   "version": "a"
  },
@@ -739,7 +739,7 @@
    null,
    "reciprocal"
   ],
-  "solution": "The correct statement is $\\log_{3}5 > \\log_{5}3$ — the left side is greater than $1$ and the right side is less than $1$. $\\log_{27}3 = \\log_{3}27$ is false: the two values are reciprocals: $\\dfrac{1}{3}$ and $3$. $\\log_{\\frac{1}{3}}9 = 2$ is false: a base $\\dfrac{1}{3}$ gives $-2$. $\\log_{2}16 = 5$ is false: $2^{4} = 16$, so the value is $4$.",
+  "solution": "$\\log_{3}5 > \\log_{5}3$ is correct. The left side is greater than $1$, because its argument is greater than its base, and the right side is less than $1$, because its argument is smaller than its base. $\\log_{27}3 = \\log_{3}27$ is incorrect. The two values are reciprocals of each other: $\\log_{27}3 = \\dfrac{1}{3}$ and $\\log_{3}27 = 3$. $\\log_{\\frac{1}{3}}9 = 2$ is incorrect. $\\left(\\dfrac{1}{3}\\right)^{-2} = 9$, so the value is $-2$. $\\log_{2}16 = 5$ is incorrect. $2^{4} = 16$, so the value is $4$, not $5$.",
   "video": "V42",
   "version": "a"
  },
@@ -770,7 +770,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Decide for each option whether the two powers share a base (exponential function) or an exponent (power function). The correct statement is $2.5^{1/3} < 4.1^{1/3}$ — same exponent $1/3$: $y = x^{1/3}$ is increasing on $(0, +\\infty)$, so the larger base gives the larger value. $4.1^{2/5} < 3.2^{2/5}$ is false: same exponent $2/5$: $y = x^{2/5}$ is increasing on $(0, +\\infty)$, so the larger base gives the larger value. $1.3^{0.3} > 3.2^{0.3}$ is false: same exponent $0.3$: $y = x^{0.3}$ is increasing on $(0, +\\infty)$, so the larger base gives the larger value. $2.5^{0.6} > 3.1^{0.6}$ is false: same exponent $0.6$: $y = x^{0.6}$ is increasing on $(0, +\\infty)$, so the larger base gives the larger value.",
+  "solution": "In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function. $2.5^{1/3} < 4.1^{1/3}$ is correct. Both powers have the exponent $1/3$, and $y = x^{1/3}$ is increasing on $(0, +\\infty)$ because $1/3 > 0$. Since $2.5 < 4.1$, $2.5^{1/3} < 4.1^{1/3}$. $4.1^{2/5} < 3.2^{2/5}$ is incorrect. Both powers have the exponent $2/5$, and $y = x^{2/5}$ is increasing on $(0, +\\infty)$ because $2/5 > 0$. Since $3.2 < 4.1$, $3.2^{2/5} < 4.1^{2/5}$. $1.3^{0.3} > 3.2^{0.3}$ is incorrect. Both powers have the exponent $0.3$, and $y = x^{0.3}$ is increasing on $(0, +\\infty)$ because $0.3 > 0$. Since $1.3 < 3.2$, $1.3^{0.3} < 3.2^{0.3}$. $2.5^{0.6} > 3.1^{0.6}$ is incorrect. Both powers have the exponent $0.6$, and $y = x^{0.6}$ is increasing on $(0, +\\infty)$ because $0.6 > 0$. Since $2.5 < 3.1$, $2.5^{0.6} < 3.1^{0.6}$.",
   "video": "V43",
   "version": "a"
  },
@@ -801,7 +801,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Decide for each option whether the two powers share a base (exponential function) or an exponent (power function). The correct statement is $1.5^{0.2} < 1.5^{0.8}$ — same base $1.5$: $y = 1.5^x$ is increasing, so the larger exponent gives the larger value. $4^{0.8} < 4^{0.5}$ is false: same base $4$: $y = 4^x$ is increasing, so the larger exponent gives the larger value. $2^{-0.4} < 2^{-0.6}$ is false: same base $2$: $y = 2^x$ is increasing, so the larger exponent gives the larger value. $2^{-0.3} > 2^{-0.1}$ is false: same base $2$: $y = 2^x$ is increasing, so the larger exponent gives the larger value.",
+  "solution": "In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function. $1.5^{0.2} < 1.5^{0.8}$ is correct. Both powers have the base $1.5$, and $y = 1.5^x$ is increasing because $1.5 > 1$. Since $0.2 < 0.8$, $1.5^{0.2} < 1.5^{0.8}$. $4^{0.8} < 4^{0.5}$ is incorrect. Both powers have the base $4$, and $y = 4^x$ is increasing because $4 > 1$. Since $0.5 < 0.8$, $4^{0.5} < 4^{0.8}$. $2^{-0.4} < 2^{-0.6}$ is incorrect. Both powers have the base $2$, and $y = 2^x$ is increasing because $2 > 1$. Since $-0.6 < -0.4$, $2^{-0.6} < 2^{-0.4}$. $2^{-0.3} > 2^{-0.1}$ is incorrect. Both powers have the base $2$, and $y = 2^x$ is increasing because $2 > 1$. Since $-0.3 < -0.1$, $2^{-0.3} < 2^{-0.1}$.",
   "video": "V43",
   "version": "a"
  },
@@ -832,7 +832,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Decide for each option whether the two powers share a base (exponential function) or an exponent (power function). The correct statement is $0.5^{1.2} > 0.5^{1.5}$ — same base $0.5$: $y = 0.5^x$ is decreasing, so the larger exponent gives the smaller value. $0.3^{-1} > 0.3^{-2}$ is false: same base $0.3$: $y = 0.3^x$ is decreasing, so the larger exponent gives the smaller value. $0.3^{0.3} < 0.3^{0.6}$ is false: same base $0.3$: $y = 0.3^x$ is decreasing, so the larger exponent gives the smaller value. $0.2^{0.8} > 0.2^{0.6}$ is false: same base $0.2$: $y = 0.2^x$ is decreasing, so the larger exponent gives the smaller value.",
+  "solution": "In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function. $0.5^{1.2} > 0.5^{1.5}$ is correct. Both powers have the base $0.5$, and $y = 0.5^x$ is decreasing because $0 < 0.5 < 1$. Since $1.2 < 1.5$, $0.5^{1.2} > 0.5^{1.5}$. $0.3^{-1} > 0.3^{-2}$ is incorrect. Both powers have the base $0.3$, and $y = 0.3^x$ is decreasing because $0 < 0.3 < 1$. Since $-2 < -1$, $0.3^{-2} > 0.3^{-1}$. $0.3^{0.3} < 0.3^{0.6}$ is incorrect. Both powers have the base $0.3$, and $y = 0.3^x$ is decreasing because $0 < 0.3 < 1$. Since $0.3 < 0.6$, $0.3^{0.3} > 0.3^{0.6}$. $0.2^{0.8} > 0.2^{0.6}$ is incorrect. Both powers have the base $0.2$, and $y = 0.2^x$ is decreasing because $0 < 0.2 < 1$. Since $0.6 < 0.8$, $0.2^{0.6} > 0.2^{0.8}$.",
   "video": "V43",
   "version": "a"
  },
@@ -863,7 +863,7 @@
    "near-miss",
    "near-miss"
   ],
-  "solution": "Decide for each option whether the two powers share a base (exponential function) or an exponent (power function). The correct statement is $3.1^{-2} < 2.7^{-2}$ — same exponent $-2$: $y = x^{-2}$ is decreasing on $(0, +\\infty)$, so the larger base gives the smaller value. $1.3^{-1/2} < 2.3^{-1/2}$ is false: same exponent $-1/2$: $y = x^{-1/2}$ is decreasing on $(0, +\\infty)$, so the larger base gives the smaller value. $1.2^{-2/3} > 0.6^{-2/3}$ is false: same exponent $-2/3$: $y = x^{-2/3}$ is decreasing on $(0, +\\infty)$, so the larger base gives the smaller value. $2.7^{-0.5} < 3.1^{-0.5}$ is false: same exponent $-0.5$: $y = x^{-0.5}$ is decreasing on $(0, +\\infty)$, so the larger base gives the smaller value.",
+  "solution": "In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function. $3.1^{-2} < 2.7^{-2}$ is correct. Both powers have the exponent $-2$, and $y = x^{-2}$ is decreasing on $(0, +\\infty)$ because $-2 < 0$. Since $2.7 < 3.1$, $2.7^{-2} > 3.1^{-2}$. $1.3^{-1/2} < 2.3^{-1/2}$ is incorrect. Both powers have the exponent $-1/2$, and $y = x^{-1/2}$ is decreasing on $(0, +\\infty)$ because $-1/2 < 0$. Since $1.3 < 2.3$, $1.3^{-1/2} > 2.3^{-1/2}$. $1.2^{-2/3} > 0.6^{-2/3}$ is incorrect. Both powers have the exponent $-2/3$, and $y = x^{-2/3}$ is decreasing on $(0, +\\infty)$ because $-2/3 < 0$. Since $0.6 < 1.2$, $0.6^{-2/3} > 1.2^{-2/3}$. $2.7^{-0.5} < 3.1^{-0.5}$ is incorrect. Both powers have the exponent $-0.5$, and $y = x^{-0.5}$ is decreasing on $(0, +\\infty)$ because $-0.5 < 0$. Since $2.7 < 3.1$, $2.7^{-0.5} > 3.1^{-0.5}$.",
   "video": "V43",
   "version": "a"
  },
@@ -894,7 +894,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Decide for each option whether the two powers share a base (exponential function) or an exponent (power function). The correct statement is $1.2^{3/4} < 1.5^{3/4}$ — same exponent $3/4$: $y = x^{3/4}$ is increasing on $(0, +\\infty)$, so the larger base gives the larger value. $1.3^{-3} < 3.1^{-3}$ is false: same exponent $-3$: $y = x^{-3}$ is decreasing on $(0, +\\infty)$, so the larger base gives the smaller value. $0.8^{2.5} < 0.8^{3}$ is false: same base $0.8$: $y = 0.8^x$ is decreasing, so the larger exponent gives the smaller value. $2^{3} < 2^{1.2}$ is false: same base $2$: $y = 2^x$ is increasing, so the larger exponent gives the larger value.",
+  "solution": "In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function. $1.2^{3/4} < 1.5^{3/4}$ is correct. Both powers have the exponent $3/4$, and $y = x^{3/4}$ is increasing on $(0, +\\infty)$ because $3/4 > 0$. Since $1.2 < 1.5$, $1.2^{3/4} < 1.5^{3/4}$. $1.3^{-3} < 3.1^{-3}$ is incorrect. Both powers have the exponent $-3$, and $y = x^{-3}$ is decreasing on $(0, +\\infty)$ because $-3 < 0$. Since $1.3 < 3.1$, $1.3^{-3} > 3.1^{-3}$. $0.8^{2.5} < 0.8^{3}$ is incorrect. Both powers have the base $0.8$, and $y = 0.8^x$ is decreasing because $0 < 0.8 < 1$. Since $2.5 < 3$, $0.8^{2.5} > 0.8^{3}$. $2^{3} < 2^{1.2}$ is incorrect. Both powers have the base $2$, and $y = 2^x$ is increasing because $2 > 1$. Since $1.2 < 3$, $2^{1.2} < 2^{3}$.",
   "video": "V43",
   "version": "a"
  },
@@ -925,7 +925,7 @@
    "sign",
    null
   ],
-  "solution": "A logarithm $\\log_a b$ is positive exactly when $a$ and $b$ lie on the same side of $1$. The correct statement is $0 < \\log_{3}2 < 1$ — $1 < 2 < 3$, so the logarithm lies between $0$ and $1$. $\\log_{0.2}0.5 < 0$ is false: base and argument are on the same side of $1$, so the logarithm is positive. $\\log_{4}0.8 > 0$ is false: base above $1$ with an argument below $1$ gives a negative logarithm. $\\log_{2}3 < 1$ is false: the argument exceeds the base (both above $1$), so the logarithm exceeds $1$.",
+  "solution": "A logarithm $\\log_a b$ is positive when $a$ and $b$ lie on the same side of $1$, and negative when they lie on opposite sides. $0 < \\log_{3}2 < 1$ is correct. $\\log_{3}1 = 0$, $\\log_{3}3 = 1$ and $1 < 2 < 3$, so the logarithm lies between $0$ and $1$. $\\log_{0.2}0.5 < 0$ is incorrect. The base $0.2$ and the argument $0.5$ are both below $1$, so the logarithm is positive. $\\log_{4}0.8 > 0$ is incorrect. The base $4$ is above $1$ and the argument $0.8$ is below $1$, so the logarithm is negative. $\\log_{2}3 < 1$ is incorrect. $y = \\log_{2} x$ is increasing and $3 > 2$, so $\\log_{2}3 > \\log_{2}2 = 1$.",
   "video": "V43",
   "version": "a"
  },
@@ -956,7 +956,7 @@
    "swap",
    null
   ],
-  "solution": "Compare each value with $0$ and $1$. $a = \\log_{0.5}3 < 0$ (base below $1$, argument above $1$); $0 < c = 0.8^{2} < 1$ (a base below $1$ with a positive exponent); $b = 0.5^{-0.3} > 1$ (a base below $1$ with a negative exponent). So $a < c < b$.",
+  "solution": "Compare each value with $0$ and $1$. $a = \\log_{0.5}3 < 0$, because the base is below $1$ and the argument is above $1$. $0 < c = 0.8^{2} < 1$, because a base between $0$ and $1$ raised to a positive power gives a value between $0$ and $1$. $b = 0.5^{-0.3} > 1$, because $0.5^{-0.3} = 2^{0.3}$, and a base above $1$ raised to a positive power gives a value above $1$. So $a < c < b$.",
   "video": "V43",
   "version": "a"
  },
@@ -987,7 +987,7 @@
    "swap",
    "swap"
   ],
-  "solution": "Compare each value with $0$ and $1$. $c = \\log_{0.2}4 < 0$ (base below $1$, argument above $1$); $0 < b = \\ln 2 < 1$ ($1 < 2 < e$); $a = 3^{0.2} > 1$ (a base above $1$ with a positive exponent). So $c < b < a$.",
+  "solution": "Compare each value with $0$ and $1$. $c = \\log_{0.2}4 < 0$, because the base is below $1$ and the argument is above $1$. $0 < b = \\ln 2 < 1$, because $\\ln 1 = 0$, $\\ln e = 1$ and $1 < 2 < e$. $a = 3^{0.2} > 1$, because a base above $1$ raised to a positive power gives a value above $1$. So $c < b < a$.",
   "video": "V43",
   "version": "a"
  },
@@ -1018,7 +1018,7 @@
    "slip",
    "sign"
   ],
-  "solution": "Work coordinate by coordinate: $2\\boldsymbol{a} - \\boldsymbol{b} = (-6 - 3, -4 + 2) = (-9, -2)$. Multiply first, then watch the signs when subtracting.",
+  "solution": "Work coordinate by coordinate. $2\\boldsymbol{a} = (-6, -4)$ and $-\\boldsymbol{b} = (-3, 2)$, so $2\\boldsymbol{a} - \\boldsymbol{b} = (-6 - 3, -4 + 2) = (-9, -2)$.",
   "video": "V44",
   "version": "a"
  },
@@ -1049,7 +1049,7 @@
    "sign",
    "companion"
   ],
-  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OE} + \\overrightarrow{OF})$. $\\overrightarrow{EM} = \\dfrac{1}{2}\\overrightarrow{EF}$ and $\\overrightarrow{EF} = \\overrightarrow{OF} - \\overrightarrow{OE}$ (end minus start).",
+  "solution": "For a midpoint, $\\overrightarrow{OM} = \\dfrac{1}{2}(\\overrightarrow{OE} + \\overrightarrow{OF})$. Also $\\overrightarrow{EM} = \\dfrac{1}{2}\\overrightarrow{EF}$, and $\\overrightarrow{EF} = \\overrightarrow{OF} - \\overrightarrow{OE}$ because a vector is its end point minus its start point.",
   "video": "V44",
   "version": "a"
  },
@@ -1080,7 +1080,7 @@
    "sign",
    null
   ],
-  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = x_1x_2 + y_1y_2 = 3 \\cdot 2 + 2 \\cdot 2 = 10$ — a number, not a vector.",
+  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = x_1x_2 + y_1y_2 = 3 \\cdot 2 + 2 \\cdot 2 = 10$. The dot product is a number, not a vector.",
   "video": "V44",
   "version": "a"
  },
@@ -1111,7 +1111,7 @@
    "sign",
    "partial"
   ],
-  "solution": "$2\\boldsymbol{a} + \\boldsymbol{b} = (4, -8)$. $|2\\boldsymbol{a} + \\boldsymbol{b}| = \\sqrt{4^2 + (-8)^2} = \\sqrt{80} = 4\\sqrt{5}$.",
+  "solution": "First $2\\boldsymbol{a} + \\boldsymbol{b} = (4, -8)$. Then $|2\\boldsymbol{a} + \\boldsymbol{b}| = \\sqrt{4^2 + (-8)^2} = \\sqrt{80} = 4\\sqrt{5}$.",
   "video": "V44",
   "version": "a"
  },
@@ -1204,7 +1204,7 @@
    null,
    "swap"
   ],
-  "solution": "Walk along the sides from $D$ to $M$: opposite sides give $\\overrightarrow{DC} = \\boldsymbol{a}$ and $\\overrightarrow{BC} = \\boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\\overrightarrow{DM} = \\boldsymbol{a} - \\dfrac{1}{2}\\boldsymbol{b}$.",
+  "solution": "Measure every point from $A$: $\\overrightarrow{AB} = \\boldsymbol{a}$, $\\overrightarrow{AD} = \\boldsymbol{b}$ and, since $ABCD$ is a parallelogram, $\\overrightarrow{AC} = \\boldsymbol{a} + \\boldsymbol{b}$. Since $M$ is the midpoint of $BC$, $\\overrightarrow{AM} = \\dfrac{1}{2}(\\overrightarrow{AB} + \\overrightarrow{AC}) = \\boldsymbol{a} + \\dfrac{1}{2}\\boldsymbol{b}$. Then $\\overrightarrow{DM} = \\overrightarrow{AM} - \\overrightarrow{AD} = \\boldsymbol{a} - \\dfrac{1}{2}\\boldsymbol{b}$.",
   "video": "V44",
   "version": "a"
  },
@@ -1328,7 +1328,7 @@
    "partial",
    "companion"
   ],
-  "solution": "The points $z$ lie on the circle with centre $0$ and radius $2$, and $|z + 6 + 8i|$ is the distance from such a point to $-6 - 8i$, which is $10$ from the centre. The largest distance is $2 + 10 = 12$.",
+  "solution": "The points $z$ lie on the circle with center $0$ and radius $2$, and $|z + 6 + 8i|$ is the distance from such a point to $-6 - 8i$, which is $10$ from the center. The largest distance is $2 + 10 = 12$.",
   "video": "V45",
   "version": "a"
  },
@@ -1421,7 +1421,7 @@
    "sign",
    "partial"
   ],
-  "solution": "The correct statement is $|z| = 5$ — $|z| = \\sqrt{4^2 + 3^2} = 5$. $\\dfrac{1}{z} = 4 - 3i$ is false: the denominator $z\\bar{z} = 25$ is missing: $\\dfrac{1}{z} = \\dfrac{4}{25} - \\dfrac{3}{25}i$. $z\\bar{z} = 7$ is false: $z\\bar{z} = a^2 + b^2 = 25$. $\\bar{z} = -4 - 3i$ is false: only the imaginary part changes sign: $\\bar{z} = 4 - 3i$.",
+  "solution": "$|z| = 5$ is correct. $|z| = \\sqrt{4^2 + 3^2} = 5$. $\\dfrac{1}{z} = 4 - 3i$ is incorrect. Dividing $\\bar{z}$ by $z\\bar{z} = 25$ gives $\\dfrac{1}{z} = \\dfrac{4}{25} - \\dfrac{3}{25}i$. $z\\bar{z} = 7$ is incorrect. $z\\bar{z} = a^2 + b^2 = 25$. $\\bar{z} = -4 - 3i$ is incorrect. Only the imaginary part changes sign, so $\\bar{z} = 4 - 3i$.",
   "video": "V45",
   "version": "a"
  },
@@ -1483,7 +1483,7 @@
    null,
    "half"
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + 2ti$ (a point of $y = 2x$). Product of the roots: $z\\bar{z} = 5t^2 = 30$, so $t = \\pm \\sqrt{6}$. Sum of the roots: $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 2\\sqrt{6}$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + 2ti$, since $z$ lies on $y = 2x$. The product of the roots is $z\\bar{z} = 5t^2 = 30$, so $t = \\pm \\sqrt{6}$. The sum of the roots is $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 2\\sqrt{6}$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a"
  },
@@ -1514,7 +1514,7 @@
    "complement",
    "operation"
   ],
-  "solution": "There are $C(6, 2) = 15$ equally likely pairs, and $C(4, 2) = 6$ of them are two green balls. So the probability is $\\dfrac{2}{5}$.",
+  "solution": "There are $C(6, 2) = 15$ equally likely pairs, and $C(4, 2) = 6$ of them are two green balls. So the probability is $\\dfrac{6}{15} = \\dfrac{2}{5}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1545,7 +1545,7 @@
    "complement",
    "operation"
   ],
-  "solution": "There are $C(7, 2) = 21$ equally likely pairs. Same-colour pairs: $10 + 1 = 11$. So the probability is $\\dfrac{11}{21}$.",
+  "solution": "There are $C(7, 2) = 21$ equally likely pairs. The pairs of the same colour number $C(5, 2) + C(2, 2) = 10 + 1 = 11$. So the probability is $\\dfrac{11}{21}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1607,7 +1607,7 @@
    "partial",
    "slip"
   ],
-  "solution": "P(same choice) $= \\dfrac{40}{100} \\cdot \\dfrac{20}{30} + \\dfrac{10}{100} \\cdot \\dfrac{5}{30} + \\dfrac{50}{100} \\cdot \\dfrac{5}{30} = \\dfrac{11}{30}$ (multiply within each option, then add).",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{40}{100} \\cdot \\dfrac{20}{30} + \\dfrac{10}{100} \\cdot \\dfrac{5}{30} + \\dfrac{50}{100} \\cdot \\dfrac{5}{30} = \\dfrac{11}{30}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1638,7 +1638,7 @@
    "complement",
    "order"
   ],
-  "solution": "There are $C(6, 2) = 15$ equally likely pairs. The correct statement is “The probability that the two balls have different colours is $\\dfrac{8}{15}$” — there are $4 \\cdot 2 = 8$ such pairs out of $15$. “The probability that the two balls have different colours is $\\dfrac{4}{15}$” is false: that counts only one of the two orders; the probability is $\\dfrac{8}{15}$. “The probability that at least one ball is red is $\\dfrac{3}{5}$” is false: the complement of “at least one red” is “both blue”: $1 - \\dfrac{1}{15} = \\dfrac{14}{15}$. “The probability that the two balls have the same colour is $\\dfrac{2}{5}$” is false: that counts only the red pairs; add the blue pairs: $\\dfrac{7}{15}$.",
+  "solution": "There are $C(6, 2) = 15$ equally likely pairs. “The probability that the two balls have different colours is $\\dfrac{8}{15}$” is correct. There are $4 \\cdot 2 = 8$ such pairs out of $15$. “The probability that the two balls have different colours is $\\dfrac{4}{15}$” is incorrect. The pairs are unordered, so there are $8$ such pairs out of $15$ and the probability is $\\dfrac{8}{15}$. “The probability that at least one ball is red is $\\dfrac{3}{5}$” is incorrect. The complement of “at least one red” is “both blue”: $1 - \\dfrac{1}{15} = \\dfrac{14}{15}$. “The probability that the two balls have the same colour is $\\dfrac{2}{5}$” is incorrect. That value counts only the red pairs. Adding the blue pairs gives $\\dfrac{7}{15}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1669,7 +1669,7 @@
    "swap",
    null
   ],
-  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{1}{5} - \\dfrac{8}{15} = \\dfrac{4}{15}$; then $P(\\text{green}) = \\dfrac{3}{5} - \\dfrac{4}{15} = \\dfrac{1}{3}$ and $P(\\text{yellow}) = \\dfrac{8}{15} - \\dfrac{1}{3} = \\dfrac{1}{5}$. Match each value to its colour — the options differ only in the order.",
+  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{1}{5} - \\dfrac{8}{15} = \\dfrac{4}{15}$. Then $P(\\text{green}) = \\dfrac{3}{5} - \\dfrac{4}{15} = \\dfrac{1}{3}$ and $P(\\text{yellow}) = \\dfrac{8}{15} - \\dfrac{1}{3} = \\dfrac{1}{5}$. The options use the same three numbers in different orders, so the order green, yellow, red decides the answer.",
   "video": "V46",
   "version": "a"
  },
@@ -1700,7 +1700,7 @@
    null,
    "complement"
   ],
-  "solution": "P(same choice) $= \\dfrac{5}{40} \\cdot \\dfrac{15}{50} + \\dfrac{30}{40} \\cdot \\dfrac{20}{50} + \\dfrac{5}{40} \\cdot \\dfrac{15}{50} = \\dfrac{3}{8}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{5}{40} \\cdot \\dfrac{15}{50} + \\dfrac{30}{40} \\cdot \\dfrac{20}{50} + \\dfrac{5}{40} \\cdot \\dfrac{15}{50} = \\dfrac{3}{8}$. So P(different) $= 1 - \\dfrac{3}{8} = \\dfrac{5}{8}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1762,7 +1762,7 @@
    "partial",
    "operation"
   ],
-  "solution": "There are $C(6, 2) = 15$ equally likely pairs, and $C(4, 2) = 6$ of them are two blue balls. So the probability is $\\dfrac{2}{5}$.",
+  "solution": "There are $C(6, 2) = 15$ equally likely pairs, and $C(4, 2) = 6$ of them are two blue balls. So the probability is $\\dfrac{6}{15} = \\dfrac{2}{5}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1793,7 +1793,7 @@
    "partial",
    "complement"
   ],
-  "solution": "There are $C(6, 2) = 15$ equally likely pairs. Same-colour pairs: $6 + 1 = 7$. So the probability is $\\dfrac{7}{15}$.",
+  "solution": "There are $C(6, 2) = 15$ equally likely pairs. The pairs of the same colour number $C(4, 2) + C(2, 2) = 6 + 1 = 7$. So the probability is $\\dfrac{7}{15}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1855,7 +1855,7 @@
    "complement",
    "slip"
   ],
-  "solution": "P(same choice) $= \\dfrac{25}{40} \\cdot \\dfrac{30}{100} + \\dfrac{5}{40} \\cdot \\dfrac{10}{100} + \\dfrac{5}{40} \\cdot \\dfrac{40}{100} + \\dfrac{5}{40} \\cdot \\dfrac{20}{100} = \\dfrac{11}{40}$ (multiply within each option, then add).",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{25}{40} \\cdot \\dfrac{30}{100} + \\dfrac{5}{40} \\cdot \\dfrac{10}{100} + \\dfrac{5}{40} \\cdot \\dfrac{40}{100} + \\dfrac{5}{40} \\cdot \\dfrac{20}{100} = \\dfrac{11}{40}$.",
   "video": "V46",
   "version": "a"
  },
@@ -1886,7 +1886,7 @@
    null,
    "sign"
   ],
-  "solution": "The roots are $1 + i$ and $1 - i$ (conjugates). $z_1^{2} = 2i$ and $z_2^{2}$ is its conjugate, so $z_1^{2} - z_2^{2} = 4i$. Squaring gives $-16$ (remember $i^2 = -1$).",
+  "solution": "The roots are $1 + i$ and $1 - i$, a conjugate pair. Then $z_1^{2} = 2i$ and $z_2^{2}$ is its conjugate, so $z_1^{2} - z_2^{2} = 4i$. Squaring gives $-16$, because $i^2 = -1$.",
   "video": "V45",
   "version": "a"
  },
@@ -1917,7 +1917,7 @@
    "swap",
    null
   ],
-  "solution": "The correct statement is “It is monotonically increasing on $\\mathbb{R}$” — the base is greater than $1$. “Its graph is symmetric about the $y$-axis” is false: it is not an even function. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 2$.",
+  "solution": "“It is monotonically increasing on $\\mathbb{R}$” is correct. The base $2$ is greater than $1$, so the function is increasing. “Its graph is symmetric about the $y$-axis” is incorrect. The function is increasing, so $f(-1) \\ne f(1)$ and it is not even. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $2$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions.",
   "video": "V40",
   "version": "a"
  },
@@ -1948,7 +1948,7 @@
    null,
    "axis"
   ],
-  "solution": "$2a = 20$ gives $a = 10$; the foci give $c = 8$. Then $b^2 = a^2 - c^2 = 36$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$: $\\dfrac{x^2}{100} + \\dfrac{y^2}{36} = 1$.",
+  "solution": "$2a = 20$ gives $a = 10$, and the foci give $c = 8$. Then $b^2 = a^2 - c^2 = 100 - 64 = 36$. The foci are on the $x$-axis, so $a^2$ goes under $x^2$ and the equation is $\\dfrac{x^2}{100} + \\dfrac{y^2}{36} = 1$.",
   "video": "V38",
   "version": "a"
  },
@@ -1979,7 +1979,7 @@
    "swap",
    "complement"
   ],
-  "solution": "There are $C(6, 2) = 15$ equally likely pairs. Different colours: $2 \\cdot 4 = 8$ pairs, so $\\dfrac{8}{15}$. For the second event, counting the pairs whose labels are both even or both odd gives $\\dfrac{2}{5}$.",
+  "solution": "There are $C(6, 2) = 15$ equally likely pairs. There are $2 \\cdot 4 = 8$ pairs with different colours, so the first probability is $\\dfrac{8}{15}$. For the second event, counting the pairs whose labels are both even or both odd gives $\\dfrac{2}{5}$.",
   "video": "V46",
   "version": "a"
  },
@@ -2041,7 +2041,7 @@
    "complement",
    "partial"
   ],
-  "solution": "P(same choice) $= \\dfrac{10}{50} \\cdot \\dfrac{30}{100} + \\dfrac{15}{50} \\cdot \\dfrac{10}{100} + \\dfrac{25}{50} \\cdot \\dfrac{60}{100} = \\dfrac{39}{100}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{39}{100} = \\dfrac{61}{100}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{10}{50} \\cdot \\dfrac{30}{100} + \\dfrac{15}{50} \\cdot \\dfrac{10}{100} + \\dfrac{25}{50} \\cdot \\dfrac{60}{100} = \\dfrac{39}{100}$. So P(different) $= 1 - \\dfrac{39}{100} = \\dfrac{61}{100}$.",
   "video": "V46",
   "version": "a"
  },
@@ -2103,7 +2103,7 @@
    "partial",
    "partial"
   ],
-  "solution": "A point on an axis is a vertex, but it may be on the major or on the minor axis. Case 1: $a = 3$, $b = 1$ gives $x^2 + \\dfrac{y^2}{9} = 1$. Case 2: $b = 3$, $a = 9$ gives $\\dfrac{x^2}{81} + \\dfrac{y^2}{9} = 1$. Both are answers; an option with one case only is incomplete.",
+  "solution": "A point on an axis is a vertex, but it can be an end of the major axis or of the minor axis. If it is on the major axis, then $a = 3$ and $b = 1$, which gives $x^2 + \\dfrac{y^2}{9} = 1$. If it is on the minor axis, then $b = 3$ and $a = 9$, which gives $\\dfrac{x^2}{81} + \\dfrac{y^2}{9} = 1$. Both equations are possible, so an option with only one of them is incomplete.",
   "video": "V38",
   "version": "a"
  },
@@ -2134,7 +2134,7 @@
    "swap",
    "off-by-one"
   ],
-  "solution": "$\\log_a 1 = 0$ for every base, so make the argument equal to $1$: $x - 5 = 1$, i.e. $x = 6$. Then $f(6) = -3 + 0 = -3$. Fixed point: $(6, -3)$.",
+  "solution": "$\\log_a 1 = 0$ for every base $a$, so make the expression inside the logarithm equal to $1$: $x - 5 = 1$, so $x = 6$. Then $f(6) = -3 + 0 = -3$ whatever $a$ is. So the fixed point is $(6, -3)$.",
   "video": "V42",
   "version": "a"
  },
@@ -2165,7 +2165,7 @@
    null,
    "endpoint"
   ],
-  "solution": "Domain first: $x - 5 > 0$. Write $-1 = \\log_{\\frac{1}{3}} 3$. Because the base is between $0$ and $1$, the logarithm is decreasing and the direction reverses: $x - 5 > 3$. Together with the domain: $(8, +\\infty)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x - 5 > 0$, that is $x > 5$. Next, write $-1 = \\log_{\\frac{1}{3}} 3$. The base is between $0$ and $1$, so the logarithm is decreasing and the inequality sign reverses: $x - 5 > 3$, that is $x > 8$. Both conditions must hold, so the solution set is $(8, +\\infty)$.",
   "video": "V42",
   "version": "a"
  },
@@ -2196,7 +2196,7 @@
    "swap",
    "swap"
   ],
-  "solution": "Compare each value with $0$ and $1$. $b = \\ln 0.5 < 0$ (the argument is below $1$); $0 < c = 0.8^{2} < 1$ (a base below $1$ with a positive exponent); $a = 2^{0.3} > 1$ (a base above $1$ with a positive exponent). So $b < c < a$.",
+  "solution": "Compare each value with $0$ and $1$. $b = \\ln 0.5 < 0$, because the base $e$ is above $1$ and the argument $0.5$ is below $1$. $0 < c = 0.8^{2} < 1$, because a base between $0$ and $1$ raised to a positive power gives a value between $0$ and $1$. $a = 2^{0.3} > 1$, because a base above $1$ raised to a positive power gives a value above $1$. So $b < c < a$.",
   "video": "V43",
   "version": "a"
  },
@@ -2258,7 +2258,7 @@
    "reciprocal",
    null
   ],
-  "solution": "The correct statement is $\\log_{2}3 > \\log_{3}2$ — the left side is greater than $1$ and the right side is less than $1$. $\\log_{4}2 = \\log_{2}4$ is false: the two values are reciprocals: $\\dfrac{1}{2}$ and $2$. $\\lg 2 + \\lg 3 = \\lg 5$ is false: $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$. $\\log_{\\frac{1}{2}}4 = 2$ is false: a base $\\dfrac{1}{2}$ gives $-2$.",
+  "solution": "$\\log_{2}3 > \\log_{3}2$ is correct. The left side is greater than $1$, because its argument is greater than its base, and the right side is less than $1$, because its argument is smaller than its base. $\\log_{4}2 = \\log_{2}4$ is incorrect. The two values are reciprocals of each other: $\\log_{4}2 = \\dfrac{1}{2}$ and $\\log_{2}4 = 2$. $\\lg 2 + \\lg 3 = \\lg 5$ is incorrect. $\\lg 2 + \\lg 3 = \\lg 6$. The rule is $\\lg M + \\lg N = \\lg(MN)$, not $\\lg(M + N)$. $\\log_{\\frac{1}{2}}4 = 2$ is incorrect. $\\left(\\dfrac{1}{2}\\right)^{-2} = 4$, so the value is $-2$.",
   "video": "V42",
   "version": "a"
  },
@@ -2289,7 +2289,7 @@
    null,
    "partial"
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + 2ti$ (a point of $y = 2x$). Product of the roots: $z\\bar{z} = 5t^2 = 40$, so $t = \\pm 2\\sqrt{2}$. Sum of the roots: $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 4\\sqrt{2}$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + 2ti$, since $z$ lies on $y = 2x$. The product of the roots is $z\\bar{z} = 5t^2 = 40$, so $t = \\pm 2\\sqrt{2}$. The sum of the roots is $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 4\\sqrt{2}$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a"
  },
@@ -2382,7 +2382,7 @@
    "domain",
    "swap"
   ],
-  "solution": "The correct statement is “Its range is $(0, +\\infty)$” — an exponential takes every positive value and no other. “Its range is $\\mathbb{R}$” is false: its values are always positive. “Its graph passes through the point $(1, 0)$” is false: that point belongs to logarithmic functions; here $f(1) = 2$. “Its graph passes through the origin” is false: at $x = 0$ the value is $1$, not $0$.",
+  "solution": "“Its range is $(0, +\\infty)$” is correct. Every power of a positive base is positive, and the function takes every positive value. “Its range is $\\mathbb{R}$” is incorrect. Every power of a positive base is positive, so the function never takes the value $0$ or a negative value. “Its graph passes through the point $(1, 0)$” is incorrect. At $x = 1$ the value is $2$, not $0$. The point $(1, 0)$ lies on the graphs of logarithmic functions. “Its graph passes through the origin” is incorrect. At $x = 0$ the value is $1$, not $0$.",
   "video": "V40",
   "version": "a"
  },
@@ -2413,7 +2413,7 @@
    "sign",
    "partial"
   ],
-  "solution": "Make the exponent $0$: $2x + 5 = 0$ gives $x = -\\dfrac{5}{2}$. Then $f = a^0 + 3 = 4$. Fixed point: $\\left(-\\dfrac{5}{2}, 4\\right)$.",
+  "solution": "$a^0 = 1$ for every base $a$, so make the exponent $0$: $2x + 5 = 0$ gives $x = -\\dfrac{5}{2}$. Then $f\\left(-\\dfrac{5}{2}\\right) = a^0 + 3 = 1 + 3 = 4$ whatever $a$ is. So the fixed point is $\\left(-\\dfrac{5}{2}, 4\\right)$.",
   "video": "V40",
   "version": "a"
  },
@@ -2444,7 +2444,7 @@
    null,
    "partial"
   ],
-  "solution": "$\\log_{2}4 = 2$ since $2^{2} = 4$. $\\log_{3}9 = 2$ since $3^{2} = 9$. Product: $4$.",
+  "solution": "$\\log_{2}4 = 2$ because $2^{2} = 4$, and $\\log_{3}9 = 2$ because $3^{2} = 9$. So the product is $2 \\times 2 = 4$.",
   "video": "V41",
   "version": "a"
  },
@@ -2475,7 +2475,7 @@
    null,
    "slip"
   ],
-  "solution": "$\\log_{4}16 = 2$; $\\log_{2}\\dfrac{1}{8} = -3$ (a reciprocal gives a negative exponent); $\\lg 100 = 2$. Combining with the signs gives $7$.",
+  "solution": "Work out each term. $\\log_{4}16 = 2$, because $4^{2} = 16$. $\\log_{2}\\dfrac{1}{8} = \\log_{2}2^{-3} = -3$. $\\lg 100 = 2$. So the value is $2 - (-3) + 2 = 7$.",
   "video": "V41",
   "version": "a"
  },
@@ -2506,7 +2506,7 @@
    null,
    "sign"
   ],
-  "solution": "Domain first: $x - 3 > 0$. Write $0 = \\lg 1$. Because the base is greater than $1$, the logarithm is increasing and the direction is kept: $x - 3 > 1$. Together with the domain: $(4, +\\infty)$.",
+  "solution": "First, the expression inside the logarithm must be positive: $x - 3 > 0$, that is $x > 3$. Next, write $0 = \\lg 1$. The base is greater than $1$, so the logarithm is increasing and the inequality sign is kept: $x - 3 > 1$, that is $x > 4$. Both conditions must hold, so the solution set is $(4, +\\infty)$.",
   "video": "V42",
   "version": "a"
  },
@@ -2537,7 +2537,7 @@
    "swap",
    "domain"
   ],
-  "solution": "The correct statement is “Its domain is $(0, +\\infty)$”. “Its domain is $(-\\infty, +\\infty)$” is false: the argument of a logarithm must be positive. “Its graph always passes through the point $(0, 1)$” is false: $(0, 1)$ belongs to $y = a^x$; $x = 0$ is not even in the domain here. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is false: a base greater than $1$ gives an increasing logarithm.",
+  "solution": "“Its domain is $(0, +\\infty)$” is correct. The expression inside a logarithm must be positive. “Its domain is $(-\\infty, +\\infty)$” is incorrect. The expression inside a logarithm must be positive, so the domain is $(0, +\\infty)$. “Its graph always passes through the point $(0, 1)$” is incorrect. $x = 0$ is not in the domain of $y = \\log_a x$. The point $(0, 1)$ is the fixed point of $y = a^x$. “When $a > 1$, it is decreasing on $(0, +\\infty)$” is incorrect. A logarithm with a base greater than $1$ is increasing.",
   "video": "V42",
   "version": "a"
  },
@@ -2568,7 +2568,7 @@
    "axis",
    null
   ],
-  "solution": "The correct statement is “Their graphs are symmetric about the line $y = x$” — the two functions are inverses of each other, so their graphs are mirror images in the line $y = x$.",
+  "solution": "“Their graphs are symmetric about the line $y = x$” is correct. The two functions are inverses of each other, so their graphs are mirror images in the line $y = x$. “Their graphs are symmetric about the $y$-axis” is incorrect. The point $(1, 1)$ lies on $y = x^5$, but its mirror image in the $y$-axis, $(-1, 1)$, does not lie on $y = \\sqrt[5]{x}$. “Their graphs are symmetric about the $x$-axis” is incorrect. The point $(1, 1)$ lies on $y = x^5$, but its mirror image in the $x$-axis, $(1, -1)$, does not lie on $y = \\sqrt[5]{x}$. “Their graphs are symmetric about the origin” is incorrect. The point $(2, 32)$ lies on $y = x^5$, but its mirror image in the origin, $(-2, -32)$, does not lie on $y = \\sqrt[5]{x}$.",
   "video": "V42",
   "version": "a"
  },
@@ -2599,7 +2599,7 @@
    "sign",
    "sign"
   ],
-  "solution": "A logarithm $\\log_a b$ is positive exactly when $a$ and $b$ lie on the same side of $1$. The correct statement is $\\log_{0.3}0.2 > 1$ — both numbers are below $1$ and the argument is smaller than the base, so the logarithm exceeds $1$. $\\log_{0.6}7 > 0$ is false: base and argument lie on opposite sides of $1$, so the logarithm is negative. $\\log_{2}5 < 1$ is false: the argument exceeds the base (both above $1$), so the logarithm exceeds $1$. $\\log_{7}0.6 > 0$ is false: base above $1$ with an argument below $1$ gives a negative logarithm.",
+  "solution": "A logarithm $\\log_a b$ is positive when $a$ and $b$ lie on the same side of $1$, and negative when they lie on opposite sides. $\\log_{0.3}0.2 > 1$ is correct. $y = \\log_{0.3} x$ is decreasing because its base is below $1$, and $0.2 < 0.3$, so $\\log_{0.3}0.2 > \\log_{0.3}0.3 = 1$. $\\log_{0.6}7 > 0$ is incorrect. The base $0.6$ is below $1$ and the argument $7$ is above $1$, so the logarithm is negative. $\\log_{2}5 < 1$ is incorrect. $y = \\log_{2} x$ is increasing and $5 > 2$, so $\\log_{2}5 > \\log_{2}2 = 1$. $\\log_{7}0.6 > 0$ is incorrect. The base $7$ is above $1$ and the argument $0.6$ is below $1$, so the logarithm is negative.",
   "video": "V43",
   "version": "a"
  },
@@ -2630,7 +2630,7 @@
    null,
    "near-miss"
   ],
-  "solution": "Decide for each option whether the two powers share a base (exponential function) or an exponent (power function). The correct statement is $2^{1.2} < 2^{3}$ — same base $2$: $y = 2^x$ is increasing, so the larger exponent gives the larger value. $3.2^{2/3} < 1.3^{2/3}$ is false: same exponent $2/3$: $y = x^{2/3}$ is increasing on $(0, +\\infty)$, so the larger base gives the larger value. $3.2^{-0.3} > 2.3^{-0.3}$ is false: same exponent $-0.3$: $y = x^{-0.3}$ is decreasing on $(0, +\\infty)$, so the larger base gives the smaller value. $0.3^{2.25} > 0.3^{2}$ is false: same base $0.3$: $y = 0.3^x$ is decreasing, so the larger exponent gives the smaller value.",
+  "solution": "In each option the two powers have either the same base, so we use an exponential function, or the same exponent, so we use a power function. $2^{1.2} < 2^{3}$ is correct. Both powers have the base $2$, and $y = 2^x$ is increasing because $2 > 1$. Since $1.2 < 3$, $2^{1.2} < 2^{3}$. $3.2^{2/3} < 1.3^{2/3}$ is incorrect. Both powers have the exponent $2/3$, and $y = x^{2/3}$ is increasing on $(0, +\\infty)$ because $2/3 > 0$. Since $1.3 < 3.2$, $1.3^{2/3} < 3.2^{2/3}$. $3.2^{-0.3} > 2.3^{-0.3}$ is incorrect. Both powers have the exponent $-0.3$, and $y = x^{-0.3}$ is decreasing on $(0, +\\infty)$ because $-0.3 < 0$. Since $2.3 < 3.2$, $2.3^{-0.3} > 3.2^{-0.3}$. $0.3^{2.25} > 0.3^{2}$ is incorrect. Both powers have the base $0.3$, and $y = 0.3^x$ is decreasing because $0 < 0.3 < 1$. Since $2 < 2.25$, $0.3^{2} > 0.3^{2.25}$.",
   "video": "V43",
   "version": "a"
  },
@@ -2692,7 +2692,7 @@
    "sign",
    "sign"
   ],
-  "solution": "Walk along the sides from $A$ to $F$: opposite sides give $\\overrightarrow{DC} = \\boldsymbol{a}$ and $\\overrightarrow{BC} = \\boldsymbol{b}$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $\\overrightarrow{AF} = \\dfrac{1}{2}\\boldsymbol{a} + \\boldsymbol{b}$.",
+  "solution": "Measure every point from $A$: $\\overrightarrow{AB} = \\boldsymbol{a}$, $\\overrightarrow{AD} = \\boldsymbol{b}$ and, since $ABCD$ is a parallelogram, $\\overrightarrow{AC} = \\boldsymbol{a} + \\boldsymbol{b}$. Since $F$ is the midpoint of $CD$, $\\overrightarrow{AF} = \\dfrac{1}{2}(\\overrightarrow{AC} + \\overrightarrow{AD}) = \\dfrac{1}{2}\\boldsymbol{a} + \\boldsymbol{b}$. So $\\overrightarrow{AF} = \\dfrac{1}{2}\\boldsymbol{a} + \\boldsymbol{b}$.",
   "video": "V44",
   "version": "a"
  },
@@ -2709,7 +2709,7 @@
   "points": 2,
   "repeat": null,
   "trick": null,
-  "stem": "Given $|\\boldsymbol{a}| = 3$, $|\\boldsymbol{b}| = 4$ and the angle between $\\boldsymbol{a}$ and $\\boldsymbol{b}$ is $120^\\circ$, then $|\\boldsymbol{a} + 2\\boldsymbol{b}| =$ ( )",
+  "stem": "If $|\\boldsymbol{a}| = 3$, $|\\boldsymbol{b}| = 4$ and the angle between $\\boldsymbol{a}$ and $\\boldsymbol{b}$ is $120^\\circ$, then $|\\boldsymbol{a} + 2\\boldsymbol{b}| =$ ( )",
   "options": [
    "$7$",
    "$\\sqrt{73}$",
@@ -2723,7 +2723,7 @@
    "partial",
    "sign"
   ],
-  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = |\\boldsymbol{a}||\\boldsymbol{b}|\\cos 120^\\circ = -6$. $|\\boldsymbol{a} + 2\\boldsymbol{b}|^2 = |\\boldsymbol{a}|^2 + 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + 4|\\boldsymbol{b}|^2 = 49$, so $|\\boldsymbol{a} + 2\\boldsymbol{b}| = 7$.",
+  "solution": "$\\boldsymbol{a} \\cdot \\boldsymbol{b} = |\\boldsymbol{a}||\\boldsymbol{b}|\\cos 120^\\circ = -6$. $|\\boldsymbol{a} + 2\\boldsymbol{b}|^2 = |\\boldsymbol{a}|^2 + 4\\boldsymbol{a} \\cdot \\boldsymbol{b} + 4|\\boldsymbol{b}|^2 = 9 - 24 + 64 = 49$, so $|\\boldsymbol{a} + 2\\boldsymbol{b}| = \\sqrt{49} = 7$.",
   "video": "V44",
   "version": "a"
  },
@@ -2754,7 +2754,7 @@
    "slip",
    "slip"
   ],
-  "solution": "From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $51$ terms: 17 complete blocks of three (each $0$), so the sum is $0$.",
+  "solution": "Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $51$ terms, which is $17$ blocks of three exactly, so the sum is $0$.",
   "video": "V45",
   "version": "a"
  },
@@ -2785,7 +2785,7 @@
    "partial",
    null
   ],
-  "solution": "The points $z$ lie on the circle with centre $0$ and radius $1$, and $|z + 5 + 12i|$ is the distance from such a point to $-5 - 12i$, which is $13$ from the centre. The smallest distance is $|13 - 1| = 12$.",
+  "solution": "The points $z$ lie on the circle with center $0$ and radius $1$, and $|z + 5 + 12i|$ is the distance from such a point to $-5 - 12i$, which is $13$ from the center. The smallest distance is $|13 - 1| = 12$.",
   "video": "V45",
   "version": "a"
  },
@@ -2816,7 +2816,7 @@
    null,
    "swap"
   ],
-  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{1}{6} - \\dfrac{5}{12} = \\dfrac{5}{12}$; then $P(\\text{green}) = \\dfrac{3}{4} - \\dfrac{5}{12} = \\dfrac{1}{3}$ and $P(\\text{yellow}) = \\dfrac{5}{12} - \\dfrac{1}{3} = \\dfrac{1}{12}$. Match each value to its colour — the options differ only in the order.",
+  "solution": "The four probabilities add up to $1$. So $P(\\text{red}) = 1 - \\dfrac{1}{6} - \\dfrac{5}{12} = \\dfrac{5}{12}$. Then $P(\\text{green}) = \\dfrac{3}{4} - \\dfrac{5}{12} = \\dfrac{1}{3}$ and $P(\\text{yellow}) = \\dfrac{5}{12} - \\dfrac{1}{3} = \\dfrac{1}{12}$. The options use the same three numbers in different orders, so the order green, yellow, red decides the answer.",
   "video": "V46",
   "version": "a"
  },
@@ -2847,7 +2847,7 @@
    "complement",
    "order"
   ],
-  "solution": "There are $C(9, 2) = 36$ equally likely pairs. The correct statement is “The probability that both balls are red is $\\dfrac{1}{6}$” — there are $C(4, 2) = 6$ such pairs out of $C(9, 2) = 36$. “The probability that at least one ball is red is $\\dfrac{5}{6}$” is false: the complement of “at least one red” is “both yellow”: $1 - \\dfrac{5}{18} = \\dfrac{13}{18}$. “The probability that both balls are red is $\\dfrac{16}{81}$” is false: the balls are drawn together (no replacement): $\\dfrac{C(4, 2)}{C(9, 2)} = \\dfrac{6}{36} = \\dfrac{1}{6}$. “The probability that the two balls have different colours is $\\dfrac{5}{18}$” is false: that counts only one of the two orders; the probability is $\\dfrac{20}{36} = \\dfrac{5}{9}$.",
+  "solution": "There are $C(9, 2) = 36$ equally likely pairs. “The probability that both balls are red is $\\dfrac{1}{6}$” is correct. There are $C(4, 2) = 6$ such pairs out of $C(9, 2) = 36$. “The probability that at least one ball is red is $\\dfrac{5}{6}$” is incorrect. The complement of “at least one red” is “both yellow”: $1 - \\dfrac{5}{18} = \\dfrac{13}{18}$. “The probability that both balls are red is $\\dfrac{16}{81}$” is incorrect. The balls are drawn together, so there is no replacement and the probability is $\\dfrac{C(4, 2)}{C(9, 2)} = \\dfrac{6}{36} = \\dfrac{1}{6}$. “The probability that the two balls have different colours is $\\dfrac{5}{18}$” is incorrect. The pairs are unordered, so there are $20$ such pairs out of $36$ and the probability is $\\dfrac{20}{36} = \\dfrac{5}{9}$.",
   "video": "V46",
   "version": "a"
  },
@@ -2878,7 +2878,7 @@
    "axis",
    null
   ],
-  "solution": "For a hyperbola $c^2 = a^2 + b^2 = 4 + 4 = 8$ (plus, not minus), so $c = 2\\sqrt{2}$. The foci are on the axis of the positive term, the $x$-axis: $(\\pm 2\\sqrt{2}, 0)$.",
+  "solution": "Unlike an ellipse, a hyperbola has $c^2 = a^2 + b^2$. Here $c^2 = 4 + 4 = 8$, so $c = 2\\sqrt{2}$. The foci lie on the axis of the positive term, the $x$-axis, so they are $(\\pm 2\\sqrt{2}, 0)$.",
   "video": "V39",
   "version": "a"
  },
@@ -2909,7 +2909,7 @@
    "off-by-one",
    "sign"
   ],
-  "solution": "Separate the sign and the size. Size: $2^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 2^{n}$; test $n = 1$ and $n = 2$ in each option.",
+  "solution": "Separate the sign and the size. Size: $2^{n}$. Sign: the first term is negative, so use $(-1)^{n}$. Hence $a_n = (-1)^{n} \\cdot 2^{n}$. Check with $n = 1$ and $n = 2$: the formula gives $-2$ and $4$.",
   "video": "V30",
   "version": "a"
  },
@@ -2940,7 +2940,7 @@
    "operation",
    null
   ],
-  "solution": "$|PQ| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{(-1)^2 + 3^2} = \\sqrt{10}$. Subtract the coordinates before squaring, and do not forget the square root.",
+  "solution": "The coordinate differences are $3 - 4 = -1$ and $3 - 0 = 3$. By the distance formula, $|PQ| = \\sqrt{(-1)^2 + 3^2} = \\sqrt{1 + 9} = \\sqrt{10}$.",
   "video": "V21",
   "version": "a"
  },
@@ -2957,7 +2957,7 @@
   "points": 2,
   "repeat": "R01",
   "trick": "T05",
-  "stem": "It is known that $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
+  "stem": "Suppose $\\cos\\alpha = -\\dfrac{8}{17}$ and $\\dfrac{\\pi}{2} < \\alpha < \\pi$. Then $\\sin\\dfrac{\\alpha}{2} =$ ( )",
   "options": [
    "$\\dfrac{5\\sqrt{34}}{34}$",
    "$-\\dfrac{5\\sqrt{34}}{34}$",
@@ -2971,7 +2971,7 @@
    "companion",
    "pm"
   ],
-  "solution": "Locate the half angle first: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{25}{34}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{5\\sqrt{34}}{34}$. The interval fixes the sign, so an option with $\\pm$ is a trap.",
+  "solution": "Find where the half angle lies: $\\alpha \\in \\left(\\dfrac{\\pi}{2}, \\pi\\right)$ gives $\\dfrac{\\alpha}{2} \\in \\left(\\dfrac{\\pi}{4}, \\dfrac{\\pi}{2}\\right)$, where the sine is positive. $\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - \\left(-\\dfrac{8}{17}\\right)}{2} = \\dfrac{25}{34}$, so $\\sin\\dfrac{\\alpha}{2} = \\dfrac{5\\sqrt{34}}{34}$. The interval fixes the sign, so the answer is not $\\pm\\dfrac{5\\sqrt{34}}{34}$.",
   "video": "V17",
   "version": "a"
  },
@@ -3033,7 +3033,7 @@
    "half",
    null
   ],
-  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + ti$ (a point of $y = x$). Product of the roots: $z\\bar{z} = 2t^2 = 18$, so $t = \\pm 3$. Sum of the roots: $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 6$ — both signs.",
+  "solution": "The coefficients are real, so the other root is $\\bar{z}$. Write $z = t + ti$, since $z$ lies on $y = x$. The product of the roots is $z\\bar{z} = 2t^2 = 18$, so $t = \\pm 3$. The sum of the roots is $z + \\bar{z} = 2t = -m$. Hence $m = \\pm 6$, with both signs possible because $t$ can be positive or negative.",
   "video": "V45",
   "version": "a"
  },
@@ -3095,7 +3095,7 @@
    "partial",
    null
   ],
-  "solution": "P(same choice) $= \\dfrac{5}{60} \\cdot \\dfrac{25}{50} + \\dfrac{35}{60} \\cdot \\dfrac{5}{50} + \\dfrac{20}{60} \\cdot \\dfrac{20}{50} = \\dfrac{7}{30}$ (multiply within each option, then add). So P(different) $= 1 - \\dfrac{7}{30} = \\dfrac{23}{30}$.",
+  "solution": "For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= \\dfrac{5}{60} \\cdot \\dfrac{25}{50} + \\dfrac{35}{60} \\cdot \\dfrac{5}{50} + \\dfrac{20}{60} \\cdot \\dfrac{20}{50} = \\dfrac{7}{30}$. So P(different) $= 1 - \\dfrac{7}{30} = \\dfrac{23}{30}$.",
   "video": "V46",
   "version": "a"
  }

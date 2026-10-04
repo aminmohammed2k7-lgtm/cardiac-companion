@@ -26,7 +26,7 @@
    "partial",
    "near-miss"
   ],
-  "solution": "Choose $x$ so that the inside equals $-10$: $2x - 4 = -10$ gives $x = -3$. Then $f(-10) = (-3) - 2 = -5$. (Substituting $-10$ straight into $x - 2$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $-10$: $2x - 4 = -10$ gives $x = -3$. Put $x = -3$ into the right side: $f(-10) = (-3) - 2 = -5$. Putting $-10$ into $x - 2$ directly is wrong, because $-10$ is the value of $2x - 4$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
@@ -64,7 +64,7 @@
    null,
    "partial"
   ],
-  "solution": "Choose $x$ so that the inside equals $-4$: $3x + 5 = -4$ gives $x = -3$. Then $f(-4) = 3(-3) - 2 = -11$. (Substituting $-4$ straight into $3x - 2$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $-4$: $3x + 5 = -4$ gives $x = -3$. Put $x = -3$ into the right side: $f(-4) = 3 \\times (-3) - 2 = -11$. Putting $-4$ into $3x - 2$ directly is wrong, because $-4$ is the value of $3x + 5$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
@@ -102,7 +102,7 @@
    "near-miss",
    "partial"
   ],
-  "solution": "Choose $x$ so that the inside equals $2$: $3x - 1 = 2$ gives $x = 1$. Then $f(2) = -(1) + 5 = 4$. (Substituting $2$ straight into $-x + 5$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $2$: $3x - 1 = 2$ gives $x = 1$. Put $x = 1$ into the right side: $f(2) = -(1) + 5 = 4$. Putting $2$ into $-x + 5$ directly is wrong, because $2$ is the value of $3x - 1$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
@@ -140,7 +140,7 @@
    null,
    "sign"
   ],
-  "solution": "Choose $x$ so that the inside equals $-14$: $3x - 5 = -14$ gives $x = -3$. Then $f(-14) = 3(-3) - 3 = -12$. (Substituting $-14$ straight into $3x - 3$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $-14$: $3x - 5 = -14$ gives $x = -3$. Put $x = -3$ into the right side: $f(-14) = 3 \\times (-3) - 3 = -12$. Putting $-14$ into $3x - 3$ directly is wrong, because $-14$ is the value of $3x - 5$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
@@ -178,7 +178,7 @@
    "near-miss",
    null
   ],
-  "solution": "Choose $x$ so that the inside equals $11$: $4x + 3 = 11$ gives $x = 2$. Then $f(11) = 2(2) - 5 = -1$. (Substituting $11$ straight into $2x - 5$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $11$: $4x + 3 = 11$ gives $x = 2$. Put $x = 2$ into the right side: $f(11) = 2 \\times 2 - 5 = -1$. Putting $11$ into $2x - 5$ directly is wrong, because $11$ is the value of $4x + 3$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
@@ -216,7 +216,7 @@
    "sign",
    "near-miss"
   ],
-  "solution": "Choose $x$ so that the inside equals $11$: $2x + 3 = 11$ gives $x = 4$. Then $f(11) = 3(4) + 3 = 15$. (Substituting $11$ straight into $3x + 3$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $11$: $2x + 3 = 11$ gives $x = 4$. Put $x = 4$ into the right side: $f(11) = 3 \\times 4 + 3 = 15$. Putting $11$ into $3x + 3$ directly is wrong, because $11$ is the value of $2x + 3$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
@@ -254,7 +254,7 @@
    "partial",
    null
   ],
-  "solution": "Choose $x$ so that the inside equals $-1$: $2x - 5 = -1$ gives $x = 2$. Then $f(-1) = (2) - 2 = 0$. (Substituting $-1$ straight into $x - 2$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $-1$: $2x - 5 = -1$ gives $x = 2$. Put $x = 2$ into the right side: $f(-1) = 2 - 2 = 0$. Putting $-1$ into $x - 2$ directly is wrong, because $-1$ is the value of $2x - 5$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
@@ -292,7 +292,7 @@
    "partial",
    "sign"
   ],
-  "solution": "Choose $x$ so that the inside equals $-12$: $4x + 4 = -12$ gives $x = -4$. Then $f(-12) = (-4) - 6 = -10$. (Substituting $-12$ straight into $x - 6$ is the trap.)",
+  "solution": "Choose $x$ so that the expression inside $f$ equals $-12$: $4x + 4 = -12$ gives $x = -4$. Put $x = -4$ into the right side: $f(-12) = (-4) - 6 = -10$. Putting $-12$ into $x - 6$ directly is wrong, because $-12$ is the value of $4x + 4$, not of $x$.",
   "video": "V05",
   "version": "a",
   "domain": "FN",
