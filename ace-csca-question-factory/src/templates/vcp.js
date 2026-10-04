@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/vcp.js — VEC (plane vectors), CPX (complex numbers), PRB (classical probability). */
+/* ACE CSCA Question Factory · templates/vcp.js: plane vectors (VEC), complex numbers (CPX) and classical probability (PRB). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.LN;
@@ -25,7 +25,7 @@
     var expr = comb(p, r);
     return {
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$ and $' + VB + ' = ' + pt(b[0], b[1]) + '$. Then $' + expr + ' =$ ( )', key: T(key[0], key[1]), wrong: wrong, check: chk.tuple([p * a[0] + r * b[0], p * a[1] + r * b[1]]),
-      sol: 'Work coordinate by coordinate: $' + expr + ' = (' + F.sum([[p * a[0], ''], [r * b[0], '']]).replace(/^(-?\d+) ([+-]) (\d+)$/, '$1 $2 $3') + ', ' + F.sum([[p * a[1], ''], [r * b[1], '']]) + ') = ' + pt(key[0], key[1]) + '$. Multiply first, then watch the signs when subtracting.'
+      sol: 'Work coordinate by coordinate. ' + [[p, VA, a], [r, VB, b]].map(function (t) { return '$' + (t[0] === 1 ? '' : t[0] === -1 ? '-' : t[0]) + t[1] + ' = ' + pt(t[0] * t[2][0], t[0] * t[2][1]) + '$'; }).join(' and ') + ', so $' + expr + ' = (' + F.sum([[p * a[0], ''], [r * b[0], '']]) + ', ' + F.sum([[p * a[1], ''], [r * b[1], '']]) + ') = ' + pt(key[0], key[1]) + '$.'
     };
   });
   def({ id: 'VEC.midpoint', code: 'VEC', lesson: '7.5', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -36,16 +36,16 @@
     var lead = 'Let $' + M + '$ be the midpoint of segment $' + A + B + '$ and $O$ any point in the plane. Then, as vectors, ', ask, key, wrong, truth, why;
     if (kind === 'sum') {
       ask = OA + ' + ' + OB; key = '2' + OM; truth = function (e) { return e['vO' + A] + e['vO' + B]; };
-      wrong = [[AB, 'operation'], [OM, 'half'], ['\\dfrac{1}{2}' + OM, 'half'], ['2' + AB, 'operation'], [vec(B + A), 'sign']]; why = 'Since $' + OM + ' = \\dfrac{1}{2}(' + OA + ' + ' + OB + ')$, the sum is $2' + OM + '$.';
+      wrong = [[AB, 'operation'], [OM, 'half'], ['\\dfrac{1}{2}' + OM, 'half'], ['2' + AB, 'operation'], [vec(B + A), 'sign']]; why = 'Multiplying by $2$ gives $' + OA + ' + ' + OB + ' = 2' + OM + '$.';
     } else if (kind === 'end') {
       ask = OB; key = '2' + OM + ' - ' + OA; truth = function (e) { return e['vO' + B]; };
-      wrong = [[OM + ' - ' + OA, 'half'], ['2' + OM + ' + ' + OA, 'sign'], [OM + ' + ' + OA, 'operation'], ['2' + OA + ' - ' + OM, 'swap'], ['\\dfrac{1}{2}(' + OM + ' + ' + OA + ')', 'operation']]; why = 'From $' + OM + ' = \\dfrac{1}{2}(' + OA + ' + ' + OB + ')$: $' + OB + ' = 2' + OM + ' - ' + OA + '$.';
+      wrong = [[OM + ' - ' + OA, 'half'], ['2' + OM + ' + ' + OA, 'sign'], [OM + ' + ' + OA, 'operation'], ['2' + OA + ' - ' + OM, 'swap'], ['\\dfrac{1}{2}(' + OM + ' + ' + OA + ')', 'operation']]; why = 'Multiplying by $2$ gives $' + OA + ' + ' + OB + ' = 2' + OM + '$, so $' + OB + ' = 2' + OM + ' - ' + OA + '$.';
     } else if (kind === 'half') {
       ask = AM; key = '\\dfrac{1}{2}(' + OB + ' - ' + OA + ')'; truth = function (e) { return e['v' + A + M]; };
-      wrong = [['\\dfrac{1}{2}(' + OA + ' - ' + OB + ')', 'sign'], ['\\dfrac{1}{2}(' + OA + ' + ' + OB + ')', 'companion'], [OB + ' - ' + OA, 'half'], [OA + ' - ' + OB, 'sign'], ['2(' + OB + ' - ' + OA + ')', 'half']]; why = '$' + AM + ' = \\dfrac{1}{2}' + AB + '$ and $' + AB + ' = ' + OB + ' - ' + OA + '$ (end minus start).';
+      wrong = [['\\dfrac{1}{2}(' + OA + ' - ' + OB + ')', 'sign'], ['\\dfrac{1}{2}(' + OA + ' + ' + OB + ')', 'companion'], [OB + ' - ' + OA, 'half'], [OA + ' - ' + OB, 'sign'], ['2(' + OB + ' - ' + OA + ')', 'half']]; why = 'Also $' + AM + ' = \\dfrac{1}{2}' + AB + '$, and $' + AB + ' = ' + OB + ' - ' + OA + '$ because a vector is its end point minus its start point.';
     } else {
       ask = OM + ' - ' + OA; key = '\\dfrac{1}{2}' + AB; truth = function (e) { return e['vO' + M] - e['vO' + A]; };
-      wrong = [[AB, 'half'], ['\\dfrac{1}{2}' + vec(B + A), 'sign'], [vec(M + B) + ' + ' + AB, 'operation'], ['2' + AB, 'half'], [vec(B + A), 'sign']]; why = '$' + OM + ' - ' + OA + ' = ' + AM + '$, half of $' + AB + '$.';
+      wrong = [[AB, 'half'], ['\\dfrac{1}{2}' + vec(B + A), 'sign'], [vec(M + B) + ' + ' + AB, 'operation'], ['2' + AB, 'half'], [vec(B + A), 'sign']]; why = 'Also $' + OM + ' - ' + OA + ' = ' + AM + '$, which is half of $' + AB + '$.';
     }
     if (kind === 'sum' && M === 'P') retry('real item');
     return { stem: lead + '$' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.fn(truth, envs), sol: 'For a midpoint, $' + OM + ' = \\dfrac{1}{2}(' + OA + ' + ' + OB + ')$. ' + why };
@@ -85,7 +85,15 @@
     return {
       stem: 'In ' + shape + ' $ABCD$, let the vectors $' + vec('AB') + ' = ' + VA + '$ and $' + vec('AD') + ' = ' + VB + '$, and let $' + E + '$ be the midpoint of $' + side + '$. Then the vector $' + vec(from + E) + ' =$ ( )', key: m(T(ca, cb)), wrong: W(wrong),
       check: chk.fn(function (e) { return ca.num * e.va + cb.num * e.vb; }, [{ va: 0.7, vb: 2.3 }, { va: -1.9, vb: 0.4 }, { va: 3.1, vb: -2.2 }]),
-      sol: 'Walk along the sides from $' + from + '$ to $' + E + '$: opposite sides give $' + vec('DC') + ' = ' + VA + '$ and $' + vec('BC') + ' = ' + VB + '$, and the midpoint contributes half a side. Adding the pieces (with a minus sign when walking against a side): $' + vec(from + E) + ' = ' + T(ca, cb) + '$.'
+      sol: (function () {
+        var rel = function (V) { return V === 'A' ? '' : T(CORNER[V][0], CORNER[V][1]); };      // the vector from A to a corner
+        var usesC = side.indexOf('C') >= 0 || from === 'C';
+        var lead = 'Measure every point from $A$: $' + vec('AB') + ' = ' + VA + '$, $' + vec('AD') + ' = ' + VB + '$' + (usesC ? ' and, since $ABCD$ is a parallelogram, $' + vec('AC') + ' = ' + T(1, 1) + '$' : '') + '. ';
+        var hasA = side.indexOf('A') >= 0, other = hasA ? side.replace('A', '') : null;
+        var mid2 = 'Since $' + E + '$ is the midpoint of $' + side + '$, $' + vec('A' + E) + ' = ' + (hasA ? '\\dfrac{1}{2}' + vec('A' + other) : '\\dfrac{1}{2}(' + vec('A' + side[0]) + ' + ' + vec('A' + side[1]) + ')') + ' = ' + T(mid[0], mid[1]) + '$. ';
+        var last = from === 'A' ? 'So $' + vec('A' + E) + ' = ' + T(ca, cb) + '$.' : 'Then $' + vec(from + E) + ' = ' + vec('A' + E) + ' - ' + vec('A' + from) + ' = ' + T(ca, cb) + '$.';
+        return lead + mid2 + last;
+      })()
     };
   });
   function minNorm(p2, r2, d) {            // min over λ of |λa + (1 − λ)b|², |a|² = p2, |b|² = r2, a·b = d
@@ -105,7 +113,7 @@
       stem: 'Given plane vectors $' + VA + '$, $' + VB + '$, $\\boldsymbol{c}$ with $|' + VA + '| = ' + p + '$, $|' + VB + '| = ' + r + '$, $' + VA + ' \\cdot ' + VB + ' = ' + F.n(d) + '$ and $\\boldsymbol{c} = \\lambda' + VA + ' + (1 - \\lambda)' + VB + '$ ($\\lambda \\in \\mathbb{R}$), the minimum value of $|\\boldsymbol{c}|$ is ( )', key: m(key),
       wrong: W([[min2.isInt && N.isSquare(min2.n) && min2.n !== 1 ? min2 : (min2.eq(1) ? null : min2), 'partial'], [Math.min(p, r), 'partial'], [Sd.sqrt(q(p2 + r2).add(d.mul(2)).div(4)).eq(key) ? null : Sd.sqrt(q(p2 + r2).add(d.mul(2)).div(4)), 'slip'], [d.n === 0 ? null : Sd.sqrt(d.abs()), 'partial'], [key.scale(2), 'half'], [Sd.sqrt(min2.add(1)), 'slip']]),
       check: chk.num(minNorm(p2, r2, d.num)),
-      sol: 'Square it: $|\\boldsymbol{c}|^2 = ' + p2 + '\\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot ' + par(d) + ' + ' + r2 + '(1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = ' + F.n(lam) + '$, where $|\\boldsymbol{c}|^2 = ' + F.n(min2) + '$. So the minimum of $|\\boldsymbol{c}|$ is $' + F.n(key) + '$.'
+      sol: 'Square it: $|\\boldsymbol{c}|^2 = ' + (p2 === 1 ? '' : p2) + '\\lambda^2 + 2\\lambda(1 - \\lambda) \\cdot ' + par(d) + ' + ' + (r2 === 1 ? '' : r2) + '(1 - \\lambda)^2$, a quadratic in $\\lambda$ that opens upward. Its vertex is at $\\lambda = ' + F.n(lam) + '$, where $|\\boldsymbol{c}|^2 = ' + F.n(min2) + '$. So the minimum of $|\\boldsymbol{c}|$ is $' + F.n(key) + '$.'
     };
   });
   def({ id: 'VEC.dot', code: 'VEC', lesson: '7.5', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -114,7 +122,7 @@
     return {
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$ and $' + VB + ' = ' + pt(b[0], b[1]) + '$. Then $' + VA + ' \\cdot ' + VB + ' =$ ( )', key: m(key),
       wrong: W([[a[0] * b[0] - a[1] * b[1], 'sign'], [a[0] * b[1] + a[1] * b[0], 'swap'], [m(pt(a[0] * b[0], a[1] * b[1])), 'operation'], [-key, 'sign'], [a[0] + b[0] + a[1] + b[1], 'operation'], [key + 1, 'slip']]), check: chk.num(a[0] * b[0] + a[1] * b[1]),
-      sol: '$' + VA + ' \\cdot ' + VB + ' = x_1x_2 + y_1y_2 = ' + par(a[0]) + ' \\cdot ' + par(b[0]) + ' + ' + par(a[1]) + ' \\cdot ' + par(b[1]) + ' = ' + key + '$ — a number, not a vector.'
+      sol: '$' + VA + ' \\cdot ' + VB + ' = x_1x_2 + y_1y_2 = ' + par(a[0]) + ' \\cdot ' + par(b[0]) + ' + ' + par(a[1]) + ' \\cdot ' + par(b[1]) + ' = ' + key + '$. The dot product is a number, not a vector.'
     };
   });
   def({ id: 'VEC.magnitude', code: 'VEC', lesson: '7.5', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -126,7 +134,7 @@
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$' + (c[1] === 0 ? '' : ' and $' + VB + ' = ' + pt(b[0], b[1]) + '$') + '. Then $|' + expr + '| =$ ( )', key: m(key),
       wrong: W([[d2, 'partial'], [Math.abs(v[0]) + Math.abs(v[1]), 'operation'], [v[0] * v[0] === v[1] * v[1] ? null : Sd.sqrt(Math.abs(v[0] * v[0] - v[1] * v[1])), 'sign'], [c[1] === 0 ? null : Sd.sqrt(a[0] * a[0] + a[1] * a[1]).add(Sd.sqrt(b[0] * b[0] + b[1] * b[1]).scale(Math.abs(c[1]))), 'operation'], [Sd.sqrt(d2 + 1), 'slip'], [Math.max(Math.abs(v[0]), Math.abs(v[1])), 'partial']]),
       check: chk.num(Math.hypot(c[0] * a[0] + c[1] * b[0], c[0] * a[1] + c[1] * b[1])),
-      sol: (c[1] === 0 ? '' : '$' + expr + ' = ' + pt(v[0], v[1]) + '$. ') + '$|' + expr + '| = \\sqrt{' + par(v[0]) + '^2 + ' + par(v[1]) + '^2} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
+      sol: (c[1] === 0 ? '' : 'First $' + expr + ' = ' + pt(v[0], v[1]) + '$. Then ') + '$|' + expr + '| = \\sqrt{' + par(v[0]) + '^2 + ' + par(v[1]) + '^2} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
   def({ id: 'VEC.perp-param', code: 'VEC', lesson: '7.5', tier: 'M', level: '+1', fmt: 'V',
@@ -139,7 +147,7 @@
     return {
       stem: 'Let $' + VA + ' = ' + pt(a[0], a[1]) + '$ and $' + VB + ' = (k, ' + y2 + ')$. If $' + VA + (rel === 'perp' ? ' \\perp ' : ' \\parallel ') + VB + '$, then $k =$ ( )', key: m(k),
       wrong: W([[rel === 'perp' ? kq : kp, 'companion'], [k.neg(), 'sign'], [(rel === 'perp' ? kq : kp).neg(), 'companion'], [k.n === 0 ? null : k.inv(), 'reciprocal'], [k.add(1), 'slip']]), check: chk.num(rel === 'perp' ? -a[1] * y2 / a[0] : a[0] * y2 / a[1]),
-      sol: rel === 'perp' ? 'Perpendicular vectors have dot product $0$: $' + par(a[0]) + 'k + ' + par(a[1]) + ' \\cdot ' + par(y2) + ' = 0$, so $k = ' + F.n(k) + '$.' : 'Parallel vectors satisfy $x_1y_2 - x_2y_1 = 0$: $' + par(a[0]) + ' \\cdot ' + par(y2) + ' - ' + par(a[1]) + 'k = 0$, so $k = ' + F.n(k) + '$.'
+      sol: rel === 'perp' ? 'Perpendicular vectors have dot product $0$: $' + (a[0] === 1 ? '' : a[0] === -1 ? '-' : par(a[0])) + 'k + ' + par(a[1]) + ' \\cdot ' + par(y2) + ' = 0$, so $k = ' + F.n(k) + '$.' : 'Parallel vectors satisfy $x_1y_2 - x_2y_1 = 0$: $' + par(a[0]) + ' \\cdot ' + par(y2) + ' - ' + par(a[1]) + 'k = 0$, so $k = ' + F.n(k) + '$.'
     };
   });
   def({ id: 'VEC.norm-sum', code: 'VEC', lesson: '7.5', tier: 'M', level: '+1', fmt: 'V',
@@ -153,7 +161,7 @@
       stem: 'Given $|' + VA + '| = ' + p + '$, $|' + VB + '| = ' + r + '$ and ' + given + ', then $|' + expr + '| =$ ( )', key: m(key),
       wrong: W([[v2.isInt && v2.n === 1 ? null : v2, 'partial'], [d.n === 0 ? null : Sd.sqrt(wrongSign), 'sign'], [Sd.sqrt(q(c[0] * c[0] * p * p + c[1] * c[1] * r * r)).eq(key) ? null : Sd.sqrt(q(c[0] * c[0] * p * p + c[1] * c[1] * r * r)), 'partial'], [Math.abs(c[0]) * p + Math.abs(c[1]) * r, 'operation'], [Sd.sqrt(v2.add(1)), 'slip'], [key.scale(2), 'slip']]),
       check: chk.num(Math.sqrt(c[0] * c[0] * p * p + 2 * c[0] * c[1] * p * r * Math.cos(ang * Math.PI / 180) + c[1] * c[1] * r * r)),
-      sol: (useAngle ? '$' + VA + ' \\cdot ' + VB + ' = |' + VA + '||' + VB + '|\\cos ' + ang + '^\\circ = ' + F.n(d) + '$. ' : '') + '$|' + expr + '|^2 = ' + (c[0] * c[0] === 1 ? '' : c[0] * c[0]) + '|' + VA + '|^2 ' + (c[0] * c[1] < 0 ? '- ' : '+ ') + Math.abs(2 * c[0] * c[1]) + VA + ' \\cdot ' + VB + ' + ' + (c[1] * c[1] === 1 ? '' : c[1] * c[1]) + '|' + VB + '|^2 = ' + F.n(v2) + '$, so $|' + expr + '| = ' + F.n(key) + '$.'
+      sol: (useAngle ? '$' + VA + ' \\cdot ' + VB + ' = |' + VA + '||' + VB + '|\\cos ' + ang + '^\\circ = ' + F.n(d) + '$. ' : '') + '$|' + expr + '|^2 = ' + (c[0] * c[0] === 1 ? '' : c[0] * c[0]) + '|' + VA + '|^2 ' + (c[0] * c[1] < 0 ? '- ' : '+ ') + Math.abs(2 * c[0] * c[1]) + VA + ' \\cdot ' + VB + ' + ' + (c[1] * c[1] === 1 ? '' : c[1] * c[1]) + '|' + VB + '|^2 = ' + F.sum([[c[0] * c[0] * p * p, ''], [d.mul(2 * c[0] * c[1]), ''], [c[1] * c[1] * r * r, '']]) + ' = ' + F.n(v2) + '$, so $|' + expr + '| = ' + (F.n(key) === F.n(v2) ? '' : '\\sqrt{' + F.n(v2) + '} = ') + F.n(key) + '$.'
     };
   });
 
@@ -276,8 +284,8 @@
     var wrong = ['0', '1', '-1', 'z', 'z^2', '-z', '1 + z^2'].filter(function (x) { return x !== key; });
     return {
       stem: 'If the complex number $z$ satisfies $z^3 = 1$ and $z \\ne 1$, then $1 + z + z^2 + \\cdots + z^{' + n + '} =$ ( )', key: m(key), wrong: W(R.shuffle(wrong.slice(0, 4)).concat(wrong.slice(4)).map(function (x) { return [x, 'slip']; })), check: omegaCheck(omegaSum(n)),
-      sol: 'From $z^3 = 1$, $z \\ne 1$: $(z - 1)(z^2 + z + 1) = 0$ gives $1 + z + z^2 = 0$, and the powers repeat every $3$. The sum has $' + terms + '$ terms: ' + Math.floor(terms / 3) + ' complete blocks of three (each $0$)' +
-        (rem === 0 ? ', so the sum is $0$.' : rem === 1 ? ' and one more term, $z^{' + n + '} = 1$. So the sum is $1$.' : ' and two more terms, $z^{' + (n - 1) + '} + z^{' + n + '} = 1 + z = -z^2$.')
+      sol: 'Since $z^3 - 1 = (z - 1)(z^2 + z + 1) = 0$ and $z \\ne 1$, we get $1 + z + z^2 = 0$. The powers of $z$ repeat every $3$, so every block of three consecutive terms adds up to $0$. The sum has $' + terms + '$ terms, which is $' + Math.floor(terms / 3) + '$ blocks of three' +
+        (rem === 0 ? ' exactly, so the sum is $0$.' : rem === 1 ? ' and one more term, $z^{' + n + '} = 1$. So the sum is $1$.' : ' and two more terms, $z^{' + (n - 1) + '} + z^{' + n + '} = 1 + z = -z^2$.')
     };
   }
   def({ id: 'CPX.omega', code: 'CPX', lesson: '7.6', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -308,8 +316,8 @@
     return {
       stem: 'On the complex plane, the point representing a non-real complex number $z$ lies on the line $' + L[2] + '$. If $z$ is a root of the equation $x^2 + mx + ' + F.n(c) + ' = 0$ ($m \\in \\mathbb{R}$), then $m =$ ( )', key: m(F.pm(mv)),
       wrong: W([[mv, 'pm'], [Sd.sqrt(c).eq(mv) ? null : m(F.pm(Sd.sqrt(c))), 'partial'], [m(F.pm(mv.scale(q(1, 2)))), 'half'], [mv.neg(), 'pm'], [Sd.sqrt(c.mul(2)).eq(mv) ? null : m(F.pm(Sd.sqrt(c.mul(2)))), 'slip'], [m(F.pm(mv.scale(2))), 'slip']]), check: chk.alts([mv.num, -mv.num]),
-      sol: 'The coefficients are real, so the other root is $\\bar{z}$. Write $z = ' + (L[0] === 1 ? 't' : L[0] + 't') + ' ' + (L[1] < 0 ? '- ' : '+ ') + (Math.abs(L[1]) === 1 ? '' : Math.abs(L[1])) + 'ti$ (a point of $' + L[2] + '$). Product of the roots: $z\\bar{z} = ' + s2 + 't^2 = ' + F.n(c) + '$, so $t = \\pm ' + F.n(Sd.sqrt(t2)) +
-        '$. Sum of the roots: $z + \\bar{z} = ' + (2 * L[0]) + 't = -m$. Hence $m = \\pm ' + F.n(mv) + '$ — both signs.'
+      sol: 'The coefficients are real, so the other root is $\\bar{z}$. Write $z = ' + (L[0] === 1 ? 't' : L[0] + 't') + ' ' + (L[1] < 0 ? '- ' : '+ ') + (Math.abs(L[1]) === 1 ? '' : Math.abs(L[1])) + 'ti$, since $z$ lies on $' + L[2] + '$. The product of the roots is $z\\bar{z} = ' + s2 + 't^2 = ' + F.n(c) + '$, so $t = \\pm ' + F.n(Sd.sqrt(t2)) +
+        '$. The sum of the roots is $z + \\bar{z} = ' + (2 * L[0]) + 't = -m$. Hence $m = \\pm ' + F.n(mv) + '$, with both signs possible because $t$ can be positive or negative.'
     };
   });
   function rootsOf(p, qq) { return 'z^2 ' + (p < 0 ? '+ ' : '- ') + (Math.abs(2 * p) === 1 ? '' : Math.abs(2 * p)) + 'z + ' + (p * p + qq * qq) + ' = 0'; }       // roots p ± qi
@@ -325,7 +333,7 @@
     return {
       stem: 'Let $z_1$ and $z_2$ be the two complex roots of $' + rootsOf(p, qq) + '$, and let $a_n = (z_1^n ' + sg + ' z_2^n)^2$. Then $a_' + n + ' =$ ( )', key: m(key),
       wrong: W([[key.n === 0 ? null : key.neg(), 'sign'], [other.eq(key) ? null : other, 'companion'], [sg === '+' ? z1.re.mul(2) : z1.im.mul(2), 'partial'], [key.n === 0 ? q(4) : q(0), 'slip'], [other.neg(), 'companion'], [key.div(4), 'partial']]), check: chk.num(sq[0]),
-      sol: 'The roots are $' + cx(p, qq).tex() + '$ and $' + cx(p, -qq).tex() + '$ (conjugates). $z_1^{' + n + '} = ' + z1.tex() + '$ and $z_2^{' + n + '}$ is its conjugate, so $z_1^{' + n + '} ' + sg + ' z_2^{' + n + '} = ' + (sg === '+' ? F.n(z1.re.mul(2)) : cx(0, z1.im.mul(2)).tex()) + '$. Squaring gives $' + F.n(key) + '$' + (sg === '-' && key.n !== 0 ? ' (remember $i^2 = -1$).' : '.')
+      sol: 'The roots are $' + cx(p, qq).tex() + '$ and $' + cx(p, -qq).tex() + '$, a conjugate pair. Then $z_1^{' + n + '} = ' + z1.tex() + '$ and $z_2^{' + n + '}$ is its conjugate, so $z_1^{' + n + '} ' + sg + ' z_2^{' + n + '} = ' + (sg === '+' ? F.n(z1.re.mul(2)) : cx(0, z1.im.mul(2)).tex()) + '$. Squaring gives $' + F.n(key) + '$' + (sg === '-' && key.n !== 0 ? ', because $i^2 = -1$.' : '.')
     };
   });
   def({ id: 'CPX.vieta', code: 'CPX', lesson: '7.6', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -357,6 +365,8 @@
   function combos(n, k) { var res = [], cur = []; (function rec(s) { if (cur.length === k) { res.push(cur.slice()); return; } for (var i = s; i < n; i++) { cur.push(i); rec(i + 1); cur.pop(); } })(0); return res; }
   function perms(n, k) { var res = [], cur = [], used = []; (function rec() { if (cur.length === k) { res.push(cur.slice()); return; } for (var i = 0; i < n; i++) { if (used[i]) continue; used[i] = 1; cur.push(i); rec(); cur.pop(); used[i] = 0; } })(); return res; }
   function prob(outcomes, pred) { var c = 0; outcomes.forEach(function (o) { if (pred(o)) c++; }); return q(c, outcomes.length); }
+  /** "\\dfrac{a}{b} = key", or just the fraction when it does not reduce */
+  function fracEq(a, b, key) { var t = '\\dfrac{' + a + '}{' + b + '}'; return F.n(key) === t ? t : t + ' = ' + F.n(key); }
   function fracOpts(key, list) { return W(list.filter(function (x) { return x && x[0] !== null && x[0] !== undefined; }).filter(function (x) { var v = Fr.of(x[0]); return v.n >= 0 && v.cmp(1) <= 0; })); }
   var CNT = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
   var COL = ['red', 'white', 'black', 'yellow', 'green', 'blue'];
@@ -369,12 +379,12 @@
     var c2 = function (x) { return x * (x - 1) / 2; };
     if (kind === 'same') {
       key = prob(all, same); ask = 'the two balls have the same colour';
-      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs. Same-colour pairs: $' + counts.map(c2).join(' + ') + ' = ' + counts.map(c2).reduce(function (x, y) { return x + y; }) + '$. So the probability is $' + F.n(key) + '$.';
+      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs. The pairs of the same colour number $' + counts.map(function (c) { return 'C(' + c + ', 2)'; }).join(' + ') + ' = ' + counts.map(c2).join(' + ') + ' = ' + counts.map(c2).reduce(function (x, y) { return x + y; }) + '$. So the probability is $' + fracEq(counts.map(c2).reduce(function (x, y) { return x + y; }), tot, key) + '$.';
       wrong = [[q(1).sub(key), 'complement'], [counts.reduce(function (s, c) { return s.add(q(c * c, n * n)); }, q(0)), 'operation'], [q(c2(counts[0]), tot), 'partial'], [q(1, counts.length), 'slip'], [key.div(2), 'slip']];
     } else if (kind === 'both') {
       if (counts[0] < 2) retry();
       key = prob(all, function (o) { return bag[o[0]] === 0 && bag[o[1]] === 0; }); ask = 'both balls are ' + names[0];
-      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs, and $C(' + counts[0] + ', 2) = ' + c2(counts[0]) + '$ of them are two ' + names[0] + ' balls. So the probability is $' + F.n(key) + '$.';
+      sol = 'There are $C(' + n + ', 2) = ' + tot + '$ equally likely pairs, and $C(' + counts[0] + ', 2) = ' + c2(counts[0]) + '$ of them are two ' + names[0] + ' balls. So the probability is $' + fracEq(c2(counts[0]), tot, key) + '$.';
       wrong = [[q(counts[0] * counts[0], n * n), 'operation'], [q(counts[0], n), 'partial'], [q(1).sub(key), 'complement'], [q(2 * counts[0], n * (n - 1)), 'slip'], [q(c2(counts[0]) * 2, tot).cmp(1) <= 0 ? q(c2(counts[0]) * 2, tot) : null, 'slip']];
     } else {
       key = prob(all, function (o) { return bag[o[0]] === 0 || bag[o[1]] === 0; }); ask = 'at least one of the two balls is ' + names[0];
@@ -450,7 +460,7 @@
     return {
       stem: c[0] + ', $' + n1 + '$ ' + c[1] + ' and $' + n2 + '$ ' + c[2] + ' were surveyed. ' + G1 + ': ' + list(a) + '. ' + G2 + ': ' + list(b) + '. The two groups choose independently. If one person is chosen at random from each group, the probability that they ' + (same ? c[4].replace('different', 'the same').replace(/s$/, '').replace('travel in the same way', 'travel in the same way') : c[4]) + ' is ( )', key: m(key),
       wrong: fracOpts(key, [[q(1).sub(key), 'complement'], [same ? q(1, k) : q(k - 1, k), 'partial'], [q(Math.max.apply(null, a), n1).mul(q(Math.max.apply(null, b), n2)), 'partial'], [key.add(q(1, 10)).cmp(1) < 0 ? key.add(q(1, 10)) : key.sub(q(1, 10)), 'slip'], [key.sub(q(1, 20)), 'slip']]), check: chk.num(key.num),
-      sol: 'P(same choice) $= ' + terms + ' = ' + F.n(pSame) + '$ (multiply within each option, then add).' + (same ? '' : ' So P(different) $= 1 - ' + F.n(pSame) + ' = ' + F.n(key) + '$.')
+      sol: 'For each option, multiply the two probabilities of choosing it, then add the results: P(same choice) $= ' + terms + ' = ' + F.n(pSame) + '$.' + (same ? '' : ' So P(different) $= 1 - ' + F.n(pSame) + ' = ' + F.n(key) + '$.')
     };
   }
   def({ id: 'PRB.two-way', code: 'PRB', lesson: '7.7', tier: 'H', level: '=', fmt: 'V', w: 1,
@@ -464,8 +474,8 @@
     for (var j = 1; j <= y; j++) balls.push([1, j]);
     var n = balls.length, all = combos(n, 2), e2 = R.pick(['labels', 'labels', 'one', 'sum']);
     var p1 = prob(all, function (o) { return balls[o[0]][0] !== balls[o[1]][0]; }), p2, t2, why2;
-    if (e2 === 'labels') { p2 = prob(all, function (o) { return balls[o[0]][1] !== balls[o[1]][1]; }); t2 = 'they have different labels'; why2 = 'same-label pairs: $' + Math.min(r, y) + '$, so different labels: $1 - \\dfrac{' + Math.min(r, y) + '}{' + all.length + '} = ' + F.n(p2) + '$'; }
-    else if (e2 === 'one') { p2 = prob(all, function (o) { return balls[o[0]][1] === 1 || balls[o[1]][1] === 1; }); t2 = 'at least one of them is labelled $1$'; why2 = 'pairs with no ball labelled $1$: $C(' + (n - 2) + ', 2) = ' + ((n - 2) * (n - 3) / 2) + '$, so at least one label $1$: $' + F.n(p2) + '$'; }
+    if (e2 === 'labels') { p2 = prob(all, function (o) { return balls[o[0]][1] !== balls[o[1]][1]; }); t2 = 'they have different labels'; why2 = 'exactly $' + Math.min(r, y) + '$ pairs share a label, one for each label that both colours carry, so the probability of different labels is $1 - \\dfrac{' + Math.min(r, y) + '}{' + all.length + '} = ' + F.n(p2) + '$'; }
+    else if (e2 === 'one') { p2 = prob(all, function (o) { return balls[o[0]][1] === 1 || balls[o[1]][1] === 1; }); t2 = 'at least one of them is labelled $1$'; why2 = 'there are $C(' + (n - 2) + ', 2) = ' + ((n - 2) * (n - 3) / 2) + '$ pairs with no ball labelled $1$, so the probability of at least one label $1$ is $1 - \\dfrac{' + ((n - 2) * (n - 3) / 2) + '}{' + all.length + '} = ' + F.n(p2) + '$'; }
     else { p2 = prob(all, function (o) { return (balls[o[0]][1] + balls[o[1]][1]) % 2 === 0; }); t2 = 'the sum of their labels is even'; why2 = 'counting the pairs whose labels are both even or both odd gives $' + F.n(p2) + '$'; }
     if (p1.eq(p2) || p2.n === 0 || p2.eq(1) || p1.eq(q(1).sub(p2))) retry();
     var pr = function (u, v) { return m(u) + ', ' + m(v); };
@@ -473,7 +483,7 @@
       stem: 'A box contains $' + n + '$ balls of the same size: $' + r + '$ ' + names[0] + ' balls labelled $' + Array.from({ length: r }, function (_, k) { return k + 1; }).join(', ') + '$ and $' + y + '$ ' + names[1] + ' balls labelled $' + Array.from({ length: y }, function (_, k) { return k + 1; }).join(', ') +
         '$. Two balls are drawn at random at the same time. The probability that the two balls have different colours and the probability that ' + t2 + ' are, respectively, ( )', key: pr(p1, p2),
       wrong: [[pr(p1, q(1).sub(p2)), 'complement'], [pr(q(1).sub(p1), p2), 'complement'], [pr(p2, p1), 'swap'], [pr(q(1).sub(p1), q(1).sub(p2)), 'complement'], [pr(q(1, 2), p2), 'slip']], check: chk.tuple([p1.num, p2.num]),
-      sol: 'There are $C(' + n + ', 2) = ' + all.length + '$ equally likely pairs. Different colours: $' + r + ' \\cdot ' + y + ' = ' + (r * y) + '$ pairs, so $' + F.n(p1) + '$. For the second event, ' + why2 + '.'
+      sol: 'There are $C(' + n + ', 2) = ' + all.length + '$ equally likely pairs. There are $' + r + ' \\cdot ' + y + ' = ' + (r * y) + '$ pairs with different colours, so the first probability is $' + fracEq(r * y, all.length, p1) + '$. For the second event, ' + why2 + '.'
     };
   });
   def({ id: 'PRB.sums', code: 'PRB', lesson: '7.7', tier: 'M', level: '=', fmt: 'V', w: 1,
@@ -489,7 +499,7 @@
       stem: 'A bag contains $' + Nn + '$ balls of the same size: ' + names.join(', ').replace(/, ([^,]*)$/, ' and $1') + '. When one ball is drawn at random, $P(\\text{' + names[0] + '}) = ' + F.n(r) + '$, $P(\\text{' + names[2] + ' or ' + names[1] + '}) = ' + F.n(s1) + '$ and $P(\\text{' + names[1] + ' or ' + names[3] + '}) = ' + F.n(s2) +
         '$. Then the probabilities of drawing a ' + names[1] + ', a ' + names[2] + ' and a ' + names[3] + ' ball are, respectively, ( )', key: tr(P[0], P[1], P[2]),
       wrong: [[tr(P[2], P[1], P[0]), 'swap'], [tr(P[0], P[2], P[1]), 'swap'], [tr(P[1], P[0], P[2]), 'swap'], [tr(P[1], P[2], P[0]), 'swap'], [tr(P[2], P[0], P[1]), 'swap']], check: chk.tuple([p2, p3, p4]),
-      sol: 'The four probabilities add up to $1$. So $P(\\text{' + names[3] + '}) = 1 - ' + F.n(r) + ' - ' + F.n(s1) + ' = ' + F.n(P[2]) + '$; then $P(\\text{' + names[1] + '}) = ' + F.n(s2) + ' - ' + F.n(P[2]) + ' = ' + F.n(P[0]) + '$ and $P(\\text{' + names[2] + '}) = ' + F.n(s1) + ' - ' + F.n(P[0]) + ' = ' + F.n(P[1]) + '$. Match each value to its colour — the options differ only in the order.'
+      sol: 'The four probabilities add up to $1$. So $P(\\text{' + names[3] + '}) = 1 - ' + F.n(r) + ' - ' + F.n(s1) + ' = ' + F.n(P[2]) + '$. Then $P(\\text{' + names[1] + '}) = ' + F.n(s2) + ' - ' + F.n(P[2]) + ' = ' + F.n(P[0]) + '$ and $P(\\text{' + names[2] + '}) = ' + F.n(s1) + ' - ' + F.n(P[0]) + ' = ' + F.n(P[1]) + '$. The options use the same three numbers in different orders, so the order ' + names[1] + ', ' + names[2] + ', ' + names[3] + ' decides the answer.'
     };
   });
   def({ id: 'PRB.compare-n', code: 'PRB', lesson: '7.7', tier: 'H', level: '=', fmt: 'V', w: 1,
@@ -530,9 +540,9 @@
     if (key.n === 0 || key.eq(1)) retry();
     var alt = prob(all, function (o) { return holds(o, rel === '\\le' ? '<' : rel === '<' ? '\\le' : '\\le'); });
     return {
-      stem: 'There are $' + Nn + '$ identical balls labelled $1, 2, \\ldots, ' + Nn + '$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| ' + rel + ' ' + F.n(th) + '$ is ( )', key: m(key),
+      stem: 'There are $' + Nn + '$ identical balls labelled $' + (Nn <= 5 ? Array.from({ length: Nn }, function (_, k) { return k + 1; }).join(', ') : '1, 2, \\ldots, ' + Nn) + '$. Three balls are drawn at random one after another without replacement. Let $m$ be the average of the numbers on the first two balls and $n$ the average of the numbers on all three balls. The probability that $|m - n| ' + rel + ' ' + F.n(th) + '$ is ( )', key: m(key),
       wrong: fracOpts(key, [[q(1).sub(key), 'complement'], [alt.eq(key) || rel === '>' ? null : alt, 'endpoint'], [key.add(q(1, 15)).cmp(1) < 0 ? key.add(q(1, 15)) : null, 'slip'], [key.sub(q(1, 15)).n > 0 ? key.sub(q(1, 15)) : null, 'slip'], [q(1, 2).eq(key) ? null : q(1, 2), 'slip'], [key.add(q(1, 10)).cmp(1) < 0 ? key.add(q(1, 10)) : null, 'slip'], [q(1, 3).eq(key) ? null : q(1, 3), 'slip']]), check: chk.num(key.num),
-      sol: 'If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| ' + rel + ' ' + F.n(th.mul(6)) + '$. Counting the ordered draws that satisfy it gives $' + all.filter(function (o) { return holds(o, rel); }).length + '$ out of $' + all.length + '$, i.e. $' + F.n(key) + '$.'
+      sol: 'If the three numbers are $a, b, c$ in order, then $m - n = \\dfrac{a + b}{2} - \\dfrac{a + b + c}{3} = \\dfrac{a + b - 2c}{6}$, so the condition is $|a + b - 2c| ' + rel + ' ' + F.n(th.mul(6)) + '$. Counting the ordered draws that satisfy it gives $' + all.filter(function (o) { return holds(o, rel); }).length + '$ out of $' + all.length + '$, so the probability is $' + F.n(key) + '$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);

@@ -164,7 +164,7 @@
     return {
       stem: full ? 'If the major axis of an ellipse has length $' + (2 * a) + '$ and its eccentricity is $' + F.n(e) + '$, then the length of its minor axis is ( )' : 'If an ellipse has $a = ' + a + '$ and eccentricity $e = ' + F.n(e) + '$, then $b =$ ( )', key: m(key),
       wrong: W([[full ? b : b.scale(2), 'half'], [full ? 2 * c : c, 'companion'], [a * a - c * c, 'partial'], [full ? Sd.sqrt(a * a + c * c).scale(2) : Sd.sqrt(a * a + c * c), 'sign'], [full ? 2 * a : a, 'partial']]), check: chk.num((full ? 2 : 1) * Math.sqrt(a * a - Math.pow(a * e.num, 2))),
-      sol: (full ? '$2a = ' + (2 * a) + '$ gives $a = ' + a + '$, so ' : '') + '$c = ae = ' + a + ' \\cdot ' + F.n(e) + ' = ' + c + '$, so $b^2 = a^2 - c^2 = ' + (a * a) + ' - ' + (c * c) + ' = ' + (a * a - c * c) + '$ and $b = ' + F.n(b) + '$.' + (full ? ' The minor axis is $2b = ' + F.n(key) + '$.' : '')
+      sol: (full ? '$2a = ' + (2 * a) + '$ gives $a = ' + a + '$. Then ' : '') + '$c = ae = ' + a + ' \\cdot ' + F.n(e) + ' = ' + c + '$, so $b^2 = a^2 - c^2 = ' + (a * a) + ' - ' + (c * c) + ' = ' + (a * a - c * c) + '$ and $b = ' + F.n(b) + '$.' + (full ? ' The minor axis is $2b = ' + F.n(key) + '$.' : '')
     };
   });
   def({ id: 'CN-ell.vertex-e', code: 'CN-ell', lesson: '6.5', tier: 'M', level: '=', fmt: 'V', w: 0.3,
