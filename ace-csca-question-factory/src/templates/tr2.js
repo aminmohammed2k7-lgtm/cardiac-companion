@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/tr2.js — Trigonometry II: TR-sum, TR-dbl, TR-half, TR-hom. */
+/* ACE CSCA Question Factory · templates/tr2.js: Trigonometry II: TR-sum, TR-dbl, TR-half, TR-hom. */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Sd = N.Sd, trig = N.trig, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, T = QF.T;
@@ -10,9 +10,31 @@
     return list.filter(function (b) { return b && b[0] !== null && b[0] !== undefined; }).map(function (b) { return [typeof b[0] === 'string' ? b[0] : m(b[0]), b[1]]; });
   }
   function par(v) { var t = F.n(v); return /^-/.test(t) ? '\\left(' + t + '\\right)' : t; }
+  /** " = \dfrac{n}{d} = \dfrac{n'}{d'} = value": the fraction, then (when n or d is a fraction) both parts multiplied by their common denominator, then the value */
+  function chain(n, d, key) {
+    var parts = [d.n === 1 && d.d === 1 ? F.n(n) : '\\dfrac{' + F.n(n) + '}{' + F.n(d) + '}'];
+    if (!(n.d === 1 && d.d === 1)) {
+      var L = N.lcm(n.d, d.d), n2 = n.mul(L), d2 = d.mul(L);
+      if (!(d2.n === 1 && d2.d === 1)) parts.push('\\dfrac{' + F.n(n2) + '}{' + F.n(d2) + '}');
+    }
+    parts.push(F.n(key));
+    return ' = ' + parts.filter(function (p, i) { return i === 0 || p !== parts[i - 1]; }).join(' = ');
+  }
   function word(fn) { return { sin: 'sine', cos: 'cosine', tan: 'tangent' }[fn]; }
   function sgnWord(v) { return v.sgn > 0 ? 'positive' : 'negative'; }
   function relAt(tex, a) { return function () { return ev.rel(tex, { alpha: a }); }; }
+  /** the other ratio of α from sin²α + cos²α = 1 and the sign in the quadrant */
+  function otherRatio(A, given, where) {
+    var o = given === 'sin' ? 'cos' : 'sin', g2 = A[given].mul(A[given]);
+    return 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + o + '^2\\alpha = 1 - ' + F.n(g2) + ' = ' + F.n(sd(1).sub(g2)) + '$. ' + where.charAt(0).toUpperCase() + where.slice(1) + ' the ' + word(o) + ' is ' + sgnWord(A[o]) + ', so $\\' + o + '\\alpha = ' + F.n(A[o]) + '$.';
+  }
+  /** rationalising the value of tan(A ± B) for the splits 45 ± 30 and 60 ± 45 */
+  var TANRAT = {
+    '45+30': '\\dfrac{3 + \\sqrt{3}}{3 - \\sqrt{3}} = \\dfrac{(3 + \\sqrt{3})^2}{9 - 3} = \\dfrac{12 + 6\\sqrt{3}}{6}',
+    '45-30': '\\dfrac{3 - \\sqrt{3}}{3 + \\sqrt{3}} = \\dfrac{(3 - \\sqrt{3})^2}{9 - 3} = \\dfrac{12 - 6\\sqrt{3}}{6}',
+    '60+45': '\\dfrac{(\\sqrt{3} + 1)^2}{(1 - \\sqrt{3})(1 + \\sqrt{3})} = \\dfrac{4 + 2\\sqrt{3}}{-2}',
+    '60-45': '\\dfrac{(\\sqrt{3} - 1)^2}{(1 + \\sqrt{3})(\\sqrt{3} - 1)} = \\dfrac{4 - 2\\sqrt{3}}{2}'
+  };
 
   /* ===================== TR-sum · sum and difference formulas ===================== */
   var SPLIT = { 15: [45, 30, '-'], 75: [45, 30, '+'], 105: [60, 45, '+'] };
@@ -45,9 +67,9 @@
     var call = fc(fn, deg, useDeg), stem;
     if (givenStyle && deg === ref) stem = 'Given $' + fc(fn, A, useDeg) + ' = ' + F.n(trig[fn](A)) + '$ and $' + fc(fn, B, useDeg) + ' = ' + F.n(trig[fn](B)) + '$, then $' + call + ' =$ ( )';
     else stem = R.pick(['$' + call + ' =$ ( )', 'The value of $' + call + '$ is ( )']);
-    var work = tan ? '\\tan\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expandTan(A, B, sg, useDeg) : '\\' + fn + '\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expand(fn, A, B, sg, useDeg);
+    var work = tan ? '\\tan\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expandTan(A, B, sg, useDeg) + ' = ' + TANRAT[A + sg + B] : '\\' + fn + '\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expand(fn, A, B, sg, useDeg);
     var sol;
-    if (deg === ref) sol = 'Write $' + splitTex(ref, sp, useDeg) + '$. Then $' + work + ' = ' + F.n(key) + '$' + (tan ? ' (rationalise the denominator).' : '.');
+    if (deg === ref) sol = 'Write $' + splitTex(ref, sp, useDeg) + '$. Then $' + work + ' = ' + F.n(key) + '$.' + (tan ? ' The denominator was rationalised in the last steps.' : '');
     else {
       sol = 'The angle $' + ang(deg, useDeg) + '$ lies in the ' + QD[trig.quadrant(deg)].name + ' quadrant and its reference angle is $' + ang(ref, useDeg) + '$, so $' + call + ' = ' + (key.sgn === base.sgn ? '' : '-') + fc(fn, ref, useDeg) + '$. ' +
         'With $' + splitTex(ref, sp, useDeg) + '$: $' + work + ' = ' + F.n(base) + '$. Hence the value is $' + F.n(key) + '$.';
@@ -95,8 +117,8 @@
       .concat([[key.neg(), 'sign'], [fn === 'sin' ? A.sin.add(sb) : A.cos.add(cb), 'operation']]);
     var first = sg === '+' && R.bool(0.3), arg = first ? BETA[b] + ' + \\alpha' : '\\alpha ' + sg + ' ' + BETA[b], ask = '\\' + fn + '\\left(' + arg + '\\right)';
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', then $' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: 'In the ' + QD[quad].name + ' quadrant the ' + word(other) + ' is ' + sgnWord(A[other]) + ', so $\\' + other + '\\alpha = ' + F.n(A[other]) + '$. Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', ' ' + BETA[b], sg) + ' = ' +
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', then $' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
+      sol: otherRatio(A, given, 'in the ' + QD[quad].name + ' quadrant') + ' Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', ' ' + BETA[b], sg) + ' = ' +
         sumNumbers(fn, A.sin, A.cos, sb, cb, sg) + ' = ' + F.n(key) + '$.'
     };
   });
@@ -114,14 +136,14 @@
       S('\\sin(\\alpha - \\beta) < \\sin\\alpha', true, '$-\\dfrac{\\pi}{2} < \\alpha - \\beta < \\alpha < \\dfrac{\\pi}{2}$ and the sine is increasing on that interval.', { g: 'sa' }),
       S('\\sin(\\alpha + \\beta) < \\sin(\\alpha - \\beta)', false, '$\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta) = 2\\cos\\alpha\\sin\\beta > 0$.', { g: 'sd', trap: 'sign' }),
       S('\\cos(\\alpha + \\beta) > \\cos(\\alpha - \\beta)', false, 'the difference of the two sides is $-2\\sin\\alpha\\sin\\beta < 0$.', { g: 'cc', trap: 'sign' }),
-      S('\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta', false, 'the sine of a sum is not the sum of the sines.', { g: 'ss', trap: 'operation' }),
-      S('\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta', false, 'the cosine of a sum is not the sum of the cosines.', { g: 'cs', trap: 'operation' }),
-      S('\\cos(\\alpha + \\beta) > \\cos\\alpha', false, '$\\alpha + \\beta > \\alpha$ and the cosine is decreasing on $(0, \\pi)$.', { g: 'ca', trap: 'sign' }),
-      S('\\cos(\\alpha + \\beta) > 0', false, '$\\alpha + \\beta$ can be obtuse, for example $\\alpha = \\beta = 60^\\circ$.', { g: 'c0', trap: 'domain' }),
-      S('\\sin(\\alpha + \\beta) > \\sin\\alpha', false, 'not always: for $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ < \\sin 80^\\circ$.', { g: 'sb', trap: 'domain' }),
-      S('\\sin(\\alpha - \\beta) > 0', false, 'it is negative when $\\alpha < \\beta$.', { g: 's0', trap: 'domain' }),
-      S('\\tan(\\alpha + \\beta) > 0', false, 'it is negative when $\\alpha + \\beta$ is obtuse.', { g: 't0', trap: 'domain' }),
-      S('\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta', false, '$\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ is larger.', { g: 'cp', trap: 'sign' })
+      S('\\sin(\\alpha + \\beta) = \\sin\\alpha + \\sin\\beta', false, 'the sine of a sum is not the sum of the sines. For $\\alpha = \\beta = 30^\\circ$ the left side is $\\sin 60^\\circ = \\dfrac{\\sqrt{3}}{2}$ and the right side is $1$.', { g: 'ss', trap: 'operation' }),
+      S('\\cos(\\alpha + \\beta) = \\cos\\alpha + \\cos\\beta', false, 'the cosine of a sum is not the sum of the cosines. For $\\alpha = \\beta = 60^\\circ$ the left side is $\\cos 120^\\circ = -\\dfrac{1}{2}$ and the right side is $1$.', { g: 'cs', trap: 'operation' }),
+      S('\\cos(\\alpha + \\beta) > \\cos\\alpha', false, '$0 < \\alpha < \\alpha + \\beta < \\pi$ and the cosine is decreasing on $(0, \\pi)$, so $\\cos(\\alpha + \\beta) < \\cos\\alpha$.', { g: 'ca', trap: 'sign' }),
+      S('\\cos(\\alpha + \\beta) > 0', false, '$\\alpha + \\beta$ can be obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\cos 120^\\circ = -\\dfrac{1}{2} < 0$.', { g: 'c0', trap: 'domain' }),
+      S('\\sin(\\alpha + \\beta) > \\sin\\alpha', false, 'this is not always true. For $\\alpha = \\beta = 80^\\circ$, $\\sin 160^\\circ = \\sin 20^\\circ < \\sin 80^\\circ$.', { g: 'sb', trap: 'domain' }),
+      S('\\sin(\\alpha - \\beta) > 0', false, 'it is negative when $\\alpha < \\beta$. For $\\alpha = 30^\\circ$ and $\\beta = 60^\\circ$, $\\sin(-30^\\circ) = -\\dfrac{1}{2}$.', { g: 's0', trap: 'domain' }),
+      S('\\tan(\\alpha + \\beta) > 0', false, 'it is negative when $\\alpha + \\beta$ is obtuse. For $\\alpha = \\beta = 60^\\circ$, $\\tan 120^\\circ = -\\sqrt{3}$.', { g: 't0', trap: 'domain' }),
+      S('\\cos(\\alpha - \\beta) < \\cos\\alpha\\cos\\beta', false, '$\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$ and $\\sin\\alpha\\sin\\beta > 0$, so $\\cos(\\alpha - \\beta)$ is the larger one.', { g: 'cp', trap: 'sign' })
     ];
     return out(R.pick(['Let $\\alpha$ and $\\beta$ be acute angles. Which of the following must be true? ( )', 'If $\\alpha$ and $\\beta$ are both acute angles, which of the following always holds? ( )']), QF.pickStmts(R, 'S', pool));
   });
@@ -133,8 +155,8 @@
     if (R.bool(0.45)) {
       var quad = R.pick([3, 3, 2, 4]), A = mkAng(R, quad, 'rat'), g = R.pick(['sin', 'cos']);
       t = A.tan.toFr(); a = A.num;
-      lead = 'Given $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
-      pre = 'From the quadrant, $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$, so $\\tan\\alpha = ' + F.n(t) + '$. ';
+      lead = 'If $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
+      pre = otherRatio(A, g, 'in the ' + QD[quad].name + ' quadrant') + ' So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$. ';
     } else { t = R.pick(TLIST); a = Math.atan(t.num); lead = 'If $\\tan\\alpha = ' + F.n(t) + '$, then'; }
     if ((sg === '+' && t.eq(1)) || (sg === '-' && t.eq(-1))) retry();
     var one = q(1), key = sg === '+' ? t.add(1).div(one.sub(t)) : t.sub(1).div(one.add(t));
@@ -143,7 +165,7 @@
     var ask = '\\tan\\left(\\alpha ' + sg + ' \\dfrac{\\pi}{4}\\right)', op = sg === '+' ? '-' : '+';
     return {
       stem: lead + ' $' + ask + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.tan(a + (sg === '+' ? 1 : -1) * PI / 4)),
-      sol: pre + '$' + ask + ' = \\dfrac{\\tan\\alpha ' + sg + ' \\tan\\dfrac{\\pi}{4}}{1 ' + op + ' \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{' + F.n(sg === '+' ? t.add(1) : t.sub(1)) + '}{' + F.n(sg === '+' ? one.sub(t) : one.add(t)) + '} = ' + F.n(key) + '$.'
+      sol: pre + 'With $\\tan\\dfrac{\\pi}{4} = 1$: $' + ask + ' = \\dfrac{\\tan\\alpha ' + sg + ' \\tan\\dfrac{\\pi}{4}}{1 ' + op + ' \\tan\\alpha\\tan\\dfrac{\\pi}{4}} = \\dfrac{\\tan\\alpha ' + sg + ' 1}{1 ' + op + ' \\tan\\alpha}' + chain(sg === '+' ? t.add(1) : t.sub(1), sg === '+' ? one.sub(t) : one.add(t), key) + '$.'
     };
   });
 
@@ -158,9 +180,9 @@
       .concat([[key.neg(), 'sign'], [sumVal(fn, as, ac, bs, bc, sg), 'sign']]);
     var oa = ga === 'sin' ? 'cos' : 'sin', ob = gb === 'sin' ? 'cos' : 'sin', ask = '\\' + fn + '(\\alpha ' + sg + ' \\beta)';
     return {
-      stem: 'Given $\\' + ga + '\\alpha = ' + F.n(A[ga]) + '$, $\\alpha \\in ' + QD[qa].iv + '$, and $\\' + gb + '\\beta = ' + F.n(B[gb]) + '$, $\\beta \\in ' + QD[qb].iv + '$. Then $' + ask + ' =$ ( )',
+      stem: 'Let $\\' + ga + '\\alpha = ' + F.n(A[ga]) + '$ with $\\alpha \\in ' + QD[qa].iv + '$, and $\\' + gb + '\\beta = ' + F.n(B[gb]) + '$ with $\\beta \\in ' + QD[qb].iv + '$. Then $' + ask + ' =$ ( )',
       key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: 'Signs from the quadrants: $\\' + oa + '\\alpha = ' + F.n(A[oa]) + '$ and $\\' + ob + '\\beta = ' + F.n(B[ob]) + '$. Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', '\\beta', sg) + ' = ' + sumNumbers(fn, A.sin, A.cos, B.sin, B.cos, sg) + ' = ' + F.n(key) + '$.'
+      sol: 'From $\\sin^2 + \\cos^2 = 1$ and the sign in each quadrant: $\\' + oa + '\\alpha = ' + F.n(A[oa]) + '$, because the ' + word(oa) + ' is ' + sgnWord(A[oa]) + ' in the ' + QD[qa].name + ' quadrant, and $\\' + ob + '\\beta = ' + F.n(B[ob]) + '$, because the ' + word(ob) + ' is ' + sgnWord(B[ob]) + ' in the ' + QD[qb].name + ' quadrant. Then $' + ask + ' = ' + sumFormula(fn, '\\alpha', '\\beta', sg) + ' = ' + sumNumbers(fn, A.sin, A.cos, B.sin, B.cos, sg) + ' = ' + F.n(key) + '$.'
     };
   });
 
@@ -234,8 +256,8 @@
     var key = A.sin.mul(A.cos).scale(2), cos2 = A.cos.sq().sub(A.sin.sq());
     var wrong = [[key.neg(), 'sign'], [A.sin.mul(A.cos), 'partial'], [cos2, 'companion'], [A[given].scale(2), 'operation'], [cos2.neg(), 'companion']];
     return {
-      stem: R.pick(['If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ', 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ']) + T.inQuad(R, quad) + ', then $\\sin 2\\alpha =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.sin(2 * A.num)),
-      sol: 'In the ' + QD[quad].name + ' quadrant the ' + word(other) + ' is ' + sgnWord(A[other]) + ': $\\' + other + '\\alpha = ' + F.n(A[other]) + '$. Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot ' + par(A.sin) + ' \\cdot ' + par(A.cos) + ' = ' + F.n(key) + '$.'
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', then $\\sin 2\\alpha =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.sin(2 * A.num)),
+      sol: otherRatio(A, given, 'in the ' + QD[quad].name + ' quadrant') + ' Then $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot ' + par(A.sin) + ' \\cdot ' + par(A.cos) + ' = ' + F.n(key) + '$.'
     };
   }
   def({ id: 'TR-dbl.sin2', code: 'TR-dbl', lesson: '3.2', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -253,7 +275,7 @@
     var truth = given === 'sin' ? Math.cos(2 * Math.asin(Math.sqrt(k.num))) : Math.cos(2 * Math.acos(Math.sqrt(k.num)));
     return {
       stem: 'If $\\' + given + '^2\\alpha = ' + F.n(k) + '$, then $\\cos 2\\alpha =$ ( )', key: m(key), wrong: W([[old, 'old-answer'], [key.neg(), 'companion'], [one.sub(k), 'partial'], [k.mul(2), 'operation']]), check: chk.num(truth),
-      sol: (given === 'sin' ? '$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot ' + F.n(k) : '$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot ' + F.n(k) + ' - 1') + ' = ' + F.n(key) + '$. The given value is already the square: squaring it again gives the trap answer $' + F.n(old) + '$.'
+      sol: (given === 'sin' ? '$\\cos 2\\alpha = 1 - 2\\sin^2\\alpha = 1 - 2 \\cdot ' + F.n(k) : '$\\cos 2\\alpha = 2\\cos^2\\alpha - 1 = 2 \\cdot ' + F.n(k) + ' - 1') + ' = ' + F.n(key) + '$. The given number is already $\\' + given + '^2\\alpha$, so it must not be squared again. Squaring it would give $' + F.n(old) + '$.'
     };
   });
 
@@ -268,8 +290,8 @@
     else { expr = '\\dfrac{\\sin 2\\alpha}{1 - \\cos 2\\alpha}'; key = sd(1).div(t); truth = s2 / (1 - c2); why = expr + ' = \\dfrac{2\\sin\\alpha\\cos\\alpha}{2\\sin^2\\alpha} = \\dfrac{\\cos\\alpha}{\\sin\\alpha}'; }
     var wrong = [[sd(1).div(key), 'reciprocal'], [A.sin.mul(A.cos).scale(2), 'partial'], [A[other], 'partial'], [key.scale(2), 'operation'], [key.neg(), 'sign']];
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $' + expr + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: 'Simplify first: $' + why + '$. With $\\alpha$ acute, $\\' + other + '\\alpha = ' + F.n(A[other]) + '$, so the value is $' + F.n(key) + '$.'
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in \\left(0, \\dfrac{\\pi}{2}\\right)$, then $' + expr + ' =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(truth),
+      sol: 'Simplify first, using $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$, $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$ and $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$: $' + why + '$. ' + otherRatio(A, given, 'since $\\alpha$ is acute') + ' So $\\tan\\alpha = ' + F.n(t) + '$ and the value is $' + F.n(key) + '$.'
     };
   });
 
@@ -279,8 +301,8 @@
     if (R.bool(0.45)) {
       var quad = R.pick([2, 4, 3, 1]), A = mkAng(R, quad, 'rat'), g = R.pick(['sin', 'cos']);
       t = A.tan.toFr(); a = A.num;
-      lead = 'Given $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
-      pre = 'From the quadrant, $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$, so $\\tan\\alpha = ' + F.n(t) + '$. ';
+      lead = 'If $\\' + g + '\\alpha = ' + F.n(A[g]) + '$ and ' + T.inQuad(R, quad) + ', then';
+      pre = otherRatio(A, g, 'in the ' + QD[quad].name + ' quadrant') + ' So $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$. ';
     } else { t = R.pick(TLIST); a = Math.atan(t.num); lead = 'If $\\tan\\alpha = ' + F.n(t) + '$, then'; }
     var t2 = t.mul(t), one = q(1);
     if (t2.eq(1)) retry();
@@ -288,7 +310,7 @@
     var wrong = [[t.mul(2).div(one.add(t2)), 'sign'], [key.neg(), 'sign'], [t.mul(2), 'operation'], [key.inv(), 'reciprocal']];
     return {
       stem: lead + ' $\\tan 2\\alpha =$ ( )', key: m(key), wrong: W(wrong), check: chk.num(Math.tan(2 * a)),
-      sol: pre + '$\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{' + F.n(t.mul(2)) + '}{1 - ' + F.n(t2) + '} = ' + F.n(key) + '$.'
+      sol: pre + 'Then $\\tan 2\\alpha = \\dfrac{2\\tan\\alpha}{1 - \\tan^2\\alpha} = \\dfrac{' + F.n(t.mul(2)) + '}{1 - ' + F.n(t2) + '}' + chain(t.mul(2), one.sub(t2), key) + '$.'
     };
   });
 
@@ -300,7 +322,7 @@
     var a = Math.asin(k.num / Math.SQRT2) - (sg === '+' ? 1 : -1) * PI / 4;      // sin α ± cos α = √2 sin(α ± π/4) = k
     return {
       stem: 'If $\\sin\\alpha ' + sg + ' \\cos\\alpha = ' + F.n(k) + '$, then $\\sin 2\\alpha =$ ( )', key: m(key), wrong: W([[key.neg(), 'sign'], [k2, 'partial'], [key.div(2), 'half'], [k.mul(2), 'operation']]), check: chk.num(Math.sin(2 * a)),
-      sol: 'Square both sides: $(\\sin\\alpha ' + sg + ' \\cos\\alpha)^2 = 1 ' + sg + ' 2\\sin\\alpha\\cos\\alpha = 1 ' + sg + ' \\sin 2\\alpha = ' + F.n(k2) + '$. So $\\sin 2\\alpha = ' + F.n(key) + '$.'
+      sol: 'Square both sides: $(\\sin\\alpha ' + sg + ' \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha ' + sg + ' 2\\sin\\alpha\\cos\\alpha = 1 ' + sg + ' \\sin 2\\alpha$, so $1 ' + sg + ' \\sin 2\\alpha = ' + F.n(k2) + '$. Therefore $\\sin 2\\alpha = ' + (sg === '+' ? F.n(k2) + ' - 1' : '1 - ' + F.n(k2)) + ' = ' + F.n(key) + '$.'
     };
   });
   def({ id: 'TR-dbl.sumk-cos', code: 'TR-dbl', lesson: '3.2', tier: 'H', level: '+1', fmt: 'V', w: 0.3,
@@ -308,9 +330,9 @@
     var quad = R.pick([2, 4]), A = mkAng(R, quad, 'rat'), k = A.sin.add(A.cos), key = A.cos.sq().sub(A.sin.sq()), sin2 = A.sin.mul(A.cos).scale(2), diff = A.sin.sub(A.cos);
     if (k.isZero || key.isZero) retry();
     return {
-      stem: 'Given $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $\\cos 2\\alpha =$ ( )', key: m(key),
+      stem: 'If $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $\\cos 2\\alpha =$ ( )', key: m(key),
       wrong: W([[key.neg(), 'sign'], [m(F.pm(F.absOf(key))), 'pm'], [sin2, 'companion'], [sin2.neg(), 'companion']]), check: chk.num(Math.cos(2 * A.num)),
-      sol: 'Square: $1 + \\sin 2\\alpha = ' + F.n(k.sq()) + '$, so $\\sin 2\\alpha = ' + F.n(sin2) + '$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - \\sin 2\\alpha = ' + F.n(diff.sq()) + '$; in the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') +
+      sol: 'Square both sides: $1 + \\sin 2\\alpha = ' + F.n(k.sq()) + '$, so $\\sin 2\\alpha = ' + F.n(sin2) + '$. Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - \\sin 2\\alpha = ' + F.n(diff.sq()) + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') +
         ' \\cos\\alpha$, so $\\sin\\alpha - \\cos\\alpha = ' + F.n(diff) + '$. Finally $\\cos 2\\alpha = (\\cos\\alpha - \\sin\\alpha)(\\cos\\alpha + \\sin\\alpha) = ' + par(diff.neg()) + ' \\cdot ' + par(k) + ' = ' + F.n(key) + '$.'
     };
   });
@@ -329,17 +351,18 @@
     var quad = R.pick([2, 3, 4, 1]), A = mkAng(R, quad, 'rat'), given = R.pick(['sin', 'cos']), a = A.num;
     var s2 = A.sin.mul(A.cos).scale(2), c2 = A.cos.sq().sub(A.sin.sq()), t2 = s2.div(c2);
     function st(fn, v, ok, why, extra) { var tex = '\\' + fn + ' 2\\alpha = ' + F.n(v); return h.factS('$' + tex + '$', ok, relAt(tex, a), why, extra); }
+    var sW = '$\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha = 2 \\cdot ' + par(A.sin) + ' \\cdot ' + par(A.cos) + ' = ' + F.n(s2) + '$.', cW = '$\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha = ' + F.n(A.cos.sq()) + ' - ' + F.n(A.sin.sq()) + ' = ' + F.n(c2) + '$.', tW = '$\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha} = ' + F.n(t2) + '$.';
     var pool = [
-      st('sin', s2, true, '$\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$.', { g: 's' }), st('cos', c2, true, '$\\cos 2\\alpha = \\cos^2\\alpha - \\sin^2\\alpha$.', { g: 'c' }), st('tan', t2, true, '$\\tan 2\\alpha = \\dfrac{\\sin 2\\alpha}{\\cos 2\\alpha}$.', { g: 't' }),
-      st('sin', s2.neg(), false, 'the sign is wrong: use the signs of $\\sin\\alpha$ and $\\cos\\alpha$ in this quadrant.', { g: 's', trap: 'sign' }),
-      st('sin', A.sin.mul(A.cos), false, 'the factor $2$ is missing.', { g: 's', trap: 'partial' }),
-      st('cos', c2.neg(), false, 'that is $\\sin^2\\alpha - \\cos^2\\alpha$.', { g: 'c', trap: 'sign' }),
-      st('cos', s2, false, 'that is the value of $\\sin 2\\alpha$.', { g: 'c', trap: 'companion' }),
-      st('tan', t2.neg(), false, 'the sign is wrong.', { g: 't', trap: 'sign' }),
-      st('tan', sd(1).div(t2), false, 'that is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$.', { g: 't', trap: 'reciprocal' })
+      st('sin', s2, true, sW, { g: 's' }), st('cos', c2, true, cW, { g: 'c' }), st('tan', t2, true, tW, { g: 't' }),
+      st('sin', s2.neg(), false, sW, { g: 's', trap: 'sign' }),
+      st('sin', A.sin.mul(A.cos), false, 'the factor $2$ is missing: ' + sW, { g: 's', trap: 'partial' }),
+      st('cos', c2.neg(), false, 'this is $\\sin^2\\alpha - \\cos^2\\alpha$. In fact ' + cW, { g: 'c', trap: 'sign' }),
+      st('cos', s2, false, 'this is the value of $\\sin 2\\alpha$. In fact ' + cW, { g: 'c', trap: 'companion' }),
+      st('tan', t2.neg(), false, 'the sign is wrong: ' + tW, { g: 't', trap: 'sign' }),
+      st('tan', sd(1).div(t2), false, 'this is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$. In fact ' + tW, { g: 't', trap: 'reciprocal' })
     ].filter(function (s) { return s.ok || !s.test(); });
-    return out('Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
-      'Here $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$.');
+    return out('If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      otherRatio(A, given, 'in the ' + QD[quad].name + ' quadrant'));
   });
 
   /* ===================== TR-half · half-angle formulas with the sign rule ===================== */
@@ -365,27 +388,28 @@
   function halfTex(fn) { return '\\' + fn + '\\dfrac{\\alpha}{2}'; }
   function halfLead(V, given) {
     var G = given === 'cos' ? '$\\cos\\alpha = ' + F.n(V.c) + '$' : '$\\sin\\alpha = ' + F.n(V.s) + '$';
-    return { G: G, pre: given === 'sin' ? 'On this interval the cosine is ' + (V.c.sgn > 0 ? 'positive' : 'negative') + ', so $\\cos\\alpha = ' + F.n(V.c) + '$. ' : '' };
+    var s2 = V.s.mul(V.s);
+    return { G: G, pre: given === 'sin' ? 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\cos^2\\alpha = 1 - ' + F.n(s2) + ' = ' + F.n(sd(1).sub(s2)) + '$. On the given interval the cosine is ' + (V.c.sgn > 0 ? 'positive' : 'negative') + ', so $\\cos\\alpha = ' + F.n(V.c) + '$. ' : '' };
   }
   function halfStem(R, V, given, askTex) {
     var L = halfLead(V, given), cond = R.pick(V.H.say);
-    return R.pick(['Given ' + L.G + ' and ' + cond + ', then $' + askTex + ' =$ ( )', 'It is known that ' + L.G + ' and ' + cond + '. Then $' + askTex + ' =$ ( )', 'If ' + cond + ' and ' + L.G + ', then $' + askTex + ' =$ ( )']);
+    return R.pick(['If ' + L.G + ' and ' + cond + ', then $' + askTex + ' =$ ( )', 'It is known that ' + L.G + ' and ' + cond + '. Then $' + askTex + ' =$ ( )', 'If ' + cond + ' and ' + L.G + ', then $' + askTex + ' =$ ( )']);
   }
-  function halfLocate(V, fn) { return 'Locate the half angle first: $\\alpha \\in ' + IVT[V.iv] + '$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$, where the ' + word(fn) + ' is ' + (V.H.sg[fn] > 0 ? 'positive' : 'negative') + '. '; }
+  function halfLocate(V, fn) { return 'Find where the half angle lies: $\\alpha \\in ' + IVT[V.iv] + '$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$, where the ' + word(fn) + ' is ' + (V.H.sg[fn] > 0 ? 'positive' : 'negative') + '. '; }
   function halfItem(R, iv, c, ask, given) {
     var V = halfVals(iv, c), key = V[ask], truth = Math[ask](V.a / 2), other = ask === 'sin' ? 'cos' : 'sin', kAbs = F.absOf(key), wrong, work;
     if (ask === 'tan') {
       wrong = [[m(F.pm(kAbs)), 'pm'], [key.neg(), 'sign']].concat(R.shuffle([[sd(1).div(key), 'reciprocal'], [V.s.div(sd(V.c)), 'partial']])).concat([[sd(1).div(key).neg(), 'reciprocal']]);
-      work = (given === 'cos' ? 'The sine is ' + (V.s.sgn > 0 ? 'positive' : 'negative') + ' on the given interval: $\\sin\\alpha = ' + F.n(V.s) + '$. ' : '') +
-        'So $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(key) + '$.';
+      work = (given === 'cos' ? 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\sin^2\\alpha = 1 - ' + F.n(V.c.mul(V.c)) + ' = ' + F.n(q(1).sub(V.c.mul(V.c))) + '$, and the sine is ' + (V.s.sgn > 0 ? 'positive' : 'negative') + ' on the given interval, so $\\sin\\alpha = ' + F.n(V.s) + '$. ' : '') +
+        'Then $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(key) + '$.';
     } else {
       var comp = [F.absOf(V[other]).scale(key.sgn), 'companion'], part = [sd(ask === 'sin' ? V.sin2 : V.cos2).scale(key.sgn), 'partial'];
       wrong = [[m(F.pm(kAbs)), 'pm'], [key.neg(), 'sign']].concat(R.bool(0.75) ? [comp, part] : [part, comp]);
-      work = (ask === 'sin' ? '$\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = ' + F.n(V.sin2) : '$\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2)) + '$, so $' + halfTex(ask) + ' = ' + F.n(key) + '$.';
+      work = (ask === 'sin' ? '$\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = \\dfrac{1 - ' + par(V.c) + '}{2} = ' + F.n(V.sin2) : '$\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = \\dfrac{1 ' + h.signed(V.c) + '}{2} = ' + F.n(V.cos2)) + '$, so $' + halfTex(ask) + ' = ' + F.n(key) + '$.';
     }
     return {
       stem: halfStem(R, V, given, halfTex(ask)), key: m(key), wrong: W(wrong), check: chk.num(truth),
-      sol: halfLead(V, given).pre + halfLocate(V, ask) + work + ' The interval fixes the sign, so an option with $\\pm$ is a trap.',
+      sol: halfLead(V, given).pre + halfLocate(V, ask) + work + ' The interval fixes the sign, so the answer is not $\\pm' + F.n(kAbs) + '$.',
       sig: iv + '|' + given + '|' + F.n(c) + '|' + ask
     };
   }
@@ -441,15 +465,15 @@
       st('sin', V.sin, true, '$\\sin^2\\dfrac{\\alpha}{2} = \\dfrac{1 - \\cos\\alpha}{2} = ' + F.n(V.sin2) + '$ and the sine of the half angle is ' + sgnWord(V.sin) + ' here.', { g: 's' }),
       st('cos', V.cos, true, '$\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2) + '$ and the cosine of the half angle is ' + sgnWord(V.cos) + ' here.', { g: 'c' }),
       st('tan', V.tan, true, '$\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha}$ with $\\sin\\alpha = ' + F.n(V.s) + '$.', { g: 't' }),
-      st('sin', V.sin.neg(), false, 'the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$.', { g: 's', trap: 'sign' }),
-      st('sin', F.absOf(V.cos).scale(V.sin.sgn), false, 'that is the size of $\\cos\\dfrac{\\alpha}{2}$.', { g: 's', trap: 'companion' }),
-      st('cos', V.cos.neg(), false, 'the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$.', { g: 'c', trap: 'sign' }),
-      st('cos', F.absOf(V.sin).scale(V.cos.sgn), false, 'that is the size of $\\sin\\dfrac{\\alpha}{2}$.', { g: 'c', trap: 'companion' }),
-      st('tan', V.tan.neg(), false, 'the sign is wrong for the interval of $\\dfrac{\\alpha}{2}$.', { g: 't', trap: 'sign' }),
-      st('tan', sd(1).div(V.tan), false, 'that is the reciprocal.', { g: 't', trap: 'reciprocal' })
+      st('sin', V.sin.neg(), false, 'on $' + V.H.half + '$ the sine is ' + sgnWord(V.sin) + ', so $' + halfTex('sin') + ' = ' + F.n(V.sin) + '$.', { g: 's', trap: 'sign' }),
+      st('sin', F.absOf(V.cos).scale(V.sin.sgn), false, 'this has the size of $\\cos\\dfrac{\\alpha}{2}$. In fact $' + halfTex('sin') + ' = ' + F.n(V.sin) + '$.', { g: 's', trap: 'companion' }),
+      st('cos', V.cos.neg(), false, 'on $' + V.H.half + '$ the cosine is ' + sgnWord(V.cos) + ', so $' + halfTex('cos') + ' = ' + F.n(V.cos) + '$.', { g: 'c', trap: 'sign' }),
+      st('cos', F.absOf(V.sin).scale(V.cos.sgn), false, 'this has the size of $\\sin\\dfrac{\\alpha}{2}$. In fact $' + halfTex('cos') + ' = ' + F.n(V.cos) + '$.', { g: 'c', trap: 'companion' }),
+      st('tan', V.tan.neg(), false, 'on $' + V.H.half + '$ the tangent is ' + sgnWord(V.tan) + ', so $' + halfTex('tan') + ' = ' + F.n(V.tan) + '$.', { g: 't', trap: 'sign' }),
+      st('tan', sd(1).div(V.tan), false, 'this is the reciprocal of $' + halfTex('tan') + ' = ' + F.n(V.tan) + '$.', { g: 't', trap: 'reciprocal' })
     ].filter(function (s) { return s.ok || !s.test(); });
-    return out('Given $\\cos\\alpha = ' + F.n(c) + '$ and ' + R.pick(V.H.say) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
-      'Halving the interval, $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$.');
+    return out('If $\\cos\\alpha = ' + F.n(c) + '$ and ' + R.pick(V.H.say) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      'Halving the interval of $\\alpha$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$.');
   });
   def({ id: 'TR-half.pair', code: 'TR-half', lesson: '3.3', tier: 'H', level: '+1', fmt: 'V', trick: 'T05', w: 0.4,
     form: 'sin α given in QII–QIV → the correct pair cos(α/2), tan(α/2)', basis: 'Course plan 3.3 Set C' }, function (R) {
@@ -457,9 +481,9 @@
     function pr(u, v) { return '$' + halfTex('cos') + ' = ' + F.n(u) + '$, $' + halfTex('tan') + ' = ' + F.n(v) + '$'; }
     var wrong = R.shuffle([[pr(V.cos.neg(), V.tan.neg()), 'sign'], [pr(V.cos, V.tan.neg()), 'sign'], [pr(V.cos.neg(), V.tan), 'sign']]).concat([[pr(F.absOf(V.sin).scale(V.cos.sgn), V.tan), 'companion'], [pr(V.cos, sd(1).div(V.tan)), 'reciprocal']]);
     return {
-      stem: 'Given $\\sin\\alpha = ' + F.n(V.s) + '$ and ' + R.pick(V.H.say) + ', which of the following pairs is correct? ( )', key: pr(V.cos, V.tan), wrong: wrong, check: chk.tuple([Math.cos(V.a / 2), Math.tan(V.a / 2)]),
-      sol: halfLead(V, 'sin').pre + 'Since $\\alpha \\in ' + IVT[iv] + '$, $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$: the cosine of the half angle is ' + sgnWord(V.cos) + ' and its tangent is ' + sgnWord(V.tan) + '. $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2) +
-        '$, so $\\cos\\dfrac{\\alpha}{2} = ' + F.n(V.cos) + '$; $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(V.tan) + '$.'
+      stem: 'If $\\sin\\alpha = ' + F.n(V.s) + '$ and ' + R.pick(V.H.say) + ', which of the following pairs is correct? ( )', key: pr(V.cos, V.tan), wrong: wrong, check: chk.tuple([Math.cos(V.a / 2), Math.tan(V.a / 2)]),
+      sol: halfLead(V, 'sin').pre + 'Since $\\alpha \\in ' + IVT[iv] + '$, $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$, where the cosine is ' + sgnWord(V.cos) + ' and the tangent is ' + sgnWord(V.tan) + '. Then $\\cos^2\\dfrac{\\alpha}{2} = \\dfrac{1 + \\cos\\alpha}{2} = ' + F.n(V.cos2) +
+        '$, so $\\cos\\dfrac{\\alpha}{2} = ' + F.n(V.cos) + '$, and $\\tan\\dfrac{\\alpha}{2} = \\dfrac{\\sin\\alpha}{1 + \\cos\\alpha} = ' + F.n(V.tan) + '$.'
     };
   });
 
@@ -470,7 +494,7 @@
   }
   function inT(a, b) { return F.sum([[a, '\\tan\\alpha'], [b, '']]); }
   /** " = \dfrac{n}{d}" as an intermediate step, omitted when it already is the final value */
-  function fracStep(n, d, key) { var t = '\\dfrac{' + F.n(n) + '}{' + F.n(d) + '}'; return t === F.n(key) ? '' : ' = ' + t; }
+  function fracStep(n, d, key) { var c = chain(n, d, key), last = ' = ' + F.n(key); return c.slice(0, c.length - last.length); }
   function forward(R, ts, block) {
     var t = R.pick(ts), a = R.pick([1, 2, 3, 4]), b = R.nz(-4, 4), c = R.pick([1, 2, 3, 4]), d = R.nz(-4, 4);
     if (a * d - b * c === 0 || N.gcd(a, b) !== 1 || N.gcd(c, d) !== 1) retry();
@@ -524,7 +548,7 @@
     return {
       stem: 'If $\\tan\\alpha = ' + F.n(t) + '$, then $\\sin\\alpha\\cos\\alpha =$ ( )', key: m(key),
       wrong: W([[t.mul(2).div(one.add(t2)), 'operation'], [key.neg(), 'sign'], [one.div(one.add(t2)), 'partial'], [t2.div(one.add(t2)), 'partial'], [t2.eq(1) ? null : t.div(one.sub(t2)), 'sign']]), check: chk.num(Math.sin(a) * Math.cos(a)),
-      sol: 'Divide by $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and then by $\\cos^2\\alpha$: $\\sin\\alpha\\cos\\alpha = \\dfrac{\\sin\\alpha\\cos\\alpha}{\\sin^2\\alpha + \\cos^2\\alpha} = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1} = \\dfrac{' + F.n(t) + '}{' + F.n(t2.add(1)) + '} = ' + F.n(key) + '$.'
+      sol: 'Write the expression over $\\sin^2\\alpha + \\cos^2\\alpha = 1$, then divide the numerator and the denominator by $\\cos^2\\alpha$: $\\sin\\alpha\\cos\\alpha = \\dfrac{\\sin\\alpha\\cos\\alpha}{\\sin^2\\alpha + \\cos^2\\alpha} = \\dfrac{\\tan\\alpha}{\\tan^2\\alpha + 1}' + chain(t, t2.add(1), key) + '$.'
     };
   });
   def({ id: 'TR-hom.back-sin2', code: 'TR-hom', lesson: '3.4', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -533,7 +557,7 @@
     return {
       stem: 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\sin 2\\alpha =$ ( )', key: m(key),
       wrong: W([[key.neg(), 'sign'], [key.div(2), 'half'], [one.sub(t2).div(one.add(t2)), 'companion'], [t, 'partial'], [t2.eq(1) ? null : t.mul(2).div(one.sub(t2)), 'sign']]), check: chk.num(Math.sin(2 * a)),
-      sol: B.sol + ' Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{' + F.n(t.mul(2)) + '}{' + F.n(one.add(t2)) + '} = ' + F.n(key) + '$.'
+      sol: B.sol + ' Then $\\sin 2\\alpha = \\dfrac{2\\tan\\alpha}{1 + \\tan^2\\alpha}' + chain(t.mul(2), one.add(t2), key) + '$.'
     };
   });
   def({ id: 'TR-hom.back-cos2', code: 'TR-hom', lesson: '3.4', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -543,7 +567,7 @@
     return {
       stem: 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\cos 2\\alpha =$ ( )', key: m(key),
       wrong: W([[key.neg(), 'sign'], [t.mul(2).div(one.add(t2)), 'companion'], [one.div(one.add(t2)), 'partial'], [t, 'partial']]), check: chk.num(Math.cos(2 * a)),
-      sol: B.sol + ' Then $\\cos 2\\alpha = \\dfrac{1 - \\tan^2\\alpha}{1 + \\tan^2\\alpha} = \\dfrac{' + F.n(one.sub(t2)) + '}{' + F.n(one.add(t2)) + '} = ' + F.n(key) + '$.'
+      sol: B.sol + ' Then $\\cos 2\\alpha = \\dfrac{1 - \\tan^2\\alpha}{1 + \\tan^2\\alpha}' + chain(one.sub(t2), one.add(t2), key) + '$.'
     };
   });
   def({ id: 'TR-hom.quadratic', code: 'TR-hom', lesson: '3.4', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
