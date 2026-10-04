@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/ln2.js — Lines II: LN-eq, LN-int, LN-pp, LN-perp. */
+/* ACE CSCA Question Factory · templates/ln2.js: Lines II (LN-eq, LN-int, LN-pp, LN-perp). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m, X = QF.LN;
@@ -33,6 +33,33 @@
     }
     retry();
   }
+  function parX(v) { var t = F.n(v); return /^-/.test(t) ? '\\left(' + t + '\\right)' : t; }
+  /** c·v as text, for a number c and a value v */
+  function cTimes(c, v) { c = Fr.of(c); return c.eq(1) ? F.n(v) : c.eq(-1) ? '-' + parX(v) : F.n(c) + ' \\cdot ' + parX(v); }
+  /** the coefficient k in front of a bracket: "", "-" or the number */
+  function kCo(k) { var t = F.n(k); return t === '1' ? '' : t === '-1' ? '-' : t; }
+  /** point-slope form y − y0 = k(x − x0) with the zero cases written out cleanly */
+  function psT(k, x0, y0) { var xs = F.sum([[1, 'x'], [Fr.of(x0).neg(), '']]); var kt = kCo(k); return F.sum([[1, 'y'], [Fr.of(y0).neg(), '']]) + ' = ' + kt + (Fr.of(x0).eq(0) ? 'x' : kt === '' ? xs : '(' + xs + ')'); }
+  /** the worked solution of the system ax + by + c = 0 (two lines with integer coefficients) */
+  function solveText(A, B) {
+    A = F.normLine(A[0], A[1], A[2]); B = F.normLine(B[0], B[1], B[2]);
+    var P = inter(A, B), names = ['first', 'second'], pick = null;
+    [[A, B, 0], [B, A, 1]].some(function (c) { if (Math.abs(c[0][1]) === 1 && c[0][0] !== 0) { pick = [c[0], c[1], c[2], 'y']; return true; } return false; });
+    if (!pick) [[A, B, 0], [B, A, 1]].some(function (c) { if (Math.abs(c[0][0]) === 1 && c[0][1] !== 0) { pick = [c[0], c[1], c[2], 'x']; return true; } return false; });
+    if (pick) {
+      var Ls = pick[0], Lo = pick[1], v = pick[3], iv = v === 'y' ? 1 : 0, io = 1 - iv, w = v === 'y' ? 'x' : 'y', s = Ls[iv];
+      var cw = -Ls[io] * s, c0 = -Ls[2] * s, e = F.sum([[cw, w], [c0, '']]);          // v = cw·w + c0
+      var plug = v === 'y' ? F.sum([[Lo[0], 'x'], [Lo[1], '(' + e + ')'], [Lo[2], '']]) : F.sum([[Lo[0], '(' + e + ')'], [Lo[1], 'y'], [Lo[2], '']]);
+      return 'From the ' + names[pick[2]] + ' equation, $' + v + ' = ' + e + '$. Substituting this into the other equation gives $' + plug + ' = 0$, that is $' + F.sum([[Lo[io] + Lo[iv] * cw, w], [Lo[2] + Lo[iv] * c0, '']]) + ' = 0$, so $' + w + ' = ' + F.n(P[io]) +
+        '$. Then $' + v + ' = ' + cTimes(cw, P[io]) + (c0 ? (c0 > 0 ? ' + ' : ' - ') + Math.abs(c0) : '') + ' = ' + F.n(P[iv]) + '$.';
+    }
+    var g = N.gcd(Math.abs(A[1]), Math.abs(B[1])), m1 = B[1] / g, m2 = A[1] / g, how, E;
+    if (Math.abs(m1) === 1 && m1 === m2) { how = 'Subtracting the second equation from the first'; E = [A[0] - B[0], A[2] - B[2]]; }
+    else if (Math.abs(m1) === 1 && m1 === -m2) { how = 'Adding the two equations'; E = [A[0] + B[0], A[2] + B[2]]; }
+    else { how = 'Multiplying the first equation by $' + m1 + '$, the second by $' + m2 + '$ and subtracting'; E = [A[0] * m1 - B[0] * m2, A[2] * m1 - B[2] * m2]; }
+    return how + ' removes $y$ and gives $' + F.sum([[E[0], 'x'], [E[1], '']]) + ' = 0$, so $x = ' + F.n(P[0]) + '$. Putting this into the first equation gives $' + F.sum([[A[1], 'y'], [q(A[0]).mul(P[0]).add(A[2]), '']]) + ' = 0$, so $y = ' + F.n(P[1]) + '$.';
+  }
+  X.solve = solveText; X.psT = psT;
   function eqCustom(test) {
     return chk.custom({ isTrue: function (t) { return test(coef(t)); }, same: function (x, y) { return sameLine(coef(x), coef(y)); } });
   }
@@ -51,7 +78,7 @@
     }
     return {
       stem: stem, key: m(key), wrong: W(wrong), check: chk.eq([[P0, P1]]),
-      sol: 'Point-slope form: $y - ' + par(y0) + ' = ' + F.n(k) + '(x - ' + par(x0) + ')$, i.e. $' + si(k, b) + '$' + (form === 'si' ? '' : ', or $' + key + '$') + '. Check: the point $' + pt(x0, y0) + '$ satisfies it.'
+      sol: 'By the point-slope form, $' + psT(k, x0, y0) + '$, that is $' + si(k, b) + '$' + (form === 'si' ? '' : ', or $' + key + '$ in general form') + '.'
     };
   }
   def({ id: 'LN-eq.point-slope', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '=', fmt: 'V', w: 2,
@@ -77,7 +104,8 @@
     }
     return {
       stem: 'The equation of the line passing through the points $' + names[0] + pt(P[0], P[1]) + '$ and $' + names[1] + pt(Q[0], Q[1]) + '$ is ( )', key: m(key), wrong: W(wrong), check: chk.eq([[P, Q]]),
-      sol: 'Slope first: $k = \\dfrac{' + Q[1] + ' - ' + par(P[1]) + '}{' + Q[0] + ' - ' + par(P[0]) + '} = ' + F.n(k) + '$. Then $y - ' + par(P[1]) + ' = ' + F.n(k) + '(x - ' + par(P[0]) + ')$, i.e. $' + key + '$. Check both points: an option that fits only one of them is a trap.'
+      sol: 'The slope is $k = \\dfrac{' + Q[1] + ' - ' + par(P[1]) + '}{' + Q[0] + ' - ' + par(P[0]) + '} = ' + F.n(k) + '$. By the point-slope form through $' + names[0] + '$, $' + psT(k, P[0], P[1]) + '$, that is $' + key + '$. ' +
+        'Check with $' + names[1] + '$: ' + (form === 'si' ? '$' + cTimes(k, Q[0]) + (b.eq(0) ? '' : (b.n > 0 ? ' + ' : ' - ') + F.n(b.n > 0 ? b : b.neg())) + ' = ' + Q[1] + '$.' : 'putting $x = ' + Q[0] + '$ and $y = ' + Q[1] + '$ into $' + key + '$ gives $0$.')
     };
   }
   def({ id: 'LN-eq.two-points', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '=', fmt: 'V', w: 2,
@@ -103,7 +131,7 @@
     var wrong = [[eq(k.neg(), unit ? Sd.of(y0).add(k.scale(x0)) : b), 'sign'], [eq(k, b.neg()), 'sign'], [eq(k.neg(), b.neg()), 'sign'], [unit ? (x0 === 0 ? null : eq(k, Sd.of(y0))) : eq(Sd.of(1).div(k), b), unit ? 'partial' : 'companion'], [eq(k, b.add(1)), 'slip']];
     return {
       stem: 'The equation of the line with angle of inclination $' + F.deg(th) + '$ passing through the point $' + pt(x0, y0) + '$ is ( )', key: m(eq(k, b)), wrong: W(wrong), check: chk.eq([[[x0, y0], [x0 + 1, y0 + k.num]]]),
-      sol: 'The slope is $k = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$. Through $' + pt(x0, y0) + '$: $y - ' + par(y0) + ' = ' + F.n(k) + '(x - ' + par(x0) + ')$, i.e. $' + eq(k, b) + '$.'
+      sol: 'The slope is $k = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$. By the point-slope form through $' + pt(x0, y0) + '$, $' + psT(k, x0, y0) + '$, that is $' + eq(k, b) + '$.'
     };
   });
   def({ id: 'LN-eq.incl-general', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '+1', fmt: 'V',
@@ -114,7 +142,7 @@
     return {
       stem: 'The equation of the line with angle of inclination $' + F.deg(th) + '$ passing through the point $' + pt(x0, y0) + '$ is ( )', key: m(key),
       wrong: W([[gl(-k, -1, y0 + k * x0), 'sign'], [gl(k, -1, -(y0 - k * x0)), 'sign'], [gl(-k, -1, -(y0 + k * x0)), 'sign'], [gl(k, -1, y0 + k * x0), 'sign'], [gl(k, -1, y0 - k * x0 + 1), 'slip']]), check: chk.eq([[[x0, y0], [x0 + 1, y0 + k]]]),
-      sol: '$k = \\tan ' + F.deg(th) + ' = ' + k + '$. So $y - ' + par(y0) + ' = ' + (k === 1 ? '' : '-') + '(x - ' + par(x0) + ')$, which is $' + key + '$.'
+      sol: 'The slope is $k = \\tan ' + F.deg(th) + ' = ' + k + '$. By the point-slope form, $' + psT(k, x0, y0) + '$, which is $' + key + '$.'
     };
   });
   def({ id: 'LN-eq.intercepts', code: 'LN-eq', lesson: '4.4', tier: 'E', level: '+1', fmt: 'V',
@@ -125,7 +153,7 @@
     return {
       stem: viaPts ? 'The equation of the line passing through $A' + pt(a, 0) + '$ and $B' + pt(0, b) + '$ is ( )' : 'The equation of the line whose $x$-intercept is $' + a + '$ and whose $y$-intercept is $' + b + '$ is ( )', key: m(key),
       wrong: W([[gl(a, b, -a * b), 'swap'], [gl(b, a, a * b), 'sign'], [gl(b, -a, -a * b), 'sign'], [gl(a, -b, -a * b), 'swap'], [gl(b, a, -a * b + 1), 'slip']]), check: chk.eq([[[a, 0], [0, b]]]),
-      sol: 'Intercept form: $\\dfrac{x}{' + a + '} + \\dfrac{y}{' + b + '} = 1$. Multiply by $' + (a * b) + '$ and collect: $' + key + '$. Check with $' + pt(a, 0) + '$ and $' + pt(0, b) + '$.'
+      sol: 'The intercept form is $\\dfrac{x}{' + a + '} + \\dfrac{y}{' + b + '} = 1$. Multiplying by $' + (a * b) + '$ gives $' + F.sum([[b, 'x'], [a, 'y']]) + ' = ' + (a * b) + '$, that is $' + key + '$. Both $' + pt(a, 0) + '$ and $' + pt(0, b) + '$ satisfy it.'
     };
   });
 
@@ -147,7 +175,7 @@
     return {
       stem: (extra && extra.stem) || R.pick(['The point of intersection of the lines $l_1: ' + t1 + '$ and $l_2: ' + t2 + '$ is ( )', 'The intersection point of the lines $' + t1 + '$ and $' + t2 + '$ is ( )', 'The coordinates of the intersection point of the lines $' + t1 + '$ and $' + t2 + '$ are ( )']),
       key: m(pt(P[0], P[1])), wrong: R.shuffle(w.slice(0, 2)).concat(w.slice(2)), check: chk.tuple([tx, ty]),
-      sol: ((extra && extra.pre) || '') + 'Solve the two equations together (elimination or substitution): $x = ' + F.n(P[0]) + '$, $y = ' + F.n(P[1]) + '$. Check by substituting into both equations — a point that fits only one of them is a trap.'
+      sol: ((extra && extra.pre) || '') + solveText((extra && extra.L1) || L1, (extra && extra.L2) || L2) + ' So the intersection point is $' + pt(P[0], P[1]) + '$.'
     };
   }
   var REAL_INT = [['3,-1,8', '1,2,-9'], ['3,-1,2', '4,-1,3'], ['3,2,4', '1,-1,3'], ['2,-1,1', '1,1,1']];
@@ -174,7 +202,7 @@
     if (k1 === 1 && b1 === 3 && ((A[0] === 1 && A[1] === 0 && B[0] === 0 && B[1] === 1) || (B[0] === 1 && B[1] === 0 && A[0] === 0 && A[1] === 1))) retry('real item');
     var L1 = [k1, -1, b1], L2 = [v, -u, u * y0 - v * x0], it = intItem(R, L1, L2, si(k1, b1), '', {
       stem: 'Given the line $l_1: ' + si(k1, b1) + '$ and the line $l_2$ passing through $A' + pt(A[0], A[1]) + '$ and $B' + pt(B[0], B[1]) + '$, the intersection point of $l_1$ and $l_2$ is ( )',
-      pre: 'First find $l_2$: its slope is $' + F.n(q(v, u)) + '$, so $l_2: ' + gl(L2[0], L2[1], L2[2]) + '$. '
+      pre: 'First find $l_2$. Its slope is $\\dfrac{' + B[1] + ' - ' + par(A[1]) + '}{' + B[0] + ' - ' + par(A[0]) + '} = ' + F.n(q(v, u)) + '$, so $l_2$ is $' + gl(L2[0], L2[1], L2[2]) + '$. '
     });
     it.wrong = [[m(pt(A[0], A[1])), 'partial'], [m(pt(0, b1)), 'partial']].concat(it.wrong);
     return it;
@@ -195,7 +223,8 @@
       return {
         stem: 'If the three lines $' + t1 + '$, $' + t2 + '$ and $' + t3 + '$ pass through one point, then $a =$ ( )', key: m(a),
         wrong: W([[a.neg(), 'sign'], [sw && !sw.eq(a) ? sw : null, 'swap'], [oth.mul(b3).sub(c3).neg().div(div), 'sign'], [a.add(1), 'slip'], [a.sub(1), 'slip'], [a.add(2), 'slip']]), check: chk.num(truth),
-        sol: 'Intersect the two complete lines first: $' + pt(P[0], P[1]) + '$. The third line must pass through this point: substitute $x = ' + F.n(P[0]) + '$, $y = ' + F.n(P[1]) + '$ into $' + t3 + '$ and solve: $a = ' + F.n(a) + '$.'
+        sol: 'First find where the first two lines meet. ' + solveText(L1, L2) + ' The third line must also pass through $' + pt(P[0], P[1]) + '$, so $' +
+          (kind === 'x' ? F.sum([[x0, 'a'], [y0.mul(b3), ''], [c3, '']]) : F.sum([[x0.mul(b3), ''], [y0, 'a'], [c3, '']])) + ' = 0$ and $a = ' + F.n(a) + '$.'
       };
     }
     retry();
@@ -220,7 +249,7 @@
     var L1 = through(R, x0, y0, [L2]);
     return intItem(R, L1, L2, lineT(L1), '', {
       stem: 'The intersection point of the lines $' + lineT(L1) + '$ and $\\dfrac{x}{' + a + '} + \\dfrac{y}{' + b + '} = 1$ is ( )',
-      pre: 'Clear the fractions: the second line is $' + gl(L2[0], L2[1], L2[2]) + '$. '
+      pre: 'Multiplying by $' + (a * b) + '$ clears the fractions, so the second line is $' + gl(L2[0], L2[1], L2[2]) + '$. '
     });
   });
   def({ id: 'LN-int.on-axis', code: 'LN-int', lesson: '4.5', tier: 'M', level: '+1', fmt: 'V',
@@ -234,7 +263,7 @@
     return {
       stem: 'If the lines $l_1: ' + lineT(L1) + '$ and $l_2: ' + t2 + '$ intersect at a point on the $' + (onX ? 'x' : 'y') + '$-axis, then $a =$ ( )', key: m(a),
       wrong: W([[-a, 'sign'], [Number.isInteger(other) && other !== a && Math.abs(other) <= 20 ? other : null, 'axis'], [v, 'partial'], [a + 1, 'slip'], [a - 1, 'slip'], [2 * a, 'slip']]), check: chk.num(onX ? -(a2 * ax) : -(b2 * ax)),
-      sol: 'The point where $l_1$ meets the $' + (onX ? 'x' : 'y') + '$-axis: put $' + (onX ? 'y' : 'x') + ' = 0$ in $l_1$ to get $' + pt(P[0], P[1]) + '$. It must lie on $l_2$: ' + '$' + F.sum([[a2 * P[0] + b2 * P[1], ''], [1, 'a']]) + ' = 0$, so $a = ' + a + '$.'
+      sol: 'Putting $' + (onX ? 'y' : 'x') + ' = 0$ in $l_1$ gives $' + (onX ? 'x' : 'y') + ' = ' + v + '$, so $l_1$ meets the $' + (onX ? 'x' : 'y') + '$-axis at $' + pt(P[0], P[1]) + '$. This point lies on $l_2$, so $' + F.sum([[a2 * P[0] + b2 * P[1], ''], [1, 'a']]) + ' = 0$ and $a = ' + a + '$.'
     };
   });
 
@@ -253,8 +282,8 @@
     var k0 = q(-a, b), kk = rel === 'perp' ? k0.inv().neg() : k0;
     return {
       stem: 'Which of the following lines is ' + (rel === 'perp' ? 'perpendicular' : 'parallel') + ' to the line $' + lineT(base) + '$? ( )', key: m(keyT), wrong: W(cand.map(function (x) { return [show(x[0]), x[1]]; })), check: eqCustom(test),
-      sol: 'The given line has slope $' + F.n(k0) + '$. ' + (rel === 'perp' ? 'A perpendicular line needs slope $' + F.n(kk) + '$ (product $-1$)' : 'A parallel line needs the same slope $' + F.n(kk) + '$ and a different intercept') + '; that is $' + keyT + '$.' +
-        (rel === 'perp' ? ' In general form: $A_1A_2 + B_1B_2 = 0$.' : ' In general form: $A_1B_2 - A_2B_1 = 0$.')
+      sol: 'The given line has slope $' + F.n(k0) + '$. ' + (rel === 'perp' ? 'A perpendicular line has slope $' + F.n(kk) + '$, because $' + F.n(k0) + ' \\cdot ' + parX(kk) + ' = -1$. The only option with slope $' + F.n(kk) + '$ is $' + keyT + '$.'
+        : 'A parallel line has the same slope $' + F.n(kk) + '$ but is a different line. The option with these properties is $' + keyT + '$.')
     };
   }
   def({ id: 'LN-pp.which-perp', code: 'LN-pp', lesson: '4.6', tier: 'E', level: '=', fmt: 'S', w: 2,
@@ -280,10 +309,10 @@
       var why = 'the slopes are $' + F.n(ki) + '$ and $' + F.n(kj) + '$';
       var p1 = isPerp(Ls[i], Ls[j]), p2 = isPar(Ls[i], Ls[j]);
       pool.push(h.factS(name + ' is perpendicular to ' + name2, p1, function () { return isPerp(Ls[i], Ls[j]); }, why + (p1 ? ', and their product is $-1$.' : ', and their product is not $-1$.'), { g: 'p' + i + j, trap: 'sign' }));
-      pool.push(h.factS(name + ' is parallel to ' + name2, p2, function () { return isPar(Ls[i], Ls[j]); }, why + (p2 ? ', equal, with different intercepts.' : ', which are not equal.'), { g: 'q' + i + j, trap: 'parallel' }));
+      pool.push(h.factS(name + ' is parallel to ' + name2, p2, function () { return isPar(Ls[i], Ls[j]); }, p2 ? 'both slopes are $' + F.n(ki) + '$, and the two lines are different.' : why + ', which are not equal.', { g: 'q' + i + j, trap: 'parallel' }));
     });
     return out('Which of the following statements about the three lines $l_1: ' + lineT(Ls[0]) + '$, $l_2: ' + lineT(Ls[1]) + '$ and $l_3: ' + lineT(Ls[2]) + '$ is correct? ( )', QF.pickStmts(R, 'S', pool),
-      'Slopes: $l_1$: $' + F.n(q(-Ls[0][0], Ls[0][1])) + '$, $l_2$: $' + F.n(q(-Ls[1][0], Ls[1][1])) + '$, $l_3$: $' + F.n(q(-Ls[2][0], Ls[2][1])) + '$.');
+      'The slopes are $' + F.n(q(-Ls[0][0], Ls[0][1])) + '$ for $l_1$, $' + F.n(q(-Ls[1][0], Ls[1][1])) + '$ for $l_2$ and $' + F.n(q(-Ls[2][0], Ls[2][1])) + '$ for $l_3$.');
   });
   /** coefficient of the form a + p, as text: "a", "(a + 2)" */
   function ap(p, sym) { return p === 0 ? 'a' + sym : '(' + F.sum([[1, 'a'], [p, '']]) + ')' + sym; }
@@ -295,29 +324,29 @@
   }
   def({ id: 'LN-pp.perp-param', code: 'LN-pp', lesson: '4.6', tier: 'M', level: '=', fmt: 'V', w: 1,
     form: 'Two lines with a parameter are perpendicular → a (two answers)', basis: 'Jan Q32' }, function (R) {
-    var fam = R.pick([1, 1, 2, 3]), c1 = R.nz(-6, 6), c2 = R.nz(-6, 6), t1, t2, at, u, v, eqn;
+    var fam = R.pick([1, 1, 2, 3]), c1 = R.nz(-6, 6), c2 = R.nz(-6, 6), t1, t2, at, u, v, eqn, expn;
     if (fam === 1) {           // a x + (a + p) y + c1 = 0 ⊥ s x + a y + c2 = 0  →  a(a + p + s) = 0
       var p = R.nz(-4, 4), s = R.pick([1, 2, 3, -1, -2].filter(function (z) { return z + p !== 0; }));
       if (p === -1 && s === 2) retry('real item');
       t1 = 'ax + ' + ap(p, 'y') + ' ' + (c1 < 0 ? '- ' : '+ ') + Math.abs(c1) + ' = 0'; t2 = F.sum([[s, 'x'], [1, 'ay'], [c2, '']]) + ' = 0';
-      at = function (a) { return [[a, a + p, c1], [s, a, c2]]; }; u = 0; v = -(p + s); eqn = 'a(' + F.sum([[1, 'a'], [p + s, '']]) + ') = 0';
+      at = function (a) { return [[a, a + p, c1], [s, a, c2]]; }; u = 0; v = -(p + s); eqn = 'a(' + F.sum([[1, 'a'], [p + s, '']]) + ') = 0'; expn = F.sum([[s, 'a'], [1, 'a' + ap(p, '')]]);
     } else if (fam === 2) {    // (a + p) x + r y + c1 = 0 ⊥ a x + s y + c2 = 0  →  a² + pa + rs = 0
       u = R.nz(-4, 4); v = R.pick([-4, -3, -2, -1, 1, 2, 3, 4].filter(function (z) { return z !== u; }));
       var prod = u * v, sgn2 = R.pick([1, -1]), ds = [1, 2, 3, 4].filter(function (d) { return prod % d === 0; }), s2 = R.pick(ds) * sgn2, r = prod / s2, p2 = -(u + v);
       if (p2 === 0) retry();
       t1 = ap(p2, 'x') + ' ' + (r < 0 ? '- ' : '+ ') + (Math.abs(r) === 1 ? '' : Math.abs(r)) + 'y ' + (c1 < 0 ? '- ' : '+ ') + Math.abs(c1) + ' = 0'; t2 = F.sum([[1, 'ax'], [s2, 'y'], [c2, '']]) + ' = 0';
-      at = function (a) { return [[a + p2, r, c1], [a, s2, c2]]; }; eqn = F.poly([1, p2, prod], 'a') + ' = 0';
+      at = function (a) { return [[a + p2, r, c1], [a, s2, c2]]; }; eqn = F.poly([1, p2, prod], 'a') + ' = 0'; expn = F.sum([[1, 'a' + ap(p2, '')], [r * s2, '']]);
     } else {                   // a x + r y + c1 = 0 ⊥ (a + p) x − a y + c2 = 0  →  a(a + p − r) = 0
       var r3 = R.int(1, 4), p3 = R.pick([-3, -2, -1, 1, 2, 3].filter(function (z) { return z !== r3; }));
       t1 = F.sum([[1, 'ax'], [r3, 'y'], [c1, '']]) + ' = 0'; t2 = ap(p3, 'x') + ' - ay ' + (c2 < 0 ? '- ' : '+ ') + Math.abs(c2) + ' = 0';
-      at = function (a) { return [[a, r3, c1], [a + p3, -a, c2]]; }; u = 0; v = r3 - p3; eqn = 'a(' + F.sum([[1, 'a'], [p3 - r3, '']]) + ') = 0';
+      at = function (a) { return [[a, r3, c1], [a + p3, -a, c2]]; }; u = 0; v = r3 - p3; eqn = 'a(' + F.sum([[1, 'a'], [p3 - r3, '']]) + ') = 0'; expn = F.sum([[1, 'a' + ap(p3, '')], [-r3, 'a']]);
     }
     var found = roots(function (a) { var L = at(a); return isPerp(L[0], L[1]) && (L[0][0] !== 0 || L[0][1] !== 0) && (L[1][0] !== 0 || L[1][1] !== 0); });
     if (found.length !== 2 || found.indexOf(u) < 0 || found.indexOf(v) < 0) retry();
     var O = paramOpts(u, v);
     return {
       stem: 'If the line $l_1: ' + t1 + '$ is perpendicular to the line $l_2: ' + t2 + '$, then $a =$ ( )', key: O.key, wrong: O.wrong, check: chk.alts(found),
-      sol: 'Perpendicular lines satisfy $A_1A_2 + B_1B_2 = 0$ (this also covers vertical lines). Here it gives $' + eqn + '$, so $a = ' + Math.max(u, v) + '$ or $a = ' + Math.min(u, v) + '$ — both values are valid.'
+      sol: 'Two lines $A_1x + B_1y + C_1 = 0$ and $A_2x + B_2y + C_2 = 0$ are perpendicular exactly when $A_1A_2 + B_1B_2 = 0$, and this test also works when one line is vertical. Here it gives $' + expn + ' = 0$, that is $' + eqn + '$, so $a = ' + Math.max(u, v) + '$ or $a = ' + Math.min(u, v) + '$. Both values are valid.'
     };
   });
   function parParam(R, coincide) {
@@ -333,8 +362,9 @@
     var O = coincide ? paramOpts(u, v, v) : paramOpts(u, v);
     return {
       stem: 'Given that the lines $l_1: ' + t1 + '$ and $l_2: ' + t2 + '$ are parallel, then $a =$ ( )', key: O.key, wrong: O.wrong, check: chk.alts(found),
-      sol: 'Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$: $a' + ap(p, '').replace(/^a$/, ' \\cdot a') + ' - ' + par(r) + ' = 0$, i.e. $' + F.poly([1, p, -r], 'a') + ' = 0$, so $a = ' + u + '$ or $a = ' + v + '$. ' +
-        (coincide ? 'Check each root: for $a = ' + u + '$ the two equations describe the same line, so it is rejected. Hence $a = ' + v + '$.' : 'Check each root: neither makes the two lines coincide, so both are valid.')
+      sol: 'Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a' + ap(p, '').replace(/^a$/, ' \\cdot a') + ' - ' + par(r) + ' = 0$, that is $' + F.poly([1, p, -r], 'a') + ' = 0$, so $a = ' + u + '$ or $a = ' + v + '$. ' +
+        'The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $' + F.sum([[c2, 'a'], [-c1, '']]) + ' = 0$. ' +
+        (coincide ? 'This holds for $a = ' + u + '$, so that value gives one line, not two parallel lines. Hence $a = ' + v + '$.' : 'Neither root satisfies this, so both values are valid.')
     };
   }
   def({ id: 'LN-pp.par-param', code: 'LN-pp', lesson: '4.6', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -349,7 +379,7 @@
       stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and perpendicular to the line $' + si(k, b0) + '$ is ( )', key: m(si(kp, b)),
       wrong: W([[si(k, q(y0).sub(k.mul(x0))), 'parallel'], [si(k.inv(), q(y0).sub(k.inv().mul(x0))), 'sign'], [si(kp, b.neg()), 'sign'], [si(k.neg(), q(y0).add(k.mul(x0))), 'near-miss'], [si(kp, q(y0)), 'partial']]),
       check: chk.eq([[[x0, y0], [x0 + kp.d, y0 + kp.n]]]),
-      sol: 'The given slope is $' + F.n(k) + '$, so the perpendicular slope is $-\\dfrac{1}{k} = ' + F.n(kp) + '$. Through $' + pt(x0, y0) + '$: $y - ' + par(y0) + ' = ' + F.n(kp) + '(x - ' + par(x0) + ')$, i.e. $' + si(kp, b) + '$.'
+      sol: 'The given slope is $' + F.n(k) + '$, so the perpendicular slope is $-\\dfrac{1}{k} = ' + F.n(kp) + '$. By the point-slope form through $' + pt(x0, y0) + '$, $' + psT(kp, x0, y0) + '$, that is $' + si(kp, b) + '$.'
     };
   });
   def({ id: 'LN-pp.par-through', code: 'LN-pp', lesson: '4.6', tier: 'E', level: '+1', fmt: 'V',
@@ -360,7 +390,7 @@
       stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and parallel to the line $' + F.line(a, b, c) + '$ is ( )', key: m(gl(a, b, k)),
       wrong: W([[gl(a, b, -k), 'sign'], [gl(b, -a, -(b * x0 - a * y0)), 'companion'], [gl(a, b, -(a * y0 + b * x0)), 'swap'], [gl(a, -b, -(a * x0 - b * y0)), 'sign'], [gl(a, b, k + 1), 'slip']]),
       check: chk.eq([[[x0, y0], [x0 + b, y0 - a]]]),
-      sol: 'A line parallel to $' + F.line(a, b, c) + '$ has the form $' + F.sum([[a, 'x'], [b, 'y'], [1, 'k']]) + ' = 0$. Substitute $' + pt(x0, y0) + '$: $k = ' + k + '$. So the line is $' + gl(a, b, k) + '$.'
+      sol: 'A line parallel to $' + F.line(a, b, c) + '$ has the form $' + F.sum([[a, 'x'], [b, 'y'], [1, 'k']]) + ' = 0$. Substituting $' + pt(x0, y0) + '$ gives $' + F.sum([[a * x0, ''], [b * y0, ''], [1, 'k']]) + ' = 0$, so $k = ' + k + '$. So the line is $' + gl(a, b, k) + '$.'
     };
   });
 
@@ -380,8 +410,10 @@
     var kShown = o.rel === 'perp' ? kPerp.mul(flip) : kPar;
     return {
       stem: o.stem, key: m(key), wrong: W(wrong), check: chk.eq([[[x0.num, y0.num], [x0.num + dir[0], y0.num + dir[1]]]]),
-      sol: (o.pre || 'Step 1 — the intersection: solving the two equations gives $' + pt(x0, y0) + '$. ') + 'Step 2 — ' + (o.rel === 'perp' ? 'swap and flip: a line perpendicular to $' + lineT(L0) + '$ has the form $' + form + '$. ' : 'a line parallel to $' + lineT(L0) + '$ has the form $' + form + '$. ') +
-        'Step 3 — substitute the point: $k = ' + F.n(kShown) + '$' + (kShown.isInt ? '' : ' (then clear the fraction)') + '. So $l$: $' + key + '$.'
+      sol: (o.pre !== undefined ? o.pre : 'First find the intersection point. ' + solveText(o.L1, o.L2) + ' ') +
+        (o.rel === 'perp' ? 'Swapping the coefficients of $x$ and $y$ and changing one sign, a line perpendicular to $' + (o.given ? o.given + '$, that is $' + lineT(L0) + '$,' : lineT(L0) + '$') + ' has the form $' + form + '$. ' : 'A line parallel to $' + lineT(L0) + '$ keeps the same coefficients of $x$ and $y$, so it has the form $' + form + '$. ') +
+        'Substituting $' + pt(x0, y0) + '$ gives $' + F.sum(o.rel === 'perp' ? [[x0.mul(flip * b0), ''], [y0.mul(-flip * a0), ''], [1, 'k']] : [[x0.mul(a0), ''], [y0.mul(b0), ''], [1, 'k']]) + ' = 0$, so $k = ' + F.n(kShown) + '$' +
+        (kShown.isInt ? '. So $l$ is $' + key + '$.' : '. Clearing the fraction, $l$ is $' + key + '$.')
     };
   }
   function r06base(R) {
@@ -411,7 +443,7 @@
     var x0 = R.int(-4, 4), y0 = R.int(-4, 4), a0 = R.int(1, 4), b0 = R.nz(-4, 4), c0 = R.int(-6, 6);
     if (N.gcd(a0, b0) !== 1) retry();
     var L0 = [a0, b0, c0];
-    return r06(R, { P: [q(x0), q(y0)], L0: L0, rel: 'perp', stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and perpendicular to the line $' + lineT(L0) + '$ is ( )', pre: 'Step 1 — the point is given: $' + pt(x0, y0) + '$. ' });
+    return r06(R, { P: [q(x0), q(y0)], L0: L0, rel: 'perp', stem: 'The equation of the line passing through the point $' + pt(x0, y0) + '$ and perpendicular to the line $' + lineT(L0) + '$ is ( )', pre: '' });
   });
   def({ id: 'LN-perp.r06-frac', code: 'LN-perp', lesson: '4.7', tier: 'M', level: '+1', fmt: 'V', trick: 'T08',
     form: 'R06 with a fractional intersection point', basis: 'Course plan 4.7 Q5' }, function (R) {
@@ -424,7 +456,7 @@
   def({ id: 'LN-perp.r06-slope-form', code: 'LN-perp', lesson: '4.7', tier: 'M', level: '+1', fmt: 'V', trick: 'T08',
     form: 'R06 with the given line in slope-intercept form', basis: 'Course plan 4.7 Q6' }, function (R) {
     var B = r06base(R), k = R.pick([q(2), q(-2), q(3), q(-3), q(1, 2), q(-1, 2), q(1, 3), q(2, 3), q(-3, 2)]), b = R.int(-5, 5);
-    B.L0 = F.normLine(k.n, -k.d, b * k.d); B.rel = 'perp'; B.stem = r06stem(B, 'perp', si(k, b));
+    B.L0 = F.normLine(k.n, -k.d, b * k.d); B.rel = 'perp'; B.stem = r06stem(B, 'perp', si(k, b)); B.given = si(k, b);
     return r06(R, B);
   });
   def({ id: 'LN-perp.r06-axis', code: 'LN-perp', lesson: '4.7', tier: 'M', level: '+1', fmt: 'V', trick: 'T08',
@@ -441,7 +473,7 @@
     var A = [ax, ay], Bp = [ax + b0 * t, ay - a0 * t];          // direction (b0, −a0) lies on a line with normal (a0, b0)
     B.L0 = F.normLine(a0, b0, -(a0 * ax + b0 * ay)); B.rel = 'perp';
     B.stem = 'A line $l$ is perpendicular to the line through $A' + pt(A[0], A[1]) + '$ and $B' + pt(Bp[0], Bp[1]) + '$ and passes through the intersection point of the lines $' + lineT(B.L1) + '$ and $' + lineT(B.L2) + '$. The equation of $l$ is ( )';
-    B.pre = 'The line $AB$ is $' + lineT(B.L0) + '$. Step 1 — the intersection: solving the two equations gives $' + pt(B.P[0], B.P[1]) + '$. ';
+    B.pre = 'The line $AB$ has slope $' + F.n(q(Bp[1] - A[1], Bp[0] - A[0])) + '$ and passes through $A$, so it is $' + lineT(B.L0) + '$. Next find the intersection point. ' + solveText(B.L1, B.L2) + ' ';
     return r06(R, B);
   });
   def({ id: 'LN-perp.equal-intercepts', code: 'LN-perp', lesson: '4.7', tier: 'H', level: '+1', fmt: 'V', w: 0.4,
@@ -454,7 +486,8 @@
     return {
       stem: 'A line $l$ passes through the intersection point of the lines $' + lineT(L1) + '$ and $' + lineT(L2) + '$ and has equal intercepts on the two coordinate axes. The equation of $l$ is ( )', key: two(e1, e2),
       wrong: [[m(e1), 'partial'], [m(e2), 'partial'], [two(e3, e2), 'sign'], [two(e1, e3), 'sign'], [two(gl(1, 1, s), e2), 'sign']], check: chk.eq([[[x0, y0], [s, 0]], [[x0, y0], [0, 0]]]),
-      sol: 'The intersection point is $' + pt(x0, y0) + '$. Case 1: both intercepts are $0$ — the line passes through the origin: $' + e2 + '$. Case 2: equal non-zero intercepts $c$: $x + y = c$, and the point gives $c = ' + s + '$: $' + e1 + '$. Both lines are answers; forgetting the line through the origin is the trap.'
+      sol: 'First find the intersection point. ' + solveText(L1, L2) + ' If both intercepts are $0$, the line passes through the origin and $' + pt(x0, y0) + '$, so it is $' + e2 + '$. ' +
+        'If the two intercepts are equal and not $0$, the line is $x + y = c$, and the point gives $c = ' + x0 + ' + ' + par(y0) + ' = ' + s + '$, so it is $' + e1 + '$. Both lines satisfy the condition.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);

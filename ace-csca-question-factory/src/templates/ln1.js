@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/ln1.js — Lines I: LN-quad, LN-pt, LN-dist, LN-slope. */
+/* ACE CSCA Question Factory · templates/ln1.js: Lines I (LN-quad, LN-pt, LN-dist, LN-slope). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, F = QF.fmt, chk = QF.chk, ev = QF.ev, h = QF.h, m = F.m;
@@ -40,7 +40,7 @@
       stem: R.pick(['Which of the following points lies in the ' + QW[target] + ' quadrant? ( )', 'Which of the following points is in the ' + QW[target] + ' quadrant? ( )', 'In the rectangular coordinate system, which of the following points lies in the ' + QW[target] + ' quadrant? ( )']),
       key: P(target), wrong: R.shuffle(wrong),
       check: chk.custom({ isTrue: function (t) { var p = ptOf(t); return quadOf(p[0], p[1]) === target; }, same: function (x, y) { var p = ptOf(x), r = ptOf(y); return ev.close(p[0], r[0]) && ev.close(p[1], r[1]); } }),
-      sol: 'Signs by quadrant: I $(+, +)$, II $(-, +)$, III $(-, -)$, IV $(+, -)$. The ' + QW[target] + ' quadrant needs $' + SGT[target] + '$, so the point is $' + pt(SG[target][0] * a, SG[target][1] * b) + '$.' + (axis ? ' A point on an axis belongs to no quadrant.' : ''),
+      sol: 'A point in the first quadrant has signs $(+, +)$, in the second $(-, +)$, in the third $(-, -)$ and in the fourth $(+, -)$. Only one option has the signs $' + SGT[target] + '$, namely $' + pt(SG[target][0] * a, SG[target][1] * b) + '$.' + (axis ? ' A point on an axis belongs to no quadrant.' : ''),
       sig: 'r02|' + target + '|' + a + '|' + b
     };
   });
@@ -56,6 +56,7 @@
     var notes = [];
     if (hx || both) notes.push('Since $' + H1[1] + '$, $' + H1[0] + (ev.expr(H1[0], {}) > 0 ? ' > 0' : ' < 0') + '$.');
     if (!hx || both) notes.push('Since $' + H2[1] + '$, $' + H2[0] + (ev.expr(H2[0], {}) > 0 ? ' > 0' : ' < 0') + '$.');
+    if (notes.length === 2 && notes[0] === notes[1]) notes.pop();
     var st = quadOptions(qf, notes.join(' ') + ' The signs are $' + SGT[k] + '$, so the point lies in ' + QN[k] + '.');
     return out(R.pick(['The point $(' + xT + ', ' + yT + ')$ lies in ( )', 'In the rectangular coordinate system, the point $P(' + xT + ', ' + yT + ')$ lies in ( )']), st);
   });
@@ -81,7 +82,7 @@
     if (kind === 'sum') { cond = '$ab > 0$ and $a + b ' + sum + ' 0$'; sa = sb = sum === '<' ? -1 : 1; why = '$ab > 0$ means $a$ and $b$ have the same sign, and $a + b ' + sum + ' 0$ makes both ' + (sum === '<' ? 'negative' : 'positive') + '.'; }
     else if (kind === 'a') { cond = '$a = ' + c + '$ and $ab ' + prod + ' 0$'; sa = c > 0 ? 1 : -1; sb = prod === '<' ? -sa : sa; why = '$a ' + (c > 0 ? '>' : '<') + ' 0$ and $ab ' + prod + ' 0$ give $b ' + (sb > 0 ? '>' : '<') + ' 0$.'; }
     else { cond = '$b = ' + c + '$ and $ab ' + prod + ' 0$'; sb = c > 0 ? 1 : -1; sa = prod === '<' ? -sb : sb; why = '$b ' + (c > 0 ? '>' : '<') + ' 0$ and $ab ' + prod + ' 0$ give $a ' + (sa > 0 ? '>' : '<') + ' 0$.'; }
-    var st = quadOptions(qf, why + ' So the point ' + (swap ? '$(b, a)$' : '$(a, b)$') + ' has signs $' + SGT[k] + '$: ' + QN[k] + '.');
+    var st = quadOptions(qf, why + ' So the point ' + (swap ? '$(b, a)$' : '$(a, b)$') + ' has signs $' + SGT[k] + '$ and lies in ' + QN[k] + '.');
     return out('If ' + cond + ', then the point ' + (swap ? '$P(b, a)$' : '$P(a, b)$') + ' lies in ( )', st);
   });
   def({ id: 'LN-quad.transformed', code: 'LN-quad', lesson: '4.1', tier: 'E', level: '=', fmt: 'V', trick: 'T07', w: 1,
@@ -98,7 +99,7 @@
     };
     var k = qf(), X = F.sum([[c, swap ? 'y' : 'x']]), Y = F.sum([[d, swap ? 'x' : 'y']]);
     var sx = SG[p][0] > 0 ? '>' : '<', sy = SG[p][1] > 0 ? '>' : '<';
-    var st = quadOptions(qf, 'In the ' + QW[p] + ' quadrant $x ' + sx + ' 0$ and $y ' + sy + ' 0$. Then $' + X + (SG[k][0] > 0 ? ' > 0' : ' < 0') + '$ and $' + Y + (SG[k][1] > 0 ? ' > 0' : ' < 0') + '$, so $Q$ has signs $' + SGT[k] + '$: ' + QN[k] + '.');
+    var st = quadOptions(qf, 'In the ' + QW[p] + ' quadrant $x ' + sx + ' 0$ and $y ' + sy + ' 0$. Then $' + X + (SG[k][0] > 0 ? ' > 0' : ' < 0') + '$ and $' + Y + (SG[k][1] > 0 ? ' > 0' : ' < 0') + '$, so $Q$ has signs $' + SGT[k] + '$ and lies in ' + QN[k] + '.');
     return out('If the point $P(x, y)$ lies in the ' + QW[p] + ' quadrant, then the point $Q(' + X + ', ' + Y + ')$ lies in ( )', st);
   });
   function reflect(a, b, axis) {          // geometric reflection (independent of the sign table)
@@ -118,13 +119,13 @@
     var kq = quadOf(a, b), wq = R.pick([1, 2, 3, 4].filter(function (k) { return k !== kq; })), kq2 = quadOf(-a, b);
     var pool = [
       sym('x', a, -b, 'reflection in the $x$-axis keeps $x$ and changes the sign of $y$.', { g: 'x' }), sym('y', -a, b, 'reflection in the $y$-axis changes the sign of $x$ and keeps $y$.', { g: 'y' }), sym('origin', -a, -b, 'reflection in the origin changes both signs.', { g: 'o' }),
-      sym('x', -a, b, 'that is the reflection in the $y$-axis; about the $x$-axis the point is $' + pt(a, -b) + '$.', { g: 'x', trap: 'axis' }), sym('y', a, -b, 'that is the reflection in the $x$-axis; about the $y$-axis the point is $' + pt(-a, b) + '$.', { g: 'y', trap: 'axis' }),
-      sym('origin', b, a, 'that swaps the coordinates; about the origin the point is $' + pt(-a, -b) + '$.', { g: 'o', trap: 'swap' }),
+      sym('x', -a, b, 'reflection in the $x$-axis keeps $x$ and changes the sign of $y$, which gives $' + pt(a, -b) + '$. The point $' + pt(-a, b) + '$ is the reflection in the $y$-axis.', { g: 'x', trap: 'axis' }), sym('y', a, -b, 'reflection in the $y$-axis changes the sign of $x$ and keeps $y$, which gives $' + pt(-a, b) + '$. The point $' + pt(a, -b) + '$ is the reflection in the $x$-axis.', { g: 'y', trap: 'axis' }),
+      sym('origin', b, a, 'reflection in the origin changes both signs, which gives $' + pt(-a, -b) + '$. Swapping the coordinates is a different operation.', { g: 'o', trap: 'swap' }),
       h.factS('$P$ lies in ' + QN[kq], false, function () { return quadOf(a, b) === kq; }, 'its signs are $' + SGT[kq] + '$.', { g: 'q' }),
       h.factS('$P$ lies in ' + QN[wq], false, function () { return quadOf(a, b) === wq; }, 'its signs are $' + SGT[kq] + '$, so it lies in ' + QN[kq] + '.', { g: 'q', trap: 'sign' }),
-      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(b) + '$', false, function () { return Math.abs(b) === Math.abs(b); }, 'the distance to the $x$-axis is $|y|$.', { g: 'd' }),
-      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(a) + '$', false, function () { return Math.abs(b) === Math.abs(a); }, 'the distance to the $x$-axis is $|y| = ' + Math.abs(b) + '$; $|x|$ is the distance to the $y$-axis.', { g: 'd', trap: 'axis' }),
-      h.factS('The point $' + pt(-a, b) + '$ lies in ' + QN[kq], false, function () { return quadOf(-a, b) === kq; }, 'changing the sign of $x$ moves it to ' + QN[kq2] + '.', { g: 'q2', trap: 'sign' })
+      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(b) + '$', false, function () { return Math.abs(b) === Math.abs(b); }, 'the distance to the $x$-axis is $|y| = ' + Math.abs(b) + '$.', { g: 'd' }),
+      h.factS('The distance from $P$ to the $x$-axis is $' + Math.abs(a) + '$', false, function () { return Math.abs(b) === Math.abs(a); }, 'the distance to the $x$-axis is $|y| = ' + Math.abs(b) + '$. The number $' + Math.abs(a) + '$ is the distance to the $y$-axis.', { g: 'd', trap: 'axis' }),
+      h.factS('The point $' + pt(-a, b) + '$ lies in ' + QN[kq], false, function () { return quadOf(-a, b) === kq; }, 'its signs are $' + SGT[kq2] + '$, so it lies in ' + QN[kq2] + '.', { g: 'q2', trap: 'sign' })
     ];
     pool.forEach(function (s) { s.ok = !!s.test(); });
     return out('Given the point $P' + pt(a, b) + '$, which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
@@ -141,7 +142,7 @@
     var rule = { x: 'keeps $x$ and changes the sign of $y$', y: 'changes the sign of $x$ and keeps $y$', origin: 'changes both signs' }[axis];
     return {
       stem: R.pick(['Let $P' + pt(a, b) + '$ be a point in the rectangular coordinate system. If point $Q$ and point $P$ are symmetric about ' + AX[axis] + ', then the coordinates of $Q$ are ( )', 'The point symmetric to $P' + pt(a, b) + '$ about ' + AX[axis] + ' is ( )']),
-      key: m(pt(key[0], key[1])), wrong: wrong, check: chk.tuple(truth), sol: 'Symmetry about ' + AX[axis] + ' ' + rule + ': $' + pt(a, b) + ' \\to ' + pt(key[0], key[1]) + '$.'
+      key: m(pt(key[0], key[1])), wrong: wrong, check: chk.tuple(truth), sol: 'Symmetry about ' + AX[axis] + ' ' + rule + ', so $' + pt(a, b) + '$ becomes $' + pt(key[0], key[1]) + '$.'
     };
   });
   def({ id: 'LN-pt.dist-axis', code: 'LN-pt', lesson: '4.1', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -155,7 +156,7 @@
     return {
       stem: 'If the $' + (xGiven ? 'x' : 'y') + '$-coordinate of point $P$ is $' + c + '$ and the distance from $P$ to the $' + (xGiven ? 'x' : 'y') + '$-axis is $' + d + '$, then the coordinates of $P$ are ( )', key: two(A1, A2), wrong: R.shuffle(wrong.slice(0, 2)).concat(wrong.slice(2)),
       check: chk.tuples([A1, A2]),
-      sol: 'The distance from $(x, y)$ to the $' + (xGiven ? 'x' : 'y') + '$-axis is $' + (xGiven ? '|y|' : '|x|') + '$, so $' + (xGiven ? 'y' : 'x') + ' = \\pm ' + d + '$: there are two points, $' + pt(A1[0], A1[1]) + '$ and $' + pt(A2[0], A2[1]) + '$. An option with only one of them is incomplete.'
+      sol: 'The distance from $(x, y)$ to the $' + (xGiven ? 'x' : 'y') + '$-axis is $' + (xGiven ? '|y|' : '|x|') + '$, so $' + (xGiven ? 'y' : 'x') + ' = \\pm ' + d + '$. Hence there are two points, $' + pt(A1[0], A1[1]) + '$ and $' + pt(A2[0], A2[1]) + '$, and an option with only one of them is incomplete.'
     };
   });
   def({ id: 'LN-pt.on-axis', code: 'LN-pt', lesson: '4.1', tier: 'E', level: '=', fmt: 'V', w: 0.5,
@@ -172,7 +173,7 @@
       stem: 'If the point $' + name + '(' + X + ', ' + Y + ')$ lies on the $' + (onX ? 'x' : 'y') + '$-axis, then the coordinates of $' + name + '$ are ( )', key: m(pt(key[0], key[1])),
       wrong: [[m(pt(other[0], other[1])), 'axis'], [m(onX ? pt(0, v) : pt(v, 0)), 'axis'], [m(onX ? pt(-v, 0) : pt(0, -v)), 'sign'], [m(onX ? pt(v, a) : pt(a, v)), 'partial'], [m(onX ? pt(a, 0) : pt(0, a)), 'partial']],
       check: chk.tuple(onX ? [al * (-r / be) + p, be * (-r / be) + r] : [al * (-p / al) + p, be * (-p / al) + r]),
-      sol: 'A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + ' = 0$: $' + (onX ? Y : X) + ' = 0$, so $a = ' + a + '$. Hence $' + name + pt(key[0], key[1]) + '$.'
+      sol: 'A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + ' = 0$, so $' + (onX ? Y : X) + ' = 0$ and $a = ' + a + '$. Then $' + (onX ? X : Y) + ' = ' + v + '$, so the point is $' + name + pt(key[0], key[1]) + '$.'
     };
   });
   def({ id: 'LN-pt.sym-param', code: 'LN-pt', lesson: '4.1', tier: 'E', level: '+1', fmt: 'V',
@@ -216,7 +217,7 @@
     return {
       stem: R.pick(['The distance between the points ' + a + ' and ' + b + ' is ( )', 'The distance from the point ' + a + ' to the point ' + b + ' is ( )', 'Given points ' + a + ' and ' + b + ', then $|' + A + B + '| =$ ( )']),
       key: m(key), wrong: W(wrong), check: chk.num(Math.hypot(Q[0] - P[0], Q[1] - P[1])),
-      sol: '$|' + A + B + '| = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} = \\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$. Subtract the coordinates before squaring, and do not forget the square root.',
+      sol: 'The coordinate differences are $' + Q[0] + ' - ' + par(P[0]) + ' = ' + dx + '$ and $' + Q[1] + ' - ' + par(P[1]) + ' = ' + dy + '$. By the distance formula, $|' + A + B + '| = \\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + (dx * dx) + ' + ' + (dy * dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.',
       sig: 'dist|' + [P[0], P[1], Q[0], Q[1]].join(',') + (extraSig || '')
     };
   }
@@ -250,7 +251,7 @@
     return {
       stem: 'The distance from point $P(' + L[0] + ', ' + L[1] + ')$ to point $Q(' + X + ', ' + Y + ')$ is ( )', key: m(key),
       wrong: W([[d2, 'partial'], [Math.abs(p) + Math.abs(r), 'operation'], [Math.max(Math.abs(p), Math.abs(r)), 'partial'], [p * p === r * r ? null : Sd.sqrt(Math.abs(p * p - r * r)), 'sign'], [Sd.sqrt(d2).scale(2), 'slip']]), check: chk.num(Math.hypot(p, r)),
-      sol: 'The differences of the coordinates are $' + p + '$ and $' + r + '$ — the letters cancel. So $|PQ| = \\sqrt{' + sqT(p) + ' + ' + sqT(r) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
+      sol: 'The differences of the coordinates are $(' + X + ') - ' + L[0] + ' = ' + p + '$ and $(' + Y + ') - ' + L[1] + ' = ' + r + '$, so the letters cancel. Then $|PQ| = \\sqrt{' + sqT(p) + ' + ' + sqT(r) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
   function paramItem(R, x1, y1, y2, leg, h2, hT, onY, block) {
@@ -265,8 +266,8 @@
     var roots = [x1 + Math.sqrt(h2 - dy * dy), x1 - Math.sqrt(h2 - dy * dy)];
     return {
       stem: 'Given points $A' + A + '$ and $B' + B + '$, if $|AB| = ' + hT + '$, then $' + L + ' =$ ( )', key: key, wrong: sym ? wrong : R.shuffle(wrong.slice(0, 2)).concat(wrong.slice(2)), check: chk.alts(roots),
-      sol: sym ? '$|AB|^2 = ' + h2 + '$ gives $' + L + '^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $' + L + '^2 = ' + (leg * leg) + '$ and $' + L + ' = \\pm ' + leg + '$ — two answers.'
-        : '$|AB|^2 = ' + h2 + '$ gives $(' + F.sum([[1, L], [-x1, '']]) + ')^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $(' + F.sum([[1, L], [-x1, '']]) + ')^2 = ' + (leg * leg) + '$ and $' + F.sum([[1, L], [-x1, '']]) + ' = \\pm ' + leg + '$. Hence $' + L + ' = ' + v1 + '$ or $' + v2 + '$ — two answers.'
+      sol: sym ? '$|AB|^2 = ' + h2 + '$ gives $' + L + '^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $' + L + '^2 = ' + (leg * leg) + '$ and $' + L + ' = \\pm ' + leg + '$. Both values give $|AB| = ' + hT + '$.'
+        : '$|AB|^2 = ' + h2 + '$ gives $(' + F.sum([[1, L], [-x1, '']]) + ')^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $(' + F.sum([[1, L], [-x1, '']]) + ')^2 = ' + (leg * leg) + '$ and $' + F.sum([[1, L], [-x1, '']]) + ' = \\pm ' + leg + '$. Hence $' + L + ' = ' + v1 + '$ or $' + L + ' = ' + v2 + '$, and both give $|AB| = ' + hT + '$.'
     };
   }
   var TRI = [[3, 4, 5], [4, 3, 5], [6, 8, 10], [8, 6, 10], [5, 12, 13], [12, 5, 13]];
@@ -295,7 +296,7 @@
       stem: 'The distance between the points $' + nm[0] + pt(P[0], P[1]) + '$ and $' + nm[1] + pt(Q[0], Q[1]) + '$ is ( )', key: m(key),
       wrong: W([[d2, 'partial'], [Math.abs(dx) + Math.abs(dy), 'operation'], [Sd.sqrt(P[0].add(Q[0]).mul(P[0].add(Q[0])).add(P[1].add(Q[1]).mul(P[1].add(Q[1])))), 'sign'], [Math.max(Math.abs(dx), Math.abs(dy)), 'partial'], [Sd.sqrt(d2 + 2), 'slip']]),
       check: chk.num(Math.hypot(Q[0].num - P[0].num, Q[1].num - P[1].num)),
-      sol: 'The differences are $' + dx + '$ and $' + dy + '$ (the fractions cancel). So the distance is $\\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
+      sol: 'The differences are $' + F.n(Q[0]) + ' - ' + par(P[0]) + ' = ' + dx + '$ and $' + F.n(Q[1]) + ' - ' + par(P[1]) + ' = ' + dy + '$, so the fractions cancel. The distance is $\\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
 
@@ -317,7 +318,7 @@
     return {
       stem: R.pick(['The slope of the line passing through the points $A' + pt(x1, y1) + '$ and $B' + pt(x2, y2) + '$ is ( )', 'If the straight line $l$ passes through the points $A' + pt(x1, y1) + '$ and $B' + pt(x2, y2) + '$, then the slope of $l$ is ( )']), key: m(k),
       wrong: W([[k.inv(), 'reciprocal'], [k.neg(), 'sign'], [k.inv().neg(), 'reciprocal'], [sumK, 'sign'], [k.add(1), 'slip']]), check: chk.num((y2 - y1) / (x2 - x1)),
-      sol: '$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{' + y2 + ' - ' + par(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$. Keep the same order of the points in the numerator and the denominator.'
+      sol: '$k = \\dfrac{y_2 - y_1}{x_2 - x_1} = \\dfrac{' + y2 + ' - ' + par(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$.'
     };
   });
   def({ id: 'LN-slope.incl-si', code: 'LN-slope', lesson: '4.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -327,7 +328,7 @@
     var A = angOpts(R, c[0], useDeg), eq = 'y = ' + F.sum([[c[1], 'x'], [b, '']]);
     return {
       stem: 'The angle of inclination of the line $' + eq + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(incOf(c[1].num)),
-      sol: 'The slope is $k = ' + F.n(c[1]) + ' = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = ' + F.deg(c[0]) + (useDeg ? '' : ' = ' + F.rad(c[0])) + '$. The intercept does not matter' + (c[0] > 90 ? ', and a negative slope gives an obtuse angle, never a negative one.' : '.'),
+      sol: 'The slope is $k = ' + F.n(c[1]) + ' = \\tan\\theta$ with $0^\\circ \\le \\theta < 180^\\circ$, so $\\theta = ' + F.deg(c[0]) + (useDeg ? '' : ' = ' + F.rad(c[0])) + '$.' + (b ? ' The intercept $' + b + '$ does not affect the angle.' : '') + (c[0] > 90 ? ' The value $' + F.deg(c[0] - 180) + '$ is not an inclination, because an inclination is never negative.' : ''),
       sig: 'incl|' + eq + '|' + useDeg
     };
   });
@@ -339,7 +340,7 @@
     var k = c[0].neg().div(c[1]), th = Math.round(incOf(k.num) * 180 / PI), A = angOpts(R, th, useDeg), eq = F.sum([[c[0], 'x'], [c[1], 'y'], [cc, '']]) + ' = 0';
     return {
       stem: 'The angle of inclination of the line $' + eq + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(incOf(-c[0].num / c[1].num)),
-      sol: 'For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = ' + F.n(k) + '$. With $\\tan\\theta = ' + F.n(k) + '$ and $0^\\circ \\le \\theta < 180^\\circ$: $\\theta = ' + F.deg(th) + (useDeg ? '' : ' = ' + F.rad(th)) + '$.'
+      sol: 'For $Ax + By + C = 0$ the slope is $k = -\\dfrac{A}{B} = -\\dfrac{' + F.n(c[0]) + '}{' + F.n(c[1]) + '} = ' + F.n(k) + '$. Since $\\tan\\theta = ' + F.n(k) + '$ and $0^\\circ \\le \\theta < 180^\\circ$, $\\theta = ' + F.deg(th) + (useDeg ? '' : ' = ' + F.rad(th)) + '$.'
     };
   });
   def({ id: 'LN-slope.from-incl', code: 'LN-slope', lesson: '4.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -349,7 +350,7 @@
     var wrong = [[k.neg(), 'sign'], [k.eq(rec) ? null : rec, 'reciprocal'], [k.eq(rec) ? null : rec.neg(), 'reciprocal'], [N.trig.sin(th), 'companion'], [N.trig.cos(th), 'companion'], [N.trig.sin(th).neg(), 'companion']];
     return {
       stem: R.pick(['If the angle of inclination of a line is $' + (useDeg ? F.deg(th) : F.rad(th)) + '$, then its slope is ( )', 'The slope of a line whose angle of inclination is $' + (useDeg ? F.deg(th) : F.rad(th)) + '$ is ( )']), key: m(k), wrong: W(wrong), check: chk.num(Math.tan(th * PI / 180)),
-      sol: '$k = \\tan\\theta = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$' + (th > 90 ? ' (an obtuse inclination gives a negative slope).' : '.')
+      sol: '$k = \\tan\\theta = \\tan ' + F.deg(th) + ' = ' + F.n(k) + '$' + '.' + (th > 90 ? ' An obtuse inclination gives a negative slope.' : '')
     };
   });
   def({ id: 'LN-slope.incl-two-points', code: 'LN-slope', lesson: '4.3', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -367,8 +368,8 @@
     form: 'Inclination of a general-form line with integer coefficients (x + y − 2 = 0), incl. vertical and horizontal lines', basis: 'Course plan 4.3 Q5' }, function (R) {
     var kind = R.pick(['d', 'd', 'd', 'v', 'h']), t = R.pick([1, 2, 3]), c = R.nz(-7, 7), useDeg = R.bool(0.8), eq, th, why;
     if (kind === 'd') { var sgn = R.sign(); eq = F.line(t, sgn * t, c); th = sgn > 0 ? 135 : 45; why = 'The slope is $k = -\\dfrac{A}{B} = ' + (-sgn) + '$, so $\\theta = ' + F.deg(th) + '$.'; }
-    else if (kind === 'v') { eq = R.bool() ? 'x = ' + c : F.line(1, 0, -c); th = 90; why = 'The line is vertical: its inclination is $90^\\circ$ and it has no slope.'; }
-    else { eq = R.bool() ? 'y = ' + c : F.line(0, 1, -c); th = 0; why = 'The line is horizontal: its slope is $0$ and its inclination is $0^\\circ$.'; }
+    else if (kind === 'v') { eq = R.bool() ? 'x = ' + c : F.line(1, 0, -c); th = 90; why = 'The line is vertical, so its inclination is $90^\\circ$ and it has no slope.'; }
+    else { eq = R.bool() ? 'y = ' + c : F.line(0, 1, -c); th = 0; why = 'The line is horizontal, so its slope is $0$ and its inclination is $0^\\circ$.'; }
     var A = angOpts(R, th, useDeg);
     return { stem: 'The angle of inclination of the line $' + eq + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(th * PI / 180), sol: why };
   });
@@ -380,16 +381,16 @@
     var V = [[a, 0], [a, 1]], H = [[0, b], [1, b]], V2 = [[x0, y0], [x0, y0 + t]], H2 = [[x0, y0], [x0 + t, y0]];
     var S = function (text, test, why, extra) { return h.factS(text, test(), test, why, extra); };
     var pool = [
-      S('The line $x = ' + a + '$ has inclination $90^\\circ$', function () { return slope(V[0], V[1]) === null; }, 'it is vertical.', { g: 'vi' }),
+      S('The line $x = ' + a + '$ has inclination $90^\\circ$', function () { return slope(V[0], V[1]) === null; }, 'it is vertical, so its inclination is $90^\\circ$.', { g: 'vi' }),
       S('The line $x = ' + a + '$ has no slope', function () { return slope(V[0], V[1]) === null; }, 'for a vertical line $\\tan 90^\\circ$ is undefined.', { g: 'vs' }),
-      S('The line $y = ' + b + '$ has slope $0$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal.', { g: 'hs' }),
-      S('The line $y = ' + b + '$ has inclination $0^\\circ$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal.', { g: 'hi' }),
+      S('The line $y = ' + b + '$ has slope $0$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal, so its slope is $0$.', { g: 'hs' }),
+      S('The line $y = ' + b + '$ has inclination $0^\\circ$', function () { return slope(H[0], H[1]) === 0; }, 'it is horizontal, so its inclination is $0^\\circ$.', { g: 'hi' }),
       S('The line through $' + pt(V2[0][0], V2[0][1]) + '$ and $' + pt(V2[1][0], V2[1][1]) + '$ has no slope', function () { return slope(V2[0], V2[1]) === null; }, 'the two points have the same $x$-coordinate, so the line is vertical.', { g: 'p' }),
-      S('The line $x = ' + a + '$ has slope $0$', function () { return slope(V[0], V[1]) === 0; }, 'a vertical line has no slope; slope $0$ belongs to horizontal lines.', { g: 'vs', trap: 'axis' }),
+      S('The line $x = ' + a + '$ has slope $0$', function () { return slope(V[0], V[1]) === 0; }, 'a vertical line has no slope, because $\\tan 90^\\circ$ is undefined. Slope $0$ belongs to horizontal lines.', { g: 'vs', trap: 'axis' }),
       S('The line $y = ' + b + '$ has no slope', function () { return slope(H[0], H[1]) === null; }, 'a horizontal line has slope $0$.', { g: 'hs', trap: 'axis' }),
       S('The line $y = ' + b + '$ has inclination $90^\\circ$', function () { return slope(H[0], H[1]) === null; }, 'a horizontal line has inclination $0^\\circ$.', { g: 'hi', trap: 'axis' }),
       S('The line $x = ' + a + '$ has inclination $0^\\circ$', function () { return slope(V[0], V[1]) === 0; }, 'a vertical line has inclination $90^\\circ$.', { g: 'vi', trap: 'axis' }),
-      S('The line through $' + pt(H2[0][0], H2[0][1]) + '$ and $' + pt(H2[1][0], H2[1][1]) + '$ has no slope', function () { return slope(H2[0], H2[1]) === null; }, 'the two points have the same $y$-coordinate: the line is horizontal with slope $0$.', { g: 'p', trap: 'axis' }),
+      S('The line through $' + pt(H2[0][0], H2[0][1]) + '$ and $' + pt(H2[1][0], H2[1][1]) + '$ has no slope', function () { return slope(H2[0], H2[1]) === null; }, 'the two points have the same $y$-coordinate, so the line is horizontal and its slope is $0$.', { g: 'p', trap: 'axis' }),
       S('A line with inclination $135^\\circ$ has slope $1$', function () { return ev.close(Math.tan(135 * PI / 180), 1); }, '$\\tan 135^\\circ = -1$.', { g: 't', trap: 'sign' })
     ];
     return out('Which of the following statements is correct? ( )', QF.pickStmts(R, 'S', pool));
@@ -399,11 +400,13 @@
     var k = R.pick([q(2), q(3), q(-2), q(-1), q(1, 2), q(-1, 2), q(3, 2), q(-3), q(1, 3), q(2, 3)]), x1 = R.int(-4, 4), y1 = R.int(-4, 4), dx = R.nz(-3, 3) * k.d, dy = k.mul(dx).n, unkX = R.bool(0.6);
     var x2 = x1 + dx, y2 = y1 + dy;
     var B = unkX ? '(a, ' + y2 + ')' : '(' + x2 + ', a)', key = unkX ? x2 : y2;
+    function aM(v) { return F.sum([[1, 'a'], [-v, '']]); }
     var wrongV = unkX ? [x1 - dx, x1 + dy * k.n / k.d === x2 ? null : q(x1).add(k.mul(dy)), x1 + dy, -x2] : [y1 - dy, q(y1).add(q(dx).div(k)), y1 + dx, -y2];
     return {
       stem: 'If the slope of the line through $A' + pt(x1, y1) + '$ and $B' + B + '$ is $' + F.n(k) + '$, then $a =$ ( )', key: m(key),
       wrong: W(wrongV.map(function (v, i) { return [v, ['sign', 'reciprocal', 'partial', 'sign'][i]]; }).concat([[key + 1, 'slip']])), check: chk.num(unkX ? x1 + (y2 - y1) / k.num : y1 + k.num * (x2 - x1)),
-      sol: unkX ? '$\\dfrac{' + y2 + ' - ' + par(y1) + '}{a - ' + par(x1) + '} = ' + F.n(k) + '$, so $a - ' + par(x1) + ' = ' + dx + '$ and $a = ' + x2 + '$.' : '$\\dfrac{a - ' + par(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$, so $a - ' + par(y1) + ' = ' + dy + '$ and $a = ' + y2 + '$.'
+      sol: unkX ? '$\\dfrac{' + y2 + ' - ' + par(y1) + '}{' + aM(x1) + '} = ' + F.n(k) + '$, so $' + (k.eq(1) ? '' : k.eq(-1) ? '-' : F.n(k)) + '(' + aM(x1) + ') = ' + dy + '$. Then $' + aM(x1) + ' = ' + dx + '$ and $a = ' + x2 + '$.'
+        : '$\\dfrac{' + aM(y1) + '}{' + x2 + ' - ' + par(x1) + '} = ' + F.n(k) + '$, so $' + aM(y1) + ' = ' + F.n(k) + ' \\cdot ' + par(dx) + ' = ' + dy + '$ and $a = ' + y2 + '$.'
     };
   });
   def({ id: 'LN-slope.incl-surd-points', code: 'LN-slope', lesson: '4.3', tier: 'M', level: '+1', fmt: 'V',
@@ -415,7 +418,7 @@
     var A = angOpts(R, th, useDeg);
     return {
       stem: 'The angle of inclination of the line through $A' + pt(P[0], P[1]) + '$ and $B' + pt(Q[0], Q[1]) + '$ is ( )', key: A.key, wrong: A.wrong, check: chk.num(incOf((Q[1].num - P[1].num) / (Q[0].num - P[0].num))),
-      sol: 'The slope is $k = \\dfrac{\\Delta y}{\\Delta x} = ' + F.n(k) + '$, and $\\tan\\theta = ' + F.n(k) + '$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = ' + F.deg(th) + '$.'
+      sol: 'Here $\\Delta x = ' + F.n(Q[0].sub(P[0])) + '$ and $\\Delta y = ' + F.n(Q[1].sub(P[1])) + '$, so the slope is $k = \\dfrac{\\Delta y}{\\Delta x} = ' + (steep ? '' : '\\dfrac{' + F.n(Q[1].sub(P[1])) + '}{' + F.n(Q[0].sub(P[0])) + '} = ') + F.n(k) + '$, and $\\tan\\theta = ' + F.n(k) + '$ with $0^\\circ \\le \\theta < 180^\\circ$ gives $\\theta = ' + F.deg(th) + '$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
