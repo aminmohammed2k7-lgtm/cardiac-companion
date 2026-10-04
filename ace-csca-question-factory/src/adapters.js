@@ -1,5 +1,5 @@
 /* ACE CSCA Question Factory · adapters.js
- * Generators for the website's speed drill (L01–L12) and easy-trick drill (T01–T12) in the shape the site expects
+ * Generators for the website's speed drill (L01-L12) and easy-trick drill (T01-T12) in the shape the site expects
  * (Website Spec §4):  ACE_GEN.L04 = [8 functions],  ACE_GEN.T05 = function;  each  rng => ({ stem, options, answer, explain }).
  * The site's seeded rng drives the choice, so a stored seed replays the same round. */
 ;(function (root) {

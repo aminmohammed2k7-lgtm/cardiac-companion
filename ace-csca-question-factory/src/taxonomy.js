@@ -107,7 +107,7 @@
   };
   var LESSONS = Object.keys(L).map(function (id) { return { id: id, title: L[id][0], week: L[id][1], day: L[id][2], video: L[id][3] }; });
 
-  /* recycled bank templates (Atlas §5.1) — only the template is kept, the numbers are always new */
+  /* recycled bank templates (Atlas §5.1): only the template is kept, the numbers are always new */
   var REPEATS = {
     R01: 'Half-angle: cos α given with α ∈ (π/2, π) → sin(α/2)',
     R02: 'Which point lies in a given quadrant',

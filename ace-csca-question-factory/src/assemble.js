@@ -1,6 +1,6 @@
 /* ACE CSCA Question Factory · assemble.js
  * Turns verified templates into papers: full mocks (slot-by-slot replicas of the six papers, and blueprint A/B mocks),
- * the diagnostic, weekly mocks W1–W7, Set A / Set B / Set C for every lesson day, 41–48 drills, and custom practice
+ * the diagnostic, weekly mocks W1-W7, Set A / Set B / Set C for every lesson day, 41-48 drills, and custom practice
  * tests by domain, sub-domain or lesson. Everything is seeded: the same seed gives the same paper. */
 ;(function (root) {
   'use strict';
@@ -112,7 +112,7 @@
   };
 
   /* ---------------- answer letters ---------------- */
-  /** balanced key strip: equal counts of A–D (±1), no run longer than maxRun */
+  /** balanced key strip: equal counts of A-D (±1), no run longer than maxRun */
   function keyStrip(n, R, maxRun) {
     var base = [], i;
     for (i = 0; i < n; i++) base.push(i % 4);
@@ -161,8 +161,8 @@
 
   /**
    * mock({ source: 'dec'|'jan'|'mar'|'apr'|'jun'|'und', mode: 'replica'|'blueprint', seed, ref, kind, registry })
-   * replica   — every slot keeps the form of the source paper (same code, tier, format, repeated template), new numbers
-   * blueprint — every slot keeps the source paper's code and tier; repeated-template slots stay; other slots take any
+   * replica:   every slot keeps the form of the source paper (same code, tier, format, repeated template), new numbers
+   * blueprint: every slot keeps the source paper's code and tier; repeated-template slots stay; other slots take any
    *             real exam form of that sub-domain, so the paper is new but still fits blueprint A or B
    */
   A.mock = function (o) {
@@ -217,7 +217,7 @@
   }
   /**
    * dailySet(day, 'a' | 'b' | 'c', { seed, registry })
-   * Set A / Set B: 8 items, Q1–4 exam level, Q5–7 one notch harder (Set B of a one-video day: spaced review), Q8 worth 2.5.
+   * Set A / Set B: 8 items, Q1-4 exam level, Q5-7 one notch harder (Set B of a one-video day: spaced review), Q8 worth 2.5.
    * Set C: 4 hard items worth 2.5 on the 20 one-video days.
    */
   A.dailySet = function (day, which, o) {
@@ -238,13 +238,13 @@
       if (!it) throw new Error(ref + ': no fresh item for slot ' + slot);
       if (it.format === 'S') needS = false;
       var level;
-      if (which === 'c') level = it.level;                                            // hardest form +1, or the 41–48-band form
+      if (which === 'c') level = it.level;                                            // hardest form +1, or the 41-48-band form
       else if (slot <= 4) level = '=';
       else if (slot <= 7) level = isReview ? it.level : '+1';                           // spaced review may be = or +1
       else level = it.level;
       items[i] = finish(it, { id: ref + '-q' + slot, kind: kind, ref: ref, slot: slot, level: level, lesson: r.lesson });
     });
-    if (which !== 'c' && !items.some(function (it) { return it.format === 'S'; })) throw new Error(ref + ': no "which is true" item — fix the recipe');
+    if (which !== 'c' && !items.some(function (it) { return it.format === 'S'; })) throw new Error(ref + ': no "which is true" item, so the recipe needs one');
     A.balance(items, ref + ':' + seed, 2);
     return paper({ ref: ref, kind: kind, seed: seed, items: items,
       title: 'Day ' + day + ' · Set ' + which.toUpperCase() + (which === 'c' ? ' (85+)' : '') + ' · ' + (which === 'c' ? d.a.lessons : rec.lessons).join(', '),
@@ -255,7 +255,7 @@
   A.weekly = function (week, o) {
     o = o || {};
     var spec = course.weekly[week - 1];
-    if (!spec) throw new Error('weekly mocks exist for weeks 1–7');
+    if (!spec) throw new Error('weekly mocks exist for weeks 1-7');
     var seed = String(o.seed === undefined ? 1 : o.seed), ref = 'w' + week + '-test', R = QF.rng('weekly:' + ref + ':' + seed), reg = (o.registry || new Registry(1)).begin();
     var items = [], used = {}, q = 0;
     function entryPool(e) {
@@ -284,7 +284,7 @@
             if (!cands.length) cands = list.filter(function (t) { return t.level === want; });
             if (!cands.length) cands = list.filter(function (t) { return !used[t.id]; });
           }
-          var soft = cands.filter(function (t) { return t.tier !== 'H'; });                  // H forms are kept for Q21–24
+          var soft = cands.filter(function (t) { return t.tier !== 'H'; });                  // H forms are kept for Q21-24
           if (soft.length) cands = soft;
           var ids = weightedOrder(R, cands).concat(weightedOrder(R, list.filter(function (t) { return cands.indexOf(t) < 0; }))).map(function (t) { return t.id; });
           add(ids, { level: null, lesson: opt.trap ? '3.5' : null });
@@ -292,19 +292,19 @@
         if (reps.length) throw new Error(ref + ': repeated template ' + reps.join(', ') + ' did not fit (' + e[0] + ')');
       });
     }
-    fill(spec.main, function (slot) { return slot % 2 ? '=' : '+1'; });                // Q1–16: about half = and half +1
-    fill(spec.review, function () { return '='; });                                    // Q17–20: spaced review at exam level
-    spec.hard.forEach(function (h) { add(Array.isArray(h) ? R.shuffle(h) : [h], { level: '+1' }); });   // Q21–24: 2.5 points, level +1
+    fill(spec.main, function (slot) { return slot % 2 ? '=' : '+1'; });                // Q1-16: about half = and half +1
+    fill(spec.review, function () { return '='; });                                    // Q17-20: spaced review at exam level
+    spec.hard.forEach(function (h) { add(Array.isArray(h) ? R.shuffle(h) : [h], { level: '+1' }); });   // Q21-24: 2.5 points, level +1
     if (items.length !== 24) throw new Error(ref + ': ' + items.length + ' items');
     A.balance(items, ref + ':' + seed, 3);
     return paper({ ref: ref, kind: 'weekly', seed: seed, items: items, title: 'Weekly mock W' + week + ' · 24 questions · 30 minutes', meta: { week: week, day: spec.day } });
   };
 
-  /* ---------------- 41–48 drills ---------------- */
+  /* ---------------- 41-48 drills ---------------- */
   A.drill = function (week, o) {
     o = o || {};
     var spec = course.drills[week - 1];
-    if (!spec) throw new Error('41–48 drills exist for weeks 1–7');
+    if (!spec) throw new Error('41-48 drills exist for weeks 1-7');
     var version = o.version || 'a', seed = String(o.seed === undefined ? 1 : o.seed), ref = 'd4148-w' + week, R = QF.rng('drill:' + ref + ':' + version + ':' + seed), reg = (o.registry || new Registry(1)).begin();
     var items = spec.slots.map(function (s, i) {
       var slot = 41 + i, it = A.draw(Array.isArray(s) ? R.shuffle(s) : [s], ref + ':' + version + ':' + seed + ':q' + slot, reg);
@@ -312,7 +312,7 @@
       return finish(it, { id: ref + '-q' + slot, kind: 'd4148', ref: ref, slot: slot, version: version });
     });
     A.balance(items, ref + ':' + version + ':' + seed, 2);
-    return paper({ ref: ref, kind: 'd4148', seed: seed, items: items, title: '41–48 drill · Week ' + week + ' · version ' + version.toUpperCase(), meta: { week: week, day: spec.day, version: version } });
+    return paper({ ref: ref, kind: 'd4148', seed: seed, items: items, title: '41-48 drill · Week ' + week + ' · version ' + version.toUpperCase(), meta: { week: week, day: spec.day, version: version } });
   };
 
   /* ---------------- custom practice tests ---------------- */
@@ -373,7 +373,7 @@
     A.balance(picked, ref, 3);
     return paper({ ref: ref, kind: 'practice', seed: seed, items: picked, title: o.title || 'Practice test · ' + picked.length + ' questions', meta: { filter: { domains: o.domains, codes: o.codes, lessons: o.lessons, tiers: o.tiers, level: level }, domains: domainCount(picked), tiers: tierCount(picked) } });
   };
-  /** 1 when the form belongs to the Q41–48 band (2.5 points on a real paper), else 0 */
+  /** 1 when the form belongs to the Q41-48 band (2.5 points on a real paper), else 0 */
   var bandCache = {};
   A.band = function (id) {
     if (bandCache[id] !== undefined) return bandCache[id];
@@ -430,7 +430,7 @@
     }
     if (o.solutions !== false) {
       L.push('## Solutions', '');
-      p.items.forEach(function (it, i) { L.push('**' + (it.slot || i + 1) + '. ' + LETTERS[it.answer] + '** — ' + it.solution, ''); });
+      p.items.forEach(function (it, i) { L.push('**' + (it.slot || i + 1) + '. Answer ' + LETTERS[it.answer] + '.** ' + it.solution, ''); });
     }
     return L.join('\n');
   };

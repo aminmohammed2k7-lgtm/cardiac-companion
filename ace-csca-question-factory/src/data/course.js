@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · data/course.js — the 56-day course as recipes (Course Plan 6th edition, §3–§8; Website Spec §3–§4).
+/* ACE CSCA Question Factory · data/course.js: the 56-day course as recipes (Course Plan 6th edition, §3-§8; Website Spec §3-§4).
  * A slot is: 'template.id' | ['id1', 'id2'] (one is drawn) | at(lesson, slot) (file the item under another lesson)
  *          | rev(lesson) (spaced review: a real exam form of that lesson) | trap() (a lesson-3.5 trap item).
  * Recipes follow the "Set A / Set B / Set C · Day N" paragraphs of the plan. Where a paragraph names no "which is true"
@@ -110,13 +110,13 @@
       c: { back: '6.5', items: ['PRB.share', 'PRB.two-way', 'PRB.compare-n', 'CN-ell.two-case'] } }
   ];
 
-  /* ---------------- weekly mocks W1–W7 (Course Plan §7) ----------------
-   * main: Q1–16 this week's topics in lesson order ([code, count, options]); review: Q17–20 (level =); hard: Q21–24 (2.5 points, +1).
+  /* ---------------- weekly mocks W1-W7 (Course Plan §7) ----------------
+   * main: Q1-16 this week's topics in lesson order ([code, count, options]); review: Q17-20 (level =); hard: Q21-24 (2.5 points, +1).
    * options: lessons (restrict a code to these lessons), rep (repeated templates that must appear), ids (explicit pool), trap. */
   var weekly = [
     { week: 1, day: 7,
       main: [['SET-el', 2], ['SET-op', 2], ['INQ-quad', 2], ['INQ-rat', 2], ['INQ-prop', 2], ['FN-dom', 3], ['FN-rng', 1], ['FN-par', 2]],
-      review: [['FN-inv', 2], ['FN-mono', 1], ['FN-same', 1]],          // Week 1 has no earlier week: Q17–20 continue the week's own list at level =
+      review: [['FN-inv', 2], ['FN-mono', 1], ['FN-same', 1]],          // Week 1 has no earlier week: Q17-20 continue the week's own list at level =
       hard: ['INQ-rat.lek', ['FN-dom.composite-sq', 'FN-dom.composite'], 'FN-dom.inv-ln-abs', ['FN-inv.frac-neg', 'FN-inv.frac']] },
     { week: 2, day: 14,
       main: [['TR-val', 3], ['TR-def', 3], ['TR-id', 3], ['TR-red', 3], ['TR-graph', 2, { lessons: ['2.5'] }], ['TR-graph', 2, { lessons: ['2.6'] }]],
@@ -144,7 +144,7 @@
       hard: ['VEC.min-norm', 'CPX.root-on-line', 'PRB.share', 'PRB.two-way'] }
   ];
 
-  /* ---------------- 41–48 drills, Weeks 1–7 (Course Plan §6): slot 41 … 48 ---------------- */
+  /* ---------------- 41-48 drills, Weeks 1-7 (Course Plan §6): slot 41 … 48 ---------------- */
   var drills = [
     { week: 1, day: 6, slots: [['INQ-rat.le1', 'INQ-rat.lek'], 'FN-dom.inv-ln-abs', 'FN-dom.composite', 'FN-dom.root-den-log', ['FN-rng.recip-quad', 'FN-rng.recip-abs'], 'FN-inv.frac', 'FN-same.pairs', 'INQ-rat.closed'] },
     { week: 2, day: 13, slots: ['TR-id.four', 'TR-id.noquad', 'TR-red.chain', 'TR-red.three-half', 'TR-graph.four', 'TR-graph.tan-neg', 'TR-graph.tan-domain', 'TR-def.chain'] },
@@ -155,23 +155,23 @@
     { week: 7, day: 47, slots: [['FN-prop.fixed-log', 'FN-prop.fixed-exp'], 'FN-log.ineq-small', 'FN-cmp.order3', ['VEC.min-norm', 'VEC.collinear'], 'FN-log.stmt4', 'CPX.root-on-line', ['CPX.power-diff', 'CPX.max-mod', 'CPX.conj-expr'], ['PRB.share', 'PRB.two-way']] }
   ];
 
-  /* ---------------- speed drill L1–L12 (Course Plan §8): exactly 8 item types per level, in this order ---------------- */
+  /* ---------------- speed drill L1-L12 (Course Plan §8): exactly 8 item types per level, in this order ---------------- */
   var speed = {
-    L01: { name: 'Sets & number sets', lessons: '1.3–1.4', types: ['SET-el.listed', 'SET-el.two-sets', 'SET-el.empty', 'SET-num.member', 'SET-el.roots', 'SET-op.fin-cap', 'SET-op.int-cap', 'SET-op.sb-cup'] },
-    L02: { name: 'Inequalities', lessons: '1.5–1.7', types: ['INQ-quad.lt', 'INQ-quad.gt', 'INQ-quad.closed', 'INQ-quad.factored', 'INQ-rat.closed', 'INQ-rat.const', 'INQ-prop.basic', 'INQ-prop.negc'] },
-    L03: { name: 'Function basics', lessons: '1.8–1.13', types: ['FN-dom.inv-sqrt', 'FN-dom.recip-root', 'FN-dom.ln-root', 'FN-par.classify', 'FN-inv.linear', 'FN-inv.cubic', 'FN-mono.inc-R', 'FN-same.as-x'] },
-    L04: { name: 'Angles & ratios', lessons: '2.1–2.3', types: ['TR-val.single', 'TR-val.combo', 'TR-val.alpha-true', 'TR-def.point', 'TR-def.point', 'TR-def.point', 'TR-id.quad-v', 'TR-id.noquad'] },
-    L05: { name: 'Reduction & graphs', lessons: '2.4–2.6', types: ['TR-red.correct', 'TR-red.value', 'TR-red.three-half', 'TR-graph.period', 'TR-graph.tan-period', 'TR-graph.extreme', 'TR-graph.stmt', 'TR-graph.mono-interval'] },
-    L06: { name: 'Sum & double angle', lessons: '3.1–3.2', types: ['TR-sum.exact', 'TR-sum.exact-tan', 'TR-sum.tan-shift', 'TR-sum.acute-stmt', 'TR-dbl.cos-from-sin', 'TR-dbl.cos-from-cos', 'TR-dbl.sin2', 'TR-dbl.squared'] },
-    L07: { name: 'Half-angle & homogeneous', lessons: '3.3–3.5', types: ['TR-half.q4', 'TR-half.r01', 'TR-half.cos-q2', 'TR-half.tan', 'TR-hom.forward', 'TR-hom.sincos', 'TR-hom.backward', 'TR-id.identity'] },
-    L08: { name: 'Points, distance, slope', lessons: '4.1–4.3', types: ['LN-quad.r02', 'LN-pt.symmetric', 'LN-pt.on-axis', 'LN-dist.integer', 'LN-pt.dist-axis', 'LN-slope.two-points', 'LN-slope.incl-si', 'LN-slope.from-incl'] },
-    L09: { name: 'Lines', lessons: '4.4–4.7', types: ['LN-eq.point-slope', 'LN-eq.two-points', 'LN-eq.intercepts', 'LN-int.integer', 'LN-pp.par-through', 'LN-pp.perp-through', 'LN-pp.which-perp', 'LN-pp.perp-param'] },
-    L10: { name: 'Sequences', lessons: '5.1–5.7', types: ['SQ-ar.r03', 'SQ-ar.r12', 'SQ-geo.term', 'SQ-geo.ratio', 'SQ-mean.geo', 'SQ-gen.r14', 'SQ-sn.quad-term', 'SQ-sum.index-pair'] },
-    L11: { name: 'Conics', lessons: '6.1–6.6', types: ['CN-cir.r08', 'CN-cir.gen-both', 'CN-cir.r13', 'CN-par.directrix', 'CN-ell.foci', 'CN-ell.from-2a-foci', 'CN-hyp.foci', 'CN-hyp.condition'] },
-    L12: { name: 'Exp, log, vectors, complex, probability', lessons: '7.1–7.7', types: ['FN-log.sum-inv', 'FN-log.product', 'FN-prop.fixed-exp', 'FN-cmp.r07', 'VEC.lincomb', 'VEC.dot', 'CPX.linear', 'PRB.same-colour'] }
+    L01: { name: 'Sets & number sets', lessons: '1.3-1.4', types: ['SET-el.listed', 'SET-el.two-sets', 'SET-el.empty', 'SET-num.member', 'SET-el.roots', 'SET-op.fin-cap', 'SET-op.int-cap', 'SET-op.sb-cup'] },
+    L02: { name: 'Inequalities', lessons: '1.5-1.7', types: ['INQ-quad.lt', 'INQ-quad.gt', 'INQ-quad.closed', 'INQ-quad.factored', 'INQ-rat.closed', 'INQ-rat.const', 'INQ-prop.basic', 'INQ-prop.negc'] },
+    L03: { name: 'Function basics', lessons: '1.8-1.13', types: ['FN-dom.inv-sqrt', 'FN-dom.recip-root', 'FN-dom.ln-root', 'FN-par.classify', 'FN-inv.linear', 'FN-inv.cubic', 'FN-mono.inc-R', 'FN-same.as-x'] },
+    L04: { name: 'Angles & ratios', lessons: '2.1-2.3', types: ['TR-val.single', 'TR-val.combo', 'TR-val.alpha-true', 'TR-def.point', 'TR-def.point', 'TR-def.point', 'TR-id.quad-v', 'TR-id.noquad'] },
+    L05: { name: 'Reduction & graphs', lessons: '2.4-2.6', types: ['TR-red.correct', 'TR-red.value', 'TR-red.three-half', 'TR-graph.period', 'TR-graph.tan-period', 'TR-graph.extreme', 'TR-graph.stmt', 'TR-graph.mono-interval'] },
+    L06: { name: 'Sum & double angle', lessons: '3.1-3.2', types: ['TR-sum.exact', 'TR-sum.exact-tan', 'TR-sum.tan-shift', 'TR-sum.acute-stmt', 'TR-dbl.cos-from-sin', 'TR-dbl.cos-from-cos', 'TR-dbl.sin2', 'TR-dbl.squared'] },
+    L07: { name: 'Half-angle & homogeneous', lessons: '3.3-3.5', types: ['TR-half.q4', 'TR-half.r01', 'TR-half.cos-q2', 'TR-half.tan', 'TR-hom.forward', 'TR-hom.sincos', 'TR-hom.backward', 'TR-id.identity'] },
+    L08: { name: 'Points, distance, slope', lessons: '4.1-4.3', types: ['LN-quad.r02', 'LN-pt.symmetric', 'LN-pt.on-axis', 'LN-dist.integer', 'LN-pt.dist-axis', 'LN-slope.two-points', 'LN-slope.incl-si', 'LN-slope.from-incl'] },
+    L09: { name: 'Lines', lessons: '4.4-4.7', types: ['LN-eq.point-slope', 'LN-eq.two-points', 'LN-eq.intercepts', 'LN-int.integer', 'LN-pp.par-through', 'LN-pp.perp-through', 'LN-pp.which-perp', 'LN-pp.perp-param'] },
+    L10: { name: 'Sequences', lessons: '5.1-5.7', types: ['SQ-ar.r03', 'SQ-ar.r12', 'SQ-geo.term', 'SQ-geo.ratio', 'SQ-mean.geo', 'SQ-gen.r14', 'SQ-sn.quad-term', 'SQ-sum.index-pair'] },
+    L11: { name: 'Conics', lessons: '6.1-6.6', types: ['CN-cir.r08', 'CN-cir.gen-both', 'CN-cir.r13', 'CN-par.directrix', 'CN-ell.foci', 'CN-ell.from-2a-foci', 'CN-hyp.foci', 'CN-hyp.condition'] },
+    L12: { name: 'Exp, log, vectors, complex, probability', lessons: '7.1-7.7', types: ['FN-log.sum-inv', 'FN-log.product', 'FN-prop.fixed-exp', 'FN-cmp.r07', 'VEC.lincomb', 'VEC.dot', 'CPX.linear', 'PRB.same-colour'] }
   };
 
-  /* ---------------- easy-trick drill T01–T12 (Course Plan §5): one generator per trick ---------------- */
+  /* ---------------- easy-trick drill T01-T12 (Course Plan §5): one generator per trick ---------------- */
   var tricks = {
     T01: ['SET-el.listed', 'SET-el.two-sets', 'SET-el.roots', 'SET-el.empty'],
     T02: ['INQ-quad.lt', 'INQ-quad.gt', 'INQ-quad.closed', 'INQ-quad.factored', 'INQ-rat.basic', 'INQ-rat.closed'],

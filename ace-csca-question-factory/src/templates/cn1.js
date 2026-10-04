@@ -160,7 +160,7 @@
     };
   });
   def({ id: 'CN-cir.gen-frac', code: 'CN-cir', lesson: '6.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'General form with odd coefficients → a fractional centre (and the radius)', basis: 'Course plan 6.2 Q5–6' }, function (R) {
+    form: 'General form with odd coefficients → a fractional centre (and the radius)', basis: 'Course plan 6.2 Q5-6' }, function (R) {
     var D = R.pick([-5, -3, -1, 1, 3, 5]), E = R.pick([-4, -2, 0, 2, 4, -3, 1, 3]), r2 = R.pick([q(5, 4), q(9, 4), q(13, 4), q(17, 4), q(25, 4), q(5, 2), q(9, 2), q(1, 2), q(1, 4), q(29, 4), q(4), q(9)]);
     var a = q(-D, 2), b = q(-E, 2), Fc = a.mul(a).add(b.mul(b)).sub(r2);
     if (!Fc.isInt || Math.abs(Fc.n) > 12) retry();
@@ -282,7 +282,7 @@
     return parStmtItem(R, 'S', function (mm, axis, st) { return (axis === 'x' && mm.eq(4) && /focus is \$\(1, 0\)/.test(st.key)) || (axis === 'y' && mm.eq(4) && /directrix is \$y = -1\$/.test(st.key)); });
   });
   def({ id: 'CN-par.stmt-n', code: 'CN-par', lesson: '6.3', tier: 'M', level: '+1', fmt: 'N', trick: 'T11',
-    form: 'Which statement about a parabola is INCORRECT (focus / directrix / axis traps)', basis: 'Course plan 6.3 Set B Q8, Set C' }, function (R) { return parStmtItem(R, 'N'); });
+    form: 'Which statement about a parabola is incorrect (focus, directrix or axis errors)', basis: 'Course plan 6.3 Set B Q8, Set C' }, function (R) { return parStmtItem(R, 'N'); });
   def({ id: 'CN-par.focal-dist', code: 'CN-par', lesson: '6.3', tier: 'M', level: '=', fmt: 'V', w: 1,
     form: 'Parabola y² = mx (or x² = my): a point with a given coordinate → |PF|', basis: 'Jan Q31' }, function (R) {
     var mm = R.pick([4, 8, 12, 16, 2, 6, 20]), axis = R.pick(['x', 'x', 'y']), x0 = R.int(1, 9), key = q(x0).add(q(mm, 4));

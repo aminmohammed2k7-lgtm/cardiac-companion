@@ -199,7 +199,7 @@
   }
   var LOGSTEM = 'Let $a > 0$, $a \\ne 1$, $b > 0$, $M > 0$ and $N > 0$. Which of the following statements about logarithms is ';
   def({ id: 'FN-log.incorrect-rule', code: 'FN-log', lesson: '7.2', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'Logarithm rules: which is INCORRECT', basis: 'Jan Q29' }, function (R) {
+    form: 'Logarithm rules: which is incorrect', basis: 'Jan Q29' }, function (R) {
     var st = QF.pickStmts(R, 'N', logRules());
     if (/\\ln a\}\{\\ln b\}/.test(st.key)) retry('real item');
     return out(LOGSTEM + 'incorrect? ( )', st);
@@ -366,13 +366,13 @@
     ];
   }
   def({ id: 'FN-prop.exp-incorrect', code: 'FN-prop', lesson: '7.1', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'y = aˣ (a > 0, a ≠ 1): which statement is INCORRECT', basis: 'Jan Q23' }, function (R) {
+    form: 'y = aˣ (a > 0, a ≠ 1): which statement is incorrect', basis: 'Jan Q23' }, function (R) {
     var st = QF.pickStmts(R, 'N', expFamily());
     if (/increasing on its domain/.test(st.key)) retry('real item');
     return out('About the exponential function $y = a^x$ ($a > 0$ and $a \\ne 1$), which of the following statements is incorrect? ( )', st);
   });
   def({ id: 'FN-prop.log-incorrect', code: 'FN-prop', lesson: '7.3', tier: 'E', level: '=', fmt: 'N', w: 0.4,
-    form: 'y = log_a x (a > 0, a ≠ 1): which statement is INCORRECT', basis: 'Jan Q23 (log version)' }, function (R) {
+    form: 'y = log_a x (a > 0, a ≠ 1): which statement is incorrect', basis: 'Jan Q23 (log version)' }, function (R) {
     return out('About the logarithmic function $y = \\log_a x$ ($a > 0$ and $a \\ne 1$), which of the following statements is incorrect? ( )', QF.pickStmts(R, 'N', logFamily()));
   });
   def({ id: 'FN-prop.log-stmt', code: 'FN-prop', lesson: '7.3', tier: 'M', level: '=', fmt: 'S', w: 1,

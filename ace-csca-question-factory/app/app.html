@@ -200,7 +200,7 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
             <option value="site">Site paper · diagnostic, mock-1 … mock-4</option>
             <option value="weekly">Weekly mock · 24 questions</option>
             <option value="set">Daily set · Set A, B or C</option>
-            <option value="drill">41–48 drill</option>
+            <option value="drill">41-48 drill</option>
             <option value="practice">Practice test · choose the topics</option>
             <option value="speed">Speed-drill round · 8 questions</option>
             <option value="trick">Easy-trick round · 10 questions</option>
@@ -232,7 +232,7 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
           </div>
           <div class="f"><span>Tiers</span><div class="checks" id="p-tiers">
             <label class="chk"><input type="checkbox" id="p-tier-E" value="E" checked>E · one step</label>
-            <label class="chk"><input type="checkbox" id="p-tier-M" value="M" checked>M · two–three</label>
+            <label class="chk"><input type="checkbox" id="p-tier-M" value="M" checked>M · two to three</label>
             <label class="chk"><input type="checkbox" id="p-tier-H" value="H" checked>H · multi-step</label>
           </div></div>
         </div>
@@ -304,7 +304,7 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
   <section class="tab stack" id="course" role="tabpanel" aria-labelledby="t-course" hidden>
     <div class="stack" style="gap:6px">
       <h2 class="h">Course build</h2>
-      <p class="lede">Everything the 56-day plan still needs written, in one run: Set A and Set B for the 33 lesson days, Set C for the 20 one-video days, weekly mocks W1–W7 and both versions of the 41–48 drills. No question is used twice anywhere in the build. Files use the website's import format, one per course week.</p>
+      <p class="lede">Everything the 56-day plan still needs written, in one run: Set A and Set B for the 33 lesson days, Set C for the 20 one-video days, weekly mocks W1-W7 and both versions of the 41-48 drills. No question is used twice anywhere in the build. Files use the website's import format, one per course week.</p>
     </div>
     <form class="row" id="c-form" autocomplete="off">
       <label class="f" style="width:110px"><span>Seed</span><input type="number" id="c-seed" min="1" max="999999" value="1"></label>
@@ -468,7 +468,7 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
     var out = [], first = p.items.length ? (p.items[0].slot || 1) : 1;
     for (var i = 0; i < p.items.length; i += 8) {
       var part = p.items.slice(i, i + 8);
-      out.push('<span><i>' + (first + i) + '–' + (first + i + part.length - 1) + '</i>' + part.map(function (it) { return LETTERS[it.answer]; }).join('') + '</span>');
+      out.push('<span><i>' + (first + i) + '-' + (first + i + part.length - 1) + '</i>' + part.map(function (it) { return LETTERS[it.answer]; }).join('') + '</span>');
     }
     return out.join('');
   }
@@ -478,7 +478,7 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
       '<div class="keystrip" aria-label="Answer key">' + keyGroups(p) + '</div></header><ol class="qs">';
     p.items.forEach(function (it, i) {
       var n = it.slot || i + 1;
-      if (band && n === band) h += '<li class="band">Questions ' + band + '–' + p.items.length + ' · 2.5 points each</li>';
+      if (band && n === band) h += '<li class="band">Questions ' + band + '-' + p.items.length + ' · 2.5 points each</li>';
       h += qHTML(it, n);
     });
     return h + '</ol>';
@@ -514,7 +514,7 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
       '<h1>' + esc(p.title) + '</h1><p class="sub">' + p.items.length + ' questions · one answer each' + (pts ? ' · ' + pts + ' points' : '') + ' · seed ' + esc(p.seed) + '</p>';
     p.items.forEach(function (it, i) {
       var n = it.slot || i + 1, long = it.options.some(function (o) { return plainLen(o) > 34; });
-      if (band && n === band) h += '<div class="band">Questions ' + band + '–' + p.items.length + ' · 2.5 points each</div>';
+      if (band && n === band) h += '<div class="band">Questions ' + band + '-' + p.items.length + ' · 2.5 points each</div>';
       h += '<div class="q"><span class="n">' + n + '</span><div>' + r(it.stem) + '<ol class="o' + (long ? ' long' : '') + '">' + it.options.map(function (o, k) { return '<li><b>' + LETTERS[k] + '.</b><span>' + r(o) + '</span></li>'; }).join('') + '</ol></div></div>';
     });
     if (withKey) {
@@ -594,9 +594,9 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
     'mock-real': 'Every slot keeps the sub-domain, tier, question type and repeated template of that paper. Numbers, options and wording are new.',
     'mock-bp': 'Slot order and domain quotas follow the blueprint. Repeated-template slots stay; every other slot takes any real exam form of its sub-domain.',
     'site': 'The same replicas with the ids the website expects (diagnostic-q01 …, mock-1-q01 …).',
-    'weekly': 'Q1–16 this week’s topics, Q17–20 spaced review at exam level, Q21–24 the hard four (2.5 points, level +1).',
-    'set': 'Q1–4 exam level, Q5–7 one notch harder (Set B of a one-video day: spaced review), Q8 worth 2.5. Every set has a “which is true” item.',
-    'drill': 'Eight questions on slots 41–48, the hardest forms the real papers used for the week’s topics.',
+    'weekly': 'Q1-16 this week’s topics, Q17-20 spaced review at exam level, Q21-24 the hard four (2.5 points, level +1).',
+    'set': 'Q1-4 exam level, Q5-7 one notch harder (Set B of a one-video day: spaced review), Q8 worth 2.5. Every set has a “which is true” item.',
+    'drill': 'Eight questions on slots 41-48, the hardest forms the real papers used for the week’s topics.',
     'practice': 'Leave domains and sub-domains empty for the whole syllabus. Sub-domains, when ticked, replace the domain choice.',
     'speed': 'One question per item type of the level, as the site’s ACE_GEN generators produce them.',
     'trick': 'Ten questions for one easy trick.'
@@ -736,7 +736,7 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
       rows += '<tr><td><b>Week ' + w + '</b></td><td class="num">' + papers.length + '</td><td class="num">' + items.length + '</td><td>' + (rep.ok ? '<span class="chip ok">import rules passed</span>' : '<span class="chip bad">' + rep.errors.length + ' error(s)</span>') +
         '</td><td><button type="button" class="linkish" data-save="week' + w + '">Save week' + w + '.json</button></td></tr>';
     });
-    rows += '<tr><td><b>41–48 drills, version B</b></td><td class="num">7</td><td class="num">' + C.drillsB.length + '</td><td><span class="chip ok">checked</span></td><td><button type="button" class="linkish" data-save="drillsB">Save drills-version-b.json</button></td></tr>';
+    rows += '<tr><td><b>41-48 drills, version B</b></td><td class="num">7</td><td class="num">' + C.drillsB.length + '</td><td><span class="chip ok">checked</span></td><td><button type="button" class="linkish" data-save="drillsB">Save drills-version-b.json</button></td></tr>';
     Object.keys(C.mocks).forEach(function (k) {
       rows += '<tr><td><b>' + k + '</b> · ' + esc(C.mocks[k].title.replace(/^.*· /, '')) + '</td><td class="num">1</td><td class="num">48</td><td><span class="chip">key ' + C.mocks[k].key.slice(0, 12) + '…</span></td><td><button type="button" class="linkish" data-save="' + k + '">Save ' + k + '.json</button></td></tr>';
     });
@@ -844,9 +844,9 @@ pre.code { margin: 0; padding: 12px; background: var(--panel); border: 1px solid
       '<li>A question is kept only if exactly one option is correct and no two options are equal in value. Anything else is discarded and drawn again.</li>' +
       '<li>The numbers of real exam questions are blocked, so a generated question never repeats a real one.</li></ul></div>' +
       '<div><h3>What each paper follows</h3><ul>' +
-      '<li><b>Full mocks</b> copy the structure of one paper slot by slot: sub-domain, tier, question type and repeated template (R01–R14). Answer letters are balanced 12/12/12/12 with no run longer than three.</li>' +
-      '<li><b>Blueprint mocks</b> keep the domain quotas, the conic split, the anchors (sets at Q1–2, vectors at Q44, complex numbers at Q46, the hardest sequence at Q47, probability at Q48) and two to four H items in Q44–48.</li>' +
-      '<li><b>Daily sets, weekly mocks and 41–48 drills</b> follow the recipes of the course plan, with the points and levels the website checks on import.</li>' +
+      '<li><b>Full mocks</b> copy the structure of one paper slot by slot: sub-domain, tier, question type and repeated template (R01-R14). Answer letters are balanced 12/12/12/12 with no run longer than three.</li>' +
+      '<li><b>Blueprint mocks</b> keep the domain quotas, the conic split, the anchors (sets at Q1-2, vectors at Q44, complex numbers at Q46, the hardest sequence at Q47, probability at Q48) and two to four H items in Q44-48.</li>' +
+      '<li><b>Daily sets, weekly mocks and 41-48 drills</b> follow the recipes of the course plan, with the points and levels the website checks on import.</li>' +
       '<li><b>Practice tests</b> and the <b>bank</b> give each sub-domain the share it has on the real papers.</li></ul></div>' +
       '<div><h3>The bank rule</h3><p>Questions for a sub-domain = bank size × (its questions in the five sittings ÷ 240), rounded so the total is exact. SET-num and FN-val never appeared in the five sittings (only in the undated paper and the CSC sample), so they get a floor of 8 questions each to keep the syllabus covered.</p></div>' +
       '<div><h3>Seeds</h3><p>The same seed always gives the same paper, in this page and on the command line. Change the seed for new numbers. Keep the seed with a paper so that you can rebuild it later.</p></div>' +

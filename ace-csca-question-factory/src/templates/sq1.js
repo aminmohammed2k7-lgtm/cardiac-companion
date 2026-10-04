@@ -225,7 +225,7 @@
     return altItem(R, 'S', function (c, start, st) { return c === 2 && start === '+' && /S_\{10\} = 0/.test(st.key); });
   });
   def({ id: 'SQ-geo.alt-n', code: 'SQ-geo', lesson: '5.2', tier: 'M', level: '+1', fmt: 'N',
-    form: 'aₙ = c·(−1)ⁿ: which statement is INCORRECT (S₂₁, a₁, q)', basis: 'Course plan 5.2 Q8 (2.5)' }, function (R) { return altItem(R, 'N'); });
+    form: 'aₙ = c·(−1)ⁿ: which statement is incorrect (S₂₁, a₁, q)', basis: 'Course plan 5.2 Q8 (2.5)' }, function (R) { return altItem(R, 'N'); });
   def({ id: 'SQ-geo.term-frac', code: 'SQ-geo', lesson: '5.2', tier: 'E', level: '+1', fmt: 'V',
     form: 'a₂ and a fractional ratio → a later term', basis: 'Course plan 5.2 Q5' }, function (R) {
     var r = R.pick([q(1, 2), q(-1, 2), q(1, 3), q(-1, 3), q(3, 2), q(2, 3), q(-3, 2)]), a2 = R.pick(r.d === 2 ? [4, 6, 8, 12, 16, -8, 24] : [6, 9, 18, 27, -9, 54]), n = R.int(4, 6);
@@ -318,7 +318,7 @@
     };
   });
   def({ id: 'SQ-mean.positive', code: 'SQ-mean', lesson: '5.3', tier: 'E', level: '+1', fmt: 'V',
-    form: '"Positive" geometric mean → one value (the ± option is the trap)', basis: 'Course plan 5.3 Q7' }, function (R) {
+    form: '"Positive" geometric mean → one value (not ±)', basis: 'Course plan 5.3 Q7' }, function (R) {
     var g = R.pick([2, 3, 4, 5, 6, 7, 8, 9, 10, 12]), p = g * g, pairs = [];
     for (var x = 1; x < g; x++) if (p % x === 0) pairs.push([x, p / x]);
     var c = R.pick(pairs), kind = R.pick(['num', 'abc']);

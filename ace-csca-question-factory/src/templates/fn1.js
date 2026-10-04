@@ -325,7 +325,7 @@
     };
   });
   def({ id: 'FN-rng.quad', code: 'FN-rng', lesson: '1.9', tier: 'E', level: '+1', fmt: 'V',
-    form: 'Range of a quadratic from its vertex', basis: 'Course plan deck 1.8–1.9 (vertex)' }, function (R) {
+    form: 'Range of a quadratic from its vertex', basis: 'Course plan deck 1.8-1.9 (vertex)' }, function (R) {
     var hv = R.nz(-4, 4), kv = R.int(-5, 6), up = R.bool(0.7);   // y = ±(x - h)^2 + k
     var poly = up ? F.poly([1, -2 * hv, hv * hv + kv]) : F.poly([-1, 2 * hv, -hv * hv + kv]);
     // y is attained iff ±(y - k) >= 0
@@ -418,7 +418,7 @@
     return classify(R, e, kind, 'The function $f(x) = ' + e[0] + '$ ($x \\in \\mathbb{R}$) is ( )');
   });
   def({ id: 'FN-par.special', code: 'FN-par', lesson: '1.10', tier: 'E', level: '=', fmt: 'S', w: 1,
-    form: 'Parity of x|x|, ln(x²), x sin x and similar products', basis: 'Mar Q7; Course plan 1.10 Q6–7' }, function (R) {
+    form: 'Parity of x|x|, ln(x²), x sin x and similar products', basis: 'Mar Q7; Course plan 1.10 Q6-7' }, function (R) {
     var lib = [
       [['x\\lvert x \\rvert', function (x) { return x * Math.abs(x); }, '(-x)\\lvert -x \\rvert = -x\\lvert x \\rvert'], 'odd'], [['x\\sin x', function (x) { return x * Math.sin(x); }, '(-x)\\sin(-x) = x\\sin x'], 'even'],
       [['x\\cos x', function (x) { return x * Math.cos(x); }, '(-x)\\cos(-x) = -x\\cos x'], 'odd'], [['x^2\\sin x', function (x) { return x * x * Math.sin(x); }, '(-x)^2\\sin(-x) = -x^2\\sin x'], 'odd'],
@@ -431,7 +431,7 @@
   });
 
   def({ id: 'FN-par.incorrect', code: 'FN-par', lesson: '1.10', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'Odd (or even) function y = f(x): which statement is INCORRECT', basis: 'Jun Q7' }, function (R) {
+    form: 'Odd (or even) function y = f(x): which statement is incorrect', basis: 'Jun Q7' }, function (R) {
     var kind = R.pick(['odd', 'even']), c = R.int(1, 5);
     var samples = kind === 'odd' ? ODD().slice(0, 5).map(function (e) { return e[1]; }) : EVEN().slice(0, 5).map(function (e) { return e[1]; });
     var xs = [0.4, 1.3, 2.1, c];
@@ -742,7 +742,7 @@
   });
 
   def({ id: 'FN-mono.recip', code: 'FN-mono', lesson: '1.12', tier: 'E', level: '+1', fmt: 'S',
-    form: 'y = k/x: decreasing on each piece, NOT on the whole domain', basis: 'Course plan deck 1.12 (y = k/x)' }, function (R) {
+    form: 'y = k/x: decreasing on each piece, not on the whole domain', basis: 'Course plan deck 1.12 (y = k/x)' }, function (R) {
     var k = R.int(1, 6), neg = R.bool(0.3), f = function (x) { return (neg ? -k : k) * M.inv(x); };
     var tex = (neg ? '-' : '') + '\\dfrac{' + k + '}{x}', dn = !neg;
     var whole = function (dirInc) { return function () { var xs = [-3, -1, -0.5, 0.5, 1, 3], okk = true; for (var i = 0; i + 1 < xs.length; i++) { if (dirInc ? !(f(xs[i + 1]) > f(xs[i])) : !(f(xs[i + 1]) < f(xs[i]))) okk = false; } return okk; }; };
@@ -812,7 +812,7 @@
     ];
   }
   def({ id: 'FN-same.pairs', code: 'FN-same', lesson: '1.13', tier: 'M', level: '=', fmt: 'S', w: 1.5,
-    form: 'In which pair are the two functions the same (rule AND domain)', basis: 'Jan Q35, undated Q35' }, function (R) {
+    form: 'In which pair are the two functions the same (rule and domain)', basis: 'Jan Q35, undated Q35' }, function (R) {
     var pool = sameLib(R).map(function (e) {
       return h.factS('$y = ' + e[0] + '$ and $y = ' + e[1] + '$', !!e[4], function () { return sameFn(e[2], e[3]); }, e[5], { trap: 'domain' });
     });

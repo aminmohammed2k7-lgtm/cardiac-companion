@@ -1,6 +1,6 @@
 'use strict';
 /* Builds the browser app from app/app.html:
-     dist/app/csca-question-factory.html   one self-contained file (engine + KaTeX inside) — open it from disk, no server needed
+     dist/app/csca-question-factory.html   one self-contained file (engine + KaTeX inside); open it from disk, no server needed
      dist/app/artifact.html                the same page as page content only (KaTeX script from cdnjs) for hosted publishing
      dist/question-factory.js              the engine as one script for the website (also .min.js when esbuild is available)
    KaTeX (css + fonts + js) is taken from node_modules when present; without it the page still works and shows formulas as MathML. */
@@ -16,7 +16,7 @@ function findPkg(name) {
 function safeScript(js) { return js.replace(/<\/script/gi, '<\\/script'); }
 
 /* ---- engine bundle ---- */
-const banner = '/* ACE CSCA Question Factory — browser bundle. Defines window.QF; call QF.adapters.install() to register ACE_GEN. */\n';
+const banner = '/* ACE CSCA Question Factory: browser bundle. Defines window.QF; call QF.adapters.install() to register ACE_GEN. */\n';
 let bundle = banner + QF.FILES.filter(f => fs.existsSync(path.join(ROOT, 'src', f))).map(f => '/* ---- ' + f + ' ---- */\n' + fs.readFileSync(path.join(ROOT, 'src', f), 'utf8')).join('\n');
 fs.mkdirSync(path.join(ROOT, 'dist', 'app'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'dist', 'question-factory.js'), bundle);

@@ -1,7 +1,7 @@
 /* ACE CSCA Question Factory · templates/extra.js
  * (1) "Which is correct" forms for the lessons whose real items are all compute-type. The Course Plan asks for one
  *     "which is true" item in every daily set (§1.4) and counts the four-statement version of a form as level +1 (§1.3).
- * (2) A few +1 forms named in the daily-set recipes (2.5 Set C, 2.6 Q5–7).
+ * (2) A few +1 forms named in the daily-set recipes (2.5 Set C, 2.6 Q5-7).
  * Every statement carries an independent numeric test; the verifier re-runs it on the finished item. */
 ;(function (root) {
   'use strict';
@@ -506,7 +506,7 @@
   function tanT(wq) { return wq.eq(1) ? '\\tan x' : (wq.d === 1 ? '\\tan ' + wq.n + 'x' : '\\tan\\dfrac{x}{' + wq.d + '}'); }
   function piOf(degFr) { return F.piMul(q(degFr).div(180)); }
   def({ id: 'TR-graph.tan-mono', code: 'TR-graph', lesson: '2.6', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Interval on which y = tan ωx is increasing (an asymptote inside the interval is the trap)', basis: 'Course plan 2.6 Q7' }, function (R) {
+    form: 'Interval on which y = tan ωx is increasing (the wrong intervals contain an asymptote)', basis: 'Course plan 2.6 Q7' }, function (R) {
     var wq = R.pick([q(2), q(1, 2), q(3), q(2), q(1, 2)]), hw = q(90).div(wq), f = function (x) { return Math.tan(wq.num * x); };
     function st(l, r, ok) {
       var lo = hw.mul(l), hi = hw.mul(r), asy = null, kk;
@@ -525,7 +525,7 @@
   });
 
   def({ id: 'TR-graph.tan-shift', code: 'TR-graph', lesson: '2.6', tier: 'M', level: '+1', fmt: 'S',
-    form: 'y = tan(ωx + φ): which statement (period, domain, monotonic interval, zero, parity) is correct', basis: 'Course plan 2.6 Q5–7 and Set C' }, function (R) {
+    form: 'y = tan(ωx + φ): which statement (period, domain, monotonic interval, zero, parity) is correct', basis: 'Course plan 2.6 Q5-7 and Set C' }, function (R) {
     var wq = R.pick([q(1), q(2), q(1, 2), q(1), q(2)]), phi = R.pick([45, -45, 30, -30, 60, -60]), w = wq.num, ph = phi * PI / 180;
     var f = function (x) { return Math.tan(w * x + ph); };
     var T = q(180).div(wq), x0 = q(90 - phi).div(wq), x1 = q(-phi).div(wq);                      // degrees: period, an asymptote, a zero

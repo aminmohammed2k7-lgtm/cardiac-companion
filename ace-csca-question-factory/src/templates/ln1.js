@@ -282,7 +282,7 @@
     return paramItem(R, 0, y1, y2, t[0], t[2] * t[2], String(t[2]), onY, !onY && y1 === 3 && y2 === -1 && t[2] === 5);
   });
   def({ id: 'LN-dist.param-surd', code: 'LN-dist', lesson: '4.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'Distance parameter with |AB| = √n', basis: 'Course plan 4.2 Q6–8' }, function (R) {
+    form: 'Distance parameter with |AB| = √n', basis: 'Course plan 4.2 Q6-8' }, function (R) {
     var leg = R.int(1, 5), dy = R.nz(-5, 5), h2 = leg * leg + dy * dy, x1 = R.int(-5, 5), y1 = R.int(-4, 4);
     if (N.isSquare(h2)) retry();
     return paramItem(R, x1, y1, y1 + dy, leg, h2, F.n(Sd.sqrt(h2)), R.bool(0.3), false);

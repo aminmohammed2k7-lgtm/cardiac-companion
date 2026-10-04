@@ -265,7 +265,7 @@
     return sin2Item(R, [1, 1, 1, 4, 2], 'rat', function (A, quad, given) { return quad === 1 && given === 'sin' && A.sin.eq(sd(q(3, 5))); });
   });
   def({ id: 'TR-dbl.sin2-surd', code: 'TR-dbl', lesson: '3.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'sin 2α with a surd ratio and a QII–QIV sign', basis: 'Course plan 3.2 Q6' }, function (R) { return sin2Item(R, [2, 4, 3], 'surd'); });
+    form: 'sin 2α with a surd ratio and a QII-QIV sign', basis: 'Course plan 3.2 Q6' }, function (R) { return sin2Item(R, [2, 4, 3], 'surd'); });
 
   def({ id: 'TR-dbl.squared', code: 'TR-dbl', lesson: '3.2', tier: 'E', level: '=', fmt: 'V', trick: 'T06', w: 1,
     form: 'sin²α or cos²α given → cos 2α (the answer for "sin α = k" is kept as an old-answer distractor)', basis: 'Jun Q25' }, function (R) {
@@ -450,7 +450,7 @@
     return halfItem(R, 'q4', c, 'sin', 'cos');
   });
   def({ id: 'TR-half.mixed', code: 'TR-half', lesson: '3.3', tier: 'M', level: '+1', fmt: 'V', trick: 'T05', w: 1,
-    form: 'Half-angle value on a less usual interval (QIII, QIV or negative angles; sine or cosine given)', basis: 'Course plan 3.3 Q5–7 and Set B Q8' }, function (R) {
+    form: 'Half-angle value on a less usual interval (QIII, QIV or negative angles; sine or cosine given)', basis: 'Course plan 3.3 Q5-7 and Set B Q8' }, function (R) {
     var c3 = R.pick([['q3', 'cos', 'sin'], ['q3', 'cos', 'cos'], ['q3', 'cos', 'tan'], ['q3', 'sin', 'tan'], ['q3', 'sin', 'sin'], ['q4', 'cos', 'cos'], ['q4', 'cos', 'tan'], ['neg', 'cos', 'sin'], ['neg', 'cos', 'cos'],
       ['q2', 'sin', 'sin'], ['q2', 'sin', 'cos'], ['q2', 'sin', 'tan'], ['q4', 'sin', 'sin'], ['q4', 'sin', 'cos']]);
     var iv = c3[0], given = c3[1], ask = c3[2], c;
@@ -476,7 +476,7 @@
       'Halving the interval of $\\alpha$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$.');
   });
   def({ id: 'TR-half.pair', code: 'TR-half', lesson: '3.3', tier: 'H', level: '+1', fmt: 'V', trick: 'T05', w: 0.4,
-    form: 'sin α given in QII–QIV → the correct pair cos(α/2), tan(α/2)', basis: 'Course plan 3.3 Set C' }, function (R) {
+    form: 'sin α given in QII-QIV → the correct pair cos(α/2), tan(α/2)', basis: 'Course plan 3.3 Set C' }, function (R) {
     var iv = R.pick(['q3', 'q3', 'q4', 'q2']), t = R.pick(HT), V = halfVals(iv, q(t[1] * HQ[iv].cs, t[2]));
     function pr(u, v) { return '$' + halfTex('cos') + ' = ' + F.n(u) + '$, $' + halfTex('tan') + ' = ' + F.n(v) + '$'; }
     var wrong = R.shuffle([[pr(V.cos.neg(), V.tan.neg()), 'sign'], [pr(V.cos, V.tan.neg()), 'sign'], [pr(V.cos.neg(), V.tan), 'sign']]).concat([[pr(F.absOf(V.sin).scale(V.cos.sgn), V.tan), 'companion'], [pr(V.cos, sd(1).div(V.tan)), 'reciprocal']]);

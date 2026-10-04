@@ -120,7 +120,7 @@
     return ellStmtItem(R, 'S', ['x', 'y', 'y'], function (a2, b2, axis, st) { return a2 === 20 && b2 === 4 && axis === 'y' && /foci are \$\(0, \\pm 4\)/.test(st.key); });
   });
   def({ id: 'CN-ell.stmt-n', code: 'CN-ell', lesson: '6.4', tier: 'M', level: '+1', fmt: 'N',
-    form: 'Which statement about an ellipse with foci on the y-axis is INCORRECT', basis: 'Course plan 6.4 Q8 (2.5) and Set C' }, function (R) { return ellStmtItem(R, 'N', ['y']); });
+    form: 'Which statement about an ellipse with foci on the y-axis is incorrect', basis: 'Course plan 6.4 Q8 (2.5) and Set C' }, function (R) { return ellStmtItem(R, 'N', ['y']); });
   def({ id: 'CN-ell.stmt-general', code: 'CN-ell', lesson: '6.4', tier: 'M', level: '=', fmt: 'S', w: 1,
     form: 'Statements about x²/m + y²/n = 1 for all positive m ≠ n: which must be true', basis: 'Jun Q43' }, function (R) {
     var L = R.pick([['m', 'n'], ['m', 'n'], ['s', 't'], ['p', 'q']]), u = L[0], v = L[1], MN = [[4, 9], [9, 4], [2, 5], [7, 3], [1, 6], [5, 1]];
@@ -176,7 +176,7 @@
       'The vertex $' + V + '$ is on the minor axis, so $b^2 = ' + b2 + '$. From $e^2 = 1 - \\dfrac{b^2}{a^2} = ' + F.n(q(a2 - b2, a2)) + '$ we get $\\dfrac{b^2}{a^2} = ' + F.n(q(b2, a2)) + '$, so $a^2 = ' + a2 + '$.', [[ell(a2 + b2, b2, axis), 'slip']]);
   });
   def({ id: 'CN-ell.ecc', code: 'CN-ell', lesson: '6.4', tier: 'E', level: '+1', fmt: 'V',
-    form: 'Eccentricity of an ellipse whose foci are on the y-axis (axis trap)', basis: 'Course plan 6.4 Q5' }, function (R) {
+    form: 'Eccentricity of an ellipse whose foci are on the y-axis (a² is under y²)', basis: 'Course plan 6.4 Q5' }, function (R) {
     var e0 = R.pick(ELL), a2 = e0[0], b2 = e0[1], axis = R.pick(['y', 'y', 'x']), a = Sd.sqrt(a2), b = Sd.sqrt(b2), c = Sd.sqrt(a2 - b2), e = c.div(a), rr = radii(axis === 'x' ? a2 : b2, axis === 'x' ? b2 : a2);
     return {
       stem: 'The eccentricity of the ellipse $' + ell(a2, b2, axis) + '$ is ( )', key: m(e),
@@ -274,7 +274,7 @@
     return hypStmtItem(R, 'S', function (A, B, axis, st) { return A === 64 && B === 16 && axis === 'x' && /focal distance/.test(st.key); });
   });
   def({ id: 'CN-hyp.stmt-n', code: 'CN-hyp', lesson: '6.6', tier: 'M', level: '+1', fmt: 'N',
-    form: 'Which statement about a hyperbola is INCORRECT (needs a, b, c and e)', basis: 'Course plan 6.6 Q8 (2.5) and Set C' }, function (R) { return hypStmtItem(R, 'N'); });
+    form: 'Which statement about a hyperbola is incorrect (needs a, b, c and e)', basis: 'Course plan 6.6 Q8 (2.5) and Set C' }, function (R) { return hypStmtItem(R, 'N'); });
   /** options that are conditions on m: tests compare them with the true condition on a grid */
   function condItem(R, stem, isHyp, opts, sol) {
     var grid = [];

@@ -184,7 +184,7 @@
     return whichCorrect(R, [30, 45, 60, 30, 60], [['sin', 90, sd(0), false, 'in fact $\\sin\\dfrac{\\pi}{2} = 1$.'], ['cos', 0, sd(0), false, 'in fact $\\cos 0 = 1$.'], ['sin', 90, sd(1), true, ''], ['cos', 90, sd(0), true, '']]);
   });
   def({ id: 'TR-val.which-correct-quad', code: 'TR-val', lesson: '2.1', tier: 'E', level: '+1', fmt: 'S',
-    form: 'Four special values in QII–QIV: which is correct', basis: 'Course plan 2.1 Q7' }, function (R) { return whichCorrect(R, Q2.concat(Q3, Q4)); });
+    form: 'Four special values in QII-QIV: which is correct', basis: 'Course plan 2.1 Q7' }, function (R) { return whichCorrect(R, Q2.concat(Q3, Q4)); });
 
   def({ id: 'TR-val.beyond', code: 'TR-val', lesson: '2.1', tier: 'E', level: '+1', fmt: 'V',
     form: 'Special value of an angle beyond 2π or negative (reduce first)', basis: 'Course plan 2.1 Q5' }, function (R) {
@@ -282,7 +282,7 @@
   });
 
   def({ id: 'TR-def.four', code: 'TR-def', lesson: '2.2', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Four statements about α whose terminal side passes through a point in QII–QIV', basis: 'Course plan 2.2 Q8 (2.5)' }, function (R) {
+    form: 'Four statements about α whose terminal side passes through a point in QII-QIV', basis: 'Course plan 2.2 Q8 (2.5)' }, function (R) {
     var p = R.pick(PTS), qd = R.pick([3, 3, 2, 4]), x = p[0] * QD[qd].cs, y = p[1] * QD[qd].ss, t = ptRatios(x, y), a = Math.atan2(y, x);
     var pool = [
       ratS('sin', t.sin, a, true, ratioStep('sin', x, y, t) + '.', { g: 's' }), ratS('cos', t.cos, a, true, ratioStep('cos', x, y, t) + '.', { g: 'c' }), ratS('tan', t.tan, a, true, ratioStep('tan', x, y, t) + '.', { g: 't' }),
@@ -327,7 +327,7 @@
     return idItem(R, 1, given, ask, { real: function (A, g, a) { return (g === 'cos' && A.cos.eq(sd(q(2, 3))) && a === 'tan'); } });
   });
   def({ id: 'TR-id.quad-v', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'V', w: 0.5,
-    form: 'One ratio and the quadrant (QII–QIV) → another ratio', basis: 'Dec Q19 (EX/TG version)' }, function (R) {
+    form: 'One ratio and the quadrant (QII-QIV) → another ratio', basis: 'Dec Q19 (EX/TG version)' }, function (R) {
     var quad = R.pick([2, 2, 3, 4]), given = R.pick(['sin', 'cos']), ask = given === 'sin' ? 'cos' : 'sin';
     return idItem(R, quad, given, ask, { kind: 'rat', real: function (A, g) { return quad === 2 && g === 'sin' && A.sin.eq(sd(q(3, 5))); } });
   });
@@ -398,7 +398,7 @@
     return out('Which of the following identities is correct? ( )', st);
   });
   def({ id: 'TR-id.identity-n', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'N', w: 0.3,
-    form: 'Which same-angle identity is INCORRECT', basis: 'Course plan 2.3 Set B Q4' }, function (R) {
+    form: 'Which same-angle identity is incorrect', basis: 'Course plan 2.3 Set B Q4' }, function (R) {
     return out('Which of the following identities is incorrect? ( )', QF.pickStmts(R, 'N', identPool()));
   });
 
@@ -521,7 +521,7 @@
     return out(R.pick(['Which of the following reduction formulas is correct? ( )', 'Which of the following formulas is correct? ( )', 'Which of the following equalities is correct? ( )']), st);
   });
   def({ id: 'TR-red.incorrect', code: 'TR-red', lesson: '2.4', tier: 'E', level: '=', fmt: 'N', trick: 'T04', w: 1,
-    form: 'Which reduction formula is INCORRECT', basis: 'Dec Q38' }, function (R) {
+    form: 'Which reduction formula is incorrect', basis: 'Dec Q38' }, function (R) {
     var st = QF.pickStmts(R, 'N', redPool(R, R.sample(BASIC, 5), ['sin', 'cos', 'tan']));
     if (/tan\\left\(\\pi \+ \\alpha\\right\) = -\\tan/.test(st.key)) retry('real item');
     return out('Regarding the reduction formulas, which of the following is incorrect? ( )', st);
@@ -533,7 +533,7 @@
     return out('Which of the following equalities is correct? ( )', st);
   });
   def({ id: 'TR-red.incorrect-3half', code: 'TR-red', lesson: '2.4', tier: 'M', level: '+1', fmt: 'N', trick: 'T04',
-    form: 'Which formula with 3π/2 is INCORRECT', basis: 'Course plan 2.4 Set C' }, function (R) {
+    form: 'Which formula with 3π/2 is incorrect', basis: 'Course plan 2.4 Set C' }, function (R) {
     return out('Which of the following formulas is incorrect? ( )', QF.pickStmts(R, 'N', redPool(R, [6, 7, 0, 1, 2, 3], ['sin', 'cos'])));
   });
 
@@ -702,7 +702,7 @@
     return out(R.pick(['Which of the following statements about the function $y = \\' + fn + ' x$ is correct? ( )', 'Regarding the function $y = \\' + fn + ' x$, which of the following conclusions is correct? ( )']), st);
   });
   def({ id: 'TR-graph.stmt-n', code: 'TR-graph', lesson: '2.5', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'y = sin x or y = cos x: which statement is INCORRECT', basis: 'Jan Q30' }, function (R) {
+    form: 'y = sin x or y = cos x: which statement is incorrect', basis: 'Jan Q30' }, function (R) {
     var fn = R.pick(['sin', 'cos']);
     var st = QF.pickStmts(R, 'N', waveFacts(fn));
     if (fn === 'sin' && /even function/.test(st.key)) retry('real item');
@@ -736,7 +736,7 @@
   });
 
   def({ id: 'TR-graph.four', code: 'TR-graph', lesson: '2.5', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Four statements about y = A sin(ωx + φ) + k (period, maximum, minimum, value)', basis: 'Course plan 2.5 Q7–Q8' }, function (R) {
+    form: 'Four statements about y = A sin(ωx + φ) + k (period, maximum, minimum, value)', basis: 'Course plan 2.5 Q7-Q8' }, function (R) {
     var fn = R.pick(['sin', 'cos']), A = R.pick([2, 3, 4]), w = R.pick([q(2), q(3), q(1, 2), q(4)]), phi = R.pick([q(0), q(1, 3), q(-1, 6), q(1, 6), q(1, 2)]), k = R.pick([0, 1, -1, 2]);
     var f = function (x) { return A * Math[fn](w.num * x + phi.num * PI) + k; }, Tm = q(2).div(w), S = h.factS;
     var mx = k + A, mn = k - A, f0 = f(0);
@@ -824,7 +824,7 @@
     return out('Which of the following statements about the function $y = ' + tanName(w, false) + '$ is correct? ( )', st);
   });
   def({ id: 'TR-graph.tan-n', code: 'TR-graph', lesson: '2.6', tier: 'E', level: '=', fmt: 'N', w: 1,
-    form: 'y = tan x: which statement is INCORRECT', basis: 'Mar Q40, undated Q38' }, function (R) {
+    form: 'y = tan x: which statement is incorrect', basis: 'Mar Q40, undated Q38' }, function (R) {
     var w = R.pick([q(1), q(1), q(2)]);
     var st = QF.pickStmts(R, 'N', tanFacts(w, false));
     if (w.eq(1) && /even function/.test(st.key)) retry('real item');

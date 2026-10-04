@@ -86,7 +86,7 @@
     };
   });
   def({ id: 'SQ-sn.quad-term', code: 'SQ-sn', lesson: '5.5', tier: 'E', level: '=', fmt: 'V', w: 0.5,
-    form: 'Quadratic Sₙ → a single term aₖ = Sₖ − Sₖ₋₁', basis: 'CSC sample, Course plan 5.5 Q1–3' }, function (R) {
+    form: 'Quadratic Sₙ → a single term aₖ = Sₖ − Sₖ₋₁', basis: 'CSC sample, Course plan 5.5 Q1-3' }, function (R) {
     var p = R.pick([1, 1, 2, 3]), b = R.int(-3, 4), c = R.pick([0, 0, 1, -1, 2, 3]), k = R.int(3, 12);
     if (p === 1 && b === 0 && c === 1 && k === 10) retry('real item');
     var S = function (n) { return p * n * n + b * n + c; }, key = p * (2 * k - 1) + b;

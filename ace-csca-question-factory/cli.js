@@ -21,14 +21,14 @@ function emit(p) {
   } else if (opt('md')) console.log(A.toMarkdown(p, { tags: !!opt('tags') }));
   else console.log(json(site));
 }
-const HELP = `ACE CSCA Question Factory — ${QF.templateList.length} verified question forms, ${QF.tax.codes.length} sub-domains
+const HELP = `ACE CSCA Question Factory: ${QF.templateList.length} verified question forms, ${QF.tax.codes.length} sub-domains
 
   node cli.js mock --source dec|jan|mar|apr|jun|und [--seed 1]     slot-by-slot replica of a real paper (new numbers)
   node cli.js mock --blueprint A|B [--seed 1]                      new paper that fits blueprint A or B
   node cli.js diagnostic [--seed 1]                                the Day-1 diagnostic (December pattern)
   node cli.js weekly --week 1..7 [--seed 1]                        weekly mock, 24 questions
   node cli.js set --day 9 --set a|b|c [--seed 1]                   Set A / Set B / Set C of a lesson day
-  node cli.js drill --week 1..7 [--version a|b] [--seed 1]         41–48 drill
+  node cli.js drill --week 1..7 [--version a|b] [--seed 1]         41-48 drill
   node cli.js practice --n 20 [--domains TR,SQ] [--codes CN-ell] [--lessons 5.5,5.6] [--tiers M,H]
                        [--level =|+1|mixed] [--weights real|equal] [--order exam|lesson|shuffle] [--seed 1]
   node cli.js course [--seed 1] [--out dist/course]                every set, weekly mock and drill of the 56-day course
@@ -80,7 +80,7 @@ try {
       if (items.length) writeFile(path.join(dir, 'by-domain', d.id + '.json'), json(items));
       d.codes.forEach(c => { const sub = items.filter(x => x.code === c); if (sub.length) writeFile(path.join(dir, 'by-sub-domain', d.id, c + '.json'), json(sub)); });
     });
-    const m = r.manifest, T = ['# ACE CSCA question bank — ' + m.total + ' questions', '', 'Seed ' + m.seed + ' · built ' + m.generated + ' · every question verified (' + Object.keys(m.verification.methods).map(k => k + ' ' + m.verification.methods[k]).join(', ') + ')', '',
+    const m = r.manifest, T = ['# ACE CSCA question bank: ' + m.total + ' questions', '', 'Seed ' + m.seed + ' · built ' + m.generated + ' · every question verified (' + Object.keys(m.verification.methods).map(k => k + ' ' + m.verification.methods[k]).join(', ') + ')', '',
       '**Rule.** ' + m.rule + ' ' + Math.round(m.plusShare * 100) + '% of each sub-domain is one notch harder than the exam (level +1); the rest is at exam level.', '',
       '| Domain | Real papers (of 240) | Share | Bank | Share |', '|---|---:|---:|---:|---:|'];
     m.domains.forEach(d => T.push('| ' + d.domain + ' · ' + d.name + ' | ' + d.realItems + ' | ' + d.realShare + '% | ' + d.questions + ' | ' + d.bankShare + '% |'));
@@ -113,7 +113,7 @@ try {
   } else if (cmd === 'bundle') {
     const file = opt('out', 'dist/question-factory.js');
     const parts = QF.FILES.filter(f => fs.existsSync(path.join(__dirname, 'src', f))).map(f => '/* ---- ' + f + ' ---- */\n' + fs.readFileSync(path.join(__dirname, 'src', f), 'utf8'));
-    writeFile(file, '/* ACE CSCA Question Factory — browser bundle. Defines window.QF; call QF.adapters.install() to register ACE_GEN. */\n' + parts.join('\n'));
+    writeFile(file, '/* ACE CSCA Question Factory: browser bundle. Defines window.QF; call QF.adapters.install() to register ACE_GEN. */\n' + parts.join('\n'));
     console.log('bundle → ' + file + ' (' + Math.round(fs.statSync(file).size / 1024) + ' KB)');
   } else { console.log('unknown command "' + cmd + '"\n\n' + HELP); process.exitCode = 1; }
 } catch (e) { console.error('error: ' + e.message); process.exitCode = 1; }

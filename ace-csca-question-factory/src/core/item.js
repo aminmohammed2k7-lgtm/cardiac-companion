@@ -362,7 +362,7 @@
   }
 
   /** QF.strict = true (the test-suite): a draw that fails verification is an error, so that a faulty template is found.
-   *  QF.strict = false (normal use): the draw is discarded and the next one is taken — a question that fails its check is never returned. */
+   *  QF.strict = false (normal use): the draw is discarded and the next one is taken, so a question that fails its check is never returned. */
   QF.strict = false;
   QF.rejected = 0;
   /** generate one verified item from a template. Same (id, seed) -> same item. */

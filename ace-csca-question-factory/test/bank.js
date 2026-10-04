@@ -35,5 +35,5 @@ ok(csv.split('\r\n').length >= TOTAL + 1, 'CSV rows');
 const m = r.manifest, tiers = { E: 0, M: 0, H: 0 };
 items.forEach(it => tiers[it.tier]++);
 console.log('bank: ' + items.length + ' questions in ' + (Date.now() - t0) + ' ms · tiers E/M/H ' + tiers.E + '/' + tiers.M + '/' + tiers.H + ' · exam level ' + items.filter(it => it.level === '=').length + ', +1 ' + items.filter(it => it.level === '+1').length + ' · forms used ' + new Set(items.map(it => it.template)).size + ' of ' + QF.templateList.length + ' · supply limits hit: ' + m.overflow.length);
-console.log((fails ? 'FAILED — ' + fails + ' of ' + checks : 'bank: all ' + checks + ' checks passed') + (katex ? ' (KaTeX ' + katex.version + ')' : ''));
+console.log((fails ? 'FAILED: ' + fails + ' of ' + checks : 'bank: all ' + checks + ' checks passed') + (katex ? ' (KaTeX ' + katex.version + ')' : ''));
 process.exit(fails ? 1 : 0);

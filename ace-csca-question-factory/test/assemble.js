@@ -60,7 +60,7 @@ for (const bp of ['A', 'B']) {
     ok(c.A === 12 && c.B === 12 && c.C === 12 && c.D === 12 && runs(m.key) <= 3, 'blueprint ' + bp + '#' + s + ' letters');
     ok(m.items.every(it => it.level === '=' && QF.templates[it.template].level === '='), 'blueprint ' + bp + '#' + s + ' exam level only');
     const H = m.items.filter(it => it.slot >= 44 && it.tier === 'H').length;
-    ok(H >= 2 && H <= 4, 'blueprint ' + bp + '#' + s + ' H items at Q44–48: ' + H);
+    ok(H >= 2 && H <= 4, 'blueprint ' + bp + '#' + s + ' H items at Q44-48: ' + H);
     ok(m.meta.repeats >= 6 && m.meta.repeats <= 14, 'blueprint ' + bp + '#' + s + ' bank-style items: ' + m.meta.repeats);
     const cn = m.items.filter(it => it.domain === 'CN').map(it => it.code).sort().join(',');
     ok(cn === (bp === 'A' ? 'CN-cir,CN-cir,CN-ell,CN-hyp,CN-par,CN-par' : 'CN-cir,CN-cir,CN-ell,CN-ell,CN-hyp,CN-par'), 'blueprint ' + bp + ' conic split ' + cn);
@@ -87,8 +87,8 @@ for (let s = 1; s <= SEEDS; s++) {
     let p;
     try { p = A.weekly(w, { seed: s }); } catch (e) { ok(false, 'weekly ' + w + ': ' + e.message); continue; }
     const eq = p.items.slice(0, 16).filter(it => it.level === '=').length;
-    ok(eq >= 6 && eq <= 12, p.ref + ' Q1–16 levels: ' + eq + ' at exam level');
-    ok(p.items.slice(16, 20).every(it => it.level === '='), p.ref + ' Q17–20 must be =');
+    ok(eq >= 6 && eq <= 12, p.ref + ' Q1-16 levels: ' + eq + ' at exam level');
+    ok(p.items.slice(16, 20).every(it => it.level === '='), p.ref + ' Q17-20 must be =');
     ok(p.items.every(it => QF.tax.lesson(it.lesson).week <= w), p.ref + ' uses a later lesson');
     common(p);
     for (const ver of ['a', 'b']) { const dr = A.drill(w, { seed: s, version: ver }); ok(dr.items.length === 8 && dr.items.every((it, i) => it.slot === 41 + i), dr.ref + ' slots'); common(dr); }
@@ -112,5 +112,5 @@ ok(sig.size === all.length, 'course: ' + (all.length - sig.size) + ' repeated it
 const rep = V.pack(all.filter(x => x.version === 'a'));
 ok(rep.ok, 'course import rules: ' + rep.errors.slice(0, 5).join(' | '));
 Object.keys(C.mocks).forEach(k => { const r = V.pack(C.mocks[k].items.map(A.toSite)); ok(r.ok, k + ' import rules: ' + r.errors.slice(0, 3).join(' | ')); });
-console.log((fails ? 'FAILED' : 'assemble: all ' + checks + ' checks passed') + (fails ? ' — ' + fails + ' of ' + checks : '') + (katex ? ' (KaTeX ' + katex.version + ')' : ''));
+console.log((fails ? 'FAILED' : 'assemble: all ' + checks + ' checks passed') + (fails ? ': ' + fails + ' of ' + checks : '') + (katex ? ' (KaTeX ' + katex.version + ')' : ''));
 process.exit(fails ? 1 : 0);

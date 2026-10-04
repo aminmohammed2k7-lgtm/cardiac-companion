@@ -1,6 +1,6 @@
 # ACE CSCA Question Factory
 
-A generator for CSCA Mathematics questions and papers. It writes full mocks, the diagnostic, weekly mocks, daily sets, 41–48 drills, practice tests and a question bank, and it checks every answer before a question leaves the factory.
+A generator for CSCA Mathematics questions and papers. It writes full mocks, the diagnostic, weekly mocks, daily sets, 41-48 drills, practice tests and a question bank, and it checks every answer before a question leaves the factory.
 
 It is built from four documents: the Exam Structure Atlas (what the real papers ask, slot by slot), the Mock Rewrite Specifications (wording, numbers, wrong options), the Course Plan, 6th edition (what each set, weekly mock and drill contains) and the Website Spec (the import format and its rules).
 
@@ -41,13 +41,13 @@ The same seed always gives the same paper. Change the seed for new numbers.
 
 | Paper | Rules |
 |---|---|
-| **Full mock, real pattern** (`--source dec\|jan\|mar\|apr\|jun\|und`) | Every slot keeps the sub-domain, tier (E/M/H), question type (V/S/N) and repeated template (R01–R14) of that paper. Numbers, options and wording are new. Tier totals match the Atlas (December 36/10/2, January 32/13/3, March 33/13/2, April 34/12/2, June 32/12/4). Answer letters 12/12/12/12, no run longer than three. Every item is level `=`. |
-| **Full mock, blueprint A or B** | Slot order and domain quotas of the blueprint, the conic split (A: 2 parabolas + 1 ellipse; B: 1 parabola + 2 ellipses), the anchors (sets Q1–2, vectors Q44, complex Q46, hardest sequence Q47, probability Q48), about eight repeated-template items and two to four H items in Q44–48. Other slots take any real exam form of their sub-domain. |
+| **Full mock, real pattern** (`--source dec\|jan\|mar\|apr\|jun\|und`) | Every slot keeps the sub-domain, tier (E/M/H), question type (V/S/N) and repeated template (R01-R14) of that paper. Numbers, options and wording are new. Tier totals match the Atlas (December 36/10/2, January 32/13/3, March 33/13/2, April 34/12/2, June 32/12/4). Answer letters 12/12/12/12, no run longer than three. Every item is level `=`. |
+| **Full mock, blueprint A or B** | Slot order and domain quotas of the blueprint, the conic split (A: 2 parabolas + 1 ellipse; B: 1 parabola + 2 ellipses), the anchors (sets Q1-2, vectors Q44, complex Q46, hardest sequence Q47, probability Q48), about eight repeated-template items and two to four H items in Q44-48. Other slots take any real exam form of their sub-domain. |
 | **Diagnostic, mock-1 … mock-4** | The December, January, March, April and June replicas with the ids the site expects. |
-| **Weekly mock W1–W7** | 24 questions: Q1–16 the week's topics in lesson order (about half `=`, half `+1`), Q17–20 spaced review at `=`, Q21–24 the plan's hard four (2.5 points, `+1`). |
-| **Set A / Set B** | 8 questions from the plan's recipe for that day: Q1–4 `=`, Q5–7 `+1` (Set B of a one-video day: spaced review of three earlier lessons), Q8 worth 2.5. Every set has a "which is true" item. |
+| **Weekly mock W1-W7** | 24 questions: Q1-16 the week's topics in lesson order (about half `=`, half `+1`), Q17-20 spaced review at `=`, Q21-24 the plan's hard four (2.5 points, `+1`). |
+| **Set A / Set B** | 8 questions from the plan's recipe for that day: Q1-4 `=`, Q5-7 `+1` (Set B of a one-video day: spaced review of three earlier lessons), Q8 worth 2.5. Every set has a "which is true" item. |
 | **Set C** | 4 hard questions on the 20 one-video days; the fourth is the hardest form of the lesson about a week back. |
-| **41–48 drill** | Slots 41–48 as listed in the plan for each week; versions A and B. |
+| **41-48 drill** | Slots 41-48 as listed in the plan for each week; versions A and B. |
 | **Practice test** | Any number of questions from the domains, sub-domains, lessons or tiers you choose. By default each sub-domain gets the share it has on the real papers. |
 | **Speed drill, easy trick** | The website's `ACE_GEN.L01 … L12` (8 item types each) and `ACE_GEN.T01 … T12`. |
 
@@ -102,15 +102,15 @@ What the checks do not cover: whether a stem reads naturally to a student, and w
 ## Putting the content on the website
 
 - Import `dist/course/week1.json` … `week7.json` (and `drills-version-b.json`) on the admin import page. They pass the import rules of Website Spec §4; `node cli.js validate <file>` runs the same rules on any file, including hand-written ones.
-- `dist/course/mocks/` holds replicas for `diagnostic` and `mock-1 … mock-4`. Use them only if you want papers with new numbers in place of Rewrite Mocks 1–5.
+- `dist/course/mocks/` holds replicas for `diagnostic` and `mock-1 … mock-4`. Use them only if you want papers with new numbers in place of Rewrite Mocks 1-5.
 - For the speed drill and the easy-trick drill, load `dist/question-factory.js` (or `.min.js`) and call `QF.adapters.install()`. That fills `window.ACE_GEN.L01 … L12` (eight functions each) and `ACE_GEN.T01 … T12`, each `rng => ({ stem, options, answer, explain })`.
 
 ## Decisions made while building, which you may want to change
 
-- **The "which is true" item in sets whose recipe has none.** The import rule wants one format-S item per set, but the recipes for some lessons list only compute-type forms (for example 4.2, 4.4, 5.1, 6.1, 7.6). For those lessons there is a four-statement form of the lesson (level `+1`), and it takes one of the Q5–7 slots or Q8. The recipes are in `src/data/course.js`.
+- **The "which is true" item in sets whose recipe has none.** The import rule wants one format-S item per set, but the recipes for some lessons list only compute-type forms (for example 4.2, 4.4, 5.1, 6.1, 7.6). For those lessons there is a four-statement form of the lesson (level `+1`), and it takes one of the Q5-7 slots or Q8. The recipes are in `src/data/course.js`.
 - **Lesson 3.5 (trap clinic)** has no forms of its own: its items are real trigonometry forms that plant one named trap, filed under lesson 3.5.
-- **Levels follow the slot** in daily sets (Q1–4 `=`, Q5–7 `+1`), as the import rule requires, even when the form in the slot is a real exam form.
-- **Weekly mock W1** has no earlier week to review, so Q17–20 continue the week's own list at level `=`.
+- **Levels follow the slot** in daily sets (Q1-4 `=`, Q5-7 `+1`), as the import rule requires, even when the form in the slot is a real exam form.
+- **Weekly mock W1** has no earlier week to review, so Q17-20 continue the week's own list at level `=`.
 
 ## Adding a form
 

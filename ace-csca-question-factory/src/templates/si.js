@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/si.js — Sets & inequalities (SET-el, SET-num, SET-op, INQ-quad, INQ-rat, INQ-prop). */
+/* ACE CSCA Question Factory · templates/si.js: sets and inequalities (SET-el, SET-num, SET-op, INQ-quad, INQ-rat, INQ-prop). */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, F = QF.fmt, IS = QF.iset, chk = QF.chk, S = QF.S, ev = QF.ev, h = QF.h, m = F.m;
@@ -465,7 +465,7 @@
   });
 
   def({ id: 'SET-op.four', code: 'SET-op', lesson: '1.4', tier: 'M', level: '+1', fmt: 'S',
-    form: 'Four ∩ / ∪ statements on two set-builder sets, each with a bracket trap', basis: 'Course plan 1.4 Q8' }, function (R) {
+    form: 'Four ∩ / ∪ statements on two set-builder sets, each with a possible bracket error', basis: 'Course plan 1.4 Q8' }, function (R) {
     var a = R.int(-5, 0), c = a + R.int(1, 3), b = c + R.int(1, 3), d = b + R.int(1, 3), fa = R.bool(), fb = R.bool(), fc = R.bool(), fd = R.bool();
     var nm = names(R), X = nm[0], Y = nm[1], crit = [a, c, b, d];
     var cap = function (x) { return h.inIv(x, a, b, fa, fb) && h.inIv(x, c, d, fc, fd); };
@@ -669,7 +669,7 @@
   });
 
   def({ id: 'INQ-rat.closed', code: 'INQ-rat', lesson: '1.6', tier: 'M', level: '=', fmt: 'V', trick: 'T02', w: 2,
-    form: '(ax + b)/(cx + d) ≤ 0 with a fractional root (end-point trap)', basis: 'Jan Q12, Mar Q11' }, function (R) {
+    form: '(ax + b)/(cx + d) ≤ 0 with a fractional root (check the end points)', basis: 'Jan Q12, Mar Q11' }, function (R) {
     var a = R.pick([2, 3, 2, 3, 4]), b = R.nz(-7, 7), c = R.pick([1, 1, 1, 2, 3]), d = R.nz(-7, 7), rel = R.pick(['<=', '<=', '<=', '>=']);
     if (N.gcd(a, b) !== 1 || N.gcd(c, d) !== 1) retry();
     if ((a === 2 && b === 1 && c === 1 && d === -2) || (a === 2 && b === -3 && c === 3 && d === -4)) retry('real item');

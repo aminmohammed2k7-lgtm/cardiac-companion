@@ -33,7 +33,7 @@ for (const tpl of QF.templateList) {
     stems.add(it.stem); sigs.add(it.stem + '|' + it.options.slice().sort().join('|')); letters[it.answer]++;
     if (shown < SHOW && !quiet) {
       shown++;
-      console.log('\n[' + tpl.id + '] ' + tpl.tier + ' ' + tpl.level + ' ' + tpl.fmt + (tpl.rep ? ' ' + tpl.rep : '') + '  — ' + tpl.form);
+      console.log('\n[' + tpl.id + '] ' + tpl.tier + ' ' + tpl.level + ' ' + tpl.fmt + (tpl.rep ? ' ' + tpl.rep : '') + '  ' + tpl.form);
       console.log('  ' + it.stem);
       it.options.forEach((o, i) => console.log('   ' + 'ABCD'[i] + (i === it.answer ? '*' : ' ') + ' ' + o + (it.traps[i] ? '   <' + it.traps[i] + '>' : '')));
       console.log('  sol: ' + it.solution);

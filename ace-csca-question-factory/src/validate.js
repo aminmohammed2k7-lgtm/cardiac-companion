@@ -24,15 +24,15 @@
       var vals = QF.plainValues(o);                 // null for statements, sets, intervals and equations
       if (vals) for (i = 0; i < 4; i++) for (j = i + 1; j < 4; j++) if (QF.ev.sameAlts(vals[i], vals[j])) err('options ' + 'ABCD'[i] + ' and ' + 'ABCD'[j] + ' are equal in value');
     }
-    if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3) err('answer must be 0–3');
+    if (!Number.isInteger(q.answer) || q.answer < 0 || q.answer > 3) err('answer must be 0-3');
     if (q.level !== '=' && q.level !== '+1') err('level must be "=" or "+1"');
     if (!/^[EMH]$/.test(q.tier || '')) err('tier must be E, M or H');
     if (!/^[VSN]$/.test(q.format || '')) err('format must be V, S or N');
     if (!/\( \)$/.test(q.stem || '')) err('stem must end with "( )"');
     if (!tax.lesson(q.lesson)) err('lesson ' + q.lesson + ' does not exist');
     if (!tax.code(q.code)) err('topic code ' + q.code + ' does not exist');
-    if (q.repeat !== null && q.repeat !== undefined && !tax.repeats[q.repeat]) err('repeat must be R01–R14 or null');
-    if (q.trick !== null && q.trick !== undefined && !tax.tricks[q.trick]) err('trick must be T01–T12 or null');
+    if (q.repeat !== null && q.repeat !== undefined && !tax.repeats[q.repeat]) err('repeat must be R01-R14 or null');
+    if (q.trick !== null && q.trick !== undefined && !tax.tricks[q.trick]) err('trick must be T01-T12 or null');
     [q.stem, q.solution].concat(o || []).forEach(function (s) { var l = QF.lintTex(s === undefined || s === null ? '' : s); if (l) err('KaTeX: ' + l + ' in "' + String(s).slice(0, 50) + '"'); });
     if (Array.isArray(q.traps)) {
       if (q.traps.length !== 4) err('traps must list 4 entries');
@@ -52,13 +52,13 @@
         if (q.ref !== refFromId) err('ref "' + q.ref + '" does not match the id');
       }
       if ((q.kind === 'mock' || q.kind === 'diagnostic') && q.level !== '=') err('mock and diagnostic items must be level "="');
-      if (q.kind === 'weekly' && q.slot >= 21 && q.level !== '+1') err('weekly Q21–24 must be level "+1"');
-      if (q.kind === 'd4148' && q.version !== 'a' && q.version !== 'b') err('41–48 drill items need version a or b');
+      if (q.kind === 'weekly' && q.slot >= 21 && q.level !== '+1') err('weekly Q21-24 must be level "+1"');
+      if (q.kind === 'd4148' && q.version !== 'a' && q.version !== 'b') err('41-48 drill items need version a or b');
       if (q.kind === 'set') {
         var day = Number(m && m[1]), which = m && m[2];
         if (m && lessonDays().indexOf(day) < 0) err('day ' + day + ' is not a lesson day');
-        if (q.slot <= 4 && q.level !== '=') err('Q1–4 of a daily set must be level "="');
-        if (q.slot >= 5 && q.slot <= 7 && q.level !== '+1' && !(which === 'b' && oneVideo(day))) err('Q5–7 must be level "+1" (only Set B of a one-video day may use "=")');
+        if (q.slot <= 4 && q.level !== '=') err('Q1-4 of a daily set must be level "="');
+        if (q.slot >= 5 && q.slot <= 7 && q.level !== '+1' && !(which === 'b' && oneVideo(day))) err('Q5-7 must be level "+1" (only Set B of a one-video day may use "=")');
       }
       if (q.kind === 'setc' && m && !oneVideo(Number(m[1]))) err('Set C exists only on the 20 one-video days');
     }
@@ -84,7 +84,7 @@
       if (!opt.partial) {
         if (qs.length !== n) E.push(g + ': ' + qs.length + ' items, expected ' + n);
         var first = kind === 'd4148' ? 41 : 1, slots = qs.map(function (q) { return q.slot; }).sort(function (a, b) { return a - b; });
-        for (var i = 0; i < Math.min(n, slots.length); i++) if (slots[i] !== first + i) { E.push(g + ': slots must run ' + first + '–' + (first + n - 1)); break; }
+        for (var i = 0; i < Math.min(n, slots.length); i++) if (slots[i] !== first + i) { E.push(g + ': slots must run ' + first + '-' + (first + n - 1)); break; }
         if (kind === 'set' && !qs.some(function (q) { return q.format === 'S'; })) E.push(g + ': a daily set needs at least one format-S item');
       }
       if (kind === 'mock' || kind === 'diagnostic') {
