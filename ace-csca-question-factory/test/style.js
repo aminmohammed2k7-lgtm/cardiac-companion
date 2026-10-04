@@ -1,7 +1,8 @@
 'use strict';
 /* House style of the text a student reads (stem, options, worked solution).
    Generates items from every form and fails on: dashes used as punctuation, Latin abbreviations, shouting capitals,
-   chains of colons, filler words, broken spacing and sentences that do not start with a capital.
+   chains of colons, filler words, broken spacing, sentences that do not start with a capital
+   and stems of the form "Given X, then Y".
    usage: node test/style.js [filter] [--n 25] [--show 3] */
 const QF = require('../src/index.js');
 const args = process.argv.slice(2);
@@ -27,8 +28,10 @@ const RULES = [
   ['repeated full stop', s => /\.\s*\./.test(prose(s).replace(/\\ldots|\.\.\./g, ''))],
   ['sentence starts in lower case', s => /[.?!] [a-z]/.test(prose(s))],
   ['starts in lower case', s => /^[a-z]/.test(prose(s))],
-  ['parenthetical aside', s => /\((?:[^()$]*\s){5,}[^()$]*\)/.test(prose(s))]
+  ['parenthetical aside', s => /\((?:[^()$]*\s){5,}[^()$]*\)/.test(prose(s))],
+  ['"Given ..., then" or "It is known that" stem', s => /^Given[^.?]*, then|It is known that/.test(s)]
 ];
+const STEM_ONLY = new Set(['"Given ..., then" or "It is known that" stem']);
 const SOL_ONLY = new Set(['two colons in one sentence', 'filler or exam-coach word', 'semicolon chain', 'sentence starts in lower case', 'starts in lower case', 'parenthetical aside', 'repeated full stop']);
 
 const hits = {};
@@ -43,6 +46,7 @@ for (const tpl of QF.templateList) {
     for (const [where, text] of fields) {
       for (const [name, test] of RULES) {
         if (SOL_ONLY.has(name) && where !== 'solution') continue;
+        if (STEM_ONLY.has(name) && where !== 'stem') continue;
         if (!test(text)) continue;
         const k = name;
         (hits[k] = hits[k] || {});

@@ -32,32 +32,32 @@
     return { stem: stem, key: m(key), wrong: W(R.shuffle(wrong.slice(0, 3)).concat(wrong.slice(3))), check: chk.eq([circlePts(a, b, r)]), sol: sol + ' So the equation is $' + key + '$.' };
   }
   def({ id: 'CN-cir.r08', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', rep: 'R08', trick: 'T10', w: 5,
-    form: 'Centre and radius given → the standard equation', basis: 'R08: Dec Q18, Jan Q28, Mar Q20, Mar Q24; Jun Q19' }, function (R) {
+    form: 'Center and radius given → the standard equation', basis: 'R08: Dec Q18, Jan Q28, Mar Q20, Mar Q24; Jun Q19' }, function (R) {
     var a = R.int(-6, 6), b = R.int(-6, 6), r = R.int(2, 7);
     if (a === 0 && b === 0) retry();
     if ((a === -3 && b === 2 && r <= 4) || (a === 2 && b === 5 && r === 5)) retry('real item');
-    return stdItem(R, a, b, r * r, r, R.pick(CSTEM)(a, b, r), 'A circle with centre $(a, b)$ and radius $r$ has the equation $(x - a)^2 + (y - b)^2 = r^2$. Here $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r + '^2 = ' + (r * r) + '$.');
+    return stdItem(R, a, b, r * r, r, R.pick(CSTEM)(a, b, r), 'A circle with center $(a, b)$ and radius $r$ has the equation $(x - a)^2 + (y - b)^2 = r^2$. Here $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r + '^2 = ' + (r * r) + '$.');
   });
   def({ id: 'CN-cir.sqrt-radius', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '+1', fmt: 'V', trick: 'T10',
-    form: 'Centre and a surd radius (r = √7) → the standard equation', basis: 'Course plan 6.1 Q6' }, function (R) {
+    form: 'Center and a surd radius (r = √7) → the standard equation', basis: 'Course plan 6.1 Q6' }, function (R) {
     var a = R.int(-6, 6), b = R.int(-6, 6), n = R.pick([2, 3, 5, 6, 7, 10, 11, 13]);
     if (a === 0 && b === 0) retry();
     var key = circ(a, b, n);
     return {
       stem: 'The equation of the circle with center $' + pt(a, b) + '$ and radius $\\sqrt{' + n + '}$ is ( )', key: m(key),
       wrong: W([[circ(a, b, n * n), 'radius'], [circ(-a, -b, n), 'sign'], [circ(a, b, '\\sqrt{' + n + '}'), 'radius'], [circ(-a, -b, n * n), 'sign'], [a === b ? null : circ(b, a, n), 'swap']]), check: chk.eq([circlePts(a, b, Math.sqrt(n))]),
-      sol: 'The right-hand side is $r^2 = (\\sqrt{' + n + '})^2 = ' + n + '$. With the centre $' + pt(a, b) + '$ the equation is $' + key + '$.'
+      sol: 'The right-hand side is $r^2 = (\\sqrt{' + n + '})^2 = ' + n + '$. With the center $' + pt(a, b) + '$ the equation is $' + key + '$.'
     };
   });
   def({ id: 'CN-cir.read', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', trick: 'T10', w: 0.5,
-    form: 'Standard equation → centre and radius', basis: 'Course plan 6.1 Q2' }, function (R) {
+    form: 'Standard equation → center and radius', basis: 'Course plan 6.1 Q2' }, function (R) {
     var a = R.int(-6, 6), b = R.int(-6, 6), sq = R.bool(0.6), r2 = sq ? Math.pow(R.int(2, 7), 2) : R.pick([2, 3, 5, 6, 7, 10]), r = Sd.sqrt(r2);
     if (a === 0 && b === 0) retry();
     var pr = function (x, y, rr) { return m(pt(x, y)) + ', ' + m(rr); };
     return {
       stem: 'The center and radius of the circle $' + circ(a, b, r2) + '$ are ( )', key: pr(a, b, r),
       wrong: [[pr(-a, -b, r), 'sign'], [pr(a, b, r2), 'radius'], [pr(-a, -b, r2), 'sign'], [a === b ? null : pr(b, a, r), 'swap'], [pr(a, -b, r), 'sign']].filter(function (x) { return x[0]; }), check: chk.tuple([a, b, Math.sqrt(r2)]),
-      sol: 'Comparing with $(x - a)^2 + (y - b)^2 = r^2$ gives $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r2 + '$. So the centre is $' + pt(a, b) + '$ and $r = ' + F.n(r) + '$.' +
+      sol: 'Comparing with $(x - a)^2 + (y - b)^2 = r^2$ gives $a = ' + a + '$, $b = ' + b + '$ and $r^2 = ' + r2 + '$. So the center is $' + pt(a, b) + '$ and $r = ' + F.n(r) + '$.' +
         (a < 0 ? ' The bracket $' + brk('x', a) + '$ is $x - (' + a + ')$, which is why $a = ' + a + '$.' : b < 0 ? ' The bracket $' + brk('y', b) + '$ is $y - (' + b + ')$, which is why $b = ' + b + '$.' : '')
     };
   });
@@ -78,23 +78,23 @@
     return {
       stem: R.pick(['If a circle passes through the point $A' + pt(px, py) + '$ and has center $' + pt(a, b) + '$, then its equation is ( )', 'If a circle has center $' + pt(a, b) + '$ and passes through the point $' + pt(px, py) + '$, then its equation is ( )']).replace('its equation', form === 'gen' ? 'its general equation' : 'its equation'),
       key: m(key), wrong: W(wrong), check: chk.eq([circlePts(a, b, Math.hypot(px - a, py - b))]),
-      sol: 'The radius is the distance from the centre to the point: $r^2 = ' + (px - a < 0 ? '(' + (px - a) + ')' : (px - a)) + '^2 + ' + (py - b < 0 ? '(' + (py - b) + ')' : (py - b)) + '^2 = ' + r2 + '$. So the circle is $' + circ(a, b, r2) + '$' + (form === 'gen' ? '. Expanding, $' + F.sum([[1, 'x^2'], [-2 * a, 'x'], [a * a, ''], [1, 'y^2'], [-2 * b, 'y'], [b * b, '']]) + ' = ' + r2 + '$, that is $' + key + '$.' : '.')
+      sol: 'The radius is the distance from the center to the point: $r^2 = ' + (px - a < 0 ? '(' + (px - a) + ')' : (px - a)) + '^2 + ' + (py - b < 0 ? '(' + (py - b) + ')' : (py - b)) + '^2 = ' + r2 + '$. So the circle is $' + circ(a, b, r2) + '$' + (form === 'gen' ? '. Expanding, $' + F.sum([[1, 'x^2'], [-2 * a, 'x'], [a * a, ''], [1, 'y^2'], [-2 * b, 'y'], [b * b, '']]) + ' = ' + r2 + '$, that is $' + key + '$.' : '.')
     };
   }
   def({ id: 'CN-cir.r13', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '=', fmt: 'V', rep: 'R13', trick: 'T10', w: 2,
-    form: 'Centre and a point on the circle → the standard equation', basis: 'R13: Apr Q23, Jun Q27' }, function (R) {
+    form: 'Center and a point on the circle → the standard equation', basis: 'R13: Apr Q23, Jun Q27' }, function (R) {
     var a = R.int(-4, 4), b = R.int(-4, 4), d = R.pick([[0, 2], [0, 3], [3, 0], [0, 4], [3, 4], [4, 3], [2, 0], [0, 5], [1, 1], [1, 2], [2, 1], [2, 2], [1, 3], [-3, 4], [4, 0], [-2, 1]]), sx = R.sign(), sy = R.sign();
     var px = a + d[0] * sx, py = b + d[1] * sy;
     if (a === 2 && b === 0 && px === 2 && py === 2) retry('real item');
     return throughItem(R, a, b, px, py, 'std');
   });
   def({ id: 'CN-cir.far-point', code: 'CN-cir', lesson: '6.1', tier: 'E', level: '+1', fmt: 'V', trick: 'T10',
-    form: 'Centre and a far point (5-12-13 or 8-15-17 distance) → the standard equation', basis: 'Course plan 6.1 Q7' }, function (R) {
+    form: 'Center and a far point (5-12-13 or 8-15-17 distance) → the standard equation', basis: 'Course plan 6.1 Q7' }, function (R) {
     var a = R.int(-5, 5), b = R.int(-5, 5), d = R.pick([[5, 12], [12, 5], [8, 15], [15, 8], [6, 8], [8, 6], [7, 24]]);
     return throughItem(R, a, b, a + d[0] * R.sign(), b + d[1] * R.sign(), 'std');
   });
   def({ id: 'CN-cir.gen-through', code: 'CN-cir', lesson: '6.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'Centre and a point on the circle → the general equation', basis: 'Course plan 6.2 Q7' }, function (R) {
+    form: 'Center and a point on the circle → the general equation', basis: 'Course plan 6.2 Q7' }, function (R) {
     var a = R.int(-4, 4), b = R.int(-4, 4), d = R.pick([[0, 2], [0, 3], [3, 4], [4, 3], [1, 2], [2, 1], [2, 2], [1, 3], [3, 0]]);
     if (a === 0 && b === 0) retry();
     return throughItem(R, a, b, a + d[0] * R.sign(), b + d[1] * R.sign(), 'gen');
@@ -129,26 +129,26 @@
     };
   });
   def({ id: 'CN-cir.gen-centre', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 0.5,
-    form: 'Centre of a circle in general form', basis: 'Course plan 6.2 Q2' }, function (R) {
+    form: 'Center of a circle in general form', basis: 'Course plan 6.2 Q2' }, function (R) {
     var C = genCircle(R, true), T = function (x, y) { return m(pt(x, y)); };
     return {
       stem: 'The center of the circle $' + C.tex + '$ is ( )', key: T(C.a, C.b),
       wrong: [[T(-C.a, -C.b), 'sign'], [T(C.D, C.E), 'half'], [T(-C.D, -C.E), 'half'], [C.a === C.b ? null : T(C.b, C.a), 'swap'], [T(C.a, -C.b), 'sign'], [T(-C.a, C.b), 'sign']].filter(function (x) { return x[0]; }),
-      check: chk.tuple([-C.D / 2, -C.E / 2]), sol: compSq(C) + ' So the centre is $' + pt(C.a, C.b) + '$.'
+      check: chk.tuple([-C.D / 2, -C.E / 2]), sol: compSq(C) + ' So the center is $' + pt(C.a, C.b) + '$.'
     };
   });
   def({ id: 'CN-cir.gen-both', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
-    form: 'Centre and radius of a circle in general form (often with one variable missing)', basis: 'Jan Q19' }, function (R) {
+    form: 'Center and radius of a circle in general form (often with one variable missing)', basis: 'Jan Q19' }, function (R) {
     var C = genCircle(R, true), pr = function (x, y, rr) { return m(pt(x, y)) + ', ' + m(rr); };
     if (C.D === -4 && C.E === 0 && C.F === -3) retry('real item');
     return {
       stem: 'The center and radius of the circle $' + C.tex + '$ are ( )', key: pr(C.a, C.b, C.r),
       wrong: [[pr(-C.a, -C.b, C.r), 'sign'], [pr(C.a, C.b, C.r2), 'radius'], [C.a === C.b ? null : pr(C.b, C.a, C.r), 'swap'], [pr(-C.a, -C.b, C.r2), 'sign'], [pr(C.D, C.E, C.r), 'half']].filter(function (x) { return x[0]; }),
-      check: chk.tuple([-C.D / 2, -C.E / 2, Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)]), sol: compSq(C) + ' So the centre is $' + pt(C.a, C.b) + '$ and the radius is $' + rootT(C.r2, C.r) + '$.'
+      check: chk.tuple([-C.D / 2, -C.E / 2, Math.sqrt((C.D * C.D + C.E * C.E) / 4 - C.F)]), sol: compSq(C) + ' So the center is $' + pt(C.a, C.b) + '$ and the radius is $' + rootT(C.r2, C.r) + '$.'
     };
   });
   def({ id: 'CN-cir.to-general', code: 'CN-cir', lesson: '6.2', tier: 'E', level: '=', fmt: 'V', w: 1,
-    form: 'Centre and radius → the general equation x² + y² + Dx + Ey + F = 0', basis: 'Apr Q20' }, function (R) {
+    form: 'Center and radius → the general equation x² + y² + Dx + Ey + F = 0', basis: 'Apr Q20' }, function (R) {
     var a = R.int(-5, 5), b = R.int(-5, 5), r = R.int(1, 6), Fc = a * a + b * b - r * r;
     if ((a === 0 && b === 0) || Fc === 0) retry();
     if (a === -1 && b === 2 && r === 3) retry('real item');
@@ -160,7 +160,7 @@
     };
   });
   def({ id: 'CN-cir.gen-frac', code: 'CN-cir', lesson: '6.2', tier: 'M', level: '+1', fmt: 'V',
-    form: 'General form with odd coefficients → a fractional centre (and the radius)', basis: 'Course plan 6.2 Q5-6' }, function (R) {
+    form: 'General form with odd coefficients → a fractional center (and the radius)', basis: 'Course plan 6.2 Q5-6' }, function (R) {
     var D = R.pick([-5, -3, -1, 1, 3, 5]), E = R.pick([-4, -2, 0, 2, 4, -3, 1, 3]), r2 = R.pick([q(5, 4), q(9, 4), q(13, 4), q(17, 4), q(25, 4), q(5, 2), q(9, 2), q(1, 2), q(1, 4), q(29, 4), q(4), q(9)]);
     var a = q(-D, 2), b = q(-E, 2), Fc = a.mul(a).add(b.mul(b)).sub(r2);
     if (!Fc.isInt || Math.abs(Fc.n) > 12) retry();
@@ -171,11 +171,11 @@
     else { key = m(r); wrong = W([[r2, 'radius'], [Sd.sqrt(r2.mul(4)), 'partial'], [Sd.sqrt(r2.add(1)), 'slip'], [r2.mul(4), 'radius'], [r.scale(2), 'partial']]); check = chk.num(Math.sqrt((D * D + E * E) / 4 - Fc.n)); }
     return {
       stem: 'The ' + { centre: 'center', both: 'center and radius', radius: 'radius' }[ask] + ' of the circle $' + tex + '$ ' + (ask === 'both' ? 'are' : 'is') + ' ( )', key: key, wrong: wrong.filter(function (x) { return x[0]; }), check: check,
-      sol: 'Here $D = ' + D + '$, $E = ' + E + '$ and $F = ' + Fc.n + '$. The centre is $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + pt(a, b) + '$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F = \\dfrac{' + (D * D) + ' + ' + (E * E) + '}{4} - ' + par(Fc.n) + ' = ' + F.n(r2) + '$, so $r = ' + F.n(r) + '$.'
+      sol: 'Here $D = ' + D + '$, $E = ' + E + '$ and $F = ' + Fc.n + '$. The center is $\\left(-\\dfrac{D}{2}, -\\dfrac{E}{2}\\right) = ' + pt(a, b) + '$ and $r^2 = \\dfrac{D^2 + E^2}{4} - F = \\dfrac{' + (D * D) + ' + ' + (E * E) + '}{4} - ' + par(Fc.n) + ' = ' + F.n(r2) + '$, so $r = ' + F.n(r) + '$.'
     };
   });
   def({ id: 'CN-cir.axis-param', code: 'CN-cir', lesson: '6.1', tier: 'M', level: '+1', fmt: 'V',
-    form: 'A circle whose centre (with a parameter) lies on an axis → the centre', basis: 'Course plan 6.1 Q5' }, function (R) {
+    form: 'A circle whose center (with a parameter) lies on an axis → the center', basis: 'Course plan 6.1 Q5' }, function (R) {
     var p = R.int(-5, 5), r = R.nz(-5, 5), be = R.pick([1, 2, -1]), onX = R.bool(0.5), rr = R.int(2, 6);
     // centre (a + p, be·a + r)
     var a, key;
@@ -188,7 +188,7 @@
       stem: 'The center of the circle $' + eq + '$ lies on the $' + (onX ? 'x' : 'y') + '$-axis. Then the center is ( )', key: T(key[0], key[1]),
       wrong: [[other ? T(other[0], other[1]) : null, 'axis'], [onX ? T(0, v) : T(v, 0), 'axis'], [onX ? T(-v, 0) : T(0, -v), 'sign'], [onX ? T(v, rr) : T(rr, v), 'partial'], [onX ? T(a, 0) : T(0, a), 'partial']].filter(function (x) { return x[0]; }),
       check: chk.tuple(onX ? [(-r / be) + p, 0] : [0, be * (-p) + r]),
-      sol: 'The centre is $(' + cx + ', ' + cy + ')$. A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + '$-coordinate $0$, so ' + (zero === 'a' ? '$a = 0$' : '$' + zero + ' = 0$ and $a = ' + a + '$') + '. Then the centre is $' + pt(key[0], key[1]) + '$.'
+      sol: 'The center is $(' + cx + ', ' + cy + ')$. A point on the $' + (onX ? 'x' : 'y') + '$-axis has $' + (onX ? 'y' : 'x') + '$-coordinate $0$, so ' + (zero === 'a' ? '$a = 0$' : '$' + zero + ' = 0$ and $a = ' + a + '$') + '. Then the center is $' + pt(key[0], key[1]) + '$.'
     };
   });
 

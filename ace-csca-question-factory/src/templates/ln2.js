@@ -361,7 +361,7 @@
     if (coincide ? (found.length !== 1 || found[0] !== v) : (found.length !== 2)) retry();
     var O = coincide ? paramOpts(u, v, v) : paramOpts(u, v);
     return {
-      stem: 'Given that the lines $l_1: ' + t1 + '$ and $l_2: ' + t2 + '$ are parallel, then $a =$ ( )', key: O.key, wrong: O.wrong, check: chk.alts(found),
+      stem: 'If the lines $l_1: ' + t1 + '$ and $l_2: ' + t2 + '$ are parallel, then $a =$ ( )', key: O.key, wrong: O.wrong, check: chk.alts(found),
       sol: 'Parallel lines satisfy $A_1B_2 - A_2B_1 = 0$. Here $a' + ap(p, '').replace(/^a$/, ' \\cdot a') + ' - ' + par(r) + ' = 0$, that is $' + F.poly([1, p, -r], 'a') + ' = 0$, so $a = ' + u + '$ or $a = ' + v + '$. ' +
         'The two lines would be the same line if also $A_1C_2 - A_2C_1 = 0$, that is $' + F.sum([[c2, 'a'], [-c1, '']]) + ' = 0$. ' +
         (coincide ? 'This holds for $a = ' + u + '$, so that value gives one line, not two parallel lines. Hence $a = ' + v + '$.' : 'Neither root satisfies this, so both values are valid.')

@@ -215,7 +215,7 @@
     var wrong = [[Sd.sqrt(sx * sx + sy * sy), 'sign'], [d2, 'partial'], [Math.abs(dx) + Math.abs(dy), 'operation'], [Math.max(Math.abs(dx), Math.abs(dy)), 'partial'], [dx * dx === dy * dy ? null : Sd.sqrt(Math.abs(dx * dx - dy * dy)), 'sign'], [Sd.sqrt(d2 + 1), 'slip']];
     var A = names[0], B = names[1], a = '$' + A + pt(P[0], P[1]) + '$', b = '$' + B + pt(Q[0], Q[1]) + '$';
     return {
-      stem: R.pick(['The distance between the points ' + a + ' and ' + b + ' is ( )', 'The distance from the point ' + a + ' to the point ' + b + ' is ( )', 'Given points ' + a + ' and ' + b + ', then $|' + A + B + '| =$ ( )']),
+      stem: R.pick(['The distance between the points ' + a + ' and ' + b + ' is ( )', 'The distance from the point ' + a + ' to the point ' + b + ' is ( )', 'For the points ' + a + ' and ' + b + ', $|' + A + B + '| =$ ( )']),
       key: m(key), wrong: W(wrong), check: chk.num(Math.hypot(Q[0] - P[0], Q[1] - P[1])),
       sol: 'The coordinate differences are $' + Q[0] + ' - ' + par(P[0]) + ' = ' + dx + '$ and $' + Q[1] + ' - ' + par(P[1]) + ' = ' + dy + '$. By the distance formula, $|' + A + B + '| = \\sqrt{' + sqT(dx) + ' + ' + sqT(dy) + '} = \\sqrt{' + (dx * dx) + ' + ' + (dy * dy) + '} = \\sqrt{' + d2 + '}' + (F.n(key) === '\\sqrt{' + d2 + '}' ? '' : ' = ' + F.n(key)) + '$.',
       sig: 'dist|' + [P[0], P[1], Q[0], Q[1]].join(',') + (extraSig || '')
@@ -265,7 +265,7 @@
       : [[m(v1), 'partial'], [m(v2), 'partial'], [F.or(-v2, -v1), 'sign'], [m(F.pm(leg)), 'partial'], [F.or(v1 + 1, v2 - 1), 'slip']];
     var roots = [x1 + Math.sqrt(h2 - dy * dy), x1 - Math.sqrt(h2 - dy * dy)];
     return {
-      stem: 'Given points $A' + A + '$ and $B' + B + '$, if $|AB| = ' + hT + '$, then $' + L + ' =$ ( )', key: key, wrong: sym ? wrong : R.shuffle(wrong.slice(0, 2)).concat(wrong.slice(2)), check: chk.alts(roots),
+      stem: 'The points $A' + A + '$ and $B' + B + '$ satisfy $|AB| = ' + hT + '$. Then $' + L + ' =$ ( )', key: key, wrong: sym ? wrong : R.shuffle(wrong.slice(0, 2)).concat(wrong.slice(2)), check: chk.alts(roots),
       sol: sym ? '$|AB|^2 = ' + h2 + '$ gives $' + L + '^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $' + L + '^2 = ' + (leg * leg) + '$ and $' + L + ' = \\pm ' + leg + '$. Both values give $|AB| = ' + hT + '$.'
         : '$|AB|^2 = ' + h2 + '$ gives $(' + F.sum([[1, L], [-x1, '']]) + ')^2 + ' + sqT(dy) + ' = ' + h2 + '$, so $(' + F.sum([[1, L], [-x1, '']]) + ')^2 = ' + (leg * leg) + '$ and $' + F.sum([[1, L], [-x1, '']]) + ' = \\pm ' + leg + '$. Hence $' + L + ' = ' + v1 + '$ or $' + L + ' = ' + v2 + '$, and both give $|AB| = ' + hT + '$.'
     };

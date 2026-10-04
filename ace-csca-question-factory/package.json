@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "test": "node test/core.js && node test/run.js --quiet --n 60 && node test/assemble.js && node test/bank.js",
+    "test": "node test/core.js && node test/run.js --quiet --n 60 && node test/assemble.js && node test/bank.js && node test/style.js --n 12",
     "bank": "node cli.js bank",
     "course": "node cli.js course",
     "bundle": "node cli.js bundle",

@@ -65,7 +65,7 @@
       wrong = [[comp.scale(s), 'companion'], [key.neg(), 'sign']].concat(R.shuffle([[comp.scale(-s), 'companion'], [(sg === '+' ? fA.add(fB) : fA.sub(fB)).scale(s), 'operation'], [kAbs.scale(2).scale(s), 'slip']]));
     }
     var call = fc(fn, deg, useDeg), stem;
-    if (givenStyle && deg === ref) stem = 'Given $' + fc(fn, A, useDeg) + ' = ' + F.n(trig[fn](A)) + '$ and $' + fc(fn, B, useDeg) + ' = ' + F.n(trig[fn](B)) + '$, then $' + call + ' =$ ( )';
+    if (givenStyle && deg === ref) stem = 'Given that $' + fc(fn, A, useDeg) + ' = ' + F.n(trig[fn](A)) + '$ and $' + fc(fn, B, useDeg) + ' = ' + F.n(trig[fn](B)) + '$, the value of $' + call + '$ is ( )';
     else stem = R.pick(['$' + call + ' =$ ( )', 'The value of $' + call + '$ is ( )']);
     var work = tan ? '\\tan\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expandTan(A, B, sg, useDeg) + ' = ' + TANRAT[A + sg + B] : '\\' + fn + '\\left(' + ang(A, useDeg) + ' ' + sg + ' ' + ang(B, useDeg) + '\\right) = ' + expand(fn, A, B, sg, useDeg);
     var sol;
@@ -358,7 +358,7 @@
       st('sin', A.sin.mul(A.cos), false, 'the factor $2$ is missing: ' + sW, { g: 's', trap: 'partial' }),
       st('cos', c2.neg(), false, 'this is $\\sin^2\\alpha - \\cos^2\\alpha$. In fact ' + cW, { g: 'c', trap: 'sign' }),
       st('cos', s2, false, 'this is the value of $\\sin 2\\alpha$. In fact ' + cW, { g: 'c', trap: 'companion' }),
-      st('tan', t2.neg(), false, 'the sign is wrong: ' + tW, { g: 't', trap: 'sign' }),
+      st('tan', t2.neg(), false, tW, { g: 't', trap: 'sign' }),
       st('tan', sd(1).div(t2), false, 'this is $\\dfrac{\\cos 2\\alpha}{\\sin 2\\alpha}$. In fact ' + tW, { g: 't', trap: 'reciprocal' })
     ].filter(function (s) { return s.ok || !s.test(); });
     return out('If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + T.inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
@@ -393,7 +393,7 @@
   }
   function halfStem(R, V, given, askTex) {
     var L = halfLead(V, given), cond = R.pick(V.H.say);
-    return R.pick(['If ' + L.G + ' and ' + cond + ', then $' + askTex + ' =$ ( )', 'It is known that ' + L.G + ' and ' + cond + '. Then $' + askTex + ' =$ ( )', 'If ' + cond + ' and ' + L.G + ', then $' + askTex + ' =$ ( )']);
+    return R.pick(['If ' + L.G + ' and ' + cond + ', then $' + askTex + ' =$ ( )', 'Suppose ' + L.G + ' and ' + cond + '. Then $' + askTex + ' =$ ( )', 'If ' + cond + ' and ' + L.G + ', then $' + askTex + ' =$ ( )']);
   }
   function halfLocate(V, fn) { return 'Find where the half angle lies: $\\alpha \\in ' + IVT[V.iv] + '$ gives $\\dfrac{\\alpha}{2} \\in ' + V.H.half + '$, where the ' + word(fn) + ' is ' + (V.H.sg[fn] > 0 ? 'positive' : 'negative') + '. '; }
   function halfItem(R, iv, c, ask, given) {
@@ -538,7 +538,7 @@
     form: 'A ratio of sin α and cos α is given → tan α', basis: 'Dec Q40' }, function (R) {
     var B = backData(R), t = B.t;
     return {
-      stem: R.pick(['It is known that $' + B.expr + ' = ' + F.n(B.k) + '$. Then $\\tan\\alpha =$ ( )', 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\tan\\alpha =$ ( )']), key: m(t),
+      stem: R.pick(['Suppose $' + B.expr + ' = ' + F.n(B.k) + '$. Then $\\tan\\alpha =$ ( )', 'If $' + B.expr + ' = ' + F.n(B.k) + '$, then $\\tan\\alpha =$ ( )']), key: m(t),
       wrong: W([[t.inv(), 'reciprocal'], [t.neg(), 'sign'], [B.k, 'partial'], [t.inv().neg(), 'reciprocal'], [B.k.inv(), 'reciprocal']]), check: chk.num(B.tNum), sol: B.sol
     };
   });

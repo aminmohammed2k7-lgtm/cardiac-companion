@@ -172,7 +172,8 @@
       var work = '$' + reduceTex(fn, A) + '$.';
       pool.push(stt(fn, A, v, true, trig.quadrant(A) <= 1 ? '' : work));
       if (!alt.eq(v)) pool.push(stt(fn, A, alt, false, (fn === 'tan' ? 'this is the reciprocal of the correct value. In fact ' : 'this is the value of $' + call(fn === 'sin' ? 'cos' : 'sin', A) + '$. In fact ') + work, 'companion'));
-      if (!v.isZero) pool.push(stt(fn, A, v.neg(), false, 'the sign is wrong. In fact ' + work, 'sign'));
+      var qd = trig.quadrant(A), sgnWhy = qd ? 'in the ' + ['', 'first', 'second', 'third', 'fourth'][qd] + ' quadrant ' + { sin: 'the sine', cos: 'the cosine', tan: 'the tangent' }[fn] + ' is ' + (v.num > 0 ? 'positive' : 'negative') + '. In fact ' : 'in fact ';
+      if (!v.isZero) pool.push(stt(fn, A, v.neg(), false, sgnWhy + work, 'sign'));
     }
     (extra || []).forEach(function (e) { pool.push(stt(e[0], e[1], e[2], e[3], e[4], 'slip')); });
     var st = QF.pickStmts(R, 'S', pool);

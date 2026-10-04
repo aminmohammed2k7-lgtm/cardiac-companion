@@ -158,7 +158,7 @@
     var expr = comb(c[0], c[1]), given = useAngle ? 'the angle between $' + VA + '$ and $' + VB + '$ is $' + ang + '^\\circ$' : '$' + VA + ' \\cdot ' + VB + ' = ' + F.n(d) + '$';
     var wrongSign = q(c[0] * c[0] * p * p).sub(d.mul(2 * c[0] * c[1])).add(c[1] * c[1] * r * r);
     return {
-      stem: 'Given $|' + VA + '| = ' + p + '$, $|' + VB + '| = ' + r + '$ and ' + given + ', then $|' + expr + '| =$ ( )', key: m(key),
+      stem: 'If $|' + VA + '| = ' + p + '$, $|' + VB + '| = ' + r + '$ and ' + given + ', then $|' + expr + '| =$ ( )', key: m(key),
       wrong: W([[v2.isInt && v2.n === 1 ? null : v2, 'partial'], [d.n === 0 ? null : Sd.sqrt(wrongSign), 'sign'], [Sd.sqrt(q(c[0] * c[0] * p * p + c[1] * c[1] * r * r)).eq(key) ? null : Sd.sqrt(q(c[0] * c[0] * p * p + c[1] * c[1] * r * r)), 'partial'], [Math.abs(c[0]) * p + Math.abs(c[1]) * r, 'operation'], [Sd.sqrt(v2.add(1)), 'slip'], [key.scale(2), 'slip']]),
       check: chk.num(Math.sqrt(c[0] * c[0] * p * p + 2 * c[0] * c[1] * p * r * Math.cos(ang * Math.PI / 180) + c[1] * c[1] * r * r)),
       sol: (useAngle ? '$' + VA + ' \\cdot ' + VB + ' = |' + VA + '||' + VB + '|\\cos ' + ang + '^\\circ = ' + F.n(d) + '$. ' : '') + '$|' + expr + '|^2 = ' + (c[0] * c[0] === 1 ? '' : c[0] * c[0]) + '|' + VA + '|^2 ' + (c[0] * c[1] < 0 ? '- ' : '+ ') + Math.abs(2 * c[0] * c[1]) + VA + ' \\cdot ' + VB + ' + ' + (c[1] * c[1] === 1 ? '' : c[1] * c[1]) + '|' + VB + '|^2 = ' + F.sum([[c[0] * c[0] * p * p, ''], [d.mul(2 * c[0] * c[1]), ''], [c[1] * c[1] * r * r, '']]) + ' = ' + F.n(v2) + '$, so $|' + expr + '| = ' + (F.n(key) === F.n(v2) ? '' : '\\sqrt{' + F.n(v2) + '} = ') + F.n(key) + '$.'
@@ -241,7 +241,7 @@
     return {
       stem: 'If the complex number $z$ satisfies $|z| = ' + r + '$, then the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' value of $|' + wT + '|$ is ( )', key: m(key),
       wrong: W([[kind === 'max' ? Math.abs(wm - kr) : kr + wm, 'companion'], [wm, 'partial'], [Sd.sqrt(kr * kr + wm * wm), 'operation'], [kr, 'partial'], [kind === 'max' ? r + wm : Math.abs(wm - r), 'slip'], [key + 1, 'slip']]), check: chk.num(truth),
-      sol: 'The points $' + (k === 1 ? 'z' : k + 'z') + '$ lie on the circle with centre $0$ and radius $' + kr + '$, and $|' + wT + '|$ is the distance from such a point to $' + cx(-w[0], -w[1]).tex() + '$, which is $' + wm + '$ from the centre. The ' + (kind === 'max' ? 'largest distance is $' + kr + ' + ' + wm + ' = ' + key + '$.' : 'smallest distance is $|' + wm + ' - ' + kr + '| = ' + key + '$.')
+      sol: 'The points $' + (k === 1 ? 'z' : k + 'z') + '$ lie on the circle with center $0$ and radius $' + kr + '$, and $|' + wT + '|$ is the distance from such a point to $' + cx(-w[0], -w[1]).tex() + '$, which is $' + wm + '$ from the center. The ' + (kind === 'max' ? 'largest distance is $' + kr + ' + ' + wm + ' = ' + key + '$.' : 'smallest distance is $|' + wm + ' - ' + kr + '| = ' + key + '$.')
     };
   }
   def({ id: 'CPX.max-mod', code: 'CPX', lesson: '7.6', tier: 'M', level: '=', fmt: 'V', w: 0.6,
@@ -259,7 +259,7 @@
     return {
       stem: 'If the complex number $z$ satisfies $|z - (' + cx(w[0], w[1]).tex() + ')| = ' + r + '$, then the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' value of $|z|$ is ( )', key: m(key),
       wrong: W([[kind === 'max' ? Math.abs(wm - r) : wm + r, 'companion'], [wm, 'partial'], [r, 'partial'], [Sd.sqrt(wm * wm + r * r), 'operation'], [key + 1, 'slip']]), check: chk.num(truth),
-      sol: '$z$ lies on the circle with centre $' + cx(w[0], w[1]).tex() + '$ and radius $' + r + '$. The centre is $' + wm + '$ from the origin, so $|z|$ ranges from $' + Math.abs(wm - r) + '$ to $' + (wm + r) + '$; the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' is $' + key + '$.'
+      sol: '$z$ lies on the circle with center $' + cx(w[0], w[1]).tex() + '$ and radius $' + r + '$. The center is $' + wm + '$ from the origin, so $|z|$ ranges from $' + Math.abs(wm - r) + '$ to $' + (wm + r) + '$; the ' + (kind === 'max' ? 'maximum' : 'minimum') + ' is $' + key + '$.'
     };
   });
   /** value of a simple expression in z when z = ω (a primitive cube root of 1): 0, 1, −1, z, −z, z², −z², 1 + z … */

@@ -281,7 +281,7 @@
     var sums = [0.7, -1.3].map(function (d) { var a1 = (T - (u + v - 2) * d) / 2, s = 0; for (var i = 1; i <= Nn; i++) s += a1 + (i - 1) * d; return s; });
     if (!close(sums[0], sums[1]) || !close(sums[0], key)) throw new Error('SQ-sum.two-group: the sum is not determined');
     return {
-      stem: 'It is known that the arithmetic sequence ' + SEQ + ' satisfies $' + rel + '$. Then the sum of the first $' + Nn + '$ terms $' + Sn(Nn) + ' =$ ( )', key: m(key),
+      stem: 'The arithmetic sequence ' + SEQ + ' satisfies $' + rel + '$. Then the sum of its first $' + Nn + '$ terms is $' + Sn(Nn) + ' =$ ( )', key: m(key),
       wrong: W([[Nn * T, 'half'], [V, 'partial'], [q((Nn + 1) * T, 2), 'off-by-one'], [q((Nn - 1) * T, 2), 'off-by-one'], [T, 'partial'], [Nn * T / 2 + T, 'slip']]), check: chk.num(sums[0]),
       sol: 'In an arithmetic sequence, $a_m + a_n = a_p + a_q$ whenever $m + n = p + q$. So $' + A(pc - e) + ' + ' + A(pc + e) + ' = 2' + A(pc) + '$ and $' + A(tc - f) + ' + ' + A(tc) + ' + ' + A(tc + f) + ' = 3' + A(tc) + '$. The condition becomes $6' + A(u) + ' + 6' + A(v) + ' = ' + V + '$, so $' + A(u) + ' + ' + A(v) + ' = ' + T +
         '$. Because $' + u + ' + ' + v + ' = 1 + ' + Nn + '$, $a_1 + ' + A(Nn) + ' = ' + T + '$ and $' + Sn(Nn) + ' = \\dfrac{' + Nn + '(a_1 + ' + A(Nn) + ')}{2} = ' + key + '$.'

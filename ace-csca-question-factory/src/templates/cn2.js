@@ -15,7 +15,7 @@
   /** definition tests for a pair of foci */
   function constSum(pts, F1, F2) { return spread(pts.map(function (p) { return dist(p, F1) + dist(p, F2); })) < 1e-9; }
   function constDiff(pts, F1, F2) { var d = pts.map(function (p) { return Math.abs(dist(p, F1) - dist(p, F2)); }); return spread(d) < 1e-9 && d[0] > 1e-9; }
-  /** largest and smallest distance from the centre to the ellipse x²/A + y²/B = 1 (i.e. a and b), found numerically */
+  /** largest and smallest distance from the center to the ellipse x²/A + y²/B = 1 (i.e. a and b), found numerically */
   function radii(A, B) {
     var mx = 0, mn = Infinity, a = Math.sqrt(num(A)), b = Math.sqrt(num(B));
     for (var i = 0; i < 3600; i++) { var t = i * Math.PI / 1800, r = Math.hypot(a * Math.cos(t), b * Math.sin(t)); if (r > mx) mx = r; if (r < mn) mn = r; }
@@ -66,7 +66,7 @@
       '$2a = ' + (2 * a) + '$ gives $a = ' + a + '$, and the foci give $c = ' + c + '$. Then $b^2 = a^2 - c^2 = ' + (a * a) + ' - ' + (c * c) + ' = ' + b2 + '$.', [[ell(4 * a * a, 4 * a * a - c * c, axis), 'partial']]);
   });
   def({ id: 'CN-ell.r09', code: 'CN-ell', lesson: '6.5', tier: 'M', level: '=', fmt: 'V', rep: 'R09', w: 2,
-    form: 'Centre O, the axis of the foci, the focal distance and e → the equation', basis: 'R09: Apr Q40, Jun Q40' }, function (R) {
+    form: 'Center O, the axis of the foci, the focal distance and e → the equation', basis: 'R09: Apr Q40, Jun Q40' }, function (R) {
     var p = R.pick(AC), a = p[0], c = p[1], axis = R.pick(['x', 'y', 'y']), b2 = a * a - c * c, e = q(c, a);
     if (axis === 'y' && c === 2 && a === 3) retry('real item');
     var a2w = q(2 * c).div(e).pow(2);           // using 2c as c

@@ -267,7 +267,7 @@
       [m(ivTex(a, d, fa, fd)), 'operation'], [m(ivTex(c, b, !fc, fb)), 'endpoint']
     ];
     return {
-      stem: 'Given sets $' + nm[0] + ' = ' + showIv(style, a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + showIv(style, c, d, fc, fd) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
+      stem: 'If $' + nm[0] + ' = ' + showIv(style, a, b, fa, fb) + '$ and $' + nm[1] + ' = ' + showIv(style, c, d, fc, fd) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(ivTex(c, b, fc, fb)), wrong: wrong, check: chk.set(truth, [a, b, c, d]),
       sol: 'The intersection is the part that lies in both sets. $' + nm[0] + '$ runs from $' + a + '$ to $' + b + '$ and $' + nm[1] + '$ runs from $' + c + '$ to $' + d + '$, so they overlap from $' + c + '$ to $' + b + '$. The end point $' + c + '$ comes from $' + nm[1] + '$, where it is ' + (fc ? 'included' : 'excluded') + ', and $' + b + '$ comes from $' + nm[0] + '$, where it is ' + (fb ? 'included' : 'excluded') + '. So $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + ivTex(c, b, fc, fb) + '$.'
     };
@@ -361,7 +361,7 @@
     var t = twoLists(R), nm = names(R);
     var inA = listTruth(t.A), inB = listTruth(t.B);
     return {
-      stem: 'Given sets $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
+      stem: 'If $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cap ' + nm[1] + ' =$ ( )',
       key: m(h.lst(t.cap)), wrong: [[m(h.lst(t.cup)), 'operation'], [m(h.lst(t.onlyA)), 'complement'], [m(h.lst(t.onlyB)), 'complement'], [m(h.lst(t.A)), 'partial']],
       check: chk.set(function (x) { return inA(x) && inB(x); }, rng0(-1, 13)),
       sol: 'The intersection contains the elements that appear in both lists. ' + (t.cap.length === 1 ? 'Only $' + t.cap[0] + '$ appears' : 'Only $' + t.cap.join('$ and $') + '$ appear') + ' in both, so $' + nm[0] + ' \\cap ' + nm[1] + ' = ' + h.lst(t.cap) + '$.'
@@ -373,7 +373,7 @@
     var t = twoLists(R), nm = names(R);
     var inA = listTruth(t.A), inB = listTruth(t.B);
     return {
-      stem: 'Given sets $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
+      stem: 'If $' + nm[0] + ' = ' + h.lst(t.A) + '$ and $' + nm[1] + ' = ' + h.lst(t.B) + '$, then $' + nm[0] + ' \\cup ' + nm[1] + ' =$ ( )',
       key: m(h.lst(t.cup)), wrong: [[m(h.lst(t.cap)), 'operation'], [m(h.lst(t.onlyA.concat(t.onlyB).sort(function (x, y) { return x - y; }))), 'partial'], [m(h.lst(t.A)), 'partial'], [m(h.lst(t.B)), 'partial']],
       check: chk.set(function (x) { return inA(x) || inB(x); }, rng0(-1, 13)),
       sol: 'The union contains every element that appears in at least one of the lists. Combine the two lists and write the common ' + (t.cap.length === 1 ? 'element $' + t.cap[0] + '$' : 'elements $' + t.cap.join('$ and $') + '$') + ' only once: $' + nm[0] + ' \\cup ' + nm[1] + ' = ' + h.lst(t.cup) + '$.'
@@ -829,7 +829,7 @@
     form: 'a > b ⇒ which must be true (add, positive multiple, cube, increasing function)', basis: 'Dec Q24, Mar Q23, Apr Q24, Jun Q22' }, function (R) {
     var st = QF.pickStmts(R, 'S', propBasic(R, false));
     if (/^\$5a > 5b\$$/.test(st.key)) retry('real item');
-    var stem = R.pick(['It is known that $a > b$. Then ( )', 'If $a > b$, which of the following must be true? ( )']);
+    var stem = R.pick(['If $a > b$, then ( )', 'If $a > b$, which of the following must be true? ( )']);
     return out(stem, st);
   });
 
@@ -908,7 +908,7 @@
       h.relS('ac^2 < bc^2', false, E, '$c^2 > 0$, so multiplying by $c^2$ keeps the direction: $ac^2 > bc^2$.', { trap: 'sign', g: 'c2' }),
       h.relS('a^2 > b^2', false, E, 'take $a = 1$, $b = -2$: then $a^2 = 1 < 4 = b^2$.', { trap: 'near-miss', g: 'sq' })
     ];
-    return out('Given $a > b$ and $c < 0$, then ( )', QF.pickStmts(R, 'S', pool));
+    return out('If $a > b$ and $c < 0$, then ( )', QF.pickStmts(R, 'S', pool));
   });
 
   def({ id: 'INQ-prop.two-pairs', code: 'INQ-prop', lesson: '1.7', tier: 'E', level: '+1', fmt: 'S', trick: 'T03',
@@ -942,6 +942,6 @@
       h.relS('ac > bc', false, E, 'multiplying by $c$ keeps the direction only when $c > 0$. Take $a = 3$, $b = 2$, $c = -1$: then $ac = -3 < -2 = bc$.', { trap: 'sign' }),
       h.relS(fr(1, 'a') + ' < ' + fr(1, 'c'), false, E, 'take $a = 1$, $b = -2$, $c = -3$: then $\\dfrac{1}{a} = 1 > -\\dfrac{1}{3} = \\dfrac{1}{c}$.', { trap: 'reciprocal' })
     ], 3);
-    return out('It is known that $a > b > c$. Which of the following must be true? ( )', QF.useStmts('S', key, wrongs));
+    return out('If $a > b > c$, which of the following must be true? ( )', QF.useStmts('S', key, wrongs));
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);

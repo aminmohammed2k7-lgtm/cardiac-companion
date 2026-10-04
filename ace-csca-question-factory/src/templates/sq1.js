@@ -299,7 +299,7 @@
     form: 'a, b, c geometric with ac given → b = ±√(ac)', basis: 'Jun Q12' }, function (R) {
     var g = R.pick([2, 3, 4, 5, 6, 7, 8, 9, 11, 12]), p = g * g;
     return {
-      stem: R.pick(['Given that $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )', 'If $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )']), key: m(F.pm(g)),
+      stem: R.pick(['If $a, b, c$ form a geometric sequence and $ac = ' + p + '$, then $b =$ ( )', 'The numbers $a, b, c$ form a geometric sequence and $ac = ' + p + '$. Then $b =$ ( )']), key: m(F.pm(g)),
       wrong: W([[g, 'pm'], [q(p, 2), 'half'], [-g, 'pm'], [m(F.pm(q(p, 2))), 'half'], [p, 'partial']]), check: chk.alts([g, -g]),
       sol: 'In a geometric sequence $b^2 = ac = ' + p + '$, so $b = \\pm ' + g + '$. Both signs are possible: for example $1, ' + g + ', ' + p + '$ and $1, ' + (-g) + ', ' + p + '$ are both geometric.'
     };
