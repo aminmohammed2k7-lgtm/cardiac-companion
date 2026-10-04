@@ -1,4 +1,4 @@
-/* ACE CSCA Question Factory · templates/tr1.js — Trigonometry I: TR-val, TR-def, TR-id, TR-red, TR-graph. */
+/* ACE CSCA Question Factory · templates/tr1.js: Trigonometry I: TR-val, TR-def, TR-id, TR-red, TR-graph. */
 ;(function (root) {
   'use strict';
   var QF = root.QF, N = QF.num, q = N.q, Fr = N.Fr, Sd = N.Sd, trig = N.trig, F = QF.fmt, IS = QF.iset, chk = QF.chk, ev = QF.ev, h = QF.h, nt = QF.nt, m = F.m;
@@ -50,6 +50,20 @@
   function angTex(deg, useDeg) { return useDeg ? F.deg(deg) : F.rad(deg); }
   /** \sin\dfrac{5\pi}{6} or \sin 150^\circ */
   function call(fn, deg, useDeg) { var a = angTex(deg, useDeg); return '\\' + fn + (/^\\dfrac|^\d|^\\pi|^-/.test(a) ? ' ' : '') + a; }
+  var FNAME = { sin: 'sine', cos: 'cosine', tan: 'tangent' };
+  /** the value of fn at an angle in [0, 360) worked out from its reference angle:
+   *  \sin\dfrac{5\pi}{6} = \sin\left(\pi - \dfrac{\pi}{6}\right) = \sin\dfrac{\pi}{6} = \dfrac{1}{2}  (no $ signs) */
+  function reduceTex(fn, A, useDeg) {
+    var d = ((A % 360) + 360) % 360, qd = trig.quadrant(d), v = val(fn, d), head = call(fn, A, useDeg);
+    if (qd === 0 || qd === 1) return head + ' = ' + F.n(v);
+    var ref = qd === 2 ? 180 - d : qd === 3 ? d - 180 : 360 - d;
+    var full = qd === 4 ? (useDeg ? '360^\\circ' : '2\\pi') : (useDeg ? '180^\\circ' : '\\pi');
+    var sign = { sin: qd === 2 ? 1 : -1, cos: qd === 4 ? 1 : -1, tan: qd === 3 ? 1 : -1 }[fn];
+    return head + ' = \\' + fn + '\\left(' + full + (qd === 3 ? ' + ' : ' - ') + angTex(ref, useDeg) + '\\right) = ' + (sign < 0 ? '-' : '') + call(fn, ref, useDeg) + ' = ' + F.n(v);
+  }
+  T.reduceTex = reduceTex;
+  /** a value inside a longer expression: negative values in brackets */
+  function par(v) { return v.sgn < 0 ? '\\left(' + F.n(v) + '\\right)' : F.n(v); }
 
   /* ===================== TR-val · special-angle values ===================== */
   var Q1 = [30, 45, 60], Q2 = [120, 135, 150], Q3 = [210, 225, 240], Q4 = [300, 315, 330];
@@ -72,9 +86,10 @@
       bad = [[sA.add(cB).add(tC), 'sign'], [trig.cos(A).add(cB).sub(tC), 'companion'], [sA.add(trig.sin(B)).sub(tC), 'companion'], [sA.add(cB), 'partial'], [key.neg(), 'sign']];
     }
     if (key.isZero) retry();
+    var sub = form === 1 ? '\\left(' + F.sum([[sA, ''], [cB, '']]) + '\\right) \\cdot ' + par(tC) : form === 2 ? F.n(sA) + ' \\cdot ' + par(cB) + ' ' + h.signed(tC) : F.sum([[sA, ''], [cB, ''], [tC.neg(), '']]);
     return {
       stem: '$' + expr + ' =$ ( )', key: m(key), wrong: bad.map(function (b) { return [m(b[0]), b[1]]; }), check: chk.num(truth),
-      sol: 'Use the special values: $' + S(A) + ' = ' + F.n(sA) + '$, $' + Cc(B) + ' = ' + F.n(cB) + '$, $' + Tt(C) + ' = ' + F.n(tC) + '$ (reference angle, then the sign of the quadrant). Substituting gives $' + F.n(key) + '$.'
+      sol: 'Find each value: $' + reduceTex('sin', A) + '$, $' + reduceTex('cos', B) + '$ and $' + reduceTex('tan', C) + '$. Substituting, the expression equals $' + sub + ' = ' + F.n(key) + '$.'
     };
   }
   def({ id: 'TR-val.combo', code: 'TR-val', lesson: '2.1', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -94,32 +109,36 @@
     var bad = [[sg === '+' ? sA.add(cB).sub(tC) : sA.add(cB).add(tC), 'sign'], [sA.sub(cB).add(sg === '+' ? tC : tC.neg()), 'sign'], [sA.neg().add(cB).add(sg === '+' ? tC : tC.neg()), 'sign'], [trig.cos(A).add(cB).add(sg === '+' ? tC : tC.neg()), 'companion'], [key.neg(), 'sign']];
     return {
       stem: '$' + call('sin', A) + ' + ' + call('cos', B) + ' ' + sg + ' ' + call('tan', C) + ' =$ ( )', key: m(key), wrong: bad.map(function (b) { return [m(b[0]), b[1]]; }), check: chk.num(truth),
-      sol: 'Reference angle first, then the sign of the quadrant: $' + call('sin', A) + ' = ' + F.n(sA) + '$ (QII, sine positive), $' + call('cos', B) + ' = ' + F.n(cB) + '$ (QIII, cosine negative), $' + call('tan', C) + ' = ' + F.n(tC) + '$ (QIV, tangent negative). The result is $' + F.n(key) + '$.'
+      sol: 'Use the reference angle and the sign in each quadrant. $' + reduceTex('sin', A) + '$, because sine is positive in the second quadrant. $' + reduceTex('cos', B) + '$, because cosine is negative in the third quadrant. $' + reduceTex('tan', C) + '$, because tangent is negative in the fourth quadrant. So the value is $' + F.sum([[sA, ''], [cB, ''], [sg === '+' ? tC : tC.neg(), '']]) + ' = ' + F.n(key) + '$.'
     };
   });
 
   function alphaTrue(R, angs, level) {
     var A = R.pick(angs), useDeg = R.bool(0.4), a = rad(A), tanOk = A % 180 !== 90;
     var s = trig.sin(A), c = trig.cos(A), t = tanOk ? trig.tan(A) : null;
+    var qd = trig.quadrant(A), where = qd === 1 ? 'in the first quadrant' : 'in the second quadrant';
+    function signWhy(fn, v) { return FNAME[fn] + ' is ' + (v.sgn > 0 ? 'positive' : 'negative') + ' ' + where + ', so $\\' + fn + '\\alpha = ' + F.n(v) + '$.'; }
     var pool = [
-      ratS('sin', s, a, true, 'reference angle and quadrant sign give $\\sin\\alpha = ' + F.n(s) + '$.', { g: 'sin' }),
-      ratS('cos', c, a, true, 'reference angle and quadrant sign give $\\cos\\alpha = ' + F.n(c) + '$.', { g: 'cos' }),
-      ratS('sin', c, a, false, 'that is the value of $\\cos\\alpha$.', { g: 'sin', trap: 'companion' }),
-      ratS('cos', s, a, false, 'that is the value of $\\sin\\alpha$.', { g: 'cos', trap: 'companion' }),
-      ratS('sin', s.neg(), a, false, 'the sign is wrong for this quadrant.', { g: 'sin2', trap: 'sign' }),
-      ratS('cos', c.neg(), a, false, 'the sign is wrong for this quadrant.', { g: 'cos2', trap: 'sign' })
+      ratS('sin', s, a, true, '', { g: 'sin' }),
+      ratS('cos', c, a, true, '', { g: 'cos' }),
+      ratS('sin', c, a, false, 'this is the value of $\\cos\\alpha$. In fact $\\sin\\alpha = ' + F.n(s) + '$.', { g: 'sin', trap: 'companion' }),
+      ratS('cos', s, a, false, 'this is the value of $\\sin\\alpha$. In fact $\\cos\\alpha = ' + F.n(c) + '$.', { g: 'cos', trap: 'companion' }),
+      ratS('sin', s.neg(), a, false, signWhy('sin', s), { g: 'sin2', trap: 'sign' }),
+      ratS('cos', c.neg(), a, false, signWhy('cos', c), { g: 'cos2', trap: 'sign' })
     ];
     if (t) {
-      pool.push(ratS('tan', t, a, true, '$\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$.', { g: 'tan' }));
-      pool.push(ratS('tan', sd(1).div(t), a, false, 'that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.', { g: 'tan', trap: 'reciprocal' }));
-      pool.push(ratS('tan', t.neg(), a, false, 'the sign is wrong for this quadrant.', { g: 'tan2', trap: 'sign' }));
+      pool.push(ratS('tan', t, a, true, '', { g: 'tan' }));
+      pool.push(ratS('tan', sd(1).div(t), a, false, 'this is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$.', { g: 'tan', trap: 'reciprocal' }));
+      pool.push(ratS('tan', t.neg(), a, false, signWhy('tan', t), { g: 'tan2', trap: 'sign' }));
     }
     // drop statements that coincide in value with a true one (45°-type angles)
     pool = pool.filter(function (st) { return st.ok || !st.test(); });
     var st = QF.pickStmts(R, 'S', pool);
     if ((A === 30 && /cos/.test(st.key)) || (A === 150 && /sin/.test(st.key))) retry('real item');
     var stem = R.pick(['Suppose that an angle $\\alpha = ' + angTex(A, useDeg) + '$. Then which of the following statements is correct? ( )', 'Given the angle $\\alpha = ' + angTex(A, useDeg) + '$, which of the following conclusions is correct? ( )']);
-    return out(stem, st);
+    var pre = 'For $\\alpha = ' + angTex(A, useDeg) + '$: $' + reduceTex('sin', A, useDeg).replace(call('sin', A, useDeg), '\\sin\\alpha') + '$, $' + reduceTex('cos', A, useDeg).replace(call('cos', A, useDeg), '\\cos\\alpha') + '$' +
+      (t ? ' and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(t) + '$.' : '.');
+    return out(stem, st, pre);
   }
   def({ id: 'TR-val.alpha-true', code: 'TR-val', lesson: '2.1', tier: 'E', level: '=', fmt: 'S', w: 1.6,
     form: 'α = a special angle (QI or QII): which statement is true', basis: 'Jan Q7, undated Q6' }, function (R) { return alphaTrue(R, Q1.concat(Q2)); });
@@ -134,7 +153,7 @@
     var ref = A < 180 ? 180 - A : A - 180, qd = trig.quadrant(A);
     return {
       stem: stem, key: m(v), wrong: wrong, check: chk.num(numv(fn, A)),
-      sol: 'The reference angle is $' + angTex(ref, useDeg) + '$ and the angle lies in the ' + F.ord(qd) + ' quadrant, where ' + { sin: 'sine', cos: 'cosine', tan: 'tangent' }[fn] + ' is ' + (v.sgn > 0 ? 'positive' : 'negative') + '. So the value is $' + F.n(v) + '$.'
+      sol: 'The angle $' + angTex(A, useDeg) + '$ lies in the ' + F.ord(qd) + ' quadrant, where ' + FNAME[fn] + ' is ' + (v.sgn > 0 ? 'positive' : 'negative') + ', and its reference angle is $' + angTex(ref, useDeg) + '$. So $' + reduceTex(fn, A, useDeg) + '$.'
     };
   });
 
@@ -150,9 +169,10 @@
       if (fn === 'tan' && A % 180 === 90) continue;
       if (seen[fn + A]) continue; seen[fn + A] = 1;
       var v = val(fn, A), alt = fn === 'sin' ? trig.cos(A) : fn === 'cos' ? trig.sin(A) : sd(1).div(v.isZero ? sd(1) : v);
-      pool.push(stt(fn, A, v, true, 'this is the correct special value.'));
-      if (!alt.eq(v)) pool.push(stt(fn, A, alt, false, 'the correct value is $' + F.n(v) + '$.', 'companion'));
-      if (!v.isZero) pool.push(stt(fn, A, v.neg(), false, 'the correct value is $' + F.n(v) + '$ (check the sign of the quadrant).', 'sign'));
+      var work = '$' + reduceTex(fn, A) + '$.';
+      pool.push(stt(fn, A, v, true, trig.quadrant(A) <= 1 ? '' : work));
+      if (!alt.eq(v)) pool.push(stt(fn, A, alt, false, (fn === 'tan' ? 'this is the reciprocal of the correct value. In fact ' : 'this is the value of $' + call(fn === 'sin' ? 'cos' : 'sin', A) + '$. In fact ') + work, 'companion'));
+      if (!v.isZero) pool.push(stt(fn, A, v.neg(), false, 'the sign is wrong. In fact ' + work, 'sign'));
     }
     (extra || []).forEach(function (e) { pool.push(stt(e[0], e[1], e[2], e[3], e[4], 'slip')); });
     var st = QF.pickStmts(R, 'S', pool);
@@ -161,7 +181,7 @@
   }
   def({ id: 'TR-val.which-correct', code: 'TR-val', lesson: '2.1', tier: 'E', level: '=', fmt: 'S', w: 1,
     form: 'Four special values (QI and the axes): which is correct', basis: 'Jun Q6' }, function (R) {
-    return whichCorrect(R, [30, 45, 60, 30, 60], [['sin', 90, sd(0), false, '$\\sin\\dfrac{\\pi}{2} = 1$.'], ['cos', 0, sd(0), false, '$\\cos 0 = 1$.'], ['sin', 90, sd(1), true, '$\\sin\\dfrac{\\pi}{2} = 1$.'], ['cos', 90, sd(0), true, '$\\cos\\dfrac{\\pi}{2} = 0$.']]);
+    return whichCorrect(R, [30, 45, 60, 30, 60], [['sin', 90, sd(0), false, 'in fact $\\sin\\dfrac{\\pi}{2} = 1$.'], ['cos', 0, sd(0), false, 'in fact $\\cos 0 = 1$.'], ['sin', 90, sd(1), true, ''], ['cos', 90, sd(0), true, '']]);
   });
   def({ id: 'TR-val.which-correct-quad', code: 'TR-val', lesson: '2.1', tier: 'E', level: '+1', fmt: 'S',
     form: 'Four special values in QII–QIV: which is correct', basis: 'Course plan 2.1 Q7' }, function (R) { return whichCorrect(R, Q2.concat(Q3, Q4)); });
@@ -175,7 +195,7 @@
     var useDeg = R.bool(0.3);
     return {
       stem: '$' + call(fn, A, useDeg) + ' =$ ( )', key: m(v), wrong: wrong, check: chk.num(numv(fn, A)),
-      sol: 'Remove full turns: $' + angTex(A, useDeg) + '$ has the same terminal side as $' + angTex(base, useDeg) + '$, which lies in the ' + F.ord(trig.quadrant(base)) + ' quadrant. Hence the value is $' + F.n(v) + '$.'
+      sol: 'Since $' + angTex(A, useDeg) + ' = ' + angTex(base, useDeg) + (shift > 0 ? ' + ' : ' - ') + angTex(Math.abs(shift), useDeg) + '$, the angle has the same terminal side as $' + angTex(base, useDeg) + '$, so the two angles have the same trigonometric values. Then $' + reduceTex(fn, base, useDeg) + '$.'
     };
   });
 
@@ -184,6 +204,12 @@
   function ptRatios(x, y) {
     var r = Sd.sqrt(x * x + y * y);
     return { r: r, sin: sd(y).div(r), cos: sd(x).div(r), tan: sd(q(y, x)) };
+  }
+  /** "$\sin\alpha = \dfrac{y}{r} = \dfrac{-4}{5} = -\dfrac{4}{5}$" with the raw fraction shown before it is simplified */
+  function ratioStep(fn, x, y, t) {
+    var top = fn === 'cos' ? x : y, bot = fn === 'tan' ? String(x) : F.n(t.r), v = t[fn];
+    var raw = '\\dfrac{' + top + '}{' + bot + '}', out = '$\\' + fn + '\\alpha = ' + { sin: '\\dfrac{y}{r}', cos: '\\dfrac{x}{r}', tan: '\\dfrac{y}{x}' }[fn] + ' = ' + raw;
+    return out + (raw === F.n(v) ? '' : ' = ' + F.n(v)) + '$';
   }
   function pointItem(R, quads, real) {
     var p = R.pick(PTS), qd = R.pick(quads), x = p[0] * QD[qd].cs, y = p[1] * QD[qd].ss, fn = R.pick(['sin', 'sin', 'cos', 'tan']);
@@ -195,7 +221,7 @@
     var name = R.pick(['P', 'P', 'M']);
     return {
       stem: 'If the terminal side of angle $\\alpha$ passes through the point $' + name + F.pt(x, y) + '$, then $\\' + fn + '\\alpha =$ ( )', key: m(key), wrong: cands.map(function (c) { return [m(c[0]), c[1]]; }), check: chk.num(Math[fn](a)),
-      sol: '$r = \\sqrt{x^2 + y^2} = \\sqrt{' + (x * x + y * y) + '}' + (t.r.isRational ? ' = ' + F.n(t.r) : '') + '$. ' + (fn === 'sin' ? '$\\sin\\alpha = \\dfrac{y}{r}$' : fn === 'cos' ? '$\\cos\\alpha = \\dfrac{x}{r}$' : '$\\tan\\alpha = \\dfrac{y}{x}$') + ' $= ' + F.n(key) + '$ (the signs come from the coordinates).'
+      sol: 'Here $x = ' + x + '$, $y = ' + y + '$ and $r = \\sqrt{x^2 + y^2} = \\sqrt{' + (x * x + y * y) + '}' + (t.r.isRational ? ' = ' + F.n(t.r) : '') + '$. So ' + ratioStep(fn, x, y, t) + '.'
     };
   }
   def({ id: 'TR-def.point', code: 'TR-def', lesson: '2.2', tier: 'E', level: '=', fmt: 'V', w: 2.5,
@@ -218,7 +244,7 @@
     var wrong = [[m(alt), 'reciprocal'], [m(key.neg()), 'sign'], [m(alt.neg()), 'reciprocal'], [m(tn), 'partial'], [m(key.add(1)), 'slip']];
     return {
       stem: 'If the point $P(' + (findY ? known + ', y' : 'x, ' + known) + ')$ lies on the terminal side of angle $\\alpha$ and $\\tan\\alpha = ' + F.n(tn) + '$, then $' + (findY ? 'y' : 'x') + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(findY ? y : x),
-      sol: '$\\tan\\alpha = \\dfrac{y}{x}$, so ' + (findY ? '$\\dfrac{y}{' + known + '} = ' + F.n(tn) + '$ and $y = ' + F.n(key) + '$.' : '$\\dfrac{' + known + '}{x} = ' + F.n(tn) + '$ and $x = ' + F.n(key) + '$.')
+      sol: 'By definition $\\tan\\alpha = \\dfrac{y}{x}$, so ' + (findY ? '$\\dfrac{y}{' + known + '} = ' + F.n(tn) + '$, which gives $y = ' + F.n(tn) + ' \\times ' + par(sd(known)) + ' = ' + F.n(key) + '$.' : '$\\dfrac{' + known + '}{x} = ' + F.n(tn) + '$, which gives $x = ' + known + ' \\div ' + par(sd(tn)) + ' = ' + F.n(key) + '$.')
     };
   });
 
@@ -235,7 +261,8 @@
     var order = R.shuffle(['AC = ' + ac, 'BC = ' + bc, 'AB = ' + ab]);
     return {
       stem: 'In $\\triangle ABC$, $' + order[0] + '$, $' + order[1] + '$ and $' + order[2] + '$. Then $\\' + fn + ' ' + V + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[fn](angle)),
-      sol: 'Since $' + ac + '^2 + ' + bc + '^2 = ' + ab + '^2$, the right angle is at $C$ and $AB$ is the hypotenuse. For angle $' + V + '$ the opposite side is $' + (V === 'A' ? 'BC' : 'AC') + ' = ' + opp + '$ and the adjacent side is $' + adj + '$, so $\\' + fn + ' ' + V + ' = ' + F.n(key) + '$.'
+      sol: 'Since $' + ac + '^2 + ' + bc + '^2 = ' + ab + '^2$, the triangle has a right angle at $C$ and $AB = ' + ab + '$ is the hypotenuse. For angle $' + V + '$ the opposite side is $' + (V === 'A' ? 'BC' : 'AC') + ' = ' + opp + '$ and the adjacent side is $' + (V === 'A' ? 'AC' : 'BC') + ' = ' + adj + '$, so $\\' + fn + ' ' + V + ' = ' +
+        (fn === 'sin' ? '\\dfrac{' + opp + '}{' + ab + '}' : fn === 'cos' ? '\\dfrac{' + adj + '}{' + ab + '}' : '\\dfrac{' + opp + '}{' + adj + '}') + (key.d === (fn === 'tan' ? adj : ab) ? '' : ' = ' + F.n(key)) + '$.'
     };
   });
 
@@ -250,7 +277,7 @@
     return {
       stem: 'If the point $P(x, y)$ lies on the terminal side of angle $\\alpha$ and $|OP| = r$ ($r > 0$' + (fn === 'tan' ? ', $x \\ne 0$' : '') + '), then $\\' + fn + '\\alpha =$ ( )',
       key: m(fr(all[fn])), wrong: R.shuffle(opts).map(function (s) { return [m(fr(s)), 'near-miss']; }), check: chk.fn(truth, samples),
-      sol: 'By definition, for a point $P(x, y)$ on the terminal side with $|OP| = r$: $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$, $\\tan\\alpha = \\dfrac{y}{x}$.'
+      sol: 'For a point $P(x, y)$ on the terminal side with $|OP| = r$, the definitions are $\\sin\\alpha = \\dfrac{y}{r}$, $\\cos\\alpha = \\dfrac{x}{r}$ and $\\tan\\alpha = \\dfrac{y}{x}$. So $\\' + fn + '\\alpha = ' + fr(all[fn]) + '$.'
     };
   });
 
@@ -258,12 +285,12 @@
     form: 'Four statements about α whose terminal side passes through a point in QII–QIV', basis: 'Course plan 2.2 Q8 (2.5)' }, function (R) {
     var p = R.pick(PTS), qd = R.pick([3, 3, 2, 4]), x = p[0] * QD[qd].cs, y = p[1] * QD[qd].ss, t = ptRatios(x, y), a = Math.atan2(y, x);
     var pool = [
-      ratS('sin', t.sin, a, true, '$\\sin\\alpha = \\dfrac{y}{r}$.', { g: 's' }), ratS('cos', t.cos, a, true, '$\\cos\\alpha = \\dfrac{x}{r}$.', { g: 'c' }), ratS('tan', t.tan, a, true, '$\\tan\\alpha = \\dfrac{y}{x}$.', { g: 't' }),
-      ratS('sin', t.sin.neg(), a, false, 'the sign of $y$ decides the sign of the sine.', { g: 's', trap: 'sign' }), ratS('cos', t.cos.neg(), a, false, 'the sign of $x$ decides the sign of the cosine.', { g: 'c', trap: 'sign' }),
-      ratS('tan', t.tan.neg(), a, false, '$\\tan\\alpha = \\dfrac{y}{x}$ keeps both signs.', { g: 't', trap: 'sign' }), ratS('sin', t.cos, a, false, 'that is $\\cos\\alpha$.', { g: 's2', trap: 'companion' }),
-      ratS('tan', sd(q(x, y)), a, false, 'that is $\\dfrac{x}{y}$; the tangent is $\\dfrac{y}{x}$.', { g: 't2', trap: 'reciprocal' })
+      ratS('sin', t.sin, a, true, ratioStep('sin', x, y, t) + '.', { g: 's' }), ratS('cos', t.cos, a, true, ratioStep('cos', x, y, t) + '.', { g: 'c' }), ratS('tan', t.tan, a, true, ratioStep('tan', x, y, t) + '.', { g: 't' }),
+      ratS('sin', t.sin.neg(), a, false, 'the sine has the sign of $y = ' + y + '$: ' + ratioStep('sin', x, y, t) + '.', { g: 's', trap: 'sign' }), ratS('cos', t.cos.neg(), a, false, 'the cosine has the sign of $x = ' + x + '$: ' + ratioStep('cos', x, y, t) + '.', { g: 'c', trap: 'sign' }),
+      ratS('tan', t.tan.neg(), a, false, ratioStep('tan', x, y, t) + '.', { g: 't', trap: 'sign' }), ratS('sin', t.cos, a, false, 'this is the value of $\\cos\\alpha = \\dfrac{x}{r}$. In fact ' + ratioStep('sin', x, y, t) + '.', { g: 's2', trap: 'companion' }),
+      ratS('tan', sd(q(x, y)), a, false, 'this is $\\dfrac{x}{y}$. In fact ' + ratioStep('tan', x, y, t) + '.', { g: 't2', trap: 'reciprocal' })
     ].filter(function (s) { return s.ok || !s.test(); });
-    return out('The terminal side of angle $\\alpha$ passes through the point $P' + F.pt(x, y) + '$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'Here $r = \\sqrt{' + (x * x + y * y) + '}' + (t.r.isRational ? ' = ' + F.n(t.r) : '') + '$.');
+    return out('The terminal side of angle $\\alpha$ passes through the point $P' + F.pt(x, y) + '$. Which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'Here $x = ' + x + '$, $y = ' + y + '$ and $r = \\sqrt{' + x * x + ' + ' + y * y + '} = ' + (t.r.isRational ? F.n(t.r) : '\\sqrt{' + (x * x + y * y) + '}') + '$.');
   });
 
   def({ id: 'TR-def.chain', code: 'TR-def', lesson: '2.2', tier: 'M', level: '+1', fmt: 'V',
@@ -276,7 +303,7 @@
     var wrong = [[m(key.neg()), 'sign'], [m(ask === 'cos' ? q(y, r) : q(x, r)), 'companion'], [m((ask === 'cos' ? q(y, r) : q(x, r)).neg()), 'companion'], [m(tn.inv()), 'reciprocal']];
     return {
       stem: 'The point $P(x, ' + y + ')$ lies on the terminal side of angle $\\alpha$ and $\\tan\\alpha = ' + F.n(tn) + '$. Then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](a)),
-      sol: 'From $\\tan\\alpha = \\dfrac{y}{x}$: $\\dfrac{' + y + '}{x} = ' + F.n(tn) + '$, so $x = ' + x + '$. Then $r = \\sqrt{' + x * x + ' + ' + y * y + '} = ' + r + '$ and $\\' + ask + '\\alpha = ' + F.n(key) + '$.'
+      sol: 'By definition $\\tan\\alpha = \\dfrac{y}{x}$, so $\\dfrac{' + y + '}{x} = ' + F.n(tn) + '$ and $x = ' + x + '$. Then $r = \\sqrt{x^2 + y^2} = \\sqrt{' + x * x + ' + ' + y * y + '} = ' + r + '$, so $\\' + ask + '\\alpha = \\dfrac{' + (ask === 'cos' ? 'x' : 'y') + '}{r} = \\dfrac{' + (ask === 'cos' ? x : y) + '}{' + r + '}' + (key.d === r ? '' : ' = ' + F.n(key)) + (key.d === r && key.n < 0 ? ' = ' + F.n(key) : '') + '$.'
     };
   });
 
@@ -287,10 +314,11 @@
     var key = A[ask], other = ask === 'tan' ? sd(1).div(key) : (ask === 'sin' ? A.cos : A.sin);
     var wrong = [[m(key.neg()), 'sign'], [m(ask === 'tan' ? other : A.tan), ask === 'tan' ? 'reciprocal' : 'near-miss'], [m(given === ask ? other : A[given]), 'companion'], [m(other.neg()), 'companion'], [m(sd(1).div(A.tan)), 'reciprocal']];
     var cond = quad === 1 ? R.pick(['$\\alpha$ is an acute angle', '$0 < \\alpha < \\dfrac{\\pi}{2}$']) : inQuad(R, quad);
-    var how = given === 'sin' ? '$\\cos^2\\alpha = 1 - \\sin^2\\alpha$' : '$\\sin^2\\alpha = 1 - \\cos^2\\alpha$';
+    var oth = given === 'sin' ? 'cos' : 'sin', g = A[given], g2 = g.mul(g), o = A[oth];
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + cond + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
-      sol: how + ' gives $\\' + (given === 'sin' ? 'cos' : 'sin') + '\\alpha = \\pm ' + F.n(F.absOf(given === 'sin' ? A.cos : A.sin)) + '$; in the ' + QD[quad].name + ' quadrant ' + (given === 'sin' ? 'cosine' : 'sine') + ' is ' + ((given === 'sin' ? A.cos : A.sin).sgn > 0 ? 'positive' : 'negative') + '.' + (ask === 'tan' ? ' Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(key) + '$.' : ' So $\\' + ask + '\\alpha = ' + F.n(key) + '$.')
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(g) + '$ and ' + cond + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
+      sol: 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + oth + '^2\\alpha = 1 - ' + par(g).replace(/^(?!\\left)(.*)$/, '\\left($1\\right)') + '^2 = 1 - ' + F.n(g2) + ' = ' + F.n(sd(1).sub(g2)) + '$, so $\\' + oth + '\\alpha = \\pm ' + F.n(F.absOf(o)) + '$. In the ' + QD[quad].name + ' quadrant ' + FNAME[oth] + ' is ' + (o.sgn > 0 ? 'positive' : 'negative') + ', so $\\' + oth + '\\alpha = ' + F.n(o) + '$.' +
+        (ask === 'tan' ? ' Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(key) + '$.' : '')
     };
   }
   def({ id: 'TR-id.acute', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'V', w: 2,
@@ -307,31 +335,39 @@
     form: 'tan α and the quadrant → sin α or cos α', basis: 'Course plan 2.3 Q7' }, function (R) {
     var quad = R.pick([2, 3, 3, 4]), A = mkAng(R, quad, 'rat'), ask = R.pick(['sin', 'cos']);
     var key = A[ask], other = ask === 'sin' ? A.cos : A.sin;
+    var fs = F.absOf(A.sin).toFr(), fc = F.absOf(A.cos).toFr(), legS = fs.n, legC = fc.n, hyp = fs.d;
+    if (fc.d !== hyp) throw new Error('TR-id.from-tan: legs over different denominators');
     var wrong = [[m(key.neg()), 'sign'], [m(other), 'companion'], [m(other.neg()), 'companion'], [m(A.tan), 'partial']];
     return {
-      stem: 'Given $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
-      sol: 'From $\\tan\\alpha = ' + F.n(A.tan) + '$, think of a right triangle with legs $' + F.n(F.absOf(A.sin.scale(q(1).div(1)))) .replace(/\\dfrac\{(\d+)\}\{\d+\}/, '$1') + '$ and $' + F.n(F.absOf(A.cos)).replace(/\\dfrac\{(\d+)\}\{\d+\}/, '$1') + '$: $\\lvert\\sin\\alpha\\rvert = ' + F.n(F.absOf(A.sin)) + '$ and $\\lvert\\cos\\alpha\\rvert = ' + F.n(F.absOf(A.cos)) + '$. In the ' + QD[quad].name + ' quadrant ' + (ask === 'sin' ? 'sine' : 'cosine') + ' is ' + (key.sgn > 0 ? 'positive' : 'negative') + ', so $\\' + ask + '\\alpha = ' + F.n(key) + '$.'
+      stem: 'If $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $\\' + ask + '\\alpha =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[ask](A.num)),
+      sol: 'Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{' + legS + '}{' + legC + '}$, take a right triangle with legs $' + legS + '$ and $' + legC + '$. Its hypotenuse is $\\sqrt{' + legS + '^2 + ' + legC + '^2} = ' + hyp + '$, so $\\lvert\\sin\\alpha\\rvert = \\dfrac{' + legS + '}{' + hyp + '}$ and $\\lvert\\cos\\alpha\\rvert = \\dfrac{' + legC + '}{' + hyp + '}$. In the ' + QD[quad].name + ' quadrant ' + FNAME[ask] + ' is ' + (key.sgn > 0 ? 'positive' : 'negative') + ', so $\\' + ask + '\\alpha = ' + F.n(key) + '$.'
     };
   });
 
   function quadStmts(A) {
     var a = A.num;
+    function sgnWhy(fn) { return FNAME[fn] + ' is ' + (A[fn].sgn > 0 ? 'positive' : 'negative') + ' in the ' + A.Q.name + ' quadrant, so $\\' + fn + '\\alpha = ' + F.n(A[fn]) + '$.'; }
     return [
-      ratS('cos', A.cos, a, true, 'the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant.', { g: 'c' }),
-      ratS('tan', A.tan, a, true, '$\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ with the correct signs.', { g: 't' }),
-      ratS('sin', A.sin, a, true, 'the size comes from $\\sin^2\\alpha + \\cos^2\\alpha = 1$ and the sign from the quadrant.', { g: 's' }),
-      ratS('cos', A.cos.neg(), a, false, 'the sign of the cosine is wrong for the ' + A.Q.name + ' quadrant.', { g: 'c', trap: 'sign' }),
-      ratS('tan', A.tan.neg(), a, false, 'the sign of the tangent is wrong for the ' + A.Q.name + ' quadrant.', { g: 't', trap: 'sign' }),
-      ratS('sin', A.sin.neg(), a, false, 'the sign of the sine is wrong for the ' + A.Q.name + ' quadrant.', { g: 's', trap: 'sign' }),
-      ratS('tan', sd(1).div(A.tan), a, false, 'that is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$, the reciprocal of the tangent.', { g: 't2', trap: 'reciprocal' }),
-      ratS('tan', sd(1).div(A.tan).neg(), a, false, 'that is the reciprocal of the tangent with the wrong sign.', { g: 't3', trap: 'reciprocal' })
+      ratS('cos', A.cos, a, true, '', { g: 'c' }),
+      ratS('tan', A.tan, a, true, '', { g: 't' }),
+      ratS('sin', A.sin, a, true, '', { g: 's' }),
+      ratS('cos', A.cos.neg(), a, false, sgnWhy('cos'), { g: 'c', trap: 'sign' }),
+      ratS('tan', A.tan.neg(), a, false, sgnWhy('tan'), { g: 't', trap: 'sign' }),
+      ratS('sin', A.sin.neg(), a, false, sgnWhy('sin'), { g: 's', trap: 'sign' }),
+      ratS('tan', sd(1).div(A.tan), a, false, 'this is $\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.', { g: 't2', trap: 'reciprocal' }),
+      ratS('tan', sd(1).div(A.tan).neg(), a, false, 'this is $-\\dfrac{\\cos\\alpha}{\\sin\\alpha}$. In fact $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.', { g: 't3', trap: 'reciprocal' })
     ];
+  }
+  /** the working that gives the other two ratios from sin α (or cos α) and the quadrant */
+  function quadWork(A, given) {
+    var oth = given === 'sin' ? 'cos' : 'sin', g = A[given], g2 = g.mul(g);
+    return 'In the ' + A.Q.name + ' quadrant $\\sin\\alpha ' + (A.sin.sgn > 0 ? '> 0' : '< 0') + '$ and $\\cos\\alpha ' + (A.cos.sgn > 0 ? '> 0' : '< 0') + '$. From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + oth + '^2\\alpha = 1 - ' + F.n(g2) + ' = ' + F.n(sd(1).sub(g2)) + '$, so $\\' + oth + '\\alpha = ' + F.n(A[oth]) + '$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.';
   }
   function quadStmtItem(R, quads, real) {
     var quad = R.pick(quads), A = mkAng(R, quad, 'rat'), given = R.pick(['sin', 'cos']);
     if (real && real(A, quad, given)) retry('real item');
     var pool = quadStmts(A).filter(function (s) { return !new RegExp('\\\\' + given + '\\\\alpha').test(s.t); });
-    return out('Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool));
+    return out('If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), quadWork(A, given));
   }
   def({ id: 'TR-id.quad', code: 'TR-id', lesson: '2.3', tier: 'E', level: '=', fmt: 'S', w: 1,
     form: 'sin α or cos α given with the quadrant: which statement about the other ratios is true', basis: 'Jan Q20' }, function (R) {
@@ -341,17 +377,17 @@
   function identPool() {
     var I = function (l, r, ok, why, extra) { return h.identS(l, r, ok, 'alpha', why, extra); };
     return [
-      I('\\sin^2\\alpha + \\cos^2\\alpha', '1', true, 'the Pythagorean identity.', { g: 'py' }),
-      I('\\tan\\alpha', '\\dfrac{\\sin\\alpha}{\\cos\\alpha}', true, 'the definition of the tangent (for $\\cos\\alpha \\ne 0$).', { g: 'tan' }),
+      I('\\sin^2\\alpha + \\cos^2\\alpha', '1', true, 'this is the Pythagorean identity.', { g: 'py' }),
+      I('\\tan\\alpha', '\\dfrac{\\sin\\alpha}{\\cos\\alpha}', true, 'this is the definition of the tangent, valid whenever $\\cos\\alpha \\ne 0$.', { g: 'tan' }),
       I('1 + \\tan^2\\alpha', '\\dfrac{1}{\\cos^2\\alpha}', true, 'divide $\\sin^2\\alpha + \\cos^2\\alpha = 1$ by $\\cos^2\\alpha$.', { g: 'sec' }),
       I('(\\sin\\alpha + \\cos\\alpha)^2', '1 + 2\\sin\\alpha\\cos\\alpha', true, 'expand the square and use $\\sin^2\\alpha + \\cos^2\\alpha = 1$.', { g: 'sq' }),
       I('\\sin\\alpha', '\\tan\\alpha\\cos\\alpha', true, 'multiply $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ by $\\cos\\alpha$.', { g: 'tan2' }),
-      I('\\sin\\alpha + \\cos\\alpha', '1', false, 'only the squares add up to $1$.', { g: 'py', trap: 'near-miss' }),
+      I('\\sin\\alpha + \\cos\\alpha', '1', false, 'only the squares add up to $1$. For example, at $\\alpha = \\dfrac{\\pi}{4}$ the left side is $\\sqrt{2}$.', { g: 'py', trap: 'near-miss' }),
       I('\\sin^2\\alpha - \\cos^2\\alpha', '1', false, 'the identity has a plus sign: $\\sin^2\\alpha + \\cos^2\\alpha = 1$.', { g: 'py2', trap: 'near-miss' }),
       I('\\tan\\alpha', '\\dfrac{\\cos\\alpha}{\\sin\\alpha}', false, 'the fraction is upside down: $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$.', { g: 'tan', trap: 'reciprocal' }),
       I('1 + \\tan^2\\alpha', '\\dfrac{1}{\\sin^2\\alpha}', false, 'the right side should be $\\dfrac{1}{\\cos^2\\alpha}$.', { g: 'sec', trap: 'near-miss' }),
       I('(\\sin\\alpha + \\cos\\alpha)^2', '1', false, 'the middle term $2\\sin\\alpha\\cos\\alpha$ is missing.', { g: 'sq', trap: 'partial' }),
-      I('\\tan\\alpha', '\\sin\\alpha\\cos\\alpha', false, 'the tangent is a quotient, not a product.', { g: 'tan3', trap: 'operation' }),
+      I('\\tan\\alpha', '\\sin\\alpha\\cos\\alpha', false, 'the tangent is the quotient $\\dfrac{\\sin\\alpha}{\\cos\\alpha}$, not the product.', { g: 'tan3', trap: 'operation' }),
       I('(\\sin\\alpha - \\cos\\alpha)^2', '1 + 2\\sin\\alpha\\cos\\alpha', false, 'the middle term is negative: $1 - 2\\sin\\alpha\\cos\\alpha$.', { g: 'sq2', trap: 'sign' })
     ];
   }
@@ -376,7 +412,7 @@
     if (!ev.close(Math.pow(Math[given](a), 2), k.num)) throw new Error('TR-id.noquad inconsistent');
     return {
       stem: 'If $\\' + given + '^2\\alpha = ' + F.n(k) + '$, then $\\tan\\alpha =$ ( )', key: m(F.pm(t)), wrong: wrong, check: chk.alts([Math.tan(a), -Math.tan(a)]),
-      sol: '$\\' + (given === 'cos' ? 'sin' : 'cos') + '^2\\alpha = 1 - ' + F.n(k) + ' = ' + F.n(q(1).sub(k)) + '$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = ' + F.n(s2.div(c2)) + '$. No quadrant is given, so both signs are possible: $\\tan\\alpha = ' + F.pm(t) + '$.'
+      sol: 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + (given === 'cos' ? 'sin' : 'cos') + '^2\\alpha = 1 - ' + F.n(k) + ' = ' + F.n(q(1).sub(k)) + '$, so $\\tan^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = ' + F.n(s2.div(c2)) + '$. No quadrant is given, so $\\alpha$ can lie in a quadrant where the tangent is positive or in one where it is negative. Both signs are possible: $\\tan\\alpha = ' + F.pm(t) + '$.'
     };
   });
 
@@ -385,12 +421,14 @@
     var quad = R.pick([2, 2, 3, 4]), A = mkAng(R, quad, 'rat'), a = A.num;
     var prod = A.sin.mul(A.cos), sum = A.sin.add(A.cos);
     var pool = quadStmts(A).filter(function (s) { return !/\\tan\\alpha/.test(s.t); }).concat([
-      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$', true, function () { return ev.close(Math.sin(a) * Math.cos(a), prod.num); }, 'multiply the two values with their signs.', { g: 'p' }),
-      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod.neg()) + '$', false, function () { return ev.close(Math.sin(a) * Math.cos(a), -prod.num); }, 'the sign of the product is wrong.', { g: 'p', trap: 'sign' }),
-      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(sum) + '$', true, function () { return ev.close(Math.sin(a) + Math.cos(a), sum.num); }, 'add the two values with their signs.', { g: 'q' }),
-      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(A.sin.sub(A.cos)) + '$', false, function () { return ev.close(Math.sin(a) + Math.cos(a), A.sin.sub(A.cos).num); }, 'one of the two signs is wrong.', { g: 'q', trap: 'sign' })
+      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$', true, function () { return ev.close(Math.sin(a) * Math.cos(a), prod.num); }, '$\\sin\\alpha\\cos\\alpha = ' + par(A.sin) + ' \\times ' + par(A.cos) + ' = ' + F.n(prod) + '$.', { g: 'p' }),
+      h.factS('$\\sin\\alpha\\cos\\alpha = ' + F.n(prod.neg()) + '$', false, function () { return ev.close(Math.sin(a) * Math.cos(a), -prod.num); }, '$\\sin\\alpha\\cos\\alpha = ' + par(A.sin) + ' \\times ' + par(A.cos) + ' = ' + F.n(prod) + '$.', { g: 'p', trap: 'sign' }),
+      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(sum) + '$', true, function () { return ev.close(Math.sin(a) + Math.cos(a), sum.num); }, '$\\sin\\alpha + \\cos\\alpha = ' + F.sum([[A.sin, ''], [A.cos, '']]) + ' = ' + F.n(sum) + '$.', { g: 'q' }),
+      h.factS('$\\sin\\alpha + \\cos\\alpha = ' + F.n(A.sin.sub(A.cos)) + '$', false, function () { return ev.close(Math.sin(a) + Math.cos(a), A.sin.sub(A.cos).num); }, '$\\sin\\alpha + \\cos\\alpha = ' + F.sum([[A.sin, ''], [A.cos, '']]) + ' = ' + F.n(sum) + '$.', { g: 'q', trap: 'sign' })
     ]);
-    return out('Given $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool), 'Here $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$.');
+    var fs = F.absOf(A.sin).toFr(), fc = F.absOf(A.cos).toFr();
+    return out('If $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', which of the following is correct? ( )', QF.pickStmts(R, 'S', pool),
+      'Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{' + fs.n + '}{' + fc.n + '}$, a right triangle with legs $' + fs.n + '$ and $' + fc.n + '$ has hypotenuse $' + fs.d + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (A.sin.sgn > 0 ? '> 0' : '< 0') + '$ and $\\cos\\alpha ' + (A.cos.sgn > 0 ? '> 0' : '< 0') + '$, so $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$.');
   });
 
   def({ id: 'TR-id.pair', code: 'TR-id', lesson: '2.3', tier: 'M', level: '+1', fmt: 'V',
@@ -400,7 +438,7 @@
     var wrong = [[pr(A[o1].neg(), A.tan.neg()), 'sign'], [pr(A[o1], A.tan.neg()), 'sign'], [pr(A[o1].neg(), A.tan), 'sign'], [pr(A[o1], sd(1).div(A.tan)), 'reciprocal']];
     return {
       stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, which of the following pairs is correct? ( )', key: pr(A[o1], A.tan), wrong: wrong, check: chk.tuple([Math[o1](A.num), Math.tan(A.num)]),
-      sol: 'In the ' + QD[quad].name + ' quadrant ' + (o1 === 'cos' ? 'cosine' : 'sine') + ' is ' + (A[o1].sgn > 0 ? 'positive' : 'negative') + ': $\\' + o1 + '\\alpha = ' + F.n(A[o1]) + '$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.'
+      sol: 'From $\\sin^2\\alpha + \\cos^2\\alpha = 1$: $\\' + o1 + '^2\\alpha = 1 - ' + F.n(A[given].mul(A[given])) + ' = ' + F.n(sd(1).sub(A[given].mul(A[given]))) + '$. In the ' + QD[quad].name + ' quadrant ' + FNAME[o1] + ' is ' + (A[o1].sgn > 0 ? 'positive' : 'negative') + ', so $\\' + o1 + '\\alpha = ' + F.n(A[o1]) + '$. Then $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$.'
     };
   });
 
@@ -412,9 +450,10 @@
     var wrong = ask === 'prod' ? [[m(prod.neg()), 'sign'], [m(prod.scale(2)), 'half'], [m(k.mul(k).sub(1)), 'half'], [m(k.mul(k)), 'partial']]
       : [[m(diff.neg()), 'sign'], [m(F.pm(F.absOf(diff))), 'pm'], [m(diff.mul(diff)), 'partial'], [m(k), 'slip']];
     return {
-      stem: 'Given $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + (ask === 'prod' ? '\\sin\\alpha\\cos\\alpha' : '\\sin\\alpha - \\cos\\alpha') + ' =$ ( )', key: m(key), wrong: wrong,
+      stem: 'If $\\sin\\alpha + \\cos\\alpha = ' + F.n(k) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + (ask === 'prod' ? '\\sin\\alpha\\cos\\alpha' : '\\sin\\alpha - \\cos\\alpha') + ' =$ ( )', key: m(key), wrong: wrong,
       check: chk.num(ask === 'prod' ? Math.sin(A.num) * Math.cos(A.num) : Math.sin(A.num) - Math.cos(A.num)),
-      sol: 'Square: $(\\sin\\alpha + \\cos\\alpha)^2 = 1 + 2\\sin\\alpha\\cos\\alpha = ' + F.n(k.mul(k)) + '$, so $\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$.' + (ask === 'diff' ? ' Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = ' + F.n(diff.mul(diff)) + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') + ' \\cos\\alpha$, so the difference is ' + (diff.sgn > 0 ? 'positive' : 'negative') + ': $' + F.n(diff) + '$.' : '')
+      sol: 'Square both sides: $(\\sin\\alpha + \\cos\\alpha)^2 = \\sin^2\\alpha + \\cos^2\\alpha + 2\\sin\\alpha\\cos\\alpha = 1 + 2\\sin\\alpha\\cos\\alpha = ' + F.n(k.mul(k)) + '$, so $2\\sin\\alpha\\cos\\alpha = ' + F.n(prod.scale(2)) + '$ and $\\sin\\alpha\\cos\\alpha = ' + F.n(prod) + '$.' +
+        (ask === 'diff' ? ' Then $(\\sin\\alpha - \\cos\\alpha)^2 = 1 - 2\\sin\\alpha\\cos\\alpha = 1 - ' + par(prod.scale(2)) + ' = ' + F.n(diff.mul(diff)) + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (quad === 2 ? '> 0 >' : '< 0 <') + ' \\cos\\alpha$, so $\\sin\\alpha - \\cos\\alpha$ is ' + (diff.sgn > 0 ? 'positive' : 'negative') + ' and equals $' + F.n(diff) + '$.' : '')
     };
   });
 
@@ -422,11 +461,13 @@
     form: 'tan α and the quadrant → a combination such as 2 sin α − cos α', basis: 'Course plan 2.3 Set C' }, function (R) {
     var quad = R.pick([3, 3, 2, 4]), A = mkAng(R, quad, 'rat'), p = R.pick([2, 3, 1]), qq = R.pick([-1, 1, -2, 2]);
     var key = A.sin.scale(p).add(A.cos.scale(qq));
+    var ls = F.absOf(A.sin).toFr(), lc = F.absOf(A.cos).toFr();
     var expr = F.sum([[p, '\\sin\\alpha'], [qq, '\\cos\\alpha']]);
     var wrong = [[m(key.neg()), 'sign'], [m(A.sin.scale(p).sub(A.cos.scale(qq))), 'sign'], [m(A.sin.scale(-p).add(A.cos.scale(qq))), 'sign'], [m(A.cos.scale(p).add(A.sin.scale(qq))), 'companion']];
     return {
-      stem: 'Given $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(p * Math.sin(A.num) + qq * Math.cos(A.num)),
-      sol: 'From the tangent and the quadrant: $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$. Substituting: $' + expr + ' = ' + F.n(key) + '$.'
+      stem: 'If $\\tan\\alpha = ' + F.n(A.tan) + '$ and ' + inQuad(R, quad) + ', then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(p * Math.sin(A.num) + qq * Math.cos(A.num)),
+      sol: 'Since $\\lvert\\tan\\alpha\\rvert = \\dfrac{' + ls.n + '}{' + lc.n + '}$, a right triangle with legs $' + ls.n + '$ and $' + lc.n + '$ has hypotenuse $' + ls.d + '$. In the ' + QD[quad].name + ' quadrant $\\sin\\alpha ' + (A.sin.sgn > 0 ? '> 0' : '< 0') + '$ and $\\cos\\alpha ' + (A.cos.sgn > 0 ? '> 0' : '< 0') + '$, so $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$. Substituting: $' + expr + ' = ' +
+        (p === 1 ? '' : p + ' \\times ') + par(A.sin) + (qq > 0 ? ' + ' : ' - ') + (Math.abs(qq) === 1 ? '' : Math.abs(qq) + ' \\times ') + par(A.cos) + ' = ' + F.n(key) + '$.'
     };
   });
 
@@ -448,6 +489,13 @@
     return hit;       // null when the result is a cotangent
   }
   function lhs(fn, sh) { return '\\' + fn + '\\left(' + sh.tex + '\\right)'; }
+  /** why fn(shift) reduces to c[0]: the landing quadrant for an acute α gives the sign, the shift decides the name */
+  function redWhy(fn, sh) {
+    var a0 = 0.4321, land = ((sh.f(a0) % (2 * PI)) + 2 * PI) % (2 * PI), qd = Math.floor(land / (PI / 2)) + 1, pos = Math[fn](sh.f(a0)) > 0;
+    var swap = /2\}/.test(sh.tex);
+    return 'if $\\alpha$ is acute, $' + sh.tex + '$ lies in the ' + F.ord(qd) + ' quadrant, where ' + FNAME[fn] + ' is ' + (pos ? 'positive' : 'negative') + '. ' +
+      (swap ? 'The shift is an odd multiple of $\\dfrac{\\pi}{2}$, so sine and cosine swap.' : 'The shift is a multiple of $\\pi$, so the function name stays the same.');
+  }
   function redPool(R, shiftIdx, fns) {
     var pool = [];
     shiftIdx.forEach(function (i) {
@@ -456,11 +504,11 @@
         var c = reduce(fn, sh);
         if (!c) return;
         var L = lhs(fn, sh), name = c[0].replace('-', ''), swapped = name === '\\sin\\alpha' ? '\\cos\\alpha' : name === '\\cos\\alpha' ? '\\sin\\alpha' : null;
-        var rule = /2\}/.test(sh.tex) ? 'an odd multiple of $\\dfrac{\\pi}{2}$ swaps sine and cosine' : 'a multiple of $\\pi$ keeps the name';
-        pool.push(h.identS(L, c[0], true, 'alpha', rule + '; the sign is that of $\\' + fn + '$ where the angle lands (take $\\alpha$ acute).', { g: fn + i }));
+        var why = redWhy(fn, sh), fix = ' So $' + L + ' = ' + c[0] + '$.';
+        pool.push(h.identS(L, c[0], true, 'alpha', why, { g: fn + i }));
         var flip = c[2] > 0 ? '-' + c[0] : name;
-        pool.push(h.identS(L, flip, false, 'alpha', 'the sign is wrong: the correct result is $' + c[0] + '$.', { g: fn + i, trap: 'sign' }));
-        if (swapped && R.bool(0.5)) pool.push(h.identS(L, (R.bool() ? '' : '-') + swapped, false, 'alpha', 'the name is wrong: the correct result is $' + c[0] + '$.', { g: fn + i, trap: 'near-miss' }));
+        pool.push(h.identS(L, flip, false, 'alpha', why + fix, { g: fn + i, trap: 'sign' }));
+        if (swapped && R.bool(0.5)) pool.push(h.identS(L, (R.bool() ? '' : '-') + swapped, false, 'alpha', why + fix, { g: fn + i, trap: 'near-miss' }));
       });
     });
     return pool;
@@ -503,7 +551,7 @@
     var wrong = [[m(key.neg()), 'sign'], [m(comp), 'companion'], [m(comp.neg()), 'companion'], [m(F.pm(F.absOf(k))), 'pm']];
     return {
       stem: 'If $\\' + given + '\\alpha = ' + F.n(k) + '$, then $' + lhs(fn, sh) + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(Math[fn](sh.f(a))),
-      sol: '$' + lhs(fn, sh) + ' = ' + c[0] + '$ (' + (/2\}/.test(sh.tex) ? 'odd multiple of $\\dfrac{\\pi}{2}$: the name changes' : 'multiple of $\\pi$: the name stays') + '; sign from the quadrant where the angle lands). So the value is $' + F.n(key) + '$ — no quadrant is needed.'
+      sol: QF.sentence(redWhy(fn, sh)) + ' So $' + lhs(fn, sh) + ' = ' + c[0] + ' = ' + F.n(key) + '$. The identity holds for every $\\alpha$, so the quadrant of $\\alpha$ is not needed.'
     };
   });
 
@@ -526,8 +574,8 @@
     var truth = Math[Aq[0]](Aq[1].f(A.num));
     var wrong = [[m(key.neg()), 'sign'], [m(endTan ? sd(1).div(key) : A[gFn]), endTan ? 'reciprocal' : 'companion'], [m(endTan ? sd(1).div(key).neg() : A[gFn].neg()), 'companion'], [m(F.pm(F.absOf(key))), 'pm']];
     return {
-      stem: 'Given $' + lhs(G[0], G[1]) + ' = ' + F.n(gVal) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + lhs(Aq[0], Aq[1]) + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
-      sol: 'Step 1: $' + lhs(G[0], G[1]) + ' = ' + G[2][0] + '$, so $\\' + gFn + '\\alpha = ' + F.n(A[gFn]) + '$. Step 2: in the ' + QD[quad].name + ' quadrant $\\' + other + '\\alpha = ' + F.n(A[other]) + '$' + (endTan ? ' and $\\tan\\alpha = ' + F.n(A.tan) + '$' : '') + '. Step 3: $' + lhs(Aq[0], Aq[1]) + ' = ' + (endTan ? (Aq[2][2] > 0 ? '' : '-') + '\\tan\\alpha' : Aq[2][0]) + ' = ' + F.n(key) + '$.'
+      stem: 'If $' + lhs(G[0], G[1]) + ' = ' + F.n(gVal) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + lhs(Aq[0], Aq[1]) + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
+      sol: 'Step 1: $' + lhs(G[0], G[1]) + ' = ' + G[2][0] + '$, so $\\' + gFn + '\\alpha = ' + F.n(A[gFn]) + '$. Step 2: $\\' + other + '^2\\alpha = 1 - ' + F.n(A[gFn].mul(A[gFn])) + ' = ' + F.n(sd(1).sub(A[gFn].mul(A[gFn]))) + '$, and in the ' + QD[quad].name + ' quadrant ' + FNAME[other] + ' is ' + (A[other].sgn > 0 ? 'positive' : 'negative') + ', so $\\' + other + '\\alpha = ' + F.n(A[other]) + '$' + (endTan ? ' and $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = ' + F.n(A.tan) + '$' : '') + '. Step 3: $' + lhs(Aq[0], Aq[1]) + ' = ' + (endTan ? (Aq[2][2] > 0 ? '' : '-') + '\\tan\\alpha' : Aq[2][0]) + ' = ' + F.n(key) + '$.'
     };
   });
 
@@ -541,13 +589,19 @@
     function red(p) { var c = reduce(p[1], SHIFTS[p[0]]); return { sgn: c[2], name: c[0].replace('-', '').replace('\\', '').replace('\\alpha', ''), tex: c[0] }; }
     var r1 = red(top[0]), r2 = red(top[1]), r3 = red(bot);
     var key = A[r1.name].mul(A[r2.name]).div(A[r3.name]).scale(r1.sgn * r2.sgn * r3.sgn);
+    function pTex(t) { return '\\left(' + t + '\\right)'; }
+    var sg = r1.sgn * r2.sgn * r3.sgn, nm = [r1.name, r2.name], cut = nm.indexOf(r3.name), simp;
+    if (cut >= 0) { simp = (sg < 0 ? '-' : '') + '\\' + nm[1 - cut] + '\\alpha'; }
+    else simp = (sg < 0 ? '-' : '') + '\\dfrac{\\' + nm[0] + '\\alpha' + (nm[0] === nm[1] ? '' : '\\' + nm[1] + '\\alpha').replace(/^$/, '') + (nm[0] === nm[1] ? '' : '') + '}{\\' + r3.name + '\\alpha}';
+    if (cut < 0 && nm[0] === nm[1]) simp = (sg < 0 ? '-' : '') + '\\dfrac{\\' + nm[0] + '^2\\alpha}{\\' + r3.name + '\\alpha}';
     if (!ev.close(key.num, truth, 1e-8)) throw new Error('TR-red.quotient exact value mismatch');
     if (key.t.length > 1) retry();
     var expr = '\\dfrac{' + lhs(top[0][1], SHIFTS[top[0][0]]) + '\\cdot' + lhs(top[1][1], SHIFTS[top[1][0]]) + '}{' + lhs(bot[1], SHIFTS[bot[0]]) + '}';
     var wrong = [[m(key.neg()), 'sign'], [m(A.sin), 'partial'], [m(A.cos), 'partial'], [m(A.sin.neg()), 'sign'], [m(A.cos.neg()), 'sign'], [m(sd(1).div(key)), 'reciprocal']];
     return {
-      stem: 'Given $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
-      sol: 'Reduce each factor: $' + lhs(top[0][1], SHIFTS[top[0][0]]) + ' = ' + r1.tex + '$, $' + lhs(top[1][1], SHIFTS[top[1][0]]) + ' = ' + r2.tex + '$, $' + lhs(bot[1], SHIFTS[bot[0]]) + ' = ' + r3.tex + '$. With $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$ the quotient equals $' + F.n(key) + '$.'
+      stem: 'If $\\' + given + '\\alpha = ' + F.n(A[given]) + '$ and $\\alpha \\in ' + QD[quad].iv + '$, then $' + expr + ' =$ ( )', key: m(key), wrong: wrong, check: chk.num(truth),
+      sol: 'Reduce each factor: $' + lhs(top[0][1], SHIFTS[top[0][0]]) + ' = ' + r1.tex + '$, $' + lhs(top[1][1], SHIFTS[top[1][0]]) + ' = ' + r2.tex + '$ and $' + lhs(bot[1], SHIFTS[bot[0]]) + ' = ' + r3.tex + '$. So the expression is $\\dfrac{' + pTex(r1.tex) + pTex(r2.tex) + '}{' + r3.tex + '} = ' + simp + '$. ' +
+        'Here $\\sin\\alpha = ' + F.n(A.sin) + '$ and $\\cos\\alpha = ' + F.n(A.cos) + '$' + (given === 'tan' ? ' (from $\\tan\\alpha = ' + F.n(A.tan) + '$ and the quadrant)' : '') + ', so the value is $' + F.n(key) + '$.'
     };
   });
 
@@ -576,7 +630,7 @@
     var wrong = [[m(F.piMul(q(1).div(w))), 'near-miss'], [m(F.piMul(w.mul(2))), 'reciprocal'], [m(F.piMul(q(2 * A))), 'slip'], [m(F.piMul(q(4).div(w))), 'half'], [m(F.piMul(q(2))), 'partial']];
     return {
       stem: 'The minimum positive period of the function $y = ' + waveTex(A, fn, w, phi, 0) + '$ is ( )', key: m(F.piMul(Tm)), wrong: wrong, check: chk.num(Tm.num * PI),
-      sol: 'For $y = A\\' + fn + '(\\omega x + \\varphi)$ the period is $T = \\dfrac{2\\pi}{|\\omega|}$; the amplitude and the phase do not matter. Here $\\omega = ' + F.n(w) + '$, so $T = ' + F.piMul(Tm) + '$.'
+      sol: 'For $y = A\\' + fn + '(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$ and $\\varphi$ are. Here $\\omega = ' + F.n(w) + '$, so $T = \\dfrac{2\\pi}{' + F.n(w) + '} = ' + F.piMul(Tm) + '$.'
     };
   });
   def({ id: 'TR-graph.period-frac', code: 'TR-graph', lesson: '2.5', tier: 'E', level: '+1', fmt: 'V',
@@ -587,7 +641,7 @@
     var wrong = [[m(F.piMul(w.mul(2))), 'reciprocal'], [m(F.piMul(q(1).div(w))), 'near-miss'], [m(F.piMul(q(2))), 'partial'], [m(F.piMul(w)), 'reciprocal'], [m(F.piMul(q(4).div(w))), 'half']];
     return {
       stem: 'The minimum positive period of the function $y = ' + waveTex(A, fn, w, phi, k) + '$ is ( )', key: m(F.piMul(Tm)), wrong: wrong, check: chk.num(Tm.num * PI),
-      sol: '$T = \\dfrac{2\\pi}{|\\omega|}$ with $\\omega = ' + F.n(w) + '$: dividing by a fraction multiplies by its reciprocal, so $T = ' + F.piMul(Tm) + '$.'
+      sol: 'For $y = A\\' + fn + '(\\omega x + \\varphi) + k$ the minimum positive period is $T = \\dfrac{2\\pi}{|\\omega|}$, whatever $A$, $\\varphi$ and $k$ are. Here $\\omega = ' + F.n(w) + '$, and dividing by a fraction means multiplying by its reciprocal: $T = 2\\pi \\div ' + F.n(w) + ' = 2\\pi \\times ' + F.n(q(1).div(w)) + ' = ' + F.piMul(Tm) + '$.'
     };
   });
   def({ id: 'TR-graph.tan-period', code: 'TR-graph', lesson: '2.6', tier: 'E', level: '=', fmt: 'V', w: 1,
@@ -599,7 +653,7 @@
     var wrong = [[m(F.piMul(q(2).div(w))), 'near-miss'], [m(F.piMul(w)), 'reciprocal'], [m(F.piMul(q(1))), 'partial'], [m(F.piMul(q(1).div(w.mul(2)))), 'half'], [m(F.piMul(q(2))), 'slip']];
     return {
       stem: 'The minimum positive period of the function $y = ' + waveTex(A, 'tan', w, phi, 0) + '$ is ( )', key: m(F.piMul(Tm)), wrong: wrong, check: chk.num(Tm.num * PI),
-      sol: 'The tangent repeats every $\\pi$, so for $y = A\\tan(\\omega x + \\varphi)$ the period is $T = \\dfrac{\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$ (not $\\dfrac{2\\pi}{|\\omega|}$).'
+      sol: 'The tangent repeats every $\\pi$, not every $2\\pi$. So for $y = A\\tan(\\omega x + \\varphi)$ the minimum positive period is $T = \\dfrac{\\pi}{|\\omega|}$. Here $\\omega = ' + F.n(w) + '$, so $T = ' + (w.d === 1 ? '\\dfrac{\\pi}{' + F.n(w) + '}' : '\\pi \\div ' + F.n(w)) + ' = ' + F.piMul(Tm) + '$.'
     };
   });
 
@@ -612,7 +666,7 @@
     var wrong = [[m(wantMax ? k - Math.abs(A) : k + Math.abs(A)), 'companion'], [m(wantMax ? Math.abs(A) : -Math.abs(A)), 'partial'], [m(k), 'partial'], [m(wantMax ? k + Math.abs(A) * w.num : k - Math.abs(A) * w.num), 'slip'], [m(wantMax ? 1 : -1), 'slip']];
     return {
       stem: 'The ' + (wantMax ? 'maximum' : 'minimum') + ' value of the function $y = ' + waveTex(A, fn, w, q(0), k) + '$ is ( )', key: m(key), wrong: wrong, check: chk.num(Math.round(truth * 1e6) / 1e6),
-      sol: 'Since $-1 \\le \\' + fn + ' ' + (w.eq(1) ? '' : w.n) + 'x \\le 1$, the function $A\\' + fn + '(\\omega x) + k$ ranges from $k - |A|$ to $k + |A|$. Here $k = ' + k + '$ and $|A| = ' + Math.abs(A) + '$, so the ' + (wantMax ? 'maximum' : 'minimum') + ' is $' + key + '$.'
+      sol: 'Since $-1 \\le \\' + fn + ' ' + (w.eq(1) ? '' : w.n) + 'x \\le 1$, the function $y = A\\' + fn + ' \\omega x + k$ takes values from $k - |A|$ to $k + |A|$. Here $A = ' + A + '$ and $k = ' + k + '$, so the ' + (wantMax ? 'maximum is $' + k + ' + ' + Math.abs(A) : 'minimum is $' + k + ' - ' + Math.abs(A)) + ' = ' + key + '$.' + (A < 0 ? ' Because $A$ is negative, the ' + (wantMax ? 'maximum' : 'minimum') + ' occurs where $\\' + fn + ' ' + (w.eq(1) ? '' : w.n) + 'x = ' + (wantMax ? '-1' : '1') + '$.' : '')
     };
   });
 
@@ -620,24 +674,24 @@
   function waveFacts(fn) {
     var f = Math[fn], odd = fn === 'sin', other = odd ? 'cos' : 'sin';
     var zeros = function () { var c = 0; for (var x = -30; x <= 30; x += 0.001) if (f(x) * f(x + 0.001) < 0) c++; return c; };
-    var S = h.factS;
+    var S = h.factS, top = odd ? '\\dfrac{\\pi}{2}' : '0', parity = odd ? '$\\sin(-x) = -\\sin x$, so it is odd' : '$\\cos(-x) = \\cos x$, so it is even';
     return [
-      S('It is a periodic function with minimum positive period $2\\pi$', true, function () { return nt.minPeriod(f, 2 * PI); }, '', { g: 'per' }),
-      S('Its maximum value is $1$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6); }, '', { g: 'max' }),
-      S('Its range is $[-1, 1]$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6) && ev.close(nt.min(f, 0, 2 * PI), -1, 1e-6); }, '', { g: 'rng' }),
+      S('It is a periodic function with minimum positive period $2\\pi$', true, function () { return nt.minPeriod(f, 2 * PI); }, '$\\' + fn + '(x + 2\\pi) = \\' + fn + ' x$ for every $x$, and no smaller positive number has this property.', { g: 'per' }),
+      S('Its maximum value is $1$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6); }, 'its values never exceed $1$, and $\\' + fn + ' ' + top + ' = 1$.', { g: 'max' }),
+      S('Its range is $[-1, 1]$', true, function () { return ev.close(nt.max(f, 0, 2 * PI), 1, 1e-6) && ev.close(nt.min(f, 0, 2 * PI), -1, 1e-6); }, 'its values lie between $-1$ and $1$, and both ends are reached.', { g: 'rng' }),
       S('It has infinitely many zeros', true, function () { return zeros() > 10; }, 'it is zero at $x = ' + (odd ? 'k\\pi' : '\\dfrac{\\pi}{2} + k\\pi') + '$ for every integer $k$.', { g: 'zero' }),
-      S('It is an ' + (odd ? 'odd' : 'even') + ' function', true, function () { return odd ? nt.odd(f) : nt.even(f); }, '', { g: 'par' }),
-      S('Its graph is symmetric about the ' + (odd ? 'origin' : '$y$-axis'), true, function () { return odd ? nt.odd(f) : nt.even(f); }, '', { g: 'sym' }),
-      S(odd ? 'It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$' : 'It is monotonically decreasing on $[0, \\pi]$', true, function () { return odd ? nt.incOn(f, -PI / 2, PI / 2) : nt.decOn(f, 0, PI); }, '', { g: 'mono' }),
-      S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the minimum positive period of $y = \\' + fn + ' x$ is $2\\pi$.', { g: 'per', trap: 'near-miss' }),
+      S('It is an ' + (odd ? 'odd' : 'even') + ' function', true, function () { return odd ? nt.odd(f) : nt.even(f); }, parity + '.', { g: 'par' }),
+      S('Its graph is symmetric about the ' + (odd ? 'origin' : '$y$-axis'), true, function () { return odd ? nt.odd(f) : nt.even(f); }, parity + '.', { g: 'sym' }),
+      S(odd ? 'It is monotonically increasing on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$' : 'It is monotonically decreasing on $[0, \\pi]$', true, function () { return odd ? nt.incOn(f, -PI / 2, PI / 2) : nt.decOn(f, 0, PI); }, odd ? 'on this interval $\\sin x$ rises steadily from $-1$ to $1$.' : 'on this interval $\\cos x$ falls steadily from $1$ to $-1$.', { g: 'mono' }),
+      S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the minimum positive period is $2\\pi$. For example, $\\' + fn + ' ' + top + ' = 1$ but $\\' + fn + '\\left(' + (odd ? '\\dfrac{\\pi}{2} + \\pi' : '0 + \\pi') + '\\right) = -1$.', { g: 'per', trap: 'near-miss' }),
       S('Its maximum value is $2$', false, function () { return ev.close(nt.max(f, 0, 2 * PI), 2, 1e-6); }, 'its values never exceed $1$.', { g: 'max', trap: 'slip' }),
-      S('Its maximum value is $\\dfrac{\\pi}{2}$', false, function () { return ev.close(nt.max(f, 0, 2 * PI), PI / 2, 1e-6); }, 'its maximum value is $1$ ($\\dfrac{\\pi}{2}$ is where the sine reaches it).', { g: 'max2', trap: 'swap' }),
-      S('It has exactly one zero', false, function () { return zeros() === 1; }, 'it has infinitely many zeros.', { g: 'zero', trap: 'partial' }),
-      S('It is an ' + (odd ? 'even' : 'odd') + ' function', false, function () { return odd ? nt.even(f) : nt.odd(f); }, '$y = \\' + fn + ' x$ is ' + (odd ? 'odd' : 'even') + '.', { g: 'par', trap: 'companion' }),
-      S('Its graph is symmetric about the ' + (odd ? '$y$-axis' : 'origin'), false, function () { return odd ? nt.even(f) : nt.odd(f); }, '$y = \\' + fn + ' x$ is ' + (odd ? 'odd, so its graph is symmetric about the origin' : 'even, so its graph is symmetric about the $y$-axis') + '.', { g: 'sym', trap: 'companion' }),
-      S('It is monotonically increasing on $[0, \\pi]$', false, function () { return nt.incOn(f, 0, PI); }, odd ? 'on $[0, \\pi]$ it rises to $1$ and then falls.' : 'on $[0, \\pi]$ it is decreasing.', { g: 'mono', trap: 'slip' }),
-      S('$\\' + fn + (odd ? '\\dfrac{\\pi}{2}' : ' 0') + ' = 0$', false, function () { return ev.close(f(odd ? PI / 2 : 0), 0); }, 'the value there is $1$.', { g: 'val', trap: 'companion' }),
-      S('Its range is $\\mathbb{R}$', false, function () { return nt.max(f, 0, 7) > 5; }, 'its values stay between $-1$ and $1$.', { g: 'rng', trap: 'domain' })
+      S('Its maximum value is $\\dfrac{\\pi}{2}$', false, function () { return ev.close(nt.max(f, 0, 2 * PI), PI / 2, 1e-6); }, 'its maximum value is $1$.' + (odd ? ' The number $\\dfrac{\\pi}{2}$ is a value of $x$ where the maximum is reached, not the maximum itself.' : ''), { g: 'max2', trap: 'swap' }),
+      S('It has exactly one zero', false, function () { return zeros() === 1; }, 'it is zero at $x = ' + (odd ? 'k\\pi' : '\\dfrac{\\pi}{2} + k\\pi') + '$ for every integer $k$, so it has infinitely many zeros.', { g: 'zero', trap: 'partial' }),
+      S('It is an ' + (odd ? 'even' : 'odd') + ' function', false, function () { return odd ? nt.even(f) : nt.odd(f); }, parity + ', not ' + (odd ? 'even' : 'odd') + '.', { g: 'par', trap: 'companion' }),
+      S('Its graph is symmetric about the ' + (odd ? '$y$-axis' : 'origin'), false, function () { return odd ? nt.even(f) : nt.odd(f); }, parity + ', so its graph is symmetric about the ' + (odd ? 'origin' : '$y$-axis') + '.', { g: 'sym', trap: 'companion' }),
+      S('It is monotonically increasing on $[0, \\pi]$', false, function () { return nt.incOn(f, 0, PI); }, odd ? 'on $[0, \\pi]$ it rises from $0$ to $1$ and then falls back to $0$.' : 'on $[0, \\pi]$ it falls from $1$ to $-1$, so it is decreasing there.', { g: 'mono', trap: 'slip' }),
+      S('$\\' + fn + (odd ? '\\dfrac{\\pi}{2}' : ' 0') + ' = 0$', false, function () { return ev.close(f(odd ? PI / 2 : 0), 0); }, 'in fact $\\' + fn + (odd ? '\\dfrac{\\pi}{2}' : ' 0') + ' = 1$.', { g: 'val', trap: 'companion' }),
+      S('Its range is $\\mathbb{R}$', false, function () { return nt.max(f, 0, 7) > 5; }, 'its values stay between $-1$ and $1$, so its range is $[-1, 1]$.', { g: 'rng', trap: 'domain' })
     ];
   }
   def({ id: 'TR-graph.stmt', code: 'TR-graph', lesson: '2.5', tier: 'E', level: '=', fmt: 'S', w: 2,
@@ -669,8 +723,15 @@
     var expect = { 'sin-dec': [0.5, 1.5], 'cos-dec': [0, 1], 'cos-inc': [-1, 0] }[fn + '-' + dir];
     pool.forEach(function (s, i) { var v = ivs[i]; var should = (v[0] === expect[0] && v[1] === expect[1]) || (fn === 'cos' && dir === 'inc' && v[0] === 1); if (s.ok !== should) throw new Error('TR-graph.mono-interval: unexpected truth'); });
     var st = QF.pickStmts(R, 'S', pool), word = dir === 'inc' ? 'increasing' : 'decreasing';
+    function onIv(text) {   // what the function does on one interval of the pool
+      var v = ivs[pool.map(function (s) { return s.t; }).indexOf(text)], a = v[0] * PI, b = v[1] * PI;
+      if (nt.incOn(f, a, b)) return 'on ' + text + ' it is increasing';
+      if (nt.decOn(f, a, b)) return 'on ' + text + ' it is decreasing';
+      var turn = (fn === 'sin' ? [-0.5, 0.5, 1.5] : [-1, 0, 1, 2]).filter(function (t) { return t > v[0] && t < v[1]; })[0];
+      return 'on ' + text + ' it changes direction at $x = ' + F.piMul(q(Math.round(turn * 2), 2)) + '$';
+    }
     st.sol = (fn === 'sin' ? '$\\sin x$ increases on $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$ and decreases on $\\left[\\dfrac{\\pi}{2}, \\dfrac{3\\pi}{2}\\right]$' : '$\\cos x$ decreases on $[0, \\pi]$ and increases on $[-\\pi, 0]$ and on $[\\pi, 2\\pi]$') +
-      ' (then the pattern repeats every $2\\pi$). So the function is monotonically ' + word + ' on $' + st.key.replace(/\$/g, '') + '$. On each of the other three intervals it changes direction or moves the other way.';
+      ', and this pattern repeats every $2\\pi$. So the function is monotonically ' + word + ' on ' + st.key + '. For the other options, ' + h.joinAnd(st.wrongStmts.map(function (s) { return onIv(s.t); })) + '.';
     return out('The function $f(x) = \\' + fn + ' x$ is monotonically ' + word + ' on ( )', st);
   });
 
@@ -680,16 +741,24 @@
     var f = function (x) { return A * Math[fn](w.num * x + phi.num * PI) + k; }, Tm = q(2).div(w), S = h.factS;
     var mx = k + A, mn = k - A, f0 = f(0);
     var isEven = nt.even(f), isOdd = nt.odd(f);
+    var f0x = sd(A).mul(fn === 'sin' ? trig.sin(phi.num * 180) : trig.cos(phi.num * 180)).add(sd(k));     // exact f(0)
+    if (!ev.close(f0x.num, f0, 1e-9)) throw new Error('TR-graph.four: f(0) mismatch');
+    var wv = 'x', wTx = w.d === 1 ? w.n + 'x' : '\\dfrac{' + (w.n === 1 ? '' : w.n) + 'x}{' + w.d + '}';
+    var evenWhy = isEven ? (fn === 'cos' ? '$\\cos(-u) = \\cos u$, so $f(-x) = f(x)$.' : '$\\sin\\left(' + wTx + ' + \\dfrac{\\pi}{2}\\right) = \\cos ' + wTx + '$, so $f(x) = ' + A + '\\cos ' + wTx + (k ? ' ' + h.signed(k) : '') + '$, which is even.')
+      : '$f(0) = ' + F.n(f0x) + '$ is neither the maximum $' + mx + '$ nor the minimum $' + mn + '$, so the $y$-axis is not an axis of symmetry of the graph.';
+    var oddWhy = isOdd ? (fn === 'sin' ? '$\\sin(-u) = -\\sin u$, so $f(-x) = -f(x)$.' : '$\\cos\\left(' + wTx + ' + \\dfrac{\\pi}{2}\\right) = -\\sin ' + wTx + '$, so $f(x) = -' + A + '\\sin ' + wTx + '$, which is odd.')
+      : (k !== 0 ? 'for an odd function the maximum and the minimum are opposite numbers, but here they are $' + mx + '$ and $' + mn + '$.' : '$f(0) = ' + F.n(f0x) + ' \\ne 0$, but an odd function defined at $0$ has $f(0) = 0$.');
+    var perW = '$T = \\dfrac{2\\pi}{|\\omega|} = ' + (w.d === 1 ? '\\dfrac{2\\pi}{' + w.n + '}' : '2\\pi \\div ' + F.n(w)) + ' = ' + F.piMul(Tm) + '$.';
     var pool = [
-      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, '$T = \\dfrac{2\\pi}{|\\omega|}$.', { g: 'per' }),
-      S('Its maximum value is $' + mx + '$', true, function () { return ev.close(nt.max(f, 0, Tm.num * PI), mx, 1e-6); }, 'the maximum is $k + |A|$.', { g: 'max' }),
-      S('Its minimum value is $' + mn + '$', true, function () { return ev.close(nt.min(f, 0, Tm.num * PI), mn, 1e-6); }, 'the minimum is $k - |A|$.', { g: 'min' }),
-      S('Its minimum positive period is $' + F.piMul(q(1).div(w)) + '$', false, function () { return nt.minPeriod(f, PI / w.num); }, 'that is the period of a tangent; here $T = \\dfrac{2\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$.', { g: 'per', trap: 'near-miss' }),
-      S('Its minimum positive period is $' + F.piMul(w.mul(2)) + '$', false, function () { return nt.minPeriod(f, 2 * PI * w.num); }, 'divide by $\\omega$, do not multiply: $T = ' + F.piMul(Tm) + '$.', { g: 'per2', trap: 'reciprocal' }),
-      S('Its maximum value is $' + A + '$', k === 0, function () { return ev.close(nt.max(f, 0, Tm.num * PI), A, 1e-6); }, k === 0 ? 'the maximum is $k + |A|$.' : 'the vertical shift $' + k + '$ was forgotten: the maximum is $' + mx + '$.', { g: 'max', trap: 'partial' }),
-      S('Its minimum value is $' + (-A) + '$', k === 0, function () { return ev.close(nt.min(f, 0, Tm.num * PI), -A, 1e-6); }, k === 0 ? 'the minimum is $k - |A|$.' : 'the vertical shift $' + k + '$ was forgotten: the minimum is $' + mn + '$.', { g: 'min', trap: 'partial' }),
-      S('It is an even function', isEven, function () { return nt.even(f); }, isEven ? '$f(-x) = f(x)$.' : '$f(-x) \\ne f(x)$ in general.', { g: 'par', trap: 'slip' }),
-      S('It is an odd function', isOdd, function () { return nt.odd(f); }, isOdd ? '$f(-x) = -f(x)$.' : '$f(-x) \\ne -f(x)$ in general.', { g: 'par2', trap: 'slip' })
+      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, perW, { g: 'per' }),
+      S('Its maximum value is $' + mx + '$', true, function () { return ev.close(nt.max(f, 0, Tm.num * PI), mx, 1e-6); }, 'the maximum is $k + |A| = ' + k + ' + ' + A + ' = ' + mx + '$.', { g: 'max' }),
+      S('Its minimum value is $' + mn + '$', true, function () { return ev.close(nt.min(f, 0, Tm.num * PI), mn, 1e-6); }, 'the minimum is $k - |A| = ' + k + ' - ' + A + ' = ' + mn + '$.', { g: 'min' }),
+      S('Its minimum positive period is $' + F.piMul(q(1).div(w)) + '$', false, function () { return nt.minPeriod(f, PI / w.num); }, '$\\dfrac{\\pi}{|\\omega|}$ is the period formula for a tangent. Here ' + perW, { g: 'per', trap: 'near-miss' }),
+      S('Its minimum positive period is $' + F.piMul(w.mul(2)) + '$', false, function () { return nt.minPeriod(f, 2 * PI * w.num); }, 'the period is found by dividing $2\\pi$ by $|\\omega|$, not by multiplying: ' + perW, { g: 'per2', trap: 'reciprocal' }),
+      S('Its maximum value is $' + A + '$', k === 0, function () { return ev.close(nt.max(f, 0, Tm.num * PI), A, 1e-6); }, k === 0 ? 'the maximum is $k + |A| = ' + A + '$.' : 'the vertical shift is missing. The maximum is $k + |A| = ' + k + ' + ' + A + ' = ' + mx + '$.', { g: 'max', trap: 'partial' }),
+      S('Its minimum value is $' + (-A) + '$', k === 0, function () { return ev.close(nt.min(f, 0, Tm.num * PI), -A, 1e-6); }, k === 0 ? 'the minimum is $k - |A| = ' + (-A) + '$.' : 'the vertical shift is missing. The minimum is $k - |A| = ' + k + ' - ' + A + ' = ' + mn + '$.', { g: 'min', trap: 'partial' }),
+      S('It is an even function', isEven, function () { return nt.even(f); }, evenWhy, { g: 'par', trap: 'slip' }),
+      S('It is an odd function', isOdd, function () { return nt.odd(f); }, oddWhy, { g: 'par2', trap: 'slip' })
     ];
     // de-duplicate statements that coincide when k = 0
     var seen = {}; pool = pool.filter(function (s) { if (seen[s.t]) return false; seen[s.t] = 1; return true; });
@@ -704,15 +773,25 @@
     var base = fn === 'sin' ? (dir === 'inc' ? [q(-1, 2), q(1, 2)] : [q(1, 2), q(3, 2)]) : (dir === 'inc' ? [q(-1), q(0)] : [q(0), q(1)]);
     function ivT(a, b) { return '\\left[' + F.piMul(a) + ', ' + F.piMul(b) + '\\right]'; }
     function st(a, b, ok, why, tr) { return h.factS('$' + ivT(a, b) + '$', ok, function () { return dir === 'inc' ? nt.incOn(f, a.num * PI, b.num * PI) : nt.decOn(f, a.num * PI, b.num * PI); }, why, { trap: tr }); }
-    var key = st(base[0].sub(phi), base[1].sub(phi), true, 'solve $' + F.piMul(base[0]) + ' \\le x ' + (phi.n > 0 ? '+ ' : '- ') + F.piMul(phi.abs()) + ' \\le ' + F.piMul(base[1]) + '$.');
+    var key = st(base[0].sub(phi), base[1].sub(phi), true, '');
     var wrongs = [
-      st(base[0].add(phi), base[1].add(phi), false, 'the shift goes the other way: subtract $\\varphi$.', 'sign'),
-      st(base[0], base[1], false, 'that is the interval for the unshifted function.', 'partial'),
-      st(base[0].sub(phi).add(1), base[1].sub(phi).add(1), false, 'on this interval the function moves in the opposite direction.', 'complement')
+      st(base[0].add(phi), base[1].add(phi), false, '', 'sign'),
+      st(base[0], base[1], false, '', 'partial'),
+      st(base[0].sub(phi).add(1), base[1].sub(phi).add(1), false, '', 'complement')
     ];
     var st2 = QF.useStmts('S', key, wrongs), word = dir === 'inc' ? 'increasing' : 'decreasing', u = wArg(q(1), phi);
-    st2.sol = 'Let $u = ' + u + '$. The function $\\' + fn + ' u$ is ' + word + ' for $' + F.piMul(base[0]) + ' \\le u \\le ' + F.piMul(base[1]) + '$. Solve $' + F.piMul(base[0]) + ' \\le ' + u + ' \\le ' + F.piMul(base[1]) + '$: $x \\in ' + ivT(base[0].sub(phi), base[1].sub(phi)) + '$. ' +
-      'Moving the interval the other way (adding instead of subtracting), or using the interval of the unshifted function, gives a wrong option; half a period later the function moves in the opposite direction.';
+    function onIv(s) {
+      var v = s.t.match(/\\left\[(.*), (.*)\\right\]/), a = ev.expr(v[1]), b = ev.expr(v[2]);
+      if (nt.incOn(f, a, b)) return 'on ' + s.t + ' it is increasing';
+      if (nt.decOn(f, a, b)) return 'on ' + s.t + ' it is decreasing';
+      for (var k = -3; k <= 3; k++) {   // turning points: u = π/2 + kπ for sine, u = kπ for cosine
+        var t = (fn === 'sin' ? q(1, 2) : q(0)).add(k).sub(phi);
+        if (t.num * PI > a + 1e-9 && t.num * PI < b - 1e-9) return 'on ' + s.t + ' it changes direction at $x = ' + F.piMul(t) + '$';
+      }
+      throw new Error('TR-graph.mono-shift: no turning point found');
+    }
+    st2.sol = 'Let $u = ' + u + '$. The function $\\' + fn + ' u$ is ' + word + ' for $' + F.piMul(base[0]) + ' \\le u \\le ' + F.piMul(base[1]) + '$. Solving $' + F.piMul(base[0]) + ' \\le ' + u + ' \\le ' + F.piMul(base[1]) + '$ gives $' + F.piMul(base[0].sub(phi)) + ' \\le x \\le ' + F.piMul(base[1].sub(phi)) + '$, so the function is ' + word + ' on ' + st2.key + '. ' +
+      'For the other options, ' + h.joinAnd(st2.wrongStmts.map(onIv)) + '.';
     return out('The function $y = \\' + fn + '\\left(' + u + '\\right)$ is monotonically ' + word + ' on ( )', st2);
   });
 
@@ -722,18 +801,19 @@
     var lo = -half.num * PI, hi = half.num * PI, ivTex = '\\left(-' + F.piMul(half) + ', ' + F.piMul(half) + '\\right)';
     var inner = function (dirInc) { return function () { var prev = null; for (var i = 1; i < 200; i++) { var x = lo + (hi - lo) * i / 200, v = f(x); if (prev !== null && (dirInc ? v <= prev : v >= prev)) return false; prev = v; } return true; }; };
     var whole = function (dirInc) { return function () { var a = f(0.9 * hi), b = f(1.1 * hi); return dirInc ? b > a : b < a; }; };   // across an asymptote the order breaks
+    var perW = 'for $y = \\tan\\omega x$ the period is $T = \\dfrac{\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$', monoW = neg ? '$\\tan(-u) = -\\tan u$ and the tangent is increasing between consecutive asymptotes, so this function is decreasing on $' + ivTex + '$.' : 'the tangent is increasing on each interval between consecutive asymptotes, and $' + ivTex + '$ is one of them.';
     return [
-      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, 'for a tangent $T = \\dfrac{\\pi}{|\\omega|}$.', { g: 'per' }),
-      S('It is an odd function', true, function () { return nt.odd(f, [0.1, 0.2, 0.33]); }, '', { g: 'par' }),
-      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on $' + ivTex + '$', true, inner(!neg), neg ? '$\\tan(-u) = -\\tan u$, and $-\\tan$ is decreasing on each interval between asymptotes.' : 'the tangent is increasing on each interval between consecutive asymptotes.', { g: 'mono' }),
-      S('Its range is $\\mathbb{R}$', true, function () { return f(0.999 * hi) * (neg ? -1 : 1) > 100; }, '', { g: 'rng' }),
-      S('Its minimum positive period is $' + F.piMul(Tm.mul(2)) + '$', false, function () { return nt.minPeriod(f, Tm.num * 2 * PI); }, 'that is the formula for sine and cosine; for a tangent $T = \\dfrac{\\pi}{|\\omega|} = ' + F.piMul(Tm) + '$.', { g: 'per', trap: 'near-miss' }),
-      S('It is an even function', false, function () { return nt.even(f, [0.1, 0.2, 0.33]); }, 'the tangent is odd.', { g: 'par', trap: 'companion' }),
-      S('It is ' + (neg ? 'increasing' : 'decreasing') + ' on $' + ivTex + '$', false, inner(neg), 'the direction is the other way.', { g: 'mono', trap: 'sign' }),
-      S('Its domain is $\\mathbb{R}$', false, function () { return isFinite(f(hi)) && Math.abs(f(hi)) < 1e6; }, 'the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$.', { g: 'dom', trap: 'domain' }),
-      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on its whole domain', false, whole(!neg), 'it is monotonic on each interval between asymptotes, but not across them.', { g: 'whole', trap: 'domain' }),
-      S('Its maximum value is $1$', false, function () { return Math.abs(f(0.999 * hi)) < 2; }, 'the tangent is unbounded.', { g: 'rng', trap: 'slip' })
-    ].concat(wq.eq(1) || wq.eq(2) ? [] : [S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the coefficient of $x$ changes the period: $T = ' + F.piMul(Tm) + '$.', { g: 'per2', trap: 'partial' })]);
+      S('Its minimum positive period is $' + F.piMul(Tm) + '$', true, function () { return nt.minPeriod(f, Tm.num * PI); }, perW + '.', { g: 'per' }),
+      S('It is an odd function', true, function () { return nt.odd(f, [0.1, 0.2, 0.33]); }, '$\\tan(-u) = -\\tan u$, so $f(-x) = -f(x)$.', { g: 'par' }),
+      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on $' + ivTex + '$', true, inner(!neg), monoW, { g: 'mono' }),
+      S('Its range is $\\mathbb{R}$', true, function () { return f(0.999 * hi) * (neg ? -1 : 1) > 100; }, 'between two consecutive asymptotes the tangent takes every real value.', { g: 'rng' }),
+      S('Its minimum positive period is $' + F.piMul(Tm.mul(2)) + '$', false, function () { return nt.minPeriod(f, Tm.num * 2 * PI); }, '$\\dfrac{2\\pi}{|\\omega|}$ is the formula for sine and cosine. ' + QF.sentence(perW), { g: 'per', trap: 'near-miss' }),
+      S('It is an even function', false, function () { return nt.even(f, [0.1, 0.2, 0.33]); }, '$\\tan(-u) = -\\tan u$, so the function is odd, not even.', { g: 'par', trap: 'companion' }),
+      S('It is ' + (neg ? 'increasing' : 'decreasing') + ' on $' + ivTex + '$', false, inner(neg), monoW, { g: 'mono', trap: 'sign' }),
+      S('Its domain is $\\mathbb{R}$', false, function () { return isFinite(f(hi)) && Math.abs(f(hi)) < 1e6; }, 'the tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$, for example at $x = ' + F.piMul(half) + '$.', { g: 'dom', trap: 'domain' }),
+      S('It is ' + (neg ? 'decreasing' : 'increasing') + ' on its whole domain', false, whole(!neg), 'it is monotonic on each interval between consecutive asymptotes, but not across an asymptote.', { g: 'whole', trap: 'domain' }),
+      S('Its maximum value is $1$', false, function () { return Math.abs(f(0.999 * hi)) < 2; }, 'the tangent takes arbitrarily large values, so it has no maximum.', { g: 'rng', trap: 'slip' })
+    ].concat(wq.eq(1) || wq.eq(2) ? [] : [S('Its minimum positive period is $\\pi$', false, function () { return nt.minPeriod(f, PI); }, 'the coefficient of $x$ changes the period. ' + QF.sentence(perW), { g: 'per2', trap: 'partial' })]);
   }
   function tanName(wq, neg) { return '\\tan' + (wq.eq(1) && !neg ? ' x' : wq.d === 1 ? (neg ? '(-' + (wq.n === 1 ? '' : wq.n) + 'x)' : ' ' + wq.n + 'x') : '\\left(' + (neg ? '-' : '') + '\\dfrac{x}{' + wq.d + '}\\right)').replace('\\left(\\dfrac{x}', ' \\dfrac{x}').replace(/x\}\{(\d)\}\\right\)$/, function (s) { return neg ? s : s.replace('\\right)', ''); }); }
   def({ id: 'TR-graph.tan-stmt', code: 'TR-graph', lesson: '2.6', tier: 'E', level: '=', fmt: 'S', w: 1,
@@ -754,7 +834,7 @@
     form: 'y = tan(−kx) or tan(x/k): which statement is correct (monotonicity between asymptotes)', basis: 'Jun Q39' }, function (R) {
     var neg = R.bool(0.6), w = R.pick(neg ? [q(1), q(3), q(1, 2), q(4)] : [q(1, 2), q(1, 3), q(3), q(4)]);
     var st = QF.pickStmts(R, 'S', tanFacts(w, neg));
-    return out('Which of the following statements about the function $y = ' + tanName(w, neg) + '$ is correct? ( )', st, neg ? 'Rewrite $\\tan(-u) = -\\tan u$ first.' : '');
+    return out('Which of the following statements about the function $y = ' + tanName(w, neg) + '$ is correct? ( )', st);
   });
 
   def({ id: 'TR-graph.tan-domain', code: 'TR-graph', lesson: '2.6', tier: 'M', level: '=', fmt: 'V', w: 0.5,
@@ -769,7 +849,7 @@
     var wrong = [[m(setT(phi, 1)), 'partial'], [m(setT(q(1, 2).sub(phi), 1)), 'sign'], [m(setT(c, 2)), 'near-miss'], [m(setT(q(1, 2), 1)), 'domain'], [m('\\mathbb{R}'), 'domain']];
     return {
       stem: 'The domain of the function $y = ' + (A === 1 ? '' : A) + '\\tan\\left(' + wArg(q(1), phi.neg()) + '\\right)$ is ( )', key: m(setT(c, 1)), wrong: wrong, check: chk.set(truth, crit),
-      sol: 'The tangent needs its argument to differ from $\\dfrac{\\pi}{2} + k\\pi$: $' + wArg(q(1), phi.neg()) + ' \\ne \\dfrac{\\pi}{2} + k\\pi$, so $x \\ne k\\pi + ' + F.piMul(c) + '$ ($k \\in \\mathbb{Z}$).'
+      sol: 'The tangent is undefined where its argument equals $\\dfrac{\\pi}{2} + k\\pi$. So we need $' + wArg(q(1), phi.neg()) + ' \\ne \\dfrac{\\pi}{2} + k\\pi$, that is $x \\ne k\\pi + ' + F.piMul(c) + '$ for every integer $k$. The domain is $' + setT(c, 1) + '$.'
     };
   });
 })(typeof globalThis !== 'undefined' ? globalThis : this);
