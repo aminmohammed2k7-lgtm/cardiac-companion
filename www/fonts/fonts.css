@@ -1,0 +1,25 @@
+/*
+ * The app's two fonts, shipped inside the app so it never fetches anything
+ * from the internet (safety charter rule 3). Both are variable fonts from
+ * the official google/fonts repository, converted to WOFF2 only to make
+ * them smaller; the licence for each is next to it (OFL-*.txt).
+ *
+ * Onest: Latin text and every number. Noto Sans Ethiopic: Amharic. The
+ * unicode-range lines tell the WebView which font draws which letters,
+ * the same split Google Fonts used for the website.
+ */
+@font-face {
+  font-family: 'Onest';
+  src: url('Onest.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Noto Sans Ethiopic';
+  src: url('NotoSansEthiopic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+1200-139F, U+2D80-2DDF, U+AB00-AB2F, U+1E7E0-1E7FF;
+}

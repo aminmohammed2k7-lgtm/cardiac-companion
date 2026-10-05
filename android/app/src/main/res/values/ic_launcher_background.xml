@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- the logo's dark green tile -->
+    <color name="ic_launcher_background">#0D1F1A</color>
+    <!-- the page background (--canvas), so the splash and the app match -->
+    <color name="splash_background">#EEF1EE</color>
+</resources>

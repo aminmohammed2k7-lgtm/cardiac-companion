@@ -1,0 +1,57 @@
+# On every push: run all the tests, then build a debug APK and keep it as a
+# download (Actions → this run → Artifacts → cardiac-companion-debug).
+# A debug APK is for testing only; the Play release is built and signed on
+# Amin's laptop (Phase 8). No secrets are used here.
+name: Tests and debug APK
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Tests
+        run: npm test
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Copy the app into the Android project
+        run: npx cap sync android
+
+      - name: Build the debug APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Show the final permission list
+        run: |
+          MERGED=$(find android/app/build/intermediates -name AndroidManifest.xml -path '*merged_manifest*debug*' | head -1)
+          echo "Merged manifest: $MERGED"
+          grep -o 'uses-permission[^>]*' "$MERGED" || echo "(no permissions)"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cardiac-companion-debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error

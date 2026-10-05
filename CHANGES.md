@@ -1,3 +1,59 @@
+# Cardiac Companion — version 4.0, in progress: Phase 2 (Android shell)
+
+The app now builds as an Android app with Capacitor 8 (application ID
+`org.cardiaccompanion.app`, Android 7.0 and later, built for Android 16).
+It works with no network at all, from the very first launch. The medical
+logic, the records and the health wording are unchanged.
+
+## Removed (website-only parts the Android app does not need)
+- **The service worker** (`sw.js`) and its registration. The app's files
+  are inside the app, so there is nothing to cache.
+- **The web manifest**, built at run time from the embedded icons. The
+  Android icon and splash screen replace it.
+- **"Add to home screen"** in Settings, and the browser's install prompt.
+  The app is installed from Google Play instead.
+- **The persistent-storage request** and its line in Settings ("Protected
+  from automatic clearing"). A browser idea; Phase 3 gives the app proper
+  storage of its own.
+- **Following changes made in another tab.** An app has no second tab.
+- **The developer pulse lab** (`pulse-lab.html`) moved to `tools/`; it is
+  not part of the app.
+
+## Changed
+- **Fonts ship inside the app** (`www/fonts/`, with their OFL licences)
+  instead of loading from Google Fonts. Same fonts, same fallback order.
+- **Android's back button** closes the top panel, then a form that is open
+  (as its own Cancel button would), then goes back to Today, and only then
+  leaves the app.
+- **Android's font size**: the app's text no longer grows by itself (that
+  broke the layout). Instead, on the very first launch, a large Android font
+  size (1.15 or more) switches on the app's own Large text, which the person
+  can change in Settings as before.
+- **Edge to edge**: the header, the tab bar and the panels keep clear of
+  the status bar, the navigation bar and camera cut-outs, in light and dark
+  themes; the bar icons follow the theme.
+
+## Added
+- `android/`: the Android project, with a launcher icon drawn from the
+  heartbeat logo (adaptive and themed), a plain splash screen in the page
+  colour, and a white heartbeat icon for notifications (used from Phase 4).
+- Privacy in the manifest: no cloud backup and no device-transfer copy, and
+  **no INTERNET permission**. See `docs/android/PERMISSIONS.md`.
+- `www/js/platform/android.js`: the one place the app talks to Android.
+- `.github/workflows/android.yml`: on every push, the tests run and a debug
+  APK is built and kept as a download.
+- `tests/android.test.js` and `tests/page/android.test.js`.
+
+## Not yet working in the Android app (each has its own phase)
+- Phone notifications (Phase 4); saving and sharing files — backup, CSV,
+  calendar file, printing the visit summary (Phase 5); the camera pulse is
+  off (Phase 6).
+
+## Found on the way
+- The website's 512 px icons (`ICON_512`, `ICON_MASK`) were damaged (their
+  compressed data fails its checksum), so browsers may have shown no large
+  icon. The Android icons are drawn fresh and do not use them.
+
 # Cardiac Companion — version 3.2.2 (web, 5 October 2026)
 
 The first step towards the Android app (version 4.0, see

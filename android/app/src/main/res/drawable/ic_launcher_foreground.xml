@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The app's heartbeat line (the logo from the website), drawn as a vector
+     so it is sharp at every size. Inside the 66dp safe zone of a 108dp
+     adaptive icon, so no launcher mask cuts it. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M27.4,53.25 L38.6,53.25 L45.2,37.7 L53.6,69.6 L60.2,44.25 L63.9,53.25 L80.4,53.25"
+        android:strokeColor="#3DDC97"
+        android:strokeWidth="3.6"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000" />
+</vector>
