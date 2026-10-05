@@ -11,8 +11,8 @@ about 211 move down by 1 to 52. The function names stay the same, so use
 those to find a spot after the merge.
 
 **Since Phase 1** the medical logic lives in `js/core/*.js` (the dates,
-calendars, dose plans, supply, warfarin, injection, health rules and reminder
-timing), and `index.html` is about 300 lines shorter. The line numbers below
+calendars, dose plans, supply, warfarin, injection, health rules, reminder
+timing and typo checks), and `index.html` is about 340 lines shorter. The line numbers below
 are still v3.2's. Search for the function name; where a function moved, its
 row names the file.
 
