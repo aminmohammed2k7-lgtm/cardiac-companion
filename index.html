@@ -1805,7 +1805,7 @@ const {medDueOn, warfarinDoseOn, computePlan, ensurePlans, keyInfo, doseEntry, t
   carryMarkedDoses}=CC.doses;
 const {round2, medDailyTabs, warfarinDailyTabs, daysLeft, supplyWarning, clearSupplyWarnings,
   deductSupply, restoreSupply, resetLowWarnings}=CC.supply;
-const {tabletsFor, fmtTabs, weeklyMg, dosesOn, recordDoseHistory, inrStatus, sortedInr, timeInRange,
+const {tabletsFor, fmtTabs, weeklyTabs, weeklyMg, dosesOn, recordDoseHistory, inrStatus, sortedInr, timeInRange,
   ttrGood}=CC.warfarin;
 const {injNextDue, injDaysLeft, injAdherence, injLateness, injCompletionGood}=CC.injection;
 const {weightGain, weightChange, FLAGS_NOW, FLAGS_TODAY, isSevereSymptom, symptomDays, lastMood,
@@ -3974,7 +3974,7 @@ function renderWarfarinSetup(){
   body.innerHTML=`
     <p class="hint-line">${esc(L('t-warfarinSetupHint'))}</p>
     <div class="dose-grid">${grid}</div>
-    <p class="stat-line">${esc(L('weeklyTotal'))} <b>${esc(fmtNum(weeklyMg(W.doses)))} mg</b>${W.strength?' · '+esc(L('tabsPerWeek',{n:fmtTabs(round2(warfarinDailyTabs(S)*7))})):''}</p>
+    <p class="stat-line">${esc(L('weeklyTotal'))} <b>${esc(fmtNum(weeklyMg(W.doses)))} mg</b>${weeklyTabs(W.doses, W.strength)!=null?' · '+esc(L('tabsPerWeek',{n:fmtTabs(weeklyTabs(W.doses, W.strength))})):''}</p>
     <div class="form-row2" style="margin-top:14px">
       <div class="form-field-group"><label class="field-label" for="wStrength">${esc(L('tabletStrength'))}</label>
         <select class="form-field" id="wStrength" data-ch="wStrength"><option value="">—</option>${[1,2,3,5].map(s=>`<option value="${s}"${W.strength===s?' selected':''}>${s} mg</option>`).join('')}</select></div>

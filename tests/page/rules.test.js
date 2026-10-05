@@ -58,6 +58,11 @@ const W = { enabled: true, doses: [5, 5, 5, 5, 5, 5, 5], strength: 5, time: '18:
 const ttrMark = log => { open({ warfarin: W, inrLog: log.map(([date, value], i) => ({ id: 'r' + i, date, value })) }); p.call('renderWarfarinSetup'); return (/<p class="stat-line (\w+)">Time in target range/.exec(p.html('warfarinSetupBody')) || [])[1]; };
 same('time in range: 100% is marked good, 50% is not',
   [ttrMark([['2026-09-01', 2.5], ['2026-09-11', 2.5]]), ttrMark([['2026-09-01', 1.5], ['2026-09-11', 3.5]])], ['good', 'warn']);
+const perWeek = doses => { open({ warfarin: Object.assign({}, W, { doses }) }); p.call('renderWarfarinSetup'); return (/Weekly total <b>([^<]*)<\/b>([^<]*)<\/p>/.exec(p.html('warfarinSetupBody')) || []).slice(1); };
+same('weekly total: 35 mg and 7 tablets on 5 mg tablets', perWeek([5, 5, 5, 5, 5, 5, 5]), ['35 mg', ' · 7 tablets a week']);
+same('… 5, 5, 2.5, 5, 5, 2.5, 0 mg: 25 mg, 5 tablets', perWeek([5, 5, 2.5, 5, 5, 2.5, 0]), ['25 mg', ' · 5 tablets a week']);
+// FOUND-BUGS.md #3, fixed: it used to say "6½ tablets a week" here
+same('one day of 3 mg (0.6 of a 5 mg tablet): the mg total only, no rounded tablet count', perWeek([5, 5, 5, 5, 5, 5, 3]), ['33 mg', '']);
 function dose(value, answer = true) {
   open({ warfarin: W }); p.rec.confirmAnswer = answer;
   p.run(`__el={value:${JSON.stringify(value)}}; setWarfarinDose(1, __el)`);
@@ -124,10 +129,8 @@ function retime(times) {
 }
 same('08:00 moved to 09:00: this morning\'s "taken" moves with it', retime(['09:00', '20:00']), ['a@09:00']);
 same('a time added: nothing moves', retime(['08:00', '14:00', '20:00']), ['a@08:00']);
-// Times are matched by their place in the sorted list. Moving the evening
-// 20:00 dose to 07:00 makes 07:00 first and 08:00 second, so this morning's
-// 08:00 "taken" lands on 07:00. Pinned as it is; FOUND-BUGS.md #6.
-same('known: 20:00 moved to 07:00 shifts this morning\'s 08:00 "taken" onto 07:00 (FOUND-BUGS.md #6)', retime(['07:00', '08:00']), ['a@07:00']);
+// FOUND-BUGS.md #6, fixed: moving the evening dose no longer touches this morning's mark
+same('20:00 moved to 07:00: this morning\'s 08:00 "taken" stays on 08:00', retime(['07:00', '08:00']), ['a@08:00']);
 open({ meds: [med('a', { dose: '40 mg', times: ['08:00'] })] });
 p.call('openMedForm', 'a'); p.run('medForm.dose="80 mg"; saveMedForm()');
 same('a change is saved with its date, before and after', p.get('S.meds[0].history.map(x=>[x.date, x.from.dose, x.to.dose])'), [['2026-10-03', '40 mg', '80 mg']]);

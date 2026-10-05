@@ -70,14 +70,19 @@ same('first start: only today is planned', Sx.dayPlan, { '2026-10-04': ['a@08:00
 Sx = rec({ meds: [med('a')], planDay: '2026-10-04', dayPlan: { '2026-10-04': ['kept'] } });
 D.ensurePlans(Sx);
 same('opening again the same day keeps today\'s list', Sx.dayPlan['2026-10-04'], ['kept']);
-// After more than 400 days away, only the first 400 missed days get a list.
-// Pinned as it is today; logged as docs/android/FOUND-BUGS.md #2.
+// After more than 400 days away, the most recent 400 missed days get a list
+// (FOUND-BUGS.md #2, fixed: it used to be the oldest 400).
 at(2026, 10, 3, 9);
 Sx = rec({ meds: [med('a', { created: '2024-12-01' })], planDay: '2025-01-01', dayPlan: { '2025-01-01': ['a@08:00'] } });
 D.ensurePlans(Sx);
 const planned = Object.keys(Sx.dayPlan).sort();
-same('known limit: after 640 days away, 400 missed days are filled in (2 Jan 2025 to 5 Feb 2026), then today (FOUND-BUGS.md #2)',
-  [planned.length, planned[1], planned[400], planned[401], Sx.dayPlan['2026-02-06']], [402, '2025-01-02', '2026-02-05', '2026-10-03', undefined]);
+same('after 640 days away: the most recent 400 days are filled in (29 Aug 2025 to 2 Oct 2026), then today',
+  [planned.length, planned[1], planned[400], planned[401]], [402, '2025-08-29', '2026-10-02', '2026-10-03']);
+same('… so the last week has its lists, and the oldest days (2 Jan to 28 Aug 2025) have none',
+  [Sx.dayPlan['2026-09-27'], Sx.dayPlan['2026-10-02'], Sx.dayPlan['2025-01-02'], Sx.dayPlan['2025-08-28']], [['a@08:00'], ['a@08:00'], undefined, undefined]);
+Sx = rec({ meds: [med('a', { created: '2024-12-01' })], planDay: '2025-09-01', dayPlan: {} });
+D.ensurePlans(Sx);
+same('397 days away (from 1 Sep 2025), under the limit: every missed day is filled in', [Object.keys(Sx.dayPlan).length, Sx.dayPlan['2025-09-02']], [397, ['a@08:00']]);
 
 section('4. Counting: taken, missed, not recorded, due, upcoming');
 at(2026, 10, 3, 13, 0);
@@ -164,8 +169,11 @@ same('a time added or removed: nothing moves', carry(['08:00', '20:00'], ['08:00
 same('a mark already on the new time is never overwritten', carry(['08:00'], ['09:00'], { 'a@08:00': { s: 'taken' }, 'a@09:00': { s: 'missed' } }), { 'a@08:00': { s: 'taken' }, 'a@09:00': { s: 'missed' } });
 same('other medicines\' marks are untouched', carry(['08:00'], ['09:00'], { 'a@08:00': { s: 'taken' }, 'b@08:00': { s: 'taken' } }), { 'a@09:00': { s: 'taken' }, 'b@08:00': { s: 'taken' } });
 same('nothing marked today: nothing to do', carry(['08:00'], ['09:00'], undefined), undefined);
-// Old and new times are paired by place in the sorted list: 08:00, 20:00
-// becoming 07:00, 08:00 pairs 08:00 with 07:00. FOUND-BUGS.md #6.
-same('known: 20:00 → 07:00 moves the 08:00 mark onto 07:00 (FOUND-BUGS.md #6)', carry(['08:00', '20:00'], ['07:00', '08:00'], { 'a@08:00': { s: 'taken' } }), { 'a@07:00': { s: 'taken' } });
+// FOUND-BUGS.md #6, fixed: a kept time keeps its mark; only moved times carry one
+same('20:00 → 07:00: this morning\'s 08:00 mark stays on 08:00', carry(['08:00', '20:00'], ['07:00', '08:00'], { 'a@08:00': { s: 'taken' } }), { 'a@08:00': { s: 'taken' } });
+same('… and a mark on 20:00 moves to 07:00', carry(['08:00', '20:00'], ['07:00', '08:00'], { 'a@08:00': { s: 'taken' }, 'a@20:00': { s: 'missed' } }), { 'a@08:00': { s: 'taken' }, 'a@07:00': { s: 'missed' } });
+same('both times moved an hour later: each mark moves with its own time', carry(['08:00', '20:00'], ['09:00', '21:00'], { 'a@08:00': { s: 'taken' }, 'a@20:00': { s: 'missed' } }), { 'a@09:00': { s: 'taken' }, 'a@21:00': { s: 'missed' } });
+same('three times, the middle one moved: only its mark moves', carry(['08:00', '12:00', '20:00'], ['08:00', '13:00', '20:00'], { 'a@08:00': { s: 'taken' }, 'a@12:00': { s: 'taken' } }), { 'a@08:00': { s: 'taken' }, 'a@13:00': { s: 'taken' } });
+same('one time taken out and two put in: nothing moves', carry(['08:00', '20:00'], ['08:00', '07:00', '21:00'], { 'a@20:00': { s: 'taken' } }), { 'a@20:00': { s: 'taken' } });
 
 done();

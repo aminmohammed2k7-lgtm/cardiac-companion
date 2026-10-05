@@ -34,7 +34,9 @@ p.call('markDose', 'W', 'taken');
 same('warfarin 7.5 mg on 5 mg tablets: 1½ tablets come off', p.get('[S.warfarin.supply, S.doseLog["2026-10-03"].W.ded]'), [18.5, 1.5]);
 open({ warfarin: { enabled: true, doses: [5, 5, 5, 5, 5, 5, 3], strength: 5, supply: 20, time: '18:00' } });
 p.call('markDose', 'W', 'taken');
-same('known: 3 mg on 5 mg tablets (not a whole quarter) takes nothing off (FOUND-BUGS.md #3)', p.get('[S.warfarin.supply, S.doseLog["2026-10-03"].W.ded]'), [20, 0]);
+// kept on purpose (FOUND-BUGS.md #3): the app never guesses how a dose its
+// tablets can't make was taken, so it takes nothing off
+same('3 mg on 5 mg tablets (not a whole quarter): nothing comes off the count', p.get('[S.warfarin.supply, S.doseLog["2026-10-03"].W.ded]'), [20, 0]);
 
 section('2. An INR result keeps the doses in force on its test date');
 const A = [5, 5, 5, 5, 5, 5, 5], B = [5, 2.5, 5, 2.5, 5, 2.5, 5];

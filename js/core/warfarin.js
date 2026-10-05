@@ -34,6 +34,23 @@
     return (neg?'-':'')+((whole||!f)?String(whole):'')+f;
   }
 
+  // Tablets a week: only when every day's dose is an exact whole, half or
+  // quarter tablet, the same rule as each day's figure. Otherwise null, and
+  // the card shows the weekly total in mg alone. Blank and 0 days add
+  // nothing. (Adding up each day's mg ÷ strength and rounding once showed
+  // "6½" for 6.6 tablets — FOUND-BUGS.md #3, fixed.)
+  function weeklyTabs(doses, strength){
+    if(!strength) return null;
+    let sum=0;
+    for(const v of doses||[]){
+      if(v==null || !(v>0)) continue;
+      const t=tabletsFor(v, strength);
+      if(t==null) return null;
+      sum+=t;
+    }
+    return sum;
+  }
+
   // ═══════════════════════════════════════════
   // WARFARIN AND INR
   // The app shows where a result sits against the range the doctor wrote
@@ -84,5 +101,5 @@
   // 65% or more of the time in range is shown as good.
   function ttrGood(pct){ return pct>=65; }
 
-  return { tabletsFor, fmtTabs, weeklyMg, dosesOn, recordDoseHistory, inrStatus, sortedInr, timeInRange, ttrGood };
+  return { tabletsFor, fmtTabs, weeklyTabs, weeklyMg, dosesOn, recordDoseHistory, inrStatus, sortedInr, timeInRange, ttrGood };
 }));

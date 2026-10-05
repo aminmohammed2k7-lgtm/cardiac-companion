@@ -6,6 +6,24 @@ does today, why it may be wrong, how much it matters, and the test that pins
 today's behaviour. If Amin approves a fix, that test changes in the same commit
 as the fix.
 
+## Decisions (5 October 2026)
+
+Amin asked Claude to choose ("just choose whatever you think is better for
+me"). Each choice favours patient safety and changes as little as possible;
+a clinician can revisit any of them.
+
+| # | Finding | Decision |
+|---|---|---|
+| 1 | Ethiopian date a day ahead from 11 Sep 2099 | **No change.** No effect for 70 years; pinned by a test |
+| 2 | After 400+ days away, the newest days got no dose list | **Fixed:** the most recent 400 days are planned |
+| 3 | Weekly tablet total rounded to a quarter (charter rule 1) | **Fixed:** tablets a week only when every day is an exact quarter tablet, otherwise mg only. The supply part is **kept on purpose** |
+| 4 | Unused palpitations entry | **Closed:** the guide confirms today's rule |
+| 5 | A dose first seen 3 h 1 min late is announced 30 s later | **Left for Phase 4,** which replaces this engine and follows the guide's wording |
+| 6 | Moving a time could put a "taken" mark on the wrong dose | **Fixed:** a kept time keeps its mark; only moved times carry one |
+| 7 | Changing the window resets "running low" but not "run out" | **No change:** the code is sensible; the guide's wording is broader than it needs to be |
+
+---
+
 Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
 
 ---
@@ -31,6 +49,8 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   September 2099.
 - **Options:** leave it as it is, or switch to the day-number method, which
   has no end date.
+- **Decision:** no change. Nobody using the app before September 2099 is
+  affected, and changing the calendar code carries more risk than it removes.
 - **Test:** `tests/core/calendar.test.js`, "known difference: from 11 Sep 2099…".
 
 ## 2. After more than 400 days away, the most recent missed days get no dose list
@@ -52,7 +72,10 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
 - **How much it matters:** low. It needs more than 13 months without opening
   the app. Even then, the week view shows "no data" instead of "not recorded".
 - **Options:** fill the most recent 400 days instead of the oldest, or leave it.
-- **Test:** `tests/core/doses.test.js`, "known limit: after 640 days away…".
+- **Decision: fixed.** After a long time away, `ensurePlans()` now plans the
+  most recent 400 missed days, the ones the screens show.
+- **Test:** `tests/core/doses.test.js`, "after 640 days away: the most recent
+  400 days are filled in".
 
 ## 3. The weekly tablet total is rounded to the nearest quarter (safety charter rule 1)
 
@@ -78,7 +101,16 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
 - **Options, for Amin and a clinician:** show the weekly tablet total only when
   every day is an exact quarter tablet (the same rule as the daily figure), and
   otherwise show mg only. Decide how supply should count such days.
-- **Test:** `tests/core/warfarin.test.js`, "known: counts are written to the nearest quarter…".
+- **Decision: fixed for the weekly total.** `weeklyTabs()` in
+  `js/core/warfarin.js` gives a tablet count only when every day's dose is an
+  exact whole, half or quarter tablet; otherwise the card shows "Weekly total
+  33 mg" alone, with no rounded figure. **The supply part is kept on purpose:**
+  the app never guesses how a dose its tablets can't make was taken, so it
+  takes nothing off, and that day already says "This dose doesn't match your
+  tablets — ask your pharmacist". Counting those days in "days left" makes the
+  "running low" warning come a little early, which is the safe direction.
+- **Tests:** `tests/core/warfarin.test.js` §2b and `tests/page/rules.test.js`
+  ("one day of 3 mg…: the mg total only").
 
 ## 4. Question: should palpitations at 7/10 or more also warn? (the guide answers: no)
 
@@ -96,6 +128,7 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   rule, and `severeIdx` is a version-2 leftover.
 - **Suggestion:** close this entry with no change to the medical logic. Whether
   to delete the unused strings is a tidy-up for Phase 9. Amin decides.
+- **Decision: closed,** no change. The unused strings can go in Phase 9.
 - **Test:** `tests/core/health.test.js`, "other symptoms at 10 (dizziness, palpitations…)".
 
 ## 5. Note: a dose first seen 3 hours 1 minute late is announced 30 seconds later
@@ -113,6 +146,9 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   more than 4 hours late). Never hours after the fact." In this case there is
   no first reminder and no hour between, so the code departs from the guide's
   wording while keeping within its two limits.
+- **Decision:** no change to the web version, which Phase 4 replaces. Phase 4's
+  native reminders follow the guide's wording: a second reminder only an hour
+  after a first one that was actually sent. `docs/android/REMINDERS.md` will say so.
 - **How much it matters:** low. Phase 4 replaces this timing with native
   scheduled notifications, and `docs/android/REMINDERS.md` should state the intended rule.
 - **Test:** `tests/core/reminders.test.js`, "first look at 11:01…".
@@ -143,9 +179,13 @@ inside index.html, against the app guide.
 - **Options:** carry a mark only when exactly one time changed, from that old
   time to its new time; otherwise keep marks on the times that didn't change.
   For Amin to decide.
-- **Tests:** `tests/core/doses.test.js`, "known: 20:00 → 07:00 moves the 08:00
-  mark onto 07:00", and `tests/page/rules.test.js`, the same through the
-  medicine form.
+- **Decision: fixed.** `carryMarkedDoses()` now leaves a mark on a time that
+  was kept, and pairs only the times taken out with the times put in,
+  earliest with earliest. Nothing moves when times were only added or only
+  taken out. In the example above, the 08:00 "taken" stays on 08:00.
+- **Tests:** `tests/core/doses.test.js` §8 ("20:00 → 07:00: this morning's
+  08:00 mark stays on 08:00" and four more cases) and `tests/page/rules.test.js`,
+  the same through the medicine form.
 
 ## 7. Changing the warning window resets "running low" but not "run out"
 
@@ -160,5 +200,9 @@ inside index.html, against the app guide.
   refill resets it. This is a mismatch with the guide's wording more than a
   danger.
 - **Options:** reset both flags, or change the guide's wording. For Amin to decide.
+- **Decision:** no change to the code. "Run out" was already announced once,
+  the warning window is about "running low", and a refill resets both. The
+  guide's sentence should read "refilling resets them; changing the window
+  lets 'running low' come again" in its next edition.
 - **Tests:** `tests/core/supply.test.js` and `tests/page/rules.test.js`,
   "known: 'run out' is not reset".

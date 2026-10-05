@@ -47,7 +47,12 @@
     const today=todayKey();
     const last=Sx.planDay;
     if(isDateKey(last) && last<today){
+      // At most 400 missed days are filled in. After longer away, those are
+      // the most recent 400 — the days "This week" and the visit summary
+      // show — so none of them is quietly left out (FOUND-BUGS.md #2, fixed).
       let d=addDays(last,1), guard=0;
+      const oldest=addDays(today,-400);
+      if(d<oldest) d=oldest;
       while(d<today && guard++<400){ Sx.dayPlan[d]=computePlan(Sx,d); d=addDays(d,1); }
     }
     if(last!==today || !Sx.dayPlan[today]) Sx.dayPlan[today]=computePlan(Sx,today);
@@ -99,16 +104,21 @@
     return r;
   }
 
-  // When a medicine's times are edited, a dose already marked today follows
-  // its time to the new one. The old and new times are paired by their place
-  // in the sorted list — see docs/android/FOUND-BUGS.md #6.
+  // When a medicine's times are edited, a dose already marked today stays on
+  // its time if that time was kept, and follows a time that was moved: the
+  // times taken out and the times put in are paired in order, earliest with
+  // earliest. When times were only added or only taken out, nothing moves.
+  // (Pairing the whole lists by position once put a morning "taken" mark on a
+  // moved evening dose — FOUND-BUGS.md #6, fixed.)
   function carryMarkedDoses(log, id, oldTimes, newTimes){
-    if(log && oldTimes.length===newTimes.length){
-      oldTimes.forEach((old,i)=>{
-        const a=id+'@'+old, b=id+'@'+newTimes[i];
-        if(a!==b && log[a] && !log[b]){ log[b]=log[a]; delete log[a]; }
-      });
-    }
+    if(!log) return;
+    const out=oldTimes.filter(t=>!newTimes.includes(t)).sort();
+    const added=newTimes.filter(t=>!oldTimes.includes(t)).sort();
+    if(out.length!==added.length) return;
+    out.forEach((old,i)=>{
+      const a=id+'@'+old, b=id+'@'+added[i];
+      if(log[a] && !log[b]){ log[b]=log[a]; delete log[a]; }
+    });
   }
 
   return { medDueOn, warfarinDoseOn, computePlan, ensurePlans, keyInfo, doseEntry, tally, carryMarkedDoses };

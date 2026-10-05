@@ -24,11 +24,17 @@ section('2. Writing tablet counts');
 same('whole, half, quarter, three quarters', [1, 0.5, 1.5, 0.25, 0.75, 2.25, 0].map(Wf.fmtTabs), ['1', '½', '1½', '¼', '¾', '2¼', '0']);
 same('nothing to write', [Wf.fmtTabs(null), Wf.fmtTabs(NaN)], ['', '']);
 same('a negative count keeps its sign', Wf.fmtTabs(-1.5), '-1½');
-// fmtTabs writes the nearest quarter. Exact doses never reach it unrounded
-// (tabletsFor above), but the weekly tablet total on the warfarin card does:
-// 6.6 tablets is written "6½". Logged as docs/android/FOUND-BUGS.md #3.
-same('known: counts are written to the nearest quarter — 1.99 as 2, 6.6 as 6½, 0.1 as 0 (FOUND-BUGS.md #3)',
+// fmtTabs writes the nearest quarter. Doses only ever reach it as exact
+// quarters (tabletsFor, weeklyTabs); tablets left in a box can be anything
+// typed, and are written to the nearest quarter.
+same('counts are written to the nearest quarter — 1.99 as 2, 6.6 as 6½, 0.1 as 0',
   [Wf.fmtTabs(1.99), Wf.fmtTabs(6.6), Wf.fmtTabs(0.1)], ['2', '6½', '0']);
+
+section('2b. Tablets a week: only when every day is exact');
+same('5, 5, 2.5, 5, 5, 2.5, 5 mg on 5 mg tablets: 6 a week', Wf.weeklyTabs([5, 5, 2.5, 5, 5, 2.5, 5], 5), 6);
+same('blank and 0 days add nothing; quarters add up exactly', Wf.weeklyTabs([null, 0, 1.25, 7.5, 0, null, 5], 5), 2.75);
+same('one day of 3 mg (0.6 tablet): no tablet count at all, never a rounded one (FOUND-BUGS.md #3, fixed)', Wf.weeklyTabs([5, 5, 5, 5, 5, 5, 3], 5), null);
+same('no tablet strength: no tablet count; no doses: 0', [Wf.weeklyTabs([5, 5, 5, 5, 5, 5, 5], null), Wf.weeklyTabs([null, null, null, null, null, null, null], 5)], [null, 0]);
 
 section('3. Weekly total in mg');
 same('the seven days added up; blank and 0 days add nothing', Wf.weeklyMg([5, 5, 2.5, null, 0, 5, 5]), 22.5);
