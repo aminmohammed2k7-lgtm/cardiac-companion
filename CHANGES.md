@@ -1,3 +1,37 @@
+# Cardiac Companion — version 4.0, in progress: Phase 3 (durable storage)
+
+The record moves out of the WebView's browser storage (a few MB, no safe
+saves, no spare copy) into files in the app's private folder. What the app
+shows and does is unchanged.
+
+## Changed
+- **Where the record is kept** (`www/js/platform/storage.js`), in the
+  folder `cc/` of the app's private data:
+  - `cc-state-<person>.json`: one file per person, their whole record
+  - `cc-profiles.json`: who is on the phone; `cc-global.json`: backup date,
+    Large text; `prefs.json`: language and theme; `storage.json`: the
+    storage version and when the old storage was copied in.
+- **Safe saves:** each save writes `name.tmp`, keeps the current file as
+  `name.bak`, then swaps the new one in. If the phone dies at any step, the
+  old or the new record is there on the next start, never neither. A
+  damaged file is set aside as `name.damaged.json` (never deleted) and the
+  `.bak` copy is used, with a calm notice: "Your record was opened from an
+  earlier copy".
+- **When it saves:** a quarter of a second after a change, and at once when
+  the app goes to the background or is swiped away.
+- **First start of 4.0:** records in the old storage are copied into files,
+  each one read back and compared; the old copy is kept. If the check fails,
+  the app keeps using the old storage and tries again next time.
+- Backups made by any version, including the 3.x website, restore as before.
+- In a desktop browser, nothing changes: the record stays in browser storage.
+
+## Added
+- `@capacitor/filesystem` 8.x (approved by Amin).
+- `tests/platform/storage.test.js`: saving and loading, the phone dying at
+  each step of a save, a damaged file, a missing file, the copy from the old
+  storage (and a copy that fails its check), backup → restore compared value
+  by value.
+
 # Cardiac Companion — version 4.0, in progress: Phase 2 (Android shell)
 
 The app now builds as an Android app with Capacitor 8 (application ID

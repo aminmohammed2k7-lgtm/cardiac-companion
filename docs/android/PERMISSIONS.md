@@ -15,9 +15,14 @@ in the step "Show the final permission list".
 Nothing else is asked for. `tests/android.test.js` fails if a permission is
 added without being removed, or if the camera appears.
 
-**If the phone test shows something breaks without INTERNET** (it should
-not: nothing in the app loads from the network), the permission comes back
-only in the build that needs it, and the reason is written here.
+**Confirmed on the phone (5 October 2026):** the debug APK built by GitHub,
+with no INTERNET permission, installed on Amin's Samsung M14 and every
+screen worked, with airplane mode on from the first launch. So it stays
+removed.
+
+Phase 3 adds `@capacitor/filesystem` for the record's files. It writes only
+in the app's private folder, which needs no permission, and its own
+manifest asks for none.
 
 ## Backups
 

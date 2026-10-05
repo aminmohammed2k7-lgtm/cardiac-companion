@@ -22,7 +22,7 @@ const list = dir => fs.existsSync(path.join(__dirname, dir))
   : [];
 
 const runs = [
-  ...list('.').map(file => ({ file, zone: null })),
+  ...list('.').concat(list('platform')).map(file => ({ file, zone: null })),
   ...list('core').concat(list('page')).flatMap(file => ZONES.map(zone => ({ file, zone })))
 ];
 

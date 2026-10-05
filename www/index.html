@@ -1780,6 +1780,7 @@
 <script src="js/vendor/capacitor-core.js"></script>
 <script src="js/vendor/capacitor-app.js"></script>
 <script src="js/platform/android.js"></script>
+<script src="js/platform/storage.js"></script>
 <script src="js/core/calendar.js"></script>
 <script src="js/core/seasons.js"></script>
 <script src="js/core/doses.js"></script>
@@ -2330,6 +2331,8 @@ T2.en={
   restoreBad:"That file is not a Cardiac Companion backup",
   restoreConfirm:"Replace everything on this phone with the backup from {date} ({names})?",
   saveFailed:"Couldn't save — the phone's storage may be full",
+  recoveredTitle:"Your record was opened from an earlier copy",
+  recoveredText:"Part of the record could not be read, so the app opened the copy saved just before it. Please check your most recent entries.",
   migratedTitle:"Your record was updated",
   migratedText:"Everything you entered before is still here. New: dose reminders, INR target range, warning signs and backups.",
 
@@ -2546,6 +2549,8 @@ T2.am={
   restoreBad:"ይህ ፋይል የልብ ጤና አጋር ምትኬ አይደለም",
   restoreConfirm:"በዚህ ስልክ ያለው ሁሉ በ{date} በተቀመጠው ምትኬ ({names}) ይተካ?",
   saveFailed:"ማስቀመጥ አልተቻለም — የስልኩ ማከማቻ ሞልቶ ሊሆን ይችላል",
+  recoveredTitle:"መዝገብዎ ከቀድሞ ቅጂ ተከፍቷል",
+  recoveredText:"የመዝገቡ ከፊል ሊነበብ አልቻለም፤ ስለዚህ መተግበሪያው ከዚያ በፊት የተቀመጠውን ቅጂ ከፈተ። እባክዎ የቅርብ ጊዜ መረጃዎችዎን ያረጋግጡ።",
   migratedTitle:"መዝገብዎ ታድሷል",
   migratedText:"ቀደም ብለው ያስገቡት ሁሉ እዚህ አለ። አዲስ፦ የመድሃኒት ማስታወሻ፣ የINR ዒላማ፣ የአደጋ ምልክቶችና ምትኬ።",
 
@@ -2757,6 +2762,8 @@ T2.or={
   restoreBad:"Faayiliin kun kuusaa Michuu Onnee miti",
   restoreConfirm:"Wanti bilbila kana irra jiru hundi kuusaa {date} ({names}) tiin haa bakka bu'u?",
   saveFailed:"Olkaa'uun hin danda'amne — kuusaan bilbilaa guutameera ta'a",
+  recoveredTitle:"Galmeen kee garagalcha duraa irraa banameera",
+  recoveredText:"Galmee keessaa kutaan tokko dubbifamuu hin dandeenye, kanaaf appichi garagalcha isa dura olkaa'ame bane. Maaloo galmee kee isa dhihoo mirkaneessi.",
   migratedTitle:"Galmeen kee haaromfameera",
   migratedText:"Wanti dura galchite hundi as jira. Haaraa: yaadachiisa qorichaa, daangaa INR, mallattoolee balaa fi kuusaa.",
 
@@ -3173,14 +3180,16 @@ function migrateV2(d){
 
 // ═══════════════════════════════════════════
 // STORAGE AND PROFILES
+// CCStorage (js/platform/storage.js) answers like localStorage, from memory;
+// in the Android app it keeps every value in its own file, saved safely.
 // ═══════════════════════════════════════════
 function stateKey(pid){ return STATE_PREFIX+pid; }
 function readState(pid){
-  try{ const raw=localStorage.getItem(stateKey(pid)); return raw ? normalizeState(JSON.parse(raw)) : null; }
+  try{ const raw=CCStorage.getItem(stateKey(pid)); return raw ? normalizeState(JSON.parse(raw)) : null; }
   catch(e){ return null; }
 }
 function writeState(pid, st){
-  try{ localStorage.setItem(stateKey(pid), JSON.stringify(st)); return true; }
+  try{ CCStorage.setItem(stateKey(pid), JSON.stringify(st)); return true; }
   catch(e){ return false; }
 }
 let saveWarned=false;
@@ -3190,15 +3199,15 @@ function save(){
     if(!saveWarned){ saveWarned=true; showToast(L('saveFailed')); }
   }else saveWarned=false;
 }
-function saveProfiles(){ try{ localStorage.setItem(PROFILES_KEY, JSON.stringify(profiles)); }catch(e){} }
+function saveProfiles(){ try{ CCStorage.setItem(PROFILES_KEY, JSON.stringify(profiles)); }catch(e){} }
 function loadGlobal(){
-  try{ const g=JSON.parse(localStorage.getItem(GLOBAL_KEY)||'null'); if(g && typeof g==='object') G=Object.assign(G,g); }catch(e){}
+  try{ const g=JSON.parse(CCStorage.getItem(GLOBAL_KEY)||'null'); if(g && typeof g==='object') G=Object.assign(G,g); }catch(e){}
 }
-function saveGlobal(){ try{ localStorage.setItem(GLOBAL_KEY, JSON.stringify(G)); }catch(e){} }
+function saveGlobal(){ try{ CCStorage.setItem(GLOBAL_KEY, JSON.stringify(G)); }catch(e){} }
 
 function initProfiles(){
   let p=null;
-  try{ p=JSON.parse(localStorage.getItem(PROFILES_KEY)||'null'); }catch(e){}
+  try{ p=JSON.parse(CCStorage.getItem(PROFILES_KEY)||'null'); }catch(e){}
   if(p && Array.isArray(p.list) && p.list.length){
     profiles=p;
     if(!profiles.list.some(x=>x.id===profiles.active)) profiles.active=profiles.list[0].id;
@@ -3206,7 +3215,7 @@ function initProfiles(){
   }
   profiles={list:[{id:'p1', name:''}], active:'p1'};
   let migrated=null;
-  try{ const raw=localStorage.getItem(LEGACY_KEY); if(raw) migrated=migrateV2(JSON.parse(raw)); }catch(e){ migrated=null; }
+  try{ const raw=CCStorage.getItem(LEGACY_KEY); if(raw) migrated=migrateV2(JSON.parse(raw)); }catch(e){ migrated=null; }
   writeState('p1', migrated||defaultState());
   saveProfiles();
   return {isNew:!migrated, migrated:!!migrated};
@@ -3214,11 +3223,6 @@ function initProfiles(){
 function activeProfile(){ return profiles.list.find(p=>p.id===profiles.active)||profiles.list[0]; }
 function personName(){ const p=activeProfile(); return (p && p.name) ? p.name : ''; }
 function loadActive(){ S=readState(profiles.active)||defaultState(); }
-
-// Ask the browser not to clear this record under storage pressure. Called
-// after the person saves something — a user action — which is when
-// browsers are most willing to grant it.
-
 
 // ═══════════════════════════════════════════
 // DOSE PLANS — the rules are in js/core/doses.js
@@ -4632,7 +4636,7 @@ function applyTheme(theme){
 function toggleTheme(){
   const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
   applyTheme(next);
-  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+  try{ CCStorage.setItem(THEME_KEY, next); }catch(e){}
   drawWeightChart();
 }
 
@@ -4668,7 +4672,7 @@ function deleteProfile(id){
   const p=profiles.list.find(x=>x.id===id);
   if(!p || profiles.list.length<2) return;
   if(!confirm(L('confirmDelPerson',{name:p.name||L('unnamed')}))) return;
-  try{ localStorage.removeItem(stateKey(id)); }catch(e){}
+  try{ CCStorage.removeItem(stateKey(id)); }catch(e){}
   profiles.list=profiles.list.filter(x=>x.id!==id);
   if(profiles.active===id){ profiles.active=profiles.list[0].id; loadActive(); ensurePlans(S); }
   saveProfiles();
@@ -4827,7 +4831,7 @@ const HTML_LANG={en:'en', am:'am', or:'om'};
 function setLang(lang){
   if(!T[lang]) return;
   currentLang=lang;
-  try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
+  try{ CCStorage.setItem(LANG_KEY, lang); }catch(e){}
   document.documentElement.lang=HTML_LANG[lang];
   document.querySelectorAll('.lang-pill').forEach((b,i)=>{
     const on=['en','am','or'][i]===lang;
@@ -5486,11 +5490,12 @@ function restoreFromFile(input){
     const names=data.profiles.list.map(p=>p.name||L('unnamed')).join(', ');
     if(!confirm(L('restoreConfirm',{date:when, names}))) return;
     try{
-      profiles.list.forEach(p=>{ try{ localStorage.removeItem(stateKey(p.id)); }catch(e){} });
+      profiles.list.forEach(p=>{ try{ CCStorage.removeItem(stateKey(p.id)); }catch(e){} });
       data.profiles.list.forEach(p=>{ if(data.states[p.id]) writeState(p.id, normalizeState(data.states[p.id])); });
-      localStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
+      CCStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
       G.lastBackup=todayKey(); saveGlobal();
-      location.reload();
+      // every file written before the page starts again
+      CCStorage.flush().then(()=>location.reload());
     }catch(e){ showToast(L('saveFailed')); }
   };
   reader.onerror=()=>showToast(L('restoreBad'));
@@ -5600,12 +5605,12 @@ function init(){
   loadActive();
 
   let theme='light';
-  try{ theme=localStorage.getItem(THEME_KEY)||(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); }catch(e){}
+  try{ theme=CCStorage.getItem(THEME_KEY)||(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'); }catch(e){}
   applyTheme(theme);
   document.documentElement.classList.toggle('big-text', !!G.bigText);
 
   let lang='en';
-  try{ lang=localStorage.getItem(LANG_KEY)||'en'; }catch(e){}
+  try{ lang=CCStorage.getItem(LANG_KEY)||'en'; }catch(e){}
   if(!T[lang]) lang='en';
   currentLang=lang;
 
@@ -5619,6 +5624,9 @@ function init(){
 
   if(start.isNew) addNotification(L('welcomeTitle'), L('welcomeText'), 'info');
   if(start.migrated) addNotification(L('migratedTitle'), L('migratedText'), 'info');
+  // a file could not be read and an earlier copy was used: say so, calmly
+  if(CCStorage.recovered.length) addNotification(L('recoveredTitle'), L('recoveredText'), 'info');
+  CCStorage.onError=()=>{ if(!saveWarned){ saveWarned=true; showToast(L('saveFailed')); } };
 
   setInterval(tick, 30000);
   document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tick(); });
@@ -5627,7 +5635,8 @@ function init(){
   CCPlatform.onBack(handleBack);
   setTimeout(checkReminders, 1500);
 }
-document.addEventListener('DOMContentLoaded', init);
+// the record is loaded from its files before the app starts
+document.addEventListener('DOMContentLoaded', ()=>{ CCStorage.ready().then(init); });
 
 </script>
 </body>

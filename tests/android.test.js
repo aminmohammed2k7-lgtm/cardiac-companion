@@ -60,7 +60,8 @@ for (const [from, to] of FILES) {
   const want = read(from).replace(/\n\/\/# sourceMappingURL=.*\s*$/, '\n');
   check(`${to} matches ${from} (run npm run vendor after an update)`, exists(to) && read(to) === want);
 }
-const order = ['js/vendor/capacitor-core.js', 'js/vendor/capacitor-app.js', 'js/platform/android.js', 'js/core/calendar.js'].map(s => html.indexOf(`<script src="${s}">`));
+const order = ['js/vendor/capacitor-core.js', 'js/vendor/capacitor-app.js', 'js/platform/android.js', 'js/platform/storage.js', 'js/core/calendar.js'].map(s => html.indexOf(`<script src="${s}">`));
+check('the app reads and writes its record only through CCStorage', !/localStorage\.(get|set|remove)Item\((?!'cc-theme'\))/.test(html) && /CCStorage\.ready\(\)\.then\(init\)/.test(html));
 check('Capacitor, then the platform layer, load before the app', order.every((v, i) => v > 0 && (i === 0 || v > order[i - 1])));
 
 section('4. The Android project');
