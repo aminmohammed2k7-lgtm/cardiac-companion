@@ -1,11 +1,12 @@
 /*
  * Every test file in one run — `npm test`, or:  node tests/run.js
  *
- * Runs each tests/*.test.js once, and each tests/core/*.test.js three times,
- * in three time zones. Dates must follow the phone's own calendar day
- * wherever the phone is (safety charter rule 6), so the medical logic has to
- * give the same answers in Addis Ababa (UTC+3), in UTC, and in New York,
- * which changes its clocks for daylight saving twice a year.
+ * Runs each tests/*.test.js once, and each tests/core/*.test.js and
+ * tests/page/*.test.js (the rules still inside index.html) three times, in
+ * three time zones. Dates must follow the phone's own calendar day wherever
+ * the phone is (safety charter rule 6), so the medical logic has to give the
+ * same answers in Addis Ababa (UTC+3), in UTC, and in New York, which
+ * changes its clocks for daylight saving twice a year.
  *
  * Prints one line per run, and a test file's full output only when it fails.
  * Exit code 1 if any run fails.
@@ -22,7 +23,7 @@ const list = dir => fs.existsSync(path.join(__dirname, dir))
 
 const runs = [
   ...list('.').map(file => ({ file, zone: null })),
-  ...list('core').flatMap(file => ZONES.map(zone => ({ file, zone })))
+  ...list('core').concat(list('page')).flatMap(file => ZONES.map(zone => ({ file, zone })))
 ];
 
 let failed = 0, checks = 0;

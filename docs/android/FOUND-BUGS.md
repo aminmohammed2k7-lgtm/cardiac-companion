@@ -116,3 +116,46 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
 - **How much it matters:** low. Phase 4 replaces this timing with native
   scheduled notifications, and `docs/android/REMINDERS.md` should state the intended rule.
 - **Test:** `tests/core/reminders.test.js`, "first look at 11:01…".
+
+---
+
+Found in Phase 1b (October 2026), while testing the rules that were still
+inside index.html, against the app guide.
+
+## 6. Moving a medicine's time can move a "taken" mark onto the wrong dose
+
+- **Where:** `index.html`, `saveMedForm()`, the lines after "a dose already
+  marked today follows its time when the time is moved".
+- **What happens:** when the person edits a medicine's times, a dose already
+  marked today is meant to follow its time (the guide: "Moving a time carries
+  a dose already marked today over to the new time"). The code pairs the old
+  and new times by their **place in the sorted list**, not by which time
+  changed. Take a medicine at 08:00 and 20:00, with this morning's 08:00 dose
+  marked taken. If the person moves the evening dose from 20:00 to 07:00, the
+  new list is 07:00, 08:00. The 08:00 mark moves to 07:00, and the 08:00 dose,
+  which they did take, now shows as not marked.
+- **What follows:** Today shows the 08:00 dose as due, so the person may be
+  prompted to take a dose they have already taken. Adherence counts stay the
+  same, because one mark moved and none was lost.
+- **How much it matters:** medium. It needs a time edit on a day doses are
+  already marked, with the order of the times changing. A double dose is the
+  risk; for warfarin, though, times are set separately and this does not apply.
+- **Options:** carry a mark only when exactly one time changed, from that old
+  time to its new time; otherwise keep marks on the times that didn't change.
+  For Amin to decide.
+- **Test:** `tests/page/rules.test.js`, "known: 20:00 moved to 07:00 shifts
+  this morning's 08:00 'taken' onto 07:00".
+
+## 7. Changing the warning window resets "running low" but not "run out"
+
+- **Where:** `index.html`, `setLowDays()`.
+- **What happens:** the guide says the supply warnings "fire once when days
+  left reach the chosen window … and once when the count reaches 0;
+  refilling or changing the window resets them." Changing the window (7 / 14
+  / 21 days) clears only the "running low" flag. The "run out" flag stays, so
+  a medicine that has run out is not announced again.
+- **How much it matters:** low. "Run out" was already announced once, and a
+  refill resets it. This is a mismatch with the guide's wording more than a
+  danger.
+- **Options:** reset both flags, or change the guide's wording. For Amin to decide.
+- **Test:** `tests/page/rules.test.js`, "known: 'run out' is not reset".
