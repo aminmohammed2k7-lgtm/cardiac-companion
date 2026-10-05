@@ -42,4 +42,12 @@ same('the window is the last 365 days: 4 Oct 2025 counts, 3 Oct 2025 does not',
 same('a date in the future is left out', I.injAdherence(inj({}, ['2026-10-03', '2026-10-31'])).got, 1);
 same('every 21 days: 50 days since the first gives 1 + (50 − 3) ÷ 21 → 3 expected', I.injAdherence(inj({ interval: 21 }, ['2026-08-14'])).expected, 3);
 
+section('3. Lateness, and the 80% mark');
+at(2026, 10, 3);
+const due29 = inj({ lastDate: '2026-09-01' });   // due 29 September
+same('given 3 days after it was due: 3; on the day: 0; 2 days early: −2',
+  ['2026-10-02', '2026-09-29', '2026-09-27'].map(d => I.injLateness(due29, d)), [3, 0, -2]);
+same('the first injection ever: nothing was due, so no lateness', I.injLateness(inj({}), '2026-10-01'), null);
+same('12-month completion: 80% is good, 79% is not', [I.injCompletionGood(80), I.injCompletionGood(79), I.injCompletionGood(100)], [true, false, true]);
+
 done();

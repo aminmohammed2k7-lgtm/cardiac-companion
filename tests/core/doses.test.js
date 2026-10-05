@@ -157,4 +157,15 @@ same('id@time is that medicine at that time', D.keyInfo(Sx, 'a@08:00'), { kind: 
 same('a medicine that no longer exists', D.keyInfo(Sx, 'zz@08:00').med, undefined);
 same('doseEntry: the entry, or null', [D.doseEntry(rec({ doseLog: { '2026-10-01': { W: { s: 'taken' } } } }), '2026-10-01', 'W'), D.doseEntry(rec(), '2026-10-01', 'W')], [{ s: 'taken' }, null]);
 
+section('8. A marked dose follows its medicine\'s new time');
+const carry = (oldT, newT, log) => { D.carryMarkedDoses(log, 'a', oldT, newT); return log; };
+same('08:00 → 09:00: the "taken" mark moves with it', carry(['08:00', '20:00'], ['09:00', '20:00'], { 'a@08:00': { s: 'taken' } }), { 'a@09:00': { s: 'taken' } });
+same('a time added or removed: nothing moves', carry(['08:00', '20:00'], ['08:00', '14:00', '20:00'], { 'a@08:00': { s: 'taken' } }), { 'a@08:00': { s: 'taken' } });
+same('a mark already on the new time is never overwritten', carry(['08:00'], ['09:00'], { 'a@08:00': { s: 'taken' }, 'a@09:00': { s: 'missed' } }), { 'a@08:00': { s: 'taken' }, 'a@09:00': { s: 'missed' } });
+same('other medicines\' marks are untouched', carry(['08:00'], ['09:00'], { 'a@08:00': { s: 'taken' }, 'b@08:00': { s: 'taken' } }), { 'a@09:00': { s: 'taken' }, 'b@08:00': { s: 'taken' } });
+same('nothing marked today: nothing to do', carry(['08:00'], ['09:00'], undefined), undefined);
+// Old and new times are paired by place in the sorted list: 08:00, 20:00
+// becoming 07:00, 08:00 pairs 08:00 with 07:00. FOUND-BUGS.md #6.
+same('known: 20:00 → 07:00 moves the 08:00 mark onto 07:00 (FOUND-BUGS.md #6)', carry(['08:00', '20:00'], ['07:00', '08:00'], { 'a@08:00': { s: 'taken' } }), { 'a@07:00': { s: 'taken' } });
+
 done();

@@ -124,8 +124,8 @@ inside index.html, against the app guide.
 
 ## 6. Moving a medicine's time can move a "taken" mark onto the wrong dose
 
-- **Where:** `index.html`, `saveMedForm()`, the lines after "a dose already
-  marked today follows its time when the time is moved".
+- **Where:** `js/core/doses.js`, `carryMarkedDoses()`, called from
+  `saveMedForm()` in index.html.
 - **What happens:** when the person edits a medicine's times, a dose already
   marked today is meant to follow its time (the guide: "Moving a time carries
   a dose already marked today over to the new time"). The code pairs the old
@@ -143,12 +143,14 @@ inside index.html, against the app guide.
 - **Options:** carry a mark only when exactly one time changed, from that old
   time to its new time; otherwise keep marks on the times that didn't change.
   For Amin to decide.
-- **Test:** `tests/page/rules.test.js`, "known: 20:00 moved to 07:00 shifts
-  this morning's 08:00 'taken' onto 07:00".
+- **Tests:** `tests/core/doses.test.js`, "known: 20:00 → 07:00 moves the 08:00
+  mark onto 07:00", and `tests/page/rules.test.js`, the same through the
+  medicine form.
 
 ## 7. Changing the warning window resets "running low" but not "run out"
 
-- **Where:** `index.html`, `setLowDays()`.
+- **Where:** `js/core/supply.js`, `resetLowWarnings()`, called from
+  `setLowDays()` in index.html.
 - **What happens:** the guide says the supply warnings "fire once when days
   left reach the chosen window … and once when the count reaches 0;
   refilling or changing the window resets them." Changing the window (7 / 14
@@ -158,4 +160,5 @@ inside index.html, against the app guide.
   refill resets it. This is a mismatch with the guide's wording more than a
   danger.
 - **Options:** reset both flags, or change the guide's wording. For Amin to decide.
-- **Test:** `tests/page/rules.test.js`, "known: 'run out' is not reset".
+- **Tests:** `tests/core/supply.test.js` and `tests/page/rules.test.js`,
+  "known: 'run out' is not reset".

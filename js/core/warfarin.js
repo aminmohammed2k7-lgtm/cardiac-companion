@@ -81,5 +81,8 @@
     return {pct:Math.round(inDays/total*100), days:total, n:used.size};
   }
 
-  return { tabletsFor, fmtTabs, weeklyMg, dosesOn, recordDoseHistory, inrStatus, sortedInr, timeInRange };
+  // 65% or more of the time in range is shown as good.
+  function ttrGood(pct){ return pct>=65; }
+
+  return { tabletsFor, fmtTabs, weeklyMg, dosesOn, recordDoseHistory, inrStatus, sortedInr, timeInRange, ttrGood };
 }));

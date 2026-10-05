@@ -91,4 +91,7 @@ same('a stretch that ends before the window is left out; one that crosses its st
 same('no range from the doctor: no figure', ttr([['2026-09-01', 2.5], ['2026-09-11', 2.5]], undefined, undefined, { lo: null, hi: null }), null);
 same('two results on the same day add no days', ttr([['2026-09-01', 2.5], ['2026-09-01', 2.6], ['2026-09-11', 2.5]]), { pct: 100, days: 10, n: 2 });
 
+section('7. The time-in-range mark');
+same('65% or more is shown as good; 64% is not', [Wf.ttrGood(65), Wf.ttrGood(64), Wf.ttrGood(100)], [true, false, true]);
+
 done();

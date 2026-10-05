@@ -71,5 +71,11 @@
     if(obj && typeof obj.supply==='number') obj.supply=round2(obj.supply+ded);
   }
 
-  return { round2, medDailyTabs, warfarinDailyTabs, daysLeft, supplyWarning, clearSupplyWarnings, deductSupply, restoreSupply };
+  // A new warning window (7, 14 or 21 days): "running low" may be given
+  // again. "Run out" is not reset — see docs/android/FOUND-BUGS.md #7.
+  function resetLowWarnings(Sx){
+    Sx.meds.forEach(m=>{ m.lowWarned=false; }); Sx.warfarin.lowWarned=false;
+  }
+
+  return { round2, medDailyTabs, warfarinDailyTabs, daysLeft, supplyWarning, clearSupplyWarnings, deductSupply, restoreSupply, resetLowWarnings };
 }));

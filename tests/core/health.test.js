@@ -48,4 +48,19 @@ section('4. Days with symptoms');
 const S = { symptomLog: { '2026-10-01': [{ id: 'std-0' }], '2026-10-02': [] }, legacySymptomCount: { '2026-09-30': 2, '2026-10-03': 0 } };
 same('a day with a symptom, or an old (version 2) count above 0', H.symptomDays(S, ['2026-09-30', '2026-10-01', '2026-10-02', '2026-10-03']), ['2026-09-30', '2026-10-01']);
 
+section('5. The weekly weight change: steady under 1 kg');
+const days = ['2026-09-27', '2026-09-28', '2026-09-29', '2026-09-30', '2026-10-01', '2026-10-02', '2026-10-03'];
+same('64.0 → 64.9: +0.9, steady', H.weightChange({ '2026-09-27': 64, '2026-10-03': 64.9 }, days), { diff: 0.9, steady: true });
+same('64.0 → 65.0: +1.0, not steady', H.weightChange({ '2026-09-27': 64, '2026-10-03': 65 }, days), { diff: 1, steady: false });
+same('65.0 → 64.0: −1.0, not steady; 64.0 → 63.1: −0.9, steady',
+  [H.weightChange({ '2026-09-28': 65, '2026-10-01': 64 }, days), H.weightChange({ '2026-09-28': 64, '2026-10-01': 63.1 }, days)],
+  [{ diff: -1, steady: false }, { diff: -0.9, steady: true }]);
+same('the first and the last of the days, whatever is between', H.weightChange({ '2026-09-27': 60, '2026-09-29': 70, '2026-10-02': 61 }, days), { diff: 1, steady: false });
+same('62.1 → 64.1 is 2.0 exactly, not 1.999…', H.weightChange({ '2026-09-27': 62.1, '2026-10-03': 64.1 }, days).diff, 2);
+same('one weight, or none in these days: no change', [H.weightChange({ '2026-10-03': 64 }, days), H.weightChange({ '2026-09-26': 60, '2026-10-04': 65 }, days)], [null, null]);
+
+section('6. The warning signs');
+same('seven "get help now"', H.FLAGS_NOW, ['bleedStool', 'bleedVomit', 'bleedUrine', 'bleedStop', 'stroke', 'faint', 'chest']);
+same('three "call your clinic today"', H.FLAGS_TODAY, ['throat', 'bruise', 'breathFlat']);
+
 done();

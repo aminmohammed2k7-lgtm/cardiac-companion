@@ -16,6 +16,7 @@ const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
 const APP_FILES = [
   'js/core/calendar.js', 'js/core/seasons.js', 'js/core/doses.js', 'js/core/supply.js',
   'js/core/warfarin.js', 'js/core/injection.js', 'js/core/health.js', 'js/core/reminders.js',
+  'js/core/checks.js',
   'ppg-engine.js'
 ];
 

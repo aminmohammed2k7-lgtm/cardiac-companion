@@ -69,4 +69,10 @@ b = box(null); Sp.restoreSupply(b, 1);
 same('undo on a medicine without a count changes nothing', b.supply, null);
 same('to the hundredth: 22.5 tablets a week', Sp.round2(5 / 7 * 7 * 4.5), 22.5);
 
+section('6. A new warning window');
+const Sx = { meds: [{ lowWarned: true, outWarned: true }, { lowWarned: false, outWarned: false }], warfarin: { lowWarned: true, outWarned: true } };
+Sp.resetLowWarnings(Sx);
+same('"running low" can be given again for every medicine and warfarin', [Sx.meds[0].lowWarned, Sx.meds[1].lowWarned, Sx.warfarin.lowWarned], [false, false, false]);
+same('known: "run out" is not reset (FOUND-BUGS.md #7)', [Sx.meds[0].outWarned, Sx.warfarin.outWarned], [true, true]);
+
 done();

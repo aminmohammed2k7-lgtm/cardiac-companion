@@ -99,5 +99,17 @@
     return r;
   }
 
-  return { medDueOn, warfarinDoseOn, computePlan, ensurePlans, keyInfo, doseEntry, tally };
+  // When a medicine's times are edited, a dose already marked today follows
+  // its time to the new one. The old and new times are paired by their place
+  // in the sorted list — see docs/android/FOUND-BUGS.md #6.
+  function carryMarkedDoses(log, id, oldTimes, newTimes){
+    if(log && oldTimes.length===newTimes.length){
+      oldTimes.forEach((old,i)=>{
+        const a=id+'@'+old, b=id+'@'+newTimes[i];
+        if(a!==b && log[a] && !log[b]){ log[b]=log[a]; delete log[a]; }
+      });
+    }
+  }
+
+  return { medDueOn, warfarinDoseOn, computePlan, ensurePlans, keyInfo, doseEntry, tally, carryMarkedDoses };
 }));

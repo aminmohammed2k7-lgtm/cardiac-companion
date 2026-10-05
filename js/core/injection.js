@@ -31,5 +31,12 @@
     return {got, expected, pct:Math.min(100, Math.round(got/expected*100)), since:dates[0]};
   }
 
-  return { injNextDue, injDaysLeft, injAdherence };
+  // Days from the due date to the day the injection was given: 0 on time,
+  // more when late (a late one asks why), below 0 when early; null before
+  // the first injection, when nothing was due yet.
+  function injLateness(Sx, date){ const due=injNextDue(Sx); return due ? daysBetween(due, date) : null; }
+  // 80% or more is the standard rheumatic heart disease programmes use.
+  function injCompletionGood(pct){ return pct>=80; }
+
+  return { injNextDue, injDaysLeft, injAdherence, injLateness, injCompletionGood };
 }));

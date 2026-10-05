@@ -40,6 +40,26 @@
     return {count:keys.length, lastKey, last, gain, gainDays, alert:gain>=2};
   }
 
+  // The change over a run of days: the last weight minus the first (it needs
+  // two). Under 1 kg either way counts as steady.
+  function weightChange(weightLog, days){
+    const wk=days.filter(k=>weightLog[k]!=null);
+    if(wk.length<2) return null;
+    // in tenths of a kilo, like the weight rule above
+    const diff=Math.round((weightLog[wk[wk.length-1]]-weightLog[wk[0]])*10)/10;
+    return {diff, steady:Math.abs(diff)<1};
+  }
+
+  // ═══════════════════════════════════════════
+  // WARNING SIGNS
+  // Ten fixed signs in two levels: get medical help now, or call the clinic
+  // today. Their wording (flag_<code> in index.html) follows standard
+  // warfarin and RHD patient leaflets. It is fixed text — have your clinic
+  // confirm it before release.
+  // ═══════════════════════════════════════════
+  const FLAGS_NOW=['bleedStool','bleedVomit','bleedUrine','bleedStop','stroke','faint','chest'];
+  const FLAGS_TODAY=['throat','bruise','breathFlat'];
+
   // ═══════════════════════════════════════════
   // SYMPTOMS AND MOOD
   // ═══════════════════════════════════════════
@@ -54,5 +74,5 @@
   // doctor's summary.
   function moodPositive(m){ return moodScore(m)>=3; }
 
-  return { weightGain, isSevereSymptom, symptomDays, lastMood, moodDue, moodScore, moodPositive };
+  return { weightGain, weightChange, FLAGS_NOW, FLAGS_TODAY, isSevereSymptom, symptomDays, lastMood, moodDue, moodScore, moodPositive };
 }));
