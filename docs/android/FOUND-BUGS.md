@@ -23,6 +23,10 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   1901 to 2099. The two methods agree on every day up to 10 September 2099, and
   differ on all 112 days from 11 September to 31 December 2099. (Appendix C of the
   work order says they agree through 2099; that holds only up to 10 September.)
+- **The guide:** "Calendars, clocks and fasting seasons" documents exactly this
+  rule ("Ethiopian New Year falls on 11 September (12 September when the next
+  Gregorian year is a leap year)"), so the app does what the guide says. It is
+  the documented rule itself that stops holding in 2099.
 - **How much it matters:** not at all for anyone using the app before
   September 2099.
 - **Options:** leave it as it is, or switch to the day-number method, which
@@ -41,6 +45,10 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   at all: no doses due, nothing "not recorded".
 - **Example:** last opened 1 January 2025, opened again 3 October 2026. Lists
   are filled for 2 January 2025 to 5 February 2026, and 6 February to 2 October 2026 get none.
+- **The guide** promises the opposite: "Days when the app was not opened still
+  get their plan" and "A past dose nobody marked counts as not recorded, never
+  quietly dropped" ("Doses and adherence"). So past 400 days, the app breaks
+  its own documented rule.
 - **How much it matters:** low. It needs more than 13 months without opening
   the app. Even then, the week view shows "no data" instead of "not recorded".
 - **Options:** fill the most recent 400 days instead of the oldest, or leave it.
@@ -61,6 +69,9 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   taken (`tabletsFor()` gives null, so the amount is 0). But
   `warfarinDailyTabs()` still counts that day for "days left". The tablet count
   and the days-left figure then slowly drift apart.
+- **The guide** lists "Weekly total in mg and tablets a week" without saying
+  the tablets are rounded. For warfarin supply it says marking a dose "subtracts
+  the tablets that make that day's mg dose", which doesn't hold on these days.
 - **How much it matters:** medium. It only happens when the doctor's dose
   can't be made from whole, half or quarter tablets. A patient could still read
   "6½" as an instruction.
@@ -69,7 +80,7 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   otherwise show mg only. Decide how supply should count such days.
 - **Test:** `tests/core/warfarin.test.js`, "known: counts are written to the nearest quarter…".
 
-## 4. Question: should palpitations at 7/10 or more also warn?
+## 4. Question: should palpitations at 7/10 or more also warn? (the guide answers: no)
 
 - **Where:** `index.html`, the string tables, and `isSevereSymptom()` in `js/core/health.js`.
 - **What happens:** the severe-symptom warning ("Severe chest pain or
@@ -78,8 +89,13 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   `severeIdx: [0, 1, 4]`, which adds palpitations (symptom 4), and the texts
   `symptomSevereText` and `customSymptomSevereText`. Nothing in the code uses
   any of them. They look like leftovers from version 2.
-- **How much it matters:** unclear. Today's rule matches today's warning text,
-  so this may be intended. Please check it against the app guide and a clinician.
+- **The guide** answers it: "Chest pain or shortness of breath at 7 or more
+  shows 'Severe chest pain or breathlessness is a warning sign.'" (Symptoms tab
+  and the "Health checks" table). It also says "A few version-2 strings … remain
+  in the file but are no longer shown". So today's rule is the intended v3.2
+  rule, and `severeIdx` is a version-2 leftover.
+- **Suggestion:** close this entry with no change to the medical logic. Whether
+  to delete the unused strings is a tidy-up for Phase 9. Amin decides.
 - **Test:** `tests/core/health.test.js`, "other symptoms at 10 (dizziness, palpitations…)".
 
 ## 5. Note: a dose first seen 3 hours 1 minute late is announced 30 seconds later
@@ -92,6 +108,11 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   This follows the documented windows (first at most 3 hours late, second at
   most 4 hours late). The code comment, though, says doses are "never
   [announced] hours after the fact".
+- **The guide** words the rule as "once at its time (only if no more than 3
+  hours late) and once more **an hour later** if still unmarked (only if no
+  more than 4 hours late). Never hours after the fact." In this case there is
+  no first reminder and no hour between, so the code departs from the guide's
+  wording while keeping within its two limits.
 - **How much it matters:** low. Phase 4 replaces this timing with native
   scheduled notifications, and `docs/android/REMINDERS.md` should state the intended rule.
 - **Test:** `tests/core/reminders.test.js`, "first look at 11:01…".
