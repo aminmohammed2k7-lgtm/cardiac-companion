@@ -1775,6 +1775,16 @@
 <input type="file" id="restoreInput" accept=".json,application/json" hidden onchange="restoreFromFile(this)">
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- The medical logic, in plain files that Node can test too (npm test) -->
+<script src="js/core/calendar.js"></script>
+<script src="js/core/seasons.js"></script>
+<script src="js/core/doses.js"></script>
+<script src="js/core/supply.js"></script>
+<script src="js/core/warfarin.js"></script>
+<script src="js/core/injection.js"></script>
+<script src="js/core/health.js"></script>
+<script src="js/core/reminders.js"></script>
+<script src="js/core/checks.js"></script>
 <script src="ppg-engine.js" defer></script>
 <script>
 // ═══════════════════════════════════════════
@@ -1833,7 +1843,29 @@
 
 <script>
 // ═══════════════════════════════════════════
-// ETHIOPIAN CALENDAR — real Gregorian↔Ethiopian conversion
+// MEDICAL LOGIC — in js/core, tested in Node (npm test)
+// Dates, calendars, dose plans, supply, warfarin, the injection, the health
+// rules, reminder timing and the typo checks live in js/core/*.js, so they can be tested on
+// their own. This gives their functions back the names the rest of this
+// file has always used. Words, screens and saving stay here.
+// ═══════════════════════════════════════════
+const {pad2, localDateKey, todayKey, parseDateKey, isDateKey, addDays, daysBetween, lastNDays,
+  daysFromTo, nowHHMM, toMin, isHHMM, gregorianToEthiopian, ethTime}=CC.calendar;
+const {fastingSeasonsNow, openFast, autoCloseFasting, fastingIn}=CC.seasons;
+const {medDueOn, warfarinDoseOn, computePlan, ensurePlans, keyInfo, doseEntry, tally,
+  carryMarkedDoses}=CC.doses;
+const {round2, medDailyTabs, warfarinDailyTabs, daysLeft, supplyWarning, clearSupplyWarnings,
+  deductSupply, restoreSupply, resetLowWarnings}=CC.supply;
+const {tabletsFor, fmtTabs, weeklyTabs, weeklyMg, dosesOn, recordDoseHistory, inrStatus, sortedInr, timeInRange,
+  ttrGood}=CC.warfarin;
+const {injNextDue, injDaysLeft, injAdherence, injLateness, injCompletionGood}=CC.injection;
+const {weightGain, weightChange, FLAGS_NOW, FLAGS_TODAY, isSevereSymptom, symptomDays, lastMood,
+  moodDue, moodScore, moodPositive}=CC.health;
+const {dueReminders}=CC.reminders;
+const {num, weightOk, VITAL_LIMITS, cleanVital, doseNeedsCheck, inrCheck, targetOk, injIntervalOk}=CC.checks;
+
+// ═══════════════════════════════════════════
+// ETHIOPIAN CALENDAR — month names (the conversion is in js/core/calendar.js)
 // ═══════════════════════════════════════════
 const ETHIOPIAN_MONTHS = [
   {am:'መስከረም',en:'Meskerem',om:'Fulbaana'},
@@ -1850,31 +1882,6 @@ const ETHIOPIAN_MONTHS = [
   {am:'ነሐሴ',en:'Nehase',om:'Hagayya'},
   {am:'ጳጉሜ',en:'Pagume',om:'Pagume'}
 ];
-
-function isGregorianLeap(y){ return (y%4===0 && y%100!==0) || (y%400===0); }
-
-function ethiopianNewYearGregorian(gYear){
-  const day = isGregorianLeap(gYear+1) ? 12 : 11;
-  return new Date(gYear, 8, day); // September, 0-indexed month=8
-}
-
-function gregorianToEthiopian(gDate){
-  const d = new Date(gDate.getFullYear(), gDate.getMonth(), gDate.getDate());
-  const gYear = d.getFullYear();
-  const newYear = ethiopianNewYearGregorian(gYear);
-  let ethYear, startOfEthYear;
-  if(d >= newYear){
-    ethYear = gYear - 7;
-    startOfEthYear = newYear;
-  } else {
-    ethYear = gYear - 8;
-    startOfEthYear = ethiopianNewYearGregorian(gYear - 1);
-  }
-  const diffDays = Math.round((d - startOfEthYear) / 86400000);
-  const month = Math.floor(diffDays / 30) + 1;
-  const day = (diffDays % 30) + 1;
-  return { year: ethYear, month, day, weekday: gDate.getDay() };
-}
 
 function formatEcShort(ec, lang){
   const m = ETHIOPIAN_MONTHS[ec.month-1];
@@ -2988,39 +2995,6 @@ function esc(s){
   return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
-function pad2(n){ return String(n).padStart(2,'0'); }
-// Days are keyed by the device's local date, never toISOString(): that gives
-// the UTC date, which in Ethiopia (UTC+3) is still "yesterday" until 03:00.
-function localDateKey(d){
-  const x=d||new Date();
-  return x.getFullYear()+'-'+pad2(x.getMonth()+1)+'-'+pad2(x.getDate());
-}
-function todayKey(){ return localDateKey(); }
-function parseDateKey(k){
-  const p=String(k).split('-').map(Number);
-  return new Date(p[0], p[1]-1, p[2]);
-}
-function isDateKey(k){ return typeof k==='string' && /^\d{4}-\d{2}-\d{2}$/.test(k); }
-function addDays(key, n){ const d=parseDateKey(key); d.setDate(d.getDate()+n); return localDateKey(d); }
-function daysBetween(a,b){ return Math.round((parseDateKey(b)-parseDateKey(a))/86400000); }
-function lastNDays(n, end){
-  const e=end||todayKey(), out=[];
-  for(let i=n-1;i>=0;i--) out.push(addDays(e,-i));
-  return out;
-}
-function daysFromTo(a,b){
-  const out=[];
-  if(!isDateKey(a)||!isDateKey(b)||a>b) return out;
-  let d=a, guard=0;
-  while(d<=b && guard++<800){ out.push(d); d=addDays(d,1); }
-  return out;
-}
-function nowHHMM(){ const d=new Date(); return pad2(d.getHours())+':'+pad2(d.getMinutes()); }
-function nowMin(){ const d=new Date(); return d.getHours()*60+d.getMinutes(); }
-function toMin(hhmm){ const m=/^(\d{1,2}):(\d{2})/.exec(hhmm||''); return m ? (+m[1])*60+(+m[2]) : null; }
-function isHHMM(s){ return typeof s==='string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(s); }
-function num(v){ if(v==null||v==='') return null; const n=parseFloat(String(v).replace(',','.')); return isNaN(n)?null:n; }
-function round2(n){ return Math.round(n*100)/100; }
 function fmtNum(n){ return (Math.round(n*100)/100).toString(); }
 function fmtInr(n){ return Number(n).toFixed(1); }
 function isBusy(el){
@@ -3091,12 +3065,8 @@ function fmtDual(key, withYear){ return fmtEc(key, withYear)+' · '+fmtGreg(key,
 function fmtListDate(key){ return currentLang==='en' ? fmtGreg(key) : fmtEc(key); }
 
 function ethClock(hhmm){
-  const m=toMin(hhmm);
-  if(m==null) return '';
-  const h=Math.floor(m/60), mi=m%60;
-  let eh=(h+18)%12; if(eh===0) eh=12;
-  const period = (h>=6&&h<12)?'morning' : (h>=12&&h<18)?'day' : (h>=18)?'evening' : 'night';
-  return L('eth_'+period, {h: eh+(mi?':'+pad2(mi):'')});
+  const e=ethTime(hhmm);
+  return e ? L('eth_'+e.period, {h: e.h}) : '';
 }
 function clockMode(){ return (S && S.settings && S.settings.clock) || 'both'; }
 // the main label for a time, and the second clock beside it
@@ -3111,48 +3081,6 @@ function relDays(n){
   if(n>1) return L('relInDays',{n});
   if(n===-1) return L('relYesterday');
   return L('relDaysAgo',{n:-n});
-}
-
-// ═══════════════════════════════════════════
-// RELIGIOUS FASTING SEASONS
-// Orthodox Easter by the Julian computus (valid 1900–2099), Abiy Tsom is
-// the 55 days before it; Ramadan comes from the browser's Islamic calendar.
-// ═══════════════════════════════════════════
-function orthodoxEaster(y){
-  const a=y%4, b=y%7, c=y%19;
-  const d=(19*c+15)%30;
-  const e=(2*a+4*b-d+34)%7;
-  const month=Math.floor((d+e+114)/31);
-  const day=((d+e+114)%31)+1;
-  const j=new Date(y, month-1, day);
-  j.setDate(j.getDate()+13);          // Julian → Gregorian
-  return localDateKey(j);
-}
-function islamicParts(key){
-  try{
-    const f=new Intl.DateTimeFormat('en-u-ca-islamic-umalqura',{day:'numeric',month:'numeric',year:'numeric'});
-    const p={};
-    f.formatToParts(parseDateKey(key)).forEach(x=>{ if(x.type!=='literal') p[x.type]=x.value; });
-    const m=parseInt(p.month,10), y=parseInt(p.year||p.relatedYear,10);
-    return isNaN(m)?null:{m, y};
-  }catch(e){ return null; }
-}
-function fastingSeasonsNow(){
-  const today=todayKey(), out=[];
-  const y=parseDateKey(today).getFullYear();
-  const easter=orthodoxEaster(y);
-  const lentStart=addDays(easter,-55), lentEnd=addDays(easter,-1);
-  if(today>=lentStart && today<=lentEnd) out.push({type:'orthodox', key:'lent-'+y, end:lentEnd});
-  const p=islamicParts(today);
-  if(p && p.m===9){
-    let end=today;
-    for(let i=1;i<=31;i++){
-      const q=islamicParts(addDays(today,i));
-      if(!q || q.m!==9){ end=addDays(today,i-1); break; }
-    }
-    out.push({type:'ramadan', key:'ramadan-'+p.y, end});
-  }
-  return out;
 }
 
 // ═══════════════════════════════════════════
@@ -3343,119 +3271,14 @@ function maybePersist(){
 
 
 // ═══════════════════════════════════════════
-// DOSE PLANS
-// Every day gets a frozen list of the doses that were due. A day the app
-// was never opened still gets its plan (the schedule can only change while
-// the app is open, so it is known), and its unmarked doses count as
-// "not recorded" — never quietly left out of the adherence figure.
+// DOSE PLANS — the rules are in js/core/doses.js
 // ═══════════════════════════════════════════
-function medDueOn(m, d){
-  if(m.removed && m.removed<=d) return false;
-  if(m.created && d<m.created) return false;
-  const sc=m.sched||{type:'daily'};
-  if(sc.type==='prn') return false;
-  if(sc.type==='alternate'){
-    const diff=daysBetween(sc.start||m.created||d, d);
-    return diff>=0 && diff%2===0;
-  }
-  if(sc.type==='weekdays') return (sc.days||[]).includes(parseDateKey(d).getDay());
-  return true;
-}
-function warfarinDoseOn(Sx, d){
-  const v=Sx.warfarin.doses[parseDateKey(d).getDay()];
-  return (v==null||isNaN(v)) ? null : v;
-}
-function computePlan(Sx, d){
-  const keys=[];
-  Sx.meds.forEach(m=>{ if(medDueOn(m,d)) (m.times||[]).forEach(t=>keys.push(m.id+'@'+t)); });
-  if(Sx.warfarin.enabled){ const w=warfarinDoseOn(Sx,d); if(w!=null && w>0) keys.push('W'); }
-  return keys;
-}
-function ensurePlans(Sx){
-  const today=todayKey();
-  const last=Sx.planDay;
-  if(isDateKey(last) && last<today){
-    let d=addDays(last,1), guard=0;
-    while(d<today && guard++<400){ Sx.dayPlan[d]=computePlan(Sx,d); d=addDays(d,1); }
-  }
-  if(last!==today || !Sx.dayPlan[today]) Sx.dayPlan[today]=computePlan(Sx,today);
-  Sx.planDay=today;
-}
 // after any schedule change, today's list follows the new schedule
 function refreshTodayPlan(){ const t=todayKey(); S.dayPlan[t]=computePlan(S,t); S.planDay=t; }
 
-function keyInfo(Sx, key){
-  if(key==='W') return {kind:'W', time:Sx.warfarin.time||'18:00'};
-  const i=key.lastIndexOf('@');
-  const id=key.slice(0,i), time=key.slice(i+1);
-  return {kind:'med', id, time, med:Sx.meds.find(m=>m.id===id)};
-}
-function doseEntry(Sx, d, key){ return (Sx.doseLog[d] && Sx.doseLog[d][key]) || null; }
-
-// taken / missed / not recorded over a run of days. Today's unmarked doses
-// are "due" once their time has passed and "upcoming" before that; neither
-// counts against the person until the day is over.
-function tally(Sx, days, filter){
-  const today=todayKey(), now=nowMin();
-  const r={taken:0, missed:0, notRec:0, due:0, upcoming:0, reasons:{}, perDay:{}};
-  days.forEach(d=>{
-    if(d>today) return;
-    const day={taken:0, missed:0, notRec:0, due:0, planned:0};
-    const plan=Sx.dayPlan[d];
-    if(!plan){
-      const lg=Sx.legacyAdherence[d];
-      if(lg && !filter){ day.taken+=lg.taken; day.missed+=Math.max(0,lg.total-lg.taken); day.planned+=lg.total; }
-      const w=doseEntry(Sx,d,'W');
-      if(w && (!filter || filter('W'))){ day.planned++; if(w.s==='taken') day.taken++; else day.missed++; }
-    }else{
-      plan.forEach(key=>{
-        if(filter && !filter(key)) return;
-        day.planned++;
-        const e=doseEntry(Sx,d,key);
-        if(e && e.s==='taken') day.taken++;
-        else if(e && e.s==='missed'){ day.missed++; if(e.r) r.reasons[e.r]=(r.reasons[e.r]||0)+1; }
-        else if(d<today) day.notRec++;
-        else{
-          const t=toMin(keyInfo(Sx,key).time);
-          if(t!=null && t<=now) day.due++; else r.upcoming++;
-        }
-      });
-    }
-    r.taken+=day.taken; r.missed+=day.missed; r.notRec+=day.notRec; r.due+=day.due;
-    r.perDay[d]=day;
-  });
-  r.recorded=r.taken+r.missed+r.notRec;
-  r.pct=r.recorded ? Math.round(r.taken/r.recorded*100) : null;
-  return r;
-}
-
 // ═══════════════════════════════════════════
-// SUPPLY — counted in tablets, halves included
+// SUPPLY — counted in tablets, halves included (js/core/supply.js)
 // ═══════════════════════════════════════════
-function medDailyTabs(m){
-  const sc=m.sched||{};
-  const per=(m.perDose||1)*((m.times||[]).length||1);
-  if(sc.type==='prn') return 0;
-  if(sc.type==='alternate') return per/2;
-  if(sc.type==='weekdays') return per*((sc.days||[]).length)/7;
-  return per;
-}
-function tabletsFor(doseMg, strength){
-  if(!strength || doseMg==null || doseMg<=0) return null;
-  const t=doseMg/strength, q=Math.round(t*4)/4;
-  return Math.abs(q-t)<0.001 ? q : null;
-}
-function warfarinDailyTabs(Sx){
-  const st=Sx.warfarin.strength;
-  if(!st) return 0;
-  let sum=0;
-  Sx.warfarin.doses.forEach(v=>{ if(v>0) sum+=v/st; });
-  return sum/7;
-}
-function daysLeft(supply, daily){
-  if(typeof supply!=='number' || !daily) return null;
-  return Math.floor(supply/daily+1e-9);
-}
 function supplyItems(Sx){
   const out=[];
   Sx.meds.filter(m=>!m.removed && typeof m.supply==='number').forEach(m=>{
@@ -3467,15 +3290,9 @@ function supplyItems(Sx){
   return out;
 }
 function checkSupplyWarning(item){
-  const o=item.obj;
-  if(o.supply<=0){
-    if(!o.outWarned){ o.outWarned=true; notify(L('supplyOutTitle',{name:item.name}), L('supplyOutText',{name:item.name}), 'warn', true, 'supply-out-'+item.id); }
-    return;
-  }
-  if(item.left!=null && item.left<=S.settings.lowDays && !o.lowWarned){
-    o.lowWarned=true;
-    notify(L('supplyLowTitle',{name:item.name}), L('supplyLowText',{name:item.name, days:item.left}), 'warn', true, 'supply-low-'+item.id);
-  }
+  const w=supplyWarning(item, S.settings.lowDays);
+  if(w==='out') notify(L('supplyOutTitle',{name:item.name}), L('supplyOutText',{name:item.name}), 'warn', true, 'supply-out-'+item.id);
+  else if(w==='low') notify(L('supplyLowTitle',{name:item.name}), L('supplyLowText',{name:item.name, days:item.left}), 'warn', true, 'supply-low-'+item.id);
 }
 function takeSupply(key){
   const info=keyInfo(S,key);
@@ -3486,9 +3303,8 @@ function takeSupply(key){
   }else if(info.med){
     obj=info.med; name=info.med.name; amount=info.med.perDose||1;
   }
-  if(!obj || typeof obj.supply!=='number' || obj.supply<=0 || !amount) return 0;
-  const ded=Math.min(amount, obj.supply);
-  obj.supply=round2(obj.supply-ded);
+  const ded=deductSupply(obj, amount);
+  if(!ded) return 0;
   const daily=info.kind==='W'?warfarinDailyTabs(S):medDailyTabs(obj);
   checkSupplyWarning({id:info.kind==='W'?'W':obj.id, name, obj, left:daysLeft(obj.supply,daily)});
   return ded;
@@ -3496,104 +3312,16 @@ function takeSupply(key){
 function returnSupply(key, ded){
   if(!ded) return;
   const info=keyInfo(S,key);
-  const obj=info.kind==='W'?S.warfarin:info.med;
-  if(obj && typeof obj.supply==='number') obj.supply=round2(obj.supply+ded);
-}
-
-// ═══════════════════════════════════════════
-// WARFARIN AND INR
-// The app shows where a result sits against the range the doctor wrote
-// down. It never suggests a dose.
-// ═══════════════════════════════════════════
-function weeklyMg(doses){ return round2((doses||[]).reduce((a,v)=>a+(v>0?v:0),0)); }
-function dosesOn(Sx, d){
-  const h=(Sx.warfarin.doseHistory||[]).filter(x=>x.from<=d).sort((a,b)=>a.from<b.from?-1:1);
-  return h.length ? h[h.length-1].doses : Sx.warfarin.doses;
-}
-function recordDoseHistory(){
-  const t=todayKey(), h=S.warfarin.doseHistory;
-  const doses=S.warfarin.doses.slice();
-  const last=h[h.length-1];
-  if(last && last.from===t){ last.doses=doses; }
-  else if(!last || JSON.stringify(last.doses)!==JSON.stringify(doses)) h.push({from:t, doses});
-}
-function inrStatus(v, tg){
-  if(!tg || tg.lo==null || tg.hi==null) return null;
-  if(v<tg.lo) return 'low';
-  if(v>tg.hi) return 'high';
-  return 'in';
-}
-function sortedInr(Sx){ return Sx.inrLog.slice().sort((a,b)=>a.date<b.date?-1:a.date>b.date?1:0); }
-// Rosendaal: draw a straight line between results and count the days the
-// line sits inside the target range. Gaps longer than 120 days are skipped.
-function timeInRange(Sx, fromKey, toKey){
-  const tg=Sx.warfarin.target;
-  if(tg.lo==null || tg.hi==null) return null;
-  const pts=sortedInr(Sx).filter(r=>r.date<=toKey);
-  let inDays=0, total=0; const used=new Set();
-  for(let i=1;i<pts.length;i++){
-    const a=pts[i-1], b=pts[i];
-    if(b.date<fromKey) continue;
-    const n=daysBetween(a.date,b.date);
-    if(n<=0 || n>120) continue;
-    for(let k=0;k<n;k++){
-      if(addDays(a.date,k)<fromKey) continue;
-      const v=a.value+(b.value-a.value)*k/n;
-      total++; if(v>=tg.lo && v<=tg.hi) inDays++;
-    }
-    used.add(a.id); used.add(b.id);
-  }
-  if(total<7) return null;
-  return {pct:Math.round(inDays/total*100), days:total, n:used.size};
-}
-
-// ═══════════════════════════════════════════
-// PENICILLIN INJECTION
-// ═══════════════════════════════════════════
-function injNextDue(Sx){ return Sx.injection.lastDate ? addDays(Sx.injection.lastDate, Sx.injection.interval) : null; }
-function injDaysLeft(Sx){ const n=injNextDue(Sx); return n ? daysBetween(todayKey(), n) : null; }
-// share of the injections due in the last 12 months that were given —
-// the ≥80% standard RHD programmes use. Three days' grace before a due
-// date counts against the person.
-function injAdherence(Sx){
-  const today=todayKey(), start=addDays(today,-364);
-  const dates=Sx.injection.history.map(h=>h.date).filter(d=>d>=start && d<=today).sort();
-  if(!dates.length) return null;
-  const expected=1+Math.max(0, Math.floor((daysBetween(dates[0],today)-3)/Sx.injection.interval));
-  const got=dates.length;
-  return {got, expected, pct:Math.min(100, Math.round(got/expected*100)), since:dates[0]};
+  restoreSupply(info.kind==='W'?S.warfarin:info.med, ded);
 }
 
 // ═══════════════════════════════════════════
 // SYMPTOMS, WARNING SIGNS, MOOD
 // ═══════════════════════════════════════════
-// Wording for the warning signs follows standard warfarin and RHD patient
-// leaflets. It is fixed text — have your clinic confirm it before release.
-const FLAGS_NOW=['bleedStool','bleedVomit','bleedUrine','bleedStop','stroke','faint','chest'];
-const FLAGS_TODAY=['throat','bruise','breathFlat'];
 function symptomName(entry){
   if(entry.id && entry.id.indexOf('std-')===0) return (Larr('symptoms')||[])[parseInt(entry.id.slice(4),10)]||'';
   const cs=S.customSymptoms.find(c=>c.id===entry.id);
   return entry.name || (cs?cs.name:'');
-}
-function symptomDays(Sx, days){ return days.filter(d=>(Sx.symptomLog[d]&&Sx.symptomLog[d].length) || Sx.legacySymptomCount[d]>0); }
-function lastMood(Sx){ return Sx.mood.slice().sort((a,b)=>a.date<b.date?-1:1).pop()||null; }
-function moodDue(Sx){ const m=lastMood(Sx); return !m || daysBetween(m.date, todayKey())>=14; }
-function moodScore(m){ return (m.q1||0)+(m.q2||0); }
-
-// ═══════════════════════════════════════════
-// FASTING
-// ═══════════════════════════════════════════
-function openFast(Sx){ return Sx.fasting.periods.find(p=>!p.end)||null; }
-function autoCloseFasting(Sx){
-  const f=Sx.fasting;
-  if(f.on && f.until && todayKey()>f.until){
-    const p=openFast(Sx); if(p) p.end=f.until;
-    f.on=false; f.until=null;
-  }
-}
-function fastingIn(Sx, from, to){
-  return Sx.fasting.periods.filter(p=>p.start<=to && (p.end||todayKey())>=from);
 }
 
 
@@ -3633,14 +3361,6 @@ function pillIcons(n){
   else for(let i=0;i<whole;i++) s+=pillSvg(1);
   if(frac>0) s+=pillSvg(frac);
   return '<span class="pills" aria-hidden="true">'+s+'</span>';
-}
-function fmtTabs(n){
-  if(n==null || isNaN(n)) return '';
-  const neg=n<0; n=Math.abs(n);
-  let whole=Math.floor(n+1e-9), q=Math.round((n-whole)*4);
-  if(q===4){ whole++; q=0; }
-  const f=['','¼','½','¾'][q];
-  return (neg?'-':'')+((whole||!f)?String(whole):'')+f;
 }
 function tabsLabel(n){ return n===1 ? L('tabletOne') : n<1 ? L('tabletFrac',{n:fmtTabs(n)}) : L('tabletsN',{n:fmtTabs(n)}); }
 function dialable(n){ return String(n||'').replace(/[^\d+]/g,''); }
@@ -3779,8 +3499,7 @@ function renderInjectionToday(){
     </div>`;
 }
 function injFormHtml(){
-  const due=injNextDue(S);
-  const late=(due && isDateKey(injForm.date)) ? daysBetween(due, injForm.date) : 0;
+  const late=isDateKey(injForm.date) ? (injLateness(S, injForm.date)||0) : 0;
   let h=`<div class="inline-form">
     <label class="form-label" for="injDateInput">${esc(L('injWhen'))}</label>
     <input class="form-field" type="date" id="injDateInput" value="${esc(injForm.date)}" max="${todayKey()}" data-ch="injFormDate">`;
@@ -3797,8 +3516,7 @@ function saveInjection(){
   if(!injForm) return;
   const date=injForm.date;
   if(!isDateKey(date) || date>todayKey()){ showToast(L('noFutureDate')); return; }
-  const due=injNextDue(S);
-  const late=due ? daysBetween(due, date) : null;
+  const due=injNextDue(S), late=injLateness(S, date);
   S.injection.history.push({id:uid(), date, due, late, r:(late>0?injForm.reason:null)});
   if(!S.injection.lastDate || date>=S.injection.lastDate) S.injection.lastDate=date;
   injForm=null;
@@ -3930,7 +3648,7 @@ function prnUndo(id){
 function saveWeight(){
   const input=$('weightInput');
   const kg=num(input.value);
-  if(kg==null || kg<20 || kg>300){ showToast(L('enterWeight')); return; }
+  if(!weightOk(kg)){ showToast(L('enterWeight')); return; }
   S.weightLog[todayKey()]=Math.round(kg*10)/10;
   input.value='';
   save(); maybePersist();
@@ -3939,23 +3657,14 @@ function saveWeight(){
 }
 function renderWeightFeedback(){
   const el=$('weightFeedback');
-  const keys=Object.keys(S.weightLog).filter(isDateKey).sort();
-  if(!keys.length){ el.innerHTML=''; return; }
-  const lastKey=keys[keys.length-1], last=S.weightLog[lastKey];
-  if(keys.length===1){
+  const w=weightGain(S.weightLog);   // the rule: js/core/health.js
+  if(!w){ el.innerHTML=''; return; }
+  const lastKey=w.lastKey, last=w.last, gain=w.gain, gainDays=w.gainDays;
+  if(w.count===1){
     el.innerHTML=`<div class="warn-box"><p>${esc(L('weightFirst'))}</p><p>${esc(L('weightFirstText'))}</p></div>`;
     return;
   }
-  let gain=0, gainDays=0;
-  for(let back=1; back<=3; back++){
-    const k=addDays(lastKey,-back);
-    if(S.weightLog[k]!=null){
-      // compare in tenths of a kilo: in floating point 64.1 - 62.1 is 1.9999…
-      const diff=Math.round((last-S.weightLog[k])*10)/10;
-      if(diff>gain){ gain=diff; gainDays=back; }
-    }
-  }
-  if(gain>=2){
+  if(w.alert){
     el.innerHTML=`<div class="warn-box alert"><p>${esc(L('weightGainTitle',{kg:gain.toFixed(1), days:gainDays}))}</p><p>${esc(L('weightGainText'))}</p></div>`;
     const key='weight-alert-'+lastKey;
     if(!S.notifications.some(n=>n.key===key)) addNotification(L('weightGainTitle',{kg:gain.toFixed(1), days:gainDays}), L('weightGainText'), 'warn', key);
@@ -3975,7 +3684,6 @@ const VITAL_META={
   spo2:{prompt:'promptSpo2', type:'number', id:'spo2Value', suffix:'%'},
   temp:{prompt:'promptTemp', type:'number', id:'tempValue', suffix:'°'}
 };
-const VITAL_LIMITS={pulse:{min:20,max:250,unit:''}, spo2:{min:50,max:100,unit:'%'}, temp:{min:30,max:45,unit:' °C'}};
 function openVitalEntry(kind){
   pendingVital=kind; pendingRhythm=null;
   $('vitalEntry').hidden=false;
@@ -3997,19 +3705,6 @@ function renderRhythmChips(){
     `<button class="chip${pendingRhythm===r?' active':''}" data-act="rhythm" data-r="${r}" aria-pressed="${pendingRhythm===r}">${esc(L('rh_'+r))}</button>`).join('');
 }
 function closeVitalEntry(){ pendingVital=null; $('vitalEntry').hidden=true; }
-function cleanVital(kind, raw){
-  if(kind==='bp'){
-    const m=raw.match(/^(\d{2,3})\s*\/\s*(\d{2,3})$/);
-    if(!m) return null;
-    const sys=+m[1], dia=+m[2];
-    if(sys<50 || sys>260 || dia<30 || dia>160 || sys<=dia) return null;
-    return sys+'/'+dia;
-  }
-  const lim=VITAL_LIMITS[kind];
-  const n=num(raw);
-  if(!lim || n==null || n<lim.min || n>lim.max) return null;
-  return String(kind==='temp' ? Math.round(n*10)/10 : Math.round(n));
-}
 function saveVital(){
   if(!pendingVital) return;
   const raw=$('vitalInput').value.trim();
@@ -4235,13 +3930,7 @@ function saveMedForm(){
       const before={dose:m.dose||'', per:m.perDose||1, times:(m.times||[]).slice(), sched:{type:m.sched.type||'daily', days:m.sched.type==='weekdays'?(m.sched.days||[]).slice().sort():[]}};
       if(JSON.stringify(before)!==JSON.stringify(snap)) m.history.push({date:t, from:before, to:snap});
       // a dose already marked today follows its time when the time is moved
-      const log=S.doseLog[t];
-      if(log && before.times.length===times.length){
-        before.times.forEach((old,i)=>{
-          const a=m.id+'@'+old, b=m.id+'@'+times[i];
-          if(a!==b && log[a] && !log[b]){ log[b]=log[a]; delete log[a]; }
-        });
-      }
+      carryMarkedDoses(S.doseLog[t], m.id, before.times, times);
       const schedChanged=JSON.stringify(before.sched)!==JSON.stringify(snap.sched);
       m.name=name; m.dose=snap.dose; m.perDose=f.per; m.times=times; m.purpose=String(f.purpose||'').trim();
       m.sched={type, days:snap.sched.days, start:(type==='alternate' && (schedChanged || !m.sched.start)) ? t : (m.sched.start||t)};
@@ -4301,8 +3990,7 @@ function refill(id){
   if(!obj) return;
   obj.supply=round2((typeof obj.supply==='number'?obj.supply:0)+add);
   const left=daysLeft(obj.supply, id==='W'?warfarinDailyTabs(S):medDailyTabs(obj));
-  if(left==null || left>S.settings.lowDays) obj.lowWarned=false;
-  if(obj.supply>0) obj.outWarned=false;
+  clearSupplyWarnings(obj, left, S.settings.lowDays);
   save(); maybePersist();
   renderSupply(); renderActiveAlerts();
   showToast(L('refillToast'));
@@ -4313,7 +4001,7 @@ function refill(id){
 // ═══════════════════════════════════════════
 function toggleWarfarin(){
   S.warfarin.enabled=!S.warfarin.enabled;
-  if(S.warfarin.enabled && !S.warfarin.doseHistory.length && S.warfarin.doses.some(v=>v>0)) recordDoseHistory();
+  if(S.warfarin.enabled && !S.warfarin.doseHistory.length && S.warfarin.doses.some(v=>v>0)) recordDoseHistory(S);
   refreshTodayPlan(); save(); maybePersist();
   renderAll();
 }
@@ -4338,7 +4026,7 @@ function renderWarfarinSetup(){
   body.innerHTML=`
     <p class="hint-line">${esc(L('t-warfarinSetupHint'))}</p>
     <div class="dose-grid">${grid}</div>
-    <p class="stat-line">${esc(L('weeklyTotal'))} <b>${esc(fmtNum(weeklyMg(W.doses)))} mg</b>${W.strength?' · '+esc(L('tabsPerWeek',{n:fmtTabs(round2(warfarinDailyTabs(S)*7))})):''}</p>
+    <p class="stat-line">${esc(L('weeklyTotal'))} <b>${esc(fmtNum(weeklyMg(W.doses)))} mg</b>${weeklyTabs(W.doses, W.strength)!=null?' · '+esc(L('tabsPerWeek',{n:fmtTabs(weeklyTabs(W.doses, W.strength))})):''}</p>
     <div class="form-row2" style="margin-top:14px">
       <div class="form-field-group"><label class="field-label" for="wStrength">${esc(L('tabletStrength'))}</label>
         <select class="form-field" id="wStrength" data-ch="wStrength"><option value="">—</option>${[1,2,3,5].map(s=>`<option value="${s}"${W.strength===s?' selected':''}>${s} mg</option>`).join('')}</select></div>
@@ -4365,7 +4053,7 @@ function renderWarfarinSetup(){
       <input class="form-field" id="inrValue" type="number" step="0.1" min="0.5" max="15" inputmode="decimal" placeholder="INR" aria-label="INR">
       <button class="btn btn-solid" data-act="addInr">${esc(L('t-saveInr'))}</button>
     </div>
-    ${ttr ? `<p class="stat-line ${ttr.pct>=65?'good':'warn'}">${esc(L('ttrLine'))} <b>${ttr.pct}%</b> · ${esc(L('ttrFrom',{n:ttr.n}))}</p>`
+    ${ttr ? `<p class="stat-line ${ttrGood(ttr.pct)?'good':'warn'}">${esc(L('ttrLine'))} <b>${ttr.pct}%</b> · ${esc(L('ttrFrom',{n:ttr.n}))}</p>`
           : (W.target.lo==null ? `<p class="stat-line muted">${esc(L('ttrNeedsTarget'))}</p>` : '')}
     <div id="inrList">${inr.length ? inr.map(r=>{
       const st=inrStatus(r.value, W.target);
@@ -4380,10 +4068,9 @@ function setWarfarinDose(i, el){
   const prev=S.warfarin.doses[i];
   const v=num(el.value);
   if(v!=null && v<0){ el.value=prev==null?'':prev; return; }
-  // a dose over 20 mg is far outside usual practice — most likely a typing slip
-  if(v!=null && v>20 && !confirm(L('doseCheck',{mg:fmtNum(v)}))){ el.value=prev==null?'':prev; return; }
+  if(doseNeedsCheck(v) && !confirm(L('doseCheck',{mg:fmtNum(v)}))){ el.value=prev==null?'':prev; return; }
   S.warfarin.doses[i]= v==null ? null : round2(v);
-  recordDoseHistory(); refreshTodayPlan(); save(); maybePersist();
+  recordDoseHistory(S); refreshTodayPlan(); save(); maybePersist();
   renderAll();
 }
 function addInr(){
@@ -4391,8 +4078,9 @@ function addInr(){
   const date=dEl && dEl.value, value=num(vEl && vEl.value);
   if(!isDateKey(date) || value==null){ showToast(L('enterInr')); return; }
   if(date>todayKey()){ showToast(L('noFutureDate')); return; }
-  if(value<0.5 || value>15){ showToast(L('inrCheckRange')); return; }
-  if(value>=8 && !confirm(L('inrConfirmHigh',{v:fmtInr(value)}))) return;
+  const chk=inrCheck(value);
+  if(chk==='range'){ showToast(L('inrCheckRange')); return; }
+  if(chk==='confirm' && !confirm(L('inrConfirmHigh',{v:fmtInr(value)}))) return;
   const doses=dosesOn(S,date).slice();
   S.inrLog.push({id:uid(), date, value:round2(value), doses, weekly:weeklyMg(doses)});
   if(S.warfarin.nextInr && S.warfarin.nextInr<=date) S.warfarin.nextInr=null;
@@ -4407,8 +4095,7 @@ function setTarget(which, el){
   const v=num(el.value);
   const tg=S.warfarin.target;
   const other=which==='lo'?tg.hi:tg.lo;
-  if(v!=null && (v<1 || v>5)){ showToast(L('targetCheck')); el.value=tg[which]==null?'':tg[which]; return; }
-  if(v!=null && other!=null && ((which==='lo' && v>=other) || (which==='hi' && v<=other))){ showToast(L('targetCheck')); el.value=tg[which]==null?'':tg[which]; return; }
+  if(!targetOk(which, v, other)){ showToast(L('targetCheck')); el.value=tg[which]==null?'':tg[which]; return; }
   tg[which]= v==null ? null : round2(v);
   save(); renderAll();
 }
@@ -4442,7 +4129,7 @@ function renderInjectionSetup(){
     <label class="field-label" for="injOrder" style="display:block;margin-top:14px">${esc(L('orderLabel'))}</label>
     <textarea class="form-field" id="injOrder" rows="2" style="margin-top:6px;min-height:76px" placeholder="${esc(L('orderPh'))}" data-in="injOrder">${esc(I.order||'')}</textarea>
     <button class="btn btn-ghost ico i-nurse" data-act="showNurse">${esc(L('showNurseBtn'))}</button>
-    ${adh?`<p class="stat-line ${adh.pct>=80?'good':'warn'}">${esc(L('injAdhLine',{got:adh.got, exp:adh.expected}))} <b>${adh.pct}%</b> · ${esc(L('injAdhGoal'))}</p>`:''}
+    ${adh?`<p class="stat-line ${injCompletionGood(adh.pct)?'good':'warn'}">${esc(L('injAdhLine',{got:adh.got, exp:adh.expected}))} <b>${adh.pct}%</b> · ${esc(L('injAdhGoal'))}</p>`:''}
     <div id="injHistory">${hist.length ? hist.map(h=>`<div class="log-row"><span class="log-date">${esc(fmtListDate(h.date))}</span>
       <span class="log-val" style="text-align:left">${h.late>0?esc(L('injLateBy',{n:h.late})):h.late!=null?esc(L('injOnTime')):`<span class="log-ok" role="img" aria-label="${esc(L('statusTaken'))}">${ICON_CHECK}</span>`}${h.r?`<span class="log-sub">${esc(L('r_'+h.r))}</span>`:''}</span>
       <button class="log-del" data-act="delInj" data-id="${esc(h.id)}" aria-label="${esc(L('removeLabel'))}">${ICON_X}</button></div>`).join('')
@@ -4606,7 +4293,7 @@ function renderSymptoms(){
   if(deferIfBusy(ed, renderSymptoms)) return;
   ed.innerHTML=today.map(x=>{
     const name=symptomName(x);
-    const severe=(x.id==='std-0'||x.id==='std-1') && x.sev>=7;
+    const severe=isSevereSymptom(x);
     return `<div class="sym-edit-item">
       <div class="sym-edit-top"><span>${esc(name)}</span><span data-sev-label="${esc(x.id)}">${x.sev?`<b>${x.sev}</b>/10`:esc(L('howBadShort'))}</span></div>
       <input type="range" min="1" max="10" value="${x.sev||5}" data-in="symSevLive" data-ch="symSev" data-id="${esc(x.id)}" aria-label="${esc(L('howBad'))}: ${esc(name)}">
@@ -4663,7 +4350,7 @@ function renderMood(){
       ${last&&moodDraft.open?`<button class="text-btn" data-act="moodCancel">${esc(L('t-cancelVital'))}</button>`:''}`;
     return;
   }
-  const pos=moodScore(last)>=3;
+  const pos=moodPositive(last);
   body.innerHTML=`<div class="mood-result${pos?' pos':''}"><b>${esc(L(pos?'moodPosTitle':'moodNegTitle'))}</b>${esc(L(pos?'moodPosText':'moodNegText'))}</div>
     <p class="stat-line">${esc(L('moodLast',{date:fmtListDate(last.date)}))} · ${esc(L('moodNext',{date:fmtDual(addDays(last.date,14))}))}</p>
     <button class="text-btn" data-act="moodRetake">${esc(L('moodRetake'))}</button>`;
@@ -4706,11 +4393,8 @@ function renderSummaryTab(){
   const week=lastNDays(7), r=tally(S, week);
   $('ringAdherence').textContent = r.pct==null ? '—' : r.pct+'%';
   $('ringAdherenceSub').textContent = r.notRec ? L('adhSubNotRec',{n:r.notRec}) : L('t-adherenceSub');
-  const wk=week.filter(k=>S.weightLog[k]!=null);
-  if(wk.length>=2){
-    const diff=Math.round((S.weightLog[wk[wk.length-1]]-S.weightLog[wk[0]])*10)/10;
-    $('ringWeight').textContent=(diff>0?'+':'')+diff.toFixed(1);
-  }else $('ringWeight').textContent='—';
+  const wc=weightChange(S.weightLog, week);
+  $('ringWeight').textContent = wc ? (wc.diff>0?'+':'')+wc.diff.toFixed(1) : '—';
   $('ringSymptoms').textContent=symptomDays(S, week).length;
   drawWeightChart(); renderInsights(); renderVisit(); renderWeekTable();
 }
@@ -4778,12 +4462,11 @@ function renderInsights(){
     if(r.notRec) out.push({cls:'warn', text:L('insightNotRec',{n:r.notRec})});
     out.push(r.missed ? {cls:'warn', text:L('insightMissedDoses',{count:r.missed})} : {cls:'good', text:L('insightNoMissedDoses')});
   }
-  const wk=week.filter(k=>S.weightLog[k]!=null);
-  if(wk.length>=2){
-    const diff=Math.round((S.weightLog[wk[wk.length-1]]-S.weightLog[wk[0]])*10)/10;
-    if(Math.abs(diff)<1) out.push({cls:'good', text:L('insightWeightStable')});
-    else if(diff>0) out.push({cls:'warn', text:L('insightWeightUp',{kg:diff.toFixed(1)})});
-    else out.push({cls:'', text:L('insightWeightDown',{kg:Math.abs(diff).toFixed(1)})});
+  const wc=weightChange(S.weightLog, week);
+  if(wc){
+    if(wc.steady) out.push({cls:'good', text:L('insightWeightStable')});
+    else if(wc.diff>0) out.push({cls:'warn', text:L('insightWeightUp',{kg:wc.diff.toFixed(1)})});
+    else out.push({cls:'', text:L('insightWeightDown',{kg:Math.abs(wc.diff).toFixed(1)})});
   }else out.push({cls:'', text:L('insightNoWeight')});
   const sd=symptomDays(S, week).length;
   out.push(sd ? {cls:'warn', text:L('insightSymptoms',{count:sd})} : {cls:'good', text:L('insightNoSymptoms')});
@@ -4985,7 +4668,7 @@ function setContact(field, v){ S.contacts[field]=String(v||'').trim(); save(); r
 function setClock(m){ S.settings.clock=m; save(); renderAll(); }
 function setLowDays(n){
   S.settings.lowDays=n;
-  S.meds.forEach(m=>{ m.lowWarned=false; }); S.warfarin.lowWarned=false;
+  resetLowWarnings(S);
   save(); renderAll();
 }
 function setBigText(on){
@@ -5288,7 +4971,7 @@ const CH={
   tgHi:(d,el)=>setTarget('hi', el),
   nextInr:(d,el)=>{ S.warfarin.nextInr=isDateKey(el.value)?el.value:null; save(); renderAll(); },
   injInterval:(d,el)=>{ if(el.value==='custom'){ if([14,21,28].includes(S.injection.interval)) S.injection.interval=30; } else S.injection.interval=parseInt(el.value,10)||28; save(); renderAll(); },
-  injCustom:(d,el)=>{ const n=parseInt(el.value,10); if(n>=7 && n<=60){ S.injection.interval=n; save(); renderAll(); } else showToast(L('customDaysCheck')); },
+  injCustom:(d,el)=>{ const n=parseInt(el.value,10); if(injIntervalOk(n)){ S.injection.interval=n; save(); renderAll(); } else showToast(L('customDaysCheck')); },
   injLast:(d,el)=>{ S.injection.lastDate=isDateKey(el.value)&&el.value<=todayKey()?el.value:null; save(); renderAll(); },
   injFormDate:(d,el)=>{ if(injForm){ injForm.date=el.value||todayKey(); renderInjectionToday(); } },
   mfTime:(d,el)=>{ if(medForm && isHHMM(el.value)){ medForm.times[+d.i]=el.value; renderMedForm(); } },
@@ -5427,7 +5110,7 @@ function summaryBlocks(audience, from, to){
     const I=S.injection, next=injNextDue(S), left=injDaysLeft(S), adh=injAdherence(S);
     b.push({t:'head', v:L('t-injSetup')});
     b.push({t:'body', v:L('injEveryDays',{n:I.interval})+' · '+L('t-injLast')+': '+(I.lastDate?fmtGreg(I.lastDate,true):L('noneRecorded'))+(next?' · '+L('nurseDue',{date:fmtGreg(next,true)}):'')+(left!=null&&left<0?' ('+L('injLateBy',{n:-left})+')':'')});
-    if(adh) b.push({t:'pair', k:L('sumInj12'), v:adh.got+' / '+adh.expected+' ('+adh.pct+'%)', flag:adh.pct<80});
+    if(adh) b.push({t:'pair', k:L('sumInj12'), v:adh.got+' / '+adh.expected+' ('+adh.pct+'%)', flag:!injCompletionGood(adh.pct)});
     I.history.filter(h=>h.late>0 && h.date>=addDays(to,-364)).forEach(h=>b.push({t:'item', v:D(h.date)+' — '+L('injLateBy',{n:h.late})+(h.r?' ('+L('r_'+h.r)+')':''), flag:true}));
     if(I.order) b.push({t:'pair', k:L('nurseOrder'), v:I.order});
   }
@@ -5455,7 +5138,7 @@ function summaryBlocks(audience, from, to){
     const moods=S.mood.filter(m=>m.date>=from && m.date<=to);
     if(moods.length){
       b.push({t:'head', v:L('sumMood')});
-      moods.forEach(m=>{ const sc=moodScore(m); b.push({t:'item', v:D(m.date)+' — PHQ-2 '+sc+'/6'+(sc>=3?' — '+L('sumMoodPos'):''), flag:sc>=3}); });
+      moods.forEach(m=>{ const sc=moodScore(m), pos=moodPositive(m); b.push({t:'item', v:D(m.date)+' — PHQ-2 '+sc+'/6'+(pos?' — '+L('sumMoodPos'):''), flag:pos}); });
     }
   }
 
@@ -5463,9 +5146,9 @@ function summaryBlocks(audience, from, to){
   const wk=days.filter(k=>S.weightLog[k]!=null);
   b.push({t:'head', v:L('t-weightChange')});
   if(wk.length){
-    const diff=Math.round((S.weightLog[wk[wk.length-1]]-S.weightLog[wk[0]])*10)/10;
+    const wc=weightChange(S.weightLog, days);
     b.push({t:'body', v:wk.map(k=>D(k)+' '+S.weightLog[k]+' kg').join(',  ')});
-    if(wk.length>1) b.push({t:'pair', k:L('sumWeightChange'), v:(diff>0?'+':'')+diff.toFixed(1)+' kg'});
+    if(wc) b.push({t:'pair', k:L('sumWeightChange'), v:(wc.diff>0?'+':'')+wc.diff.toFixed(1)+' kg'});
   }else b.push({t:'body', v:L('noneRecorded')});
   const vd=days.filter(k=>(S.vitals[k]||[]).length);
   if(vd.length){
@@ -5888,55 +5571,29 @@ function testNotification(){
 // Runs every 30 seconds while the page is alive and whenever it comes back
 // to the screen. Browsers stop pages that are closed, so this is the
 // "app is open" layer; the calendar file is the "app is closed" layer.
-// Each dose is announced once at its time and once more an hour later if
-// still unmarked — and never hours after the fact.
+// When each reminder is due is decided in js/core/reminders.js; this puts
+// it into words and sends it.
 // ═══════════════════════════════════════════
 function checkRemindersFor(Sx, who){
-  let changed=false;
-  const t=todayKey(), now=nowMin();
-  if(Sx.planDay!==t){ ensurePlans(Sx); changed=true; }
-  const fired=Sx.fired[t]=Sx.fired[t]||{};
-  const byTime={};
-  (Sx.dayPlan[t]||[]).forEach(key=>{
-    if(doseEntry(Sx,t,key)) return;
-    const info=keyInfo(Sx,key), m=toMin(info.time);
-    if(m==null || m>now) return;
-    const late=now-m, count=fired[key]||0;
-    let send=false;
-    if(count===0){ send=late<=180; fired[key]=1; changed=true; }
-    else if(count===1 && late>=60){ send=late<=240; fired[key]=2; changed=true; }
-    if(send){
-      const name=key==='W'?withLang(currentLang,()=>L('warfarinName')):(info.med?info.med.name:'');
-      (byTime[info.time]=byTime[info.time]||[]).push(name);
-    }
-  });
-  Object.keys(byTime).forEach(tm=>{
-    const names=byTime[tm];
+  const r=dueReminders(Sx), t=r.today;
+  Object.keys(r.byTime).forEach(tm=>{
+    const names=r.byTime[tm].map(key=>{
+      const info=keyInfo(Sx,key);
+      return key==='W'?withLang(currentLang,()=>L('warfarinName')):(info.med?info.med.name:'');
+    });
     const title=L('remTitle',{time:tm})+(who?' — '+who:'');
     const body=Sx.settings.calNames ? names.join(', ') : L('remBody',{n:names.length});
     systemNotify(title, body, 'cc-dose-'+tm+'-'+t);
   });
-  // once a day, after 7 in the morning: injection, INR test, clinic visit
-  if(now>=7*60 && !fired._daily){
-    fired._daily=1; changed=true;
+  const d=r.daily;
+  if(d){
     const items=[];
-    if(Sx.injection.enabled && Sx.injection.lastDate){
-      const n=daysBetween(t, addDays(Sx.injection.lastDate, Sx.injection.interval));
-      if(n<=1) items.push(n<0?L('dailyInjLate',{n:-n}):n===0?L('injDueToday'):L('dailyInjTomorrow'));
-    }
-    if(Sx.warfarin.enabled && Sx.warfarin.nextInr){
-      const n=daysBetween(t, Sx.warfarin.nextInr);
-      if(n<=1 && n>=-7) items.push(n<0?L('inrOverdueTitle'):n===0?L('inrTodayTitle'):L('dailyInrTomorrow'));
-    }
-    if(Sx.visits.next){
-      const n=daysBetween(t, Sx.visits.next);
-      if(n===0||n===1) items.push(L('visitSoonTitle',{when:relDays(n)}));
-    }
+    if(d.inj!=null) items.push(d.inj<0?L('dailyInjLate',{n:-d.inj}):d.inj===0?L('injDueToday'):L('dailyInjTomorrow'));
+    if(d.inr!=null) items.push(d.inr<0?L('inrOverdueTitle'):d.inr===0?L('inrTodayTitle'):L('dailyInrTomorrow'));
+    if(d.visit!=null) items.push(L('visitSoonTitle',{when:relDays(d.visit)}));
     if(items.length) systemNotify(L('dailyTitle')+(who?' — '+who:''), items.join(' · '), 'cc-daily-'+t);
   }
-  // keep a week of reminder bookkeeping
-  Object.keys(Sx.fired).forEach(k=>{ if(k<addDays(t,-7)){ delete Sx.fired[k]; changed=true; } });
-  return changed;
+  return r.changed;
 }
 function checkReminders(){
   if(!profiles) return;

@@ -9,8 +9,16 @@
 // reminders come from the open page (see checkReminders in index.html) and
 // from the calendar file the app exports.
 
-const CACHE = 'cardiac-companion-v6';
+const CACHE = 'cardiac-companion-v7';
 const FONT_HOSTS = ['fonts.googleapis.com', 'fonts.gstatic.com'];
+// the files the page loads besides itself: the medical logic and the camera
+// pulse engine
+const APP_FILES = [
+  'js/core/calendar.js', 'js/core/seasons.js', 'js/core/doses.js', 'js/core/supply.js',
+  'js/core/warfarin.js', 'js/core/injection.js', 'js/core/health.js', 'js/core/reminders.js',
+  'js/core/checks.js',
+  'ppg-engine.js'
+];
 
 self.addEventListener('install', () => {
   self.skipWaiting();
@@ -28,8 +36,9 @@ self.addEventListener('activate', event => {
     const pages = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
     await Promise.all(pages.map(p =>
       cache.add(new Request(p.url.split('#')[0], { cache: 'reload' })).catch(() => {})));
-    // the camera pulse engine, so measuring works offline too
-    await cache.add(new Request(new URL('ppg-engine.js', self.registration.scope), { cache: 'reload' })).catch(() => {});
+    // and the files it needs, so the app (and measuring) works offline too
+    await Promise.all(APP_FILES.map(f =>
+      cache.add(new Request(new URL(f, self.registration.scope), { cache: 'reload' })).catch(() => {})));
     await self.clients.claim();
   })());
 });

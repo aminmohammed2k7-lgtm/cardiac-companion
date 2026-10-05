@@ -1,3 +1,30 @@
+# Cardiac Companion — version 3.2.2 (web, 5 October 2026)
+
+The first step towards the Android app (version 4.0, see
+`docs/claude-code-order.pdf`). The medical logic now lives in `js/core/`
+with automated tests, and three small fixes were made. Records and wording
+are unchanged. Deploy `index.html`, `sw.js`, `ppg-engine.js` and the
+`js/core/` folder together; the service-worker cache is bumped to v7.
+
+## Fixed
+- **Moving a medicine's time** no longer moves today's "taken" mark onto
+  another dose. With doses at 08:00 and 20:00 and the 08:00 one taken,
+  moving 20:00 to 07:00 used to show 07:00 as taken and 08:00 as not.
+- **Tablets a week** on the warfarin card are shown only when every day's
+  dose is an exact whole, half or quarter tablet; otherwise only the mg
+  total. A week with one 3 mg day on 5 mg tablets used to say "6½ tablets a
+  week" for 6.6 — a rounded figure the app must never show.
+- **After more than 400 days away**, the most recent missed days get their
+  dose lists (it used to be the oldest), so "This week" and the visit
+  summary count unmarked doses as "not recorded" again.
+
+## Added
+- `npm test` runs every check: the calendars against an independent method
+  for every day 1901–2099, every rule in the app guide's "Features and
+  logic", all three languages, and the earlier design and camera tests.
+- `docs/android/`: the API map, the v3.2 baseline, the suspected bugs and
+  what was decided (`FOUND-BUGS.md`), and which test covers which rule.
+
 # Cardiac Companion — version 3.2
 
 A plainer look, so the app reads like a medical record rather than an app
