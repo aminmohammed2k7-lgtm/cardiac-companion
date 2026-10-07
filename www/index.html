@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#EEF1EE">
-<meta name="mobile-web-app-capable" content="yes">
-<link id="manifestLink" rel="manifest">
 <title>Cardiac Companion</title>
 <!--
   CARDIAC COMPANION — a patient's own medicine record.  Version 3.
@@ -1687,13 +1685,11 @@
       <div class="settings-row stack">
         <span class="settings-row-label" data-t="t-settingsStorage">Storage</span>
         <span class="settings-row-sub" data-t="t-settingsStorageValue">On this phone only — nothing is sent anywhere</span>
-        <span class="settings-row-sub" id="persistStatus"></span>
         <span class="settings-row-sub" id="backupStatus"></span>
       </div>
       <button class="settings-row ico i-download" onclick="backupNow()" data-t="backupBtn">Back up now</button>
       <button class="settings-row ico i-upload" onclick="$('restoreInput').click()" data-t="restoreBtn">Restore from a backup</button>
       <button class="settings-row ico i-download" onclick="exportCsv()" data-t="t-exportCsv">Export data (CSV)</button>
-      <button class="settings-row ico i-device" onclick="triggerInstall()" data-t="t-install">Add to home screen</button>
     </div>
   </div>
 
@@ -1798,51 +1794,13 @@
 <script src="ppg-engine.js" defer></script>
 <script>
 // ═══════════════════════════════════════════
-// PWA MANIFEST — built at runtime from embedded icons so the whole
-// app still ships as a single .html file. Registered as early as
-// possible so Chrome's installability check picks it up.
+// APP ICON — the small icon in-page notifications use until Phase 4
+// gives the app native ones. The launcher icon and splash are Android
+// resources now (android/app/src/main/res), so there is no web manifest.
 // ═══════════════════════════════════════════
 (function(){
   var ICON_192 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFY0lEQVR4nO3du3kbRxSA0QU/p2pAiVpgD66LketiD26BiRpgAXJAUeZjAe5jHnfmnpPZAbAA7j8zAAnxsgTz7cf3X72vgXqen35eel/DW10vxrCzLH2jaH7Hhp5bWsfQ7M4MPnu0CqH6nRh8zqgdQrUbN/iUVCuE4jdq8KmpdAh3JW/M8FNb6RkrUpPBp4cSu8HpHcDw00uJ2TsVgOGnt7MzeDgAw08UZ2bxUACGn2iOzuTuAAw/UR2ZzV0BGH6i2zujmwMw/Ixiz6xuCsDwM5qtM/tlAIafUW2Z3aK/CgGjuRmA1Z/RfTXDVwMw/Mzi1iw7ApHaagBWf2ZzbabtAKT2KQCrP7Nam207AKm9C8Dqz+w+zrgdgNT+BGD1J4u3s24HIDUBkNrdsjj+kM/rzNsBSE0ApCYAUhMAqV28ASYzOwCpCYDUBEBqAiA1AZCaAEhNAKQmAFITAKkJgNQEQGoCIDUBkNpfvS8govvHh3f//e/f/3S6EmqzA3zwcfiv/T/m4PsAb2wZdLvBXOwApCaA37YecxyH5iIAUhMAqQlgcazJTAAHCGYeAiC19AFYzXNLH8BRwpmDAEgtdQBWcVIHcJaAxicAUksbgNWbZfGFmOH58s45aXeAUnruJL68c17KAGYYkluPYYbH10rKALaKepww4OUI4Io9wx9xICNeU0TpAhh9MEa//mjSBbBX1GPQFmL5mgBWjDz07COAQqKutlGvK4pUAYw+DKNff0SpAjhq9CORcK4TwAdnht2gjSdNAIaTNWkCOKv3MehswBaAdQJ4o8SQG7SxpAjAUL7wPHyWIoBSeh+DKE8Av0Ue7pIrt13gvekD6PGCG7JxTB9AFpF3sMgEsOwbnhkGzQ71v6kDiPZ93dq3M0OcrU0dANfZBV6kD+DIqhltpY12PSOZNoCsK9zo32Vurek/jJXtCb9/fAj/26URX5OWO1qTHeD+8SH9E93S6I+r5bxMewSqLcqQRbmOUVUPIOLK31Kvxz9DGC2eu7Q7QPQByb5wtJI2gBKiRxT9+iKoHkDEF6H1NdVazSM+tyW1eHyp/j7A7AOz5vUxO1Ktu3z78f1Xqzvr+SLUHP4tj6vGD6iOPKYRQmi5UDXdATKuwNF4Dd7zJriR0iuvQS5DAKQmgAJKrsYjnNFnIoCGDHc8AhiQ8385AijEUI5JAIE4IrUngMYMeSwCGIyjVlkCKMhwjkcAHawdgxyN+hAAqQmgsJrHIEes8gTQiSNPDAIIQAz9CKACR5VxCGAQoqpDAB05+vQngM5E0JcAKnFkGYMABiCmegRAagKoyModnwBITQDB2UXqEgCpCaAyK3hsAiA1AQRm96hPAA0Y5LgEQGoCIDUBNLL3GOTY1IYASE0ApCYAUhNAQ1vP9c7/7QiA1Jr+nWBeXPsesJW/PTtAB2uDbvj7sAOQmh2A1ARAagIgNQGQmgBITQCkJgBSEwCpCYDUBEBqAiA1AZCaAEjt7vnp56X3RUAPz08/L3YAUhMAqQmA1ARAanfL8vJmoPeFQEuvM28HIDUBkNqfAByDyOLtrNsBSO1dAHYBZvdxxu0ApPYpALsAs1qbbTsAqa0GYBdgNtdm2g5AalcDsAswi1uzfHMHEAGj+2qGHYFI7csA7AKMasvsbtoBRMBots7s5iOQCBjFnlnd9R5ABES3d0Z3vwkWAVEdmc1DnwKJgGiOzuThj0FFQBRnZvHUzwFEQG9nZ/D0D8JEQC8lZq/o8Pqr87RQctEt+qsQdgNqKz1j1QbWbkBJtRbX6iu2EDij9qmi2ZFFCOzR6jjd/MwuBG5p/T6y65tWMbAsfT88CfepjSjmFu2Twv8AvcqrTVdGoSUAAAAASUVORK5CYII=";
-  var ICON_512 = "data:image/png;base64,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";
-  var ICON_MASK = "data:image/png;base64,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sw8C+MfKW/ICAMZiBwAAggQAAAQJABjIqtvkq74umJkAAIAgAQAAQQIA2JXtfxiTAIDBGJjAEQQAAAQJAAAIEgAwoFUeA6zyOmBFAgAAggQAAAQJABiU7XNgTwIA2IWAgbEJAAAIEgAAECQAYGC20YG9CABgc8IFxicAACBIAMDg3E0DexAAABAkAIBN2bGAOQgAmIChCmxNAABAkAAAgCABAGzGowqYhwCASRiuwJYEAAAECQAACBIAMJGRHwOMfGzA7wQAAAQJAAAIEgDA3Wz/w3wEAEzGsAW2IAAAIEgAAECQAIAJjfQYYKRjAS4nAAAgSAAAQJAAgEnZegfuIQCAm4kQmJcAAIAgAQAAQQIAJmYLHriVAABuIj5gbgIAAIIEAEzOnThwCwEAAEECALiaXQeYnwCABRjIwLUEAAAECQAACBIAwFU8boA1CABYhMEMXEMAABcTGbAOAQALMaCBSwkAWMxeESAuYC0CAACCBAAsaOu7dXf/sB4BAIvaamgb/rAmAQALu3d4G/6wrsenj88vZx8EsL9P375c/HcNflifAICY90LA4IcOAQAAQb4DAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAEPR/g26qJEd8YGIAAAAASUVORK5CYII=";
-
-  var manifest = {
-    name: "Cardiac Companion",
-    short_name: "Cardiac",
-    description: "Cardiac health & medication companion",
-    start_url: "./",
-    scope: "./",
-    display: "standalone",
-    orientation: "portrait",
-    background_color: "#EEF1EE",
-    theme_color: "#EEF1EE",
-    icons: [
-      {src: ICON_192, sizes: "192x192", type: "image/png", purpose: "any"},
-      {src: ICON_512, sizes: "512x512", type: "image/png", purpose: "any"},
-      {src: ICON_MASK, sizes: "512x512", type: "image/png", purpose: "maskable"}
-    ]
-  };
-
-  try{
-    // The manifest is served from a blob: URL, and relative URLs such as "./"
-    // cannot be resolved against a blob: base — Chrome discards them as invalid.
-    // Use absolute URLs derived from this page instead.
-    var pageUrl = location.href.split('#')[0].split('?')[0];
-    manifest.start_url = pageUrl;
-    manifest.scope = new URL('./', pageUrl).href;
-    var manifestBlob = new Blob([JSON.stringify(manifest)], {type: 'application/manifest+json'});
-    document.getElementById('manifestLink').href = URL.createObjectURL(manifestBlob);
-  }catch(e){ /* Blob/URL unsupported — install prompt just won't be offered */ }
-
   window.CC_ICON = ICON_192;   // used for phone notifications
-
-  // tab / home-screen icon (also stops browsers asking for a missing /favicon.ico)
-  try{
-    [['icon',ICON_192],['apple-touch-icon',ICON_192]].forEach(function(p){
-      var l=document.createElement('link'); l.rel=p[0]; l.href=p[1]; document.head.appendChild(l);
-    });
-  }catch(e){}
 
   try{
     var _t = localStorage.getItem('cc-theme');
@@ -2984,8 +2942,9 @@ const BACKUP_KIND='cardiac-companion-backup';
 let currentLang='en';
 let S=null;                 // the active person's record
 let profiles=null;          // {list:[{id,name}], active}
+// persistAsked is no longer used (the app's files are never evicted); it stays
+// so saved settings keep the same shape (safety charter rule 5).
 let G={lastBackup:null, backupSnooze:null, persistAsked:false, bigText:false};
-let deferredPrompt=null;
 let pendingVital=null, pendingRhythm=null;
 let medForm=null;           // add/edit buffer for the medicine form
 let injForm=null;           // {date, reason} while recording an injection
@@ -3270,14 +3229,6 @@ function activeProfile(){ return profiles.list.find(p=>p.id===profiles.active)||
 function personName(){ const p=activeProfile(); return (p && p.name) ? p.name : ''; }
 function loadActive(){ S=readState(profiles.active)||defaultState(); }
 
-// Ask the browser not to clear this record under storage pressure. Called
-// after the person saves something — a user action — which is when
-// browsers are most willing to grant it.
-function maybePersist(){
-  if(G.persistAsked || !navigator.storage || !navigator.storage.persist) return;
-  G.persistAsked=true; saveGlobal();
-  navigator.storage.persisted().then(p=>{ if(!p) return navigator.storage.persist(); }).then(()=>renderStorageStatus()).catch(()=>{});
-}
 
 
 // ═══════════════════════════════════════════
@@ -3530,7 +3481,7 @@ function saveInjection(){
   S.injection.history.push({id:uid(), date, due, late, r:(late>0?injForm.reason:null)});
   if(!S.injection.lastDate || date>=S.injection.lastDate) S.injection.lastDate=date;
   injForm=null;
-  save(); maybePersist();
+  save();
   showToast(L('injRecordedToast'));
   addNotification(L('injRecordedTitle'), L('injRecordedText',{date:fmtDual(injNextDue(S))}), 'info');
   renderAll();
@@ -3606,7 +3557,7 @@ function markDose(key, status){
     if(status==='taken') e.ded=takeSupply(key);
     log[key]=e;
   }
-  save(); maybePersist();
+  save();
   if(status==='taken') showToast(L(key==='W'?'warfarinTakenToast':'doseRecordedToast'));
   else if(status==='missed'){
     showToast(L(key==='W'?'warfarinMissedToast':'doseMissedToast'));
@@ -3633,7 +3584,7 @@ function prnTake(id){
     checkSupplyWarning({id:m.id, name:m.name, obj:m, left:null});
   }
   (S.prnLog[t]=S.prnLog[t]||[]).push({id:uid(), medId:id, at:nowHHMM(), ded});
-  save(); maybePersist();
+  save();
   showToast(L('doseRecordedToast'));
   renderAll();
 }
@@ -3661,7 +3612,7 @@ function saveWeight(){
   if(!weightOk(kg)){ showToast(L('enterWeight')); return; }
   S.weightLog[todayKey()]=Math.round(kg*10)/10;
   input.value='';
-  save(); maybePersist();
+  save();
   renderWeightFeedback(); renderSummaryTab();
   showToast(L('weightSavedToast'));
 }
@@ -3731,7 +3682,7 @@ function saveVital(){
   if(pendingVital==='pulse' && pendingCam && String(pendingCam.bpm)===value){ entry.src='cam'; entry.cam=pendingCam.cam; }
   (S.vitals[t]=S.vitals[t]||[]).push(entry);
   pendingCam=null;
-  save(); maybePersist();
+  save();
   closeVitalEntry(); renderVitals();
   showToast(L('vitalSavedToast'));
 }
@@ -3954,7 +3905,7 @@ function saveMedForm(){
     showToast(L('medicationAdded'));
   }
   medForm=null;
-  refreshTodayPlan(); save(); maybePersist();
+  refreshTodayPlan(); save();
   renderAll();
 }
 function deleteMed(id){
@@ -4001,7 +3952,7 @@ function refill(id){
   obj.supply=round2((typeof obj.supply==='number'?obj.supply:0)+add);
   const left=daysLeft(obj.supply, id==='W'?warfarinDailyTabs(S):medDailyTabs(obj));
   clearSupplyWarnings(obj, left, S.settings.lowDays);
-  save(); maybePersist();
+  save();
   renderSupply(); renderActiveAlerts();
   showToast(L('refillToast'));
 }
@@ -4012,7 +3963,7 @@ function refill(id){
 function toggleWarfarin(){
   S.warfarin.enabled=!S.warfarin.enabled;
   if(S.warfarin.enabled && !S.warfarin.doseHistory.length && S.warfarin.doses.some(v=>v>0)) recordDoseHistory(S);
-  refreshTodayPlan(); save(); maybePersist();
+  refreshTodayPlan(); save();
   renderAll();
 }
 function renderWarfarinSetup(){
@@ -4080,7 +4031,7 @@ function setWarfarinDose(i, el){
   if(v!=null && v<0){ el.value=prev==null?'':prev; return; }
   if(doseNeedsCheck(v) && !confirm(L('doseCheck',{mg:fmtNum(v)}))){ el.value=prev==null?'':prev; return; }
   S.warfarin.doses[i]= v==null ? null : round2(v);
-  recordDoseHistory(S); refreshTodayPlan(); save(); maybePersist();
+  recordDoseHistory(S); refreshTodayPlan(); save();
   renderAll();
 }
 function addInr(){
@@ -4094,7 +4045,7 @@ function addInr(){
   const doses=dosesOn(S,date).slice();
   S.inrLog.push({id:uid(), date, value:round2(value), doses, weekly:weeklyMg(doses)});
   if(S.warfarin.nextInr && S.warfarin.nextInr<=date) S.warfarin.nextInr=null;
-  save(); maybePersist();
+  save();
   const st=inrStatus(value, S.warfarin.target);
   showToast(st==='in' ? L('inrSavedIn') : st ? L('inrSavedOut') : L('inrAddedToast'));
   if(st && st!=='in') addNotification(L('inrOutTitle',{v:fmtInr(value)}), L('inrOutText'), 'warn');
@@ -4115,7 +4066,7 @@ function setTarget(which, el){
 // ═══════════════════════════════════════════
 function toggleInjection(){
   S.injection.enabled=!S.injection.enabled;
-  save(); maybePersist(); renderAll();
+  save(); renderAll();
 }
 function renderInjectionSetup(){
   const sw=$('injectionSwitch'), body=$('injectionSetupBody'), I=S.injection;
@@ -4224,7 +4175,7 @@ function saveNewMed(){
   if(date>todayKey()){ showToast(L('noFutureDate')); return; }
   S.newMeds.push({id:uid(), date, type:nmType, name:String(nmDraft.name||'').trim()});
   nmDraft={name:'', date:null};
-  save(); maybePersist();
+  save();
   showToast(L(S.warfarin.enabled?'nmSavedW':'nmSaved'));
   renderNewMeds();
 }
@@ -4260,7 +4211,7 @@ function renderFlags(){
 function logFlag(code){
   const urgent=FLAGS_NOW.includes(code);
   S.redFlags.push({id:uid(), date:todayKey(), t:nowHHMM(), code});
-  save(); maybePersist();
+  save();
   addNotification(L(urgent?'helpNowTitle':'helpTodayTitle'), L('flag_'+code), 'warn');
   openHelp(urgent?'now':'today', code);
 }
@@ -4322,7 +4273,7 @@ function toggleSymptom(id){
     list.push({id, name:cs?cs.name:'', sev:null, ctx:null});
   }
   if(!list.length) delete S.symptomLog[t];
-  save(); maybePersist();
+  save();
   renderSymptoms(); renderSummaryTab();
 }
 function symptomEntry(id){ return (S.symptomLog[todayKey()]||[]).find(x=>x.id===id); }
@@ -4369,7 +4320,7 @@ function saveMood(){
   if(moodDraft.q1==null || moodDraft.q2==null) return;
   S.mood.push({id:uid(), date:todayKey(), q1:moodDraft.q1, q2:moodDraft.q2});
   moodDraft={q1:null,q2:null,open:false};
-  save(); maybePersist();
+  save();
   renderMood();
   showToast(L('moodSaved'));
 }
@@ -4383,7 +4334,7 @@ function saveNote(){
   if(!text){ showToast(L('writeSomethingFirst')); return; }
   S.notes.push({id:uid(), date:todayKey(), time:nowHHMM(), text});
   input.value='';
-  save(); maybePersist();
+  save();
   renderNotes();
   showToast(L('noteSaved'));
 }
@@ -4661,13 +4612,7 @@ function renderReminders(){
         : `<button class="btn btn-ghost ico i-bell" data-act="enableNotif">${esc(L('t-enableNotifBtn'))}</button>`}`;
 }
 function renderStorageStatus(){
-  const ps=$('persistStatus'), bs=$('backupStatus');
-  if(navigator.storage && navigator.storage.persisted){
-    navigator.storage.persisted().then(p=>{
-      ps.textContent=L(p?'persistYes':'persistNo');
-      ps.className='settings-row-sub '+(p?'status-ok':'status-warn');
-    }).catch(()=>{ ps.textContent=''; });
-  }else ps.textContent='';
+  const bs=$('backupStatus');
   const fresh=G.lastBackup && daysBetween(G.lastBackup, todayKey())<=30;
   bs.textContent=G.lastBackup ? L('lastBackupLine',{date:fmtDual(G.lastBackup,true)}) : L('noBackupYet');
   bs.className='settings-row-sub '+(fresh?'status-ok':'status-warn');
@@ -5553,8 +5498,6 @@ async function systemNotify(title, body, tag){
     if(!('Notification' in window) || Notification.permission!=='granted') return false;
     const opts={body, tag:tag||undefined, data:{url:location.href.split('#')[0]}};
     if(window.CC_ICON) opts.icon=window.CC_ICON;
-    const reg=navigator.serviceWorker && await navigator.serviceWorker.getRegistration();
-    if(reg && reg.active){ await reg.showNotification(title, opts); return true; }
     new Notification(title, opts);
     return true;
   }catch(e){ return false; }
@@ -5637,17 +5580,6 @@ function tick(){
 }
 
 // ═══════════════════════════════════════════
-// INSTALL
-// ═══════════════════════════════════════════
-function triggerInstall(){
-  if(deferredPrompt){
-    showToast(L('installingToast'));
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(c=>{ if(c.outcome==='accepted') showToast(L('installedToast')); deferredPrompt=null; });
-  }else showToast(L('installManualToast'));
-}
-
-// ═══════════════════════════════════════════
 // START
 // ═══════════════════════════════════════════
 function init(){
@@ -5675,13 +5607,7 @@ function init(){
   setInterval(tick, 30000);
   document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tick(); });
   window.addEventListener('pageshow', ()=>tick());
-  window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); deferredPrompt=e; });
   window.addEventListener('resize', drawWeightChart);
-  // another tab or window changed the record: follow it
-  window.addEventListener('storage', e=>{
-    if(e.key===stateKey(profiles.active) && e.newValue){ loadActive(); renderAll(); }
-  });
-  if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
   setTimeout(checkReminders, 1500);
 }
 document.addEventListener('DOMContentLoaded', init);
