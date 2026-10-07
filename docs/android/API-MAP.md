@@ -16,6 +16,16 @@ timing and typo checks), and `index.html` is about 340 lines shorter. The line n
 are still v3.2's. Search for the function name; where a function moved, its
 row names the file.
 
+**Since Phase 2** the page is `www/index.html` (and `www/js/core/`,
+`www/ppg-engine.js`). Done in Phase 2, on 7 October 2026: the storage
+event, `navigator.storage.persist` and its Settings line, the service
+worker, the install prompt, the runtime manifest and Google Fonts are gone
+(see `CHANGES.md`, 4.0); the system theme is still followed on first run,
+and the status-bar icons now follow the app's theme; the notification icon
+resource (`ic_stat_heartbeat`) exists for Phase 4; WebView text zoom is
+fixed at 100% with Large text on first launch when the system font is
+large. The rows below still describe v3.2, for the phases still to come.
+
 Phases: **2** Android shell, **3** storage, **4** reminders, **5** files,
 sharing and calls, **6** camera pulse, **7** polish and accessibility,
 **9** retiring the website.
