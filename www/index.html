@@ -105,6 +105,13 @@
     --r-tag:6px;
     --ctl:48px;        /* main buttons and fields */
     --ctl-sm:44px;     /* small buttons, chips, icon buttons */
+    /* The app draws edge-to-edge, under the status and navigation bars
+       (Android 16 requires it). Capacitor's SystemBars sets the
+       --safe-area-inset-* values on Android; a browser has env(). */
+    --safe-top:var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+    --safe-right:var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+    --safe-bottom:var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+    --safe-left:var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
     --tr:120ms ease;
 
     --font:'Onest','Noto Sans Ethiopic',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -174,6 +181,7 @@
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
     overflow:hidden;
+    padding:0 var(--safe-right) 0 var(--safe-left);
   }
   ::selection{background:var(--accent-soft); color:var(--ink-1);}
   button, input, textarea, select{font:inherit; color:inherit;}
@@ -224,7 +232,7 @@
   .header{
     position:relative;
     z-index:5;
-    padding:calc(10px + env(safe-area-inset-top)) 16px 6px;
+    padding:calc(10px + var(--safe-top)) 16px 6px;
     background:var(--canvas);
   }
   .header-top{display:flex; align-items:center; justify-content:space-between; gap:8px;}
@@ -767,7 +775,7 @@
     display:flex;
     background:var(--surface);
     border-top:1px solid var(--line);
-    padding:0 4px env(safe-area-inset-bottom);
+    padding:0 4px var(--safe-bottom);
     position:relative; z-index:5;
   }
   .nav-item{
@@ -796,7 +804,7 @@
 
   /* ═══════════ PANELS — notifications and settings ═══════════ */
   .notif-panel{
-    position:fixed; inset:0;
+    position:fixed; inset:0 var(--safe-right) 0 var(--safe-left);
     max-width:460px; margin:0 auto;
     z-index:100;
     display:flex; flex-direction:column;
@@ -806,7 +814,7 @@
   .notif-head{
     position:sticky; top:0; z-index:1;
     display:flex; align-items:center; justify-content:space-between; gap:12px;
-    padding:calc(8px + env(safe-area-inset-top)) 12px 8px 16px;
+    padding:calc(8px + var(--safe-top)) 12px 8px 16px;
     margin-bottom:14px;
     background:var(--canvas);
     border-bottom:1px solid var(--line);
@@ -825,7 +833,7 @@
   .notif-empty{text-align:center; padding:48px 20px; color:var(--ink-3); font-size:15px;}
   #notifPermBlock{margin:0 16px 14px;}
   #notifPermBlock .btn{margin-top:12px;}
-  .panel-foot{width:auto; margin:4px 16px calc(16px + env(safe-area-inset-bottom));}
+  .panel-foot{width:auto; margin:4px 16px calc(16px + var(--safe-bottom));}
 
   .settings-section{padding:0 16px; margin-bottom:22px;}
   .settings-section-title{font-size:14px; font-weight:600; color:var(--ink-3); margin:0 2px 8px;}
@@ -853,7 +861,7 @@
   /* ═══════════ TOAST ═══════════ */
   .toast{
     position:fixed; left:50%;
-    bottom:calc(80px + env(safe-area-inset-bottom));
+    bottom:calc(80px + var(--safe-bottom));
     transform:translateX(-50%);
     width:max-content;
     max-width:calc(100% - 32px);
@@ -890,7 +898,7 @@
      out there: a two-column grid with the nav placed in the first column. */
   @media (min-width:720px){
     .app{max-width:none;}
-    .header{padding:12px 28px; border-bottom:1px solid var(--line);}
+    .header{padding:calc(12px + var(--safe-top)) 28px 12px; border-bottom:1px solid var(--line);}
     .app-main{display:grid; grid-template-columns:104px minmax(0,1fr); grid-template-rows:minmax(0,1fr);}
     .content{grid-column:2; grid-row:1;}
     .nav{
@@ -906,7 +914,7 @@
     #activeAlerts{padding:8px 32px 0; max-width:1120px;}
     .tab{padding:8px 32px 40px; max-width:1120px;}
     .desktop-2col{display:grid; grid-template-columns:1.25fr 1fr; gap:16px; align-items:start;}
-    .notif-panel{left:auto; right:0; margin:0; width:420px; border-left:1px solid var(--line);}
+    .notif-panel{left:auto; right:var(--safe-right); margin:0; width:420px; border-left:1px solid var(--line);}
     .toast{bottom:32px;}
   }
   @media (min-width:1080px){
@@ -1077,7 +1085,7 @@
   .profile-row.active .profile-name{color:var(--accent-ink); font-weight:600;}
 
   /* full-screen panels: get help, medical ID, show-the-nurse, summary preview */
-  .panel-body{padding:0 16px calc(24px + env(safe-area-inset-bottom));}
+  .panel-body{padding:0 16px calc(24px + var(--safe-bottom));}
   .help-hero{padding:18px; border:1px solid transparent; border-radius:var(--r-card); background:var(--danger); color:#fff; margin-bottom:12px;}
   :root[data-theme="dark"] .help-hero{color:#2A0906;}
   .help-hero.today{background:var(--warn-soft); border-color:var(--warn-line); color:var(--warn-ink);}
@@ -1791,6 +1799,9 @@
 <script src="js/core/health.js"></script>
 <script src="js/core/reminders.js"></script>
 <script src="js/core/checks.js"></script>
+<script src="js/platform/native.js"></script>
+<script src="js/platform/app.js"></script>
+<script src="js/platform/display.js"></script>
 <script src="ppg-engine.js" defer></script>
 <script>
 // ═══════════════════════════════════════════
@@ -4632,11 +4643,24 @@ function setBigText(on){
   segActive('textSizeSeg', G.bigText?1:0);
   setTimeout(drawWeightChart, 50);
 }
+// The app keeps its text at 100% (MainActivity.java), so on the very first
+// launch a phone set to large system text (1.15 or more) starts with the
+// app's own Large text, which scales the whole layout evenly. Called only
+// then: after that the person's own choice in Settings stands.
+function matchSystemTextSize(){
+  if(G.bigText) return Promise.resolve(false);
+  return Platform.display.fontScale().then(scale=>{
+    if(scale==null || scale<1.15) return false;
+    setBigText(true);
+    return true;
+  });
+}
 function applyTheme(theme){
   if(theme==='dark') document.documentElement.setAttribute('data-theme','dark');
   else document.documentElement.removeAttribute('data-theme');
   const meta=document.querySelector('meta[name="theme-color"]');
   if(meta) meta.setAttribute('content', theme==='dark'?'#0D1311':'#EEF1EE');
+  Platform.display.setBarsDark(theme==='dark');
   const b=$('themeBtn'); if(b) b.textContent=L(theme==='dark'?'themeLight':'themeDark');
 }
 function toggleTheme(){
@@ -4790,7 +4814,9 @@ function closePanel(id){
   if(id==='settingsPanel') renderAll();
 }
 function topPanel(){ for(let i=PANELS.length-1;i>=0;i--){ const p=$(PANELS[i]); if(p && !p.hidden) return PANELS[i]; } return null; }
+let currentTab='today';   // the tab in view; the back button needs it
 function switchTab(name){
+  currentTab=name;
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   const tab=$('tab-'+name); if(tab) tab.classList.add('active');
   document.querySelectorAll('.nav-item').forEach((b,i)=>{
@@ -4801,6 +4827,36 @@ function switchTab(name){
   const content=$('content'); if(content) content.scrollTop=0;
   if(name==='summary') renderSummaryTab();
 }
+
+// ═══════════════════════════════════════════
+// BACK BUTTON — Android's back button and back gesture
+// One step back at a time, as in any Android app: close the panel on top,
+// then a form that is open on the tab in view (the same as its Cancel
+// button), then go back to Today. Only from Today with nothing open does
+// back leave the app. Returns what it did, for the tests.
+// ═══════════════════════════════════════════
+function cancelOpenForm(){
+  if(currentTab==='today'){
+    if(injForm){ ACT.injCancel(); return true; }
+    if(!$('vitalEntry').hidden){ closeVitalEntry(); return true; }
+  }
+  if(currentTab==='meds' && medForm){ ACT.mfCancel(); return true; }
+  if(currentTab==='symptoms'){
+    // a retake can be cancelled; the first questionnaire has no Cancel
+    if(moodDraft.open && lastMood(S)){ ACT.moodCancel(); return true; }
+    if(!$('addSymptomForm').hidden){ toggleAddSymptom(); return true; }
+  }
+  return false;
+}
+function handleBack(){
+  const p=topPanel();
+  if(p){ closePanel(p); return 'panel'; }
+  if(cancelOpenForm()) return 'form';
+  if(currentTab!=='today'){ switchTab('today'); return 'tab'; }
+  Platform.app.leave();
+  return 'leave';
+}
+
 function showToast(msg){
   const el=$('toast');
   el.textContent=msg;
@@ -5602,12 +5658,14 @@ function init(){
   setLang(lang);
 
   if(start.isNew) addNotification(L('welcomeTitle'), L('welcomeText'), 'info');
+  if(start.isNew) matchSystemTextSize();
   if(start.migrated) addNotification(L('migratedTitle'), L('migratedText'), 'info');
 
   setInterval(tick, 30000);
   document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tick(); });
   window.addEventListener('pageshow', ()=>tick());
   window.addEventListener('resize', drawWeightChart);
+  Platform.app.onBack(handleBack);
   setTimeout(checkReminders, 1500);
 }
 document.addEventListener('DOMContentLoaded', init);
