@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made by tools/icons/make-icons.py: edit that, not this. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M25.68,54 L36.8,54 L43.51,36.59 L54,70.99 L61.13,43.72 L66.17,54 L81.9,54"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="3.78"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000" />
+</vector>

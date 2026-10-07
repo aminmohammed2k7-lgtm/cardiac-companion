@@ -25,6 +25,17 @@ The website (cardiac-companion.vercel.app) stays at web 3.2.2:
 The words for the removed rows and toasts stay in all three languages for
 now; removing wording goes through Amin.
 
+## Icons
+- The launcher icon, a themed icon for Android 13 and later, a white
+  heartbeat icon for notifications (used from Phase 4) and the launch
+  screen are drawn from one vector copy of the logo by
+  `tools/icons/make-icons.py`. The launch screen is the logo on the page
+  colour (#EEF1EE, or #0D1311 when the phone is in dark mode).
+- v3.2's 512 px and maskable icons inside `index.html` were damaged (their
+  image data fails its checksum), so browsers could not show them when the
+  website was added to a home screen. The 192 px copy was intact, and the
+  new drawings were measured from it.
+
 # Cardiac Companion — version 3.2.2 (web, 5 October 2026)
 
 The first step towards the Android app (version 4.0, see

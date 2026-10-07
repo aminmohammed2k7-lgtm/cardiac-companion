@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Made by tools/icons/make-icons.py: edit that, not this. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="288dp"
+    android:height="288dp"
+    android:viewportWidth="288"
+    android:viewportHeight="288">
+    <path
+        android:fillColor="#0D1F1A"
+        android:pathData="M106.08,79 h75.83 a27.08,27.08 0 0 1 27.08,27.08 v75.83 a27.08,27.08 0 0 1 -27.08,27.08 h-75.83 a27.08,27.08 0 0 1 -27.08,-27.08 v-75.83 a27.08,27.08 0 0 1 27.08,-27.08 z" />
+    <path
+        android:pathData="M98.3,144 L116.24,144 L127.07,115.9 L144,171.42 L155.51,127.41 L163.64,144 L189.03,144"
+        android:strokeColor="#3DDC97"
+        android:strokeWidth="6.09"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000" />
+</vector>
