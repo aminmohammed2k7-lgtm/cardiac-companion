@@ -96,7 +96,7 @@ globalThis.document = {
 globalThis.isSecureContext = true;
 
 const path = require('path');
-const PPG = require(path.join(__dirname, '..', 'ppg-engine.js'));
+const PPG = require(path.join(__dirname, '..', 'www', 'ppg-engine.js'));
 
 // ── a synthetic fingertip: 71 bpm with breathing variability ───────────
 function fingertip(seconds, opt) {

@@ -16,7 +16,7 @@
  */
 'use strict';
 const path = require('path');
-const PPG = require(path.join(__dirname, '..', 'ppg-engine.js'));
+const PPG = require(path.join(__dirname, '..', 'www', 'ppg-engine.js'));
 const { mean, median, sampleStd } = PPG.dsp;
 
 // ── deterministic randomness ──────────────────────────────────────────

@@ -29,7 +29,7 @@ function done() {
   process.exit(failures ? 1 : 0);
 }
 
-const core = name => require(path.join(__dirname, '..', '..', 'js', 'core', name + '.js'));
+const core = name => require(path.join(__dirname, '..', '..', 'www', 'js', 'core', name + '.js'));
 
 // at(2026, 10, 3, 23, 59): the phone's local time, months counted from 1
 function at(y, mo, d, h = 9, mi = 0) {
