@@ -40,16 +40,26 @@
   DATA: everything stays on the phone, one record per person, with a
   one-file backup. Nothing is sent anywhere.
 
-  FONTS: Onest and Noto Sans Ethiopic load from Google Fonts. Onest keeps
-  numbers plain and easy to tell apart (no slashed zero, distinct 1/7, 5/6,
-  3/8), which matters when the number is a dose. Noto Sans Ethiopic is
-  needed for correct Amharic rendering; a first load with no network falls
-  back to the system font until the browser caches it.
+  FONTS: Onest and Noto Sans Ethiopic are bundled in fonts/ (OFL). Onest
+  keeps numbers plain and easy to tell apart (no slashed zero, distinct 1/7,
+  5/6, 3/8), which matters when the number is a dose. Noto Sans Ethiopic is
+  needed for correct Amharic rendering. Nothing is loaded from the network.
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* The two fonts ship inside the app (www/fonts/, each with its OFL
+     licence), so they are there on the very first launch in airplane mode,
+     and the PDFs drawn on a canvas always have Amharic letters. Both are
+     variable fonts: one file covers every weight the page uses. */
+  @font-face{
+    font-family:'Onest';
+    src:url('fonts/onest/Onest-Variable.ttf') format('truetype');
+    font-weight:100 900; font-style:normal; font-display:swap;
+  }
+  @font-face{
+    font-family:'Noto Sans Ethiopic';
+    src:url('fonts/noto-sans-ethiopic/NotoSansEthiopic-Variable.ttf') format('truetype');
+    font-weight:100 900; font-style:normal; font-display:swap;
+  }
   /* ═══════════════════════════════════════════════════════════════════
      CARDIAC COMPANION — design system
      Plain and flat. White cards with a 1px border on a pale page; one
