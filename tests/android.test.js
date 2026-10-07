@@ -58,6 +58,16 @@ check('no CAMERA (camera pulse is off; Phase 6 adds it to debug builds only)', !
 check('no CALL_PHONE (call buttons only open the dialer)', !/CALL_PHONE/.test(manifest));
 check('no orientation lock (Android 16 ignores it on tablets)', !/screenOrientation/.test(manifest));
 
+// XML forbids "--" inside a comment, and Android's resource compiler stops
+// the build on it (the first CI build failed on exactly that).
+const xmlFiles = dir => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e =>
+  e.isDirectory() ? (e.name === 'assets' ? [] : xmlFiles(path.join(dir, e.name)))
+    : e.name.endsWith('.xml') ? [path.join(dir, e.name)] : []);
+const badComments = xmlFiles(path.join(root, 'android', 'app', 'src'))
+  .filter(f => [...fs.readFileSync(f, 'utf8').matchAll(/<!--([\s\S]*?)-->/g)].some(m => m[1].includes('--')))
+  .map(f => path.relative(root, f));
+check('no "--" inside comments in the Android XML files', !badComments.length, badComments.join(', '));
+
 console.log('\nCapacitor and Gradle');
 const cap = JSON.parse(read('capacitor.config.json'));
 const gradle = read('android/app/build.gradle');
