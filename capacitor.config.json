@@ -1,0 +1,11 @@
+{
+  "appId": "org.cardiaccompanion.app",
+  "appName": "Cardiac Companion",
+  "webDir": "www",
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "css",
+      "initialViewportFitValueHint": "cover"
+    }
+  }
+}

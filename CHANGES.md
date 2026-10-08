@@ -1,3 +1,41 @@
+# Cardiac Companion — version 4.0 (Android, in progress)
+
+Phase 2 of `docs/claude-code-order.pdf`: the app now runs as an Android app
+built with Capacitor 8. The web files moved into `www/`; `tools/pulse-lab.html`
+is the developer tool for the camera study and is not shipped. Records and
+health wording are unchanged. **Not for patients yet:** reminders still fire
+only while the app is open (Phase 4), and exports wait for Phase 5.
+
+The website (cardiac-companion.vercel.app) stays at web 3.2.2:
+`vercel.json` stops Vercel deploying from this repository until Phase 9.
+
+## Removed (web-only, not needed in an app)
+- **Service worker** (`sw.js`) and its registration. The files are inside the
+  app, so it works offline without one.
+- **Web-app manifest** built at start-up, with its two large icons. The
+  launcher icon and splash are Android resources now.
+- **"Add to home screen"** row in Settings and the install prompt behind it.
+- **"Storage is protected / may be cleared"** line in Settings, and the
+  request behind it (`navigator.storage.persist`). An app's own files are
+  never cleared by the system. The backup line stays.
+- **Following changes made in another browser tab.** An app has one window.
+- **Google Fonts.** Onest and Noto Sans Ethiopic are bundled in `www/fonts/`
+  with their OFL licences, so nothing is loaded from the internet.
+
+The words for the removed rows and toasts stay in all three languages for
+now; removing wording goes through Amin.
+
+## Icons
+- The launcher icon, a themed icon for Android 13 and later, a white
+  heartbeat icon for notifications (used from Phase 4) and the launch
+  screen are drawn from one vector copy of the logo by
+  `tools/icons/make-icons.py`. The launch screen is the logo on the page
+  colour (#EEF1EE, or #0D1311 when the phone is in dark mode).
+- v3.2's 512 px and maskable icons inside `index.html` were damaged (their
+  image data fails its checksum), so browsers could not show them when the
+  website was added to a home screen. The 192 px copy was intact, and the
+  new drawings were measured from it.
+
 # Cardiac Companion — version 3.2.2 (web, 5 October 2026)
 
 The first step towards the Android app (version 4.0, see

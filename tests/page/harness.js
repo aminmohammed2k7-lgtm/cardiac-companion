@@ -20,7 +20,7 @@ const path = require('path');
 const vm = require('vm');
 const { isDeepStrictEqual, inspect } = require('util');
 
-const PAGE = process.env.PAGE_HTML || path.join(__dirname, '..', '..', 'index.html');
+const PAGE = process.env.PAGE_HTML || path.join(__dirname, '..', '..', 'www', 'index.html');
 
 let failures = 0, checks = 0;
 function check(name, ok, detail) {

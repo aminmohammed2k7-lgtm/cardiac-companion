@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The page colour (the canvas colour in www/index.html), so the launch screen
+         and the first frame of the app match. -->
+    <color name="splash_background">#EEF1EE</color>
+</resources>

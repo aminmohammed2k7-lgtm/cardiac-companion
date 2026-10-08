@@ -1,0 +1,69 @@
+# Runs every test and builds the debug APK on every push.
+#
+# The APK is kept for 30 days as a download on the run's page (Actions →
+# this run → Artifacts), so a build can be installed without Android Studio.
+# The log also shows the APK's final permission list and size: the
+# permissions come from the merged manifest, which is the only true list
+# (see docs/android/PERMISSIONS.md).
+#
+# Nothing here signs a release; signing stays on Amin's laptop (Phase 8).
+name: Tests and debug APK
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install (exact versions from package-lock.json)
+        run: npm ci
+
+      - name: Tests
+        run: npm test
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 21
+          cache: gradle
+
+      - name: Copy www/ into the Android project
+        run: npx cap sync android
+
+      - name: Build the debug APK
+        working-directory: android
+        run: ./gradlew assembleDebug --no-daemon --stacktrace
+
+      - name: Permissions in the APK
+        run: |
+          APK=android/app/build/outputs/apk/debug/app-debug.apk
+          BT=$(ls -d "$ANDROID_HOME"/build-tools/*/ | sort -V | tail -1)
+          {
+            echo "## Debug APK"
+            echo "Size: $(du -k "$APK" | cut -f1) KB"
+            echo
+            echo '```'
+            "$BT/aapt" dump permissions "$APK"
+            "$BT/aapt" dump badging "$APK" | grep -E "^(package|sdkVersion|targetSdkVersion)"
+            echo '```'
+          } | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cardiac-companion-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
+          if-no-files-found: error

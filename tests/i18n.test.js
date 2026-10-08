@@ -16,7 +16,7 @@ const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
-const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+const html = fs.readFileSync(path.join(__dirname, '..', 'www', 'index.html'), 'utf8');
 
 // The tables are plain object literals: cut them out of the page and evaluate
 // them on their own, the same way the page merges them at start-up (init()).
