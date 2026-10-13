@@ -30,6 +30,11 @@ let failed = 0, checks = 0;
 for (const { file, zone } of runs) {
   const env = Object.assign({}, process.env);
   if (zone) env.TZ = zone;
+  // Node prints a warning on stderr when both NO_COLOR and FORCE_COLOR are
+  // set. A test that waits (back, camera) lets that warning out after
+  // "all N checks passed", and the check below then looks like a failure.
+  // The tests do not use colour. Honour NO_COLOR.
+  if (env.NO_COLOR !== undefined && env.FORCE_COLOR !== undefined) delete env.FORCE_COLOR;
   const r = spawnSync(process.execPath, [path.join(__dirname, file)], { env, encoding: 'utf8' });
   const out = (r.stdout || '') + (r.stderr || '');
   const passed = /all (\d+) checks passed\s*$/.exec(out);

@@ -8,6 +8,9 @@ only while the app is open (Phase 4), and exports wait for Phase 5.
 
 The website (cardiac-companion.vercel.app) stays at web 3.2.2:
 `vercel.json` stops Vercel deploying from this repository until Phase 9.
+`npm run build:web` writes a static copy of these pages to `dist/` for a
+later deploy (see `docs/demo-build.md`). That command does not deploy,
+and it does not change `vercel.json`.
 
 ## Removed (web-only, not needed in an app)
 - **Service worker** (`sw.js`) and its registration. The files are inside the
@@ -35,6 +38,29 @@ now; removing wording goes through Amin.
   image data fails its checksum), so browsers could not show them when the
   website was added to a home screen. The 192 px copy was intact, and the
   new drawings were measured from it.
+
+## Encrypted backups and PIN lock
+- **Backups are encrypted.** "Back up now" asks for a passphrase (6 characters
+  or more, typed twice) and saves a JSON file holding only `version`, `salt`,
+  `iv` and `ciphertext` (base64), with the method named: PBKDF2-SHA256 with
+  310,000 rounds and a random salt, then AES-256-GCM with a random IV, all on
+  the phone (`www/js/secure.js`, Web Crypto, no new dependency). There is no
+  unencrypted choice.
+- **Restoring** asks for the passphrase. A wrong one says so clearly and lets
+  the person try again. Backups made before this change still restore, with a
+  warning that they are not protected.
+- **Optional PIN lock** (Settings > PIN lock, off by default): 4 to 6 digits,
+  stored only as a salted PBKDF2 hash. The lock shows when the app opens and
+  when it comes back to the screen. It does not show when the app's own share
+  sheet or file picker closes. Five wrong PINs mean a 30-second wait, which is
+  saved, so closing the app does not skip it. "Forgot PIN?" explains that
+  without an account the only way in is to clear all data, and offers to do
+  that after a warning. The PIN and its tries are kept in `cc-global` and are
+  never put in backups.
+- New words in English, Amharic and Afaan Oromo. These are not health wording,
+  but a native speaker should still check the Amharic and Afaan Oromo.
+- Tests: `tests/secure.test.js` and `tests/page/security.test.js`.
+- `README.md` and `LICENSE` (Apache-2.0, as chosen in `docs/android/DECISIONS.md`).
 
 # Cardiac Companion — version 3.2.2 (web, 5 October 2026)
 
