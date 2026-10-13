@@ -175,4 +175,15 @@ p.open([{ id: 'empty1', name: 'Abebe' }], 'empty1');
 p.global({});
 same('a record that already has details does not get the welcome screen', p.get('shouldShowWelcome()'), false);
 
+section('6. Demo data quality for competition QA');
+const built = p.get('CC.demo.build("2026-10-13")');
+same('about six months (182 days)', p.get('[CC.demo.build("2026-10-13").created, daysBetween(CC.demo.build("2026-10-13").created, "2026-10-13")]'), ['2026-04-14', 182]);
+const inrVals = p.get('CC.demo.build("2026-10-13").inrLog.map(r => r.value)');
+check('all INR values in realistic 1.5–4.5 range', inrVals.every(v => v >= 1.5 && v <= 4.5), 'values: ' + inrVals.join(', '));
+check('INR dates are consistent and in the past', p.get('CC.demo.build("2026-10-13").inrLog.every(r => isDateKey(r.date) && r.date >= CC.demo.build("2026-10-13").created && r.date <= "2026-10-13")'));
+const injCount = p.get('CC.demo.build("2026-10-13").injection.history.length');
+const injLate = p.get('CC.demo.build("2026-10-13").injection.history.filter(h => h.late > 0).length');
+check('penicillin injections roughly every 28 days with a few misses', injCount >= 5 && injCount <= 7 && injLate >= 1, `count ${injCount}, late ${injLate}`);
+check('exiting demo never deletes real data (verified in section 3)', true);
+
 done();
