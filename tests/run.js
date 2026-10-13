@@ -30,6 +30,9 @@ let failed = 0, checks = 0;
 for (const { file, zone } of runs) {
   const env = Object.assign({}, process.env);
   if (zone) env.TZ = zone;
+  // Node prints a stderr warning when both are set, and only after the
+  // event loop turns — so async tests no longer end on the pass line.
+  if (env.NO_COLOR && env.FORCE_COLOR) delete env.FORCE_COLOR;
   const r = spawnSync(process.execPath, [path.join(__dirname, file)], { env, encoding: 'utf8' });
   const out = (r.stdout || '') + (r.stderr || '');
   const passed = /all (\d+) checks passed\s*$/.exec(out);
