@@ -878,6 +878,28 @@
   }
   button.settings-row:active{background:var(--surface-3);}
 
+  /* ═══════════ PIN LOCK AND PASSPHRASE BOX ═══════════ */
+  /* While the PIN lock is showing, nothing else on the page can be seen or
+     reached by a screen reader (visibility, not display, so the page keeps
+     its layout and the weight chart its size). */
+  body.locked > *:not(#lockScreen):not(#toast){visibility:hidden;}
+  .lock-screen{
+    position:fixed; inset:0; z-index:300;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:calc(24px + var(--safe-top)) calc(24px + var(--safe-right)) calc(24px + var(--safe-bottom)) calc(24px + var(--safe-left));
+    overflow-y:auto;
+    background:var(--canvas);
+  }
+  .lock-inner{width:100%; max-width:360px; margin:0 auto;}
+  .lock-inner .panel-title{margin-bottom:6px;}
+  .lock-inner .form-field{text-align:center; font-size:22px; letter-spacing:.3em;}
+  .lock-inner .btn{margin-top:8px;}
+  .secret-body{padding:0 16px calc(16px + var(--safe-bottom));}
+  .secret-body .btn{margin-top:8px;}
+  .form-error{min-height:20px; margin:0 0 6px; font-size:14px; line-height:1.45; color:var(--danger-ink);}
+  .lock-forgot{margin-top:18px; padding:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-card);}
+  .lock-forgot p{font-size:14.5px; line-height:1.45; color:var(--ink-2);}
+
   /* ═══════════ TOAST ═══════════ */
   .toast{
     position:fixed; left:50%;
@@ -1723,6 +1745,20 @@
   </div>
 
   <div class="settings-section">
+    <p class="settings-section-title" data-t="lockTitle">PIN lock</p>
+    <div class="settings-block">
+      <div class="settings-row">
+        <span class="settings-row-label" data-t="lockSwitchLabel">Ask for a PIN to open the app</span>
+        <button class="switch" id="lockSwitch" onclick="togglePinLock()" role="switch" aria-checked="false" data-ta="lockSwitchLabel"></button>
+      </div>
+      <div class="settings-row stack">
+        <span class="settings-row-sub" data-t="lockHint">Keeps other people out of the app on a shared phone. If you forget the PIN, the only way back in is to clear all data, so keep a backup.</span>
+      </div>
+      <button class="settings-row" id="changePinBtn" onclick="changePin()" data-t="lockChangeBtn" hidden>Change PIN</button>
+    </div>
+  </div>
+
+  <div class="settings-section">
     <p class="settings-section-title" data-t="t-settingsPrivacy">Your data</p>
     <div class="settings-block">
       <div class="settings-row stack">
@@ -1731,7 +1767,7 @@
         <span class="settings-row-sub" id="backupStatus"></span>
       </div>
       <button class="settings-row ico i-download" onclick="backupNow()" data-t="backupBtn">Back up now</button>
-      <button class="settings-row ico i-upload" onclick="$('restoreInput').click()" data-t="restoreBtn">Restore from a backup</button>
+      <button class="settings-row ico i-upload" onclick="pickRestoreFile()" data-t="restoreBtn">Restore from a backup</button>
       <button class="settings-row ico i-download" onclick="exportCsv()" data-t="t-exportCsv">Export data (CSV)</button>
     </div>
   </div>
@@ -1837,6 +1873,42 @@
   </div>
 </div>
 
+<!-- ═══ PASSPHRASE OR PIN — asked for by askSecret() ═══ -->
+<div class="notif-panel" id="secretPanel" role="dialog" aria-modal="true" aria-labelledby="secretTitle" hidden>
+  <div class="notif-head">
+    <h2 class="panel-title" id="secretTitle"></h2>
+    <button class="icon-btn" onclick="closePanel('secretPanel')" data-ta="closeLabel" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <form class="secret-body" id="secretForm" onsubmit="event.preventDefault(); secretSubmit();" autocomplete="off">
+    <p class="hint-line" id="secretText"></p>
+    <label class="field-label" for="secretInput" id="secretLabel"></label>
+    <input class="form-field" id="secretInput" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <label class="field-label" for="secretInput2" id="secretLabel2"></label>
+    <input class="form-field" id="secretInput2" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <p class="form-error" id="secretError" role="alert"></p>
+    <button class="btn btn-solid" type="submit" id="secretOk"></button>
+    <button class="btn btn-ghost" type="button" onclick="closePanel('secretPanel')" data-t="t-cancelVital">Cancel</button>
+  </form>
+</div>
+
+<!-- ═══ PIN LOCK — over everything while locked ═══ -->
+<div class="lock-screen" id="lockScreen" role="dialog" aria-modal="true" aria-labelledby="lockHeading" hidden>
+  <form class="lock-inner" onsubmit="event.preventDefault(); unlockSubmit();" autocomplete="off">
+    <h2 class="panel-title" id="lockHeading" data-t="lockScreenTitle">Enter your PIN</h2>
+    <p class="hint-line" data-t="lockScreenText">This app is locked with a PIN.</p>
+    <input class="form-field" id="lockInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" data-ta="lockScreenTitle" aria-label="Enter your PIN">
+    <p class="form-error" id="lockError" role="alert"></p>
+    <button class="btn btn-solid" type="submit" id="lockOk" data-t="lockUnlockBtn">Unlock</button>
+    <button class="btn btn-ghost" type="button" onclick="toggleForgotPin()" data-t="lockForgotBtn">Forgot PIN?</button>
+    <div class="lock-forgot" id="lockForgot" hidden>
+      <p data-t="lockForgotText">There is no account and nothing is stored online, so a forgotten PIN cannot be recovered or reset by anyone. The only way back in is to clear all data on this phone. You can then restore your last backup file, if you have one.</p>
+      <button class="btn btn-danger" type="button" onclick="clearAllData()" data-t="lockClearBtn">Clear all data</button>
+    </div>
+  </form>
+</div>
+
 <input type="file" id="restoreInput" accept=".json,application/json" hidden onchange="restoreFromFile(this)">
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1851,6 +1923,7 @@
 <script src="js/core/reminders.js"></script>
 <script src="js/core/checks.js"></script>
 <script src="js/demo.js"></script>
+<script src="js/secure.js"></script>
 <script src="js/platform/native.js"></script>
 <script src="js/platform/app.js"></script>
 <script src="js/platform/display.js"></script>
@@ -2577,7 +2650,29 @@ T2.en={
   demoExitConfirm:"Clear the sample record from this phone? Your own record is not changed.",
   demoStartedToast:"Sample record loaded",
   demoExitedToast:"Sample record cleared",
-  demoBadge:"Sample"
+  demoBadge:"Sample",
+  // encrypted backups and the PIN lock (security update)
+  encUnavailable:"This phone can't encrypt files, so backups and the PIN lock are not available",
+  encTitle:"Protect your backup", encText:"Choose a passphrase. The backup file is locked with it, so only someone who knows it can open the file. Write it down somewhere safe: without it the backup cannot be opened by anyone.",
+  encPassLabel:"Passphrase", encPassAgain:"Passphrase again", encOkBtn:"Encrypt and save",
+  encTooShort:"Use at least {n} characters", encNoMatch:"The two passphrases are not the same", encFailed:"Something went wrong. Please try again.",
+  decTitle:"Open your backup", decText:"This backup is protected. Type the passphrase you chose when you made it.", decOkBtn:"Open backup",
+  decWrong:"Wrong passphrase, or the file is damaged. Please check and try again.",
+  restorePlainWarn:"Warning: this is an older backup that is not protected with a passphrase. Anyone who has a copy of this file can read it. After restoring, make a new backup and delete the old file.",
+  secretWorking:"Please wait…",
+  lockTitle:"PIN lock", lockSwitchLabel:"Ask for a PIN to open the app",
+  lockHint:"Keeps other people out of the app on a shared phone. If you forget the PIN, the only way back in is to clear all data, so keep a backup.",
+  lockChangeBtn:"Change PIN", lockScreenTitle:"Enter your PIN", lockScreenText:"This app is locked with a PIN.",
+  lockUnlockBtn:"Unlock", lockForgotBtn:"Forgot PIN?",
+  lockForgotText:"There is no account and nothing is stored online, so a forgotten PIN cannot be recovered or reset by anyone. The only way back in is to clear all data on this phone. You can then restore your last backup file, if you have one.",
+  lockClearBtn:"Clear all data",
+  lockClearConfirm:"Delete everything this app keeps on this phone, for every person? This cannot be undone.",
+  lockWrong:"Wrong PIN. Tries left before a short wait: {n}", lockWait:"Too many wrong tries. Please wait {n} seconds.",
+  pinSetTitle:"Set a PIN", pinNewText:"Choose 4 to 6 numbers. You will need them each time you open the app.",
+  pinNewLabel:"New PIN", pinAgainLabel:"New PIN again", pinSaveBtn:"Save PIN",
+  pinBad:"Use 4 to 6 numbers", pinNoMatch:"The two PINs are not the same",
+  pinCurrentLabel:"Current PIN", pinContinueBtn:"Continue", pinOffTitle:"Turn off the PIN lock",
+  pinOnDone:"PIN lock is on", pinOffDone:"PIN lock is off", pinChanged:"PIN changed"
 };
 
 
@@ -2805,7 +2900,29 @@ T2.am={
   demoExitConfirm:"የናሙና መዝገቡ ከዚህ ስልክ ይጥፋ? የራስዎ መዝገብ አይቀየርም።",
   demoStartedToast:"የናሙና መዝገብ ተሞልቷል",
   demoExitedToast:"የናሙና መዝገብ ጸድቷል",
-  demoBadge:"ናሙና"
+  demoBadge:"ናሙና",
+  // የተመሰጠረ ምትኬ እና የፒን መቆለፊያ
+  encUnavailable:"ይህ ስልክ ፋይሎችን መመስጠር አይችልም፤ ስለዚህ ምትኬ እና የፒን መቆለፊያ አይሰሩም",
+  encTitle:"ምትኬዎን ይጠብቁ", encText:"የይለፍ ሐረግ ይምረጡ። የምትኬ ፋይሉ በእሱ ይቆለፋል፤ ስለዚህ ፋይሉን መክፈት የሚችለው እሱን የሚያውቅ ሰው ብቻ ነው። በአስተማማኝ ቦታ ይጻፉት፤ ያለ እሱ ምትኬውን ማንም ሊከፍተው አይችልም።",
+  encPassLabel:"የይለፍ ሐረግ", encPassAgain:"የይለፍ ሐረጉን እንደገና", encOkBtn:"መስጥር እና አስቀምጥ",
+  encTooShort:"ቢያንስ {n} ፊደሎችን ይጠቀሙ", encNoMatch:"ሁለቱ የይለፍ ሐረጎች አንድ አይደሉም", encFailed:"የሆነ ችግር ተፈጥሯል። እባክዎ እንደገና ይሞክሩ።",
+  decTitle:"ምትኬዎን ይክፈቱ", decText:"ይህ ምትኬ የተጠበቀ ነው። ሲያስቀምጡት የመረጡትን የይለፍ ሐረግ ይጻፉ።", decOkBtn:"ምትኬውን ክፈት",
+  decWrong:"የይለፍ ሐረጉ ትክክል አይደለም፣ ወይም ፋይሉ ተበላሽቷል። እባክዎ አረጋግጠው እንደገና ይሞክሩ።",
+  restorePlainWarn:"ማስጠንቀቂያ፦ ይህ በይለፍ ሐረግ ያልተጠበቀ የቆየ ምትኬ ነው። የዚህ ፋይል ቅጂ ያለው ማንኛውም ሰው ሊያነበው ይችላል። ከመለሱ በኋላ አዲስ ምትኬ ያስቀምጡ እና የቆየውን ፋይል ይሰርዙ።",
+  secretWorking:"እባክዎ ይጠብቁ…",
+  lockTitle:"የፒን መቆለፊያ", lockSwitchLabel:"መተግበሪያው ሲከፈት ፒን ጠይቅ",
+  lockHint:"በጋራ ስልክ ላይ ሌሎች ሰዎች መተግበሪያውን እንዳይከፍቱ ይከላከላል። ፒኑን ከረሱ፣ ተመልሰው መግባት የሚችሉት ሁሉንም መረጃ በማጥፋት ብቻ ነው፤ ስለዚህ ምትኬ ያስቀምጡ።",
+  lockChangeBtn:"ፒን ቀይር", lockScreenTitle:"ፒንዎን ያስገቡ", lockScreenText:"ይህ መተግበሪያ በፒን ተቆልፏል።",
+  lockUnlockBtn:"ክፈት", lockForgotBtn:"ፒኑን ረሱት?",
+  lockForgotText:"መለያ የለም፣ በኢንተርኔትም ምንም አልተቀመጠም፤ ስለዚህ የተረሳ ፒንን ማንም መመለስ ወይም መቀየር አይችልም። ተመልሰው መግባት የሚችሉት በዚህ ስልክ ያለውን መረጃ ሁሉ በማጥፋት ብቻ ነው። ከዚያ ካለዎት የመጨረሻውን የምትኬ ፋይል መመለስ ይችላሉ።",
+  lockClearBtn:"ሁሉንም መረጃ አጥፋ",
+  lockClearConfirm:"ይህ መተግበሪያ በዚህ ስልክ ላይ ያስቀመጠው ሁሉ፣ ለሁሉም ሰው፣ ይጥፋ? ይህ ሊመለስ አይችልም።",
+  lockWrong:"ፒኑ ትክክል አይደለም። ከአጭር ቆይታ በፊት የቀሩ ሙከራዎች፦ {n}", lockWait:"በጣም ብዙ የተሳሳቱ ሙከራዎች። እባክዎ {n} ሰከንድ ይጠብቁ።",
+  pinSetTitle:"ፒን ያዘጋጁ", pinNewText:"ከ4 እስከ 6 ቁጥሮች ይምረጡ። መተግበሪያውን በከፈቱ ቁጥር ያስፈልጉዎታል።",
+  pinNewLabel:"አዲስ ፒን", pinAgainLabel:"አዲሱን ፒን እንደገና", pinSaveBtn:"ፒኑን አስቀምጥ",
+  pinBad:"ከ4 እስከ 6 ቁጥሮች ይጠቀሙ", pinNoMatch:"ሁለቱ ፒኖች አንድ አይደሉም",
+  pinCurrentLabel:"የአሁኑ ፒን", pinContinueBtn:"ቀጥል", pinOffTitle:"የፒን መቆለፊያውን አጥፋ",
+  pinOnDone:"የፒን መቆለፊያ በርቷል", pinOffDone:"የፒን መቆለፊያ ጠፍቷል", pinChanged:"ፒኑ ተቀይሯል"
 };
 
 
@@ -3033,7 +3150,29 @@ T2.or={
   demoExitConfirm:"Galmeen fakkeenyaa bilbila kana irraa haqamuu qaba? Galmeen kee hin jijjiiramu.",
   demoStartedToast:"Galmeen fakkeenyaa fe'ameera",
   demoExitedToast:"Galmeen fakkeenyaa haqameera",
-  demoBadge:"Fakkeenya"
+  demoBadge:"Fakkeenya",
+  // kuusaa iccitiidhaan eegame fi cufaa PIN
+  encUnavailable:"Bilbilli kun faayiloota iccitiidhaan eeguu hin danda'u; kanaaf kuusaa fi cufaan PIN hin hojjetan",
+  encTitle:"Kuusaa kee eegi", encText:"Jecha icciitii filadhu. Faayiliin kuusaa isaan cufama; kanaaf namni isa beeku qofatu faayilicha banuu danda'a. Bakka nagaa irratti barreessi: isa malee namni tokkollee kuusaa kana banuu hin danda'u.",
+  encPassLabel:"Jecha icciitii", encPassAgain:"Jecha icciitii irra deebi'i", encOkBtn:"Iccitiidhaan eegi fi olkaa'i",
+  encTooShort:"Yoo xiqqaate qubee {n} fayyadami", encNoMatch:"Jechoonni icciitii lamaan walfakkaataa miti", encFailed:"Rakkoon uumame. Maaloo irra deebi'ii yaali.",
+  decTitle:"Kuusaa kee bani", decText:"Kuusaan kun eegamaa dha. Jecha icciitii yeroo isa olkaa'atte filatte barreessi.", decOkBtn:"Kuusaa bani",
+  decWrong:"Jechi icciitii dogoggora, ykn faayiliin miidhameera. Maaloo mirkaneessii irra deebi'ii yaali.",
+  restorePlainWarn:"Akeekkachiisa: kun kuusaa durii jecha icciitiidhaan hin eegamne dha. Namni garagalcha faayila kanaa qabu kamiyyuu dubbisuu danda'a. Erga deebifattee booda kuusaa haaraa olkaa'iitii faayila durii haqi.",
+  secretWorking:"Maaloo eegi…",
+  lockTitle:"Cufaa PIN", lockSwitchLabel:"Appii banuuf PIN gaafadhu",
+  lockHint:"Bilbila waliinii irratti namoonni biroo appii akka hin banne ittisa. Yoo PIN irraanfatte, karaan deebi'anii seenuu daataa hunda haquu qofa; kanaaf kuusaa olkaa'i.",
+  lockChangeBtn:"PIN jijjiiri", lockScreenTitle:"PIN kee galchi", lockScreenText:"Appiin kun PIN dhaan cufameera.",
+  lockUnlockBtn:"Bani", lockForgotBtn:"PIN irraanfattee?",
+  lockForgotText:"Herregni hin jiru, interneetii irrattis wanti kuufame hin jiru; kanaaf PIN irraanfatame namni tokkollee deebisuu ykn jijjiiruu hin danda'u. Karaan deebi'anii seenuu daataa bilbila kana irra jiru hunda haquu qofa. Achiis yoo qabaatte faayila kuusaa dhumaa deebifachuu dandeessa.",
+  lockClearBtn:"Daataa hunda haqi",
+  lockClearConfirm:"Wanti appiin kun bilbila kana irratti kuuse hundi, nama hundaaf, haa haqamu? Kun deebi'uu hin danda'u.",
+  lockWrong:"PIN dogoggora. Yaaliiwwan eeggannaa gabaabaa dura hafan: {n}", lockWait:"Yaaliiwwan dogoggoraa baay'eedha. Maaloo sekondii {n} eegi.",
+  pinSetTitle:"PIN qopheessi", pinNewText:"Lakkoofsota 4 hanga 6 filadhu. Yeroo appii bantu hunda isaan si barbaachisu.",
+  pinNewLabel:"PIN haaraa", pinAgainLabel:"PIN haaraa irra deebi'i", pinSaveBtn:"PIN olkaa'i",
+  pinBad:"Lakkoofsota 4 hanga 6 fayyadami", pinNoMatch:"PIN lamaan walfakkaataa miti",
+  pinCurrentLabel:"PIN amma jiru", pinContinueBtn:"Itti fufi", pinOffTitle:"Cufaa PIN dhaamsi",
+  pinOnDone:"Cufaan PIN banameera", pinOffDone:"Cufaan PIN dhaamameera", pinChanged:"PIN jijjiirameera"
 };
 
 
@@ -3056,7 +3195,10 @@ let S=null;                 // the active person's record
 let profiles=null;          // {list:[{id,name}], active}
 // persistAsked is no longer used (the app's files are never evicted); it stays
 // so saved settings keep the same shape (safety charter rule 5).
-let G={lastBackup:null, backupSnooze:null, persistAsked:false, bigText:false};
+// pinLock is the optional PIN lock: null when off, else {salt, hash,
+// iterations} (a hash, never the PIN). pinTries counts wrong PINs, kept so
+// closing the app does not reset the wait. Neither goes into backups.
+let G={lastBackup:null, backupSnooze:null, persistAsked:false, bigText:false, pinLock:null, pinTries:{fails:0, waitUntil:0}};
 let pendingVital=null, pendingRhythm=null;
 let medForm=null;           // add/edit buffer for the medicine form
 let injForm=null;           // {date, reason} while recording an injection
@@ -4677,7 +4819,7 @@ function renderSettings(){
   setVal('familyInput', S.contacts.family);
   const vs=$('valveSelect');
   if(document.activeElement!==vs) vs.innerHTML=['','none','mechanical','tissue','unsure'].map(v=>`<option value="${v}"${S.about.valve===v?' selected':''}>${esc(v?L('valve_'+v):'—')}</option>`).join('');
-  renderReminders(); renderStorageStatus(); renderDemoSettings();
+  renderReminders(); renderStorageStatus(); renderDemoSettings(); renderLockSettings();
 }
 function renderDemoSettings(){
   const btn=$('demoSettingsBtn'), sub=$('demoSettingsText');
@@ -4989,7 +5131,7 @@ function updateNotifPermUI(){
 // ═══════════════════════════════════════════
 // PANELS, TABS, TOAST
 // ═══════════════════════════════════════════
-const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel','welcomePanel'];
+const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel','welcomePanel','secretPanel'];
 function openPanel(id, scrollToId){
   const p=$(id);
   if(!p) return;
@@ -5007,6 +5149,7 @@ function closePanel(id){
   if(!p || p.hidden) return;
   p.hidden=true;
   if(id==='pulsePanel') stopPulseCam();
+  if(id==='secretPanel') secretDone(null);
   const op=openerStack.pop();
   if(op && op.focus && document.contains(op)) op.focus();
   if(id==='settingsPanel') renderAll();
@@ -5047,6 +5190,8 @@ function cancelOpenForm(){
   return false;
 }
 function handleBack(){
+  // locked: back leaves the app, it never reaches what is behind the lock
+  if(isLocked()){ Platform.app.leave(); return 'leave'; }
   const p=topPanel();
   if(p){ closePanel(p); return 'panel'; }
   if(cancelOpenForm()) return 'form';
@@ -5554,6 +5699,7 @@ async function shareOrDownload(blob, filename, title){
   try{
     const file=new File([blob], filename, {type:blob.type});
     if(navigator.canShare && navigator.canShare({files:[file]})){
+      expectAway();
       await navigator.share({files:[file], title});
       return 'shared';
     }
@@ -5704,41 +5850,253 @@ async function exportIcs(){
 // Telegram is enough to survive a lost phone or a cleared browser.
 // ═══════════════════════════════════════════
 async function backupNow(){
+  if(!CC.secure.available()){ showToast(L('encUnavailable')); return; }
   save();
   const states={};
   profiles.list.forEach(p=>{ const st=p.id===profiles.active?S:readState(p.id); if(st) states[p.id]=st; });
   const data={kind:BACKUP_KIND, v:3, exported:new Date().toISOString(), profiles, states};
-  const blob=new Blob([JSON.stringify(data)], {type:'application/json'});
+  // The file is always encrypted: there is no "plain" choice that a tired
+  // or hurried person could pick by mistake.
+  let file=null;
+  const pass=await askSecret({title:L('encTitle'), text:L('encText'), label:L('encPassLabel'), label2:L('encPassAgain'),
+    ok:L('encOkBtn'), kind:'pass', submit:async (v,v2)=>{
+      if(v.length<CC.secure.MIN_PASSPHRASE) return L('encTooShort',{n:CC.secure.MIN_PASSPHRASE});
+      if(v!==v2) return L('encNoMatch');
+      try{ file=await CC.secure.encryptBackup(data, v); }catch(e){ return L('encFailed'); }
+      return null;
+    }});
+  if(pass==null || !file) return;
+  const blob=new Blob([JSON.stringify(file)], {type:'application/json'});
   const res=await shareOrDownload(blob, 'cardiac-companion-backup-'+todayKey()+'.json', L('backupBtn'));
   if(res==='cancelled') return;
   G.lastBackup=todayKey(); G.backupSnooze=null; saveGlobal();
   renderActiveAlerts(); renderStorageStatus();
   showToast(L('backupDone'));
 }
+// Choosing a file opens the phone's file picker, which takes the app off
+// screen for a moment; that must not bring up the PIN lock.
+function pickRestoreFile(){ expectAway(); $('restoreInput').click(); }
 function restoreFromFile(input){
   const file=input.files && input.files[0];
   input.value='';
   if(!file) return;
   const reader=new FileReader();
   reader.onload=()=>{
-    let data=null;
-    try{ data=JSON.parse(String(reader.result)); }catch(e){}
-    if(!data || data.kind!==BACKUP_KIND || !data.profiles || !Array.isArray(data.profiles.list) || !data.states){
-      showToast(L('restoreBad')); return;
-    }
-    const when=data.exported ? fmtGreg(localDateKey(new Date(data.exported)), true) : '?';
-    const names=data.profiles.list.map(p=>p.name||L('unnamed')).join(', ');
-    if(!confirm(L('restoreConfirm',{date:when, names}))) return;
-    try{
-      profiles.list.forEach(p=>{ try{ localStorage.removeItem(stateKey(p.id)); }catch(e){} });
-      data.profiles.list.forEach(p=>{ if(data.states[p.id]) writeState(p.id, normalizeState(data.states[p.id])); });
-      localStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
-      G.lastBackup=todayKey(); saveGlobal();
-      location.reload();
-    }catch(e){ showToast(L('saveFailed')); }
+    let raw=null;
+    try{ raw=JSON.parse(String(reader.result)); }catch(e){}
+    restoreFromData(raw);
   };
   reader.onerror=()=>showToast(L('restoreBad'));
   reader.readAsText(file);
+}
+// raw: the parsed backup file. Encrypted files ask for the passphrase and
+// stay open on a wrong one; files from before encryption still restore,
+// with a warning. Returns what happened, for the tests.
+async function restoreFromData(raw){
+  const type=CC.secure.backupType(raw);
+  if(!type){ showToast(L('restoreBad')); return 'bad'; }
+  let data=raw;
+  if(type==='encrypted'){
+    if(!CC.secure.available()){ showToast(L('encUnavailable')); return 'bad'; }
+    data=null;
+    const pass=await askSecret({title:L('decTitle'), text:L('decText'), label:L('encPassLabel'), ok:L('decOkBtn'), kind:'pass',
+      submit:async v=>{
+        try{ data=await CC.secure.decryptBackup(raw, v); return null; }
+        catch(e){ return L(e && e.message==='wrong-passphrase' ? 'decWrong' : 'restoreBad'); }
+      }});
+    if(pass==null || !data) return 'cancelled';
+  }
+  const when=data.exported ? fmtGreg(localDateKey(new Date(data.exported)), true) : '?';
+  const names=data.profiles.list.map(p=>p.name||L('unnamed')).join(', ');
+  const ask=L('restoreConfirm',{date:when, names});
+  if(!confirm(type==='plain' ? L('restorePlainWarn')+'\n\n'+ask : ask)) return 'cancelled';
+  try{
+    profiles.list.forEach(p=>{ try{ localStorage.removeItem(stateKey(p.id)); }catch(e){} });
+    data.profiles.list.forEach(p=>{ if(data.states[p.id]) writeState(p.id, normalizeState(data.states[p.id])); });
+    localStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
+    G.lastBackup=todayKey(); saveGlobal();
+    location.reload();
+  }catch(e){ showToast(L('saveFailed')); return 'failed'; }
+  return 'restored';
+}
+
+// ═══════════════════════════════════════════
+// PASSPHRASE OR PIN BOX
+// askSecret() opens a small box with one or two hidden fields and resolves
+// to what was typed, or to null if the person cancels or presses back.
+// opts.submit(v, v2) checks it and returns an error to show (the box stays
+// open, so a wrong passphrase can be typed again) or null to close.
+// ═══════════════════════════════════════════
+let secretAsk=null;
+function askSecret(opts){
+  if(secretAsk) secretDone(null);
+  return new Promise(resolve=>{
+    secretAsk={opts, resolve, busy:false};
+    const pin=opts.kind==='pin';
+    $('secretTitle').textContent=opts.title;
+    $('secretText').textContent=opts.text||'';
+    $('secretText').hidden=!opts.text;
+    $('secretLabel').textContent=opts.label;
+    $('secretLabel2').textContent=opts.label2||'';
+    $('secretLabel2').hidden=$('secretInput2').hidden=!opts.label2;
+    ['secretInput','secretInput2'].forEach(id=>{
+      const el=$(id);
+      el.value='';
+      el.setAttribute('inputmode', pin?'numeric':'text');
+      if(pin) el.setAttribute('maxlength','6'); else el.removeAttribute('maxlength');
+    });
+    $('secretError').textContent='';
+    $('secretOk').textContent=opts.ok;
+    $('secretOk').disabled=false;
+    openPanel('secretPanel');
+    $('secretInput').focus();
+  });
+}
+async function secretSubmit(){
+  const a=secretAsk;
+  if(!a || a.busy) return;
+  const v=$('secretInput').value, v2=$('secretInput2').value;
+  a.busy=true; $('secretOk').disabled=true; $('secretError').textContent=L('secretWorking');
+  let err=null;
+  try{ err=a.opts.submit ? await a.opts.submit(v, v2) : null; }catch(e){ err=L('encFailed'); }
+  a.busy=false; $('secretOk').disabled=false;
+  if(secretAsk!==a) return;              // closed while working
+  if(err){ $('secretError').textContent=err; $('secretInput').value=''; $('secretInput2').value=''; $('secretInput').focus(); return; }
+  secretDone(v);
+  closePanel('secretPanel');
+}
+function secretDone(value){
+  const a=secretAsk;
+  if(!a) return;
+  secretAsk=null;
+  ['secretInput','secretInput2'].forEach(id=>{ $(id).value=''; });   // nothing secret left in the page
+  a.resolve(value);
+}
+
+// ═══════════════════════════════════════════
+// PIN LOCK
+// Optional, off until the person turns it on in Settings. The lock shows
+// when the app opens and each time it comes back to the screen. Five wrong
+// PINs in a row mean a 30-second wait. There is no account, so a forgotten
+// PIN cannot be reset by anyone: the only way back in is to clear all data.
+// The lock keeps people out of the app; it does not encrypt what is stored.
+// ═══════════════════════════════════════════
+let locked=false;
+let lockTimer=null;
+let awayOkUntil=0;          // the app's own share sheet or file picker
+function isLocked(){ return locked; }
+function expectAway(){ awayOkUntil=Date.now()+5*60*1000; }
+function showLock(){
+  if(!G.pinLock) return;
+  if(!locked){
+    if(!$('secretPanel').hidden) closePanel('secretPanel');
+    locked=true;
+    $('lockScreen').hidden=false;
+    document.body.classList.add('locked');
+  }
+  $('lockInput').value='';
+  $('lockForgot').hidden=true;
+  renderLockWait();
+  $('lockInput').focus();
+}
+function hideLock(){
+  locked=false;
+  $('lockScreen').hidden=true;
+  document.body.classList.remove('locked');
+  $('lockInput').value=''; $('lockError').textContent='';
+  clearInterval(lockTimer); lockTimer=null;
+}
+// the countdown while five wrong PINs make the person wait
+function renderLockWait(){
+  const left=CC.secure.waitLeft(G.pinTries, Date.now());
+  $('lockOk').disabled=left>0;
+  $('lockInput').disabled=left>0;
+  if(left>0){
+    $('lockError').textContent=L('lockWait',{n:left});
+    if(!lockTimer) lockTimer=setInterval(renderLockWait, 1000);
+  }else{
+    if(lockTimer){ clearInterval(lockTimer); lockTimer=null; $('lockError').textContent=''; $('lockInput').focus(); }
+  }
+  return left;
+}
+async function unlockSubmit(){
+  if(renderLockWait()>0) return 'wait';
+  const pin=$('lockInput').value;
+  $('lockInput').value='';
+  if(await CC.secure.checkPin(pin, G.pinLock)){
+    G.pinTries={fails:0, waitUntil:0}; saveGlobal();
+    hideLock();
+    return 'unlocked';
+  }
+  G.pinTries=CC.secure.afterWrongPin(G.pinTries, Date.now()); saveGlobal();
+  if(renderLockWait()>0) return 'wait';
+  $('lockError').textContent=L('lockWrong',{n:CC.secure.PIN_TRIES-G.pinTries.fails});
+  $('lockInput').focus();
+  return 'wrong';
+}
+function toggleForgotPin(){ const f=$('lockForgot'); f.hidden=!f.hidden; }
+// "Forgot PIN": everything this app keeps on the phone is deleted, after a
+// clear warning. The person can then restore a backup file.
+function clearAllData(){
+  if(!confirm(L('lockClearConfirm'))) return false;
+  try{ localStorage.clear(); }catch(e){ showToast(L('saveFailed')); return false; }
+  location.reload();
+  return true;
+}
+// Settings
+function renderLockSettings(){
+  const on=!!G.pinLock, sw=$('lockSwitch');
+  sw.classList.toggle('on', on); sw.setAttribute('aria-checked', on?'true':'false');
+  $('changePinBtn').hidden=!on;
+}
+// the PIN, asked for twice; resolves to the saved hash, or null
+function askNewPin(title){
+  let made=null;
+  return askSecret({title, text:L('pinNewText'), label:L('pinNewLabel'), label2:L('pinAgainLabel'), ok:L('pinSaveBtn'), kind:'pin',
+    submit:async (v,v2)=>{
+      if(!CC.secure.pinOk(v)) return L('pinBad');
+      if(v!==v2) return L('pinNoMatch');
+      made=await CC.secure.hashPin(v);
+      return null;
+    }}).then(v=>v==null?null:made);
+}
+// the current PIN; wrong ones count towards the wait like on the lock screen
+function askCurrentPin(title){
+  return askSecret({title, label:L('pinCurrentLabel'), ok:L('pinContinueBtn'), kind:'pin',
+    submit:async v=>{
+      const left=CC.secure.waitLeft(G.pinTries, Date.now());
+      if(left>0) return L('lockWait',{n:left});
+      if(await CC.secure.checkPin(v, G.pinLock)){ G.pinTries={fails:0, waitUntil:0}; saveGlobal(); return null; }
+      G.pinTries=CC.secure.afterWrongPin(G.pinTries, Date.now()); saveGlobal();
+      const wait=CC.secure.waitLeft(G.pinTries, Date.now());
+      return wait>0 ? L('lockWait',{n:wait}) : L('lockWrong',{n:CC.secure.PIN_TRIES-G.pinTries.fails});
+    }}).then(v=>v!=null);
+}
+async function togglePinLock(){
+  if(!CC.secure.available()){ showToast(L('encUnavailable')); return; }
+  if(G.pinLock){
+    if(!await askCurrentPin(L('pinOffTitle'))) return;
+    G.pinLock=null; saveGlobal();
+    showToast(L('pinOffDone'));
+  }else{
+    const made=await askNewPin(L('pinSetTitle'));
+    if(!made) return;
+    G.pinLock=made; G.pinTries={fails:0, waitUntil:0}; saveGlobal();
+    showToast(L('pinOnDone'));
+  }
+  renderLockSettings();
+}
+async function changePin(){
+  if(!G.pinLock || !await askCurrentPin(L('lockChangeBtn'))) return;
+  const made=await askNewPin(L('lockChangeBtn'));
+  if(!made) return;
+  G.pinLock=made; saveGlobal();
+  showToast(L('pinChanged'));
+}
+// the app went off screen and came back
+function onAppShown(){
+  if(Date.now()<awayOkUntil){ awayOkUntil=0; return; }
+  showLock();
 }
 
 
@@ -5861,8 +6219,9 @@ function init(){
   if(start.migrated) addNotification(L('migratedTitle'), L('migratedText'), 'info');
   if(shouldShowWelcome()) openPanel('welcomePanel');
 
+  showLock();               // does nothing when the PIN lock is off
   setInterval(tick, 30000);
-  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tick(); });
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden){ onAppShown(); tick(); } });
   window.addEventListener('pageshow', ()=>tick());
   window.addEventListener('resize', drawWeightChart);
   Platform.app.onBack(handleBack);
