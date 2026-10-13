@@ -38,6 +38,8 @@ Reference: docs/app-guide.pdf (the v3.2 guide, with a file-by-file line index).
 
 ## Commands
 - npm test                                 all Node tests
+- npm run build:web                        static demo in dist/ (does not deploy)
+- npm run preview:web                      open that demo at http://127.0.0.1:8080/
 - npx cap sync android                     copy www/ into the Android project
 - npx cap open android                     open in Android Studio
 - cd android && ./gradlew assembleDebug    debug APK (gradlew.bat on Windows)

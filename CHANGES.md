@@ -8,6 +8,9 @@ only while the app is open (Phase 4), and exports wait for Phase 5.
 
 The website (cardiac-companion.vercel.app) stays at web 3.2.2:
 `vercel.json` stops Vercel deploying from this repository until Phase 9.
+`npm run build:web` writes a static copy of these pages to `dist/` for a
+later deploy (see `docs/demo-build.md`). That command does not deploy,
+and it does not change `vercel.json`.
 
 ## Removed (web-only, not needed in an app)
 - **Service worker** (`sw.js`) and its registration. The files are inside the
