@@ -751,6 +751,26 @@
   /* ═══════════ ACTIVE ALERTS ═══════════ */
   #activeAlerts{padding:6px 16px 0;}
   #activeAlerts:empty{display:none;}
+  /* Sample record: always visible while demo mode is on, on every tab. */
+  .demo-banner{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin:8px 16px 0; padding:12px 14px;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r-card);
+  }
+  .demo-banner p{margin:0; font-size:14px; line-height:1.4; color:var(--ink-2);}
+  .demo-banner strong{display:block; font-size:15px; font-weight:600; color:var(--ink-1);}
+  .demo-banner .btn{flex-shrink:0;}
+  .welcome-body{padding:calc(28px + var(--safe-top)) 20px calc(28px + var(--safe-bottom));}
+  .welcome-mark{
+    width:48px; height:48px; margin-bottom:16px;
+    display:flex; align-items:center; justify-content:center;
+    background:var(--accent); color:var(--on-accent); border-radius:var(--r-btn);
+  }
+  .welcome-mark svg{width:28px; height:28px;}
+  .welcome-body h2{font-size:28px; font-weight:700; letter-spacing:-.02em; line-height:1.2;}
+  .welcome-lead{margin-top:10px; font-size:17px; line-height:1.45; color:var(--ink-1);}
+  .welcome-body .btn-col{margin-top:22px;}
+  .welcome-body .hint-line{margin-top:14px;}
   .alert-critical, .alert-warning, .alert-info{
     display:grid; grid-template-columns:20px 1fr; column-gap:10px; row-gap:1px;
     padding:12px 14px; margin-top:8px;
@@ -1174,6 +1194,10 @@
 
   <div class="app-main">
   <main class="content" id="content">
+    <div id="demoBanner" class="demo-banner" role="status" hidden>
+      <p><strong data-t="demoBannerTitle">Sample record</strong><span data-t="demoBannerText">Made-up data for a young woman with rheumatic heart disease. Not a real patient.</span></p>
+      <button type="button" class="btn btn-ghost btn-small" onclick="exitDemo()" data-t="demoExitBtn">Exit demo</button>
+    </div>
     <div id="activeAlerts"></div>
 
     <!-- ───────── TODAY ───────── -->
@@ -1616,6 +1640,17 @@
     </button>
   </div>
 
+  <div class="settings-section" id="demoSection">
+    <p class="settings-section-title" data-t="demoSectionTitle">Sample record</p>
+    <div class="settings-block">
+      <div class="settings-row stack">
+        <span class="settings-row-label" data-t="demoSectionLabel">Demo mode</span>
+        <span class="settings-row-sub" id="demoSettingsText">About six months for a made-up young woman in Ethiopia with rheumatic heart disease, on warfarin and a monthly penicillin injection.</span>
+      </div>
+      <button type="button" class="settings-row" id="demoSettingsBtn" onclick="onDemoSettings()">Try the sample record</button>
+    </div>
+  </div>
+
   <div class="settings-section">
     <p class="settings-section-title" data-t="t-settingsPreferences">Preferences</p>
     <div class="settings-block">
@@ -1709,6 +1744,22 @@
   </div>
 </div>
 
+<!-- ═══ WELCOME — first launch, and again after leaving an empty demo ═══ -->
+<div class="notif-panel" id="welcomePanel" role="dialog" aria-modal="true" aria-labelledby="welcomeScreenTitle" hidden>
+  <div class="welcome-body">
+    <div class="welcome-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+    </div>
+    <h2 id="welcomeScreenTitle" data-t="t-appTitle">Cardiac Companion</h2>
+    <p class="welcome-lead" data-t="welcomeScreenText">A private medicine record, kept on this phone. Nothing is sent anywhere.</p>
+    <div class="btn-col">
+      <button type="button" class="btn btn-solid" onclick="startDemo()" data-t="demoStartBtn">Try the sample record</button>
+      <button type="button" class="btn btn-ghost" onclick="dismissWelcome()" data-t="welcomeOwnBtn">Start my own record</button>
+    </div>
+    <p class="hint-line" data-t="demoStartHint">One tap loads a made-up patient so you can look around. A real record on this phone is kept separate and is not changed.</p>
+  </div>
+</div>
+
 <!-- ═══ GET HELP NOW ═══ -->
 <div class="notif-panel" id="helpPanel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
   <div class="notif-head">
@@ -1799,6 +1850,7 @@
 <script src="js/core/health.js"></script>
 <script src="js/core/reminders.js"></script>
 <script src="js/core/checks.js"></script>
+<script src="js/demo.js"></script>
 <script src="js/platform/native.js"></script>
 <script src="js/platform/app.js"></script>
 <script src="js/platform/display.js"></script>
@@ -2508,7 +2560,24 @@ T2.en={
   "t-visitHint":"Everything since your last visit on one page — save it as a PDF or show the screen to your doctor.",
   "t-enableNotifText":"Turn on phone notifications for dose reminders. They ring while the app is open or was used recently.",
   "t-supplyHint":"Counts down each time you mark a dose taken, halves included.",
-  phoneNotifText:"Notifications are on. For alarms when the app is closed, add your reminders to your calendar in Settings."
+  phoneNotifText:"Notifications are on. For alarms when the app is closed, add your reminders to your calendar in Settings.",
+
+  // Demo mode — a made-up patient. Not health wording; still kept in all three languages.
+  welcomeScreenText:"A private medicine record, kept on this phone. Nothing is sent anywhere.",
+  welcomeOwnBtn:"Start my own record",
+  demoStartBtn:"Try the sample record",
+  demoStartHint:"One tap loads a made-up patient so you can look around. A real record on this phone is kept separate and is not changed.",
+  demoSectionTitle:"Sample record",
+  demoSectionLabel:"Demo mode",
+  demoOffText:"About six months for a made-up young woman in Ethiopia with rheumatic heart disease, on warfarin and a monthly penicillin injection.",
+  demoOnText:"This is the sample record for Hana Bekele. She is not a real patient.",
+  demoBannerTitle:"Sample record",
+  demoBannerText:"Made-up data for a young woman with rheumatic heart disease. Not a real patient.",
+  demoExitBtn:"Exit demo",
+  demoExitConfirm:"Clear the sample record from this phone? Your own record is not changed.",
+  demoStartedToast:"Sample record loaded",
+  demoExitedToast:"Sample record cleared",
+  demoBadge:"Sample"
 };
 
 
@@ -2720,7 +2789,23 @@ T2.am={
   "t-visitHint":"ካለፈው ጉብኝት ጀምሮ ያለው ሁሉ በአንድ ገጽ — እንደ PDF ያስቀምጡ ወይም ለሐኪምዎ ስክሪኑን ያሳዩ።",
   "t-enableNotifText":"ለመድሃኒት ማስታወሻ የስልክ ማሳወቂያ ያብሩ። መተግበሪያው ክፍት ሲሆን ወይም በቅርቡ ጥቅም ላይ ከዋለ ይጮሃሉ።",
   "t-supplyHint":"መድሃኒት እንደተወሰደ ምልክት ባደረጉ ቁጥር ይቀንሳል፤ ግማሽ ክኒንም ይቆጠራል።",
-  phoneNotifText:"ማሳወቂያ በርቷል። መተግበሪያው ዝግ ሲሆንም ማንቂያ እንዲኖር ማስታወሻዎቹን በቅንብሮች ወደ ካሌንደርዎ ይጨምሩ።"
+  phoneNotifText:"ማሳወቂያ በርቷል። መተግበሪያው ዝግ ሲሆንም ማንቂያ እንዲኖር ማስታወሻዎቹን በቅንብሮች ወደ ካሌንደርዎ ይጨምሩ።",
+
+  welcomeScreenText:"የመድሃኒት መዝገብ በዚህ ስልክ ላይ ብቻ ይቆያል። ወደ የትም አይላክም።",
+  welcomeOwnBtn:"የራሴን መዝገብ ጀምር",
+  demoStartBtn:"የናሙና መዝገብ ሞክር",
+  demoStartHint:"አንድ መታ ብቻ እውነተኛ ያልሆነ ታካሚ ይሞላል፣ መተግበሪያውን እንዲያዩ። የራስዎ መዝገብ ለብቻው ይቆያል፣ አይቀየርም።",
+  demoSectionTitle:"የናሙና መዝገብ",
+  demoSectionLabel:"የሙከራ ሁኔታ",
+  demoOffText:"ወደ ስድስት ወር ገደማ፣ የልብ ሩማቲክ በሽታ ላለባት እውነተኛ ያልሆነች ወጣት፣ ዋርፋሪን እና በየወሩ የፔኒሲሊን መርፌ።",
+  demoOnText:"ይህ የHana Bekele የናሙና መዝገብ ነው። እሷ እውነተኛ ታካሚ አይደለችም።",
+  demoBannerTitle:"የናሙና መዝገብ",
+  demoBannerText:"የልብ ሩማቲክ በሽታ ላለባት ወጣት የሐሰት መረጃ። እውነተኛ ታካሚ አይደለችም።",
+  demoExitBtn:"ከሙከራ ውጣ",
+  demoExitConfirm:"የናሙና መዝገቡ ከዚህ ስልክ ይጥፋ? የራስዎ መዝገብ አይቀየርም።",
+  demoStartedToast:"የናሙና መዝገብ ተሞልቷል",
+  demoExitedToast:"የናሙና መዝገብ ጸድቷል",
+  demoBadge:"ናሙና"
 };
 
 
@@ -2932,7 +3017,23 @@ T2.or={
   "t-visitHint":"Wanti daawwannaa darbe irraa jiru hundi fuula tokko irratti — PDF gochuun olkaa'i ykn doktora keetti iskiriinii agarsiisi.",
   "t-enableNotifText":"Yaadachiisa qorichaaf beeksisa bilbilaa banii. Yeroo appiin banaa ta'e ykn dhiyoo kana itti fayyadamte iyyu.",
   "t-supplyHint":"Yeroo hammi fudhatame jettee mallattoo gootu hunda hir'ata; walakkaanis ni lakkaa'ama.",
-  phoneNotifText:"Beeksisni banameera. Yeroo appiin cufame akka iyyuuf, Qindaa'ina keessatti yaadachiisota kalaandarii keetti dabali."
+  phoneNotifText:"Beeksisni banameera. Yeroo appiin cufame akka iyyuuf, Qindaa'ina keessatti yaadachiisota kalaandarii keetti dabali.",
+
+  welcomeScreenText:"Galmeen qorichaa bilbila kana qofa irratti tura. Gara kamittiyyuu hin ergimu.",
+  welcomeOwnBtn:"Galmee koo jalqabi",
+  demoStartBtn:"Galmee fakkeenyaa yaali",
+  demoStartHint:"Tuqaan tokko dhukkubsataa sobaa fe'a, akka appicha ilaaltu. Galmeen kee addaan tura, hin jijjiiramu.",
+  demoSectionTitle:"Galmee fakkeenyaa",
+  demoSectionLabel:"Haala agarsiisaa",
+  demoOffText:"Ji'a ja'a garaa, dubartii dargaggeettii dhukkuba onnee ruumaatikii qabdu kan sobame, warfaariinii fi lilmoo pheenisiliinii ji'a ji'aan.",
+  demoOnText:"Kun galmee fakkeenyaa Hana Bekele dha. Ishiin dhukkubsattuu dhugaa miti.",
+  demoBannerTitle:"Galmee fakkeenyaa",
+  demoBannerText:"Odeeffannoo sobaa dubartii dargaggeettii dhukkuba onnee ruumaatikii qabduuf. Dhukkubsattuu dhugaa miti.",
+  demoExitBtn:"Agarsiisa keessaa ba'i",
+  demoExitConfirm:"Galmeen fakkeenyaa bilbila kana irraa haqamuu qaba? Galmeen kee hin jijjiiramu.",
+  demoStartedToast:"Galmeen fakkeenyaa fe'ameera",
+  demoExitedToast:"Galmeen fakkeenyaa haqameera",
+  demoBadge:"Fakkeenya"
 };
 
 
@@ -4576,15 +4677,22 @@ function renderSettings(){
   setVal('familyInput', S.contacts.family);
   const vs=$('valveSelect');
   if(document.activeElement!==vs) vs.innerHTML=['','none','mechanical','tissue','unsure'].map(v=>`<option value="${v}"${S.about.valve===v?' selected':''}>${esc(v?L('valve_'+v):'—')}</option>`).join('');
-  renderReminders(); renderStorageStatus();
+  renderReminders(); renderStorageStatus(); renderDemoSettings();
+}
+function renderDemoSettings(){
+  const btn=$('demoSettingsBtn'), sub=$('demoSettingsText');
+  const on=!!(S && S.demo);
+  if(sub) sub.textContent=L(on?'demoOnText':'demoOffText');
+  if(btn) btn.textContent=L(on?'demoExitBtn':'demoStartBtn');
 }
 function renderProfiles(){
   const el=$('profilesBlock');
   if(deferIfBusy(el, renderProfiles)) return;
   let h=profiles.list.map(p=>`<div class="profile-row${p.id===profiles.active?' active':''}">
       <span class="profile-name">${esc(p.name||L('unnamed'))}</span>
+      ${profileIsDemo(p)?`<span class="badge">${esc(L('demoBadge'))}</span>`:''}
       ${p.id===profiles.active?`<span class="badge">${esc(L('activeLabel'))}</span>`:`<button class="btn btn-ghost btn-small" data-act="profSwitch" data-id="${esc(p.id)}">${esc(L('switchBtn'))}</button>`}
-      ${profiles.list.length>1?`<button class="log-del" data-act="profDel" data-id="${esc(p.id)}" aria-label="${esc(L('removeLabel'))} ${esc(p.name||'')}">${ICON_X}</button>`:''}
+      ${profiles.list.length>1 && !profileIsDemo(p)?`<button class="log-del" data-act="profDel" data-id="${esc(p.id)}" aria-label="${esc(L('removeLabel'))} ${esc(p.name||'')}">${ICON_X}</button>`:''}
     </div>`).join('');
   h+=`<div class="settings-pad" style="border-top:1px solid var(--line)">
       <label class="field-label" for="profName">${esc(L('nameLabel'))}</label>
@@ -4671,6 +4779,91 @@ function toggleTheme(){
 }
 
 // ═══════════════════════════════════════════
+// DEMO MODE
+// A made-up record for showing the app. It lives only under CC.demo.ID.
+// Starting it writes that key. Leaving it deletes that key. A real
+// person's record is never the place the sample is written, and is never
+// deleted here.
+// ═══════════════════════════════════════════
+function profileIsDemo(p){ return !!(p && CC.demo && (p.demo || p.id===CC.demo.ID)); }
+function recordIsEmpty(st){
+  if(!st) return true;
+  return !st.meds.some(m=>!m.removed)
+    && !st.warfarin.enabled && !st.injection.enabled
+    && !st.inrLog.length && !st.notes.length && !st.mood.length
+    && !Object.keys(st.weightLog).length && !Object.keys(st.vitals).length
+    && !Object.keys(st.symptomLog).length
+    && !st.clinicalInfo && !(st.visits && (st.visits.last || st.visits.next));
+}
+function shouldShowWelcome(){
+  if(G.welcomed) return false;
+  if(!S || !profiles) return false;
+  if(S.demo || profileIsDemo(activeProfile())) return false;
+  return recordIsEmpty(S);
+}
+function renderDemoBanner(){
+  const el=$('demoBanner');
+  if(el) el.hidden=!(S && S.demo);
+}
+function dismissWelcome(){
+  G.welcomed=true; saveGlobal();
+  closePanel('welcomePanel');
+}
+function onDemoSettings(){ if(S && S.demo) exitDemo(); else startDemo(); }
+function startDemo(){
+  if(!CC.demo) return;
+  // Already showing the sample: just land on Today.
+  if(S && S.demo){
+    closePanel('welcomePanel'); closePanel('settingsPanel'); switchTab('today');
+    return;
+  }
+  const returnId=profiles.active;
+  // Flush the real record as it stands. The sample is written afterwards, to its own key.
+  if(!writeState(returnId, S)){ showToast(L('saveFailed')); return; }
+  const built=CC.demo.build(todayKey());
+  if(!built || built.demo!==true) return;
+  if(!writeState(CC.demo.ID, built)){ showToast(L('saveFailed')); return; }
+  G.demoReturn=returnId; saveGlobal();
+  profiles.list=profiles.list.filter(p=>!profileIsDemo(p));
+  profiles.list.push({id:CC.demo.ID, name:CC.demo.NAME, demo:true});
+  profiles.active=CC.demo.ID;
+  saveProfiles();
+  loadActive(); ensurePlans(S); autoCloseFasting(S); save();
+  medForm=null; injForm=null; moodDraft={q1:null,q2:null,open:false}; nmDraft={name:'',date:null};
+  closePanel('welcomePanel'); closePanel('settingsPanel');
+  switchTab('today');
+  renderAll();
+  showToast(L('demoStartedToast'));
+}
+function exitDemo(){
+  if(!CC.demo) return;
+  const id=CC.demo.ID;
+  let stored=false;
+  try{ stored=!!localStorage.getItem(stateKey(id)); }catch(e){}
+  if(!stored && !profiles.list.some(profileIsDemo) && !(S && S.demo)) return;
+  if(!confirm(L('demoExitConfirm'))) return;
+  // This is the only key Exit demo removes.
+  try{ localStorage.removeItem(stateKey(id)); }catch(e){}
+  const back=G.demoReturn;
+  profiles.list=profiles.list.filter(p=>!profileIsDemo(p));
+  if(!profiles.list.length){
+    profiles.list=[{id:'p1', name:''}];
+    profiles.active='p1';
+    if(!readState('p1')) writeState('p1', defaultState());
+  }else{
+    profiles.active=profiles.list.some(p=>p.id===back)?back:profiles.list[0].id;
+  }
+  G.demoReturn=null; saveGlobal();
+  saveProfiles();
+  loadActive(); ensurePlans(S); autoCloseFasting(S); save();
+  medForm=null; injForm=null; moodDraft={q1:null,q2:null,open:false}; nmDraft={name:'',date:null};
+  closePanel('settingsPanel');
+  renderAll();
+  showToast(L('demoExitedToast'));
+  if(shouldShowWelcome()) openPanel('welcomePanel');
+}
+
+// ═══════════════════════════════════════════
 // PEOPLE ON THIS PHONE
 // ═══════════════════════════════════════════
 function renderWho(){
@@ -4681,6 +4874,9 @@ function renderWho(){
 }
 function switchProfile(id){
   if(id===profiles.active || !profiles.list.some(p=>p.id===id)) return;
+  const next=profiles.list.find(p=>p.id===id);
+  // Leaving the sample for a real person: come back here on Exit demo.
+  if(profileIsDemo(activeProfile()) && next && !profileIsDemo(next)){ G.demoReturn=id; saveGlobal(); }
   save();
   profiles.active=id; saveProfiles();
   loadActive(); ensurePlans(S); autoCloseFasting(S); save();
@@ -4693,7 +4889,8 @@ function addProfile(){
   if(!name) return;
   const id='p'+uid();
   const st=defaultState();
-  st.contacts=Object.assign({}, S.contacts);   // same phone, usually the same people to call
+  // Same phone, usually the same people to call — but never copy numbers out of the sample record.
+  if(!profileIsDemo(activeProfile())) st.contacts=Object.assign({}, S.contacts);
   if(!writeState(id, st)){ showToast(L('saveFailed')); return; }
   profiles.list.push({id, name}); saveProfiles();
   switchProfile(id);
@@ -4703,6 +4900,7 @@ function deleteProfile(id){
   if(!p || profiles.list.length<2) return;
   if(!confirm(L('confirmDelPerson',{name:p.name||L('unnamed')}))) return;
   try{ localStorage.removeItem(stateKey(id)); }catch(e){}
+  if(profileIsDemo(p)){ G.demoReturn=null; saveGlobal(); }
   profiles.list=profiles.list.filter(x=>x.id!==id);
   if(profiles.active===id){ profiles.active=profiles.list[0].id; loadActive(); ensurePlans(S); }
   saveProfiles();
@@ -4791,7 +4989,7 @@ function updateNotifPermUI(){
 // ═══════════════════════════════════════════
 // PANELS, TABS, TOAST
 // ═══════════════════════════════════════════
-const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel'];
+const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel','welcomePanel'];
 function openPanel(id, scrollToId){
   const p=$(id);
   if(!p) return;
@@ -4895,6 +5093,7 @@ function renderAll(){
   renderFlags(); renderSymptoms(); renderMood(); renderNotes();
   renderSummaryTab();
   renderActiveAlerts();
+  renderDemoBanner();
   updateNotifDot();
   if(!$('notifPanel').hidden) renderNotifications();
   if(!$('settingsPanel').hidden) renderSettings();
@@ -5660,6 +5859,7 @@ function init(){
   if(start.isNew) addNotification(L('welcomeTitle'), L('welcomeText'), 'info');
   if(start.isNew) matchSystemTextSize();
   if(start.migrated) addNotification(L('migratedTitle'), L('migratedText'), 'info');
+  if(shouldShowWelcome()) openPanel('welcomePanel');
 
   setInterval(tick, 30000);
   document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tick(); });
