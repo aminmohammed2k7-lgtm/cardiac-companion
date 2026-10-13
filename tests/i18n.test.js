@@ -86,5 +86,35 @@ const used = [...new Set([...html.matchAll(/data-t[pa]?="([^"]+)"/g)].map(m => m
 const unknown = used.filter(k => !(k in table.en) && !(('msg.' + k) in table.en));
 check('every key the markup uses exists', used.length > 50 && !unknown.length, unknown.length ? list(unknown) : used.length + ' keys');
 
+// The phone camera can estimate a pulse. These two lines used to say the
+// app measures nothing, which is no longer true. Each language must say
+// the estimate is a wellness reading only, and must not deny measuring.
+const DISCLAIMERS = ['t-disclaimer', 't-settingsAboutDisclaimer'];
+const HONEST = {
+  en: {
+    must: [/not a medical device/i, /estimate your pulse with the phone camera/i, /wellness reading only/i, /does not diagnose/i, /follow your clinician/i],
+    mustNot: [/does not measure/i, /measure your heart/i]
+  },
+  am: {
+    must: [/የሕክምና መሣሪያ አይደለም/, /በስልክ ካሜራ/, /የልብ ምት/, /እንደ የጤንነት ንባብ ብቻ/, /ሊገምት ይችላል/, /በሽታ አይለይም/, /የሐኪምዎን መመሪያ ይከተሉ/],
+    mustNot: [/አይለካም/]
+  },
+  or: {
+    must: [/meeshaa yaalaa miti/i, /kaameraa bilbilaan/i, /rukuttaa onnee/i, /akka safartuu fayyummaa qofaatti/, /tilmaamuu danda'a/, /dhukkuba hin adda baasu/i, /qajeelfama doktora keetii hordofi/],
+    mustNot: [/hin safaru/]
+  }
+};
+for (const key of DISCLAIMERS) {
+  for (const l of LANGS) {
+    const text = String(table[l][key] || '');
+    const missing = HONEST[l].must.filter(re => !re.test(text)).map(re => re.source);
+    const banned = HONEST[l].mustNot.filter(re => re.test(text)).map(re => re.source);
+    check(`${l} ${key}: camera pulse is a wellness estimate, not "does not measure"`, !missing.length && !banned.length,
+      missing.length ? 'missing ' + missing.join('; ') : banned.length ? 'still says ' + banned.join('; ') : '');
+  }
+  const shown = html.match(new RegExp('data-t="' + key + '"[^>]*>([^<]*)<'));
+  check(`page text for ${key} matches English`, !!(shown && shown[1] === table.en[key]));
+}
+
 console.log(failures ? `\n${failures} of ${checks} checks failed` : `\nall ${checks} checks passed`);
 process.exit(failures ? 1 : 0);
