@@ -5,8 +5,10 @@ with no account, no cloud and no internet connection, and it helps people
 living with heart disease keep their own record between clinic visits.
 
 **Try it:** https://cardiac-companion.vercel.app — tap "Try the sample
-record" to look around with a made-up patient. The demo runs in the browser
-and keeps anything you type in that browser only.
+record" to look around with a made-up patient. A five-stop guided tour
+starts on its own (skip it any time). The first screen and the sample come
+in English, Amharic and Afaan Oromo. The demo runs in the browser and keeps
+anything you type in that browser only.
 
 Version 4.0 (Android app in progress). The web demo is built from the same
 code, on every push to `main` (see `docs/demo-build.md`).
@@ -48,9 +50,9 @@ From the web demo with the sample record (made-up data, not a real patient).
 |---|---|---|
 | <img src="docs/screenshots/today.png" width="240" alt="Today: the sample record banner, today's warfarin dose as the doctor wrote it, and INR results against the target range"> | <img src="docs/screenshots/medicines.png" width="240" alt="Medicines tab with the sample record"> | <img src="docs/screenshots/summary.png" width="240" alt="Summary: adherence, weight change and symptom days, with a weight chart"> |
 
-| Amharic | Camera pulse, with its disclaimer |
-|---|---|
-| <img src="docs/screenshots/today-amharic.png" width="240" alt="Today screen in Amharic with the Ethiopian date"> | <img src="docs/screenshots/camera-pulse.png" width="240" alt="Pulse entry: the Measure with camera button with the not-a-medical-device line right under it"> |
+| First screen | Guided tour | Amharic | Camera pulse, with its disclaimer |
+|---|---|---|---|
+| <img src="docs/screenshots/welcome.png" width="240" alt="First screen: who the app is for, works offline, sends nothing, three languages, with language buttons"> | <img src="docs/screenshots/tour.png" width="240" alt="Guided tour, stop 1 of 5: the penicillin card outlined, with a card explaining Show to the nurse"> | <img src="docs/screenshots/today-amharic.png" width="240" alt="Today screen in Amharic with the Ethiopian date"> | <img src="docs/screenshots/camera-pulse.png" width="240" alt="Pulse entry: the Measure with camera button with the not-a-medical-device line right under it"> |
 
 ## Privacy
 

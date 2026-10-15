@@ -11,6 +11,31 @@ Amin turned Vercel deploys on for the competition demo on 13 October 2026,
 and every push to `main` runs `npm run build:web` and publishes `dist/`
 (see `docs/demo-build.md`).
 
+## Demo quick wins (15 October 2026, approved by Amin)
+- **Guided tour** after "Try the sample record", and again from "Take the
+  tour" on the sample banner: the penicillin card (Show to the nurse), the
+  warfarin card (the app never works out a dose), the warning signs, the
+  language switch and the visit summary. A plain card and an outline, no
+  animation. Skip, Done, Android's back button and Escape close it. It
+  saves nothing and runs only on the sample (`tests/page/tour.test.js`).
+- **First screen** says who the app is for (young people in Ethiopia with
+  rheumatic heart disease, and their families), that it works offline and
+  sends nothing, and that it comes in three languages with the Ethiopian
+  calendar. The language buttons are on it too. The pills now follow their
+  own `data-lang`, not their position, since there are two sets.
+- **Sample banner** introduces Hana (made up, 19, Addis Ababa, monthly
+  penicillin and warfarin) and has a "Take the tour" button. On a phone the
+  buttons go under the words, which fixes the narrow Afaan Oromo column.
+- **Sample record in three languages:** notes, the medicine's purpose, the
+  Medical ID text and the nurse's order (`www/js/demo.js`). Switching
+  language relabels them on the sample only, and only text nobody edited.
+  The penicillin order keeps the exact English dose line in every language.
+- **Demo clean-up:** the empty "No name yet" person is no longer listed next
+  to the sample (it stays on the phone; Exit demo returns to it), and the
+  untapped Taken button is no longer filled green, here or for real records.
+- No health or warning wording changed. New Amharic and Afaan Oromo text is
+  listed in `docs/NEEDS-CLINICAL-REVIEW.md` (items 4–6) for checking.
+
 ## Competition clean-up (15 October 2026)
 - **Camera pulse is on everywhere** (Amin's decision, `docs/android/DECISIONS.md`):
   the web demo and the Android app, debug and release. The Android app now
