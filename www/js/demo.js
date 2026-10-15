@@ -8,6 +8,13 @@
  * wrote". Nothing here works a dose out from an INR, and nothing suggests
  * one.
  *
+ * The words in the record (notes, the medicine's purpose, the Medical ID
+ * text and the nurse's order) come in English, Amharic and Afaan Oromo, so
+ * the sample reads naturally in the language the app is set to. relabel()
+ * swaps them when the language changes, but only on the sample record and
+ * only for text nobody has edited. Numbers and doses are not translated:
+ * the penicillin order keeps the exact English line in every language.
+ *
  * The same "today" always builds the same record (no random numbers).
  * The app stores it only under the demo profile. Exit demo deletes that
  * profile's key and does not write any real person's record.
@@ -79,12 +86,58 @@
     [160, 'std-3', 3, 'rest']
   ];
 
+  // Days before today and the time of each daily note. The words are in TEXT.
   const NOTES = [
-    [2, '21:10', 'Slept well. Walked to class.'],
-    [11, '11:20', 'Clinic day. They checked my INR.'],
-    [50, '08:40', 'A little tired after the walk to school. Ankles not swollen.'],
-    [88, '19:05', 'Missed the warfarin — the bottle was empty. Refilled the next day.']
+    [2, '21:10'],
+    [11, '11:20'],
+    [50, '08:40'],
+    [88, '19:05']
   ];
+
+  // The doctor's line on the sample penicillin order. Clinics write orders
+  // in English, and a dose must never be re-worded, so every language keeps
+  // this exact line (tests/page/demo.test.js checks it).
+  const ORDER_LINE = 'Benzathine penicillin G 1.2 million units into the muscle every 28 days';
+
+  // The sample's own words. The Amharic and Afaan Oromo are drafts, listed
+  // in docs/NEEDS-CLINICAL-REVIEW.md for a native speaker to check.
+  const TEXT = {
+    en: {
+      purpose: 'Water tablet, as my doctor wrote',
+      notes: [
+        'Slept well. Walked to class.',
+        'Clinic day. They checked my INR.',
+        'A little tired after the walk to school. Ankles not swollen.',
+        'Missed the warfarin — the bottle was empty. Refilled the next day.'
+      ],
+      clinicalInfo: 'SAMPLE RECORD — not a real patient. Hana Bekele, 19, Addis Ababa. Rheumatic heart disease with mitral stenosis. Previous clot in the left atrium. No known drug allergy.',
+      order: 'SAMPLE order, not a real patient. ' + ORDER_LINE + ', as written for this made-up record.'
+    },
+    am: {
+      purpose: 'ውሃ የሚያስወግድ ክኒን፣ ሐኪሜ እንደጻፈው',
+      notes: [
+        'በደንብ ተኛሁ። ወደ ክፍል በእግሬ ሄድኩ።',
+        'የክሊኒክ ቀን። INRዬን መረመሩ።',
+        'ወደ ትምህርት ቤት በእግሬ ከሄድኩ በኋላ ትንሽ ደከመኝ። እግሬ አላበጠም።',
+        'ዋርፋሪን አልወሰድኩም — ጠርሙሱ ባዶ ነበር። በማግስቱ ገዛሁ።'
+      ],
+      clinicalInfo: 'የናሙና መዝገብ — እውነተኛ ታካሚ አይደለችም። Hana Bekele፣ 19፣ አዲስ አበባ። የልብ ሩማቲክ በሽታ (mitral stenosis)። ከዚህ በፊት በግራ ኤትሪየም (left atrium) የደም መርጋት ነበረባት። የሚታወቅ የመድሃኒት አለርጂ የለም።',
+      order: 'የናሙና ትዕዛዝ፣ እውነተኛ ታካሚ አይደለችም። ሐኪሙ እንደጻፈው፦ ' + ORDER_LINE + '.'
+    },
+    or: {
+      purpose: 'Kininii bishaan baasu, akkuma doktorri koo barreessetti',
+      notes: [
+        'Gaarii rafe. Gara kutaa barnootaatti miilaan deeme.',
+        'Guyyaa kilinikii. INR koo ilaalan.',
+        'Erga gara mana barumsaa miilaan deemee booda xiqqoo dadhabe. Miilli koo hin dhiitofne.',
+        'Warfaariin hin fudhanne — qorichi narraa dhumee ture. Guyyaa itti aanu bitadhe.'
+      ],
+      clinicalInfo: 'GALMEE FAKKEENYAA — dhukkubsattuu dhugaa miti. Hana Bekele, 19, Finfinnee. Dhukkuba onnee ruumaatikii (mitral stenosis). Kanaan dura atriyeemii bitaa (left atrium) keessatti dhiigni itti ititee ture. Alarjiin qorichaa beekamu hin jiru.',
+      order: 'Ajaja fakkeenyaa, dhukkubsattuu dhugaa miti. Akkuma doktorri barreessetti: ' + ORDER_LINE + '.'
+    }
+  };
+  const LANGS = Object.keys(TEXT);
+  function textFor(lang){ return TEXT[lang] || TEXT.en; }
 
   // Young-adult readings she measured at home. Not interpreted.
   const PULSE = [76, 72, 80, 74, 84, 78, 70, 82];
@@ -96,8 +149,9 @@
     return (542 + wobble[offset % 7]) / 10;
   }
 
-  function build(today){
+  function build(today, lang){
     if(!isRealDay(today)) return null;
+    const words = textFor(lang);
     const created = addDays(today, -SPAN);
     const doses = WARFARIN_DOSES.slice();
 
@@ -105,7 +159,7 @@
       id: MED_ID,
       name: 'Furosemide',
       dose: '40 mg',
-      purpose: 'Water tablet, as my doctor wrote',
+      purpose: words.purpose,
       times: ['08:00'],
       sched: { type: 'daily', days: [], start: created },
       perDose: 1,
@@ -156,13 +210,13 @@
       customSymptoms: [],
       redFlags: [],
       notes: NOTES.map(function (row, i){
-        return { id: 'demo-note-' + i, date: addDays(today, -row[0]), time: row[1], text: row[2] };
+        return { id: 'demo-note-' + i, date: addDays(today, -row[0]), time: row[1], text: words.notes[i] };
       }),
       newMeds: [{ id: 'demo-nm-1', date: addDays(today, -100), type: 'antibiotic', name: 'Amoxicillin' }],
       fasting: { on: false, type: 'orthodox', until: null, periods: [], dismissed: {} },
       mood: [],
       about: { preg: 'no', contra: '', planning: false, valve: 'none' },
-      clinicalInfo: 'SAMPLE RECORD — not a real patient. Hana Bekele, 19, Addis Ababa. Rheumatic heart disease with mitral stenosis. Previous clot in the left atrium. No known drug allergy.',
+      clinicalInfo: words.clinicalInfo,
       contacts: { ambulance: '907', clinic: '0110000000', familyName: 'Sara Bekele', family: '0911000001' },
       visits: { last: addDays(today, -11), next: addDays(today, 20) },
       settings: { lowDays: 14, clock: 'both', calNames: false },
@@ -193,7 +247,7 @@
       enabled: true,
       interval: interval,
       lastDate: injDates[injDates.length - 1],
-      order: 'SAMPLE order, not a real patient. Benzathine penicillin G 1.2 million units into the muscle every 28 days, as written for this made-up record.',
+      order: words.order,
       history: history
     };
 
@@ -243,5 +297,33 @@
     return state;
   }
 
-  return { ID: DEMO_ID, NAME: DEMO_NAME, SPAN: SPAN, DOSES: WARFARIN_DOSES.slice(), build: build };
+  // The sample's words in another language. Only a record marked as the
+  // sample is touched, and only a text that is still one of the sample's
+  // own versions: a note someone typed or edited stays exactly as it is.
+  // Nothing else in the record changes (no dates, numbers or doses).
+  // Returns true when something changed, so the caller knows to save.
+  function relabel(state, lang){
+    if(!state || state.demo !== true || !TEXT[lang]) return false;
+    const to = TEXT[lang];
+    let changed = false;
+    const swap = function (current, field, i){
+      const versions = LANGS.map(function (l){ return i == null ? TEXT[l][field] : TEXT[l][field][i]; });
+      if(versions.indexOf(current) < 0) return current;
+      const next = i == null ? to[field] : to[field][i];
+      if(next !== current) changed = true;
+      return next;
+    };
+    (state.meds || []).forEach(function (m){
+      if(m && m.id === MED_ID) m.purpose = swap(m.purpose, 'purpose');
+    });
+    (state.notes || []).forEach(function (n){
+      const m = n && /^demo-note-(\d+)$/.exec(n.id);
+      if(m && +m[1] < NOTES.length) n.text = swap(n.text, 'notes', +m[1]);
+    });
+    if(typeof state.clinicalInfo === 'string') state.clinicalInfo = swap(state.clinicalInfo, 'clinicalInfo');
+    if(state.injection && typeof state.injection.order === 'string') state.injection.order = swap(state.injection.order, 'order');
+    return changed;
+  }
+
+  return { ID: DEMO_ID, NAME: DEMO_NAME, SPAN: SPAN, DOSES: WARFARIN_DOSES.slice(), ORDER_LINE: ORDER_LINE, build: build, relabel: relabel };
 }));
