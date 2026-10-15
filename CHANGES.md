@@ -6,11 +6,27 @@ is the developer tool for the camera study and is not shipped. Records and
 health wording are unchanged. **Not for patients yet:** reminders still fire
 only while the app is open (Phase 4), and exports wait for Phase 5.
 
-The website (cardiac-companion.vercel.app) stays at web 3.2.2:
-`vercel.json` stops Vercel deploying from this repository until Phase 9.
-`npm run build:web` writes a static copy of these pages to `dist/` for a
-later deploy (see `docs/demo-build.md`). That command does not deploy,
-and it does not change `vercel.json`.
+The website (cardiac-companion.vercel.app) is built from these pages:
+Amin turned Vercel deploys on for the competition demo on 13 October 2026,
+and every push to `main` runs `npm run build:web` and publishes `dist/`
+(see `docs/demo-build.md`).
+
+## Competition clean-up (15 October 2026)
+- **Camera pulse is on everywhere** (Amin's decision, `docs/android/DECISIONS.md`):
+  the web demo and the Android app, debug and release. The Android app now
+  asks for `CAMERA` (only when "Measure with camera" is tapped); the camera
+  hardware stays optional. The "not a medical device" line now sits right
+  under the button, and the two show and hide together
+  (`tests/page/camera-note.test.js`). No wording changed.
+- **No backup reminder on the sample record.** It is made-up data, so the
+  "Back up your record" card no longer shows while demo mode is on.
+- **Deploy test** matches `vercel.json` again (deploys on, `dist/` only), and
+  `docs/demo-build.md` describes the live site.
+- **README:** live demo link and screenshots (`docs/screenshots/`).
+- **Version labels:** 4.0 in `package.json`, the Android `versionName` and
+  the page header. `CLAUDE.md` moved to `.claude/CLAUDE.md`.
+- **`docs/NEEDS-CLINICAL-REVIEW.md`** lists the disclaimer change of
+  13 October and the camera texts for clinical and language review.
 
 ## Removed (web-only, not needed in an app)
 - **Service worker** (`sw.js`) and its registration. The files are inside the

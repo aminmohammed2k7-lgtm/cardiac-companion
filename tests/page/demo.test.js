@@ -186,4 +186,17 @@ const injLate = p.get('CC.demo.build("2026-10-13").injection.history.filter(h =>
 check('penicillin injections roughly every 28 days with a few misses', injCount >= 5 && injCount <= 7 && injLate >= 1, `count ${injCount}, late ${injLate}`);
 check('exiting demo never deletes real data (verified in section 3)', true);
 
+section('7. No backup reminder on the sample record');
+p.person({ meds: [{ id: 'm1', name: 'Enalapril', dose: '5 mg', times: ['08:00'], sched: { type: 'daily', days: [], start: '2026-01-01' }, perDose: 1, supply: 20, created: '2026-01-01' }], created: '2026-01-01' }, { id: 'r1' });
+p.open([{ id: 'r1', name: 'Abebe' }], 'r1');
+p.global({ lastBackup: null });
+same('a real record never backed up: the reminder is due', p.call('backupNudgeDue'), true);
+p.call('startDemo');
+same('the sample record is open', p.get('S.demo'), true);
+same('on the sample record: no reminder, the data is made up', p.call('backupNudgeDue'), false);
+p.call('renderActiveAlerts');
+check('and no "Back up your record" card on Today', !p.html('activeAlerts').includes('Back up your record'));
+p.call('exitDemo');
+same('back on the real record, the reminder returns', p.call('backupNudgeDue'), true);
+
 done();

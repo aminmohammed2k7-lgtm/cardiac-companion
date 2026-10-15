@@ -4,6 +4,13 @@ An offline heart-health companion for patients in Ethiopia. It runs on the phone
 with no account, no cloud and no internet connection, and it helps people
 living with heart disease keep their own record between clinic visits.
 
+**Try it:** https://cardiac-companion.vercel.app — tap "Try the sample
+record" to look around with a made-up patient. The demo runs in the browser
+and keeps anything you type in that browser only.
+
+Version 4.0 (Android app in progress). The web demo is built from the same
+code, on every push to `main` (see `docs/demo-build.md`).
+
 > **Not a medical device.** Cardiac Companion is a personal record and reminder
 > tool. It does not diagnose, treat or give medical advice. It never computes,
 > suggests or changes a dose: it only shows what the person entered from their
@@ -24,9 +31,10 @@ living with heart disease keep their own record between clinic visits.
 - **Visit summary.** Everything since the last visit on one page, to show the
   doctor or save as a PDF.
 - **Camera pulse estimate (wellness only).** An optional estimate of pulse rate
-  from the phone camera and a fingertip. It is not validated for medical use
-  and is not a diagnosis. It is switched off in release builds until it has
-  been validated (see `docs/android/DECISIONS.md`).
+  from the phone camera and a fingertip, on the web demo and on Android. It
+  is not validated for medical use and is not a diagnosis; the "not a
+  medical device" line is shown right under the button (see
+  `docs/android/DECISIONS.md` and `docs/NEEDS-CLINICAL-REVIEW.md`).
 - **Three languages:** English, Amharic (አማርኛ) and Afaan Oromo.
 - **Ethiopian and Gregorian calendars and clocks**, side by side or on their own.
 - **Several people on one phone**, so a parent can keep a child's record too.
@@ -34,17 +42,23 @@ living with heart disease keep their own record between clinic visits.
 
 ## Screenshots
 
-_Screenshots coming soon._
+From the web demo with the sample record (made-up data, not a real patient).
 
-| Today | Medicines | Penicillin | Visit summary |
-|---|---|---|---|
-| _(screenshot placeholder)_ | _(screenshot placeholder)_ | _(screenshot placeholder)_ | _(screenshot placeholder)_ |
+| Today | Medicines | Summary |
+|---|---|---|
+| <img src="docs/screenshots/today.png" width="240" alt="Today: the sample record banner, today's warfarin dose as the doctor wrote it, and INR results against the target range"> | <img src="docs/screenshots/medicines.png" width="240" alt="Medicines tab with the sample record"> | <img src="docs/screenshots/summary.png" width="240" alt="Summary: adherence, weight change and symptom days, with a weight chart"> |
+
+| Amharic | Camera pulse, with its disclaimer |
+|---|---|
+| <img src="docs/screenshots/today-amharic.png" width="240" alt="Today screen in Amharic with the Ethiopian date"> | <img src="docs/screenshots/camera-pulse.png" width="240" alt="Pulse entry: the Measure with camera button with the not-a-medical-device line right under it"> |
 
 ## Privacy
 
 - **No account, no cloud, no servers.** Everything is stored on the phone only.
   The Android app has no internet permission, no analytics, no ads, no crash
-  reporting and no remote code or fonts. Android's automatic cloud backup is
+  reporting and no remote code or fonts. Its only permission is the camera,
+  asked for when you tap "Measure with camera"; camera frames are never
+  saved or sent. Android's automatic cloud backup is
   switched off.
 - **Data leaves the phone only when you choose to share a file**, such as a
   backup, a PDF summary, a CSV export or a calendar file.
@@ -108,7 +122,10 @@ builds one on every push (`.github/workflows/android.yml`).
 - `www/js/platform/`: the only code that talks to Android (Capacitor)
 - `android/`: the Capacitor Android project
 - `tests/`: the Node tests (`npm test`)
-- `docs/`: the work order, the app guide and the Android decisions
+- `docs/`: the work order, the app guide, the Android decisions, the
+  wording waiting for clinical review and the README screenshots
+- `.claude/CLAUDE.md`: the safety charter and working rules for AI coding
+  tools
 
 ## License
 
