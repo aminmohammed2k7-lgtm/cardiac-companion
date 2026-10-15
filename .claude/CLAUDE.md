@@ -18,7 +18,9 @@ Reference: docs/app-guide.pdf (the v3.2 guide, with a file-by-file line index).
 5. Never lose user data. Storage changes need a tested, lossless migration and keep
    the previous copy.
 6. Dates use the phone's local calendar day, never UTC.
-7. Camera pulse is off in release builds; the release has no CAMERA permission.
+7. Camera pulse is on in every build (Amin, 15 Oct 2026) as a wellness estimate only.
+   The "not a medical device" line always shows beside the camera button. CAMERA is
+   the only Android permission; never add another without asking Amin.
 8. Suspected bug in medical logic: don't fix it silently. Log it in
    docs/android/FOUND-BUGS.md and ask Amin.
 
