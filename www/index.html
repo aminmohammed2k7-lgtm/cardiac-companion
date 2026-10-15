@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#EEF1EE">
 <title>Cardiac Companion</title>
 <!--
-  CARDIAC COMPANION — a patient's own medicine record.  Version 3.
+  CARDIAC COMPANION — a patient's own medicine record.  Version 4.0.
 
   WHAT THIS IS: a log. The patient and their clinician put the numbers in;
   the app remembers them, counts down to what is due, and prints a summary
@@ -1166,6 +1166,7 @@
 
   /* camera pulse — the entry button and its panel (ppg-engine.js) */
   #camPulseBtn{margin-top:10px;}
+  #camPulseRow .cam-note{margin:8px 0 0;}
   .cam-card{padding:16px;}
   .cam-top{display:flex; align-items:center; gap:14px;}
   .cam-video{width:64px; height:64px; flex-shrink:0; object-fit:cover; background:var(--surface-3); border:1px solid var(--line); border-radius:var(--r-btn);}
@@ -1349,7 +1350,10 @@
                   <button class="btn btn-solid" onclick="saveVital()" data-t="t-saveVital">Save</button>
                   <button class="btn btn-ghost" onclick="closeVitalEntry()" data-t="t-cancelVital">Cancel</button>
                 </div>
-                <button class="btn btn-ghost ico i-camera" id="camPulseBtn" onclick="openPulseCam()" data-t="camMeasure" hidden>Measure with camera</button>
+                <div id="camPulseRow" hidden>
+                  <button class="btn btn-ghost ico i-camera" id="camPulseBtn" onclick="openPulseCam()" data-t="camMeasure">Measure with camera</button>
+                  <p class="hint-line cam-note" data-t="camNotDevice">This is an estimate from your phone's camera, not a medical device. If you feel unwell, use the warning signs on the Today page.</p>
+                </div>
                 <div id="rhythmBox" hidden>
                   <p class="form-label" data-t="rhythmQ">Did the beat feel regular?</p>
                   <div class="chips" id="rhythmChips"></div>
@@ -3910,7 +3914,9 @@ function openVitalEntry(kind){
   input.setAttribute('aria-label', L(VITAL_META[kind].prompt));
   input.value='';
   $('rhythmBox').hidden=kind!=='pulse';
-  $('camPulseBtn').hidden=kind!=='pulse' || !window.PPG || !PPG.PulseMonitor.supported();
+  // The button and its "not a medical device" line show and hide together,
+  // so the camera is never offered without the disclaimer beside it.
+  $('camPulseRow').hidden=kind!=='pulse' || !window.PPG || !PPG.PulseMonitor.supported();
   pendingCam=null;
   renderRhythmChips();
   input.focus();
@@ -4752,6 +4758,9 @@ function alertHtml(cls, title, text, actions){
   return `<div class="${cls}" role="status"><strong>${esc(title)}</strong>${text?`<span>${esc(text)}</span>`:''}${actions?`<div class="alert-actions">${actions}</div>`:''}</div>`;
 }
 function backupNudgeDue(){
+  // The sample record is made up, so there is nothing to keep safe; a
+  // "back up" card on it only distracts whoever is being shown the app.
+  if(S && S.demo) return false;
   const t=todayKey();
   if(G.backupSnooze && t<G.backupSnooze) return false;
   const hasData=S.meds.some(m=>!m.removed) || S.warfarin.enabled || S.injection.enabled || Object.keys(S.weightLog).length;

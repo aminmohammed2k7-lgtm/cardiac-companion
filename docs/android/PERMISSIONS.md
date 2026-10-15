@@ -3,9 +3,10 @@
 What the Android app may do on the phone, and why. Phase 2 of the work order
 (`docs/claude-code-order.pdf`, task 10) and `DECISIONS.md`.
 
-## The app asks for no permissions
+## The app asks for one permission: CAMERA
 
-`android/app/src/main/AndroidManifest.xml` declares none, and removes
+`android/app/src/main/AndroidManifest.xml` asks only for `CAMERA` (see
+"Camera" below), and removes
 `INTERNET` with `tools:node="remove"`, so even a library that asks for it
 can't add it back. Without `INTERNET`, Android doesn't let the app reach
 the network at all. That's a privacy promise anyone can check (safety
@@ -41,11 +42,31 @@ The GitHub Actions build prints the APK's final list in its log (step
 - **Phase 4** (reminders) adds `POST_NOTIFICATIONS` (asked for after the
   first medicine is added), `SCHEDULE_EXACT_ALARM` (never `USE_EXACT_ALARM`)
   and `RECEIVE_BOOT_COMPLETED`, through `@capacitor/local-notifications`.
-- **Phase 6** (camera pulse) may add `CAMERA` to **debug builds only**. The
-  release must never have it (charter rule 7); `tests/android.test.js` fails
-  if `CAMERA` appears in the main manifest.
+- **Camera pulse** is on in every build (Amin's decision, 15 October 2026,
+  `DECISIONS.md`). See "Camera" below.
 - **Never:** `CALL_PHONE` (call buttons only open the dialer),
   `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, `USE_EXACT_ALARM`.
+
+## Camera
+
+`CAMERA` is in the main manifest, so debug and release builds both have it.
+It is for the camera pulse estimate only:
+
+- Android asks the person the first time they tap "Measure with camera".
+  Capacitor's WebView asks for it when the page calls `getUserMedia`; the
+  app never asks at start-up. If the person says no, the pulse is typed in
+  as before.
+- Frames stay in memory while measuring and are never saved or sent. The
+  app still has no internet permission.
+- `android.hardware.camera` and `android.hardware.camera.flash` are marked
+  `required="false"`, so phones without a camera or a light can still
+  install the app from Google Play.
+- The "not a medical device" line is shown beside the button and on the
+  camera screen, in all three languages.
+
+`tests/android.test.js` fails if any other permission is asked for, or if
+the camera hardware becomes required. Google Play's Data safety form must
+say the app uses the camera (Amin's job, Phase 8).
 
 ## Backups are off
 
