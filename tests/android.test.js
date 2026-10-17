@@ -6,7 +6,8 @@
  * web-app manifest, the install prompt, the persistent-storage request and
  * cross-tab sync (an app has one WebView, so there is no other tab).
  * And the Android project keeps the privacy settings: no cloud backup or
- * transfer to a new phone, no INTERNET, no CAMERA, no other permission.
+ * transfer to a new phone, no INTERNET, and CAMERA as the only permission
+ * (camera pulse, on since Amin's decision of 15 October 2026).
  * Exit code 1 if any check fails.
  */
 'use strict';
@@ -53,8 +54,14 @@ for (const part of ['cloud-backup', 'device-transfer']) {
 }
 check('INTERNET removed, including from libraries', perms.some(p => named(p, 'INTERNET') && /tools:node="remove"/.test(p)));
 const asked = perms.filter(p => !/tools:node="remove"/.test(p));
-check('no permission asked for', !asked.length, asked.join(' | '));
-check('no CAMERA (camera pulse is off; Phase 6 adds it to debug builds only)', !/permission\.CAMERA/.test(manifest));
+check('CAMERA is the only permission asked for (camera pulse, DECISIONS.md)',
+  asked.length === 1 && named(asked[0], 'CAMERA'), asked.join(' | '));
+// Phones without a camera or a light must still be able to install the app.
+const features = [...manifest.matchAll(/<uses-feature\s+([^>]*)\/>/g)].map(m => m[1]);
+check('camera and flash are optional hardware',
+  ['android.hardware.camera', 'android.hardware.camera.flash'].every(n =>
+    features.some(f => f.includes(`android:name="${n}"`) && f.includes('android:required="false"'))) &&
+  features.every(f => f.includes('android:required="false"')), features.join(' | '));
 check('no CALL_PHONE (call buttons only open the dialer)', !/CALL_PHONE/.test(manifest));
 check('no orientation lock (Android 16 ignores it on tablets)', !/screenOrientation/.test(manifest));
 

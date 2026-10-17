@@ -3,7 +3,8 @@
  *
  * npm run build:web copies www/ to dist/ and adds a browser Back
  * fallback. The Android tree must stay untouched: www/ does not load
- * that file, and vercel.json keeps deployment switched off.
+ * that file. Vercel builds the demo from main (vercel.json, turned on
+ * by Amin on 13 October 2026) and serves only dist/, never the repository.
  * Exit code 1 if any check fails.
  */
 'use strict';
@@ -28,7 +29,15 @@ check('npm script preview:web', pkg.scripts && pkg.scripts['preview:web'] === 'n
 check('docs/demo-build.md exists', fs.existsSync(path.join(root, 'docs', 'demo-build.md')));
 
 const vercel = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
-check('vercel deployment still blocked', vercel.git && vercel.git.deploymentEnabled === false && Object.keys(vercel).length === 1 && Object.keys(vercel.git).length === 1);
+// Exactly these settings: a new key (a rewrite, a header, a function)
+// would change what the public site does, so it must come with a test.
+check('vercel builds the demo with npm run build:web', vercel.buildCommand === 'npm run build:web', vercel.buildCommand);
+check('vercel serves dist/ only, not the repository', vercel.outputDirectory === 'dist', vercel.outputDirectory);
+check('vercel installs without running package scripts', vercel.installCommand === 'npm install --ignore-scripts', vercel.installCommand);
+check('vercel deploys from git (approved by Amin)', vercel.git && vercel.git.deploymentEnabled === true && Object.keys(vercel.git).length === 1);
+check('vercel.json has no other settings', Object.keys(vercel).sort().join() === 'buildCommand,git,installCommand,outputDirectory', Object.keys(vercel).join(', '));
+const demoDoc = fs.readFileSync(path.join(root, 'docs', 'demo-build.md'), 'utf8');
+check('docs/demo-build.md no longer says deploys are blocked', !/deploymentEnabled`?\s*is false|stays at web 3\.2\.2|is still\s+web 3\.2\.2/.test(demoDoc));
 
 const cap = JSON.parse(fs.readFileSync(path.join(root, 'capacitor.config.json'), 'utf8'));
 check('Android still serves www/, not dist/', cap.webDir === 'www');

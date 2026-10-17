@@ -2,14 +2,30 @@
 
 The Android app's pages live in `www/`. They already run in a desktop
 browser for development: where a Capacitor plugin is missing, the call
-does nothing. `npm run build:web` makes a copy you can host later. It
-writes that copy to `dist/` and adds one extra file so the browser's
-Back button follows the same steps as Android's back button.
+does nothing. `npm run build:web` makes a copy that any static host can
+serve. It writes that copy to `dist/` and adds one extra file so the
+browser's Back button follows the same steps as Android's back button.
 
-This does not deploy the app. `vercel.json` stays as it is
-(`deploymentEnabled` is false), so a push still does not publish the
-repository. The public site at cardiac-companion.vercel.app is still
-web 3.2.2. This folder is the current 4.0 pages.
+## The live demo
+
+https://cardiac-companion.vercel.app is built from this folder. Amin
+turned Vercel deploys on for the competition demo on 13 October 2026, so
+every push to `main` rebuilds the site. `vercel.json` says how:
+
+| Setting | Value | Why |
+|---|---|---|
+| `installCommand` | `npm install --ignore-scripts` | No package script runs on Vercel's machines |
+| `buildCommand` | `npm run build:web` | The same build as on your computer |
+| `outputDirectory` | `dist` | Only the built pages are published, never the repository |
+| `git.deploymentEnabled` | `true` | Deploy on push |
+
+`tests/web-build.test.js` checks those four settings and fails if any
+other setting is added, so a change to what the public site does comes
+with a test. To pause the site again, set `deploymentEnabled` to `false`
+and update that test in the same commit.
+
+The site is a demo: records typed there stay in that browser's local
+storage. Nothing is uploaded. The app is published for Android.
 
 `dist/` is generated. It is not committed. Run the build again after
 you change `www/`.
@@ -39,9 +55,9 @@ That copies `www/` into `dist/` and then adds:
 Nothing is loaded from the network. There is no service worker, no
 web-app manifest, and no Capacitor script. Camera pulse uses the
 browser's own camera only on a secure page (`https`, or
-`http://localhost`). If the camera is missing or refused, the page
-shows its usual message and the pulse is typed instead. The Android
-release build does not ask for the camera.
+`http://localhost`), and its "not a medical device" line is shown
+beside the button. If the camera is missing or refused, the page shows
+its usual message and the pulse is typed instead.
 
 ## Preview on this computer
 
@@ -70,20 +86,12 @@ The same folder can be served without that script:
 python3 -m http.server 8080 --directory dist --bind 127.0.0.1
 ```
 
-What to look at: Today shows both dates, the language switch (EN, አማ,
-OR) redraws the page, Settings opens and Back closes it, and a medicine
-you add is still there after a reload. Records stay in this browser's
-local storage for that address. Nothing is uploaded. Clearing the
-site's data deletes them; the in-app backup file is the copy to keep.
+What to look at: the welcome screen offers "Try the sample record",
+Today shows both dates, the language switch (EN, አማ, OR) redraws the
+page, Settings opens and Back closes it, and a medicine you add is
+still there after a reload. Records stay in this browser's local
+storage for that address. Nothing is uploaded. Clearing the site's data
+deletes them; the in-app backup file is the copy to keep.
 
 Reminders from the page ring only while the tab is open. "Add reminders
 to my calendar" still downloads a calendar file.
-
-## Deploy later
-
-Upload the contents of `dist/` (not the whole repository) to any static
-file host. The site is `index.html`, `js/`, `fonts/`, `ppg-engine.js`
-and the favicon. No server-side code.
-
-Do not turn Vercel git deployment on as part of publishing this folder
-until that is a separate decision. `vercel.json` is what blocks it.

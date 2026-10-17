@@ -43,9 +43,18 @@
         </provider>
     </application>
 
-    <!-- Permissions: none. The app's files are served from inside the app,
-         so it needs no internet. tools:node="remove" also takes INTERNET out
-         if a library asks for it, so anyone can check that the app cannot go
-         online. Why, and how to check: docs/android/PERMISSIONS.md. -->
+    <!-- Permissions: CAMERA only. The app's files are served from inside the
+         app, so it needs no internet. tools:node="remove" also takes INTERNET
+         out if a library asks for it, so anyone can check that the app cannot
+         go online. Why, and how to check: docs/android/PERMISSIONS.md. -->
     <uses-permission android:name="android.permission.INTERNET" tools:node="remove" />
+
+    <!-- Camera pulse (wellness estimate), on by Amin's decision of
+         15 October 2026 (docs/android/DECISIONS.md). Android asks the person
+         only when they tap "Measure with camera"; frames stay in memory on
+         the phone. The camera and its light are optional, so phones without
+         them can still install the app. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
 </manifest>
