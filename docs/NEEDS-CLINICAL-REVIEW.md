@@ -17,6 +17,7 @@ copied from `www/index.html`; the key names let anyone find them there.
 | 4 | Guided tour: two stops restate safety rules in plain words | **In the app (sample record only), please check** |
 | 5 | Sample record: Medical ID text and nurse's order in Amharic and Afaan Oromo | **Drafts, please check** (made-up patient, but medical terms) |
 | 6 | First screen, sample banner, tour and sample notes in Amharic and Afaan Oromo | **Drafts, need a native-speaker check** (not health wording) |
+| 7 | Camera coaching lines (how to place the finger) | **Drafts, need a native-speaker check** (not a diagnosis) |
 
 ## 1. Disclaimers mention the camera pulse
 
@@ -147,3 +148,34 @@ video):
   daily notes and the medicine's purpose.
 - In Amharic the banner writes the name as ሃና; the profile name stays
   "Hana Bekele" in Latin letters, as before.
+
+## 7. Camera coaching lines
+
+- **Added for the camera-pulse accuracy work.** English was rewritten so
+  the live hints say, in plain words, cover the whole lens, press lightly,
+  keep still, and rest the hand on a table. Amharic and Afaan Oromo of
+  those lines, and of the new "no number is shown" lines, are drafts.
+- **Not changed:** `camNotDevice`, `camUneven`, the HRV lines, the warning
+  signs, and both disclaimers. Nothing here tells someone they have a
+  rhythm problem or what to do about medicine.
+- **Please check:** that the drafts below mean the same as the English, and
+  that none of them sounds like a diagnosis.
+
+Keys in `www/index.html`: `camHow`, `camPlace`, `camHold`, `camLighter`,
+`camWeak`, `camGood`, `camCover`, `camRest`, `camNoReading`,
+`camFailLight`, `camFailStill`, `camFailCover`, `camFailWeak`,
+`camFailDisagree`, `camLowQuality`.
+
+The English of the new "we will not show a number" lines:
+
+| Key | English |
+|---|---|
+| `camNoReading` | No number is shown — the reading was not clear enough. |
+| `camFailLight` | The light was too bright, so no number is shown. Press lightly and try again. |
+| `camFailStill` | Your hand moved, so no number is shown. Rest it on a table and try again. |
+| `camFailCover` | The lens was not fully covered, so no number is shown. Cover the whole lens and try again. |
+| `camFailWeak` | The signal was too weak, so no number is shown. Warm your hand, press lightly, and try again. |
+| `camFailDisagree` | The pulse was not steady enough to trust, so no number is shown. Keep still and try again. |
+| `camLowQuality` | This reading is not clear enough to show a number. Cover the whole lens, press lightly, rest your hand on a table, and try again. |
+| `camCover` | Cover the whole lens. Part of it is still open. |
+| `camRest` | Keep still, and rest your hand on a table. |

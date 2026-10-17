@@ -1907,7 +1907,7 @@
     </button>
   </div>
   <div class="panel-body">
-    <p class="hint-line" data-t="camHow">Rest for a minute. Cover the back camera and its light with a fingertip, press gently, and hold still for about a minute.</p>
+    <p class="hint-line" data-t="camHow">Rest for a minute. Sit down and put your hand on a table. Cover the whole back camera and its light with a fingertip, press lightly, and keep still.</p>
     <div class="card cam-card">
       <div class="cam-top">
         <video class="cam-video" id="camVideo" muted playsinline aria-hidden="true"></video>
@@ -2555,13 +2555,24 @@ T2.en={
   getHelpTitle:"Get help", medIdBtn:"Medical ID", warningSignsBtn:"Warning signs",
   // camera pulse (ppg-engine.js)
   camMeasure:"Measure with camera", camTitle:"Measure pulse with camera", camTag:"camera",
-  camHow:"Rest for a minute. Cover the back camera and its light with a fingertip, press gently, and hold still for about a minute.",
+  camHow:"Rest for a minute. Sit down and put your hand on a table. Cover the whole back camera and its light with a fingertip, press lightly, and keep still.",
   camBpmUnit:"beats/min", camStart:"Start", camUse:"Use this reading", camAgain:"Measure again",
   camNoLight:"Your phone's light didn't switch on. Measure next to a bright lamp or window.",
   camNotDevice:"This is an estimate from your phone's camera, not a medical device. If you feel unwell, use the warning signs on the Today page.",
-  camPlace:"Cover the camera and light with your fingertip.", camHold:"Hold still…", camLighter:"Press a little lighter.",
-  camWeak:"Weak signal — warm your hand and cover the light fully.", camGood:"Good — keep still.",
-  camDone:"Done.", camNoReading:"Couldn't get a clear reading. Try again, holding still.",
+  camPlace:"Cover the whole lens and the light with your fingertip.",
+  camHold:"Keep still. Rest your hand on a table.",
+  camLighter:"Press lightly — not hard.",
+  camWeak:"Weak signal. Press lightly, cover the whole lens, and warm your hand.",
+  camGood:"Good signal. Keep still.",
+  camCover:"Cover the whole lens. Part of it is still open.",
+  camRest:"Keep still, and rest your hand on a table.",
+  camDone:"Done.", camNoReading:"No number is shown — the reading was not clear enough.",
+  camFailLight:"The light was too bright, so no number is shown. Press lightly and try again.",
+  camFailStill:"Your hand moved, so no number is shown. Rest it on a table and try again.",
+  camFailCover:"The lens was not fully covered, so no number is shown. Cover the whole lens and try again.",
+  camFailWeak:"The signal was too weak, so no number is shown. Warm your hand, press lightly, and try again.",
+  camFailDisagree:"The pulse was not steady enough to trust, so no number is shown. Keep still and try again.",
+  camLowQuality:"This reading is not clear enough to show a number. Cover the whole lens, press lightly, rest your hand on a table, and try again.",
   camDenied:"Camera permission was refused. You can allow it in your browser settings, or type the pulse instead.",
   camError:"The camera couldn't start. Type the pulse instead.",
   camHrv:"Beat-to-beat variation: RMSSD {rmssd} ms, SDNN {sdnn} ms.",
@@ -2828,13 +2839,24 @@ T2.am={
   getHelpTitle:"እርዳታ ያግኙ", medIdBtn:"የሕክምና መታወቂያ", warningSignsBtn:"የአደጋ ምልክቶች",
   // camera pulse — DRAFT translation, needs review by a native speaker
   camMeasure:"በካሜራ ይለኩ", camTitle:"የልብ ምትን በካሜራ ይለኩ", camTag:"ካሜራ",
-  camHow:"ለአንድ ደቂቃ ያርፉ። የኋላውን ካሜራና መብራቱን በጣት ጫፍዎ ይሸፍኑ፣ በቀስታ ይጫኑ፣ ለአንድ ደቂቃ ያህል ሳይንቀሳቀሱ ይቆዩ።",
+  camHow:"ለአንድ ደቂቃ ያርፉ። ተቀምጠው እጅዎን በጠረጴዛ ላይ ያድርጉ። የኋላውን ካሜራና መብራቱን በሙሉ በጣትዎ ይሸፍኑ፣ ቀስ ይጫኑ፣ ሳይንቀሳቀሱ ይቆዩ።",
   camBpmUnit:"ምት/ደቂቃ", camStart:"ጀምር", camUse:"ይህን ንባብ ተጠቀም", camAgain:"እንደገና ለካ",
   camNoLight:"የስልክዎ መብራት አልበራም። ደማቅ መብራት ወይም መስኮት አጠገብ ሆነው ይለኩ።",
   camNotDevice:"ይህ ከስልክዎ ካሜራ የተገኘ ግምት ነው እንጂ የሕክምና መሣሪያ አይደለም። ከታመሙ በዛሬ ገጽ ላይ ያሉትን የአደጋ ምልክቶች ይጠቀሙ።",
-  camPlace:"ካሜራውንና መብራቱን በጣት ጫፍዎ ይሸፍኑ።", camHold:"ሳይንቀሳቀሱ ይቆዩ…", camLighter:"ትንሽ ቀለል አድርገው ይጫኑ።",
-  camWeak:"ምልክቱ ደካማ ነው — እጅዎን ያሙቁ፣ መብራቱን ሙሉ በሙሉ ይሸፍኑ።", camGood:"ጥሩ — ሳይንቀሳቀሱ ይቆዩ።",
-  camDone:"ተጠናቋል።", camNoReading:"ግልጽ ንባብ አልተገኘም። ሳይንቀሳቀሱ እንደገና ይሞክሩ።",
+  camPlace:"ሌንሱንና መብራቱን በሙሉ በጣትዎ ይሸፍኑ።",
+  camHold:"ሳይንቀሳቀሱ ይቆዩ። እጅዎን በጠረጴዛ ላይ ያድርጉ።",
+  camLighter:"ቀስ ይጫኑ — አጥብቀው አይጫኑ።",
+  camWeak:"ምልክቱ ደካማ ነው። ቀስ ይጫኑ፣ ሌንሱን በሙሉ ይሸፍኑ፣ እጅዎን ያሙቁ።",
+  camGood:"ምልክቱ ጥሩ ነው። ሳይንቀሳቀሱ ይቆዩ።",
+  camCover:"ሌንሱን በሙሉ ይሸፍኑ። ክፍሉ ገና ክፍት ነው።",
+  camRest:"ሳይንቀሳቀሱ ይቆዩ፣ እጅዎን በጠረጴዛ ላይ ያድርጉ።",
+  camDone:"ተጠናቋል።", camNoReading:"ቁጥር አይታይም — ንባቡ በቂ ግልጽ አልነበረም።",
+  camFailLight:"ብርሃኑ በጣም ጠንካራ ነው፣ ስለዚህ ቁጥር አይታይም። ቀስ ይጫኑና እንደገና ይሞክሩ።",
+  camFailStill:"እጅዎ ተንቀሳቅሷል፣ ስለዚህ ቁጥር አይታይም። በጠረጴዛ ላይ አድርገው እንደገና ይሞክሩ።",
+  camFailCover:"ሌንሱ ሙሉ በሙሉ አልተሸፈነም፣ ስለዚህ ቁጥር አይታይም። ሌንሱን በሙሉ ይሸፍኑና እንደገና ይሞክሩ።",
+  camFailWeak:"ምልክቱ በጣም ደካማ ነው፣ ስለዚህ ቁጥር አይታይም። እጅዎን ያሙቁ፣ ቀስ ይጫኑና እንደገና ይሞክሩ።",
+  camFailDisagree:"ምቱ የተረጋጋ አልነበረም፣ ስለዚህ ቁጥር አይታይም። ሳይንቀሳቀሱ እንደገና ይሞክሩ።",
+  camLowQuality:"ይህ ንባብ ግልጽ አይደለም፣ ስለዚህ ቁጥር አይታይም። ሌንሱን ይሸፍኑ፣ ቀስ ይጫኑ፣ እጅዎን በጠረጴዛ ላይ አድርገው እንደገና ይሞክሩ።",
   camDenied:"የካሜራ ፈቃድ ተከልክሏል። በአሳሽዎ ቅንብሮች ሊፈቅዱት ወይም የልብ ምቱን በእጅ ሊጽፉት ይችላሉ።",
   camError:"ካሜራው መጀመር አልቻለም። የልብ ምቱን በእጅ ይጻፉ።",
   camHrv:"በምቶች መካከል ያለው ልዩነት፦ RMSSD {rmssd} ms፣ SDNN {sdnn} ms።",
@@ -3092,14 +3114,25 @@ T2.or={
   getHelpTitle:"Gargaarsa argadhu", medIdBtn:"Eenyummaa yaalaa", warningSignsBtn:"Mallattoolee balaa",
   // camera pulse — DRAFT translation, needs review by a native speaker
   camMeasure:"Kaameraan safari", camTitle:"Rukuttaa onnee kaameraan safari", camTag:"kaameraa",
-  camHow:"Daqiiqaa tokkoof boqodhaa. Kaameraa duubaa fi ifa isaa qubaan haguugaa, suuta dhiibaa, daqiiqaa tokko naannoo osoo hin sochoʼin turaa.",
-  camBpmUnit:"rukuttaa/daqiiqaa", camStart:"Jalqabi", camUse:"Safartuu kana fayyadami", camAgain:"Irra deebiʼi safari",
-  camNoLight:"Ifni bilbila keessanii hin ifne. Ifa cimaa ykn foddaa bira taaʼaa safaraa.",
-  camNotDevice:"Kun tilmaama kaameraa bilbila keessanii irraa argame malee meeshaa yaalaa miti. Yoo dhukkubsattan, mallattoolee balaa fuula Harʼaa irra jiran fayyadamaa.",
-  camPlace:"Kaameraa fi ifa isaa quba keessaniin haguugaa.", camHold:"Osoo hin sochoʼin turaa…", camLighter:"Xiqqoo laaffisaa dhiibaa.",
-  camWeak:"Mallattoon laafaa dha — harka keessan hoʼisaa, ifa guutummaatti haguugaa.", camGood:"Gaarii — osoo hin sochoʼin turaa.",
-  camDone:"Xumurameera.", camNoReading:"Safartuun ifa taʼe hin argamne. Osoo hin sochoʼin irra deebiʼaa yaalaa.",
-  camDenied:"Hayyamni kaameraa dideera. Qindaaʼina browser keessanii keessatti hayyamuu ykn rukuttaa harkaan barreessuu dandeessu.",
+  camHow:"Daqiiqaa tokkoof boqodhaa. Teessaa'aatii harka keessan minjaala irra kaa'aa. Kaameraa duubaa fi ifa isaa hunda qubaan haguugaa, suuta dhiibaa, osoo hin socho'in turaa.",
+  camBpmUnit:"rukuttaa/daqiiqaa", camStart:"Jalqabi", camUse:"Safartuu kana fayyadami", camAgain:"Irra deebi'ii safari",
+  camNoLight:"Ifni bilbila keessanii hin ifne. Ifa cimaa ykn foddaa bira taa'aa safaraa.",
+  camNotDevice:"Kun tilmaama kaameraa bilbila keessanii irraa argame malee meeshaa yaalaa miti. Yoo dhukkubsattan, mallattoolee balaa fuula Har'aa irra jiran fayyadamaa.",
+  camPlace:"Leensii fi ifa hunda qubaan haguugaa.",
+  camHold:"Osoo hin socho'in turaa. Harka keessan minjaala irra kaa'aa.",
+  camLighter:"Suuta dhiibaa — cimaa hin dhiibinaa.",
+  camWeak:"Mallattoon laafaa dha. Suuta dhiibaa, leensii hunda haguugaa, harka keessan ho'isaa.",
+  camGood:"Mallattoon gaarii dha. Osoo hin socho'in turaa.",
+  camCover:"Leensii hunda haguugaa. Kutaan isaa ammayyuu banaa dha.",
+  camRest:"Osoo hin socho'in turaa, harka keessan minjaala irra kaa'aa.",
+  camDone:"Xumurameera.", camNoReading:"Lakkoofsi hin agarsiifamu — safartuun ifa gahaa hin turre.",
+  camFailLight:"Ifni baay'ee cimaa ture, kanaaf lakkoofsi hin agarsiifamu. Suuta dhiibaa irra deebi'aa yaalaa.",
+  camFailStill:"Harki keessan socho'eera, kanaaf lakkoofsi hin agarsiifamu. Minjaala irra kaa'aatii irra deebi'aa yaalaa.",
+  camFailCover:"Leensiin guutummaatti hin haguugamne, kanaaf lakkoofsi hin agarsiifamu. Leensii hunda haguugaa irra deebi'aa yaalaa.",
+  camFailWeak:"Mallattoon baay'ee laafaa dha, kanaaf lakkoofsi hin agarsiifamu. Harka ho'isaa, suuta dhiibaa, irra deebi'aa yaalaa.",
+  camFailDisagree:"Rukuttaan tasgabbaa'aa hin turre, kanaaf lakkoofsi hin agarsiifamu. Osoo hin socho'in irra deebi'aa yaalaa.",
+  camLowQuality:"Safartuun kun ifa miti, kanaaf lakkoofsi hin agarsiifamu. Leensii haguugaa, suuta dhiibaa, harka minjaala irra kaa'aatii irra deebi'aa yaalaa.",
+  camDenied:"Hayyamni kaameraa dideera. Qindaa'ina browser keessanii keessatti hayyamuu ykn rukuttaa harkaan barreessuu dandeessu.",
   camError:"Kaameraan jalqabuu hin dandeenye. Rukuttaa harkaan barreessaa.",
   camHrv:"Garaagarummaa rukuttaa gidduu: RMSSD {rmssd} ms, SDNN {sdnn} ms.",
   "camHrvNo_uneven":"Rukuttaan walqixa waan hin turreef garaagarummaan hin argisiifamne.",
@@ -4063,9 +4096,19 @@ function saveVital(){
 // ─── CAMERA PULSE (ppg-engine.js) ───
 // An estimate from the phone camera: the number goes into the pulse field
 // like a typed one; HRV details are kept with it only as a personal record.
-let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camResult=null;
+let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camResult=null, camFailed=false;
+function camFailKey(res){
+  const h=res&&res.hint, w=res&&res.withhold;
+  if(w==='disagree'||h==='rate-disagree') return 'camFailDisagree';
+  if(h==='press-lighter') return 'camFailLight';
+  if(h==='rest-hand'||h==='hold-still') return 'camFailStill';
+  if(h==='cover-lens'||h==='place-finger') return 'camFailCover';
+  if(h==='weak-signal') return 'camFailWeak';
+  if(w==='quality') return 'camLowQuality';
+  return 'camNoReading';
+}
 function openPulseCam(){
-  camResult=null; $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true;
+  camResult=null; camFailed=false; $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true;
   $('camStart').hidden=false; $('camBpm').textContent='—'; $('camProgress').style.width='0';
   $('camHint').textContent=''; $('camNoLight').hidden=true;
   const wv=$('camWave'); wv.getContext('2d').clearRect(0,0,wv.width,wv.height);   // no wave left over from the last reading
@@ -4080,7 +4123,7 @@ function camDraw(){
 }
 async function startPulseCam(){
   stopPulseCam();
-  camResult=null; camWaveData=null;
+  camResult=null; camFailed=false; camWaveData=null;
   $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true; $('camStart').hidden=true;
   $('camBpm').textContent='—'; $('camProgress').style.width='0';
   const mon=new PPG.PulseMonitor({video:$('camVideo'), durationSec:60});
@@ -4089,21 +4132,31 @@ async function startPulseCam(){
   mon.on('status', st=>{
     if(st.state==='waiting') $('camHint').textContent=L('camPlace');
     if(st.state==='settling') $('camHint').textContent=L('camHold');
-    if(['complete','stopped','error'].includes(st.state)){ cancelAnimationFrame(camRaf); if(camMon===mon) camMon=null; if(!camResult) { $('camStart').hidden=false; } }
+    if(['complete','stopped','error'].includes(st.state)){
+      cancelAnimationFrame(camRaf);
+      if(camMon===mon) camMon=null;
+      if(!camResult && !camFailed) $('camStart').hidden=false;
+    }
   });
   mon.on('quality', q=>{
-    const k={'place-finger':'camPlace','press-lighter':'camLighter','hold-still':'camHold','weak-signal':'camWeak',good:'camGood'}[q.hint];
+    const k={'place-finger':'camPlace','press-lighter':'camLighter','hold-still':'camHold','rest-hand':'camRest','cover-lens':'camCover','weak-signal':'camWeak','rate-disagree':'camFailDisagree',good:'camGood'}[q.hint];
     if(k && mon.state!=='complete') $('camHint').textContent=L(k);
   });
   mon.on('wave', w=>{ camWaveData=w; camWaveAt=performance.now(); });
   mon.on('metrics', m=>{
-    if(m.bpm && m.phase==='measuring') $('camBpm').textContent=Math.round(m.bpm);
+    $('camBpm').textContent = (m.showBpm && m.bpm) ? Math.round(m.bpm) : '—';
     $('camProgress').style.width=((m.progress||0)*100)+'%';
   });
-  mon.on('error', e=>{ $('camHint').textContent=L(e.code==='permission-denied'?'camDenied':'camError'); $('camStart').hidden=false; });
+  mon.on('error', e=>{ $('camHint').textContent=L(e.code==='permission-denied'?'camDenied':'camError'); $('camStart').hidden=false; $('camAgain').hidden=true; });
   mon.on('complete', res=>{
-    if(!res.ok){ $('camHint').textContent=L('camNoReading'); $('camStart').hidden=false; return; }
-    camResult=res; renderPulseCamResult(res);
+    if(!res.ok){
+      camFailed=true; camResult=null;
+      $('camBpm').textContent='—';
+      $('camHint').textContent=L(camFailKey(res));
+      $('camResult').hidden=true; $('camUse').hidden=true; $('camStart').hidden=true; $('camAgain').hidden=false;
+      return;
+    }
+    camFailed=false; camResult=res; renderPulseCamResult(res);
   });
   camDraw();
   await mon.start();
