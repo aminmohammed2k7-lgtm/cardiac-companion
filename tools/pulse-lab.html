@@ -117,7 +117,20 @@ footer{color:var(--ink-3);font-size:.82rem;margin:18px 4px}
 
     <section class="card">
       <h2>Camera</h2>
-      <dl><dt>Camera</dt><dd id="cam">—</dd><dt>Light</dt><dd id="torch">—</dd><dt>Frame rate</dt><dd id="fps">—</dd><dt>Clock</dt><dd id="clock">—</dd><dt>Exposure</dt><dd id="exp">—</dd></dl>
+      <dl><dt>Camera</dt><dd id="cam">—</dd><dt>Light</dt><dd id="torch">—</dd><dt>Frame rate</dt><dd id="fps">—</dd><dt>Clock</dt><dd id="clock">—</dd><dt>Exposure</dt><dd id="exp">—</dd><dt>Locked</dt><dd id="locked">—</dd><dt>Channel</dt><dd id="channel">—</dd></dl>
+    </section>
+
+    <section class="card wide">
+      <h2>Oximeter check</h2>
+      <p class="hint">While the app is showing a number, read a pulse oximeter on the other hand and type that number. This does not diagnose anything. It only stores the two numbers so you can compute the error later.</p>
+      <div class="row" style="margin-top:10px">
+        <label for="ox">Oximeter beats/min <input id="ox" inputmode="numeric" pattern="[0-9]*" maxlength="3" style="width:5.5rem;font:inherit;padding:8px 10px;border-radius:12px;border:1px solid var(--line);background:var(--surface-2);color:inherit"></label>
+        <button id="oxSave" class="solid" disabled>Save pair</button>
+        <button id="oxCsv" disabled>Download comparison (CSV)</button>
+        <button id="oxClear">Clear list</button>
+      </div>
+      <p class="hint" id="oxMae">No pairs yet.</p>
+      <div style="overflow:auto;margin-top:8px"><table id="oxTable" style="width:100%;border-collapse:collapse;font-size:.88rem"></table></div>
     </section>
 
     <section class="card wide">
@@ -146,10 +159,23 @@ await mon.start();</pre></details>
   const $ = id => document.getElementById(id);
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const f = (v, d = 0) => (v == null || !isFinite(v) ? '—' : v.toFixed(d));
-  const HINTS = { 'place-finger': 'Place a fingertip over the camera and light.', 'press-lighter': 'Too bright — press a little lighter.', 'hold-still': 'Hold still.', 'weak-signal': 'Weak pulse — warm your hand, cover the light fully.', good: 'Good signal.' };
+  const HINTS = {
+    'place-finger': 'Cover the whole lens and the light with a fingertip.',
+    'press-lighter': 'Press lightly — not hard.',
+    'hold-still': 'Keep still. Rest your hand on a table.',
+    'rest-hand': 'Keep still, and rest your hand on a table.',
+    'cover-lens': 'Cover the whole lens. Part of it is still open.',
+    'weak-signal': 'Weak signal. Press lightly, cover the whole lens, and warm your hand.',
+    'rate-disagree': 'The pulse is not steady enough to show a number. Keep still.',
+    good: 'Good signal. Keep still.'
+  };
   const WHY = { uneven: 'The rhythm was uneven, so variability isn\'t meaningful.', 'too-few': 'Needs more clean beats.', artifacts: 'Too many disturbed beats.', noisy: 'Beat timing is too coarse for this little variability.' };
   const STATES = { starting: 'Opening the camera…', waiting: 'Waiting for a fingertip.', settling: 'Settling — hold still.', measuring: 'Measuring.', complete: 'Done.', stopped: 'Stopped.', error: 'Camera problem.' };
   let duration = 60, mon = null, wave = null, waveAt = 0, rrList = [], result = null, logLines = [], raf = 0;
+  let live = { bpm: null, quality: null, level: null, channel: null, device: '' };
+  const OX_KEY = 'ppg-lab-oximeter';
+  const loadOx = () => { try { return JSON.parse(localStorage.getItem(OX_KEY) || '[]'); } catch (e) { return []; } };
+  const saveOx = rows => { try { localStorage.setItem(OX_KEY, JSON.stringify(rows)); } catch (e) { /* private mode */ } };
 
   if (!window.PPG) { $('status').textContent = 'ppg-engine.js did not load.'; $('start').disabled = true; return; }
   $('durations').addEventListener('click', e => {
@@ -186,15 +212,23 @@ await mon.start();</pre></details>
       $('cam').textContent = c.label || '—'; $('torch').textContent = c.torch ? 'on' : 'off';
       $('fps').textContent = c.fps ? c.fps + ' fps' : '—'; $('clock').textContent = c.timeSource || '—';
       $('exp').textContent = c.exposureCompensation == null ? '—' : c.exposureCompensation.toFixed(2);
+      const lk = c.locked || {};
+      $('locked').textContent = [lk.focusMode && 'focus', lk.whiteBalanceMode && 'colour', lk.exposureMode && 'exposure'].filter(Boolean).join(', ') || '—';
+      live.device = c.label || live.device;
       $('nolight').hidden = !!c.torch;
     });
     mon.on('quality', q => {
       $('qlevel').textContent = q.level; $('qscore').textContent = Math.round(q.score);
       $('qbar').firstElementChild.style.width = q.score + '%'; $('qbar').classList.toggle('good', q.score >= 65);
       $('qhint').textContent = HINTS[q.hint] || '';
+      live.quality = q.score; live.level = q.level; live.channel = q.channel || live.channel;
+      if ($('channel')) $('channel').textContent = q.channel || '—';
     });
     mon.on('metrics', m => {
-      $('bpm').textContent = m.bpm ? Math.round(m.bpm) : '—';
+      const show = !!(m.showBpm && m.bpm);
+      live.bpm = show ? Math.round(m.bpm) : null;
+      $('bpm').textContent = show ? live.bpm : '—';
+      $('oxSave').disabled = live.bpm == null;
       $('method').textContent = m.bpmMethod === 'uneven' ? '· every beat counted' : '';
       $('inst').textContent = f(m.bpmInstant) + ' bpm'; $('avg').textContent = f(m.bpmAverage, 1) + ' bpm';
       $('rmssd').textContent = f(m.rmssd); $('sdnn').textContent = f(m.sdnn); $('pnn').textContent = f(m.pnn50);
@@ -211,7 +245,8 @@ await mon.start();</pre></details>
       result = res;
       $('resultText').textContent = res.ok
         ? `${res.bpm} bpm from ${res.beats} beats over ${res.cleanSec} s · RMSSD ${f(res.rmssd)} ms, SDNN ${f(res.sdnn)} ms (${res.hrvReliable ? 'reliable' : 'not reliable: ' + res.hrvIssue}) · quality ${res.quality}`
-        : `No usable reading (${res.reason}).`;
+        : `No number shown (${res.withhold || res.reason}). ${HINTS[res.hint] || 'Try again: cover the whole lens, press lightly, rest your hand.'}`;
+      if (res.ok && res.bpm) { live.bpm = res.bpm; $('oxSave').disabled = false; }
       $('json').disabled = $('csv').disabled = !res.ok;
     });
     $('start').disabled = true; $('stop').disabled = false;
@@ -221,6 +256,53 @@ await mon.start();</pre></details>
   $('stop').onclick = () => mon && mon.stop();
   $('json').onclick = () => result && download('pulse-reading.json', JSON.stringify(result, null, 2), 'application/json');
   $('csv').onclick = () => result && download('pulse-intervals.csv', 't_ms,rr_ms,valid,reason\n' + (result.intervals || []).map(i => [Math.round(i.t), i.rr.toFixed(1), i.valid, i.reason].join(',')).join('\n'), 'text/csv');
+
+  function renderOx() {
+    const rows = loadOx();
+    const head = '<tr><th>Time</th><th>App</th><th>Oximeter</th><th>Error</th><th>%</th><th>Quality</th><th>Device</th></tr>';
+    $('oxTable').innerHTML = head + rows.map(r => `<tr>
+      <td>${r.at.slice(11, 19)}</td><td>${r.app_bpm}</td><td>${r.oximeter_bpm}</td>
+      <td>${r.abs_error_bpm.toFixed(0)}</td><td>${r.pct_error.toFixed(1)}</td>
+      <td>${r.quality}</td><td>${r.device || ''}</td></tr>`).join('');
+    $('oxCsv').disabled = !rows.length;
+    if (rows.length < 1) { $('oxMae').textContent = 'No pairs yet.'; return; }
+    const mae = rows.reduce((s, r) => s + r.abs_error_bpm, 0) / rows.length;
+    const mape = rows.reduce((s, r) => s + r.pct_error, 0) / rows.length;
+    const bias = rows.reduce((s, r) => s + (r.app_bpm - r.oximeter_bpm), 0) / rows.length;
+    const within = 100 * rows.filter(r => r.abs_error_bpm <= 5).length / rows.length;
+    $('oxMae').textContent = `${rows.length} pair${rows.length === 1 ? '' : 's'} · mean absolute error ${mae.toFixed(1)} bpm · mean absolute percent error ${mape.toFixed(1)}% · bias ${bias.toFixed(1)} bpm · within 5 bpm: ${within.toFixed(0)}%. Not a clinical validation.`;
+  }
+  $('oxSave').onclick = () => {
+    const ox = +$('ox').value;
+    if (!live.bpm || !(ox >= 20 && ox <= 250)) { $('oxMae').textContent = 'Type the oximeter number (20–250) while the app is showing a rate.'; return; }
+    const rows = loadOx();
+    const abs = Math.abs(live.bpm - ox);
+    rows.push({
+      at: new Date().toISOString(),
+      app_bpm: live.bpm,
+      oximeter_bpm: ox,
+      abs_error_bpm: abs,
+      pct_error: 100 * abs / ox,
+      quality: live.quality,
+      quality_level: live.level,
+      channel: live.channel,
+      device: live.device || (navigator.userAgent || ''),
+      torch: ($('torch').textContent || ''),
+      fps: ($('fps').textContent || ''),
+      engine: PPG.VERSION
+    });
+    saveOx(rows);
+    $('ox').value = '';
+    renderOx();
+  };
+  $('oxClear').onclick = () => { saveOx([]); renderOx(); };
+  $('oxCsv').onclick = () => {
+    const rows = loadOx();
+    const cols = ['at', 'app_bpm', 'oximeter_bpm', 'abs_error_bpm', 'pct_error', 'quality', 'quality_level', 'channel', 'device', 'torch', 'fps', 'engine'];
+    const esc = v => { const s = v == null ? '' : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+    download('pulse-oximeter.csv', cols.join(',') + '\n' + rows.map(r => cols.map(c => esc(r[c])).join(',')).join('\n') + '\n', 'text/csv');
+  };
+  renderOx();
 })();
 </script>
 </body>

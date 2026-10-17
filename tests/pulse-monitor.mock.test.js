@@ -23,16 +23,26 @@ const opened = [];
 class FakeTrack {
   constructor(dev) {
     this.dev = dev; this.label = dev.label; this.stopped = false;
-    this.settings = { deviceId: dev.deviceId, width: 640, height: 480, frameRate: 30, exposureCompensation: 0 };
+    this.settings = { deviceId: dev.deviceId, width: 640, height: 480, frameRate: 30, exposureCompensation: 0, focusDistance: 0.15, colorTemperature: 4500 };
   }
   getCapabilities() {
     const c = { exposureCompensation: { min: -2, max: 2, step: 1 / 3 } };
     if (this.dev.torch) c.torch = true;
+    if (this.dev.controls) {
+      c.focusMode = ['continuous', 'manual'];
+      c.whiteBalanceMode = ['continuous', 'manual'];
+      c.exposureMode = ['continuous', 'manual'];
+      c.focusDistance = { min: 0, max: 1 };
+      c.colorTemperature = { min: 2500, max: 8000 };
+    }
     return c;
   }
   getSettings() { return Object.assign({}, this.settings); }
   async applyConstraints(c) {
     const a = (c.advanced || [])[0] || {};
+    if (this.dev.rejectLock && (a.focusMode || a.whiteBalanceMode || a.exposureMode || 'focusDistance' in a || 'colorTemperature' in a)) {
+      const e = new Error('constraint not supported'); e.name = 'OverconstrainedError'; throw e;
+    }
     calls.push({ dev: this.dev.deviceId, a });
     if ('exposureCompensation' in a) this.settings.exposureCompensation = a.exposureCompensation;
     if ('torch' in a && this.dev.torch) this.settings.torch = a.torch;
@@ -274,6 +284,40 @@ const phone = () => [
     const res = ev.complete[0];
     check('repeated screen refreshes of one frame are skipped', !!res);
     check('pulse rate within 1 bpm even on the coarser clock', res && res.ok && Math.abs(res.bpm - truthBpm) <= 1, res && `${res.bpm} vs ${truthBpm.toFixed(1)}`);
+  }
+
+  { // 8. after warm-up the camera locks focus, colour and exposure
+    devices = [{ deviceId: 'main', label: 'camera2 2, facing back', torch: true, controls: true }];
+    localStorage.clear(); opened.length = 0; calls.length = 0;
+    const video = new FakeVideo();
+    const mon = new PPG.PulseMonitor({ video, durationSec: 15 });
+    const ev = record(mon);
+    console.log('\n8. Phone that can lock focus, white balance and exposure');
+    await mon.start();
+    const { frames, truthBpm } = fingertip(40, { seed: 8 });
+    await play(mon, video, frames);
+    const locked = calls.map(c => c.a);
+    check('focus locked to manual', locked.some(a => a.focusMode === 'manual'));
+    check('white balance locked to manual', locked.some(a => a.whiteBalanceMode === 'manual'));
+    check('exposure mode locked to manual', locked.some(a => a.exposureMode === 'manual'));
+    check('the lock restarted the signal once', ev.segment.filter(s => s.reason === 'lock').length === 1);
+    const res = ev.complete[0];
+    check('reading still completes within 1 bpm', res && res.ok && Math.abs(res.bpm - truthBpm) <= 1, res && `${res.bpm} vs ${truthBpm.toFixed(1)}, withhold ${res && res.withhold}`);
+  }
+
+  { // 9. a phone that refuses those locks still measures
+    devices = [{ deviceId: 'main', label: 'camera2 2, facing back', torch: true, controls: true, rejectLock: true }];
+    localStorage.clear(); opened.length = 0; calls.length = 0;
+    const video = new FakeVideo();
+    const mon = new PPG.PulseMonitor({ video, durationSec: 15 });
+    const ev = record(mon);
+    console.log('\n9. Phone that rejects focus, white balance and exposure locks');
+    await mon.start();
+    const { frames, truthBpm } = fingertip(40, { seed: 9 });
+    await play(mon, video, frames);
+    check('no lock segment when every lock is rejected', !ev.segment.some(s => s.reason === 'lock'));
+    const res = ev.complete[0];
+    check('reading still completes', res && res.ok && Math.abs(res.bpm - truthBpm) <= 1, res && `${res && res.bpm} bpm`);
   }
 
   console.log(failures ? `\n${failures} of ${checks} checks failed` : `\nall ${checks} checks passed`);
