@@ -753,13 +753,21 @@
   #activeAlerts:empty{display:none;}
   /* Sample record: always visible while demo mode is on, on every tab. */
   .demo-banner{
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px 12px;
     margin:8px 16px 0; padding:12px 14px;
     background:var(--surface); border:1px solid var(--line); border-radius:var(--r-card);
   }
-  .demo-banner p{margin:0; font-size:14px; line-height:1.4; color:var(--ink-2);}
+  .demo-banner p{margin:0; flex:1 1 280px; min-width:0; font-size:14px; line-height:1.4; color:var(--ink-2);}
   .demo-banner strong{display:block; font-size:15px; font-weight:600; color:var(--ink-1);}
-  .demo-banner .btn{flex-shrink:0;}
+  .demo-banner-actions{display:flex; flex-wrap:wrap; gap:8px;}
+  /* On a phone the words take the whole width and the buttons go under
+     them. Side by side, a long label such as the Afaan Oromo "Exit demo"
+     squeezed the text into a narrow column. */
+  @media (max-width:560px){
+    .demo-banner{flex-direction:column; align-items:stretch;}
+    .demo-banner p{flex:none;}
+    .demo-banner-actions .btn{flex:1 1 auto;}
+  }
   .welcome-body{padding:calc(28px + var(--safe-top)) 20px calc(28px + var(--safe-bottom));}
   .welcome-mark{
     width:48px; height:48px; margin-bottom:16px;
@@ -767,7 +775,12 @@
     background:var(--accent); color:var(--on-accent); border-radius:var(--r-btn);
   }
   .welcome-mark svg{width:28px; height:28px;}
+  .welcome-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:16px;}
+  .welcome-top .welcome-mark{margin-bottom:0;}
   .welcome-body h2{font-size:28px; font-weight:700; letter-spacing:-.02em; line-height:1.2;}
+  .welcome-points{margin:14px 0 0; padding:0; list-style:none;}
+  .welcome-points li{position:relative; margin-top:8px; padding-left:20px; font-size:15.5px; line-height:1.45; color:var(--ink-2);}
+  .welcome-points li::before{content:''; position:absolute; left:2px; top:.5em; width:8px; height:8px; background:var(--accent); border-radius:2px;}
   .welcome-lead{margin-top:10px; font-size:17px; line-height:1.45; color:var(--ink-1);}
   .welcome-body .btn-col{margin-top:22px;}
   .welcome-body .hint-line{margin-top:14px;}
@@ -900,6 +913,30 @@
   .lock-forgot{margin-top:18px; padding:14px; background:var(--surface); border:1px solid var(--line); border-radius:var(--r-card);}
   .lock-forgot p{font-size:14.5px; line-height:1.45; color:var(--ink-2);}
 
+  /* ═══════════ GUIDED TOUR — a plain card and an outline ═══════════
+     The card sits above the bottom bar (bottom right on a wide screen) and
+     the part of the page it talks about gets an outline. Nothing moves,
+     fades or casts a shadow. While it is open the page gets extra room at
+     the bottom, so a card can scroll clear of it. */
+  .tour{
+    position:fixed; z-index:90;
+    left:calc(12px + var(--safe-left)); right:calc(12px + var(--safe-right));
+    bottom:calc(72px + var(--safe-bottom));
+    max-width:440px; margin:0 auto; padding:14px 16px 12px;
+    background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--r-card);
+  }
+  .tour-count{font-size:13px; font-weight:600; color:var(--ink-3);}
+  .tour h2{margin-top:2px; font-size:17px; font-weight:700; line-height:1.3; color:var(--ink-1);}
+  .tour-text{margin-top:6px; font-size:15px; line-height:1.45; color:var(--ink-2);}
+  .tour-actions{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:12px;}
+  .tour-actions .tour-skip{margin-right:auto;}
+  .tour-target{outline:3px solid var(--accent); outline-offset:3px; scroll-margin-top:12px;}
+  :root.touring .content{padding-bottom:280px;}
+  @media (min-width:720px){
+    .tour{left:auto; right:calc(24px + var(--safe-right)); bottom:24px; width:380px; margin:0;}
+    :root.touring .content{padding-bottom:0;}
+  }
+
   /* ═══════════ TOAST ═══════════ */
   .toast{
     position:fixed; left:50%;
@@ -970,7 +1007,7 @@
      ═══════════════════════════════════════════════════════════════════ */
 
   /* larger text: zoom keeps every layout in proportion */
-  :root.big-text .app, :root.big-text .notif-panel{zoom:1.14;}
+  :root.big-text .app, :root.big-text .notif-panel, :root.big-text .tour{zoom:1.14;}
   /* zoom magnifies viewport units too, so the app shell is shrunk back to fit */
   :root.big-text .app{height:calc(100vh / 1.14); height:calc(100dvh / 1.14);}
   :root.big-text .notif-panel{height:calc(100vh / 1.14); height:calc(100dvh / 1.14); bottom:auto;}
@@ -1199,10 +1236,10 @@
         </div>
       </div>
       <div class="header-actions">
-        <div class="lang-pills" role="group" aria-label="Language">
-          <button class="lang-pill active" onclick="setLang('en')" aria-pressed="true">EN</button>
-          <button class="lang-pill" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
-          <button class="lang-pill" onclick="setLang('or')" aria-pressed="false" aria-label="Afaan Oromoo">OR</button>
+        <div class="lang-pills" id="headerLangs" role="group" aria-label="Language" data-ta="langGroupLabel">
+          <button class="lang-pill active" data-lang="en" onclick="setLang('en')" aria-pressed="true">EN</button>
+          <button class="lang-pill" data-lang="am" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
+          <button class="lang-pill" data-lang="or" onclick="setLang('or')" aria-pressed="false" aria-label="Afaan Oromoo">OR</button>
         </div>
         <button class="icon-btn" id="notifBtn" onclick="openPanel('notifPanel')" data-ta="t-notifTitle" aria-label="Notifications">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
@@ -1218,8 +1255,11 @@
   <div class="app-main">
   <main class="content" id="content">
     <div id="demoBanner" class="demo-banner" role="status" hidden>
-      <p><strong data-t="demoBannerTitle">Sample record</strong><span data-t="demoBannerText">Made-up data for a young woman with rheumatic heart disease. Not a real patient.</span></p>
-      <button type="button" class="btn btn-ghost btn-small" onclick="exitDemo()" data-t="demoExitBtn">Exit demo</button>
+      <p><strong data-t="demoBannerTitle">Sample record</strong><span data-t="demoBannerText">Hana, 19, from Addis Ababa, is made up — not a real patient. She has rheumatic heart disease, with a monthly penicillin injection and warfarin.</span></p>
+      <div class="demo-banner-actions">
+        <button type="button" class="btn btn-ghost btn-small" onclick="startTour()" data-t="demoTourBtn">Take the tour</button>
+        <button type="button" class="btn btn-ghost btn-small" onclick="exitDemo()" data-t="demoExitBtn">Exit demo</button>
+      </div>
     </div>
     <div id="activeAlerts"></div>
 
@@ -1593,7 +1633,7 @@
         </div>
 
         <div>
-          <div class="card">
+          <div class="card" id="visitCard">
             <div class="card-head">
               <div class="card-head-left">
                 <span class="card-label" data-t="t-visitTitle">Prepare for your visit</span>
@@ -1787,11 +1827,25 @@
 <!-- ═══ WELCOME — first launch, and again after leaving an empty demo ═══ -->
 <div class="notif-panel" id="welcomePanel" role="dialog" aria-modal="true" aria-labelledby="welcomeScreenTitle" hidden>
   <div class="welcome-body">
-    <div class="welcome-mark" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+    <div class="welcome-top">
+      <div class="welcome-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+      </div>
+      <!-- The language comes first: someone who reads Amharic or Afaan Oromo
+           should not have to get past an English screen to find it. -->
+      <div class="lang-pills" role="group" aria-label="Language" data-ta="langGroupLabel">
+        <button class="lang-pill active" data-lang="en" onclick="setLang('en')" aria-pressed="true">EN</button>
+        <button class="lang-pill" data-lang="am" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
+        <button class="lang-pill" data-lang="or" onclick="setLang('or')" aria-pressed="false" aria-label="Afaan Oromoo">OR</button>
+      </div>
     </div>
     <h2 id="welcomeScreenTitle" data-t="t-appTitle">Cardiac Companion</h2>
-    <p class="welcome-lead" data-t="welcomeScreenText">A private medicine record, kept on this phone. Nothing is sent anywhere.</p>
+    <p class="welcome-lead" data-t="welcomeWho">For young people in Ethiopia living with rheumatic heart disease, and their families.</p>
+    <ul class="welcome-points">
+      <li data-t="welcomeOffline">Works without internet. No account and no sign-up.</li>
+      <li data-t="welcomeScreenText">A private medicine record, kept on this phone. Nothing is sent anywhere.</li>
+      <li data-t="welcomeLangs">In English, Amharic and Afaan Oromo, with the Ethiopian calendar and clock.</li>
+    </ul>
     <div class="btn-col">
       <button type="button" class="btn btn-solid" onclick="startDemo()" data-t="demoStartBtn">Try the sample record</button>
       <button type="button" class="btn btn-ghost" onclick="dismissWelcome()" data-t="welcomeOwnBtn">Start my own record</button>
@@ -1914,6 +1968,18 @@
 </div>
 
 <input type="file" id="restoreInput" accept=".json,application/json" hidden onchange="restoreFromFile(this)">
+<!-- ═══ GUIDED TOUR — five stops on the sample record (startTour) ═══ -->
+<div class="tour" id="tourSheet" role="dialog" aria-modal="false" aria-labelledby="tourTitle" aria-describedby="tourText" hidden>
+  <p class="tour-count" id="tourCount"></p>
+  <h2 id="tourTitle"></h2>
+  <p class="tour-text" id="tourText" aria-live="polite"></p>
+  <div class="tour-actions">
+    <button type="button" class="btn btn-ghost btn-small tour-skip" onclick="endTour()" data-t="tourSkip">Skip tour</button>
+    <button type="button" class="btn btn-ghost btn-small" id="tourBackBtn" onclick="tourGoBack()" data-t="tourBack">Back</button>
+    <button type="button" class="btn btn-solid btn-small" id="tourNextBtn" onclick="tourGoNext()">Next</button>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- The medical logic, in plain files that Node can test too (npm test) -->
@@ -2649,12 +2715,30 @@ T2.en={
   demoOffText:"About six months for a made-up young woman in Ethiopia with rheumatic heart disease, on warfarin and a monthly penicillin injection.",
   demoOnText:"This is the sample record for Hana Bekele. She is not a real patient.",
   demoBannerTitle:"Sample record",
-  demoBannerText:"Made-up data for a young woman with rheumatic heart disease. Not a real patient.",
+  demoBannerText:"Hana, 19, from Addis Ababa, is made up — not a real patient. She has rheumatic heart disease, with a monthly penicillin injection and warfarin.",
   demoExitBtn:"Exit demo",
   demoExitConfirm:"Clear the sample record from this phone? Your own record is not changed.",
   demoStartedToast:"Sample record loaded",
   demoExitedToast:"Sample record cleared",
   demoBadge:"Sample",
+  // The first screen, the sample banner and the guided tour. They describe
+  // the app; none of them is health advice, and the tour repeats the safety
+  // rules in plain words. Amharic and Afaan Oromo: drafts for a native
+  // speaker to check (docs/NEEDS-CLINICAL-REVIEW.md).
+  welcomeWho:"For young people in Ethiopia living with rheumatic heart disease, and their families.",
+  welcomeOffline:"Works without internet. No account and no sign-up.",
+  welcomeLangs:"In English, Amharic and Afaan Oromo, with the Ethiopian calendar and clock.",
+  langGroupLabel:"Language",
+  demoTourBtn:"Take the tour",
+  tourLabel:"Guided tour",
+  tourStepOf:"{n} of {total}",
+  tourNext:"Next", tourBack:"Back", tourSkip:"Skip tour", tourDone:"Done",
+  tourInjText:"Counts down to the next injection. “Show to the nurse” opens the doctor's order, exactly as it was written, to show at the clinic.",
+  tourWarfarinText:"Shows the dose the doctor wrote for today. The app never works out, suggests or changes a dose.",
+  tourWarnText:"Two fixed lists: when to get help now, and when to call the clinic today. The app does not decide anything for you.",
+  tourLangTitle:"English · አማርኛ · Afaan Oromo",
+  tourLangText:"Change the language here at any time. Dates show in the Ethiopian and the Gregorian calendar.",
+  tourVisitText:"Everything since the last clinic visit on one page. Show it on the screen, or save it as a PDF for the doctor.",
   // encrypted backups and the PIN lock (security update)
   encUnavailable:"This phone can't encrypt files, so backups and the PIN lock are not available",
   encTitle:"Protect your backup", encText:"Choose a passphrase. The backup file is locked with it, so only someone who knows it can open the file. Write it down somewhere safe: without it the backup cannot be opened by anyone.",
@@ -2899,12 +2983,26 @@ T2.am={
   demoOffText:"ወደ ስድስት ወር ገደማ፣ የልብ ሩማቲክ በሽታ ላለባት እውነተኛ ያልሆነች ወጣት፣ ዋርፋሪን እና በየወሩ የፔኒሲሊን መርፌ።",
   demoOnText:"ይህ የHana Bekele የናሙና መዝገብ ነው። እሷ እውነተኛ ታካሚ አይደለችም።",
   demoBannerTitle:"የናሙና መዝገብ",
-  demoBannerText:"የልብ ሩማቲክ በሽታ ላለባት ወጣት የሐሰት መረጃ። እውነተኛ ታካሚ አይደለችም።",
+  demoBannerText:"ሃና፣ 19፣ ከአዲስ አበባ፣ ምናባዊ ናት — እውነተኛ ታካሚ አይደለችም። የልብ ሩማቲክ በሽታ አለባት፤ በየወሩ የፔኒሲሊን መርፌ እና ዋርፋሪን ትወስዳለች።",
   demoExitBtn:"ከሙከራ ውጣ",
   demoExitConfirm:"የናሙና መዝገቡ ከዚህ ስልክ ይጥፋ? የራስዎ መዝገብ አይቀየርም።",
   demoStartedToast:"የናሙና መዝገብ ተሞልቷል",
   demoExitedToast:"የናሙና መዝገብ ጸድቷል",
   demoBadge:"ናሙና",
+  welcomeWho:"በኢትዮጵያ የልብ ሩማቲክ በሽታ ላለባቸው ወጣቶች እና ለቤተሰቦቻቸው።",
+  welcomeOffline:"ያለ ኢንተርኔት ይሰራል። መለያ ወይም ምዝገባ አያስፈልግም።",
+  welcomeLangs:"በእንግሊዝኛ፣ በአማርኛ እና በአፋን ኦሮሞ፣ ከኢትዮጵያ ቀን መቁጠሪያ እና ሰዓት ጋር።",
+  langGroupLabel:"ቋንቋ",
+  demoTourBtn:"አስጎብኙኝ",
+  tourLabel:"የመተግበሪያ ጉብኝት",
+  tourStepOf:"{n} / {total}",
+  tourNext:"ቀጣይ", tourBack:"ተመለስ", tourSkip:"ጉብኝቱን ዝለል", tourDone:"ጨርስ",
+  tourInjText:"እስከሚቀጥለው መርፌ ያሉትን ቀኖች ይቆጥራል። «ለነርሷ አሳይ» የሐኪሙን ትዕዛዝ ልክ እንደተጻፈው ይከፍታል፣ በክሊኒክ ለማሳየት።",
+  tourWarfarinText:"ሐኪሙ ለዛሬ የጻፈውን መጠን ያሳያል። መተግበሪያው መጠን አያሰላም፣ አይጠቁምም፣ አይቀይርም።",
+  tourWarnText:"ሁለት ቋሚ ዝርዝሮች፦ አሁኑኑ እርዳታ ማግኘት ያለብዎት መቼ እንደሆነ፣ እና ዛሬ ለክሊኒክ መደወል ያለብዎት መቼ እንደሆነ። መተግበሪያው ለእርስዎ ምንም አይወስንም።",
+  tourLangTitle:"English · አማርኛ · Afaan Oromo",
+  tourLangText:"ቋንቋውን እዚህ በማንኛውም ጊዜ ይቀይሩ። ቀኖች በኢትዮጵያ እና በፈረንጅ ቀን መቁጠሪያ ይታያሉ።",
+  tourVisitText:"ካለፈው የክሊኒክ ጉብኝት ጀምሮ ያለው ሁሉ በአንድ ገጽ። በስክሪኑ ላይ ያሳዩ፣ ወይም ለሐኪሙ PDF አድርገው ያስቀምጡ።",
   // የተመሰጠረ ምትኬ እና የፒን መቆለፊያ
   encUnavailable:"ይህ ስልክ ፋይሎችን መመስጠር አይችልም፤ ስለዚህ ምትኬ እና የፒን መቆለፊያ አይሰሩም",
   encTitle:"ምትኬዎን ይጠብቁ", encText:"የይለፍ ሐረግ ይምረጡ። የምትኬ ፋይሉ በእሱ ይቆለፋል፤ ስለዚህ ፋይሉን መክፈት የሚችለው እሱን የሚያውቅ ሰው ብቻ ነው። በአስተማማኝ ቦታ ይጻፉት፤ ያለ እሱ ምትኬውን ማንም ሊከፍተው አይችልም።",
@@ -3149,12 +3247,26 @@ T2.or={
   demoOffText:"Ji'a ja'a garaa, dubartii dargaggeettii dhukkuba onnee ruumaatikii qabdu kan sobame, warfaariinii fi lilmoo pheenisiliinii ji'a ji'aan.",
   demoOnText:"Kun galmee fakkeenyaa Hana Bekele dha. Ishiin dhukkubsattuu dhugaa miti.",
   demoBannerTitle:"Galmee fakkeenyaa",
-  demoBannerText:"Odeeffannoo sobaa dubartii dargaggeettii dhukkuba onnee ruumaatikii qabduuf. Dhukkubsattuu dhugaa miti.",
+  demoBannerText:"Hana, umurii 19, Finfinnee irraa, kan sobame — dhukkubsattuu dhugaa miti. Dhukkuba onnee ruumaatikii qabdi; ji'a ji'aan lilmoo pheenisiliinii fi warfaariinii fudhatti.",
   demoExitBtn:"Agarsiisa keessaa ba'i",
   demoExitConfirm:"Galmeen fakkeenyaa bilbila kana irraa haqamuu qaba? Galmeen kee hin jijjiiramu.",
   demoStartedToast:"Galmeen fakkeenyaa fe'ameera",
   demoExitedToast:"Galmeen fakkeenyaa haqameera",
   demoBadge:"Fakkeenya",
+  welcomeWho:"Dargaggoota Itoophiyaa keessatti dhukkuba onnee ruumaatikii qabaniif, akkasumas maatii isaaniitiif.",
+  welcomeOffline:"Interneetii malee hojjeta. Herregni fi galmeen hin barbaachisu.",
+  welcomeLangs:"Afaan Ingiliffaa, Amaariffaa fi Afaan Oromootiin, kalaandarii fi sa'aatii Itoophiyaa waliin.",
+  langGroupLabel:"Afaan",
+  demoTourBtn:"Daawwannaa jalqabi",
+  tourLabel:"Daawwannaa appii",
+  tourStepOf:"{n} / {total}",
+  tourNext:"Itti aanu", tourBack:"Duubatti", tourSkip:"Daawwannaa dhiisi", tourDone:"Xumuri",
+  tourInjText:"Guyyoota lilmoo itti aanutti hafan lakkaa'a. “Narsiitti agarsiisi” ajaja doktoraa akkuma barreeffametti bana, kilinikiitti agarsiisuuf.",
+  tourWarfarinText:"Hamma doktorri har'aaf barreesse agarsiisa. Appiin kun hamma qorichaa gonkumaa hin shallagu, hin yaadu, hin jijjiiru.",
+  tourWarnText:"Tarree jijjiiramuu hin dandeenye lama: yoom amma gargaarsa argachuu akka qabdu, fi yoom har'a kilinikii bilbiluu akka qabdu. Appiin kun siif homaa hin murteessu.",
+  tourLangTitle:"English · አማርኛ · Afaan Oromo",
+  tourLangText:"Afaan as irratti yeroo kamiyyuu jijjiiri. Guyyaan kalaandarii Itoophiyaa fi Giriigooriyaaniin mul'ata.",
+  tourVisitText:"Wanti daawwannaa kilinikii darbe irraa jalqabee jiru hundi fuula tokko irratti. Iskiriinii irratti agarsiisi, ykn doktoraaf PDF godhii olkaa'i.",
   // kuusaa iccitiidhaan eegame fi cufaa PIN
   encUnavailable:"Bilbilli kun faayiloota iccitiidhaan eeguu hin danda'u; kanaaf kuusaa fi cufaan PIN hin hojjetan",
   encTitle:"Kuusaa kee eegi", encText:"Jecha icciitii filadhu. Faayiliin kuusaa isaan cufama; kanaaf namni isa beeku qofatu faayilicha banuu danda'a. Bakka nagaa irratti barreessi: isa malee namni tokkollee kuusaa kana banuu hin danda'u.",
@@ -3611,14 +3723,16 @@ function deferIfBusy(el, fn){
 // ═══════════════════════════════════════════
 function doseActionsHtml(key, e, hero){
   const k=esc(key);
+  // Before anyone taps, Taken and Not taken look the same: a filled green
+  // button read as "already taken". Once tapped, the status line shows it.
   if(!e){
     return hero
       ? `<div class="btn-row">
-          <button class="btn btn-solid ico i-check" data-act="take" data-key="${k}">${esc(L('t-warfarinTaken'))}</button>
+          <button class="btn btn-ghost ico i-check" data-act="take" data-key="${k}">${esc(L('t-warfarinTaken'))}</button>
           <button class="btn btn-ghost" data-act="miss" data-key="${k}">${esc(L('t-warfarinMissed'))}</button>
         </div>`
       : `<div class="med-actions">
-          <button class="btn btn-solid med-take" data-act="take" data-key="${k}">${ICON_CHECK}<span>${esc(L('t-warfarinTaken'))}</span></button>
+          <button class="btn btn-ghost med-take" data-act="take" data-key="${k}">${ICON_CHECK}<span>${esc(L('t-warfarinTaken'))}</span></button>
           <button class="btn btn-ghost med-skip" data-act="miss" data-key="${k}">${esc(L('t-warfarinMissed'))}</button>
         </div>`;
   }
@@ -4836,10 +4950,18 @@ function renderDemoSettings(){
   if(sub) sub.textContent=L(on?'demoOnText':'demoOffText');
   if(btn) btn.textContent=L(on?'demoExitBtn':'demoStartBtn');
 }
+// While the sample is open, a person with no name and nothing recorded (the
+// empty record a new phone starts with) is left out of this list, so the
+// sample does not sit next to a "No name yet" row. Nothing is deleted: the
+// record stays on the phone, and Exit demo goes back to it.
+function hiddenWhileDemo(p){
+  if(!(S && S.demo) || !p || profileIsDemo(p) || p.name || p.id===profiles.active) return false;
+  return recordIsEmpty(readState(p.id));
+}
 function renderProfiles(){
   const el=$('profilesBlock');
   if(deferIfBusy(el, renderProfiles)) return;
-  let h=profiles.list.map(p=>`<div class="profile-row${p.id===profiles.active?' active':''}">
+  let h=profiles.list.filter(p=>!hiddenWhileDemo(p)).map(p=>`<div class="profile-row${p.id===profiles.active?' active':''}">
       <span class="profile-name">${esc(p.name||L('unnamed'))}</span>
       ${profileIsDemo(p)?`<span class="badge">${esc(L('demoBadge'))}</span>`:''}
       ${p.id===profiles.active?`<span class="badge">${esc(L('activeLabel'))}</span>`:`<button class="btn btn-ghost btn-small" data-act="profSwitch" data-id="${esc(p.id)}">${esc(L('switchBtn'))}</button>`}
@@ -4971,7 +5093,7 @@ function startDemo(){
   const returnId=profiles.active;
   // Flush the real record as it stands. The sample is written afterwards, to its own key.
   if(!writeState(returnId, S)){ showToast(L('saveFailed')); return; }
-  const built=CC.demo.build(todayKey());
+  const built=CC.demo.build(todayKey(), currentLang);
   if(!built || built.demo!==true) return;
   if(!writeState(CC.demo.ID, built)){ showToast(L('saveFailed')); return; }
   G.demoReturn=returnId; saveGlobal();
@@ -4984,7 +5106,8 @@ function startDemo(){
   closePanel('welcomePanel'); closePanel('settingsPanel');
   switchTab('today');
   renderAll();
-  showToast(L('demoStartedToast'));
+  // The tour card says the sample is open, so no toast on top of it.
+  startTour();
 }
 function exitDemo(){
   if(!CC.demo) return;
@@ -4993,6 +5116,7 @@ function exitDemo(){
   try{ stored=!!localStorage.getItem(stateKey(id)); }catch(e){}
   if(!stored && !profiles.list.some(profileIsDemo) && !(S && S.demo)) return;
   if(!confirm(L('demoExitConfirm'))) return;
+  endTour();
   // This is the only key Exit demo removes.
   try{ localStorage.removeItem(stateKey(id)); }catch(e){}
   const back=G.demoReturn;
@@ -5012,6 +5136,75 @@ function exitDemo(){
   renderAll();
   showToast(L('demoExitedToast'));
   if(shouldShowWelcome()) openPanel('welcomePanel');
+}
+
+// ═══════════════════════════════════════════
+// GUIDED TOUR — five stops on the sample record
+// A card above the bottom bar says what one part of the page is for, and
+// that part gets an outline. The tour only moves between tabs and scrolls:
+// it saves nothing and changes no record. Skip, Done, Android's back
+// button and Escape all close it. It runs only on the sample record.
+// ═══════════════════════════════════════════
+const TOUR=[
+  {tab:'today',    target:'injectionCard', title:'t-injectionTitle', text:'tourInjText'},
+  {tab:'today',    target:'warfarinCard',  title:'t-warfarinToday',  text:'tourWarfarinText'},
+  {tab:'symptoms', target:'warningCard',   title:'warnTitle',        text:'tourWarnText'},
+  {tab:null,       target:'headerLangs',   title:'tourLangTitle',    text:'tourLangText', scroll:false},
+  {tab:'summary',  target:'visitCard',     title:'t-visitTitle',     text:'tourVisitText'}
+];
+let tourAt=-1;        // the stop in view; -1 when the tour is closed
+let tourMarked=null;  // the element with the outline
+function tourOpen(){ return tourAt>=0; }
+function tourMark(el){
+  if(tourMarked && tourMarked.classList) tourMarked.classList.remove('tour-target');
+  tourMarked=el||null;
+  if(tourMarked && tourMarked.classList) tourMarked.classList.add('tour-target');
+}
+function startTour(){
+  if(!(S && S.demo)) return;
+  tourAt=0;
+  document.documentElement.classList.add('touring');
+  showTourStop();
+  const next=$('tourNextBtn'); if(next && next.focus) next.focus();
+}
+function showTourStop(){
+  const stop=TOUR[tourAt];
+  if(!stop){ endTour(); return; }
+  if(stop.tab && stop.tab!==currentTab) switchTab(stop.tab);
+  const el=$(stop.target);
+  tourMark(el);
+  if(el && stop.scroll!==false && el.scrollIntoView) el.scrollIntoView({block:'start'});
+  renderTour();
+}
+function tourGoNext(){
+  if(!tourOpen()) return;
+  if(tourAt>=TOUR.length-1){ endTour(); switchTab('today'); return; }
+  tourAt++; showTourStop();
+}
+function tourGoBack(){
+  if(!tourOpen() || tourAt===0) return;
+  tourAt--; showTourStop();
+}
+function endTour(){
+  tourAt=-1;
+  tourMark(null);
+  document.documentElement.classList.remove('touring');
+  renderTour();
+}
+function renderTour(){
+  const sheet=$('tourSheet');
+  if(!sheet) return;
+  // Leaving the sample (Exit demo, or switching to a real person) ends it.
+  if(tourOpen() && !(S && S.demo)){ endTour(); return; }
+  sheet.hidden=!tourOpen();
+  if(!tourOpen()) return;
+  const stop=TOUR[tourAt], last=tourAt===TOUR.length-1;
+  sheet.setAttribute('aria-label', L('tourLabel'));
+  $('tourCount').textContent=L('tourStepOf',{n:tourAt+1, total:TOUR.length});
+  $('tourTitle').textContent=L(stop.title);
+  $('tourText').textContent=L(stop.text);
+  $('tourBackBtn').hidden=tourAt===0;
+  $('tourNextBtn').textContent=L(last?'tourDone':'tourNext');
 }
 
 // ═══════════════════════════════════════════
@@ -5203,6 +5396,7 @@ function handleBack(){
   if(isLocked()){ Platform.app.leave(); return 'leave'; }
   const p=topPanel();
   if(p){ closePanel(p); return 'panel'; }
+  if(tourOpen()){ endTour(); return 'tour'; }
   if(cancelOpenForm()) return 'form';
   if(currentTab!=='today'){ switchTab('today'); return 'tab'; }
   Platform.app.leave();
@@ -5226,10 +5420,15 @@ function setLang(lang){
   currentLang=lang;
   try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
   document.documentElement.lang=HTML_LANG[lang];
-  document.querySelectorAll('.lang-pill').forEach((b,i)=>{
-    const on=['en','am','or'][i]===lang;
+  // The header and the welcome screen each have a set of pills, so each
+  // pill says its own language rather than counting on its position.
+  document.querySelectorAll('.lang-pill').forEach(b=>{
+    const on=b.dataset.lang===lang;
     b.classList.toggle('active', on); b.setAttribute('aria-pressed', on?'true':'false');
   });
+  // The sample's notes and texts follow the language (only on the sample,
+  // and only text nobody has edited; see js/demo.js).
+  if(S && S.demo && CC.demo && CC.demo.relabel && CC.demo.relabel(S, lang)) save();
   renderAll();
 }
 function renderHeader(){
@@ -5248,6 +5447,7 @@ function renderAll(){
   renderSummaryTab();
   renderActiveAlerts();
   renderDemoBanner();
+  renderTour();
   updateNotifDot();
   if(!$('notifPanel').hidden) renderNotifications();
   if(!$('settingsPanel').hidden) renderSettings();
@@ -5369,7 +5569,12 @@ document.addEventListener('change', ev=>{
   if(el && CH[el.dataset.ch]) setTimeout(()=>CH[el.dataset.ch](el.dataset, el), 0);
 });
 document.addEventListener('keydown', ev=>{
-  if(ev.key==='Escape'){ const p=topPanel(); if(p){ ev.preventDefault(); closePanel(p); } return; }
+  if(ev.key==='Escape'){
+    const p=topPanel();
+    if(p){ ev.preventDefault(); closePanel(p); }
+    else if(tourOpen()){ ev.preventDefault(); endTour(); }
+    return;
+  }
   const el=ev.target;
   if((ev.key==='Enter'||ev.key===' ') && el && el.getAttribute && el.getAttribute('role')==='checkbox' && el.dataset.act){
     ev.preventDefault(); el.click();

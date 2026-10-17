@@ -7,7 +7,8 @@
  * from the INR values. A real person's saved record is left as it was.
  */
 'use strict';
-const { check, same, section, done, loadPage } = require('./harness.js');
+const fs = require('fs');
+const { check, same, section, done, loadPage, PAGE } = require('./harness.js');
 const p = loadPage();
 
 p.at(2026, 10, 13, 9, 0);
@@ -198,5 +199,88 @@ p.call('renderActiveAlerts');
 check('and no "Back up your record" card on Today', !p.html('activeAlerts').includes('Back up your record'));
 p.call('exitDemo');
 same('back on the real record, the reminder returns', p.call('backupNudgeDue'), true);
+
+section('8. The sample in Amharic and Afaan Oromo');
+const T0 = '2026-10-13';
+const words = l => p.get(`(function(){ const b = CC.demo.build(${JSON.stringify(T0)}, ${JSON.stringify(l)});
+  return { notes: b.notes.map(n => n.text), purpose: b.meds[0].purpose, info: b.clinicalInfo, order: b.injection.order }; })()`);
+const en = words('en'), am = words('am'), om = words('or');
+same('English is the default, word for word', p.get(`JSON.stringify(CC.demo.build("${T0}")) === JSON.stringify(CC.demo.build("${T0}", "en"))`), true);
+for (const [name, w] of [['Amharic', am], ['Afaan Oromo', om]]) {
+  check(`${name}: every note is translated`, w.notes.length === 4 && w.notes.every((t, i) => t && t !== en.notes[i]), w.notes.join(' / '));
+  check(`${name}: the medicine's purpose, Medical ID text and order are translated`, w.purpose !== en.purpose && w.info !== en.info && w.order !== en.order);
+  check(`${name}: the doctor's order keeps the exact dose line`, w.order.includes(p.get('CC.demo.ORDER_LINE')), w.order);
+  check(`${name}: still says it is not a real patient`, /እውነተኛ ታካሚ አይደለችም|dhukkubsattuu dhugaa miti/.test(w.info) && /እውነተኛ ታካሚ አይደለችም|dhukkubsattuu dhugaa miti/.test(w.order));
+}
+check('English order keeps the exact dose line too', en.order.includes(p.get('CC.demo.ORDER_LINE')));
+same('only the words differ: doses, INR, dates and injections are the same in every language',
+  p.get(`(function(){ const strip = b => { b = JSON.parse(JSON.stringify(b)); b.notes.forEach(n => delete n.text); delete b.meds[0].purpose; delete b.clinicalInfo; delete b.injection.order; return JSON.stringify(b); };
+    return [strip(CC.demo.build("${T0}", "am")) === strip(CC.demo.build("${T0}", "en")), strip(CC.demo.build("${T0}", "or")) === strip(CC.demo.build("${T0}", "en"))]; })()`),
+  [true, true]);
+
+p.person({}, { id: 'p1' });
+p.open([{ id: 'p1', name: '' }], 'p1');
+p.global({});
+p.lang('am');
+p.call('startDemo');
+same('opened in Amharic, the sample is written in Amharic', p.get('[S.notes[0].text, S.meds[0].purpose]'), [am.notes[0], am.purpose]);
+p.run('S.notes[1].text = "My own words"; save();');
+p.call('setLang', 'or');
+same('switching to Afaan Oromo relabels the untouched texts', p.get('[S.notes[0].text, S.clinicalInfo, S.injection.order, S.meds[0].purpose]'), [om.notes[0], om.info, om.order, om.purpose]);
+same('a note someone edited is left as it is', p.get('S.notes[1].text'), 'My own words');
+same('and the change is saved with the sample', p.get('JSON.parse(localStorage.getItem("cc-state-v3:demo")).notes[0].text'), om.notes[0]);
+p.call('setLang', 'en');
+same('back to English', p.get('[S.notes[0].text, S.clinicalInfo]'), [en.notes[0], en.info]);
+same('relabel never touches a real record', p.get(`(function(){ const r = normalizeState(Object.assign(defaultState(), { clinicalInfo: ${JSON.stringify(en.info)}, notes: [{ id: 'demo-note-0', date: '2026-10-01', time: '09:00', text: ${JSON.stringify(en.notes[0])} }] }));
+  return [CC.demo.relabel(r, 'am'), r.clinicalInfo, r.notes[0].text]; })()`), [false, en.info, en.notes[0]]);
+same('relabel ignores a language it does not have', p.get('CC.demo.relabel(S, "fr")'), false);
+
+section('9. No empty "No name yet" person next to the sample');
+p.run('openPanel = function(){}');   // the settings panel is not under test here
+p.call('renderProfiles');
+const people = p.html('profilesBlock');
+check('the empty first record is not listed while the sample is open', !people.includes(p.get('L("unnamed")')) && people.includes('Hana Bekele'));
+check('… but it is still on the phone', !!p.get('localStorage.getItem("cc-state-v3:p1")') && p.get('profiles.list.some(x => x.id === "p1")'));
+p.rec.confirmAnswer = true;
+p.call('exitDemo');
+same('Exit demo goes back to it', p.get('profiles.active'), 'p1');
+p.person({ clinicalInfo: 'REAL' }, { id: 'p1' });
+p.person({}, { id: 'p2' });
+p.open([{ id: 'p1', name: '' }, { id: 'p2', name: 'Abebe' }], 'p1');
+p.call('startDemo');
+p.call('renderProfiles');
+const people2 = p.html('profilesBlock');
+check('a person with no name but a record is still listed', people2.includes(p.get('L("unnamed")')));
+check('a person with a name is still listed', people2.includes('Abebe'));
+p.call('exitDemo');
+p.call('renderProfiles');
+check('outside the sample, the list is unchanged', p.html('profilesBlock').includes(p.get('L("unnamed")')));
+
+section('10. Taken is not green before anyone taps it');
+const pending = p.call('doseActionsHtml', 'W', null, true) + p.call('doseActionsHtml', 'm1@08:00', null, false);
+check('no filled button among the untapped Taken / Not taken', !/btn-solid/.test(pending) && (pending.match(/btn-ghost/g) || []).length === 4, pending.replace(/\s+/g, ' ').slice(0, 160));
+check('Taken still has its tick', /data-act="take"[^>]*>[\s\S]*?(i-check|<svg)/.test(pending) || /i-check[^>]*data-act="take"/.test(pending));
+
+section('11. The first screen and the sample banner');
+const html = fs.readFileSync(PAGE, 'utf8');
+const welcome = (html.match(/<div class="notif-panel" id="welcomePanel"[\s\S]*?<!-- ═══/) || [''])[0];
+for (const k of ['welcomeWho', 'welcomeOffline', 'welcomeScreenText', 'welcomeLangs', 'demoStartBtn', 'welcomeOwnBtn'])
+  check(`the welcome screen shows ${k}`, welcome.includes(`data-t="${k}"`));
+same('the welcome screen has the three language buttons', [...welcome.matchAll(/class="lang-pill[^"]*" data-lang="(\w+)"/g)].map(m => m[1]), ['en', 'am', 'or']);
+check('the language buttons follow their own language, not their position', /b\.dataset\.lang===lang/.test(html) && !/\['en','am','or'\]\[i\]===lang/.test(html));
+const banner = (html.match(/<div id="demoBanner"[\s\S]*?\n    <\/div>/) || [''])[0];
+check('the banner offers the tour and Exit demo', /onclick="startTour\(\)"[^>]*data-t="demoTourBtn"/.test(banner) && /data-t="demoExitBtn"/.test(banner));
+check('the banner buttons go under the words on a phone', /@media \(max-width:560px\)\{\s*\.demo-banner\{flex-direction:column;/.test(html));
+for (const l of ['en', 'am', 'or']) {
+  p.lang(l);
+  const t = p.get('L("demoBannerText")');
+  check(`${l}: the banner says Hana is 19, from Addis Ababa, made up`, /19/.test(t) && /Addis Ababa|አዲስ አበባ|Finfinnee/.test(t) && /not a real patient|እውነተኛ ታካሚ አይደለችም|dhukkubsattuu dhugaa miti/.test(t), t);
+}
+p.lang('en');
+// what the markup shows before the page fills it in matches the English table
+for (const k of ['welcomeWho', 'welcomeOffline', 'welcomeLangs', 'demoBannerText', 'demoTourBtn', 'tourSkip', 'tourBack']) {
+  const shown = html.match(new RegExp('data-t="' + k + '"[^>]*>([^<]*)<'));
+  same(`page text for ${k} matches English`, shown && shown[1], p.get(`L(${JSON.stringify(k)})`));
+}
 
 done();

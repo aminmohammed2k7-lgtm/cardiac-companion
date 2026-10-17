@@ -14,6 +14,9 @@ copied from `www/index.html`; the key names let anyone find them there.
 | 1 | Main and About disclaimers mention the camera pulse | **In the app, waiting for clinical review** |
 | 2 | "Not a medical device" line beside the camera button | **In the app, waiting for clinical review** (existing text, new place) |
 | 3 | Amharic and Afaan Oromo camera texts | **Drafts, need a native-speaker check** |
+| 4 | Guided tour: two stops restate safety rules in plain words | **In the app (sample record only), please check** |
+| 5 | Sample record: Medical ID text and nurse's order in Amharic and Afaan Oromo | **Drafts, please check** (made-up patient, but medical terms) |
+| 6 | First screen, sample banner, tour and sample notes in Amharic and Afaan Oromo | **Drafts, need a native-speaker check** (not health wording) |
 
 ## 1. Disclaimers mention the camera pulse
 
@@ -94,3 +97,53 @@ also still apply now that the camera is on everywhere: clinical sign-off of
 the camera screen and the "uneven beats" note, real-world validation against
 a pulse oximeter or a manual count on the phones patients use, atrial
 fibrillation, and phones without a controllable light.
+
+## 4. Guided tour: two stops restate safety rules
+
+- **Added in:** the demo quick-wins change (15 October 2026), approved by
+  Amin as part of the competition bundle. Only shown on the sample record.
+- **No existing health or warning wording changed.** The warning-sign
+  lists, their headings and every medical text are exactly as before. The
+  tour's titles reuse the existing card titles.
+- Two tour texts describe what a screen does in words that touch the safety
+  rules, so they are listed here to be safe:
+
+| Key | English (Amharic and Afaan Oromo drafts are next to it in `www/index.html`) |
+|---|---|
+| `tourWarfarinText` | Shows the dose the doctor wrote for today. The app never works out, suggests or changes a dose. |
+| `tourWarnText` | Two fixed lists: when to get help now, and when to call the clinic today. The app does not decide anything for you. |
+
+- **Please check:** that these say no more than the app does (charter rules
+  1 and 2), and that "Two fixed lists" matches how a clinician would want
+  the warning signs described.
+
+## 5. Sample record: Medical ID text and nurse's order
+
+The sample patient is made up, but two of her texts use medical terms. They
+are now in Amharic and Afaan Oromo too (`www/js/demo.js`, `TEXT`), so the
+sample reads in the app's language. The medical terms (mitral stenosis,
+left atrium) are kept in English in brackets.
+
+- The **doctor's order** keeps the exact English line in every language:
+  `Benzathine penicillin G 1.2 million units into the muscle every 28 days`.
+  Only the sentence around it ("Sample order, not a real patient. As the
+  doctor wrote:") is translated. `tests/page/demo.test.js` fails if a
+  language loses that line, so a dose is never re-worded.
+- **Please check:** the Amharic and Afaan Oromo `clinicalInfo` and `order`
+  in `www/js/demo.js`.
+
+## 6. New text in Amharic and Afaan Oromo (not health wording)
+
+All drafts, written without a native speaker. They should be checked before
+the demo is shown in Amharic or Afaan Oromo (for example in the competition
+video):
+
+- First screen: `welcomeWho`, `welcomeOffline`, `welcomeLangs`, `langGroupLabel`.
+- Sample banner: `demoBannerText` (rewritten to introduce Hana), `demoTourBtn`.
+- Tour: `tourLabel`, `tourStepOf`, `tourNext`, `tourBack`, `tourSkip`,
+  `tourDone`, `tourInjText`, `tourWarfarinText`, `tourWarnText`,
+  `tourLangText`, `tourVisitText`.
+- Sample record words in `www/js/demo.js` (`TEXT.am`, `TEXT.or`): the four
+  daily notes and the medicine's purpose.
+- In Amharic the banner writes the name as ሃና; the profile name stays
+  "Hana Bekele" in Latin letters, as before.
