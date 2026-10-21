@@ -39,7 +39,7 @@ check('every local file index.html loads is in www/', !missing.length, missing.j
 // name, not a download, so only real loads are looked for.
 const remote = [...scripts, ...links, ...urls].filter(u => /^https?:/.test(u));
 check('index.html loads nothing from the network', !remote.length, remote.join(', '));
-const code = ['index.html', 'ppg-engine.js', 'js/secure.js', ...fs.readdirSync(path.join(www, 'js', 'core')).map(f => 'js/core/' + f)]
+const code = ['index.html', 'ppg-engine.js', 'pulse-quality.js', 'pulse-quality-weights.js', 'js/secure.js', ...fs.readdirSync(path.join(www, 'js', 'core')).map(f => 'js/core/' + f)]
   .map(f => [f, fs.readFileSync(path.join(www, f), 'utf8')]);
 const netApi = /\bfetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource|@import/;
 const calls = code.filter(([, src]) => netApi.test(src)).map(([f]) => f);

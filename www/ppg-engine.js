@@ -1429,6 +1429,21 @@
 
     // Stop early and report what was collected.
     finish(reason) { this._finish(reason || 'stopped'); }
+
+    // The last few seconds of the camera signal before any filtering: mean
+    // red, green and blue on the exact 30 Hz grid, plus how much of the red
+    // was clipped. Read-only, for the signal-quality model
+    // (pulse-quality.js) and its recording mode. It changes nothing here.
+    rawWindow(sec) {
+      const fs = this.o.fs, n = Math.min(this.bufR.length, Math.round((sec || this.o.windowSec) * fs));
+      const from = this.bufR.length - n;
+      return {
+        fs,
+        red: this.bufR.slice(from), green: this.bufG.slice(from), blue: this.bufB.slice(from),
+        saturation: this.satHist.length ? mean(this.satHist) : 0,
+        cover: this.cover
+      };
+    }
   }
 
   // ═══════════════════════════════════════════
@@ -1914,6 +1929,9 @@
         .catch(() => { this.expSteps = o.maxExposureSteps; })
         .then(() => { this._expBusy = false; this._satSince = null; });
     }
+
+    // See SignalProcessor.rawWindow(). Still readable after 'complete'.
+    rawWindow(sec) { return this.proc.rawWindow(sec); }
 
     snapshot() {
       return {

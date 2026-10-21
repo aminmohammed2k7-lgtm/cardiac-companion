@@ -23,6 +23,10 @@ synthetic tests only prove the maths on made-up signals.
 You can also write the two numbers in a notebook. The sums below are the
 same either way.
 
+To keep the raw camera signal with each pair as well — so it can train the
+signal-quality model — use the app's hidden recording mode instead. See
+`docs/pulse-quality-model.md`.
+
 ## How one person is measured
 
 1. They sit for one minute. The oximeter goes on one hand. The phone is on

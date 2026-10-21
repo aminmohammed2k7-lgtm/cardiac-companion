@@ -22,7 +22,9 @@
   marked "(camera)". Beat-to-beat variation is shown only when the engine
   judges it reliable, and an "uneven beats" note never names a condition.
   It is an estimate, not a measurement device — see CHANGES.md before use
-  with patients.
+  with patients. pulse-quality.js rates each reading good or poor (0–100
+  confidence) and a poor one shows no number; its weights, once trained
+  from oximeter recordings, are in pulse-quality-weights.js.
 
   WHY THESE FEATURES: rheumatic heart disease is the most common cardiac
   condition among Ethiopian cardiac patients, which makes warfarin dosing
@@ -1212,6 +1214,9 @@
   .cam-unit{font-size:16px; font-weight:600; color:var(--ink-3);}
   #camWave{width:100%; height:120px; display:block; margin-top:14px;}
   .cam-progress{margin-top:10px;}
+  .cam-conf{margin-top:6px; font-size:14px; color:var(--ink-3); font-variant-numeric:tabular-nums;}
+  .cam-rec{margin-top:14px; padding-top:12px; border-top:1px solid var(--line);}
+  .cam-rec .entry-row{margin-top:8px;}
   .cam-hint{min-height:2.9em; margin-top:10px; font-size:15px; line-height:1.45; color:var(--ink-1);}
   .cam-note{padding:10px 12px; border:1px solid var(--warn-line); border-radius:var(--r-btn); background:var(--warn-soft); color:var(--warn-ink); font-size:14px; line-height:1.45;}
   #camNoLight{margin-top:10px;}
@@ -1817,9 +1822,27 @@
   </div>
 
   <div class="settings-section">
-    <p class="settings-section-title" data-t="t-settingsAbout">About</p>
+    <p class="settings-section-title" data-t="t-settingsAbout" onclick="devTap()">About</p>
     <div class="settings-block settings-pad">
       <p class="settings-row-sub" data-t="t-settingsAboutDisclaimer">Cardiac Companion is a personal record, not a medical device. It can estimate your pulse with the phone camera as a wellness reading only. It does not diagnose anything or tell you whether to seek care. Always follow your clinician's guidance.</p>
+    </div>
+  </div>
+
+  <!-- Hidden until "About" is tapped seven times (devTap). For checking the
+       camera pulse against a pulse oximeter; see tools/train-pulse-quality.js. -->
+  <div class="settings-section" id="devSection" hidden>
+    <p class="settings-section-title" data-t="devTitle">Developer</p>
+    <div class="settings-block">
+      <div class="settings-row">
+        <span class="settings-row-label" data-t="devRecLabel">Pulse recording mode</span>
+        <button class="switch" id="devRecSwitch" onclick="toggleDevRecording()" role="switch" aria-checked="false" data-ta="devRecLabel"></button>
+      </div>
+      <div class="settings-row stack">
+        <span class="settings-row-sub" data-t="devRecHint">For checking the camera pulse against a pulse oximeter. After each camera reading, type the oximeter's number to save the raw camera signal with it. Saved on this phone only.</span>
+        <span class="settings-row-sub" id="devRecStatus"></span>
+      </div>
+      <button class="settings-row ico i-download" onclick="exportPulseRecordings()" data-t="devRecExport">Export recordings (CSV)</button>
+      <button class="settings-row" onclick="clearPulseRecordings()" data-t="devRecClear">Delete recordings</button>
     </div>
   </div>
 </div>
@@ -1916,11 +1939,19 @@
           <span class="cam-unit" data-t="camBpmUnit">beats/min</span>
         </div>
       </div>
+      <p class="cam-conf" id="camConf" hidden></p>
       <canvas id="camWave" aria-hidden="true"></canvas>
       <div class="supply-bar cam-progress" aria-hidden="true"><div class="supply-bar-fill" id="camProgress" style="width:0"></div></div>
       <p class="cam-hint" id="camHint" role="status" aria-live="polite"></p>
       <p class="cam-note" id="camNoLight" data-t="camNoLight" hidden>Your phone's light didn't switch on. Measure next to a bright lamp or window.</p>
       <div id="camResult" hidden></div>
+      <div class="cam-rec" id="camRec" hidden>
+        <label class="field-label" for="camRecRef" data-t="devRecRefLabel">Pulse oximeter beats/min</label>
+        <div class="entry-row">
+          <input class="form-field" id="camRecRef" type="number" inputmode="numeric" min="30" max="250" step="1">
+          <button class="btn btn-solid" onclick="savePulseRecording()" data-t="devRecSave">Save recording</button>
+        </div>
+      </div>
     </div>
     <div class="btn-col cam-actions">
       <button class="btn btn-solid" id="camStart" onclick="startPulseCam()" data-t="camStart">Start</button>
@@ -1998,6 +2029,8 @@
 <script src="js/platform/app.js"></script>
 <script src="js/platform/display.js"></script>
 <script src="ppg-engine.js" defer></script>
+<script src="pulse-quality-weights.js" defer></script>
+<script src="pulse-quality.js" defer></script>
 <script>
 // ═══════════════════════════════════════════
 // APP ICON — the small icon in-page notifications use until Phase 4
@@ -2581,6 +2614,20 @@ T2.en={
   "camHrvNo_artifacts":"Beat-to-beat variation isn't shown: too many beats were disturbed.",
   "camHrvNo_noisy":"Beat-to-beat variation isn't shown: the signal wasn't precise enough.",
   camUneven:"Your beats were uneven during this reading. This can have many causes. If you see this again, or feel dizzy or breathless, tell your nurse or doctor.",
+  // camera pulse signal quality (pulse-quality.js)
+  camConfidence:"Signal confidence {n}/100",
+  camQualityHold:"Keep your finger still and fully cover the camera.",
+  camQualityRetry:"The signal was not clear enough, so no number is shown. Keep your finger still and fully cover the camera.",
+  // developer: pulse recording mode (hidden; see tools/train-pulse-quality.js)
+  devTitle:"Developer", devUnlocked:"Developer options are on.",
+  devRecLabel:"Pulse recording mode",
+  devRecHint:"For checking the camera pulse against a pulse oximeter. After each camera reading, type the oximeter's number to save the raw camera signal with it. Saved on this phone only.",
+  devRecCount:"Recordings saved: {n}", devRecExport:"Export recordings (CSV)", devRecClear:"Delete recordings",
+  devRecClearConfirm:"Delete all saved pulse recordings from this phone?",
+  devRecRefLabel:"Pulse oximeter beats/min", devRecSave:"Save recording", devRecSaved:"Recording saved.",
+  devRecCheckRef:"Type the oximeter's number (30–250).",
+  devRecFull:"Recording storage is full ({n}). Export and delete them first.",
+  devModelLine:"Quality check: {m}", devModelRules:"fixed rules", devModelTrained:"trained model",
   rhythmQ:"Did the beat feel regular?", rh_regular:"Regular", rh_irregular:"Irregular", rh_unsure:"Not sure",
   whenNeeded:"When needed", prnTakeBtn:"Took one", prnNone:"Not taken today", prnTakenN:"Taken {n}× today, last at {t}",
   noneDueToday:"No medicines due today.",
@@ -2865,6 +2912,20 @@ T2.am={
   "camHrvNo_artifacts":"ብዙ ምቶች ስለተረበሹ ልዩነቱ አልታየም።",
   "camHrvNo_noisy":"ምልክቱ በቂ ትክክለኛ ስላልነበረ ልዩነቱ አልታየም።",
   camUneven:"በዚህ ንባብ ወቅት ምቶችዎ ያልተስተካከሉ ነበሩ። ይህ ብዙ ምክንያቶች ሊኖሩት ይችላል። እንደገና ካዩት ወይም የማዞር ወይም የትንፋሽ ማጠር ስሜት ካለዎት ለነርስዎ ወይም ለሐኪምዎ ይንገሩ።",
+  // camera pulse signal quality and developer recording mode — DRAFT
+  // translation, needs review by a native speaker
+  camConfidence:"የምልክት እርግጠኝነት {n}/100",
+  camQualityHold:"ጣትዎን ሳያንቀሳቅሱ ካሜራውን ሙሉ በሙሉ ይሸፍኑ።",
+  camQualityRetry:"ምልክቱ በቂ ግልጽ አልነበረም፣ ስለዚህ ቁጥር አይታይም። ጣትዎን ሳያንቀሳቅሱ ካሜራውን ሙሉ በሙሉ ይሸፍኑ።",
+  devTitle:"ለገንቢዎች", devUnlocked:"የገንቢ አማራጮች በርተዋል።",
+  devRecLabel:"የልብ ምት መቅጃ ሁነታ",
+  devRecHint:"የካሜራውን የልብ ምት ከፐልስ ኦክሲሜትር ጋር ለማነጻጸር። ከእያንዳንዱ የካሜራ ንባብ በኋላ የኦክሲሜትሩን ቁጥር ይጻፉ፤ ጥሬው የካሜራ ምልክት ከእሱ ጋር ይቀመጣል። በዚህ ስልክ ላይ ብቻ ይቀመጣል።",
+  devRecCount:"የተቀመጡ ቅጂዎች፦ {n}", devRecExport:"ቅጂዎችን ላክ (CSV)", devRecClear:"ቅጂዎችን ሰርዝ",
+  devRecClearConfirm:"የተቀመጡት የልብ ምት ቅጂዎች በሙሉ ከዚህ ስልክ ይሰረዙ?",
+  devRecRefLabel:"የፐልስ ኦክሲሜትር ምት/ደቂቃ", devRecSave:"ቅጂውን አስቀምጥ", devRecSaved:"ቅጂው ተቀምጧል።",
+  devRecCheckRef:"የኦክሲሜትሩን ቁጥር ይጻፉ (30–250)።",
+  devRecFull:"የቅጂ ማከማቻው ሞልቷል ({n})። መጀመሪያ ይላኩና ይሰርዙ።",
+  devModelLine:"የጥራት ፍተሻ፦ {m}", devModelRules:"ቋሚ ደንቦች", devModelTrained:"የሰለጠነ ሞዴል",
   rhythmQ:"የልብ ምቱ መደበኛ ነበር?", rh_regular:"መደበኛ", rh_irregular:"የተዛባ", rh_unsure:"እርግጠኛ አይደለሁም",
   whenNeeded:"ሲያስፈልግ", prnTakeBtn:"አንድ ወሰድኩ", prnNone:"ዛሬ አልተወሰደም", prnTakenN:"ዛሬ {n} ጊዜ ተወስዷል፣ የመጨረሻው {t}",
   noneDueToday:"ዛሬ የሚወሰድ መድሃኒት የለም።",
@@ -3140,6 +3201,20 @@ T2.or={
   "camHrvNo_artifacts":"Rukuttaan baayʼeen waan jeeqamaniif garaagarummaan hin argisiifamne.",
   "camHrvNo_noisy":"Mallattoon sirrii gahaa waan hin taaneef garaagarummaan hin argisiifamne.",
   camUneven:"Yeroo safartuu kanaa rukuttaan keessan walqixa hin turre. Kun sababa baayʼee qabaachuu dandaʼa. Yoo irra deebiʼee argitan, ykn mataan isin marsee ykn hafuurri isin qabate, narsii ykn doktora keessanitti himaa.",
+  // camera pulse signal quality and developer recording mode — DRAFT
+  // translation, needs review by a native speaker
+  camConfidence:"Amanamummaa mallattoo {n}/100",
+  camQualityHold:"Quba kee osoo hin sochoosin kaameraa guutummaatti haguugi.",
+  camQualityRetry:"Mallattoon ifa gahaa hin turre, kanaaf lakkoofsi hin agarsiifamu. Quba kee osoo hin sochoosin kaameraa guutummaatti haguugi.",
+  devTitle:"Misoomsitootaaf", devUnlocked:"Filannoowwan misoomsitootaa banameera.",
+  devRecLabel:"Haala galmee rukuttaa onnee",
+  devRecHint:"Rukuttaa onnee kaameraa pulse oximeter waliin wal bira qabuuf. Safartuu kaameraa hunda booda lakkoofsa oximeter barreessi; mallattoon kaameraa isa waliin kuufama. Bilbila kana irratti qofa kuufama.",
+  devRecCount:"Galmeewwan kuufaman: {n}", devRecExport:"Galmeewwan ergi (CSV)", devRecClear:"Galmeewwan haqi",
+  devRecClearConfirm:"Galmeewwan rukuttaa onnee kuufaman hunda bilbila kana irraa haqi?",
+  devRecRefLabel:"Rukuttaa pulse oximeter/daqiiqaa", devRecSave:"Galmee kuusi", devRecSaved:"Galmeen kuufameera.",
+  devRecCheckRef:"Lakkoofsa oximeter barreessi (30–250).",
+  devRecFull:"Kuusaan galmee guuteera ({n}). Dura ergiitii haqi.",
+  devModelLine:"Sakatta'iinsa qulqullinaa: {m}", devModelRules:"seerota dhaabbataa", devModelTrained:"moodela leenji'e",
   rhythmQ:"Rukuttaan onnee idilee turee?", rh_regular:"Idilee", rh_irregular:"Jeeqamaa", rh_unsure:"Hin beeku",
   whenNeeded:"Yeroo barbaachisu", prnTakeBtn:"Tokko fudhadhe", prnNone:"Har'a hin fudhatamne", prnTakenN:"Har'a al {n} fudhatame, kan dhumaa {t}",
   noneDueToday:"Har'a qorichi fudhatamu hin jiru.",
@@ -4097,6 +4172,19 @@ function saveVital(){
 // An estimate from the phone camera: the number goes into the pulse field
 // like a typed one; HRV details are kept with it only as a personal record.
 let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camResult=null, camFailed=false;
+// Signal quality (pulse-quality.js): a second check on top of the engine's
+// own. A reading it rates poor shows no number, live or at the end. It
+// never changes the number; it only decides whether it is shown.
+let camQualityAt=-Infinity, camQuality=null, camRecording=null;
+function camRate(mon, uneven){
+  if(!window.PulseQuality || !mon || !mon.rawWindow) return null;
+  try{ return PulseQuality.classify(mon.rawWindow(), {uneven:!!uneven}); }catch(e){ return null; }
+}
+function camShowConf(q){
+  const el=$('camConf');
+  el.hidden=!(q && q.good);
+  el.textContent=q && q.good ? L('camConfidence',{n:q.confidence}) : '';
+}
 function camFailKey(res){
   const h=res&&res.hint, w=res&&res.withhold;
   if(w==='disagree'||h==='rate-disagree') return 'camFailDisagree';
@@ -4111,6 +4199,7 @@ function openPulseCam(){
   camResult=null; camFailed=false; $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true;
   $('camStart').hidden=false; $('camBpm').textContent='—'; $('camProgress').style.width='0';
   $('camHint').textContent=''; $('camNoLight').hidden=true;
+  camShowConf(null); camRecording=null; $('camRec').hidden=true;
   const wv=$('camWave'); wv.getContext('2d').clearRect(0,0,wv.width,wv.height);   // no wave left over from the last reading
   openPanel('pulsePanel');
 }
@@ -4126,6 +4215,7 @@ async function startPulseCam(){
   camResult=null; camFailed=false; camWaveData=null;
   $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true; $('camStart').hidden=true;
   $('camBpm').textContent='—'; $('camProgress').style.width='0';
+  camQualityAt=-Infinity; camQuality=null; camShowConf(null); camRecording=null; $('camRec').hidden=true;
   const mon=new PPG.PulseMonitor({video:$('camVideo'), durationSec:60});
   camMon=mon;
   mon.on('camera', c=>{ $('camNoLight').hidden=!!c.torch; });
@@ -4139,24 +4229,38 @@ async function startPulseCam(){
     }
   });
   mon.on('quality', q=>{
-    const k={'place-finger':'camPlace','press-lighter':'camLighter','hold-still':'camHold','rest-hand':'camRest','cover-lens':'camCover','weak-signal':'camWeak','rate-disagree':'camFailDisagree',good:'camGood'}[q.hint];
+    let k={'place-finger':'camPlace','press-lighter':'camLighter','hold-still':'camHold','rest-hand':'camRest','cover-lens':'camCover','weak-signal':'camWeak','rate-disagree':'camFailDisagree',good:'camGood'}[q.hint];
+    // the engine is happy but the quality check is not: say what to do
+    if(k==='camGood' && camQuality && !camQuality.good) k='camQualityHold';
     if(k && mon.state!=='complete') $('camHint').textContent=L(k);
   });
   mon.on('wave', w=>{ camWaveData=w; camWaveAt=performance.now(); });
   mon.on('metrics', m=>{
-    $('camBpm').textContent = (m.showBpm && m.bpm) ? Math.round(m.bpm) : '—';
+    let show=!!(m.showBpm && m.bpm);
+    if(show){
+      // rate the last seconds at most once a second; the number shows only
+      // while they are rated good, with the confidence beside it
+      const now=performance.now();
+      if(now-camQualityAt>=1000){ camQualityAt=now; camQuality=camRate(mon, m.unevenBeats); }
+      if(camQuality && !camQuality.good) show=false;
+    }
+    $('camBpm').textContent = show ? Math.round(m.bpm) : '—';
+    camShowConf(show ? camQuality : null);
     $('camProgress').style.width=((m.progress||0)*100)+'%';
   });
   mon.on('error', e=>{ $('camHint').textContent=L(e.code==='permission-denied'?'camDenied':'camError'); $('camStart').hidden=false; $('camAgain').hidden=true; });
   mon.on('complete', res=>{
-    if(!res.ok){
+    // the raw window is read now, while the engine still holds it
+    const q=camRate(mon, res.unevenBeats);
+    if(devRecordingOn()) prepareRecording(mon, res, q);
+    if(!res.ok || (q && !q.good)){
       camFailed=true; camResult=null;
-      $('camBpm').textContent='—';
-      $('camHint').textContent=L(camFailKey(res));
+      $('camBpm').textContent='—'; camShowConf(null);
+      $('camHint').textContent=L(res.ok ? 'camQualityRetry' : camFailKey(res));
       $('camResult').hidden=true; $('camUse').hidden=true; $('camStart').hidden=true; $('camAgain').hidden=false;
       return;
     }
-    camFailed=false; camResult=res; renderPulseCamResult(res);
+    camFailed=false; camResult=res; renderPulseCamResult(res); camShowConf(q);
   });
   camDraw();
   await mon.start();
@@ -4179,6 +4283,68 @@ function usePulseCam(){
   pendingCam=pc;
   $('vitalInput').value=r.bpm;
   if(r.unevenBeats && !pendingRhythm){ pendingRhythm='irregular'; renderRhythmChips(); }
+}
+// ─── PULSE RECORDING MODE (developer, hidden) ───
+// Saves each camera reading's raw signal with a pulse oximeter's number, to
+// train pulse-quality.js (tools/train-pulse-quality.js). Kept in its own
+// storage key, apart from anyone's record; it leaves the phone only when
+// "Export recordings" is tapped. "Clear all data" removes it too.
+const DEV_KEY='cc-dev-pulse', PULSE_REC_KEY='cc-pulse-recordings', PULSE_REC_MAX=300;
+let devTaps=0, devTapAt=0;
+function devState(){ try{ return JSON.parse(localStorage.getItem(DEV_KEY)||'null')||{}; }catch(e){ return {}; } }
+function setDevState(d){ try{ localStorage.setItem(DEV_KEY, JSON.stringify(d)); }catch(e){ showToast(L('saveFailed')); } }
+function devRecordingOn(){ const d=devState(); return !!(d.unlocked && d.record); }
+function pulseRecordings(){ try{ const a=JSON.parse(localStorage.getItem(PULSE_REC_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+// Seven taps on "About" within a few seconds, like Android's own developer options.
+function devTap(){
+  const now=Date.now();
+  devTaps = now-devTapAt<1500 ? devTaps+1 : 1; devTapAt=now;
+  if(devTaps>=7 && !devState().unlocked){ setDevState(Object.assign(devState(), {unlocked:true})); showToast(L('devUnlocked')); renderDevSettings(); }
+}
+function renderDevSettings(){
+  const d=devState();
+  $('devSection').hidden=!d.unlocked;
+  if(!d.unlocked) return;
+  const sw=$('devRecSwitch'), on=!!d.record;
+  sw.classList.toggle('on', on); sw.setAttribute('aria-checked', on?'true':'false');
+  const method=window.PulseQuality ? PulseQuality.activeMethod() : 'rules';
+  $('devRecStatus').textContent=L('devRecCount',{n:pulseRecordings().length})+' · '+L('devModelLine',{m:L(method==='model'?'devModelTrained':'devModelRules')});
+}
+function toggleDevRecording(){ const d=devState(); d.record=!d.record; setDevState(d); renderDevSettings(); }
+// After a reading: keep what the engine saw and computed, and ask for the
+// oximeter's number. The app's number is the engine's, shown or not, so a
+// withheld reading is recorded too (labelled poor).
+function prepareRecording(mon, res, q){
+  const w=mon.rawWindow();
+  const r2=v=>Math.round(v*100)/100;
+  camRecording={id:uid(), at:new Date().toISOString(), device:(res.camera&&res.camera.label)||'', engine:PPG.VERSION,
+    fs:w.fs, red:w.red.map(r2), green:w.green.map(r2), blue:w.blue.map(r2), saturation:w.saturation, cover:w.cover,
+    appBpm:res.bpm!=null?res.bpm:null, appShown:!!(res.ok && (!q || q.good)), withhold:res.ok?(q && !q.good?'quality-model':''):(res.withhold||''),
+    uneven:!!res.unevenBeats, confidence:q?q.confidence:null, method:q?q.method:null, referenceBpm:null};
+  $('camRecRef').value=''; $('camRec').hidden=false;
+}
+function savePulseRecording(){
+  if(!camRecording) return;
+  const ref=Number($('camRecRef').value);
+  if(!(ref>=30 && ref<=250)){ showToast(L('devRecCheckRef')); return; }
+  const list=pulseRecordings();
+  if(list.length>=PULSE_REC_MAX){ showToast(L('devRecFull',{n:list.length})); return; }
+  camRecording.referenceBpm=Math.round(ref);
+  list.push(camRecording);
+  try{ localStorage.setItem(PULSE_REC_KEY, JSON.stringify(list)); }catch(e){ showToast(L('saveFailed')); return; }
+  camRecording=null; $('camRec').hidden=true;
+  showToast(L('devRecSaved'));
+}
+function exportPulseRecordings(){
+  const list=pulseRecordings();
+  if(!list.length || !window.PulseQuality){ showToast(L('devRecCount',{n:list.length})); return; }
+  // the file name says when, not who: the readings carry no name
+  shareOrDownload(new Blob([PulseQuality.toCsv(list)], {type:'text/csv'}), 'pulse-recordings-'+todayKey()+'.csv', L('devRecExport'));
+}
+function clearPulseRecordings(){
+  if(!confirm(L('devRecClearConfirm'))) return;
+  try{ localStorage.removeItem(PULSE_REC_KEY); }catch(e){}
+  renderDevSettings();
 }
 function vitalLabel(x){
   const name={pulse:L('t-pulseTile'), bp:L('t-bp'), spo2:L('t-spo2'), temp:L('t-temp')}[x.k]||x.k;
@@ -4995,7 +5161,7 @@ function renderSettings(){
   setVal('familyInput', S.contacts.family);
   const vs=$('valveSelect');
   if(document.activeElement!==vs) vs.innerHTML=['','none','mechanical','tissue','unsure'].map(v=>`<option value="${v}"${S.about.valve===v?' selected':''}>${esc(v?L('valve_'+v):'—')}</option>`).join('');
-  renderReminders(); renderStorageStatus(); renderDemoSettings(); renderLockSettings();
+  renderReminders(); renderStorageStatus(); renderDemoSettings(); renderLockSettings(); renderDevSettings();
 }
 function renderDemoSettings(){
   const btn=$('demoSettingsBtn'), sub=$('demoSettingsText');
