@@ -11,6 +11,25 @@ Amin turned Vercel deploys on for the competition demo on 13 October 2026,
 and every push to `main` runs `npm run build:web` and publishes `dist/`
 (see `docs/demo-build.md`).
 
+## Pulse signal-quality model (October 2026, waiting for Amin's review)
+- **Second check on every camera reading** (`www/pulse-quality.js`): rates
+  the raw camera signal good or poor, with a confidence from 0 to 100. A
+  poor reading shows no number, live or at the end, and asks the person to
+  keep the finger still and cover the camera. It never changes a number.
+  The "not a medical device" line is unchanged.
+- **Fixed rules until there is data**, then a small logistic-regression
+  model trained by `tools/train-pulse-quality.js` (`npm run train:pulse`)
+  from readings recorded next to a pulse oximeter. Weights live in
+  `www/pulse-quality-weights.js` (empty for now).
+- **Hidden recording mode** (Settings → tap "About" seven times): saves
+  each reading's raw signal with the oximeter's number, exports a CSV.
+  Stored apart from anyone's record. How to use it:
+  `docs/pulse-quality-model.md`.
+- `ppg-engine.js` gains a read-only `rawWindow()`; nothing it computes
+  changed. No new dependency, no network, no new permission.
+- New wording and the uneven-rhythm question: `docs/NEEDS-CLINICAL-REVIEW.md`
+  item 8.
+
 ## Demo quick wins (15 October 2026, approved by Amin)
 - **Guided tour** after "Try the sample record", and again from "Take the
   tour" on the sample banner: the penicillin card (Show to the nurse), the

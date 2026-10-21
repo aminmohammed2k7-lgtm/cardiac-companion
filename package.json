@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node tests/run.js",
     "build:web": "node tools/build-web.js",
-    "preview:web": "node tools/preview-web.js"
+    "preview:web": "node tools/preview-web.js",
+    "train:pulse": "node tools/train-pulse-quality.js"
   },
   "dependencies": {
     "@capacitor/android": "8.5.3",

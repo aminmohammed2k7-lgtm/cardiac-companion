@@ -18,6 +18,7 @@ copied from `www/index.html`; the key names let anyone find them there.
 | 5 | Sample record: Medical ID text and nurse's order in Amharic and Afaan Oromo | **Drafts, please check** (made-up patient, but medical terms) |
 | 6 | First screen, sample banner, tour and sample notes in Amharic and Afaan Oromo | **Drafts, need a native-speaker check** (not health wording) |
 | 7 | Camera coaching lines (how to place the finger) | **Drafts, need a native-speaker check** (not a diagnosis) |
+| 8 | Camera pulse signal-quality check: confidence and retry lines, developer recording mode | **Proposed on a branch, waiting for Amin** (Amharic and Afaan Oromo are drafts) |
 
 ## 1. Disclaimers mention the camera pulse
 
@@ -179,3 +180,41 @@ The English of the new "we will not show a number" lines:
 | `camLowQuality` | This reading is not clear enough to show a number. Cover the whole lens, press lightly, rest your hand on a table, and try again. |
 | `camCover` | Cover the whole lens. Part of it is still open. |
 | `camRest` | Keep still, and rest your hand on a table. |
+
+## 8. Camera pulse signal-quality check
+
+- **Proposed in:** the pull request "Pulse signal-quality model (do not
+  merge until Amin reviews)", October 2026. Not in `main`.
+- **What it does:** a second check (`www/pulse-quality.js`) rates each
+  camera reading good or poor with a confidence from 0 to 100. A poor
+  reading shows no number, live or at the end. It never changes a number.
+- **Not changed:** `camNotDevice` (still beside the camera button and in
+  the camera panel), `camUneven`, the HRV lines, the warning signs and both
+  disclaimers.
+- **Please check:**
+  1. whether "Signal confidence 82/100" beside the pulse could be read as
+     "the pulse is 82 % accurate" or as a statement about the heart. It is
+     only how clean the camera signal looked. "Signal quality" may be safer
+     wording;
+  2. that the Amharic and Afaan Oromo drafts mean the same as the English;
+  3. **uneven rhythms:** many people with rheumatic heart disease have
+     atrial fibrillation. When the engine has already found clean pulses in
+     an uneven rhythm, the check ignores beat spacing (otherwise most such
+     readings would be refused as "noise" and the person told to keep
+     still). The trained model is not used for those readings until it has
+     been trained on some. Is that the right behaviour, or should an uneven
+     reading show no number at all?
+
+| Key | English | Amharic (draft) | Afaan Oromo (draft) |
+|---|---|---|---|
+| `camConfidence` | Signal confidence {n}/100 | የምልክት እርግጠኝነት {n}/100 | Amanamummaa mallattoo {n}/100 |
+| `camQualityHold` | Keep your finger still and fully cover the camera. | ጣትዎን ሳያንቀሳቅሱ ካሜራውን ሙሉ በሙሉ ይሸፍኑ። | Quba kee osoo hin sochoosin kaameraa guutummaatti haguugi. |
+| `camQualityRetry` | The signal was not clear enough, so no number is shown. Keep your finger still and fully cover the camera. | ምልክቱ በቂ ግልጽ አልነበረም፣ ስለዚህ ቁጥር አይታይም። ጣትዎን ሳያንቀሳቅሱ ካሜራውን ሙሉ በሙሉ ይሸፍኑ። | Mallattoon ifa gahaa hin turre, kanaaf lakkoofsi hin agarsiifamu. Quba kee osoo hin sochoosin kaameraa guutummaatti haguugi. |
+
+The developer recording mode (hidden; seven taps on "About" in Settings)
+adds `devTitle`, `devUnlocked`, `devRecLabel`, `devRecHint`, `devRecCount`,
+`devRecExport`, `devRecClear`, `devRecClearConfirm`, `devRecRefLabel`,
+`devRecSave`, `devRecSaved`, `devRecCheckRef`, `devRecFull`,
+`devModelLine`, `devModelRules` and `devModelTrained`. They are for the
+people running the oximeter study, not health wording, but the Amharic and
+Afaan Oromo are drafts too.
