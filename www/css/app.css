@@ -941,6 +941,9 @@ button.settings-row:active{background:var(--surface-3);}
 /* zoom magnifies viewport units too, so the app shell is shrunk back to fit */
 :root.big-text .app{height:calc(100vh / var(--big-zoom)); height:calc(100dvh / var(--big-zoom));}
 :root.big-text .panel{height:calc(100vh / var(--big-zoom)); height:calc(100dvh / var(--big-zoom)); bottom:auto;}
+/* with large text, Taken and Not taken sit one above the other, so a long
+   word such as the Oromo "Fudhadheera" is never cut off */
+:root.big-text .med-actions, :root.big-text #warfarinActions .btn-row{flex-direction:column;}
 
 .sub-label{font-size:var(--fs-sm); font-weight:600; color:var(--ink-2); margin:var(--sp-lg) 0 var(--sp-sm);}
 .card-body > .sub-label:first-child{margin-top:0;}
