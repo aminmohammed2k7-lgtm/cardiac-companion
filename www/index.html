@@ -52,7 +52,7 @@
 <body>
 <div class="app">
 
-  <!-- ═══ HEADER ═══ -->
+  <!-- Header -->
   <header class="header">
     <div class="header-top">
       <div class="brand">
@@ -92,7 +92,7 @@
   <main class="content" id="content">
     <div id="activeAlerts"></div>
 
-    <!-- ───────── TODAY ───────── -->
+    <!-- Today -->
     <section class="tab active" id="tab-today" role="tabpanel" aria-labelledby="nav-today">
       <div class="tab-head tab-head-row">
         <div>
@@ -242,7 +242,7 @@
       </div>
     </section>
 
-    <!-- ───────── MEDICINES ───────── -->
+    <!-- Medicines -->
     <section class="tab" id="tab-meds" role="tabpanel" aria-labelledby="nav-meds">
       <div class="tab-head">
         <h2 data-t="t-medsTitle">Medicines</h2>
@@ -331,7 +331,7 @@
       </div>
     </section>
 
-    <!-- ───────── SYMPTOMS ───────── -->
+    <!-- Symptoms -->
     <section class="tab" id="tab-symptoms" role="tabpanel" aria-labelledby="nav-symptoms">
       <div class="tab-head">
         <h2 data-t="t-symTitle">Symptoms</h2>
@@ -398,7 +398,7 @@
       </div>
     </section>
 
-    <!-- ───────── SUMMARY ───────── -->
+    <!-- Summary -->
     <section class="tab" id="tab-summary" role="tabpanel" aria-labelledby="nav-summary">
       <div class="tab-head">
         <h2 data-t="t-sumTitle">Summary</h2>
@@ -479,7 +479,7 @@
     <p class="disclaimer" data-t="t-disclaimer">Not a medical device. This app records what you and your doctor enter — it does not measure, diagnose or decide anything. Always follow your clinician's guidance.</p>
   </main>
 
-  <!-- ═══ NAV ═══ -->
+  <!-- Nav -->
   <nav class="nav" role="tablist">
     <button class="nav-item active" id="nav-today" onclick="switchTab('today')" role="tab" aria-controls="tab-today" aria-selected="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><rect x="7" y="13" width="4" height="4" rx="1"/></svg>
@@ -501,7 +501,7 @@
   </div>
 </div>
 
-<!-- ═══ NOTIFICATIONS ═══ -->
+<!-- Notifications -->
 <div class="panel" id="notifPanel" role="dialog" aria-modal="true" aria-labelledby="notifTitle" hidden>
   <div class="panel-head">
     <h2 class="panel-title" id="notifTitle" data-t="t-notifTitle">Notifications</h2>
@@ -515,7 +515,7 @@
   <button class="btn btn-ghost panel-foot" onclick="clearNotifications()" data-t="t-clearAll">Clear all</button>
 </div>
 
-<!-- ═══ SETTINGS ═══ -->
+<!-- Settings -->
 <div class="panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
   <div class="panel-head">
     <h2 class="panel-title" id="settingsTitle" data-t="t-settingsTitle">Settings</h2>
@@ -618,7 +618,7 @@
   </div>
 </div>
 
-<!-- ═══ GET HELP NOW ═══ -->
+<!-- Get help now -->
 <div class="panel" id="helpPanel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
   <div class="panel-head">
     <h2 class="panel-title" id="helpTitle" data-t="getHelpTitle">Get help</h2>
@@ -627,7 +627,7 @@
   <div class="panel-body" id="helpBody"></div>
 </div>
 
-<!-- ═══ MEDICAL ID ═══ -->
+<!-- Medical ID -->
 <div class="panel" id="idPanel" role="dialog" aria-modal="true" aria-labelledby="idTitle" hidden>
   <div class="panel-head">
     <h2 class="panel-title" id="idTitle" data-t="medIdBtn">Medical ID</h2>
@@ -636,7 +636,7 @@
   <div class="panel-body" id="idBody"></div>
 </div>
 
-<!-- ═══ SHOW TO THE NURSE ═══ -->
+<!-- Show to the nurse -->
 <div class="panel" id="nursePanel" role="dialog" aria-modal="true" aria-labelledby="nurseTitle" hidden>
   <div class="panel-head">
     <h2 class="panel-title" id="nurseTitle" data-t="t-injectionTitle">Penicillin injection</h2>
@@ -645,7 +645,7 @@
   <div class="panel-body" id="nurseBody"></div>
 </div>
 
-<!-- ═══ SUMMARY ON SCREEN ═══ -->
+<!-- Summary on screen -->
 <div class="panel" id="previewPanel" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
   <div class="panel-head">
     <h2 class="panel-title" id="previewTitle" data-t="visitTitle">Visit summary</h2>
@@ -654,7 +654,7 @@
   <div class="panel-body" id="previewBody"></div>
 </div>
 
-<!-- ═══ CAMERA PULSE: an estimate from the phone camera (ppg-engine.js) ═══ -->
+<!-- Camera pulse: an estimate from the phone camera (ppg-engine.js) -->
 <div class="panel" id="pulsePanel" role="dialog" aria-modal="true" aria-labelledby="pulseTitle" hidden>
   <div class="panel-head">
     <h2 class="panel-title" id="pulseTitle" data-t="camTitle">Measure pulse with camera</h2>
@@ -688,7 +688,7 @@
 <input type="file" id="restoreInput" accept=".json,application/json" hidden onchange="restoreFromFile(this)">
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<!-- ═══ QUESTION BOX: asks before deleting or saving an unusual number ═══ -->
+<!-- Question box: asks before deleting or saving an unusual number -->
 <div class="dialog-scrim" id="dialog" hidden>
   <div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialogMsg">
     <p class="dialog-msg" id="dialogMsg"></p>
@@ -715,10 +715,8 @@
 <script src="js/core/checks.js"></script>
 <script src="js/strings.js"></script>
 <script>
-// ═══════════════════════════════════════════
-// APP ICON for in-app notifications (Phase 4 replaces these with
+// ---- App icon for in-app notifications (Phase 4 replaces these with ----
 // Android's own notifications and the monochrome icon in android/).
-// ═══════════════════════════════════════════
 (function(){
   var ICON_192 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFY0lEQVR4nO3du3kbRxSA0QU/p2pAiVpgD66LketiD26BiRpgAXJAUeZjAe5jHnfmnpPZAbAA7j8zAAnxsgTz7cf3X72vgXqen35eel/DW10vxrCzLH2jaH7Hhp5bWsfQ7M4MPnu0CqH6nRh8zqgdQrUbN/iUVCuE4jdq8KmpdAh3JW/M8FNb6RkrUpPBp4cSu8HpHcDw00uJ2TsVgOGnt7MzeDgAw08UZ2bxUACGn2iOzuTuAAw/UR2ZzV0BGH6i2zujmwMw/Ixiz6xuCsDwM5qtM/tlAIafUW2Z3aK/CgGjuRmA1Z/RfTXDVwMw/Mzi1iw7ApHaagBWf2ZzbabtAKT2KQCrP7Nam207AKm9C8Dqz+w+zrgdgNT+BGD1J4u3s24HIDUBkNrdsjj+kM/rzNsBSE0ApCYAUhMAqV28ASYzOwCpCYDUBEBqAiA1AZCaAEhNAKQmAFITAKkJgNQEQGoCIDUBkNpfvS8govvHh3f//e/f/3S6EmqzA3zwcfiv/T/m4PsAb2wZdLvBXOwApCaA37YecxyH5iIAUhMAqQlgcazJTAAHCGYeAiC19AFYzXNLH8BRwpmDAEgtdQBWcVIHcJaAxicAUksbgNWbZfGFmOH58s45aXeAUnruJL68c17KAGYYkluPYYbH10rKALaKepww4OUI4Io9wx9xICNeU0TpAhh9MEa//mjSBbBX1GPQFmL5mgBWjDz07COAQqKutlGvK4pUAYw+DKNff0SpAjhq9CORcK4TwAdnht2gjSdNAIaTNWkCOKv3MehswBaAdQJ4o8SQG7SxpAjAUL7wPHyWIoBSeh+DKE8Av0Ue7pIrt13gvekD6PGCG7JxTB9AFpF3sMgEsOwbnhkGzQ71v6kDiPZ93dq3M0OcrU0dANfZBV6kD+DIqhltpY12PSOZNoCsK9zo32Vurek/jJXtCb9/fAj/26URX5OWO1qTHeD+8SH9E93S6I+r5bxMewSqLcqQRbmOUVUPIOLK31Kvxz9DGC2eu7Q7QPQByb5wtJI2gBKiRxT9+iKoHkDEF6H1NdVazSM+tyW1eHyp/j7A7AOz5vUxO1Ktu3z78f1Xqzvr+SLUHP4tj6vGD6iOPKYRQmi5UDXdATKuwNF4Dd7zJriR0iuvQS5DAKQmgAJKrsYjnNFnIoCGDHc8AhiQ8385AijEUI5JAIE4IrUngMYMeSwCGIyjVlkCKMhwjkcAHawdgxyN+hAAqQmgsJrHIEes8gTQiSNPDAIIQAz9CKACR5VxCGAQoqpDAB05+vQngM5E0JcAKnFkGYMABiCmegRAagKoyModnwBITQDB2UXqEgCpCaAyK3hsAiA1AQRm96hPAA0Y5LgEQGoCIDUBNLL3GOTY1IYASE0ApCYAUhNAQ1vP9c7/7QiA1Jr+nWBeXPsesJW/PTtAB2uDbvj7sAOQmh2A1ARAagIgNQGQmgBITQCkJgBSEwCpCYDUBEBqAiA1AZCaAEjt7vnp56X3RUAPz08/L3YAUhMAqQmA1ARAanfL8vJmoPeFQEuvM28HIDUBkNqfAByDyOLtrNsBSO1dAHYBZvdxxu0ApPYpALsAs1qbbTsAqa0GYBdgNtdm2g5AalcDsAswi1uzfHMHEAGj+2qGHYFI7csA7AKMasvsbtoBRMBots7s5iOQCBjFnlnd9R5ABES3d0Z3vwkWAVEdmc1DnwKJgGiOzuThj0FFQBRnZvHUzwFEQG9nZ/D0D8JEQC8lZq/o8Pqr87RQctEt+qsQdgNqKz1j1QbWbkBJtRbX6iu2EDij9qmi2ZFFCOzR6jjd/MwuBG5p/T6y65tWMbAsfT88CfepjSjmFu2Twv8AvcqrTVdGoSUAAAAASUVORK5CYII=";
 
@@ -732,13 +730,11 @@
 </script>
 
 <script>
-// ═══════════════════════════════════════════
-// MEDICAL LOGIC: in js/core, tested in Node (npm test)
+// ---- Medical logic: in js/core, tested in Node (npm test) ----
 // Dates, calendars, dose plans, supply, warfarin, the injection, the health
 // rules, reminder timing and the typo checks live in js/core/*.js, so they can be tested on
 // their own. This gives their functions back the names the rest of this
 // file has always used. Words, screens and saving stay here.
-// ═══════════════════════════════════════════
 const {pad2, localDateKey, todayKey, parseDateKey, isDateKey, addDays, daysBetween, lastNDays,
   daysFromTo, nowHHMM, toMin, isHHMM, gregorianToEthiopian, ethTime}=CC.calendar;
 const {fastingSeasonsNow, openFast, autoCloseFasting, fastingIn}=CC.seasons;
@@ -760,12 +756,10 @@ function formatEcShort(ec, lang){
   return name + ' ' + ec.day;
 }
 
-// ═══════════════════════════════════════════
-// STATE
+// ---- State ----
 // Everything lives on the device. Nothing is sent anywhere.
 // One record per person ("profile"), so a parent can keep a
 // child's record next to their own on the same phone.
-// ═══════════════════════════════════════════
 const STATE_PREFIX='cc-state-v3:';
 const LEGACY_KEY='cc-state-v2';
 const PROFILES_KEY='cc-profiles';
@@ -791,9 +785,7 @@ let sumOwnLang=false;
 let toastTimer=null;
 let openerStack=[];
 
-// ═══════════════════════════════════════════
-// SMALL HELPERS
-// ═══════════════════════════════════════════
+// ---- Small helpers ----
 const $=id=>document.getElementById(id);
 function esc(s){
   return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -806,12 +798,10 @@ function isBusy(el){
   return !!(el && a && el.contains(a) && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName));
 }
 
-// ═══════════════════════════════════════════
-// LANGUAGE
+// ---- Language ----
 // One lookup for every string: runtime messages first, then static
 // labels, then English. data-t / data-tp / data-ta attributes carry the
 // keys for text, placeholders and aria-labels in the markup.
-// ═══════════════════════════════════════════
 function L(key, vars){
   const t=T[currentLang]||T.en;
   let s = (t.msg && t.msg[key]!=null) ? t.msg[key]
@@ -837,12 +827,10 @@ function applyStaticText(){
   document.title=L('t-appTitle');
 }
 
-// ═══════════════════════════════════════════
-// DATES AND CLOCK
+// ---- Dates and clock ----
 // Due dates are shown in both calendars ("Tikimt 12 · 22 Oct"), and
 // medicine times in both clocks, because many patients tell time the
 // Ethiopian way: 08:00 is "2 in the morning".
-// ═══════════════════════════════════════════
 const GREG_MONTHS={
   en:{s:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
       l:['January','February','March','April','May','June','July','August','September','October','November','December']},
@@ -887,9 +875,7 @@ function relDays(n){
   return L('relDaysAgo',{n:-n});
 }
 
-// ═══════════════════════════════════════════
-// RECORD SHAPE
-// ═══════════════════════════════════════════
+// ---- Record shape ----
 function defaultState(){
   return {
     v:3,
@@ -1020,9 +1006,7 @@ function migrateV2(d){
   return st;
 }
 
-// ═══════════════════════════════════════════
-// STORAGE AND PROFILES
-// ═══════════════════════════════════════════
+// ---- Storage and profiles ----
 function stateKey(pid){ return STATE_PREFIX+pid; }
 function readState(pid){
   try{ const raw=localStorage.getItem(stateKey(pid)); return raw ? normalizeState(JSON.parse(raw)) : null; }
@@ -1065,15 +1049,11 @@ function personName(){ const p=activeProfile(); return (p && p.name) ? p.name : 
 function loadActive(){ S=readState(profiles.active)||defaultState(); }
 
 
-// ═══════════════════════════════════════════
-// DOSE PLANS: the rules are in js/core/doses.js
-// ═══════════════════════════════════════════
+// ---- Dose plans: the rules are in js/core/doses.js ----
 // after any schedule change, today's list follows the new schedule
 function refreshTodayPlan(){ const t=todayKey(); S.dayPlan[t]=computePlan(S,t); S.planDay=t; }
 
-// ═══════════════════════════════════════════
-// SUPPLY: counted in tablets, halves included (js/core/supply.js)
-// ═══════════════════════════════════════════
+// ---- Supply: counted in tablets, halves included (js/core/supply.js) ----
 function supplyItems(Sx){
   const out=[];
   Sx.meds.filter(m=>!m.removed && typeof m.supply==='number').forEach(m=>{
@@ -1110,9 +1090,7 @@ function returnSupply(key, ded){
   restoreSupply(info.kind==='W'?S.warfarin:info.med, ded);
 }
 
-// ═══════════════════════════════════════════
-// SYMPTOMS, WARNING SIGNS, MOOD
-// ═══════════════════════════════════════════
+// ---- Symptoms, warning signs, mood ----
 function symptomName(entry){
   if(entry.id && entry.id.indexOf('std-')===0) return (Larr('symptoms')||[])[parseInt(entry.id.slice(4),10)]||'';
   const cs=S.customSymptoms.find(c=>c.id===entry.id);
@@ -1120,9 +1098,7 @@ function symptomName(entry){
 }
 
 
-// ═══════════════════════════════════════════
-// ICONS AND SHARED PIECES
-// ═══════════════════════════════════════════
+// ---- Icons and shared pieces ----
 const ICON_CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>';
 const ICON_X='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>';
 const ICON_DASH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>';
@@ -1182,9 +1158,7 @@ function deferIfBusy(el, fn){
   return true;
 }
 
-// ═══════════════════════════════════════════
-// TODAY: warfarin
-// ═══════════════════════════════════════════
+// ---- Today: warfarin ----
 function doseActionsHtml(key, e, hero){
   const k=esc(key);
   if(!e){
@@ -1262,9 +1236,7 @@ function renderWarfarinToday(){
   if(!pn.hidden) pn.textContent=L('pregNote');
 }
 
-// ═══════════════════════════════════════════
-// TODAY: penicillin injection
-// ═══════════════════════════════════════════
+// ---- Today: penicillin injection ----
 function renderInjectionToday(){
   const card=$('injectionCard');
   card.hidden=!S.injection.enabled;
@@ -1321,9 +1293,7 @@ function saveInjection(){
   renderAll();
 }
 
-// ═══════════════════════════════════════════
-// TODAY: medicines, grouped by clock time
-// ═══════════════════════════════════════════
+// ---- Today: medicines, grouped by clock time ----
 function doseRowHtml(key, med, e){
   const per=med.perDose||1;
   return `<div class="med-row ${e?e.s:'pending'}">
@@ -1434,12 +1404,10 @@ function prnUndo(id){
   save(); renderAll();
 }
 
-// ═══════════════════════════════════════════
-// TODAY: weight
+// ---- Today: weight ----
 // Rising weight over a few days is the classic sign of fluid building up in
 // heart failure, and the one thing a bathroom scale can catch early. The app
 // reports the change and points to the clinician.
-// ═══════════════════════════════════════════
 function saveWeight(){
   const input=$('weightInput');
   const kg=num(input.value);
@@ -1468,11 +1436,9 @@ function renderWeightFeedback(){
   }
 }
 
-// ═══════════════════════════════════════════
-// TODAY: readings the patient measured
+// ---- Today: readings the patient measured ----
 // Wide limits only catch typing slips (an oxygen of 850, a pulse of 7);
 // they never judge a reading.
-// ═══════════════════════════════════════════
 const VITAL_META={
   pulse:{prompt:'promptPulse', type:'number', id:'pulseValue', suffix:''},
   bp:{prompt:'promptBp', type:'text', id:'bpValue', suffix:''},
@@ -1520,7 +1486,7 @@ function saveVital(){
   closeVitalEntry(); renderVitals();
   showToast(L('vitalSavedToast'));
 }
-// ─── CAMERA PULSE (ppg-engine.js) ───
+// ---- Camera pulse (ppg-engine.js) ----
 // An estimate from the phone camera: the number goes into the pulse field
 // like a typed one; HRV details are kept with it only as a personal record.
 let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camResult=null;
@@ -1628,9 +1594,7 @@ function renderVitals(){
     `<div class="mini-row"><span class="log-date">${esc(x.t||'—')}</span><span class="grow"><b>${esc(vitalLabel(x))}</b></span><button class="log-del" data-act="delVital" data-id="${esc(x.id)}" aria-label="${esc(L('removeLabel'))}">${ICON_X}</button></div>`).join('');
 }
 
-// ═══════════════════════════════════════════
-// TODAY: get help
-// ═══════════════════════════════════════════
+// ---- Today: get help ----
 function callButtonsHtml(order){
   const c=S.contacts, out={};
   if(dialable(c.ambulance).length>=3) out.amb=`<a class="btn btn-danger ico i-phone" href="tel:${esc(dialable(c.ambulance))}">${esc(L('callAmbulance',{n:c.ambulance}))}</a>`;
@@ -1645,9 +1609,7 @@ function renderCalls(){
   $('todayCalls').innerHTML=h;
 }
 
-// ═══════════════════════════════════════════
-// MEDICINES: schedule
-// ═══════════════════════════════════════════
+// ---- Medicines: schedule ----
 function schedText(sc){
   sc=sc||{};
   if(sc.type==='prn') return L('sched_prn');
@@ -1773,9 +1735,7 @@ function deleteMed(id){
   }});
 }
 
-// ═══════════════════════════════════════════
-// MEDICINES: supply
-// ═══════════════════════════════════════════
+// ---- Medicines: supply ----
 function renderSupply(){
   const el=$('supplyList');
   if(deferIfBusy(el, renderSupply)) return;
@@ -1814,9 +1774,7 @@ function refill(id){
   showToast(L('refillToast'));
 }
 
-// ═══════════════════════════════════════════
-// MEDICINES: warfarin schedule and INR
-// ═══════════════════════════════════════════
+// ---- Medicines: warfarin schedule and INR ----
 function toggleWarfarin(){
   S.warfarin.enabled=!S.warfarin.enabled;
   if(S.warfarin.enabled && !S.warfarin.doseHistory.length && S.warfarin.doses.some(v=>v>0)) recordDoseHistory(S);
@@ -1925,9 +1883,7 @@ function setTarget(which, el){
   save(); renderAll();
 }
 
-// ═══════════════════════════════════════════
-// MEDICINES: penicillin injection setup
-// ═══════════════════════════════════════════
+// ---- Medicines: penicillin injection setup ----
 function toggleInjection(){
   S.injection.enabled=!S.injection.enabled;
   save(); renderAll();
@@ -1974,11 +1930,9 @@ function deleteInjection(id){
 // "Remove this entry?" for one line in a log
 function askRemove(then){ ask({msg:L('confirmRemoveEntry'), yes:ANSWER.remove, no:ANSWER.cancel, danger:true, onYes:then}); }
 
-// ═══════════════════════════════════════════
-// MEDICINES: fasting
+// ---- Medicines: fasting ----
 // Fasting changes when people eat and how much green food they eat, and
 // both move INR. The app records the fast; it never moves a dose itself.
-// ═══════════════════════════════════════════
 function toggleFasting(){
   const f=S.fasting;
   if(f.on){ const p=openFast(S); if(p) p.end=todayKey(); f.on=false; f.until=null; }
@@ -2017,11 +1971,9 @@ function renderFasting(){
   body.innerHTML=h;
 }
 
-// ═══════════════════════════════════════════
-// MEDICINES: new medicine or remedy
+// ---- Medicines: new medicine or remedy ----
 // Antibiotics, painkillers and herbal remedies can all change how warfarin
 // works; writing them down lets the clinic connect them to an INR result.
-// ═══════════════════════════════════════════
 let nmDraft={name:'', date:null};
 function renderNewMeds(){
   const body=$('newMedBody');
@@ -2047,9 +1999,7 @@ function saveNewMed(){
   renderNewMeds();
 }
 
-// ═══════════════════════════════════════════
-// MEDICINES: this week
-// ═══════════════════════════════════════════
+// ---- Medicines: this week ----
 function renderWeekView(){
   const el=$('weekView'), names=Larr('weekdayShort'), today=todayKey(), week=lastNDays(7);
   const r=tally(S, week);
@@ -2068,9 +2018,7 @@ function renderWeekView(){
 }
 
 
-// ═══════════════════════════════════════════
-// SYMPTOMS: warning signs
-// ═══════════════════════════════════════════
+// ---- Symptoms: warning signs ----
 function renderFlags(){
   $('flagsNow').innerHTML=FLAGS_NOW.map(c=>`<button class="flag-btn" data-act="flag" data-code="${c}">${esc(L('flag_'+c))}</button>`).join('');
   $('flagsToday').innerHTML=FLAGS_TODAY.map(c=>`<button class="flag-btn today" data-act="flag" data-code="${c}">${esc(L('flag_'+c))}</button>`).join('');
@@ -2104,10 +2052,8 @@ function goWarningSigns(){
   const c=$('warningCard'); if(c) c.scrollIntoView({block:'start'});
 }
 
-// ═══════════════════════════════════════════
-// SYMPTOMS: tracker. Each ticked symptom gets its own severity and
+// ---- Symptoms: tracker. Each ticked symptom gets its own severity and ----
 // whether it came at rest or with activity, saved with that day
-// ═══════════════════════════════════════════
 function renderSymptoms(){
   const grid=$('symptomGrid'), std=Larr('symptoms')||[];
   const today=S.symptomLog[todayKey()]||[];
@@ -2164,11 +2110,9 @@ function removeCustomSymptom(id){
   }});
 }
 
-// ═══════════════════════════════════════════
-// SYMPTOMS: mood check (PHQ-2, every two weeks)
+// ---- Symptoms: mood check (PHQ-2, every two weeks) ----
 // Two validated questions instead of a free 1 to 10 stress number. A score of
 // 3 or more is a positive screen: it goes on the doctor's summary.
-// ═══════════════════════════════════════════
 function renderMood(){
   const body=$('moodBody');
   if(deferIfBusy(body, renderMood)) return;
@@ -2194,9 +2138,7 @@ function saveMood(){
   showToast(L('moodSaved'));
 }
 
-// ═══════════════════════════════════════════
-// SYMPTOMS: notes
-// ═══════════════════════════════════════════
+// ---- Symptoms: notes ----
 function saveNote(){
   const input=$('noteInput');
   const text=input.value.trim();
@@ -2216,9 +2158,7 @@ function renderNotes(){
     </div>`).join('');
 }
 
-// ═══════════════════════════════════════════
-// SUMMARY TAB
-// ═══════════════════════════════════════════
+// ---- Summary tab ----
 function renderSummaryTab(){
   const week=lastNDays(7), r=tally(S, week);
   $('ringAdherence').textContent = r.pct==null ? '—' : r.pct+'%';
@@ -2365,9 +2305,7 @@ function renderWeekTable(){
   el.innerHTML=h;
 }
 
-// ═══════════════════════════════════════════
-// ACTIVE ALERTS: the top of Today
-// ═══════════════════════════════════════════
+// ---- Active alerts: the top of Today ----
 function alertHtml(cls, title, text, actions){
   return `<div class="${cls}" role="status"><strong>${esc(title)}</strong>${text?`<span>${esc(text)}</span>`:''}${actions?`<div class="alert-actions">${actions}</div>`:''}</div>`;
 }
@@ -2418,9 +2356,7 @@ function renderActiveAlerts(){
   el.innerHTML=items.join('');
 }
 
-// ═══════════════════════════════════════════
-// SETTINGS
-// ═══════════════════════════════════════════
+// ---- Settings ----
 function segActive(id, idx){
   const el=$(id); if(!el) return;
   el.querySelectorAll('button').forEach((b,i)=>{ b.classList.toggle('active', i===idx); b.setAttribute('aria-pressed', i===idx?'true':'false'); });
@@ -2520,9 +2456,7 @@ function setTheme(theme){
   drawWeightChart();
 }
 
-// ═══════════════════════════════════════════
-// PEOPLE ON THIS PHONE
-// ═══════════════════════════════════════════
+// ---- People on this phone ----
 function renderWho(){
   const b=$('whoBtn');
   const show=profiles.list.length>1 || !!personName();
@@ -2562,11 +2496,9 @@ function deleteProfile(id){
   }});
 }
 
-// ═══════════════════════════════════════════
-// MEDICAL ID and SHOW-THE-NURSE
+// ---- Medical ID and show-the-nurse ----
 // English first (that is what emergency staff read), with the patient's
 // own language underneath.
-// ═══════════════════════════════════════════
 function idLines(){
   const out=[];
   const both=key=>({en:withLang('en',()=>L(key)), own:currentLang!=='en'?L(key):''});
@@ -2619,9 +2551,7 @@ function openNurse(){
   openPanel('nursePanel');
 }
 
-// ═══════════════════════════════════════════
-// NOTIFICATIONS PANEL
-// ═══════════════════════════════════════════
+// ---- Notifications panel ----
 function addNotification(title, text, kind, key){
   S.notifications.unshift({id:uid(), key:key||null, title, text, kind:kind||'info', time:nowHHMM(), date:todayKey()});
   if(S.notifications.length>40) S.notifications.length=40;
@@ -2641,9 +2571,7 @@ function updateNotifPermUI(){
   $('notifPermBlock').hidden=!('Notification' in window) || Notification.permission==='granted';
 }
 
-// ═══════════════════════════════════════════
-// PANELS, TABS, TOAST
-// ═══════════════════════════════════════════
+// ---- Panels, tabs, toast ----
 const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel'];
 const PANEL_SCROLL_MS=60;   // let the panel draw before scrolling inside it
 function openPanel(id, scrollToId){
@@ -2739,9 +2667,7 @@ function answerDialog(ok){
   else if(d.o.onNo) d.o.onNo();
 }
 
-// ═══════════════════════════════════════════
-// LANGUAGE SWITCH AND RENDER ALL
-// ═══════════════════════════════════════════
+// ---- Language switch and render all ----
 const HTML_LANG={en:'en', am:'am', or:'om'};
 const LANG_CODE={en:'EN', am:'አማ', or:'OR'};   // what the header shows
 function setLang(lang){
@@ -2774,11 +2700,9 @@ function renderAll(){
   if(!$('settingsPanel').hidden) renderSettings();
 }
 
-// ═══════════════════════════════════════════
-// ONE PLACE FOR EVERY TAP, KEYSTROKE AND CHANGE
+// ---- One place for every tap, keystroke and change ----
 // Buttons carry data-act (and their arguments as data-*); fields carry
 // data-in (on every keystroke) or data-ch (on change).
-// ═══════════════════════════════════════════
 const ACT={
   take:d=>markDose(d.key,'taken'),
   miss:d=>markDose(d.key,'missed'),
@@ -2911,14 +2835,12 @@ document.addEventListener('keydown', ev=>{
 });
 
 
-// ═══════════════════════════════════════════
-// VISIT SUMMARY
+// ---- Visit summary ----
 // One structured description, three renderings: PDF pages, the on-screen
 // preview, and plain text for sharing. The doctor's copy is always in
 // English (clinicians write their notes in English), and a copy in the
 // patient's own language can be added after it.
 // audience: 'doctor' (everything) or 'family' (no mood, pregnancy or notes)
-// ═══════════════════════════════════════════
 function summaryBlocks(audience, from, to){
   const b=[], days=daysFromTo(from, to), doctor=audience==='doctor';
   const crossYear=from.slice(0,4)!==to.slice(0,4);
@@ -3109,13 +3031,11 @@ async function shareFamily(){
   }
 }
 
-// ═══════════════════════════════════════════
-// PDF EXPORT
+// ---- PDF export ----
 // A PDF's built-in fonts cannot encode Ethiopic script, and embedding a
 // Unicode font would add megabytes to this single file. So each page is
 // drawn on a canvas (the browser shapes the text with the fonts already
 // loaded) and embedded in the PDF as a JPEG.
-// ═══════════════════════════════════════════
 const PDF_PAGE={w:1240, h:1754, pad:92};   // A4 proportions at ~150dpi
 const PDF_STYLE={
   title:{size:40, weight:'700', gap:14, color:'#111111'},
@@ -3274,9 +3194,7 @@ async function saveIdPdf(){
   }catch(e){ showToast(L('pdfFailed')); }
 }
 
-// ═══════════════════════════════════════════
-// CSV: one row per day, for anyone who wants the numbers
-// ═══════════════════════════════════════════
+// ---- CSV: one row per day, for anyone who wants the numbers ----
 function csvCell(v){ const s=String(v==null?'':v); return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; }
 function exportCsv(){
   withLang('en', ()=>{
@@ -3303,14 +3221,12 @@ function exportCsv(){
   showToast(L('csvExported'));
 }
 
-// ═══════════════════════════════════════════
-// CALENDAR REMINDERS (.ics)
+// ---- Calendar reminders (.ics) ----
 // A web page cannot ring an alarm while it is closed. The phone's own
 // calendar can, even offline, so the app writes the schedule into a
 // calendar file. Titles never carry doses (a dose written into a calendar
 // goes stale the day the doctor changes it); names only if the person
 // chooses, since calendars can sync to the cloud.
-// ═══════════════════════════════════════════
 function icsEscape(s){ return String(s).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\n/g,'\\n'); }
 function icsFold(line){
   const enc=new TextEncoder();
@@ -3384,11 +3300,9 @@ async function exportIcs(){
   if(res!=='cancelled') showToast(L('icsReady'));
 }
 
-// ═══════════════════════════════════════════
-// BACKUP AND RESTORE
+// ---- Backup and restore ----
 // One file holds every person on this phone. Sending it to yourself on
 // Telegram is enough to survive a lost phone or a cleared browser.
-// ═══════════════════════════════════════════
 async function backupNow(){
   save();
   const states={};
@@ -3429,12 +3343,10 @@ function restoreFromFile(input){
 }
 
 
-// ═══════════════════════════════════════════
-// PHONE NOTIFICATIONS
+// ---- Phone notifications ----
 // Only for things the person has not just done themselves: a dose that is
 // due, a medicine running out, an injection, INR test or visit coming up.
 // Tapping "Taken" never produces a notification about tapping "Taken".
-// ═══════════════════════════════════════════
 async function systemNotify(title, body, tag){
   try{
     if(!('Notification' in window) || Notification.permission!=='granted') return false;
@@ -3461,14 +3373,12 @@ function testNotification(){
   systemNotify(L('testNotifTitle'), L('testNotifText'), 'cc-test').then(ok=>{ if(!ok) showToast(L('notifBlockedToast')); });
 }
 
-// ═══════════════════════════════════════════
-// REMINDER ENGINE
+// ---- Reminder engine ----
 // Runs every 30 seconds while the page is alive and whenever it comes back
 // to the screen. Browsers stop pages that are closed, so this is the
 // "app is open" layer; the calendar file is the "app is closed" layer.
 // When each reminder is due is decided in js/core/reminders.js; this puts
 // it into words and sends it.
-// ═══════════════════════════════════════════
 function checkRemindersFor(Sx, who){
   const r=dueReminders(Sx), t=r.today;
   Object.keys(r.byTime).forEach(tm=>{
@@ -3503,9 +3413,7 @@ function checkReminders(){
   });
 }
 
-// ═══════════════════════════════════════════
-// THE CLOCK
-// ═══════════════════════════════════════════
+// ---- The clock ----
 let lastMinuteKey='';
 function tick(){
   if(!S) return;
@@ -3521,9 +3429,7 @@ function tick(){
   checkReminders();
 }
 
-// ═══════════════════════════════════════════
-// START
-// ═══════════════════════════════════════════
+// ---- Start ----
 const TICK_MS=30000;                  // reminders and the date are checked twice a minute
 const FIRST_REMINDER_CHECK_MS=1500;   // after start-up, once the screen is drawn
 function init(){

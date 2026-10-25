@@ -14,9 +14,7 @@
   'use strict';
   const { todayKey, addDays, daysBetween } = calendar;
 
-  // ═══════════════════════════════════════════
-  // PENICILLIN INJECTION
-  // ═══════════════════════════════════════════
+  // ---- Penicillin injection ----
   function injNextDue(Sx){ return Sx.injection.lastDate ? addDays(Sx.injection.lastDate, Sx.injection.interval) : null; }
   function injDaysLeft(Sx){ const n=injNextDue(Sx); return n ? daysBetween(todayKey(), n) : null; }
   // share of the injections due in the last 12 months that were given,

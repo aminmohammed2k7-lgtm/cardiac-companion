@@ -15,11 +15,9 @@
   const { todayKey, addDays, daysBetween } = calendar;
   const { round2 } = supply;
 
-  // ═══════════════════════════════════════════
-  // TABLETS
+  // ---- Tablets ----
   // A dose is shown as tablets only when it is an exact whole, half or
   // quarter tablet; otherwise in mg alone. The app never rounds a dose.
-  // ═══════════════════════════════════════════
   function tabletsFor(doseMg, strength){
     if(!strength || doseMg==null || doseMg<=0) return null;
     const t=doseMg/strength, q=Math.round(t*4)/4;
@@ -51,11 +49,9 @@
     return sum;
   }
 
-  // ═══════════════════════════════════════════
-  // WARFARIN AND INR
+  // ---- Warfarin and INR ----
   // The app shows where a result sits against the range the doctor wrote
   // down. It never suggests a dose.
-  // ═══════════════════════════════════════════
   function weeklyMg(doses){ return round2((doses||[]).reduce((a,v)=>a+(v>0?v:0),0)); }
   function dosesOn(Sx, d){
     const h=(Sx.warfarin.doseHistory||[]).filter(x=>x.from<=d).sort((a,b)=>a.from<b.from?-1:1);

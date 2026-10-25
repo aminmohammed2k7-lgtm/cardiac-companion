@@ -15,9 +15,7 @@
 
   function round2(n){ return Math.round(n*100)/100; }
 
-  // ═══════════════════════════════════════════
-  // SUPPLY: counted in tablets, halves included
-  // ═══════════════════════════════════════════
+  // ---- Supply: counted in tablets, halves included ----
   function medDailyTabs(m){
     const sc=m.sched||{};
     const per=(m.perDose||1)*((m.times||[]).length||1);

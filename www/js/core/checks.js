@@ -21,9 +21,7 @@
   // A number as people type it: "64,5" and "64.5" both mean 64.5.
   function num(v){ if(v==null||v==='') return null; const n=parseFloat(String(v).replace(',','.')); return isNaN(n)?null:n; }
 
-  // ═══════════════════════════════════════════
-  // WEIGHT AND READINGS
-  // ═══════════════════════════════════════════
+  // ---- Weight and readings ----
   function weightOk(kg){ return !(kg==null || kg<20 || kg>300); }
   const VITAL_LIMITS={pulse:{min:20,max:250,unit:''}, spo2:{min:50,max:100,unit:'%'}, temp:{min:30,max:45,unit:' °C'}};
   // The reading as it is saved, or null when it is outside the limits.
@@ -41,9 +39,7 @@
     return String(kind==='temp' ? Math.round(n*10)/10 : Math.round(n));
   }
 
-  // ═══════════════════════════════════════════
-  // WARFARIN, INR AND THE INJECTION
-  // ═══════════════════════════════════════════
+  // ---- Warfarin, INR and the injection ----
   // A dose over 20 mg is far outside usual practice and most likely a typing
   // slip, so the app asks "Is that exactly what your doctor wrote?"
   function doseNeedsCheck(mg){ return mg!=null && mg>20; }

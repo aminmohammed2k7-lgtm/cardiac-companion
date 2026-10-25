@@ -170,9 +170,7 @@
     storageKey: 'ppg-camera-id'
   };
 
-  // ═══════════════════════════════════════════
-  // SMALL MATHS
-  // ═══════════════════════════════════════════
+  // ---- Small maths ----
   const clamp = (v, lo, hi) => (v < lo ? lo : v > hi ? hi : v);
   function mean(a) { let s = 0; for (let i = 0; i < a.length; i++) s += a[i]; return a.length ? s / a.length : NaN; }
   function sampleStd(a) {
@@ -200,11 +198,9 @@
   }
   const oddWindow = n => { const w = Math.max(1, Math.round(n)); return w % 2 ? w : w + 1; };
 
-  // ═══════════════════════════════════════════
-  // FILTERS
+  // ---- Filters ----
   // Second-order sections (RBJ cookbook, bilinear transform with
   // pre-warping), run in transposed direct form II.
-  // ═══════════════════════════════════════════
   function biquad(type, f0, fs, Q) {
     const w0 = 2 * Math.PI * f0 / fs, c = Math.cos(w0), alpha = Math.sin(w0) / (2 * Q);
     const a0 = 1 + alpha;
@@ -278,9 +274,7 @@
     };
   }
 
-  // ═══════════════════════════════════════════
-  // PEAKS
-  // ═══════════════════════════════════════════
+  // ---- Peaks ----
   function movingAverage(src, w) {             // centred, truncated at the ends
     const n = src.length, h = (w - 1) >> 1, cs = new Float64Array(n + 1), out = new Float64Array(n);
     for (let i = 0; i < n; i++) cs[i + 1] = cs[i] + src[i];
@@ -398,9 +392,7 @@
     return { corr: pearson(s, t), gain, sigmaMs };
   }
 
-  // ═══════════════════════════════════════════
-  // INTERVALS: outlier rejection and metrics
-  // ═══════════════════════════════════════════
+  // ---- Intervals: outlier rejection and metrics ----
   class RRAnalyzer {
     constructor(options) { this.o = Object.assign({}, DEFAULTS, options); this.reset(); }
 
@@ -764,10 +756,8 @@
     }
   }
 
-  // ═══════════════════════════════════════════
-  // SIGNAL PROCESSOR: frames in, beats / intervals / quality out.
+  // ---- Signal processor: frames in, beats / intervals / quality out. ----
   // No DOM: feed it (time in ms, frame stats) from a camera or a test.
-  // ═══════════════════════════════════════════
   class SignalProcessor {
     constructor(options, emit) {
       this.o = Object.assign({}, DEFAULTS, options);
@@ -1169,9 +1159,7 @@
     finish(reason) { this._finish(reason || 'stopped'); }
   }
 
-  // ═══════════════════════════════════════════
-  // CAMERA: back camera, light on, frames sampled on a small canvas
-  // ═══════════════════════════════════════════
+  // ---- Camera: back camera, light on, frames sampled on a small canvas ----
   const hasDom = typeof window !== 'undefined' && typeof document !== 'undefined';
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const store = {
@@ -1498,9 +1486,7 @@
     }
   }
 
-  // ═══════════════════════════════════════════
-  // DRAWING: small canvas helpers shared by the app and the lab page
-  // ═══════════════════════════════════════════
+  // ---- Drawing: small canvas helpers shared by the app and the lab page ----
   function fitCanvas(canvas) {
     const dpr = (hasDom && window.devicePixelRatio) || 1;
     const w = Math.max(1, Math.round(canvas.clientWidth * dpr)), h = Math.max(1, Math.round(canvas.clientHeight * dpr));

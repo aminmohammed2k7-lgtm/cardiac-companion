@@ -135,7 +135,7 @@
   :root{ --ctl:40px; --ctl-sm:36px; }
 }
 
-/* ═══════════ BASE ═══════════ */
+/* ---- Base ---- */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 [hidden]{display:none !important;}
 
@@ -204,7 +204,7 @@ button{-webkit-appearance:none; appearance:none;}
 .i-nurse{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 2l4 4M17 7l3-3M19 9L8.7 19.3a2.4 2.4 0 0 1-3.4 0l-.6-.6a2.4 2.4 0 0 1 0-3.4L15 5M9 11l4 4M5 19l-3 3'/%3E%3C/svg%3E");}
 
 
-/* ═══════════ HEADER: both calendars, then language, alerts, settings ═══════════ */
+/* ---- Header: both calendars, then language, alerts, settings ---- */
 .header{
   position:relative;
   z-index:5;
@@ -292,7 +292,7 @@ button{-webkit-appearance:none; appearance:none;}
 .seg-control button{padding:0 var(--sp-md); font-size:var(--fs-sm);}
 .seg-control button.active{background:var(--accent-soft); color:var(--accent-ink);}
 
-/* ═══════════ CONTENT ═══════════ */
+/* ---- Content ---- */
 .app-main{flex:1; display:flex; flex-direction:column; min-height:0;}
 .content{
   flex:1;
@@ -309,7 +309,7 @@ button{-webkit-appearance:none; appearance:none;}
 .tab-head{padding:var(--sp-lg) var(--sp-xxs) var(--sp-md);}
 .tab-head h2{font-size:var(--fs-xl); font-weight:700; line-height:1.2; letter-spacing:-.01em;}
 
-/* ═══════════ SECTIONS ═══════════ */
+/* ---- Sections ---- */
 .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); margin-bottom:var(--sp-md);}
 .card-head{
   display:flex; align-items:center; justify-content:space-between; gap:var(--sp-md);
@@ -331,7 +331,7 @@ button{-webkit-appearance:none; appearance:none;}
 .form-row2 > *{min-width:0;}
 .form-row2 + .form-row2{margin-top:0;}
 
-/* ═══════════ COUNTS AND STATE TAGS ═══════════
+/* Counts and state tags.
    A count is plain text; only a state (taken, missed) gets an outline. */
 .badge{
   font-size:var(--fs-sm); font-weight:600; color:var(--ink-3);
@@ -350,7 +350,7 @@ button{-webkit-appearance:none; appearance:none;}
 .badge-status.taken{border-color:var(--accent-line); color:var(--accent-ink);}
 .badge-status.missed{border-color:var(--danger-line); color:var(--danger-ink);}
 
-/* ═══════════ BUTTONS ═══════════ */
+/* ---- Buttons ---- */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:var(--sp-sm);
   width:100%; min-height:var(--ctl);
@@ -393,7 +393,7 @@ button{-webkit-appearance:none; appearance:none;}
 .log-del{color:var(--ink-3);}
 .log-del svg{width:16px; height:16px;}
 
-/* ═══════════ FORM FIELDS ═══════════ */
+/* ---- Form fields ---- */
 .form-field{
   width:100%; min-height:var(--ctl);
   padding:var(--sp-md) var(--sp-md);
@@ -434,7 +434,7 @@ textarea.form-field[rows="2"]{min-height:76px;}
 .inr-entry #inrValue{flex:1 1 30%; text-align:center;}
 .inr-entry .btn{flex:1 0 100%;}
 
-/* ═══════════ SWITCH ═══════════ */
+/* ---- Switch ---- */
 .switch{
   position:relative; flex-shrink:0;
   width:52px; height:32px;
@@ -453,7 +453,7 @@ textarea.form-field[rows="2"]{min-height:76px;}
 .switch.on{background:var(--accent);}
 .switch.on::after{transform:translateX(20px); background:var(--on-accent);}
 
-/* ═══════════ TODAY: warfarin, the dose is the biggest thing on the page ═══════════ */
+/* ---- Today: warfarin, the dose is the biggest thing on the page ---- */
 .dose-hero{display:flex; align-items:baseline; gap:var(--sp-sm);}
 .dose-hero-num{
   font-size:var(--fs-hero); font-weight:700; line-height:1;
@@ -569,7 +569,7 @@ textarea.form-field[rows="2"]{min-height:76px;}
 }
 .vital-val.empty{color:var(--ink-3); font-weight:500;}
 
-/* ═══════════ MEDICINES ═══════════ */
+/* ---- Medicines ---- */
 
 .supply-item{padding:var(--sp-lg) 0; border-top:1px solid var(--line);}
 .supply-item:first-child{border-top:none; padding-top:0;}
@@ -633,7 +633,7 @@ textarea.form-field[rows="2"]{min-height:76px;}
 .week-cell.none strong{color:var(--danger-ink);}
 .week-cell.is-today{outline:2px solid var(--ink-2); outline-offset:-2px;}
 
-/* ═══════════ SYMPTOMS ═══════════ */
+/* ---- Symptoms ---- */
 #addSymptomForm{padding-bottom:var(--sp-lg); margin-bottom:var(--sp-lg); border-bottom:1px solid var(--line);}
 input[type="range"]{
   -webkit-appearance:none; appearance:none;
@@ -700,7 +700,7 @@ input[type="range"]::-moz-range-thumb{
 .htext{font-size:var(--fs-md); line-height:1.45; color:var(--ink-1);}
 .htime{display:flex; gap:var(--sp-sm); font-size:var(--fs-xs); color:var(--ink-3); margin-top:var(--sp-xxs); font-variant-numeric:tabular-nums;}
 
-/* ═══════════ SUMMARY ═══════════ */
+/* ---- Summary ---- */
 .stat-row{
   display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
   background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
@@ -738,7 +738,7 @@ input[type="range"]::-moz-range-thumb{
 #weekTable .table-row span:not(:first-child){text-align:right;}
 #weekTable .table-row:not(:first-child) span:first-child{font-weight:600;}
 
-/* ═══════════ ACTIVE ALERTS ═══════════ */
+/* ---- Active alerts ---- */
 #activeAlerts{padding:var(--sp-sm) var(--sp-lg) 0;}
 #activeAlerts:empty{display:none;}
 .alert-critical, .alert-warning, .alert-info{
@@ -760,7 +760,7 @@ input[type="range"]::-moz-range-thumb{
 .alert-info{background:var(--surface); color:var(--ink-2);}
 .alert-info::before{-webkit-mask-image:var(--m-info); mask-image:var(--m-info);}
 
-/* ═══════════ NAV ═══════════ */
+/* ---- Nav ---- */
 .nav{
   display:flex;
   background:var(--surface);
@@ -792,7 +792,7 @@ input[type="range"]::-moz-range-thumb{
   font-size:var(--fs-xs); line-height:1.5; color:var(--ink-3);
 }
 
-/* ═══════════ PANELS: notifications and settings ═══════════ */
+/* ---- Panels: notifications and settings ---- */
 .panel{
   position:fixed; inset:0;
   max-width:460px; margin:0 auto;
@@ -849,7 +849,7 @@ button.settings-row{
 }
 button.settings-row:active{background:var(--surface-3);}
 
-/* ═══════════ TOAST ═══════════ */
+/* ---- Toast ---- */
 .toast{
   position:fixed; left:50%;
   bottom:calc(80px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
@@ -866,7 +866,7 @@ button.settings-row:active{background:var(--surface-3);}
 }
 .toast.show{opacity:1;}
 
-/* ═══════════ QUESTION BOX ═══════════ */
+/* ---- Question box ---- */
 .dialog-scrim{
   position:fixed; inset:0; z-index:300;
   display:flex; align-items:flex-end; justify-content:center;
@@ -884,7 +884,7 @@ button.settings-row:active{background:var(--surface-3);}
 .dialog-actions .btn{flex:1; min-width:0;}
 @media (min-width:720px){ .dialog-scrim{align-items:center;} }
 
-/* ═══════════ POINTER HOVER: a colour change, nothing moves ═══════════ */
+/* ---- Pointer hover: a colour change, nothing moves ---- */
 @media (hover:hover){
   .btn-solid:hover:not(:disabled){background:var(--accent-press);}
   .btn-ghost:hover:not(:disabled){background:var(--surface-2);}
@@ -902,7 +902,7 @@ button.settings-row:active{background:var(--surface-3);}
   .text-btn:hover{text-decoration:underline; text-underline-offset:3px;}
 }
 
-/* ═══════════ DESKTOP / TABLET: nav becomes a left rail ═══════════
+/* Desktop / tablet: nav becomes a left rail.
    The nav lives inside .app-main (after the content), so the rail is laid
    out there: a two-column grid with the nav placed in the first column. */
 @media (min-width:720px){
@@ -932,9 +932,8 @@ button.settings-row:active{background:var(--surface-3);}
 }
 
 
-/* ═══════════════════════════════════════════════════════════════════
-   ADDITIONS: reminders, warning signs, INR range, fasting, profiles
-   ═══════════════════════════════════════════════════════════════════ */
+/* ---- Large text, and the pieces for reminders, warning signs, INR range,
+   fasting and the people on this phone ---- */
 
 /* larger text: zoom keeps every layout in proportion */
 :root{--big-zoom:1.14;}   /* Large text: everything 14% bigger */

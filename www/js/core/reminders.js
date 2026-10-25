@@ -15,8 +15,7 @@
   const { todayKey, nowMin, toMin, addDays, daysBetween } = calendar;
   const { ensurePlans, keyInfo, doseEntry } = doses;
 
-  // ═══════════════════════════════════════════
-  // REMINDER TIMING
+  // ---- Reminder timing ----
   // Each dose is announced once at its time and once more an hour later if
   // still unmarked, and never hours after the fact: the first at most 3
   // hours late, the second at most 4. Doses at the same time share one
@@ -27,7 +26,6 @@
   // dose keys to announce, grouped by time; the day's "Coming up" items as
   // days from today (null when not due, or already done today); and whether
   // the record changed and should be saved. index.html words and sends them.
-  // ═══════════════════════════════════════════
   function dueReminders(Sx){
     let changed=false;
     const t=todayKey(), now=nowMin();

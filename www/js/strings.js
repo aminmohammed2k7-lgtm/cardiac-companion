@@ -8,9 +8,7 @@
  * tests/i18n.test.js checks that all three languages have every key.
  */
 'use strict';
-// ═══════════════════════════════════════════
-// ETHIOPIAN CALENDAR: month names (the conversion is in js/core/calendar.js)
-// ═══════════════════════════════════════════
+// ---- Ethiopian calendar: month names (the conversion is in js/core/calendar.js) ----
 const ETHIOPIAN_MONTHS = [
   {am:'መስከረም',en:'Meskerem',om:'Fulbaana'},
   {am:'ጥቅምት',en:'Tikimt',om:'Onkololeessa'},
@@ -382,12 +380,10 @@ const T = {
 };
 
 
-// ═══════════════════════════════════════════
-// STRINGS ADDED IN VERSION 3 (merged into T[lang].msg at start-up).
+// ---- Strings added in version 3 (merged into T[lang].msg at start-up). ----
 // Amharic and Afaan Oromo versions below were written for this release and
 // must be checked by a bilingual health worker before patients use them,
 // especially the warning signs, the pregnancy note and the mood questions.
-// ═══════════════════════════════════════════
 const T2={};
 T2.en={
   // people on this phone

@@ -14,13 +14,11 @@
   'use strict';
   const { todayKey, parseDateKey, addDays, daysBetween, isDateKey, nowMin, toMin } = calendar;
 
-  // ═══════════════════════════════════════════
-  // DOSE PLANS
+  // ---- Dose plans ----
   // Every day gets a frozen list of the doses that were due. A day the app
   // was never opened still gets its plan (the schedule can only change while
   // the app is open, so it is known), and its unmarked doses count as
   // "not recorded", never quietly left out of the adherence figure.
-  // ═══════════════════════════════════════════
   function medDueOn(m, d){
     if(m.removed && m.removed<=d) return false;
     if(m.created && d<m.created) return false;
