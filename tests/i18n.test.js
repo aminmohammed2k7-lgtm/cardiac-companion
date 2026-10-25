@@ -86,5 +86,11 @@ const used = [...new Set([...html.matchAll(/data-t[pa]?="([^"]+)"/g)].map(m => m
 const unknown = used.filter(k => !(k in table.en) && !(('msg.' + k) in table.en));
 check('every key the markup uses exists', used.length > 50 && !unknown.length, unknown.length ? list(unknown) : used.length + ' keys');
 
+// confirm(), prompt() and alert() put their buttons in the phone's language,
+// not the app's. The page asks in its own box, ask(), instead.
+const script = html.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\//g, '');
+const native = [...new Set(script.match(/(?<![\w.$])(?:window\.)?(?:confirm|prompt|alert)\s*\(/g) || [])];
+check('questions are asked in the app\'s language, not with confirm() or prompt()', !native.length, native.join(' '));
+
 console.log(failures ? `\n${failures} of ${checks} checks failed` : `\nall ${checks} checks passed`);
 process.exit(failures ? 1 : 0);

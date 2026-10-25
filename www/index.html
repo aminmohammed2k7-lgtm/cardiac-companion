@@ -83,6 +83,7 @@
     --accent-ink:#17514A;
     --on-accent:#FFFFFF;
     --on-danger:#FFFFFF;
+    --scrim:rgba(20,32,28,.55);   /* behind the question box */
 
     --danger:#B3261E;
     --danger-soft:#FCEDEB;
@@ -160,6 +161,7 @@
     --accent-ink:#8FD4C5;
     --on-accent:#062520;
     --on-danger:#2A0906;
+    --scrim:rgba(0,0,0,.65);
 
     --danger:#F08F85;
     --danger-soft:rgba(240,143,133,.12);
@@ -273,7 +275,7 @@
     font-variant-numeric:tabular-nums;
   }
   .header-actions{display:flex; align-items:center; gap:var(--sp-xxs); flex-shrink:0;}
-  .header-actions .lang-switch{margin-right:var(--sp-xs);}
+  .header-actions .lang-pick{margin-right:var(--sp-xs);}
   /* on phones the date needs the room more than the logo does:
      the longest month, Oromo "Onkololeessa 30", must fit a 360px screen */
   @media (max-width:419px){ .brand-mark{display:none;} }
@@ -299,16 +301,30 @@
     box-shadow:0 0 0 2px var(--canvas);
   }
 
-  /* segmented controls: language, text size, clock, chart range */
-  .lang-switch, .seg-control{
+  /* the language: the short name, with the phone's own picker laid over it */
+  .lang-pick{
+    position:relative;
+    display:inline-flex; align-items:center;
+    min-width:var(--ctl-sm); height:var(--ctl-sm);
+    padding:0 var(--sp-xl) 0 var(--sp-sm);
+    border:1px solid var(--line-strong); border-radius:var(--r);
+    background:var(--surface) var(--chev) no-repeat right var(--sp-xs) center / 16px 16px;
+    color:var(--ink-1); font-size:var(--fs-sm); font-weight:600;
+    cursor:pointer;
+    transition:background-color var(--tr);
+  }
+  .lang-pick select{position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; font-size:var(--fs-md);}
+  .lang-pick:focus-within{outline:2px solid var(--accent); outline-offset:2px;}
+  /* segmented controls: text size, clock, theme, chart range */
+  .seg-control{
     display:inline-flex; align-items:center;
     background:var(--surface);
     border:1px solid var(--line-strong);
     border-radius:var(--r);
     padding:var(--sp-xxs); gap:var(--sp-xxs);
   }
-  .lang-btn, .seg-control button{
-    min-width:32px; min-height:calc(var(--ctl-sm) - 6px);
+  .seg-control button{
+    min-width:var(--ctl-sm); min-height:var(--ctl-sm);
     padding:0 var(--sp-sm);
     border:none; border-radius:var(--r);
     background:transparent;
@@ -318,7 +334,7 @@
     transition:background-color var(--tr), color var(--tr);
   }
   .seg-control button{padding:0 var(--sp-md); font-size:var(--fs-sm);}
-  .lang-btn.active, .seg-control button.active{background:var(--accent-soft); color:var(--accent-ink);}
+  .seg-control button.active{background:var(--accent-soft); color:var(--accent-ink);}
 
   /* ═══════════ CONTENT ═══════════ */
   .app-main{flex:1; display:flex; flex-direction:column; min-height:0;}
@@ -476,9 +492,10 @@
     width:22px; height:22px; border-radius:var(--r);
     background:var(--surface);
   }
+  /* the switch looks 32px tall but takes a 48px tap */
+  .switch::before{content:''; position:absolute; inset:calc(var(--sp-sm) * -1) calc(var(--sp-xs) * -1);}
   .switch.on{background:var(--accent);}
-  .switch.on::after{transform:translateX(20px);}
-  .switch.on::after{background:var(--on-accent);}
+  .switch.on::after{transform:translateX(20px); background:var(--on-accent);}
 
   /* ═══════════ TODAY: warfarin, the dose is the biggest thing on the page ═══════════ */
   .dose-hero{display:flex; align-items:baseline; gap:var(--sp-sm);}
@@ -716,7 +733,7 @@
   .symptom-chip{flex:1; min-width:0; font-size:var(--fs-md); font-weight:500; line-height:1.25; color:var(--ink-1);}
   .symptom-sev{font-size:var(--fs-xs); font-weight:600; color:var(--ink-3); font-variant-numeric:tabular-nums; flex-shrink:0;}
   .symptom-remove{
-    width:36px; height:36px; margin:calc(var(--sp-sm) * -1) calc(var(--sp-sm) * -1) calc(var(--sp-sm) * -1) 0; flex-shrink:0;
+    width:var(--ctl-sm); height:var(--ctl-sm); margin:calc(var(--sp-sm) * -1) calc(var(--sp-sm) * -1) calc(var(--sp-sm) * -1) 0; flex-shrink:0;
     display:grid; place-items:center;
     border:none; border-radius:var(--r);
     background:transparent; color:var(--ink-3);
@@ -898,6 +915,24 @@
   }
   .toast.show{opacity:1;}
 
+  /* ═══════════ QUESTION BOX ═══════════ */
+  .dialog-scrim{
+    position:fixed; inset:0; z-index:300;
+    display:flex; align-items:flex-end; justify-content:center;
+    padding:var(--sp-lg) var(--sp-lg) calc(var(--sp-lg) + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+    background:var(--scrim);
+  }
+  .dialog{
+    width:100%; max-width:420px;
+    padding:var(--sp-xl) var(--sp-lg) var(--sp-lg);
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
+  }
+  .dialog-msg{font-size:var(--fs-md); line-height:1.45; color:var(--ink-1); white-space:pre-line;}
+  .dialog .form-field{margin:var(--sp-lg) 0 0;}
+  .dialog-actions{display:flex; gap:var(--sp-sm); margin-top:var(--sp-xl);}
+  .dialog-actions .btn{flex:1; min-width:0;}
+  @media (min-width:720px){ .dialog-scrim{align-items:center;} }
+
   /* ═══════════ POINTER HOVER: a colour change, nothing moves ═══════════ */
   @media (hover:hover){
     .btn-solid:hover:not(:disabled){background:var(--accent-press);}
@@ -905,7 +940,7 @@
     .btn-danger:hover{background:var(--danger-ink);}
     .icon-btn:hover, .small-btn:hover, .med-undo:hover, .log-del:hover, .symptom-remove:hover{background:var(--surface-3); color:var(--ink-1);}
     .small-btn.accent:hover{background:var(--surface-2); color:var(--accent-ink);}
-    .lang-btn:not(.active):hover, .seg-control button:not(.active):hover{background:var(--surface-2); color:var(--ink-1);}
+    .lang-pick:hover, .seg-control button:not(.active):hover{background:var(--surface-2); color:var(--ink-1);}
     .chip:not(.active):hover{background:var(--surface-2); color:var(--ink-1);}
     .symptom-item:not(.sel):hover, .vital:hover{background:var(--surface-2);}
     .who-btn:hover{background:var(--surface-2);}
@@ -1035,8 +1070,8 @@
   .med-form{padding-bottom:var(--sp-lg); margin-bottom:var(--sp-sm); border-bottom:1px solid var(--line);}
   .times-list{display:flex; flex-wrap:wrap; gap:var(--sp-sm); margin-bottom:var(--sp-sm);}
   .time-item{display:flex; align-items:center; gap:var(--sp-xxs); padding:var(--sp-xxs) var(--sp-xxs) var(--sp-xxs) var(--sp-md); border:1px solid var(--line-input); border-radius:var(--r); background:var(--surface);}
-  .time-item input{width:136px; min-height:36px; border:none; background:transparent; color:var(--ink-1); font-size:var(--fs-md); font-weight:600;}
-  .time-item .log-del{width:36px; height:36px;}
+  .time-item input{width:136px; min-height:var(--ctl-sm); border:none; background:transparent; color:var(--ink-1); font-size:var(--fs-md); font-weight:600;}
+  .time-item .log-del{width:var(--ctl-sm); height:var(--ctl-sm);}
   .manage-row .small-btn{margin-left:calc(var(--sp-xxs) * -1);}
   .row-actions{display:flex; gap:var(--sp-xs); flex-shrink:0;}
 
@@ -1185,11 +1220,17 @@
         </div>
       </div>
       <div class="header-actions">
-        <div class="lang-switch" role="group" aria-label="Language">
-          <button class="lang-btn active" onclick="setLang('en')" aria-pressed="true">EN</button>
-          <button class="lang-btn" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
-          <button class="lang-btn" onclick="setLang('or')" aria-pressed="false" aria-label="Afaan Oromoo">OR</button>
-        </div>
+        <!-- One 44px control instead of three small buttons: it leaves room for
+             the date. Tapping it opens the phone's own list, where each
+             language is written in its own script, so no translation is needed. -->
+        <label class="lang-pick">
+          <span class="lang-code" id="langCode" aria-hidden="true">EN</span>
+          <select id="langSelect" onchange="setLang(this.value)">
+            <option value="en" lang="en">English</option>
+            <option value="am" lang="am">አማርኛ</option>
+            <option value="or" lang="om">Afaan Oromoo</option>
+          </select>
+        </label>
         <button class="icon-btn" id="notifBtn" onclick="openPanel('notifPanel')" data-ta="t-notifTitle" aria-label="Notifications">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
           <span class="notif-dot" id="notifDot" hidden></span>
@@ -1206,7 +1247,7 @@
     <div id="activeAlerts"></div>
 
     <!-- ───────── TODAY ───────── -->
-    <section class="tab active" id="tab-today">
+    <section class="tab active" id="tab-today" role="tabpanel" aria-labelledby="nav-today">
       <div class="tab-head tab-head-row">
         <div>
           <h2 data-t="t-todayTitle">Today</h2>
@@ -1356,7 +1397,7 @@
     </section>
 
     <!-- ───────── MEDICINES ───────── -->
-    <section class="tab" id="tab-meds">
+    <section class="tab" id="tab-meds" role="tabpanel" aria-labelledby="nav-meds">
       <div class="tab-head">
         <h2 data-t="t-medsTitle">Medicines</h2>
       </div>
@@ -1445,7 +1486,7 @@
     </section>
 
     <!-- ───────── SYMPTOMS ───────── -->
-    <section class="tab" id="tab-symptoms">
+    <section class="tab" id="tab-symptoms" role="tabpanel" aria-labelledby="nav-symptoms">
       <div class="tab-head">
         <h2 data-t="t-symTitle">Symptoms</h2>
       </div>
@@ -1512,7 +1553,7 @@
     </section>
 
     <!-- ───────── SUMMARY ───────── -->
-    <section class="tab" id="tab-summary">
+    <section class="tab" id="tab-summary" role="tabpanel" aria-labelledby="nav-summary">
       <div class="tab-head">
         <h2 data-t="t-sumTitle">Summary</h2>
       </div>
@@ -1548,7 +1589,7 @@
               </div>
             </div>
             <div class="card-body">
-              <canvas id="trendChart" width="700" height="220"></canvas>
+              <canvas id="trendChart" width="700" height="220" role="img" aria-label="Weight"></canvas>
               <p class="hint-line" id="weightAxisLabel" data-t="t-weightAxisLabel">Kilograms</p>
             </div>
           </div>
@@ -1594,19 +1635,19 @@
 
   <!-- ═══ NAV ═══ -->
   <nav class="nav" role="tablist">
-    <button class="nav-item active" onclick="switchTab('today')" role="tab" aria-selected="true">
+    <button class="nav-item active" id="nav-today" onclick="switchTab('today')" role="tab" aria-controls="tab-today" aria-selected="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><rect x="7" y="13" width="4" height="4" rx="1"/></svg>
       <span data-t="t-nav-today">Today</span>
     </button>
-    <button class="nav-item" onclick="switchTab('meds')" role="tab" aria-selected="false">
+    <button class="nav-item" id="nav-meds" onclick="switchTab('meds')" role="tab" aria-controls="tab-meds" aria-selected="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><path d="M12 8v8"/></svg>
       <span data-t="t-nav-meds">Medicines</span>
     </button>
-    <button class="nav-item" onclick="switchTab('symptoms')" role="tab" aria-selected="false">
+    <button class="nav-item" id="nav-symptoms" onclick="switchTab('symptoms')" role="tab" aria-controls="tab-symptoms" aria-selected="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>
       <span data-t="t-nav-symptoms">Symptoms</span>
     </button>
-    <button class="nav-item" onclick="switchTab('summary')" role="tab" aria-selected="false">
+    <button class="nav-item" id="nav-summary" onclick="switchTab('summary')" role="tab" aria-controls="tab-summary" aria-selected="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 16v-5"/><path d="M13 16V8"/><path d="M18 16v-3"/></svg>
       <span data-t="t-nav-summary">Summary</span>
     </button>
@@ -1644,7 +1685,10 @@
     <div class="settings-block">
       <div class="settings-row">
         <span class="settings-row-label" data-t="t-settingsTheme">Appearance</span>
-        <button class="btn btn-ghost btn-small" onclick="toggleTheme()" id="themeBtn">Dark</button>
+        <div class="seg-control" role="group" id="themeSeg">
+          <button onclick="setTheme('light')" data-t="themeLight">Light</button>
+          <button onclick="setTheme('dark')" data-t="themeDark">Dark</button>
+        </div>
       </div>
       <div class="settings-row">
         <span class="settings-row-label" data-t="textSizeLabel">Text size</span>
@@ -1811,6 +1855,18 @@
 
 <input type="file" id="restoreInput" accept=".json,application/json" hidden onchange="restoreFromFile(this)">
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- ═══ QUESTION BOX: asks before deleting or saving an unusual number ═══ -->
+<div class="dialog-scrim" id="dialog" hidden>
+  <div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="dialogMsg">
+    <p class="dialog-msg" id="dialogMsg"></p>
+    <input class="form-field" id="dialogInput" hidden aria-labelledby="dialogMsg">
+    <div class="dialog-actions">
+      <button class="btn btn-ghost" id="dialogNo" onclick="answerDialog(false)"></button>
+      <button class="btn btn-solid" id="dialogYes" onclick="answerDialog(true)"></button>
+    </div>
+  </div>
+</div>
 
 <!-- The medical logic, in plain files that Node can test too (npm test) -->
 <script src="js/vendor/capacitor-core.js"></script>
@@ -3944,10 +4000,12 @@ function saveMedForm(){
 }
 function deleteMed(id){
   const m=S.meds.find(x=>x.id===id);
-  if(!m || !confirm(L('confirmRemoveMed',{name:m.name}))) return;
-  m.removed=todayKey();
-  refreshTodayPlan(); save();
-  renderAll();
+  if(!m) return;
+  ask({msg:L('confirmRemoveMed',{name:m.name}), yes:ANSWER.remove, no:ANSWER.cancel, danger:true, onYes:()=>{
+    m.removed=todayKey();
+    refreshTodayPlan(); save();
+    renderAll();
+  }});
 }
 
 // ═══════════════════════════════════════════
@@ -4063,10 +4121,14 @@ function setWarfarinDose(i, el){
   const prev=S.warfarin.doses[i];
   const v=num(el.value);
   if(v!=null && v<0){ el.value=prev==null?'':prev; return; }
-  if(doseNeedsCheck(v) && !confirm(L('doseCheck',{mg:fmtNum(v)}))){ el.value=prev==null?'':prev; return; }
-  S.warfarin.doses[i]= v==null ? null : round2(v);
-  recordDoseHistory(S); refreshTodayPlan(); save();
-  renderAll();
+  const keep=()=>{
+    S.warfarin.doses[i]= v==null ? null : round2(v);
+    recordDoseHistory(S); refreshTodayPlan(); save();
+    renderAll();
+  };
+  if(!doseNeedsCheck(v)){ keep(); return; }
+  // "No" puts back the dose that was there
+  ask({msg:L('doseCheck',{mg:fmtNum(v)}), onYes:keep, onNo:()=>{ el.value=prev==null?'':prev; }});
 }
 function addInr(){
   const dEl=$('inrDate'), vEl=$('inrValue');
@@ -4075,7 +4137,10 @@ function addInr(){
   if(date>todayKey()){ showToast(L('noFutureDate')); return; }
   const chk=inrCheck(value);
   if(chk==='range'){ showToast(L('inrCheckRange')); return; }
-  if(chk==='confirm' && !confirm(L('inrConfirmHigh',{v:fmtInr(value)}))) return;
+  if(chk==='confirm'){ ask({msg:L('inrConfirmHigh',{v:fmtInr(value)}), onYes:()=>saveInr(date, value, vEl)}); return; }
+  saveInr(date, value, vEl);
+}
+function saveInr(date, value, vEl){
   const doses=dosesOn(S,date).slice();
   S.inrLog.push({id:uid(), date, value:round2(value), doses, weekly:weeklyMg(doses)});
   if(S.warfarin.nextInr && S.warfarin.nextInr<=date) S.warfarin.nextInr=null;
@@ -4131,15 +4196,18 @@ function renderInjectionSetup(){
       : `<p class="empty-line">${esc(L('emptyInj'))}</p>`}</div>`;
 }
 function deleteInjection(id){
-  if(!confirm(L('confirmRemoveEntry'))) return;
-  const I=S.injection, gone=I.history.find(h=>h.id===id);
-  I.history=I.history.filter(h=>h.id!==id);
-  if(gone && gone.date===I.lastDate){
-    const rest=I.history.map(h=>h.date).sort();
-    I.lastDate=rest.length?rest[rest.length-1]:null;
-  }
-  save(); renderAll();
+  askRemove(()=>{
+    const I=S.injection, gone=I.history.find(h=>h.id===id);
+    I.history=I.history.filter(h=>h.id!==id);
+    if(gone && gone.date===I.lastDate){
+      const rest=I.history.map(h=>h.date).sort();
+      I.lastDate=rest.length?rest[rest.length-1]:null;
+    }
+    save(); renderAll();
+  });
 }
+// "Remove this entry?" for one line in a log
+function askRemove(then){ ask({msg:L('confirmRemoveEntry'), yes:ANSWER.remove, no:ANSWER.cancel, danger:true, onYes:then}); }
 
 // ═══════════════════════════════════════════
 // MEDICINES: fasting
@@ -4324,9 +4392,11 @@ function addCustomSymptom(){
 }
 function removeCustomSymptom(id){
   const c=S.customSymptoms.find(x=>x.id===id);
-  if(!c || !confirm(L('confirmRemoveSymptom',{name:c.name}))) return;
-  S.customSymptoms=S.customSymptoms.filter(x=>x.id!==id);
-  save(); renderSymptoms();
+  if(!c) return;
+  ask({msg:L('confirmRemoveSymptom',{name:c.name}), yes:ANSWER.remove, no:ANSWER.cancel, danger:true, onYes:()=>{
+    S.customSymptoms=S.customSymptoms.filter(x=>x.id!==id);
+    save(); renderSymptoms();
+  }});
 }
 
 // ═══════════════════════════════════════════
@@ -4428,6 +4498,9 @@ function drawWeightChart(){
   const labelW=Math.max(...keys.map(k=>ctx.measureText(fmtGreg(k)).width))+10;
   const step=Math.max(1, Math.ceil(labelW/(plotW/(N-1))));
   for(let i=N-1;i>=0;i-=step) ctx.fillText(fmtGreg(keys[i]), xAt(i), H-8);
+  // a screen reader cannot see the line, so it gets the newest weight in words
+  const lastI=vals.map(x=>x!=null).lastIndexOf(true);
+  c.setAttribute('aria-label', L('weightChartTitle')+': '+(present.length<2 ? L('insightNoWeight') : fmtNum(vals[lastI])+' kg, '+fmtGreg(keys[lastI])));
   if(present.length<2){
     ctx.font='500 14px '+font;
     ctx.fillText(L('insightNoWeight'), padL+plotW/2, padT+plotH/2);
@@ -4586,7 +4659,7 @@ function segActive(id, idx){
   el.querySelectorAll('button').forEach((b,i)=>{ b.classList.toggle('active', i===idx); b.setAttribute('aria-pressed', i===idx?'true':'false'); });
 }
 function renderSettings(){
-  $('themeBtn').textContent=L(document.documentElement.getAttribute('data-theme')==='dark'?'themeLight':'themeDark');
+  segActive('themeSeg', document.documentElement.getAttribute('data-theme')==='dark'?1:0);
   segActive('textSizeSeg', G.bigText?1:0);
   segActive('clockSeg', ['both','intl','eth'].indexOf(S.settings.clock));
   segActive('lowDaysSeg', [7,14,21].indexOf(S.settings.lowDays));
@@ -4671,13 +4744,12 @@ function applyTheme(theme){
   else document.documentElement.removeAttribute('data-theme');
   const meta=document.querySelector('meta[name="theme-color"]');
   if(meta) meta.setAttribute('content', theme==='dark'?'#0D1311':'#EEF1EE');
-  const b=$('themeBtn'); if(b) b.textContent=L(theme==='dark'?'themeLight':'themeDark');
+  segActive('themeSeg', theme==='dark'?1:0);
   CCPlatform.setBarsTheme(theme);
 }
-function toggleTheme(){
-  const next=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
-  applyTheme(next);
-  try{ localStorage.setItem(THEME_KEY, next); }catch(e){}
+function setTheme(theme){
+  applyTheme(theme);
+  try{ localStorage.setItem(THEME_KEY, theme); }catch(e){}
   drawWeightChart();
 }
 
@@ -4700,7 +4772,9 @@ function switchProfile(id){
   showToast(L('switchedTo',{name:personName()||L('unnamed')}));
 }
 function addProfile(){
-  const name=(prompt(L('newPersonPrompt'))||'').trim();
+  ask({msg:L('newPersonPrompt'), input:true, yes:'addPersonBtn', no:ANSWER.cancel, onYes:text=>addProfileNamed(text.trim())});
+}
+function addProfileNamed(name){
   if(!name) return;
   const id='p'+uid();
   const st=defaultState();
@@ -4712,12 +4786,13 @@ function addProfile(){
 function deleteProfile(id){
   const p=profiles.list.find(x=>x.id===id);
   if(!p || profiles.list.length<2) return;
-  if(!confirm(L('confirmDelPerson',{name:p.name||L('unnamed')}))) return;
-  try{ localStorage.removeItem(stateKey(id)); }catch(e){}
-  profiles.list=profiles.list.filter(x=>x.id!==id);
-  if(profiles.active===id){ profiles.active=profiles.list[0].id; loadActive(); ensurePlans(S); }
-  saveProfiles();
-  renderAll();
+  ask({msg:L('confirmDelPerson',{name:p.name||L('unnamed')}), yes:ANSWER.remove, no:ANSWER.cancel, danger:true, onYes:()=>{
+    try{ localStorage.removeItem(stateKey(id)); }catch(e){}
+    profiles.list=profiles.list.filter(x=>x.id!==id);
+    if(profiles.active===id){ profiles.active=profiles.list[0].id; loadActive(); ensurePlans(S); }
+    saveProfiles();
+    renderAll();
+  }});
 }
 
 // ═══════════════════════════════════════════
@@ -4837,6 +4912,7 @@ function startsWithBigText(isNew, fontScale){
 // tapping Cancel does, and only for a form the person can see.
 const FORM_CANCELS=['mfCancel','injCancel','moodCancel'];
 function handleBack(){
+  if(dialogNow){ answerDialog(false); return true; }
   const p=topPanel();
   if(p){ closePanel(p); return true; }
   const tab=document.querySelector('.tab.active');
@@ -4865,19 +4941,48 @@ function showToast(msg){
   toastTimer=setTimeout(()=>el.classList.remove('show'), 3200);
 }
 
+// The question box, instead of the browser's confirm() and prompt(). Those
+// show OK and Cancel in the phone's language, so an Amharic reader with an
+// English phone got English buttons on "delete this whole record". The
+// buttons here reuse words the app already has in all three languages.
+// ask({msg, yes, no, danger, input, onYes(text), onNo})
+const ANSWER={yes:'preg_yes', no:'preg_no', remove:'removeLabel', cancel:'t-cancelVital'};
+let dialogNow=null;
+function ask(o){
+  if(dialogNow) answerDialog(false);
+  const inp=$('dialogInput'), yes=$('dialogYes'), no=$('dialogNo');
+  $('dialogMsg').textContent=o.msg;
+  inp.hidden=!o.input; inp.value='';
+  yes.textContent=L(o.yes||ANSWER.yes);
+  no.textContent=L(o.no||ANSWER.no);
+  yes.className='btn '+(o.danger?'btn-danger':'btn-solid');
+  dialogNow={o, opener:document.activeElement};
+  $('dialog').hidden=false;
+  (o.input?inp:no).focus();   // the safe answer has focus, so Enter never deletes
+}
+function answerDialog(ok){
+  const d=dialogNow; if(!d) return;
+  dialogNow=null;
+  $('dialog').hidden=true;
+  const text=$('dialogInput').value;
+  if(d.opener && d.opener.focus && document.contains(d.opener)) d.opener.focus();
+  if(ok){ if(d.o.onYes) d.o.onYes(text); }
+  else if(d.o.onNo) d.o.onNo();
+}
+
 // ═══════════════════════════════════════════
 // LANGUAGE SWITCH AND RENDER ALL
 // ═══════════════════════════════════════════
 const HTML_LANG={en:'en', am:'am', or:'om'};
+const LANG_CODE={en:'EN', am:'አማ', or:'OR'};   // what the header shows
 function setLang(lang){
   if(!T[lang]) return;
   currentLang=lang;
   try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
   document.documentElement.lang=HTML_LANG[lang];
-  document.querySelectorAll('.lang-btn').forEach((b,i)=>{
-    const on=['en','am','or'][i]===lang;
-    b.classList.toggle('active', on); b.setAttribute('aria-pressed', on?'true':'false');
-  });
+  $('langCode').textContent=LANG_CODE[lang];
+  $('langCode').lang=HTML_LANG[lang];
+  $('langSelect').value=lang;
   renderAll();
 }
 function renderHeader(){
@@ -4931,7 +5036,7 @@ const ACT={
   mfCancel:()=>{ medForm=null; renderMedForm(); },
   refill:d=>refill(d.id),
   addInr:()=>addInr(),
-  delInr:d=>{ if(!confirm(L('confirmRemoveEntry'))) return; S.inrLog=S.inrLog.filter(r=>r.id!==d.id); save(); renderAll(); },
+  delInr:d=>askRemove(()=>{ S.inrLog=S.inrLog.filter(r=>r.id!==d.id); save(); renderAll(); }),
   fastType:d=>{ S.fasting.type=d.v; const p=openFast(S); if(p) p.type=d.v; save(); renderFasting(); },
   seasonYes:d=>startFasting(d.type, d.key, d.end),
   seasonNo:d=>{ S.fasting.dismissed[d.key]=true; save(); renderActiveAlerts(); },
@@ -4949,7 +5054,7 @@ const ACT={
   moodSave:()=>saveMood(),
   moodRetake:()=>{ moodDraft={q1:null,q2:null,open:true}; renderMood(); },
   moodCancel:()=>{ moodDraft={q1:null,q2:null,open:false}; renderMood(); },
-  delNote:d=>{ if(!confirm(L('confirmRemoveEntry'))) return; S.notes=S.notes.filter(n=>n.id!==d.id); save(); renderNotes(); },
+  delNote:d=>askRemove(()=>{ S.notes=S.notes.filter(n=>n.id!==d.id); save(); renderNotes(); }),
   sumRange:d=>{ sumRange=d.v; renderVisit(); },
   pdfDoctor:()=>saveDoctorPdf(),
   previewSummary:()=>previewSummary(),
@@ -5016,6 +5121,16 @@ document.addEventListener('change', ev=>{
   if(el && CH[el.dataset.ch]) setTimeout(()=>CH[el.dataset.ch](el.dataset, el), 0);
 });
 document.addEventListener('keydown', ev=>{
+  if(dialogNow){
+    if(ev.key==='Escape'){ ev.preventDefault(); answerDialog(false); }
+    else if(ev.key==='Enter' && ev.target.id==='dialogInput'){ ev.preventDefault(); answerDialog(true); }
+    else if(ev.key==='Tab'){   // keep focus inside the box
+      const f=['dialogInput','dialogNo','dialogYes'].map($).filter(e=>!e.hidden);
+      const i=f.indexOf(document.activeElement);
+      ev.preventDefault(); f[(i+(ev.shiftKey?f.length-1:1))%f.length].focus();
+    }
+    return;
+  }
   if(ev.key==='Escape'){ const p=topPanel(); if(p){ ev.preventDefault(); closePanel(p); } return; }
   const el=ev.target;
   if((ev.key==='Enter'||ev.key===' ') && el && el.getAttribute && el.getAttribute('role')==='checkbox' && el.dataset.act){
@@ -5529,14 +5644,15 @@ function restoreFromFile(input){
     }
     const when=data.exported ? fmtGreg(localDateKey(new Date(data.exported)), true) : '?';
     const names=data.profiles.list.map(p=>p.name||L('unnamed')).join(', ');
-    if(!confirm(L('restoreConfirm',{date:when, names}))) return;
-    try{
-      profiles.list.forEach(p=>{ try{ localStorage.removeItem(stateKey(p.id)); }catch(e){} });
-      data.profiles.list.forEach(p=>{ if(data.states[p.id]) writeState(p.id, normalizeState(data.states[p.id])); });
-      localStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
-      G.lastBackup=todayKey(); saveGlobal();
-      location.reload();
-    }catch(e){ showToast(L('saveFailed')); }
+    ask({msg:L('restoreConfirm',{date:when, names}), yes:'restoreBtn', no:ANSWER.cancel, onYes:()=>{
+      try{
+        profiles.list.forEach(p=>{ try{ localStorage.removeItem(stateKey(p.id)); }catch(e){} });
+        data.profiles.list.forEach(p=>{ if(data.states[p.id]) writeState(p.id, normalizeState(data.states[p.id])); });
+        localStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
+        G.lastBackup=todayKey(); saveGlobal();
+        location.reload();
+      }catch(e){ showToast(L('saveFailed')); }
+    }});
   };
   reader.onerror=()=>showToast(L('restoreBad'));
   reader.readAsText(file);

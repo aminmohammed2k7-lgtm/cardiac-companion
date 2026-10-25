@@ -66,6 +66,12 @@ const root = (rules.find(r => r.sel === ':root') || { body: '' }).body;
 const px = name => { const m = root.match(new RegExp(name + '\\s*:\\s*(\\d+)px')); return m ? +m[1] : 0; };
 check('main buttons and fields are 48px on a phone', px('--ctl') >= 48, px('--ctl') + 'px');
 check('small buttons and chips are 44px on a phone', px('--ctl-sm') >= 44, px('--ctl-sm') + 'px');
+// controls that once were 32 to 38px: each must take its size from --ctl-sm or --ctl
+const TAP = ['.seg-control button', '.lang-pick', '.symptom-remove', '.time-item input', '.time-item .log-del', '.icon-btn', '.chip'];
+const small = TAP.filter(sel => !rules.some(r => r.sel.split(',').map(s => s.trim()).includes(sel) && /(min-)?height\s*:\s*var\(--ctl(-sm)?\)/.test(r.body)));
+check('language, segment, remove and time controls are at least 44px', !small.length, list(small));
+check('the switch has a 48px tap area', rules.some(r => r.sel === '.switch::before' && /inset/.test(r.body)));
+
 check('one corner radius, 8px', px('--r') === 8 && !/--r-(card|btn|tag)\s*:/.test(root), px('--r') + 'px');
 
 // The scales in docs/DESIGN-DECISIONS.md. Every rule takes its sizes from
