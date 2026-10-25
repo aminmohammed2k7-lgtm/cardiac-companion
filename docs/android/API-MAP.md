@@ -49,7 +49,7 @@ sharing and calls, **6** camera pulse, **7** polish and accessibility,
 | `:5822` `requestNotificationPermission()`, `:5074` `#notifPermBlock`, `:4905` | Asks for permission and shows the Enable block | `LocalNotifications.requestPermissions()`, asked right after the first medicine is added. If refused, a calm banner on Today | 4 |
 | `:5830` `testNotification()` | Test notification | "Send a test reminder in 1 minute" | 4 |
 | `sw.js:62` `notificationclick` | Tapping a notification focuses or opens the page | `localNotificationActionPerformed` opens Today for the right person | 4 |
-| `:5058` `addNotification()`, the in-app Notifications panel | In-app list | **Not a browser API.** Stays as it is | — |
+| `:5058` `addNotification()`, the in-app Notifications panel | In-app list | **Not a browser API.** Stays as it is | None |
 | `:5700` `buildIcs()`, `:5749` `exportIcs()` | "Add reminders to my calendar" (.ics) | Stays as an optional extra. The file goes out through Phase 5's share path | 4, 5 |
 | `window.CC_ICON` (notification icon) | Colour icon from a data: URL | Monochrome (white on transparent) small icon resource | 2 |
 
