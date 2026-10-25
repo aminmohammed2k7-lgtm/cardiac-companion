@@ -1,5 +1,5 @@
 /*
- * Fasting seasons — run with:  node tests/core/seasons.test.js
+ * Fasting seasons. Run with:  node tests/core/seasons.test.js
  *
  * Orthodox Easter and Abiy Tsom (the 55 days before it) against Appendix C
  * of the work order; Ramadan against Node's own Umm al-Qura calendar (the

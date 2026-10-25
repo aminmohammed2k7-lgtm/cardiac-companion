@@ -1,5 +1,5 @@
 /*
- * Three languages, kept complete — run with:  node tests/i18n.test.js
+ * Three languages, kept complete. Run with:  node tests/i18n.test.js
  *
  * The app shows every text in English, Amharic or Afaan Oromo. A key that is
  * missing in one language quietly falls back to English, and an empty string

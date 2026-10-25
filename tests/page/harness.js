@@ -4,8 +4,8 @@
  * Loads the real page into Node: index.html's own script, after the js/core
  * files it loads, in a sandbox with small stand-ins for the browser (an
  * element store, storage in memory, a fixed clock). The tests then call the
- * page's own functions — the rules that still live in index.html, where they
- * are — and read what they drew or saved.
+ * page's own functions (the rules that still live in index.html, where they
+ * are) and read what they drew or saved.
  *
  * PAGE_HTML=/path/to/index.html runs the same tests against another copy of
  * the page (Phase 1b ran them against v3.2's index.html first).

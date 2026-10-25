@@ -1,5 +1,5 @@
 /*
- * Calendars and clocks — run with:  node tests/core/calendar.test.js
+ * Calendars and clocks. Run with:  node tests/core/calendar.test.js
  *
  * Ethiopian dates (js/core/calendar.js gregorianToEthiopian) against the
  * vectors in Appendix C of the work order and against a second, independent
@@ -40,7 +40,7 @@ for (const [g, wd, want, what] of VECTORS) {
   same(`${g} → ${want}  (${what})`, [e.year, e.month, e.day, e.weekday], [...ymd(want), wd]);
 }
 
-section('2. Every day 1901–2099 against Julian Day Numbers');
+section('2. Every day 1901 to 2099 against Julian Day Numbers');
 // An independent method: count days from a fixed epoch. The Ethiopian year
 // has twelve 30-day months and Pagume (5 days, 6 in a leap year), and every
 // fourth year is a leap year, so it repeats every 1461 days.
@@ -88,7 +88,7 @@ for (let gy = 1901; gy <= 2098; gy++) {
   const leap = e.year % 4 === 3;  // 2015, 2019, 2023… : the year before a Gregorian leap year begins
   if (e.month !== 13 || e.day !== (leap ? 6 : 5)) leapWrong.push(gy);
 }
-check('the last day of every year 1901–2098 is Pagume 6 in a leap year, Pagume 5 otherwise', !leapWrong.length, leapWrong.join(', '));
+check('the last day of every year 1901 to 2098 is Pagume 6 in a leap year, Pagume 5 otherwise', !leapWrong.length, leapWrong.join(', '));
 same('New Year falls on 12 September before a Gregorian leap year (2023, 2027)',
   [2023, 2027].map(y => C.ethiopianNewYearGregorian(y).getDate()), [12, 12]);
 same('… and on 11 September otherwise (2025, 2026, 2028)',
@@ -138,7 +138,7 @@ same('isDateKey', [C.isDateKey('2026-10-03'), C.isDateKey('2026-10-3'), C.isDate
 
 section('7. Clock times');
 same('toMin', [C.toMin('08:30'), C.toMin('00:00'), C.toMin('23:59'), C.toMin(''), C.toMin(null)], [510, 0, 1439, null, null]);
-same('isHHMM accepts 00:00–23:59 only', ['00:00', '23:59', '24:00', '8:00', '12:60'].map(C.isHHMM), [true, true, false, false, false]);
+same('isHHMM accepts 00:00 to 23:59 only', ['00:00', '23:59', '24:00', '8:00', '12:60'].map(C.isHHMM), [true, true, false, false, false]);
 same('pad2', [C.pad2(3), C.pad2(12)], ['03', '12']);
 
 done();

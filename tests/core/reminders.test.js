@@ -1,5 +1,5 @@
 /*
- * Reminder timing — run with:  node tests/core/reminders.test.js
+ * Reminder timing. Run with:  node tests/core/reminders.test.js
  *
  * Which reminders are due now for one person (js/core/reminders.js
  * dueReminders). Each unmarked dose is announced once at its time if that

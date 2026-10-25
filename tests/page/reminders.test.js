@@ -1,5 +1,5 @@
 /*
- * Reminders for everyone on the phone — run with:  node tests/page/reminders.test.js
+ * Reminders for everyone on the phone. Run with:  node tests/page/reminders.test.js
  *
  * When each reminder is due is tested in tests/core/reminders.test.js. This
  * tests what index.html sends: reminders run for every person on the phone,

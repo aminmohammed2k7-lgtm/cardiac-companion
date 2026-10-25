@@ -1,5 +1,5 @@
 /*
- * Warfarin and INR — run with:  node tests/core/warfarin.test.js
+ * Warfarin and INR. Run with:  node tests/core/warfarin.test.js
  *
  * The app never works out a dose. It shows the doctor's dose as tablets
  * only when that is an exact whole, half or quarter tablet (otherwise in mg
@@ -27,7 +27,7 @@ same('a negative count keeps its sign', Wf.fmtTabs(-1.5), '-1½');
 // fmtTabs writes the nearest quarter. Doses only ever reach it as exact
 // quarters (tabletsFor, weeklyTabs); tablets left in a box can be anything
 // typed, and are written to the nearest quarter.
-same('counts are written to the nearest quarter — 1.99 as 2, 6.6 as 6½, 0.1 as 0',
+same('counts are written to the nearest quarter: 1.99 as 2, 6.6 as 6½, 0.1 as 0',
   [Wf.fmtTabs(1.99), Wf.fmtTabs(6.6), Wf.fmtTabs(0.1)], ['2', '6½', '0']);
 
 section('2b. Tablets a week: only when every day is exact');
@@ -43,8 +43,8 @@ same('a negative entry adds nothing; no list is 0', [Wf.weeklyMg([-5, 5, 0, 0, 0
 
 section('4. INR against the doctor\'s range');
 const tg = { lo: 2, hi: 3 };
-same('range 2.0–3.0: 1.9 low, 2.0 in, 2.5 in, 3.0 in, 3.1 high', [1.9, 2, 2.5, 3, 3.1].map(v => Wf.inrStatus(v, tg)), ['low', 'in', 'in', 'in', 'high']);
-same('range 2.5–3.5: 2.4 low', Wf.inrStatus(2.4, { lo: 2.5, hi: 3.5 }), 'low');
+same('range 2.0 to 3.0: 1.9 low, 2.0 in, 2.5 in, 3.0 in, 3.1 high', [1.9, 2, 2.5, 3, 3.1].map(v => Wf.inrStatus(v, tg)), ['low', 'in', 'in', 'in', 'high']);
+same('range 2.5 to 3.5: 2.4 low', Wf.inrStatus(2.4, { lo: 2.5, hi: 3.5 }), 'low');
 same('no range, or half a range: no judgement at all', [Wf.inrStatus(2.5, null), Wf.inrStatus(2.5, { lo: null, hi: 3 }), Wf.inrStatus(2.5, { lo: 2, hi: null })], [null, null, null]);
 const log = [{ id: 'c', date: '2026-09-20', value: 3 }, { id: 'a', date: '2026-09-01', value: 2 }, { id: 'b', date: '2026-09-10', value: 2.5 }];
 const Sx = { inrLog: log };
@@ -89,9 +89,9 @@ same('6 days of line is too little for a figure; 7 days is enough',
 same('one result alone gives no figure', ttr([['2026-09-01', 2.5]]), null);
 same('only days from the start of the window count', ttr([['2026-09-01', 2.5], ['2026-09-21', 2.5]], '2026-09-11'), { pct: 100, days: 10, n: 2 });
 same('results after the end of the window are left out', ttr([['2026-09-01', 2.5], ['2026-09-11', 2.5], ['2026-09-21', 1]], '2025-01-01', '2026-09-15'), { pct: 100, days: 10, n: 2 });
-// window from 25 Aug: 1 Aug–20 Aug ends before it (left out: 3 results used,
-// not 4); 20 Aug–1 Sep (1.0 rising to 2.5) counts from 25 Aug, 7 days, of
-// which 28–31 Aug are 2.0 or more; 1–11 Sep adds 10 days in range: 14 of 17
+// window from 25 Aug: 1 Aug to 20 Aug ends before it (left out: 3 results used,
+// not 4); 20 Aug to 1 Sep (1.0 rising to 2.5) counts from 25 Aug, 7 days, of
+// which 28 to 31 Aug are 2.0 or more; 1 to 11 Sep adds 10 days in range: 14 of 17
 same('a stretch that ends before the window is left out; one that crosses its start counts from the start',
   ttr([['2026-08-01', 1], ['2026-08-20', 1], ['2026-09-01', 2.5], ['2026-09-11', 2.5]], '2026-08-25'), { pct: 82, days: 17, n: 3 });
 same('no range from the doctor: no figure', ttr([['2026-09-01', 2.5], ['2026-09-11', 2.5]], undefined, undefined, { lo: null, hi: null }), null);

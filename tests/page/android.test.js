@@ -1,5 +1,5 @@
 /*
- * The page inside the Android app — run with:  node tests/page/android.test.js
+ * The page inside the Android app. Run with:  node tests/page/android.test.js
  *
  * Android's back button closes the top panel, then a form open on this tab
  * (as its own Cancel button would), then goes back to Today, and only then

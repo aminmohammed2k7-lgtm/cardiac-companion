@@ -1,5 +1,5 @@
 /*
- * Every test file in one run — `npm test`, or:  node tests/run.js
+ * Every test file in one run: `npm test`, or:  node tests/run.js
  *
  * Runs each tests/*.test.js once, and each tests/core/*.test.js and
  * tests/page/*.test.js (the rules still inside index.html) three times, in

@@ -1,5 +1,5 @@
 /*
- * What the page records — run with:  node tests/page/records.test.js
+ * What the page records. Run with:  node tests/page/records.test.js
  *
  * Rules from the guide's "Features and logic" that index.html carries out
  * when the person taps something: undo gives back the tablets a dose took;

@@ -1,5 +1,5 @@
 /*
- * Dose plans and adherence — run with:  node tests/core/doses.test.js
+ * Dose plans and adherence. Run with:  node tests/core/doses.test.js
  *
  * Which doses are due on a day (daily, every other day, weekdays, when
  * needed; medicines added or removed part-way; warfarin 0 versus blank),
@@ -151,7 +151,7 @@ same('Sun 4 to Sat 10 October: every other day 4×, Mon/Wed/Fri 3×, when needed
   ['alt@08:00', 'mwf@08:00', 'prn@08:00', 'new@08:00', 'gone@08:00', 'W'].map(count), [4, 3, 0, 4, 2, 5]);
 r = D.tally(Sx, C.daysFromTo('2026-10-04', '2026-10-10'));
 // 18 doses in the week; Saturday's are every-other-day, the one added on
-// Wednesday, and warfarin — 3, all past their time at 23:00
+// Wednesday, and warfarin: 3, all past their time at 23:00
 same('none of them marked: the 15 before today are "not recorded", today\'s 3 are due', [r.notRec, r.due, r.taken], [15, 3, 0]);
 
 section('7. Reading a dose key');

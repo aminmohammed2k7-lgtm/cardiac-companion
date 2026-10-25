@@ -1,5 +1,5 @@
 /*
- * Today's alerts — run with:  node tests/page/alerts.test.js
+ * Today's alerts. Run with:  node tests/page/alerts.test.js
  *
  * From the guide's Today tab and "Features and logic": what the alerts strip
  * shows, in which order, and that only one information card shows at a time

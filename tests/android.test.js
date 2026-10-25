@@ -1,5 +1,5 @@
 /*
- * The Android app is put together as the safety charter requires — run with:
+ * The Android app is put together as the safety charter requires. Run with:
  *   node tests/android.test.js
  *
  * Reads the app's files and the Android project and fails if: the page

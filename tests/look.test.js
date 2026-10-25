@@ -1,5 +1,5 @@
 /*
- * The plain look, kept plain — run with:  node tests/look.test.js
+ * The plain look, kept plain. Run with:  node tests/look.test.js
  *
  * Reads the stylesheet and markup in index.html and fails if anything from
  * the old "app template" look comes back: pill-shaped or shadowed buttons,
