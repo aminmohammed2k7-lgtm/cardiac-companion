@@ -1,7 +1,8 @@
 /*
  * The plain look, kept plain. Run with:  node tests/look.test.js
  *
- * Reads the stylesheet and markup in index.html and fails if anything from
+ * Reads the stylesheet (www/css/app.css) and the markup in index.html and
+ * fails if anything from
  * the old "app template" look comes back: pill-shaped or shadowed buttons,
  * gradients, press/lift motion, slide-in panels, all-caps labels, extra-bold
  * type, or text characters (✓ ↑ ↓ ×) used as icons instead of drawn ones.
@@ -16,7 +17,7 @@ const fs = require('fs');
 const path = require('path');
 
 const html = fs.readFileSync(path.join(__dirname, '..', 'www', 'index.html'), 'utf8');
-const css = html.slice(html.indexOf('<style>') + 7, html.indexOf('</style>')).replace(/\/\*[\s\S]*?\*\//g, '');
+const css = fs.readFileSync(path.join(__dirname, '..', 'www', 'css', 'app.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
 
 // every innermost rule: { sel, body }
 const rules = [];
@@ -104,7 +105,7 @@ check('text is at least 6:1 on the page and on cards', inks.length === 6 && !wea
 const edge = ratio(hex('--line-input'), hex('--surface'));
 check('field and switch edges are at least 3:1', edge >= 3, edge.toFixed(2) + ':1');
 
-const glyphs = [...new Set(html.match(/[✓✔✕✗↑↓]/g) || [])];
+const glyphs = [...new Set((html + css).match(/[✓✔✕✗↑↓]/g) || [])];
 check('no text characters used as icons', !glyphs.length && !/>\s*×\s*</.test(html), glyphs.join(' '));
 
 console.log(failures ? `\n${failures} of ${checks} checks failed` : `\nall ${checks} checks passed`);

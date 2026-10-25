@@ -28,14 +28,15 @@ function section(t) { console.log('\n' + t); }
 
 const html = read('www/index.html');
 const fontsCss = read('www/fonts/fonts.css');
+const appCss = read('www/css/app.css');
 
 section('1. Nothing from the internet');
 const loads = [...html.matchAll(/<(?:script|link|img|iframe)\b[^>]*\b(?:src|href)="([^"]+)"/g)].map(m => m[1]);
 const remote = loads.filter(u => /^(https?:)?\/\//.test(u));
 check('the page loads no file from the internet', !remote.length, remote.join(', '));
-const code = html + ['js/core', 'js/platform'].map(d => fs.readdirSync(path.join(root, 'www', d)).map(f => read(`www/${d}/${f}`)).join('\n')).join('\n') + read('www/ppg-engine.js');
+const code = html + read('www/js/strings.js') + ['js/core', 'js/platform'].map(d => fs.readdirSync(path.join(root, 'www', d)).map(f => read(`www/${d}/${f}`)).join('\n')).join('\n') + read('www/ppg-engine.js');
 check('no code that could send anything (fetch, XMLHttpRequest, WebSocket, sendBeacon)', !/\bfetch\(|XMLHttpRequest|WebSocket|sendBeacon/.test(code));
-check('no Google Fonts', !/fonts\.(googleapis|gstatic)\.com/.test(html + fontsCss));
+check('no Google Fonts', !/fonts\.(googleapis|gstatic)\.com/.test(html + fontsCss + appCss) && !/@import|url\((?!["']?data:)/.test(appCss));
 const local = loads.filter(u => !/^(https?:|data:|blob:|\/\/|#)/.test(u));
 const missing = local.filter(u => !exists(path.join('www', u)));
 check('every file the page loads is in www/', local.length > 0 && !missing.length, missing.join(', ') || local.length + ' files');
@@ -43,7 +44,7 @@ const fontFiles = [...fontsCss.matchAll(/url\('([^']+)'\)/g)].map(m => m[1]);
 check('both fonts are in the app, each with its licence',
   fontFiles.length === 2 && fontFiles.every(f => exists('www/fonts/' + f)) && exists('www/fonts/OFL-Onest.txt') && exists('www/fonts/OFL-NotoSansEthiopic.txt'),
   fontFiles.join(', '));
-check('the font stack is unchanged', html.includes("--font:'Onest','Noto Sans Ethiopic',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;"));
+check('the font stack is unchanged', appCss.includes("--font:'Onest','Noto Sans Ethiopic',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;"));
 
 section('2. Website-only parts are gone (CHANGES.md 4.0.0)');
 check('no service worker', !/serviceWorker/.test(html) && !exists('www/sw.js') && !exists('sw.js'));
@@ -53,7 +54,7 @@ check('no cross-tab sync', !/addEventListener\('storage'/.test(html));
 check('the developer pulse lab is not shipped', !exists('www/pulse-lab.html') && exists('tools/pulse-lab.html'));
 
 section('3. Android only through js/platform/');
-const appCode = [html, ...fs.readdirSync(path.join(root, 'www/js/core')).map(f => read('www/js/core/' + f))].join('\n');
+const appCode = [html, read('www/js/strings.js'), ...fs.readdirSync(path.join(root, 'www/js/core')).map(f => read('www/js/core/' + f))].join('\n');
 check('UI and medical code never touch Capacitor directly', !/Capacitor\.|Plugins\./.test(appCode.replace(/<script src="js\/vendor\/[^"]+"><\/script>/g, '')));
 const { FILES } = require('../scripts/vendor.js');
 // Line endings are ignored: on Windows, git (core.autocrlf) checks the copies
