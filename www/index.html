@@ -82,6 +82,7 @@
     --accent-line:#A8CBC3;
     --accent-ink:#17514A;
     --on-accent:#FFFFFF;
+    --on-danger:#FFFFFF;
 
     --danger:#B3261E;
     --danger-soft:#FCEDEB;
@@ -158,6 +159,7 @@
     --accent-line:rgba(125,202,186,.42);
     --accent-ink:#8FD4C5;
     --on-accent:#062520;
+    --on-danger:#2A0906;
 
     --danger:#F08F85;
     --danger-soft:rgba(240,143,133,.12);
@@ -271,7 +273,7 @@
     font-variant-numeric:tabular-nums;
   }
   .header-actions{display:flex; align-items:center; gap:var(--sp-xxs); flex-shrink:0;}
-  .header-actions .lang-pills{margin-right:var(--sp-xs);}
+  .header-actions .lang-switch{margin-right:var(--sp-xs);}
   /* on phones the date needs the room more than the logo does:
      the longest month, Oromo "Onkololeessa 30", must fit a 360px screen */
   @media (max-width:419px){ .brand-mark{display:none;} }
@@ -298,14 +300,14 @@
   }
 
   /* segmented controls: language, text size, clock, chart range */
-  .lang-pills, .seg-control{
+  .lang-switch, .seg-control{
     display:inline-flex; align-items:center;
     background:var(--surface);
     border:1px solid var(--line-strong);
     border-radius:var(--r);
     padding:var(--sp-xxs); gap:var(--sp-xxs);
   }
-  .lang-pill, .seg-control button{
+  .lang-btn, .seg-control button{
     min-width:32px; min-height:calc(var(--ctl-sm) - 6px);
     padding:0 var(--sp-sm);
     border:none; border-radius:var(--r);
@@ -316,7 +318,7 @@
     transition:background-color var(--tr), color var(--tr);
   }
   .seg-control button{padding:0 var(--sp-md); font-size:var(--fs-sm);}
-  .lang-pill.active, .seg-control button.active{background:var(--accent-soft); color:var(--accent-ink);}
+  .lang-btn.active, .seg-control button.active{background:var(--accent-soft); color:var(--accent-ink);}
 
   /* ═══════════ CONTENT ═══════════ */
   .app-main{flex:1; display:flex; flex-direction:column; min-height:0;}
@@ -352,7 +354,9 @@
   .field-label{font-size:var(--fs-sm); font-weight:600; color:var(--ink-2);}
   .form-field-group{display:flex; flex-direction:column; gap:var(--sp-sm);}
   .form-field-group .form-field{margin:0;}
-  .form-row2{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-sm);}
+  /* minmax(0,…): a date field must not push its row wider than a 360px phone */
+  .form-row2{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--sp-sm);}
+  .form-row2 > *{min-width:0;}
   .form-row2 + .form-row2{margin-top:0;}
 
   /* ═══════════ COUNTS AND STATE TAGS ═══════════
@@ -403,7 +407,7 @@
   .card-head .btn::before{width:18px; height:18px;}
 
   /* small icon buttons: edit, remove, refill, undo */
-  .round-btn, .med-undo, .log-del{
+  .small-btn, .med-undo, .log-del{
     width:var(--ctl-sm); height:var(--ctl-sm); flex-shrink:0;
     border:1px solid transparent; border-radius:var(--r);
     background:transparent; color:var(--ink-2);
@@ -411,9 +415,9 @@
     cursor:pointer;
     transition:background-color var(--tr), color var(--tr);
   }
-  .round-btn svg, .med-undo svg, .log-del svg{width:18px; height:18px;}
-  .round-btn.accent{background:var(--surface); border-color:var(--line-strong); color:var(--accent-ink);}
-  .round-btn:active, .med-undo:active, .log-del:active{background:var(--surface-3);}
+  .small-btn svg, .med-undo svg, .log-del svg{width:18px; height:18px;}
+  .small-btn.accent{background:var(--surface); border-color:var(--line-strong); color:var(--accent-ink);}
+  .small-btn:active, .med-undo:active, .log-del:active{background:var(--surface-3);}
   .log-del{color:var(--ink-3);}
   .log-del svg{width:16px; height:16px;}
 
@@ -442,6 +446,7 @@
     background-size:18px 18px;
   }
   textarea.form-field{resize:vertical; min-height:96px; line-height:1.45;}
+  textarea.form-field[rows="2"]{min-height:76px;}
 
   .entry-row{display:flex; align-items:center; gap:var(--sp-sm);}
   .entry-row .form-field{flex:1; min-width:0; margin:0;}
@@ -469,11 +474,11 @@
   .switch::after{
     content:''; position:absolute; top:5px; left:5px;
     width:22px; height:22px; border-radius:var(--r);
-    background:#fff;
+    background:var(--surface);
   }
   .switch.on{background:var(--accent);}
   .switch.on::after{transform:translateX(20px);}
-  :root[data-theme="dark"] .switch.on::after{background:var(--on-accent);}
+  .switch.on::after{background:var(--on-accent);}
 
   /* ═══════════ TODAY: warfarin, the dose is the biggest thing on the page ═══════════ */
   .dose-hero{display:flex; align-items:baseline; gap:var(--sp-sm);}
@@ -634,7 +639,7 @@
   #inrList, #injHistory{margin-top:var(--sp-md);}
   .log-date{min-width:52px; font-size:var(--fs-sm); color:var(--ink-3); font-variant-numeric:tabular-nums;}
   .log-val{flex:1; font-weight:600; font-variant-numeric:tabular-nums; text-align:right;}
-  #inrList .log-val{text-align:left;}
+  #inrList .log-val, #injHistory .log-val{text-align:left;}
   .log-ok{display:inline-flex; color:var(--accent-ink); vertical-align:-3px;}
   .log-ok svg{width:18px; height:18px;}
 
@@ -728,16 +733,16 @@
   .htime{display:flex; gap:var(--sp-sm); font-size:var(--fs-xs); color:var(--ink-3); margin-top:var(--sp-xxs); font-variant-numeric:tabular-nums;}
 
   /* ═══════════ SUMMARY ═══════════ */
-  .rings-row{
+  .stat-row{
     display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
     background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
     padding:var(--sp-lg) 0; margin-bottom:var(--sp-md);
   }
-  .ring-card{padding:0 var(--sp-lg); border-left:1px solid var(--line); min-width:0;}
-  .ring-card:first-child{border-left:none;}
-  .ring-num{font-size:var(--fs-2xl); font-weight:700; line-height:1.1; letter-spacing:-.01em; font-variant-numeric:tabular-nums;}
-  .ring-label{font-size:var(--fs-sm); font-weight:600; line-height:1.25; margin-top:var(--sp-sm);}
-  .ring-sub{font-size:var(--fs-xs); line-height:1.3; color:var(--ink-3); margin-top:var(--sp-xxs);}
+  .stat{padding:0 var(--sp-lg); border-left:1px solid var(--line); min-width:0;}
+  .stat:first-child{border-left:none;}
+  .stat-num{font-size:var(--fs-2xl); font-weight:700; line-height:1.1; letter-spacing:-.01em; font-variant-numeric:tabular-nums;}
+  .stat-label{font-size:var(--fs-sm); font-weight:600; line-height:1.25; margin-top:var(--sp-sm);}
+  .stat-sub{font-size:var(--fs-xs); line-height:1.3; color:var(--ink-3); margin-top:var(--sp-xxs);}
 
   #trendChart{width:100%; height:180px; display:block;}
   #weightAxisLabel{text-align:center; margin:var(--sp-sm) 0 0;}
@@ -761,7 +766,7 @@
     padding:var(--sp-md) 0; border-top:1px solid var(--line);
     font-size:var(--fs-md); font-variant-numeric:tabular-nums;
   }
-  #weekTable .table-row:first-child{border-top:none; padding-top:0; font-size:var(--fs-xs); color:var(--ink-3);}
+  #weekTable .table-row:first-child{border-top:none; padding-top:0; font-size:var(--fs-xs); font-weight:600; color:var(--ink-3);}
   #weekTable .table-row span:not(:first-child){text-align:right;}
   #weekTable .table-row:not(:first-child) span:first-child{font-weight:600;}
 
@@ -820,7 +825,7 @@
   }
 
   /* ═══════════ PANELS: notifications and settings ═══════════ */
-  .notif-panel{
+  .panel{
     position:fixed; inset:0;
     max-width:460px; margin:0 auto;
     z-index:100;
@@ -828,7 +833,7 @@
     overflow-y:auto;
     background:var(--canvas);
   }
-  .notif-head{
+  .panel-head{
     position:sticky; top:0; z-index:1;
     display:flex; align-items:center; justify-content:space-between; gap:var(--sp-md);
     padding:calc(var(--sp-sm) + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) var(--sp-md) var(--sp-sm) var(--sp-lg);
@@ -836,7 +841,7 @@
     background:var(--canvas);
     border-bottom:1px solid var(--line);
   }
-  .panel-title{font-size:var(--fs-lg); font-weight:700; letter-spacing:-.01em; line-height:1.25;}
+  .panel-title{font-size:var(--fs-xl); font-weight:700; letter-spacing:-.01em; line-height:1.25;}
   .notif-list{padding:0 var(--sp-lg) var(--sp-sm); flex:1 0 auto;}
   .notif-item{
     padding:var(--sp-md) var(--sp-lg); margin-bottom:var(--sp-sm);
@@ -856,6 +861,7 @@
   .settings-section-title{font-size:var(--fs-sm); font-weight:600; color:var(--ink-3); margin:0 var(--sp-xxs) var(--sp-sm);}
   .settings-block{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow:hidden;}
   .settings-pad{padding:var(--sp-lg);}
+  .settings-pad.divided{border-top:1px solid var(--line);}
   .settings-pad .form-field{margin:var(--sp-md) 0 0;}
   .settings-row{
     display:flex; align-items:center; justify-content:space-between; gap:var(--sp-md);
@@ -897,9 +903,9 @@
     .btn-solid:hover:not(:disabled){background:var(--accent-press);}
     .btn-ghost:hover:not(:disabled){background:var(--surface-2);}
     .btn-danger:hover{background:var(--danger-ink);}
-    .icon-btn:hover, .round-btn:hover, .med-undo:hover, .log-del:hover, .symptom-remove:hover{background:var(--surface-3); color:var(--ink-1);}
-    .round-btn.accent:hover{background:var(--surface-2); color:var(--accent-ink);}
-    .lang-pill:not(.active):hover, .seg-control button:not(.active):hover{background:var(--surface-2); color:var(--ink-1);}
+    .icon-btn:hover, .small-btn:hover, .med-undo:hover, .log-del:hover, .symptom-remove:hover{background:var(--surface-3); color:var(--ink-1);}
+    .small-btn.accent:hover{background:var(--surface-2); color:var(--accent-ink);}
+    .lang-btn:not(.active):hover, .seg-control button:not(.active):hover{background:var(--surface-2); color:var(--ink-1);}
     .chip:not(.active):hover{background:var(--surface-2); color:var(--ink-1);}
     .symptom-item:not(.sel):hover, .vital:hover{background:var(--surface-2);}
     .who-btn:hover{background:var(--surface-2);}
@@ -931,7 +937,7 @@
     #activeAlerts{padding:var(--sp-sm) var(--sp-2xl) 0; max-width:1120px;}
     .tab{padding:var(--sp-sm) var(--sp-2xl) var(--sp-2xl); max-width:1120px;}
     .desktop-2col{display:grid; grid-template-columns:1.25fr 1fr; gap:var(--sp-lg); align-items:start;}
-    .notif-panel{left:auto; right:0; margin:0; width:420px; border-left:1px solid var(--line);}
+    .panel{left:auto; right:0; margin:0; width:420px; border-left:1px solid var(--line);}
     .toast{bottom:32px;}
   }
   @media (min-width:1080px){
@@ -945,10 +951,10 @@
      ═══════════════════════════════════════════════════════════════════ */
 
   /* larger text: zoom keeps every layout in proportion */
-  :root.big-text .app, :root.big-text .notif-panel{zoom:1.14;}
+  :root.big-text .app, :root.big-text .panel{zoom:1.14;}
   /* zoom magnifies viewport units too, so the app shell is shrunk back to fit */
   :root.big-text .app{height:calc(100vh / 1.14); height:calc(100dvh / 1.14);}
-  :root.big-text .notif-panel{height:calc(100vh / 1.14); height:calc(100dvh / 1.14); bottom:auto;}
+  :root.big-text .panel{height:calc(100vh / 1.14); height:calc(100dvh / 1.14); bottom:auto;}
 
   .sub-label{font-size:var(--fs-sm); font-weight:600; color:var(--ink-2); margin:var(--sp-lg) 0 var(--sp-sm);}
   .card-body > .sub-label:first-child{margin-top:0;}
@@ -966,9 +972,8 @@
     cursor:pointer;
   }
   .btn-col{display:flex; flex-direction:column; gap:var(--sp-sm);}
-  .btn-danger{background:var(--danger); color:#fff;}
+  .btn-danger{background:var(--danger); color:var(--on-danger);}
   .btn-danger:active{background:var(--danger-ink);}
-  :root[data-theme="dark"] .btn-danger{color:#2A0906;}
   a.btn{text-decoration:none;}
 
   /* chips laid out as a 2×2 grid (mood answers) or a row of weekdays */
@@ -1032,7 +1037,7 @@
   .time-item{display:flex; align-items:center; gap:var(--sp-xxs); padding:var(--sp-xxs) var(--sp-xxs) var(--sp-xxs) var(--sp-md); border:1px solid var(--line-input); border-radius:var(--r); background:var(--surface);}
   .time-item input{width:136px; min-height:36px; border:none; background:transparent; color:var(--ink-1); font-size:var(--fs-md); font-weight:600;}
   .time-item .log-del{width:36px; height:36px;}
-  .manage-row .round-btn{margin-left:calc(var(--sp-xxs) * -1);}
+  .manage-row .small-btn{margin-left:calc(var(--sp-xxs) * -1);}
   .row-actions{display:flex; gap:var(--sp-xs); flex-shrink:0;}
 
   /* warning signs: the only place red leads */
@@ -1076,6 +1081,8 @@
   .mood-result b{display:block; font-size:var(--fs-md); font-weight:600; color:var(--ink-1); margin-bottom:var(--sp-xxs);}
 
   /* Today: get help */
+  .help-section{margin:var(--sp-xl) 0 var(--sp-md); padding-top:var(--sp-lg); border-top:1px solid var(--line);}
+  .section-label{font-size:var(--fs-lg); font-weight:600; line-height:1.3; margin:0 var(--sp-xxs) var(--sp-md);}
   .call-row{display:flex; flex-direction:column; gap:var(--sp-sm);}
   .help-actions{display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-sm); margin-top:var(--sp-sm);}
   .help-actions .btn{min-height:var(--ctl); font-size:var(--fs-md); padding:var(--sp-sm) var(--sp-md);}
@@ -1103,28 +1110,28 @@
 
   /* full-screen panels: get help, medical ID, show-the-nurse, summary preview */
   .panel-body{padding:0 var(--sp-lg) calc(var(--sp-xl) + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));}
-  .help-hero{padding:var(--sp-lg); border:1px solid transparent; border-radius:var(--r); background:var(--danger); color:#fff; margin-bottom:var(--sp-md);}
-  :root[data-theme="dark"] .help-hero{color:#2A0906;}
+  .help-hero{padding:var(--sp-lg); border:1px solid transparent; border-radius:var(--r); background:var(--danger); color:var(--on-danger); margin-bottom:var(--sp-md);}
   .help-hero.today{background:var(--warn-soft); border-color:var(--warn-line); color:var(--warn-ink);}
   .help-hero h3{font-size:var(--fs-xl); font-weight:700; line-height:1.25;}
   .help-hero p{font-size:var(--fs-md); line-height:1.45; margin-top:var(--sp-sm);}
-  .help-hero .say{margin-top:var(--sp-md); padding:var(--sp-md) var(--sp-md); border-radius:var(--r); background:rgba(255,255,255,.16); font-weight:600;}
+  .help-hero .say{margin-top:var(--sp-md); padding:var(--sp-md) var(--sp-md); border-radius:var(--r); background:var(--surface); color:var(--danger-ink); font-weight:600;}
   .help-hero.today .say{background:var(--surface);}
   .id-card{background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:var(--sp-lg); margin-bottom:var(--sp-md);}
   .id-name{font-size:var(--fs-xl); font-weight:700; line-height:1.25; margin-top:var(--sp-xxs);}
   .id-line{padding:var(--sp-md) 0; border-top:1px solid var(--line); font-size:var(--fs-md); line-height:1.45; font-weight:500;}
   .id-name + .id-line{border-top:none;}
   .id-line .tr{display:block; margin-top:var(--sp-xxs); font-size:var(--fs-sm); font-weight:400; color:var(--ink-3);}
-  .preview{background:#fff; color:#1b1b1b; border:1px solid var(--line); border-radius:var(--r); padding:var(--sp-xl) var(--sp-lg); font-size:var(--fs-md); line-height:1.5;}
+  .preview{background:var(--paper); color:var(--paper-ink); border:1px solid var(--line); border-radius:var(--r); padding:var(--sp-xl) var(--sp-lg); font-size:var(--fs-md); line-height:1.5;}
   .preview .p-title{font-size:var(--fs-xl); font-weight:700; line-height:1.25;}
-  .preview .p-sub{color:#555; margin-top:var(--sp-xs);}
-  .preview .p-head{font-size:var(--fs-md); font-weight:700; margin-top:var(--sp-lg); padding-bottom:var(--sp-xs); border-bottom:1px solid #cfcfcf;}
+  .preview .p-sub{color:var(--paper-ink-2); margin-top:var(--sp-xs);}
+  .preview .p-head{font-size:var(--fs-md); font-weight:700; margin-top:var(--sp-lg); padding-bottom:var(--sp-xs); border-bottom:1px solid var(--paper-line);}
   .preview .p-item{padding:var(--sp-xxs) 0 var(--sp-xxs) var(--sp-lg); text-indent:-10px;}
-  .preview .p-subitem{padding:0 0 var(--sp-xxs) var(--sp-xl); color:#666;}
+  .preview .p-subitem{padding:0 0 var(--sp-xxs) var(--sp-xl); color:var(--paper-ink-3);}
   .preview .p-pair, .preview .p-body{padding:var(--sp-xxs) 0;}
   .preview .p-pair b{font-weight:600;}
-  .preview .p-note{margin-top:var(--sp-lg); font-size:var(--fs-xs); color:#666;}
-  .preview .p-flag{color:#96201A; font-weight:600;}
+  .preview .p-note{margin-top:var(--sp-lg); font-size:var(--fs-xs); color:var(--paper-ink-3);}
+  .preview .p-flag{color:var(--paper-flag); font-weight:600;}
+  .preview .p-break{margin:var(--sp-xl) 0; border:none; border-top:2px dashed var(--paper-line);}
 
   .check-row{display:flex; align-items:center; gap:var(--sp-md); min-height:var(--ctl); font-size:var(--fs-md); font-weight:500; cursor:pointer;}
   .check-row input{width:22px; height:22px; flex-shrink:0; accent-color:var(--accent);}
@@ -1154,6 +1161,11 @@
   #camNoLight{margin-top:var(--sp-md);}
   #camResult{margin-top:var(--sp-md);}
   .cam-actions{margin-bottom:var(--sp-lg);}
+
+  /* space above, from the spacing scale (for pieces the script builds) */
+  .block{display:block;}
+  .mt-sm{margin-top:var(--sp-sm);}
+  .mt-md{margin-top:var(--sp-md);}
 </style>
 </head>
 <body>
@@ -1164,7 +1176,7 @@
     <div class="header-top">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.2a4.2 4.2 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/><path d="M7.5 12.5h2.5l1.2-2.2 1.8 4 1.2-1.8h2.3"/></svg>
         </div>
         <div class="brand-date">
           <h1 class="sr-only" data-t="t-appTitle">Cardiac Companion</h1>
@@ -1173,10 +1185,10 @@
         </div>
       </div>
       <div class="header-actions">
-        <div class="lang-pills" role="group" aria-label="Language">
-          <button class="lang-pill active" onclick="setLang('en')" aria-pressed="true">EN</button>
-          <button class="lang-pill" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
-          <button class="lang-pill" onclick="setLang('or')" aria-pressed="false" aria-label="Afaan Oromoo">OR</button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button class="lang-btn active" onclick="setLang('en')" aria-pressed="true">EN</button>
+          <button class="lang-btn" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
+          <button class="lang-btn" onclick="setLang('or')" aria-pressed="false" aria-label="Afaan Oromoo">OR</button>
         </div>
         <button class="icon-btn" id="notifBtn" onclick="openPanel('notifPanel')" data-ta="t-notifTitle" aria-label="Notifications">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
@@ -1208,7 +1220,7 @@
           <div class="card" id="warfarinCard" hidden>
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-warfarinToday">Warfarin today</span>
+                <h3 class="card-label" data-t="t-warfarinToday">Warfarin today</h3>
               </div>
               <div class="card-head-right">
                 <span class="badge-status pending" id="warfarinDay">—</span>
@@ -1233,7 +1245,7 @@
           <div class="card" id="injectionCard" hidden>
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-injectionTitle">Penicillin injection</span>
+                <h3 class="card-label" data-t="t-injectionTitle">Penicillin injection</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1252,7 +1264,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-todayDoses">Today's medicines</span>
+                <h3 class="card-label" data-t="t-todayDoses">Today's medicines</h3>
               </div>
               <span class="badge" id="medBadge">0/0</span>
             </div>
@@ -1267,7 +1279,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-weightTitle">Daily weight</span>
+                <h3 class="card-label" data-t="t-weightTitle">Daily weight</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1287,7 +1299,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-vitals">Your readings</span>
+                <h3 class="card-label" data-t="t-vitals">Your readings</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1315,7 +1327,7 @@
                 </button>
               </div>
               <div id="vitalEntry" hidden>
-                <div class="entry-row" style="margin-top:12px;">
+                <div class="entry-row mt-md">
                   <input class="form-field" id="vitalInput" aria-label="Reading">
                   <button class="btn btn-solid" onclick="saveVital()" data-t="t-saveVital">Save</button>
                   <button class="btn btn-ghost" onclick="closeVitalEntry()" data-t="t-cancelVital">Cancel</button>
@@ -1330,21 +1342,15 @@
             </div>
           </div>
 
-          <!-- GET HELP -->
-          <div class="card">
-            <div class="card-head">
-              <div class="card-head-left">
-                <span class="card-label" data-t="getHelpTitle">Get help</span>
-              </div>
+          <!-- GET HELP: buttons, not a record, so no card around them -->
+          <section class="help-section" aria-labelledby="helpHeading">
+            <h3 class="section-label" id="helpHeading" data-t="getHelpTitle">Get help</h3>
+            <div class="call-row" id="todayCalls"></div>
+            <div class="help-actions">
+              <button class="btn btn-ghost ico i-id" onclick="openMedicalId()" data-t="medIdBtn">Medical ID</button>
+              <button class="btn btn-ghost ico i-warn" onclick="goWarningSigns()" data-t="warningSignsBtn">Warning signs</button>
             </div>
-            <div class="card-body">
-              <div class="call-row" id="todayCalls"></div>
-              <div class="help-actions">
-                <button class="btn btn-ghost ico i-id" onclick="openMedicalId()" data-t="medIdBtn">Medical ID</button>
-                <button class="btn btn-ghost ico i-warn" onclick="goWarningSigns()" data-t="warningSignsBtn">Warning signs</button>
-              </div>
-            </div>
-          </div>
+          </section>
         </div>
       </div>
     </section>
@@ -1360,7 +1366,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-schedule">Schedule</span>
+                <h3 class="card-label" data-t="t-schedule">Schedule</h3>
               </div>
               <button class="btn btn-ghost ico i-plus" id="addMedBtn" onclick="openMedForm()" data-t="t-addMed">Add medicine</button>
             </div>
@@ -1373,7 +1379,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-supplyTitle">Supply left</span>
+                <h3 class="card-label" data-t="t-supplyTitle">Supply left</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1385,7 +1391,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="newMedTitle">New medicine or remedy</span>
+                <h3 class="card-label" data-t="newMedTitle">New medicine or remedy</h3>
               </div>
             </div>
             <div class="card-body" id="newMedBody"></div>
@@ -1396,7 +1402,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-warfarinSetup">Warfarin schedule</span>
+                <h3 class="card-label" data-t="t-warfarinSetup">Warfarin schedule</h3>
               </div>
               <button class="switch" id="warfarinSwitch" onclick="toggleWarfarin()" role="switch" aria-checked="false" data-ta="t-warfarinSetup"></button>
             </div>
@@ -1406,7 +1412,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-injSetup">Penicillin injection</span>
+                <h3 class="card-label" data-t="t-injSetup">Penicillin injection</h3>
               </div>
               <button class="switch" id="injectionSwitch" onclick="toggleInjection()" role="switch" aria-checked="false" data-ta="t-injSetup"></button>
             </div>
@@ -1416,7 +1422,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="fastTitle">Fasting</span>
+                <h3 class="card-label" data-t="fastTitle">Fasting</h3>
               </div>
               <button class="switch" id="fastSwitch" onclick="toggleFasting()" role="switch" aria-checked="false" data-ta="fastTitle"></button>
             </div>
@@ -1426,7 +1432,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-weekAdherence">This week</span>
+                <h3 class="card-label" data-t="t-weekAdherence">This week</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1449,7 +1455,7 @@
           <div class="card card-danger" id="warningCard">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="warnTitle">Warning signs</span>
+                <h3 class="card-label" data-t="warnTitle">Warning signs</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1463,7 +1469,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-symTracker">Symptom tracker</span>
+                <h3 class="card-label" data-t="t-symTracker">Symptom tracker</h3>
               </div>
               <button class="btn btn-ghost ico i-plus" onclick="toggleAddSymptom()" data-t="t-addSymptom">Add</button>
             </div>
@@ -1483,7 +1489,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="moodTitle">How you've been feeling</span>
+                <h3 class="card-label" data-t="moodTitle">How you've been feeling</h3>
               </div>
             </div>
             <div class="card-body" id="moodBody"></div>
@@ -1492,7 +1498,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-notes">Daily notes</span>
+                <h3 class="card-label" data-t="t-notes">Daily notes</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1513,28 +1519,28 @@
 
       <div class="desktop-2col">
         <div>
-          <div class="rings-row">
-            <div class="ring-card">
-              <div class="ring-num" id="ringAdherence">—</div>
-              <div class="ring-label" data-t="t-adherence">Adherence</div>
-              <div class="ring-sub" id="ringAdherenceSub">doses taken</div>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-num" id="ringAdherence">—</div>
+              <div class="stat-label" data-t="t-adherence">Adherence</div>
+              <div class="stat-sub" id="ringAdherenceSub">doses taken</div>
             </div>
-            <div class="ring-card">
-              <div class="ring-num" id="ringWeight">—</div>
-              <div class="ring-label" data-t="t-weightChange">Weight</div>
-              <div class="ring-sub" data-t="t-weightChangeSub">change in 7 days</div>
+            <div class="stat">
+              <div class="stat-num" id="ringWeight">—</div>
+              <div class="stat-label" data-t="t-weightChange">Weight</div>
+              <div class="stat-sub" data-t="t-weightChangeSub">change in 7 days</div>
             </div>
-            <div class="ring-card">
-              <div class="ring-num" id="ringSymptoms">—</div>
-              <div class="ring-label" data-t="t-symptomDays">Symptom days</div>
-              <div class="ring-sub" data-t="t-symptomDaysSub">of last 7 days</div>
+            <div class="stat">
+              <div class="stat-num" id="ringSymptoms">—</div>
+              <div class="stat-label" data-t="t-symptomDays">Symptom days</div>
+              <div class="stat-sub" data-t="t-symptomDaysSub">of last 7 days</div>
             </div>
           </div>
 
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="weightChartTitle">Weight</span>
+                <h3 class="card-label" data-t="weightChartTitle">Weight</h3>
               </div>
               <div class="seg-control" role="group" id="chartSeg">
                 <button class="active" onclick="setChartDays(7)" aria-pressed="true" data-t="days7">7 days</button>
@@ -1550,7 +1556,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-insights">What this week shows</span>
+                <h3 class="card-label" data-t="t-insights">What this week shows</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1563,7 +1569,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-visitTitle">Prepare for your visit</span>
+                <h3 class="card-label" data-t="t-visitTitle">Prepare for your visit</h3>
               </div>
             </div>
             <div class="card-body" id="visitBody"></div>
@@ -1572,7 +1578,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <span class="card-label" data-t="t-weekTable">Week at a glance</span>
+                <h3 class="card-label" data-t="t-weekTable">Week at a glance</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1589,7 +1595,7 @@
   <!-- ═══ NAV ═══ -->
   <nav class="nav" role="tablist">
     <button class="nav-item active" onclick="switchTab('today')" role="tab" aria-selected="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><rect x="7" y="13" width="4" height="4" rx="1"/></svg>
       <span data-t="t-nav-today">Today</span>
     </button>
     <button class="nav-item" onclick="switchTab('meds')" role="tab" aria-selected="false">
@@ -1597,7 +1603,7 @@
       <span data-t="t-nav-meds">Medicines</span>
     </button>
     <button class="nav-item" onclick="switchTab('symptoms')" role="tab" aria-selected="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>
       <span data-t="t-nav-symptoms">Symptoms</span>
     </button>
     <button class="nav-item" onclick="switchTab('summary')" role="tab" aria-selected="false">
@@ -1609,8 +1615,8 @@
 </div>
 
 <!-- ═══ NOTIFICATIONS ═══ -->
-<div class="notif-panel" id="notifPanel" role="dialog" aria-modal="true" aria-labelledby="notifTitle" hidden>
-  <div class="notif-head">
+<div class="panel" id="notifPanel" role="dialog" aria-modal="true" aria-labelledby="notifTitle" hidden>
+  <div class="panel-head">
     <h2 class="panel-title" id="notifTitle" data-t="t-notifTitle">Notifications</h2>
     <button class="icon-btn" onclick="closePanel('notifPanel')" data-ta="closeLabel" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -1625,8 +1631,8 @@
 </div>
 
 <!-- ═══ SETTINGS ═══ -->
-<div class="notif-panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
-  <div class="notif-head">
+<div class="panel" id="settingsPanel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle" hidden>
+  <div class="panel-head">
     <h2 class="panel-title" id="settingsTitle" data-t="t-settingsTitle">Settings</h2>
     <button class="icon-btn" onclick="closePanel('settingsPanel')" data-ta="closeLabel" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -1727,8 +1733,8 @@
 </div>
 
 <!-- ═══ GET HELP NOW ═══ -->
-<div class="notif-panel" id="helpPanel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
-  <div class="notif-head">
+<div class="panel" id="helpPanel" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
+  <div class="panel-head">
     <h2 class="panel-title" id="helpTitle" data-t="getHelpTitle">Get help</h2>
     <button class="icon-btn" onclick="closePanel('helpPanel')" data-ta="closeLabel" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -1738,8 +1744,8 @@
 </div>
 
 <!-- ═══ MEDICAL ID ═══ -->
-<div class="notif-panel" id="idPanel" role="dialog" aria-modal="true" aria-labelledby="idTitle" hidden>
-  <div class="notif-head">
+<div class="panel" id="idPanel" role="dialog" aria-modal="true" aria-labelledby="idTitle" hidden>
+  <div class="panel-head">
     <h2 class="panel-title" id="idTitle" data-t="medIdBtn">Medical ID</h2>
     <button class="icon-btn" onclick="closePanel('idPanel')" data-ta="closeLabel" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -1749,8 +1755,8 @@
 </div>
 
 <!-- ═══ SHOW TO THE NURSE ═══ -->
-<div class="notif-panel" id="nursePanel" role="dialog" aria-modal="true" aria-labelledby="nurseTitle" hidden>
-  <div class="notif-head">
+<div class="panel" id="nursePanel" role="dialog" aria-modal="true" aria-labelledby="nurseTitle" hidden>
+  <div class="panel-head">
     <h2 class="panel-title" id="nurseTitle" data-t="t-injectionTitle">Penicillin injection</h2>
     <button class="icon-btn" onclick="closePanel('nursePanel')" data-ta="closeLabel" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -1760,8 +1766,8 @@
 </div>
 
 <!-- ═══ SUMMARY ON SCREEN ═══ -->
-<div class="notif-panel" id="previewPanel" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
-  <div class="notif-head">
+<div class="panel" id="previewPanel" role="dialog" aria-modal="true" aria-labelledby="previewTitle" hidden>
+  <div class="panel-head">
     <h2 class="panel-title" id="previewTitle" data-t="visitTitle">Visit summary</h2>
     <button class="icon-btn" onclick="closePanel('previewPanel')" data-ta="closeLabel" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -1771,8 +1777,8 @@
 </div>
 
 <!-- ═══ CAMERA PULSE: an estimate from the phone camera (ppg-engine.js) ═══ -->
-<div class="notif-panel" id="pulsePanel" role="dialog" aria-modal="true" aria-labelledby="pulseTitle" hidden>
-  <div class="notif-head">
+<div class="panel" id="pulsePanel" role="dialog" aria-modal="true" aria-labelledby="pulseTitle" hidden>
+  <div class="panel-head">
     <h2 class="panel-title" id="pulseTitle" data-t="camTitle">Measure pulse with camera</h2>
     <button class="icon-btn" onclick="closePanel('pulsePanel')" data-ta="closeLabel" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -3847,13 +3853,13 @@ function renderMedManage(){
       <div class="med-main">
         <p class="med-name">${esc(m.name)}</p>
         <p class="med-meta">${m.dose?`<span>${esc(m.dose)}</span>`:''}<span>${pillIcons(m.perDose||1)} ${esc(tabsLabel(m.perDose||1))}</span><span>${esc(schedText(m.sched))}</span></p>
-        ${times?`<p class="med-meta" style="margin-top:6px">${times}</p>`:''}
+        ${times?`<p class="med-meta mt-sm">${times}</p>`:''}
         ${m.purpose?`<p class="why-note">${esc(m.purpose)}</p>`:''}
         ${last?`<span class="log-sub">${esc(L('lastChange',{date:fmtListDate(last.date), text:describeChange(last)}))}</span>`:''}
       </div>
       <div class="row-actions">
-        <button class="round-btn" data-act="editMed" data-id="${esc(m.id)}" aria-label="${esc(L('editLabel'))} ${esc(m.name)}">${ICON_EDIT}</button>
-        <button class="round-btn" data-act="delMed" data-id="${esc(m.id)}" aria-label="${esc(L('removeLabel'))} ${esc(m.name)}">${ICON_X}</button>
+        <button class="small-btn" data-act="editMed" data-id="${esc(m.id)}" aria-label="${esc(L('editLabel'))} ${esc(m.name)}">${ICON_EDIT}</button>
+        <button class="small-btn" data-act="delMed" data-id="${esc(m.id)}" aria-label="${esc(L('removeLabel'))} ${esc(m.name)}">${ICON_X}</button>
       </div>
     </div>`;
   }).join('');
@@ -3885,13 +3891,13 @@ function renderMedForm(focus){
     <div class="chips">${perOpts.map(v=>chip('mfPer',v,f.per===v,fmtTabs(v))).join('')}</div>
     <p class="form-label">${esc(L('lblHowOften'))}</p>
     <div class="chips">${['daily','alternate','weekdays','prn'].map(s=>chip('mfSched',s,f.sched.type===s,L('sched_'+s))).join('')}</div>
-    ${f.sched.type==='weekdays'?`<div class="chips days" style="margin-top:10px">${days.map((d,i)=>chip('mfDay',i,f.sched.days.includes(i),d)).join('')}</div>`:''}
+    ${f.sched.type==='weekdays'?`<div class="chips days mt-md">${days.map((d,i)=>chip('mfDay',i,f.sched.days.includes(i),d)).join('')}</div>`:''}
     ${f.sched.type!=='prn'?`
       <p class="form-label">${esc(L('lblTimes'))}</p>
       <div class="times-list">${f.times.map((t,i)=>`<span class="time-item"><input type="time" value="${esc(t)}" data-ch="mfTime" data-i="${i}" aria-label="${esc(L('lblTimes'))} ${i+1}">${f.times.length>1?`<button class="log-del" data-act="mfTimeDel" data-i="${i}" aria-label="${esc(L('removeLabel'))}">${ICON_X}</button>`:''}</span>`).join('')}
         <button class="chip" data-act="mfTimeAdd">+ ${esc(L('addTime'))}</button></div>
       <span class="log-sub">${esc(f.times.filter(isHHMM).map(ethClock).join(' · '))}</span>`:''}
-    <div class="form-row2" style="margin-top:12px">
+    <div class="form-row2 mt-md">
       <input class="form-field" type="number" min="0" step="0.5" inputmode="decimal" data-in="mf" data-f="supply" value="${esc(f.supply)}" placeholder="${esc(L('phSupply'))}" aria-label="${esc(L('phSupply'))}">
       <input class="form-field" data-in="mf" data-f="purpose" value="${esc(f.purpose)}" placeholder="${esc(L('phPurpose'))}" aria-label="${esc(L('phPurpose'))}">
     </div>
@@ -3966,7 +3972,7 @@ function renderSupply(){
       <div class="supply-refill">
         <label class="field-label" for="refill-${esc(it.id)}">${esc(L('refillLabel'))}</label>
         <input class="form-field" type="number" min="0" step="0.5" inputmode="decimal" placeholder="0" id="refill-${esc(it.id)}">
-        <button class="round-btn accent" data-act="refill" data-id="${esc(it.id)}" aria-label="${esc(L('refillLabel'))} ${esc(it.name)}">${ICON_PLUS}</button>
+        <button class="small-btn accent" data-act="refill" data-id="${esc(it.id)}" aria-label="${esc(L('refillLabel'))} ${esc(it.name)}">${ICON_PLUS}</button>
       </div>
     </div>`;
   }).join('');
@@ -4016,14 +4022,14 @@ function renderWarfarinSetup(){
     <p class="hint-line">${esc(L('t-warfarinSetupHint'))}</p>
     <div class="dose-grid">${grid}</div>
     <p class="stat-line">${esc(L('weeklyTotal'))} <b>${esc(fmtNum(weeklyMg(W.doses)))} mg</b>${weeklyTabs(W.doses, W.strength)!=null?' · '+esc(L('tabsPerWeek',{n:fmtTabs(weeklyTabs(W.doses, W.strength))})):''}</p>
-    <div class="form-row2" style="margin-top:14px">
+    <div class="form-row2 mt-md">
       <div class="form-field-group"><label class="field-label" for="wStrength">${esc(L('tabletStrength'))}</label>
         <select class="form-field" id="wStrength" data-ch="wStrength"><option value="">—</option>${[1,2,3,5].map(s=>`<option value="${s}"${W.strength===s?' selected':''}>${s} mg</option>`).join('')}</select></div>
       <div class="form-field-group"><label class="field-label" for="wTime">${esc(L('timeITake'))}</label>
         <input class="form-field" type="time" id="wTime" value="${esc(W.time||'18:00')}" data-ch="wTime">
         <span class="log-sub">${esc(ethClock(W.time||'18:00'))}</span></div>
     </div>
-    <div class="form-field-group" style="margin-top:12px"><label class="field-label" for="wSupply">${esc(L('tabletsIHave'))}</label>
+    <div class="form-field-group mt-md"><label class="field-label" for="wSupply">${esc(L('tabletsIHave'))}</label>
       <input class="form-field" type="number" min="0" step="0.5" inputmode="decimal" id="wSupply" value="${W.supply==null?'':esc(W.supply)}" placeholder="0" data-ch="wSupply"></div>
     <div class="divider"></div>
     <p class="sub-label">${esc(L('inrTargetLabel'))}</p>
@@ -4032,7 +4038,7 @@ function renderWarfarinSetup(){
       <span>–</span>
       <input class="form-field" type="number" step="0.1" min="1" max="5" inputmode="decimal" placeholder="3.0" value="${W.target.hi==null?'':fmtInr(W.target.hi)}" data-ch="tgHi" aria-label="${esc(L('targetHigh'))}">
     </div>
-    <span class="log-sub" style="margin-top:6px">${esc(L('targetHint'))}</span>
+    <span class="log-sub mt-sm">${esc(L('targetHint'))}</span>
     <p class="sub-label">${esc(L('nextInrLabel'))}</p>
     <input class="form-field" type="date" value="${esc(W.nextInr||'')}" data-ch="nextInr" aria-label="${esc(L('nextInrLabel'))}">
     ${W.nextInr?`<span class="log-sub">${esc(fmtDual(W.nextInr,true))}</span>`:''}
@@ -4113,14 +4119,14 @@ function renderInjectionSetup(){
       <div class="form-field-group"><label class="field-label" for="injLast">${esc(L('t-injLast'))}</label>
         <input class="form-field" id="injLast" type="date" max="${todayKey()}" value="${esc(I.lastDate||'')}" data-ch="injLast"></div>
     </div>
-    ${custom?`<div class="form-field-group" style="margin-top:10px"><label class="field-label" for="injCustom">${esc(L('customDaysLabel'))}</label>
+    ${custom?`<div class="form-field-group mt-md"><label class="field-label" for="injCustom">${esc(L('customDaysLabel'))}</label>
       <input class="form-field" id="injCustom" type="number" min="7" max="60" inputmode="numeric" value="${esc(I.interval)}" data-ch="injCustom"></div>`:''}
-    <label class="field-label" for="injOrder" style="display:block;margin-top:14px">${esc(L('orderLabel'))}</label>
-    <textarea class="form-field" id="injOrder" rows="2" style="margin-top:6px;min-height:76px" placeholder="${esc(L('orderPh'))}" data-in="injOrder">${esc(I.order||'')}</textarea>
+    <label class="field-label block mt-md" for="injOrder">${esc(L('orderLabel'))}</label>
+    <textarea class="form-field mt-sm" id="injOrder" rows="2" placeholder="${esc(L('orderPh'))}" data-in="injOrder">${esc(I.order||'')}</textarea>
     <button class="btn btn-ghost ico i-nurse" data-act="showNurse">${esc(L('showNurseBtn'))}</button>
     ${adh?`<p class="stat-line ${injCompletionGood(adh.pct)?'good':'warn'}">${esc(L('injAdhLine',{got:adh.got, exp:adh.expected}))} <b>${adh.pct}%</b> · ${esc(L('injAdhGoal'))}</p>`:''}
     <div id="injHistory">${hist.length ? hist.map(h=>`<div class="log-row"><span class="log-date">${esc(fmtListDate(h.date))}</span>
-      <span class="log-val" style="text-align:left">${h.late>0?esc(L('injLateBy',{n:h.late})):h.late!=null?esc(L('injOnTime')):`<span class="log-ok" role="img" aria-label="${esc(L('statusTaken'))}">${ICON_CHECK}</span>`}${h.r?`<span class="log-sub">${esc(L('r_'+h.r))}</span>`:''}</span>
+      <span class="log-val">${h.late>0?esc(L('injLateBy',{n:h.late})):h.late!=null?esc(L('injOnTime')):`<span class="log-ok" role="img" aria-label="${esc(L('statusTaken'))}">${ICON_CHECK}</span>`}${h.r?`<span class="log-sub">${esc(L('r_'+h.r))}</span>`:''}</span>
       <button class="log-del" data-act="delInj" data-id="${esc(h.id)}" aria-label="${esc(L('removeLabel'))}">${ICON_X}</button></div>`).join('')
       : `<p class="empty-line">${esc(L('emptyInj'))}</p>`}</div>`;
 }
@@ -4170,8 +4176,8 @@ function renderFasting(){
   let h=`<p class="hint-line">${esc(L('fastHint'))}</p>`;
   if(f.on){
     h+=`<div class="chips">${['orthodox','ramadan','other'].map(t=>`<button class="chip${f.type===t?' active':''}" data-act="fastType" data-v="${t}" aria-pressed="${f.type===t}">${esc(L('fast_'+t))}</button>`).join('')}</div>
-      <label class="field-label" for="fastUntil" style="display:block;margin-top:14px">${esc(L('fastUntil'))}</label>
-      <input class="form-field" id="fastUntil" type="date" style="margin-top:6px" min="${todayKey()}" value="${esc(f.until||'')}" data-ch="fastUntil">
+      <label class="field-label block mt-md" for="fastUntil">${esc(L('fastUntil'))}</label>
+      <input class="form-field mt-sm" id="fastUntil" type="date" min="${todayKey()}" value="${esc(f.until||'')}" data-ch="fastUntil">
       <div class="warn-box ok"><p>${esc(L('fastAdviceTitle'))}</p><p>${esc(fastAdvice())}</p></div>`;
   }
   if(past.length) h+=`<p class="sub-label">${esc(L('fastPast'))}</p><div class="mini-list">${past.map(p=>`<div class="mini-row"><span class="grow">${esc(L('fast_'+p.type))}</span><span class="muted">${esc(fmtListDate(p.start))} – ${esc(fmtListDate(p.end))}</span></div>`).join('')}</div>`;
@@ -4196,7 +4202,7 @@ function renderNewMeds(){
       <input class="form-field" id="nmDate" type="date" max="${todayKey()}" value="${esc(nmDraft.date||todayKey())}" data-ch="nmDate" aria-label="${esc(L('dateLabel'))}">
     </div>
     <button class="btn btn-solid" data-act="nmSave">${esc(L('nmSaveBtn'))}</button>
-    ${list.length?`<div class="mini-list" style="margin-top:12px">${list.map(n=>`<div class="mini-row"><span class="log-date">${esc(fmtListDate(n.date))}</span><span class="grow"><b>${esc(L('nm_'+n.type))}</b>${n.name?' — '+esc(n.name):''}</span><button class="log-del" data-act="delNewMed" data-id="${esc(n.id)}" aria-label="${esc(L('removeLabel'))}">${ICON_X}</button></div>`).join('')}</div>`:''}`;
+    ${list.length?`<div class="mini-list mt-md">${list.map(n=>`<div class="mini-row"><span class="log-date">${esc(fmtListDate(n.date))}</span><span class="grow"><b>${esc(L('nm_'+n.type))}</b>${n.name?' — '+esc(n.name):''}</span><button class="log-del" data-act="delNewMed" data-id="${esc(n.id)}" aria-label="${esc(L('removeLabel'))}">${ICON_X}</button></div>`).join('')}</div>`:''}`;
 }
 function saveNewMed(){
   const date=isDateKey(nmDraft.date)?nmDraft.date:todayKey();
@@ -4498,11 +4504,11 @@ function renderVisit(){
         <input class="form-field" id="visitNext" type="date" min="${t}" value="${esc(V.next||'')}" data-ch="visitNext"></div>
     </div>
     ${V.next?`<p class="stat-line">${esc(L('nextVisitLine',{when:relDays(daysBetween(t,V.next)), date:fmtDual(V.next)}))}</p>`:''}
-    <p class="form-label" style="margin-top:14px">${esc(L('sumCovers'))}</p>
+    <p class="form-label mt-md">${esc(L('sumCovers'))}</p>
     <div class="seg-control fill" role="group">${['visit','30','90'].map(v=>`<button class="${sumRange===v?'active':''}" data-act="sumRange" data-v="${v}" aria-pressed="${sumRange===v}">${esc(L('range_'+v))}</button>`).join('')}</div>
     <p class="stat-line">${esc(fmtGreg(rg.from,true))} – ${esc(fmtGreg(rg.to,true))}${rg.fallback?' · '+esc(L('rangeFallback')):''}</p>
     ${currentLang!=='en'?`<label class="check-row"><input type="checkbox" data-ch="ownLang" ${sumOwnLang?'checked':''}> ${esc(L('ownLangCopy'))}</label>`:''}
-    <div class="btn-col" style="margin-top:12px">
+    <div class="btn-col mt-md">
       <button class="btn btn-solid ico i-pdf" data-act="pdfDoctor">${esc(L('pdfDoctorBtn'))}</button>
       <button class="btn btn-ghost ico i-eye" data-act="previewSummary">${esc(L('showScreenBtn'))}</button>
       <button class="btn btn-ghost ico i-share" data-act="shareFamily">${esc(L('t-shareSummary'))}</button>
@@ -4510,7 +4516,7 @@ function renderVisit(){
 }
 function renderWeekTable(){
   const el=$('weekTable'), names=Larr('weekdayShort'), week=lastNDays(7), r=tally(S, week);
-  let h=`<div class="table-row" style="font-weight:600"><span></span><span>${esc(L('t-weightChange'))}</span><span>${esc(L('t-adherence'))}</span><span>${esc(L('t-nav-symptoms'))}</span></div>`;
+  let h=`<div class="table-row"><span></span><span>${esc(L('t-weightChange'))}</span><span>${esc(L('t-adherence'))}</span><span>${esc(L('t-nav-symptoms'))}</span></div>`;
   week.forEach(k=>{
     const d=r.perDay[k]||{planned:0};
     const sc=(S.symptomLog[k]||[]).length || S.legacySymptomCount[k] || 0;
@@ -4603,11 +4609,11 @@ function renderProfiles(){
       ${p.id===profiles.active?`<span class="badge">${esc(L('activeLabel'))}</span>`:`<button class="btn btn-ghost btn-small" data-act="profSwitch" data-id="${esc(p.id)}">${esc(L('switchBtn'))}</button>`}
       ${profiles.list.length>1?`<button class="log-del" data-act="profDel" data-id="${esc(p.id)}" aria-label="${esc(L('removeLabel'))} ${esc(p.name||'')}">${ICON_X}</button>`:''}
     </div>`).join('');
-  h+=`<div class="settings-pad" style="border-top:1px solid var(--line)">
+  h+=`<div class="settings-pad divided">
       <label class="field-label" for="profName">${esc(L('nameLabel'))}</label>
       <input class="form-field" id="profName" value="${esc(personName())}" placeholder="${esc(L('namePh'))}" data-in="profName">
       <button class="btn btn-ghost ico i-plus" data-act="profAdd">${esc(L('addPersonBtn'))}</button>
-      <p class="settings-row-sub" style="margin-top:10px">${esc(L('profilesHint'))}</p>
+      <p class="settings-row-sub mt-md">${esc(L('profilesHint'))}</p>
     </div>`;
   el.innerHTML=h;
 }
@@ -4616,11 +4622,11 @@ function renderAbout(){
   if(deferIfBusy(el, renderAbout)) return;
   const A=S.about;
   let h=`<p class="field-label">${esc(L('pregQ'))}</p>
-    <div class="chips" style="margin-top:8px">${['yes','no','skip'].map(v=>`<button class="chip${A.preg===v?' active':''}" data-act="preg" data-v="${v}" aria-pressed="${A.preg===v}">${esc(L('preg_'+v))}</button>`).join('')}</div>
-    <p class="settings-row-sub" style="margin-top:10px">${esc(L('pregWhy'))}</p>`;
+    <div class="chips mt-sm">${['yes','no','skip'].map(v=>`<button class="chip${A.preg===v?' active':''}" data-act="preg" data-v="${v}" aria-pressed="${A.preg===v}">${esc(L('preg_'+v))}</button>`).join('')}</div>
+    <p class="settings-row-sub mt-md">${esc(L('pregWhy'))}</p>`;
   if(A.preg==='yes') h+=`<label class="field-label" for="contraInput">${esc(L('contraLabel'))}</label>
     <input class="form-field" id="contraInput" value="${esc(A.contra)}" placeholder="${esc(L('contraPh'))}" data-in="contra">
-    <label class="check-row" style="margin-top:8px"><input type="checkbox" data-ch="planning" ${A.planning?'checked':''}> ${esc(L('planningLabel'))}</label>`;
+    <label class="check-row mt-sm"><input type="checkbox" data-ch="planning" ${A.planning?'checked':''}> ${esc(L('planningLabel'))}</label>`;
   el.innerHTML=h;
 }
 function renderReminders(){
@@ -4629,14 +4635,14 @@ function renderReminders(){
   const perm=('Notification' in window) ? Notification.permission : 'unsupported';
   el.innerHTML=`<p class="settings-row-sub">${esc(L('remHow'))}</p>
     <button class="btn btn-solid ico i-calendar" data-act="exportIcs">${esc(L('icsBtn'))}</button>
-    <label class="check-row" style="margin-top:6px"><input type="checkbox" data-ch="calNames" ${S.settings.calNames?'checked':''}> ${esc(L('calNamesLabel'))}</label>
+    <label class="check-row mt-sm"><input type="checkbox" data-ch="calNames" ${S.settings.calNames?'checked':''}> ${esc(L('calNamesLabel'))}</label>
     <p class="settings-row-sub">${esc(L('icsHint'))}</p>
-    <div class="divider" style="margin:16px 0 14px"></div>
+    <div class="divider"></div>
     <p class="settings-row-sub">${esc(L('remOpenOnly'))}</p>
     ${perm==='granted'
-      ? `<p class="settings-row-sub status-ok" style="margin-top:8px">${esc(L('notifOnStatus'))}</p><button class="btn btn-ghost ico i-bell" data-act="testNotif">${esc(L('testNotifBtn'))}</button>`
+      ? `<p class="settings-row-sub status-ok mt-sm">${esc(L('notifOnStatus'))}</p><button class="btn btn-ghost ico i-bell" data-act="testNotif">${esc(L('testNotifBtn'))}</button>`
       : perm==='unsupported'
-        ? `<p class="settings-row-sub status-warn" style="margin-top:8px">${esc(L('notifUnsupported'))}</p>`
+        ? `<p class="settings-row-sub status-warn mt-sm">${esc(L('notifUnsupported'))}</p>`
         : `<button class="btn btn-ghost ico i-bell" data-act="enableNotif">${esc(L('t-enableNotifBtn'))}</button>`}`;
 }
 function renderStorageStatus(){
@@ -4747,7 +4753,7 @@ function openMedicalId(){
       ${lines.length?lines.map(l=>`<p class="id-line">${esc(l.en)}${l.own?`<span class="tr">${esc(l.own)}</span>`:''}</p>`).join(''):`<p class="id-line">${esc(L('idEmpty'))}</p>`}
     </div>
     <div class="call-row">${callButtonsHtml()}</div>
-    <div class="btn-col" style="margin-top:10px">
+    <div class="btn-col mt-md">
       <button class="btn btn-ghost ico i-pdf" data-act="idPdf">${esc(L('idPdfBtn'))}</button>
     </div>`;
   $('idBody').innerHTML=h;
@@ -4804,7 +4810,7 @@ function openPanel(id, scrollToId){
   p.hidden=false;
   if(id==='settingsPanel') renderSettings();
   if(id==='notifPanel'){ renderNotifications(); updateNotifPermUI(); }
-  const closeBtn=p.querySelector('.notif-head .icon-btn');
+  const closeBtn=p.querySelector('.panel-head .icon-btn');
   if(scrollToId){ const t=$(scrollToId); if(t) setTimeout(()=>t.scrollIntoView({block:'start'}),60); }
   else p.scrollTop=0;
   if(closeBtn) closeBtn.focus();
@@ -4868,7 +4874,7 @@ function setLang(lang){
   currentLang=lang;
   try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
   document.documentElement.lang=HTML_LANG[lang];
-  document.querySelectorAll('.lang-pill').forEach((b,i)=>{
+  document.querySelectorAll('.lang-btn').forEach((b,i)=>{
     const on=['en','am','or'][i]===lang;
     b.classList.toggle('active', on); b.setAttribute('aria-pressed', on?'true':'false');
   });
@@ -5193,7 +5199,7 @@ function blocksToText(blocks){
 function previewSummary(){
   const html=doctorBlocks().map(x=>{
     const f=x.flag?' p-flag':'';
-    if(x.t==='pagebreak') return '<hr style="margin:22px 0;border:none;border-top:2px dashed #ccc">';
+    if(x.t==='pagebreak') return '<hr class="p-break">';
     if(x.t==='title') return `<p class="p-title">${esc(x.v)}</p>`;
     if(x.t==='sub') return `<p class="p-sub">${esc(x.v)}</p>`;
     if(x.t==='head') return `<p class="p-head">${esc(x.v)}</p>`;
