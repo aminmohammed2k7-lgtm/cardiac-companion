@@ -239,7 +239,6 @@
   .i-phone{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z'/%3E%3C/svg%3E");}
   .i-download{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E");}
   .i-upload{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21V9'/%3E%3Cpath d='M7 14l5-5 5 5'/%3E%3Cpath d='M5 3h14'/%3E%3C/svg%3E");}
-  .i-device{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='6' y='2' width='12' height='20' rx='3'/%3E%3Cpath d='M11 18h2'/%3E%3C/svg%3E");}
   .i-calendar{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='3'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3Cpath d='M12 13.5v4M10 15.5h4'/%3E%3C/svg%3E");}
   .i-id{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='3'/%3E%3Ccircle cx='9' cy='11' r='2'/%3E%3Cpath d='M6 16c.6-1.4 1.7-2 3-2s2.4.6 3 2M15 10h3M15 13.5h3'/%3E%3C/svg%3E");}
   .i-eye{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E");}
@@ -679,9 +678,6 @@
 
   /* ═══════════ SYMPTOMS ═══════════ */
   #addSymptomForm{padding-bottom:var(--sp-lg); margin-bottom:var(--sp-lg); border-bottom:1px solid var(--line);}
-  .slider-block{margin:var(--sp-sm) 0 var(--sp-lg);}
-  .slider-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:var(--sp-md); font-size:var(--fs-md); font-weight:500; color:var(--ink-2);}
-  .slider-val{font-weight:700; color:var(--ink-1); font-variant-numeric:tabular-nums;}
   input[type="range"]{
     -webkit-appearance:none; appearance:none;
     width:100%; height:6px; border-radius:0;
@@ -731,7 +727,6 @@
   .symptom-item.sel{background:var(--accent-soft); border-color:var(--accent);}
   .symptom-item.sel .chk{background:var(--accent); border-color:var(--accent); color:var(--on-accent);}
   .symptom-chip{flex:1; min-width:0; font-size:var(--fs-md); font-weight:500; line-height:1.25; color:var(--ink-1);}
-  .symptom-sev{font-size:var(--fs-xs); font-weight:600; color:var(--ink-3); font-variant-numeric:tabular-nums; flex-shrink:0;}
   .symptom-remove{
     width:var(--ctl-sm); height:var(--ctl-sm); margin:calc(var(--sp-sm) * -1) calc(var(--sp-sm) * -1) calc(var(--sp-sm) * -1) 0; flex-shrink:0;
     display:grid; place-items:center;
@@ -745,7 +740,6 @@
   .note-save{margin-top:var(--sp-xxs);}
   .history-list{display:flex; flex-direction:column; margin-top:var(--sp-lg);}
   .history-item{padding:var(--sp-md) 0; border-top:1px solid var(--line);}
-  .hdot{display:none;}
   .htext{font-size:var(--fs-md); line-height:1.45; color:var(--ink-1);}
   .htime{display:flex; gap:var(--sp-sm); font-size:var(--fs-xs); color:var(--ink-3); margin-top:var(--sp-xxs); font-variant-numeric:tabular-nums;}
 
@@ -986,10 +980,11 @@
      ═══════════════════════════════════════════════════════════════════ */
 
   /* larger text: zoom keeps every layout in proportion */
-  :root.big-text .app, :root.big-text .panel{zoom:1.14;}
+  :root{--big-zoom:1.14;}   /* Large text: everything 14% bigger */
+  :root.big-text .app, :root.big-text .panel{zoom:var(--big-zoom);}
   /* zoom magnifies viewport units too, so the app shell is shrunk back to fit */
-  :root.big-text .app{height:calc(100vh / 1.14); height:calc(100dvh / 1.14);}
-  :root.big-text .panel{height:calc(100vh / 1.14); height:calc(100dvh / 1.14); bottom:auto;}
+  :root.big-text .app{height:calc(100vh / var(--big-zoom)); height:calc(100dvh / var(--big-zoom));}
+  :root.big-text .panel{height:calc(100vh / var(--big-zoom)); height:calc(100dvh / var(--big-zoom)); bottom:auto;}
 
   .sub-label{font-size:var(--fs-sm); font-weight:600; color:var(--ink-2); margin:var(--sp-lg) 0 var(--sp-sm);}
   .card-body > .sub-label:first-child{margin-top:0;}
@@ -1881,7 +1876,6 @@
 <script src="js/core/health.js"></script>
 <script src="js/core/reminders.js"></script>
 <script src="js/core/checks.js"></script>
-<script src="ppg-engine.js" defer></script>
 <script>
 // ═══════════════════════════════════════════
 // APP ICON for in-app notifications (Phase 4 replaces these with
@@ -1949,19 +1943,18 @@ function formatEcShort(ec, lang){
 
 const T = {
   en:{
-    "t-appTitle":"Cardiac Companion","t-appSubtitle":"Your medicine record",
+    "t-appTitle":"Cardiac Companion",
     "t-nav-today":"Today","t-nav-meds":"Medicines","t-nav-symptoms":"Symptoms","t-nav-summary":"Summary",
 
     "t-todayTitle":"Today",
     "t-warfarinToday":"Warfarin today","t-warfarinNote":"This is the dose your doctor set for this day of the week.",
     "t-warfarinTaken":"Taken","t-warfarinMissed":"Not taken",
-    "t-injectionTitle":"Penicillin injection","t-injGiven":"I had the injection today",
+    "t-injectionTitle":"Penicillin injection",
     "t-todayDoses":"Today's medicines",
     "t-weightTitle":"Daily weight","t-weightHint":"Weigh yourself each morning, after the toilet, before eating.","t-saveWeight":"Save",
     "t-vitals":"Your readings","t-vitalsHint":"Only if you measured it yourself with a cuff, thermometer or oximeter.",
     "t-pulseTile":"Pulse","t-bp":"Pressure","t-spo2":"Oxygen","t-temp":"Temp",
     "t-saveVital":"Save","t-cancelVital":"Cancel",
-    "t-emergencyContact":"Emergency contact",
 
     "t-medsTitle":"Medicines",
     "t-schedule":"Schedule","t-addMed":"Add medicine","t-saveMed":"Save medicine",
@@ -1975,27 +1968,24 @@ const T = {
     "t-weekAdherence":"This week",
 
     "t-symTitle":"Symptoms",
-    "t-symTracker":"Symptom tracker","t-addSymptom":"Add your own","t-saveSymptom":"Add symptom","t-severity":"Severity",
-    "t-symptomCtxLabel":"Context","t-ctxRest":"At rest","t-ctxExertion":"After exertion","t-ctxOther":"Other",
-    "t-stressTitle":"Stress level","t-stressCurrent":"Current level",
+    "t-symTracker":"Symptom tracker","t-addSymptom":"Add your own","t-saveSymptom":"Add symptom",
     "t-notes":"Daily notes","t-saveNote":"Save note",
 
     "t-sumTitle":"Summary",
     "t-adherence":"Adherence","t-adherenceSub":"doses taken",
     "t-weightChange":"Weight","t-weightChangeSub":"change in 7 days",
     "t-symptomDays":"Symptom days","t-symptomDaysSub":"of last 7 days",
-    "t-weightTrend":"7-day weight","t-weightAxisLabel":"Kilograms",
+    "t-weightAxisLabel":"Kilograms",
     "t-insights":"What this week shows",
-    "t-ecCalendar":"Ethiopian calendar","t-gregorianEquiv":"Gregorian",
     "t-visitTitle":"Prepare for your visit",
     "t-visitHint":"Your last two weeks on one page. Save it as a PDF or show the screen to your doctor.",
-    "t-savePdf":"Save as PDF","t-shareSummary":"Send to family",
+    "t-shareSummary":"Send to family",
     "t-weekTable":"Day by day",
 
     "t-disclaimer":"Not a medical device. This app records what you and your doctor enter — it does not measure, diagnose or decide anything. Always follow your clinician's guidance.",
     "t-notifTitle":"Notifications","t-clearAll":"Clear all",
     "t-enableNotifText":"Turn on phone notifications for medicine reminders.","t-enableNotifBtn":"Turn on notifications",
-    "t-settingsTitle":"Settings","t-settingsPreferences":"Preferences","t-settingsTheme":"Appearance","t-settingsDateFormat":"Date format",
+    "t-settingsTitle":"Settings","t-settingsPreferences":"Preferences","t-settingsTheme":"Appearance",
     "t-settingsClinical":"Your conditions","t-settingsClinicalSub":"Shown on the printed visit summary.",
     "t-settingsPrivacy":"Your data","t-settingsStorage":"Storage",
     "t-settingsStorageValue":"On this phone only. Nothing is sent anywhere.",
@@ -2005,13 +1995,12 @@ const T = {
 
     weekdayShort:["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
     symptoms:["Chest pain","Shortness of breath","Dizziness","Fatigue","Palpitations","Swollen ankles","Cough at night","Nausea"],
-    severeIdx:[0,1,4],
     msg:{
-      statusTaken:"Taken", statusPending:"Pending", statusMissed:"Missed",
+      statusTaken:"Taken", statusMissed:"Missed",
       noDoseToday:"No dose today", doseUnit:"mg",
       warfarinTakenToast:"Warfarin recorded", warfarinMissedToast:"Marked as not taken",
       warfarinMissedTitle:"Warfarin not taken", warfarinMissedText:"Tell your doctor at your next visit — do not double the next dose.",
-      injDueIn:"Injection due in", injDueDays:"days", injDueToday:"Injection due today", injOverdue:"Injection overdue",
+      injDueToday:"Injection due today", injOverdue:"Injection overdue",
       injNextOn:"Next due {date}", injSetLast:"Set your last injection date below",
       injRecordedToast:"Injection recorded", injRecordedTitle:"Injection recorded", injRecordedText:"Next one due {date}.",
       injOverdueTitle:"Injection overdue", injOverdueText:"{days} day(s) late. Go to your health centre as soon as you can.",
@@ -2024,22 +2013,14 @@ const T = {
       promptPulse:"Pulse (beats per minute)", promptBp:"Blood pressure (e.g. 120/80)",
       promptSpo2:"Oxygen (%)", promptTemp:"Temperature (°C)",
       doseRecordedToast:"Dose recorded", doseMissedToast:"Marked as missed",
-      doseRecordedTitle:"Dose recorded", doseTakenText:"{name} {dose} marked as taken.",
       doseMissedTitle:"Dose missed", doseMissedText:"{name} {dose} was not taken.",
       enterMedName:"Enter a medicine name", medicationAdded:"Medicine added",
       resetToPending:"Reset to pending", reasonMissedPlaceholder:"Reason missed (optional)",
-      supplyLeft:"{n} left · about {days} day(s)", supplyNone:"No count set",
       supplyLowTitle:"{name} running low", supplyLowText:"About {days} day(s) left. Plan your pharmacy trip.",
       supplyOutTitle:"{name} finished", supplyOutText:"You have run out. Collect more as soon as you can.",
       refillLabel:"Refill", refillToast:"Supply updated",
       inrAddedToast:"INR saved", enterInr:"Enter a date and an INR value",
-      symptomLoggedTitle:"Symptom logged",
-      symptomSevereText:"{name} recorded — contact your clinician if it does not settle.",
       enterSymptomName:"Enter a symptom name", symptomAdded:"Symptom added",
-      customSymptomSevereText:"{name} at {severity}/10 — contact your clinician if it does not settle.",
-      customSymptomMildText:"{name} at {severity}/10.",
-      highStressTitle:"High stress logged", highStressText:"Consider a short breathing exercise.",
-      severitySaved:"Severity saved",
       writeSomethingFirst:"Write something first", noteSaved:"Note saved",
       notificationsCleared:"Notifications cleared", notifEmpty:"No messages. Reminders and notes from the app show up here.",
       themeDark:"Dark", themeLight:"Light",
@@ -2048,15 +2029,12 @@ const T = {
       notifBlockedToast:"Notifications are blocked. Turn them on in the phone's Settings, under Apps",
       welcomeTitle:"Getting started", welcomeText:"Add your medicines and the times you take them on the Medicines page. Everything stays on this phone, and the app works without internet.",
       phoneNotifText:"You will now get reminders on this phone.",
-      callClinician:"Call clinician",
-      offlineFontsWarning:"Offline. Some text may not display correctly until fonts load",
       csvExported:"CSV file saved",
       shareCopied:"Summary copied. Paste it into a message",
       shareFailed:"Could not share. Save as PDF instead",
       pdfBuilding:"Making your PDF…", pdfSaved:"PDF saved to your downloads",
       pdfFailed:"Could not make the PDF. Try Send to family instead",
       alertMissedDoseTitle:"Medicine missed today", alertMissedDoseText:"{count} dose(s) not taken today.",
-      alertHighStressTitle:"High stress recorded", alertHighStressText:"Consider a short breathing exercise.",
       insightAdherence:"{taken} of {total} doses taken this week.",
       insightNoMissedDoses:"No missed doses this week.",
       insightMissedDoses:"{count} missed dose(s) this week.",
@@ -2077,25 +2055,23 @@ const T = {
       vitalCheckRange:"Check that number — it should be between {min} and {max}.",
       vitalCheckBp:"Enter blood pressure like 120/80.",
       injEveryDays:"Every {n} days",
-      sumLast14:"Last 14 days", sumTakenDays:"{n} taken", sumMissedDays:"{n} missed",
-      sumNotRecordedDays:"{n} not recorded", sumMissedOn:"Missed on"
+      sumMissedOn:"Missed on"
     }
   },
 
   am:{
-    "t-appTitle":"የልብ ጤና አጋር","t-appSubtitle":"የመድሃኒት መዝገብዎ",
+    "t-appTitle":"የልብ ጤና አጋር",
     "t-nav-today":"ዛሬ","t-nav-meds":"መድሃኒቶች","t-nav-symptoms":"ምልክቶች","t-nav-summary":"ማጠቃለያ",
 
     "t-todayTitle":"ዛሬ",
     "t-warfarinToday":"የዛሬ ዋርፋሪን","t-warfarinNote":"ይህ ሐኪምዎ ለዚህ የሳምንት ቀን ያዘዘው መጠን ነው።",
     "t-warfarinTaken":"ወሰድኩ","t-warfarinMissed":"አልወሰድኩም",
-    "t-injectionTitle":"የፔኒሲሊን መርፌ","t-injGiven":"ዛሬ መርፌውን ወስጃለሁ",
+    "t-injectionTitle":"የፔኒሲሊን መርፌ",
     "t-todayDoses":"የዛሬ መድሃኒቶች",
     "t-weightTitle":"ዕለታዊ ክብደት","t-weightHint":"በየቀኑ ጠዋት፣ ከመጸዳዳት በኋላ፣ ከመብላት በፊት ይመዘኑ።","t-saveWeight":"አስቀምጥ",
     "t-vitals":"የእርስዎ መለኪያዎች","t-vitalsHint":"በራስዎ በመሣሪያ ከለኩት ብቻ ያስገቡ።",
     "t-pulseTile":"የልብ ምት","t-bp":"ግፊት","t-spo2":"ኦክስጅን","t-temp":"ሙቀት",
     "t-saveVital":"አስቀምጥ","t-cancelVital":"ተወው",
-    "t-emergencyContact":"የአደጋ ጊዜ አድራሻ",
 
     "t-medsTitle":"መድሃኒቶች",
     "t-schedule":"መርሃግብር","t-addMed":"መድሃኒት ጨምር","t-saveMed":"መድሃኒት አስቀምጥ",
@@ -2109,27 +2085,24 @@ const T = {
     "t-weekAdherence":"በዚህ ሳምንት",
 
     "t-symTitle":"ምልክቶች",
-    "t-symTracker":"የምልክት መከታተያ","t-addSymptom":"ጨምር","t-saveSymptom":"ምልክት ጨምር","t-severity":"ክብደት",
-    "t-symptomCtxLabel":"ሁኔታ","t-ctxRest":"በእረፍት ላይ","t-ctxExertion":"ከድካም በኋላ","t-ctxOther":"ሌላ",
-    "t-stressTitle":"የጭንቀት ደረጃ","t-stressCurrent":"አሁን ያለው",
+    "t-symTracker":"የምልክት መከታተያ","t-addSymptom":"ጨምር","t-saveSymptom":"ምልክት ጨምር",
     "t-notes":"ዕለታዊ ማስታወሻ","t-saveNote":"ማስታወሻ አስቀምጥ",
 
     "t-sumTitle":"ማጠቃለያ",
     "t-adherence":"ተገዢነት","t-adherenceSub":"የተወሰዱ መጠኖች",
     "t-weightChange":"ክብደት","t-weightChangeSub":"በ7 ቀን ለውጥ",
     "t-symptomDays":"የምልክት ቀናት","t-symptomDaysSub":"ከ7 ቀናት",
-    "t-weightTrend":"የ7 ቀን ክብደት","t-weightAxisLabel":"ኪሎ ግራም",
+    "t-weightAxisLabel":"ኪሎ ግራም",
     "t-insights":"ይህ ሳምንት ያሳየው",
-    "t-ecCalendar":"የኢትዮጵያ ቀን መቁጠሪያ","t-gregorianEquiv":"የፈረንጅ",
     "t-visitTitle":"ለጉብኝትዎ ይዘጋጁ",
     "t-visitHint":"የሁለት ሳምንት መረጃ በአንድ ገጽ — እንደ PDF ያስቀምጡ ወይም ለሐኪምዎ ያሳዩ።",
-    "t-savePdf":"እንደ PDF አስቀምጥ","t-shareSummary":"ለቤተሰብ ላክ",
+    "t-shareSummary":"ለቤተሰብ ላክ",
     "t-weekTable":"የሳምንቱ እይታ",
 
     "t-disclaimer":"የሕክምና መሣሪያ አይደለም። ይህ መተግበሪያ እርስዎና ሐኪምዎ ያስገቡትን ብቻ ይመዘግባል — አይለካም፣ በሽታ አይለይም። ሁልጊዜ የሐኪምዎን መመሪያ ይከተሉ።",
     "t-notifTitle":"ማሳወቂያዎች","t-clearAll":"ሁሉንም አጽዳ",
     "t-enableNotifText":"ለመድሃኒት ማስታወሻ የስልክ ማሳወቂያ ያብሩ።","t-enableNotifBtn":"አብራ",
-    "t-settingsTitle":"ቅንብሮች","t-settingsPreferences":"ምርጫዎች","t-settingsTheme":"መልክ","t-settingsDateFormat":"የቀን ቅርጸት",
+    "t-settingsTitle":"ቅንብሮች","t-settingsPreferences":"ምርጫዎች","t-settingsTheme":"መልክ",
     "t-settingsClinical":"የእርስዎ ሁኔታዎች","t-settingsClinicalSub":"በታተመው ማጠቃለያ ላይ ይታያል።",
     "t-settingsPrivacy":"የእርስዎ መረጃ","t-settingsStorage":"ማከማቻ",
     "t-settingsStorageValue":"በዚህ ስልክ ብቻ — ምንም ወደ ውጭ አይላክም",
@@ -2139,13 +2112,12 @@ const T = {
 
     weekdayShort:["እሁድ","ሰኞ","ማክሰ","ረቡዕ","ሐሙስ","ዓርብ","ቅዳሜ"],
     symptoms:["የደረት ህመም","የትንፋሽ ማጠር","ማዞር","ድካም","የልብ ምት መዛባት","የእግር እብጠት","የሌሊት ሳል","ማቅለሽለሽ"],
-    severeIdx:[0,1,4],
     msg:{
-      statusTaken:"ተወስዷል", statusPending:"በመጠባበቅ", statusMissed:"አልተወሰደም",
+      statusTaken:"ተወስዷል", statusMissed:"አልተወሰደም",
       noDoseToday:"ዛሬ መጠን የለም", doseUnit:"ሚግ",
       warfarinTakenToast:"ዋርፋሪን ተመዝግቧል", warfarinMissedToast:"እንዳልተወሰደ ተመዝግቧል",
       warfarinMissedTitle:"ዋርፋሪን አልተወሰደም", warfarinMissedText:"በሚቀጥለው ጉብኝት ለሐኪምዎ ይንገሩ — የሚቀጥለውን መጠን እጥፍ አያድርጉ።",
-      injDueIn:"መርፌ የሚያስፈልገው በ", injDueDays:"ቀናት", injDueToday:"መርፌ ዛሬ ነው", injOverdue:"መርፌ አልፎበታል",
+      injDueToday:"መርፌ ዛሬ ነው", injOverdue:"መርፌ አልፎበታል",
       injNextOn:"ቀጣዩ {date}", injSetLast:"የመጨረሻ መርፌ ቀንዎን ከታች ያስገቡ",
       injRecordedToast:"መርፌ ተመዝግቧል", injRecordedTitle:"መርፌ ተመዝግቧል", injRecordedText:"ቀጣዩ {date} ነው።",
       injOverdueTitle:"መርፌ አልፎበታል", injOverdueText:"{days} ቀን አልፏል። በተቻለ ፍጥነት ወደ ጤና ጣቢያ ይሂዱ።",
@@ -2158,22 +2130,14 @@ const T = {
       promptPulse:"የልብ ምት (በደቂቃ)", promptBp:"የደም ግፊት (ለምሳሌ 120/80)",
       promptSpo2:"ኦክስጅን (%)", promptTemp:"ሙቀት (°C)",
       doseRecordedToast:"ተመዝግቧል", doseMissedToast:"እንዳልተወሰደ ተመዝግቧል",
-      doseRecordedTitle:"መጠን ተመዝግቧል", doseTakenText:"{name} {dose} እንደተወሰደ ተመዝግቧል።",
       doseMissedTitle:"መጠን አልተወሰደም", doseMissedText:"{name} {dose} አልተወሰደም።",
       enterMedName:"የመድሃኒት ስም ያስገቡ", medicationAdded:"መድሃኒት ተጨምሯል",
       resetToPending:"ወደ መጠባበቅ መልስ", reasonMissedPlaceholder:"ያልተወሰደበት ምክንያት (አማራጭ)",
-      supplyLeft:"{n} ቀርቷል · ለ{days} ቀን ገደማ", supplyNone:"ቁጥር አልተገባም",
       supplyLowTitle:"{name} እያለቀ ነው", supplyLowText:"ለ{days} ቀን ገደማ ይበቃል። የፋርማሲ ጉዞዎን ያቅዱ።",
       supplyOutTitle:"{name} አልቋል", supplyOutText:"አልቆብዎታል። በተቻለ ፍጥነት ይውሰዱ።",
       refillLabel:"ሙላ", refillToast:"ክምችት ተዘምኗል",
       inrAddedToast:"INR ተመዝግቧል", enterInr:"ቀንና የINR ውጤት ያስገቡ",
-      symptomLoggedTitle:"ምልክት ተመዝግቧል",
-      symptomSevereText:"{name} ተመዝግቧል — ካልቀለለ ሐኪምዎን ያነጋግሩ።",
       enterSymptomName:"የምልክት ስም ያስገቡ", symptomAdded:"ምልክት ተጨምሯል",
-      customSymptomSevereText:"{name} በ{severity}/10 — ካልቀለለ ሐኪምዎን ያነጋግሩ።",
-      customSymptomMildText:"{name} በ{severity}/10።",
-      highStressTitle:"ከፍተኛ ጭንቀት ተመዝግቧል", highStressText:"አጭር የትንፋሽ ልምምድ ያድርጉ።",
-      severitySaved:"ክብደት ተመዝግቧል",
       writeSomethingFirst:"መጀመሪያ ይጻፉ", noteSaved:"ማስታወሻ ተመዝግቧል",
       notificationsCleared:"ማሳወቂያዎች ጸድተዋል", notifEmpty:"እስካሁን ማሳወቂያ የለም",
       themeDark:"ጨለማ", themeLight:"ብርሃን",
@@ -2182,15 +2146,12 @@ const T = {
       notifBlockedToast:"ታግዷል — በአሳሽ ቅንብር ያብሩ",
       welcomeTitle:"እንኳን ደህና መጡ", welcomeText:"የመድሃኒት መዝገብዎ ዝግጁ ነው።",
       phoneNotifText:"ከአሁን ጀምሮ በዚህ ስልክ ማስታወሻ ይደርስዎታል።",
-      callClinician:"ሐኪም ደውል",
-      offlineFontsWarning:"ከመስመር ውጭ — ፊደላት እስኪጫኑ አንዳንድ ጽሑፍ ላይታይ ይችላል",
       csvExported:"CSV ፋይል ወርዷል",
       shareCopied:"ማጠቃለያ ተቀድቷል — በመልዕክት ይለጥፉት",
       shareFailed:"ማጋራት አልተቻለም — በምትኩ እንደ PDF ያስቀምጡ",
       pdfBuilding:"PDF በመስራት ላይ…", pdfSaved:"PDF ተቀምጧል",
       pdfFailed:"PDF መስራት አልተቻለም — በምትኩ ለቤተሰብ ይላኩ",
       alertMissedDoseTitle:"ዛሬ መድሃኒት አልተወሰደም", alertMissedDoseText:"ዛሬ {count} መጠን አልተወሰደም።",
-      alertHighStressTitle:"ከፍተኛ ጭንቀት ተመዝግቧል", alertHighStressText:"አጭር የትንፋሽ ልምምድ ያድርጉ።",
       insightAdherence:"በዚህ ሳምንት ከ{total} መጠኖች {taken} ተወስደዋል።",
       insightNoMissedDoses:"በዚህ ሳምንት ያልተወሰደ መጠን የለም።",
       insightMissedDoses:"በዚህ ሳምንት {count} መጠን አልተወሰደም።",
@@ -2211,25 +2172,23 @@ const T = {
       vitalCheckRange:"ቁጥሩን ያረጋግጡ — ከ{min} እስከ {max} መሆን አለበት።",
       vitalCheckBp:"የደም ግፊትን እንደ 120/80 ያስገቡ።",
       injEveryDays:"በየ{n} ቀኑ",
-      sumLast14:"ያለፉት 14 ቀናት", sumTakenDays:"{n} ቀን ተወስዷል", sumMissedDays:"{n} ቀን አልተወሰደም",
-      sumNotRecordedDays:"{n} ቀን አልተመዘገበም", sumMissedOn:"ያልተወሰደባቸው ቀናት"
+      sumMissedOn:"ያልተወሰደባቸው ቀናት"
     }
   },
 
   or:{
-    "t-appTitle":"Michuu Onnee","t-appSubtitle":"Galmee qoricha kee",
+    "t-appTitle":"Michuu Onnee",
     "t-nav-today":"Har'a","t-nav-meds":"Qorichoota","t-nav-symptoms":"Mallattoolee","t-nav-summary":"Cuunfaa",
 
     "t-todayTitle":"Har'a",
     "t-warfarinToday":"Warfaariin har'aa","t-warfarinNote":"Kun hamma doktorri kee guyyaa torbanii kanaaf murteesse dha.",
     "t-warfarinTaken":"Fudhadheera","t-warfarinMissed":"Hin fudhanne",
-    "t-injectionTitle":"Lilmoo Pheenisiliinii","t-injGiven":"Har'a lilmoo fudhadheera",
+    "t-injectionTitle":"Lilmoo Pheenisiliinii",
     "t-todayDoses":"Qorichoota har'aa",
     "t-weightTitle":"Ulfaatina guyyaa","t-weightHint":"Ganama hunda, mana fincaanii booda, nyaata dura of madaali.","t-saveWeight":"Olkaa'i",
     "t-vitals":"Safarawwan kee","t-vitalsHint":"Yoo ofii keetii meeshaadhaan safarte qofa galchi.",
     "t-pulseTile":"Rukuttaa onnee","t-bp":"Dhiibbaa","t-spo2":"Oksijiinii","t-temp":"Ho'a",
     "t-saveVital":"Olkaa'i","t-cancelVital":"Dhiisi",
-    "t-emergencyContact":"Quunnamtii ariifachiisaa",
 
     "t-medsTitle":"Qorichoota",
     "t-schedule":"Sagantaa","t-addMed":"Qoricha dabali","t-saveMed":"Qoricha olkaa'i",
@@ -2243,27 +2202,24 @@ const T = {
     "t-weekAdherence":"Torban kana",
 
     "t-symTitle":"Mallattoolee",
-    "t-symTracker":"Hordoffii mallattoo","t-addSymptom":"Dabali","t-saveSymptom":"Mallattoo dabali","t-severity":"Cimina",
-    "t-symptomCtxLabel":"Haala","t-ctxRest":"Boqonnaa irra","t-ctxExertion":"Dadhabbii booda","t-ctxOther":"Kan biraa",
-    "t-stressTitle":"Sadarkaa dhiphinaa","t-stressCurrent":"Kan ammaa",
+    "t-symTracker":"Hordoffii mallattoo","t-addSymptom":"Dabali","t-saveSymptom":"Mallattoo dabali",
     "t-notes":"Yaadannoo guyyaa","t-saveNote":"Yaadannoo olkaa'i",
 
     "t-sumTitle":"Cuunfaa",
     "t-adherence":"Hordoffii","t-adherenceSub":"hammi fudhatame",
     "t-weightChange":"Ulfaatina","t-weightChangeSub":"jijjiirama guyyaa 7",
     "t-symptomDays":"Guyyaa mallattoo","t-symptomDaysSub":"guyyaa 7 keessaa",
-    "t-weightTrend":"Ulfaatina guyyaa 7","t-weightAxisLabel":"Kiiloo giraamii",
+    "t-weightAxisLabel":"Kiiloo giraamii",
     "t-insights":"Wanti torban kun agarsiisu",
-    "t-ecCalendar":"Kalaandarii Itoophiyaa","t-gregorianEquiv":"Giriigooriyaan",
     "t-visitTitle":"Daawwannaa keetiif qophaa'i",
     "t-visitHint":"Torban lamaan darban fuula tokko irratti — PDF gochuun olkaa'i ykn doktora keetitti agarsiisi.",
-    "t-savePdf":"PDF gochuun olkaa'i","t-shareSummary":"Maatiif ergi",
+    "t-shareSummary":"Maatiif ergi",
     "t-weekTable":"Torbanii ilaalcha",
 
     "t-disclaimer":"Meeshaa yaalaa miti. Appiin kun waanuma ati fi doktorri kee galchitan galmeessa — hin safaru, dhukkuba hin adda baasu. Yeroo hunda qajeelfama doktora keetii hordofi.",
     "t-notifTitle":"Beeksisoota","t-clearAll":"Hunda haqi",
     "t-enableNotifText":"Yaadachiisa qorichaaf beeksisa bilbilaa banii.","t-enableNotifBtn":"Banii",
-    "t-settingsTitle":"Qindaa'ina","t-settingsPreferences":"Filannoo","t-settingsTheme":"Bifa","t-settingsDateFormat":"Bifa guyyaa",
+    "t-settingsTitle":"Qindaa'ina","t-settingsPreferences":"Filannoo","t-settingsTheme":"Bifa",
     "t-settingsClinical":"Haala fayyaa keetii","t-settingsClinicalSub":"Cuunfaa maxxanfamu irratti mul'ata.",
     "t-settingsPrivacy":"Daataa kee","t-settingsStorage":"Kuusaa",
     "t-settingsStorageValue":"Bilbila kana irra qofa — homtuu gara alaa hin ergamu",
@@ -2273,13 +2229,12 @@ const T = {
 
     weekdayShort:["Dil","Wix","Kib","Rob","Kam","Jim","San"],
     symptoms:["Dhukkubbii qoma","Hafuura kutuu","Mataa naanna'uu","Dadhabbii","Rukuttaa onnee jeequu","Miila dhiita'uu","Qufaa halkanii","Garaa ciniinnaa"],
-    severeIdx:[0,1,4],
     msg:{
-      statusTaken:"Fudhatame", statusPending:"Eegaa jira", statusMissed:"Hin fudhatamne",
+      statusTaken:"Fudhatame", statusMissed:"Hin fudhatamne",
       noDoseToday:"Har'a hammi hin jiru", doseUnit:"mg",
       warfarinTakenToast:"Warfaariin galmaa'e", warfarinMissedToast:"Akka hin fudhatamne galmaa'e",
       warfarinMissedTitle:"Warfaariin hin fudhatamne", warfarinMissedText:"Daawwannaa itti aanutti doktora keetti himi — hamma itti aanu hin dachaasin.",
-      injDueIn:"Lilmoon kan barbaachisu guyyaa", injDueDays:"keessatti", injDueToday:"Lilmoon har'a", injOverdue:"Lilmoon darbeera",
+      injDueToday:"Lilmoon har'a", injOverdue:"Lilmoon darbeera",
       injNextOn:"Kan itti aanu {date}", injSetLast:"Guyyaa lilmoo dhumaa gadiitti galchi",
       injRecordedToast:"Lilmoon galmaa'e", injRecordedTitle:"Lilmoon galmaa'e", injRecordedText:"Kan itti aanu {date}.",
       injOverdueTitle:"Lilmoon darbeera", injOverdueText:"Guyyaa {days} darbeera. Dafii gara buufata fayyaa deemi.",
@@ -2292,22 +2247,14 @@ const T = {
       promptPulse:"Rukuttaa onnee (daqiiqaatti)", promptBp:"Dhiibbaa dhiigaa (fkn 120/80)",
       promptSpo2:"Oksijiinii (%)", promptTemp:"Ho'a (°C)",
       doseRecordedToast:"Galmaa'e", doseMissedToast:"Akka hin fudhatamne galmaa'e",
-      doseRecordedTitle:"Hammi galmaa'e", doseTakenText:"{name} {dose} akka fudhatame galmaa'e.",
       doseMissedTitle:"Hammi hin fudhatamne", doseMissedText:"{name} {dose} hin fudhatamne.",
       enterMedName:"Maqaa qorichaa galchi", medicationAdded:"Qorichi dabalame",
       resetToPending:"Gara eegaatti deebisi", reasonMissedPlaceholder:"Sababa hin fudhatamneef (filannoo)",
-      supplyLeft:"{n} hafe · guyyaa {days} ta'a", supplyNone:"Lakkoofsi hin galchamne",
       supplyLowTitle:"{name} dhumaa jira", supplyLowText:"Guyyaa {days} qofa ta'a. Imala faarmaasii kee karoorfadhu.",
       supplyOutTitle:"{name} dhumeera", supplyOutText:"Sirra dhumeera. Dafii fudhadhu.",
       refillLabel:"Guuti", refillToast:"Kuusaan haaromfame",
       inrAddedToast:"INR galmaa'e", enterInr:"Guyyaa fi bu'aa INR galchi",
-      symptomLoggedTitle:"Mallattoon galmaa'e",
-      symptomSevereText:"{name} galmaa'e — yoo hin wayyaawin doktora kee quunnami.",
       enterSymptomName:"Maqaa mallattoo galchi", symptomAdded:"Mallattoon dabalame",
-      customSymptomSevereText:"{name} {severity}/10 — yoo hin wayyaawin doktora kee quunnami.",
-      customSymptomMildText:"{name} {severity}/10.",
-      highStressTitle:"Dhiphinni ol'aanaan galmaa'e", highStressText:"Shaakala hafuura gabaabaa yaali.",
-      severitySaved:"Ciminni galmaa'e",
       writeSomethingFirst:"Dura waa barreessi", noteSaved:"Yaadannoon galmaa'e",
       notificationsCleared:"Beeksisoonni haqaman", notifEmpty:"Ammatti beeksisni hin jiru",
       themeDark:"Dukkana", themeLight:"Ifa",
@@ -2316,15 +2263,12 @@ const T = {
       notifBlockedToast:"Ugguramee — qindaa'ina daawwataa keessatti banii",
       welcomeTitle:"Baga nagaan dhufte", welcomeText:"Galmeen qoricha keetii qophaa'eera.",
       phoneNotifText:"Ammaan booda bilbila kana irratti yaadachiisa argatta.",
-      callClinician:"Doktora bilbili",
-      offlineFontsWarning:"Toora ala — hamma fontiin fe'amutti barruun tokko tokko sirriitti hin mul'atu",
       csvExported:"Faayilii CSV buufame",
       shareCopied:"Cuunfaan waraabame — ergaa keessatti maxxansi",
       shareFailed:"Qooduun hin danda'amne — qooda isaa PDF gochuun olkaa'i",
       pdfBuilding:"PDF hojjetamaa jira…", pdfSaved:"PDF olkaa'ame",
       pdfFailed:"PDF hojjechuun hin danda'amne — qooda isaa maatiif ergi",
       alertMissedDoseTitle:"Har'a qorichi hin fudhatamne", alertMissedDoseText:"Har'a hammi {count} hin fudhatamne.",
-      alertHighStressTitle:"Dhiphinni ol'aanaan galmaa'e", alertHighStressText:"Shaakala hafuura gabaabaa yaali.",
       insightAdherence:"Torban kana hamma {total} keessaa {taken} fudhatame.",
       insightNoMissedDoses:"Torban kana hammi hin fudhatamne hin jiru.",
       insightMissedDoses:"Torban kana hammi {count} hin fudhatamne.",
@@ -2345,8 +2289,7 @@ const T = {
       vitalCheckRange:"Lakkoofsa kana mirkaneessi — {min} fi {max} gidduu ta'uu qaba.",
       vitalCheckBp:"Dhiibbaa dhiigaa akka 120/80tti galchi.",
       injEveryDays:"Guyyaa {n} keessatti al tokko",
-      sumLast14:"Guyyoota 14 darban", sumTakenDays:"guyyaa {n} fudhatame", sumMissedDays:"guyyaa {n} hin fudhatamne",
-      sumNotRecordedDays:"guyyaa {n} hin galmoofne", sumMissedOn:"Guyyoota hin fudhatamne"
+      sumMissedOn:"Guyyoota hin fudhatamne"
     }
   }
 };
@@ -3307,10 +3250,6 @@ function activeProfile(){ return profiles.list.find(p=>p.id===profiles.active)||
 function personName(){ const p=activeProfile(); return (p && p.name) ? p.name : ''; }
 function loadActive(){ S=readState(profiles.active)||defaultState(); }
 
-// Ask the browser not to clear this record under storage pressure. Called
-// after the person saves something (a user action), which is when
-// browsers are most willing to grant it.
-
 
 // ═══════════════════════════════════════════
 // DOSE PLANS: the rules are in js/core/doses.js
@@ -3777,6 +3716,18 @@ let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camRe
 // in a desktop or phone browser, where the engine is developed and tested.
 function camPulseAvailable(){
   return !CCPlatform.isApp() && !!window.PPG && PPG.PulseMonitor.supported();
+}
+// The engine (about 80 KB) is read only where it can be used. Inside the
+// app the camera pulse is off, so the file is never loaded there and a slow
+// phone starts faster. In a browser it loads during start-up, as before.
+const CAMERA_ENGINE='ppg-engine.js';
+function loadCameraEngine(){
+  if(CCPlatform.isApp() || window.PPG) return;
+  const sc=document.createElement('script');
+  sc.src=CAMERA_ENGINE;
+  // the pulse entry may already be open: offer the camera once it is here
+  sc.onload=()=>{ if(pendingVital==='pulse') $('camPulseBtn').hidden=!camPulseAvailable(); };
+  document.head.appendChild(sc);
 }
 function openPulseCam(){
   if(!camPulseAvailable()) return;
@@ -4468,6 +4419,7 @@ function setChartDays(n){
   document.querySelectorAll('#chartSeg button').forEach((b,i)=>{ const on=(i===0)===(n===7); b.classList.toggle('active',on); b.setAttribute('aria-pressed',on?'true':'false'); });
   drawWeightChart();
 }
+const CHART_PAD={left:42, right:24, top:12, bottom:30};   // px
 function drawWeightChart(){
   const c=$('trendChart');
   if(!c) return;
@@ -4486,7 +4438,8 @@ function drawWeightChart(){
   const N=chartDays, keys=lastNDays(N);
   const vals=keys.map(k=>S.weightLog[k]!=null?S.weightLog[k]:null);
   const present=vals.filter(x=>x!=null);
-  const padL=42, padR=24, padT=12, padB=30;
+  // room for the kg labels on the left and the dates underneath
+  const padL=CHART_PAD.left, padR=CHART_PAD.right, padT=CHART_PAD.top, padB=CHART_PAD.bottom;
   const plotW=W-padL-padR, plotH=H-padT-padB;
   const xAt=i=>padL+(plotW/(N-1))*i;
   ctx.strokeStyle=grid; ctx.lineWidth=1;
@@ -4878,6 +4831,7 @@ function updateNotifPermUI(){
 // PANELS, TABS, TOAST
 // ═══════════════════════════════════════════
 const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel'];
+const PANEL_SCROLL_MS=60;   // let the panel draw before scrolling inside it
 function openPanel(id, scrollToId){
   const p=$(id);
   if(!p) return;
@@ -4886,7 +4840,7 @@ function openPanel(id, scrollToId){
   if(id==='settingsPanel') renderSettings();
   if(id==='notifPanel'){ renderNotifications(); updateNotifPermUI(); }
   const closeBtn=p.querySelector('.panel-head .icon-btn');
-  if(scrollToId){ const t=$(scrollToId); if(t) setTimeout(()=>t.scrollIntoView({block:'start'}),60); }
+  if(scrollToId){ const t=$(scrollToId); if(t) setTimeout(()=>t.scrollIntoView({block:'start'}), PANEL_SCROLL_MS); }
   else p.scrollTop=0;
   if(closeBtn) closeBtn.focus();
 }
@@ -4933,12 +4887,13 @@ function switchTab(name){
   const content=$('content'); if(content) content.scrollTop=0;
   if(name==='summary') renderSummaryTab();
 }
+const TOAST_MS=3200;   // long enough to read a two-line message
 function showToast(msg){
   const el=$('toast');
   el.textContent=msg;
   el.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.classList.remove('show'), 3200);
+  toastTimer=setTimeout(()=>el.classList.remove('show'), TOAST_MS);
 }
 
 // The question box, instead of the browser's confirm() and prompt(). Those
@@ -5456,13 +5411,14 @@ async function fontsReady(){
   }
   if(document.fonts && document.fonts.ready) await document.fonts.ready;
 }
+const DOWNLOAD_KEEP_MS=4000;   // the browser needs the file a moment after the click
 function downloadBlob(blob, filename){
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
   a.href=url; a.download=filename;
   document.body.appendChild(a); a.click(); a.remove();
   // revoking the link straight away can cancel the download in some browsers
-  setTimeout(()=>URL.revokeObjectURL(url), 4000);
+  setTimeout(()=>URL.revokeObjectURL(url), DOWNLOAD_KEEP_MS);
 }
 // Hand a file to the phone's share sheet when it can take one (Telegram,
 // Files, Calendar…), otherwise download it.
@@ -5754,6 +5710,8 @@ function tick(){
 // ═══════════════════════════════════════════
 // START
 // ═══════════════════════════════════════════
+const TICK_MS=30000;                  // reminders and the date are checked twice a minute
+const FIRST_REMINDER_CHECK_MS=1500;   // after start-up, once the screen is drawn
 function init(){
   Object.keys(T2).forEach(l=>{ if(T[l]) Object.assign(T[l].msg, T2[l]); });
   loadGlobal();
@@ -5781,12 +5739,13 @@ function init(){
   if(start.isNew) addNotification(L('welcomeTitle'), L('welcomeText'), 'info');
   if(start.migrated) addNotification(L('migratedTitle'), L('migratedText'), 'info');
 
-  setInterval(tick, 30000);
+  setInterval(tick, TICK_MS);
   document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tick(); });
   window.addEventListener('pageshow', ()=>tick());
   window.addEventListener('resize', drawWeightChart);
   CCPlatform.onBack(handleBack);
-  setTimeout(checkReminders, 1500);
+  loadCameraEngine();
+  setTimeout(checkReminders, FIRST_REMINDER_CHECK_MS);
 }
 document.addEventListener('DOMContentLoaded', init);
 

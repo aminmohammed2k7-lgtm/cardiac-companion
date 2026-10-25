@@ -61,4 +61,12 @@ same('inside the app, the pulse entry hides the camera button', p.el('camPulseBt
 p.run(`window.Capacitor=__realCap; delete window.PPG;`);
 same('no camera engine loaded: not offered', p.call('camPulseAvailable'), false);
 
+// the engine file itself is only read where the camera can be offered
+p.run(`__added=[]; document.createElement=()=>({}); document.head={appendChild:x=>__added.push(x.src)};`);
+p.run(`window.Capacitor={isNativePlatform:()=>true}; loadCameraEngine();`);
+same('inside the app, ppg-engine.js is never loaded', p.get('__added'), []);
+p.run(`window.Capacitor={isNativePlatform:()=>false}; loadCameraEngine();`);
+same('in a browser, it is loaded at start-up', p.get('__added'), ['ppg-engine.js']);
+p.run(`window.Capacitor=__realCap;`);
+
 done();

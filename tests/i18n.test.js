@@ -62,7 +62,7 @@ for (const l of LANGS) {
 for (const l of LANGS) {
   const empty = Object.keys(table[l]).filter(k => {
     const v = table[l][k];
-    // a list of numbers (severeIdx) is data, not text
+    // a list of numbers is data, not text
     if (Array.isArray(v)) return v.some(x => typeof x === 'string' ? !x.trim() : typeof x !== 'number');
     return typeof v !== 'string' || !v.trim();
   });
