@@ -124,8 +124,11 @@ word the same.
 | `insightNoWeight` | No weights recorded yet this week. | No weights recorded in this period. | The weight chart shows this text in its 30 day view too, where "this week" is wrong. Alternative: a second string for the 30 day view. |
 | `t-adherence` | Adherence | Doses taken | "Adherence" is a clinician's word. The sub-line already says "doses taken", so that would need to change too, for example to "this week". It stays the first number on the Summary, as Amin decided. |
 | `t-temp` | Temp | Temperature | A short form on a reading tile. "Temperature" fits the tile at 360px. |
-| Many keys | day(s), dose(s), symptom(s), warning sign(s) | Two strings each, singular and plural | About 20 strings use "(s)". Most are health wording: `injOverdueText`, `supplyLowText`, `insightMissedDoses`, `insightSymptoms`, `insightInjection`, `insightInjectionOverdue`, `alertMissedDoseText`, `dueNowTitle`, `dailyInjLate`, `injLateQ`, `injLateBy`, `inrOverdueText`, `weekNotRec`, `insightNotRec`, `insightFlags`, `legacySymptoms`. Amharic and Oromo plurals work differently, so this needs a native speaker for each language. |
 | `camDenied` | …allow it in your browser settings… | …allow it in the phone's Settings, under Apps… | The camera pulse is off in release builds, and camera text is treated like health text. |
+
+**Not a problem after all:** the English strings written as "{n} day(s)"
+never show "(s)". `L()` turns them into "1 day" or "3 days" from the number.
+The Phase 1 audit listed this as a tell. It was wrong about that.
 
 ### 4c. Amharic and Afaan Oromo flags (not changed)
 
@@ -139,7 +142,7 @@ word the same.
 - **Version 3 strings.** No native speaker review is recorded for `T2.am`
   and `T2.or` (the strings added in version 3). They should be checked as a
   whole, not one by one.
-- **The header date in Oromo.** The longest month, "Onkololeessa", is cut
-  off at 360px. The polish pass made the header roomier, but a shorter
-  agreed month form would help on small phones. This is a question for a
-  native speaker, not a wording change.
+- **The header date in Oromo.** The longest month, "Onkololeessa", used to
+  be cut off at 360px. The language control is now one button, and the date
+  fits. Nothing to change. Noted only so a native speaker can check it on
+  a real phone.
