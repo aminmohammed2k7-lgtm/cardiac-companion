@@ -1,5 +1,5 @@
 /*
- * injection.js — the monthly benzathine penicillin injection
+ * injection.js: the monthly benzathine penicillin injection
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.injection)
@@ -19,7 +19,7 @@
   // ═══════════════════════════════════════════
   function injNextDue(Sx){ return Sx.injection.lastDate ? addDays(Sx.injection.lastDate, Sx.injection.interval) : null; }
   function injDaysLeft(Sx){ const n=injNextDue(Sx); return n ? daysBetween(todayKey(), n) : null; }
-  // share of the injections due in the last 12 months that were given —
+  // share of the injections due in the last 12 months that were given,
   // the ≥80% standard RHD programmes use. Three days' grace before a due
   // date counts against the person.
   function injAdherence(Sx){

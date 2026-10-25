@@ -1,5 +1,5 @@
 /*
- * reminders.js — which reminders are due now, for one person
+ * reminders.js: which reminders are due now, for one person
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.reminders)
@@ -18,7 +18,7 @@
   // ═══════════════════════════════════════════
   // REMINDER TIMING
   // Each dose is announced once at its time and once more an hour later if
-  // still unmarked — and never hours after the fact: the first at most 3
+  // still unmarked, and never hours after the fact: the first at most 3
   // hours late, the second at most 4. Doses at the same time share one
   // reminder. Once a day, after 7 in the morning: the injection, the INR
   // test and the clinic visit, when they are close.

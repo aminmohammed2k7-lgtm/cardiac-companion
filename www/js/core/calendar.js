@@ -1,5 +1,5 @@
 /*
- * calendar.js — dates, the Ethiopian calendar and the Ethiopian clock
+ * calendar.js: dates, the Ethiopian calendar and the Ethiopian clock
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.calendar)
@@ -62,7 +62,7 @@
   function isHHMM(s){ return typeof s==='string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(s); }
 
   // ═══════════════════════════════════════════
-  // ETHIOPIAN CALENDAR — real Gregorian↔Ethiopian conversion
+  // ETHIOPIAN CALENDAR: real Gregorian↔Ethiopian conversion
   // ═══════════════════════════════════════════
   function isGregorianLeap(y){ return (y%4===0 && y%100!==0) || (y%400===0); }
 

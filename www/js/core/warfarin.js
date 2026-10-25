@@ -1,5 +1,5 @@
 /*
- * warfarin.js — tablets, INR against the doctor's range, time in range
+ * warfarin.js: tablets, INR against the doctor's range, time in range
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.warfarin)
@@ -38,7 +38,7 @@
   // quarter tablet, the same rule as each day's figure. Otherwise null, and
   // the card shows the weekly total in mg alone. Blank and 0 days add
   // nothing. (Adding up each day's mg ÷ strength and rounding once showed
-  // "6½" for 6.6 tablets — FOUND-BUGS.md #3, fixed.)
+  // "6½" for 6.6 tablets. FOUND-BUGS.md #3, fixed.)
   function weeklyTabs(doses, strength){
     if(!strength) return null;
     let sum=0;

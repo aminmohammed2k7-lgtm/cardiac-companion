@@ -1,5 +1,5 @@
 /*
- * health.js — the weight, mood and severe-symptom rules
+ * health.js: the weight, mood and severe-symptom rules
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.health)
@@ -54,7 +54,7 @@
   // WARNING SIGNS
   // Ten fixed signs in two levels: get medical help now, or call the clinic
   // today. Their wording (flag_<code> in index.html) follows standard
-  // warfarin and RHD patient leaflets. It is fixed text — have your clinic
+  // warfarin and RHD patient leaflets. It is fixed text. Have your clinic
   // confirm it before release.
   // ═══════════════════════════════════════════
   const FLAGS_NOW=['bleedStool','bleedVomit','bleedUrine','bleedStop','stroke','faint','chest'];

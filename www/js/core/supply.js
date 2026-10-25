@@ -1,5 +1,5 @@
 /*
- * supply.js — tablets left, days left, and the warnings when they run low
+ * supply.js: tablets left, days left, and the warnings when they run low
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.supply)
@@ -16,7 +16,7 @@
   function round2(n){ return Math.round(n*100)/100; }
 
   // ═══════════════════════════════════════════
-  // SUPPLY — counted in tablets, halves included
+  // SUPPLY: counted in tablets, halves included
   // ═══════════════════════════════════════════
   function medDailyTabs(m){
     const sc=m.sched||{};
@@ -40,7 +40,7 @@
 
   // "Running low" and "run out" are each given once; refilling lets them
   // come back (clearSupplyWarnings). Returns which warning to give now, or
-  // null — index.html words it and shows it.
+  // null. index.html words it and shows it.
   function supplyWarning(item, lowDays){
     const o=item.obj;
     if(o.supply<=0){
@@ -72,7 +72,7 @@
   }
 
   // A new warning window (7, 14 or 21 days): "running low" may be given
-  // again. "Run out" is not reset — see docs/android/FOUND-BUGS.md #7.
+  // again. "Run out" is not reset (see docs/android/FOUND-BUGS.md #7).
   function resetLowWarnings(Sx){
     Sx.meds.forEach(m=>{ m.lowWarned=false; }); Sx.warfarin.lowWarned=false;
   }

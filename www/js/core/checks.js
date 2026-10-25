@@ -1,5 +1,5 @@
 /*
- * checks.js — typo checks on what the person types
+ * checks.js: typo checks on what the person types
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.checks)
@@ -44,10 +44,10 @@
   // ═══════════════════════════════════════════
   // WARFARIN, INR AND THE INJECTION
   // ═══════════════════════════════════════════
-  // A dose over 20 mg is far outside usual practice — most likely a typing
-  // slip — so the app asks "Is that exactly what your doctor wrote?"
+  // A dose over 20 mg is far outside usual practice and most likely a typing
+  // slip, so the app asks "Is that exactly what your doctor wrote?"
   function doseNeedsCheck(mg){ return mg!=null && mg>20; }
-  // An INR result outside 0.5–15 is refused ('range'); 8 or more is asked
+  // An INR result outside 0.5 to 15 is refused ('range'); 8 or more is asked
   // about ('confirm'): "Is that the number on your lab result?"
   function inrCheck(value){
     if(value<0.5 || value>15) return 'range';

@@ -1,5 +1,5 @@
 /*
- * doses.js — which doses are due each day, and counting what was taken
+ * doses.js: which doses are due each day, and counting what was taken
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.doses)
@@ -19,7 +19,7 @@
   // Every day gets a frozen list of the doses that were due. A day the app
   // was never opened still gets its plan (the schedule can only change while
   // the app is open, so it is known), and its unmarked doses count as
-  // "not recorded" — never quietly left out of the adherence figure.
+  // "not recorded", never quietly left out of the adherence figure.
   // ═══════════════════════════════════════════
   function medDueOn(m, d){
     if(m.removed && m.removed<=d) return false;
@@ -48,8 +48,8 @@
     const last=Sx.planDay;
     if(isDateKey(last) && last<today){
       // At most 400 missed days are filled in. After longer away, those are
-      // the most recent 400 — the days "This week" and the visit summary
-      // show — so none of them is quietly left out (FOUND-BUGS.md #2, fixed).
+      // the most recent 400: the days "This week" and the visit summary
+      // show, so none of them is quietly left out (FOUND-BUGS.md #2, fixed).
       let d=addDays(last,1), guard=0;
       const oldest=addDays(today,-400);
       if(d<oldest) d=oldest;
@@ -109,7 +109,7 @@
   // times taken out and the times put in are paired in order, earliest with
   // earliest. When times were only added or only taken out, nothing moves.
   // (Pairing the whole lists by position once put a morning "taken" mark on a
-  // moved evening dose — FOUND-BUGS.md #6, fixed.)
+  // moved evening dose. FOUND-BUGS.md #6, fixed.)
   function carryMarkedDoses(log, id, oldTimes, newTimes){
     if(!log) return;
     const out=oldTimes.filter(t=>!newTimes.includes(t)).sort();

@@ -1,5 +1,5 @@
 /*
- * Copies Capacitor's ready-made browser files into www/js/vendor/ — run with:
+ * Copies Capacitor's ready-made browser files into www/js/vendor/. Run with:
  *   npm run vendor
  *
  * The app has no bundler: index.html loads plain script files. Capacitor's

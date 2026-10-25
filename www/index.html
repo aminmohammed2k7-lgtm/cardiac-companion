@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#EEF1EE">
 <title>Cardiac Companion</title>
 <!--
-  CARDIAC COMPANION — a patient's own medicine record.  Version 3.
+  CARDIAC COMPANION: a patient's own medicine record.  Version 3.
 
   WHAT THIS IS: a log. The patient and their clinician put the numbers in;
   the app remembers them, counts down to what is due, and prints a summary
@@ -21,13 +21,13 @@
   the phone camera and light. The number is saved like a typed pulse,
   marked "(camera)". Beat-to-beat variation is shown only when the engine
   judges it reliable, and an "uneven beats" note never names a condition.
-  It is an estimate, not a measurement device — see CHANGES.md before use
+  It is an estimate, not a measurement device. See CHANGES.md before use
   with patients.
 
   WHY THESE FEATURES: rheumatic heart disease is the most common cardiac
   condition among Ethiopian cardiac patients, which makes warfarin dosing
   and monthly benzathine penicillin the two regimens most worth getting
-  right — and the ones a paper card handles worst.
+  right, and the ones a paper card handles worst.
 
   REMINDERS: until Phase 4 adds Android's own notifications, the app
   notifies while it is open, and it can write the schedule into the
@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="fonts/fonts.css">
 <style>
   /* ═══════════════════════════════════════════════════════════════════
-     CARDIAC COMPANION — design system
+     CARDIAC COMPANION: design system
      Plain and flat. White cards with a 1px border on a pale page; one
      green for actions, red only for warning signs, amber for "soon".
      Buttons and fields are rounded rectangles (8px), cards 12px, state
@@ -58,7 +58,7 @@
      appear in place. Controls are at least 44px on a phone (48px for the
      main buttons and fields) because many people using this are older or
      unwell; with a mouse on a wide screen they are 40px and 36px.
-     Type is Onest: plain numerals that are easy to tell apart — what
+     Type is Onest: plain numerals that are easy to tell apart. That is what
      matters most when the number on screen is a dose.
      ═══════════════════════════════════════════════════════════════════ */
   :root{
@@ -215,7 +215,7 @@
   .i-nurse{--ico:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 2l4 4M17 7l3-3M19 9L8.7 19.3a2.4 2.4 0 0 1-3.4 0l-.6-.6a2.4 2.4 0 0 1 0-3.4L15 5M9 11l4 4M5 19l-3 3'/%3E%3C/svg%3E");}
 
 
-  /* ═══════════ HEADER — both calendars, then language, alerts, settings ═══════════ */
+  /* ═══════════ HEADER: both calendars, then language, alerts, settings ═══════════ */
   .header{
     position:relative;
     z-index:5;
@@ -242,7 +242,7 @@
   }
   .header-actions{display:flex; align-items:center; gap:2px; flex-shrink:0;}
   .header-actions .lang-pills{margin-right:4px;}
-  /* on phones the date needs the room more than the logo does —
+  /* on phones the date needs the room more than the logo does:
      the longest month, Oromo "Onkololeessa 30", must fit a 360px screen */
   @media (max-width:419px){ .brand-mark{display:none;} }
   @media (max-width:380px){ .ec-date{font-size:15px;} .greg-date{font-size:12.5px;} }
@@ -445,7 +445,7 @@
   .switch.on::after{transform:translateX(20px);}
   :root[data-theme="dark"] .switch.on::after{background:var(--on-accent);}
 
-  /* ═══════════ TODAY — warfarin: the dose is the biggest thing on the page ═══════════ */
+  /* ═══════════ TODAY: warfarin, the dose is the biggest thing on the page ═══════════ */
   .dose-hero{display:flex; align-items:baseline; gap:6px;}
   .dose-hero-num{
     font-size:56px; font-weight:700; line-height:1;
@@ -789,7 +789,7 @@
     font-size:12.5px; line-height:1.5; color:var(--ink-3);
   }
 
-  /* ═══════════ PANELS — notifications and settings ═══════════ */
+  /* ═══════════ PANELS: notifications and settings ═══════════ */
   .notif-panel{
     position:fixed; inset:0;
     max-width:460px; margin:0 auto;
@@ -862,7 +862,7 @@
   }
   .toast.show{opacity:1;}
 
-  /* ═══════════ POINTER HOVER — a colour change, nothing moves ═══════════ */
+  /* ═══════════ POINTER HOVER: a colour change, nothing moves ═══════════ */
   @media (hover:hover){
     .btn-solid:hover:not(:disabled){background:var(--accent-press);}
     .btn-ghost:hover:not(:disabled){background:var(--surface-2);}
@@ -880,7 +880,7 @@
     .text-btn:hover{text-decoration:underline; text-underline-offset:3px;}
   }
 
-  /* ═══════════ DESKTOP / TABLET — nav becomes a left rail ═══════════
+  /* ═══════════ DESKTOP / TABLET: nav becomes a left rail ═══════════
      The nav lives inside .app-main (after the content), so the rail is laid
      out there: a two-column grid with the nav placed in the first column. */
   @media (min-width:720px){
@@ -911,7 +911,7 @@
 
 
   /* ═══════════════════════════════════════════════════════════════════
-     ADDITIONS — reminders, warning signs, INR range, fasting, profiles
+     ADDITIONS: reminders, warning signs, INR range, fasting, profiles
      ═══════════════════════════════════════════════════════════════════ */
 
   /* larger text: zoom keeps every layout in proportion */
@@ -1005,7 +1005,7 @@
   .manage-row .round-btn{margin-left:-2px;}
   .row-actions{display:flex; gap:4px; flex-shrink:0;}
 
-  /* warning signs — the only place red leads */
+  /* warning signs: the only place red leads */
   .card-danger{border-color:var(--danger-line);}
   .card-danger .card-head .card-label{color:var(--danger-ink);}
   .flag-list{display:flex; flex-direction:column; gap:8px;}
@@ -1029,7 +1029,7 @@
   .flag-btn.today:active{background:var(--warn-soft);}
   .sym-warn{margin-top:10px; font-size:14px; line-height:1.4; color:var(--danger-ink);}
 
-  /* symptom detail — how bad, and when */
+  /* symptom detail: how bad, and when */
   .sym-edit{display:flex; flex-direction:column; gap:8px; margin-top:14px;}
   .sym-edit:empty{display:none;}
   .sym-edit-item{padding:14px; border:1px solid var(--line); border-radius:var(--r-btn); background:var(--surface-2);}
@@ -1109,7 +1109,7 @@
   .status-ok{color:var(--accent-ink); font-weight:600;}
   .status-warn{color:var(--warn-ink); font-weight:600;}
 
-  /* camera pulse — the entry button and its panel (ppg-engine.js) */
+  /* camera pulse: the entry button and its panel (ppg-engine.js) */
   #camPulseBtn{margin-top:10px;}
   .cam-card{padding:16px;}
   .cam-top{display:flex; align-items:center; gap:14px;}
@@ -1174,7 +1174,7 @@
 
       <div class="desktop-2col">
         <div>
-          <!-- WARFARIN — today's dose, the biggest number on the page -->
+          <!-- WARFARIN: today's dose, the biggest number on the page -->
           <div class="card" id="warfarinCard" hidden>
             <div class="card-head">
               <div class="card-head-left">
@@ -1253,7 +1253,7 @@
             </div>
           </div>
 
-          <!-- READINGS — only what the patient measured themselves -->
+          <!-- READINGS: only what the patient measured themselves -->
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
@@ -1740,7 +1740,7 @@
   <div class="panel-body" id="previewBody"></div>
 </div>
 
-<!-- ═══ CAMERA PULSE — an estimate from the phone camera (ppg-engine.js) ═══ -->
+<!-- ═══ CAMERA PULSE: an estimate from the phone camera (ppg-engine.js) ═══ -->
 <div class="notif-panel" id="pulsePanel" role="dialog" aria-modal="true" aria-labelledby="pulseTitle" hidden>
   <div class="notif-head">
     <h2 class="panel-title" id="pulseTitle" data-t="camTitle">Measure pulse with camera</h2>
@@ -1809,7 +1809,7 @@
 
 <script>
 // ═══════════════════════════════════════════
-// MEDICAL LOGIC — in js/core, tested in Node (npm test)
+// MEDICAL LOGIC: in js/core, tested in Node (npm test)
 // Dates, calendars, dose plans, supply, warfarin, the injection, the health
 // rules, reminder timing and the typo checks live in js/core/*.js, so they can be tested on
 // their own. This gives their functions back the names the rest of this
@@ -1831,7 +1831,7 @@ const {dueReminders}=CC.reminders;
 const {num, weightOk, VITAL_LIMITS, cleanVital, doseNeedsCheck, inrCheck, targetOk, injIntervalOk}=CC.checks;
 
 // ═══════════════════════════════════════════
-// ETHIOPIAN CALENDAR — month names (the conversion is in js/core/calendar.js)
+// ETHIOPIAN CALENDAR: month names (the conversion is in js/core/calendar.js)
 // ═══════════════════════════════════════════
 const ETHIOPIAN_MONTHS = [
   {am:'መስከረም',en:'Meskerem',om:'Fulbaana'},
@@ -2263,7 +2263,7 @@ const T = {
 // ═══════════════════════════════════════════
 // STRINGS ADDED IN VERSION 3 (merged into T[lang].msg at start-up).
 // Amharic and Afaan Oromo versions below were written for this release and
-// must be checked by a bilingual health worker before patients use them —
+// must be checked by a bilingual health worker before patients use them,
 // especially the warning signs, the pregnancy note and the mood questions.
 // ═══════════════════════════════════════════
 const T2={};
@@ -2550,7 +2550,7 @@ T2.am={
   migratedText:"ቀደም ብለው ያስገቡት ሁሉ እዚህ አለ። አዲስ፦ የመድሃኒት ማስታወሻ፣ የINR ዒላማ፣ የአደጋ ምልክቶችና ምትኬ።",
 
   getHelpTitle:"እርዳታ ያግኙ", medIdBtn:"የሕክምና መታወቂያ", warningSignsBtn:"የአደጋ ምልክቶች",
-  // camera pulse — DRAFT translation, needs review by a native speaker
+  // camera pulse, DRAFT translation, needs review by a native speaker
   camMeasure:"በካሜራ ይለኩ", camTitle:"የልብ ምትን በካሜራ ይለኩ", camTag:"ካሜራ",
   camHow:"ለአንድ ደቂቃ ያርፉ። የኋላውን ካሜራና መብራቱን በጣት ጫፍዎ ይሸፍኑ፣ በቀስታ ይጫኑ፣ ለአንድ ደቂቃ ያህል ሳይንቀሳቀሱ ይቆዩ።",
   camBpmUnit:"ምት/ደቂቃ", camStart:"ጀምር", camUse:"ይህን ንባብ ተጠቀም", camAgain:"እንደገና ለካ",
@@ -2761,7 +2761,7 @@ T2.or={
   migratedText:"Wanti dura galchite hundi as jira. Haaraa: yaadachiisa qorichaa, daangaa INR, mallattoolee balaa fi kuusaa.",
 
   getHelpTitle:"Gargaarsa argadhu", medIdBtn:"Eenyummaa yaalaa", warningSignsBtn:"Mallattoolee balaa",
-  // camera pulse — DRAFT translation, needs review by a native speaker
+  // camera pulse, DRAFT translation, needs review by a native speaker
   camMeasure:"Kaameraan safari", camTitle:"Rukuttaa onnee kaameraan safari", camTag:"kaameraa",
   camHow:"Daqiiqaa tokkoof boqodhaa. Kaameraa duubaa fi ifa isaa qubaan haguugaa, suuta dhiibaa, daqiiqaa tokko naannoo osoo hin sochoʼin turaa.",
   camBpmUnit:"rukuttaa/daqiiqaa", camStart:"Jalqabi", camUse:"Safartuu kana fayyadami", camAgain:"Irra deebiʼi safari",
@@ -3014,7 +3014,7 @@ function fmtEc(key, withYear){
   const base=formatEcShort(ec, currentLang);
   return withYear ? base+', '+ec.year : base;
 }
-// "Tikimt 12 · 22 Oct" — for anything the patient has to act on
+// "Tikimt 12 · 22 Oct": for anything the patient has to act on
 function fmtDual(key, withYear){ return fmtEc(key, withYear)+' · '+fmtGreg(key, withYear); }
 // dates in lists: the calendar the reader is most likely to use
 function fmtListDate(key){ return currentLang==='en' ? fmtGreg(key) : fmtEc(key); }
@@ -3216,18 +3216,18 @@ function personName(){ const p=activeProfile(); return (p && p.name) ? p.name : 
 function loadActive(){ S=readState(profiles.active)||defaultState(); }
 
 // Ask the browser not to clear this record under storage pressure. Called
-// after the person saves something — a user action — which is when
+// after the person saves something (a user action), which is when
 // browsers are most willing to grant it.
 
 
 // ═══════════════════════════════════════════
-// DOSE PLANS — the rules are in js/core/doses.js
+// DOSE PLANS: the rules are in js/core/doses.js
 // ═══════════════════════════════════════════
 // after any schedule change, today's list follows the new schedule
 function refreshTodayPlan(){ const t=todayKey(); S.dayPlan[t]=computePlan(S,t); S.planDay=t; }
 
 // ═══════════════════════════════════════════
-// SUPPLY — counted in tablets, halves included (js/core/supply.js)
+// SUPPLY: counted in tablets, halves included (js/core/supply.js)
 // ═══════════════════════════════════════════
 function supplyItems(Sx){
   const out=[];
@@ -3292,7 +3292,7 @@ const NEWMED_TYPES=['antibiotic','pain','herbal','other'];
 
 // A tablet drawn as two halves with a score line between them, so a
 // half or a quarter looks like exactly that. Pictures help people who
-// read little — but only alongside the words, never instead of them.
+// read little, but only alongside the words, never instead of them.
 function pillSvg(frac){
   const left='<path d="M11.2 2.5A9.5 9.5 0 0 0 11.2 21.5Z" fill="currentColor"/>';
   const right='<path d="M12.8 2.5A9.5 9.5 0 0 1 12.8 21.5Z" fill="currentColor"/>';
@@ -3316,7 +3316,7 @@ function tabsLabel(n){ return n===1 ? L('tabletOne') : n<1 ? L('tabletFrac',{n:f
 function dialable(n){ return String(n||'').replace(/[^\d+]/g,''); }
 
 // When a section is re-drawn while someone is typing in it, wait until they
-// leave the section — never wipe what they are typing. A tap on a button is
+// leave the section. Never wipe what they are typing. A tap on a button is
 // different: the person asked for the change, so it is drawn at once
 // (everything typed in those sections is already saved or buffered).
 let forceRender=false;
@@ -3338,7 +3338,7 @@ function deferIfBusy(el, fn){
 }
 
 // ═══════════════════════════════════════════
-// TODAY — warfarin
+// TODAY: warfarin
 // ═══════════════════════════════════════════
 function doseActionsHtml(key, e, hero){
   const k=esc(key);
@@ -3418,7 +3418,7 @@ function renderWarfarinToday(){
 }
 
 // ═══════════════════════════════════════════
-// TODAY — penicillin injection
+// TODAY: penicillin injection
 // ═══════════════════════════════════════════
 function renderInjectionToday(){
   const card=$('injectionCard');
@@ -3477,7 +3477,7 @@ function saveInjection(){
 }
 
 // ═══════════════════════════════════════════
-// TODAY — medicines, grouped by clock time
+// TODAY: medicines, grouped by clock time
 // ═══════════════════════════════════════════
 function doseRowHtml(key, med, e){
   const per=med.perDose||1;
@@ -3590,7 +3590,7 @@ function prnUndo(id){
 }
 
 // ═══════════════════════════════════════════
-// TODAY — weight
+// TODAY: weight
 // Rising weight over a few days is the classic sign of fluid building up in
 // heart failure, and the one thing a bathroom scale can catch early. The app
 // reports the change and points to the clinician.
@@ -3624,7 +3624,7 @@ function renderWeightFeedback(){
 }
 
 // ═══════════════════════════════════════════
-// TODAY — readings the patient measured
+// TODAY: readings the patient measured
 // Wide limits only catch typing slips (an oxygen of 850, a pulse of 7);
 // they never judge a reading.
 // ═══════════════════════════════════════════
@@ -3772,7 +3772,7 @@ function renderVitals(){
 }
 
 // ═══════════════════════════════════════════
-// TODAY — get help
+// TODAY: get help
 // ═══════════════════════════════════════════
 function callButtonsHtml(order){
   const c=S.contacts, out={};
@@ -3789,7 +3789,7 @@ function renderCalls(){
 }
 
 // ═══════════════════════════════════════════
-// MEDICINES — schedule
+// MEDICINES: schedule
 // ═══════════════════════════════════════════
 function schedText(sc){
   sc=sc||{};
@@ -3915,7 +3915,7 @@ function deleteMed(id){
 }
 
 // ═══════════════════════════════════════════
-// MEDICINES — supply
+// MEDICINES: supply
 // ═══════════════════════════════════════════
 function renderSupply(){
   const el=$('supplyList');
@@ -3956,7 +3956,7 @@ function refill(id){
 }
 
 // ═══════════════════════════════════════════
-// MEDICINES — warfarin schedule and INR
+// MEDICINES: warfarin schedule and INR
 // ═══════════════════════════════════════════
 function toggleWarfarin(){
   S.warfarin.enabled=!S.warfarin.enabled;
@@ -4060,7 +4060,7 @@ function setTarget(which, el){
 }
 
 // ═══════════════════════════════════════════
-// MEDICINES — penicillin injection setup
+// MEDICINES: penicillin injection setup
 // ═══════════════════════════════════════════
 function toggleInjection(){
   S.injection.enabled=!S.injection.enabled;
@@ -4106,7 +4106,7 @@ function deleteInjection(id){
 }
 
 // ═══════════════════════════════════════════
-// MEDICINES — fasting
+// MEDICINES: fasting
 // Fasting changes when people eat and how much green food they eat, and
 // both move INR. The app records the fast; it never moves a dose itself.
 // ═══════════════════════════════════════════
@@ -4149,7 +4149,7 @@ function renderFasting(){
 }
 
 // ═══════════════════════════════════════════
-// MEDICINES — new medicine or remedy
+// MEDICINES: new medicine or remedy
 // Antibiotics, painkillers and herbal remedies can all change how warfarin
 // works; writing them down lets the clinic connect them to an INR result.
 // ═══════════════════════════════════════════
@@ -4179,7 +4179,7 @@ function saveNewMed(){
 }
 
 // ═══════════════════════════════════════════
-// MEDICINES — this week
+// MEDICINES: this week
 // ═══════════════════════════════════════════
 function renderWeekView(){
   const el=$('weekView'), names=Larr('weekdayShort'), today=todayKey(), week=lastNDays(7);
@@ -4200,7 +4200,7 @@ function renderWeekView(){
 
 
 // ═══════════════════════════════════════════
-// SYMPTOMS — warning signs
+// SYMPTOMS: warning signs
 // ═══════════════════════════════════════════
 function renderFlags(){
   $('flagsNow').innerHTML=FLAGS_NOW.map(c=>`<button class="flag-btn" data-act="flag" data-code="${c}">${esc(L('flag_'+c))}</button>`).join('');
@@ -4236,7 +4236,7 @@ function goWarningSigns(){
 }
 
 // ═══════════════════════════════════════════
-// SYMPTOMS — tracker: each ticked symptom gets its own severity and
+// SYMPTOMS: tracker. Each ticked symptom gets its own severity and
 // whether it came at rest or with activity, saved with that day
 // ═══════════════════════════════════════════
 function renderSymptoms(){
@@ -4294,8 +4294,8 @@ function removeCustomSymptom(id){
 }
 
 // ═══════════════════════════════════════════
-// SYMPTOMS — mood check (PHQ-2, every two weeks)
-// Two validated questions instead of a free 1–10 stress number. A score of
+// SYMPTOMS: mood check (PHQ-2, every two weeks)
+// Two validated questions instead of a free 1 to 10 stress number. A score of
 // 3 or more is a positive screen: it goes on the doctor's summary.
 // ═══════════════════════════════════════════
 function renderMood(){
@@ -4324,7 +4324,7 @@ function saveMood(){
 }
 
 // ═══════════════════════════════════════════
-// SYMPTOMS — notes
+// SYMPTOMS: notes
 // ═══════════════════════════════════════════
 function saveNote(){
   const input=$('noteInput');
@@ -4490,7 +4490,7 @@ function renderWeekTable(){
 }
 
 // ═══════════════════════════════════════════
-// ACTIVE ALERTS — the top of Today
+// ACTIVE ALERTS: the top of Today
 // ═══════════════════════════════════════════
 function alertHtml(cls, title, text, actions){
   return `<div class="${cls}" role="status"><strong>${esc(title)}</strong>${text?`<span>${esc(text)}</span>`:''}${actions?`<div class="alert-actions">${actions}</div>`:''}</div>`;
@@ -4686,7 +4686,7 @@ function deleteProfile(id){
 
 // ═══════════════════════════════════════════
 // MEDICAL ID and SHOW-THE-NURSE
-// English first — that is what emergency staff read — with the patient's
+// English first (that is what emergency staff read), with the patient's
 // own language underneath.
 // ═══════════════════════════════════════════
 function idLines(){
@@ -4972,7 +4972,7 @@ document.addEventListener('input', ev=>{
   const el=ev.target.closest('[data-in]');
   if(el && IN[el.dataset.in]) IN[el.dataset.in](el.dataset, el);
 });
-// A field reports "change" as focus leaves it — at that instant nothing has
+// A field reports "change" as focus leaves it. At that instant nothing has
 // focus yet. Waiting one tick lets focus land on the next field first, so a
 // redraw never pulls the field out from under the person's finger.
 document.addEventListener('change', ev=>{
@@ -4995,7 +4995,7 @@ document.addEventListener('keydown', ev=>{
 // VISIT SUMMARY
 // One structured description, three renderings: PDF pages, the on-screen
 // preview, and plain text for sharing. The doctor's copy is always in
-// English — clinicians write their notes in English — and a copy in the
+// English (clinicians write their notes in English), and a copy in the
 // patient's own language can be added after it.
 // audience: 'doctor' (everything) or 'family' (no mood, pregnancy or notes)
 // ═══════════════════════════════════════════
@@ -5193,8 +5193,8 @@ async function shareFamily(){
 // PDF EXPORT
 // A PDF's built-in fonts cannot encode Ethiopic script, and embedding a
 // Unicode font would add megabytes to this single file. So each page is
-// drawn on a canvas — the browser shapes the text with the fonts already
-// loaded — and embedded in the PDF as a JPEG.
+// drawn on a canvas (the browser shapes the text with the fonts already
+// loaded) and embedded in the PDF as a JPEG.
 // ═══════════════════════════════════════════
 const PDF_PAGE={w:1240, h:1754, pad:92};   // A4 proportions at ~150dpi
 const PDF_STYLE={
@@ -5354,7 +5354,7 @@ async function saveIdPdf(){
 }
 
 // ═══════════════════════════════════════════
-// CSV — one row per day, for anyone who wants the numbers
+// CSV: one row per day, for anyone who wants the numbers
 // ═══════════════════════════════════════════
 function csvCell(v){ const s=String(v==null?'':v); return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; }
 function exportCsv(){
@@ -5385,7 +5385,7 @@ function exportCsv(){
 // ═══════════════════════════════════════════
 // CALENDAR REMINDERS (.ics)
 // A web page cannot ring an alarm while it is closed. The phone's own
-// calendar can, even offline — so the app writes the schedule into a
+// calendar can, even offline, so the app writes the schedule into a
 // calendar file. Titles never carry doses (a dose written into a calendar
 // goes stale the day the doctor changes it); names only if the person
 // chooses, since calendars can sync to the cloud.

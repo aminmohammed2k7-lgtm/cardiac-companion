@@ -1,5 +1,5 @@
 /*
- * seasons.js — religious fasting seasons, and the person's own fasting
+ * seasons.js: religious fasting seasons, and the person's own fasting
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.seasons)
@@ -16,7 +16,7 @@
 
   // ═══════════════════════════════════════════
   // RELIGIOUS FASTING SEASONS
-  // Orthodox Easter by the Julian computus (valid 1900–2099), Abiy Tsom is
+  // Orthodox Easter by the Julian computus (valid 1900 to 2099). Abiy Tsom is
   // the 55 days before it; Ramadan comes from the browser's Islamic calendar.
   // ═══════════════════════════════════════════
   function orthodoxEaster(y){
@@ -57,7 +57,7 @@
   }
 
   // ═══════════════════════════════════════════
-  // FASTING — the periods the person has said they are fasting
+  // FASTING: the periods the person has said they are fasting
   // ═══════════════════════════════════════════
   function openFast(Sx){ return Sx.fasting.periods.find(p=>!p.end)||null; }
   function autoCloseFasting(Sx){
