@@ -1471,7 +1471,7 @@
               <div class="card-head-left">
                 <h3 class="card-label" data-t="t-symTracker">Symptom tracker</h3>
               </div>
-              <button class="btn btn-ghost ico i-plus" onclick="toggleAddSymptom()" data-t="t-addSymptom">Add</button>
+              <button class="btn btn-ghost ico i-plus" onclick="toggleAddSymptom()" data-t="t-addSymptom">Add your own</button>
             </div>
             <div class="card-body">
               <div id="addSymptomForm" hidden>
@@ -1578,7 +1578,7 @@
           <div class="card">
             <div class="card-head">
               <div class="card-head-left">
-                <h3 class="card-label" data-t="t-weekTable">Week at a glance</h3>
+                <h3 class="card-label" data-t="t-weekTable">Day by day</h3>
               </div>
             </div>
             <div class="card-body">
@@ -1624,7 +1624,7 @@
   </div>
   <div class="settings-block settings-pad" id="notifPermBlock">
     <p class="settings-row-sub" data-t="t-enableNotifText">Turn on phone notifications.</p>
-    <button class="btn btn-solid ico i-bell" onclick="requestNotificationPermission()" data-t="t-enableNotifBtn">Enable</button>
+    <button class="btn btn-solid ico i-bell" onclick="requestNotificationPermission()" data-t="t-enableNotifBtn">Turn on notifications</button>
   </div>
   <div class="notif-list" id="notifList"></div>
   <button class="btn btn-ghost panel-foot" onclick="clearNotifications()" data-t="t-clearAll">Clear all</button>
@@ -1715,7 +1715,7 @@
     <div class="settings-block">
       <div class="settings-row stack">
         <span class="settings-row-label" data-t="t-settingsStorage">Storage</span>
-        <span class="settings-row-sub" data-t="t-settingsStorageValue">On this phone only. Nothing is sent anywhere</span>
+        <span class="settings-row-sub" data-t="t-settingsStorageValue">On this phone only. Nothing is sent anywhere.</span>
         <span class="settings-row-sub" id="backupStatus"></span>
       </div>
       <button class="settings-row ico i-download" onclick="backupNow()" data-t="backupBtn">Back up now</button>
@@ -1919,7 +1919,7 @@ const T = {
     "t-weekAdherence":"This week",
 
     "t-symTitle":"Symptoms",
-    "t-symTracker":"Symptom tracker","t-addSymptom":"Add","t-saveSymptom":"Add symptom","t-severity":"Severity",
+    "t-symTracker":"Symptom tracker","t-addSymptom":"Add your own","t-saveSymptom":"Add symptom","t-severity":"Severity",
     "t-symptomCtxLabel":"Context","t-ctxRest":"At rest","t-ctxExertion":"After exertion","t-ctxOther":"Other",
     "t-stressTitle":"Stress level","t-stressCurrent":"Current level",
     "t-notes":"Daily notes","t-saveNote":"Save note",
@@ -1934,15 +1934,15 @@ const T = {
     "t-visitTitle":"Prepare for your visit",
     "t-visitHint":"Your last two weeks on one page. Save it as a PDF or show the screen to your doctor.",
     "t-savePdf":"Save as PDF","t-shareSummary":"Send to family",
-    "t-weekTable":"Week at a glance",
+    "t-weekTable":"Day by day",
 
     "t-disclaimer":"Not a medical device. This app records what you and your doctor enter — it does not measure, diagnose or decide anything. Always follow your clinician's guidance.",
     "t-notifTitle":"Notifications","t-clearAll":"Clear all",
-    "t-enableNotifText":"Turn on phone notifications for medicine reminders.","t-enableNotifBtn":"Enable",
+    "t-enableNotifText":"Turn on phone notifications for medicine reminders.","t-enableNotifBtn":"Turn on notifications",
     "t-settingsTitle":"Settings","t-settingsPreferences":"Preferences","t-settingsTheme":"Appearance","t-settingsDateFormat":"Date format",
     "t-settingsClinical":"Your conditions","t-settingsClinicalSub":"Shown on the printed visit summary.",
     "t-settingsPrivacy":"Your data","t-settingsStorage":"Storage",
-    "t-settingsStorageValue":"On this phone only. Nothing is sent anywhere",
+    "t-settingsStorageValue":"On this phone only. Nothing is sent anywhere.",
     "t-exportCsv":"Export data (CSV)",
     "t-settingsAbout":"About",
     "t-settingsAboutDisclaimer":"Cardiac Companion is a personal record, not a medical device. It does not measure your heart, diagnose anything, or tell you whether to seek care. Always follow your clinician's guidance.",
@@ -1985,16 +1985,16 @@ const T = {
       highStressTitle:"High stress logged", highStressText:"Consider a short breathing exercise.",
       severitySaved:"Severity saved",
       writeSomethingFirst:"Write something first", noteSaved:"Note saved",
-      notificationsCleared:"Notifications cleared", notifEmpty:"No notifications yet",
+      notificationsCleared:"Notifications cleared", notifEmpty:"No messages. Reminders and notes from the app show up here.",
       themeDark:"Dark", themeLight:"Light",
-      notifUnsupported:"Notifications not supported here",
+      notifUnsupported:"This phone can't show notifications from the app",
       notifEnabledToast:"Phone notifications on",
-      notifBlockedToast:"Blocked. Turn on in browser settings",
-      welcomeTitle:"Welcome", welcomeText:"Your medicine record is ready.",
+      notifBlockedToast:"Notifications are blocked. Turn them on in the phone's Settings, under Apps",
+      welcomeTitle:"Getting started", welcomeText:"Add your medicines and the times you take them on the Medicines page. Everything stays on this phone, and the app works without internet.",
       phoneNotifText:"You will now get reminders on this phone.",
       callClinician:"Call clinician",
       offlineFontsWarning:"Offline. Some text may not display correctly until fonts load",
-      csvExported:"CSV file downloaded",
+      csvExported:"CSV file saved",
       shareCopied:"Summary copied. Paste it into a message",
       shareFailed:"Could not share. Save as PDF instead",
       pdfBuilding:"Making your PDF…", pdfSaved:"PDF saved to your downloads",
@@ -2016,7 +2016,7 @@ const T = {
       emptyMeds:"No medicines yet. Add one on the Medicines tab.",
       emptySupply:"No tablet counts yet. Add a count when you collect your medicine.",
       emptyInr:"No INR results yet.", emptyInj:"No injections recorded yet.",
-      emptyNotes:"No notes yet.",
+      emptyNotes:"No notes yet. Notes you save go on the doctor's summary.",
       confirmRemoveMed:"Remove {name} from your medicines?",
       vitalCheckRange:"Check that number — it should be between {min} and {max}.",
       vitalCheckBp:"Enter blood pressure like 120/80.",
@@ -2361,7 +2361,7 @@ T2.en={
   backupBtn:"Back up now", restoreBtn:"Restore from a backup",
   backupDone:"Backup saved. Keep the file somewhere safe, like your Telegram Saved Messages",
   backupNudgeTitle:"Back up your record",
-  backupNudgeText:"If this phone is lost or its browser data is cleared, everything here is gone. A backup takes a few seconds.",
+  backupNudgeText:"If this phone is lost or the app is removed, everything here is gone. A backup takes a few seconds.",
   laterBtn:"Later", lastBackupLine:"Last backup: {date}", noBackupYet:"No backup yet",
   restoreBad:"That file is not a Cardiac Companion backup",
   restoreConfirm:"Replace everything on this phone with the backup from {date} ({names})?",
@@ -5567,7 +5567,7 @@ function requestNotificationPermission(){
   if(!('Notification' in window)){ showToast(L('notifUnsupported')); return; }
   Notification.requestPermission().then(p=>{
     showToast(L(p==='granted'?'notifEnabledToast':'notifBlockedToast'));
-    if(p==='granted') systemNotify(L('welcomeTitle'), L('phoneNotifText'), 'cc-welcome');
+    if(p==='granted') systemNotify(L('notifEnabledToast'), L('phoneNotifText'), 'cc-welcome');
     updateNotifPermUI(); renderReminders();
   });
 }
