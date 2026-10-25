@@ -20,6 +20,12 @@ logic, the records and the health wording are unchanged.
   not part of the app.
 
 ## Changed
+- **The camera pulse is off inside the app** (safety charter rule 7). The
+  "Measure with camera" button was still shown on the pulse entry, but the
+  app has no CAMERA permission, so it could only fail with a confusing
+  "permission refused" message. It is now hidden inside the app and stays
+  available in a browser. The camera engine has one support check instead
+  of two that could disagree.
 - **Fonts ship inside the app** (`www/fonts/`, with their OFL licences)
   instead of loading from Google Fonts. Same fonts, same fallback order.
 - **Android's back button** closes the top panel, then a form that is open

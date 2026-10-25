@@ -3645,7 +3645,7 @@ function openVitalEntry(kind){
   input.setAttribute('aria-label', L(VITAL_META[kind].prompt));
   input.value='';
   $('rhythmBox').hidden=kind!=='pulse';
-  $('camPulseBtn').hidden=kind!=='pulse' || !window.PPG || !PPG.PulseMonitor.supported();
+  $('camPulseBtn').hidden=kind!=='pulse' || !camPulseAvailable();
   pendingCam=null;
   renderRhythmChips();
   input.focus();
@@ -3679,7 +3679,15 @@ function saveVital(){
 // An estimate from the phone camera: the number goes into the pulse field
 // like a typed one; HRV details are kept with it only as a personal record.
 let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camResult=null;
+// Off inside the Android app (safety charter rule 7, DECISIONS.md): the app has
+// no CAMERA permission, so the camera could never open there, and the person
+// would only see a confusing "permission refused" message. It stays available
+// in a desktop or phone browser, where the engine is developed and tested.
+function camPulseAvailable(){
+  return !CCPlatform.isApp() && !!window.PPG && PPG.PulseMonitor.supported();
+}
 function openPulseCam(){
+  if(!camPulseAvailable()) return;
   camResult=null; $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true;
   $('camStart').hidden=false; $('camBpm').textContent='—'; $('camProgress').style.width='0';
   $('camHint').textContent=''; $('camNoLight').hidden=true;
@@ -3694,6 +3702,7 @@ function camDraw(){
   camRaf=requestAnimationFrame(camDraw);
 }
 async function startPulseCam(){
+  if(!camPulseAvailable()) return;
   stopPulseCam();
   camResult=null; camWaveData=null;
   $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true; $('camStart').hidden=true;

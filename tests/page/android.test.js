@@ -49,4 +49,16 @@ same('first launch, Android font below 1.15: normal text', p.call('startsWithBig
 same('not the first launch: the person\'s own choice stands', p.call('startsWithBigText', false, 1.5), false);
 same('in a browser (no font scale): normal text', p.call('startsWithBigText', true, null), false);
 
+section('3. The camera pulse is off inside the app (safety charter rule 7)');
+// a stand-in camera engine that says this browser could measure
+p.run(`PPG={PulseMonitor:{supported:()=>true}}; __realCap=window.Capacitor;`);
+p.run(`window.Capacitor={isNativePlatform:()=>false};`);
+same('in a browser that can use the camera: offered', p.call('camPulseAvailable'), true);
+p.run(`window.Capacitor={isNativePlatform:()=>true};`);
+same('inside the Android app: never offered', p.call('camPulseAvailable'), false);
+p.run(`openVitalEntry('pulse')`);
+same('inside the app, the pulse entry hides the camera button', p.el('camPulseBtn').hidden, true);
+p.run(`window.Capacitor=__realCap; delete window.PPG;`);
+same('no camera engine loaded: not offered', p.call('camPulseAvailable'), false);
+
 done();

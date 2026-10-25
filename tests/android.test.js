@@ -56,9 +56,12 @@ section('3. Android only through js/platform/');
 const appCode = [html, ...fs.readdirSync(path.join(root, 'www/js/core')).map(f => read('www/js/core/' + f))].join('\n');
 check('UI and medical code never touch Capacitor directly', !/Capacitor\.|Plugins\./.test(appCode.replace(/<script src="js\/vendor\/[^"]+"><\/script>/g, '')));
 const { FILES } = require('../scripts/vendor.js');
+// Line endings are ignored: on Windows, git (core.autocrlf) checks the copies
+// out with CRLF while node_modules keeps LF; the code is still the same.
+const lf = s => s.replace(/\r\n/g, '\n');
 for (const [from, to] of FILES) {
-  const want = read(from).replace(/\n\/\/# sourceMappingURL=.*\s*$/, '\n');
-  check(`${to} matches ${from} (run npm run vendor after an update)`, exists(to) && read(to) === want);
+  const want = lf(read(from)).replace(/\n\/\/# sourceMappingURL=.*\s*$/, '\n');
+  check(`${to} matches ${from} (run npm run vendor after an update)`, exists(to) && lf(read(to)) === want);
 }
 const order = ['js/vendor/capacitor-core.js', 'js/vendor/capacitor-app.js', 'js/platform/android.js', 'js/core/calendar.js'].map(s => html.indexOf(`<script src="${s}">`));
 check('Capacitor, then the platform layer, load before the app', order.every((v, i) => v > 0 && (i === 0 || v > order[i - 1])));

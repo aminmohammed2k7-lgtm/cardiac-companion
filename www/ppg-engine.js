@@ -1271,10 +1271,6 @@
       this.proc = new SignalProcessor(this.o, (type, detail) => this._fromProcessor(type, detail));
     }
 
-    static isSupported() {
-      return hasDom && !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) && (window.isSecureContext !== false);
-    }
-
     on(type, fn) {
       const h = e => fn(e.detail);
       this.addEventListener(type, h);
@@ -1309,7 +1305,8 @@
 
     async start() {
       if (this.running || this.state === 'starting') return;
-      if (!PulseMonitor.isSupported()) { this._fail('unsupported', 'Camera access needs a secure (https) page in a current browser.'); return; }
+      // the same check the page uses to show the button, so they never disagree
+      if (!PulseMonitor.supported()) { this._fail('unsupported', 'Camera access needs a secure (https) page in a current browser.'); return; }
       this.result = null;
       this._setState('starting');
       let stream;
