@@ -89,3 +89,57 @@ were not counted as wording:
 
 Changing them would change how the doctor's summary looks. Leave them unless
 Amin wants a different separator.
+
+## 4. Human polish pass (October 2026)
+
+Line numbers above are from before this pass. From here on, look strings up
+by key. After the polish pass they live in `www/js/strings.js`.
+
+### 4a. English UI text that changed. The translations still say the old thing
+
+These are not health wording, so the English was changed. The Amharic and
+Oromo copies were **not** touched. A native speaker should bring them in
+line when convenient. Until then they still read fine, just not word for
+word the same.
+
+| Key | Old English | New English |
+|---|---|---|
+| `welcomeTitle` | Welcome | Getting started |
+| `welcomeText` | Your medicine record is ready. | Add your medicines and the times you take them on the Medicines page. Everything stays on this phone, and the app works without internet. |
+| `t-enableNotifBtn` | Enable | Turn on notifications |
+| `t-addSymptom` | Add | Add your own |
+| `t-weekTable` | Week at a glance | Day by day |
+| `t-settingsStorageValue` | On this phone only. Nothing is sent anywhere | (adds a full stop) |
+| `notifEmpty` | No notifications yet | No messages. Reminders and notes from the app show up here. |
+| `notifUnsupported` | Notifications not supported here | This phone can't show notifications from the app |
+| `notifBlockedToast` | Blocked. Turn on in browser settings | Notifications are blocked. Turn them on in the phone's Settings, under Apps |
+| `csvExported` | CSV file downloaded | CSV file saved |
+| `emptyNotes` | No notes yet. | No notes yet. Notes you save go on the doctor's summary. |
+| `backupNudgeText` | If this phone is lost or its browser data is cleared, everything here is gone. A backup takes a few seconds. | If this phone is lost or the app is removed, everything here is gone. A backup takes a few seconds. |
+
+### 4b. Proposed, not changed (health wording or close to it)
+
+| Key | Now | Proposed | Why |
+|---|---|---|---|
+| `insightNoWeight` | No weights recorded yet this week. | No weights recorded in this period. | The weight chart shows this text in its 30 day view too, where "this week" is wrong. Alternative: a second string for the 30 day view. |
+| `t-adherence` | Adherence | Doses taken | "Adherence" is a clinician's word. The sub-line already says "doses taken", so that would need to change too, for example to "this week". It stays the first number on the Summary, as Amin decided. |
+| `t-temp` | Temp | Temperature | A short form on a reading tile. "Temperature" fits the tile at 360px. |
+| Many keys | day(s), dose(s), symptom(s), warning sign(s) | Two strings each, singular and plural | About 20 strings use "(s)". Most are health wording: `injOverdueText`, `supplyLowText`, `insightMissedDoses`, `insightSymptoms`, `insightInjection`, `insightInjectionOverdue`, `alertMissedDoseText`, `dueNowTitle`, `dailyInjLate`, `injLateQ`, `injLateBy`, `inrOverdueText`, `weekNotRec`, `insightNotRec`, `insightFlags`, `legacySymptoms`. Amharic and Oromo plurals work differently, so this needs a native speaker for each language. |
+| `camDenied` | …allow it in your browser settings… | …allow it in the phone's Settings, under Apps… | The camera pulse is off in release builds, and camera text is treated like health text. |
+
+### 4c. Amharic and Afaan Oromo flags (not changed)
+
+- **Oromo `camDenied`** contains the English word "browser": "Qindaaʼina
+  browser keessanii keessatti…". It should name the phone's Settings in
+  Oromo, like the English proposal above.
+- **"Afaan Oromoo" or "Afaan Oromo".** The language button's spoken label
+  says "Afaan Oromoo". The docs and CLAUDE.md say "Afaan Oromo". A native
+  speaker should pick one, and the app and docs should then use it
+  everywhere.
+- **Version 3 strings.** No native speaker review is recorded for `T2.am`
+  and `T2.or` (the strings added in version 3). They should be checked as a
+  whole, not one by one.
+- **The header date in Oromo.** The longest month, "Onkololeessa", is cut
+  off at 360px. The polish pass made the header roomier, but a shorter
+  agreed month form would help on small phones. This is a question for a
+  native speaker, not a wording change.
