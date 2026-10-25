@@ -6,45 +6,46 @@
 <meta name="theme-color" content="#EEF1EE">
 <title>Cardiac Companion</title>
 <!--
-  CARDIAC COMPANION: a patient's own medicine record.  Version 3.
+  Cardiac Companion: a patient's own medicine record.
 
-  WHAT THIS IS: a log. The patient and their clinician put the numbers in;
-  the app remembers them, counts down to what is due, and prints a summary
+  What this is: a log. The patient and their clinician put the numbers in.
+  The app remembers them, counts down to what is due, and prints a summary
   for the next clinic visit.
 
-  WHAT THIS IS NOT: a measuring device or a decision-maker. There is no ECG
+  What this is not: a measuring device or a decision-maker. There is no ECG
   here, simulated or otherwise, and the app never works out a dose. It
   compares an INR result with the range the doctor wrote down and shows
-  fixed warning-sign text; it does not interpret anything else.
+  fixed warning-sign text. It does not interpret anything else.
 
-  CAMERA PULSE (optional, ppg-engine.js): the pulse can be estimated with
-  the phone camera and light. The number is saved like a typed pulse,
-  marked "(camera)". Beat-to-beat variation is shown only when the engine
-  judges it reliable, and an "uneven beats" note never names a condition.
-  It is an estimate, not a measurement device. See CHANGES.md before use
-  with patients.
+  Why these features: rheumatic heart disease is the most common cardiac
+  condition among Ethiopian cardiac patients. That makes warfarin and the
+  monthly benzathine penicillin injection the two treatments most worth
+  getting right, and the ones a paper card handles worst.
 
-  WHY THESE FEATURES: rheumatic heart disease is the most common cardiac
-  condition among Ethiopian cardiac patients, which makes warfarin dosing
-  and monthly benzathine penicillin the two regimens most worth getting
-  right, and the ones a paper card handles worst.
+  Where things are:
+    css/app.css        the styles. docs/DESIGN-DECISIONS.md explains them.
+    js/strings.js      every word, in English, Amharic and Afaan Oromo
+    js/core/           the medical rules, tested in Node (npm test)
+    js/platform/       the only code that talks to Android
+    this file          the screens, and the code that draws them
 
-  REMINDERS: until Phase 4 adds Android's own notifications, the app
-  notifies while it is open, and it can write the schedule into the
-  phone's own calendar, which rings even offline.
+  Camera pulse (ppg-engine.js): off inside the Android app, which has no
+  camera permission (safety charter rule 7). In a browser the pulse can be
+  estimated with the phone camera and light, saved like a typed pulse and
+  marked "(camera)". It is an estimate, not a measurement.
 
-  DATA: everything stays on the phone, one record per person, with a
+  Reminders: until Android's own notifications are added (work order
+  phase 4), the app notifies while it is open. It can also write the
+  schedule into the phone's calendar, which rings even offline.
+
+  Data: everything stays on the phone, one record per person, with a
   one-file backup. Nothing is sent anywhere.
 
-  FONTS: Onest and Noto Sans Ethiopic ship inside the app (fonts/, with
-  their OFL licences), so the very first launch with no network looks the
-  same as every other. Onest keeps numbers plain and easy to tell apart (no
-  slashed zero, distinct 1/7, 5/6, 3/8), which matters when the number is a
-  dose. Noto Sans Ethiopic is needed for correct Amharic rendering.
-
-  ANDROID: this page runs inside a Capacitor app. Everything that talks to
-  Android (back button, system bars, text size) goes through js/platform/,
-  never straight to a plugin.
+  Fonts: Onest and Noto Sans Ethiopic ship inside the app (fonts/, with
+  their OFL licences), so the first launch with no network looks the same
+  as every other. Onest keeps numbers plain and easy to tell apart (no
+  slashed zero, distinct 1 and 7, 5 and 6, 3 and 8), which matters when the
+  number is a dose. Noto Sans Ethiopic is needed for correct Amharic.
 -->
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="css/app.css">
@@ -2700,9 +2701,13 @@ function renderAll(){
   if(!$('settingsPanel').hidden) renderSettings();
 }
 
-// ---- One place for every tap, keystroke and change ----
+// ---- Taps, keystrokes and changes in the parts the script draws ----
 // Buttons carry data-act (and their arguments as data-*); fields carry
 // data-in (on every keystroke) or data-ch (on change).
+// The fixed controls written in the markup (tabs, header, panels, Settings)
+// call their function with onclick instead. That is on purpose: a data-act
+// tap redraws its section at once (forceRender), while the fixed controls
+// must not pull a half-typed field away from someone.
 const ACT={
   take:d=>markDose(d.key,'taken'),
   miss:d=>markDose(d.key,'missed'),
