@@ -206,3 +206,34 @@ inside index.html, against the app guide.
   lets 'running low' come again" in its next edition.
 - **Tests:** `tests/core/supply.test.js` and `tests/page/rules.test.js`,
   "known: 'run out' is not reset".
+
+---
+
+Found in the human polish pass (October 2026), while checking error states.
+Not fixed: it is about storage (charter rules 5 and 8), so Amin decides.
+
+## 8. A record that cannot be read is replaced by an empty one
+
+- **Where:** `readState()` and `loadActive()` in index.html.
+- **What happens:** if the saved record for a person cannot be read (the
+  text is cut off or damaged), `JSON.parse` fails, `readState()` returns
+  `null` and `loadActive()` starts a new empty record. Nothing is shown. The
+  next `save()` (any tap that saves) writes the empty record over the
+  damaged one.
+- **How likely:** low. The record is written in one call, so it should only
+  be damaged by a storage fault or a phone that loses power mid-write.
+- **How much it matters:** high when it happens. The person sees an empty
+  app, and whatever could have been recovered from the damaged text is
+  gone. A backup file is the only way back.
+- **Options:**
+  1. Before starting fresh, copy the damaged text to a separate key (for
+     example `cc-state-v3:<id>:damaged`) so it is never overwritten, and
+     show a message that says the record could not be read and to restore
+     the last backup.
+  2. Option 1, plus a way to send the damaged text to a family member with
+     the share sheet so someone can try to recover it.
+  Either way it needs a test of the copy and of the message, and a lossless
+  path (charter rule 5).
+- **Decision:** waiting for Amin.
+- **Tests:** `tests/page/records.test.js` section 6, "known: the app starts
+  an empty record" and "known: the next save writes over the damaged one".
