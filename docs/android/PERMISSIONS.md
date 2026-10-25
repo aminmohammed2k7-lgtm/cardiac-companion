@@ -2,14 +2,14 @@
 
 What the app asks Android for, and why. The final list is what Android
 Studio shows in the **merged** manifest (`android/app/build/intermediates/
-merged_manifest/debug/.../AndroidManifest.xml`); the GitHub build prints it
+merged_manifest/debug/.../AndroidManifest.xml`). The GitHub build prints it
 in the step "Show the final permission list".
 
 ## Phase 2 (now)
 
 | Permission | Asked for? | Why |
 |---|---|---|
-| `INTERNET` | **No — removed** | The app never uses the network (safety charter rule 3). Capacitor's template asks for it; `tools:node="remove"` in `AndroidManifest.xml` takes it out of the final manifest, including any a library adds. The app's own files are served to the WebView from inside the app, which needs no network. |
+| `INTERNET` | **No, removed** | The app never uses the network (safety charter rule 3). Capacitor's template asks for it. `tools:node="remove"` in `AndroidManifest.xml` takes it out of the final manifest, including any a library adds. The app's own files are served to the WebView from inside the app, which needs no network. |
 | `CAMERA` | **No** | The camera pulse is off in the public app (DECISIONS.md, safety charter rule 7). |
 
 Nothing else is asked for. `tests/android.test.js` fails if a permission is
