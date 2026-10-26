@@ -1,0 +1,329 @@
+/*
+ * demo.js — a made-up patient, so the app can be shown without a real record
+ *
+ * One tap builds about six months for Hana Bekele, a fictional 19-year-old
+ * in Addis Ababa with rheumatic heart disease. She is not a real person.
+ * The warfarin doses below are a fixed prescription, written out in full.
+ * They are copied onto each INR the way the app stores "what the doctor
+ * wrote". Nothing here works a dose out from an INR, and nothing suggests
+ * one.
+ *
+ * The words in the record (notes, the medicine's purpose, the Medical ID
+ * text and the nurse's order) come in English, Amharic and Afaan Oromo, so
+ * the sample reads naturally in the language the app is set to. relabel()
+ * swaps them when the language changes, but only on the sample record and
+ * only for text nobody has edited. Numbers and doses are not translated:
+ * the penicillin order keeps the exact English line in every language.
+ *
+ * The same "today" always builds the same record (no random numbers).
+ * The app stores it only under the demo profile. Exit demo deletes that
+ * profile's key and does not write any real person's record.
+ *
+ * Runs in the app (window.CC.demo) and in Node (npm test).
+ */
+(function (root, factory) {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./core/calendar.js'), require('./core/doses.js'));
+  else (root.CC = root.CC || {}).demo = factory(root.CC.calendar, root.CC.doses);
+}(typeof self !== 'undefined' ? self : this, function (calendar, doses) {
+  'use strict';
+  const { addDays, daysBetween, isDateKey, parseDateKey, localDateKey } = calendar;
+
+  // A key like "2026-13-01" matches the shape of a day but is not one.
+  // The date object would roll it into another month, so refuse it.
+  function isRealDay(key){
+    return isDateKey(key) && localDateKey(parseDateKey(key)) === key;
+  }
+  const { computePlan } = doses;
+
+  // Reserved profile id. Real profiles are p1, p2, … and are never this.
+  const DEMO_ID = 'demo';
+  const DEMO_NAME = 'Hana Bekele';
+  const MED_ID = 'demo-fur';
+  // How far back the record starts. 182 days is about six months.
+  const SPAN = 182;
+
+  // Sunday→Saturday, milligrams, as a clinic card would list them.
+  // 5 mg tablets: 5, 5, 2½, 5, 5, 2½, 5. Not derived from any INR.
+  const WARFARIN_DOSES = [5, 5, 2.5, 5, 5, 2.5, 5];
+  const TABLET_MG = 5;
+  const WEEKLY_MG = 30;
+
+  // A few missed doses across the six months, counted back from today.
+  // Today's warfarin is left unmarked so the person can tap it.
+  const MISSES = {
+    4: { W: 'forgot' },
+    17: { med: 'forgot' },
+    38: { W: 'travel' },
+    61: { med: 'cost' },
+    88: { W: 'ranOut', med: 'ranOut' },
+    120: { W: 'forgot' },
+    155: { med: 'forgot' }
+  };
+
+  // INR results the fictional clinic wrote down, days before today.
+  // One sits below 2.0 and one above 3.0; the rest are inside 2.0–3.0.
+  // The weekly dose beside each result is the same prescription above.
+  const INR = [
+    [179, 2.4],
+    [151, 2.6],
+    [123, 1.8],
+    [95, 2.3],
+    [67, 3.2],
+    [39, 2.5],
+    [11, 2.4]
+  ];
+
+  // Mild symptoms only. Chest pain is not used. Shortness of breath stays
+  // under 7/10, so the app's severe-symptom note does not fire.
+  const SYMPTOMS = [
+    [2, 'std-3', 3, 'rest'],
+    [9, 'std-4', 2, 'active'],
+    [24, 'std-1', 3, 'active'],
+    [45, 'std-3', 4, 'rest'],
+    [73, 'std-5', 2, 'rest'],
+    [102, 'std-4', 3, 'active'],
+    [131, 'std-1', 2, 'active'],
+    [160, 'std-3', 3, 'rest']
+  ];
+
+  // Days before today and the time of each daily note. The words are in TEXT.
+  const NOTES = [
+    [2, '21:10'],
+    [11, '11:20'],
+    [50, '08:40'],
+    [88, '19:05']
+  ];
+
+  // The doctor's line on the sample penicillin order. Clinics write orders
+  // in English, and a dose must never be re-worded, so every language keeps
+  // this exact line (tests/page/demo.test.js checks it).
+  const ORDER_LINE = 'Benzathine penicillin G 1.2 million units into the muscle every 28 days';
+
+  // The sample's own words. The Amharic and Afaan Oromo are drafts, listed
+  // in docs/NEEDS-CLINICAL-REVIEW.md for a native speaker to check.
+  const TEXT = {
+    en: {
+      purpose: 'Water tablet, as my doctor wrote',
+      notes: [
+        'Slept well. Walked to class.',
+        'Clinic day. They checked my INR.',
+        'A little tired after the walk to school. Ankles not swollen.',
+        'Missed the warfarin — the bottle was empty. Refilled the next day.'
+      ],
+      clinicalInfo: 'SAMPLE RECORD — not a real patient. Hana Bekele, 19, Addis Ababa. Rheumatic heart disease with mitral stenosis. Previous clot in the left atrium. No known drug allergy.',
+      order: 'SAMPLE order, not a real patient. ' + ORDER_LINE + ', as written for this made-up record.'
+    },
+    am: {
+      purpose: 'ውሃ የሚያስወግድ ክኒን፣ ሐኪሜ እንደጻፈው',
+      notes: [
+        'በደንብ ተኛሁ። ወደ ክፍል በእግሬ ሄድኩ።',
+        'የክሊኒክ ቀን። INRዬን መረመሩ።',
+        'ወደ ትምህርት ቤት በእግሬ ከሄድኩ በኋላ ትንሽ ደከመኝ። እግሬ አላበጠም።',
+        'ዋርፋሪን አልወሰድኩም — ጠርሙሱ ባዶ ነበር። በማግስቱ ገዛሁ።'
+      ],
+      clinicalInfo: 'የናሙና መዝገብ — እውነተኛ ታካሚ አይደለችም። Hana Bekele፣ 19፣ አዲስ አበባ። የልብ ሩማቲክ በሽታ (mitral stenosis)። ከዚህ በፊት በግራ ኤትሪየም (left atrium) የደም መርጋት ነበረባት። የሚታወቅ የመድሃኒት አለርጂ የለም።',
+      order: 'የናሙና ትዕዛዝ፣ እውነተኛ ታካሚ አይደለችም። ሐኪሙ እንደጻፈው፦ ' + ORDER_LINE + '.'
+    },
+    or: {
+      purpose: 'Kininii bishaan baasu, akkuma doktorri koo barreessetti',
+      notes: [
+        'Gaarii rafe. Gara kutaa barnootaatti miilaan deeme.',
+        'Guyyaa kilinikii. INR koo ilaalan.',
+        'Erga gara mana barumsaa miilaan deemee booda xiqqoo dadhabe. Miilli koo hin dhiitofne.',
+        'Warfaariin hin fudhanne — qorichi narraa dhumee ture. Guyyaa itti aanu bitadhe.'
+      ],
+      clinicalInfo: 'GALMEE FAKKEENYAA — dhukkubsattuu dhugaa miti. Hana Bekele, 19, Finfinnee. Dhukkuba onnee ruumaatikii (mitral stenosis). Kanaan dura atriyeemii bitaa (left atrium) keessatti dhiigni itti ititee ture. Alarjiin qorichaa beekamu hin jiru.',
+      order: 'Ajaja fakkeenyaa, dhukkubsattuu dhugaa miti. Akkuma doktorri barreessetti: ' + ORDER_LINE + '.'
+    }
+  };
+  const LANGS = Object.keys(TEXT);
+  function textFor(lang){ return TEXT[lang] || TEXT.en; }
+
+  // Young-adult readings she measured at home. Not interpreted.
+  const PULSE = [76, 72, 80, 74, 84, 78, 70, 82];
+  const BP = ['108/68', '112/70', '106/66', '110/72', '114/74', '108/70', '112/68', '110/70'];
+
+  function weightFor(offset){
+    // 54.0–54.4 kg. A jump of 2 kg would be the fluid warning; this never is.
+    const wobble = [0, 1, -1, 2, -2, 1, -1];
+    return (542 + wobble[offset % 7]) / 10;
+  }
+
+  function build(today, lang){
+    if(!isRealDay(today)) return null;
+    const words = textFor(lang);
+    const created = addDays(today, -SPAN);
+    const doses = WARFARIN_DOSES.slice();
+
+    const med = {
+      id: MED_ID,
+      name: 'Furosemide',
+      dose: '40 mg',
+      purpose: words.purpose,
+      times: ['08:00'],
+      sched: { type: 'daily', days: [], start: created },
+      perDose: 1,
+      supply: 40,
+      created: created,
+      removed: null,
+      history: [],
+      lowWarned: false,
+      outWarned: false
+    };
+
+    const state = {
+      v: 3,
+      demo: true,
+      created: created,
+      meds: [med],
+      dayPlan: {},
+      planDay: today,
+      doseLog: {},
+      prnLog: {},
+      legacyAdherence: {},
+      warfarin: {
+        enabled: true,
+        doses: doses,
+        strength: TABLET_MG,
+        time: '18:00',
+        supply: 36,
+        lowWarned: false,
+        outWarned: false,
+        target: { lo: 2, hi: 3 },
+        nextInr: addDays(today, 20),
+        doseHistory: [{ from: created, doses: doses.slice() }]
+      },
+      inrLog: INR.map(function (row, i){
+        return {
+          id: 'demo-inr-' + i,
+          date: addDays(today, -row[0]),
+          value: row[1],
+          doses: doses.slice(),
+          weekly: WEEKLY_MG
+        };
+      }),
+      injection: { enabled: false, interval: 28, lastDate: null, order: '', history: [] },
+      weightLog: {},
+      vitals: {},
+      symptomLog: {},
+      legacySymptomCount: {},
+      customSymptoms: [],
+      redFlags: [],
+      notes: NOTES.map(function (row, i){
+        return { id: 'demo-note-' + i, date: addDays(today, -row[0]), time: row[1], text: words.notes[i] };
+      }),
+      newMeds: [{ id: 'demo-nm-1', date: addDays(today, -100), type: 'antibiotic', name: 'Amoxicillin' }],
+      fasting: { on: false, type: 'orthodox', until: null, periods: [], dismissed: {} },
+      mood: [],
+      about: { preg: 'no', contra: '', planning: false, valve: 'none' },
+      clinicalInfo: words.clinicalInfo,
+      contacts: { ambulance: '907', clinic: '0110000000', familyName: 'Sara Bekele', family: '0911000001' },
+      visits: { last: addDays(today, -11), next: addDays(today, 20) },
+      settings: { lowDays: 14, clock: 'both', calNames: false },
+      notifications: [],
+      fired: {}
+    };
+
+    // Penicillin every 28 days, one month missed (travel), last one 22 days
+    // ago so the next is 6 days from today — due, not overdue.
+    const interval = 28;
+    const injDates = [];
+    for(let i = 0, d = addDays(today, -22); i < 12; i++, d = addDays(d, -interval)){
+      if(d < created) break;
+      if(i === 3) continue;
+      injDates.push(d);
+    }
+    injDates.sort();
+    const history = injDates.map(function (date, idx){
+      const entry = { id: 'demo-inj-' + idx, date: date, due: null, late: null, r: null };
+      if(idx > 0){
+        entry.due = addDays(injDates[idx - 1], interval);
+        entry.late = daysBetween(entry.due, date);
+        if(entry.late > 0) entry.r = 'travel';
+      }
+      return entry;
+    });
+    state.injection = {
+      enabled: true,
+      interval: interval,
+      lastDate: injDates[injDates.length - 1],
+      order: words.order,
+      history: history
+    };
+
+    // Home readings about every two weeks, including this morning.
+    for(let offset = 0; offset <= SPAN; offset += 14){
+      const day = addDays(today, -offset);
+      const i = (offset / 14) % PULSE.length;
+      state.vitals[day] = [
+        { id: 'demo-pulse-' + offset, t: '07:35', k: 'pulse', v: String(PULSE[i]), irr: 'regular' },
+        { id: 'demo-bp-' + offset, t: '07:36', k: 'bp', v: BP[i], irr: null }
+      ];
+    }
+
+    SYMPTOMS.forEach(function (row){
+      const day = addDays(today, -row[0]);
+      state.symptomLog[day] = [{ id: row[1], name: '', sev: row[2], ctx: row[3] }];
+    });
+
+    // Mood every two weeks. Scores stay under 3, so this is not a positive
+    // PHQ-2 screen. The latest is 3 days ago, so the question is not due today.
+    for(let offset = 3, n = 0; offset <= SPAN; offset += 14, n++){
+      const q1 = offset === 59 ? 1 : 0;
+      const q2 = offset === 59 ? 1 : 1;
+      state.mood.push({ id: 'demo-mood-' + n, date: addDays(today, -offset), q1: q1, q2: q2 });
+    }
+
+    let day = created, guard = 0;
+    while(day <= today && guard++ < 400){
+      const offset = daysBetween(day, today);
+      // Most mornings, plus the last three days so the week chart is filled.
+      if(offset <= 2 || offset % 8 !== 5) state.weightLog[day] = weightFor(offset);
+      const plan = computePlan(state, day);
+      state.dayPlan[day] = plan;
+      const miss = MISSES[offset] || {};
+      const log = {};
+      plan.forEach(function (key){
+        // Leave today's warfarin unmarked: the card stays tappable.
+        if(day === today && key === 'W') return;
+        const kind = key === 'W' ? 'W' : 'med';
+        if(miss[kind]) log[key] = { s: 'missed', at: kind === 'W' ? '18:20' : '08:20', r: miss[kind] };
+        else log[key] = { s: 'taken', at: kind === 'W' ? '18:10' : '08:05' };
+      });
+      if(Object.keys(log).length) state.doseLog[day] = log;
+      day = addDays(day, 1);
+    }
+
+    return state;
+  }
+
+  // The sample's words in another language. Only a record marked as the
+  // sample is touched, and only a text that is still one of the sample's
+  // own versions: a note someone typed or edited stays exactly as it is.
+  // Nothing else in the record changes (no dates, numbers or doses).
+  // Returns true when something changed, so the caller knows to save.
+  function relabel(state, lang){
+    if(!state || state.demo !== true || !TEXT[lang]) return false;
+    const to = TEXT[lang];
+    let changed = false;
+    const swap = function (current, field, i){
+      const versions = LANGS.map(function (l){ return i == null ? TEXT[l][field] : TEXT[l][field][i]; });
+      if(versions.indexOf(current) < 0) return current;
+      const next = i == null ? to[field] : to[field][i];
+      if(next !== current) changed = true;
+      return next;
+    };
+    (state.meds || []).forEach(function (m){
+      if(m && m.id === MED_ID) m.purpose = swap(m.purpose, 'purpose');
+    });
+    (state.notes || []).forEach(function (n){
+      const m = n && /^demo-note-(\d+)$/.exec(n.id);
+      if(m && +m[1] < NOTES.length) n.text = swap(n.text, 'notes', +m[1]);
+    });
+    if(typeof state.clinicalInfo === 'string') state.clinicalInfo = swap(state.clinicalInfo, 'clinicalInfo');
+    if(state.injection && typeof state.injection.order === 'string') state.injection.order = swap(state.injection.order, 'order');
+    return changed;
+  }
+
+  return { ID: DEMO_ID, NAME: DEMO_NAME, SPAN: SPAN, DOSES: WARFARIN_DOSES.slice(), ORDER_LINE: ORDER_LINE, build: build, relabel: relabel };
+}));

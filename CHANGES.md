@@ -1,36 +1,125 @@
-# Cardiac Companion 4.0, in progress: Phase 2 (Android shell)
+# Cardiac Companion 4.0 (Android, in progress)
 
-The app now builds as an Android app with Capacitor 8 (application ID
-`org.cardiaccompanion.app`, Android 7.0 and later, built for Android 16).
-It works with no network at all, from the very first launch. The medical
-logic, the records and the health wording are unchanged.
+Phase 2 of `docs/claude-code-order.pdf`: the app now runs as an Android app
+built with Capacitor 8. The web files moved into `www/`; `tools/pulse-lab.html`
+is the developer tool for the camera study and is not shipped. Records and
+health wording are unchanged. **Not for patients yet:** reminders still fire
+only while the app is open (Phase 4), and exports wait for Phase 5.
 
-## Removed (website-only parts the Android app does not need)
-- **The service worker** (`sw.js`) and its registration. The app's files
-  are inside the app, so there is nothing to cache.
-- **The web manifest**, built at run time from the embedded icons. The
-  Android icon and splash screen replace it.
-- **"Add to home screen"** in Settings, and the browser's install prompt.
-  The app is installed from Google Play instead.
-- **The persistent-storage request** and its line in Settings ("Protected
-  from automatic clearing"). This was a browser idea. Phase 3 gives the app
-  proper storage of its own.
-- **Following changes made in another tab.** An app has no second tab.
-- **The developer pulse lab** (`pulse-lab.html`) moved to `tools/`. It is
-  not part of the app.
+The website (cardiac-companion.vercel.app) is built from these pages.
+Amin turned Vercel deploys on for the competition demo on 13 October 2026,
+and every push to `main` runs `npm run build:web` and publishes `dist/`
+(see `docs/demo-build.md`).
 
-## Changed
-- **The camera pulse is off inside the app** (safety charter rule 7). The
-  "Measure with camera" button was still shown on the pulse entry, but the
-  app has no CAMERA permission, so it could only fail with a confusing
-  "permission refused" message. It is now hidden inside the app and stays
-  available in a browser. The camera engine has one support check instead
-  of two that could disagree.
-- **Fonts ship inside the app** (`www/fonts/`, with their OFL licences)
-  instead of loading from Google Fonts. Same fonts, same fallback order.
+## Human polish (October 2026, merged with main on 26 October 2026)
+The look, the words that are not health wording, and the code layout were
+made plainer. Nothing medical changed. The full report is
+`docs/HUMAN-POLISH-FINAL.md`, and how it was merged with main is in
+`docs/MERGE-NOTES.md`.
+- **One set of design tokens** (`www/css/app.css`, reasons in
+  `docs/DESIGN-DECISIONS.md`): seven type sizes, one spacing scale, one 8px
+  corner radius, and field and text contrast made for bright sun.
+  `tests/look.test.js` keeps every rule on them. The demo banner, welcome
+  screen, PIN lock and guided tour from main use the same tokens.
+- **The stylesheet and the strings moved out of `index.html`**, into
+  `www/css/app.css` and `www/js/strings.js`.
+- **A question box in the app's own language** replaces the browser's
+  `confirm()` and `prompt()`, including the four questions main added
+  (delete pulse recordings, exit demo, restore a backup, clear all data).
+  Back and Escape answer No, and focus starts on the safe answer.
+- **Language** in the header is one 44px control that opens the phone's own
+  list. The welcome screen keeps its three language buttons.
+- **Plain English** for buttons, empty lists and messages that are not
+  health wording (12 strings, listed in `docs/NEEDS-CLINICAL-REVIEW.md`
+  section 4a), plain punctuation in the docs and comments, and plain section
+  comments instead of box-drawing banners.
+- **Unused strings and styles removed.** 38 keys that nothing showed any
+  more left all three languages.
+- **Found bug 8** (a damaged record is replaced by an empty one) is logged in
+  `docs/android/FOUND-BUGS.md` and waits for Amin.
+
+## Pulse signal-quality model (October 2026, waiting for Amin's review)
+- **Second check on every camera reading** (`www/pulse-quality.js`): rates
+  the raw camera signal good or poor, with a confidence from 0 to 100. A
+  poor reading shows no number, live or at the end, and asks the person to
+  keep the finger still and cover the camera. It never changes a number.
+  The "not a medical device" line is unchanged.
+- **Fixed rules until there is data**, then a small logistic-regression
+  model trained by `tools/train-pulse-quality.js` (`npm run train:pulse`)
+  from readings recorded next to a pulse oximeter. Weights live in
+  `www/pulse-quality-weights.js` (empty for now).
+- **Hidden recording mode** (Settings, then tap "About" seven times): saves
+  each reading's raw signal with the oximeter's number, exports a CSV.
+  Stored apart from anyone's record. How to use it:
+  `docs/pulse-quality-model.md`.
+- `ppg-engine.js` gains a read-only `rawWindow()`; nothing it computes
+  changed. No new dependency, no network, no new permission.
+- New wording and the uneven-rhythm question: `docs/NEEDS-CLINICAL-REVIEW.md`
+  item 8.
+
+## Demo quick wins (15 October 2026, approved by Amin)
+- **Guided tour** after "Try the sample record", and again from "Take the
+  tour" on the sample banner: the penicillin card (Show to the nurse), the
+  warfarin card (the app never works out a dose), the warning signs, the
+  language switch and the visit summary. A plain card and an outline, no
+  animation. Skip, Done, Android's back button and Escape close it. It
+  saves nothing and runs only on the sample (`tests/page/tour.test.js`).
+- **First screen** says who the app is for (young people in Ethiopia with
+  rheumatic heart disease, and their families), that it works offline and
+  sends nothing, and that it comes in three languages with the Ethiopian
+  calendar. The language buttons are on it too. The buttons follow their
+  own `data-lang`, not their position.
+- **Sample banner** introduces Hana (made up, 19, Addis Ababa, monthly
+  penicillin and warfarin) and has a "Take the tour" button. On a phone the
+  buttons go under the words, which fixes the narrow Afaan Oromo column.
+- **Sample record in three languages:** notes, the medicine's purpose, the
+  Medical ID text and the nurse's order (`www/js/demo.js`). Switching
+  language relabels them on the sample only, and only text nobody edited.
+  The penicillin order keeps the exact English dose line in every language.
+- **Demo clean-up:** the empty "No name yet" person is no longer listed next
+  to the sample (it stays on the phone; Exit demo returns to it), and the
+  untapped Taken button is no longer filled green, here or for real records.
+- No health or warning wording changed. New Amharic and Afaan Oromo text is
+  listed in `docs/NEEDS-CLINICAL-REVIEW.md` (items 4 to 6) for checking.
+
+## Competition clean-up (15 October 2026)
+- **Camera pulse is on everywhere** (Amin's decision, `docs/android/DECISIONS.md`):
+  the web demo and the Android app, debug and release. The Android app now
+  asks for `CAMERA` (only when "Measure with camera" is tapped); the camera
+  hardware stays optional. The "not a medical device" line now sits right
+  under the button, and the two show and hide together
+  (`tests/page/camera-note.test.js`). No wording changed.
+- **No backup reminder on the sample record.** It is made-up data, so the
+  "Back up your record" card no longer shows while demo mode is on.
+- **Deploy test** matches `vercel.json` again (deploys on, `dist/` only), and
+  `docs/demo-build.md` describes the live site.
+- **README:** live demo link and screenshots (`docs/screenshots/`).
+- **Version labels:** 4.0 in `package.json`, the Android `versionName` and
+  the page header. `CLAUDE.md` moved to `.claude/CLAUDE.md`.
+- **`docs/NEEDS-CLINICAL-REVIEW.md`** lists the disclaimer change of
+  13 October and the camera texts for clinical and language review.
+
+## Removed (web-only, not needed in an app)
+- **Service worker** (`sw.js`) and its registration. The files are inside the
+  app, so it works offline without one.
+- **Web-app manifest** built at start-up, with its two large icons. The
+  launcher icon and splash are Android resources now.
+- **"Add to home screen"** row in Settings and the install prompt behind it.
+- **"Storage is protected / may be cleared"** line in Settings, and the
+  request behind it (`navigator.storage.persist`). An app's own files are
+  never cleared by the system. The backup line stays.
+- **Following changes made in another browser tab.** An app has one window.
+- **Google Fonts.** Onest and Noto Sans Ethiopic are bundled in `www/fonts/`
+  with their OFL licences, so nothing is loaded from the internet.
+
+The words for these removed rows and toasts were kept at first, because
+removing wording goes through Amin. The human polish pass then removed them
+with the other unused keys. `docs/MERGE-NOTES.md` asks Amin to confirm that.
+
+## Android
 - **Android's back button** closes the top panel, then a form that is open
   (as its own Cancel button would), then goes back to Today, and only then
-  leaves the app.
+  leaves the app (`tests/page/back.test.js`).
 - **Android's font size**: the app's text no longer grows by itself (that
   broke the layout). Instead, on the very first launch, a large Android font
   size (1.15 or more) switches on the app's own Large text, which the person
@@ -38,28 +127,45 @@ logic, the records and the health wording are unchanged.
 - **Edge to edge**: the header, the tab bar and the panels keep clear of
   the status bar, the navigation bar and camera cut-outs, in light and dark
   themes. The bar icons follow the theme.
-
-## Added
-- `android/`: the Android project, with a launcher icon drawn from the
-  heartbeat logo (adaptive and themed), a plain splash screen in the page
-  colour, and a white heartbeat icon for notifications (used from Phase 4).
-- Privacy in the manifest: no cloud backup and no device-transfer copy, and
-  **no INTERNET permission**. See `docs/android/PERMISSIONS.md`.
-- `www/js/platform/android.js`: the one place the app talks to Android.
+- **Privacy in the manifest**: no cloud backup and no device-transfer copy,
+  and no INTERNET permission. CAMERA is the only permission. See
+  `docs/android/PERMISSIONS.md`.
 - `.github/workflows/android.yml`: on every push, the tests run and a debug
   APK is built and kept as a download.
-- `tests/android.test.js` and `tests/page/android.test.js`.
 
-## Not yet working in the Android app (each has its own phase)
-- Phone notifications (Phase 4).
-- Saving and sharing files: backup, CSV, the calendar file and printing the
-  visit summary (Phase 5).
-- The camera pulse, which is off (Phase 6).
+## Icons
+- The launcher icon, a themed icon for Android 13 and later, a white
+  heartbeat icon for notifications (used from Phase 4) and the launch
+  screen are drawn from one vector copy of the logo by
+  `tools/icons/make-icons.py`. The launch screen is the logo on the page
+  colour (#EEF1EE, or #0D1311 when the phone is in dark mode).
+- v3.2's 512 px and maskable icons inside `index.html` were damaged (their
+  image data fails its checksum), so browsers could not show them when the
+  website was added to a home screen. The 192 px copy was intact, and the
+  new drawings were measured from it.
 
-## Found on the way
-- The website's 512 px icons (`ICON_512`, `ICON_MASK`) were damaged (their
-  compressed data fails its checksum), so browsers may have shown no large
-  icon. The Android icons are drawn fresh and do not use them.
+## Encrypted backups and PIN lock
+- **Backups are encrypted.** "Back up now" asks for a passphrase (6 characters
+  or more, typed twice) and saves a JSON file holding only `version`, `salt`,
+  `iv` and `ciphertext` (base64), with the method named: PBKDF2-SHA256 with
+  310,000 rounds and a random salt, then AES-256-GCM with a random IV, all on
+  the phone (`www/js/secure.js`, Web Crypto, no new dependency). There is no
+  unencrypted choice.
+- **Restoring** asks for the passphrase. A wrong one says so clearly and lets
+  the person try again. Backups made before this change still restore, with a
+  warning that they are not protected.
+- **Optional PIN lock** (Settings > PIN lock, off by default): 4 to 6 digits,
+  stored only as a salted PBKDF2 hash. The lock shows when the app opens and
+  when it comes back to the screen. It does not show when the app's own share
+  sheet or file picker closes. Five wrong PINs mean a 30-second wait, which is
+  saved, so closing the app does not skip it. "Forgot PIN?" explains that
+  without an account the only way in is to clear all data, and offers to do
+  that after a warning. The PIN and its tries are kept in `cc-global` and are
+  never put in backups.
+- New words in English, Amharic and Afaan Oromo. These are not health wording,
+  but a native speaker should still check the Amharic and Afaan Oromo.
+- Tests: `tests/secure.test.js` and `tests/page/security.test.js`.
+- `README.md` and `LICENSE` (Apache-2.0, as chosen in `docs/android/DECISIONS.md`).
 
 # Cardiac Companion 3.2.2 (web, 5 October 2026)
 

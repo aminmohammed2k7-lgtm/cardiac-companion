@@ -71,20 +71,20 @@ function loadPage() {
     if (!els.has(id)) els.set(id, {
       id, innerHTML: '', textContent: '', value: '', hidden: false, style: {}, dataset: {}, scrollTop: 0,
       classList: { toggle() {}, add() {}, remove() {}, contains() { return false; } },
-      addEventListener() {}, removeEventListener() {}, setAttribute() {}, getAttribute() { return null; },
+      addEventListener() {}, removeEventListener() {}, setAttribute() {}, removeAttribute() {}, getAttribute() { return null; },
       contains() { return false; }, querySelector() { return null; }, querySelectorAll() { return []; },
       focus() {}, blur() {}, scrollIntoView() {}, getContext() { return null; }
     });
     return els.get(id);
   };
   const store = new Map();
-  const rec = { toasts: [], confirms: [], sent: [], redraws: 0, confirmAnswer: true };
+  const rec = { toasts: [], confirms: [], sent: [], redraws: 0, reloads: 0, confirmAnswer: true };
   const ctx = {
-    Date: FakeDate, Math: M, Intl, JSON, console, TextEncoder,
-    setTimeout() { return 0; }, clearTimeout() {}, setInterval() { return 0; }, requestAnimationFrame() { return 0; }, cancelAnimationFrame() {},
-    document: { addEventListener() {}, getElementById: el, querySelectorAll: () => [], querySelector: () => null, documentElement: el('html'), activeElement: null, title: '' },
-    localStorage: { getItem: k => store.has(k) ? store.get(k) : null, setItem: (k, v) => store.set(k, String(v)), removeItem: k => store.delete(k) },
-    navigator: {}, location: { href: 'file:///index.html' },
+    Date: FakeDate, Math: M, Intl, JSON, console, TextEncoder, TextDecoder, Blob, btoa, atob, crypto: globalThis.crypto,
+    setTimeout() { return 0; }, clearTimeout() {}, setInterval() { return 0; }, clearInterval() {}, requestAnimationFrame() { return 0; }, cancelAnimationFrame() {},
+    document: { addEventListener() {}, getElementById: el, querySelectorAll: () => [], querySelector: () => null, documentElement: el('html'), body: el('body'), activeElement: null, title: '' },
+    localStorage: { getItem: k => store.has(k) ? store.get(k) : null, setItem: (k, v) => store.set(k, String(v)), removeItem: k => store.delete(k), clear: () => store.clear() },
+    navigator: {}, location: { href: 'file:///index.html', reload() { rec.reloads++; } },
     confirm: msg => { rec.confirms.push(msg); return rec.confirmAnswer; },
     getComputedStyle: () => ({ getPropertyValue: () => '' })
   };

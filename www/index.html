@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#EEF1EE">
 <title>Cardiac Companion</title>
 <!--
-  Cardiac Companion: a patient's own medicine record.
+  Cardiac Companion: a patient's own medicine record. Version 4.0.
 
   What this is: a log. The patient and their clinician put the numbers in.
   The app remembers them, counts down to what is due, and prints a summary
@@ -27,12 +27,21 @@
     js/strings.js      every word, in English, Amharic and Afaan Oromo
     js/core/           the medical rules, tested in Node (npm test)
     js/platform/       the only code that talks to Android
+    js/demo.js         the made-up sample record (demo mode)
+    js/secure.js       encrypted backups and the PIN lock
+    ppg-engine.js      the camera pulse engine
+    pulse-quality.js   rates each camera reading good or poor
     this file          the screens, and the code that draws them
 
-  Camera pulse (ppg-engine.js): off inside the Android app, which has no
-  camera permission (safety charter rule 7). In a browser the pulse can be
+  Camera pulse (ppg-engine.js): on in every build, the Android app too
+  (Amin, 15 October 2026), as a wellness estimate. The "not a medical
+  device" line always shows beside the camera button. The pulse is
   estimated with the phone camera and light, saved like a typed pulse and
-  marked "(camera)". It is an estimate, not a measurement.
+  marked "(camera)". Beat-to-beat variation is shown only when the engine
+  judges it reliable, and an "uneven beats" note never names a condition.
+  pulse-quality.js rates each reading (0 to 100 confidence) and a poor one
+  shows no number. Its weights, once trained from oximeter recordings, are
+  in pulse-quality-weights.js. It is an estimate, not a measurement.
 
   Reminders: until Android's own notifications are added (work order
   phase 4), the app notifies while it is open. It can also write the
@@ -47,7 +56,6 @@
   slashed zero, distinct 1 and 7, 5 and 6, 3 and 8), which matters when the
   number is a dose. Noto Sans Ethiopic is needed for correct Amharic.
 -->
-<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
@@ -69,10 +77,11 @@
       <div class="header-actions">
         <!-- One 44px control instead of three small buttons: it leaves room for
              the date. Tapping it opens the phone's own list, where each
-             language is written in its own script, so no translation is needed. -->
-        <label class="lang-pick">
+             language is written in its own script, so no translation is needed.
+             The guided tour points at it by its id. -->
+        <label class="lang-pick" id="headerLangs">
           <span class="lang-code" id="langCode" aria-hidden="true">EN</span>
-          <select id="langSelect" onchange="setLang(this.value)">
+          <select id="langSelect" onchange="setLang(this.value)" data-ta="langGroupLabel" aria-label="Language">
             <option value="en" lang="en">English</option>
             <option value="am" lang="am">አማርኛ</option>
             <option value="or" lang="om">Afaan Oromoo</option>
@@ -91,6 +100,13 @@
 
   <div class="app-main">
   <main class="content" id="content">
+    <div id="demoBanner" class="demo-banner" role="status" hidden>
+      <p><strong data-t="demoBannerTitle">Sample record</strong><span data-t="demoBannerText">Hana, 19, from Addis Ababa, is made up. She is not a real patient. She has rheumatic heart disease, with a monthly penicillin injection and warfarin.</span></p>
+      <div class="demo-banner-actions">
+        <button type="button" class="btn btn-ghost btn-small" onclick="startTour()" data-t="demoTourBtn">Take the tour</button>
+        <button type="button" class="btn btn-ghost btn-small" onclick="exitDemo()" data-t="demoExitBtn">Exit demo</button>
+      </div>
+    </div>
     <div id="activeAlerts"></div>
 
     <!-- Today -->
@@ -220,7 +236,10 @@
                   <button class="btn btn-solid" onclick="saveVital()" data-t="t-saveVital">Save</button>
                   <button class="btn btn-ghost" onclick="closeVitalEntry()" data-t="t-cancelVital">Cancel</button>
                 </div>
-                <button class="btn btn-ghost ico i-camera" id="camPulseBtn" onclick="openPulseCam()" data-t="camMeasure" hidden>Measure with camera</button>
+                <div id="camPulseRow" hidden>
+                  <button class="btn btn-ghost ico i-camera" id="camPulseBtn" onclick="openPulseCam()" data-t="camMeasure">Measure with camera</button>
+                  <p class="hint-line cam-note" data-t="camNotDevice">This is an estimate from your phone's camera, not a medical device. If you feel unwell, use the warning signs on the Today page.</p>
+                </div>
                 <div id="rhythmBox" hidden>
                   <p class="form-label" data-t="rhythmQ">Did the beat feel regular?</p>
                   <div class="chips" id="rhythmChips"></div>
@@ -454,7 +473,7 @@
         </div>
 
         <div>
-          <div class="card">
+          <div class="card" id="visitCard">
             <div class="card-head">
               <div class="card-head-left">
                 <h3 class="card-label" data-t="t-visitTitle">Prepare for your visit</h3>
@@ -477,7 +496,7 @@
       </div>
     </section>
 
-    <p class="disclaimer" data-t="t-disclaimer">Not a medical device. This app records what you and your doctor enter — it does not measure, diagnose or decide anything. Always follow your clinician's guidance.</p>
+    <p class="disclaimer" data-t="t-disclaimer">Not a medical device. This app records what you and your doctor enter. It can estimate your pulse with the phone camera as a wellness reading only. It does not diagnose or decide anything. Always follow your clinician's guidance.</p>
   </main>
 
   <!-- Nav -->
@@ -521,6 +540,17 @@
   <div class="panel-head">
     <h2 class="panel-title" id="settingsTitle" data-t="t-settingsTitle">Settings</h2>
     <button class="icon-btn ico i-close" onclick="closePanel('settingsPanel')" data-ta="closeLabel" aria-label="Close"></button>
+  </div>
+
+  <div class="settings-section" id="demoSection">
+    <p class="settings-section-title" data-t="demoSectionTitle">Sample record</p>
+    <div class="settings-block">
+      <div class="settings-row stack">
+        <span class="settings-row-label" data-t="demoSectionLabel">Demo mode</span>
+        <span class="settings-row-sub" id="demoSettingsText">About six months for a made-up young woman in Ethiopia with rheumatic heart disease, on warfarin and a monthly penicillin injection.</span>
+      </div>
+      <button type="button" class="settings-row" id="demoSettingsBtn" onclick="onDemoSettings()">Try the sample record</button>
+    </div>
   </div>
 
   <div class="settings-section">
@@ -598,6 +628,20 @@
   </div>
 
   <div class="settings-section">
+    <p class="settings-section-title" data-t="lockTitle">PIN lock</p>
+    <div class="settings-block">
+      <div class="settings-row">
+        <span class="settings-row-label" data-t="lockSwitchLabel">Ask for a PIN to open the app</span>
+        <button class="switch" id="lockSwitch" onclick="togglePinLock()" role="switch" aria-checked="false" data-ta="lockSwitchLabel"></button>
+      </div>
+      <div class="settings-row stack">
+        <span class="settings-row-sub" data-t="lockHint">Keeps other people out of the app on a shared phone. If you forget the PIN, the only way back in is to clear all data, so keep a backup.</span>
+      </div>
+      <button class="settings-row" id="changePinBtn" onclick="changePin()" data-t="lockChangeBtn" hidden>Change PIN</button>
+    </div>
+  </div>
+
+  <div class="settings-section">
     <p class="settings-section-title" data-t="t-settingsPrivacy">Your data</p>
     <div class="settings-block">
       <div class="settings-row stack">
@@ -606,16 +650,64 @@
         <span class="settings-row-sub" id="backupStatus"></span>
       </div>
       <button class="settings-row ico i-download" onclick="backupNow()" data-t="backupBtn">Back up now</button>
-      <button class="settings-row ico i-upload" onclick="$('restoreInput').click()" data-t="restoreBtn">Restore from a backup</button>
+      <button class="settings-row ico i-upload" onclick="pickRestoreFile()" data-t="restoreBtn">Restore from a backup</button>
       <button class="settings-row ico i-download" onclick="exportCsv()" data-t="t-exportCsv">Export data (CSV)</button>
     </div>
   </div>
 
   <div class="settings-section">
-    <p class="settings-section-title" data-t="t-settingsAbout">About</p>
+    <p class="settings-section-title" data-t="t-settingsAbout" onclick="devTap()">About</p>
     <div class="settings-block settings-pad">
-      <p class="settings-row-sub" data-t="t-settingsAboutDisclaimer">Cardiac Companion is a personal record, not a medical device.</p>
+      <p class="settings-row-sub" data-t="t-settingsAboutDisclaimer">Cardiac Companion is a personal record, not a medical device. It can estimate your pulse with the phone camera as a wellness reading only. It does not diagnose anything or tell you whether to seek care. Always follow your clinician's guidance.</p>
     </div>
+  </div>
+
+  <!-- Hidden until "About" is tapped seven times (devTap). For checking the
+       camera pulse against a pulse oximeter; see tools/train-pulse-quality.js. -->
+  <div class="settings-section" id="devSection" hidden>
+    <p class="settings-section-title" data-t="devTitle">Developer</p>
+    <div class="settings-block">
+      <div class="settings-row">
+        <span class="settings-row-label" data-t="devRecLabel">Pulse recording mode</span>
+        <button class="switch" id="devRecSwitch" onclick="toggleDevRecording()" role="switch" aria-checked="false" data-ta="devRecLabel"></button>
+      </div>
+      <div class="settings-row stack">
+        <span class="settings-row-sub" data-t="devRecHint">For checking the camera pulse against a pulse oximeter. After each camera reading, type the oximeter's number to save the raw camera signal with it. Saved on this phone only.</span>
+        <span class="settings-row-sub" id="devRecStatus"></span>
+      </div>
+      <button class="settings-row ico i-download" onclick="exportPulseRecordings()" data-t="devRecExport">Export recordings (CSV)</button>
+      <button class="settings-row" onclick="clearPulseRecordings()" data-t="devRecClear">Delete recordings</button>
+    </div>
+  </div>
+</div>
+
+<!-- Welcome: first launch, and again after leaving an empty demo -->
+<div class="panel" id="welcomePanel" role="dialog" aria-modal="true" aria-labelledby="welcomeScreenTitle" hidden>
+  <div class="welcome-body">
+    <div class="welcome-top">
+      <div class="welcome-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12.5h4l2-6 3.5 12 2.5-9.5 1.5 3.5h5.5"/></svg>
+      </div>
+      <!-- The language comes first: someone who reads Amharic or Afaan Oromo
+           should not have to get past an English screen to find it. -->
+      <div class="seg-control lang-pills" role="group" aria-label="Language" data-ta="langGroupLabel">
+        <button class="lang-pill active" data-lang="en" onclick="setLang('en')" aria-pressed="true">EN</button>
+        <button class="lang-pill" data-lang="am" onclick="setLang('am')" aria-pressed="false" lang="am" aria-label="አማርኛ">አማ</button>
+        <button class="lang-pill" data-lang="or" onclick="setLang('or')" aria-pressed="false" aria-label="Afaan Oromoo">OR</button>
+      </div>
+    </div>
+    <h2 id="welcomeScreenTitle" data-t="t-appTitle">Cardiac Companion</h2>
+    <p class="welcome-lead" data-t="welcomeWho">For young people in Ethiopia living with rheumatic heart disease, and their families.</p>
+    <ul class="welcome-points">
+      <li data-t="welcomeOffline">Works without internet. No account and no sign-up.</li>
+      <li data-t="welcomeScreenText">A private medicine record, kept on this phone. Nothing is sent anywhere.</li>
+      <li data-t="welcomeLangs">In English, Amharic and Afaan Oromo, with the Ethiopian calendar and clock.</li>
+    </ul>
+    <div class="btn-col">
+      <button type="button" class="btn btn-solid" onclick="startDemo()" data-t="demoStartBtn">Try the sample record</button>
+      <button type="button" class="btn btn-ghost" onclick="dismissWelcome()" data-t="welcomeOwnBtn">Start my own record</button>
+    </div>
+    <p class="hint-line" data-t="demoStartHint">One tap loads a made-up patient so you can look around. A real record on this phone is kept separate and is not changed.</p>
   </div>
 </div>
 
@@ -662,7 +754,7 @@
     <button class="icon-btn ico i-close" onclick="closePanel('pulsePanel')" data-ta="closeLabel" aria-label="Close"></button>
   </div>
   <div class="panel-body">
-    <p class="hint-line" data-t="camHow">Rest for a minute. Cover the back camera and its light with a fingertip, press gently, and hold still for about a minute.</p>
+    <p class="hint-line" data-t="camHow">Rest for a minute. Sit down and put your hand on a table. Cover the whole back camera and its light with a fingertip, press lightly, and keep still.</p>
     <div class="card cam-card">
       <div class="cam-top">
         <video class="cam-video" id="camVideo" muted playsinline aria-hidden="true"></video>
@@ -671,11 +763,19 @@
           <span class="cam-unit" data-t="camBpmUnit">beats/min</span>
         </div>
       </div>
+      <p class="cam-conf" id="camConf" hidden></p>
       <canvas id="camWave" aria-hidden="true"></canvas>
       <div class="supply-bar cam-progress" aria-hidden="true"><div class="supply-bar-fill" id="camProgress" style="width:0"></div></div>
       <p class="cam-hint" id="camHint" role="status" aria-live="polite"></p>
       <p class="cam-note" id="camNoLight" data-t="camNoLight" hidden>Your phone's light didn't switch on. Measure next to a bright lamp or window.</p>
       <div id="camResult" hidden></div>
+      <div class="cam-rec" id="camRec" hidden>
+        <label class="field-label" for="camRecRef" data-t="devRecRefLabel">Pulse oximeter beats/min</label>
+        <div class="entry-row">
+          <input class="form-field" id="camRecRef" type="number" inputmode="numeric" min="30" max="250" step="1">
+          <button class="btn btn-solid" onclick="savePulseRecording()" data-t="devRecSave">Save recording</button>
+        </div>
+      </div>
     </div>
     <div class="btn-col cam-actions">
       <button class="btn btn-solid" id="camStart" onclick="startPulseCam()" data-t="camStart">Start</button>
@@ -686,7 +786,53 @@
   </div>
 </div>
 
+<!-- Passphrase or PIN: asked for by askSecret() -->
+<div class="panel" id="secretPanel" role="dialog" aria-modal="true" aria-labelledby="secretTitle" hidden>
+  <div class="panel-head">
+    <h2 class="panel-title" id="secretTitle"></h2>
+    <button class="icon-btn ico i-close" onclick="closePanel('secretPanel')" data-ta="closeLabel" aria-label="Close"></button>
+  </div>
+  <form class="secret-body" id="secretForm" onsubmit="event.preventDefault(); secretSubmit();" autocomplete="off">
+    <p class="hint-line" id="secretText"></p>
+    <label class="field-label" for="secretInput" id="secretLabel"></label>
+    <input class="form-field" id="secretInput" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <label class="field-label" for="secretInput2" id="secretLabel2"></label>
+    <input class="form-field" id="secretInput2" type="password" autocomplete="off" autocapitalize="off" spellcheck="false">
+    <p class="form-error" id="secretError" role="alert"></p>
+    <button class="btn btn-solid" type="submit" id="secretOk"></button>
+    <button class="btn btn-ghost" type="button" onclick="closePanel('secretPanel')" data-t="t-cancelVital">Cancel</button>
+  </form>
+</div>
+
+<!-- PIN lock: over everything while locked -->
+<div class="lock-screen" id="lockScreen" role="dialog" aria-modal="true" aria-labelledby="lockHeading" hidden>
+  <form class="lock-inner" onsubmit="event.preventDefault(); unlockSubmit();" autocomplete="off">
+    <h2 class="panel-title" id="lockHeading" data-t="lockScreenTitle">Enter your PIN</h2>
+    <p class="hint-line" data-t="lockScreenText">This app is locked with a PIN.</p>
+    <input class="form-field" id="lockInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="off" data-ta="lockScreenTitle" aria-label="Enter your PIN">
+    <p class="form-error" id="lockError" role="alert"></p>
+    <button class="btn btn-solid" type="submit" id="lockOk" data-t="lockUnlockBtn">Unlock</button>
+    <button class="btn btn-ghost" type="button" onclick="toggleForgotPin()" data-t="lockForgotBtn">Forgot PIN?</button>
+    <div class="lock-forgot" id="lockForgot" hidden>
+      <p data-t="lockForgotText">There is no account and nothing is stored online, so a forgotten PIN cannot be recovered or reset by anyone. The only way back in is to clear all data on this phone. You can then restore your last backup file, if you have one.</p>
+      <button class="btn btn-danger" type="button" onclick="clearAllData()" data-t="lockClearBtn">Clear all data</button>
+    </div>
+  </form>
+</div>
+
 <input type="file" id="restoreInput" accept=".json,application/json" hidden onchange="restoreFromFile(this)">
+<!-- Guided tour: five stops on the sample record (startTour) -->
+<div class="tour" id="tourSheet" role="dialog" aria-modal="false" aria-labelledby="tourTitle" aria-describedby="tourText" hidden>
+  <p class="tour-count" id="tourCount"></p>
+  <h2 id="tourTitle"></h2>
+  <p class="tour-text" id="tourText" aria-live="polite"></p>
+  <div class="tour-actions">
+    <button type="button" class="btn btn-ghost btn-small tour-skip" onclick="endTour()" data-t="tourSkip">Skip tour</button>
+    <button type="button" class="btn btn-ghost btn-small" id="tourBackBtn" onclick="tourGoBack()" data-t="tourBack">Back</button>
+    <button type="button" class="btn btn-solid btn-small" id="tourNextBtn" onclick="tourGoNext()">Next</button>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- Question box: asks before deleting or saving an unusual number -->
@@ -702,9 +848,6 @@
 </div>
 
 <!-- The medical logic, in plain files that Node can test too (npm test) -->
-<script src="js/vendor/capacitor-core.js"></script>
-<script src="js/vendor/capacitor-app.js"></script>
-<script src="js/platform/android.js"></script>
 <script src="js/core/calendar.js"></script>
 <script src="js/core/seasons.js"></script>
 <script src="js/core/doses.js"></script>
@@ -715,9 +858,22 @@
 <script src="js/core/reminders.js"></script>
 <script src="js/core/checks.js"></script>
 <script src="js/strings.js"></script>
+<script src="js/demo.js"></script>
+<script src="js/secure.js"></script>
+<script src="js/platform/native.js"></script>
+<script src="js/platform/app.js"></script>
+<script src="js/platform/display.js"></script>
+<!-- The camera pulse engine and its signal-quality check. The camera pulse
+     is on in every build (Amin, 15 October 2026), so the engine is read at
+     start-up wherever the page runs; camPulseAvailable() decides whether the
+     camera is offered. defer: they never hold up the first screen. -->
+<script src="ppg-engine.js" defer></script>
+<script src="pulse-quality-weights.js" defer></script>
+<script src="pulse-quality.js" defer></script>
 <script>
-// ---- App icon for in-app notifications (Phase 4 replaces these with ----
-// Android's own notifications and the monochrome icon in android/).
+// ---- App icon: the small icon in-page notifications use until Phase 4 ----
+// gives the app native ones. The launcher icon and splash are Android
+// resources now (android/app/src/main/res), so there is no web manifest.
 (function(){
   var ICON_192 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFY0lEQVR4nO3du3kbRxSA0QU/p2pAiVpgD66LketiD26BiRpgAXJAUeZjAe5jHnfmnpPZAbAA7j8zAAnxsgTz7cf3X72vgXqen35eel/DW10vxrCzLH2jaH7Hhp5bWsfQ7M4MPnu0CqH6nRh8zqgdQrUbN/iUVCuE4jdq8KmpdAh3JW/M8FNb6RkrUpPBp4cSu8HpHcDw00uJ2TsVgOGnt7MzeDgAw08UZ2bxUACGn2iOzuTuAAw/UR2ZzV0BGH6i2zujmwMw/Ixiz6xuCsDwM5qtM/tlAIafUW2Z3aK/CgGjuRmA1Z/RfTXDVwMw/Mzi1iw7ApHaagBWf2ZzbabtAKT2KQCrP7Nam207AKm9C8Dqz+w+zrgdgNT+BGD1J4u3s24HIDUBkNrdsjj+kM/rzNsBSE0ApCYAUhMAqV28ASYzOwCpCYDUBEBqAiA1AZCaAEhNAKQmAFITAKkJgNQEQGoCIDUBkNpfvS8govvHh3f//e/f/3S6EmqzA3zwcfiv/T/m4PsAb2wZdLvBXOwApCaA37YecxyH5iIAUhMAqQlgcazJTAAHCGYeAiC19AFYzXNLH8BRwpmDAEgtdQBWcVIHcJaAxicAUksbgNWbZfGFmOH58s45aXeAUnruJL68c17KAGYYkluPYYbH10rKALaKepww4OUI4Io9wx9xICNeU0TpAhh9MEa//mjSBbBX1GPQFmL5mgBWjDz07COAQqKutlGvK4pUAYw+DKNff0SpAjhq9CORcK4TwAdnht2gjSdNAIaTNWkCOKv3MehswBaAdQJ4o8SQG7SxpAjAUL7wPHyWIoBSeh+DKE8Av0Ue7pIrt13gvekD6PGCG7JxTB9AFpF3sMgEsOwbnhkGzQ71v6kDiPZ93dq3M0OcrU0dANfZBV6kD+DIqhltpY12PSOZNoCsK9zo32Vurek/jJXtCb9/fAj/26URX5OWO1qTHeD+8SH9E93S6I+r5bxMewSqLcqQRbmOUVUPIOLK31Kvxz9DGC2eu7Q7QPQByb5wtJI2gBKiRxT9+iKoHkDEF6H1NdVazSM+tyW1eHyp/j7A7AOz5vUxO1Ktu3z78f1Xqzvr+SLUHP4tj6vGD6iOPKYRQmi5UDXdATKuwNF4Dd7zJriR0iuvQS5DAKQmgAJKrsYjnNFnIoCGDHc8AhiQ8385AijEUI5JAIE4IrUngMYMeSwCGIyjVlkCKMhwjkcAHawdgxyN+hAAqQmgsJrHIEes8gTQiSNPDAIIQAz9CKACR5VxCGAQoqpDAB05+vQngM5E0JcAKnFkGYMABiCmegRAagKoyModnwBITQDB2UXqEgCpCaAyK3hsAiA1AQRm96hPAA0Y5LgEQGoCIDUBNLL3GOTY1IYASE0ApCYAUhNAQ1vP9c7/7QiA1Jr+nWBeXPsesJW/PTtAB2uDbvj7sAOQmh2A1ARAagIgNQGQmgBITQCkJgBSEwCpCYDUBEBqAiA1AZCaAEjt7vnp56X3RUAPz08/L3YAUhMAqQmA1ARAanfL8vJmoPeFQEuvM28HIDUBkNqfAByDyOLtrNsBSO1dAHYBZvdxxu0ApPYpALsAs1qbbTsAqa0GYBdgNtdm2g5AalcDsAswi1uzfHMHEAGj+2qGHYFI7csA7AKMasvsbtoBRMBots7s5iOQCBjFnlnd9R5ABES3d0Z3vwkWAVEdmc1DnwKJgGiOzuThj0FFQBRnZvHUzwFEQG9nZ/D0D8JEQC8lZq/o8Pqr87RQctEt+qsQdgNqKz1j1QbWbkBJtRbX6iu2EDij9qmi2ZFFCOzR6jjd/MwuBG5p/T6y65tWMbAsfT88CfepjSjmFu2Twv8AvcqrTVdGoSUAAAAASUVORK5CYII=";
 
@@ -772,9 +928,12 @@ const BACKUP_KIND='cardiac-companion-backup';
 let currentLang='en';
 let S=null;                 // the active person's record
 let profiles=null;          // {list:[{id,name}], active}
-// persistAsked is no longer used (the website asked the browser not to clear
-// its storage); it stays so the saved settings keep the same shape.
-let G={lastBackup:null, backupSnooze:null, persistAsked:false, bigText:false};
+// persistAsked is no longer used (the app's files are never evicted); it stays
+// so saved settings keep the same shape (safety charter rule 5).
+// pinLock is the optional PIN lock: null when off, else {salt, hash,
+// iterations} (a hash, never the PIN). pinTries counts wrong PINs, kept so
+// closing the app does not reset the wait. Neither goes into backups.
+let G={lastBackup:null, backupSnooze:null, persistAsked:false, bigText:false, pinLock:null, pinTries:{fails:0, waitUntil:0}};
 let pendingVital=null, pendingRhythm=null;
 let medForm=null;           // add/edit buffer for the medicine form
 let injForm=null;           // {date, reason} while recording an injection
@@ -1162,14 +1321,16 @@ function deferIfBusy(el, fn){
 // ---- Today: warfarin ----
 function doseActionsHtml(key, e, hero){
   const k=esc(key);
+  // Before anyone taps, Taken and Not taken look the same: a filled green
+  // button read as "already taken". Once tapped, the status line shows it.
   if(!e){
     return hero
       ? `<div class="btn-row">
-          <button class="btn btn-solid ico i-check" data-act="take" data-key="${k}">${esc(L('t-warfarinTaken'))}</button>
+          <button class="btn btn-ghost ico i-check" data-act="take" data-key="${k}">${esc(L('t-warfarinTaken'))}</button>
           <button class="btn btn-ghost" data-act="miss" data-key="${k}">${esc(L('t-warfarinMissed'))}</button>
         </div>`
       : `<div class="med-actions">
-          <button class="btn btn-solid med-take" data-act="take" data-key="${k}">${ICON_CHECK}<span>${esc(L('t-warfarinTaken'))}</span></button>
+          <button class="btn btn-ghost med-take" data-act="take" data-key="${k}">${ICON_CHECK}<span>${esc(L('t-warfarinTaken'))}</span></button>
           <button class="btn btn-ghost med-skip" data-act="miss" data-key="${k}">${esc(L('t-warfarinMissed'))}</button>
         </div>`;
   }
@@ -1457,7 +1618,9 @@ function openVitalEntry(kind){
   input.setAttribute('aria-label', L(VITAL_META[kind].prompt));
   input.value='';
   $('rhythmBox').hidden=kind!=='pulse';
-  $('camPulseBtn').hidden=kind!=='pulse' || !camPulseAvailable();
+  // The button and its "not a medical device" line show and hide together,
+  // so the camera is never offered without the disclaimer beside it.
+  $('camPulseRow').hidden=kind!=='pulse' || !camPulseAvailable();
   pendingCam=null;
   renderRhythmChips();
   input.focus();
@@ -1490,31 +1653,45 @@ function saveVital(){
 // ---- Camera pulse (ppg-engine.js) ----
 // An estimate from the phone camera: the number goes into the pulse field
 // like a typed one; HRV details are kept with it only as a personal record.
-let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camResult=null;
-// Off inside the Android app (safety charter rule 7, DECISIONS.md): the app has
-// no CAMERA permission, so the camera could never open there, and the person
-// would only see a confusing "permission refused" message. It stays available
-// in a desktop or phone browser, where the engine is developed and tested.
+let pendingCam=null, camMon=null, camWaveData=null, camWaveAt=0, camRaf=0, camResult=null, camFailed=false;
+// The camera pulse is on in every build, the Android app included (Amin,
+// 15 October 2026, docs/android/DECISIONS.md), as a wellness estimate with
+// its "not a medical device" line beside the button. It is offered only
+// where the engine has loaded and says this phone or browser can measure.
+// This one function is where the camera is allowed or not, so a change to
+// that decision is a change here.
 function camPulseAvailable(){
-  return !CCPlatform.isApp() && !!window.PPG && PPG.PulseMonitor.supported();
+  return !!window.PPG && PPG.PulseMonitor.supported();
 }
-// The engine (about 80 KB) is read only where it can be used. Inside the
-// app the camera pulse is off, so the file is never loaded there and a slow
-// phone starts faster. In a browser it loads during start-up, as before.
-const CAMERA_ENGINE='ppg-engine.js';
-function loadCameraEngine(){
-  if(CCPlatform.isApp() || window.PPG) return;
-  const sc=document.createElement('script');
-  sc.src=CAMERA_ENGINE;
-  // the pulse entry may already be open: offer the camera once it is here
-  sc.onload=()=>{ if(pendingVital==='pulse') $('camPulseBtn').hidden=!camPulseAvailable(); };
-  document.head.appendChild(sc);
+// Signal quality (pulse-quality.js): a second check on top of the engine's
+// own. A reading it rates poor shows no number, live or at the end. It
+// never changes the number; it only decides whether it is shown.
+let camQualityAt=-Infinity, camQuality=null, camRecording=null;
+function camRate(mon, uneven){
+  if(!window.PulseQuality || !mon || !mon.rawWindow) return null;
+  try{ return PulseQuality.classify(mon.rawWindow(), {uneven:!!uneven}); }catch(e){ return null; }
+}
+function camShowConf(q){
+  const el=$('camConf');
+  el.hidden=!(q && q.good);
+  el.textContent=q && q.good ? L('camConfidence',{n:q.confidence}) : '';
+}
+function camFailKey(res){
+  const h=res&&res.hint, w=res&&res.withhold;
+  if(w==='disagree'||h==='rate-disagree') return 'camFailDisagree';
+  if(h==='press-lighter') return 'camFailLight';
+  if(h==='rest-hand'||h==='hold-still') return 'camFailStill';
+  if(h==='cover-lens'||h==='place-finger') return 'camFailCover';
+  if(h==='weak-signal') return 'camFailWeak';
+  if(w==='quality') return 'camLowQuality';
+  return 'camNoReading';
 }
 function openPulseCam(){
   if(!camPulseAvailable()) return;
-  camResult=null; $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true;
+  camResult=null; camFailed=false; $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true;
   $('camStart').hidden=false; $('camBpm').textContent='—'; $('camProgress').style.width='0';
   $('camHint').textContent=''; $('camNoLight').hidden=true;
+  camShowConf(null); camRecording=null; $('camRec').hidden=true;
   const wv=$('camWave'); wv.getContext('2d').clearRect(0,0,wv.width,wv.height);   // no wave left over from the last reading
   openPanel('pulsePanel');
 }
@@ -1528,30 +1705,55 @@ function camDraw(){
 async function startPulseCam(){
   if(!camPulseAvailable()) return;
   stopPulseCam();
-  camResult=null; camWaveData=null;
+  camResult=null; camFailed=false; camWaveData=null;
   $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true; $('camStart').hidden=true;
   $('camBpm').textContent='—'; $('camProgress').style.width='0';
+  camQualityAt=-Infinity; camQuality=null; camShowConf(null); camRecording=null; $('camRec').hidden=true;
   const mon=new PPG.PulseMonitor({video:$('camVideo'), durationSec:60});
   camMon=mon;
   mon.on('camera', c=>{ $('camNoLight').hidden=!!c.torch; });
   mon.on('status', st=>{
     if(st.state==='waiting') $('camHint').textContent=L('camPlace');
     if(st.state==='settling') $('camHint').textContent=L('camHold');
-    if(['complete','stopped','error'].includes(st.state)){ cancelAnimationFrame(camRaf); if(camMon===mon) camMon=null; if(!camResult) { $('camStart').hidden=false; } }
+    if(['complete','stopped','error'].includes(st.state)){
+      cancelAnimationFrame(camRaf);
+      if(camMon===mon) camMon=null;
+      if(!camResult && !camFailed) $('camStart').hidden=false;
+    }
   });
   mon.on('quality', q=>{
-    const k={'place-finger':'camPlace','press-lighter':'camLighter','hold-still':'camHold','weak-signal':'camWeak',good:'camGood'}[q.hint];
+    let k={'place-finger':'camPlace','press-lighter':'camLighter','hold-still':'camHold','rest-hand':'camRest','cover-lens':'camCover','weak-signal':'camWeak','rate-disagree':'camFailDisagree',good:'camGood'}[q.hint];
+    // the engine is happy but the quality check is not: say what to do
+    if(k==='camGood' && camQuality && !camQuality.good) k='camQualityHold';
     if(k && mon.state!=='complete') $('camHint').textContent=L(k);
   });
   mon.on('wave', w=>{ camWaveData=w; camWaveAt=performance.now(); });
   mon.on('metrics', m=>{
-    if(m.bpm && m.phase==='measuring') $('camBpm').textContent=Math.round(m.bpm);
+    let show=!!(m.showBpm && m.bpm);
+    if(show){
+      // rate the last seconds at most once a second; the number shows only
+      // while they are rated good, with the confidence beside it
+      const now=performance.now();
+      if(now-camQualityAt>=1000){ camQualityAt=now; camQuality=camRate(mon, m.unevenBeats); }
+      if(camQuality && !camQuality.good) show=false;
+    }
+    $('camBpm').textContent = show ? Math.round(m.bpm) : '—';
+    camShowConf(show ? camQuality : null);
     $('camProgress').style.width=((m.progress||0)*100)+'%';
   });
-  mon.on('error', e=>{ $('camHint').textContent=L(e.code==='permission-denied'?'camDenied':'camError'); $('camStart').hidden=false; });
+  mon.on('error', e=>{ $('camHint').textContent=L(e.code==='permission-denied'?'camDenied':'camError'); $('camStart').hidden=false; $('camAgain').hidden=true; });
   mon.on('complete', res=>{
-    if(!res.ok){ $('camHint').textContent=L('camNoReading'); $('camStart').hidden=false; return; }
-    camResult=res; renderPulseCamResult(res);
+    // the raw window is read now, while the engine still holds it
+    const q=camRate(mon, res.unevenBeats);
+    if(devRecordingOn()) prepareRecording(mon, res, q);
+    if(!res.ok || (q && !q.good)){
+      camFailed=true; camResult=null;
+      $('camBpm').textContent='—'; camShowConf(null);
+      $('camHint').textContent=L(res.ok ? 'camQualityRetry' : camFailKey(res));
+      $('camResult').hidden=true; $('camUse').hidden=true; $('camStart').hidden=true; $('camAgain').hidden=false;
+      return;
+    }
+    camFailed=false; camResult=res; renderPulseCamResult(res); camShowConf(q);
   });
   camDraw();
   await mon.start();
@@ -1574,6 +1776,69 @@ function usePulseCam(){
   pendingCam=pc;
   $('vitalInput').value=r.bpm;
   if(r.unevenBeats && !pendingRhythm){ pendingRhythm='irregular'; renderRhythmChips(); }
+}
+// ---- Pulse recording mode (developer, hidden) ----
+// Saves each camera reading's raw signal with a pulse oximeter's number, to
+// train pulse-quality.js (tools/train-pulse-quality.js). Kept in its own
+// storage key, apart from anyone's record; it leaves the phone only when
+// "Export recordings" is tapped. "Clear all data" removes it too.
+const DEV_KEY='cc-dev-pulse', PULSE_REC_KEY='cc-pulse-recordings', PULSE_REC_MAX=300;
+let devTaps=0, devTapAt=0;
+function devState(){ try{ return JSON.parse(localStorage.getItem(DEV_KEY)||'null')||{}; }catch(e){ return {}; } }
+function setDevState(d){ try{ localStorage.setItem(DEV_KEY, JSON.stringify(d)); }catch(e){ showToast(L('saveFailed')); } }
+function devRecordingOn(){ const d=devState(); return !!(d.unlocked && d.record); }
+function pulseRecordings(){ try{ const a=JSON.parse(localStorage.getItem(PULSE_REC_KEY)||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+// Seven taps on "About" within a few seconds, like Android's own developer options.
+function devTap(){
+  const now=Date.now();
+  devTaps = now-devTapAt<1500 ? devTaps+1 : 1; devTapAt=now;
+  if(devTaps>=7 && !devState().unlocked){ setDevState(Object.assign(devState(), {unlocked:true})); showToast(L('devUnlocked')); renderDevSettings(); }
+}
+function renderDevSettings(){
+  const d=devState();
+  $('devSection').hidden=!d.unlocked;
+  if(!d.unlocked) return;
+  const sw=$('devRecSwitch'), on=!!d.record;
+  sw.classList.toggle('on', on); sw.setAttribute('aria-checked', on?'true':'false');
+  const method=window.PulseQuality ? PulseQuality.activeMethod() : 'rules';
+  $('devRecStatus').textContent=L('devRecCount',{n:pulseRecordings().length})+' · '+L('devModelLine',{m:L(method==='model'?'devModelTrained':'devModelRules')});
+}
+function toggleDevRecording(){ const d=devState(); d.record=!d.record; setDevState(d); renderDevSettings(); }
+// After a reading: keep what the engine saw and computed, and ask for the
+// oximeter's number. The app's number is the engine's, shown or not, so a
+// withheld reading is recorded too (labelled poor).
+function prepareRecording(mon, res, q){
+  const w=mon.rawWindow();
+  const r2=v=>Math.round(v*100)/100;
+  camRecording={id:uid(), at:new Date().toISOString(), device:(res.camera&&res.camera.label)||'', engine:PPG.VERSION,
+    fs:w.fs, red:w.red.map(r2), green:w.green.map(r2), blue:w.blue.map(r2), saturation:w.saturation, cover:w.cover,
+    appBpm:res.bpm!=null?res.bpm:null, appShown:!!(res.ok && (!q || q.good)), withhold:res.ok?(q && !q.good?'quality-model':''):(res.withhold||''),
+    uneven:!!res.unevenBeats, confidence:q?q.confidence:null, method:q?q.method:null, referenceBpm:null};
+  $('camRecRef').value=''; $('camRec').hidden=false;
+}
+function savePulseRecording(){
+  if(!camRecording) return;
+  const ref=Number($('camRecRef').value);
+  if(!(ref>=30 && ref<=250)){ showToast(L('devRecCheckRef')); return; }
+  const list=pulseRecordings();
+  if(list.length>=PULSE_REC_MAX){ showToast(L('devRecFull',{n:list.length})); return; }
+  camRecording.referenceBpm=Math.round(ref);
+  list.push(camRecording);
+  try{ localStorage.setItem(PULSE_REC_KEY, JSON.stringify(list)); }catch(e){ showToast(L('saveFailed')); return; }
+  camRecording=null; $('camRec').hidden=true;
+  showToast(L('devRecSaved'));
+}
+function exportPulseRecordings(){
+  const list=pulseRecordings();
+  if(!list.length || !window.PulseQuality){ showToast(L('devRecCount',{n:list.length})); return; }
+  // the file name says when, not who: the readings carry no name
+  shareOrDownload(new Blob([PulseQuality.toCsv(list)], {type:'text/csv'}), 'pulse-recordings-'+todayKey()+'.csv', L('devRecExport'));
+}
+function clearPulseRecordings(){
+  ask({msg:L('devRecClearConfirm'), yes:'devRecClear', no:ANSWER.cancel, danger:true, onYes:()=>{
+    try{ localStorage.removeItem(PULSE_REC_KEY); }catch(e){}
+    renderDevSettings();
+  }});
 }
 function vitalLabel(x){
   const name={pulse:L('t-pulseTile'), bp:L('t-bp'), spo2:L('t-spo2'), temp:L('t-temp')}[x.k]||x.k;
@@ -2311,6 +2576,9 @@ function alertHtml(cls, title, text, actions){
   return `<div class="${cls}" role="status"><strong>${esc(title)}</strong>${text?`<span>${esc(text)}</span>`:''}${actions?`<div class="alert-actions">${actions}</div>`:''}</div>`;
 }
 function backupNudgeDue(){
+  // The sample record is made up, so there is nothing to keep safe; a
+  // "back up" card on it only distracts whoever is being shown the app.
+  if(S && S.demo) return false;
   const t=todayKey();
   if(G.backupSnooze && t<G.backupSnooze) return false;
   const hasData=S.meds.some(m=>!m.removed) || S.warfarin.enabled || S.injection.enabled || Object.keys(S.weightLog).length;
@@ -2376,15 +2644,30 @@ function renderSettings(){
   setVal('familyInput', S.contacts.family);
   const vs=$('valveSelect');
   if(document.activeElement!==vs) vs.innerHTML=['','none','mechanical','tissue','unsure'].map(v=>`<option value="${v}"${S.about.valve===v?' selected':''}>${esc(v?L('valve_'+v):'—')}</option>`).join('');
-  renderReminders(); renderStorageStatus();
+  renderReminders(); renderStorageStatus(); renderDemoSettings(); renderLockSettings(); renderDevSettings();
+}
+function renderDemoSettings(){
+  const btn=$('demoSettingsBtn'), sub=$('demoSettingsText');
+  const on=!!(S && S.demo);
+  if(sub) sub.textContent=L(on?'demoOnText':'demoOffText');
+  if(btn) btn.textContent=L(on?'demoExitBtn':'demoStartBtn');
+}
+// While the sample is open, a person with no name and nothing recorded (the
+// empty record a new phone starts with) is left out of this list, so the
+// sample does not sit next to a "No name yet" row. Nothing is deleted: the
+// record stays on the phone, and Exit demo goes back to it.
+function hiddenWhileDemo(p){
+  if(!(S && S.demo) || !p || profileIsDemo(p) || p.name || p.id===profiles.active) return false;
+  return recordIsEmpty(readState(p.id));
 }
 function renderProfiles(){
   const el=$('profilesBlock');
   if(deferIfBusy(el, renderProfiles)) return;
-  let h=profiles.list.map(p=>`<div class="profile-row${p.id===profiles.active?' active':''}">
+  let h=profiles.list.filter(p=>!hiddenWhileDemo(p)).map(p=>`<div class="profile-row${p.id===profiles.active?' active':''}">
       <span class="profile-name">${esc(p.name||L('unnamed'))}</span>
+      ${profileIsDemo(p)?`<span class="badge">${esc(L('demoBadge'))}</span>`:''}
       ${p.id===profiles.active?`<span class="badge">${esc(L('activeLabel'))}</span>`:`<button class="btn btn-ghost btn-small" data-act="profSwitch" data-id="${esc(p.id)}">${esc(L('switchBtn'))}</button>`}
-      ${profiles.list.length>1?`<button class="log-del" data-act="profDel" data-id="${esc(p.id)}" aria-label="${esc(L('removeLabel'))} ${esc(p.name||'')}">${ICON_X}</button>`:''}
+      ${profiles.list.length>1 && !profileIsDemo(p)?`<button class="log-del" data-act="profDel" data-id="${esc(p.id)}" aria-label="${esc(L('removeLabel'))} ${esc(p.name||'')}">${ICON_X}</button>`:''}
     </div>`).join('');
   h+=`<div class="settings-pad divided">
       <label class="field-label" for="profName">${esc(L('nameLabel'))}</label>
@@ -2443,18 +2726,185 @@ function setBigText(on){
   segActive('textSizeSeg', G.bigText?1:0);
   setTimeout(drawWeightChart, 50);
 }
+// The app keeps its text at 100% (MainActivity.java), so on the very first
+// launch a phone set to large system text (1.15 or more) starts with the
+// app's own Large text, which scales the whole layout evenly. Called only
+// then: after that the person's own choice in Settings stands.
+function matchSystemTextSize(){
+  if(G.bigText) return Promise.resolve(false);
+  return Platform.display.fontScale().then(scale=>{
+    if(scale==null || scale<1.15) return false;
+    setBigText(true);
+    return true;
+  });
+}
 function applyTheme(theme){
   if(theme==='dark') document.documentElement.setAttribute('data-theme','dark');
   else document.documentElement.removeAttribute('data-theme');
   const meta=document.querySelector('meta[name="theme-color"]');
   if(meta) meta.setAttribute('content', theme==='dark'?'#0D1311':'#EEF1EE');
   segActive('themeSeg', theme==='dark'?1:0);
-  CCPlatform.setBarsTheme(theme);
+  Platform.display.setBarsDark(theme==='dark');
 }
 function setTheme(theme){
   applyTheme(theme);
   try{ localStorage.setItem(THEME_KEY, theme); }catch(e){}
   drawWeightChart();
+}
+
+// ---- Demo mode ----
+// A made-up record for showing the app. It lives only under CC.demo.ID.
+// Starting it writes that key. Leaving it deletes that key. A real
+// person's record is never the place the sample is written, and is never
+// deleted here.
+function profileIsDemo(p){ return !!(p && CC.demo && (p.demo || p.id===CC.demo.ID)); }
+function recordIsEmpty(st){
+  if(!st) return true;
+  return !st.meds.some(m=>!m.removed)
+    && !st.warfarin.enabled && !st.injection.enabled
+    && !st.inrLog.length && !st.notes.length && !st.mood.length
+    && !Object.keys(st.weightLog).length && !Object.keys(st.vitals).length
+    && !Object.keys(st.symptomLog).length
+    && !st.clinicalInfo && !(st.visits && (st.visits.last || st.visits.next));
+}
+function shouldShowWelcome(){
+  if(G.welcomed) return false;
+  if(!S || !profiles) return false;
+  if(S.demo || profileIsDemo(activeProfile())) return false;
+  return recordIsEmpty(S);
+}
+function renderDemoBanner(){
+  const el=$('demoBanner');
+  if(el) el.hidden=!(S && S.demo);
+}
+function dismissWelcome(){
+  G.welcomed=true; saveGlobal();
+  closePanel('welcomePanel');
+}
+function onDemoSettings(){ if(S && S.demo) exitDemo(); else startDemo(); }
+function startDemo(){
+  if(!CC.demo) return;
+  // Already showing the sample: just land on Today.
+  if(S && S.demo){
+    closePanel('welcomePanel'); closePanel('settingsPanel'); switchTab('today');
+    return;
+  }
+  const returnId=profiles.active;
+  // Flush the real record as it stands. The sample is written afterwards, to its own key.
+  if(!writeState(returnId, S)){ showToast(L('saveFailed')); return; }
+  const built=CC.demo.build(todayKey(), currentLang);
+  if(!built || built.demo!==true) return;
+  if(!writeState(CC.demo.ID, built)){ showToast(L('saveFailed')); return; }
+  G.demoReturn=returnId; saveGlobal();
+  profiles.list=profiles.list.filter(p=>!profileIsDemo(p));
+  profiles.list.push({id:CC.demo.ID, name:CC.demo.NAME, demo:true});
+  profiles.active=CC.demo.ID;
+  saveProfiles();
+  loadActive(); ensurePlans(S); autoCloseFasting(S); save();
+  medForm=null; injForm=null; moodDraft={q1:null,q2:null,open:false}; nmDraft={name:'',date:null};
+  closePanel('welcomePanel'); closePanel('settingsPanel');
+  switchTab('today');
+  renderAll();
+  // The tour card says the sample is open, so no toast on top of it.
+  startTour();
+}
+function exitDemo(){
+  if(!CC.demo) return;
+  const id=CC.demo.ID;
+  let stored=false;
+  try{ stored=!!localStorage.getItem(stateKey(id)); }catch(e){}
+  if(!stored && !profiles.list.some(profileIsDemo) && !(S && S.demo)) return;
+  ask({msg:L('demoExitConfirm'), yes:'demoExitBtn', no:ANSWER.cancel, onYes:()=>leaveDemo(id)});
+}
+// Exit demo, once the person has said yes
+function leaveDemo(id){
+  endTour();
+  // This is the only key Exit demo removes.
+  try{ localStorage.removeItem(stateKey(id)); }catch(e){}
+  const back=G.demoReturn;
+  profiles.list=profiles.list.filter(p=>!profileIsDemo(p));
+  if(!profiles.list.length){
+    profiles.list=[{id:'p1', name:''}];
+    profiles.active='p1';
+    if(!readState('p1')) writeState('p1', defaultState());
+  }else{
+    profiles.active=profiles.list.some(p=>p.id===back)?back:profiles.list[0].id;
+  }
+  G.demoReturn=null; saveGlobal();
+  saveProfiles();
+  loadActive(); ensurePlans(S); autoCloseFasting(S); save();
+  medForm=null; injForm=null; moodDraft={q1:null,q2:null,open:false}; nmDraft={name:'',date:null};
+  closePanel('settingsPanel');
+  renderAll();
+  showToast(L('demoExitedToast'));
+  if(shouldShowWelcome()) openPanel('welcomePanel');
+}
+
+// ---- Guided tour: five stops on the sample record ----
+// A card above the bottom bar says what one part of the page is for, and
+// that part gets an outline. The tour only moves between tabs and scrolls:
+// it saves nothing and changes no record. Skip, Done, Android's back
+// button and Escape all close it. It runs only on the sample record.
+const TOUR=[
+  {tab:'today',    target:'injectionCard', title:'t-injectionTitle', text:'tourInjText'},
+  {tab:'today',    target:'warfarinCard',  title:'t-warfarinToday',  text:'tourWarfarinText'},
+  {tab:'symptoms', target:'warningCard',   title:'warnTitle',        text:'tourWarnText'},
+  {tab:null,       target:'headerLangs',   title:'tourLangTitle',    text:'tourLangText', scroll:false},
+  {tab:'summary',  target:'visitCard',     title:'t-visitTitle',     text:'tourVisitText'}
+];
+let tourAt=-1;        // the stop in view; -1 when the tour is closed
+let tourMarked=null;  // the element with the outline
+function tourOpen(){ return tourAt>=0; }
+function tourMark(el){
+  if(tourMarked && tourMarked.classList) tourMarked.classList.remove('tour-target');
+  tourMarked=el||null;
+  if(tourMarked && tourMarked.classList) tourMarked.classList.add('tour-target');
+}
+function startTour(){
+  if(!(S && S.demo)) return;
+  tourAt=0;
+  document.documentElement.classList.add('touring');
+  showTourStop();
+  const next=$('tourNextBtn'); if(next && next.focus) next.focus();
+}
+function showTourStop(){
+  const stop=TOUR[tourAt];
+  if(!stop){ endTour(); return; }
+  if(stop.tab && stop.tab!==currentTab) switchTab(stop.tab);
+  const el=$(stop.target);
+  tourMark(el);
+  if(el && stop.scroll!==false && el.scrollIntoView) el.scrollIntoView({block:'start'});
+  renderTour();
+}
+function tourGoNext(){
+  if(!tourOpen()) return;
+  if(tourAt>=TOUR.length-1){ endTour(); switchTab('today'); return; }
+  tourAt++; showTourStop();
+}
+function tourGoBack(){
+  if(!tourOpen() || tourAt===0) return;
+  tourAt--; showTourStop();
+}
+function endTour(){
+  tourAt=-1;
+  tourMark(null);
+  document.documentElement.classList.remove('touring');
+  renderTour();
+}
+function renderTour(){
+  const sheet=$('tourSheet');
+  if(!sheet) return;
+  // Leaving the sample (Exit demo, or switching to a real person) ends it.
+  if(tourOpen() && !(S && S.demo)){ endTour(); return; }
+  sheet.hidden=!tourOpen();
+  if(!tourOpen()) return;
+  const stop=TOUR[tourAt], last=tourAt===TOUR.length-1;
+  sheet.setAttribute('aria-label', L('tourLabel'));
+  $('tourCount').textContent=L('tourStepOf',{n:tourAt+1, total:TOUR.length});
+  $('tourTitle').textContent=L(stop.title);
+  $('tourText').textContent=L(stop.text);
+  $('tourBackBtn').hidden=tourAt===0;
+  $('tourNextBtn').textContent=L(last?'tourDone':'tourNext');
 }
 
 // ---- People on this phone ----
@@ -2466,6 +2916,9 @@ function renderWho(){
 }
 function switchProfile(id){
   if(id===profiles.active || !profiles.list.some(p=>p.id===id)) return;
+  const next=profiles.list.find(p=>p.id===id);
+  // Leaving the sample for a real person: come back here on Exit demo.
+  if(profileIsDemo(activeProfile()) && next && !profileIsDemo(next)){ G.demoReturn=id; saveGlobal(); }
   save();
   profiles.active=id; saveProfiles();
   loadActive(); ensurePlans(S); autoCloseFasting(S); save();
@@ -2480,7 +2933,8 @@ function addProfileNamed(name){
   if(!name) return;
   const id='p'+uid();
   const st=defaultState();
-  st.contacts=Object.assign({}, S.contacts);   // same phone, usually the same people to call
+  // Same phone, usually the same people to call, but never copy numbers out of the sample record.
+  if(!profileIsDemo(activeProfile())) st.contacts=Object.assign({}, S.contacts);
   if(!writeState(id, st)){ showToast(L('saveFailed')); return; }
   profiles.list.push({id, name}); saveProfiles();
   switchProfile(id);
@@ -2490,6 +2944,7 @@ function deleteProfile(id){
   if(!p || profiles.list.length<2) return;
   ask({msg:L('confirmDelPerson',{name:p.name||L('unnamed')}), yes:ANSWER.remove, no:ANSWER.cancel, danger:true, onYes:()=>{
     try{ localStorage.removeItem(stateKey(id)); }catch(e){}
+    if(profileIsDemo(p)){ G.demoReturn=null; saveGlobal(); }
     profiles.list=profiles.list.filter(x=>x.id!==id);
     if(profiles.active===id){ profiles.active=profiles.list[0].id; loadActive(); ensurePlans(S); }
     saveProfiles();
@@ -2573,7 +3028,7 @@ function updateNotifPermUI(){
 }
 
 // ---- Panels, tabs, toast ----
-const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel'];
+const PANELS=['notifPanel','settingsPanel','helpPanel','idPanel','nursePanel','previewPanel','pulsePanel','welcomePanel','secretPanel'];
 const PANEL_SCROLL_MS=60;   // let the panel draw before scrolling inside it
 function openPanel(id, scrollToId){
   const p=$(id);
@@ -2592,34 +3047,15 @@ function closePanel(id){
   if(!p || p.hidden) return;
   p.hidden=true;
   if(id==='pulsePanel') stopPulseCam();
+  if(id==='secretPanel') secretDone(null);
   const op=openerStack.pop();
   if(op && op.focus && document.contains(op)) op.focus();
   if(id==='settingsPanel') renderAll();
 }
-// Large text on the very first launch when Android's font size is 1.15 or
-// more (null: not in the app). Never after: the person's choice then stands.
-function startsWithBigText(isNew, fontScale){
-  return !!isNew && fontScale!=null && fontScale>=1.15 && !G.bigText;
-}
-
-// Android's back button or gesture: close the top panel, then an open
-// form on this tab, then go back to Today. Returns false when there is
-// nothing left to close, and the app then leaves (js/platform/android.js).
-// A form is closed with its own Cancel button, so back does exactly what
-// tapping Cancel does, and only for a form the person can see.
-const FORM_CANCELS=['mfCancel','injCancel','moodCancel'];
-function handleBack(){
-  if(dialogNow){ answerDialog(false); return true; }
-  const p=topPanel();
-  if(p){ closePanel(p); return true; }
-  const tab=document.querySelector('.tab.active');
-  const cancel=tab && FORM_CANCELS.map(a=>tab.querySelector(`[data-act="${a}"]`)).find(b=>b && b.offsetParent!==null);
-  if(cancel){ cancel.click(); return true; }
-  if(tab && tab.id!=='tab-today'){ switchTab('today'); return true; }
-  return false;
-}
 function topPanel(){ for(let i=PANELS.length-1;i>=0;i--){ const p=$(PANELS[i]); if(p && !p.hidden) return PANELS[i]; } return null; }
+let currentTab='today';   // the tab in view; the back button needs it
 function switchTab(name){
+  currentTab=name;
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   const tab=$('tab-'+name); if(tab) tab.classList.add('active');
   document.querySelectorAll('.nav-item').forEach((b,i)=>{
@@ -2630,6 +3066,39 @@ function switchTab(name){
   const content=$('content'); if(content) content.scrollTop=0;
   if(name==='summary') renderSummaryTab();
 }
+
+// Back button: Android's back button and back gesture.
+// One step back at a time, as in any Android app: close the panel on top,
+// then a form that is open on the tab in view (the same as its Cancel
+// button), then go back to Today. Only from Today with nothing open does
+// back leave the app. Returns what it did, for the tests.
+function cancelOpenForm(){
+  if(currentTab==='today'){
+    if(injForm){ ACT.injCancel(); return true; }
+    if(!$('vitalEntry').hidden){ closeVitalEntry(); return true; }
+  }
+  if(currentTab==='meds' && medForm){ ACT.mfCancel(); return true; }
+  if(currentTab==='symptoms'){
+    // a retake can be cancelled; the first questionnaire has no Cancel
+    if(moodDraft.open && lastMood(S)){ ACT.moodCancel(); return true; }
+    if(!$('addSymptomForm').hidden){ toggleAddSymptom(); return true; }
+  }
+  return false;
+}
+function handleBack(){
+  // locked: back leaves the app, it never reaches what is behind the lock
+  if(isLocked()){ Platform.app.leave(); return 'leave'; }
+  // a question is open: back answers it the safe way, as Escape does
+  if(dialogNow){ answerDialog(false); return 'dialog'; }
+  const p=topPanel();
+  if(p){ closePanel(p); return 'panel'; }
+  if(tourOpen()){ endTour(); return 'tour'; }
+  if(cancelOpenForm()) return 'form';
+  if(currentTab!=='today'){ switchTab('today'); return 'tab'; }
+  Platform.app.leave();
+  return 'leave';
+}
+
 const TOAST_MS=3200;   // long enough to read a two-line message
 function showToast(msg){
   const el=$('toast');
@@ -2658,6 +3127,10 @@ function ask(o){
   $('dialog').hidden=false;
   (o.input?inp:no).focus();   // the safe answer has focus, so Enter never deletes
 }
+// ask() for code that waits: resolves to true for yes, false for no
+function askYes(o){
+  return new Promise(resolve=>ask(Object.assign({}, o, {onYes:()=>resolve(true), onNo:()=>resolve(false)})));
+}
 function answerDialog(ok){
   const d=dialogNow; if(!d) return;
   dialogNow=null;
@@ -2676,9 +3149,18 @@ function setLang(lang){
   currentLang=lang;
   try{ localStorage.setItem(LANG_KEY, lang); }catch(e){}
   document.documentElement.lang=HTML_LANG[lang];
+  // The header has one language list; the welcome screen has three
+  // buttons, each saying its own language rather than counting on position.
   $('langCode').textContent=LANG_CODE[lang];
   $('langCode').lang=HTML_LANG[lang];
   $('langSelect').value=lang;
+  document.querySelectorAll('.lang-pill').forEach(b=>{
+    const on=b.dataset.lang===lang;
+    b.classList.toggle('active', on); b.setAttribute('aria-pressed', on?'true':'false');
+  });
+  // The sample's notes and texts follow the language (only on the sample,
+  // and only text nobody has edited; see js/demo.js).
+  if(S && S.demo && CC.demo && CC.demo.relabel && CC.demo.relabel(S, lang)) save();
   renderAll();
 }
 function renderHeader(){
@@ -2696,6 +3178,8 @@ function renderAll(){
   renderFlags(); renderSymptoms(); renderMood(); renderNotes();
   renderSummaryTab();
   renderActiveAlerts();
+  renderDemoBanner();
+  renderTour();
   updateNotifDot();
   if(!$('notifPanel').hidden) renderNotifications();
   if(!$('settingsPanel').hidden) renderSettings();
@@ -2829,7 +3313,12 @@ document.addEventListener('keydown', ev=>{
     }
     return;
   }
-  if(ev.key==='Escape'){ const p=topPanel(); if(p){ ev.preventDefault(); closePanel(p); } return; }
+  if(ev.key==='Escape'){
+    const p=topPanel();
+    if(p){ ev.preventDefault(); closePanel(p); }
+    else if(tourOpen()){ ev.preventDefault(); endTour(); }
+    return;
+  }
   const el=ev.target;
   if((ev.key==='Enter'||ev.key===' ') && el && el.getAttribute && el.getAttribute('role')==='checkbox' && el.dataset.act){
     ev.preventDefault(); el.click();
@@ -3165,6 +3654,7 @@ async function shareOrDownload(blob, filename, title){
   try{
     const file=new File([blob], filename, {type:blob.type});
     if(navigator.canShare && navigator.canShare({files:[file]})){
+      expectAway();
       await navigator.share({files:[file], title});
       return 'shared';
     }
@@ -3309,42 +3799,255 @@ async function exportIcs(){
 // One file holds every person on this phone. Sending it to yourself on
 // Telegram is enough to survive a lost phone or a cleared browser.
 async function backupNow(){
+  if(!CC.secure.available()){ showToast(L('encUnavailable')); return; }
   save();
   const states={};
   profiles.list.forEach(p=>{ const st=p.id===profiles.active?S:readState(p.id); if(st) states[p.id]=st; });
   const data={kind:BACKUP_KIND, v:3, exported:new Date().toISOString(), profiles, states};
-  const blob=new Blob([JSON.stringify(data)], {type:'application/json'});
+  // The file is always encrypted: there is no "plain" choice that a tired
+  // or hurried person could pick by mistake.
+  let file=null;
+  const pass=await askSecret({title:L('encTitle'), text:L('encText'), label:L('encPassLabel'), label2:L('encPassAgain'),
+    ok:L('encOkBtn'), kind:'pass', submit:async (v,v2)=>{
+      if(v.length<CC.secure.MIN_PASSPHRASE) return L('encTooShort',{n:CC.secure.MIN_PASSPHRASE});
+      if(v!==v2) return L('encNoMatch');
+      try{ file=await CC.secure.encryptBackup(data, v); }catch(e){ return L('encFailed'); }
+      return null;
+    }});
+  if(pass==null || !file) return;
+  const blob=new Blob([JSON.stringify(file)], {type:'application/json'});
   const res=await shareOrDownload(blob, 'cardiac-companion-backup-'+todayKey()+'.json', L('backupBtn'));
   if(res==='cancelled') return;
   G.lastBackup=todayKey(); G.backupSnooze=null; saveGlobal();
   renderActiveAlerts(); renderStorageStatus();
   showToast(L('backupDone'));
 }
+// Choosing a file opens the phone's file picker, which takes the app off
+// screen for a moment; that must not bring up the PIN lock.
+function pickRestoreFile(){ expectAway(); $('restoreInput').click(); }
 function restoreFromFile(input){
   const file=input.files && input.files[0];
   input.value='';
   if(!file) return;
   const reader=new FileReader();
   reader.onload=()=>{
-    let data=null;
-    try{ data=JSON.parse(String(reader.result)); }catch(e){}
-    if(!data || data.kind!==BACKUP_KIND || !data.profiles || !Array.isArray(data.profiles.list) || !data.states){
-      showToast(L('restoreBad')); return;
-    }
-    const when=data.exported ? fmtGreg(localDateKey(new Date(data.exported)), true) : '?';
-    const names=data.profiles.list.map(p=>p.name||L('unnamed')).join(', ');
-    ask({msg:L('restoreConfirm',{date:when, names}), yes:'restoreBtn', no:ANSWER.cancel, onYes:()=>{
-      try{
-        profiles.list.forEach(p=>{ try{ localStorage.removeItem(stateKey(p.id)); }catch(e){} });
-        data.profiles.list.forEach(p=>{ if(data.states[p.id]) writeState(p.id, normalizeState(data.states[p.id])); });
-        localStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
-        G.lastBackup=todayKey(); saveGlobal();
-        location.reload();
-      }catch(e){ showToast(L('saveFailed')); }
-    }});
+    let raw=null;
+    try{ raw=JSON.parse(String(reader.result)); }catch(e){}
+    restoreFromData(raw);
   };
   reader.onerror=()=>showToast(L('restoreBad'));
   reader.readAsText(file);
+}
+// raw: the parsed backup file. Encrypted files ask for the passphrase and
+// stay open on a wrong one; files from before encryption still restore,
+// with a warning. Returns what happened, for the tests.
+async function restoreFromData(raw){
+  const type=CC.secure.backupType(raw);
+  if(!type){ showToast(L('restoreBad')); return 'bad'; }
+  let data=raw;
+  if(type==='encrypted'){
+    if(!CC.secure.available()){ showToast(L('encUnavailable')); return 'bad'; }
+    data=null;
+    const pass=await askSecret({title:L('decTitle'), text:L('decText'), label:L('encPassLabel'), ok:L('decOkBtn'), kind:'pass',
+      submit:async v=>{
+        try{ data=await CC.secure.decryptBackup(raw, v); return null; }
+        catch(e){ return L(e && e.message==='wrong-passphrase' ? 'decWrong' : 'restoreBad'); }
+      }});
+    if(pass==null || !data) return 'cancelled';
+  }
+  const when=data.exported ? fmtGreg(localDateKey(new Date(data.exported)), true) : '?';
+  const names=data.profiles.list.map(p=>p.name||L('unnamed')).join(', ');
+  const question=L('restoreConfirm',{date:when, names});
+  const yes=await askYes({msg:type==='plain' ? L('restorePlainWarn')+'\n\n'+question : question, yes:'restoreBtn', no:ANSWER.cancel});
+  if(!yes) return 'cancelled';
+  try{
+    profiles.list.forEach(p=>{ try{ localStorage.removeItem(stateKey(p.id)); }catch(e){} });
+    data.profiles.list.forEach(p=>{ if(data.states[p.id]) writeState(p.id, normalizeState(data.states[p.id])); });
+    localStorage.setItem(PROFILES_KEY, JSON.stringify(data.profiles));
+    G.lastBackup=todayKey(); saveGlobal();
+    location.reload();
+  }catch(e){ showToast(L('saveFailed')); return 'failed'; }
+  return 'restored';
+}
+
+// ---- Passphrase or PIN box ----
+// askSecret() opens a small box with one or two hidden fields and resolves
+// to what was typed, or to null if the person cancels or presses back.
+// opts.submit(v, v2) checks it and returns an error to show (the box stays
+// open, so a wrong passphrase can be typed again) or null to close.
+let secretAsk=null;
+function askSecret(opts){
+  if(secretAsk) secretDone(null);
+  return new Promise(resolve=>{
+    secretAsk={opts, resolve, busy:false};
+    const pin=opts.kind==='pin';
+    $('secretTitle').textContent=opts.title;
+    $('secretText').textContent=opts.text||'';
+    $('secretText').hidden=!opts.text;
+    $('secretLabel').textContent=opts.label;
+    $('secretLabel2').textContent=opts.label2||'';
+    $('secretLabel2').hidden=$('secretInput2').hidden=!opts.label2;
+    ['secretInput','secretInput2'].forEach(id=>{
+      const el=$(id);
+      el.value='';
+      el.setAttribute('inputmode', pin?'numeric':'text');
+      if(pin) el.setAttribute('maxlength','6'); else el.removeAttribute('maxlength');
+    });
+    $('secretError').textContent='';
+    $('secretOk').textContent=opts.ok;
+    $('secretOk').disabled=false;
+    openPanel('secretPanel');
+    $('secretInput').focus();
+  });
+}
+async function secretSubmit(){
+  const a=secretAsk;
+  if(!a || a.busy) return;
+  const v=$('secretInput').value, v2=$('secretInput2').value;
+  a.busy=true; $('secretOk').disabled=true; $('secretError').textContent=L('secretWorking');
+  let err=null;
+  try{ err=a.opts.submit ? await a.opts.submit(v, v2) : null; }catch(e){ err=L('encFailed'); }
+  a.busy=false; $('secretOk').disabled=false;
+  if(secretAsk!==a) return;              // closed while working
+  if(err){ $('secretError').textContent=err; $('secretInput').value=''; $('secretInput2').value=''; $('secretInput').focus(); return; }
+  secretDone(v);
+  closePanel('secretPanel');
+}
+function secretDone(value){
+  const a=secretAsk;
+  if(!a) return;
+  secretAsk=null;
+  ['secretInput','secretInput2'].forEach(id=>{ $(id).value=''; });   // nothing secret left in the page
+  a.resolve(value);
+}
+
+// ---- PIN lock ----
+// Optional, off until the person turns it on in Settings. The lock shows
+// when the app opens and each time it comes back to the screen. Five wrong
+// PINs in a row mean a 30-second wait. There is no account, so a forgotten
+// PIN cannot be reset by anyone: the only way back in is to clear all data.
+// The lock keeps people out of the app; it does not encrypt what is stored.
+let locked=false;
+let lockTimer=null;
+let awayOkUntil=0;          // the app's own share sheet or file picker
+function isLocked(){ return locked; }
+function expectAway(){ awayOkUntil=Date.now()+5*60*1000; }
+function showLock(){
+  if(!G.pinLock) return;
+  if(!locked){
+    if(!$('secretPanel').hidden) closePanel('secretPanel');
+    locked=true;
+    $('lockScreen').hidden=false;
+    document.body.classList.add('locked');
+  }
+  $('lockInput').value='';
+  $('lockForgot').hidden=true;
+  renderLockWait();
+  $('lockInput').focus();
+}
+function hideLock(){
+  locked=false;
+  $('lockScreen').hidden=true;
+  document.body.classList.remove('locked');
+  $('lockInput').value=''; $('lockError').textContent='';
+  clearInterval(lockTimer); lockTimer=null;
+}
+// the countdown while five wrong PINs make the person wait
+function renderLockWait(){
+  const left=CC.secure.waitLeft(G.pinTries, Date.now());
+  $('lockOk').disabled=left>0;
+  $('lockInput').disabled=left>0;
+  if(left>0){
+    $('lockError').textContent=L('lockWait',{n:left});
+    if(!lockTimer) lockTimer=setInterval(renderLockWait, 1000);
+  }else{
+    if(lockTimer){ clearInterval(lockTimer); lockTimer=null; $('lockError').textContent=''; $('lockInput').focus(); }
+  }
+  return left;
+}
+async function unlockSubmit(){
+  if(renderLockWait()>0) return 'wait';
+  const pin=$('lockInput').value;
+  $('lockInput').value='';
+  if(await CC.secure.checkPin(pin, G.pinLock)){
+    G.pinTries={fails:0, waitUntil:0}; saveGlobal();
+    hideLock();
+    return 'unlocked';
+  }
+  G.pinTries=CC.secure.afterWrongPin(G.pinTries, Date.now()); saveGlobal();
+  if(renderLockWait()>0) return 'wait';
+  $('lockError').textContent=L('lockWrong',{n:CC.secure.PIN_TRIES-G.pinTries.fails});
+  $('lockInput').focus();
+  return 'wrong';
+}
+function toggleForgotPin(){ const f=$('lockForgot'); f.hidden=!f.hidden; }
+// "Forgot PIN": everything this app keeps on the phone is deleted, after a
+// clear warning. The person can then restore a backup file.
+// Returns true once the data is gone: straight away when the answer comes
+// at once (as in the tests), otherwise false and the page reloads later.
+function clearAllData(){
+  let cleared=false;
+  ask({msg:L('lockClearConfirm'), yes:'lockClearBtn', no:ANSWER.cancel, danger:true, onYes:()=>{
+    try{ localStorage.clear(); }catch(e){ showToast(L('saveFailed')); return; }
+    cleared=true;
+    location.reload();
+  }});
+  return cleared;
+}
+// Settings
+function renderLockSettings(){
+  const on=!!G.pinLock, sw=$('lockSwitch');
+  sw.classList.toggle('on', on); sw.setAttribute('aria-checked', on?'true':'false');
+  $('changePinBtn').hidden=!on;
+}
+// the PIN, asked for twice; resolves to the saved hash, or null
+function askNewPin(title){
+  let made=null;
+  return askSecret({title, text:L('pinNewText'), label:L('pinNewLabel'), label2:L('pinAgainLabel'), ok:L('pinSaveBtn'), kind:'pin',
+    submit:async (v,v2)=>{
+      if(!CC.secure.pinOk(v)) return L('pinBad');
+      if(v!==v2) return L('pinNoMatch');
+      made=await CC.secure.hashPin(v);
+      return null;
+    }}).then(v=>v==null?null:made);
+}
+// the current PIN; wrong ones count towards the wait like on the lock screen
+function askCurrentPin(title){
+  return askSecret({title, label:L('pinCurrentLabel'), ok:L('pinContinueBtn'), kind:'pin',
+    submit:async v=>{
+      const left=CC.secure.waitLeft(G.pinTries, Date.now());
+      if(left>0) return L('lockWait',{n:left});
+      if(await CC.secure.checkPin(v, G.pinLock)){ G.pinTries={fails:0, waitUntil:0}; saveGlobal(); return null; }
+      G.pinTries=CC.secure.afterWrongPin(G.pinTries, Date.now()); saveGlobal();
+      const wait=CC.secure.waitLeft(G.pinTries, Date.now());
+      return wait>0 ? L('lockWait',{n:wait}) : L('lockWrong',{n:CC.secure.PIN_TRIES-G.pinTries.fails});
+    }}).then(v=>v!=null);
+}
+async function togglePinLock(){
+  if(!CC.secure.available()){ showToast(L('encUnavailable')); return; }
+  if(G.pinLock){
+    if(!await askCurrentPin(L('pinOffTitle'))) return;
+    G.pinLock=null; saveGlobal();
+    showToast(L('pinOffDone'));
+  }else{
+    const made=await askNewPin(L('pinSetTitle'));
+    if(!made) return;
+    G.pinLock=made; G.pinTries={fails:0, waitUntil:0}; saveGlobal();
+    showToast(L('pinOnDone'));
+  }
+  renderLockSettings();
+}
+async function changePin(){
+  if(!G.pinLock || !await askCurrentPin(L('lockChangeBtn'))) return;
+  const made=await askNewPin(L('lockChangeBtn'));
+  if(!made) return;
+  G.pinLock=made; saveGlobal();
+  showToast(L('pinChanged'));
+}
+// the app went off screen and came back
+function onAppShown(){
+  if(Date.now()<awayOkUntil){ awayOkUntil=0; return; }
+  showLock();
 }
 
 
@@ -3456,20 +4159,17 @@ function init(){
   ensurePlans(S); autoCloseFasting(S); save();
   setLang(lang);
 
-  // First launch only: if Android's font size is large, start with the
-  // app's own Large text (MainActivity keeps the page itself at 100%).
-  // Later the person's own choice in Settings always wins.
-  if(startsWithBigText(start.isNew, CCPlatform.systemFontScale())) setBigText(true);
-
   if(start.isNew) addNotification(L('welcomeTitle'), L('welcomeText'), 'info');
+  if(start.isNew) matchSystemTextSize();
   if(start.migrated) addNotification(L('migratedTitle'), L('migratedText'), 'info');
+  if(shouldShowWelcome()) openPanel('welcomePanel');
 
+  showLock();               // does nothing when the PIN lock is off
   setInterval(tick, TICK_MS);
-  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) tick(); });
+  document.addEventListener('visibilitychange', ()=>{ if(!document.hidden){ onAppShown(); tick(); } });
   window.addEventListener('pageshow', ()=>tick());
   window.addEventListener('resize', drawWeightChart);
-  CCPlatform.onBack(handleBack);
-  loadCameraEngine();
+  Platform.app.onBack(handleBack);
   setTimeout(checkReminders, FIRST_REMINDER_CHECK_MS);
 }
 document.addEventListener('DOMContentLoaded', init);

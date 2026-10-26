@@ -11,38 +11,49 @@
  *   is never shown as a good one.
  *
  * PIPELINE (per camera frame, about 30 a second)
- *   1. camera:   mean red / green / blue of the centre of the frame, and
- *                 the share of red pixels clipped at 255.
+ *   1. camera:   the frame is split into a grid. Cells that are clipped
+ *                 or have no pulse are left out; the rest are averaged.
+ *                 Mean red, green and blue, and the share of clipped red.
  *   2. contact:  is a fingertip on the lens? (red-dominant, bright enough)
- *   3. resample: frames never arrive exactly every 33.3 ms; the red values
- *                 are re-sampled onto an exact 30 Hz grid using each
- *                 frame's own capture time.
- *   4. filter:   band-pass whose −3 dB points are 0.7 and 3.5 Hz
+ *   3. resample: frames never arrive exactly every 33.3 ms; each colour
+ *                 is re-sampled onto an exact 30 Hz grid using the frame's
+ *                 own capture time.
+ *   4. channel:  red, green and blue are each filtered. The window keeps
+ *                 the colours that actually carry a pulse, weighted by how
+ *                 clean that pulse is, so a red channel flattened by the
+ *                 torch can give way to green. One colour alone is used
+ *                 when the others are flat, which is the old red path.
+ *   5. filter:   band-pass whose −3 dB points are 0.7 and 3.5 Hz
  *                 (42 to 210 bpm; slower pulses still pass, a little weaker),
  *                 run forwards and backwards over an 8 s window: no delay,
  *                 so each peak stays on the real pulse peak, and no phase
- *                 distortion of the pulse shape that step 6 compares. (For
+ *                 distortion of the pulse shape that step 7 compares. (For
  *                 the intervals themselves a one-way filter does as well, as
  *                 the tests show. This is not an accuracy trick.)
- *   5. peaks:    Elgendi's two-moving-average detector (PLoS ONE 2013),
+ *   6. peaks:    Elgendi's two-moving-average detector (PLoS ONE 2013),
  *                 then a parabola through the top three samples places
- *                 each peak between frames.
- *   6. pulses:   every pulse is compared with a template (the sample-by-
+ *                 each peak between frames. A second rate, from the
+ *                 autocorrelation and from an FFT of the same window, is
+ *                 compared with the peak rate. When both are confident and
+ *                 they disagree, the quality score drops and no number is
+ *                 shown.
+ *   7. pulses:   every pulse is compared with a template (the sample-by-
  *                 sample median of its neighbours). Wrong shape (a
  *                 diastolic wave, a blip) or too weak → set aside; far
  *                 taller than a pulse → movement, and no interval may span
  *                 it. The fit also estimates how precisely the beat is
  *                 timed (least squares, corrected for the filter's effect
  *                 on noise).
- *   7. intervals: each interval is compared with the median of the last
+ *   8. intervals: each interval is compared with the median of the last
  *                 accepted ones (±25 %), or with the accepted interval just
  *                 before it (±15 %: breathing changes intervals smoothly,
  *                 false and missed beats jump). A short one is held a beat
  *                 to see whether it and the next one are one beat split by
  *                 a doubtful peak (merged); about double → a missed beat.
  *                 Only accepted, back-to-back intervals feed RMSSD.
- *   8. quality:  contact, pulse shape, periodicity, timing precision,
- *                 movement, glare and the share of accepted intervals.
+ *   9. quality:  contact, pulse shape, periodicity, timing precision,
+ *                 movement, glare, rate agreement and the share of
+ *                 accepted intervals.
  *
  * WHAT THE NUMBERS MEAN
  *   Pulse rate (bpm): time divided by the beats it holds: missed beats
@@ -97,7 +108,7 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  const VERSION = '1.0.0';
+  const VERSION = '1.1.0';
 
   const DEFAULTS = {
     // signal processing
@@ -154,16 +165,21 @@
     maxSessionSec: 180,      // give up after this long even without enough clean signal
     displaySec: 6,           // length of the 'wave' hook's trace
 
+    channelMode: 'auto',     // 'auto' uses whichever colours carry a pulse; 'red' is the old path
     // camera
     cameraWidth: 640,
     cameraHeight: 480,
     cameraFps: 30,
-    roi: 0.5,                // centre share of the frame that is averaged
-    sampleWidth: 64,         // the region is scaled to this many pixels before averaging
+    roi: 0.5,                // kept for older callers; sampling uses the grid below
+    gridRoi: 0.9,            // share of the frame that is split into cells
+    gridCols: 4,
+    gridRows: 3,
+    sampleWidth: 64,         // the region is scaled to this many pixels before the grid
     sampleHeight: 48,
     torch: true,
     findTorchCamera: true,   // try other back cameras when the first has no light
     adaptExposure: true,     // lower exposure compensation when red is clipped
+    lockControls: true,      // after warm-up, lock focus, white balance and exposure when the camera allows it
     maxExposureSteps: 4,
     keepAwake: true,         // screen wake lock while measuring
     rememberCamera: true,    // remember which camera had the light
@@ -344,6 +360,143 @@
     let top = 0; for (const k of cands) top = Math.max(top, r[k]);
     const k0 = cands.find(k => r[k] >= 0.85 * top);
     return { periodMs: (k0 + parabolicOffset(r, k0)) / fs * 1000, strength: clamp(r[k0], 0, 1) };
+  }
+
+  // In-place radix-2 FFT. n must be a power of two. Sign is the engineering
+  // convention (e^−iωt); only the magnitude is used afterwards.
+  function fftRadix2(re, im) {
+    const n = re.length;
+    for (let i = 1, j = 0; i < n; i++) {
+      let bit = n >>> 1;
+      for (; j & bit; bit >>>= 1) j ^= bit;
+      j ^= bit;
+      if (i < j) {
+        const tr = re[i]; re[i] = re[j]; re[j] = tr;
+        const ti = im[i]; im[i] = im[j]; im[j] = ti;
+      }
+    }
+    for (let len = 2; len <= n; len <<= 1) {
+      const ang = -2 * Math.PI / len;
+      const wlenRe = Math.cos(ang), wlenIm = Math.sin(ang);
+      for (let i = 0; i < n; i += len) {
+        let wRe = 1, wIm = 0;
+        const half = len >>> 1;
+        for (let j = 0; j < half; j++) {
+          const a = i + j, b = a + half;
+          const vRe = re[b] * wRe - im[b] * wIm;
+          const vIm = re[b] * wIm + im[b] * wRe;
+          re[b] = re[a] - vRe; im[b] = im[a] - vIm;
+          re[a] += vRe; im[a] += vIm;
+          const nRe = wRe * wlenRe - wIm * wlenIm;
+          wIm = wRe * wlenIm + wIm * wlenRe;
+          wRe = nRe;
+        }
+      }
+    }
+  }
+
+  // Pulse rate from the spectrum of one analysis window. A narrow pulse
+  // has a strong second harmonic, so each candidate frequency is scored
+  // as its own bin plus half of the bin at twice the frequency. The
+  // fundamental then beats a harmonic that only looks tall. Zero-padding
+  // and a parabola put the peak between bins.
+  function spectralRate(y, fs, lo, hi) {
+    const n = y.length;
+    if (n < 32) return null;
+    let meanY = 0;
+    for (let i = 0; i < n; i++) meanY += y[i];
+    meanY /= n;
+    let N = 1;
+    while (N < n) N <<= 1;
+    if (N < 1024) N = 1024;
+    const re = new Float64Array(N), im = new Float64Array(N);
+    const denom = Math.max(1, n - 1);
+    for (let i = 0; i < n; i++) {
+      const w = 0.5 * (1 - Math.cos(2 * Math.PI * i / denom));
+      re[i] = (y[i] - meanY) * w;
+    }
+    fftRadix2(re, im);
+    const kLo = Math.max(2, Math.ceil(lo * N / fs));
+    const kHi = Math.min((N >> 1) - 2, Math.floor(hi * N / fs));
+    if (kHi <= kLo + 2) return null;
+    const score = new Float64Array(kHi + 2);
+    const mag = new Float64Array(kHi + 2);
+    for (let k = kLo - 1; k <= kHi + 1; k++) mag[k] = Math.hypot(re[k], im[k]);
+    let best = -1, bestK = kLo;
+    for (let k = kLo; k <= kHi; k++) {
+      const k2 = k * 2;
+      const harm = k2 < N >> 1 ? Math.hypot(re[k2], im[k2]) : 0;
+      const s = mag[k] + 0.5 * harm;
+      score[k] = s;
+      if (s > best) { best = s; bestK = k; }
+    }
+    const band = [];
+    for (let k = kLo; k <= kHi; k++) band.push(mag[k]);
+    const med = median(band);
+    const off = parabolicOffset(score, bestK);
+    const hz = (bestK + off) * fs / N;
+    return { hz, bpm: hz * 60, strength: med > 0 ? mag[bestK] / med : 0 };
+  }
+
+  function bpmClose(a, b) {
+    if (!(a > 0) || !(b > 0)) return false;
+    return Math.abs(a - b) <= Math.max(8, 0.1 * Math.min(a, b));
+  }
+  // A filtered pulse slower than the 0.7 Hz corner still has its second
+  // harmonic inside the band, and that harmonic can be the tallest line.
+  // Twice (or half) the peak rate is that ambiguity, not a second opinion.
+  function harmonicOf(a, b) {
+    if (!(a > 0) || !(b > 0)) return false;
+    const r = a > b ? a / b : b / a;
+    return r > 1.75 && r < 2.25;
+  }
+
+  // Peak rate against the autocorrelation rate and the FFT rate.
+  // agree is true, false, or null when there is not enough to judge.
+  // A frequency estimate only overrules the peaks when it is confident
+  // and the two frequency estimates agree with each other. A harmonic
+  // mistake in one of them must not hide a good peak reading.
+  function rateAgreement(peakBpm, acBpm, acStr, specBpm, specStr) {
+    const acOk = acBpm > 0 && acStr >= 0.55;
+    const specOk = specBpm > 0 && specStr >= 6;
+    const out = { agree: null, acBpm: acBpm > 0 ? acBpm : null, specBpm: specBpm > 0 ? specBpm : null, peakBpm: peakBpm > 0 ? peakBpm : null, refBpm: null };
+    if (!acOk && !specOk) return out;
+    if (acOk && specOk && !bpmClose(acBpm, specBpm)) return out;
+    const ref = acOk && specOk ? (acBpm + specBpm) / 2 : acOk ? acBpm : specBpm;
+    out.refBpm = ref;
+    if (!(peakBpm > 0)) return out;
+    if (harmonicOf(peakBpm, ref)) return out;
+    out.agree = Math.abs(peakBpm - ref) <= Math.max(10, 0.12 * ref);
+    return out;
+  }
+
+  // Pulse rate implied by the spacing of the peaks already in this window.
+  function peakRateBpm(peaks) {
+    if (!peaks || peaks.length < 4) return null;
+    const iv = [];
+    for (let i = 1; i < peaks.length; i++) {
+      const d = peaks[i].t - peaks[i - 1].t;
+      if (d > 250 && d < 2200) iv.push(d);
+    }
+    if (iv.length < 3) return null;
+    const med = median(iv);
+    const keep = iv.filter(v => med > 0 && Math.abs(v / med - 1) <= 0.35);
+    if (keep.length < 3) return null;
+    return 60000 / median(keep);
+  }
+
+  // How uneven the peak spacing in this window is. A single frequency is
+  // not a fair second opinion once the intervals themselves wander.
+  function intervalCv(peaks) {
+    if (!peaks || peaks.length < 5) return null;
+    const iv = [];
+    for (let i = 1; i < peaks.length; i++) {
+      const d = peaks[i].t - peaks[i - 1].t;
+      if (d > 250 && d < 2200) iv.push(d);
+    }
+    if (iv.length < 4) return null;
+    const m = mean(iv);
+    return m > 0 ? sampleStd(iv) / m : null;
   }
 
   // ── Per-beat checks against a pulse template ──
@@ -778,6 +931,10 @@
       this.cleanMs = 0; this.contactMs = 0;
       this.contact = false; this.onRun = 0; this.offRun = 0;
       this.satHist = [];
+      this.gSat = [];
+      this.cover = null;
+      this._rate = { agree: null, acBpm: null, specBpm: null, peakBpm: null, refBpm: null };
+      this.lastMix = 'r';
       this.qualityLog = [];      // {t, score, morph} for the summary
       this.committed = [];       // recent final peaks {t, valid} for display
       this.beatRejects = { shape: 0, weak: 0, motion: 0 };
@@ -789,7 +946,7 @@
     }
 
     _resetSegment(reason) {
-      this.buf = []; this.bufT0 = null;
+      this.bufR = []; this.bufG = []; this.bufB = []; this.bufT0 = null;
       this.prev = null; this.nextT = null;
       this.segStart = null;
       this.lastCommit = -Infinity;
@@ -838,6 +995,9 @@
       }
       this.satHist.push(f.clip || 0);
       if (this.satHist.length > o.fs) this.satHist.shift();
+      this.gSat.push(f.clipG || 0);
+      if (this.gSat.length > o.fs) this.gSat.shift();
+      if (f.cover != null && isFinite(f.cover)) this.cover = f.cover;
 
       if (!this.contact) {
         this.quality = this._noContactQuality();
@@ -848,7 +1008,7 @@
       if (gap > o.maxGapMs) { this._resetSegment('gap'); this.segStart = t; }
       this.contactMs += Math.min(gap, 100);
 
-      this.sinceAnalysis += this._resample(t, f.r);
+      this.sinceAnalysis += this._resample(t, f);
       if (this.sinceAnalysis >= Math.max(1, Math.round(o.hopSec * o.fs))) {
         this.sinceAnalysis = 0;
         this._analyze();
@@ -874,24 +1034,32 @@
       this.emit('phase', { phase: p });
     }
 
-    // Linear interpolation of the red level onto an exact grid, using the
-    // real capture time of each frame.
-    _resample(t, v) {
+    // Linear interpolation of each colour onto an exact grid, using the
+    // real capture time of each frame. A missing green channel copies red,
+    // so an older caller that only sent red still measures red.
+    _resample(t, f) {
+      const r = +f.r || 0;
+      const g = f.g == null ? r : +f.g;
+      const b = f.b == null ? 0 : +f.b;
       const dt = this.dt;
+      const pushAt = (rv, gv, bv) => { this.bufR.push(rv); this.bufG.push(gv); this.bufB.push(bv); };
       if (!this.prev) {
-        this.prev = { t, v }; this.bufT0 = t; this.buf.push(v); this.nextT = t + dt;
+        this.prev = { t, r, g, b }; this.bufT0 = t; pushAt(r, g, b); this.nextT = t + dt;
         return 1;
       }
       const p = this.prev; let added = 0;
+      const span = t - p.t;
       while (this.nextT <= t) {
-        this.buf.push(p.v + (v - p.v) * (this.nextT - p.t) / (t - p.t));
+        const u = span > 0 ? (this.nextT - p.t) / span : 0;
+        pushAt(p.r + (r - p.r) * u, p.g + (g - p.g) * u, p.b + (b - p.b) * u);
         this.nextT += dt; added++;
       }
-      this.prev = { t, v };
+      this.prev = { t, r, g, b };
       const keep = Math.ceil(this.o.windowSec * this.o.fs) + 4;
-      if (this.buf.length > 2 * keep) {
-        const drop = this.buf.length - keep;
-        this.buf.splice(0, drop); this.bufT0 += drop * dt;
+      if (this.bufR.length > 2 * keep) {
+        const drop = this.bufR.length - keep;
+        this.bufR.splice(0, drop); this.bufG.splice(0, drop); this.bufB.splice(0, drop);
+        this.bufT0 += drop * dt;
       }
       return added;
     }
@@ -909,18 +1077,72 @@
       return mask;
     }
 
+    // One colour, normalised so a dip in the light (more blood) points up,
+    // then zero-phase filtered. Returns null when the colour is dark.
+    _filtered(buf, start, N) {
+      let m = 0;
+      for (let i = 0; i < N; i++) m += buf[start + i];
+      m /= N;
+      if (!(m > 1)) return null;
+      const x = new Float64Array(N);
+      for (let i = 0; i < N; i++) x[i] = 1 - buf[start + i] / m;
+      return filtfilt(this.sos, x, Math.round(this.o.padSec * this.o.fs));
+    }
+
+    // Which colours to trust in this window. A flat colour (the green
+    // channel when only red carries the pulse) scores nothing and is left
+    // out, so the result is exactly the red signal the engine used to use.
+    // A colour pinned by the torch scores nothing too, and a colour that
+    // does not rise and fall with the best one is left out.
+    _mixWindow(start, N) {
+      const o = this.o, fs = o.fs;
+      const redClip = this.satHist.length ? mean(this.satHist) : 0;
+      const greenClip = this.gSat && this.gSat.length ? mean(this.gSat) : 0;
+      const want = o.channelMode === 'red' ? [['r', this.bufR, redClip]] : [['r', this.bufR, redClip], ['g', this.bufG, greenClip], ['b', this.bufB, 0]];
+      const parts = [];
+      for (const [name, buf, clip] of want) {
+        const y = this._filtered(buf, start, N);
+        if (!y) continue;
+        const tail = Math.max(0, N - 6 * fs);
+        const per = periodicity(y.subarray(tail), fs, o.minRR, o.maxRR);
+        const pulse = y.subarray(Math.max(0, N - 4 * fs));
+        const perf = percentile(pulse, 0.975) - percentile(pulse, 0.025);
+        const ac = per && per.strength > 0 ? per.strength : 0;
+        const pen = clip >= 0.5 ? 0.05 : clip >= 0.2 ? 0.5 : 1;
+        const colour = name === 'b' ? 0.85 : 1;
+        parts.push({ name, y, score: ac * perf * pen * colour });
+      }
+      if (!parts.length) return null;
+      let best = parts[0];
+      for (const p of parts) if (p.score > best.score) best = p;
+      const use = [];
+      for (const p of parts) {
+        if (!(p.score > 0)) continue;
+        if (p !== best && p.score < 0.45 * best.score) continue;
+        if (p !== best && pearson(p.y, best.y) < 0.2) continue;
+        use.push(p);
+      }
+      if (!use.length) use.push(best);
+      this.lastMix = use.map(p => p.name).join('+');
+      if (use.length === 1) return use[0].y;
+      let wsum = 0;
+      for (const p of use) wsum += p.score;
+      const y = new Float64Array(N);
+      for (const p of use) {
+        const w = p.score / wsum;
+        for (let i = 0; i < N; i++) y[i] += w * p.y[i];
+      }
+      return y;
+    }
+
     _analyze() {
       const o = this.o, fs = o.fs, dt = this.dt;
-      const N = Math.min(this.buf.length, Math.round(o.windowSec * fs));
+      const N = Math.min(this.bufR.length, Math.round(o.windowSec * fs));
       if (N < o.minWindowSec * fs) { this.quality = this._settlingQuality(); this.emit('quality', this.quality); return; }
-      const start = this.buf.length - N, wT0 = this.bufT0 + start * dt, tEnd = wT0 + (N - 1) * dt;
+      const start = this.bufR.length - N, wT0 = this.bufT0 + start * dt, tEnd = wT0 + (N - 1) * dt;
 
-      // normalise by the mean and flip: more blood = less light = up
-      let m = 0; for (let i = 0; i < N; i++) m += this.buf[start + i]; m /= N;
-      if (!(m > 0)) return;
-      const x = new Float64Array(N);
-      for (let i = 0; i < N; i++) x[i] = 1 - this.buf[start + i] / m;
-      const y = filtfilt(this.sos, x, Math.round(o.padSec * fs));
+      const y = this._mixWindow(start, N);
+      if (!y) return;
 
       const per = periodicity(y.subarray(Math.max(0, N - 6 * fs)), fs, o.minRR, o.maxRR);
 
@@ -941,6 +1163,17 @@
         for (let k = 1; k < plaus.length; k++) gaps.push(plaus[k].t - plaus[k - 1].t);
         this.rr.setSeed(per.periodMs, per.strength, gaps.length >= 3 ? median(gaps) : null);
       }
+      const timedPeaks = peaks.filter(p => typical > 0 && p.a > o.minBeatAmp * typical && p.a < artThr);
+      const timed = timedPeaks.length >= 4 ? timedPeaks : peaks;
+      const spec = spectralRate(y, fs, o.band[0], o.band[1]);
+      const acBpm = per && per.periodMs > 0 ? 60000 / per.periodMs : null;
+      const spread = intervalCv(timed);
+      if (spread != null && spread > 0.18) {
+        this._rate = { agree: null, acBpm, specBpm: spec && spec.bpm > 0 ? spec.bpm : null, peakBpm: peakRateBpm(timed), refBpm: null };
+      } else {
+        this._rate = rateAgreement(peakRateBpm(timed), acBpm, per ? per.strength : 0, spec && spec.bpm, spec && spec.strength);
+      }
+      this._rate.channel = this.lastMix;
       // every pulse is compared with a template of the plausible ones
       const refMs = this.rr.reference() || (per && per.strength >= 0.3 ? per.periodMs : null) || 800;
       const T = typical > 0
@@ -1058,15 +1291,20 @@
         : rmssdCheck != null && m.rmssdNoise != null && m.rmssdNoise > o.maxHrvNoise * rmssdCheck ? 'noisy'
         : null;
       m.hrvReliable = m.hrvIssue === null;
+      const q = this.quality || {};
+      m.showBpm = m.bpm != null && this.phase === 'measuring' && q.score >= o.minCleanScore && q.rateAgree !== false && !q.motion;
+      m.rateAgree = q.rateAgree == null ? null : q.rateAgree;
+      m.channel = q.channel || this.lastMix || null;
+      m.spectralBpm = q.spectralBpm || null;
       return m;
     }
 
     _noContactQuality() {
       const sat = this.satHist && this.satHist.length ? mean(this.satHist) : 0;
-      return { score: 0, level: 'none', contact: false, hint: 'place-finger', perfusion: null, periodicity: null, periodMs: null, morphology: null, timingMs: null, acceptance: null, saturation: sat, motion: false };
+      return { score: 0, level: 'none', contact: false, hint: 'place-finger', perfusion: null, periodicity: null, periodMs: null, morphology: null, timingMs: null, acceptance: null, saturation: sat, motion: false, rateAgree: null, spectralBpm: null, acBpm: null, peakBpm: null, channel: null, cover: this.cover };
     }
     _settlingQuality() {
-      return { score: 0, level: 'poor', contact: true, hint: 'hold-still', perfusion: null, periodicity: null, periodMs: null, morphology: null, timingMs: null, acceptance: null, saturation: mean(this.satHist), motion: false };
+      return { score: 0, level: 'poor', contact: true, hint: 'hold-still', perfusion: null, periodicity: null, periodMs: null, morphology: null, timingMs: null, acceptance: null, saturation: mean(this.satHist), motion: false, rateAgree: null, spectralBpm: null, acBpm: null, peakBpm: null, channel: this.lastMix || null, cover: this.cover };
     }
 
     // One number for "can this signal be trusted right now", from:
@@ -1094,15 +1332,19 @@
       const qAcc = acc == null ? 0.5 : acc;
       const qTime = timingMs == null ? 0.5 : clamp((25 - timingMs) / 20, 0, 1);
       let score = 100 * (0.45 * qMorph + 0.2 * qPer + 0.15 * qAcc + 0.2 * qTime);
+      const rate = this._rate || {};
       if (motion) score *= 0.4;
       if (sat > o.saturationClip) score *= 0.6;
       if (perfusion < 0.03) score *= 0.5;
+      if (rate.agree === false) score *= 0.5;
       score = Math.round(clamp(score, 0, 100));
 
       let hint = 'good';
       if (sat > o.saturationClip) hint = 'press-lighter';
-      else if (motion) hint = 'hold-still';
+      else if (motion) hint = 'rest-hand';
+      else if (this.cover != null && this.cover > 0 && this.cover < 0.34) hint = 'cover-lens';
       else if (perfusion < 0.03) hint = 'weak-signal';
+      else if (rate.agree === false) hint = 'rate-disagree';
       else if (score < o.minCleanScore) hint = 'hold-still';
 
       const q = {
@@ -1111,10 +1353,16 @@
         contact: true, hint, perfusion, motion,
         periodicity: per ? per.strength : null,
         periodMs: per ? per.periodMs : null,
-        morphology: morph, timingMs, acceptance: acc, saturation: sat
+        morphology: morph, timingMs, acceptance: acc, saturation: sat,
+        rateAgree: rate.agree == null ? null : rate.agree,
+        spectralBpm: rate.specBpm || null,
+        acBpm: rate.acBpm || null,
+        peakBpm: rate.peakBpm || null,
+        channel: this.lastMix || 'r',
+        cover: this.cover
       };
       if (this.lastT >= this.segStart + o.warmupSec * 1000) {
-        this.qualityLog.push({ t: this.lastT, score, morph, timing: timingMs });
+        this.qualityLog.push({ t: this.lastT, score, morph, timing: timingMs, rateAgree: q.rateAgree });
         if (this.qualityLog.length > 4000) this.qualityLog.splice(0, 1000);
       }
       return q;
@@ -1124,10 +1372,20 @@
     summary() {
       const o = this.o, m = this._metrics();
       const good = this.qualityLog.filter(q => q.score >= o.minCleanScore);
+      const judged = this.qualityLog.filter(q => q.rateAgree != null);
+      const nDisagree = judged.filter(q => q.rateAgree === false).length;
+      const disagreeFrac = judged.length ? nDisagree / judged.length : 0;
+      const disagree = !m.unevenBeats && judged.length >= 15 && disagreeFrac >= 0.5;
       const enough = m.nnCount >= 10 || (m.unevenBeats && m.rawCount >= 15);
       const bpm = m.bpmAverage;
+      const thin = this.cleanMs < 8000;
+      let withhold = null;
+      if (!(enough && bpm != null)) withhold = 'no-reading';
+      else if (disagree) withhold = 'disagree';
+      else if (thin) withhold = 'quality';
       return {
-        ok: enough && bpm != null,
+        ok: withhold == null,
+        withhold,
         bpm: bpm != null ? Math.round(bpm) : null,
         bpmMethod: m.bpmMethod,
         bpmAverage: m.bpmAverage, meanNN: m.meanNN, pulseRate: m.pulseRate,
@@ -1141,6 +1399,10 @@
         cleanSec: Math.round(m.cleanSec * 10) / 10,
         quality: good.length ? Math.round(median(good.map(q => q.score))) : 0,
         morphology: m.morphology,
+        rateAgree: disagree ? false : (judged.length ? disagreeFrac < 0.5 : null),
+        channel: this.lastMix || null,
+        hint: this.quality ? this.quality.hint : 'place-finger',
+        spectralBpm: this._rate && this._rate.specBpm ? Math.round(this._rate.specBpm) : null,
         intervals: this.rr.intervals.map(i => ({ t: Math.round(i.t), rr: Math.round(i.rr * 10) / 10, valid: i.valid, reason: i.reason }))
       };
     }
@@ -1157,6 +1419,21 @@
 
     // Stop early and report what was collected.
     finish(reason) { this._finish(reason || 'stopped'); }
+
+    // The last few seconds of the camera signal before any filtering: mean
+    // red, green and blue on the exact 30 Hz grid, plus how much of the red
+    // was clipped. Read-only, for the signal-quality model
+    // (pulse-quality.js) and its recording mode. It changes nothing here.
+    rawWindow(sec) {
+      const fs = this.o.fs, n = Math.min(this.bufR.length, Math.round((sec || this.o.windowSec) * fs));
+      const from = this.bufR.length - n;
+      return {
+        fs,
+        red: this.bufR.slice(from), green: this.bufG.slice(from), blue: this.bufB.slice(from),
+        saturation: this.satHist.length ? mean(this.satHist) : 0,
+        cover: this.cover
+      };
+    }
   }
 
   // ---- Camera: back camera, light on, frames sampled on a small canvas ----
@@ -1238,6 +1515,139 @@
     if (n === 'NotFoundError' || n === 'OverconstrainedError' || n === 'DevicesNotFoundError') return 'no-camera';
     if (n === 'NotReadableError' || n === 'TrackStartError' || n === 'AbortError') return 'camera-busy';
     return 'camera-error';
+  }
+
+  function modeList(cap) {
+    if (!cap) return [];
+    if (Array.isArray(cap)) return cap;
+    return [];
+  }
+  async function tryAdvanced(track, dict) {
+    try { await track.applyConstraints({ advanced: [dict] }); return true; }
+    catch (e) { return false; }
+  }
+  // Freeze focus, white balance and exposure at the values the camera has
+  // already settled on. Each family is applied on its own, and a rejection
+  // is ignored, so a phone that only supports some of them still locks the
+  // rest. Nothing here sets a new exposure number (that stays with the
+  // clipping control above), so this cannot fight it.
+  async function lockImageControls(track) {
+    if (!track || !track.applyConstraints) return {};
+    const c = caps(track);
+    const set = (track.getSettings && track.getSettings()) || {};
+    const locked = {};
+    const focusModes = modeList(c.focusMode);
+    if (focusModes.indexOf('manual') >= 0) {
+      const withDistance = { focusMode: 'manual' };
+      if (typeof set.focusDistance === 'number') withDistance.focusDistance = set.focusDistance;
+      if (await tryAdvanced(track, withDistance)) Object.assign(locked, withDistance);
+      else if (await tryAdvanced(track, { focusMode: 'manual' })) locked.focusMode = 'manual';
+    } else if (focusModes.indexOf('single-shot') >= 0) {
+      if (await tryAdvanced(track, { focusMode: 'single-shot' })) locked.focusMode = 'single-shot';
+    }
+    const wbModes = modeList(c.whiteBalanceMode);
+    if (wbModes.indexOf('manual') >= 0) {
+      const withTemp = { whiteBalanceMode: 'manual' };
+      if (typeof set.colorTemperature === 'number') withTemp.colorTemperature = set.colorTemperature;
+      if (await tryAdvanced(track, withTemp)) Object.assign(locked, withTemp);
+      else if (await tryAdvanced(track, { whiteBalanceMode: 'manual' })) locked.whiteBalanceMode = 'manual';
+    }
+    const expModes = modeList(c.exposureMode);
+    if (expModes.indexOf('manual') >= 0) {
+      if (await tryAdvanced(track, { exposureMode: 'manual' })) locked.exposureMode = 'manual';
+    }
+    return locked;
+  }
+
+  // Mean of each cell in a grid. `data` is RGBA from a canvas.
+  function sampleGrid(data, width, height, cols, rows) {
+    const cells = [];
+    const cw = Math.max(1, Math.floor(width / cols));
+    const ch = Math.max(1, Math.floor(height / rows));
+    for (let ry = 0; ry < rows; ry++) {
+      for (let cx = 0; cx < cols; cx++) {
+        const x0 = cx * cw, y0 = ry * ch;
+        const x1 = cx === cols - 1 ? width : x0 + cw;
+        const y1 = ry === rows - 1 ? height : y0 + ch;
+        let sr = 0, sg = 0, sb = 0, clip = 0, n = 0;
+        for (let y = y0; y < y1; y++) {
+          let i = (y * width + x0) * 4;
+          for (let x = x0; x < x1; x++) {
+            const r = data[i];
+            sr += r; sg += data[i + 1]; sb += data[i + 2];
+            if (r >= 250) clip++;
+            n++; i += 4;
+          }
+        }
+        cells.push({ r: n ? sr / n : 0, g: n ? sg / n : 0, b: n ? sb / n : 0, clip: n ? clip / n : 0 });
+      }
+    }
+    return cells;
+  }
+
+  // Keep the cells that look like a fingertip and that actually pulse.
+  // Weights move slowly, so a cell switching in or out does not step the
+  // average (a step would look like a heartbeat).
+  class SpatialPicker {
+    constructor(opt) {
+      const o = opt || {};
+      this.history = o.history || 45;
+      this.hist = [];
+      this.smooth = null;
+    }
+    fuse(cells) {
+      const n = cells.length;
+      this.hist.push(cells);
+      if (this.hist.length > this.history) this.hist.shift();
+      const H = this.hist.length;
+      const w = new Float64Array(n);
+      if (H < 12) {
+        for (let i = 0; i < n; i++) {
+          const c = cells[i];
+          const share = c.r / (c.r + c.g + c.b + 1e-9);
+          w[i] = c.r >= 25 && share >= 0.55 && (c.clip || 0) < 0.5 ? 1 : 0;
+        }
+      } else {
+        for (let i = 0; i < n; i++) {
+          const rs = new Float64Array(H);
+          let sr = 0, sg = 0, sb = 0, clip = 0;
+          for (let t = 0; t < H; t++) {
+            const c = this.hist[t][i];
+            rs[t] = c.r; sr += c.r; sg += c.g; sb += c.b; clip += c.clip || 0;
+          }
+          const meanR = sr / H, redShare = meanR / (meanR + sg / H + sb / H + 1e-9);
+          const win = 15;
+          let ac = 0;
+          for (let t = 0; t < H; t++) {
+            const a = Math.max(0, t - win), b = Math.min(H - 1, t + win);
+            let s = 0;
+            for (let k = a; k <= b; k++) s += rs[k];
+            const d = rs[t] - s / (b - a + 1);
+            ac += d * d;
+          }
+          ac = Math.sqrt(ac / H);
+          const contact = meanR >= 20 && redShare >= 0.5 && clip / H < 0.45;
+          w[i] = contact && meanR > 1 ? ac / meanR : 0;
+        }
+      }
+      if (!this.smooth || this.smooth.length !== n) this.smooth = Float64Array.from(w);
+      else for (let i = 0; i < n; i++) this.smooth[i] += 0.2 * (w[i] - this.smooth[i]);
+      let ws = 0, used = 0;
+      for (let i = 0; i < n; i++) { if (this.smooth[i] > 1e-6) { ws += this.smooth[i]; used++; } }
+      const out = { r: 0, g: 0, b: 0, clip: 0, used, cells: n, cover: n ? used / n : null };
+      if (!(ws > 0)) {
+        for (let i = 0; i < n; i++) { out.r += cells[i].r; out.g += cells[i].g; out.b += cells[i].b; out.clip += cells[i].clip || 0; }
+        if (n) { out.r /= n; out.g /= n; out.b /= n; out.clip /= n; }
+        out.used = 0; out.cover = 0;
+        return out;
+      }
+      for (let i = 0; i < n; i++) {
+        const k = this.smooth[i] > 1e-6 ? this.smooth[i] / ws : 0;
+        if (!k) continue;
+        out.r += k * cells[i].r; out.g += k * cells[i].g; out.b += k * cells[i].b; out.clip += k * (cells[i].clip || 0);
+      }
+      return out;
+    }
   }
 
   const Base = typeof EventTarget !== 'undefined' ? EventTarget : class {};
@@ -1332,6 +1742,8 @@
       this.canvas = document.createElement('canvas');
       this.canvas.width = this.o.sampleWidth; this.canvas.height = this.o.sampleHeight;
       this.ctx = this.canvas.getContext('2d', { willReadFrequently: true });
+      this.picker = new SpatialPicker();
+      this._locked = false; this._lockBusy = false;
 
       this.proc.resetSession();
       this.proc.o.durationSec = this.o.durationSec;
@@ -1424,12 +1836,15 @@
 
     _sample() {
       const v = this.video, o = this.o, vw = v.videoWidth, vh = v.videoHeight;
-      const sw = vw * o.roi, sh = vh * o.roi, W = o.sampleWidth, H = o.sampleHeight;
+      const roi = o.gridRoi > 0 ? o.gridRoi : o.roi;
+      const sw = Math.max(1, vw * roi), sh = Math.max(1, vh * roi);
+      const W = o.sampleWidth, H = o.sampleHeight;
+      const cols = o.gridCols || 4, rows = o.gridRows || 3;
       this.ctx.drawImage(v, (vw - sw) / 2, (vh - sh) / 2, sw, sh, 0, 0, W, H);
-      const d = this.ctx.getImageData(0, 0, W, H).data, n = W * H;
-      let sr = 0, sg = 0, sb = 0, clip = 0;
-      for (let i = 0; i < d.length; i += 4) { const r = d[i]; sr += r; sg += d[i + 1]; sb += d[i + 2]; if (r >= 250) clip++; }
-      return { r: sr / n, g: sg / n, b: sb / n, clip: clip / n };
+      const d = this.ctx.getImageData(0, 0, W, H).data;
+      const cells = sampleGrid(d, W, H, cols, rows);
+      if (!this.picker) this.picker = new SpatialPicker();
+      return this.picker.fuse(cells);
     }
 
     _frame(now, meta) {
@@ -1451,6 +1866,31 @@
       this._emit('frame', { t, r: f.r, g: f.g, b: f.b, clip: f.clip, contact: this.proc.contact });
       this.proc.push(t, f);
       if (this.running) this._adaptExposure(f, t);
+      if (this.running) this._maybeLock(f, t);
+    }
+
+    // Once the finger has been on long enough for the picture to settle,
+    // and clipping is no longer being corrected, stop the camera changing
+    // focus, colour or exposure on its own. Those automatic changes look
+    // like extra dips. A phone that cannot lock is left as it is.
+    _maybeLock(f, t) {
+      const o = this.o;
+      if (!o.lockControls || this._locked || this._lockBusy || !this.track) return;
+      if (!this.proc.contact || this.proc.segStart == null) return;
+      if (t < this.proc.segStart + o.warmupSec * 1000) return;
+      const clipping = (f.clip || 0) >= o.saturationClip;
+      const canAdapt = o.adaptExposure && this.expCaps && this.expSteps < o.maxExposureSteps;
+      if (clipping && canAdapt) return;
+      this._lockBusy = true;
+      const track = this.track;
+      lockImageControls(track).then(locked => {
+        this._locked = true;
+        this.diag.locked = locked;
+        this._emit('camera', this.diag);
+        if (locked && (locked.focusMode || locked.whiteBalanceMode || locked.exposureMode) && this.proc && !this.proc.done) {
+          this.proc.markDiscontinuity('lock', t);
+        }
+      }).catch(() => { this._locked = true; }).then(() => { this._lockBusy = false; });
     }
 
     // Auto-exposure aims at a mid-grey *luminance*; a fingertip is almost
@@ -1474,6 +1914,9 @@
         .catch(() => { this.expSteps = o.maxExposureSteps; })
         .then(() => { this._expBusy = false; this._satSince = null; });
     }
+
+    // See SignalProcessor.rawWindow(). Still readable after 'complete'.
+    rawWindow(sec) { return this.proc.rawWindow(sec); }
 
     snapshot() {
       return {
@@ -1578,7 +2021,10 @@
     dsp: {
       biquad, designBandpass, filtfilt, sosFilterInPlace, sosSteadyState, makeStreamingFilter,
       detectPeaks, parabolicOffset, periodicity, beatTemplate, beatFit, movingAverage,
-      mean, median, sampleStd, percentile
-    }
+      mean, median, sampleStd, percentile, pearson,
+      fftRadix2, spectralRate, rateAgreement, peakRateBpm, bpmClose,
+      sampleGrid
+    },
+    SpatialPicker, lockImageControls
   };
 }));

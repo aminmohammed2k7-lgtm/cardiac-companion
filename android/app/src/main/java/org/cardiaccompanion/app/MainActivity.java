@@ -1,31 +1,28 @@
 package org.cardiaccompanion.app;
 
 import android.os.Bundle;
-import android.webkit.JavascriptInterface;
-import android.webkit.WebSettings;
+import androidx.core.splashscreen.SplashScreen;
 import com.getcapacitor.BridgeActivity;
 
 public class MainActivity extends BridgeActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        // The launch screen (styles.xml: AppTheme.NoActionBarLaunch). This
+        // also makes it work the same way on Android 7 to 11, before Android
+        // had launch screens of its own.
+        SplashScreen.installSplashScreen(this);
+        // The app's own plugins must be registered before the bridge starts.
+        registerPlugin(DisplaySettingsPlugin.class);
         super.onCreate(savedInstanceState);
 
-        WebSettings settings = getBridge().getWebView().getSettings();
-        // Android's font size setting would otherwise enlarge the page's text
-        // by itself and break its layout. Keep the page at 100%; the page reads
-        // the setting below and switches on its own Large text instead.
-        settings.setTextZoom(100);
-
-        // window.CCAndroid.fontScale() for www/js/platform/android.js.
-        // The WebView only ever shows the app's own files, never a website.
-        getBridge().getWebView().addJavascriptInterface(new FontScale(), "CCAndroid");
-    }
-
-    private class FontScale {
-        @JavascriptInterface
-        public float fontScale() {
-            return getResources().getConfiguration().fontScale;
-        }
+        // Keep the WebView's text at 100% whatever the phone's font size.
+        // Android's text zoom enlarges only the letters, not the boxes around
+        // them, so buttons, the dose number and the week grid would overflow.
+        // Instead, on the first launch the page switches on the app's own
+        // "Large text", which scales the whole layout evenly (see
+        // matchSystemTextSize() in www/index.html). Changing the font size
+        // later recreates this activity, so the setting is applied again.
+        getBridge().getWebView().getSettings().setTextZoom(100);
     }
 }

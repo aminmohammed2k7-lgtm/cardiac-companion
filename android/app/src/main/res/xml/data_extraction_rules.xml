@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Android 12 and later: nothing goes to Google's cloud backup, and nothing
-     is copied to a new phone by device transfer. Health data never leaves
-     the phone except in a backup file the person makes and shares
-     (safety charter rule 3; docs/android/DECISIONS.md). -->
+<!-- Android 12 and later: nothing in the app goes to cloud backup or to a new
+     phone. Every storage area is excluded, so the record stays on this phone
+     unless the person shares a backup file. See AndroidManifest.xml. -->
 <data-extraction-rules>
     <cloud-backup>
         <exclude domain="root" path="." />
@@ -10,6 +9,10 @@
         <exclude domain="database" path="." />
         <exclude domain="sharedpref" path="." />
         <exclude domain="external" path="." />
+        <exclude domain="device_root" path="." />
+        <exclude domain="device_file" path="." />
+        <exclude domain="device_database" path="." />
+        <exclude domain="device_sharedpref" path="." />
     </cloud-backup>
     <device-transfer>
         <exclude domain="root" path="." />
@@ -17,5 +20,9 @@
         <exclude domain="database" path="." />
         <exclude domain="sharedpref" path="." />
         <exclude domain="external" path="." />
+        <exclude domain="device_root" path="." />
+        <exclude domain="device_file" path="." />
+        <exclude domain="device_database" path="." />
+        <exclude domain="device_sharedpref" path="." />
     </device-transfer>
 </data-extraction-rules>

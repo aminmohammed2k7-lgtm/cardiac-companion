@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Privacy (docs/android/PERMISSIONS.md):
-         allowBackup="false" keeps Android 11 and older from backing the app
-         up; dataExtractionRules does the same for Android 12 and later. -->
+    <!-- Health data never leaves the phone (safety charter rule 3), so
+         Android's own backups are off: no Google Drive backup, and nothing
+         copied by "transfer to a new phone" (Android 12+ still allows that
+         with allowBackup="false" unless dataExtractionRules says no).
+         People move their record with the app's own backup file. -->
     <application
         android:allowBackup="false"
         android:fullBackupContent="false"
@@ -13,11 +15,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:targetApi="31">
+        android:theme="@style/AppTheme">
 
         <activity
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density|fontScale"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode|navigation|density"
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBarLaunch"
@@ -42,12 +43,18 @@
         </provider>
     </application>
 
-    <!-- Permissions -->
-
-    <!-- No internet at all. The app's own files are served to the WebView
-         from inside the app, which needs no network. Capacitor's template
-         asks for INTERNET; tools:node="remove" takes it out of the final
-         manifest, including any a library adds. If the phone test ever shows
-         this breaks something, the reason goes in PERMISSIONS.md. -->
+    <!-- Permissions: CAMERA only. The app's files are served from inside the
+         app, so it needs no internet. tools:node="remove" also takes INTERNET
+         out if a library asks for it, so anyone can check that the app cannot
+         go online. Why, and how to check: docs/android/PERMISSIONS.md. -->
     <uses-permission android:name="android.permission.INTERNET" tools:node="remove" />
+
+    <!-- Camera pulse (wellness estimate), on by Amin's decision of
+         15 October 2026 (docs/android/DECISIONS.md). Android asks the person
+         only when they tap "Measure with camera"; frames stay in memory on
+         the phone. The camera and its light are optional, so phones without
+         them can still install the app. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false" />
 </manifest>

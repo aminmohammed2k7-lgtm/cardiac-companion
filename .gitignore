@@ -1,4 +1,5 @@
 node_modules/
+dist/
 
 # Android Studio's own settings for this machine
 android/.idea/
@@ -9,3 +10,5 @@ human_polish_prompt.txt
 polish_full_prompt.txt
 vibe_research.md
 polish_go.txt
+merge_go.txt
+continue_go.txt

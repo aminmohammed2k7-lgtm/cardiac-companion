@@ -16,6 +16,16 @@ timing and typo checks), and `index.html` is about 340 lines shorter. The line n
 are still v3.2's. Search for the function name; where a function moved, its
 row names the file.
 
+**Since Phase 2** the page is `www/index.html` (and `www/js/core/`,
+`www/ppg-engine.js`). Done in Phase 2, on 7 October 2026: the storage
+event, `navigator.storage.persist` and its Settings line, the service
+worker, the install prompt, the runtime manifest and Google Fonts are gone
+(see `CHANGES.md`, 4.0); the system theme is still followed on first run,
+and the status-bar icons now follow the app's theme; the notification icon
+resource (`ic_stat_heartbeat`) exists for Phase 4; WebView text zoom is
+fixed at 100% with Large text on first launch when the system font is
+large. The rows below still describe v3.2, for the phases still to come.
+
 Phases: **2** Android shell, **3** storage, **4** reminders, **5** files,
 sharing and calls, **6** camera pulse, **7** polish and accessibility,
 **9** retiring the website.
@@ -82,8 +92,8 @@ sharing and calls, **6** camera pulse, **7** polish and accessibility,
 | `:155` `@media (prefers-reduced-motion: reduce)` | Turns off animations | Keep. Check on the phone | 7 |
 | Text size setting (Normal / Large) | App's own Large text | Keep. Also: fix WebView text zoom at 100%, and on first launch only, switch on Large when the system font scale is 1.15 or more | 2 |
 | `:3080` `islamicParts()` (now `js/core/seasons.js`): `Intl.DateTimeFormat('en-u-ca-islamic-umalqura')` | Ramadan dates (the app asks the user to confirm) | Keep. Phase 1 tests check it in Node. Check on the Samsung's WebView too. See risk R4 | 1, 7 |
-| `ppg-engine.js:1198` `getUserMedia`, `:1182-1238` torch (`getCapabilities`, `applyConstraints`), `:1487` exposure | Camera pulse | Behind the `cameraPulse` build flag: **off in release**, and no CAMERA permission in the release manifest | 6 |
-| `ppg-engine.js:1360-1361` `navigator.wakeLock`, `:1359` `visibilitychange` | Keeps the screen on while measuring | Camera only, same flag | 6 |
+| `ppg-engine.js:1198` `getUserMedia`, `:1182-1238` torch (`getCapabilities`, `applyConstraints`), `:1487` exposure | Camera pulse | On in every build since Amin's decision of 15 October 2026 (`DECISIONS.md`). The release manifest asks for CAMERA, and the "not a medical device" line sits beside the button | 6 |
+| `ppg-engine.js:1360-1361` `navigator.wakeLock`, `:1359` `visibilitychange` | Keeps the screen on while measuring | Camera only, on in every build like the camera pulse | 6 |
 
 ## 6. Checked and not a problem
 
@@ -126,5 +136,6 @@ sharing and calls, **6** camera pulse, **7** polish and accessibility,
   aminmohammed2k7-lgtm/cardiac-companion#3, the reading tiles on Today throw an
   error on the live site. After the merge, the line numbers above shift (see the top of this file).
 - **R7. The camera writes to localStorage itself.** `ppg-engine.js` keeps
-  `ppg-camera-id` outside the storage layer. This is harmless while the camera
-  is off in release builds. If Phase 6b ever ships the camera, move it behind the platform layer.
+  `ppg-camera-id` outside the storage layer. The camera now ships (Amin,
+  15 October 2026), so this should move behind the platform layer. It is a
+  camera id, not health data, so it is listed here rather than fixed now.

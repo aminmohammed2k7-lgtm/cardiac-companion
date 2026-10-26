@@ -3,6 +3,20 @@
  * The design tokens are in :root at the top. docs/DESIGN-DECISIONS.md says
  * why they are what they are, and tests/look.test.js keeps every rule on them.
  */
+/* The two fonts ship inside the app (www/fonts/, each with its OFL
+   licence), so they are there on the very first launch in airplane mode,
+   and the PDFs drawn on a canvas always have Amharic letters. Both are
+   variable fonts: one file covers every weight the page uses. */
+@font-face{
+  font-family:'Onest';
+  src:url('../fonts/onest/Onest-Variable.ttf') format('truetype');
+  font-weight:100 900; font-style:normal; font-display:swap;
+}
+@font-face{
+  font-family:'Noto Sans Ethiopic';
+  src:url('../fonts/noto-sans-ethiopic/NotoSansEthiopic-Variable.ttf') format('truetype');
+  font-weight:100 900; font-style:normal; font-display:swap;
+}
 /* CARDIAC COMPANION: design tokens. The reasons are in
    docs/DESIGN-DECISIONS.md. In short:
    - Flat. White cards with a 1px border on a pale page. No shadows,
@@ -81,6 +95,13 @@
   --r:8px;
   --ctl:48px;        /* main buttons and fields */
   --ctl-sm:44px;     /* small buttons, chips, icon buttons */
+  /* The app draws edge-to-edge, under the status and navigation bars
+     (Android 16 requires it). Capacitor's SystemBars sets the
+     --safe-area-inset-* values on Android; a browser has env(). */
+  --safe-top:var(--safe-area-inset-top, env(safe-area-inset-top, 0px));
+  --safe-right:var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+  --safe-bottom:var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  --safe-left:var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
   --tr:120ms ease;
 
   --font:'Onest','Noto Sans Ethiopic',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
@@ -153,11 +174,7 @@ body{
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
   overflow:hidden;
-  /* Android draws the app edge to edge: keep clear of a side navigation
-     bar or a camera cut-out when the phone is turned sideways. Capacitor
-     sets --safe-area-inset-*; env() is the browser's own value. */
-  padding-left:var(--safe-area-inset-left, env(safe-area-inset-left, 0px));
-  padding-right:var(--safe-area-inset-right, env(safe-area-inset-right, 0px));
+  padding:0 var(--safe-right) 0 var(--safe-left);
 }
 ::selection{background:var(--accent-soft); color:var(--ink-1);}
 button, input, textarea, select{font:inherit; color:inherit;}
@@ -208,7 +225,7 @@ button{-webkit-appearance:none; appearance:none;}
 .header{
   position:relative;
   z-index:5;
-  padding:calc(var(--sp-md) + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) var(--sp-lg) var(--sp-sm);
+  padding:calc(var(--sp-md) + var(--safe-top)) var(--sp-lg) var(--sp-sm);
   background:var(--canvas);
 }
 .header-top{display:flex; align-items:center; justify-content:space-between; gap:var(--sp-sm);}
@@ -741,6 +758,40 @@ input[type="range"]::-moz-range-thumb{
 /* ---- Active alerts ---- */
 #activeAlerts{padding:var(--sp-sm) var(--sp-lg) 0;}
 #activeAlerts:empty{display:none;}
+/* Sample record: always visible while demo mode is on, on every tab. */
+.demo-banner{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:var(--sp-md);
+  margin:var(--sp-sm) var(--sp-lg) 0; padding:var(--sp-md) var(--sp-lg);
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r);
+}
+.demo-banner p{margin:0; flex:1 1 280px; min-width:0; font-size:var(--fs-sm); line-height:1.4; color:var(--ink-2);}
+.demo-banner strong{display:block; font-size:var(--fs-md); font-weight:600; color:var(--ink-1);}
+.demo-banner-actions{display:flex; flex-wrap:wrap; gap:var(--sp-sm);}
+/* On a phone the words take the whole width and the buttons go under
+   them. Side by side, a long label such as the Afaan Oromo "Exit demo"
+   squeezed the text into a narrow column. */
+@media (max-width:560px){
+  .demo-banner{flex-direction:column; align-items:stretch;}
+  .demo-banner p{flex:none;}
+  .demo-banner-actions .btn{flex:1 1 auto;}
+}
+.welcome-body{padding:calc(var(--sp-2xl) + var(--safe-top)) var(--sp-xl) calc(var(--sp-2xl) + var(--safe-bottom));}
+.welcome-mark{
+  width:48px; height:48px; margin-bottom:var(--sp-lg);
+  display:flex; align-items:center; justify-content:center;
+  background:var(--accent); color:var(--on-accent); border-radius:var(--r);
+}
+.welcome-mark svg{width:28px; height:28px;}
+.welcome-top{display:flex; align-items:flex-start; justify-content:space-between; gap:var(--sp-md); margin-bottom:var(--sp-lg);}
+.welcome-top .welcome-mark{margin-bottom:0;}
+.welcome-body h2{font-size:var(--fs-2xl); font-weight:700; letter-spacing:-.02em; line-height:1.2;}
+.welcome-points{margin:var(--sp-lg) 0 0; padding:0; list-style:none;}
+.welcome-points li{position:relative; margin-top:var(--sp-sm); padding-left:var(--sp-xl); font-size:var(--fs-md); line-height:1.45; color:var(--ink-2);}
+/* the bullet is smaller than a fingertip, so it is square */
+.welcome-points li::before{content:''; position:absolute; left:2px; top:.5em; width:8px; height:8px; background:var(--accent); border-radius:0;}
+.welcome-lead{margin-top:var(--sp-md); font-size:var(--fs-lg); line-height:1.45; color:var(--ink-1);}
+.welcome-body .btn-col{margin-top:var(--sp-xl);}
+.welcome-body .hint-line{margin-top:var(--sp-lg);}
 .alert-critical, .alert-warning, .alert-info{
   display:grid; grid-template-columns:20px 1fr; column-gap:var(--sp-sm); row-gap:var(--sp-xxs);
   padding:var(--sp-md) var(--sp-lg); margin-top:var(--sp-sm);
@@ -765,7 +816,7 @@ input[type="range"]::-moz-range-thumb{
   display:flex;
   background:var(--surface);
   border-top:1px solid var(--line);
-  padding:0 var(--sp-xs) var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
+  padding:0 var(--sp-xs) var(--safe-bottom);
   position:relative; z-index:5;
 }
 .nav-item{
@@ -794,7 +845,7 @@ input[type="range"]::-moz-range-thumb{
 
 /* ---- Panels: notifications and settings ---- */
 .panel{
-  position:fixed; inset:0;
+  position:fixed; inset:0 var(--safe-right) 0 var(--safe-left);
   max-width:460px; margin:0 auto;
   z-index:100;
   display:flex; flex-direction:column;
@@ -804,7 +855,7 @@ input[type="range"]::-moz-range-thumb{
 .panel-head{
   position:sticky; top:0; z-index:1;
   display:flex; align-items:center; justify-content:space-between; gap:var(--sp-md);
-  padding:calc(var(--sp-sm) + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) var(--sp-md) var(--sp-sm) var(--sp-lg);
+  padding:calc(var(--sp-sm) + var(--safe-top)) var(--sp-md) var(--sp-sm) var(--sp-lg);
   margin-bottom:var(--sp-lg);
   background:var(--canvas);
   border-bottom:1px solid var(--line);
@@ -823,7 +874,7 @@ input[type="range"]::-moz-range-thumb{
 .notif-empty{text-align:center; padding:var(--sp-3xl) var(--sp-xl); color:var(--ink-3); font-size:var(--fs-md);}
 #notifPermBlock{margin:0 var(--sp-lg) var(--sp-lg);}
 #notifPermBlock .btn{margin-top:var(--sp-md);}
-.panel-foot{width:auto; margin:var(--sp-xs) var(--sp-lg) calc(var(--sp-lg) + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));}
+.panel-foot{width:auto; margin:var(--sp-xs) var(--sp-lg) calc(var(--sp-lg) + var(--safe-bottom));}
 
 .settings-section{padding:0 var(--sp-lg); margin-bottom:var(--sp-xl);}
 .settings-section-title{font-size:var(--fs-sm); font-weight:600; color:var(--ink-3); margin:0 var(--sp-xxs) var(--sp-sm);}
@@ -849,10 +900,57 @@ button.settings-row{
 }
 button.settings-row:active{background:var(--surface-3);}
 
+/* ---- PIN lock and passphrase box ---- */
+/* While the PIN lock is showing, nothing else on the page can be seen or
+   reached by a screen reader (visibility, not display, so the page keeps
+   its layout and the weight chart its size). The question box stays
+   visible: "Forgot PIN" asks its question over the lock. */
+body.locked > *:not(#lockScreen):not(#toast):not(#dialog){visibility:hidden;}
+.lock-screen{
+  position:fixed; inset:0; z-index:300;
+  display:flex; flex-direction:column; justify-content:center;
+  padding:calc(var(--sp-xl) + var(--safe-top)) calc(var(--sp-xl) + var(--safe-right)) calc(var(--sp-xl) + var(--safe-bottom)) calc(var(--sp-xl) + var(--safe-left));
+  overflow-y:auto;
+  background:var(--canvas);
+}
+.lock-inner{width:100%; max-width:360px; margin:0 auto;}
+.lock-inner .panel-title{margin-bottom:var(--sp-sm);}
+.lock-inner .form-field{text-align:center; font-size:var(--fs-xl); letter-spacing:.3em;}
+.lock-inner .btn{margin-top:var(--sp-sm);}
+.secret-body{padding:0 var(--sp-lg) calc(var(--sp-lg) + var(--safe-bottom));}
+.secret-body .btn{margin-top:var(--sp-sm);}
+.form-error{min-height:20px; margin:0 0 var(--sp-sm); font-size:var(--fs-sm); line-height:1.45; color:var(--danger-ink);}
+.lock-forgot{margin-top:var(--sp-lg); padding:var(--sp-lg); background:var(--surface); border:1px solid var(--line); border-radius:var(--r);}
+.lock-forgot p{font-size:var(--fs-sm); line-height:1.45; color:var(--ink-2);}
+
+/* Guided tour: a plain card and an outline.
+   The card sits above the bottom bar (bottom right on a wide screen) and
+   the part of the page it talks about gets an outline. Nothing moves,
+   fades or casts a shadow. While it is open the page gets extra room at
+   the bottom, so a card can scroll clear of it. */
+.tour{
+  position:fixed; z-index:90;
+  left:calc(12px + var(--safe-left)); right:calc(12px + var(--safe-right));
+  bottom:calc(72px + var(--safe-bottom));
+  max-width:440px; margin:0 auto; padding:var(--sp-lg) var(--sp-lg) var(--sp-md);
+  background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--r);
+}
+.tour-count{font-size:var(--fs-xs); font-weight:600; color:var(--ink-3);}
+.tour h2{margin-top:var(--sp-xxs); font-size:var(--fs-lg); font-weight:700; line-height:1.3; color:var(--ink-1);}
+.tour-text{margin-top:var(--sp-sm); font-size:var(--fs-md); line-height:1.45; color:var(--ink-2);}
+.tour-actions{display:flex; flex-wrap:wrap; align-items:center; gap:var(--sp-sm); margin-top:var(--sp-md);}
+.tour-actions .tour-skip{margin-right:auto;}
+.tour-target{outline:3px solid var(--accent); outline-offset:3px; scroll-margin-top:12px;}
+:root.touring .content{padding-bottom:calc(var(--sp-3xl) * 6);}
+@media (min-width:720px){
+  .tour{left:auto; right:calc(24px + var(--safe-right)); bottom:24px; width:380px; margin:0;}
+  :root.touring .content{padding-bottom:0;}
+}
+
 /* ---- Toast ---- */
 .toast{
   position:fixed; left:50%;
-  bottom:calc(80px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+  bottom:calc(80px + var(--safe-bottom));
   transform:translateX(-50%);
   width:max-content;
   max-width:calc(100% - 32px);
@@ -868,9 +966,9 @@ button.settings-row:active{background:var(--surface-3);}
 
 /* ---- Question box ---- */
 .dialog-scrim{
-  position:fixed; inset:0; z-index:300;
+  position:fixed; inset:0; z-index:400;   /* over the PIN lock too */
   display:flex; align-items:flex-end; justify-content:center;
-  padding:var(--sp-lg) var(--sp-lg) calc(var(--sp-lg) + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+  padding:var(--sp-lg) var(--sp-lg) calc(var(--sp-lg) + var(--safe-bottom));
   background:var(--scrim);
 }
 .dialog{
@@ -907,14 +1005,14 @@ button.settings-row:active{background:var(--surface-3);}
    out there: a two-column grid with the nav placed in the first column. */
 @media (min-width:720px){
   .app{max-width:none;}
-  .header{padding:calc(var(--sp-md) + var(--safe-area-inset-top, env(safe-area-inset-top, 0px))) var(--sp-xl) var(--sp-md); border-bottom:1px solid var(--line);}
+  .header{padding:calc(var(--sp-md) + var(--safe-top)) var(--sp-xl) var(--sp-md); border-bottom:1px solid var(--line);}
   .app-main{display:grid; grid-template-columns:104px minmax(0,1fr); grid-template-rows:minmax(0,1fr);}
   .content{grid-column:2; grid-row:1;}
   .nav{
     grid-column:1; grid-row:1;
     flex-direction:column; justify-content:flex-start; gap:var(--sp-xs);
     border-top:none; border-right:1px solid var(--line);
-    padding:var(--sp-lg) var(--sp-sm) calc(var(--sp-lg) + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));
+    padding:var(--sp-lg) var(--sp-sm) calc(var(--sp-lg) + var(--safe-bottom));
   }
   .nav-item{flex:0 0 auto; min-height:64px; padding:var(--sp-sm) 0; border-radius:var(--r);}
   .nav-item.active{background:var(--accent-soft);}
@@ -923,7 +1021,7 @@ button.settings-row:active{background:var(--surface-3);}
   #activeAlerts{padding:var(--sp-sm) var(--sp-2xl) 0; max-width:1120px;}
   .tab{padding:var(--sp-sm) var(--sp-2xl) var(--sp-2xl); max-width:1120px;}
   .desktop-2col{display:grid; grid-template-columns:1.25fr 1fr; gap:var(--sp-lg); align-items:start;}
-  .panel{left:auto; right:0; margin:0; width:420px; border-left:1px solid var(--line);}
+  .panel{left:auto; right:var(--safe-right); margin:0; width:420px; border-left:1px solid var(--line);}
   .toast{bottom:32px;}
 }
 @media (min-width:1080px){
@@ -937,7 +1035,7 @@ button.settings-row:active{background:var(--surface-3);}
 
 /* larger text: zoom keeps every layout in proportion */
 :root{--big-zoom:1.14;}   /* Large text: everything 14% bigger */
-:root.big-text .app, :root.big-text .panel{zoom:var(--big-zoom);}
+:root.big-text .app, :root.big-text .panel, :root.big-text .tour{zoom:var(--big-zoom);}
 /* zoom magnifies viewport units too, so the app shell is shrunk back to fit */
 :root.big-text .app{height:calc(100vh / var(--big-zoom)); height:calc(100dvh / var(--big-zoom));}
 :root.big-text .panel{height:calc(100vh / var(--big-zoom)); height:calc(100dvh / var(--big-zoom)); bottom:auto;}
@@ -1098,7 +1196,7 @@ a.btn{text-decoration:none;}
 .profile-row.active .profile-name{color:var(--accent-ink); font-weight:600;}
 
 /* full-screen panels: get help, medical ID, show-the-nurse, summary preview */
-.panel-body{padding:0 var(--sp-lg) calc(var(--sp-xl) + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));}
+.panel-body{padding:0 var(--sp-lg) calc(var(--sp-xl) + var(--safe-bottom));}
 .help-hero{padding:var(--sp-lg); border:1px solid transparent; border-radius:var(--r); background:var(--danger); color:var(--on-danger); margin-bottom:var(--sp-md);}
 .help-hero.today{background:var(--warn-soft); border-color:var(--warn-line); color:var(--warn-ink);}
 .help-hero h3{font-size:var(--fs-xl); font-weight:700; line-height:1.25;}
@@ -1137,6 +1235,7 @@ a.btn{text-decoration:none;}
 
 /* camera pulse: the entry button and its panel (ppg-engine.js) */
 #camPulseBtn{margin-top:var(--sp-md);}
+#camPulseRow .cam-note{margin:var(--sp-sm) 0 0;}
 .cam-card{padding:var(--sp-lg);}
 .cam-top{display:flex; align-items:center; gap:var(--sp-lg);}
 .cam-video{width:64px; height:64px; flex-shrink:0; object-fit:cover; background:var(--surface-3); border:1px solid var(--line); border-radius:var(--r);}
@@ -1145,6 +1244,9 @@ a.btn{text-decoration:none;}
 .cam-unit{font-size:var(--fs-md); font-weight:600; color:var(--ink-3);}
 #camWave{width:100%; height:120px; display:block; margin-top:var(--sp-lg);}
 .cam-progress{margin-top:var(--sp-md);}
+.cam-conf{margin-top:var(--sp-sm); font-size:var(--fs-sm); color:var(--ink-3); font-variant-numeric:tabular-nums;}
+.cam-rec{margin-top:var(--sp-lg); padding-top:var(--sp-md); border-top:1px solid var(--line);}
+.cam-rec .entry-row{margin-top:var(--sp-sm);}
 .cam-hint{min-height:2.9em; margin-top:var(--sp-md); font-size:var(--fs-md); line-height:1.45; color:var(--ink-1);}
 .cam-note{padding:var(--sp-md) var(--sp-md); border:1px solid var(--warn-line); border-radius:var(--r); background:var(--warn-soft); color:var(--warn-ink); font-size:var(--fs-sm); line-height:1.45;}
 #camNoLight{margin-top:var(--sp-md);}

@@ -33,7 +33,8 @@ function synth(rrList, opt) {
   const o = Object.assign({
     seed: 1, fps: 30, jitterMs: 3, dropRate: 0.01, dc: 180, mod: 0.012, noise: 0.12,
     drift: 0.03, breath: 0.004, lead: 1500, tail: 2500, missedBeats: [], extraBlips: [],
-    beatAmps: {}, motion: [], gaps: [], clipped: 0, quantMs: 0
+    beatAmps: {}, motion: [], gaps: [], clipped: 0, quantMs: 0,
+    greenDc: 30, greenMod: 0, greenNoise: 0, redFlat: false
   }, opt);
   const r = rng(o.seed);
   const onsets = []; let t = o.lead;
@@ -66,8 +67,14 @@ function synth(rrList, opt) {
     let red = dc * (1 - o.mod * volume(ft)) + o.noise * r.gauss();
     for (const b of o.extraBlips) red -= o.dc * o.mod * 0.9 * Math.exp(-(((ft - b) / 1000) ** 2) / (2 * 0.04 * 0.04));
     for (const m of o.motion) if (ft >= m[0] && ft < m[1]) red += o.dc * 0.06 * Math.sin(2 * Math.PI * 1.7 * sec) * (0.5 + r());
+    let green = o.greenDc * (1 - o.greenMod * volume(ft));
+    if (o.greenNoise) green += o.greenNoise * r.gauss();
+    let clip = o.clipped;
+    if (o.redFlat) { red = 251; clip = Math.max(clip, 0.96); }
+    else red = Math.min(255, Math.max(0, red));
+    green = Math.min(255, Math.max(0, green));
     const stamp = o.quantMs ? Math.ceil(ft / o.quantMs) * o.quantMs : ft;   // e.g. a screen-refresh clock
-    frames.push({ t: stamp, f: inGap ? { r: 40, g: 45, b: 50, clip: 0 } : { r: Math.min(255, red), g: 30, b: 20, clip: o.clipped } });
+    frames.push({ t: stamp, f: inGap ? { r: 40, g: 45, b: 50, clip: 0 } : { r: red, g: green, b: 20, clip } });
   }
   return { frames, truePeaks: beats.map(b => b.on + b.ts * 1000) };
 }
@@ -360,6 +367,112 @@ console.log('ppg-engine', PPG.VERSION + ': synthetic validation');
   // which the template check compares, not for RMSSD accuracy.
   check('both filters give RMSSD within 3 % of each other', Math.abs(e.s.rmssd / causal.rmssd - 1) < 0.03, pct(e.s.rmssd, causal.rmssd));
   check('zero-phase peaks sit on the pulse peak (< 5 ms)', Math.abs(e.offset) < 5, fmt(e.offset) + ' ms');
+}
+
+{ // 17. red pinned by the torch, pulse still in green
+  const rr = sinusRR(80, 850, 45, 12, 11);
+  const opt = { seed: 17, redFlat: true, greenDc: 95, greenMod: 0.014, greenNoise: 0.15, mod: 0 };
+  const rec = synth(rr, opt);
+  const auto = evaluate('17. Clipped red, pulse in green', rec, run(rec));
+  const redOnly = evaluate('17b. Same recording, red channel only', rec, run(rec, { channelMode: 'red' }), true);
+  check('red alone is not a usable rate', redOnly.s.bpm == null || Math.abs(redOnly.s.bpm - auto.truth.bpm) > 8, 'red ' + redOnly.s.bpm + ' vs ' + fmt(auto.truth.bpm));
+  check('green channel recovers bpm within 2', auto.s.bpm != null && Math.abs(auto.s.bpm - auto.truth.bpm) <= 2, auto.s.bpm + ' vs ' + fmt(auto.truth.bpm) + ', channel ' + auto.s.channel);
+  check('the window actually used green', auto.s.channel && auto.s.channel.indexOf('g') >= 0, auto.s.channel);
+  check('mean absolute RR error under 8 ms', auto.errs.length > 20 && mean(auto.errs.map(Math.abs)) < 8, fmt(mean(auto.errs.map(Math.abs)), 2) + ' ms');
+}
+
+{ // 18. both colours carry the pulse, with independent noise: mixing should beat red alone
+  const rr = sinusRR(80, 880, 40, 12, 44);
+  const opt = { seed: 18, mod: 0.007, noise: 0.9, greenDc: 120, greenMod: 0.007, greenNoise: 0.9 };
+  const rec = synth(rr, opt);
+  const auto = evaluate('18. Noisy red and green together', rec, run(rec));
+  const redOnly = evaluate('18b. Same recording, red only', rec, run(rec, { channelMode: 'red' }), true);
+  const autoMae = mean(auto.errs.map(Math.abs)), redMae = mean(redOnly.errs.map(Math.abs));
+  console.log(`  RR |mean| error: both channels ${fmt(autoMae, 2)} ms, red only ${fmt(redMae, 2)} ms`);
+  check('mixing the two noisy channels lowers the RR error by at least 10%', auto.errs.length > 15 && redOnly.errs.length > 10 && autoMae < redMae * 0.9, `${fmt(autoMae, 2)} ms vs ${fmt(redMae, 2)} ms (${fmt(100 * (1 - autoMae / redMae), 0)}% lower)`);
+  check('bpm within 2 of truth', Math.abs(auto.s.bpm - auto.truth.bpm) <= 2, auto.s.bpm + ' vs ' + fmt(auto.truth.bpm));
+}
+
+{ // 19. low perfusion in red, a clearer green, plus an uneven rhythm that must still be flagged
+  const rec = synth(unevenRR(19), { seed: 19, mod: 0.003, noise: 0.2, redFlat: false, greenDc: 100, greenMod: 0.012, greenNoise: 0.12 });
+  const e = evaluate('19. Low red perfusion, uneven rhythm carried by green', rec, run(rec));
+  check('still flagged as uneven beats', e.s.unevenBeats === true);
+  check('rate within 2 % and not withheld', e.s.ok && Math.abs(e.s.bpm / e.truth.bpm - 1) < 0.02, `${e.s.bpm} vs ${fmt(e.truth.bpm)}, withhold ${e.s.withhold}`);
+}
+
+{ // 20. movement is still rejected when green is present, and a clean sinus agrees with the spectrum
+  const rec = synth(sinusRR(70, 860, 30, 10, 71), { seed: 21, motion: [[20000, 24000]], greenDc: 80, greenMod: 0.01, greenNoise: 0.08 });
+  const res = run(rec);
+  const e = evaluate('20. Movement, with a real green pulse as well', rec, res);
+  check('movement still set aside', e.s.beatsRejected.motion > 0);
+  check('bpm within 1', Math.abs(e.s.bpm - e.truth.bpm) <= 1);
+  const agreed = res.events.quality.filter(q => q.rateAgree === true).length;
+  const denied = res.events.quality.filter(q => q.rateAgree === false).length;
+  check('spectrum and peaks agree on a clean stretch', agreed > 20 && denied < agreed / 5, `${agreed} agree, ${denied} disagree`);
+  check('a trustworthy reading is shown', e.s.ok && e.s.withhold == null);
+}
+
+{ // 21. the second rate estimate, on its own
+  const fs = 30, n = 8 * fs, f0 = 1.2;
+  const y = new Float64Array(n);
+  for (let i = 0; i < n; i++) y[i] = Math.sin(2 * Math.PI * f0 * i / fs);
+  const spec = PPG.dsp.spectralRate(y, fs, 0.7, 3.5);
+  check('FFT of a 72 bpm sine is within 1 bpm', spec && Math.abs(spec.bpm - 72) < 1, spec && fmt(spec.bpm, 2));
+  const yes = PPG.dsp.rateAgreement(72, 71.4, 0.9, 72.6, 20);
+  const no = PPG.dsp.rateAgreement(108, 72, 0.86, 73, 18);
+  const octave = PPG.dsp.rateAgreement(40, 80, 0.8, 81, 15);
+  check('close rates count as agreement', yes.agree === true);
+  check('a confident non-harmonic gap does not', no.agree === false, JSON.stringify(no));
+  check('exactly twice the rate is treated as a harmonic, not a rejection', octave.agree == null);
+}
+
+{ // 22. grid: ignore clipped and background cells
+  const rr = sinusRR(70, 860, 25, 8, 22);
+  const rec = synth(rr, { seed: 22, noise: 0.05, jitterMs: 1, dropRate: 0 });
+  const picker = new PPG.SpatialPicker();
+  const cols = 4, rows = 3, n = cols * rows;
+  const fused = [], naive = [];
+  // Which cells are the fingertip. The rest are glare or the room.
+  const finger = new Set([5, 6, 9, 10]);
+  const rRoom = rng(99);
+  for (const fr of rec.frames) {
+    const cells = [];
+    for (let i = 0; i < n; i++) {
+      if (finger.has(i)) cells.push({ r: fr.f.r, g: fr.f.g, b: fr.f.b, clip: 0 });
+      else if (i < 4) cells.push({ r: 255, g: 250, b: 240, clip: 1 });
+      else {
+        const wobble = 30 * Math.sin(2 * Math.PI * 1.7 * fr.t / 1000) + 8 * rRoom.gauss();
+        cells.push({ r: 50 + wobble, g: 48, b: 46, clip: 0 });
+      }
+    }
+    const got = picker.fuse(cells);
+    fused.push({ t: fr.t, f: { r: got.r, g: got.g, b: got.b, clip: got.clip, cover: got.cover } });
+    let sr = 0, sg = 0, sb = 0, sc = 0;
+    for (const c of cells) { sr += c.r; sg += c.g; sb += c.b; sc += c.clip; }
+    naive.push({ t: fr.t, f: { r: sr / n, g: sg / n, b: sb / n, clip: sc / n } });
+  }
+  const good = evaluate('22. Grid keeps the fingertip cells', { frames: fused, truePeaks: rec.truePeaks }, run({ frames: fused, truePeaks: rec.truePeaks }));
+  const bad = evaluate('22b. Averaging every cell, including glare and the room', { frames: naive, truePeaks: rec.truePeaks }, run({ frames: naive, truePeaks: rec.truePeaks }), true);
+  const goodMae = mean(good.errs.map(Math.abs)), badMae = bad.errs.length ? mean(bad.errs.map(Math.abs)) : 1e9;
+  console.log(`  RR |mean| error: selected cells ${fmt(goodMae, 2)} ms (n=${good.errs.length}), whole frame ${fmt(bad.errs.length ? badMae : NaN, 2)} ms (bpm ${bad.s.bpm})`);
+  check('selected cells: bpm within 1 of truth', Math.abs(good.s.bpm - good.truth.bpm) <= 1, good.s.bpm + ' vs ' + fmt(good.truth.bpm));
+  check('selected cells beat a plain average of the frame', good.errs.length > 20 && (bad.s.bpm == null || Math.abs(bad.s.bpm - good.truth.bpm) > 2 || badMae > goodMae + 2),
+    `grid ${fmt(goodMae, 2)} ms / ${good.s.bpm} bpm, frame ${bad.s.bpm} bpm`);
+  // uniform grid must not change the value
+  const flat = new PPG.SpatialPicker();
+  let fusedFlat = null;
+  const one = [];
+  for (let i = 0; i < 12; i++) one.push({ r: 180, g: 30, b: 20, clip: 0 });
+  for (let k = 0; k < 40; k++) fusedFlat = flat.fuse(one.map(c => ({ r: c.r, g: c.g, b: c.b, clip: 0 })));
+  check('a uniform frame is unchanged by the grid', fusedFlat && Math.abs(fusedFlat.r - 180) < 0.05 && fusedFlat.used === 12, fusedFlat && fmt(fusedFlat.r, 3));
+}
+
+{ // 23. a fingertip colour with no pulse in it: do not invent a rate
+  const frames = [], r = rng(23);
+  for (let t = 0; t < 22000; t += 33.3) frames.push({ t, f: { r: 150 + 6 * r.gauss(), g: 36, b: 22, clip: 0 } });
+  const s = run({ frames }).summary;
+  console.log('\n23. Red fingertip colour, no pulse');
+  check('no number is offered', s.ok === false, s.ok ? `${s.bpm} bpm was shown` : `withhold ${s.withhold}`);
 }
 
 console.log(failures ? `\n${failures} of ${checks} checks failed` : `\nall ${checks} checks passed`);

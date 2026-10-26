@@ -1,72 +1,53 @@
 /*
  * The page inside the Android app. Run with:  node tests/page/android.test.js
  *
- * Android's back button closes the top panel, then a form open on this tab
- * (as its own Cancel button would), then goes back to Today, and only then
- * lets the app leave. On the very first launch a large Android font size
- * switches on the app's own Large text. Exit code 1 if any check fails.
+ * The back button one step at a time, and Large text on the first launch,
+ * are in tests/page/back.test.js. This file covers what the human polish
+ * merge added on top: Android's back button answers an open question box
+ * the safe way, and the camera pulse follows Amin's decision of 15 October
+ * 2026 (on in every build, the app included), offered wherever the engine
+ * says the phone can measure, and loaded by the page itself.
+ * Exit code 1 if any check fails.
  */
 'use strict';
-const { same, section, done, loadPage } = require('./harness.js');
+const fs = require('fs');
+const path = require('path');
+const { check, same, section, done, loadPage } = require('./harness.js');
+const html = fs.readFileSync(path.join(__dirname, '..', '..', 'www', 'index.html'), 'utf8');
 const p = loadPage();
+p.at(2026, 10, 26, 9, 0);
+p.person({}, { id: 'p1' });
+p.open([{ id: 'p1', name: 'Abebe' }], 'p1');
 
-// a stand-in screen: which panels are open, which tab shows, which Cancel
-// buttons are on it; clicks on them are recorded
-function screen({ panels = [], tab = 'today', cancels = [] }) {
-  p.run(`PANELS.forEach(id=>{ $(id).hidden=true; });`);
-  panels.forEach(id => { p.el(id).hidden = false; });
-  p.run(`__clicked=[]; __switched=[];
-    switchTab=n=>__switched.push(n);
-    document.querySelector=sel=>sel!=='.tab.active' ? null : {
-      id:'tab-'+${JSON.stringify(tab)},
-      querySelector:s=>{ const a=/data-act="(\\w+)"/.exec(s)[1];
-        return ${JSON.stringify(cancels)}.includes(a) ? {offsetParent:{}, click:()=>__clicked.push(a)} : null; }
-    };`);
-}
-const back = () => p.call('handleBack');
+section('1. Back with the question box open');
+p.run(`PANELS.forEach(id=>{ $(id).hidden=true; }); $('settingsPanel').hidden=false;
+  __no=0; __yes=0; dialogNow={o:{onNo:()=>{ __no++; }, onYes:()=>{ __yes++; }}, opener:null};`);
+same('back answers the question, before anything else', p.call('handleBack'), 'dialog');
+same('...with No, the safe answer', [p.get('__no'), p.get('__yes')], [1, 0]);
+same('...and the panel behind it stays open', [p.get('dialogNow'), p.get("$('settingsPanel').hidden")], [null, false]);
+same('the next back closes the panel', p.call('handleBack'), 'panel');
 
-section('1. The back button, one step at a time');
-screen({ panels: ['settingsPanel'], tab: 'meds', cancels: ['mfCancel'] });
-same('a panel is open: back closes it, and nothing else', [back(), p.el('settingsPanel').hidden, p.get('__clicked'), p.get('__switched')], [true, true, [], []]);
-screen({ panels: ['settingsPanel', 'helpPanel'] });
-back();
-same('two panels: back closes the top one first', [p.el('helpPanel').hidden, p.el('settingsPanel').hidden], [true, false]);
-screen({ tab: 'meds', cancels: ['mfCancel'] });
-same('the medicine form is open: back taps its Cancel', [back(), p.get('__clicked'), p.get('__switched')], [true, ['mfCancel'], []]);
-screen({ tab: 'today', cancels: ['injCancel'] });
-same('recording an injection: back taps its Cancel', [back(), p.get('__clicked')], [true, ['injCancel']]);
-screen({ tab: 'symptoms', cancels: ['moodCancel'] });
-same('retaking the mood questions: back taps its Cancel', [back(), p.get('__clicked')], [true, ['moodCancel']]);
-screen({ tab: 'summary' });
-same('another tab, nothing open: back goes to Today', [back(), p.get('__switched')], [true, ['today']]);
-screen({ tab: 'today' });
-same('Today, nothing open: back says "nothing left", so the app leaves', back(), false);
-
-section('2. Large text on the first launch');
-p.global({ bigText: false });
-same('first launch, Android font 1.15 or more: Large text', [p.call('startsWithBigText', true, 1.15), p.call('startsWithBigText', true, 1.3)], [true, true]);
-same('first launch, Android font below 1.15: normal text', p.call('startsWithBigText', true, 1.1), false);
-same('not the first launch: the person\'s own choice stands', p.call('startsWithBigText', false, 1.5), false);
-same('in a browser (no font scale): normal text', p.call('startsWithBigText', true, null), false);
-
-section('3. The camera pulse is off inside the app (safety charter rule 7)');
-// a stand-in camera engine that says this browser could measure
+section('2. The camera pulse is offered inside the app as in a browser');
 p.run(`PPG={PulseMonitor:{supported:()=>true}}; __realCap=window.Capacitor;`);
 p.run(`window.Capacitor={isNativePlatform:()=>false};`);
 same('in a browser that can use the camera: offered', p.call('camPulseAvailable'), true);
 p.run(`window.Capacitor={isNativePlatform:()=>true};`);
-same('inside the Android app: never offered', p.call('camPulseAvailable'), false);
+same('inside the Android app: offered too', p.call('camPulseAvailable'), true);
 p.run(`openVitalEntry('pulse')`);
-same('inside the app, the pulse entry hides the camera button', p.el('camPulseBtn').hidden, true);
-p.run(`window.Capacitor=__realCap; delete window.PPG;`);
+same('inside the app, the pulse entry shows the camera row (button and its line)', p.el('camPulseRow').hidden, false);
+p.run(`PPG={PulseMonitor:{supported:()=>false}};`);
+same('the engine says this phone cannot measure: not offered', p.call('camPulseAvailable'), false);
+p.run(`openVitalEntry('pulse')`);
+same('...and the camera row stays hidden', p.el('camPulseRow').hidden, true);
+p.run(`delete window.PPG;`);
 same('no camera engine loaded: not offered', p.call('camPulseAvailable'), false);
-
-// the engine file itself is only read where the camera can be offered
-p.run(`__added=[]; document.createElement=()=>({}); document.head={appendChild:x=>__added.push(x.src)};`);
-p.run(`window.Capacitor={isNativePlatform:()=>true}; loadCameraEngine();`);
-same('inside the app, ppg-engine.js is never loaded', p.get('__added'), []);
-p.run(`window.Capacitor={isNativePlatform:()=>false}; loadCameraEngine();`);
-same('in a browser, it is loaded at start-up', p.get('__added'), ['ppg-engine.js']);
 p.run(`window.Capacitor=__realCap;`);
+
+section('3. The page loads the camera engine wherever it runs');
+// One www/ runs in the browser and in the app, so a script tag in the page
+// is read in both. Nothing may hold the engine back inside the app any more.
+same('ppg-engine.js is loaded once, by the page', (html.match(/<script src="ppg-engine\.js" defer><\/script>/g) || []).length, 1);
+check('the engine file ships in www/', fs.existsSync(path.join(__dirname, '..', '..', 'www', 'ppg-engine.js')));
+check('no code keeps the engine out of the app', !/isNativePlatform|isApp\(\)/.test(html));
 
 done();

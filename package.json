@@ -1,19 +1,20 @@
 {
   "name": "cardiac-companion",
-  "version": "4.0.0-dev",
+  "version": "4.0.0",
   "private": true,
   "description": "Offline heart-health companion for patients in Ethiopia",
   "scripts": {
     "test": "node tests/run.js",
-    "vendor": "node scripts/vendor.js",
-    "sync": "node scripts/vendor.js && npx cap sync android"
+    "build:web": "node tools/build-web.js",
+    "preview:web": "node tools/preview-web.js",
+    "train:pulse": "node tools/train-pulse-quality.js"
   },
   "dependencies": {
-    "@capacitor/android": "^8.5.2",
-    "@capacitor/app": "^8.1.2",
-    "@capacitor/core": "^8.5.2"
+    "@capacitor/android": "8.5.3",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.5.3"
   },
   "devDependencies": {
-    "@capacitor/cli": "^8.5.2"
+    "@capacitor/cli": "8.5.3"
   }
 }

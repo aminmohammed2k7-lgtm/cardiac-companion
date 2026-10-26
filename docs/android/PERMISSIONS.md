@@ -1,38 +1,84 @@
-# Android permissions
+# Permissions and backups
 
-What the app asks Android for, and why. The final list is what Android
-Studio shows in the **merged** manifest (`android/app/build/intermediates/
-merged_manifest/debug/.../AndroidManifest.xml`). The GitHub build prints it
-in the step "Show the final permission list".
+What the Android app may do on the phone, and why. Phase 2 of the work order
+(`docs/claude-code-order.pdf`, task 10) and `DECISIONS.md`.
 
-## Phase 2 (now)
+## The app asks for one permission: CAMERA
 
-| Permission | Asked for? | Why |
-|---|---|---|
-| `INTERNET` | **No, removed** | The app never uses the network (safety charter rule 3). Capacitor's template asks for it. `tools:node="remove"` in `AndroidManifest.xml` takes it out of the final manifest, including any a library adds. The app's own files are served to the WebView from inside the app, which needs no network. |
-| `CAMERA` | **No** | The camera pulse is off in the public app (DECISIONS.md, safety charter rule 7). |
+`android/app/src/main/AndroidManifest.xml` asks only for `CAMERA` (see
+"Camera" below), and removes
+`INTERNET` with `tools:node="remove"`, so even a library that asks for it
+can't add it back. Without `INTERNET`, Android doesn't let the app reach
+the network at all. That's a privacy promise anyone can check (safety
+charter rule 3).
 
-Nothing else is asked for. `tests/android.test.js` fails if a permission is
-added without being removed, or if the camera appears.
+The app works without it because Capacitor serves the app's own files
+(`www/`) from inside the APK. The WebView loads `https://localhost/`, and
+Capacitor answers those requests itself; nothing goes over a network. The fonts
+are bundled too (`www/fonts/`).
 
-**If the phone test shows something breaks without INTERNET** (it should
-not: nothing in the app loads from the network), the permission comes back
-only in the build that needs it, and the reason is written here.
+Debugging still works: `chrome://inspect` talks to the WebView over the USB
+cable (adb), not over the internet.
 
-## Backups
+**If removing `INTERNET` ever breaks something on a phone,** put the plain
+`<uses-permission android:name="android.permission.INTERNET" />` back, and
+write here what broke and why the app needs it. Don't do it silently.
 
-- `android:allowBackup="false"` and `android:fullBackupContent="false"`:
-  Android 11 and older never back the app up.
-- `android:dataExtractionRules`: Android 12 and later exclude everything
-  from Google's cloud backup **and** from device-to-device transfer.
+### Permissions Android adds by itself
 
-So health data leaves the phone only in a backup file the person makes and
-shares themselves (DECISIONS.md: "Android's automatic cloud backup: Off").
-The person must use the app's own **Back up now** before changing phones.
+The merged manifest (what is really in the APK) can list a permission that
+no one asked for:
 
-## Later phases (planned, not yet added)
+- `org.cardiaccompanion.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` comes
+  from AndroidX. It is a *signature* permission private to the app, which
+  lets the app's own parts talk to each other. The person is never asked
+  about it, and it gives no access to anything.
 
-- Phase 4: `POST_NOTIFICATIONS` (Android 13+), and exact alarms for dose
-  reminders (`SCHEDULE_EXACT_ALARM` or `USE_EXACT_ALARM`, decided then),
-  `RECEIVE_BOOT_COMPLETED` so reminders survive a restart.
-- Each is added with its reason in this file.
+The GitHub Actions build prints the APK's final list in its log (step
+"Permissions in the APK"). Phase 8 checks the release build the same way.
+
+### Later phases
+
+- **Phase 4** (reminders) adds `POST_NOTIFICATIONS` (asked for after the
+  first medicine is added), `SCHEDULE_EXACT_ALARM` (never `USE_EXACT_ALARM`)
+  and `RECEIVE_BOOT_COMPLETED`, through `@capacitor/local-notifications`.
+- **Camera pulse** is on in every build (Amin's decision, 15 October 2026,
+  `DECISIONS.md`). See "Camera" below.
+- **Never:** `CALL_PHONE` (call buttons only open the dialer),
+  `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS`, `USE_EXACT_ALARM`.
+
+## Camera
+
+`CAMERA` is in the main manifest, so debug and release builds both have it.
+It is for the camera pulse estimate only:
+
+- Android asks the person the first time they tap "Measure with camera".
+  Capacitor's WebView asks for it when the page calls `getUserMedia`; the
+  app never asks at start-up. If the person says no, the pulse is typed in
+  as before.
+- Frames stay in memory while measuring and are never saved or sent. The
+  app still has no internet permission.
+- `android.hardware.camera` and `android.hardware.camera.flash` are marked
+  `required="false"`, so phones without a camera or a light can still
+  install the app from Google Play.
+- The "not a medical device" line is shown beside the button and on the
+  camera screen, in all three languages.
+
+`tests/android.test.js` fails if any other permission is asked for, or if
+the camera hardware becomes required. Google Play's Data safety form must
+say the app uses the camera (Amin's job, Phase 8).
+
+## Backups are off
+
+Health data never leaves the phone, so Android's own copies are off:
+
+| Setting | What it stops |
+|---|---|
+| `android:allowBackup="false"` | Google Drive backup on Android 6 to 11, and transfer to a new phone on Android 6 to 11 |
+| `android:fullBackupContent="false"` | The same, said a second way for Android 6 to 11 |
+| `android:dataExtractionRules` → `res/xml/data_extraction_rules.xml` | Android 12+: cloud backup **and** device-to-device transfer. Since Android 12, `allowBackup="false"` alone no longer stops the transfer to a new phone, so every storage area is excluded from both |
+
+People move their record with the app's own backup file (Settings → Your
+data → Back up now), which they choose where to send.
+
+`tests/android.test.js` fails if any of this changes.
