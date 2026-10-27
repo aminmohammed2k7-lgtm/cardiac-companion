@@ -6,13 +6,16 @@
  * the events the real one sends, and a raw window from tests/pulse-signals.js
  * for pulse-quality.js to rate. Checks that a number is never shown for a
  * reading rated poor (live or at the end), that the confidence sits beside
- * a number that is shown, that the "not a medical device" line is still
- * there, and that the hidden recording mode saves, exports and deletes
- * oximeter pairs without touching anyone's record.
+ * a number that is shown, that the signal line says good or poor, that one
+ * hint says what to do (the signal check's reason first, then the engine's
+ * own coaching), that the "not a medical device" line is still there, and
+ * that the hidden recording mode saves, exports and deletes oximeter pairs
+ * without touching anyone's record.
  */
 'use strict';
 const fs = require('fs');
 const path = require('path');
+const vm = require('vm');
 const { check, same, section, done, loadPage } = require('./harness.js');
 const PPG = require('../../www/ppg-engine.js');
 const PQ = require('../../www/pulse-quality.js');
@@ -25,6 +28,7 @@ check('pulse-quality.js and its weights load after the engine',
   /ppg-engine\.js" defer><\/script>\s*<script src="pulse-quality-weights\.js" defer><\/script>\s*<script src="pulse-quality\.js" defer><\/script>/.test(html));
 const panel = /<div class="panel" id="pulsePanel"[\s\S]*?<!-- Passphrase or PIN/.exec(html)[0];
 check('the confidence line sits in the reading card', /id="camBpm"[\s\S]*id="camConf"[\s\S]*id="camWave"/.test(panel));
+check('the signal line and its bar sit between the number and the confidence line', /id="camBpm"[\s\S]*id="camSignal"[\s\S]*id="camSignalBar"[\s\S]*id="camConf"/.test(panel));
 check('the "not a medical device" line is still in the camera panel', /data-t="camNotDevice"/.test(panel));
 check('the recording box starts hidden', /<div class="cam-rec" id="camRec" hidden>/.test(panel));
 check('the developer section starts hidden', /<div class="settings-section" id="devSection" hidden>/.test(html));
@@ -66,11 +70,15 @@ section('2. While measuring: a number only while the signal is rated good');
 p.call('openVitalEntry', 'pulse');
 p.call('openPulseCam');
 let m = start(ppgWindow({ seed: 1 }));
+same('starting: the signal line says it is checking', p.el('camSignal').textContent, T('camSignalChecking'));
+check('…and the line is in view while measuring', p.el('camSignal').hidden === false);
 m.emit('metrics', { showBpm: true, bpm: 71.6, progress: 0.5 });
 same('clean signal: the number shows', bpmShown(), '72');
 check('…with the confidence beside it', p.el('camConf').hidden === false && /^Signal confidence \d+\/100$/.test(p.el('camConf').textContent), p.el('camConf').textContent);
 const conf = +/\d+/.exec(p.el('camConf').textContent)[0];
 same('…the same confidence pulse-quality.js gives', conf, PQ.classify(ppgWindow({ seed: 1 })).confidence);
+same('…the signal line says good', p.el('camSignal').textContent, T('camSignalGood'));
+check('…with a thin bar to the same confidence', p.el('camSignalBar').hidden === false && p.el('camSignalFill').style.width === conf + '%', p.el('camSignalFill').style.width);
 m.emit('metrics', { showBpm: false, bpm: 71.6, progress: 0.5 });
 same('the engine itself not ready: no number', bpmShown(), '—');
 check('…and no confidence', p.el('camConf').hidden === true);
@@ -80,11 +88,11 @@ perfNow += 1001;
 m.emit('metrics', { showBpm: true, bpm: 88, progress: 0.6 });
 same('noisy signal, engine happy: no number', bpmShown(), '—');
 check('…and no confidence', p.el('camConf').hidden === true);
+same('…the signal line says poor, with no bar', [p.el('camSignal').textContent, p.el('camSignalBar').hidden], [T('camSignalPoor'), true]);
 m.emit('quality', { hint: 'good' });
-same('…the hint asks to keep still and cover the camera', p.el('camHint').textContent, T('camQualityHold'));
-same('…the exact words asked for', T('camQualityHold'), 'Keep your finger still and fully cover the camera.');
+same('…one hint says what is wrong: a weak signal', p.el('camHint').textContent, T('camHintWeak'));
 m.emit('quality', { hint: 'press-lighter' });
-same('the engine\'s own hints still win when it has one', p.el('camHint').textContent, T('camLighter'));
+same('…the signal check\'s reason comes before the engine\'s own coaching', p.el('camHint').textContent, T('camHintWeak'));
 
 m.win = ppgWindow({ seed: 3 });
 perfNow += 300;
@@ -93,13 +101,30 @@ same('rated at most once a second: still no number 0.3 s later', bpmShown(), '�
 perfNow += 800;
 m.emit('metrics', { showBpm: true, bpm: 72, progress: 0.7 });
 same('a second later, clean again: the number is back', bpmShown(), '72');
+same('…the signal line says good again', p.el('camSignal').textContent, T('camSignalGood'));
+m.emit('quality', { hint: 'press-lighter' });
+same('a clean signal: the engine\'s own coaching shows', p.el('camHint').textContent, T('camLighter'));
+
+// a poor reading with no single fault the check can name: the fallback line
+m.win = CASES.uneven(3);
+perfNow += 1001;
+m.emit('metrics', { showBpm: true, bpm: 90, progress: 0.8 });
+same('an uneven rhythm the engine did not flag: no number', bpmShown(), '—');
+m.emit('quality', { hint: 'good' });
+same('…the fallback line: keep your finger still and cover the camera', p.el('camHint').textContent, T('camQualityHold'));
+same('…the words themselves', T('camQualityHold'), 'Keep your finger still and fully cover the camera.');
+
+// too short to rate yet (the first 4 seconds): no number, and "checking"
+m = start(ppgWindow({ sec: 3 }));
+m.emit('metrics', { showBpm: true, bpm: 72, progress: 0.1 });
+same('a window too short to rate: no number, and the line says checking', [bpmShown(), p.el('camSignal').textContent], ['—', T('camSignalChecking')]);
 
 section('3. At the end');
 m.win = CASES.motion(4);
 m.emit('complete', result());
 same('engine has a number, quality check says poor: no number', bpmShown(), '—');
-same('…the retry message', p.el('camHint').textContent, T('camQualityRetry'));
-check('…which contains the asked-for words', T('camQualityRetry').includes('Keep your finger still and fully cover the camera.'));
+same('…the hint names the fault: moving, so keep still and rest the hand', p.el('camHint').textContent, T('camRest'));
+same('…the signal line says poor', p.el('camSignal').textContent, T('camSignalPoor'));
 check('…no "Use this reading" button', p.el('camUse').hidden === true);
 check('…"Measure again" instead', p.el('camAgain').hidden === false);
 same('…nothing to use', p.get('camResult'), null);
@@ -109,6 +134,7 @@ m = start(ppgWindow({ seed: 5 }));
 m.emit('complete', result({ bpm: 74 }));
 same('good reading: the number shows', bpmShown(), '74');
 check('…with its confidence', p.el('camConf').hidden === false && /^Signal confidence \d+\/100$/.test(p.el('camConf').textContent));
+same('…the signal line says good', p.el('camSignal').textContent, T('camSignalGood'));
 check('…and can be used', p.el('camUse').hidden === false);
 p.call('usePulseCam');
 same('using it fills in the pulse, as before', p.el('vitalInput').value, 74);
@@ -128,6 +154,7 @@ same('clean pulses in an uneven rhythm (engine says so): the number shows', bpmS
 m = start(CASES.dark(8));
 m.emit('complete', result({ bpm: 60 }));
 same('dark lens: no number', bpmShown(), '—');
+same('…the hint: too dark, so turn the light on', p.el('camHint').textContent, T('camHintDark'));
 
 section('4. The developer switch is hidden');
 p.call('renderDevSettings');
@@ -144,6 +171,23 @@ check('…and how many recordings there are', /Recordings saved: 0/.test(p.el('d
 m = start(ppgWindow({ seed: 9 }));
 m.emit('complete', result());
 check('recording off: no recording box after a reading', p.el('camRec').hidden === true);
+
+section('4b. The hint and signal words, in all three languages');
+{
+  const strings = fs.readFileSync(path.join(__dirname, '..', '..', 'www', 'js', 'strings.js'), 'utf8');
+  // camera lines live in the runtime messages (T[lang].msg) and in T2, as in i18n.test.js
+  const { T: tables, T2: more } = vm.runInContext(strings + '\n;({ T, T2 })', vm.createContext({}));
+  const words = ['camSignalChecking', 'camSignalGood', 'camSignalPoor', 'camHintDark', 'camHintBright', 'camHintPressure', 'camHintWeak',
+    'camCover', 'camRest', 'camQualityHold', 'camPlace', 'camLighter', 'camHold', 'camWeak', 'camGood', 'camFailDisagree', 'camQualityRetry'];
+  const text = (l, k) => [tables[l] && tables[l].msg, more[l], tables[l]].map(t => t && t[k]).find(v => v !== undefined);
+  for (const l of ['en', 'am', 'or']) {
+    const missing = words.filter(k => { const v = text(l, k); return typeof v !== 'string' || !v.trim(); });
+    check(`${l}: every hint and signal line has its words`, !missing.length, missing.join(', '));
+  }
+  const lines = p.get('CAM_SIGNAL_HINT');
+  same('the page names one line for each of the seven hints, in order', PQ.HINTS.map(h => lines[h]),
+    ['camHintDark', 'camCover', 'camHintBright', 'camRest', 'camHintPressure', 'camHintWeak', 'camQualityHold']);
+}
 
 section('5. Recording mode');
 p.call('toggleDevRecording');

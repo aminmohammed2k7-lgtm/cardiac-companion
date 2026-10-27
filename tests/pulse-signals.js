@@ -27,11 +27,13 @@ function rng(seed) {
 //   drift    slow wander of the light, share of the level
 //   motion   [from, to] seconds of jerky movement (sharp swings of 3–8 %)
 //   step     a sudden change of the light level half way (finger pressure)
+//   ramp     the light level climbing across the window, share of the level
+//            (pressure changing slowly, all the way through)
 //   green, blue  their levels (a fingertip lets little through)
 //   clip     share of clipped red pixels reported by the camera
 function ppgWindow(opt) {
   const o = Object.assign({ fs: 30, sec: 8, bpm: 72, rr: null, pulse: true, dc: 180, mod: 0.012, noise: 0.12, drift: 0.02,
-    motion: null, step: 0, green: 30, blue: 20, clip: 0, seed: 1 }, opt);
+    motion: null, step: 0, ramp: 0, green: 30, blue: 20, clip: 0, seed: 1 }, opt);
   const r = rng(o.seed), n = Math.round(o.sec * o.fs);
   const onsets = []; let t = -1.5, k = 0;
   while (t < o.sec + 1) { onsets.push(t); t += o.rr ? o.rr(r, k++) : 60 / o.bpm; }
@@ -50,6 +52,7 @@ function ppgWindow(opt) {
     }
     let dc = o.dc * (1 + o.drift * Math.sin(2 * Math.PI * 0.05 * s + phase));
     if (o.step && s > o.sec / 2) dc *= 1 + o.step;
+    if (o.ramp) dc *= 1 + o.ramp * s / o.sec;
     let x = dc * (1 - o.mod * v) + o.noise * r.gauss();
     for (const j of jerks) x += j.a * Math.exp(-((s - j.t) ** 2) / (2 * j.w * j.w));
     red.push(Math.min(255, Math.max(0, x)));
@@ -65,6 +68,7 @@ const CASES = {
   noise: s => ppgWindow({ pulse: false, noise: 1, seed: s }),
   noisyPulse: s => ppgWindow({ noise: 4, seed: s }),
   motion: s => ppgWindow({ motion: [2 + s % 3, 4.5 + s % 3], seed: s }),
+  pressure: s => ppgWindow({ ramp: 0.3, seed: s }),
   dark: s => ppgWindow({ dc: 6, seed: s }),
   open: s => Object.assign(ppgWindow({ seed: s }), { green: new Array(240).fill(170), blue: new Array(240).fill(160) }),
   saturated: s => Object.assign(ppgWindow({ seed: s }), { red: new Array(240).fill(251), saturation: 0.96 }),

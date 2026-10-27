@@ -4,19 +4,28 @@ The camera pulse (`www/ppg-engine.js`) already refuses readings it cannot
 trust. `www/pulse-quality.js` adds a second, separate check: it rates the
 last 8 seconds of the raw camera signal **good** or **poor**, with a
 confidence from 0 to 100. A poor reading shows no number, during the
-reading or at the end, and the person sees: "Keep your finger still and
-fully cover the camera." It never changes a number; the pulse rate always
-comes from the engine.
+reading or at the end. Beside the reading the person sees a signal line,
+"Signal: good" or "Signal: poor" (with a thin bar for the confidence when it
+is good), and one hint saying what to do next (see "The hints"). It never
+changes a number; the pulse rate always comes from the engine.
 
-Until real recordings exist it uses fixed rules, tuned on synthetic
-signals only. Once a model has been trained from recordings next to a
-pulse oximeter, it uses that instead. Everything stays on the phone.
+**Where this stands.** The rules are fixed thresholds, set by hand on
+synthetic signals only (`tests/pulse-signals.js`). They have **not** been
+trained or validated on real recordings from any phone or any person, so
+nothing here says how often a "good" reading is right. The model in
+`www/pulse-quality-weights.js` is still empty. This is a wellness estimate
+only: not a measurement of the heart, and not a medical device. Everything
+stays on the phone.
+
+Once a model has been trained from recordings next to a pulse oximeter, it
+uses that instead. That needs 40 or more oximeter-paired recordings, at least
+10 good and 10 poor (see `docs/pulse-accuracy-check.md`). There are none yet.
 
 ## Files
 
 | File | What it is |
 |---|---|
-| `www/pulse-quality.js` | Features, the fixed rules, the model, the recording CSV |
+| `www/pulse-quality.js` | Features, the fixed rules, the hints, the model, the recording CSV |
 | `www/pulse-quality-weights.js` | The trained weights. `null` until trained |
 | `tools/train-pulse-quality.js` | Trains the model from recording CSVs (`npm run train:pulse`) |
 | `tests/pulse-quality.test.js` | Features, rules, model and training on synthetic signals |
@@ -41,6 +50,45 @@ From the raw red, green and blue levels (30 a second):
 | `motion` | Tallest 2-second swing over the quieter ones | High: movement |
 
 A dark or open lens is always refused, whatever the model says.
+
+## The hints
+
+Each poor reading gets one hint, from the same features. The first test that
+fits is the one shown, in this order:
+
+| Hint | When | What the person reads |
+|---|---|---|
+| `too-dark` | `redMean` under 25 | Too dark. Turn the light on, or move near a bright window. |
+| `cover-lens` | `redShare` under 0.55 | Cover the whole lens. Part of it is still open. |
+| `too-bright` | `saturation` over 0.85 | Too bright. Press lightly, and move away from strong light. |
+| `moving` | `motion` 3 or more | Keep still, and rest your hand on a table. |
+| `pressure` | `drift` 10 or more | Keep the same pressure: not harder, not softer. |
+| `weak` | `snrDb` under 0, or `perfusion` under 0.03 | Weak signal. Warm your hand, then press lightly. |
+| `unsteady` | none of the above: the beats or the two rates disagree | Keep your finger still and fully cover the camera. |
+
+The light comes first, because a dark or uncovered lens leaves nothing else
+to judge. Most cut-offs are ones the contact check, the reasons and the
+engine already use. The 0 dB for the pulse band is new: the rules count
+that bad at −3 dB and worse. All of them were chosen by hand from synthetic
+signals and have not been checked against real readings. A good reading
+gets no hint.
+
+On the page, while measuring: the engine's "place your finger" message comes
+first, because only the engine knows whether there is contact at all. Then
+this hint. Then the engine's own coaching (press lighter, keep still) when
+the signal check has no reason to refuse. A refused reading at the end shows
+its one hint, and the number is a dash.
+
+The words are in `www/js/strings.js` (`camHint…`, `camCover`, `camRest`,
+`camQualityHold`, `camWeak`). The Amharic and Afaan Oromo are drafts that
+need a native-speaker check (`docs/NEEDS-CLINICAL-REVIEW.md`, item 10).
+
+## The signal line
+
+While measuring it reads "Signal: checking" until a 4-second window can be
+rated. Then it reads "Signal: good", with a thin bar for the 0–100 confidence
+and the number beside it, or "Signal: poor", with no bar and no number. It
+is rated about once a second, from the last 8 seconds.
 
 ## Collecting data
 
@@ -115,8 +163,10 @@ Amin to review. To go back to the rules, set `WEIGHTS` in that file back to
 
 ## Limits
 
-- The rules were tuned on synthetic signals. Real fingers, cameras and
-  patients will differ; that is what the recordings are for.
+- The rules were tuned on synthetic signals and have not been validated on
+  real recordings. Real fingers, cameras and patients will differ; that is
+  what the recordings are for. The hints and the signal line inherit that
+  limit: they say what the features show, not what the heart is doing.
 - Uneven rhythms (atrial fibrillation): when the engine has found clean
   pulses in an uneven rhythm, the check ignores beat spacing and rate
   agreement, and the model is not used. See item 8 in

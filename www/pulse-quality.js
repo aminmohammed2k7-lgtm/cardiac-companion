@@ -42,6 +42,11 @@
  *   agreement, and the model is not used (it may never have seen such a
  *   reading). See docs/NEEDS-CLINICAL-REVIEW.md.
  *
+ * HINTS
+ *   A poor reading also gets one hint, from the same features, saying what
+ *   to do next: too dark, lens not covered, too bright, moving, pressure
+ *   changing, weak signal. See hintFor(). Null for a good reading.
+ *
  * Plain JavaScript, no libraries, nothing sent anywhere. Runs in Node too.
  */
 (function (root, factory) {
@@ -246,18 +251,42 @@
     return 'noisy';
   }
 
+  // ── Hints (what to do next) ─────────────────────────────────────────
+  // One hint for a poor reading, from the same features. The order is the
+  // order of the light: a dark or uncovered lens comes first, because the
+  // rest cannot be judged through it. The cut-offs are the contact limits,
+  // the ones reasonOf uses (motion, drift), the engine's weak-signal limit
+  // (perfusion) and 0 dB for the pulse band (the rules count that bad at
+  // −3 dB and worse, so the hint is the stricter of the two).
+  const HINT_TESTS = [
+    ['too-dark', f => f.redMean < CONTACT_MIN_RED],
+    ['cover-lens', f => f.redShare < CONTACT_MIN_SHARE],
+    ['too-bright', f => f.saturation > SATURATED],
+    ['moving', f => f.motion >= 3],
+    ['pressure', f => f.drift >= 10],
+    ['weak', f => f.snrDb < 0 || f.perfusion < 0.03]
+  ];
+  // 'unsteady' when no single feature is clearly wrong: the beats or the two
+  // rates disagree, which the page words as keep still and cover the lens.
+  function hintFor(f) {
+    for (const [name, wrong] of HINT_TESTS) if (wrong(f)) return name;
+    return 'unsteady';
+  }
+  const HINTS = [...HINT_TESTS.map(t => t[0]), 'unsteady'];
+
   // ── Classify ────────────────────────────────────────────────────────
   // win: as for extract(). opt: { uneven, weights, useModel }.
   // Returns { good, confidence (0–100), method: 'model'|'rules'|'none',
-  //           reason, features, peakBpm, fftBpm }.
+  //           reason, hint ('too-dark'|… , null when good), features,
+  //           peakBpm, fftBpm }.
   function classify(win, opt) {
     const o = opt || {};
     const ex = extract(win);
-    const res = { good: false, confidence: 0, method: 'none', reason: null, features: ex.features, peakBpm: ex.peakBpm, fftBpm: ex.fftBpm };
+    const res = { good: false, confidence: 0, method: 'none', reason: null, hint: null, features: ex.features, peakBpm: ex.peakBpm, fftBpm: ex.fftBpm };
     if (!ex.ok) { res.reason = ex.reason; return res; }
     const f = ex.features;
     // a dark lens or no fingertip: never a reading, whatever a model says
-    if (!(f.redMean >= CONTACT_MIN_RED && f.redShare >= CONTACT_MIN_SHARE)) { res.reason = 'no-finger'; return res; }
+    if (!(f.redMean >= CONTACT_MIN_RED && f.redShare >= CONTACT_MIN_SHARE)) { res.reason = 'no-finger'; res.hint = hintFor(f); return res; }
 
     const w = o.weights !== undefined ? o.weights : getWeights();
     if (o.useModel !== false && !o.uneven && validWeights(w)) {
@@ -266,14 +295,14 @@
       res.method = 'model';
       res.confidence = Math.round(100 * p);
       res.good = p >= thr;
-      if (!res.good) res.reason = reasonOf(f, ruleConfidence(f, false).worst);
+      if (!res.good) { res.reason = reasonOf(f, ruleConfidence(f, false).worst); res.hint = hintFor(f); }
       return res;
     }
     const r = ruleConfidence(f, !!o.uneven);
     res.method = 'rules';
     res.confidence = r.confidence;
     res.good = r.confidence >= RULE_GOOD && f.saturation <= SATURATED;
-    if (!res.good) res.reason = reasonOf(f, r.worst);
+    if (!res.good) { res.reason = reasonOf(f, r.worst); res.hint = hintFor(f); }
     return res;
   }
 
@@ -355,8 +384,8 @@
   const parseSignal = s => String(s || '').trim().split(/\s+/).filter(Boolean).map(Number);
 
   return {
-    FEATURES, MODEL_INPUTS, CSV_COLUMNS, LABEL_TOLERANCE, RULE_GOOD,
-    extract, classify, modelInputs, modelProbability, validWeights, ruleConfidence, activeMethod,
+    FEATURES, MODEL_INPUTS, CSV_COLUMNS, LABEL_TOLERANCE, RULE_GOOD, HINTS,
+    extract, classify, hintFor, modelInputs, modelProbability, validWeights, ruleConfidence, activeMethod,
     labelFor, toCsv, recordingRow, parseCsv, parseSignal
   };
 }));

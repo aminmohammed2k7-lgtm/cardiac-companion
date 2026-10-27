@@ -5,7 +5,8 @@
  * show. These checks feed it synthetic windows with known answers — a clean
  * pulse at many rates, sensor noise, movement, a dark or open lens, a
  * clipped red channel, an uneven rhythm — and check the features, the fixed
- * rules, the trained-model path, the recording CSV and the training script.
+ * rules, the hints, the trained-model path, the recording CSV and the
+ * training script.
  *
  * What synthetic data cannot show: how real fingers, phones and patients
  * behave. That is what the recording mode and tools/train-pulse-quality.js
@@ -289,6 +290,57 @@ section('10. Offline and self-contained');
   check('pulse-quality.js needs only the engine and the weights', reqs.every(r => r === './ppg-engine.js' || r === './pulse-quality-weights.js'), reqs.join(', '));
   const treqs = [...tsrc.matchAll(/require\('([^']+)'\)/g)].map(m => m[1]);
   check('the training script needs only Node and pulse-quality.js', treqs.every(r => ['fs', 'path', '../www/pulse-quality.js'].includes(r)), treqs.join(', '));
+}
+
+section('11. Hints: one reason for each poor reading');
+{
+  check('seven hints, in the order of the light', JSON.stringify(PQ.HINTS) === JSON.stringify(['too-dark', 'cover-lens', 'too-bright', 'moving', 'pressure', 'weak', 'unsteady']), PQ.HINTS.join(', '));
+
+  // each synthetic fault gets the hint for that fault, on every seed
+  const want = { dark: 'too-dark', open: 'cover-lens', saturated: 'too-bright', motion: 'moving', pressure: 'pressure', noise: 'weak', noisyPulse: 'weak' };
+  for (const [name, hint] of Object.entries(want)) {
+    const r = SEEDS.map(s => PQ.classify(CASES[name](s)));
+    check(`30 × ${name}: hint "${hint}"`, r.every(c => !c.good && c.hint === hint), [...new Set(r.map(c => c.hint))].join(', '));
+  }
+  const poorUneven = SEEDS.map(s => PQ.classify(CASES.uneven(s))).filter(c => !c.good);
+  check('uneven pulses the engine did not flag: "unsteady", no single fault', poorUneven.length >= 20 && poorUneven.every(c => c.hint === 'unsteady'), poorUneven.length + ' poor');
+
+  const every = Object.keys(CASES).flatMap(n => SEEDS.map(s => PQ.classify(CASES[n](s))));
+  check('a hint if and only if the reading is poor', every.every(c => c.good === (c.hint === null)));
+  check('every hint is one of the seven', every.every(c => c.hint === null || PQ.HINTS.includes(c.hint)));
+  check('a window too short to rate has no hint', PQ.classify(ppgWindow({ sec: 3 })).hint === null);
+
+  // the light comes first: a dark or open lens that also moves
+  const dimMoving = SEEDS.map(s => PQ.classify(ppgWindow({ dc: 6, motion: [2, 4], seed: s })));
+  check('a dark lens that also moves: "too-dark"', dimMoving.every(c => c.hint === 'too-dark'), [...new Set(dimMoving.map(c => c.hint))].join(', '));
+  const openMoving = SEEDS.map(s => PQ.classify(Object.assign(ppgWindow({ motion: [2, 4], seed: s }), { green: new Array(240).fill(170), blue: new Array(240).fill(160) })));
+  check('an open lens that also moves: "cover-lens"', openMoving.every(c => c.hint === 'cover-lens'), [...new Set(openMoving.map(c => c.hint))].join(', '));
+
+  // each cut-off, exactly at its edge (the features of a clean pulse otherwise)
+  const G = { snrDb: 10, concentration: 0.9, intervalCv: 0.05, bpmDiff: 1, redMean: 180, redShare: 0.78, saturation: 0, perfusion: 1, drift: 2, motion: 1 };
+  const at = (k, v) => PQ.hintFor(Object.assign({}, G, { [k]: v }));
+  check('nothing clearly wrong: "unsteady"', PQ.hintFor(G) === 'unsteady');
+  check('too dark: mean red under 25', at('redMean', 24.9) === 'too-dark' && at('redMean', 25) !== 'too-dark');
+  check('lens not covered: red share under 0.55', at('redShare', 0.54) === 'cover-lens' && at('redShare', 0.55) !== 'cover-lens');
+  check('too bright: clipped share over 0.85', at('saturation', 0.86) === 'too-bright' && at('saturation', 0.85) !== 'too-bright');
+  check('moving: motion of 3 or more', at('motion', 3) === 'moving' && at('motion', 2.9) !== 'moving');
+  check('pressure changing: drift of 10 or more', at('drift', 10) === 'pressure' && at('drift', 9.9) !== 'pressure');
+  check('weak: pulse band under the hiss (SNR under 0 dB)', at('snrDb', -0.1) === 'weak' && at('snrDb', 0) !== 'weak');
+  check('weak: pulse height under 0.03 %', at('perfusion', 0.029) === 'weak' && at('perfusion', 0.03) !== 'weak');
+
+  // several faults at once: the first in the order, then the next
+  const order = [['redMean', 'too-dark', 180], ['redShare', 'cover-lens', 0.78], ['saturation', 'too-bright', 0], ['motion', 'moving', 1], ['drift', 'pressure', 2], ['snrDb', 'weak', 10]];
+  let f = Object.assign({}, G, { redMean: 10, redShare: 0.1, saturation: 0.9, motion: 5, drift: 20, snrDb: -5 });
+  const seen = [];
+  for (const [k, name, fine] of order) { seen.push(PQ.hintFor(f) === name); f = Object.assign({}, f, { [k]: fine }); }
+  check('several faults at once: the first in the order, then the next', seen.every(Boolean), seen.join(' '));
+
+  // a trained model refuses the reading: the hint still comes from the features
+  const model = (bias) => ({ kind: 'logistic', weights: new Array(10).fill(0), mean: new Array(10).fill(0), std: new Array(10).fill(1), bias, threshold: 0.5 });
+  const refused = PQ.classify(CASES.motion(2), { weights: model(-9) });
+  check('a model that refuses: the same hint the features give', refused.method === 'model' && !refused.good && refused.hint === 'moving' && refused.hint === PQ.hintFor(refused.features), refused.hint);
+  const accepted = PQ.classify(CASES.clean(2), { weights: model(9) });
+  check('a model that accepts: no hint', accepted.method === 'model' && accepted.good && accepted.hint === null);
 }
 
 console.log(failures ? `\n${failures} of ${checks} checks failed` : `\nall ${checks} checks passed`);
