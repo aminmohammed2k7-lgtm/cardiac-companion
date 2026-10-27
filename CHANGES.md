@@ -1,6 +1,6 @@
 # Cardiac Companion 4.0 (Android, in progress)
 
-Phase 2 of `docs/claude-code-order.pdf`: the app now runs as an Android app
+Phase 2 of the 4.0 work order: the app now runs as an Android app
 built with Capacitor 8. The web files moved into `www/`; `tools/pulse-lab.html`
 is the developer tool for the camera study and is not shipped. Records and
 health wording are unchanged. **Not for patients yet:** reminders still fire
@@ -95,7 +95,7 @@ made plainer. Nothing medical changed. The full report is
   `docs/demo-build.md` describes the live site.
 - **README:** live demo link and screenshots (`docs/screenshots/`).
 - **Version labels:** 4.0 in `package.json`, the Android `versionName` and
-  the page header. `CLAUDE.md` moved to `.claude/CLAUDE.md`.
+  the page header. `docs/PROJECT-RULES.md` moved to `docs/PROJECT-RULES.md`.
 - **`docs/NEEDS-CLINICAL-REVIEW.md`** lists the disclaimer change of
   13 October and the camera texts for clinical and language review.
 
@@ -170,7 +170,7 @@ with the other unused keys. `docs/MERGE-NOTES.md` asks Amin to confirm that.
 # Cardiac Companion 3.2.2 (web, 5 October 2026)
 
 The first step towards the Android app (version 4.0, see
-`docs/claude-code-order.pdf`). The medical logic now lives in `js/core/`
+the 4.0 work order). The medical logic now lives in `js/core/`
 with automated tests, and three small fixes were made. Records and wording
 are unchanged. Deploy `index.html`, `sw.js`, `ppg-engine.js` and the
 `js/core/` folder together. The service-worker cache is bumped to v7.

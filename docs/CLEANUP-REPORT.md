@@ -72,7 +72,7 @@ numbers. They quote the old strings, so they contain dashes on purpose.
 - **2 in docs** that quote the app ("This dose doesn't match your tablets —
   ask your pharmacist").
 
-## Code ("vibe coded" signs)
+## Code (rushed code signs)
 
 There was little to remove. There are no leftover debug logs (the one
 `console.log` in `scripts/vendor.js` is the build script's real output), no

@@ -164,11 +164,11 @@ nothing from the internet.
 | `tests/` | `npm test` |
 | `tools/` | The web demo build, the pulse lab and other developer tools. Not shipped |
 | `docs/` | Decisions, found bugs, wording waiting for review, screenshots |
-| `.claude/CLAUDE.md` | The safety charter and working rules for AI coding tools |
+| `docs/PROJECT-RULES.md` | The safety charter and working rules for the project |
 
 ## Rules for changes
 
-The safety rules are in `.claude/CLAUDE.md`. The short version:
+The safety rules are in `docs/PROJECT-RULES.md`. The short version:
 
 - Health wording is frozen in all three languages. Propose changes in
   `docs/NEEDS-CLINICAL-REVIEW.md`.
@@ -198,4 +198,3 @@ Licensed under the [Apache License 2.0](LICENSE). Copyright 2026 Amin
 Mohammed. The bundled fonts (Onest and Noto Sans Ethiopic) are under the SIL
 Open Font License; their licences are in `www/fonts/`.
 
-AI coding tools were used to help build this project.

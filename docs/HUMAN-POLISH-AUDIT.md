@@ -8,7 +8,7 @@ Line numbers are for `www/index.html` on this branch unless a file is named.
 
 ## How to read the scores
 
-1 means strong AI or template tells. 5 means clearly human and deliberate.
+1 means strong template tells. 5 means clearly human and deliberate.
 
 | Area | Score |
 |---|---|
@@ -217,7 +217,7 @@ anything else.
   1586 to 1748).
 - **Box-drawing banners.** `═══` banners in CSS and JS (about 80 of them).
   This is a common generated-code look.
-- **No README.** The root has `CHANGES.md` and `CLAUDE.md`, but nothing that
+- **No README.** The root has `CHANGES.md` and `docs/PROJECT-RULES.md`, but nothing that
   tells a reader what the app is and how to run the tests.
 - **Prompt files in the project root.** `cleanup_prompt.txt`,
   `human_polish_prompt.txt`, `polish_full_prompt.txt` and `vibe_research.md`

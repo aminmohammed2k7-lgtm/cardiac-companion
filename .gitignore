@@ -12,3 +12,7 @@ vibe_research.md
 polish_go.txt
 merge_go.txt
 continue_go.txt
+
+# Local tool config
+.claude/
+docs/claude-code-order.pdf

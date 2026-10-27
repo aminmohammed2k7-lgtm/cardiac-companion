@@ -1,10 +1,10 @@
-# Cardiac Companion: rules for Claude Code
+# Cardiac Companion: project rules
 
 ## What this is
 Offline Android app (Capacitor 8, Android only, Google Play only) for heart patients in
 Ethiopia: warfarin and INR, monthly benzathine penicillin, medicines, weight, symptoms,
 warning signs and a visit summary. English, Amharic, Afaan Oromo. Ethiopian and Gregorian
-calendars and clocks. Owner: Amin. Work order: docs/claude-code-order.pdf (phases 0-9).
+calendars and clocks. Owner: Amin. Work order: the 4.0 work order (phases 0-9, kept offline).
 Reference: docs/app-guide.pdf (the v3.2 guide, with a file-by-file line index).
 
 ## Safety charter (never break)

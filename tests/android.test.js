@@ -58,7 +58,7 @@ check('both fonts are in the app, each with its licence',
   exists('www/fonts/onest/OFL.txt') && exists('www/fonts/noto-sans-ethiopic/OFL.txt'), cssUrls.join(', '));
 check('the font stack is unchanged', appCss.includes("--font:'Onest','Noto Sans Ethiopic',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;"));
 
-// CLAUDE.md: from Phase 2, UI code calls www/js/platform/*, never a
+// PROJECT-RULES.md: from Phase 2, UI code calls www/js/platform/*, never a
 // Capacitor plugin directly.
 console.log('\nAndroid only through js/platform/');
 const appCode = [html, ...jsDir('js'), ...jsDir('js/core')].join('\n');

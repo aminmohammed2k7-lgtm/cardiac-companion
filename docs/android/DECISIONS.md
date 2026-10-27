@@ -1,7 +1,7 @@
 # Decisions for Cardiac Companion 4.0
 
 Part A4 of the work order lists the decisions only Amin can make. On 5 October
-2026 Amin asked Claude to choose ("just choose whatever you think is better for
+2026 Amin asked for a choice to be made ("just choose whatever you think is better for
 me"). These are the work order's own recommended defaults unless a reason
 below says otherwise. Every later phase should follow this file, and ask Amin
 before changing any line in it.
@@ -24,7 +24,7 @@ What was decided about each finding, and why, is in `FOUND-BUGS.md` ("Decisions"
 
 ## Still Amin's own jobs (work order A5)
 
-No one else can do these, and Claude must never be given them:
+No one else can do these, and they must never be shared:
 
 - Create the upload signing key and keep two offline copies (Phase 8 gives the exact command).
 - Google Play Console: the account, identity checks, payments and every declaration.

@@ -8,7 +8,7 @@ as the fix.
 
 ## Decisions (5 October 2026)
 
-Amin asked Claude to choose ("just choose whatever you think is better for
+Amin asked for a choice to be made ("just choose whatever you think is better for
 me"). Each choice favours patient safety and changes as little as possible;
 a clinician can revisit any of them.
 

@@ -1,7 +1,7 @@
 # Permissions and backups
 
 What the Android app may do on the phone, and why. Phase 2 of the work order
-(`docs/claude-code-order.pdf`, task 10) and `DECISIONS.md`.
+(4.0 work order, task 10) and `DECISIONS.md`.
 
 ## The app asks for one permission: CAMERA
 
