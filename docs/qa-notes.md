@@ -1,4 +1,4 @@
-# QA Notes — competition build (grok-qa)
+# QA Notes, competition build
 
 Reviewed `www/index.html` and the demo/i18n paths for the competition build.
 

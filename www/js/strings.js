@@ -2,7 +2,7 @@
  * Every word the app shows, in English, Amharic (am) and Afaan Oromo (or),
  * and the Ethiopian month names. Loaded before the app script in index.html.
  *
- * Health wording is frozen in all three languages (CLAUDE.md, rule 4).
+ * Health wording is frozen in all three languages (PROJECT-RULES.md, rule 4).
  * Propose a change in docs/NEEDS-CLINICAL-REVIEW.md instead of editing it.
  * Amharic and Oromo are only changed by a native speaker.
  * tests/i18n.test.js checks that all three languages have every key.

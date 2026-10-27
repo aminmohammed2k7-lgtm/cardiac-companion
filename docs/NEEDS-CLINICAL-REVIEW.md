@@ -377,7 +377,7 @@ The Phase 1 audit listed this as a tell. It was wrong about that.
   browser keessanii keessatti…". It should name the phone's Settings in
   Oromo, like the English proposal above.
 - **"Afaan Oromoo" or "Afaan Oromo".** The language button's spoken label
-  says "Afaan Oromoo". The docs and CLAUDE.md say "Afaan Oromo". A native
+  says "Afaan Oromoo". The docs and PROJECT-RULES.md say "Afaan Oromo". A native
   speaker should pick one, and the app and docs should then use it
   everywhere.
 - **Version 3 strings.** No native speaker review is recorded for `T2.am`

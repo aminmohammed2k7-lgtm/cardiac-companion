@@ -10,7 +10,7 @@ ones are listed under "Tests" below.
 
 ## Scores
 
-1 means strong AI or template tells. 5 means clearly human and deliberate.
+1 means strong template tells. 5 means clearly human and deliberate.
 
 | Area | Before | After | Why it is not higher |
 |---|---|---|---|
@@ -206,7 +206,7 @@ All in `docs/NEEDS-CLINICAL-REVIEW.md`:
 
 - `www/index.html` is still large. A next step would move the reminder,
   PDF and backup code into their own files, the way `js/core` was done.
-  Each move needs its tests first (CLAUDE.md).
+  Each move needs its tests first (PROJECT-RULES.md).
 - `renderAll` (about 150 lines) and `summaryBlocks` (about 142) are still
   long. Splitting them touches the medical display.
 - No "working" message for restore or the calendar file. Both are local and

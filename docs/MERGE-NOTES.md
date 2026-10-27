@@ -17,7 +17,7 @@ the storage format and the signing are unchanged. No keystore or
 1. **Camera pulse in the release build.** The merge instructions said to
    keep "camera pulse off in release builds, no CAMERA permission". But
    `main` records your decision of 15 October 2026 to turn the camera pulse
-   on everywhere: `.claude/CLAUDE.md` rule 7, `docs/android/DECISIONS.md`,
+   on everywhere: `docs/PROJECT-RULES.md` rule 7, `docs/android/DECISIONS.md`,
    the manifest (CAMERA is the only permission), and the tests
    `tests/page/camera-note.test.js` and `tests/android.test.js`. Going back
    to "off" would have removed a feature and meant changing main's tests,
@@ -26,7 +26,7 @@ the storage format and the signing are unchanged. No keystore or
    again, these are the places to change: `camPulseAvailable()` in
    `www/index.html` (the one gate), the CAMERA lines in
    `android/app/src/main/AndroidManifest.xml`, rule 7 in
-   `.claude/CLAUDE.md`, `DECISIONS.md`, `PERMISSIONS.md`, and the camera
+   `docs/PROJECT-RULES.md`, `DECISIONS.md`, `PERMISSIONS.md`, and the camera
    checks in `tests/android.test.js`, `tests/page/android.test.js` and
    `tests/page/camera-note.test.js`.
 2. **Removed wording.** Main's `CHANGES.md` said the words for the removed
@@ -82,7 +82,7 @@ comments next to main's new code, were done by hand.
 | `.gitignore` | Both: main's `dist/` and polish's Android Studio folder and note files, plus `merge_go.txt` and `continue_go.txt` |
 | `www/js/platform/android.js`, `www/js/vendor/*`, `scripts/vendor.js` | Removed. Main's `platform/native.js`, `app.js` and `display.js` do the same jobs. Only two old reports (`docs/CLEANUP-REPORT.md`, `docs/HUMAN-POLISH-AUDIT.md`) still mention them, as history |
 | `www/fonts/*.woff2`, `fonts.css`, `OFL-*.txt` | Removed. Main's TTF fonts with `OFL.txt` beside each are used. The `@font-face` rules are now at the top of `www/css/app.css` (see decision 4) |
-| `CLAUDE.md` | Main moved it to `.claude/CLAUDE.md`. Polish's punctuation edits are kept there. Rule 7 is main's (see decision 1) |
+| `docs/PROJECT-RULES.md` | Main moved it to `docs/PROJECT-RULES.md`. Polish's punctuation edits are kept there. Rule 7 is main's (see decision 1) |
 
 ### The page: `www/index.html`, `www/css/app.css`, `www/js/strings.js`
 

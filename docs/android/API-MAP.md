@@ -1,6 +1,6 @@
 # Browser-only APIs in v3.2 and their Android replacements
 
-Phase 0 of the 4.0 work order (`docs/claude-code-order.pdf`). Every place the
+Phase 0 of the 4.0 work order. Every place the
 v3.2 web app uses something that only a browser provides, what it does for the
 user today, what replaces it in the Android app, and the phase that does it.
 
