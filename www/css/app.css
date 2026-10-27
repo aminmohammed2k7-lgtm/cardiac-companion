@@ -1245,6 +1245,9 @@ a.btn{text-decoration:none;}
 #camWave{width:100%; height:120px; display:block; margin-top:var(--sp-lg);}
 .cam-progress{margin-top:var(--sp-md);}
 .cam-conf{margin-top:var(--sp-sm); font-size:var(--fs-sm); color:var(--ink-3); font-variant-numeric:tabular-nums;}
+/* the signal line: a word, and a thin bar for the 0–100 confidence (good only) */
+.cam-signal{margin-top:var(--sp-md); font-size:var(--fs-sm); font-weight:600; color:var(--ink-1);}
+.cam-signal-bar{height:4px; margin-top:var(--sp-xs);}
 .cam-rec{margin-top:var(--sp-lg); padding-top:var(--sp-md); border-top:1px solid var(--line);}
 .cam-rec .entry-row{margin-top:var(--sp-sm);}
 .cam-hint{min-height:2.9em; margin-top:var(--sp-md); font-size:var(--fs-md); line-height:1.45; color:var(--ink-1);}

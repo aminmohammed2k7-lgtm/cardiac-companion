@@ -11,6 +11,31 @@ Amin turned Vercel deploys on for the competition demo on 13 October 2026,
 and every push to `main` runs `npm run build:web` and publishes `dist/`
 (see `docs/demo-build.md`).
 
+## Pulse hints and signal line (27 October 2026, waiting for Amin's review)
+- **One hint for every poor camera reading** (`hintFor()` in
+  `www/pulse-quality.js`): too dark, lens not covered, too bright, moving,
+  pressure changing, weak signal, or "keep your finger still and fully cover
+  the camera" when no single measure fits. Shown one at a time, while
+  measuring and when a reading is refused, in English, Amharic and Afaan
+  Oromo. The fixed rules are unchanged: the same features, cut-offs and
+  decisions. A hint is words only.
+- **"Signal: good" or "Signal: poor" on the camera screen**, with a thin bar
+  for the 0–100 confidence when the signal is good. A poor reading still
+  shows no number.
+- **What the person sees differently:** a refused reading shows the one hint
+  that fits, where it used to show the same "keep your finger still" line
+  every time. That line is still used when nothing else fits.
+- **Honest status:** the rules are fixed thresholds, tuned on synthetic
+  signals. They have not been trained or validated on real recordings. This
+  is a wellness estimate only. The Amharic and Afaan Oromo texts are drafts
+  that need a native-speaker check (`docs/NEEDS-CLINICAL-REVIEW.md`, item 10).
+- **Tests:** `tests/pulse-quality.test.js` section 11 (each hint on synthetic
+  signals, each cut-off at its edge, the order, the model path);
+  `tests/page/pulse-quality.test.js` (the signal line, the hint on the page,
+  the words in all three languages). `tests/pulse-signals.js` gains a
+  `pressure` case and a `ramp` option.
+- No new permission, dependency, network call or stored data.
+
 ## Human polish (October 2026, merged with main on 26 October 2026)
 The look, the words that are not health wording, and the code layout were
 made plainer. Nothing medical changed. The full report is

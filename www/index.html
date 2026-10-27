@@ -763,6 +763,8 @@
           <span class="cam-unit" data-t="camBpmUnit">beats/min</span>
         </div>
       </div>
+      <p class="cam-signal" id="camSignal" hidden></p>
+      <div class="supply-bar cam-signal-bar" id="camSignalBar" hidden aria-hidden="true"><div class="supply-bar-fill" id="camSignalFill" style="width:0"></div></div>
       <p class="cam-conf" id="camConf" hidden></p>
       <canvas id="camWave" aria-hidden="true"></canvas>
       <div class="supply-bar cam-progress" aria-hidden="true"><div class="supply-bar-fill" id="camProgress" style="width:0"></div></div>
@@ -1666,7 +1668,7 @@ function camPulseAvailable(){
 // Signal quality (pulse-quality.js): a second check on top of the engine's
 // own. A reading it rates poor shows no number, live or at the end. It
 // never changes the number; it only decides whether it is shown.
-let camQualityAt=-Infinity, camQuality=null, camRecording=null;
+let camQualityAt=-Infinity, camQuality=null, camRecording=null, camEngineHint=null;
 function camRate(mon, uneven){
   if(!window.PulseQuality || !mon || !mon.rawWindow) return null;
   try{ return PulseQuality.classify(mon.rawWindow(), {uneven:!!uneven}); }catch(e){ return null; }
@@ -1675,6 +1677,16 @@ function camShowConf(q){
   const el=$('camConf');
   el.hidden=!(q && q.good);
   el.textContent=q && q.good ? L('camConfidence',{n:q.confidence}) : '';
+}
+// The signal line: "Signal: good" with the confidence as a thin bar, or
+// "Signal: poor" with neither bar nor number. Until a 4-second window can be
+// rated (too-short), it says "checking".
+function camShowSignal(q){
+  const rated=!!q && q.reason!=='too-short';
+  const good=rated && q.good;
+  $('camSignal').textContent=L(!rated ? 'camSignalChecking' : good ? 'camSignalGood' : 'camSignalPoor');
+  $('camSignalBar').hidden=!good;
+  $('camSignalFill').style.width=good ? q.confidence+'%' : '0';
 }
 function camFailKey(res){
   const h=res&&res.hint, w=res&&res.withhold;
@@ -1686,11 +1698,32 @@ function camFailKey(res){
   if(w==='quality') return 'camLowQuality';
   return 'camNoReading';
 }
+// One hint at a time, in the order the reason is known: the engine's "no
+// finger" first, then the signal check's reason for a poor reading (every poor
+// reading has one), then the engine's own coaching.
+const CAM_ENGINE_HINT={'press-lighter':'camLighter','hold-still':'camHold','rest-hand':'camRest','cover-lens':'camCover','weak-signal':'camWeak','rate-disagree':'camFailDisagree',good:'camGood'};
+// The signal check's hints (hintFor in pulse-quality.js), in plain words.
+const CAM_SIGNAL_HINT={'too-dark':'camHintDark','cover-lens':'camCover','too-bright':'camHintBright','moving':'camRest','pressure':'camHintPressure','weak':'camHintWeak','unsteady':'camQualityHold'};
+function camHintKey(){
+  if(camEngineHint==='place-finger') return 'camPlace';
+  if(camQuality && !camQuality.good && CAM_SIGNAL_HINT[camQuality.hint]) return CAM_SIGNAL_HINT[camQuality.hint];
+  return CAM_ENGINE_HINT[camEngineHint] || null;
+}
+function camShowHint(mon){
+  const k=camHintKey();
+  if(k && mon.state!=='complete') $('camHint').textContent=L(k);
+}
+// The line for a refused reading: the signal check's reason, else the engine's message.
+function camRefusedKey(res, q){
+  if(q && !q.good && CAM_SIGNAL_HINT[q.hint]) return CAM_SIGNAL_HINT[q.hint];
+  return res.ok ? 'camQualityRetry' : camFailKey(res);
+}
 function openPulseCam(){
   if(!camPulseAvailable()) return;
   camResult=null; camFailed=false; $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true;
   $('camStart').hidden=false; $('camBpm').textContent='—'; $('camProgress').style.width='0';
   $('camHint').textContent=''; $('camNoLight').hidden=true;
+  camQuality=null; camEngineHint=null; $('camSignal').hidden=true;
   camShowConf(null); camRecording=null; $('camRec').hidden=true;
   const wv=$('camWave'); wv.getContext('2d').clearRect(0,0,wv.width,wv.height);   // no wave left over from the last reading
   openPanel('pulsePanel');
@@ -1708,7 +1741,7 @@ async function startPulseCam(){
   camResult=null; camFailed=false; camWaveData=null;
   $('camResult').hidden=true; $('camUse').hidden=true; $('camAgain').hidden=true; $('camStart').hidden=true;
   $('camBpm').textContent='—'; $('camProgress').style.width='0';
-  camQualityAt=-Infinity; camQuality=null; camShowConf(null); camRecording=null; $('camRec').hidden=true;
+  camQualityAt=-Infinity; camQuality=null; camEngineHint=null; camShowConf(null); camShowSignal(null); $('camSignal').hidden=false; camRecording=null; $('camRec').hidden=true;
   const mon=new PPG.PulseMonitor({video:$('camVideo'), durationSec:60});
   camMon=mon;
   mon.on('camera', c=>{ $('camNoLight').hidden=!!c.torch; });
@@ -1721,39 +1754,33 @@ async function startPulseCam(){
       if(!camResult && !camFailed) $('camStart').hidden=false;
     }
   });
-  mon.on('quality', q=>{
-    let k={'place-finger':'camPlace','press-lighter':'camLighter','hold-still':'camHold','rest-hand':'camRest','cover-lens':'camCover','weak-signal':'camWeak','rate-disagree':'camFailDisagree',good:'camGood'}[q.hint];
-    // the engine is happy but the quality check is not: say what to do
-    if(k==='camGood' && camQuality && !camQuality.good) k='camQualityHold';
-    if(k && mon.state!=='complete') $('camHint').textContent=L(k);
-  });
+  mon.on('quality', q=>{ camEngineHint=q.hint; camShowHint(mon); });
   mon.on('wave', w=>{ camWaveData=w; camWaveAt=performance.now(); });
   mon.on('metrics', m=>{
+    // rate the last seconds about once a second, whether or not a number is
+    // due, so the hint and the signal line follow the camera
+    const now=performance.now();
+    if(now-camQualityAt>=1000){ camQualityAt=now; camQuality=camRate(mon, m.unevenBeats); camShowSignal(camQuality); camShowHint(mon); }
+    // the number shows only while the signal is rated good, with the confidence beside it
     let show=!!(m.showBpm && m.bpm);
-    if(show){
-      // rate the last seconds at most once a second; the number shows only
-      // while they are rated good, with the confidence beside it
-      const now=performance.now();
-      if(now-camQualityAt>=1000){ camQualityAt=now; camQuality=camRate(mon, m.unevenBeats); }
-      if(camQuality && !camQuality.good) show=false;
-    }
+    if(show && camQuality && !camQuality.good) show=false;
     $('camBpm').textContent = show ? Math.round(m.bpm) : '—';
     camShowConf(show ? camQuality : null);
     $('camProgress').style.width=((m.progress||0)*100)+'%';
   });
-  mon.on('error', e=>{ $('camHint').textContent=L(e.code==='permission-denied'?'camDenied':'camError'); $('camStart').hidden=false; $('camAgain').hidden=true; });
+  mon.on('error', e=>{ $('camHint').textContent=L(e.code==='permission-denied'?'camDenied':'camError'); $('camSignal').hidden=true; $('camStart').hidden=false; $('camAgain').hidden=true; });
   mon.on('complete', res=>{
     // the raw window is read now, while the engine still holds it
     const q=camRate(mon, res.unevenBeats);
     if(devRecordingOn()) prepareRecording(mon, res, q);
     if(!res.ok || (q && !q.good)){
       camFailed=true; camResult=null;
-      $('camBpm').textContent='—'; camShowConf(null);
-      $('camHint').textContent=L(res.ok ? 'camQualityRetry' : camFailKey(res));
+      $('camBpm').textContent='—'; camShowConf(null); if(q) camShowSignal(q);
+      $('camHint').textContent=L(camRefusedKey(res, q));
       $('camResult').hidden=true; $('camUse').hidden=true; $('camStart').hidden=true; $('camAgain').hidden=false;
       return;
     }
-    camFailed=false; camResult=res; renderPulseCamResult(res); camShowConf(q);
+    camFailed=false; camResult=res; renderPulseCamResult(res); camShowConf(q); if(q) camShowSignal(q);
   });
   camDraw();
   await mon.start();

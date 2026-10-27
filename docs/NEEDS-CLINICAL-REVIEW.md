@@ -5,7 +5,7 @@ Afaan Oromo. A change is proposed here and waits for Amin, who agrees it
 with a clinician before any real patient uses the app. Nothing in this file
 changes the app by itself.
 
-This file has two parts. Items 1 to 9 came with the camera pulse, the demo
+This file has two parts. Items 1 to 10 came with the camera pulse, the demo
 and the merge. Sections P1 to P4 came from the cleanup and human polish
 passes (their reports call them sections 1 to 4).
 
@@ -26,6 +26,7 @@ live in `www/js/strings.js`; the key names let anyone find them there.
 | 7 | Camera coaching lines (how to place the finger) | **Drafts, need a native-speaker check** (not a diagnosis) |
 | 8 | Camera pulse signal-quality check: confidence and retry lines, developer recording mode | **In main since 21 October 2026, wording still waiting for Amin** (Amharic and Afaan Oromo are drafts) |
 | 9 | Camera texts found while merging: two dashes, and "browser" in the camera permission message | **Proposed, not changed** |
+| 10 | Camera hints (one per poor reading) and the "Signal: good / poor" line | **In the app, waiting for Amin's review**; Amharic and Afaan Oromo are drafts, **not verified** |
 
 ## 1. Disclaimers mention the camera pulse
 
@@ -240,6 +241,41 @@ Amin.
 
 `devRecCheckRef` ("30–250") keeps its en dash: it marks a range, like the
 INR ranges in P1.
+
+## 10. Camera hints and the "Signal: good / poor" line (27 October 2026)
+
+- **Proposed in:** the pull request from branch `claude/pulse-quality-finish`
+  (October 2026). Not yet reviewed by Amin, and not merged.
+- **What it does:** each poor camera reading gets one line of advice (what
+  to do next, from the camera signal alone), and the camera screen shows
+  "Signal: good" or "Signal: poor". No number changes. A poor reading still
+  shows no number. The line for a reading whose fault no single measure
+  names is the existing "keep your finger still" line (item 8).
+- **Not changed:** `camNotDevice`, the warning signs, both disclaimers, and
+  the HRV and uneven-rhythm lines.
+- **Please check:**
+  1. the English lines are plain, and none of them diagnoses or suggests a
+     medical action;
+  2. "Signal: poor" is not read as a verdict on the heart. It says only that
+     the camera signal was not clean enough to show a number;
+  3. "Warm your hand" (`camHintWeak`): is that a safe, plain tip for every
+     person who uses the app? It is a tip for the camera signal, not for the
+     heart;
+  4. **the Amharic and Afaan Oromo are drafts.** They need a native speaker to
+     check the meaning, not only the spelling. Nothing here is verified.
+
+| Key | English | Amharic (draft) | Afaan Oromo (draft) |
+|---|---|---|---|
+| `camSignalChecking` | Signal: checking… | ምልክት፦ በመፈተሽ ላይ… | Mallattoo: ilaalamaa jira… |
+| `camSignalGood` | Signal: good | ምልክት፦ ጥሩ | Mallattoo: gaarii |
+| `camSignalPoor` | Signal: poor | ምልክት፦ ደካማ | Mallattoo: hin gaarii |
+| `camHintDark` | Too dark. Turn the light on, or move near a bright window. | ጨለማ ነው። መብራቱን ያብሩ፣ ወይም ደማቅ መስኮት አጠገብ ይቁሙ። | Dukkana dha. Ifa banaa, ykn foddaa ifaa bira dhiyaadhu. |
+| `camHintBright` | Too bright. Press lightly, and move away from strong light. | ብርሃኑ በጣም ጠንካራ ነው። ቀስ ይጫኑ፣ ከጠንካራ ብርሃን ይራቁ። | Ifni baay'ee cimaa dha. Suuta dhiibaa, ifa cimaa irraa fagaadhu. |
+| `camHintPressure` | Keep the same pressure: not harder, not softer. | ተመሳሳይ ግፊት ይያዙ። ከዚህ በላይ አጥብቀው አይጫኑ ወይም አይልቀቁ። | Dhiibbaa wal fakkaatu itti fufi. Hin cimsin, hin laafin. |
+| `camHintWeak` | Weak signal. Warm your hand, then press lightly. | ምልክቱ ደካማ ነው። እጅዎን ያሙቁ፣ ከዚያ ቀስ ይጫኑ። | Mallattoon laafaa dha. Harka keessan ho'isaa, suuta dhiibaa. |
+
+The other lines the hints use already existed (`camCover`, `camRest`,
+`camQualityHold`, `camWeak`, `camPlace`) and are in items 7 and 8.
 
 
 ## Part two: cleanup and human polish
