@@ -1,5 +1,5 @@
 /*
- * health.js — the weight, mood and severe-symptom rules
+ * health.js: the weight, mood and severe-symptom rules
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.health)
@@ -17,13 +17,11 @@
   'use strict';
   const { todayKey, isDateKey, addDays, daysBetween } = calendar;
 
-  // ═══════════════════════════════════════════
-  // WEIGHT
+  // ---- Weight ----
   // Rising weight over a few days is the classic sign of fluid building up in
   // heart failure, and the one thing a bathroom scale can catch early. The
   // newest weight is compared with each of the three days before it; a rise
   // of 2 kg or more is reported, and the app points to the clinician.
-  // ═══════════════════════════════════════════
   function weightGain(weightLog){
     const keys=Object.keys(weightLog).filter(isDateKey).sort();
     if(!keys.length) return null;
@@ -50,19 +48,15 @@
     return {diff, steady:Math.abs(diff)<1};
   }
 
-  // ═══════════════════════════════════════════
-  // WARNING SIGNS
+  // ---- Warning signs ----
   // Ten fixed signs in two levels: get medical help now, or call the clinic
   // today. Their wording (flag_<code> in index.html) follows standard
-  // warfarin and RHD patient leaflets. It is fixed text — have your clinic
+  // warfarin and RHD patient leaflets. It is fixed text. Have your clinic
   // confirm it before release.
-  // ═══════════════════════════════════════════
   const FLAGS_NOW=['bleedStool','bleedVomit','bleedUrine','bleedStop','stroke','faint','chest'];
   const FLAGS_TODAY=['throat','bruise','breathFlat'];
 
-  // ═══════════════════════════════════════════
-  // SYMPTOMS AND MOOD
-  // ═══════════════════════════════════════════
+  // ---- Symptoms and mood ----
   // Chest pain (std-0) or shortness of breath (std-1) rated 7/10 or more
   // shows the warning-sign note under the symptom.
   function isSevereSymptom(x){ return (x.id==='std-0'||x.id==='std-1') && x.sev>=7; }

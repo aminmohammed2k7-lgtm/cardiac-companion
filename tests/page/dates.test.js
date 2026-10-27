@@ -1,5 +1,5 @@
 /*
- * Dates and times in words — run with:  node tests/page/dates.test.js
+ * Dates and times in words. Run with:  node tests/page/dates.test.js
  *
  * The rules from the guide's "Calendars, clocks and fasting seasons": dates
  * people act on are shown in both calendars ("Tikimt 12 · 22 Oct"), lists use

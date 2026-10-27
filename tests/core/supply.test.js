@@ -1,5 +1,5 @@
 /*
- * Supply — run with:  node tests/core/supply.test.js
+ * Supply. Run with:  node tests/core/supply.test.js
  *
  * Tablets left, counted in tablets with halves and quarters included; how
  * many days that lasts on each schedule; the "running low" and "run out"

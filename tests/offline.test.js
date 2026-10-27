@@ -1,13 +1,14 @@
 /*
- * The app works with no network — run with:  node tests/offline.test.js
+ * The app works with no network. Run with:  node tests/offline.test.js
  *
  * In the Android app every file comes from inside the APK (Capacitor serves
  * www/ from the phone itself), so the app must work in airplane mode from the
  * very first launch. Until Phase 2 the web version's service worker (sw.js)
  * did this job by caching the page; the app has no service worker.
  *
- * This fails if www/index.html loads a local file that isn't in www/, loads
- * anything from the internet, or if a bundled font has lost its licence.
+ * This fails if www/index.html or its stylesheet (www/css/app.css) loads a
+ * local file that isn't in www/, loads anything from the internet, or if a
+ * bundled font has lost its licence.
  * Exit code 1 if any check fails.
  */
 'use strict';
@@ -16,6 +17,7 @@ const path = require('path');
 
 const www = path.join(__dirname, '..', 'www');
 const html = fs.readFileSync(path.join(www, 'index.html'), 'utf8');
+const css = fs.readFileSync(path.join(www, 'css', 'app.css'), 'utf8');
 
 let failures = 0, checks = 0;
 function check(name, ok, detail) {
@@ -27,19 +29,23 @@ function check(name, ok, detail) {
 const isLocal = u => !/^(https?:|data:|blob:|#)/.test(u);
 const scripts = [...html.matchAll(/<script src="([^"]+)"/g)].map(m => m[1]);
 const links = [...html.matchAll(/<link [^>]*href="([^"]+)"/g)].map(m => m[1]);
-const urls = [...html.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)].map(m => m[1]);
+// url() in the stylesheet is relative to css/, so it is written from www/ here
+const urlsIn = (src, dir) => [...src.matchAll(/url\(\s*['"]?([^'")]+)['"]?\s*\)/g)].map(m => m[1])
+  .map(u => isLocal(u) ? path.posix.join(dir, u) : u);
+const urls = [...urlsIn(html, '.'), ...urlsIn(css, 'css')];
 const local = [...scripts, ...links, ...urls].filter(isLocal);
 
 check('index.html loads local scripts', scripts.filter(isLocal).length > 0, scripts.filter(isLocal).length + ' files');
 const missing = local.filter(f => !fs.existsSync(path.join(www, f)));
-check('every local file index.html loads is in www/', !missing.length, missing.join(', '));
+check('every local file the page and its stylesheet load is in www/', !missing.length, missing.join(', '));
 
 // Nothing from the network (safety charter rule 3: no remote code or fonts).
 // The SVG namespace "http://www.w3.org/2000/svg" inside data: icons is a
 // name, not a download, so only real loads are looked for.
 const remote = [...scripts, ...links, ...urls].filter(u => /^https?:/.test(u));
-check('index.html loads nothing from the network', !remote.length, remote.join(', '));
-const code = ['index.html', 'ppg-engine.js', 'pulse-quality.js', 'pulse-quality-weights.js', 'js/secure.js', ...fs.readdirSync(path.join(www, 'js', 'core')).map(f => 'js/core/' + f)]
+check('the page and its stylesheet load nothing from the network', !remote.length, remote.join(', '));
+const code = ['index.html', 'css/app.css', 'ppg-engine.js', 'pulse-quality.js', 'pulse-quality-weights.js', 'js/secure.js', 'js/strings.js', 'js/demo.js',
+  ...['core', 'platform'].flatMap(d => fs.readdirSync(path.join(www, 'js', d)).map(f => 'js/' + d + '/' + f))]
   .map(f => [f, fs.readFileSync(path.join(www, f), 'utf8')]);
 const netApi = /\bfetch\(|XMLHttpRequest|WebSocket|sendBeacon|EventSource|@import/;
 const calls = code.filter(([, src]) => netApi.test(src)).map(([f]) => f);

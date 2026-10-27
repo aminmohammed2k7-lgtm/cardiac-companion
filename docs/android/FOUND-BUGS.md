@@ -14,13 +14,13 @@ a clinician can revisit any of them.
 
 | # | Finding | Decision |
 |---|---|---|
-| 1 | Ethiopian date a day ahead from 11 Sep 2099 | **No change.** No effect for 70 years; pinned by a test |
+| 1 | Ethiopian date a day ahead from 11 Sep 2099 | **No change.** No effect for 70 years. Pinned by a test |
 | 2 | After 400+ days away, the newest days got no dose list | **Fixed:** the most recent 400 days are planned |
 | 3 | Weekly tablet total rounded to a quarter (charter rule 1) | **Fixed:** tablets a week only when every day is an exact quarter tablet, otherwise mg only. The supply part is **kept on purpose** |
 | 4 | Unused palpitations entry | **Closed:** the guide confirms today's rule |
 | 5 | A dose first seen 3 h 1 min late is announced 30 s later | **Left for Phase 4,** which replaces this engine and follows the guide's wording |
-| 6 | Moving a time could put a "taken" mark on the wrong dose | **Fixed:** a kept time keeps its mark; only moved times carry one |
-| 7 | Changing the window resets "running low" but not "run out" | **No change:** the code is sensible; the guide's wording is broader than it needs to be |
+| 6 | Moving a time could put a "taken" mark on the wrong dose | **Fixed:** a kept time keeps its mark. Only moved times carry one |
+| 7 | Changing the window resets "running low" but not "run out" | **No change:** the code is sensible. The guide's wording is broader than it needs to be |
 
 ---
 
@@ -103,7 +103,7 @@ Found in Phase 1 (October 2026), while writing tests for v3.2's logic.
   otherwise show mg only. Decide how supply should count such days.
 - **Decision: fixed for the weekly total.** `weeklyTabs()` in
   `js/core/warfarin.js` gives a tablet count only when every day's dose is an
-  exact whole, half or quarter tablet; otherwise the card shows "Weekly total
+  exact whole, half or quarter tablet. Otherwise the card shows "Weekly total
   33 mg" alone, with no rounded figure. **The supply part is kept on purpose:**
   the app never guesses how a dose its tablets can't make was taken, so it
   takes nothing off, and that day already says "This dose doesn't match your
@@ -175,9 +175,9 @@ inside index.html, against the app guide.
   same, because one mark moved and none was lost.
 - **How much it matters:** medium. It needs a time edit on a day doses are
   already marked, with the order of the times changing. A double dose is the
-  risk; for warfarin, though, times are set separately and this does not apply.
+  risk. For warfarin, though, times are set separately and this does not apply.
 - **Options:** carry a mark only when exactly one time changed, from that old
-  time to its new time; otherwise keep marks on the times that didn't change.
+  time to its new time. Otherwise keep marks on the times that didn't change.
   For Amin to decide.
 - **Decision: fixed.** `carryMarkedDoses()` now leaves a mark on a time that
   was kept, and pairs only the times taken out with the times put in,
@@ -206,3 +206,34 @@ inside index.html, against the app guide.
   lets 'running low' come again" in its next edition.
 - **Tests:** `tests/core/supply.test.js` and `tests/page/rules.test.js`,
   "known: 'run out' is not reset".
+
+---
+
+Found in the human polish pass (October 2026), while checking error states.
+Not fixed: it is about storage (charter rules 5 and 8), so Amin decides.
+
+## 8. A record that cannot be read is replaced by an empty one
+
+- **Where:** `readState()` and `loadActive()` in index.html.
+- **What happens:** if the saved record for a person cannot be read (the
+  text is cut off or damaged), `JSON.parse` fails, `readState()` returns
+  `null` and `loadActive()` starts a new empty record. Nothing is shown. The
+  next `save()` (any tap that saves) writes the empty record over the
+  damaged one.
+- **How likely:** low. The record is written in one call, so it should only
+  be damaged by a storage fault or a phone that loses power mid-write.
+- **How much it matters:** high when it happens. The person sees an empty
+  app, and whatever could have been recovered from the damaged text is
+  gone. A backup file is the only way back.
+- **Options:**
+  1. Before starting fresh, copy the damaged text to a separate key (for
+     example `cc-state-v3:<id>:damaged`) so it is never overwritten, and
+     show a message that says the record could not be read and to restore
+     the last backup.
+  2. Option 1, plus a way to send the damaged text to a family member with
+     the share sheet so someone can try to recover it.
+  Either way it needs a test of the copy and of the message, and a lossless
+  path (charter rule 5).
+- **Decision:** waiting for Amin.
+- **Tests:** `tests/page/records.test.js` section 6, "known: the app starts
+  an empty record" and "known: the next save writes over the damaged one".

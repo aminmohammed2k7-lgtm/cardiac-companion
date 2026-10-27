@@ -1,4 +1,4 @@
-# Cardiac Companion — version 4.0 (Android, in progress)
+# Cardiac Companion 4.0 (Android, in progress)
 
 Phase 2 of `docs/claude-code-order.pdf`: the app now runs as an Android app
 built with Capacitor 8. The web files moved into `www/`; `tools/pulse-lab.html`
@@ -6,10 +6,37 @@ is the developer tool for the camera study and is not shipped. Records and
 health wording are unchanged. **Not for patients yet:** reminders still fire
 only while the app is open (Phase 4), and exports wait for Phase 5.
 
-The website (cardiac-companion.vercel.app) is built from these pages:
+The website (cardiac-companion.vercel.app) is built from these pages.
 Amin turned Vercel deploys on for the competition demo on 13 October 2026,
 and every push to `main` runs `npm run build:web` and publishes `dist/`
 (see `docs/demo-build.md`).
+
+## Human polish (October 2026, merged with main on 26 October 2026)
+The look, the words that are not health wording, and the code layout were
+made plainer. Nothing medical changed. The full report is
+`docs/HUMAN-POLISH-FINAL.md`, and how it was merged with main is in
+`docs/MERGE-NOTES.md`.
+- **One set of design tokens** (`www/css/app.css`, reasons in
+  `docs/DESIGN-DECISIONS.md`): seven type sizes, one spacing scale, one 8px
+  corner radius, and field and text contrast made for bright sun.
+  `tests/look.test.js` keeps every rule on them. The demo banner, welcome
+  screen, PIN lock and guided tour from main use the same tokens.
+- **The stylesheet and the strings moved out of `index.html`**, into
+  `www/css/app.css` and `www/js/strings.js`.
+- **A question box in the app's own language** replaces the browser's
+  `confirm()` and `prompt()`, including the four questions main added
+  (delete pulse recordings, exit demo, restore a backup, clear all data).
+  Back and Escape answer No, and focus starts on the safe answer.
+- **Language** in the header is one 44px control that opens the phone's own
+  list. The welcome screen keeps its three language buttons.
+- **Plain English** for buttons, empty lists and messages that are not
+  health wording (12 strings, listed in `docs/NEEDS-CLINICAL-REVIEW.md`
+  section 4a), plain punctuation in the docs and comments, and plain section
+  comments instead of box-drawing banners.
+- **Unused strings and styles removed.** 38 keys that nothing showed any
+  more left all three languages.
+- **Found bug 8** (a damaged record is replaced by an empty one) is logged in
+  `docs/android/FOUND-BUGS.md` and waits for Amin.
 
 ## Pulse signal-quality model (October 2026, waiting for Amin's review)
 - **Second check on every camera reading** (`www/pulse-quality.js`): rates
@@ -21,7 +48,7 @@ and every push to `main` runs `npm run build:web` and publishes `dist/`
   model trained by `tools/train-pulse-quality.js` (`npm run train:pulse`)
   from readings recorded next to a pulse oximeter. Weights live in
   `www/pulse-quality-weights.js` (empty for now).
-- **Hidden recording mode** (Settings → tap "About" seven times): saves
+- **Hidden recording mode** (Settings, then tap "About" seven times): saves
   each reading's raw signal with the oximeter's number, exports a CSV.
   Stored apart from anyone's record. How to use it:
   `docs/pulse-quality-model.md`.
@@ -40,8 +67,8 @@ and every push to `main` runs `npm run build:web` and publishes `dist/`
 - **First screen** says who the app is for (young people in Ethiopia with
   rheumatic heart disease, and their families), that it works offline and
   sends nothing, and that it comes in three languages with the Ethiopian
-  calendar. The language buttons are on it too. The pills now follow their
-  own `data-lang`, not their position, since there are two sets.
+  calendar. The language buttons are on it too. The buttons follow their
+  own `data-lang`, not their position.
 - **Sample banner** introduces Hana (made up, 19, Addis Ababa, monthly
   penicillin and warfarin) and has a "Take the tour" button. On a phone the
   buttons go under the words, which fixes the narrow Afaan Oromo column.
@@ -53,7 +80,7 @@ and every push to `main` runs `npm run build:web` and publishes `dist/`
   to the sample (it stays on the phone; Exit demo returns to it), and the
   untapped Taken button is no longer filled green, here or for real records.
 - No health or warning wording changed. New Amharic and Afaan Oromo text is
-  listed in `docs/NEEDS-CLINICAL-REVIEW.md` (items 4–6) for checking.
+  listed in `docs/NEEDS-CLINICAL-REVIEW.md` (items 4 to 6) for checking.
 
 ## Competition clean-up (15 October 2026)
 - **Camera pulse is on everywhere** (Amin's decision, `docs/android/DECISIONS.md`):
@@ -85,8 +112,26 @@ and every push to `main` runs `npm run build:web` and publishes `dist/`
 - **Google Fonts.** Onest and Noto Sans Ethiopic are bundled in `www/fonts/`
   with their OFL licences, so nothing is loaded from the internet.
 
-The words for the removed rows and toasts stay in all three languages for
-now; removing wording goes through Amin.
+The words for these removed rows and toasts were kept at first, because
+removing wording goes through Amin. The human polish pass then removed them
+with the other unused keys. `docs/MERGE-NOTES.md` asks Amin to confirm that.
+
+## Android
+- **Android's back button** closes the top panel, then a form that is open
+  (as its own Cancel button would), then goes back to Today, and only then
+  leaves the app (`tests/page/back.test.js`).
+- **Android's font size**: the app's text no longer grows by itself (that
+  broke the layout). Instead, on the very first launch, a large Android font
+  size (1.15 or more) switches on the app's own Large text, which the person
+  can change in Settings as before.
+- **Edge to edge**: the header, the tab bar and the panels keep clear of
+  the status bar, the navigation bar and camera cut-outs, in light and dark
+  themes. The bar icons follow the theme.
+- **Privacy in the manifest**: no cloud backup and no device-transfer copy,
+  and no INTERNET permission. CAMERA is the only permission. See
+  `docs/android/PERMISSIONS.md`.
+- `.github/workflows/android.yml`: on every push, the tests run and a debug
+  APK is built and kept as a download.
 
 ## Icons
 - The launcher icon, a themed icon for Android 13 and later, a white
@@ -122,34 +167,35 @@ now; removing wording goes through Amin.
 - Tests: `tests/secure.test.js` and `tests/page/security.test.js`.
 - `README.md` and `LICENSE` (Apache-2.0, as chosen in `docs/android/DECISIONS.md`).
 
-# Cardiac Companion — version 3.2.2 (web, 5 October 2026)
+# Cardiac Companion 3.2.2 (web, 5 October 2026)
 
 The first step towards the Android app (version 4.0, see
 `docs/claude-code-order.pdf`). The medical logic now lives in `js/core/`
 with automated tests, and three small fixes were made. Records and wording
 are unchanged. Deploy `index.html`, `sw.js`, `ppg-engine.js` and the
-`js/core/` folder together; the service-worker cache is bumped to v7.
+`js/core/` folder together. The service-worker cache is bumped to v7.
 
 ## Fixed
 - **Moving a medicine's time** no longer moves today's "taken" mark onto
   another dose. With doses at 08:00 and 20:00 and the 08:00 one taken,
   moving 20:00 to 07:00 used to show 07:00 as taken and 08:00 as not.
 - **Tablets a week** on the warfarin card are shown only when every day's
-  dose is an exact whole, half or quarter tablet; otherwise only the mg
-  total. A week with one 3 mg day on 5 mg tablets used to say "6½ tablets a
-  week" for 6.6 — a rounded figure the app must never show.
+  dose is an exact whole, half or quarter tablet. Otherwise only the mg
+  total is shown. A week with one 3 mg day on 5 mg tablets used to say
+  "6½ tablets a week" for 6.6, which is a rounded figure the app must never
+  show.
 - **After more than 400 days away**, the most recent missed days get their
   dose lists (it used to be the oldest), so "This week" and the visit
   summary count unmarked doses as "not recorded" again.
 
 ## Added
 - `npm test` runs every check: the calendars against an independent method
-  for every day 1901–2099, every rule in the app guide's "Features and
-  logic", all three languages, and the earlier design and camera tests.
+  for every day from 1901 to 2099, every rule in the app guide's "Features
+  and logic", all three languages, and the earlier design and camera tests.
 - `docs/android/`: the API map, the v3.2 baseline, the suspected bugs and
   what was decided (`FOUND-BUGS.md`), and which test covers which rule.
 
-# Cardiac Companion — version 3.2
+# Cardiac Companion 3.2
 
 A plainer look, so the app reads like a medical record rather than an app
 template. Copy `index.html` and `sw.js` over the old ones and deploy
@@ -158,23 +204,23 @@ Records, features and wording are unchanged apart from the notes below.
 
 ## Changed
 - **Flat and plain throughout.** White cards with a 1px border instead of
-  floating rounded panels; buttons, fields and chips are rounded rectangles
-  (8px) instead of pills and circles; no shadows, inset "3D" button edges,
+  floating rounded panels. Buttons, fields and chips are rounded rectangles
+  (8px) instead of pills and circles. No shadows, inset "3D" button edges,
   glows or coloured dots. The rules are in the comment at the top of the
   stylesheet.
 - **Nothing moves.** No fade-in on opening, no sliding panels, no buttons
   that shrink or sink when pressed. Colours change quickly instead.
 - **Warfarin card** is an ordinary card now, not a dark green block. The
   dose is still the biggest number on the page (56px instead of 80px).
-- **Quieter labels.** Counts ("0/3", the weekday) are plain text; only
+- **Quieter labels.** Counts ("0/3", the weekday) are plain text. Only
   states (taken, missed, below / in / above range) are outlined tags.
   Headings are lighter (no extra-bold), and the one-line subtitles under
   each page title are gone.
 - **Drawn marks instead of characters.** INR results use drawn arrows and
-  a tick (with the status in words for screen readers), "What this week
-  shows" uses an info, alert or tick mark instead of a dot, the warning-sign
+  a tick (with the status in words for screen readers). "What this week
+  shows" uses an info, alert or tick mark instead of a dot. The warning-sign
   buttons end in a drawn arrow, and the ✓ and × characters are drawn icons.
-- **Header and nav.** The bell and settings icons stand alone; the
+- **Header and nav.** The bell and settings icons stand alone. The
   Ethiopian date is plain text (it was gold). The chosen tab has a bar along
   its top edge on phones and a tinted background on the desktop rail.
 - **Touch targets.** Main buttons and fields are 48px tall and small
@@ -194,33 +240,34 @@ Records, features and wording are unchanged apart from the notes below.
 ## Added
 - `tests/look.test.js` (`node tests/look.test.js`, 14 checks): fails if
   pills, shadows, gradients, press or slide motion, all-caps, extra-bold
-  type or text characters used as icons come back, or controls shrink below
-  48px / 44px.
+  type or text characters used as icons come back, or if controls shrink
+  below 48px / 44px.
 
-# Cardiac Companion — version 3.1
+# Cardiac Companion 3.1
 
 Adds an optional camera pulse measurement. Copy `index.html`, `sw.js` and
-the new `ppg-engine.js` into the same folder and deploy (all three are
-needed; `pulse-lab.html` and `tests/` are for developers). The service-worker
+the new `ppg-engine.js` into the same folder and deploy. All three are
+needed. `pulse-lab.html` and `tests/` are for developers. The service-worker
 cache is bumped to v5 and now also stores `ppg-engine.js` for offline use.
 Existing records are untouched.
 
 ## Added
-- **Measure with camera** — in the pulse entry on the Today page. A fingertip
-  over the back camera and its light for about a minute gives a pulse rate;
+- **Measure with camera**, in the pulse entry on the Today page. A fingertip
+  over the back camera and its light for about a minute gives a pulse rate.
   "Use this reading" puts it in the pulse field, where it can still be
   edited. Saved readings are marked "(camera)" on the summary and in exports,
   and keep their details (beats used, signal quality, beat-to-beat
   variation and whether it was reliable). Typing a different number drops
   the camera details.
 - **Beat-to-beat variation (RMSSD, SDNN)** is shown only when the engine
-  judges it reliable; otherwise a plain reason is shown instead.
-- **"Uneven beats" note** — neutral wording, never names a condition, and
-  pre-selects "Irregular" in the rhythm question (the person can change it).
-- **ppg-engine.js** — the signal engine, usable on its own (see its header).
-- **pulse-lab.html** — a developer dashboard showing everything live: wave,
-  intervals, quality, HRV, camera details, hook log, JSON/CSV export.
-- **tests/** — `node tests/ppg-synthetic.test.js` (49 checks on simulated
+  judges it reliable. Otherwise a plain reason is shown instead.
+- **"Uneven beats" note.** The wording is neutral and never names a
+  condition. It pre-selects "Irregular" in the rhythm question, and the
+  person can change it.
+- **ppg-engine.js**: the signal engine, usable on its own (see its header).
+- **pulse-lab.html**: a developer dashboard that shows the wave, intervals,
+  quality, HRV, camera details and hook log live, with JSON and CSV export.
+- **tests/**: `node tests/ppg-synthetic.test.js` (49 checks on simulated
   signals) and `node tests/pulse-monitor.mock.test.js` (27 checks of the
   camera logic in a mock browser).
 
@@ -241,10 +288,10 @@ Existing records are untouched.
 4. **Translations.** The Amharic and Oromo camera texts are drafts and need a
    native speaker's review.
 5. **Phones without a controllable light** (some browsers, older iPhones) get a
-   "measure next to a bright lamp or window" note; accuracy there is
+   "measure next to a bright lamp or window" note. Accuracy there is
    unknown.
 
-# Cardiac Companion — version 3
+# Cardiac Companion 3
 
 Drop-in replacement: copy `index.html` and `sw.js` over the old ones and deploy.
 Existing records upgrade automatically on first open (the old data is kept
@@ -252,52 +299,54 @@ untouched under `cc-state-v2` as a fallback). The service-worker cache is
 bumped to v4 so phones pick up the new version.
 
 ## Added
-- **Reminders** — the app now actually reminds: a notification at each dose
-  time (and once more an hour later if unmarked) while the app is open or
-  recently used, plus an "Add reminders to my calendar" file so the phone's
-  own calendar rings even when the app is closed. Calendar titles never
-  include doses; names only if the person chooses.
-- **Backup and restore** — one file for everyone on the phone; persistent
-  storage requested; a gentle backup reminder.
-- **INR** — target range, in/below/above marking, time in range
+- **Reminders.** The app now actually reminds. There is a notification at
+  each dose time (and once more an hour later if unmarked) while the app is
+  open or recently used. An "Add reminders to my calendar" file makes the
+  phone's own calendar ring even when the app is closed. Calendar titles
+  never include doses, and include names only if the person chooses.
+- **Backup and restore.** One file for everyone on the phone. Persistent
+  storage is requested, and there is a gentle backup reminder.
+- **INR.** Target range, in/below/above marking, time in range
   (Rosendaal), next-test countdown, weekly dose saved with every result,
-  dose-change history, typo checks. The app still never suggests a dose.
-- **Warning signs** — bleeding, stroke, fainting, severe chest pain (get
-  help now) and sore throat with fever, bruising, breathlessness lying flat
-  (call today). Opens a full-screen help card with call buttons and a
+  dose-change history and typo checks. The app still never suggests a dose.
+- **Warning signs.** Bleeding, stroke, fainting and severe chest pain (get
+  help now). Sore throat with fever, bruising and breathlessness lying flat
+  (call today). Each opens a full-screen help card with call buttons and a
   medical ID ("I take warfarin").
-- **Emergency contacts** — ambulance (907 by default), clinic, family member.
-- **Medicines** — several times a day, every other day, chosen weekdays, as
-  needed; ¼ / ½ / ¾ tablets with pictures; edit with change history; warfarin
-  tablet strength and supply; low-supply warning at 7 / 14 / 21 days.
+- **Emergency contacts**: ambulance (907 by default), clinic, family member.
+- **Medicines.** Several times a day, every other day, chosen weekdays, or
+  as needed. ¼ / ½ / ¾ tablets with pictures. Editing keeps a change
+  history. Warfarin tablet strength and supply. A low-supply warning at
+  7 / 14 / 21 days.
 - **Missed-dose and late-injection reasons** (one tap), shown on the summary.
-- **Penicillin** — 14-day and custom intervals, lateness per injection,
-  12-month completion against the 80% standard, a "show to the nurse" card
-  with the doctor's written order.
-- **Fasting mode** — detects Abiy Tsom and Ramadan, records fasting periods.
+- **Penicillin.** 14-day and custom intervals, lateness per injection,
+  12-month completion against the 80% standard, and a "show to the nurse"
+  card with the doctor's written order.
+- **Fasting mode.** Detects Abiy Tsom and Ramadan, and records fasting periods.
 - **New medicine or remedy log** (antibiotic, painkiller, herbal).
 - **Pregnancy prompt** for women on warfarin (private, off the family share).
-- **Visit summary** — covers "since last visit", English doctor copy (plus
-  an optional copy in Amharic / Afaan Oromo), on-screen view, PDF, and
-  honest adherence (unopened days count as "not recorded").
+- **Visit summary.** Covers "since last visit", with an English doctor copy
+  (plus an optional copy in Amharic or Afaan Oromo), an on-screen view, a
+  PDF, and honest adherence (unopened days count as "not recorded").
 - **People on this phone** (caregiver profiles), large text, times shown in
   both clocks, due dates in both calendars.
 
 ## Removed or replaced
-- Stress 1–10 slider → two-question PHQ-2 mood check every two weeks.
-- Phone notifications about your own taps ("Dose recorded").
-- Symptom "context" buttons that were never saved → severity and
-  at rest / when active per symptom, saved with the day.
-- Ethiopian-calendar card and the MM/DD switch → both calendars on every
-  due date.
+- The stress slider (1 to 10) is replaced by a two-question PHQ-2 mood check
+  every two weeks.
+- Phone notifications about your own taps ("Dose recorded") are gone.
+- Symptom "context" buttons that were never saved are replaced by severity
+  and at rest / when active per symptom, saved with the day.
+- The Ethiopian-calendar card and the MM/DD switch are replaced by both
+  calendars on every due date.
 
 ## Before real patients use it
-1. **Translation review** — all new Amharic and Afaan Oromo text needs a
+1. **Translation review.** All new Amharic and Afaan Oromo text needs a
    bilingual health worker's check, especially warning signs, the pregnancy
    note and the PHQ-2 questions.
 2. **Clinical sign-off** on the fixed wording (warning signs, fasting advice).
 3. **True alarms when closed** need a thin native wrapper (e.g. Capacitor
    Local Notifications). Test on TECNO / itel / Infinix phones.
-4. If you ever add a server (SMS, Telegram, sync): Ethiopia's Personal Data
+4. If you ever add a server (SMS, Telegram, sync), Ethiopia's Personal Data
    Protection Proclamation 1321/2024 requires explicit consent for health
    data and local storage of personal data.

@@ -1,13 +1,13 @@
 /*
- * PulseMonitor in a mock browser — run with:  node tests/pulse-monitor.mock.test.js
+ * PulseMonitor in a mock browser. Run with:  node tests/pulse-monitor.mock.test.js
  *
  * The camera layer cannot run in Node, so this builds just enough of a
  * browser around it: a phone with three cameras (a wide back lens without
  * a light, the main back lens with one, a front camera), a video element
  * with requestVideoFrameCallback, a canvas that returns real 8-bit pixels,
  * a wake lock and localStorage. The pixels come from a synthetic pulse, so
- * the whole path — permission, finding the light, sampling, measuring,
- * adapting exposure, shutting down — runs as it would on a phone.
+ * the whole path (permission, finding the light, sampling, measuring,
+ * adapting exposure, shutting down) runs as it would on a phone.
  * What it cannot show: how a real camera, torch and fingertip behave.
  */
 'use strict';
@@ -161,7 +161,7 @@ const phone = () => [
 ];
 
 (async () => {
-  console.log('ppg-engine', PPG.VERSION, '— PulseMonitor in a mock browser');
+  console.log('ppg-engine', PPG.VERSION + ': PulseMonitor in a mock browser');
 
   { // 1. a full timed reading on a phone whose first back camera has no light
     devices = phone(); calls.length = 0; opened.length = 0;

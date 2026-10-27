@@ -1,5 +1,5 @@
 /*
- * What the page records — run with:  node tests/page/records.test.js
+ * What the page records. Run with:  node tests/page/records.test.js
  *
  * Rules from the guide's "Features and logic" that index.html carries out
  * when the person taps something: undo gives back the tablets a dose took;
@@ -77,5 +77,13 @@ same('no last visit: 30 days, and it says so', range('visit', null), { from: '20
 same('a last visit of today counts as none', range('visit', '2026-10-03'), { from: '2026-09-04', to: '2026-10-03', fallback: true });
 same('30 days', range('30', '2026-09-01'), { from: '2026-09-04', to: '2026-10-03', fallback: false });
 same('90 days', range('90', '2026-09-01'), { from: '2026-07-06', to: '2026-10-03', fallback: false });
+
+section('6. A record that cannot be read (FOUND-BUGS.md #8)');
+open({});
+p.run('localStorage.setItem(stateKey("p1"), "{\\"v\\":3,\\"meds\\":[{\\"name\\":\\"Warf")');
+p.run('loadActive()');
+same('known: the app starts an empty record', p.get('S.meds.length'), 0);
+p.run('save()');
+same('known: the next save writes over the damaged one', p.get('localStorage.getItem(stateKey("p1")) === JSON.stringify(S)'), true);
 
 done();

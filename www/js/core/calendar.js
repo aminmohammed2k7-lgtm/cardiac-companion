@@ -1,5 +1,5 @@
 /*
- * calendar.js — dates, the Ethiopian calendar and the Ethiopian clock
+ * calendar.js: dates, the Ethiopian calendar and the Ethiopian clock
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.calendar)
@@ -17,18 +17,14 @@
 }(typeof self !== 'undefined' ? self : this, function () {
   'use strict';
 
-  // ═══════════════════════════════════════════
-  // NOW
+  // ---- Now ----
   // One place asks the time, so a test can stand at 23:59, or on a day the
   // app was not opened, without changing the code that uses the time.
-  // ═══════════════════════════════════════════
   let clock = () => new Date();
   function now(){ return clock(); }
   function setClock(fn){ clock = fn || (() => new Date()); }
 
-  // ═══════════════════════════════════════════
-  // DAYS AND TIMES
-  // ═══════════════════════════════════════════
+  // ---- Days and times ----
   function pad2(n){ return String(n).padStart(2,'0'); }
   // Days are keyed by the device's local date, never toISOString(): that gives
   // the UTC date, which in Ethiopia (UTC+3) is still "yesterday" until 03:00.
@@ -61,9 +57,7 @@
   function toMin(hhmm){ const m=/^(\d{1,2}):(\d{2})/.exec(hhmm||''); return m ? (+m[1])*60+(+m[2]) : null; }
   function isHHMM(s){ return typeof s==='string' && /^([01]\d|2[0-3]):[0-5]\d$/.test(s); }
 
-  // ═══════════════════════════════════════════
-  // ETHIOPIAN CALENDAR — real Gregorian↔Ethiopian conversion
-  // ═══════════════════════════════════════════
+  // ---- Ethiopian calendar: real Gregorian↔Ethiopian conversion ----
   function isGregorianLeap(y){ return (y%4===0 && y%100!==0) || (y%400===0); }
 
   function ethiopianNewYearGregorian(gYear){
@@ -89,13 +83,11 @@
     return { year: ethYear, month, day, weekday: gDate.getDay() };
   }
 
-  // ═══════════════════════════════════════════
-  // ETHIOPIAN CLOCK
+  // ---- Ethiopian clock ----
   // Many patients tell time the Ethiopian way, counting the hours from
   // 06:00: 07:00 is "1 in the morning", 18:00 "12 in the evening". This
   // gives the hour as it is said and the part of the day; index.html puts
   // them into words in the person's language (ethClock).
-  // ═══════════════════════════════════════════
   function ethTime(hhmm){
     const m=toMin(hhmm);
     if(m==null) return null;

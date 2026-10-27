@@ -1,5 +1,5 @@
 /*
- * reminders.js — which reminders are due now, for one person
+ * reminders.js: which reminders are due now, for one person
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.reminders)
@@ -15,10 +15,9 @@
   const { todayKey, nowMin, toMin, addDays, daysBetween } = calendar;
   const { ensurePlans, keyInfo, doseEntry } = doses;
 
-  // ═══════════════════════════════════════════
-  // REMINDER TIMING
+  // ---- Reminder timing ----
   // Each dose is announced once at its time and once more an hour later if
-  // still unmarked — and never hours after the fact: the first at most 3
+  // still unmarked, and never hours after the fact: the first at most 3
   // hours late, the second at most 4. Doses at the same time share one
   // reminder. Once a day, after 7 in the morning: the injection, the INR
   // test and the clinic visit, when they are close.
@@ -27,7 +26,6 @@
   // dose keys to announce, grouped by time; the day's "Coming up" items as
   // days from today (null when not due, or already done today); and whether
   // the record changed and should be saved. index.html words and sends them.
-  // ═══════════════════════════════════════════
   function dueReminders(Sx){
     let changed=false;
     const t=todayKey(), now=nowMin();

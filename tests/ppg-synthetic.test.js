@@ -1,5 +1,5 @@
 /*
- * Synthetic validation for ppg-engine.js — run with:  node tests/ppg-synthetic.test.js
+ * Synthetic validation for ppg-engine.js. Run with:  node tests/ppg-synthetic.test.js
  *
  * Each case builds what a phone camera would see with a fingertip on the
  * lens: a red level that dips with every beat at known times (so the true
@@ -11,7 +11,7 @@
  * What synthetic data can and cannot show: it proves the signal chain does
  * what it claims on signals with known answers, including the awkward ones
  * (slow and fast hearts, noise, movement, premature beats, uneven rhythm).
- * It says nothing about real skin, real cameras or real patients — that
+ * It says nothing about real skin, real cameras or real patients. That
  * needs a comparison with a pulse oximeter or ECG on the target phones.
  */
 'use strict';
@@ -158,7 +158,7 @@ function withPVCs(every, seed) {                       // premature beat (62 %, 
 }
 
 // ── cases ─────────────────────────────────────────────────────────────
-console.log('ppg-engine', PPG.VERSION, '— synthetic validation');
+console.log('ppg-engine', PPG.VERSION + ': synthetic validation');
 
 { // 1. resting sinus rhythm with breathing-driven variability
   const rec = synth(sinusRR(80, 850, 45, 12, 11), { seed: 2 });
@@ -191,7 +191,7 @@ console.log('ppg-engine', PPG.VERSION, '— synthetic validation');
   const rec = synth(sinusRR(80, 900, 40, 12, 41), { seed: 5, mod: 0.004, noise: 0.35, jitterMs: 5, dropRate: 0.03 });
   const e = evaluate('4. Weak and noisy (0.4 % modulation, 3 % dropped frames)', rec, run(rec));
   check('bpm within 2 of truth', Math.abs(e.s.bpm - e.truth.bpm) <= 2);
-  // Each beat's time is uncertain by ~25 ms here — close to the physical
+  // Each beat's time is uncertain by ~25 ms here, close to the physical
   // limit for this signal-to-noise ratio, so no detector can get RMSSD
   // right. What matters is that the engine knows.
   check('HRV flagged unreliable', !e.s.hrvReliable && (e.s.hrvIssue === 'noisy' || e.s.hrvIssue === 'artifacts'), `issue ${e.s.hrvIssue}, RMSSD ${fmt(e.s.rmssd)} vs ${fmt(e.truth.rmssd)}`);
@@ -215,7 +215,7 @@ console.log('ppg-engine', PPG.VERSION, '— synthetic validation');
 
 { // 6. uneven rhythm (atrial-fibrillation-like): random intervals, clean pulses
   const rec = synth(unevenRR(61), { seed: 7 });
-  const e = evaluate('6. Uneven rhythm (random intervals 420–940 ms)', rec, run(rec));
+  const e = evaluate('6. Uneven rhythm (random intervals 420 to 940 ms)', rec, run(rec));
   check('flagged as uneven beats', e.s.unevenBeats === true, 'irregular share ' + fmt(100 * e.s.irregularShare, 0) + ' %');
   check('HRV marked unreliable because of the rhythm', e.s.hrvIssue === 'uneven');
   check('rate from every beat, within 2 % of truth', e.s.bpmMethod === 'uneven' && Math.abs(e.s.bpm / e.truth.bpm - 1) < 0.02, fmt(e.s.bpm, 0) + ' vs ' + fmt(e.truth.bpm));
@@ -224,7 +224,7 @@ console.log('ppg-engine', PPG.VERSION, '— synthetic validation');
 { // 7. movement, then a lifted finger, then recovery
   const rec = synth(sinusRR(90, 860, 30, 10, 71), { seed: 8, motion: [[30000, 34000]], gaps: [[50000, 52500]] });
   const res = run(rec);
-  const e = evaluate('7. Movement at 30–34 s, finger lifted at 50–52.5 s', rec, res);
+  const e = evaluate('7. Movement at 30 to 34 s, finger lifted at 50 to 52.5 s', rec, res);
   check('movement set aside, not turned into intervals', e.s.beatsRejected.motion > 0 && !res.events.rr.some(i => i.valid && i.t > 30000 && i.start < 34400), e.s.beatsRejected.motion + ' pulses');
   check('no interval spans the lifted finger', !res.events.rr.some(i => i.start < 50000 && i.t > 52500));
   check('restarts reported', res.events.segment.some(s => s.reason === 'motion') && res.events.segment.some(s => s.reason === 'no-contact') && res.events.segment.some(s => s.reason === 'contact'));
@@ -248,7 +248,7 @@ console.log('ppg-engine', PPG.VERSION, '— synthetic validation');
 
 { // 9. strong breathing arrhythmia (children, young adults): ±22 % swings are normal
   const rec = synth(sinusRR(80, 900, 200, 10, 20), { seed: 20 });
-  const e = evaluate('9. Strong sinus arrhythmia (RR 700–1100 ms with each breath)', rec, run(rec));
+  const e = evaluate('9. Strong sinus arrhythmia (RR 700 to 1100 ms with each breath)', rec, run(rec));
   check('bpm within 1 of truth (it once read 3.4 high)', Math.abs(e.s.bpm - e.truth.bpm) <= 1, e.s.bpm + ' vs ' + fmt(e.truth.bpm));
   check('RMSSD within 10 %', Math.abs(e.s.rmssd / e.truth.rmssd - 1) < 0.10, pct(e.s.rmssd, e.truth.rmssd));
   check('not mistaken for an uneven rhythm', !e.s.unevenBeats && e.s.hrvReliable);
@@ -317,7 +317,7 @@ console.log('ppg-engine', PPG.VERSION, '— synthetic validation');
 
 { // 15. the uneven-rhythm flag: sensitive to AF-like rhythms, silent for the look-alikes
   // Big breathing swings are out of line too but repeat with each breath;
-  // premature beats come as a short–long pair that adds up to two beats.
+  // premature beats come as a short-long pair that adds up to two beats.
   const slowBreaths = seed => { const r = rng(seed), out = []; for (let i = 0; i < 70; i++) out.push(900 + 270 * Math.sin(2 * Math.PI * i / 10) + 10 * r.gauss()); return out; };
   const kinds = [
     ['AF-like', true, s => synth(unevenRR(300 + s), { seed: 3000 + s })],
@@ -364,7 +364,7 @@ console.log('ppg-engine', PPG.VERSION, '— synthetic validation');
   console.log(`  RMSSD: truth ${fmt(e.truth.rmssd)} | zero-phase ${fmt(e.s.rmssd)} | one-way ${fmt(causal.rmssd)} ms. Peak vs true pulse peak: zero-phase ${fmt(e.offset)} ms, one-way ${fmt(lag)} ms`);
   // The intervals come out the same either way; zero-phase is used because
   // the peaks stay on the real pulse peak and the pulse keeps its shape,
-  // which the template check compares — not for RMSSD accuracy.
+  // which the template check compares, not for RMSSD accuracy.
   check('both filters give RMSSD within 3 % of each other', Math.abs(e.s.rmssd / causal.rmssd - 1) < 0.03, pct(e.s.rmssd, causal.rmssd));
   check('zero-phase peaks sit on the pulse peak (< 5 ms)', Math.abs(e.offset) < 5, fmt(e.offset) + ' ms');
 }

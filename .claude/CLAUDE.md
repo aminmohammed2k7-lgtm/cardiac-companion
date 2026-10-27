@@ -1,4 +1,4 @@
-# Cardiac Companion — rules for Claude Code
+# Cardiac Companion: rules for Claude Code
 
 ## What this is
 Offline Android app (Capacitor 8, Android only, Google Play only) for heart patients in
@@ -25,7 +25,7 @@ Reference: docs/app-guide.pdf (the v3.2 guide, with a file-by-file line index).
    docs/android/FOUND-BUGS.md and ask Amin.
 
 ## How to work
-- One phase per branch: phase-N-short-name. Plan first; wait for approval.
+- One phase per branch: phase-N-short-name. Plan first and wait for approval.
 - Run `npm test` before every commit. Never skip or weaken a test to make it pass.
 - Write tests before moving medical logic. Behaviour must not change unless the
   phase says so.

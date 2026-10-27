@@ -8,6 +8,7 @@
  */
 'use strict';
 const fs = require('fs');
+const path = require('path');
 const { check, same, section, done, loadPage, PAGE } = require('./harness.js');
 const p = loadPage();
 
@@ -149,7 +150,8 @@ same('Settings offers the sample again', p.get("$('demoSettingsBtn').textContent
 
 section('4. A new person added during demo does not inherit sample numbers');
 p.call('startDemo');
-p.run('prompt = function () { return "Child"; }');
+// the page asks for the name in its own question box (ask), not prompt()
+p.rec.promptAnswer = 'Child';
 p.call('addProfile');
 same('the new person has no clinic number from the sample', p.get('S.contacts.clinic'), '');
 same('the new person is not the sample', p.get('!!S.demo'), false);
@@ -263,14 +265,16 @@ check('Taken still has its tick', /data-act="take"[^>]*>[\s\S]*?(i-check|<svg)/.
 
 section('11. The first screen and the sample banner');
 const html = fs.readFileSync(PAGE, 'utf8');
-const welcome = (html.match(/<div class="notif-panel" id="welcomePanel"[\s\S]*?<!-- ═══/) || [''])[0];
+// the styles are in www/css/app.css; the welcome panel runs to the next section comment
+const css = fs.readFileSync(path.join(path.dirname(PAGE), 'css', 'app.css'), 'utf8');
+const welcome = (html.match(/<div class="panel" id="welcomePanel"[\s\S]*?\n<!-- /) || [''])[0];
 for (const k of ['welcomeWho', 'welcomeOffline', 'welcomeScreenText', 'welcomeLangs', 'demoStartBtn', 'welcomeOwnBtn'])
   check(`the welcome screen shows ${k}`, welcome.includes(`data-t="${k}"`));
 same('the welcome screen has the three language buttons', [...welcome.matchAll(/class="lang-pill[^"]*" data-lang="(\w+)"/g)].map(m => m[1]), ['en', 'am', 'or']);
 check('the language buttons follow their own language, not their position', /b\.dataset\.lang===lang/.test(html) && !/\['en','am','or'\]\[i\]===lang/.test(html));
 const banner = (html.match(/<div id="demoBanner"[\s\S]*?\n    <\/div>/) || [''])[0];
 check('the banner offers the tour and Exit demo', /onclick="startTour\(\)"[^>]*data-t="demoTourBtn"/.test(banner) && /data-t="demoExitBtn"/.test(banner));
-check('the banner buttons go under the words on a phone', /@media \(max-width:560px\)\{\s*\.demo-banner\{flex-direction:column;/.test(html));
+check('the banner buttons go under the words on a phone', /@media \(max-width:560px\)\{\s*\.demo-banner\{flex-direction:column;/.test(css));
 for (const l of ['en', 'am', 'or']) {
   p.lang(l);
   const t = p.get('L("demoBannerText")');

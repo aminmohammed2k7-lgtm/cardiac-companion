@@ -23,7 +23,7 @@ const html = fs.readFileSync(path.join(__dirname, '..', '..', 'www', 'index.html
 section('1. The markup');
 check('pulse-quality.js and its weights load after the engine',
   /ppg-engine\.js" defer><\/script>\s*<script src="pulse-quality-weights\.js" defer><\/script>\s*<script src="pulse-quality\.js" defer><\/script>/.test(html));
-const panel = /<div class="notif-panel" id="pulsePanel"[\s\S]*?<!-- ═══ PASSPHRASE/.exec(html)[0];
+const panel = /<div class="panel" id="pulsePanel"[\s\S]*?<!-- Passphrase or PIN/.exec(html)[0];
 check('the confidence line sits in the reading card', /id="camBpm"[\s\S]*id="camConf"[\s\S]*id="camWave"/.test(panel));
 check('the "not a medical device" line is still in the camera panel', /data-t="camNotDevice"/.test(panel));
 check('the recording box starts hidden', /<div class="cam-rec" id="camRec" hidden>/.test(panel));

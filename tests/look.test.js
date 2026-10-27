@@ -1,11 +1,15 @@
 /*
- * The plain look, kept plain — run with:  node tests/look.test.js
+ * The plain look, kept plain. Run with:  node tests/look.test.js
  *
- * Reads the stylesheet and markup in index.html and fails if anything from
+ * Reads the stylesheet (www/css/app.css) and the markup in index.html and
+ * fails if anything from
  * the old "app template" look comes back: pill-shaped or shadowed buttons,
  * gradients, press/lift motion, slide-in panels, all-caps labels, extra-bold
  * type, or text characters (✓ ↑ ↓ ×) used as icons instead of drawn ones.
- * It also checks that controls stay big enough to tap on a phone.
+ * It also checks that controls stay big enough to tap on a phone, that
+ * sizes come from the type, spacing and radius scales in
+ * docs/DESIGN-DECISIONS.md, and that text and field edges stay readable in
+ * bright light.
  * Exit code 1 if any check fails.
  */
 'use strict';
@@ -13,7 +17,7 @@ const fs = require('fs');
 const path = require('path');
 
 const html = fs.readFileSync(path.join(__dirname, '..', 'www', 'index.html'), 'utf8');
-const css = html.slice(html.indexOf('<style>') + 7, html.indexOf('</style>')).replace(/\/\*[\s\S]*?\*\//g, '');
+const css = fs.readFileSync(path.join(__dirname, '..', 'www', 'css', 'app.css'), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
 
 // every innermost rule: { sel, body }
 const rules = [];
@@ -63,9 +67,45 @@ const root = (rules.find(r => r.sel === ':root') || { body: '' }).body;
 const px = name => { const m = root.match(new RegExp(name + '\\s*:\\s*(\\d+)px')); return m ? +m[1] : 0; };
 check('main buttons and fields are 48px on a phone', px('--ctl') >= 48, px('--ctl') + 'px');
 check('small buttons and chips are 44px on a phone', px('--ctl-sm') >= 44, px('--ctl-sm') + 'px');
-check('button corners are 8px, card corners 12px', px('--r-btn') === 8 && px('--r-card') === 12, `${px('--r-btn')}px, ${px('--r-card')}px`);
+// controls that once were 32 to 38px: each must take its size from --ctl-sm or --ctl
+const TAP = ['.seg-control button', '.lang-pick', '.symptom-remove', '.time-item input', '.time-item .log-del', '.icon-btn', '.chip'];
+const small = TAP.filter(sel => !rules.some(r => r.sel.split(',').map(s => s.trim()).includes(sel) && /(min-)?height\s*:\s*var\(--ctl(-sm)?\)/.test(r.body)));
+check('language, segment, remove and time controls are at least 44px', !small.length, list(small));
+check('the switch has a 48px tap area', rules.some(r => r.sel === '.switch::before' && /inset/.test(r.body)));
 
-const glyphs = [...new Set(html.match(/[✓✔✕✗↑↓]/g) || [])];
+check('one corner radius, 8px', px('--r') === 8 && !/--r-(card|btn|tag)\s*:/.test(root), px('--r') + 'px');
+
+// The scales in docs/DESIGN-DECISIONS.md. Every rule takes its sizes from
+// them, so a one-off 15.5px or 14px gap cannot creep back in.
+const outside = (prop, ok) => rules.filter(r => r.sel !== ':root')
+  .flatMap(r => [...r.body.matchAll(new RegExp('(?:^|;)\\s*(' + prop + ')\\s*:([^;]*)', 'g'))]
+    .filter(m => !ok(m[2].trim())).map(m => `${r.sel} { ${m[1]}:${m[2].trim()} }`));
+const FS = ['xs', 'sm', 'md', 'lg', 'xl', '2xl', 'hero'];
+check('seven type sizes', FS.every(k => px('--fs-' + k) > 0) && (root.match(/--fs-[\w]+\s*:/g) || []).length === FS.length,
+  FS.map(k => px('--fs-' + k)).join(', '));
+bad = outside('font-size', v => /^var\(--fs-(xs|sm|md|lg|xl|2xl|hero)\)$/.test(v));
+check('every font size comes from the type scale', !bad.length, list(bad));
+bad = outside('border-radius', v => v === 'var(--r)' || v === '0' || v === '50%');
+check('every corner is the one radius, or square', !bad.length, list(bad));
+// 0px is allowed: it is the fallback inside env(safe-area-inset-*, 0px)
+bad = outside('padding(?:-[a-z]+)?|margin(?:-[a-z]+)?|gap|row-gap|column-gap', v => !/(^|[^\w.])(?!0px)\d*\.?\d+px/.test(v));
+check('every space comes from the spacing scale', !bad.length, list(bad));
+
+// Read outside in bright sun: text at least 6:1 on the page and on cards,
+// and the edges of fields and switches at least 3:1 (WCAG 1.4.11).
+const hex = name => { const m = root.match(new RegExp(name + '\\s*:\\s*(#[0-9A-Fa-f]{6})')); return m ? m[1] : null; };
+const lum = h => [1, 3, 5].map(i => parseInt(h.substr(i, 2), 16) / 255)
+  .map(v => v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4)
+  .reduce((s, v, i) => s + v * [0.2126, 0.7152, 0.0722][i], 0);
+const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+const inks = ['--ink-1', '--ink-2', '--ink-3'].flatMap(i => ['--canvas', '--surface'].map(bg => [i, bg, ratio(hex(i), hex(bg))]));
+const weak = inks.filter(x => x[2] < 6);
+check('text is at least 6:1 on the page and on cards', inks.length === 6 && !weak.length,
+  weak.length ? weak.map(x => `${x[0]} on ${x[1]} ${x[2].toFixed(2)}:1`).join(', ') : 'lowest ' + Math.min(...inks.map(x => x[2])).toFixed(2) + ':1');
+const edge = ratio(hex('--line-input'), hex('--surface'));
+check('field and switch edges are at least 3:1', edge >= 3, edge.toFixed(2) + ':1');
+
+const glyphs = [...new Set((html + css).match(/[✓✔✕✗↑↓]/g) || [])];
 check('no text characters used as icons', !glyphs.length && !/>\s*×\s*</.test(html), glyphs.join(' '));
 
 console.log(failures ? `\n${failures} of ${checks} checks failed` : `\nall ${checks} checks passed`);

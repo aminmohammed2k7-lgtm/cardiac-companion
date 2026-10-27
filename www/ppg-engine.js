@@ -1,5 +1,5 @@
 /*!
- * ppg-engine.js — camera pulse (photoplethysmography) for Cardiac Companion
+ * ppg-engine.js: camera pulse (photoplethysmography) for Cardiac Companion
  *
  * WHAT IT DOES
  *   A fingertip over the back camera, lit by the phone's own light, lets
@@ -7,60 +7,60 @@
  *   fingertip, which absorbs a little more light, so the red channel dips
  *   once per beat. This file turns those dips into beats, beat-to-beat
  *   intervals (RR, in ms), pulse rate and heart-rate variability (RMSSD,
- *   SDNN) — and says how far each number can be trusted, so a bad reading
+ *   SDNN), and says how far each number can be trusted, so a bad reading
  *   is never shown as a good one.
  *
  * PIPELINE (per camera frame, about 30 a second)
- *   1. camera   — the frame is split into a grid. Cells that are clipped
+ *   1. camera:   the frame is split into a grid. Cells that are clipped
  *                 or have no pulse are left out; the rest are averaged.
  *                 Mean red, green and blue, and the share of clipped red.
- *   2. contact  — is a fingertip on the lens? (red-dominant, bright enough)
- *   3. resample — frames never arrive exactly every 33.3 ms; each colour
+ *   2. contact:  is a fingertip on the lens? (red-dominant, bright enough)
+ *   3. resample: frames never arrive exactly every 33.3 ms; each colour
  *                 is re-sampled onto an exact 30 Hz grid using the frame's
  *                 own capture time.
- *   4. channel  — red, green and blue are each filtered. The window keeps
+ *   4. channel:  red, green and blue are each filtered. The window keeps
  *                 the colours that actually carry a pulse, weighted by how
  *                 clean that pulse is, so a red channel flattened by the
  *                 torch can give way to green. One colour alone is used
  *                 when the others are flat, which is the old red path.
- *   5. filter   — band-pass whose −3 dB points are 0.7 and 3.5 Hz
- *                 (42–210 bpm; slower pulses still pass, a little weaker),
+ *   5. filter:   band-pass whose −3 dB points are 0.7 and 3.5 Hz
+ *                 (42 to 210 bpm; slower pulses still pass, a little weaker),
  *                 run forwards and backwards over an 8 s window: no delay,
  *                 so each peak stays on the real pulse peak, and no phase
  *                 distortion of the pulse shape that step 7 compares. (For
- *                 the intervals themselves a one-way filter does as well —
- *                 the tests show it; this is not an accuracy trick.)
- *   6. peaks    — Elgendi's two-moving-average detector (PLoS ONE 2013),
+ *                 the intervals themselves a one-way filter does as well, as
+ *                 the tests show. This is not an accuracy trick.)
+ *   6. peaks:    Elgendi's two-moving-average detector (PLoS ONE 2013),
  *                 then a parabola through the top three samples places
  *                 each peak between frames. A second rate, from the
  *                 autocorrelation and from an FFT of the same window, is
  *                 compared with the peak rate. When both are confident and
  *                 they disagree, the quality score drops and no number is
  *                 shown.
- *   7. pulses   — every pulse is compared with a template (the sample-by-
+ *   7. pulses:   every pulse is compared with a template (the sample-by-
  *                 sample median of its neighbours). Wrong shape (a
  *                 diastolic wave, a blip) or too weak → set aside; far
  *                 taller than a pulse → movement, and no interval may span
  *                 it. The fit also estimates how precisely the beat is
  *                 timed (least squares, corrected for the filter's effect
  *                 on noise).
- *   8. intervals— each interval is compared with the median of the last
+ *   8. intervals: each interval is compared with the median of the last
  *                 accepted ones (±25 %), or with the accepted interval just
  *                 before it (±15 %: breathing changes intervals smoothly,
  *                 false and missed beats jump). A short one is held a beat
  *                 to see whether it and the next one are one beat split by
  *                 a doubtful peak (merged); about double → a missed beat.
  *                 Only accepted, back-to-back intervals feed RMSSD.
- *   9. quality  — contact, pulse shape, periodicity, timing precision,
+ *   9. quality:  contact, pulse shape, periodicity, timing precision,
  *                 movement, glare, rate agreement and the share of
  *                 accepted intervals.
  *
  * WHAT THE NUMBERS MEAN
- *   Pulse rate (bpm) — time divided by the beats it holds: missed beats
+ *   Pulse rate (bpm): time divided by the beats it holds: missed beats
  *     confirmed by the intervals around them, false peaks merged away,
  *     premature beats and their pauses counted as the beats they are, so
  *     rejections cannot bias it.
- *   RMSSD, SDNN — from accepted intervals only. `hrvReliable` is false,
+ *   RMSSD, SDNN: from accepted intervals only. `hrvReliable` is false,
  *     with `hrvIssue` saying why, when the rhythm is uneven ('uneven'),
  *     there are too few clean pairs ('too-few'), too many rejections or a
  *     few differences dominate ('artifacts'), or beat timing is too coarse
@@ -70,9 +70,9 @@
  *
  * UNEVEN RHYTHMS
  *   When the pulses are clean and precisely timed but many intervals are
- *   out of line with their neighbours, in no repeating pattern — breathing
- *   swings repeat with each breath, a premature beat comes as a short–long
- *   pair — the rhythm itself is uneven (atrial fibrillation does this). The
+ *   out of line with their neighbours, in no repeating pattern (breathing
+ *   swings repeat with each breath, a premature beat comes as a short-long
+ *   pair), the rhythm itself is uneven (atrial fibrillation does this). The
  *   result says so: `unevenBeats: true`, HRV is marked unreliable, and the
  *   pulse rate counts every beat. A description of the reading, not a
  *   diagnosis.
@@ -133,7 +133,7 @@
 
     // intervals
     minRR: 300,              // ms (200 bpm)
-    maxRR: 2000,             // ms (30 bpm) — a slow pulse is a finding, not an artifact
+    maxRR: 2000,             // ms (30 bpm), a slow pulse is a finding, not an artifact
     tolerance: 0.25,         // accepted if within ±25 % of the local median …
     stepTolerance: 0.15,     // … or within 15 % of the accepted interval just before it (breathing)
     refBeats: 7,             // local median over this many accepted intervals
@@ -147,7 +147,7 @@
     maxDiffDominance: 0.6,   // … and no handful of differences (top 5 %) carrying more than 60 % of RMSSD²
 
     // quality and contact
-    contactMinRed: 25,       // mean red (0–255) a covered lens must reach
+    contactMinRed: 25,       // mean red (0 to 255) a covered lens must reach
     contactMinRedShare: 0.55,// red / (red + green + blue)
     contactOnFrames: 8,      // consecutive frames to decide "finger on"
     contactOffFrames: 6,     // … and "finger off"
@@ -186,9 +186,7 @@
     storageKey: 'ppg-camera-id'
   };
 
-  // ═══════════════════════════════════════════
-  // SMALL MATHS
-  // ═══════════════════════════════════════════
+  // ---- Small maths ----
   const clamp = (v, lo, hi) => (v < lo ? lo : v > hi ? hi : v);
   function mean(a) { let s = 0; for (let i = 0; i < a.length; i++) s += a[i]; return a.length ? s / a.length : NaN; }
   function sampleStd(a) {
@@ -216,11 +214,9 @@
   }
   const oddWindow = n => { const w = Math.max(1, Math.round(n)); return w % 2 ? w : w + 1; };
 
-  // ═══════════════════════════════════════════
-  // FILTERS
+  // ---- Filters ----
   // Second-order sections (RBJ cookbook, bilinear transform with
   // pre-warping), run in transposed direct form II.
-  // ═══════════════════════════════════════════
   function biquad(type, f0, fs, Q) {
     const w0 = 2 * Math.PI * f0 / fs, c = Math.cos(w0), alpha = Math.sin(w0) / (2 * Q);
     const a0 = 1 + alpha;
@@ -245,7 +241,7 @@
   }
 
   // State that a cascade would settle into after a long run of constant
-  // input x0 — starting there avoids a start-up transient.
+  // input x0. Starting there avoids a start-up transient.
   function sosSteadyState(sos, x0) {
     const zi = []; let u = x0;
     for (const s of sos) {
@@ -294,9 +290,7 @@
     };
   }
 
-  // ═══════════════════════════════════════════
-  // PEAKS
-  // ═══════════════════════════════════════════
+  // ---- Peaks ----
   function movingAverage(src, w) {             // centred, truncated at the ends
     const n = src.length, h = (w - 1) >> 1, cs = new Float64Array(n + 1), out = new Float64Array(n);
     for (let i = 0; i < n; i++) cs[i + 1] = cs[i] + src[i];
@@ -403,7 +397,7 @@
 
   // Pulse rate from the spectrum of one analysis window. A narrow pulse
   // has a strong second harmonic, so each candidate frequency is scored
-  // as its own bin plus half of the bin at twice the frequency — the
+  // as its own bin plus half of the bin at twice the frequency. The
   // fundamental then beats a harmonic that only looks tall. Zero-padding
   // and a parabola put the peak between bins.
   function spectralRate(y, fs, lo, hi) {
@@ -460,7 +454,7 @@
   // Peak rate against the autocorrelation rate and the FFT rate.
   // agree is true, false, or null when there is not enough to judge.
   // A frequency estimate only overrules the peaks when it is confident
-  // and the two frequency estimates agree with each other — a harmonic
+  // and the two frequency estimates agree with each other. A harmonic
   // mistake in one of them must not hide a good peak reading.
   function rateAgreement(peakBpm, acBpm, acStr, specBpm, specStr) {
     const acOk = acBpm > 0 && acStr >= 0.55;
@@ -509,8 +503,8 @@
   // Each pulse is cut out around its (sub-sample) peak; the template is
   // the sample-by-sample median of the plausible ones, so a few odd beats
   // cannot bend it. For one pulse we then know
-  //   corr    — how much it looks like the others (Pearson r), and
-  //   sigmaMs — how precisely its time can be known: residual noise
+  //   corr:    how much it looks like the others (Pearson r), and
+  //   sigmaMs: how precisely its time can be known: residual noise
   //             divided by how steep the template is (the least-squares /
   //             Cramér–Rao estimate for a time shift). Beat-to-beat
   //             timing noise of σ adds about 6σ² to RMSSD², so this is
@@ -551,9 +545,7 @@
     return { corr: pearson(s, t), gain, sigmaMs };
   }
 
-  // ═══════════════════════════════════════════
-  // INTERVALS — outlier rejection and metrics
-  // ═══════════════════════════════════════════
+  // ---- Intervals: outlier rejection and metrics ----
   class RRAnalyzer {
     constructor(options) { this.o = Object.assign({}, DEFAULTS, options); this.reset(); }
 
@@ -595,7 +587,7 @@
     // nothing is lost; about double → it was a real beat, and the rejected
     // interval says nothing about the rhythm. `isBeat`: still pulse-shaped
     // enough to count when every beat is counted (uneven rhythms distort
-    // beats that follow very short intervals — excluding them would drop
+    // beats that follow very short intervals, and excluding them would drop
     // exactly the fast stretches and bias the count low).
     // kind: 'beat' (pulse-shaped, counts), 'noise' (clearly no pulse, e.g. a
     // diastolic wave: ignored) or 'unsure' (too weak to tell: the interval
@@ -708,7 +700,7 @@
     _reject(iv, reason) {
       iv.valid = false; iv.reason = reason; iv.adjacent = false;
       this.intervals.push(iv);
-      // a run of consistent rejections may mean the rate really changed —
+      // a run of consistent rejections may mean the rate really changed,
       // but not when the interval only looks wrong because a pulse was set aside
       if (!iv.spansSkipped && (reason === 'short' || reason === 'long' || reason === 'missed')) { this.rejRun.push(iv); this._maybeReseed(); }
       return iv;
@@ -716,8 +708,8 @@
 
     // Five rejected intervals in a row that agree with each other mean the
     // rate really changed (or the first reference was wrong): start over
-    // from them — unless they are a half or double of the reference and
-    // the autocorrelation doesn't back them, which is a detection problem.
+    // from them, unless they are a half or double of the reference and
+    // the autocorrelation doesn't back them (that is a detection problem).
     _maybeReseed() {
       const run = this.rejRun;
       if (run.length < 5) return;
@@ -783,7 +775,7 @@
       const rawPrev = new Map(), rawNext = new Map();
       for (const r of raw) { rawPrev.set(r.endId, r); rawNext.set(r.startId, r); }
       // How many beats a long interval holds: its length over a local
-      // normal interval — the median of the reference and the accepted
+      // normal interval: the median of the reference and the accepted
       // intervals beside it. The reference is robust to noisy neighbours,
       // the neighbours follow big breathing swings the reference lags
       // behind; the median lets neither one mislead it alone.
@@ -810,12 +802,12 @@
       // How uneven the rhythm is, in two parts.
       // Out of line: the share of intervals more than the tolerance away
       // from the median of their neighbours (same stretch of signal, ±4
-      // intervals) — not counting a short interval followed by a long one
+      // intervals), not counting a short interval followed by a long one
       // that together make two normal beats (a premature beat and its
       // pause: an interruption, not an uneven rhythm).
       // Predictable: the strongest correlation of those deviations with
-      // themselves 1–8 beats later. Breathing makes intervals swing in a
-      // repeating wave (0.7–1.0 in the tests), repeated premature beats
+      // themselves 1 to 8 beats later. Breathing makes intervals swing in a
+      // repeating wave (0.7 to 1.0 in the tests). Repeated premature beats
       // repeat too; atrial fibrillation is "irregularly irregular" (< 0.5).
       const adjacent = i => i > 0 && counted[i - 1].segment === counted[i].segment && counted[i - 1].endId === counted[i].startId;
       const localMed = counted.map((x, i) => {
@@ -852,15 +844,15 @@
       const nrmssd = cd.length >= o.minHrvPairs && counted.length ? Math.sqrt(mean(cd.map(d => d * d))) / mean(counted.map(i => i.rr)) : null;
 
       // Average rate over normal beats: time divided by the beats it holds,
-      // with every interval counted — a missed beat's interval as two
+      // with every interval counted: a missed beat's interval as two
       // beats, a merged false peak as one, a premature beat and its pause
       // as the two beats they are, and a rejected fragment as the whole
       // beats it could hold (under half a beat: none). Rejections then
       // cannot bias the rate the way averaging only accepted intervals does
       // (+1 to +4 bpm with strong breathing arrhythmia in the tests).
       // On each side the neighbour is the interval right there if both its
-      // pulses were clean — the rhythm as it is, whatever the rules made of
-      // it — else the accepted interval there. (With breathing swings of
+      // pulses were clean (the rhythm as it is, whatever the rules made of
+      // it), else the accepted interval there. (With breathing swings of
       // ±30 % the reference can settle on the short half of the cycle, and
       // then the accepted intervals only agree with it.)
       const nnEnd = new Map(), nnStart = new Map();
@@ -917,10 +909,8 @@
     }
   }
 
-  // ═══════════════════════════════════════════
-  // SIGNAL PROCESSOR — frames in, beats / intervals / quality out.
+  // ---- Signal processor: frames in, beats / intervals / quality out. ----
   // No DOM: feed it (time in ms, frame stats) from a camera or a test.
-  // ═══════════════════════════════════════════
   class SignalProcessor {
     constructor(options, emit) {
       this.o = Object.assign({}, DEFAULTS, options);
@@ -1195,7 +1185,7 @@
       }
       const art = this._artifactMask(y, artThr);
 
-      // Make beats final once they are far enough from the window's end —
+      // Make beats final once they are far enough from the window's end,
       // and only once there is a template to check them against (at a slow
       // pulse the first seconds hold too few beats; they wait in the window).
       const limit = tEnd - o.guardSec * 1000, warmEnd = this.segStart + o.warmupSec * 1000;
@@ -1245,7 +1235,7 @@
 
     // Every pulse "too tall" for several seconds, all about the same height,
     // and still regular: the pulse itself got bigger (lighter finger
-    // pressure does that) — start a fresh segment rather than reject forever.
+    // pressure does that). Start a fresh segment rather than reject forever.
     _stuckOnMotion(p, per) {
       const run = this.motionRun;
       run.push({ t: p.t, a: p.a });
@@ -1283,10 +1273,10 @@
         m.predictability != null && m.predictability < o.unevenMaxPredictability &&
         morphMed != null && morphMed >= o.unevenMorphology && timingMed != null && timingMed <= o.unevenMaxTimingMs;
       // Which pulse rate to report:
-      //   'normal' — time over the beats the classified intervals hold (missed
+      //   'normal': time over the beats the classified intervals hold (missed
       //              beats confirmed by their neighbours, false peaks merged,
       //              premature beats and their pauses counted as the beats they are)
-      //   'uneven' — every beat counted: the "normal interval" idea no longer applies
+      //   'uneven': every beat counted: the "normal interval" idea no longer applies
       if (m.unevenBeats) { m.bpm = m.pulseRateRolling; m.bpmAverage = m.pulseRate; }
       m.bpmMethod = m.unevenBeats ? 'uneven' : 'normal';
       // HRV is trusted only with a steady rhythm, enough clean pairs, few
@@ -1318,10 +1308,10 @@
     }
 
     // One number for "can this signal be trusted right now", from:
-    //   shape     — how alike the pulses are (mean correlation with the template)
-    //   rhythm    — how strongly the signal repeats (autocorrelation)
-    //   acceptance— share of the last 10 intervals that passed
-    //   timing    — how precisely a beat can be placed (≤ 5 ms best, ≥ 25 ms worst)
+    //   shape:     how alike the pulses are (mean correlation with the template)
+    //   rhythm:    how strongly the signal repeats (autocorrelation)
+    //   acceptance: share of the last 10 intervals that passed
+    //   timing:    how precisely a beat can be placed (≤ 5 ms best, ≥ 25 ms worst)
     // then cut down for movement, glare (clipped red) and a very weak pulse.
     _quality(y, peaks, per, typical) {
       const o = this.o, fs = o.fs, N = y.length;
@@ -1446,9 +1436,7 @@
     }
   }
 
-  // ═══════════════════════════════════════════
-  // CAMERA — back camera, light on, frames sampled on a small canvas
-  // ═══════════════════════════════════════════
+  // ---- Camera: back camera, light on, frames sampled on a small canvas ----
   const hasDom = typeof window !== 'undefined' && typeof document !== 'undefined';
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   const store = {
@@ -1504,7 +1492,7 @@
   async function setTorch(track, on) {
     if (!torchCapable(track)) {
       // Not advertised. Some browsers accept it anyway; an unsupported
-      // advanced constraint is simply ignored, so this cannot hurt — but it
+      // advanced constraint is simply ignored, so this cannot hurt, but it
       // cannot be confirmed either, so report "no light" and let the page
       // suggest measuring next to a bright lamp or window.
       try { await track.applyConstraints({ advanced: [{ torch: on }] }); } catch (e) { /* not supported */ }
@@ -1541,8 +1529,8 @@
   // Freeze focus, white balance and exposure at the values the camera has
   // already settled on. Each family is applied on its own, and a rejection
   // is ignored, so a phone that only supports some of them still locks the
-  // rest. Nothing here sets a new exposure number — that stays with the
-  // clipping control above — so this cannot fight it.
+  // rest. Nothing here sets a new exposure number (that stays with the
+  // clipping control above), so this cannot fight it.
   async function lockImageControls(track) {
     if (!track || !track.applyConstraints) return {};
     const c = caps(track);
@@ -1681,10 +1669,6 @@
       this.proc = new SignalProcessor(this.o, (type, detail) => this._fromProcessor(type, detail));
     }
 
-    static isSupported() {
-      return hasDom && !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) && (window.isSecureContext !== false);
-    }
-
     on(type, fn) {
       const h = e => fn(e.detail);
       this.addEventListener(type, h);
@@ -1719,7 +1703,8 @@
 
     async start() {
       if (this.running || this.state === 'starting') return;
-      if (!PulseMonitor.isSupported()) { this._fail('unsupported', 'Camera access needs a secure (https) page in a current browser.'); return; }
+      // the same check the page uses to show the button, so they never disagree
+      if (!PulseMonitor.supported()) { this._fail('unsupported', 'Camera access needs a secure (https) page in a current browser.'); return; }
       this.result = null;
       this._setState('starting');
       let stream;
@@ -1944,9 +1929,7 @@
     }
   }
 
-  // ═══════════════════════════════════════════
-  // DRAWING — small canvas helpers shared by the app and the lab page
-  // ═══════════════════════════════════════════
+  // ---- Drawing: small canvas helpers shared by the app and the lab page ----
   function fitCanvas(canvas) {
     const dpr = (hasDom && window.devicePixelRatio) || 1;
     const w = Math.max(1, Math.round(canvas.clientWidth * dpr)), h = Math.max(1, Math.round(canvas.clientHeight * dpr));

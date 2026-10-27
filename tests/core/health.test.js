@@ -1,5 +1,5 @@
 /*
- * Health rules — run with:  node tests/core/health.test.js
+ * Health rules. Run with:  node tests/core/health.test.js
  *
  * The weight rule (a rise of 2 kg or more against any of the previous one to
  * three days: fluid building up in heart failure), the PHQ-2 mood screen

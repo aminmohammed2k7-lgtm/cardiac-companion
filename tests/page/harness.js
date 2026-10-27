@@ -4,14 +4,14 @@
  * Loads the real page into Node: index.html's own script, after the js/core
  * files it loads, in a sandbox with small stand-ins for the browser (an
  * element store, storage in memory, a fixed clock). The tests then call the
- * page's own functions — the rules that still live in index.html, where they
- * are — and read what they drew or saved.
+ * page's own functions (the rules that still live in index.html, where they
+ * are) and read what they drew or saved.
  *
  * PAGE_HTML=/path/to/index.html runs the same tests against another copy of
  * the page (Phase 1b ran them against v3.2's index.html first).
  *
  * Drawing the whole page (renderAll) and the weight chart are replaced by
- * counters here, and toasts, confirm() and phone notifications are recorded,
+ * counters here, and toasts, questions and phone notifications are recorded,
  * so each test looks only at the part it is about.
  */
 'use strict';
@@ -100,6 +100,17 @@ function loadPage() {
   ctx.drawWeightChart = () => {};
   ctx.showToast = msg => { rec.toasts.push(msg); };
   ctx.systemNotify = (title, body, tag) => { rec.sent.push({ title, body, tag }); return Promise.resolve(true); };
+  // The page asks its questions in its own box (ask), not with confirm().
+  // Answer it straight away the way confirm() was answered: the question is
+  // recorded, and rec.confirmAnswer picks yes or no. (An older page that
+  // still calls confirm() is answered by the stand-in above.)
+  if (typeof ctx.ask === 'function') {
+    ctx.ask = o => {
+      rec.confirms.push(o.msg);
+      if (rec.confirmAnswer) { if (o.onYes) o.onYes(rec.promptAnswer || ''); }
+      else if (o.onNo) o.onNo();
+    };
+  }
 
   const page = {
     rec, run,

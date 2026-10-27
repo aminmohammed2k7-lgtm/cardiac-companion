@@ -1,5 +1,5 @@
 /*
- * The calendar file — run with:  node tests/page/calendar-file.test.js
+ * The calendar file. Run with:  node tests/page/calendar-file.test.js
  *
  * "Add reminders to my calendar" writes an .ics file the phone's calendar
  * rings from, even when the app is closed. From the guide: one repeating

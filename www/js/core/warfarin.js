@@ -1,5 +1,5 @@
 /*
- * warfarin.js — tablets, INR against the doctor's range, time in range
+ * warfarin.js: tablets, INR against the doctor's range, time in range
  *
  * Part of the medical logic in js/core: plain JavaScript with no page, no
  * storage and no text, so the same file runs in the app (window.CC.warfarin)
@@ -15,11 +15,9 @@
   const { todayKey, addDays, daysBetween } = calendar;
   const { round2 } = supply;
 
-  // ═══════════════════════════════════════════
-  // TABLETS
+  // ---- Tablets ----
   // A dose is shown as tablets only when it is an exact whole, half or
   // quarter tablet; otherwise in mg alone. The app never rounds a dose.
-  // ═══════════════════════════════════════════
   function tabletsFor(doseMg, strength){
     if(!strength || doseMg==null || doseMg<=0) return null;
     const t=doseMg/strength, q=Math.round(t*4)/4;
@@ -38,7 +36,7 @@
   // quarter tablet, the same rule as each day's figure. Otherwise null, and
   // the card shows the weekly total in mg alone. Blank and 0 days add
   // nothing. (Adding up each day's mg ÷ strength and rounding once showed
-  // "6½" for 6.6 tablets — FOUND-BUGS.md #3, fixed.)
+  // "6½" for 6.6 tablets. FOUND-BUGS.md #3, fixed.)
   function weeklyTabs(doses, strength){
     if(!strength) return null;
     let sum=0;
@@ -51,11 +49,9 @@
     return sum;
   }
 
-  // ═══════════════════════════════════════════
-  // WARFARIN AND INR
+  // ---- Warfarin and INR ----
   // The app shows where a result sits against the range the doctor wrote
   // down. It never suggests a dose.
-  // ═══════════════════════════════════════════
   function weeklyMg(doses){ return round2((doses||[]).reduce((a,v)=>a+(v>0?v:0),0)); }
   function dosesOn(Sx, d){
     const h=(Sx.warfarin.doseHistory||[]).filter(x=>x.from<=d).sort((a,b)=>a.from<b.from?-1:1);

@@ -1,10 +1,10 @@
 /*
- * The checks the screens make — run with:  node tests/page/rules.test.js
+ * The checks the screens make. Run with:  node tests/page/rules.test.js
  *
  * Rules from the guide that act when the person types or taps: injection
- * lateness and its reasons, the custom injection interval (7–60 days), the
+ * lateness and its reasons, the custom injection interval (7 to 60 days), the
  * 80% injection and 65% time-in-range marks, the typo checks (a warfarin dose
- * over 20 mg, INR 0.5–15 and 8 or more, the INR target 1–5, weight 20–300 kg,
+ * over 20 mg, INR 0.5 to 15 and 8 or more, the INR target 1 to 5, weight 20 to 300 kg,
  * the reading ranges), the weekly weight change (steady under 1 kg), the ten
  * warning signs in two levels, a marked dose following its medicine's new
  * time, and the supply warnings after the warning window changes.
@@ -96,12 +96,12 @@ const weigh = v => { open({}); p.el('weightInput').value = v; p.call('saveWeight
 same('weight 20 and 300 kg are saved; 19.9 and 300.1 are refused', [weigh('20'), weigh('300'), weigh('19.9'), weigh('300.1')], [20, 300, undefined, undefined]);
 same('… with a comma as the decimal mark, to one decimal', weigh('64,56'), 64.6);
 const clean = (kind, raw) => p.call('cleanVital', kind, raw);
-same('pulse 20–250, whole numbers', ['19', '20', '72.6', '250', '251'].map(v => clean('pulse', v)), [null, '20', '73', '250', null]);
-same('pressure: top 50–260, bottom 30–160, top higher than bottom',
+same('pulse 20 to 250, whole numbers', ['19', '20', '72.6', '250', '251'].map(v => clean('pulse', v)), [null, '20', '73', '250', null]);
+same('pressure: top 50 to 260, bottom 30 to 160, top higher than bottom',
   ['120/80', '120 / 80', '80/120', '49/30', '50/30', '260/160', '261/90', '120/29', '120'].map(v => clean('bp', v)),
   ['120/80', '120/80', null, null, '50/30', '260/160', null, null, null]);
-same('oxygen 50–100 %', ['49', '50', '100', '101'].map(v => clean('spo2', v)), [null, '50', '100', null]);
-same('temperature 30–45 °C, to one decimal', ['29.9', '30', '36.66', '45', '45.1'].map(v => clean('temp', v)), [null, '30', '36.7', '45', null]);
+same('oxygen 50 to 100 %', ['49', '50', '100', '101'].map(v => clean('spo2', v)), [null, '50', '100', null]);
+same('temperature 30 to 45 °C, to one decimal', ['29.9', '30', '36.66', '45', '45.1'].map(v => clean('temp', v)), [null, '30', '36.7', '45', null]);
 function week(log) {
   open({ weightLog: log }); p.call('renderSummaryTab');
   const insight = (/Weight[^<]*7 days\./.exec(p.html('insightList')) || [])[0];

@@ -1,5 +1,5 @@
 /*
- * Penicillin injection — run with:  node tests/core/injection.test.js
+ * Penicillin injection. Run with:  node tests/core/injection.test.js
  *
  * When the next benzathine penicillin injection is due, how many days are
  * left, and the share of injections due in the last 12 months that were

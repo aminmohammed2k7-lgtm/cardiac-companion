@@ -74,8 +74,8 @@ Health data never leaves the phone, so Android's own copies are off:
 
 | Setting | What it stops |
 |---|---|
-| `android:allowBackup="false"` | Google Drive backup on Android 6–11, and transfer to a new phone on Android 6–11 |
-| `android:fullBackupContent="false"` | The same, said a second way for Android 6–11 |
+| `android:allowBackup="false"` | Google Drive backup on Android 6 to 11, and transfer to a new phone on Android 6 to 11 |
+| `android:fullBackupContent="false"` | The same, said a second way for Android 6 to 11 |
 | `android:dataExtractionRules` → `res/xml/data_extraction_rules.xml` | Android 12+: cloud backup **and** device-to-device transfer. Since Android 12, `allowBackup="false"` alone no longer stops the transfer to a new phone, so every storage area is excluded from both |
 
 People move their record with the app's own backup file (Settings → Your

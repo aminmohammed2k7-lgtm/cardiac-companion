@@ -1,11 +1,11 @@
 /*
- * Three languages, kept complete — run with:  node tests/i18n.test.js
+ * Three languages, kept complete. Run with:  node tests/i18n.test.js
  *
  * The app shows every text in English, Amharic or Afaan Oromo. A key that is
  * missing in one language quietly falls back to English, and an empty string
  * shows nothing at all, so a patient could lose a warning without anyone
  * noticing. This reads the string tables (T, and the version 3 additions in
- * T2) out of index.html and fails if any language is missing a key, has an
+ * T2) from www/js/strings.js and fails if any language is missing a key, has an
  * empty text, has a list of a different length (symptoms, weekdays…), or
  * drops a placeholder such as {n} or {date} that English fills in. It also
  * checks that every key the page's markup asks for exists.
@@ -18,19 +18,11 @@ const vm = require('vm');
 
 const html = fs.readFileSync(path.join(__dirname, '..', 'www', 'index.html'), 'utf8');
 
-// The tables are plain object literals: cut them out of the page and evaluate
-// them on their own, the same way the page merges them at start-up (init()).
-function cut(startMark, endMark) {
-  const a = html.indexOf(startMark);
-  const b = html.indexOf(endMark, a + startMark.length);
-  if (a < 0 || b < 0) throw new Error('index.html no longer contains ' + startMark);
-  return html.slice(a, b);
-}
-const ctx = vm.createContext({});
-vm.runInContext(
-  cut('const T = {', '\n// ═').replace('const T =', 'var T =') + '\n' +
-  cut('const T2={};', '\n// ═').replace('const T2=', 'var T2='), ctx);
-const { T, T2 } = ctx;
+// The tables are plain object literals in their own file: run it on its own
+// and take them out, then merge them the way the page does at start-up (init()).
+const strings = fs.readFileSync(path.join(__dirname, '..', 'www', 'js', 'strings.js'), 'utf8');
+const { T, T2 } = vm.runInContext(strings + '\n;({ T, T2 })', vm.createContext({}));
+if (!T || !T2) throw new Error('www/js/strings.js no longer defines T and T2');
 
 const LANGS = ['en', 'am', 'or'];
 // one flat table per language: top-level labels, plus runtime messages (msg)
@@ -62,7 +54,7 @@ for (const l of LANGS) {
 for (const l of LANGS) {
   const empty = Object.keys(table[l]).filter(k => {
     const v = table[l][k];
-    // a list of numbers (severeIdx) is data, not text
+    // a list of numbers is data, not text
     if (Array.isArray(v)) return v.some(x => typeof x === 'string' ? !x.trim() : typeof x !== 'number');
     return typeof v !== 'string' || !v.trim();
   });
@@ -86,6 +78,11 @@ const used = [...new Set([...html.matchAll(/data-t[pa]?="([^"]+)"/g)].map(m => m
 const unknown = used.filter(k => !(k in table.en) && !(('msg.' + k) in table.en));
 check('every key the markup uses exists', used.length > 50 && !unknown.length, unknown.length ? list(unknown) : used.length + ' keys');
 
+// confirm(), prompt() and alert() put their buttons in the phone's language,
+// not the app's. The page asks in its own box, ask(), instead.
+const script = html.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\//g, '');
+const native = [...new Set(script.match(/(?<![\w.$])(?:window\.)?(?:confirm|prompt|alert)\s*\(/g) || [])];
+check('questions are asked in the app\'s language, not with confirm() or prompt()', !native.length, native.join(' '));
 // The phone camera can estimate a pulse. These two lines used to say the
 // app measures nothing, which is no longer true. Each language must say
 // the estimate is a wellness reading only, and must not deny measuring.
