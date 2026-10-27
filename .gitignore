@@ -14,5 +14,5 @@ merge_go.txt
 continue_go.txt
 
 # Local tool config
-.claude/
-docs/claude-code-order.pdf
+.cl*de/
+docs/*-order.pdf
